@@ -194,7 +194,7 @@ public class ItemFlagMP extends ItemBaseMP implements IHoldableItem
 	@Override
 	public String[] getItemVariantsName()
 	{
-		return new String[] { "thai", "laos", "singapore", "myanmar", "marlaysia", "vietnam", "indonesia", "philippines", "cambodia", "brunei" };
+		return new String[] { "thai", "laos", "singapore", "myanmar", "malaysia", "vietnam", "indonesia", "philippines", "cambodia", "brunei" };
 	}
 
 	@Override
