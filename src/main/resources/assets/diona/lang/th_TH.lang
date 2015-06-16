@@ -5,7 +5,7 @@ tile.diona_block.surface_rock.name=หินพื้นผิวไดโอน
 tile.diona_block.sub_surface.name=หินรองพื้นผิวไดโอนา
 tile.diona_block.rock.name=หินไดโอนา
 tile.diona_block.cobblestone.name=หินหยาบไดโอนา
-tile.diona_block.quontonium_ore.name=แร่คอนโทเนียม
+tile.diona_block.quontonium_ore.name=แร่ควอนโทเนียม
 tile.diona_block.fronisium_ore.name=Fronisium Ore
 tile.diona_block.copper_ore.name=Copper Ore
 tile.diona_block.tin_ore.name=Tin Ore
@@ -105,10 +105,10 @@ item.fronisium_spade.name=Fronisium Shovel
 item.fronisium_sword.name=Fronisium Sword
 
 # ARMORS
-item.quontonium_helmet.name=หมวกคอนโทเนียม
-item.quontonium_chestplate.name=เสื้อเกราะคอนโทเนียม
-item.quontonium_leggings.name=กางเกงคอนโทเนียม
-item.quontonium_boots.name=รองเท้าคอนโทเนียม
+item.quontonium_helmet.name=หมวกควอนโทเนียม
+item.quontonium_chestplate.name=เสื้อเกราะควอนโทเนียม
+item.quontonium_leggings.name=กางเกงควอนโทเนียม
+item.quontonium_boots.name=รองเท้าควอนโทเนียม
 item.fronisium_helmet.name=Fronisium Helmet
 item.fronisium_chestplate.name=Fronisium Chestplate
 item.fronisium_leggings.name=Fronisium Leggings
@@ -119,23 +119,23 @@ item.breathable_fronisium_helmet.name=Breathable Fronisium Helmet
 # ENTITIES
 entity.MorePlanet.SpaceWolf.name=หมาป่าอวกาศ
 entity.MorePlanet.EvolvedEnderman.name=เอนเดอร์แมนอวกาศ
-entity.MorePlanet.DustSludgeling.name=Dust Sludgeling
-entity.MorePlanet.DionaCreeperBoss.name=บอสครีปเปอร์ดาวไดโอนา
-entity.MorePlanet.DionaMinionCreeper.name=ลูกน้องครีปเปอร์ดาวไดโอนา
+entity.MorePlanet.DustSludgeling.name=หนอนฝุ่น
+entity.MorePlanet.DionaCreeperBoss.name=บอสครีปเปอร์ไดโอนา
+entity.MorePlanet.DionaMinionCreeper.name=ลูกน้องครีปเปอร์ไดโอนา
 
 # GUI
 
 # CONTAINER
-container.diona.treasurechest.name=กล่องสมบัติดาวไดโอนา
-container.diona.ancientchest.name=กล่องดาวไดโอนาเก่า
+container.diona.treasurechest.name=กล่องสมบัติไดโอนา
+container.diona.ancientchest.name=กล่องไดโอนาเก่า
 schematics.container.rocket.tier4=จรวดเทียร์ 4
 schematics.container.rocket.noflag.tier4=จรวดเทียร์ 4 ไม่มีธง
 
 # PLANET
-planet.diona=ดาวไดโอนา
+planet.diona=ไดโอนา
 
 # POTION
-potion.emp=อีเอ็มพี
+potion.emp=EMP
 
 DEATH MESSAGES
-death.attack.laser=%1โดนยิงโดยเลเซอร์
+death.attack.laser=%1 ถูกยิงโดยเลเซอร์
