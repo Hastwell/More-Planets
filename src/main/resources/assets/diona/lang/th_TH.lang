@@ -33,8 +33,8 @@ tile.mp_stone_half_slab1.chiseledQuon.name=ควอนโทเนียมค�
 tile.dungeon_brick_half_slab1.dionaBrick.name=อิฐครึ่งขั้นดันเจี้ยนดาวไดโอนา
 
 # WALLS
-tile.mp_wall.diona.name=Diona Cobblestone Wall
-tile.mp_wall.quonBrick.name=Quontonium Brick Wall
+tile.mp_wall.diona.name=กำแพงหินดาวไดโอนา
+tile.mp_wall.quonBrick.name=กำแพงอิฐควอนโทเนียม
 tile.mp_wall.quonChiseled.name=Chiseled Quontonium Wall
 tile.mp_dungeon_brick_wall.dionaBrick.name=Diona Dungeon Brick Wall
 
