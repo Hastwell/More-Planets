@@ -93,7 +93,18 @@ public class CraftingRecipesFronos
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.caramel_block), new Object[] { "CCC", "CCC", "CCC", 'C', new ItemStack(FronosItems.fronos_food2, 1, 2) });
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosBlocks.mossy_fronos_cobblestone), new ItemStack(FronosBlocks.fronos_block, 1, 1), new ItemStack(Blocks.vine) );
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_dirt, 4, 1), new Object[] { "DG", "GD", 'D', new ItemStack(FronosBlocks.fronos_dirt, 1, 0), 'G', new ItemStack(Blocks.gravel) });
-		GameRegistry.addShapelessRecipe(new ItemStack(FronosBlocks.mossy_fronos_cobblestone, 1), new ItemStack(FronosBlocks.fronos_block, 1, 1), new ItemStack(Blocks.vine) );
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 4, 0), new Object[] { "SS", "SS", 'S', new ItemStack(FronosBlocks.fronos_sand, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 4, 3), new Object[] { "SS", "SS", 'S', new ItemStack(FronosBlocks.fronos_sand, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 4, 6), new Object[] { "SS", "SS", 'S', new ItemStack(FronosBlocks.fronos_sand, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 4, 2), new Object[] { "SS", "SS", 'S', new ItemStack(FronosBlocks.fronos_sandstone, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 4, 5), new Object[] { "SS", "SS", 'S', new ItemStack(FronosBlocks.fronos_sandstone, 1, 3) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 4, 8), new Object[] { "SS", "SS", 'S', new ItemStack(FronosBlocks.fronos_sandstone, 1, 6) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 1, 1), new Object[] { "S", "S", 'S', new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 1, 4), new Object[] { "S", "S", 'S', new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 1, 7), new Object[] { "S", "S", 'S', new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, 2) });
+		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 0), new Object[] { "SSS", 'S', "fronosSandstone" });
+		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 1), new Object[] { "SSS", 'S', "whiteSandstone" });
+		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 2), new Object[] { "SSS", 'S', "cheeseSandstone" });
 
 		// Coconut Wood Stairs
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.coconut_wood_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', new ItemStack(FronosBlocks.fronos_wooden_planks, 1, 0) });
@@ -118,6 +129,18 @@ public class CraftingRecipesFronos
 		// Fronos Dungeon Brick Stairs
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_dungeon_brick_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', new ItemStack(FronosBlocks.fronos_block, 1, 14) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_dungeon_brick_stairs, 4), new Object[] { "X  ", "XX ", "XXX", 'X', new ItemStack(FronosBlocks.fronos_block, 1, 14) });
+
+		// Fronos Sandstone Stairs
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', new ItemStack(FronosBlocks.fronos_sandstone, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone_stairs, 4), new Object[] { "X  ", "XX ", "XXX", 'X', new ItemStack(FronosBlocks.fronos_sandstone, 1, 0) });
+
+		// White Sandstone Stairs
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.white_sandstone_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', new ItemStack(FronosBlocks.fronos_sandstone, 1, 3) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.white_sandstone_stairs, 4), new Object[] { "X  ", "XX ", "XXX", 'X', new ItemStack(FronosBlocks.fronos_sandstone, 1, 3) });
+
+		// Cheese Sandstone Stairs
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.cheese_sandstone_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', new ItemStack(FronosBlocks.fronos_sandstone, 1, 6) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.cheese_sandstone_stairs, 4), new Object[] { "X  ", "XX ", "XXX", 'X', new ItemStack(FronosBlocks.fronos_sandstone, 1, 6) });
 
 		// Slabs
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.wooden_slab_half, 6, 2), new Object[] { "CCC", 'C', new ItemStack(FronosBlocks.fronos_wooden_planks, 1, 0) });
@@ -320,6 +343,15 @@ public class CraftingRecipesFronos
 		OreDictionary.registerOre("candyCane", new ItemStack(FronosBlocks.candy_cane2, 1, 1));
 		OreDictionary.registerOre("candyCane", new ItemStack(FronosBlocks.candy_cane2, 1, 2));
 		OreDictionary.registerOre("candyCane", new ItemStack(FronosBlocks.candy_cane2, 1, 3));
+		OreDictionary.registerOre("fronosSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 0));
+		OreDictionary.registerOre("fronosSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 1));
+		OreDictionary.registerOre("fronosSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 2));
+		OreDictionary.registerOre("whiteSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 3));
+		OreDictionary.registerOre("whiteSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 4));
+		OreDictionary.registerOre("whiteSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 5));
+		OreDictionary.registerOre("cheeseSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 6));
+		OreDictionary.registerOre("cheeseSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 7));
+		OreDictionary.registerOre("cheeseSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 8));
 	}
 
 	private static void addTier7RocketRecipes()

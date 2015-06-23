@@ -26,6 +26,7 @@ public class CraftingRecipesVenus
 		CraftingRecipesVenus.addItemRecipes();
 		CraftingRecipesVenus.addBlockSmelting();
 		CraftingRecipesVenus.addItemSmelting();
+		CraftingRecipesVenus.addOreDictionary();
 	}
 
 	private static void addBlockRecipes()
@@ -51,8 +52,6 @@ public class CraftingRecipesVenus
 		//		GameRegistry.addRecipe(new ItemStack(MPBlocks.stone_wall, 6, 6), new Object[] { "XXX", "XXX", 'X', new ItemStack(KoentusBlocks.koentus_block, 1, 12) });
 		//		GameRegistry.addRecipe(new ItemStack(MPBlocks.stone_wall, 6, 7), new Object[] { "XXX", "XXX", 'X', new ItemStack(KoentusBlocks.koentus_block, 1, 13) });
 		//		GameRegistry.addRecipe(new ItemStack(MPBlocks.dungeon_brick_wall, 6, 3), new Object[] { "XXX", "XXX", 'X', new ItemStack(KoentusBlocks.koentus_block, 1, 11) });
-
-		OreDictionary.registerOre("sand", new ItemStack(VenusBlocks.venus_sand));
 	}
 
 	private static void addItemRecipes()
@@ -92,6 +91,11 @@ public class CraftingRecipesVenus
 		//		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
 		//		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_sword), new Object[] { "X", "X", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
 		//		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_shovel), new Object[] { "X", "Y", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
+	}
+	
+	private static void addOreDictionary()
+	{
+		OreDictionary.registerOre("sand", new ItemStack(VenusBlocks.venus_sand, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	private static void addBlockSmelting()

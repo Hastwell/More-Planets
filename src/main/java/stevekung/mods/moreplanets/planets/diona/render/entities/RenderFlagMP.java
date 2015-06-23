@@ -23,7 +23,7 @@ public class RenderFlagMP extends Render
 {
 	public static ResourceLocation[] flagTexture;
 
-	private static String[] flag = { "thai", "laos", "singapore", "myanmar", "marlaysia", "vietnam", "indonesia", "philippines", "cambodia", "brunei" };
+	private static String[] flag = { "thai", "laos", "singapore", "myanmar", "malaysia", "vietnam", "indonesia", "philippines", "cambodia", "brunei" };
 
 	static
 	{

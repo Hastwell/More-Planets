@@ -191,6 +191,7 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		API.hideItem(new ItemStack(MPBlocks.stone_slab_full2, 1, OreDictionary.WILDCARD_VALUE));
 		API.hideItem(new ItemStack(MPBlocks.wooden_slab_full, 1, OreDictionary.WILDCARD_VALUE));
 		API.hideItem(new ItemStack(MPBlocks.dungeon_brick_slab_full, 1, OreDictionary.WILDCARD_VALUE));
+		API.hideItem(new ItemStack(FronosBlocks.double_fronos_sandstone_slab, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	private void registerHideItems()

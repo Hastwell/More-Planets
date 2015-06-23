@@ -201,6 +201,18 @@ tile.green_jelly_slime_egg.name=Green Jelly Slime Egg
 tile.lemon_jelly_slime_egg.name=Lemon Jelly Slime Egg
 tile.fronos_leaves2.purple_maple.name=Purple Maple Leaves
 tile.fronos_sapling.purple_maple.name=Purple Maple Sapling
+tile.fronos_sandstone.fronosSandstone.name=Fronos Sandstone
+tile.fronos_sandstone.fronosSandstoneChiseled.name=Chiseled Fronos Sandstone
+tile.fronos_sandstone.fronosSandstoneSmooth.name=Smooth Fronos Sandstone
+tile.fronos_sandstone.whiteSandstone.name=White Sandstone
+tile.fronos_sandstone.whiteSandstoneChiseled.name=Chiseled White Sandstone
+tile.fronos_sandstone.whiteSandstoneSmooth.name=Smooth White Sandstone
+tile.fronos_sandstone.cheeseSandstone.name=Cheese Sandstone
+tile.fronos_sandstone.cheeseSandstoneChiseled.name=Chiseled Cheese Sandstone
+tile.fronos_sandstone.cheeseSandstoneSmooth.name=Smooth Cheese Sandstone
+tile.fronos_sandstone_stairs.name=Fronos Sandstone Stairs
+tile.white_sandstone_stairs.name=White Sandstone Stairs
+tile.cheese_sandstone_stairs.name=Cheese Sandstone Stairs
 
 # SLABS
 tile.mp_stone_half_slab2.fronos.name=Fronos Cobblestone Slab
@@ -209,6 +221,9 @@ tile.mp_stone_half_slab2.fronosCrackBrick.name=Cracked Fronos Stone Brick Slab
 tile.mp_wood_half_slab.coconutWood.name=Coconut Wood Slab
 tile.mp_wood_half_slab.redMapleWood.name=Maple Wood Slab
 tile.dungeon_brick_half_slab1.fronosBrick.name=Fronos Dungeon Brick Slab
+tile.half_fronos_sandstone_slab.fronos.name=Fronos Sandstone Slab
+tile.half_fronos_sandstone_slab.white.name=White Sandstone Slab
+tile.half_fronos_sandstone_slab.cheese.name=Cheese Sandstone Slab
 
 # WALLS
 tile.mp_wall.fronos.name=Fronos Cobblestone Wall

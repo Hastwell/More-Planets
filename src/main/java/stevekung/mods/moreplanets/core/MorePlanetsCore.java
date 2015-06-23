@@ -102,7 +102,7 @@ public class MorePlanetsCore
 
 	public static final int major_version = 1;
 	public static final int minor_version = 2;
-	public static final int build_version = 8;
+	public static final int build_version = 9;
 
 	@SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
 	public static CommonProxyMP proxy;
@@ -126,7 +126,7 @@ public class MorePlanetsCore
 	public static Planet venus;
 	public static Planet pluto;
 
-	public static Moon koentus;
+	public static Planet koentus; // Again -.-
 	public static Moon phobos;
 	public static Moon deimos;
 	public static Moon io;

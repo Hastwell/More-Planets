@@ -22,6 +22,7 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickWall;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSlabMP;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockWallMP;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
@@ -73,6 +74,7 @@ public class MPBlocks
 		PhobosBlocks.init();
 		DeimosBlocks.init();
 		IoBlocks.init();
+		EuropaBlocks.init();
 	}
 
 	private static void initBlocks()

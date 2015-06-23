@@ -20,6 +20,7 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 public class BlockStairsMP extends BlockStairs
 {
 	private StairsCategory category;
+	private IIcon[] fronosSandstoneIcon;
 
 	public static enum StairsCategory
 	{
@@ -50,7 +51,10 @@ public class BlockStairsMP extends BlockStairs
 		SIRIUS_COBBLESTONE ("stone"),
 		SIRIUS_BRICK ("stone"),
 		mercury_cobblestone ("stone"),
-		mercury_brick ("stone");
+		mercury_brick ("stone"),
+		fronos_sandstone ("stone"),
+		white_sandstone ("stone"),
+		cheese_sandstone ("stone");
 
 		private List<String> values;
 		private String type;
@@ -197,6 +201,17 @@ public class BlockStairsMP extends BlockStairs
 		{
 			this.blockIcon = par1IconRegister.registerIcon("mercury:mercury_dungeon_brick");
 		}
+
+		this.fronosSandstoneIcon = new IIcon[10];
+		this.fronosSandstoneIcon[0] = par1IconRegister.registerIcon("fronos:fronos_sandstone");
+		this.fronosSandstoneIcon[1] = par1IconRegister.registerIcon("fronos:fronos_sandstone_top");
+		this.fronosSandstoneIcon[2] = par1IconRegister.registerIcon("fronos:fronos_sandstone_bottom");
+		this.fronosSandstoneIcon[3] = par1IconRegister.registerIcon("fronos:white_sandstone");
+		this.fronosSandstoneIcon[4] = par1IconRegister.registerIcon("fronos:white_sandstone_top");
+		this.fronosSandstoneIcon[5] = par1IconRegister.registerIcon("fronos:white_sandstone_bottom");
+		this.fronosSandstoneIcon[6] = par1IconRegister.registerIcon("fronos:cheese_sandstone");
+		this.fronosSandstoneIcon[7] = par1IconRegister.registerIcon("fronos:cheese_sandstone_top");
+		this.fronosSandstoneIcon[8] = par1IconRegister.registerIcon("fronos:cheese_sandstone_bottom");
 	}
 
 	public boolean isWoodCategory(String block)
@@ -213,6 +228,60 @@ public class BlockStairsMP extends BlockStairs
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
+		if (this.category == StairsCategory.fronos_sandstone)
+		{
+			switch (side)
+			{
+			case 0:
+				return this.fronosSandstoneIcon[2]; //BOTTOM
+			case 1:
+				return this.fronosSandstoneIcon[1]; //TOP
+			case 2:
+				return this.fronosSandstoneIcon[0]; //Z-
+			case 3:
+				return this.fronosSandstoneIcon[0]; //Z+
+			case 4:
+				return this.fronosSandstoneIcon[0]; //X-
+			case 5:
+				return this.fronosSandstoneIcon[0]; //X+
+			}
+		}
+		else if (this.category == StairsCategory.white_sandstone)
+		{
+			switch (side)
+			{
+			case 0:
+				return this.fronosSandstoneIcon[5]; //BOTTOM
+			case 1:
+				return this.fronosSandstoneIcon[4]; //TOP
+			case 2:
+				return this.fronosSandstoneIcon[3]; //Z-
+			case 3:
+				return this.fronosSandstoneIcon[3]; //Z+
+			case 4:
+				return this.fronosSandstoneIcon[3]; //X-
+			case 5:
+				return this.fronosSandstoneIcon[3]; //X+
+			}
+		}
+		else if (this.category == StairsCategory.cheese_sandstone)
+		{
+			switch (side)
+			{
+			case 0:
+				return this.fronosSandstoneIcon[8]; //BOTTOM
+			case 1:
+				return this.fronosSandstoneIcon[7]; //TOP
+			case 2:
+				return this.fronosSandstoneIcon[6]; //Z-
+			case 3:
+				return this.fronosSandstoneIcon[6]; //Z+
+			case 4:
+				return this.fronosSandstoneIcon[6]; //X-
+			case 5:
+				return this.fronosSandstoneIcon[6]; //X+
+			}
+		}
 		return this.blockIcon;
 	}
 }

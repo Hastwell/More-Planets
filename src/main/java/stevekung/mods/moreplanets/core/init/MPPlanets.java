@@ -65,7 +65,7 @@ public class MPPlanets
 
 	private static void initMoons()
 	{
-		MorePlanetsCore.koentus = new Moon("koentus").setParentPlanet(MorePlanetsCore.diona);
+		MorePlanetsCore.koentus = new Planet("koentus").setParentSolarSystem(MorePlanetsCore.siriusSolarSystem);
 		MorePlanetsCore.koentus.setPhaseShift(2.436F);
 		MorePlanetsCore.koentus.setRelativeDistanceFromCenter(new ScalableDistance(9.5F, 9.5F));
 		MorePlanetsCore.koentus.setRelativeOrbitTime(1 / 0.01F);
@@ -209,7 +209,7 @@ public class MPPlanets
 		GalaxyRegistry.registerPlanet(MorePlanetsCore.kapteynB);
 		GalaxyRegistry.registerPlanet(MorePlanetsCore.siriusB);
 
-		GalaxyRegistry.registerMoon(MorePlanetsCore.koentus);
+		GalaxyRegistry.registerPlanet(MorePlanetsCore.koentus);
 
 		if (ConfigManagerMP.enableMorePlanetsBasicPlanets)
 		{
