@@ -8,7 +8,6 @@
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -21,7 +20,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
-public abstract class BlockFilledCup extends BlockBaseMP implements ITileEntityProvider
+public abstract class BlockFilledCup extends BlockBaseMP
 {
 	public static PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -44,12 +43,6 @@ public abstract class BlockFilledCup extends BlockBaseMP implements ITileEntityP
 	public boolean isFullCube()
 	{
 		return false;
-	}
-
-	@Override
-	public int getRenderType()
-	{
-		return 0;
 	}
 
 	@Override

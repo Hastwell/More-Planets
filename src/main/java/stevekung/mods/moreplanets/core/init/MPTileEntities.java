@@ -12,18 +12,7 @@ import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityEledosEgg
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCandyExtractor;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCaramelCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCavernOysterClose;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCavernOysterOpen;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCheeseOfMilkCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCoconutMilkCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCup;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAncientChest;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityMineralWaterCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityOvantineCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOysterClose;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOysterOpen;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityTeaCup;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityUraniumWaste;
@@ -68,22 +57,11 @@ public class MPTileEntities
 		//		GameRegistry.registerTileEntity(TileEntityKoentusDungeonSpawner.class, "KoentusDungeonSpawner");
 
 		// Fronos
-		GameRegistry.registerTileEntity(TileEntitySpaceOysterOpen.class, "SpaceOysterOpen");
-		GameRegistry.registerTileEntity(TileEntitySpaceOysterClose.class, "SpaceOysterClose");
-		GameRegistry.registerTileEntity(TileEntityCavernOysterOpen.class, "CavernOysterOpen");
-		GameRegistry.registerTileEntity(TileEntityCavernOysterClose.class, "CavernOysterClose");
 		//		GameRegistry.registerTileEntity(TileEntityFronosTreasureChest.class, "FronosTreasureChest");
 		GameRegistry.registerTileEntity(TileEntityCandyExtractor.class, "CandyExtractor");
 		GameRegistry.registerTileEntity(TileEntityFronosAncientChest.class, "FronosAncientChest");
 		//		GameRegistry.registerTileEntity(TileEntityFronosDungeonSpawner.class, "FronosDungeonSpawner");
 		//		GameRegistry.registerTileEntity(TileEntityMineralWaterGenerator.class, "MineralWaterGenerator");
-		GameRegistry.registerTileEntity(TileEntityCup.class, "Cup");
-		GameRegistry.registerTileEntity(TileEntityMineralWaterCup.class, "MineralWaterCup");
-		GameRegistry.registerTileEntity(TileEntityOvantineCup.class, "OvantineCup");
-		GameRegistry.registerTileEntity(TileEntityCoconutMilkCup.class, "CoconutMilkCup");
-		GameRegistry.registerTileEntity(TileEntityCheeseOfMilkCup.class, "CheeseOfMilkCup");
-		GameRegistry.registerTileEntity(TileEntityTeaCup.class, "TeaCup");
-		GameRegistry.registerTileEntity(TileEntityCaramelCup.class, "CaramelCup");
 
 		// Kapteyn B
 		//		GameRegistry.registerTileEntity(TileEntityKapteynBTreasureChest.class, "KapteynBTreasureChest");

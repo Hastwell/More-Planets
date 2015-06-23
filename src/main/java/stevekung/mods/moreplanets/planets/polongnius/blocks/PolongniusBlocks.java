@@ -13,6 +13,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.polongnius.fluids.BlockFluidCheeseOfMilk;
 import stevekung.mods.moreplanets.planets.polongnius.itemblocks.ItemBlockPolongnius;
 import stevekung.mods.stevecore.RegisterHelper;
@@ -60,7 +61,7 @@ public class PolongniusBlocks
 		//		PolongniusBlocks.ultra_violet_solar_fake = new BlockUltraVioletSolarFake("ultra_violet_solar_fake");
 		PolongniusBlocks.cheese_gas_block = new BlockCheeseGas("cheese_gas_block");
 
-		PolongniusBlocks.cheese_of_milk_fluid = new Fluid("cheese_of_milk_fluid").setBlock(PolongniusBlocks.cheese_of_milk).setViscosity(2000);
+		PolongniusBlocks.cheese_of_milk_fluid = new FluidMP("cheese_of_milk_fluid").setBlock(PolongniusBlocks.cheese_of_milk).setViscosity(2000);
 		FluidRegistry.registerFluid(PolongniusBlocks.cheese_of_milk_fluid);
 		PolongniusBlocks.cheese_of_milk = new BlockFluidCheeseOfMilk("cheese_of_milk_fluid");
 	}

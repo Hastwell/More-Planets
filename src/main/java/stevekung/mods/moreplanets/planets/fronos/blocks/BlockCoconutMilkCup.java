@@ -15,13 +15,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCoconutMilkCup;
 
 public class BlockCoconutMilkCup extends BlockFilledCup
 {
@@ -59,12 +57,6 @@ public class BlockCoconutMilkCup extends BlockFilledCup
 	public int damageDropped(IBlockState state)
 	{
 		return 3;
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		return new TileEntityCoconutMilkCup();
 	}
 
 	@Override

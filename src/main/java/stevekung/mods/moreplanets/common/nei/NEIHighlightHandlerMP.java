@@ -179,6 +179,10 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(EuropaBlocks.europa_sea_lantern, 1, 0);
 		}
+		if (block == FronosBlocks.fronos_sandstone)
+		{
+			return new ItemStack(FronosBlocks.fronos_sandstone, 1, meta);
+		}
 		return null;
 	}
 }

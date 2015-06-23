@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=bottom,variant=fronos_sandstone_slab": { "model": "moreplanets:half_slab_fronos_sandstone" },
+        "half=top,variant=fronos_sandstone_slab": { "model": "moreplanets:upper_slab_fronos_sandstone" },
+		"half=bottom,variant=white_sandstone_slab": { "model": "moreplanets:half_slab_white_sandstone" },
+        "half=top,variant=white_sandstone_slab": { "model": "moreplanets:upper_slab_white_sandstone" },
+		"half=bottom,variant=cheese_sandstone_slab": { "model": "moreplanets:half_slab_cheese_sandstone" },
+        "half=top,variant=cheese_sandstone_slab": { "model": "moreplanets:upper_slab_cheese_sandstone" }
+    }
+}

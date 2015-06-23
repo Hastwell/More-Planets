@@ -1,0 +1,6 @@
+{
+    "parent": "moreplanets:block/cup_empty",
+    "textures": {
+        "texture": "moreplanets:blocks/cup"
+    }
+}

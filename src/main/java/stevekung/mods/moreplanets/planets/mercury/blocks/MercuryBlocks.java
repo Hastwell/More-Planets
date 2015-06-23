@@ -13,6 +13,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.mercury.fluids.BlockFluidDirtyWater;
 import stevekung.mods.moreplanets.planets.mercury.itemblocks.ItemBlockMercury;
 import stevekung.mods.stevecore.RegisterHelper;
@@ -47,7 +48,7 @@ public class MercuryBlocks
 		MercuryBlocks.mercury_ancient_chest = new BlockMercuryAncientChest("mercury_ancient_chest");
 		//MercuryBlocks.mercury_treasure_chest = new BlockMercuryTreasureChest("mercury_treasure_chest");
 
-		MercuryBlocks.dirty_water_fluid = new Fluid("dirty_water_fluid").setBlock(MercuryBlocks.dirty_water);
+		MercuryBlocks.dirty_water_fluid = new FluidMP("dirty_water_fluid").setBlock(MercuryBlocks.dirty_water);
 		FluidRegistry.registerFluid(MercuryBlocks.dirty_water_fluid);
 		MercuryBlocks.dirty_water = new BlockFluidDirtyWater("dirty_water_fluid");
 	}

@@ -63,11 +63,11 @@ public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
 	{
 		if (entity instanceof EntityLivingBase)
 		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.saturation.id, 50));
+			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.saturation.id, 100));
 		}
 	}
 }

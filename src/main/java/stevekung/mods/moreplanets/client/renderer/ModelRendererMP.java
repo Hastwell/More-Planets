@@ -425,10 +425,23 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosBlocks.blue_candy_torch, "blue_candy_torch", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.red_candy_torch, "red_candy_torch", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.purple_candy_torch, "purple_candy_torch", "moreplanets");
-		RegisterHelper.registerModelRender(FronosBlocks.space_oyster_open, "space_oyster_open", "moreplanets");
-		RegisterHelper.registerModelRender(FronosBlocks.space_oyster_close, "space_oyster_close", "moreplanets");
-		RegisterHelper.registerModelRender(FronosBlocks.cavern_oyster_open, "cavern_oyster_open", "moreplanets");
-		RegisterHelper.registerModelRender(FronosBlocks.cavern_oyster_close, "cavern_oyster_close", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.space_oyster, "space_oyster", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.cavern_oyster, "cavern_oyster", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 0, "fronos_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 1, "chiseled_fronos_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 2, "smooth_fronos_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 3, "white_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 4, "chiseled_white_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 5, "smooth_white_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 6, "cheese_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 7, "chiseled_cheese_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 8, "smooth_cheese_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.half_fronos_sandstone_slab, 0, "fronos_sandstone_slab", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.half_fronos_sandstone_slab, 1, "white_sandstone_slab", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.half_fronos_sandstone_slab, 2, "cheese_sandstone_slab", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone_stairs, "fronos_sandstone_stairs", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.white_sandstone_stairs, "white_sandstone_stairs", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.cheese_sandstone_stairs, "cheese_sandstone_stairs", "moreplanets");
 		RegisterHelper.registerModelRenderWithDyeColor(FronosBlocks.space_shell, "moreplanets");
 
 		RegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_block, 0, "kapteyn_b_surface_ice", "moreplanets");

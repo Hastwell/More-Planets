@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.moons.io.blocks;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidIoBlackLava;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidIoLava;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidLiquidBrownSulfur;
@@ -50,12 +51,12 @@ public class IoBlocks
 		IoBlocks.io_block = new BlockIo("io_block");
 		IoBlocks.io_magma_rock = new BlockIoMagmaRock("io_magma_rock");
 
-		IoBlocks.io_lava_fluid = new Fluid("io_lava").setBlock(IoBlocks.io_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.io_black_lava_fluid = new Fluid("io_black_lava").setBlock(IoBlocks.io_black_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_red_sulfur_fluid = new Fluid("liquid_red_sulfur").setBlock(IoBlocks.liquid_red_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_yellow_sulfur_fluid = new Fluid("liquid_yellow_sulfur").setBlock(IoBlocks.liquid_yellow_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_orange_sulfur_fluid = new Fluid("liquid_orange_sulfur").setBlock(IoBlocks.liquid_orange_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_brown_sulfur_fluid = new Fluid("liquid_brown_sulfur").setBlock(IoBlocks.liquid_brown_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.io_lava_fluid = new FluidMP("io_lava", "blocks/lava_still", "blocks/lava_flow").setBlock(IoBlocks.io_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.io_black_lava_fluid = new FluidMP("io_black_lava").setBlock(IoBlocks.io_black_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.liquid_red_sulfur_fluid = new FluidMP("liquid_red_sulfur").setBlock(IoBlocks.liquid_red_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.liquid_yellow_sulfur_fluid = new FluidMP("liquid_yellow_sulfur").setBlock(IoBlocks.liquid_yellow_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.liquid_orange_sulfur_fluid = new FluidMP("liquid_orange_sulfur").setBlock(IoBlocks.liquid_orange_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.liquid_brown_sulfur_fluid = new FluidMP("liquid_brown_sulfur").setBlock(IoBlocks.liquid_brown_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
 		FluidRegistry.registerFluid(IoBlocks.io_lava_fluid);
 		FluidRegistry.registerFluid(IoBlocks.io_black_lava_fluid);
 		FluidRegistry.registerFluid(IoBlocks.liquid_red_sulfur_fluid);

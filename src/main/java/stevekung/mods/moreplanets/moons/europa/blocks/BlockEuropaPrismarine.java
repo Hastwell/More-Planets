@@ -21,9 +21,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockBasicMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
-public class BlockEuropaPrismarine extends BlockBasicMP
+public class BlockEuropaPrismarine extends BlockBaseMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -37,7 +37,7 @@ public class BlockEuropaPrismarine extends BlockBasicMP
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random random, int par3)
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
 		return Item.getItemFromBlock(this);
 	}

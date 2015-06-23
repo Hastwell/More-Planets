@@ -48,7 +48,10 @@ public class BlockStairsMP extends BlockStairs
 		sirius_carbon_cobblestone ("stone"),
 		sirius_dungeon_brick ("stone"),
 		mercury_cobblestone ("stone"),
-		mercury_dungeon_brick ("stone");
+		mercury_dungeon_brick ("stone"),
+		fronos_sandstone ("stone"),
+		white_sandstone ("stone"),
+		cheese_sandstone ("stone");
 
 		private List<String> values;
 		private String type;

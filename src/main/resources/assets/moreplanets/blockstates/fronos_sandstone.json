@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "variant=fronos_sandstone": { "model": "moreplanets:fronos_sandstone" },
+		"variant=chiseled_fronos_sandstone": { "model": "moreplanets:chiseled_fronos_sandstone" },
+		"variant=smooth_fronos_sandstone": { "model": "moreplanets:smooth_fronos_sandstone" },
+        "variant=white_sandstone": { "model": "moreplanets:white_sandstone" },
+		"variant=chiseled_white_sandstone": { "model": "moreplanets:chiseled_white_sandstone" },
+		"variant=smooth_white_sandstone": { "model": "moreplanets:smooth_white_sandstone" },
+        "variant=cheese_sandstone": { "model": "moreplanets:cheese_sandstone" },
+		"variant=chiseled_cheese_sandstone": { "model": "moreplanets:chiseled_cheese_sandstone" },
+		"variant=smooth_cheese_sandstone": { "model": "moreplanets:smooth_cheese_sandstone" }
+    }
+}

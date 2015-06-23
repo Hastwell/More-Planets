@@ -1,0 +1,12 @@
+{
+    "variants": {
+		"facing=south,open=false": { "model": "moreplanets:space_oyster_close" },
+        "facing=north,open=false": { "model": "moreplanets:space_oyster_close", "y": 180 },
+        "facing=east,open=false":  { "model": "moreplanets:space_oyster_close", "y": 270 },
+        "facing=west,open=false":  { "model": "moreplanets:space_oyster_close", "y": 90 },
+		"facing=south,open=true": { "model": "moreplanets:space_oyster_open" },
+        "facing=north,open=true": { "model": "moreplanets:space_oyster_open", "y": 180 },
+        "facing=east,open=true":  { "model": "moreplanets:space_oyster_open", "y": 270 },
+        "facing=west,open=true":  { "model": "moreplanets:space_oyster_open", "y": 90 }
+    }
+}

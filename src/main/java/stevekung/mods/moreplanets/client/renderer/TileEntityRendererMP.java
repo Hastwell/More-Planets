@@ -12,30 +12,8 @@ import stevekung.mods.moreplanets.moons.koentus.client.render.tileentities.TileE
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 import stevekung.mods.moreplanets.planets.diona.client.render.tileentities.TileEntityDionaAncientChestRenderer;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityCaramelCupRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityCavernOysterCloseRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityCavernOysterOpenRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityCheeseOfMilkCupRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityCoconutMilkCupRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityCupRenderer;
 import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityFronosAncientChestRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityMineralWaterCupRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityOvantineCupRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntitySpaceOysterCloseRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntitySpaceOysterOpenRenderer;
-import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityTeaCupRenderer;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCaramelCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCavernOysterClose;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCavernOysterOpen;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCheeseOfMilkCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCoconutMilkCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCup;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAncientChest;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityMineralWaterCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityOvantineCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOysterClose;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOysterOpen;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityTeaCup;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.tileentities.TileEntityIcyPoisonCrystalRenderer;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.tileentities.TileEntityKapteynBAncientChestRenderer;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
@@ -78,17 +56,6 @@ public class TileEntityRendererMP
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoAncientChest.class, new TileEntityPlutoAncientChestRenderer());
 
 		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityUltraVioletSolarPanel.class, new TileEntityUltraVioletSolarPanelRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpaceOysterOpen.class, new TileEntitySpaceOysterOpenRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpaceOysterClose.class, new TileEntitySpaceOysterCloseRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCavernOysterOpen.class, new TileEntityCavernOysterOpenRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCavernOysterClose.class, new TileEntityCavernOysterCloseRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCup.class, new TileEntityCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMineralWaterCup.class, new TileEntityMineralWaterCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOvantineCup.class, new TileEntityOvantineCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoconutMilkCup.class, new TileEntityCoconutMilkCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCheeseOfMilkCup.class, new TileEntityCheeseOfMilkCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTeaCup.class, new TileEntityTeaCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaramelCup.class, new TileEntityCaramelCupRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcyPoisonCrystal.class, new TileEntityIcyPoisonCrystalRenderer());
 	}
 }

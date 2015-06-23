@@ -82,7 +82,7 @@ import stevekung.mods.moreplanets.planets.venus.recipe.CraftingRecipesVenus;
 import stevekung.mods.stevecore.CreativeTabsHelper;
 import stevekung.mods.stevecore.RegisterHelper;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION/*, dependencies = "required-after:GalacticraftCore; required-after:GalacticraftMars; required-after:Micdoodlecore; after:SteveCore@[1.0.3,); after:Forge@[10.13.2.1272,);"*/)
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars; required-after:Micdoodlecore;*/ "after:Forge@[11.14.3.1468,);")
 public class MorePlanetsCore
 {
 	public static final String NAME = "More Planets";
@@ -182,7 +182,7 @@ public class MorePlanetsCore
 
 		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 		{
-			RegisterHelper.registerBuiltInBlocks(DionaBlocks.diona_ancient_chest, PolongniusBlocks.polongnius_ancient_chest, NibiruBlocks.nibiru_ancient_chest, KoentusBlocks.koentus_ancient_chest, FronosBlocks.fronos_ancient_chest, FronosBlocks.space_oyster_open, FronosBlocks.space_oyster_close, FronosBlocks.cavern_oyster_open, FronosBlocks.cavern_oyster_close,
+			RegisterHelper.registerBuiltInBlocks(DionaBlocks.diona_ancient_chest, PolongniusBlocks.polongnius_ancient_chest, NibiruBlocks.nibiru_ancient_chest, KoentusBlocks.koentus_ancient_chest, FronosBlocks.fronos_ancient_chest,
 					KapteynBBlocks.kapteyn_b_ancient_chest, SiriusBBlocks.sirius_b_ancient_chest, MercuryBlocks.mercury_ancient_chest, VenusBlocks.venus_ancient_chest, PlutoBlocks.pluto_ancient_chest);
 		}
 

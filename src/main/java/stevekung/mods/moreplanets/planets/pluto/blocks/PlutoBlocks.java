@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.pluto.blocks;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidMethane;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidNitrogen;
 import stevekung.mods.moreplanets.planets.pluto.itemblocks.ItemBlockPluto;
@@ -49,8 +50,8 @@ public class PlutoBlocks
 		//PlutoBlocks.pluto_treasure_chest = new BlockPlutoTreasureChest("pluto_treasure_chest");
 		PlutoBlocks.space_potato_block = new BlockSpacePotato("space_potato_block");
 
-		PlutoBlocks.liquid_methane_fluid = new Fluid("liquid_methane_fluid").setBlock(PlutoBlocks.liquid_methane).setViscosity(3000);
-		PlutoBlocks.liquid_nitrogen_fluid = new Fluid("liquid_nitrogen_fluid").setBlock(PlutoBlocks.liquid_nitrogen).setViscosity(3000);
+		PlutoBlocks.liquid_methane_fluid = new FluidMP("liquid_methane_fluid", "moreplanets:blocks/liquid_gas_still", "moreplanets:blocks/liquid_gas_flowing").setBlock(PlutoBlocks.liquid_methane).setViscosity(3000);
+		PlutoBlocks.liquid_nitrogen_fluid = new FluidMP("liquid_nitrogen_fluid").setBlock(PlutoBlocks.liquid_nitrogen).setViscosity(3000);
 		FluidRegistry.registerFluid(PlutoBlocks.liquid_methane_fluid);
 		FluidRegistry.registerFluid(PlutoBlocks.liquid_nitrogen_fluid);
 		PlutoBlocks.liquid_methane = new BlockFluidMethane("liquid_methane_fluid");

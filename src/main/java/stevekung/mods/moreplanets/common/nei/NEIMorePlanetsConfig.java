@@ -69,6 +69,7 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		API.registerHighlightIdentifier(VenusBlocks.venus_redstone_ore_active, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(PlutoBlocks.pluto_block, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(EuropaBlocks.europa_sea_lantern, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(FronosBlocks.fronos_sandstone, new NEIHighlightHandlerMP());
 		this.registerRecipe();
 	}
 
@@ -150,6 +151,7 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		API.hideItem(new ItemStack(FronosBlocks.coconut_milk_cup));
 		API.hideItem(new ItemStack(FronosBlocks.tea_cup));
 		API.hideItem(new ItemStack(FronosBlocks.caramel_cup));
+		API.hideItem(new ItemStack(FronosBlocks.double_fronos_sandstone_slab, 1, OreDictionary.WILDCARD_VALUE));
 		API.hideItem(new ItemStack(KapteynBBlocks.frozen_water));
 		API.hideItem(new ItemStack(KapteynBBlocks.kapteyn_b_redstone_ore_active));
 		API.hideItem(new ItemStack(KoentusBlocks.crystal_door));

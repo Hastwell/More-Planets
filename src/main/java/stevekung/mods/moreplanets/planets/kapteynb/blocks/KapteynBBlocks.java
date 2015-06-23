@@ -13,6 +13,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.kapteynb.fluids.BlockFluidFrozenWater;
 import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockKapteynB;
@@ -65,7 +66,7 @@ public class KapteynBBlocks
 		KapteynBBlocks.frozen_water_geyser = new BlockFrozenWaterGeyser("frozen_water_geyser");
 		KapteynBBlocks.icy_poison_crystal = new BlockIcyPoisonCrystal("icy_poison_crystal");
 
-		KapteynBBlocks.frozen_water_fluid = new Fluid("frozen_water_fluid").setBlock(KapteynBBlocks.frozen_water);
+		KapteynBBlocks.frozen_water_fluid = new FluidMP("frozen_water_fluid").setBlock(KapteynBBlocks.frozen_water);
 		FluidRegistry.registerFluid(KapteynBBlocks.frozen_water_fluid);
 		KapteynBBlocks.frozen_water = new BlockFluidFrozenWater("frozen_water_fluid");
 	}

@@ -405,6 +405,21 @@ tile.stone_wall.fronos_cobblestone.name=Fronos Cobblestone Wall
 tile.stone_wall.fronos_stone_brick.name=Fronos Stone Brick Wall
 tile.stone_wall.cracked_fronos_stone_brick.name=Cracked Fronos Stone Brick Wall
 tile.dungeon_brick_wall.fronos_dungeon_brick.name=Fronos Dungeon Brick Wall
+tile.fronos_sandstone.fronos_sandstone.name=Fronos Sandstone
+tile.fronos_sandstone.chiseled_fronos_sandstone.name=Chiseled Fronos Sandstone
+tile.fronos_sandstone.smooth_fronos_sandstone.name=Smooth Fronos Sandstone
+tile.fronos_sandstone.white_sandstone.name=White Sandstone
+tile.fronos_sandstone.chiseled_white_sandstone.name=Chiseled White Sandstone
+tile.fronos_sandstone.smooth_white_sandstone.name=Smooth White Sandstone
+tile.fronos_sandstone.cheese_sandstone.name=Cheese Sandstone
+tile.fronos_sandstone.chiseled_cheese_sandstone.name=Chiseled Cheese Sandstone
+tile.fronos_sandstone.smooth_cheese_sandstone.name=Smooth Cheese Sandstone
+tile.half_fronos_sandstone_slab.fronos_sandstone.name=Fronos Sandstone Slab
+tile.half_fronos_sandstone_slab.white_sandstone.name=White Sandstone Slab
+tile.half_fronos_sandstone_slab.cheese_sandstone.name=Cheese Sandstone Slab
+tile.fronos_sandstone_stairs.name=Fronos Sandstone Stairs
+tile.white_sandstone_stairs.name=White Sandstone Stairs
+tile.cheese_sandstone_stairs.name=Cheese Sandstone Stairs
 
 #########Kapteyn B Block#########
 tile.kapteyn_b_block.surface_ice.name=Kapteyn B Surface Ice

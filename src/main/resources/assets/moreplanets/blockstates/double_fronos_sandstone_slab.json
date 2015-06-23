@@ -1,0 +1,7 @@
+{
+    "variants": {
+		"variant=fronos_sandstone_slab": { "model": "moreplanets:fronos_sandstone" },
+		"variant=white_sandstone_slab": { "model": "moreplanets:white_sandstone" },
+		"variant=cheese_sandstone_slab": { "model": "moreplanets:cheese_sandstone" }
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "moreplanets:block/oyster_open",
+    "textures": {
+        "oyster": "moreplanets:blocks/cavern_oyster",
+		"particle": "moreplanets:blocks/cavern_oyster_particle"
+    }
+}

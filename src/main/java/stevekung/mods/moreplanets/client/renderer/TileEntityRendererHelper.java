@@ -20,19 +20,7 @@ import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAn
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
-import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCaramelCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCavernOysterClose;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCavernOysterOpen;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCheeseOfMilkCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCoconutMilkCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCup;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAncientChest;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityMineralWaterCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityOvantineCup;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOysterClose;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOysterOpen;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityTeaCup;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
@@ -102,53 +90,9 @@ public class TileEntityRendererHelper extends TileEntityItemStackRenderer
 		{
 			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityPlutoAncientChest(), 0.0D, 0.0D, 0.0D, 0.0F);
 		}
-		else if (block == FronosBlocks.space_oyster_open)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntitySpaceOysterOpen(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (block == FronosBlocks.space_oyster_close)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntitySpaceOysterClose(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (block == FronosBlocks.cavern_oyster_open)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityCavernOysterOpen(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (block == FronosBlocks.cavern_oyster_close)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityCavernOysterClose(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
 		else if (block == KapteynBBlocks.icy_poison_crystal)
 		{
 			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityIcyPoisonCrystal(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (item == FronosItems.cup && meta == 0)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityCup(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (item == FronosItems.cup && meta == 1)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityMineralWaterCup(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (item == FronosItems.cup && meta == 2)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityOvantineCup(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (item == FronosItems.cup && meta == 3)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityCoconutMilkCup(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (item == FronosItems.cup && meta == 4)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityCheeseOfMilkCup(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (item == FronosItems.cup && meta == 5)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityTeaCup(), 0.0D, 0.0D, 0.0D, 0.0F);
-		}
-		else if (item == FronosItems.cup && meta == 6)
-		{
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityCaramelCup(), 0.0D, 0.0D, 0.0D, 0.0F);
 		}
 		else
 		{

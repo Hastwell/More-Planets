@@ -11,6 +11,7 @@ import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -27,7 +28,7 @@ public abstract class BlockBasicMP extends BlockBaseMP
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
 	}

@@ -19,6 +19,7 @@ import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
 import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDirtMP;
 import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidCaramel;
 import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidCoconutMilk;
@@ -38,6 +39,8 @@ import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosFlowe
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosLeaves;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosLog;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSand;
+import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSandstone;
+import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSandstoneSlab;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSapling;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosStone;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosTallGrass;
@@ -116,10 +119,8 @@ public class FronosBlocks
 	public static Block white_cake;
 	public static Block chocolate_cake;
 	public static Block space_shell;
-	public static Block space_oyster_open;
-	public static Block cavern_oyster_open;
-	public static Block space_oyster_close;
-	public static Block cavern_oyster_close;
+	public static Block space_oyster;
+	public static Block cavern_oyster;
 	public static Block jelly_slime_egg;
 	public static BlockFlowerMP fronos_sapling;
 	public static BlockFlowerMP fronos_tall_grass;
@@ -153,6 +154,12 @@ public class FronosBlocks
 	public static Block ovantine;
 	public static Block tea;
 	public static Block caramel;
+	public static Block fronos_sandstone;
+	public static Block half_fronos_sandstone_slab;
+	public static Block double_fronos_sandstone_slab;
+	public static Block fronos_sandstone_stairs;
+	public static Block white_sandstone_stairs;
+	public static Block cheese_sandstone_stairs;
 
 	// Fluids
 	public static Fluid coconut_milk_fluid;
@@ -230,10 +237,8 @@ public class FronosBlocks
 		FronosBlocks.white_cake = new BlockWhiteCake("white_cake");
 		FronosBlocks.chocolate_cake = new BlockChocolateCake("chocolate_cake");
 		FronosBlocks.space_shell = new BlockSpaceShell("space_shell");
-		FronosBlocks.space_oyster_open = new BlockSpaceOysterOpen("space_oyster_open");
-		FronosBlocks.cavern_oyster_open = new BlockCavernOysterOpen("cavern_oyster_open");
-		FronosBlocks.space_oyster_close = new BlockSpaceOysterClose("space_oyster_close");
-		FronosBlocks.cavern_oyster_close = new BlockCavernOysterClose("cavern_oyster_close");
+		FronosBlocks.space_oyster = new BlockSpaceOyster("space_oyster");
+		FronosBlocks.cavern_oyster = new BlockCavernOyster("cavern_oyster");
 		FronosBlocks.jelly_slime_egg = new BlockJellySlimeEgg("jelly_slime_egg");
 		FronosBlocks.fronos_sapling = new BlockFronosSapling("fronos_sapling");
 		FronosBlocks.fronos_tall_grass = new BlockFronosTallGrass("fronos_tall_grass");
@@ -262,12 +267,18 @@ public class FronosBlocks
 		FronosBlocks.caramel_cup = new BlockCaramelCup("caramel_cup");
 		FronosBlocks.coconut_door_block = new BlockDoorMP("coconut_door_block", DoorType.COCONUT);
 		FronosBlocks.maple_door_block = new BlockDoorMP("maple_door_block", DoorType.MAPLE);
+		FronosBlocks.fronos_sandstone = new BlockFronosSandstone("fronos_sandstone");
+		FronosBlocks.half_fronos_sandstone_slab = new BlockFronosSandstoneSlab("half_fronos_sandstone_slab", Material.rock);
+		FronosBlocks.double_fronos_sandstone_slab = new BlockDoubleFronosSandstoneSlab("double_fronos_sandstone_slab", Material.rock);
+		FronosBlocks.fronos_sandstone_stairs = new BlockStairsMP("fronos_sandstone_stairs", 0.8F, StairsCategory.fronos_sandstone, Blocks.stone.getDefaultState());
+		FronosBlocks.white_sandstone_stairs = new BlockStairsMP("white_sandstone_stairs", 0.8F, StairsCategory.white_sandstone, Blocks.stone.getDefaultState());
+		FronosBlocks.cheese_sandstone_stairs = new BlockStairsMP("cheese_sandstone_stairs", 0.8F, StairsCategory.cheese_sandstone, Blocks.stone.getDefaultState());
 
-		FronosBlocks.coconut_milk_fluid = new Fluid("coconut_milk_fluid").setBlock(FronosBlocks.coconut_milk).setViscosity(2000);
-		FronosBlocks.mineral_water_fluid = new Fluid("mineral_water_fluid").setBlock(FronosBlocks.mineral_water);
-		FronosBlocks.ovantine_fluid = new Fluid("ovantine_fluid").setBlock(FronosBlocks.ovantine).setViscosity(2000);
-		FronosBlocks.tea_fluid = new Fluid("tea_fluid").setBlock(FronosBlocks.tea).setViscosity(2000);
-		FronosBlocks.caramel_fluid = new Fluid("caramel_fluid").setBlock(FronosBlocks.caramel).setViscosity(3000);
+		FronosBlocks.coconut_milk_fluid = new FluidMP("coconut_milk_fluid").setBlock(FronosBlocks.coconut_milk).setViscosity(2000);
+		FronosBlocks.mineral_water_fluid = new FluidMP("mineral_water_fluid").setBlock(FronosBlocks.mineral_water);
+		FronosBlocks.ovantine_fluid = new FluidMP("ovantine_fluid").setBlock(FronosBlocks.ovantine).setViscosity(2000);
+		FronosBlocks.tea_fluid = new FluidMP("tea_fluid").setBlock(FronosBlocks.tea).setViscosity(2000);
+		FronosBlocks.caramel_fluid = new FluidMP("caramel_fluid").setBlock(FronosBlocks.caramel).setViscosity(3000);
 		RegisterHelper.registerFluid(FronosBlocks.coconut_milk_fluid);
 		RegisterHelper.registerFluid(FronosBlocks.mineral_water_fluid);
 		RegisterHelper.registerFluid(FronosBlocks.ovantine_fluid);
@@ -302,6 +313,7 @@ public class FronosBlocks
 		FronosBlocks.cookie_block.setHarvestLevel("shovel", 0);
 		FronosBlocks.frosted_cake.setHarvestLevel("shovel", 0);
 		FronosBlocks.golem_cream_head.setHarvestLevel("shovel", 0);
+		FronosBlocks.fronos_sandstone.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.fronos_block.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.jelly_ore.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.fronos_cobblestone_stairs.setHarvestLevel("pickaxe", 1);
@@ -313,10 +325,13 @@ public class FronosBlocks
 		//		FronosBlocks.mineral_water_generator.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.ore_block.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.mossy_fronos_cobblestone.setHarvestLevel("pickaxe", 1);
-		FronosBlocks.space_oyster_open.setHarvestLevel("pickaxe", 0);
-		FronosBlocks.space_oyster_close.setHarvestLevel("pickaxe", 0);
-		FronosBlocks.cavern_oyster_open.setHarvestLevel("pickaxe", 0);
-		FronosBlocks.cavern_oyster_close.setHarvestLevel("pickaxe", 0);
+		FronosBlocks.space_oyster.setHarvestLevel("pickaxe", 0);
+		FronosBlocks.cavern_oyster.setHarvestLevel("pickaxe", 0);
+		FronosBlocks.half_fronos_sandstone_slab.setHarvestLevel("pickaxe", 0);
+		FronosBlocks.double_fronos_sandstone_slab.setHarvestLevel("pickaxe", 0);
+		FronosBlocks.fronos_sandstone_stairs.setHarvestLevel("pickaxe", 0);
+		FronosBlocks.white_sandstone_stairs.setHarvestLevel("pickaxe", 0);
+		FronosBlocks.cheese_sandstone_stairs.setHarvestLevel("pickaxe", 0);
 		FronosBlocks.fronos_log.setHarvestLevel("axe", 0);
 		FronosBlocks.coconut_block.setHarvestLevel("axe", 0);
 		FronosBlocks.fronos_planks.setHarvestLevel("axe", 0);
@@ -380,6 +395,9 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.tea_cream_layer, ItemBlockTeaCreamLayer.class);
 		RegisterHelper.registerBlock(FronosBlocks.lemon_cream_layer, ItemBlockLemonCreamLayer.class);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_sand, ItemBlockFronosSand.class);
+		RegisterHelper.registerBlock(FronosBlocks.fronos_sandstone, ItemBlockFronosSandstone.class);
+		RegisterHelper.registerBlock(FronosBlocks.half_fronos_sandstone_slab, ItemBlockFronosSandstoneSlab.class, FronosBlocks.half_fronos_sandstone_slab, FronosBlocks.double_fronos_sandstone_slab);
+		RegisterHelper.registerBlock(FronosBlocks.double_fronos_sandstone_slab, ItemBlockFronosSandstoneSlab.class, FronosBlocks.half_fronos_sandstone_slab, FronosBlocks.double_fronos_sandstone_slab);
 		RegisterHelper.registerBlock(FronosBlocks.cheese_glass);
 		RegisterHelper.registerBlock(FronosBlocks.cheese_glass_pane);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_log, ItemBlockFronosLog.class);
@@ -390,6 +408,9 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.fronos_stone_brick_stairs);
 		RegisterHelper.registerBlock(FronosBlocks.cracked_fronos_stone_brick_stairs);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_dungeon_brick_stairs);
+		RegisterHelper.registerBlock(FronosBlocks.fronos_sandstone_stairs);
+		RegisterHelper.registerBlock(FronosBlocks.white_sandstone_stairs);
+		RegisterHelper.registerBlock(FronosBlocks.cheese_sandstone_stairs);
 		RegisterHelper.registerBlock(FronosBlocks.coconut_wood_stairs);
 		RegisterHelper.registerBlock(FronosBlocks.maple_wood_stairs);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_fence, ItemBlockFronosWoodenPlanks.class);
@@ -412,10 +433,8 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.white_cake);
 		RegisterHelper.registerBlock(FronosBlocks.chocolate_cake);
 		RegisterHelper.registerBlock(FronosBlocks.space_shell, ItemBlockSpaceShell.class);
-		RegisterHelper.registerBlock(FronosBlocks.space_oyster_open);
-		RegisterHelper.registerBlock(FronosBlocks.cavern_oyster_open);
-		RegisterHelper.registerBlock(FronosBlocks.space_oyster_close);
-		RegisterHelper.registerBlock(FronosBlocks.cavern_oyster_close);
+		RegisterHelper.registerBlock(FronosBlocks.space_oyster);
+		RegisterHelper.registerBlock(FronosBlocks.cavern_oyster);
 		RegisterHelper.registerBlock(FronosBlocks.jelly_slime_egg, ItemBlockJelly.class);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_sapling, ItemBlockFronosSapling.class);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_tall_grass, ItemBlockFronosTallGrass.class);

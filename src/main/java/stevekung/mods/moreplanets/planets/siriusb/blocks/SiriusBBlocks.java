@@ -15,6 +15,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.siriusb.fluids.BlockFluidSiriusLava;
 import stevekung.mods.moreplanets.planets.siriusb.itemblocks.ItemBlockSiriusB;
 import stevekung.mods.stevecore.RegisterHelper;
@@ -57,7 +58,7 @@ public class SiriusBBlocks
 		SiriusBBlocks.sirius_redstone_lamp_off = new BlockSiriusRedstoneLamp("sirius_redstone_lamp", false);
 		SiriusBBlocks.sirius_redstone_lamp_on = new BlockSiriusRedstoneLamp("sirius_redstone_lamp_on", true);
 
-		SiriusBBlocks.sirius_lava_fluid = new Fluid("sirius_lava").setBlock(SiriusBBlocks.sirius_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		SiriusBBlocks.sirius_lava_fluid = new FluidMP("sirius_lava").setBlock(SiriusBBlocks.sirius_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
 		FluidRegistry.registerFluid(SiriusBBlocks.sirius_lava_fluid);
 		SiriusBBlocks.sirius_lava = new BlockFluidSiriusLava("sirius_lava");
 	}

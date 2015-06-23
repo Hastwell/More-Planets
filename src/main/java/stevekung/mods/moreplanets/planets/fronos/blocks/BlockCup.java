@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.fronos.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -20,16 +19,14 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
-import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCup;
 
-public class BlockCup extends BlockBaseMP implements ITileEntityProvider
+public class BlockCup extends BlockBaseMP
 {
 	public static PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
@@ -53,12 +50,6 @@ public class BlockCup extends BlockBaseMP implements ITileEntityProvider
 	public boolean isFullCube()
 	{
 		return false;
-	}
-
-	@Override
-	public int getRenderType()
-	{
-		return 0;
 	}
 
 	@Override
@@ -128,12 +119,6 @@ public class BlockCup extends BlockBaseMP implements ITileEntityProvider
 	public boolean isReplaceable(World world, BlockPos pos)
 	{
 		return false;
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		return new TileEntityCup();
 	}
 
 	@Override
