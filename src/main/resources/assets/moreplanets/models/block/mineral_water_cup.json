@@ -1,8 +1,9 @@
 {
+	"ambientocclusion": false,
     "textures": {
         "particle": "#texture",
-        "texture": "#texture",
-		"fluid": "#fluid"
+        "texture": "moreplanets:blocks/cup",
+		"fluidtexture": "blocks/water_still"
     },
     "elements": [
         {
@@ -117,7 +118,7 @@
             "from": [ 6.5, 4.0, 6.5 ], 
             "to": [ 9.5, 5.0, 9.5 ], 
             "faces": {
-                "up": { "texture": "#fluid", "uv": [ 0.0, 0.0, 3.0, 3.0 ] }
+                "up": { "texture": "#fluidtexture", "uv": [ 0.0, 0.0, 3.0, 3.0 ] }
             }
         }
     ]

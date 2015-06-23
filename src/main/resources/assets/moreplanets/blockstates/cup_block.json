@@ -2,7 +2,7 @@
     "variants": {
 		"facing=north": { "model": "moreplanets:cup_block_empty" },
         "facing=south": { "model": "moreplanets:cup_block_empty", "y": 180 },
-        "facing=west":  { "model": "moreplanets:cup_block_empty", "y": 270 },
-        "facing=east":  { "model": "moreplanets:cup_block_empty", "y": 90 }
+        "facing=east":  { "model": "moreplanets:cup_block_empty", "y": 270 },
+        "facing=west":  { "model": "moreplanets:cup_block_empty", "y": 90 }
     }
 }
