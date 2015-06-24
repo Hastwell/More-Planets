@@ -93,12 +93,12 @@ schematic.tier4.rocket.name=จรวด เทียร์ 4
 schematic.tier4.rocket.noflag.name=จรวด เทียร์ 4 ไม่มีธง
 
 # TOOLS
-item.quontonium_pickaxe.name=ที่ขุดควอนโทเนียม
+item.quontonium_pickaxe.name=อีเต้อควอนโทเนียม
 item.quontonium_axe.name=ขวานควอนโทเนียม
 item.quontonium_hoe.name=จอบควอนโทเนียม
 item.quontonium_spade.name=พลั่วควอนโทเนียม
 item.quontonium_sword.name=ดาบควอนโทเนียม
-item.fronisium_pickaxe.name=ที่ขุดโฟรนิสซึม
+item.fronisium_pickaxe.name=อีเต้อโฟรนิสซึม
 item.fronisium_axe.name=ขวานโฟรนิสซึม
 item.fronisium_hoe.name=จอบโฟรนิสซึม
 item.fronisium_spade.name=พลั่วโฟรนิสซึม
