@@ -65,31 +65,31 @@ tile.chocolate_cream_layer.name=ครีมรสช็อกโกแลต
 tile.strawberry_cream_layer.name=ครีมรสสตรอเบอร์รี่
 tile.orange_cream_layer.name=ครีมรสส้ม
 tile.tea_cream_layer.name=ครีมรสชา
-tile.fronos_sand.fronosSand.name=Fronos Sand
-tile.fronos_sand.whiteSand.name=White Sand
-tile.fronos_sand.cheeseSand.name=Cheese Sand
-tile.cheese_glass.name=Cheese Glass
-tile.cheese_glass_pane.name=Cheese Glass Pane
-tile.fronos_log.coconut_wood.name=Coconut Wood
-tile.fronos_log.maple_wood.name=Maple Wood
-tile.fronos_wooden_planks.coconut.name=Coconut Wood Planks
-tile.fronos_wooden_planks.maple.name=Maple Wood Planks
-tile.fronos_leaves.coconut.name=Coconut Leaves
-tile.fronos_leaves2.red_maple.name=Red Maple Leaves
-tile.fronos_cobblestone_stairs.name=Fronos Cobblestone Stairs
-tile.fronos_stone_brick_stairs.name=Fronos Stone Brick Stairs
-tile.fronos_cracked_stone_brick_stairs.name=Cracked Fronos Stone Brick Stairs
-tile.fronos_dungeon_brick_stairs.name=Fronos Dungeon Brick Stairs
-tile.coconut_wood_stairs.name=Coconut Wood Stairs
-tile.red_maple_wood_stairs.name=Maple Wood Stairs
-tile.fronos_fence.coconut.name=Coconut Fence
-tile.fronos_fence.maple.name=Maple Fence
-tile.coconut_fence_gate.name=Coconut Fence Gate
-tile.red_maple_fence_gate.name=Maple Fence Gate
-tile.fronos_treasure_chest.name=Tier 7 Fronos Treasure Chest
-tile.fronos_ancient_chest.name=Fronos Ancient Chest
-tile.candy_extractor_idle.name=Candy Extractor
-tile.mineral_water_generator.name=Mineral Water Generator (WIP)
+tile.fronos_sand.fronosSand.name=ทรายโฟรนอส
+tile.fronos_sand.whiteSand.name=ทรายสีขาว
+tile.fronos_sand.cheeseSand.name=ทรายรสชีส
+tile.cheese_glass.name=กระจกรสชีส
+tile.cheese_glass_pane.name=กระจกแบนรสชีส
+tile.fronos_log.coconut_wood.name=ไม้ต้นมะพร้าว
+tile.fronos_log.maple_wood.name=ไม้ต้นเมเปิล
+tile.fronos_wooden_planks.coconut.name=ไม้แปรรูปต้นมะพร้าว
+tile.fronos_wooden_planks.maple.name=ไม้แปรรูปต้นเมเปิล
+tile.fronos_leaves.coconut.name=ใบไม้ต้นมะพร้าว
+tile.fronos_leaves2.red_maple.name=ใบไม้ต้นเมเปิลแดง
+tile.fronos_cobblestone_stairs.name=บันไดหินหยาบดาวโฟรนอส
+tile.fronos_stone_brick_stairs.name=บันไดหินอิฐดาวโฟรนอส
+tile.fronos_cracked_stone_brick_stairs.name=บันไดหินอิฐดาวโฟรนอสที่แตกหัก
+tile.fronos_dungeon_brick_stairs.name=บันไดอิฐดันเจี้ยนดาวโฟรนอส
+tile.coconut_wood_stairs.name=บันไดไม้มะพร้าว
+tile.red_maple_wood_stairs.name=บันไดไม้เมเปิล
+tile.fronos_fence.coconut.name=รั้วไม้มะพร้าว
+tile.fronos_fence.maple.name=รั้วไม้เมเปิล
+tile.coconut_fence_gate.name=ประตูรั้วไม้มะพร้าว
+tile.red_maple_fence_gate.name=ประตูรั้วไม้เมเปิล
+tile.fronos_treasure_chest.name=กล่องสมบัติ เทียร์ 7 ดาวโฟรนอส
+tile.fronos_ancient_chest.name=กล่องโฟรนอสเก่า
+tile.candy_extractor_idle.name=เครื่องสกัดน้ำตาล
+tile.mineral_water_generator.name=เครื่องกำเนิดน้ำแร่ธาตุ (WIP)
 tile.coconut_block.name=Coconut Block
 tile.vanilla_cream_head.name=Vanilla Cream Head
 tile.chocolate_cream_head.name=Chocolate Cream Head
@@ -303,11 +303,11 @@ item.fronos_food.golden_bread.name=Golden Bread
 item.cream_ball.orange_cream_ball.name=Orange Cream Ball
 item.fronos_food.orange_ice_cream.name=Orange Ice Cream
 item.orange_jelly.jelly.name=Orange Jelly
-item.tier_7_rocket.name=Tier 7 Rocket
+item.tier_7_rocket.name=จรวด เทียร์ 7
 item.fronos_item.cheese_string.name=Cheese String
-item.coconut_door.name=Coconut Door
-item.red_maple_door.name=Maple Door
-item.tier_7_rocket_schematic.name=NASA Workbench Schematic
+item.coconut_door.name=ประตูไม้มะพร้าว
+item.red_maple_door.name=ประตูไม้เมเปิล
+item.tier_7_rocket_schematic.name=แผนผังโต๊ะทำงานนาซ่า - เทียร์ 7
 item.fruits_juice.strawberry_juice.name=Strawberry Juice
 item.fruits_juice.berry_juice.name=Berry Juice
 item.fronos_food.berry_salad.name=Berry Salad
@@ -322,8 +322,8 @@ item.lemon_jelly.jelly.name=Lemon Jelly
 item.cream_ball.lemon_cream_ball.name=Lemon Cream Ball
 item.cream_golem.lemon_cream_golem.name=Lemon Cream Golem
 
-# DESCRIFTION
-schematic.tier7.rocket.name=Tier 7 Rocket
+# DESCRIPTION
+schematic.tier7.rocket.name=จรวด เทียร์ 7
 
 # ARMOR
 item.black_diamond_helmet.name=Black Diamond Helmet
@@ -377,15 +377,15 @@ entity.MorePlanet.StrawberryChicken.name=Strawberry Chicken
 entity.MorePlanet.FronosVillager.name=Fronos Villager
 
 # GUI
-schematics.container.rocket.tier7=Tier 7 Rocket
+schematics.container.rocket.tier7=จรวด เทียร์ 7
 
 # PLANET
-planet.fronos=Fronos
+planet.fronos=ดาวโฟรนอส
 
 # CONTAINER
-container.fronos.treasurechest.name=Fronos Treasure Chest
-container.fronos.ancientchest.name=Fronos Ancient Chest
-container.candy.extractor.name=Candy Extractor
+container.fronos.treasurechest.name=กล่องสมบัติดาวโฟรนอส
+container.fronos.ancientchest.name=กล่องโฟรนอสเก่า
+container.candy.extractor.name=เครื่องสกัดน้ำตาล
 
 # DEATH MESSAGES
-death.attack.purpleSpike=%1$s was pricked by purple spike flower
+death.attack.purpleSpike=%1 โดนแทงโดยดอกไม้สีม่วงมีหนาม
