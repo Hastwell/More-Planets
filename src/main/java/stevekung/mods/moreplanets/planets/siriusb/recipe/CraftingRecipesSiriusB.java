@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.planets.siriusb.recipe;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
@@ -79,14 +78,14 @@ public class CraftingRecipesSiriusB
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 3), new ItemStack(SiriusBBlocks.sirius_b_block, 1, 2), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 3), new ItemStack(SiriusBBlocks.sirius_b_block, 1, 2), 0.5F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(SiriusBItems.sirius_b_item, 1, 2), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.7F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.7F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 5), new ItemStack(Items.diamond), 0.7F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 6), new ItemStack(SiriusBItems.sirius_glowstone_dust), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(SiriusBItems.sirius_b_item, 1, 2), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 5), new ItemStack(Items.diamond), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(SiriusBBlocks.sirius_b_block, 1, 6), new ItemStack(SiriusBItems.sirius_glowstone_dust), 0.8F);
 	}
 }

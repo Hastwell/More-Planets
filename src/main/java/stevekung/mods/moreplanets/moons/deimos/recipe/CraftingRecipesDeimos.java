@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.moons.deimos.recipe;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 
 public class CraftingRecipesDeimos
@@ -78,14 +79,14 @@ public class CraftingRecipesDeimos
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DeimosBlocks.deimos_block, 1, 3), new ItemStack(DeimosBlocks.deimos_block, 1, 2), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(DeimosBlocks.deimos_block, 1, 3), new ItemStack(DeimosBlocks.deimos_block, 1, 2), 0.5F);
 	}
 
 	private static void addItemSmelting()
 	{
-		//FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DeimosBlocks.deimos_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 4), 0.7F);
-		//FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DeimosBlocks.deimos_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 3), 0.7F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DeimosBlocks.deimos_block, 1, 6), new ItemStack(Items.iron_ingot), 0.8F);
-		//FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DeimosBlocks.deimos_block, 1, 7), new ItemStack(MarsItems.marsItemBasic, 1, 2), 0.8F);
+		//GameRegistry.addSmelting(new ItemStack(DeimosBlocks.deimos_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 4), 0.7F);
+		//GameRegistry.addSmelting(new ItemStack(DeimosBlocks.deimos_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 3), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(DeimosBlocks.deimos_block, 1, 6), new ItemStack(Items.iron_ingot), 0.8F);
+		//GameRegistry.addSmelting(new ItemStack(DeimosBlocks.deimos_block, 1, 7), new ItemStack(MarsItems.marsItemBasic, 1, 2), 0.8F);
 	}
 }

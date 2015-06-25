@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.diona.recipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import stevekung.mods.moreplanets.common.util.FurnaceFuelMP;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -134,17 +133,17 @@ public class CraftingRecipesDiona
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DionaBlocks.diona_block, 1, 3), new ItemStack(DionaBlocks.diona_block, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 3), new ItemStack(DionaBlocks.diona_block, 1, 2), 0.4F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DionaBlocks.diona_block, 1, 4), new ItemStack(DionaItems.diona_item, 1, 0), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DionaBlocks.diona_block, 1, 5), new ItemStack(DionaItems.diona_item, 1, 1), 0.8F);
-		//		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DionaBlocks.diona_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		//		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DionaBlocks.diona_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
-		//		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DionaBlocks.diona_block, 1, 8), new ItemStack(GCItems.basicItem, 1, 2), 0.6F);
-		//		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(DionaBlocks.diona_block, 1, 9), new ItemStack(GCItems.basicItem, 1, 5), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 4), new ItemStack(DionaItems.diona_item, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 5), new ItemStack(DionaItems.diona_item, 1, 1), 0.8F);
+		//		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		//		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		//		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 8), new ItemStack(GCItems.basicItem, 1, 2), 0.6F);
+		//		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 9), new ItemStack(GCItems.basicItem, 1, 5), 0.8F);
 	}
 
 	//	private static void addTier4RocketRecipes()

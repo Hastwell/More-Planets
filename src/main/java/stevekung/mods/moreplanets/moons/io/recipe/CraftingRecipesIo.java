@@ -8,7 +8,7 @@
 package stevekung.mods.moreplanets.moons.io.recipe;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
@@ -79,12 +79,12 @@ public class CraftingRecipesIo
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(IoBlocks.io_block, 1, 3), new ItemStack(IoBlocks.io_block, 1, 2), 0.5F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(IoBlocks.io_block, 1, 6), new ItemStack(IoBlocks.io_block, 1, 5), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(IoBlocks.io_block, 1, 3), new ItemStack(IoBlocks.io_block, 1, 2), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(IoBlocks.io_block, 1, 6), new ItemStack(IoBlocks.io_block, 1, 5), 0.5F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(IoBlocks.io_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(IoBlocks.io_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.7F);
 	}
 }

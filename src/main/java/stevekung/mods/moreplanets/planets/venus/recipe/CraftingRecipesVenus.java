@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.planets.venus.recipe;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -94,21 +93,21 @@ public class CraftingRecipesVenus
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 3), new ItemStack(VenusBlocks.venus_block, 1, 2), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 12), new ItemStack(VenusBlocks.venus_block, 1, 13), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 3), new ItemStack(VenusBlocks.venus_block, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 12), new ItemStack(VenusBlocks.venus_block, 1, 13), 0.4F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(MPBlocks.chondrite_rock, 1, 0), new ItemStack(MPBlocks.chondrite_rock, 1, 2), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 5), new ItemStack(VenusItems.venus_item, 1, 0), 0.8F);
-		//FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		//FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 8), new ItemStack(Items.coal), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 9), new ItemStack(Items.iron_ingot), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_block, 1, 10), new ItemStack(Items.gold_ingot), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(VenusBlocks.venus_redstone_ore), new ItemStack(Items.redstone), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(MPBlocks.chondrite_rock, 1, 0), new ItemStack(MPBlocks.chondrite_rock, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 5), new ItemStack(VenusItems.venus_item, 1, 0), 0.8F);
+		//GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		//GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 8), new ItemStack(Items.coal), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 9), new ItemStack(Items.iron_ingot), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 10), new ItemStack(Items.gold_ingot), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_redstone_ore), new ItemStack(Items.redstone), 0.7F);
 	}
 
 	private static void registerOre()

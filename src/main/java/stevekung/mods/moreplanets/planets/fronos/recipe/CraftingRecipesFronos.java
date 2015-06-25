@@ -11,7 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -285,34 +284,34 @@ public class CraftingRecipesFronos
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 1), new ItemStack(FronosBlocks.fronos_block, 1, 0), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_sand, 1, 0), new ItemStack(Blocks.stained_glass, 1, 3), 0.45F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_sand, 1, 1), new ItemStack(Blocks.stained_glass, 1, 0), 0.45F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_sand, 1, 2), new ItemStack(FronosBlocks.cheese_glass), 0.5F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 11), new ItemStack(FronosBlocks.fronos_block, 1, 12), 0.45F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 1), new ItemStack(FronosBlocks.fronos_block, 1, 0), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_sand, 1, 0), new ItemStack(Blocks.stained_glass, 1, 3), 0.45F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_sand, 1, 1), new ItemStack(Blocks.stained_glass, 1, 0), 0.45F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_sand, 1, 2), new ItemStack(FronosBlocks.cheese_glass), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 11), new ItemStack(FronosBlocks.fronos_block, 1, 12), 0.45F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosItems.fronos_food, 1, 2), new ItemStack(FronosItems.fronos_food, 1, 3), 0.5F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 0), new ItemStack(FronosItems.jelly, 1, 0), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 1), new ItemStack(FronosItems.jelly, 1, 1), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 2), new ItemStack(FronosItems.jelly, 1, 2), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 3), new ItemStack(FronosItems.jelly, 1, 3), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 4), new ItemStack(FronosItems.jelly, 1, 4), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 5), new ItemStack(FronosItems.jelly, 1, 5), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 6), new ItemStack(FronosItems.jelly, 1, 6), 0.4F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.jelly_ore, 1, 7), new ItemStack(FronosItems.jelly, 1, 7), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosItems.fronos_food, 1, 2), new ItemStack(FronosItems.fronos_food, 1, 3), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 0), new ItemStack(FronosItems.jelly, 1, 0), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 1), new ItemStack(FronosItems.jelly, 1, 1), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 2), new ItemStack(FronosItems.jelly, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 3), new ItemStack(FronosItems.jelly, 1, 3), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 4), new ItemStack(FronosItems.jelly, 1, 4), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 5), new ItemStack(FronosItems.jelly, 1, 5), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 6), new ItemStack(FronosItems.jelly, 1, 6), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.jelly_ore, 1, 7), new ItemStack(FronosItems.jelly, 1, 7), 0.4F);
 
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 2), new ItemStack(Items.iron_ingot), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 3), new ItemStack(Items.coal), 0.8F);
-		//		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 5), 0.8F);
-		//		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		//		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 7), new ItemStack(Items.dye, 1, 4), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 8), new ItemStack(FronosItems.fronos_item, 1, 0), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 9), new ItemStack(FronosItems.fronos_item, 1, 2), 0.8F);
-		FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(FronosBlocks.fronos_block, 1, 10), new ItemStack(FronosItems.fronos_item, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 2), new ItemStack(Items.iron_ingot), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 3), new ItemStack(Items.coal), 0.8F);
+		//		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 5), 0.8F);
+		//		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		//		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 7), new ItemStack(Items.dye, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 8), new ItemStack(FronosItems.fronos_item, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 9), new ItemStack(FronosItems.fronos_item, 1, 2), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 10), new ItemStack(FronosItems.fronos_item, 1, 3), 0.8F);
 	}
 
 	private static void addOreDictRecipe()
