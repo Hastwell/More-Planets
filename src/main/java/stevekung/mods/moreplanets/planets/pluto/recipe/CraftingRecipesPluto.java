@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.pluto.recipe;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
@@ -91,15 +90,15 @@ public class CraftingRecipesPluto
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PlutoBlocks.pluto_block, 1, 3), new ItemStack(PlutoBlocks.pluto_block, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 3), new ItemStack(PlutoBlocks.pluto_block, 1, 2), 0.4F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PlutoBlocks.pluto_block, 1, 4), new ItemStack(GCItems.meteoricIronIngot), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PlutoBlocks.pluto_block, 1, 5), new ItemStack(KapteynBItems.kapteyn_b_item, 1, 0), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PlutoBlocks.pluto_block, 1, 6), new ItemStack(Items.iron_ingot), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PlutoBlocks.pluto_block, 1, 7), new ItemStack(PlutoItems.pluto_item, 1, 0), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PlutoItems.space_potato, 1, 0), new ItemStack(PlutoItems.space_potato, 1, 1), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 4), new ItemStack(GCItems.meteoricIronIngot), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 5), new ItemStack(KapteynBItems.kapteyn_b_item, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 6), new ItemStack(Items.iron_ingot), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 7), new ItemStack(PlutoItems.pluto_item, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(PlutoItems.space_potato, 1, 0), new ItemStack(PlutoItems.space_potato, 1, 1), 0.5F);
 	}
 }

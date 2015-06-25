@@ -12,7 +12,6 @@ import net.minecraft.block.BlockColored;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
@@ -134,17 +133,17 @@ public class CraftingRecipesKoentus
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusBlocks.koentus_block, 1, 3), new ItemStack(KoentusBlocks.koentus_block, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 3), new ItemStack(KoentusBlocks.koentus_block, 1, 2), 0.4F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusBlocks.koentus_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusBlocks.koentus_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusBlocks.koentus_block, 1, 6), new ItemStack(KoentusItems.koentus_item, 1, 0), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusBlocks.koentus_block, 1, 7), new ItemStack(KoentusItems.koentus_item, 1, 1), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusBlocks.koentus_block, 1, 8), new ItemStack(KoentusItems.koentus_item, 1, 2), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusBlocks.fallen_koentus_meteor), new ItemStack(KoentusItems.koentus_item, 1, 4), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KoentusItems.koentus_item, 1, 3), new ItemStack(KoentusItems.koentus_item, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 6), new ItemStack(KoentusItems.koentus_item, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 7), new ItemStack(KoentusItems.koentus_item, 1, 1), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 8), new ItemStack(KoentusItems.koentus_item, 1, 2), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.fallen_koentus_meteor), new ItemStack(KoentusItems.koentus_item, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusItems.koentus_item, 1, 3), new ItemStack(KoentusItems.koentus_item, 1, 4), 0.8F);
 	}
 }

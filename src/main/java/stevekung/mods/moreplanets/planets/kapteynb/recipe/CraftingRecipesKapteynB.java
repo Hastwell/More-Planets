@@ -13,7 +13,6 @@ import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
@@ -100,18 +99,18 @@ public class CraftingRecipesKapteynB
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 3), new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 2), 0.5F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 3), new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 2), 0.5F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 4), new ItemStack(KapteynBItems.namerium_crystal, 1, 0), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 5), new ItemStack(KapteynBItems.kapteyn_b_item, 1, 0), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 6), new ItemStack(KapteynBItems.kapteyn_b_item, 1, 1), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 8), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 9), new ItemStack(Items.redstone), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 10), new ItemStack(Items.redstone), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 4), new ItemStack(KapteynBItems.namerium_crystal, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 5), new ItemStack(KapteynBItems.kapteyn_b_item, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 6), new ItemStack(KapteynBItems.kapteyn_b_item, 1, 1), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 8), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 9), new ItemStack(Items.redstone), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 10), new ItemStack(Items.redstone), 0.8F);
 	}
 
 	private static void addTier8RocketRecipes()

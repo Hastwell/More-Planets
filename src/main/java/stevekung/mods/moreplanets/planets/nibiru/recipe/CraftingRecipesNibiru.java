@@ -15,7 +15,6 @@ import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
@@ -130,16 +129,16 @@ public class CraftingRecipesNibiru
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(NibiruBlocks.nibiru_block, 1, 3), new ItemStack(NibiruBlocks.nibiru_block, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(NibiruBlocks.nibiru_block, 1, 3), new ItemStack(NibiruBlocks.nibiru_block, 1, 2), 0.4F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(NibiruBlocks.nibiru_block, 1, 4), new ItemStack(NibiruItems.power_crystal), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(NibiruBlocks.nibiru_block, 1, 5), new ItemStack(NibiruItems.nibiru_item, 1, 1), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(NibiruBlocks.nibiru_block, 1, 6), new ItemStack(Items.diamond), 0.8F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(NibiruBlocks.nibiru_block, 1, 7), new ItemStack(Items.coal), 0.65F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(NibiruBlocks.nibiru_block, 1, 8), new ItemStack(NibiruItems.nibiru_item, 1, 0), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(NibiruBlocks.nibiru_block, 1, 4), new ItemStack(NibiruItems.power_crystal), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(NibiruBlocks.nibiru_block, 1, 5), new ItemStack(NibiruItems.nibiru_item, 1, 1), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(NibiruBlocks.nibiru_block, 1, 6), new ItemStack(Items.diamond), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(NibiruBlocks.nibiru_block, 1, 7), new ItemStack(Items.coal), 0.65F);
+		GameRegistry.addSmelting(new ItemStack(NibiruBlocks.nibiru_block, 1, 8), new ItemStack(NibiruItems.nibiru_item, 1, 0), 0.8F);
 	}
 
 	private static void addOreDictRecipe()

@@ -15,7 +15,6 @@ import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
@@ -128,22 +127,22 @@ public class CraftingRecipesPolongnius
 
 	private static void addBlockSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 3), new ItemStack(PolongniusBlocks.polongnius_block, 1, 2), 0.4F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 13), new ItemStack(PolongniusBlocks.polongnius_block, 1, 14), 0.3F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 3), new ItemStack(PolongniusBlocks.polongnius_block, 1, 2), 0.4F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 13), new ItemStack(PolongniusBlocks.polongnius_block, 1, 14), 0.3F);
 	}
 
 	private static void addItemSmelting()
 	{
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 3), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 6), new ItemStack(Items.iron_ingot), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 7), new ItemStack(PolongniusItems.polongnius_item, 1, 5), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 8), new ItemStack(PolongniusItems.polongnius_item, 1, 0), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.polongnius_block, 1, 9), new ItemStack(PolongniusItems.polongnius_item, 1, 1), 0.6F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusItems.polongnius_item, 1, 3), new ItemStack(PolongniusItems.polongnius_item, 1, 5), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusBlocks.fallen_polongnius_meteor), new ItemStack(PolongniusItems.polongnius_item, 1, 4), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusItems.polongnius_item, 1, 2), new ItemStack(PolongniusItems.polongnius_item, 1, 4), 0.7F);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(PolongniusItems.polongnius_food, 1, 1), new ItemStack(PolongniusItems.polongnius_food, 1, 2), 0.6F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 3), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 6), new ItemStack(Items.iron_ingot), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 7), new ItemStack(PolongniusItems.polongnius_item, 1, 5), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 8), new ItemStack(PolongniusItems.polongnius_item, 1, 0), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 9), new ItemStack(PolongniusItems.polongnius_item, 1, 1), 0.6F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusItems.polongnius_item, 1, 3), new ItemStack(PolongniusItems.polongnius_item, 1, 5), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.fallen_polongnius_meteor), new ItemStack(PolongniusItems.polongnius_item, 1, 4), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusItems.polongnius_item, 1, 2), new ItemStack(PolongniusItems.polongnius_item, 1, 4), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusItems.polongnius_food, 1, 1), new ItemStack(PolongniusItems.polongnius_food, 1, 2), 0.6F);
 	}
 
 	private static void addTier5RocketRecipes()
