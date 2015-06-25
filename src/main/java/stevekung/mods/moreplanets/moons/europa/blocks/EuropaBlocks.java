@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.moons.europa.blocks;
 
 import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaIce;
+import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSnowLayer;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class EuropaBlocks
@@ -44,6 +45,6 @@ public class EuropaBlocks
 		RegisterHelper.registerBlock(EuropaBlocks.europa_ice, ItemBlockEuropaIce.class);
 		RegisterHelper.registerBlock(EuropaBlocks.packed_europa_ice);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_block);
-		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockEuropaSnowLayer.class);
 	}
 }

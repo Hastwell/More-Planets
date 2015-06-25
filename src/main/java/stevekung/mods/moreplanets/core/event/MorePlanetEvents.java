@@ -58,6 +58,7 @@ import stevekung.mods.moreplanets.planets.fronos.items.ItemCandyBow;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
+import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockNibiruSapling;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.dimension.WorldProviderNibiru;
@@ -797,9 +798,9 @@ public class MorePlanetEvents
 		}
 		else if (block == MercuryBlocks.dirty_water)
 		{
-			//world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			//event.result = new ItemStack(IoItems.liquid_brown_sulfur_bucket);
-			//event.setResult(Result.ALLOW);
+			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
+			event.result = new ItemStack(MercuryItems.dirty_water_bucket);
+			event.setResult(Result.ALLOW);
 		}
 	}
 

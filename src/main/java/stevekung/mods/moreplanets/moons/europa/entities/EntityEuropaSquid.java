@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.moons.europa.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityWaterMob;
@@ -15,8 +16,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 
-public class EntityEuropaSquid extends EntityWaterMob
+public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathable, IEntityLivingPlanet
 {
 	public float squidPitch;
 	public float prevSquidPitch;
@@ -198,5 +200,17 @@ public class EntityEuropaSquid extends EntityWaterMob
 	{
 		//if (this.worldObj.provider instanceof WorldProviderEuropa)
 		return this.posY > 12.0D && this.posY < 64.0D && super.getCanSpawnHere();
+	}
+
+	@Override
+	public boolean canBreath()
+	{
+		return true;
+	}
+
+	@Override
+	public int canLivingInDimension()
+	{
+		return 0;//TODO Europa Dimension
 	}
 }
