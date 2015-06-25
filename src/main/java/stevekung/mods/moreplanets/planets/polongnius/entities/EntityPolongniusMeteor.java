@@ -64,7 +64,7 @@ public class EntityPolongniusMeteor extends Entity
 
 		Vec3 var15 = new Vec3(this.posX, this.posY, this.posZ);
 		Vec3 var2 = new Vec3(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-		MovingObjectPosition var3 = this.worldObj.rayTraceBlocks(var15, var2, true, true, false);
+		MovingObjectPosition var3 = this.worldObj.rayTraceBlocks(var15, var2);
 		var15 = new Vec3(this.posX, this.posY, this.posZ);
 		var2 = new Vec3(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 

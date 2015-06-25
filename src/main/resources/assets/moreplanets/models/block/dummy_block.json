@@ -9,11 +9,11 @@
 		"6": "moreplanets:blocks/kapteyn_b_ancient_chest",
 		"7": "moreplanets:blocks/sirius_b_ancient_chest",
 		"8": "moreplanets:blocks/mercury_ancient_chest",
-		"9": "moreplanets:blocks/cup",
-		"10": "moreplanets:blocks/oyster",
-		"11": "moreplanets:blocks/cavern_oyster",
-		"12": "moreplanets:blocks/venus_ancient_chest",
-		"13": "moreplanets:blocks/pluto_ancient_chest"
+		"9": "moreplanets:blocks/venus_ancient_chest",
+		"10": "moreplanets:blocks/pluto_ancient_chest",
+		"11": "#10",
+		"12": "#10",
+		"13": "#10"
     },
     "elements": [
 	    {   "from": [ 2, 2, 15 ],

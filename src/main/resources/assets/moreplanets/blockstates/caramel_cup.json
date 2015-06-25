@@ -1,0 +1,8 @@
+{
+    "variants": {
+		"facing=north": { "model": "moreplanets:caramel_cup" },
+        "facing=south": { "model": "moreplanets:caramel_cup", "y": 180 },
+        "facing=east":  { "model": "moreplanets:caramel_cup", "y": 270 },
+        "facing=west":  { "model": "moreplanets:caramel_cup", "y": 90 }
+    }
+}

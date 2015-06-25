@@ -1,0 +1,8 @@
+{
+    "variants": {
+		"facing=north": { "model": "moreplanets:tea_cup" },
+        "facing=south": { "model": "moreplanets:tea_cup", "y": 180 },
+        "facing=east":  { "model": "moreplanets:tea_cup", "y": 270 },
+        "facing=west":  { "model": "moreplanets:tea_cup", "y": 90 }
+    }
+}

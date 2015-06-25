@@ -64,16 +64,16 @@ public class EntityKoentusMeteor extends Entity
 
 		Vec3 var15 = new Vec3(this.posX, this.posY, this.posZ);
 		Vec3 var2 = new Vec3(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-		MovingObjectPosition var3 = this.worldObj.rayTraceBlocks(var15, var2, true, true, false);
+		MovingObjectPosition moving = this.worldObj.rayTraceBlocks(var15, var2);
 		var15 = new Vec3(this.posX, this.posY, this.posZ);
 		var2 = new Vec3(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
-		if (var3 != null)
+		if (moving != null)
 		{
-			var2 = new Vec3(var3.hitVec.xCoord, var3.hitVec.yCoord, var3.hitVec.zCoord);
+			var2 = new Vec3(moving.hitVec.xCoord, moving.hitVec.yCoord, moving.hitVec.zCoord);
 		}
 
-		Entity var4 = null;
+		Entity entity = null;
 		List<?> var5 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().addCoord(this.motionX, this.motionY, this.motionZ).expand(2.0D, 2.0D, 2.0D));
 		double var6 = 0.0D;
 		Iterator<?> var8 = var5.iterator();
@@ -94,21 +94,21 @@ public class EntityKoentusMeteor extends Entity
 
 					if (var13 < var6 || var6 == 0.0D)
 					{
-						var4 = var9;
+						entity = var9;
 						var6 = var13;
 					}
 				}
 			}
 		}
 
-		if (var4 != null)
+		if (entity != null)
 		{
-			var3 = new MovingObjectPosition(var4);
+			moving = new MovingObjectPosition(entity);
 		}
 
-		if (var3 != null)
+		if (moving != null)
 		{
-			this.onImpact(var3);
+			this.onImpact(moving);
 		}
 
 		if (this.posY <= -20 || this.posY >= 400)

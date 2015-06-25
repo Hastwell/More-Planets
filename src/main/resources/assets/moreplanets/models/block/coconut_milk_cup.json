@@ -2,6 +2,6 @@
     "parent": "moreplanets:block/cup_filled",
     "textures": {
         "texture": "moreplanets:blocks/cup",
-		"fluid": "moreplanets:blocks/mineral_water_still"
+		"fluid": "moreplanets:blocks/coconut_milk_still"
     }
 }
