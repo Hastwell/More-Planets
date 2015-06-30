@@ -5,21 +5,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.europa.items;
+package stevekung.mods.moreplanets.common.entities;
 
-import stevekung.mods.moreplanets.common.items.ItemBaseMP;
-
-public class ItemEuropaPrismarine extends ItemBaseMP
+public interface IEntityLivingPlanet
 {
-	public ItemEuropaPrismarine(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
-
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "europa_prismarine_shard", "europa_prismarine_crystals" };
-	}
+	int canLivingInDimension();
 }

@@ -196,5 +196,5 @@ public abstract class BlockTreasureChestMP extends BlockContainerMP implements I
 		return new BlockState(this, new IProperty[] {FACING});
 	}
 
-	public abstract TileEntity getTreasureChest();
+	protected abstract TileEntity getTreasureChest();
 }

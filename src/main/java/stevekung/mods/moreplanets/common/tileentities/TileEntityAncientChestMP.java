@@ -425,7 +425,7 @@ public abstract class TileEntityAncientChestMP extends TileEntityLockable implem
 		}
 	}
 
-	public abstract Block getAncientChestBlock();
-	public abstract String getChestName();
-	public abstract void checkForAdjacentChests();
+	protected abstract Block getAncientChestBlock();
+	protected abstract String getChestName();
+	protected abstract void checkForAdjacentChests();
 }

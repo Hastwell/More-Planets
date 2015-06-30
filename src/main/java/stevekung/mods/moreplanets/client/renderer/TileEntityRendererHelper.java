@@ -11,7 +11,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,8 +43,6 @@ public class TileEntityRendererHelper extends TileEntityItemStackRenderer
 	public void renderByItem(ItemStack itemStack)
 	{
 		Block block = Block.getBlockFromItem(itemStack.getItem());
-		Item item = itemStack.getItem();
-		int meta = itemStack.getItemDamage();
 
 		if (block == DionaBlocks.diona_ancient_chest)
 		{

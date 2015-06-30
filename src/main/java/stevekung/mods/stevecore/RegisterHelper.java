@@ -10,6 +10,7 @@ package stevekung.mods.stevecore;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -210,6 +211,11 @@ public class RegisterHelper
 	public static void registerBuiltInBlocks(Block... block)
 	{
 		Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBuiltInBlocks(block);
+	}
+
+	public static TextureAtlasSprite registerBlockTexture(String texture)
+	{
+		return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite(texture);
 	}
 
 	private static String getBlockName(Block block)

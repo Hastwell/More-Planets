@@ -16,13 +16,12 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -38,6 +37,8 @@ public class BlockDungeonBrickSlab1 extends BlockSlab
 		super(material);
 		this.setUnlocalizedName(name);
 		this.useNeighborBrightness = true;
+		this.setHardness(4.0F);
+		this.setResistance(6.0F);
 	}
 
 	public BlockDungeonBrickSlab1(Material material)
@@ -91,67 +92,8 @@ public class BlockDungeonBrickSlab1 extends BlockSlab
 		return MorePlanetsCore.mpBlocksTab;
 	}
 
-	/*@Override
-	public float getBlockHardness(World world, BlockPos pos)
-	{
-		int meta = world.getBlockMetadata(x, y, z);
-		float hardness = this.blockHardness;
-
-		if (this.category == SlabType.WOOD1)
-		{
-			switch (meta & 7)
-			{
-			case 0:
-			case 6:
-			case 7:
-				hardness = 2.5F;
-				break;
-			case 1:
-			case 2:
-			case 5:
-				hardness = 3.25F;
-				break;
-			case 3:
-				hardness = 3.0F;
-				break;
-			case 4:
-				hardness = 4.25F;
-				break;
-			default:
-				hardness = 2.0F;
-				break;
-			}
-		}
-		else if (this.category == SlabType.WOOD2)
-		{
-			switch (meta & 7)
-			{
-			case 0:
-				hardness = 1.75F;
-				break;
-			case 1:
-			case 2:
-				hardness = 2.25F;
-				break;
-			case 3:
-				hardness = 3.25F;
-				break;
-			case 4:
-				hardness = 4.5F;
-				break;
-			}
-		}
-		return hardness;
-	}*/
-
 	@Override
-	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
-	{
-		return super.getBlockHardness(world, pos);
-	}
-
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
 	}

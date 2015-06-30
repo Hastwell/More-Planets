@@ -30,11 +30,12 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.entities.ISiriusMob;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySiriusSmallFireball;
 
-public class EntitySiriusBlaze extends EntityMob implements /*IEntityBreathable,*/ ISiriusMob
+public class EntitySiriusBlaze extends EntityMob implements /*IEntityBreathable,*/ IEntityLivingPlanet
 {
 	private float heightOffset = 0.5F;
 	private int heightOffsetUpdateTime;
@@ -217,9 +218,9 @@ public class EntitySiriusBlaze extends EntityMob implements /*IEntityBreathable,
 	//	}
 
 	@Override
-	public boolean canLivingInSirius()
+	public int canLivingInDimension()
 	{
-		return true;
+		return ConfigManagerMP.idDimensionSiriusB;
 	}
 
 	class AIFireballAttack extends EntityAIBase

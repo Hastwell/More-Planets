@@ -36,13 +36,13 @@ public class ArmorFrozenIron extends ItemArmorMP
 	}
 
 	@Override
-	public Item getRepairItems()
+	protected Item getRepairItems()
 	{
 		return KapteynBItems.kapteyn_b_item;
 	}
 
 	@Override
-	public int getRepairItemsMetadata()
+	protected int getRepairItemsMetadata()
 	{
 		return 2;
 	}

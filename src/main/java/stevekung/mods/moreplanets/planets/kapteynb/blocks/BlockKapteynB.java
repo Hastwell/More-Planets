@@ -30,10 +30,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockBasicMP;
+import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
-public class BlockKapteynB extends BlockBasicMP /*implements IDetectableResource, IPlantableBlock, ITerraformableBlock*/
+public class BlockKapteynB extends BlockPlanetTileMP /*implements IDetectableResource, IPlantableBlock, ITerraformableBlock*/
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 

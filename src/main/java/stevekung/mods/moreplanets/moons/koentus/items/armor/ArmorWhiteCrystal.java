@@ -36,13 +36,13 @@ public class ArmorWhiteCrystal extends ItemArmorMP
 	}
 
 	@Override
-	public Item getRepairItems()
+	protected Item getRepairItems()
 	{
 		return KoentusItems.koentus_item;
 	}
 
 	@Override
-	public int getRepairItemsMetadata()
+	protected int getRepairItemsMetadata()
 	{
 		return 5;
 	}

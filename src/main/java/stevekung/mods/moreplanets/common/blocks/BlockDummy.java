@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.common.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
@@ -54,7 +55,7 @@ public class BlockDummy extends BlockBaseMP
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
 	{
 		return null;
 	}

@@ -7,18 +7,12 @@
 
 package stevekung.mods.moreplanets.planets.fronos.items;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
@@ -28,16 +22,6 @@ public class ItemPearl extends ItemBaseMP
 	{
 		super();
 		this.setUnlocalizedName(name);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
 	}
 
 	@Override
@@ -83,7 +67,7 @@ public class ItemPearl extends ItemBaseMP
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "cream_pearl", "cavern_pearl" };
 	}

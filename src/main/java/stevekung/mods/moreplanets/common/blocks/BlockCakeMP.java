@@ -153,7 +153,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this, 1, 0);
 	}
@@ -194,6 +194,6 @@ public abstract class BlockCakeMP extends BlockBaseMP
 		return true;
 	}
 
-	public abstract int getFoodAmount();
-	public abstract float getSaturationAmount();
+	protected abstract int getFoodAmount();
+	protected abstract float getSaturationAmount();
 }

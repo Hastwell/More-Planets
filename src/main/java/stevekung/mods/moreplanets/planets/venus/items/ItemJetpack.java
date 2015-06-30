@@ -145,13 +145,13 @@ public class ItemJetpack extends ItemArmorMP
 	}
 
 	@Override
-	public Item getRepairItems()
+	protected Item getRepairItems()
 	{
 		return null;
 	}
 
 	@Override
-	public int getRepairItemsMetadata()
+	protected int getRepairItemsMetadata()
 	{
 		return -1;
 	}

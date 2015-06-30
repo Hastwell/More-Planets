@@ -12,6 +12,7 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -59,7 +60,7 @@ public class BlockDoubleWoodenSlab1MP extends BlockWoodenSlab1MP
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(MPBlocks.half_wooden_slab_1, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
 	}

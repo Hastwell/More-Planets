@@ -7,13 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.nibiru.items;
 
-import java.util.List;
-
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 
 public class ItemNibiru extends ItemBaseMP
@@ -25,17 +18,7 @@ public class ItemNibiru extends ItemBaseMP
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
-
-	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "red_gem", "norium_ingot", "compressed_red_gem", "compressed_norium", "red_gem_stick", "norium_stick" };
 	}

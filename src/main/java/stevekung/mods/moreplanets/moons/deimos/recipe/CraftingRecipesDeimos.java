@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.moons.deimos.recipe;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 

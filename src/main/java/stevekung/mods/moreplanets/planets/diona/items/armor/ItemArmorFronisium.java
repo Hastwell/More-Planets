@@ -36,13 +36,13 @@ public class ItemArmorFronisium extends ItemArmorMP
 	}
 
 	@Override
-	public Item getRepairItems()
+	protected Item getRepairItems()
 	{
 		return DionaItems.diona_item;
 	}
 
 	@Override
-	public int getRepairItemsMetadata()
+	protected int getRepairItemsMetadata()
 	{
 		return 3;
 	}

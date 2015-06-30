@@ -9,10 +9,13 @@ package stevekung.mods.moreplanets.common.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class BlockFluidBaseMP extends BlockFluidClassic
 {
@@ -56,5 +59,12 @@ public abstract class BlockFluidBaseMP extends BlockFluidClassic
 			return false;
 		}
 		return super.displaceIfPossible(world, pos);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, EnumFacing side)
+	{
+		return super.shouldSideBeRendered(world, pos, side);
 	}
 }

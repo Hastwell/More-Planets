@@ -43,6 +43,6 @@ public abstract class ItemArmorMP extends ItemArmor
 		return false;
 	}
 
-	public abstract Item getRepairItems();
-	public abstract int getRepairItemsMetadata();
+	protected abstract Item getRepairItems();
+	protected abstract int getRepairItemsMetadata();
 }

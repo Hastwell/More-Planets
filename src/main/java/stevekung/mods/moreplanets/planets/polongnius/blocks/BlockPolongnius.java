@@ -29,12 +29,12 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockBasicMP;
+import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
-public class BlockPolongnius extends BlockBasicMP /*implements IDetectableResource, ITerraformableBlock*/
+public class BlockPolongnius extends BlockPlanetTileMP /*implements IDetectableResource, ITerraformableBlock*/
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 

@@ -87,5 +87,5 @@ public abstract class BlockGrassMP extends BlockBaseMP /*implements ITerraformab
 		return true;
 	}*/
 
-	public abstract Block getFarmlandBlock();
+	protected abstract Block getFarmlandBlock();
 }

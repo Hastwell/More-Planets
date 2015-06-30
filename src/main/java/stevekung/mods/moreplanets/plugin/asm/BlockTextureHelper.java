@@ -23,6 +23,7 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
+import stevekung.mods.stevecore.RegisterHelper;
 
 @SideOnly(Side.CLIENT)
 public class BlockTextureHelper
@@ -33,51 +34,47 @@ public class BlockTextureHelper
 
 		if (block == DionaBlocks.diona_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/diona_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/diona_ancient_chest");
 		}
 		else if (block == PolongniusBlocks.polongnius_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/polongnius_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/polongnius_ancient_chest");
 		}
 		else if (block == NibiruBlocks.nibiru_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/nibiru_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/nibiru_ancient_chest");
 		}
 		else if (block == KoentusBlocks.koentus_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/koentus_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/koentus_ancient_chest");
 		}
 		else if (block == FronosBlocks.fronos_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/fronos_ancient_chest");
-		}
-		else if (block == FronosBlocks.cup || block == FronosBlocks.mineral_water_cup || block == FronosBlocks.ovantine_cup || block == FronosBlocks.coconut_milk_cup || block == FronosBlocks.cheese_of_milk_cup || block == FronosBlocks.tea_cup || block == FronosBlocks.caramel_cup)
-		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/cup");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/fronos_ancient_chest");
 		}
 		else if (block == KapteynBBlocks.kapteyn_b_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/kapteyn_b_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/kapteyn_b_ancient_chest");
 		}
 		else if (block == SiriusBBlocks.sirius_b_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/sirius_b_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/sirius_b_ancient_chest");
 		}
 		else if (block == MercuryBlocks.mercury_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/mercury_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/mercury_ancient_chest");
 		}
 		else if (block == VenusBlocks.venus_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/venus_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/venus_ancient_chest");
 		}
 		else if (block == PlutoBlocks.pluto_ancient_chest)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/pluto_ancient_chest");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/pluto_ancient_chest");
 		}
 		else if (block == KapteynBBlocks.icy_poison_crystal)
 		{
-			return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite("moreplanets:blocks/fallen_ice_crystal_meteor");
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/fallen_ice_crystal_meteor");
 		}
 		return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(state).getTexture();
 	}

@@ -36,13 +36,13 @@ public class ArmorPalladium extends ItemArmorMP
 	}
 
 	@Override
-	public Item getRepairItems()
+	protected Item getRepairItems()
 	{
 		return PolongniusItems.polongnius_item;
 	}
 
 	@Override
-	public int getRepairItemsMetadata()
+	protected int getRepairItemsMetadata()
 	{
 		return 7;
 	}

@@ -44,7 +44,7 @@ public class BlockDoorMP extends BlockDoor
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition mov, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition mov, World world, BlockPos pos, EntityPlayer player)
 	{
 		if (this.doorType == DoorType.ANCIENT_DARK)
 		{

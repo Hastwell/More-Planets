@@ -7,24 +7,18 @@
 
 package stevekung.mods.moreplanets.planets.fronos.items;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
@@ -211,17 +205,7 @@ public class ItemFronosBucket extends ItemBaseMP
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
-
-	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "coconut_milk_bucket", "mineral_water_bucket", "ovantine_bucket", "tea_bucket", "caramel_bucket" };
 	}

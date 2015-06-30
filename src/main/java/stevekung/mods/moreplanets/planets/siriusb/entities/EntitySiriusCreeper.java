@@ -13,10 +13,11 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.entities.ISiriusMob;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntitySiriusCreeper extends EntityCreeper implements /*IEntityBreathable,*/ ISiriusMob
+public class EntitySiriusCreeper extends EntityCreeper implements /*IEntityBreathable,*/ IEntityLivingPlanet
 {
 	public EntitySiriusCreeper(World world)
 	{
@@ -37,9 +38,9 @@ public class EntitySiriusCreeper extends EntityCreeper implements /*IEntityBreat
 	}
 
 	@Override
-	public boolean canLivingInSirius()
+	public int canLivingInDimension()
 	{
-		return true;
+		return ConfigManagerMP.idDimensionSiriusB;
 	}
 
 	@Override

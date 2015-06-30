@@ -7,9 +7,13 @@
 
 package stevekung.mods.moreplanets.common.items;
 
+import java.util.List;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class ItemBaseMP extends Item
@@ -40,6 +44,16 @@ public abstract class ItemBaseMP extends Item
 	//	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+	{
+		for (int i = 0; i < this.getItemVariantsName().length; i++)
+		{
+			list.add(new ItemStack(this, 1, i));
+		}
+	}
+
+	@Override
 	public String getUnlocalizedName(ItemStack itemStack)
 	{
 		if (this.reverseName())
@@ -49,9 +63,9 @@ public abstract class ItemBaseMP extends Item
 		return super.getUnlocalizedName(itemStack) + "." + this.getItemVariantsName()[itemStack.getItemDamage()];
 	}
 
-	public abstract String[] getItemVariantsName();
+	protected abstract String[] getItemVariantsName();
 
-	public boolean reverseName()
+	protected boolean reverseName()
 	{
 		return false;
 	}

@@ -25,11 +25,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.entities.IBreathableInfectedGas;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 
-public class EntityGiantWorm extends EntityMob implements /*IEntityBreathable,*/ IBreathableInfectedGas
+public class EntityGiantWorm extends EntityMob implements /*IEntityBreathable,*/ IEntityLivingPlanet
 {
 	public EntityGiantWorm(World par1World)
 	{
@@ -145,8 +146,8 @@ public class EntityGiantWorm extends EntityMob implements /*IEntityBreathable,*/
 	}*/
 
 	@Override
-	public boolean canBreathInGas()
+	public int canLivingInDimension()
 	{
-		return true;
+		return ConfigManagerMP.idDimensionNibiru;
 	}
 }

@@ -249,7 +249,7 @@ public class ItemCup extends ItemFoodMP
 		Block block = world.getBlockState(pos).getBlock();
 		IBlockState state = world.getBlockState(pos);
 
-		if (player.canPlayerEdit(pos, side, itemStack) && block == FronosBlocks.space_oyster.getDefaultState().withProperty(BlockSpaceOyster.OPEN, false))
+		if (player.canPlayerEdit(pos, side, itemStack) && block == FronosBlocks.space_oyster && state == state.withProperty(BlockSpaceOyster.OPEN, false))
 		{
 			if (itemStack.getItemDamage() == 1)
 			{
@@ -259,9 +259,9 @@ public class ItemCup extends ItemFoodMP
 				}
 				else
 				{
-					if (world.rand.nextInt(5) == 0)
+					if (world.rand.nextInt(3) == 0)
 					{
-						world.setBlockState(pos, FronosBlocks.space_oyster.getDefaultState().withProperty(BlockOysterMP.FACING, EnumFacing.getFront(FronosBlocks.space_oyster.getMetaFromState(state))).withProperty(BlockSpaceOyster.OPEN, true), 3);
+						world.setBlockState(pos, FronosBlocks.space_oyster.getDefaultState().withProperty(BlockOysterMP.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockOysterMP.FACING)).getIndex())).withProperty(BlockSpaceOyster.OPEN, true), 3);
 					}
 					--itemStack.stackSize;
 					player.dropPlayerItemWithRandomChoice(new ItemStack(this, 1, 0), false);
@@ -273,7 +273,7 @@ public class ItemCup extends ItemFoodMP
 				return false;
 			}
 		}
-		else if (player.canPlayerEdit(pos, side, itemStack) && block == FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false))
+		else if (player.canPlayerEdit(pos, side, itemStack) && block == FronosBlocks.cavern_oyster && state == state.withProperty(BlockCavernOyster.OPEN, false))
 		{
 			if (itemStack.getItemDamage() == 5)
 			{
@@ -283,9 +283,9 @@ public class ItemCup extends ItemFoodMP
 				}
 				else
 				{
-					if (world.rand.nextInt(7) == 0)
+					if (world.rand.nextInt(5) == 0)
 					{
-						world.setBlockState(pos, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockOysterMP.FACING, EnumFacing.getFront(FronosBlocks.space_oyster.getMetaFromState(state))).withProperty(BlockCavernOyster.OPEN, true), 3);
+						world.setBlockState(pos, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockOysterMP.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockOysterMP.FACING)).getIndex())).withProperty(BlockCavernOyster.OPEN, true), 3);
 					}
 					--itemStack.stackSize;
 					player.dropPlayerItemWithRandomChoice(new ItemStack(this, 1, 0), false);

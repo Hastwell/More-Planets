@@ -30,12 +30,13 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.entities.ISiriusMob;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
-public class EntitySiriusMagmaCube extends EntityLiving implements IMob, /*IEntityBreathable,*/ ISiriusMob
+public class EntitySiriusMagmaCube extends EntityLiving implements IMob, /*IEntityBreathable,*/ IEntityLivingPlanet
 {
 	public float squishAmount;
 	public float squishFactor;
@@ -549,8 +550,8 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, /*IEnti
 	}*/
 
 	@Override
-	public boolean canLivingInSirius()
+	public int canLivingInDimension()
 	{
-		return true;
+		return ConfigManagerMP.idDimensionSiriusB;
 	}
 }

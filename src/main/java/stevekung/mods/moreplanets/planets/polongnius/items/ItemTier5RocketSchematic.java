@@ -77,7 +77,7 @@ public class ItemTier5RocketSchematic extends ItemBaseMP /*implements ISchematic
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "tier_5_rocket_schematic", "tier_5_rocket_schematic_no_flag" };
 	}

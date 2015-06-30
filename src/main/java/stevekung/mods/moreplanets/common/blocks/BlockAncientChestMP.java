@@ -433,5 +433,5 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 		return new BlockState(this, new IProperty[] {FACING});
 	}
 
-	public abstract TileEntity getChestTile();
+	protected abstract TileEntity getChestTile();
 }

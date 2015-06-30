@@ -19,9 +19,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public abstract class BlockBasicMP extends BlockBaseMP
+public abstract class BlockPlanetTileMP extends BlockBaseMP
 {
-	public BlockBasicMP(Material material)
+	public BlockPlanetTileMP(Material material)
 	{
 		super(material);
 		this.setResistance(3.0F);

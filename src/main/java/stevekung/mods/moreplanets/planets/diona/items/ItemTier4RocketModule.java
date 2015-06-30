@@ -72,7 +72,7 @@ public class ItemTier4RocketModule extends ItemBaseMP
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "tier_4_nose_cone", "tier_4_heavy_duty_plate", "tier_4_rocket_engine", "tier_4_booster", "tier_4_nose_cone_no_flag", "tier_5_rocket_engine", "tier_5_booster" };
 	}

@@ -118,7 +118,7 @@ public abstract class BlockWallBaseMP extends BlockBaseMP
 		return side == EnumFacing.DOWN ? super.shouldSideBeRendered(world, pos, side) : true;
 	}
 
-	public boolean canConnectTo(IBlockAccess world, BlockPos pos)
+	protected boolean canConnectTo(IBlockAccess world, BlockPos pos)
 	{
 		Block block = world.getBlockState(pos).getBlock();
 		return block == Blocks.barrier ? false : block != this && !(block instanceof BlockFenceGate) ? block.getMaterial().isOpaque() && block.isFullCube() ? block.getMaterial() != Material.gourd : false : true;

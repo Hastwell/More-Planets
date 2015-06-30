@@ -26,10 +26,10 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockBasicMP;
+import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
-public class BlockPluto extends BlockBasicMP/* implements IDetectableResource, ITerraformableBlock*/
+public class BlockPluto extends BlockPlanetTileMP/* implements IDetectableResource, ITerraformableBlock*/
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 

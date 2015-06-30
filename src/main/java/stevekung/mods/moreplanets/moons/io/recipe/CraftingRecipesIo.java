@@ -77,6 +77,22 @@ public class CraftingRecipesIo
 		GameRegistry.addRecipe(new ItemStack(PolongniusToolsItems.palladiumSpade.get()), new Object[] { "X", "Y", "Y", 'X', new ItemStack(PolongniusItems.polongniusBasicItem.get(), 1, 6), 'Y', new ItemStack(PolongniusItems.polongniusBasicItem.get(), 1, 8) });*/
 	}
 
+	//	private static void removeRecipesWithResult(ItemStack resultItem)
+	//	{
+	//	    ArrayList recipes = (ArrayList) CraftingManager.getInstance().getRecipeList();
+	//
+	//	    for (int scan = 0; scan < recipes.size(); scan++)
+	//	    {
+	//	        IRecipe tmpRecipe = (IRecipe) recipes.get(scan);
+	//	        ItemStack recipeResult = tmpRecipe.getRecipeOutput();
+	//	        if (ItemStack.areItemStacksEqual(resultItem, recipeResult))
+	//	        {
+	//	            System.out.println("[YOUR_MOD_NAME] Removing Recipe: " + recipes.get(scan) + " -> " + recipeResult);
+	//	            recipes.remove(scan);
+	//	        }
+	//	    }
+	//	}
+
 	private static void addBlockSmelting()
 	{
 		GameRegistry.addSmelting(new ItemStack(IoBlocks.io_block, 1, 3), new ItemStack(IoBlocks.io_block, 1, 2), 0.5F);

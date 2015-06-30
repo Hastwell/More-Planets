@@ -43,13 +43,13 @@ public class ArmorSulfur extends ItemArmorMP
 	//	}
 
 	@Override
-	public Item getRepairItems()
+	protected Item getRepairItems()
 	{
 		return SiriusBItems.sirius_b_item;
 	}
 
 	@Override
-	public int getRepairItemsMetadata()
+	protected int getRepairItemsMetadata()
 	{
 		return 4;
 	}

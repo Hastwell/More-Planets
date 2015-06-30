@@ -7,12 +7,9 @@
 
 package stevekung.mods.moreplanets.common.items;
 
-import java.util.List;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
@@ -20,8 +17,6 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.entities.EntityFlagMP;
 
 public class ItemFlagMP extends ItemBaseMP /*implements IHoldableItem*/
@@ -45,16 +40,6 @@ public class ItemFlagMP extends ItemBaseMP /*implements IHoldableItem*/
 		{
 			return MorePlanetsCore.mpItemsTab;
 		}*/
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
 	}
 
 	@Override
@@ -159,7 +144,7 @@ public class ItemFlagMP extends ItemBaseMP /*implements IHoldableItem*/
 	}*/
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "thai", "laos", "singapore", "myanmar", "marlaysia", "vietnam", "indonesia", "philippines", "cambodia", "brunei" };
 	}

@@ -79,7 +79,7 @@ public class ItemDiona extends ItemBaseMP
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "quontonium_ingot", "fronisium_ingot", "compressed_quontonium", "compressed_fronisium", "tier_5_heavy_duty_plate", "red_canvas", "white_canvas", "blue_canvas", "thai_canvas_bottom", "thai_canvas_top", "quontonium_stick", "fronisium_stick", "green_redstone_torch" };
 	}

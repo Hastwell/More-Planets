@@ -147,7 +147,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this.getDirtBlock());
 	}
@@ -170,5 +170,5 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
 		return null;
 	}
 
-	public abstract Block getDirtBlock();
+	protected abstract Block getDirtBlock();
 }

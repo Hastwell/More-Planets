@@ -15,11 +15,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.entities.IBreathableInfectedGas;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 
-public class EntityInfectedZombie extends EntityZombie implements /*IEntityBreathable,*/ IBreathableInfectedGas
+public class EntityInfectedZombie extends EntityZombie implements /*IEntityBreathable,*/ IEntityLivingPlanet
 {
 	public EntityInfectedZombie(World world)
 	{
@@ -79,8 +80,8 @@ public class EntityInfectedZombie extends EntityZombie implements /*IEntityBreat
 	}
 
 	@Override
-	public boolean canBreathInGas()
+	public int canLivingInDimension()
 	{
-		return true;
+		return ConfigManagerMP.idDimensionNibiru;
 	}
 }

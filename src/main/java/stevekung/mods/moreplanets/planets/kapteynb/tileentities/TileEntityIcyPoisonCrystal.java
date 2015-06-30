@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityIcyPoisonCrystal extends TileEntity
 {
-	public short facing;
+	public int facing;
 
 	public TileEntityIcyPoisonCrystal()
 	{
@@ -33,7 +33,7 @@ public class TileEntityIcyPoisonCrystal extends TileEntity
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		nbt.setShort("Facing", this.facing);
+		nbt.setInteger("Facing", this.facing);
 	}
 
 	@Override
