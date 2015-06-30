@@ -6,7 +6,7 @@ tile.diona_block.sub_surface.name=หินรองพื้นผิวได�
 tile.diona_block.rock.name=หินไดโอนา
 tile.diona_block.cobblestone.name=หินหยาบไดโอนา
 tile.diona_block.quontonium_ore.name=แร่ควอนโทเนียม
-tile.diona_block.fronisium_ore.name=แร่โฟรนิสซึม
+tile.diona_block.fronisium_ore.name=แร่โฟรนิเซียม
 tile.diona_block.copper_ore.name=แร่ทองแดง
 tile.diona_block.tin_ore.name=แร่ดีบุก
 tile.diona_block.silicon_ore.name=แร่ซิลิคอน
@@ -15,42 +15,42 @@ tile.diona_block.quontonium_block.name=บล็อกควอนโทเน�
 tile.diona_block.smooth_quontonium.name=บล็อกเรียบควอนโทเนียม
 tile.diona_block.quontonium_brick.name=อิฐควอนโทเนียม
 tile.diona_block.chiseled_quontonium.name=ควอนโทเนียมแกะสลัก
-tile.diona_block.dungeon_brick.name=อิฐดันเจี้ยนดาวไดโอนา
-tile.diona_cobblestone_stairs.name=บันไดหินหยาบดาวไดโอนา
+tile.diona_block.dungeon_brick.name=อิฐดันเจี้ยนไดโอนา
+tile.diona_cobblestone_stairs.name=บันไดหินหยาบไดโอนา
 tile.quontonium_brick_stairs.name=บันไดอิฐควอนโทเนียม
 tile.chiseled_quontonium_stairs.name=บันไดควอนโทเนียมแกะสลัก
-tile.diona_dungeon_brick_stairs.name=บันไดอิฐดันเจี้ยนดาวไดโอนา
-tile.fronisium_tnt.name=ระเบิดโฟรนิสซึม
+tile.diona_dungeon_brick_stairs.name=บันไดอิฐดันเจี้ยนไดโอนา
+tile.fronisium_tnt.name=ระเบิดโฟรนิเซียม
 tile.minion_creeper_egg.name=ไข่ลูกน้องครีปเปอร์
 tile.diona_treasure_chest.name=กล่องสมบัติ เทียร์ 4 ดาวไดโอนา
-tile.diona_ancient_chest.name=กล่องดาวไดโอนาเก่า
-tile.fronisium_block.name=บล็อกโฟรนิสซึม
+tile.diona_ancient_chest.name=กล่องไดโอนาเก่า
+tile.fronisium_block.name=บล็อกโฟรนิเซียม
 
 # SLABS
-tile.mp_stone_half_slab1.diona.name=หินหยาบครึ่งขั้นดาวไดโอนา
-tile.mp_stone_half_slab1.quonBrick.name=อิฐครึ่งขั้นควอนโทเนียม
-tile.mp_stone_half_slab1.chiseledQuon.name=ควอนโทเนียมครึ่งขั้นแกะสลัก
-tile.dungeon_brick_half_slab1.dionaBrick.name=อิฐครึ่งขั้นดันเจี้ยนดาวไดโอนา
+tile.mp_stone_half_slab1.diona.name=หินหยาบไดโอนาครึ่งขั้น
+tile.mp_stone_half_slab1.quonBrick.name=อิฐควอนโทเนียมครึ่งขั้น
+tile.mp_stone_half_slab1.chiseledQuon.name=ควอนโทเนียมแกะสลักครึ่งขั้น
+tile.dungeon_brick_half_slab1.dionaBrick.name=อิฐดันเจี้ยนไดโอนาครึ่งขั้น
 
 # WALLS
-tile.mp_wall.diona.name=กำแพงหินดาวไดโอนา
+tile.mp_wall.diona.name=กำแพงหินไดโอนา
 tile.mp_wall.quonBrick.name=กำแพงอิฐควอนโทเนียม
 tile.mp_wall.quonChiseled.name=กำแพงอิฐควอนโทเนียมแกะสลัก
-tile.mp_dungeon_brick_wall.dionaBrick.name=กำแพงอิฐดันเจี้ยนดาวไดโอนา
+tile.mp_dungeon_brick_wall.dionaBrick.name=กำแพงอิฐดันเจี้ยนไดโอนา
 
 # ITEMS
 item.diona_item.quontonium_ingot.name=แท่งควอนโทเนียม
-item.diona_item.fronisium_ingot.name=แท่งโฟรนิสซึม
+item.diona_item.fronisium_ingot.name=แท่งโฟรนิเซียม
 item.diona_item.compressed_quontonium.name=แผ่นควอนโทเนียม
-item.diona_item.compressed_fronisium.name=แผ่นโฟรนิสซึม
+item.diona_item.compressed_fronisium.name=แผ่นโฟรนิเซียม
 item.diona_item.red_canvas.name=ผ้าใบสีแดง
 item.diona_item.white_canvas.name=ผ้าใบสีขาว
 item.diona_item.blue_canvas.name=ผ้าใบสีน้ำเงิน
-item.diona_item.thai_canvas_bottom.name=ผ้าใบสีธงประเทศไทย
-item.diona_item.thai_canvas_top.name=ผ้าใบสีธงประเทศไทย
-item.diona_item.quontonium_stick.name=แท่งไม้ควอนโทเนียม
-item.diona_item.fronisium_stick.name=แท่งไม้โฟรนิสซึม
-item.diona_item.green_redstone_torch.name=คบเพลิงไฟเขียว
+item.diona_item.thai_canvas_bottom.name=ผ้าใบธงประเทศไทย
+item.diona_item.thai_canvas_top.name=ผ้าใบธงประเทศไทย
+item.diona_item.quontonium_stick.name=แท่งควอนโทเนียม
+item.diona_item.fronisium_stick.name=แท่งโฟรนิเซียม
+item.diona_item.green_redstone_torch.name=คบเพลิงหินแดงสีเขียว
 item.mp_flag.thai.name=ธงประเทศไทย
 item.tier_4_rocket_module.tier4_heavy_duty_plate.name=แผ่นโลหะทนทาน
 item.diona_treasure_key.name=กุญแจดันเจี้ยน เทียร์ 4 ดาวไดโอนา
@@ -61,14 +61,14 @@ item.tier_4_rocket_module.tier4_booster.name=บูสเตอร์ เที�
 item.tier_4_rocket_module.tier4_nose_cone_no_flag.name=กรวยจรวด เทียร์ 4
 item.tier_4_rocket_module.tier5_rocket_engine.name=เครื่องยนต์จรวด เทียร์ 5
 item.tier_4_rocket_module.tier5_booster.name=บูสเตอร์ เทียร์ 5
-item.tier_4_rocket_schematic.tier4_rocket_schematic.name=แผนผังโต๊ะทำงานนาซ่า - เทียร์ 4
-item.tier_4_rocket_schematic.tier4_rocket_schematic_no_flag.name=แผนผังโต๊ะทำงานนาซ่า - เทียร์ 4 ไม่มีธง
+item.tier_4_rocket_schematic.tier4_rocket_schematic.name=แผนผังโต๊ะทำงานนาซ่า เทียร์ 4
+item.tier_4_rocket_schematic.tier4_rocket_schematic_no_flag.name=แผนผังโต๊ะทำงานนาซ่า เทียร์ 4 - ไม่มีธง
 item.laser_gun.name=ปืนเลเซอร์
-item.normal_charge.laser_charge.name=ที่ชาร์จเลเซอร์ปกติ
-item.hyper_charge.laser_charge.name=ที่ชาร์จเลเซอร์ไฮเปอร์
-item.emp_charge.laser_charge.name=ที่ชาร์จเลเซอร์ EMP 
-item.uranium_charge.laser_charge.name=ที่ชาร์จเลเซอร์ยูเรเนียม
-item.icy_poison_charge.laser_charge.name=ที่ชาร์จเลเซอร์น้ำแข็งพิษ
+item.normal_charge.laser_charge.name=เลเซอร์ชาร์จปกติ
+item.hyper_charge.laser_charge.name=เลเซอร์ชาร์จไฮเปอร์
+item.emp_charge.laser_charge.name=เลเซอร์ชาร์จ EMP 
+item.uranium_charge.laser_charge.name=เลเซอร์ชาร์จยูเรเนียม
+item.icy_poison_charge.laser_charge.name=เลเซอร์ชาร์จน้ำแข็งพิษ
 item.tier_4_rocket.name=จรวด เทียร์ 4
 item.mp_flag.laos.name=ธงประเทศลาว
 item.mp_flag.singapore.name=ธงประเทศสิงคโปร์
@@ -90,7 +90,7 @@ desc.blue.canvas.name=น้ำเงิน
 
 # SCHEMATIC
 schematic.tier4.rocket.name=จรวด เทียร์ 4
-schematic.tier4.rocket.noflag.name=จรวด เทียร์ 4 ไม่มีธง
+schematic.tier4.rocket.noflag.name=จรวด เทียร์ 4 - ไม่มีธง
 
 # TOOLS
 item.quontonium_pickaxe.name=อีเต้อควอนโทเนียม
@@ -98,23 +98,23 @@ item.quontonium_axe.name=ขวานควอนโทเนียม
 item.quontonium_hoe.name=จอบควอนโทเนียม
 item.quontonium_spade.name=พลั่วควอนโทเนียม
 item.quontonium_sword.name=ดาบควอนโทเนียม
-item.fronisium_pickaxe.name=อีเต้อโฟรนิสซึม
-item.fronisium_axe.name=ขวานโฟรนิสซึม
-item.fronisium_hoe.name=จอบโฟรนิสซึม
-item.fronisium_spade.name=พลั่วโฟรนิสซึม
-item.fronisium_sword.name=ดาบโฟรนิสซึม
+item.fronisium_pickaxe.name=อีเต้อโฟรนิเซียม
+item.fronisium_axe.name=ขวานโฟรนิเซียม
+item.fronisium_hoe.name=จอบโฟรนิเซียม
+item.fronisium_spade.name=พลั่วโฟรนิเซียม
+item.fronisium_sword.name=ดาบโฟรนิเซียม
 
 # ARMORS
 item.quontonium_helmet.name=หมวกควอนโทเนียม
 item.quontonium_chestplate.name=เสื้อเกราะควอนโทเนียม
 item.quontonium_leggings.name=กางเกงควอนโทเนียม
 item.quontonium_boots.name=รองเท้าควอนโทเนียม
-item.fronisium_helmet.name=หมวกโฟรนิสซึม
-item.fronisium_chestplate.name=เสื้อเกราะโฟรนิสซึม
-item.fronisium_leggings.name=กางเกงโฟรนิสซึม
-item.fronisium_boots.name=รองเท้าโฟรนิสซึม
+item.fronisium_helmet.name=หมวกโฟรนิเซียม
+item.fronisium_chestplate.name=เสื้อเกราะโฟรนิเซียม
+item.fronisium_leggings.name=กางเกงโฟรนิเซียม
+item.fronisium_boots.name=รองเท้าโฟรนิเซียม
 item.breathable_quontonium_helmet.name=หมวกควอนโทเนียมหายใจได้
-item.breathable_fronisium_helmet.name=หมวกโฟรนิสซึมหายใจได้
+item.breathable_fronisium_helmet.name=หมวกโฟรนิเซียมหายใจได้
 
 # ENTITIES
 entity.MorePlanet.SpaceWolf.name=หมาป่าอวกาศ
