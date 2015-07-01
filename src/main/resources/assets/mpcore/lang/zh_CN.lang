@@ -1,0 +1,18 @@
+# More Planets : Core = CHINESE
+
+tile.chondrite_block.rock.name=陨石
+tile.chondrite_block.polished.name=平滑陨石
+tile.chondrite_block.stone_brick.name=陨石石砖
+
+# GUI
+itemGroup.MorePlanetsBlocks=更多行星(方块)
+itemGroup.MorePlanetsItems=更多行星(物品)
+itemGroup.MorePlanetsTools=更多行星(工具)
+itemGroup.MorePlanetsArmor=更多行星(装备)
+
+# PLANET
+star.sirius=天狼星
+solarsystem.sirius=天狼星系
+
+mp.failed.name=检查升级失败！
+mp.success.name=更多行星发现更新版本！
