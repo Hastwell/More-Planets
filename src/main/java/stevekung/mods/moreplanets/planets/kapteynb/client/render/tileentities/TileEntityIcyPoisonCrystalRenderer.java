@@ -96,7 +96,6 @@ public class TileEntityIcyPoisonCrystalRenderer extends TileEntitySpecialRendere
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float f, int par5)
 	{
-		GlStateManager.pushMatrix();
 		TileEntityIcyPoisonCrystal crystal = (TileEntityIcyPoisonCrystal)tile;
 		Random rand = new Random(crystal.getPos().getX() + crystal.getPos().getY() * crystal.getPos().getZ());
 		this.bindTexture(new ResourceLocation("moreplanets:textures/model/icy_poison_crystal.png"));
@@ -112,7 +111,5 @@ public class TileEntityIcyPoisonCrystalRenderer extends TileEntitySpecialRendere
 				this.drawCrystal(crystal.facing, (float)x, (float)y, (float)z, angle1, angle2, rand, color, 1.1F);
 			}
 		}
-		GlStateManager.popMatrix();
-		GlStateManager.disableBlend();
 	}
 }

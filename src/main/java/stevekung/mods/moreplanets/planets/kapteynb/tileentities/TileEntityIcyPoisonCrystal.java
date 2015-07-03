@@ -50,4 +50,10 @@ public class TileEntityIcyPoisonCrystal extends TileEntity
 		super.onDataPacket(net, pkt);
 		this.readFromNBT(pkt.getNbtCompound());
 	}
+
+	@Override
+	public boolean canRenderBreaking()
+	{
+		return true;
+	}
 }
