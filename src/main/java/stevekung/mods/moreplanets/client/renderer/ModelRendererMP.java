@@ -238,7 +238,6 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(KoentusBlocks.crystal_segment, "crystal_segment", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.white_crystal_torch, "white_crystal_torch", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.eledos_egg, 0, "eledos_egg", "moreplanets");
-		RegisterHelper.registerModelRender(KoentusBlocks.eledos_egg, 1, "eledos_egg_crack", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.crystal_log, "crystal_wood_log", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.crystal_leaves, "crystal_leaves", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.koentus_ice, 0, "koentus_ice", "moreplanets");

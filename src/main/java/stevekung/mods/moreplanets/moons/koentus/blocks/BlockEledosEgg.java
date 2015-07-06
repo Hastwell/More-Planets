@@ -20,6 +20,7 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -36,7 +37,7 @@ public class BlockEledosEgg extends BlockBaseMP implements ITileEntityProvider
 		this.setHardness(0.75F);
 		this.setUnlocalizedName(name);
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.eledos_egg));
-		this.setBlockBounds(0.125F, 0.0F, 0.1F, 0.875F, 0.70F, 0.9F);
+		this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.7F, 0.9F);
 	}
 
 	@Override
@@ -60,14 +61,32 @@ public class BlockEledosEgg extends BlockBaseMP implements ITileEntityProvider
 
 			if (tile instanceof TileEntityEledosEgg)
 			{
-				((TileEntityEledosEgg) tile).timeToHatch = world.rand.nextInt(1000);
+				((TileEntityEledosEgg) tile).timeToHatch = 1000 + world.rand.nextInt(500);
 			}*/
 			return false;
 		}
 		else
 		{
-			return false;
+			return world.setBlockToAir(pos);
 		}
+	}
+
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
+	{
+		if (this.getMetaFromState(world.getBlockState(pos)) == 0)
+		{
+			world.setBlockState(pos, this.getDefaultState().withProperty(VARIANT, BlockType.eledos_egg_crack), 2);
+
+			/*TileEntity tile = world.getTileEntity(pos);
+
+			if (tile instanceof TileEntityEledosEgg)
+			{
+				((TileEntityEledosEgg) tile).timeToHatch = 1000 + world.rand.nextInt(500);
+			}*/
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -113,13 +132,13 @@ public class BlockEledosEgg extends BlockBaseMP implements ITileEntityProvider
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
 	{
 		if (this.getMetaFromState(world.getBlockState(pos)) == 1)
 		{
 			return new ItemStack(this, 1, 0);
 		}
-		return super.getPickBlock(target, world, pos);
+		return super.getPickBlock(target, world, pos, player);
 	}
 
 	@Override

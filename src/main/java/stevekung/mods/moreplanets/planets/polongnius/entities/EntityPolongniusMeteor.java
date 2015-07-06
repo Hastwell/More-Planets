@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.polongnius.entities;
 import java.util.Iterator;
 import java.util.List;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,6 +22,7 @@ import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
@@ -154,6 +156,12 @@ public class EntityPolongniusMeteor extends Entity
 		}
 		return new EntityDamageSourceIndirect("explosion", meteor, entity).setProjectile();
 	}
+
+	@Override
+    public boolean func_174816_a(Explosion explosion, World world, BlockPos pos, IBlockState state, float damage)
+    {
+        return true;//TODO GC Config for meteor
+    }
 
 	@Override
 	protected void entityInit()

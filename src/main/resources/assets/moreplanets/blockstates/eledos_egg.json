@@ -1,6 +1,16 @@
 {
     "variants": {
-        "variant=eledos_egg": { "model": "moreplanets:eledos_egg" },
-        "variant=eledos_egg_crack": { "model": "moreplanets:eledos_egg_crack" }
+        "variant=eledos_egg": [
+            { "model": "moreplanets:eledos_egg" },
+            { "model": "moreplanets:eledos_egg", "y": 90 },
+            { "model": "moreplanets:eledos_egg", "y": 180 },
+            { "model": "moreplanets:eledos_egg", "y": 270 }
+        ],
+		"variant=eledos_egg_crack": [
+            { "model": "moreplanets:eledos_egg_crack" },
+            { "model": "moreplanets:eledos_egg_crack", "y": 90 },
+            { "model": "moreplanets:eledos_egg_crack", "y": 180 },
+            { "model": "moreplanets:eledos_egg_crack", "y": 270 }
+        ]
     }
 }
