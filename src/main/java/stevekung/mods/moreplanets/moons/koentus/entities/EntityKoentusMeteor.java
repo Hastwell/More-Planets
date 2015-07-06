@@ -13,7 +13,7 @@ import java.util.List;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
-import net.minecraft.block.BlockAir;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +24,7 @@ import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 
@@ -135,7 +136,7 @@ public class EntityKoentusMeteor extends Entity
 		{
 			if (par1MovingObjectPosition != null)
 			{
-				if (this.worldObj.getBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ) instanceof BlockAir)
+				if (this.worldObj.getBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ).isAir(this.worldObj, par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ))
 				{
 					this.worldObj.setBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ, KoentusBlocks.fallen_koentus_meteor, 0, 3);
 				}
@@ -147,6 +148,12 @@ public class EntityKoentusMeteor extends Entity
 			this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
 		}
 		this.setDead();
+	}
+
+	@Override
+	public boolean func_145774_a(Explosion explosion, World world, int x, int y, int z, Block block, float p_145774_7_)
+	{
+		return ConfigManagerCore.meteorBlockDamageEnabled;
 	}
 
 	public static DamageSource causeMeteorDamage(EntityKoentusMeteor par0EntityMeteor, Entity par1Entity)

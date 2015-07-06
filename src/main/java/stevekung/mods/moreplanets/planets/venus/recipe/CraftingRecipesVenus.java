@@ -91,7 +91,7 @@ public class CraftingRecipesVenus
 		//		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_sword), new Object[] { "X", "X", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
 		//		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_shovel), new Object[] { "X", "Y", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
 	}
-	
+
 	private static void addOreDictionary()
 	{
 		OreDictionary.registerOre("sand", new ItemStack(VenusBlocks.venus_sand, 1, OreDictionary.WILDCARD_VALUE));

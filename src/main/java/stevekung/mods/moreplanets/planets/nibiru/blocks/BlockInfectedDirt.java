@@ -12,7 +12,6 @@ import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -69,7 +68,7 @@ public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBloc
 	@Override
 	public boolean isTerraformable(World world, int x, int y, int z)
 	{
-		return world.getBlock(x, y + 1, z) instanceof BlockAir;
+		return !world.getBlock(x, y + 1, z).isOpaqueCube();
 	}
 
 	@Override

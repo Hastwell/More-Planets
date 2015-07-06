@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.core.blocks;
 
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -81,7 +80,7 @@ public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformable
 	@Override
 	public boolean isTerraformable(World world, int x, int y, int z)
 	{
-		return world.getBlock(x, y + 1, z) instanceof BlockAir;
+		return !world.getBlock(x, y + 1, z).isOpaqueCube();
 	}
 
 	public abstract Block getFarmlandBlock();

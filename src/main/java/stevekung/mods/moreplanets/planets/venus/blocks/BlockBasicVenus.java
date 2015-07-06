@@ -12,7 +12,6 @@ import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
-import net.minecraft.block.BlockAir;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -187,7 +186,7 @@ public class BlockBasicVenus extends BlockBasicMP implements IDetectableResource
 	{
 		int meta = world.getBlockMetadata(x, y, z);
 
-		if ((meta == 0 || meta == 1) && world.getBlock(x, y + 1, z) instanceof BlockAir)
+		if ((meta == 0 || meta == 1) && !world.getBlock(x, y + 1, z).isOpaqueCube())
 		{
 			return true;
 		}

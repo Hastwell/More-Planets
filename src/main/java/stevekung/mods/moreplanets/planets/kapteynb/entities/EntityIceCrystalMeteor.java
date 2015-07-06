@@ -13,7 +13,7 @@ import java.util.List;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
-import net.minecraft.block.BlockAir;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +24,7 @@ import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
@@ -135,7 +136,7 @@ public class EntityIceCrystalMeteor extends Entity
 		{
 			if (par1MovingObjectPosition != null)
 			{
-				if (this.worldObj.getBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ) instanceof BlockAir)
+				if (this.worldObj.getBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ).isAir(this.worldObj, par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ))
 				{
 					this.worldObj.setBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ, KapteynBBlocks.fallen_ice_crystal_meteor, 0, 3);
 				}
@@ -156,6 +157,12 @@ public class EntityIceCrystalMeteor extends Entity
 			StatCollector.translateToLocalFormatted("death." + "meteor", ((EntityPlayer) par1Entity).getGameProfile().getName() + " was hit by a meteor! That's gotta hurt!");
 		}
 		return new EntityDamageSourceIndirect("explosion", par0EntityMeteor, par1Entity).setProjectile();
+	}
+
+	@Override
+	public boolean func_145774_a(Explosion explosion, World world, int x, int y, int z, Block block, float p_145774_7_)
+	{
+		return ConfigManagerCore.meteorBlockDamageEnabled;
 	}
 
 	@Override
