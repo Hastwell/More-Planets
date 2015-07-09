@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.moons.europa.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -22,7 +23,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntityEuropaSquid extends EntityWaterMob
+public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathable
 {
 	public float squidPitch;
 	public float prevSquidPitch;
@@ -263,5 +264,11 @@ public class EntityEuropaSquid extends EntityWaterMob
 				this.squid.func_175568_b(f1, f2, f3);
 			}
 		}
+	}
+
+	@Override
+	public boolean canBreath()
+	{
+		return true;
 	}
 }

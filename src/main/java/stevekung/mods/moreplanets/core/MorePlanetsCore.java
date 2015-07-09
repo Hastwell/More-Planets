@@ -9,6 +9,10 @@ package stevekung.mods.moreplanets.core;
 
 import java.io.File;
 
+import micdoodle8.mods.galacticraft.api.galaxies.Moon;
+import micdoodle8.mods.galacticraft.api.galaxies.Planet;
+import micdoodle8.mods.galacticraft.api.galaxies.SolarSystem;
+import micdoodle8.mods.galacticraft.api.galaxies.Star;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -46,6 +50,7 @@ import stevekung.mods.moreplanets.core.init.MPArmors;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.init.MPEntities;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.core.init.MPTileEntities;
 import stevekung.mods.moreplanets.core.init.MPTools;
@@ -106,25 +111,27 @@ public class MorePlanetsCore
 
 	public static SimpleNetworkWrapper simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("MorePlanets");
 
-	//	public static Planet siriusB;
-	//	public static Planet diona;
-	//	public static Planet polongnius;
-	//	public static Planet nibiru;
-	//	public static Planet fronos;
-	//	public static Planet kapteynB;
-	//
-	//	public static Planet mercury;
-	//
-	//	public static Moon koentus;
-	//	public static Moon phobos;
-	//	public static Moon deimos;
-	//	public static Moon io;
-	//
-	//	public static Star sirius;
-	//	public static Star kapteyn;
+	public static Planet siriusB;
+	public static Planet diona;
+	public static Planet polongnius;
+	public static Planet nibiru;
+	public static Planet fronos;
+	public static Planet kapteynB;
 
-	//	public static SolarSystem siriusSolarSystem;
-	//	public static SolarSystem kapteynBSolarSystem;
+	public static Planet mercury;
+	public static Planet venus;
+	public static Planet pluto;
+
+	public static Planet koentus;//TODO Again -.-
+	public static Moon phobos;
+	public static Moon deimos;
+	public static Moon io;
+
+	public static Star sirius;
+	public static Star kapteyn;
+
+	public static SolarSystem siriusSolarSystem;
+	public static SolarSystem kapteynBSolarSystem;
 
 	//public static Achievement findOre;
 
@@ -175,7 +182,7 @@ public class MorePlanetsCore
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		//MPPlanets.init();
+		MPPlanets.init();
 		MPEntities.init();
 		TreeCapitatorIntegrationMP.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiEventHandler());

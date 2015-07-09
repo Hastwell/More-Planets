@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.moons.phobos.blocks;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -27,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
-public class BlockPhobos extends BlockPlanetTileMP /*implements IDetectableResource, ITerraformableBlock*/
+public class BlockPhobos extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -40,7 +41,7 @@ public class BlockPhobos extends BlockPlanetTileMP /*implements IDetectableResou
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
 		for (int i = 0; i < 8; ++i)
 		{
@@ -108,19 +109,19 @@ public class BlockPhobos extends BlockPlanetTileMP /*implements IDetectableResou
 			return true;
 		}
 		return false;
-	}
+	}*/
 
 	@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		int meta = this.getMetaFromState(state);
+		int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta == 0 || meta == 1)
+		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
 		{
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 	@Override
 	protected BlockState createBlockState()

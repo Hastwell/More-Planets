@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.nibiru.blocks;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -29,14 +30,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
-public class BlockInfectedDirt extends BlockBaseMP /*implements ITerraformableBlock*/
+public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
 	public BlockInfectedDirt(String name)
 	{
 		super(Material.ground);
-		this.setStepSound(Block.soundTypeGravel);
+		this.setStepSound(soundTypeGravel);
 		this.setHardness(0.55F);
 		this.blockState.getBaseState().withProperty(VARIANT, BlockType.infected_dirt);
 		this.setUnlocalizedName(name);
@@ -49,11 +50,11 @@ public class BlockInfectedDirt extends BlockBaseMP /*implements ITerraformableBl
 		return block == NibiruBlocks.nibiru_sapling;
 	}
 
-	/*@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		return true;
-	}*/
+		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
+	}
 
 	@Override
 	public int damageDropped(IBlockState state)

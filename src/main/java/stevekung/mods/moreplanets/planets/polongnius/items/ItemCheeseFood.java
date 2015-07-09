@@ -7,16 +7,10 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.items;
 
-import java.util.List;
-
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemCheeseFood extends ItemFoodMP
@@ -37,16 +31,6 @@ public class ItemCheeseFood extends ItemFoodMP
 		super();
 		this.setUnlocalizedName(name);
 		this.setHasSubtypes(true);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
 	}
 
 	@Override
@@ -88,7 +72,7 @@ public class ItemCheeseFood extends ItemFoodMP
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "cheese_of_milk_curd", "raw_cheese_beef", "cooked_cheese_beef", };
 	}

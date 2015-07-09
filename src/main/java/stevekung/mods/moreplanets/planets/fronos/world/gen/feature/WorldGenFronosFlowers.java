@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.fronos.world.gen.feature;
 
 import java.util.Random;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -16,11 +17,11 @@ import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
 
 public class WorldGenFronosFlowers extends WorldGenerator
 {
-	private BlockFlowerMP flower;
+	private IBlockState flower;
 
-	public WorldGenFronosFlowers(BlockFlowerMP block)
+	public WorldGenFronosFlowers(IBlockState state)
 	{
-		this.flower = block;
+		this.flower = state;
 	}
 
 	@Override
@@ -30,9 +31,9 @@ public class WorldGenFronosFlowers extends WorldGenerator
 		{
 			BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && this.flower.canBlockStay(world, pos1, world.getBlockState(pos1)))
+			if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && ((BlockFlowerMP)this.flower.getBlock()).canBlockStay(world, pos1, world.getBlockState(pos1)))
 			{
-				world.setBlockState(pos1, this.flower.getDefaultState(), 2);
+				world.setBlockState(pos1, this.flower, 2);
 			}
 		}
 		return true;

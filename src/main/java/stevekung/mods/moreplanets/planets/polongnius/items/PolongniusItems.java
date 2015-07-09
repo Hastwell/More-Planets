@@ -21,7 +21,7 @@ public class PolongniusItems
 	public static Item cheese_food;
 	public static Item polongnius_dungeon_key;
 	public static Item cheese_slimeball;
-	//public static Item tier5_rocket;
+	public static Item tier_5_rocket;
 	public static Item tier_6_rocket_module;
 	public static Item tier_5_rocket_schematic;
 	public static Item cheese_of_milk_bucket;

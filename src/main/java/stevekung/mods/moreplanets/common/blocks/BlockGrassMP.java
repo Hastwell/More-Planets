@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.common.blocks;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -22,7 +23,7 @@ import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockInfectedGrass;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockInfectedOrangeRoseBush;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
-public abstract class BlockGrassMP extends BlockBaseMP /*implements ITerraformableBlock*/
+public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformableBlock
 {
 	public BlockGrassMP()
 	{
@@ -81,11 +82,11 @@ public abstract class BlockGrassMP extends BlockBaseMP /*implements ITerraformab
 		}
 	}
 
-	/*@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		return true;
-	}*/
+		return true && !world.getBlockState(pos).getBlock().isOpaqueCube();
+	}
 
 	protected abstract Block getFarmlandBlock();
 }

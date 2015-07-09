@@ -7,9 +7,16 @@
 
 package stevekung.mods.moreplanets.common.items;
 
+import java.util.List;
+
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class ItemFoodMP extends ItemFood
@@ -31,12 +38,22 @@ public abstract class ItemFoodMP extends ItemFood
 		return meta;
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack itemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+	{
+		for (int i = 0; i < this.getItemVariantsName().length; i++)
+		{
+			list.add(new ItemStack(this, 1, i));
+		}
+	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack itemStack)
@@ -52,10 +69,10 @@ public abstract class ItemFoodMP extends ItemFood
 		return super.getUnlocalizedName(itemStack) + "." + this.getItemVariantsName()[itemStack.getItemDamage()];
 	}
 
-	public boolean reverseName()
+	protected boolean reverseName()
 	{
 		return false;
 	}
 
-	public abstract String[] getItemVariantsName();
+	protected abstract String[] getItemVariantsName();
 }

@@ -25,7 +25,7 @@ public class SiriusBBlocks
 	public static BlockSiriusFire sirius_fire;
 	public static Block sirius_b_block;
 	public static Block sirius_blaze_egg;
-	//public static Block sirius_b_treasure_chest;
+	public static Block sirius_b_treasure_chest;
 	public static Block sirius_b_ancient_chest;
 	public static Block sirius_obsidian;
 	public static Block sirius_b_carbon_cobblestone_stairs;
@@ -48,7 +48,7 @@ public class SiriusBBlocks
 	{
 		SiriusBBlocks.sirius_b_block = new BlockSiriusB("sirius_b_block");
 		SiriusBBlocks.sirius_blaze_egg = new BlockSiriusBlazeEgg("sirius_blaze_egg");
-		//SiriusBBlocks.sirius_b_treasure_chest = new BlockSiriusBTreasureChest("sirius_b_treasure_chest");
+		SiriusBBlocks.sirius_b_treasure_chest = new BlockSiriusBTreasureChest("sirius_b_treasure_chest");
 		SiriusBBlocks.sirius_fire = new BlockSiriusFire("sirius_fire");
 		SiriusBBlocks.sirius_b_ancient_chest = new BlockSiriusBAncientChest("sirius_b_ancient_chest");
 		SiriusBBlocks.sirius_obsidian = new BlockBaseMP("sirius_obsidian", Material.rock).setHardness(70.0F).setResistance(5000.0F).setLightLevel(1.0F);
@@ -80,7 +80,7 @@ public class SiriusBBlocks
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_redstone_lamp_off);
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_redstone_lamp_on);
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_ancient_chest);
-		//RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_treasure_chest);
+		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_treasure_chest);
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_blaze_egg);
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_carbon_cobblestone_stairs);
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_dungeon_brick_stairs);

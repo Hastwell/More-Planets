@@ -6,23 +6,22 @@
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.planets.fronos.blocks;
-//package stevekung.mods.moreplanets.planets.fronos.blocks;
-//
-//import stevekung.mods.moreplanets.core.blocks.BlockTreasureChestMP;
-//import stevekung.mods.moreplanets.core.tileentities.TileEntityTreasureChestMP;
-//import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTreasureChest;
-//
-//public class BlockT7FronosTreasureChest extends BlockTreasureChestMP
-//{
-//	public BlockT7FronosTreasureChest(String name)
-//	{
-//		super();
-//		this.setUnlocalizedName(name);
-//	}
-//
-//	@Override
-//	public TileEntityTreasureChestMP getTreasureChest()
-//	{
-//		return new TileEntityFronosTreasureChest();
-//	}
-//}
+
+import stevekung.mods.moreplanets.common.blocks.BlockTreasureChestMP;
+import stevekung.mods.moreplanets.common.tileentities.TileEntityTreasureChestMP;
+import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTreasureChest;
+
+public class BlockFronosTreasureChest extends BlockTreasureChestMP
+{
+	public BlockFronosTreasureChest(String name)
+	{
+		super();
+		this.setUnlocalizedName(name);
+	}
+
+	@Override
+	public TileEntityTreasureChestMP getTreasureChest()
+	{
+		return new TileEntityFronosTreasureChest();
+	}
+}

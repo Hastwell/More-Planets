@@ -7,9 +7,11 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.items;
 
+import micdoodle8.mods.galacticraft.api.item.IKeyItem;
+import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
-public class ItemPolongniusDungeonKey extends ItemMorePlanets /*implements IKeyItem*/
+public class ItemPolongniusDungeonKey extends ItemMorePlanets implements IKeyItem
 {
 	public ItemPolongniusDungeonKey(String name)
 	{
@@ -18,9 +20,9 @@ public class ItemPolongniusDungeonKey extends ItemMorePlanets /*implements IKeyI
 		this.setUnlocalizedName(name);
 	}
 
-	/*@Override
+	@Override
 	public int getTier(ItemStack itemStack)
 	{
 		return 5;
-	}*/
+	}
 }

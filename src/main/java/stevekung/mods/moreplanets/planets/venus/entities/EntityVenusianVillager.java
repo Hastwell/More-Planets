@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.venus.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -24,7 +25,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntityVenusianVillager extends EntityAgeable /*implements IEntityBreathable*/
+public class EntityVenusianVillager extends EntityAgeable implements IEntityBreathable
 {
 	public EntityVenusianVillager(World world)
 	{
@@ -115,9 +116,9 @@ public class EntityVenusianVillager extends EntityAgeable /*implements IEntityBr
 		return new ItemStack(MPItems.spawn_egg_mp, 1, 1036);
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 }

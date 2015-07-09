@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.moons.koentus.blocks;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -29,7 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
-public class BlockCrystalDirt extends BlockBaseMP /*implements ITerraformableBlock*/
+public class BlockCrystalDirt extends BlockBaseMP implements ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -42,11 +43,11 @@ public class BlockCrystalDirt extends BlockBaseMP /*implements ITerraformableBlo
 		this.setUnlocalizedName(name);
 	}
 
-	/*@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		return true;
-	}*/
+		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
+	}
 
 	@Override
 	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)

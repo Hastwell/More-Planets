@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.moons.koentus.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -32,7 +33,7 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
-public class BlockKoentus extends BlockPlanetTileMP /*implements IDetectableResource, ITerraformableBlock*/
+public class BlockKoentus extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -205,17 +206,17 @@ public class BlockKoentus extends BlockPlanetTileMP /*implements IDetectableReso
 		}
 	}
 
-	/*@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		int meta = this.getMetaFromState(state);
+		int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta == 0 || meta == 1)
+		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
 		{
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 	@Override
 	protected BlockState createBlockState()

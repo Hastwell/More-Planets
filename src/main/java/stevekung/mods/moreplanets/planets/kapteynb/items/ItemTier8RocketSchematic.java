@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.kapteynb.items;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.recipe.ISchematicItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
-public class ItemTier8RocketSchematic extends ItemMorePlanets /*implements ISchematicItem*/
+public class ItemTier8RocketSchematic extends ItemMorePlanets implements ISchematicItem
 {
 	public ItemTier8RocketSchematic(String name)
 	{
@@ -28,7 +29,7 @@ public class ItemTier8RocketSchematic extends ItemMorePlanets /*implements ISche
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
 	{
 		if (player.worldObj.isRemote)
 		{

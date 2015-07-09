@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -17,7 +18,7 @@ import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntitySiriusCreeper extends EntityCreeper implements /*IEntityBreathable,*/ IEntityLivingPlanet
+public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreathable, IEntityLivingPlanet
 {
 	public EntitySiriusCreeper(World world)
 	{
@@ -25,11 +26,11 @@ public class EntitySiriusCreeper extends EntityCreeper implements /*IEntityBreat
 		this.isImmuneToFire = true;
 	}
 
-	//	@Override
-	//	public boolean canBreath()
-	//	{
-	//		return true;
-	//	}
+	@Override
+	public boolean canBreath()
+	{
+		return true;
+	}
 
 	@Override
 	public ItemStack getPickedResult(MovingObjectPosition target)

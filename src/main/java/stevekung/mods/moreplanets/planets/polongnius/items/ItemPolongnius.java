@@ -7,6 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.items;
 
+import java.util.List;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 
 public class ItemPolongnius extends ItemBaseMP
@@ -15,6 +22,19 @@ public class ItemPolongnius extends ItemBaseMP
 	{
 		super();
 		this.setUnlocalizedName(name);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+	{
+		for (int i = 0; i < this.getItemVariantsName().length; i++)
+		{
+			if (i != 11)
+			{
+				list.add(new ItemStack(this, 1, i));
+			}
+		}
 	}
 
 	@Override

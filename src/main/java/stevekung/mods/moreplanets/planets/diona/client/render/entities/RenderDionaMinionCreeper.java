@@ -59,11 +59,6 @@ public class RenderDionaMinionCreeper extends RenderLiving
 		}
 	}
 
-	protected ResourceLocation getEntityTexture(EntityDionaMinionCreeper entity)
-	{
-		return this.creeperTextures;
-	}
-
 	@Override
 	protected void preRenderCallback(EntityLivingBase entity, float par2)
 	{
@@ -81,6 +76,6 @@ public class RenderDionaMinionCreeper extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.getEntityTexture((EntityDionaMinionCreeper)entity);
+		return this.creeperTextures;
 	}
 }

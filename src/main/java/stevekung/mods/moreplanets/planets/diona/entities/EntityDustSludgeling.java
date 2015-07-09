@@ -7,6 +7,12 @@
 
 package stevekung.mods.moreplanets.planets.diona.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.planets.mars.entities.EntitySlimeling;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -18,11 +24,15 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.planets.diona.blocks.BlockDiona;
+import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
+import stevekung.mods.moreplanets.planets.diona.dimension.WorldProviderDiona;
 
-public class EntityDustSludgeling extends EntityMob /*implements IEntityBreathable*/
+public class EntityDustSludgeling extends EntityMob implements IEntityBreathable
 {
 	public EntityDustSludgeling(World world)
 	{
@@ -32,11 +42,11 @@ public class EntityDustSludgeling extends EntityMob /*implements IEntityBreathab
 		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 0.25F, true));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-		/*this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedZombie.class, false, true));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedZombie.class, false, true));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedSkeleton.class, false, true));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedSpider.class, false, true));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedCreeper.class, false, true));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySlimeling.class, false));*/
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySlimeling.class, false));
 	}
 
 	@Override
@@ -108,7 +118,7 @@ public class EntityDustSludgeling extends EntityMob /*implements IEntityBreathab
 	{
 		Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
 
-		/*if (this.worldObj.provider instanceof WorldProviderDiona)
+		if (this.worldObj.provider instanceof WorldProviderDiona)
 		{
 			for (int i = 0; i < 1; i++)
 			{
@@ -124,7 +134,7 @@ public class EntityDustSludgeling extends EntityMob /*implements IEntityBreathab
 					}
 				}
 			}
-		}*/
+		}
 		super.onLivingUpdate();
 	}
 
@@ -148,11 +158,11 @@ public class EntityDustSludgeling extends EntityMob /*implements IEntityBreathab
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute()

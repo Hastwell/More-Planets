@@ -13,6 +13,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -55,7 +57,7 @@ import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 
-public class EntityEvolvedEnderman extends EntityMob /*implements IEntityBreathable*/
+public class EntityEvolvedEnderman extends EntityMob implements IEntityBreathable
 {
 	private static UUID attackingSpeedBoostModifierUUID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
 	private static AttributeModifier attackingSpeedBoostModifier = new AttributeModifier(attackingSpeedBoostModifierUUID, "Attacking speed boost", 0.15000000596046448D, 0).setSaved(false);
@@ -404,11 +406,11 @@ public class EntityEvolvedEnderman extends EntityMob /*implements IEntityBreatha
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	public boolean isScreaming()
 	{
@@ -642,17 +644,17 @@ public class EntityEvolvedEnderman extends EntityMob /*implements IEntityBreatha
 			break;
 		case 6:
 			//Oxygen tank half empty or less
-			//this.entityDropItem(new ItemStack(GCItems.oxTankMedium, 1, 901 + this.rand.nextInt(900)), 0.0F);
+			this.entityDropItem(new ItemStack(GCItems.oxTankMedium, 1, 901 + this.rand.nextInt(900)), 0.0F);
 			break;
 		case 7:
 		case 8:
 			this.dropItem(Items.ender_eye, 1);
 			break;
 		case 9:
-			//this.dropItem(GCItems.oxygenConcentrator, 1);
+			this.dropItem(GCItems.oxygenConcentrator, 1);
 			break;
 		case 10:
-			//this.dropItem(GCItems.oxMask, 1);
+			this.dropItem(GCItems.oxMask, 1);
 			break;
 		}
 	}

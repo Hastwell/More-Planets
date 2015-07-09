@@ -6,56 +6,50 @@
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.moons.koentus.client.render.entities;
-//package stevekung.mods.moreplanets.moons.koentus.render.entities;
-//
-//import net.minecraft.client.renderer.entity.Render;
-//import net.minecraft.entity.Entity;
-//import net.minecraft.util.ResourceLocation;
-//import net.minecraftforge.client.model.AdvancedModelLoader;
-//import net.minecraftforge.client.model.IModelCustom;
-//
-//import org.lwjgl.opengl.GL11;
-//
-//import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteorChunk;
-//
-//public class RenderKoentusMeteorChunk extends Render
-//{
-//	private static final ResourceLocation meteorChunkTexture = new ResourceLocation("koentus:textures/model/koentus_meteor_chunk.png");
-//	private final IModelCustom meteorChunkModel = AdvancedModelLoader.loadModel(new ResourceLocation("galacticraftcore:models/meteorChunk.obj"));
-//
-//	public RenderKoentusMeteorChunk()
-//	{
-//		this.shadowSize = 0.1F;
-//	}
-//
-//	protected ResourceLocation func_110779_a(EntityKoentusMeteorChunk par1EntityArrow)
-//	{
-//		return RenderKoentusMeteorChunk.meteorChunkTexture;
-//	}
-//
-//	@Override
-//	protected ResourceLocation getEntityTexture(Entity par1Entity)
-//	{
-//		return this.func_110779_a((EntityKoentusMeteorChunk) par1Entity);
-//	}
-//
-//	public void renderMeteorChunk(EntityKoentusMeteorChunk entity, double par2, double par4, double par6, float par8, float par9)
-//	{
-//		GL11.glPushMatrix();
-//		final float var24 = entity.rotationPitch;
-//		final float var24b = entity.rotationYaw;
-//		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
-//		GL11.glScalef(0.3F, 0.3F, 0.3F);
-//		GL11.glRotatef(var24b, 1.0F, 0.0F, 0.0F);
-//		GL11.glRotatef(var24, 0.0F, 0.0F, 1.0F);
-//		this.bindTexture(RenderKoentusMeteorChunk.meteorChunkTexture);
-//		this.meteorChunkModel.renderAll();
-//		GL11.glPopMatrix();
-//	}
-//
-//	@Override
-//	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-//	{
-//		this.renderMeteorChunk((EntityKoentusMeteorChunk) par1Entity, par2, par4, par6, par8, par9);
-//	}
-//}
+
+import micdoodle8.mods.galacticraft.core.client.objload.AdvancedModelLoader;
+import micdoodle8.mods.galacticraft.core.client.objload.IModelCustom;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
+import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteorChunk;
+
+public class RenderKoentusMeteorChunk extends Render
+{
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/koentus_meteor_chunk.png");
+	private IModelCustom meteorChunkModel = AdvancedModelLoader.loadModel(new ResourceLocation("galacticraftcore:models/meteorChunk.obj"));
+
+	public RenderKoentusMeteorChunk(RenderManager render)
+	{
+		super(render);
+		this.shadowSize = 0.1F;
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
+		return this.texture;
+	}
+
+	public void renderMeteorChunk(EntityKoentusMeteorChunk entity, double par2, double par4, double par6, float par8, float par9)
+	{
+		GlStateManager.pushMatrix();
+		float var24 = entity.rotationPitch;
+		float var24b = entity.rotationYaw;
+		GlStateManager.translate((float) par2, (float) par4, (float) par6);
+		GlStateManager.scale(0.3F, 0.3F, 0.3F);
+		GlStateManager.rotate(var24b, 1.0F, 0.0F, 0.0F);
+		GlStateManager.rotate(var24, 0.0F, 0.0F, 1.0F);
+		this.bindTexture(this.texture);
+		this.meteorChunkModel.renderAll();
+		GlStateManager.popMatrix();
+	}
+
+	@Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	{
+		this.renderMeteorChunk((EntityKoentusMeteorChunk) par1Entity, par2, par4, par6, par8, par9);
+	}
+}

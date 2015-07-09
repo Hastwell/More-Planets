@@ -7,17 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.fronos.items;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -234,16 +230,6 @@ public class ItemCup extends ItemFoodMP
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
-
-	@Override
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
 	{
 		Block block = world.getBlockState(pos).getBlock();
@@ -379,7 +365,7 @@ public class ItemCup extends ItemFoodMP
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "empty_cup", "mineral_water_cup", "ovantine_cup", "coconut_milk_cup", "cheese_of_milk_cup", "tea_cup", "caramel_cup" };
 	}

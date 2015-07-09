@@ -18,7 +18,7 @@ public class ItemBlockIoMagmaRock extends ItemBlockBaseMP
 	}
 
 	@Override
-	public String[] getBlockVariantsName()
+	protected String[] getBlockVariantsName()
 	{
 		return new String[] { "magma_rock", "sulfur_rock" };
 	}

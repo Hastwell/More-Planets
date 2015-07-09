@@ -24,7 +24,7 @@ public class PlutoBlocks
 	public static Block frozen_methane_block;
 	public static Block frozen_nitrogen_block;
 	public static Block pluto_ancient_chest;
-	//public static Block pluto_treasure_chest;
+	public static Block pluto_treasure_chest;
 	public static Block space_potato_block;
 	public static Block liquid_methane;
 	public static Block liquid_nitrogen;
@@ -47,7 +47,7 @@ public class PlutoBlocks
 		PlutoBlocks.frozen_methane_block = new BlockFrozenMethane("frozen_methane_block");
 		PlutoBlocks.frozen_nitrogen_block = new BlockFrozenNitrogen("frozen_nitrogen_block");
 		PlutoBlocks.pluto_ancient_chest = new BlockPlutoAncientChest("pluto_ancient_chest");
-		//PlutoBlocks.pluto_treasure_chest = new BlockPlutoTreasureChest("pluto_treasure_chest");
+		PlutoBlocks.pluto_treasure_chest = new BlockPlutoTreasureChest("pluto_treasure_chest");
 		PlutoBlocks.space_potato_block = new BlockSpacePotato("space_potato_block");
 
 		PlutoBlocks.liquid_methane_fluid = new FluidMP("liquid_methane_fluid", "moreplanets:blocks/liquid_gas_still", "moreplanets:blocks/liquid_gas_flowing").setBlock(PlutoBlocks.liquid_methane).setViscosity(3000);
@@ -73,7 +73,7 @@ public class PlutoBlocks
 		RegisterHelper.registerBlock(PlutoBlocks.frozen_methane_block);
 		RegisterHelper.registerBlock(PlutoBlocks.frozen_nitrogen_block);
 		RegisterHelper.registerBlock(PlutoBlocks.pluto_ancient_chest);
-		//RegisterHelper.registerBlock(PlutoBlocks.pluto_treasure_chest);
+		RegisterHelper.registerBlock(PlutoBlocks.pluto_treasure_chest);
 		RegisterHelper.registerBlock(PlutoBlocks.xeonium_torch);
 		RegisterHelper.registerBlock(PlutoBlocks.liquid_methane);
 		RegisterHelper.registerBlock(PlutoBlocks.liquid_nitrogen);

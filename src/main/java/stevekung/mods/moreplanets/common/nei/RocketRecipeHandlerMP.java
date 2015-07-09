@@ -74,9 +74,7 @@ public abstract class RocketRecipeHandlerMP extends TemplateRecipeHandler
 	}
 
 	@Override
-	public void drawExtras(int i)
-	{
-	}
+	public void drawExtras(int i) {}
 
 	@Override
 	public void onUpdate()
@@ -85,9 +83,7 @@ public abstract class RocketRecipeHandlerMP extends TemplateRecipeHandler
 	}
 
 	@Override
-	public void loadTransferRects()
-	{
-	}
+	public void loadTransferRects() {}
 
 	@Override
 	public String getGuiTexture()
@@ -95,5 +91,5 @@ public abstract class RocketRecipeHandlerMP extends TemplateRecipeHandler
 		return this.getRocketGuiTexture();
 	}
 
-	public abstract String getRocketGuiTexture();
+	protected abstract String getRocketGuiTexture();
 }

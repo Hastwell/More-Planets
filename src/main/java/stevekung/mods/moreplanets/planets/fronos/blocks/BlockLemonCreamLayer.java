@@ -8,9 +8,10 @@
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import net.minecraft.item.Item;
+import stevekung.mods.moreplanets.common.blocks.BlockSnowLayerMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockLemonCreamLayer extends BlockCreamLayer
+public class BlockLemonCreamLayer extends BlockSnowLayerMP
 {
 	public BlockLemonCreamLayer(String name)
 	{
@@ -19,13 +20,13 @@ public class BlockLemonCreamLayer extends BlockCreamLayer
 	}
 
 	@Override
-	public Item getCreamBallDropped()
+	protected Item getItemDropped()
 	{
 		return FronosItems.cream_ball;
 	}
 
 	@Override
-	public int getCreamBallMetaDropped()
+	protected int getItemMetadataDropped()
 	{
 		return 5;
 	}

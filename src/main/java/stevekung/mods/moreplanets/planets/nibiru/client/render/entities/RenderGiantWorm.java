@@ -16,33 +16,21 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.nibiru.client.model.ModelGiantWorm;
-import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 
 @SideOnly(Side.CLIENT)
 public class RenderGiantWorm extends RenderLiving
 {
-	private ResourceLocation giantWormTexture = new ResourceLocation("moreplanets:textures/entity/giant_worm.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/giant_worm.png");
 
 	public RenderGiantWorm(RenderManager render)
 	{
 		super(render, new ModelGiantWorm(5.0F), 0.65F);
 	}
 
-	protected ResourceLocation giantWormTexture(EntityGiantWorm entity)
-	{
-		return this.giantWormTexture;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.giantWormTexture((EntityGiantWorm) entity);
-	}
-
-	@Override
-	protected float getDeathMaxRotation(EntityLivingBase living)
-	{
-		return 180.0F;
+		return this.texture;
 	}
 
 	@Override

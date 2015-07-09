@@ -22,8 +22,8 @@ public class KoentusArmorItems
 	public static Item white_crystal_chestplate;
 	public static Item white_crystal_leggings;
 	public static Item white_crystal_boots;
-	//	public static Item breathableKoentusMeteorHelmet;
-	//	public static Item breathableWhiteCrystalHelmet;
+	public static Item breathable_koentus_meteoric_iron_helmet;
+	public static Item breathable_white_crystal_helmet;
 
 	// Name,Durability,ReductionAmounts[Helm,Chest,Leg,Boot],Enchantability
 	public static ArmorMaterial koentus_meteoric_iron = EnumHelper.addArmorMaterial("koentus_meteoric_iron", "koentus_meteoric_iron", 30, new int[] { 8, 11, 9, 6 }, 16);
@@ -45,8 +45,8 @@ public class KoentusArmorItems
 		KoentusArmorItems.white_crystal_chestplate = new ArmorWhiteCrystal("white_crystal_chestplate", KoentusArmorItems.white_crystal, 7, 1);
 		KoentusArmorItems.white_crystal_leggings = new ArmorWhiteCrystal("white_crystal_leggings", KoentusArmorItems.white_crystal, 7, 2);
 		KoentusArmorItems.white_crystal_boots = new ArmorWhiteCrystal("white_crystal_boots", KoentusArmorItems.white_crystal, 7, 3);
-		//		KoentusArmorItems.breathableKoentusMeteorHelmet = new ArmorBreathableKoentusMeteor("breathable_koentus_meteor_helmet", KoentusArmorItems.koentus_meteoric_iron, 7, 0);
-		//		KoentusArmorItems.breathableWhiteCrystalHelmet = new ArmorBreathableWhiteCrystal("breathable_white_crystal_helmet", KoentusArmorItems.white_crystal, 7, 0);
+		KoentusArmorItems.breathable_koentus_meteoric_iron_helmet = new ArmorBreathableKoentusMeteoricIron("breathable_koentus_meteoric_iron_helmet", KoentusArmorItems.koentus_meteoric_iron, 7, 0);
+		KoentusArmorItems.breathable_white_crystal_helmet = new ArmorBreathableWhiteCrystal("breathable_white_crystal_helmet", KoentusArmorItems.white_crystal, 7, 0);
 	}
 
 	private static void registerItems()
@@ -59,7 +59,7 @@ public class KoentusArmorItems
 		RegisterHelper.registerItem(KoentusArmorItems.white_crystal_chestplate);
 		RegisterHelper.registerItem(KoentusArmorItems.white_crystal_leggings);
 		RegisterHelper.registerItem(KoentusArmorItems.white_crystal_boots);
-		//		RegisterHelper.registerItem(KoentusArmorItems.breathableKoentusMeteorHelmet);
-		//		RegisterHelper.registerItem(KoentusArmorItems.breathableWhiteCrystalHelmet);
+		RegisterHelper.registerItem(KoentusArmorItems.breathable_koentus_meteoric_iron_helmet);
+		RegisterHelper.registerItem(KoentusArmorItems.breathable_white_crystal_helmet);
 	}
 }

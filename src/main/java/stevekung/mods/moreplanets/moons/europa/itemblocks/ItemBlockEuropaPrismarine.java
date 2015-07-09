@@ -18,7 +18,7 @@ public class ItemBlockEuropaPrismarine extends ItemBlockBaseMP
 	}
 
 	@Override
-	public String[] getBlockVariantsName()
+	protected String[] getBlockVariantsName()
 	{
 		return new String[] { "prismarine", "prismarine_bricks", "dark_prismarine" };
 	}

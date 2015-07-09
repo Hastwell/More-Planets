@@ -33,7 +33,7 @@ public class ModelDionaMinionCreeper extends ModelBase
 		this.textureWidth = 64;
 		this.textureHeight = 32;
 
-		final byte b0 = 4;
+		byte b0 = 4;
 		this.head = new ModelRenderer(this, 0, 0);
 		this.head.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, par1);
 		this.head.setRotationPoint(0.0F, b0, 0.0F);

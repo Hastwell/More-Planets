@@ -18,7 +18,7 @@ public class NibiruItems
 	public static Item space_fruits;
 	public static Item nibiru_dungeon_key;
 	public static Item power_crystal;
-	//public static Item tier6_rocket;
+	public static Item tier_6_rocket;
 	public static Item tier_7_rocket_module;
 	public static Item tier_6_rocket_schematic;
 	public static Item ancient_dark_door;
@@ -36,7 +36,7 @@ public class NibiruItems
 		NibiruItems.space_fruits = new ItemSpaceFruits("space_fruits");
 		NibiruItems.nibiru_dungeon_key = new ItemNibiruDungeonKey("nibiru_dungeon_key");
 		NibiruItems.power_crystal = new ItemPowerCrystal("power_crystal");
-		//NibiruItems.tier6_rocket = new ItemTier6Rocket("tier_6_rocket");
+		NibiruItems.tier_6_rocket = new ItemTier6Rocket("tier_6_rocket");
 		NibiruItems.tier_7_rocket_module = new ItemTier7RocketModule("tier_7_rocket_module");
 		NibiruItems.tier_6_rocket_schematic = new ItemTier6RocketSchematic("tier_6_rocket_schematic");
 		NibiruItems.ancient_dark_door = new ItemDoorMP("ancient_dark_door", DoorType.ANCIENT_DARK);
@@ -52,7 +52,7 @@ public class NibiruItems
 		RegisterHelper.registerItem(NibiruItems.ancient_dark_door);
 		RegisterHelper.registerItem(NibiruItems.orange_door);
 		RegisterHelper.registerItem(NibiruItems.space_fruits);
-		//RegisterHelper.registerItem(NibiruItems.tier6_rocket);
+		RegisterHelper.registerItem(NibiruItems.tier_6_rocket);
 		RegisterHelper.registerItem(NibiruItems.nibiru_dungeon_key);
 	}
 }

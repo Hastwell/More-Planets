@@ -8,11 +8,17 @@
 package stevekung.mods.moreplanets.moons.europa.blocks;
 
 import net.minecraft.block.Block;
+import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaIce;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaPrismarine;
+import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSnowLayer;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class EuropaBlocks
 {
+	public static Block europa_ice;
+	public static Block packed_europa_ice;
+	public static Block europa_snow_block;
+	public static Block europa_snow_layer;
 	public static Block europa_prismarine;
 	public static Block europa_sea_lantern;
 
@@ -25,17 +31,27 @@ public class EuropaBlocks
 
 	private static void initBlocks()
 	{
+		EuropaBlocks.europa_ice = new BlockEuropaIce("europa_ice");
+		EuropaBlocks.packed_europa_ice = new BlockPackedEuropaIce("packed_europa_ice");
+		EuropaBlocks.europa_snow_block = new BlockEuropaSnowBlock("europa_snow_block");
+		EuropaBlocks.europa_snow_layer = new BlockEuropaSnowLayer("europa_snow_layer");
 		EuropaBlocks.europa_prismarine = new BlockEuropaPrismarine("europa_prismarine");
 		EuropaBlocks.europa_sea_lantern = new BlockEuropaSeaLantern("europa_sea_lantern");
 	}
 
 	private static void setHarvestLevels()
 	{
+		EuropaBlocks.europa_snow_block.setHarvestLevel("shovel", 0);
+		EuropaBlocks.europa_snow_layer.setHarvestLevel("shovel", 0);
 		EuropaBlocks.europa_prismarine.setHarvestLevel("pickaxe", 0);
 	}
 
 	private static void registerBlocks()
 	{
+		RegisterHelper.registerBlock(EuropaBlocks.europa_ice, ItemBlockEuropaIce.class);
+		RegisterHelper.registerBlock(EuropaBlocks.packed_europa_ice);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_block);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockEuropaSnowLayer.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_prismarine, ItemBlockEuropaPrismarine.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_sea_lantern);
 	}

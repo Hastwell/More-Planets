@@ -36,7 +36,7 @@ public class FronosItems
 	public static Item cup;
 	public static Item cream_golem;
 	public static Item fronos_item;
-	//public static Item tier7_rocket;
+	public static Item tier_7_rocket;
 	public static Item coconut_door;
 	public static Item maple_door;
 	public static Item tier_7_rocket_schematic;
@@ -70,7 +70,7 @@ public class FronosItems
 		FronosItems.cup = new ItemCup("cup");
 		FronosItems.cream_golem = new ItemCreamGolem("cream_golem");
 		FronosItems.fronos_item = new ItemFronos("fronos_item");
-		//FronosItems.tier7_rocket = new ItemTier7Rocket("tier_7_rocket");
+		FronosItems.tier_7_rocket = new ItemTier7Rocket("tier_7_rocket");
 		FronosItems.tier_7_rocket_schematic = new ItemTier7RocketSchematic("tier_7_rocket_schematic");
 		FronosItems.coconut_door = new ItemDoorMP("coconut_door", DoorType.COCONUT);
 		FronosItems.maple_door = new ItemDoorMP("maple_door", DoorType.MAPLE);
@@ -102,7 +102,7 @@ public class FronosItems
 		RegisterHelper.registerItem(FronosItems.coconut_door);
 		RegisterHelper.registerItem(FronosItems.maple_door);
 		RegisterHelper.registerItem(FronosItems.cup);
-		//RegisterHelper.registerItem(FronosItems.tier7_rocket);
+		RegisterHelper.registerItem(FronosItems.tier_7_rocket);
 		RegisterHelper.registerItem(FronosItems.fronos_dungeon_key);
 	}
 

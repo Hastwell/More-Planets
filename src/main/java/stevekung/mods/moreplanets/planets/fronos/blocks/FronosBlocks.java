@@ -102,10 +102,10 @@ public class FronosBlocks
 	public static Block fronos_fence;
 	public static Block coconut_fence_gate;
 	public static Block maple_fence_gate;
-	//public static Block fronos_treasure_chest;
+	public static Block fronos_treasure_chest;
 	public static BlockAncientChestMP fronos_ancient_chest;
 	public static Block candy_extractor_idle;
-	//public static Block mineral_water_generator;
+	public static Block mineral_water_generator;
 	public static Block candy_extractor_active;
 	public static Block fronos_farmland;
 	public static Block strawberry_bush;
@@ -220,10 +220,10 @@ public class FronosBlocks
 		FronosBlocks.fronos_fence = new BlockFronosFence("fronos_fence");
 		FronosBlocks.coconut_fence_gate = new BlockFenceGateMP("coconut_fence_gate");
 		FronosBlocks.maple_fence_gate = new BlockFenceGateMP("maple_fence_gate");
-		//FronosBlocks.fronos_treasure_chest = new BlockT7FronosTreasureChest("fronos_treasure_chest");
+		FronosBlocks.fronos_treasure_chest = new BlockFronosTreasureChest("fronos_treasure_chest");
 		FronosBlocks.fronos_ancient_chest = new BlockFronosAncientChest("fronos_ancient_chest");
 		FronosBlocks.candy_extractor_idle = new BlockCandyExtractor("candy_extractor_idle", false);
-		//FronosBlocks.mineral_water_generator = new BlockMineralWaterGenerator("mineral_water_generator");
+		FronosBlocks.mineral_water_generator = new BlockMineralWaterGenerator("mineral_water_generator");
 		FronosBlocks.candy_extractor_active = new BlockCandyExtractor("candy_extractor_active", true);
 		FronosBlocks.fronos_farmland = new BlockFronosFarmland("fronos_farmland");
 		FronosBlocks.strawberry_bush = new BlockStrawberryBush("strawberry_bush");
@@ -322,7 +322,7 @@ public class FronosBlocks
 		FronosBlocks.fronos_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.candy_extractor_idle.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.candy_extractor_active.setHarvestLevel("pickaxe", 1);
-		//		FronosBlocks.mineral_water_generator.setHarvestLevel("pickaxe", 1);
+		FronosBlocks.mineral_water_generator.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.ore_block.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.mossy_fronos_cobblestone.setHarvestLevel("pickaxe", 1);
 		FronosBlocks.space_oyster.setHarvestLevel("pickaxe", 0);
@@ -416,10 +416,10 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.fronos_fence, ItemBlockFronosWoodenPlanks.class);
 		RegisterHelper.registerBlock(FronosBlocks.coconut_fence_gate);
 		RegisterHelper.registerBlock(FronosBlocks.maple_fence_gate);
-		//		RegisterHelper.registerBlock(FronosBlocks.fronos_treasure_chest);
+		RegisterHelper.registerBlock(FronosBlocks.fronos_treasure_chest);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_ancient_chest);
 		RegisterHelper.registerBlock(FronosBlocks.candy_extractor_idle);
-		//		RegisterHelper.registerBlock(FronosBlocks.mineral_water_generator);
+		RegisterHelper.registerBlock(FronosBlocks.mineral_water_generator);
 		RegisterHelper.registerBlock(FronosBlocks.candy_extractor_active);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_farmland);
 		RegisterHelper.registerBlock(FronosBlocks.strawberry_bush);

@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.common.items;
 
+import micdoodle8.mods.galacticraft.api.item.IHoldableItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -19,7 +20,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.entities.EntityFlagMP;
 
-public class ItemFlagMP extends ItemBaseMP /*implements IHoldableItem*/
+public class ItemFlagMP extends ItemBaseMP implements IHoldableItem
 {
 	public ItemFlagMP(String name)
 	{
@@ -125,7 +126,7 @@ public class ItemFlagMP extends ItemBaseMP /*implements IHoldableItem*/
 		return itemStack;
 	}
 
-	/*@Override
+	@Override
 	public boolean shouldHoldLeftHandUp(EntityPlayer player)
 	{
 		return false;
@@ -141,7 +142,7 @@ public class ItemFlagMP extends ItemBaseMP /*implements IHoldableItem*/
 	public boolean shouldCrouch(EntityPlayer player)
 	{
 		return false;
-	}*/
+	}
 
 	@Override
 	protected String[] getItemVariantsName()

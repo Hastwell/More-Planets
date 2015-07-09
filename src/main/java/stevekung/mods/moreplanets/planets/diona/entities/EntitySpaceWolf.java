@@ -7,6 +7,8 @@
 
 package stevekung.mods.moreplanets.planets.diona.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -56,7 +58,7 @@ import stevekung.mods.moreplanets.planets.diona.entities.ai.EntityAISpaceWolfBeg
 
 import com.google.common.base.Predicate;
 
-public class EntitySpaceWolf extends EntityTameable /*implements IEntityBreathable*/
+public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
 {
 	private float headRotationCourse;
 	private float headRotationCourseOld;
@@ -646,11 +648,11 @@ public class EntitySpaceWolf extends EntityTameable /*implements IEntityBreathab
 		return !this.isAngry() && super.allowLeashing();
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	protected void addRandomArmor()
@@ -667,16 +669,16 @@ public class EntitySpaceWolf extends EntityTameable /*implements IEntityBreathab
 			break;
 		case 7:
 			//Oxygen tank half empty or less
-			//this.entityDropItem(new ItemStack(GCItems.oxTankMedium, 1, 901 + this.rand.nextInt(900)), 0.0F);
+			this.entityDropItem(new ItemStack(GCItems.oxTankMedium, 1, 901 + this.rand.nextInt(900)), 0.0F);
 			break;
 		case 8:
 			this.dropItem(Item.getItemFromBlock(Blocks.glass), 1);
 			break;
 		case 9:
-			//this.dropItem(GCItems.oxygenGear, 1);
+			this.dropItem(GCItems.oxygenGear, 1);
 			break;
 		case 10:
-			//this.dropItem(GCItems.oxMask, 1);
+			this.dropItem(GCItems.oxMask, 1);
 			break;
 		}
 	}

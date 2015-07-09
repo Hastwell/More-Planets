@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.nibiru.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,7 +31,7 @@ import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 
-public class EntityGiantWorm extends EntityMob implements /*IEntityBreathable,*/ IEntityLivingPlanet
+public class EntityGiantWorm extends EntityMob implements IEntityBreathable, IEntityLivingPlanet
 {
 	public EntityGiantWorm(World par1World)
 	{
@@ -139,11 +140,11 @@ public class EntityGiantWorm extends EntityMob implements /*IEntityBreathable,*/
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	public int canLivingInDimension()

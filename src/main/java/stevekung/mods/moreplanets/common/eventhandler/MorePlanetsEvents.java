@@ -9,18 +9,32 @@ package stevekung.mods.moreplanets.common.eventhandler;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent;
+import micdoodle8.mods.galacticraft.core.client.gui.screen.GuiCelestialSelection;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.FOVUpdateEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -30,12 +44,16 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.DamageSourceMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.io.items.IoItems;
 import stevekung.mods.moreplanets.moons.koentus.blocks.BlockCrystalSapling;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockDandelion;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosSapling;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockGlassGemCorn;
@@ -46,14 +64,19 @@ import stevekung.mods.moreplanets.planets.fronos.items.ItemCandyBow;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
+import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockNibiruSapling;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
+import stevekung.mods.moreplanets.planets.nibiru.dimension.WorldProviderNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
+import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
+import stevekung.mods.moreplanets.planets.polongnius.items.armor.PolongniusArmorItems;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
+import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
 
@@ -109,14 +132,14 @@ public class MorePlanetsEvents
 			}
 			if (player.inventory.armorInventory[0] != null && player.inventory.armorInventory[0].getItem() == PlutoItems.gravity_boots)
 			{
-				/*if (world.provider instanceof WorldProviderKoentus || world.provider instanceof WorldProviderPluto)
+				if (world.provider instanceof WorldProviderKoentus || world.provider instanceof WorldProviderPluto)
 				{
 					event.distance = 0.1F;
 				}
 				else if (world.provider instanceof WorldProviderSiriusB)
 				{
 					event.distance = 0.76F;
-				}*/
+				}
 				event.distance *= 0.4F;
 			}
 		}
@@ -142,7 +165,7 @@ public class MorePlanetsEvents
 		}
 	}
 
-	/*@SubscribeEvent
+	@SubscribeEvent
 	public void onRenderPlanet(CelestialBodyRenderEvent.Post event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
@@ -151,12 +174,12 @@ public class MorePlanetsEvents
 		{
 			if (event.celestialBody == MorePlanetsCore.polongnius)
 			{
-				mc.renderEngine.bindTexture(new ResourceLocation("polongnius:textures/gui/celestialbodies/polongnius_ring.png"));
+				mc.renderEngine.bindTexture(new ResourceLocation("moreplanets:textures/gui/celestialbodies/polongnius_ring.png"));
 				float size = GuiCelestialSelection.getWidthForCelestialBodyStatic(event.celestialBody) / 6.0F;
 				((GuiCelestialSelection)mc.currentScreen).drawTexturedModalRect(-7.5F * size, -1.75F * size, 15.0F * size, 3.5F * size, 0, 0, 30, 7, false, false, 30, 7);
 			}
 		}
-	}*/
+	}
 
 	/*@SubscribeEvent
 	public void onPickupItem(EntityItemPickupEvent event)
@@ -451,6 +474,7 @@ public class MorePlanetsEvents
 	public void onEntityUpdate(LivingUpdateEvent event)
 	{
 		EntityLivingBase entity = event.entityLiving;
+		World world = entity.worldObj;
 
 		// Potion tick
 		if (entity instanceof EntityLivingBase)
@@ -505,66 +529,66 @@ public class MorePlanetsEvents
 			}
 		}
 
-		//		// Nibiru planet
-		//		if (entity.worldObj.provider instanceof WorldProviderNibiru)
-		//		{
-		//			if (!(entity instanceof EntityPlayer))
-		//			{
-		//				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IBreathableInfectedGas) || !((IBreathableInfectedGas) entity).canBreathInGas()) && !(entity.getClass() == EntityEvolvedZombie.class || entity.getClass() == EntityEvolvedSpider.class || entity.getClass() == EntityEvolvedSkeleton.class || entity.getClass() == EntityEvolvedCreeper.class || entity.getClass() == EntityEvolvedEnderman.class))
-		//				{
-		//					PlanetTickEvents livingEvent = new PlanetTickEvents.Pre(entity);
-		//					MinecraftForge.EVENT_BUS.post(livingEvent);
-		//
-		//					if (livingEvent.isCanceled())
-		//					{
-		//						return;
-		//					}
-		//					entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 60));
-		//					PlanetTickEvents livingEventPost = new PlanetTickEvents.Post(entity);
-		//					MinecraftForge.EVENT_BUS.post(livingEventPost);
-		//				}
-		//			}
-		//			else if (entity instanceof EntityPlayer)
-		//			{
-		//				EntityPlayer player = (EntityPlayer)entity;
-		//				InventoryPlayer inventory = player.inventory;
-		//
-		//				if (entity.ticksExisted % 100 == 0)
-		//				{
-		//					if (!(inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == PolongniusArmorItems.purple_crystal_boots) || !(inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == PolongniusArmorItems.purple_crystal_leggings) || !(inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == PolongniusArmorItems.purple_crystal_chestplate) || !(inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == PolongniusArmorItems.purple_crystal_helmet))
-		//					{
-		//						if (!player.capabilities.isCreativeMode)
-		//						{
-		//							if (entity.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
-		//							{
-		//								player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
-		//							}
-		//							entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
-		//						}
-		//					}
-		//				}
-		//			}
-		//		}
-		//		// Sirius planet
-		//		else if (entity.worldObj.provider instanceof WorldProviderSiriusB)
-		//		{
-		//			if (!(entity instanceof EntityPlayer))
-		//			{
-		//				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof ISiriusMob) || !((ISiriusMob) entity).canLivingInSirius()))
-		//				{
-		//					PlanetTickEvents livingEvent = new PlanetTickEvents.Pre(entity);
-		//					MinecraftForge.EVENT_BUS.post(livingEvent);
-		//
-		//					if (livingEvent.isCanceled())
-		//					{
-		//						return;
-		//					}
-		//					entity.setFire(50);
-		//					PlanetTickEvents livingEventPost = new PlanetTickEvents.Post(entity);
-		//					MinecraftForge.EVENT_BUS.post(livingEventPost);
-		//				}
-		//			}
-		//		}
+		// Nibiru planet
+		if (entity.worldObj.provider instanceof WorldProviderNibiru)
+		{
+			if (!(entity instanceof EntityPlayer))
+			{
+				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(world.provider.getDimensionId() == ((IEntityLivingPlanet)entity).canLivingInDimension())) && !(entity.getClass() == EntityEvolvedZombie.class || entity.getClass() == EntityEvolvedSpider.class || entity.getClass() == EntityEvolvedSkeleton.class || entity.getClass() == EntityEvolvedCreeper.class || entity.getClass() == EntityEvolvedEnderman.class))
+				{
+					PlanetTickEvents livingEvent = new PlanetTickEvents.Pre(entity);
+					MinecraftForge.EVENT_BUS.post(livingEvent);
+
+					if (livingEvent.isCanceled())
+					{
+						return;
+					}
+					entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 60));
+					PlanetTickEvents livingEventPost = new PlanetTickEvents.Post(entity);
+					MinecraftForge.EVENT_BUS.post(livingEventPost);
+				}
+			}
+			else if (entity instanceof EntityPlayer)
+			{
+				EntityPlayer player = (EntityPlayer)entity;
+				InventoryPlayer inventory = player.inventory;
+
+				if (entity.ticksExisted % 100 == 0)
+				{
+					if (!(inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == PolongniusArmorItems.purple_crystal_boots) || !(inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == PolongniusArmorItems.purple_crystal_leggings) || !(inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == PolongniusArmorItems.purple_crystal_chestplate) || !(inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == PolongniusArmorItems.purple_crystal_helmet))
+					{
+						if (!player.capabilities.isCreativeMode)
+						{
+							if (entity.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
+							{
+								player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
+							}
+							entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+						}
+					}
+				}
+			}
+		}
+		// Sirius planet
+		else if (entity.worldObj.provider instanceof WorldProviderSiriusB)
+		{
+			if (!(entity instanceof EntityPlayer))
+			{
+				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(world.provider.getDimensionId() == ((IEntityLivingPlanet)entity).canLivingInDimension())))
+				{
+					PlanetTickEvents livingEvent = new PlanetTickEvents.Pre(entity);
+					MinecraftForge.EVENT_BUS.post(livingEvent);
+
+					if (livingEvent.isCanceled())
+					{
+						return;
+					}
+					entity.setFire(50);
+					PlanetTickEvents livingEventPost = new PlanetTickEvents.Post(entity);
+					MinecraftForge.EVENT_BUS.post(livingEventPost);
+				}
+			}
+		}
 	}
 
 	@SubscribeEvent
@@ -736,9 +760,9 @@ public class MorePlanetsEvents
 		}
 		else if (block == MercuryBlocks.dirty_water)
 		{
-			//world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			//event.result = new ItemStack(IoItems.liquid_brown_sulfur_bucket);
-			//event.setResult(Result.ALLOW);
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(MercuryItems.dirty_water_bucket);
+			event.setResult(Result.ALLOW);
 		}
 	}
 

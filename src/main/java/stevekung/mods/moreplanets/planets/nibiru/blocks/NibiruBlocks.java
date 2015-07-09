@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.nibiru.blocks;
 
+import micdoodle8.mods.galacticraft.core.items.ItemBlockDesc;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
@@ -29,7 +30,7 @@ public class NibiruBlocks
 	public static Block nibiru_block;
 	public static Block nibiru_cobblestone_stairs;
 	public static Block ancient_dark_wood_stairs;
-	//public static Block nibiru_treasure_chest;
+	public static Block nibiru_treasure_chest;
 	public static Block nibiru_ancient_chest;
 	public static Block nibiru_sapling;
 	public static Block helium_block;
@@ -38,7 +39,7 @@ public class NibiruBlocks
 	public static Block ancient_dark_leaves;
 	public static Block nibiru_log;
 	public static Block nibiru_planks;
-	//public static Block power_crystal_generator;
+	public static Block power_crystal_generator;
 	public static Block ichorius_torch;
 	public static Block orange_leaves;
 	public static Block orange_wood_stairs;
@@ -67,7 +68,7 @@ public class NibiruBlocks
 	private static void initBlocks()
 	{
 		NibiruBlocks.nibiru_block = new BlockNibiru("nibiru_block");
-		//NibiruBlocks.nibiru_treasure_chest = new BlockNibiruTreasureChest("nibiru_treasure_chest");
+		NibiruBlocks.nibiru_treasure_chest = new BlockNibiruTreasureChest("nibiru_treasure_chest");
 		NibiruBlocks.nibiru_ancient_chest = new BlockNibiruAncientChest("nibiru_ancient_chest");
 		NibiruBlocks.nibiru_sapling = new BlockNibiruSapling("nibiru_sapling");
 		NibiruBlocks.helium_block = new BlockHelium("helium_block");
@@ -76,7 +77,7 @@ public class NibiruBlocks
 		NibiruBlocks.ancient_dark_leaves = new BlockAncientDarkLeaves("ancient_dark_leaves");
 		NibiruBlocks.nibiru_log = new BlockNibiruLog("nibiru_log");
 		NibiruBlocks.nibiru_planks = new BlockNibiruWoodenPlanks("nibiru_planks");
-		//NibiruBlocks.power_crystal_generator = new BlockPowerCrystalGenerator("power_crystal_generator");
+		NibiruBlocks.power_crystal_generator = new BlockPowerCrystalGenerator("power_crystal_generator");
 		NibiruBlocks.ichorius_torch = new BlockIchoriusTorch("ichorius_torch");
 		NibiruBlocks.ancient_dark_wood_stairs = new BlockStairsMP("ancient_dark_wood_stairs", 2.0F, StairsCategory.ancient_dark_wood, Blocks.log.getDefaultState());
 		NibiruBlocks.nibiru_cobblestone_stairs = new BlockStairsMP("nibiru_cobblestone_stairs", 4.25F, StairsCategory.nibiru_cobblestone, Blocks.stone.getDefaultState());
@@ -115,7 +116,7 @@ public class NibiruBlocks
 		NibiruBlocks.nibiru_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
 		NibiruBlocks.oil_rock.setHarvestLevel("pickaxe", 1);
 		NibiruBlocks.infected_worm_egg_rock.setHarvestLevel("pickaxe", 1);
-		//NibiruBlocks.power_crystal_generator.setHarvestLevel("pickaxe", 1);
+		NibiruBlocks.power_crystal_generator.setHarvestLevel("pickaxe", 1);
 	}
 
 	private static void setFireBurn()
@@ -150,11 +151,11 @@ public class NibiruBlocks
 		RegisterHelper.registerBlock(NibiruBlocks.orange_wood_stairs);
 		RegisterHelper.registerBlock(NibiruBlocks.nibiru_cobblestone_stairs);
 		RegisterHelper.registerBlock(NibiruBlocks.nibiru_dungeon_brick_stairs);
-		//RegisterHelper.registerBlock(NibiruBlocks.power_crystal_generator, ItemBlockDesc.class);
+		RegisterHelper.registerBlock(NibiruBlocks.power_crystal_generator, ItemBlockDesc.class);
 		RegisterHelper.registerBlock(NibiruBlocks.nibiru_fence, ItemBlockNibiruFence.class);
 		RegisterHelper.registerBlock(NibiruBlocks.ancient_dark_fence_gate);
 		RegisterHelper.registerBlock(NibiruBlocks.orange_fence_gate);
-		//RegisterHelper.registerBlock(NibiruBlocks.nibiru_treasure_chest);
+		RegisterHelper.registerBlock(NibiruBlocks.nibiru_treasure_chest);
 		RegisterHelper.registerBlock(NibiruBlocks.nibiru_ancient_chest);
 		RegisterHelper.registerBlock(NibiruBlocks.infected_zombie_egg);
 		RegisterHelper.registerBlock(NibiruBlocks.nibiru_sapling, ItemBlockNibiruSapling.class);

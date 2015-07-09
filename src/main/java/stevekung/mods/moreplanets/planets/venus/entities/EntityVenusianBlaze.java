@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.venus.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -30,7 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityVenusianBlaze extends EntityMob /*implements IEntityBreathable*/
+public class EntityVenusianBlaze extends EntityMob implements IEntityBreathable
 {
 	private float heightOffset = 0.5F;
 	private int heightOffsetUpdateTime;
@@ -199,11 +200,11 @@ public class EntityVenusianBlaze extends EntityMob /*implements IEntityBreathabl
 		return true;
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	public boolean getCanSpawnHere()

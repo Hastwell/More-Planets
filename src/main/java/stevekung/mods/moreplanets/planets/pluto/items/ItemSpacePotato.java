@@ -7,13 +7,9 @@
 
 package stevekung.mods.moreplanets.planets.pluto.items;
 
-import java.util.List;
-
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -21,8 +17,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 
@@ -86,16 +80,6 @@ public class ItemSpacePotato extends ItemFoodMP implements IPlantable
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
-
-	@Override
 	public int getHealAmount(ItemStack itemStack)
 	{
 		return foodHunger[itemStack.getItemDamage()];
@@ -108,7 +92,7 @@ public class ItemSpacePotato extends ItemFoodMP implements IPlantable
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "space_potato", "baked_space_potato" };
 	}

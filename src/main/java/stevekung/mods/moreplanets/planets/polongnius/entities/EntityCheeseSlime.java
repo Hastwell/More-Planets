@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,7 +34,7 @@ import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
-public class EntityCheeseSlime extends EntityLiving implements IMob/*, IEntityBreathable*/
+public class EntityCheeseSlime extends EntityLiving implements IMob, IEntityBreathable
 {
 	public float squishAmount;
 	public float squishFactor;
@@ -333,11 +334,11 @@ public class EntityCheeseSlime extends EntityLiving implements IMob/*, IEntityBr
 		return super.func_180482_a(p_180482_1_, p_180482_2_);
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	class AISlimeAttack extends EntityAIBase
 	{

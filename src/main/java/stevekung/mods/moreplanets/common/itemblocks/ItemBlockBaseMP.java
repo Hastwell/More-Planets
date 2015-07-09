@@ -7,9 +7,13 @@
 
 package stevekung.mods.moreplanets.common.itemblocks;
 
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.block.Block;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ItemBlockBaseMP extends ItemBlock
 {
@@ -25,12 +29,12 @@ public abstract class ItemBlockBaseMP extends ItemBlock
 		return meta;
 	}
 
-	/*@Override
+	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack itemStack)
 	{
 		return ClientProxyCore.galacticraftItem;
-	}*/
+	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack itemStack)
@@ -48,7 +52,7 @@ public abstract class ItemBlockBaseMP extends ItemBlock
 		return super.getUnlocalizedName() + "." + this.getBlockVariantsName()[meta];
 	}
 
-	public abstract String[] getBlockVariantsName();
+	protected abstract String[] getBlockVariantsName();
 
 	protected boolean reverseName()
 	{

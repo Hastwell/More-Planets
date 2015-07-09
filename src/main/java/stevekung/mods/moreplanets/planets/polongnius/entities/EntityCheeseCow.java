@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -30,7 +31,7 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
-public class EntityCheeseCow extends EntityAnimal /*implements IEntityBreathable*/
+public class EntityCheeseCow extends EntityAnimal implements IEntityBreathable
 {
 	public EntityCheeseCow(World world)
 	{
@@ -193,9 +194,9 @@ public class EntityCheeseCow extends EntityAnimal /*implements IEntityBreathable
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 }

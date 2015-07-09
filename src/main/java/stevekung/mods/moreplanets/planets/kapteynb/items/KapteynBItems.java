@@ -17,10 +17,10 @@ public class KapteynBItems
 {
 	public static Item kapteyn_b_item;
 	public static Item kapteyn_b_dungeon_key;
-	//	public static Item uranium_battery;
+	public static Item uranium_battery;
 	public static Item frozen_water_bucket;
 	public static Item namerium_crystal;
-	//public static Item tier8_rocket;
+	public static Item tier_8_rocket;
 	public static Item tier_8_rocket_schematic;
 
 	public static void init()
@@ -34,10 +34,10 @@ public class KapteynBItems
 	{
 		KapteynBItems.kapteyn_b_item = new ItemKapteynB("kapteyn_b_item");
 		KapteynBItems.kapteyn_b_dungeon_key = new ItemKapteynBDungeonKey("kapteyn_b_dungeon_key");
-		//		KapteynBItems.uranium_battery = new ItemUraniumBattery("uranium_battery");
+		KapteynBItems.uranium_battery = new ItemUraniumBattery("uranium_battery");
 		KapteynBItems.frozen_water_bucket = new ItemFrozenWaterBucket("frozen_water_bucket");
 		KapteynBItems.namerium_crystal = new ItemNameriumCrystal("namerium_crystal");
-		//KapteynBItems.tier8_rocket = new ItemTier8Rocket("tier_8_rocket");
+		KapteynBItems.tier_8_rocket = new ItemTier8Rocket("tier_8_rocket");
 		KapteynBItems.tier_8_rocket_schematic = new ItemTier8RocketSchematic("tier_8_rocket_schematic");
 	}
 
@@ -46,9 +46,9 @@ public class KapteynBItems
 		RegisterHelper.registerItem(KapteynBItems.kapteyn_b_item);
 		RegisterHelper.registerItem(KapteynBItems.namerium_crystal);
 		RegisterHelper.registerItem(KapteynBItems.kapteyn_b_dungeon_key);
-		//		RegisterHelper.registerItem(KapteynBItems.uranium_battery);
+		RegisterHelper.registerItem(KapteynBItems.uranium_battery);
 		RegisterHelper.registerItem(KapteynBItems.frozen_water_bucket);
-		//RegisterHelper.registerItem(KapteynBItems.tier8_rocket);
+		RegisterHelper.registerItem(KapteynBItems.tier_8_rocket);
 		RegisterHelper.registerItem(KapteynBItems.tier_8_rocket_schematic);
 	}
 

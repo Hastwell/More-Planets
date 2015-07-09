@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.moons.io.blocks;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -27,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
-public class BlockIo extends BlockPlanetTileMP /*implements IDetectableResource, ITerraformableBlock*/
+public class BlockIo extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -109,19 +110,19 @@ public class BlockIo extends BlockPlanetTileMP /*implements IDetectableResource,
 		return meta;
 	}
 
-	/*@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		int meta = this.getMetaFromState(state);
+		int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta == 0 || meta == 1)
+		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
 		{
 			return true;
 		}
 		return false;
 	}
 
-	@Override
+	/*@Override
 	public boolean isValueable(IBlockState state)
 	{
 		return state == state.withProperty(VARIANT, BlockType.sulfur_ore);

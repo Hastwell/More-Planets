@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.moons.koentus.recipe;
 
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -100,8 +101,8 @@ public class CraftingRecipesKoentus
 		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_chestplate), new Object[] { "Q Q", "QQQ", "QQQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_leggings), new Object[] { "QQQ", "Q Q", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_boots), new Object[] { "Q Q", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5) });
-		//		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathableKoentusMeteorHelmet), new Object[] { "QQQ", "QOQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 6), 'O', new ItemStack(GCItems.oxMask) });
-		//		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathableWhiteCrystalHelmet), new Object[] { "QQQ", "QOQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5), 'O', new ItemStack(GCItems.oxMask) });
+		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathable_koentus_meteoric_iron_helmet), new Object[] { "QQQ", "QOQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 6), 'O', new ItemStack(GCItems.oxMask) });
+		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathable_white_crystal_helmet), new Object[] { "QQQ", "QOQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5), 'O', new ItemStack(GCItems.oxMask) });
 
 		// Tools
 		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
@@ -136,8 +137,8 @@ public class CraftingRecipesKoentus
 
 	private static void addItemSmelting()
 	{
-		//		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		//		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 6), new ItemStack(KoentusItems.koentus_item, 1, 0), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 7), new ItemStack(KoentusItems.koentus_item, 1, 1), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(KoentusBlocks.koentus_block, 1, 8), new ItemStack(KoentusItems.koentus_item, 1, 2), 0.8F);

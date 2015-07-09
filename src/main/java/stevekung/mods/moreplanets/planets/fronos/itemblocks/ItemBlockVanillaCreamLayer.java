@@ -14,8 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.common.blocks.BlockSnowLayerMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMorePlanets;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCreamLayer;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class ItemBlockVanillaCreamLayer extends ItemBlockMorePlanets
@@ -50,11 +50,11 @@ public class ItemBlockVanillaCreamLayer extends ItemBlockMorePlanets
 
 			if (block == this.block)
 			{
-				int i = ((Integer)state.getValue(BlockCreamLayer.LAYERS)).intValue();
+				int i = ((Integer)state.getValue(BlockSnowLayerMP.LAYERS)).intValue();
 
 				if (i <= 7)
 				{
-					IBlockState state1 = state.withProperty(BlockCreamLayer.LAYERS, Integer.valueOf(i + 1));
+					IBlockState state1 = state.withProperty(BlockSnowLayerMP.LAYERS, Integer.valueOf(i + 1));
 
 					if (world.checkNoEntityCollision(this.block.getCollisionBoundingBox(world, pos, state1)) && world.setBlockState(pos, state1, 2))
 					{
@@ -72,6 +72,6 @@ public class ItemBlockVanillaCreamLayer extends ItemBlockMorePlanets
 	public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side, EntityPlayer player, ItemStack stack)
 	{
 		IBlockState state = world.getBlockState(pos);
-		return state.getBlock() != FronosBlocks.vanilla_cream_layer || (Integer)state.getValue(BlockCreamLayer.LAYERS) > 7 ? super.canPlaceBlockOnSide(world, pos, side, player, stack) : true;
+		return state.getBlock() != FronosBlocks.vanilla_cream_layer || (Integer)state.getValue(BlockSnowLayerMP.LAYERS) > 7 ? super.canPlaceBlockOnSide(world, pos, side, player, stack) : true;
 	}
 }

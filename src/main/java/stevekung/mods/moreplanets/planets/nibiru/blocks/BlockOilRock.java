@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -32,7 +33,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
-public class BlockOilRock extends BlockBaseMP /*implements IDetectableResource*/
+public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/ ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -170,5 +171,11 @@ public class BlockOilRock extends BlockBaseMP /*implements IDetectableResource*/
 		{
 			return this.name();
 		}
+	}
+
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
+	{
+		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
 	}
 }

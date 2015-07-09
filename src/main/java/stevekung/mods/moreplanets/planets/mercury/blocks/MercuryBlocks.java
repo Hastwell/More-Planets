@@ -24,7 +24,7 @@ public class MercuryBlocks
 	public static Block mercury_ice;
 	public static Block metallic_rock;
 	public static Block mercury_ancient_chest;
-	//public static Block mercury_treasure_chest;
+	public static Block mercury_treasure_chest;
 	public static Block mercury_cobblestone_stairs;
 	public static Block mercury_dungeon_brick_stairs;
 	public static Block dirty_water;
@@ -46,7 +46,7 @@ public class MercuryBlocks
 		MercuryBlocks.mercury_cobblestone_stairs = new BlockStairsMP("mercury_cobblestone_stairs", 2.5F, StairsCategory.mercury_cobblestone, Blocks.stone.getDefaultState());
 		MercuryBlocks.mercury_dungeon_brick_stairs = new BlockStairsMP("mercury_dungeon_brick_stairs", 4.0F, StairsCategory.mercury_dungeon_brick, Blocks.stone.getDefaultState());
 		MercuryBlocks.mercury_ancient_chest = new BlockMercuryAncientChest("mercury_ancient_chest");
-		//MercuryBlocks.mercury_treasure_chest = new BlockMercuryTreasureChest("mercury_treasure_chest");
+		MercuryBlocks.mercury_treasure_chest = new BlockMercuryTreasureChest("mercury_treasure_chest");
 
 		MercuryBlocks.dirty_water_fluid = new FluidMP("dirty_water_fluid").setBlock(MercuryBlocks.dirty_water);
 		FluidRegistry.registerFluid(MercuryBlocks.dirty_water_fluid);
@@ -70,7 +70,7 @@ public class MercuryBlocks
 		RegisterHelper.registerBlock(MercuryBlocks.mercury_cobblestone_stairs);
 		RegisterHelper.registerBlock(MercuryBlocks.mercury_dungeon_brick_stairs);
 		RegisterHelper.registerBlock(MercuryBlocks.mercury_ancient_chest);
-		//RegisterHelper.registerBlock(MercuryBlocks.mercury_treasure_chest);
+		RegisterHelper.registerBlock(MercuryBlocks.mercury_treasure_chest);
 		RegisterHelper.registerBlock(MercuryBlocks.dirty_water);
 	}
 }

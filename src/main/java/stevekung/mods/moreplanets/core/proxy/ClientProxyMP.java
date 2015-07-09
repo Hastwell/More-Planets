@@ -18,7 +18,6 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import stevekung.mods.moreplanets.client.particle.EntityBreakingFXMP;
 import stevekung.mods.moreplanets.client.renderer.EntityRendererMP;
-import stevekung.mods.moreplanets.client.renderer.ItemRendererMP;
 import stevekung.mods.moreplanets.client.renderer.ModelRendererMP;
 import stevekung.mods.moreplanets.client.renderer.TileEntityRendererHelper;
 import stevekung.mods.moreplanets.client.renderer.TileEntityRendererMP;
@@ -74,7 +73,6 @@ public class ClientProxyMP extends CommonProxyMP
 		TileEntityItemStackRenderer.instance = new TileEntityRendererHelper();
 
 		EntityRendererMP.init();
-		ItemRendererMP.registerItemRenderers();
 		TileEntityRendererMP.registerTileEntityRenderers();
 		ModelRendererMP.registerModelRender();
 		StateMapperUtil.registerStateMapper();

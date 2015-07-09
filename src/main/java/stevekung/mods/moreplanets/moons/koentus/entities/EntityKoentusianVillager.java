@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.moons.koentus.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -24,7 +25,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntityKoentusianVillager extends EntityAgeable /*implements IEntityBreathable*/
+public class EntityKoentusianVillager extends EntityAgeable implements IEntityBreathable
 {
 	public EntityKoentusianVillager(World world)
 	{
@@ -115,9 +116,9 @@ public class EntityKoentusianVillager extends EntityAgeable /*implements IEntity
 		return new ItemStack(MPItems.spawn_egg_mp, 1, 1012);
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 }

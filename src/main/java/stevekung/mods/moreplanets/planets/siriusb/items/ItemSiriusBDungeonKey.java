@@ -7,9 +7,11 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.items;
 
+import micdoodle8.mods.galacticraft.api.item.IKeyItem;
+import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
-public class ItemSiriusBDungeonKey extends ItemMorePlanets //implements IKeyItem
+public class ItemSiriusBDungeonKey extends ItemMorePlanets implements IKeyItem
 {
 	public ItemSiriusBDungeonKey(String name)
 	{
@@ -18,9 +20,9 @@ public class ItemSiriusBDungeonKey extends ItemMorePlanets //implements IKeyItem
 		this.setUnlocalizedName(name);
 	}
 
-	//	@Override
-	//	public int getTier(ItemStack itemStack)
-	//	{
-	//		return 8;
-	//	}
+	@Override
+	public int getTier(ItemStack itemStack)
+	{
+		return 8;
+	}
 }

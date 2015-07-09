@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.diona.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.item.ItemStack;
@@ -14,7 +15,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntityDionaMinionCreeper extends EntityCreeper /*implements IEntityBreathable*/
+public class EntityDionaMinionCreeper extends EntityCreeper implements IEntityBreathable
 {
 	public EntityDionaMinionCreeper(World world)
 	{
@@ -87,9 +88,9 @@ public class EntityDionaMinionCreeper extends EntityCreeper /*implements IEntity
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 }

@@ -7,11 +7,14 @@
 
 package stevekung.mods.moreplanets.planets.venus.blocks;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public class BlockVenusSand extends BlockFalling
+public class BlockVenusSand extends BlockFalling implements ITerraformableBlock
 {
 	public BlockVenusSand(String name)
 	{
@@ -25,5 +28,11 @@ public class BlockVenusSand extends BlockFalling
 	public CreativeTabs getCreativeTabToDisplayOn()
 	{
 		return MorePlanetsCore.mpBlocksTab;
+	}
+
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
+	{
+		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
 	}
 }

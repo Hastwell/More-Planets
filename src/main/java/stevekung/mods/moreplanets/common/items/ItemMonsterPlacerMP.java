@@ -34,7 +34,6 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPEntities;
 
 public class ItemMonsterPlacerMP extends ItemMorePlanets
@@ -207,17 +206,4 @@ public class ItemMonsterPlacerMP extends ItemMorePlanets
 	{
 		return "Spawn " + StatCollector.translateToLocal("entity.MorePlanets." + MPEntities.getStringFromID(itemStack.getItemDamage()) + ".name");
 	}
-
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
-
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
 }

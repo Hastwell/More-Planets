@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.moons.europa.entities;
 import java.util.Iterator;
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -54,7 +55,7 @@ import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 
 import com.google.common.base.Predicate;
 
-public class EntityEuropaGuardian extends EntityMob
+public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 {
 	private float field_175482_b;
 	private float field_175484_c;
@@ -724,5 +725,11 @@ public class EntityEuropaGuardian extends EntityMob
 		{
 			return this.func_179915_a((EntityLivingBase)entity);
 		}
+	}
+
+	@Override
+	public boolean canBreath()
+	{
+		return true;
 	}
 }

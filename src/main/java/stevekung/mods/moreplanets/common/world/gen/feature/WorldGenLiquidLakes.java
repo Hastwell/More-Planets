@@ -17,6 +17,15 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronos;
+import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.moreplanets.planets.fronos.dimension.WorldProviderFronos;
+import stevekung.mods.moreplanets.planets.siriusb.blocks.BlockSiriusB;
+import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
+import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
+import stevekung.mods.moreplanets.planets.venus.blocks.BlockVenus;
+import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
+import stevekung.mods.moreplanets.planets.venus.dimension.WorldProviderVenus;
 
 public class WorldGenLiquidLakes extends WorldGenerator
 {
@@ -157,19 +166,19 @@ public class WorldGenLiquidLakes extends WorldGenerator
 
 							if (flag && (k < 4 || rand.nextInt(2) != 0) && world.getBlockState(pos.add(j, k, k1)).getBlock().getMaterial().isSolid())
 							{
-								//								if (world.provider instanceof WorldProviderSiriusB)
-								//								{
-								//									world.setBlockState(pos.add(j, k, k1), SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_carbon_stone), 2);
-								//								}
-								//								else if (world.provider instanceof WorldProviderFronos)
-								//								{
-								//									world.setBlockState(pos.add(j, k, k1), FronosBlocks.fronos_block.getDefaultState(), 2);
-								//								}
-								//								else if (world.provider instanceof WorldProviderVenus)
-								//								{
-								//									world.setBlockState(pos.add(j, k, k1), FronosBlocks.fronos_block.getDefaultState(), 2);
-								//								}
-								//								else
+								if (world.provider instanceof WorldProviderSiriusB)
+								{
+									world.setBlockState(pos.add(j, k, k1), SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_carbon_stone), 2);
+								}
+								else if (world.provider instanceof WorldProviderFronos)
+								{
+									world.setBlockState(pos.add(j, k, k1), FronosBlocks.fronos_block.getDefaultState().withProperty(BlockFronos.VARIANT, BlockFronos.BlockType.fronos_rock), 2);
+								}
+								else if (world.provider instanceof WorldProviderVenus)
+								{
+									world.setBlockState(pos.add(j, k, k1), VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_rock), 2);
+								}
+								else
 								{
 									world.setBlockState(pos.add(j, k, k1), Blocks.stone.getDefaultState(), 2);
 								}

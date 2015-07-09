@@ -30,6 +30,8 @@ public class ConfigManagerMP
 	public static int idDimensionSiriusB;
 
 	public static int idDimensionMercury;
+	public static int idDimensionVenus;
+	public static int idDimensionPluto;
 
 	public static int idDimensionDeimos;
 	public static int idDimensionPhobos;
@@ -44,6 +46,8 @@ public class ConfigManagerMP
 	public static int idBiomeSiriusB;
 
 	public static int idMercuryBiome;
+	public static int idVenusBiome;
+	public static int idPlutoBiome;
 
 	public static int idDeimosBiome;
 	public static int idPhobosBiome;
@@ -105,6 +109,8 @@ public class ConfigManagerMP
 			ConfigManagerMP.idDimensionSiriusB = ConfigManagerMP.configuration.get("Dimensions", "Sirius B Dimension", -12).getInt(-12);
 
 			ConfigManagerMP.idDimensionMercury = ConfigManagerMP.configuration.get("Dimensions", "Mercury Dimension", -20).getInt(-20);
+			ConfigManagerMP.idDimensionVenus = ConfigManagerMP.configuration.get("Dimensions", "Venus Dimension", -21).getInt(-21);
+			ConfigManagerMP.idDimensionPluto = ConfigManagerMP.configuration.get("Dimensions", "Pluto Dimension", -22).getInt(-22);
 
 			ConfigManagerMP.idDimensionDeimos = ConfigManagerMP.configuration.get("Dimensions", "Deimos Dimension", -40).getInt(-40);
 			ConfigManagerMP.idDimensionPhobos = ConfigManagerMP.configuration.get("Dimensions", "Phobos Dimension", -41).getInt(-41);
@@ -130,6 +136,8 @@ public class ConfigManagerMP
 			ConfigManagerMP.idBiomeSiriusB = ConfigManagerMP.configuration.get("Biomes", "Sirius B Biome", 226).getInt(226);
 
 			ConfigManagerMP.idMercuryBiome = ConfigManagerMP.configuration.get("Biomes", "Mercury Biome", 240).getInt(240);
+			ConfigManagerMP.idVenusBiome = ConfigManagerMP.configuration.get("Biomes", "Venus Biome", 241).getInt(241);
+			ConfigManagerMP.idPlutoBiome = ConfigManagerMP.configuration.get("Biomes", "Pluto Biome", 242).getInt(242);
 
 			ConfigManagerMP.idDeimosBiome = ConfigManagerMP.configuration.get("Biomes", "Deimos Biome", 210).getInt(210);
 			ConfigManagerMP.idPhobosBiome = ConfigManagerMP.configuration.get("Biomes", "Phobos Biome", 211).getInt(211);

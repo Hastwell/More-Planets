@@ -181,7 +181,5 @@ public class CircuitFabricatorRecipeHandlerMP extends TemplateRecipeHandler
 	}
 
 	@Override
-	public void drawForeground(int recipe)
-	{
-	}
+	public void drawForeground(int recipe) {}
 }

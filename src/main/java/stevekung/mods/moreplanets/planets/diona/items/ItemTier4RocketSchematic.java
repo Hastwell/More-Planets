@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.diona.items;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.recipe.ISchematicItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -20,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 
-public class ItemTier4RocketSchematic extends ItemBaseMP /*implements ISchematicItem*/
+public class ItemTier4RocketSchematic extends ItemBaseMP implements ISchematicItem
 {
 	public ItemTier4RocketSchematic(String name)
 	{

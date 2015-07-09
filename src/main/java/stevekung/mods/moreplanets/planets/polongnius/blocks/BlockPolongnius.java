@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.polongnius.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -34,7 +35,7 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
-public class BlockPolongnius extends BlockPlanetTileMP /*implements IDetectableResource, ITerraformableBlock*/
+public class BlockPolongnius extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -234,15 +235,17 @@ public class BlockPolongnius extends BlockPlanetTileMP /*implements IDetectableR
 		}
 	}
 
-	/*@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		if (state == state.withProperty(VARIANT, BlockType.cheese_gas) || state == state.withProperty(VARIANT, BlockType.solid_cheese_gas))
+		int meta = this.getMetaFromState(world.getBlockState(pos));
+
+		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
 		{
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 	@Override
 	protected BlockState createBlockState()

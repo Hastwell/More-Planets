@@ -37,8 +37,8 @@ public class ModelEvolvedEnderman extends ModelBiped
 	public ModelEvolvedEnderman()
 	{
 		super(0.0F, -14.0F, 64, 64);
-		final float f = -14.0F;
-		final float f1 = 0.0F;
+		float f = -14.0F;
+		float f1 = 0.0F;
 		this.bipedHeadwear = new ModelRenderer(this, 0, 16);
 		this.bipedHeadwear.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, f1 - 0.5F);
 		this.bipedHeadwear.setRotationPoint(0.0F, 0.0F + f, 0.0F);
@@ -176,7 +176,7 @@ public class ModelEvolvedEnderman extends ModelBiped
 	{
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		this.bipedHead.showModel = true;
-		final float f6 = -14.0F;
+		float f6 = -14.0F;
 		this.bipedBody.rotateAngleX = 0.0F;
 		this.bipedBody.rotationPointY = f6;
 		this.bipedBody.rotationPointZ = -0.0F;
@@ -186,7 +186,7 @@ public class ModelEvolvedEnderman extends ModelBiped
 		this.bipedLeftArm.rotateAngleX = (float)(this.bipedLeftArm.rotateAngleX * 0.5D);
 		this.bipedRightLeg.rotateAngleX = (float)(this.bipedRightLeg.rotateAngleX * 0.5D);
 		this.bipedLeftLeg.rotateAngleX = (float)(this.bipedLeftLeg.rotateAngleX * 0.5D);
-		final float f7 = 0.4F;
+		float f7 = 0.4F;
 
 		if (this.bipedRightArm.rotateAngleX > f7)
 		{
@@ -260,7 +260,7 @@ public class ModelEvolvedEnderman extends ModelBiped
 
 		if (this.isAttacking)
 		{
-			final float f8 = 1.0F;
+			float f8 = 1.0F;
 			this.bipedHead.rotationPointY -= f8 * 5.0F;
 		}
 	}

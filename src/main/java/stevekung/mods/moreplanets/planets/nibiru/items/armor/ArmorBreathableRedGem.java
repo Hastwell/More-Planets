@@ -6,53 +6,52 @@
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.planets.nibiru.items.armor;
-//package stevekung.mods.moreplanets.planets.nibiru.items.armor;
-//
-//import net.minecraft.entity.Entity;
-//import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
-//import stevekung.mods.moreplanets.core.items.armor.ItemBreathableArmor;
-//import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
-//
-//public class ArmorBreathableRedGem extends ItemBreathableArmor
-//{
-//	public ArmorBreathableRedGem(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-//	{
-//		super(par2EnumArmorMaterial, par3, par4);
-//		this.setUnlocalizedName(name);
-//	}
-//
-//	@Override
-//	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-//	{
-//		if (stack.getItem() == NibiruArmorItems.breathable_red_gem_helmet)
-//		{
-//			return "nibiru:textures/model/armor/breathable_red_gem_1.png";
-//		}
-//		return null;
-//	}
-//
-//	@Override
-//	public Item getRepairItems()
-//	{
-//		return NibiruItems.nibiru_item;
-//	}
-//
-//	@Override
-//	public int getRepairItemsMetadata()
-//	{
-//		return 2;
-//	}
-//
-//	@Override
-//	public EnumGearType getGearType()
-//	{
-//		return EnumGearType.HELMET;
-//	}
-//
-//	@Override
-//	public Item getBreathableArmor()
-//	{
-//		return NibiruArmorItems.breathable_red_gem_helmet;
-//	}
-//}
+
+import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import stevekung.mods.moreplanets.common.items.armor.ItemBreathableArmor;
+import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
+
+public class ArmorBreathableRedGem extends ItemBreathableArmor
+{
+	public ArmorBreathableRedGem(String name, ArmorMaterial material, int render, int type)
+	{
+		super(material, render, type);
+		this.setUnlocalizedName(name);
+	}
+
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+	{
+		if (stack.getItem() == NibiruArmorItems.breathable_red_gem_helmet)
+		{
+			return "moreplanets:textures/model/armor/breathable_red_gem_1.png";
+		}
+		return null;
+	}
+
+	@Override
+	protected Item getRepairItems()
+	{
+		return NibiruItems.nibiru_item;
+	}
+
+	@Override
+	protected int getRepairItemsMetadata()
+	{
+		return 2;
+	}
+
+	@Override
+	protected EnumGearType getGearType()
+	{
+		return EnumGearType.HELMET;
+	}
+
+	@Override
+	protected Item getBreathableArmor()
+	{
+		return NibiruArmorItems.breathable_red_gem_helmet;
+	}
+}

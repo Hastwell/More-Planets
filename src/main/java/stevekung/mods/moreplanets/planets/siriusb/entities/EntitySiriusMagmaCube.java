@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -36,7 +37,7 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
-public class EntitySiriusMagmaCube extends EntityLiving implements IMob, /*IEntityBreathable,*/ IEntityLivingPlanet
+public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntityBreathable, IEntityLivingPlanet
 {
 	public float squishAmount;
 	public float squishFactor;
@@ -543,11 +544,11 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, /*IEnti
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	public int canLivingInDimension()

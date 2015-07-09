@@ -7,9 +7,11 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.items;
 
+import micdoodle8.mods.galacticraft.api.item.IKeyItem;
+import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
-public class ItemKapteynBDungeonKey extends ItemMorePlanets /*implements IKeyItem*/
+public class ItemKapteynBDungeonKey extends ItemMorePlanets implements IKeyItem
 {
 	public ItemKapteynBDungeonKey(String name)
 	{
@@ -18,9 +20,9 @@ public class ItemKapteynBDungeonKey extends ItemMorePlanets /*implements IKeyIte
 		this.setUnlocalizedName(name);
 	}
 
-	//	@Override
-	//	public int getTier(ItemStack itemStack)
-	//	{
-	//		return 8;
-	//	}
+	@Override
+	public int getTier(ItemStack itemStack)
+	{
+		return 8;
+	}
 }

@@ -24,7 +24,7 @@
 	"category": "player",
 	"sounds": ["player/laser"]
 	},
-	"player.unlock.treasure.chest":
+	"player.unlocktreasurechest":
 	{
 	"category": "player",
 	"sounds": ["player/unlockTreasureChest"]

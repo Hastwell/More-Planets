@@ -30,8 +30,8 @@ public class PolongniusArmorItems
 	public static Item purple_crystal_chestplate;
 	public static Item purple_crystal_leggings;
 	public static Item purple_crystal_boots;
-	//	public static Item breathable_polongnius_meteor_helmet;
-	//	public static Item breathable_palladium_helmet;
+	public static Item breathable_polongnius_meteor_helmet;
+	public static Item breathable_palladium_helmet;
 
 	// Name,Durability,ReductionAmounts[Helm,Chest,Leg,Boot],Enchantability
 	public static ArmorMaterial cheese_leather = EnumHelper.addArmorMaterial("cheese_leather", "cheese_leather", 12, new int[] { 3, 6, 4, 2 }, 16);
@@ -63,8 +63,8 @@ public class PolongniusArmorItems
 		PolongniusArmorItems.purple_crystal_chestplate = new ArmorPurpleCrystal("purple_crystal_chestplate", PolongniusArmorItems.purple_crystal, 7, 1);
 		PolongniusArmorItems.purple_crystal_leggings = new ArmorPurpleCrystal("purple_crystal_leggings", PolongniusArmorItems.purple_crystal, 7, 2);
 		PolongniusArmorItems.purple_crystal_boots = new ArmorPurpleCrystal("purple_crystal_boots", PolongniusArmorItems.purple_crystal, 7, 3);
-		//		PolongniusArmorItems.breathable_polongnius_meteor_helmet = new ArmorBreathablePolongniusMeteor("breathable_polongnius_meteor_helmet", PolongniusArmorItems.polongnius_meteoric_iron, 7, 0);
-		//		PolongniusArmorItems.breathable_palladium_helmet = new ArmorBreathablePalladium("breathable_palladium_helmet", PolongniusArmorItems.palladium, 7, 0);
+		PolongniusArmorItems.breathable_polongnius_meteor_helmet = new ArmorBreathablePolongniusMeteoricIron("breathable_polongnius_meteor_helmet", PolongniusArmorItems.polongnius_meteoric_iron, 7, 0);
+		PolongniusArmorItems.breathable_palladium_helmet = new ArmorBreathablePalladium("breathable_palladium_helmet", PolongniusArmorItems.palladium, 7, 0);
 	}
 
 	private static void registerItems()
@@ -85,7 +85,7 @@ public class PolongniusArmorItems
 		RegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_chestplate);
 		RegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_leggings);
 		RegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_boots);
-		//		RegisterHelper.registerItem(PolongniusArmorItems.breathable_polongnius_meteor_helmet);
-		//		RegisterHelper.registerItem(PolongniusArmorItems.breathable_palladium_helmet);
+		RegisterHelper.registerItem(PolongniusArmorItems.breathable_polongnius_meteor_helmet);
+		RegisterHelper.registerItem(PolongniusArmorItems.breathable_palladium_helmet);
 	}
 }

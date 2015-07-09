@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.nibiru.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.IAttribute;
@@ -20,18 +21,18 @@ import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 
-public class EntityInfectedZombie extends EntityZombie implements /*IEntityBreathable,*/ IEntityLivingPlanet
+public class EntityInfectedZombie extends EntityZombie implements IEntityBreathable, IEntityLivingPlanet
 {
 	public EntityInfectedZombie(World world)
 	{
 		super(world);
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	public void setDead()

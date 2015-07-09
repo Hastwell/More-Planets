@@ -11,18 +11,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IChatComponent;
 
 public class InventorySchematicRocket implements IInventory
 {
 	private ItemStack[] stackList;
 	private int inventoryWidth;
-	private Container eventHandler;
+	private Container container;
 
-	public InventorySchematicRocket(Container par1Container)
+	public InventorySchematicRocket(Container container)
 	{
 		this.stackList = new ItemStack[22];
-		this.eventHandler = par1Container;
+		this.container = container;
 		this.inventoryWidth = 5;
 	}
 
@@ -33,9 +32,9 @@ public class InventorySchematicRocket implements IInventory
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int par1)
+	public ItemStack getStackInSlot(int slot)
 	{
-		return par1 >= this.getSizeInventory() ? null : this.stackList[par1];
+		return slot >= this.getSizeInventory() ? null : this.stackList[slot];
 	}
 
 	public ItemStack getStackInRowAndColumn(int par1, int par2)
@@ -63,13 +62,13 @@ public class InventorySchematicRocket implements IInventory
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int par1)
+	public ItemStack getStackInSlotOnClosing(int slot)
 	{
-		if (this.stackList[par1] != null)
+		if (this.stackList[slot] != null)
 		{
-			ItemStack var2 = this.stackList[par1];
-			this.stackList[par1] = null;
-			return var2;
+			ItemStack stack = this.stackList[slot];
+			this.stackList[slot] = null;
+			return stack;
 		}
 		else
 		{
@@ -78,29 +77,29 @@ public class InventorySchematicRocket implements IInventory
 	}
 
 	@Override
-	public ItemStack decrStackSize(int par1, int par2)
+	public ItemStack decrStackSize(int slot, int size)
 	{
-		if (this.stackList[par1] != null)
+		if (this.stackList[slot] != null)
 		{
-			ItemStack var3;
+			ItemStack itemStack;
 
-			if (this.stackList[par1].stackSize <= par2)
+			if (this.stackList[slot].stackSize <= size)
 			{
-				var3 = this.stackList[par1];
-				this.stackList[par1] = null;
-				this.eventHandler.onCraftMatrixChanged(this);
-				return var3;
+				itemStack = this.stackList[slot];
+				this.stackList[slot] = null;
+				this.container.onCraftMatrixChanged(this);
+				return itemStack;
 			}
 			else
 			{
-				var3 = this.stackList[par1].splitStack(par2);
+				itemStack = this.stackList[slot].splitStack(size);
 
-				if (this.stackList[par1].stackSize == 0)
+				if (this.stackList[slot].stackSize == 0)
 				{
-					this.stackList[par1] = null;
+					this.stackList[slot] = null;
 				}
-				this.eventHandler.onCraftMatrixChanged(this);
-				return var3;
+				this.container.onCraftMatrixChanged(this);
+				return itemStack;
 			}
 		}
 		else
@@ -110,10 +109,10 @@ public class InventorySchematicRocket implements IInventory
 	}
 
 	@Override
-	public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
+	public void setInventorySlotContents(int slot, ItemStack itemStack)
 	{
-		this.stackList[par1] = par2ItemStack;
-		this.eventHandler.onCraftMatrixChanged(this);
+		this.stackList[slot] = itemStack;
+		this.container.onCraftMatrixChanged(this);
 	}
 
 	@Override
@@ -123,9 +122,7 @@ public class InventorySchematicRocket implements IInventory
 	}
 
 	@Override
-	public void markDirty()
-	{
-	}
+	public void markDirty() {}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -134,14 +131,10 @@ public class InventorySchematicRocket implements IInventory
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player)
-	{
-	}
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void closeInventory(EntityPlayer player)
-	{
-	}
+	public void closeInventory(EntityPlayer player) {}
 
 	@Override
 	public boolean hasCustomName()
@@ -150,38 +143,8 @@ public class InventorySchematicRocket implements IInventory
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack)
+	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
 	{
 		return false;
-	}
-
-	@Override
-	public IChatComponent getDisplayName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int getField(int arg0) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getFieldCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setField(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-
 	}
 }

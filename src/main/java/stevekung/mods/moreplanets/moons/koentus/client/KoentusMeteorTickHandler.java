@@ -14,8 +14,8 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import stevekung.mods.moreplanets.moons.koentus.dimension.IKoentusMeteor;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteor;
+import stevekung.mods.moreplanets.moons.koentus.world.IKoentusMeteor;
 
 public class KoentusMeteorTickHandler
 {

@@ -30,7 +30,7 @@ public class KoentusBlocks
 	public static Block koentus_ice;
 	public static Block koentus_cobblestone_stairs;
 	public static Block koentus_dungeon_brick_stairs;
-	//public static Block koentus_treasure_chest;
+	public static Block koentus_treasure_chest;
 	public static Block eledos_egg;
 	public static Block white_crystal_torch;
 	public static Block fallen_koentus_meteor;
@@ -67,7 +67,7 @@ public class KoentusBlocks
 		KoentusBlocks.fallen_koentus_meteor = new BlockFallenKoentusMeteor("fallen_koentus_meteor");
 		KoentusBlocks.eledos_egg = new BlockEledosEgg("eledos_egg");
 		KoentusBlocks.white_crystal_torch = new BlockWhiteCrystalTorch("white_crystal_torch");
-		//		KoentusBlocks.koentus_treasure_chest = new BlockT4KoentusTreasureChest("koentus_treasure_chest");
+		KoentusBlocks.koentus_treasure_chest = new BlockKoentusTreasureChest("koentus_treasure_chest");
 		KoentusBlocks.koentus_ancient_stone_stairs = new BlockStairsMP("koentus_ancient_stone_stairs", 2.5F, StairsCategory.koentus_ancient_stone, Blocks.stone.getDefaultState());
 		KoentusBlocks.koentus_ancient_stone_brick_stairs = new BlockStairsMP("koentus_ancient_stone_brick_stairs", 2.5F, StairsCategory.koentus_ancient_stone_brick, Blocks.stone.getDefaultState());
 		KoentusBlocks.koentus_ancient_chest = new BlockKoentusAncientChest("koentus_ancient_chest");
@@ -131,7 +131,7 @@ public class KoentusBlocks
 		RegisterHelper.registerBlock(KoentusBlocks.koentus_dungeon_brick_stairs);
 		RegisterHelper.registerBlock(KoentusBlocks.koentus_ancient_stone_stairs);
 		RegisterHelper.registerBlock(KoentusBlocks.koentus_ancient_stone_brick_stairs);
-		//		RegisterHelper.registerBlock(KoentusBlocks.koentus_treasure_chest);
+		RegisterHelper.registerBlock(KoentusBlocks.koentus_treasure_chest);
 		RegisterHelper.registerBlock(KoentusBlocks.koentus_ancient_chest);
 		RegisterHelper.registerBlock(KoentusBlocks.crystal_fence);
 		RegisterHelper.registerBlock(KoentusBlocks.crystal_fence_gate);

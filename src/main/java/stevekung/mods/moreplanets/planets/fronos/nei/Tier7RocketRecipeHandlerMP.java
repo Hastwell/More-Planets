@@ -74,8 +74,8 @@ public class Tier7RocketRecipeHandlerMP extends RocketRecipeHandlerMP
 	}
 
 	@Override
-	public String getRocketGuiTexture()
+	protected String getRocketGuiTexture()
 	{
-		return "moreplanets:textures/gui/tier_7_rocket_schematic.png";
+		return "moreplanets:textures/gui/schematic/tier_7_rocket.png";
 	}
 }

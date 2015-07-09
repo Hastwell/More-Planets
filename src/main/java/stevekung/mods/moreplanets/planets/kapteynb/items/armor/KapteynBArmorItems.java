@@ -26,9 +26,9 @@ public class KapteynBArmorItems
 	public static Item ice_crystal_chestplate;
 	public static Item ice_crystal_leggings;
 	public static Item ice_crystal_boots;
-	//	public static Item breathable_uranium_helmet;
-	//	public static Item breathable_frozen_iron_helmet;
-	//public static Item breathable_ice_crystal_helmet;
+	public static Item breathable_uranium_helmet;
+	public static Item breathable_frozen_iron_helmet;
+	public static Item breathable_ice_crystal_helmet;
 
 	// Name,Durability,ReductionAmounts[Helm,Chest,Leg,Boot],Enchantability
 	public static ArmorMaterial uranium = EnumHelper.addArmorMaterial("uranium", "uranium", 46, new int[] { 13, 15, 11, 8 }, 16);
@@ -55,9 +55,9 @@ public class KapteynBArmorItems
 		KapteynBArmorItems.ice_crystal_chestplate = new ArmorIceCrystal("ice_crystal_chestplate", KapteynBArmorItems.ice_crystal, 7, 1);
 		KapteynBArmorItems.ice_crystal_leggings = new ArmorIceCrystal("ice_crystal_leggings", KapteynBArmorItems.ice_crystal, 7, 2);
 		KapteynBArmorItems.ice_crystal_boots = new ArmorIceCrystal("ice_crystal_boots", KapteynBArmorItems.ice_crystal, 7, 3);
-		//		KapteynBArmorItems.breathable_uranium_helmet = new ArmorBreathableUranium("breathable_uranium_helmet", KapteynBArmorItems.uranium, 7, 0);
-		//		KapteynBArmorItems.breathable_frozen_iron_helmet = new ArmorBreathableFrozenIron("breathable_frozen_iron_helmet", KapteynBArmorItems.frozen_iron, 7, 0);
-		//KapteynBArmorItems.breathable_ice_crystal_helmet = new ArmorBreathableIceCrystal("breathable_ice_crystal_helmet", KapteynBArmorItems.ice_crystal, 7, 0);
+		KapteynBArmorItems.breathable_uranium_helmet = new ArmorBreathableUranium("breathable_uranium_helmet", KapteynBArmorItems.uranium, 7, 0);
+		KapteynBArmorItems.breathable_frozen_iron_helmet = new ArmorBreathableFrozenIron("breathable_frozen_iron_helmet", KapteynBArmorItems.frozen_iron, 7, 0);
+		KapteynBArmorItems.breathable_ice_crystal_helmet = new ArmorBreathableIceCrystal("breathable_ice_crystal_helmet", KapteynBArmorItems.ice_crystal, 7, 0);
 	}
 
 	private static void registerItems()
@@ -74,8 +74,8 @@ public class KapteynBArmorItems
 		RegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_chestplate);
 		RegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_leggings);
 		RegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_boots);
-		//		RegisterHelper.registerItem(KapteynBArmorItems.breathable_uranium_helmet);
-		//		RegisterHelper.registerItem(KapteynBArmorItems.breathable_frozen_iron_helmet);
-		//		RegisterHelper.registerItem(KapteynBArmorItems.breathable_ice_crystal_helmet);
+		RegisterHelper.registerItem(KapteynBArmorItems.breathable_uranium_helmet);
+		RegisterHelper.registerItem(KapteynBArmorItems.breathable_frozen_iron_helmet);
+		RegisterHelper.registerItem(KapteynBArmorItems.breathable_ice_crystal_helmet);
 	}
 }

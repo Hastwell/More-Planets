@@ -18,7 +18,7 @@ public class ItemBlockDeimos extends ItemBlockBaseMP
 	}
 
 	@Override
-	public String[] getBlockVariantsName()
+	protected String[] getBlockVariantsName()
 	{
 		return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "iron_ore", "desh_ore" };
 	}

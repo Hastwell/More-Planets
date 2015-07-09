@@ -7,17 +7,11 @@
 
 package stevekung.mods.moreplanets.planets.fronos.items;
 
-import java.util.List;
-
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemFronosFood extends ItemFoodMP
@@ -103,16 +97,6 @@ public class ItemFronosFood extends ItemFoodMP
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
-
-	@Override
 	public int getHealAmount(ItemStack itemStack)
 	{
 		return foodHunger[itemStack.getItemDamage()];
@@ -125,7 +109,7 @@ public class ItemFronosFood extends ItemFoodMP
 	}
 
 	@Override
-	public String[] getItemVariantsName()
+	protected String[] getItemVariantsName()
 	{
 		return new String[] { "strawberry", "berry", "marshmallow", "cooked_marshmallow", "vanilla_ice_cream", "chocolate_ice_cream", "strawberry_ice_cream", "strawberry_cloud_ice_cream", "orange_ice_cream", "golden_bread", "little_sun_flower_seeds", "tea_ice_cream", "berry_salad", "sky_mushroom_stew", "rainbow_cloud_ice_cream", "lemon_ice_cream" };
 	}

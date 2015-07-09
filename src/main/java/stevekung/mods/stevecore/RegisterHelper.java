@@ -8,6 +8,7 @@
 package stevekung.mods.stevecore;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -216,6 +217,11 @@ public class RegisterHelper
 	public static TextureAtlasSprite registerBlockTexture(String texture)
 	{
 		return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite(texture);
+	}
+
+	public static TextureAtlasSprite getTexture(IBlockState state)
+	{
+		return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(state).getTexture();
 	}
 
 	private static String getBlockName(Block block)

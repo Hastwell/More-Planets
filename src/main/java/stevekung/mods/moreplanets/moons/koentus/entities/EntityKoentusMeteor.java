@@ -10,6 +10,9 @@ package stevekung.mods.moreplanets.moons.koentus.entities;
 import java.util.Iterator;
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.vector.Vector3;
+import micdoodle8.mods.galacticraft.core.GalacticraftCore;
+import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -61,7 +64,7 @@ public class EntityKoentusMeteor extends Entity
 
 		if (this.worldObj.isRemote)
 		{
-			//			this.spawnParticles();
+			this.spawnParticles();
 		}
 
 		Vec3 var15 = new Vec3(this.posX, this.posY, this.posZ);
@@ -119,14 +122,14 @@ public class EntityKoentusMeteor extends Entity
 		}
 	}
 
-	//	protected void spawnParticles()
-	//	{
-	//		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX, this.posY + 1D + Math.random(), this.posZ), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
-	//		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX + Math.random() / 2, this.posY + 1D + Math.random() / 2, this.posZ), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
-	//		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX, this.posY + 1D + Math.random(), this.posZ + Math.random()), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
-	//		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX - Math.random() / 2, this.posY + 1D + Math.random() / 2, this.posZ), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
-	//		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX, this.posY + 1D + Math.random(), this.posZ - Math.random()), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
-	//	}
+	private void spawnParticles()
+	{
+		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX, this.posY + 1D + Math.random(), this.posZ), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
+		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX + Math.random() / 2, this.posY + 1D + Math.random() / 2, this.posZ), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
+		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX, this.posY + 1D + Math.random(), this.posZ + Math.random()), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
+		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX - Math.random() / 2, this.posY + 1D + Math.random() / 2, this.posZ), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
+		GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX, this.posY + 1D + Math.random(), this.posZ - Math.random()), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
+	}
 
 	protected void onImpact(MovingObjectPosition moving)
 	{
@@ -160,10 +163,10 @@ public class EntityKoentusMeteor extends Entity
 	}
 
 	@Override
-    public boolean func_174816_a(Explosion explosion, World world, BlockPos pos, IBlockState state, float damage)
-    {
-        return true;//TODO GC Config for meteor
-    }
+	public boolean func_174816_a(Explosion explosion, World world, BlockPos pos, IBlockState state, float damage)
+	{
+		return ConfigManagerCore.meteorBlockDamageEnabled;
+	}
 
 	@Override
 	protected void entityInit()
@@ -183,12 +186,8 @@ public class EntityKoentusMeteor extends Entity
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-	}
+	protected void readEntityFromNBT(NBTTagCompound nbt) {}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-	}
+	protected void writeEntityToNBT(NBTTagCompound nbt) {}
 }

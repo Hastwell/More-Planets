@@ -9,18 +9,18 @@ package stevekung.mods.moreplanets.common.util;
 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
+import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 
 public class WorldUtilMP
 {
 	public static boolean isMercuryWorld(World world, BlockPos pos)
 	{
-		return false;
-		//return world.provider instanceof WorldProviderMercury && world.isDaytime() && world.canBlockSeeSky(pos);
+		return world.provider instanceof WorldProviderMercury && world.isDaytime() && world.canBlockSeeSky(pos);
 	}
 
-	public static boolean isPlutoWorld(World world, BlockPos pos)
+	public static boolean isPlutoWorld(World world)
 	{
-		return false;
-		//return world.provider instanceof WorldProviderPluto;
+		return world.provider instanceof WorldProviderPluto;
 	}
 }

@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.venus.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,7 +33,7 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntityVenusianSlime extends EntityLiving implements IMob/*, IEntityBreathable*/
+public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBreathable
 {
 	public float squishAmount;
 	public float squishFactor;
@@ -336,11 +337,11 @@ public class EntityVenusianSlime extends EntityLiving implements IMob/*, IEntity
 		return super.func_180482_a(p_180482_1_, p_180482_2_);
 	}
 
-	/*@Override
+	@Override
 	public boolean canBreath()
 	{
 		return true;
-	}*/
+	}
 
 	class AISlimeAttack extends EntityAIBase
 	{

@@ -28,7 +28,6 @@ public class BlockFrozenNitrogen extends BlockIceMP
 		this.setUnlocalizedName(name);
 		this.setHardness(4.0F);
 		this.setResistance(8.0F);
-		this.setStepSound(soundTypeGlass);
 	}
 
 	@Override

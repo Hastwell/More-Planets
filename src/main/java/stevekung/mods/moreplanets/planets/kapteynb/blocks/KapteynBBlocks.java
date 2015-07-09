@@ -27,7 +27,7 @@ public class KapteynBBlocks
 	public static Block kapteyn_b_redstone_ore;
 	public static Block kapteyn_b_redstone_ore_active;
 	public static Block kapteyn_b_ice;
-	//public static Block kapteyn_b_treasure_chest;
+	public static Block kapteyn_b_treasure_chest;
 	public static Block kapteyn_b_cracked_ice_stairs;
 	public static Block kapteyn_b_dungeon_brick_stairs;
 	public static Block frozen_water;

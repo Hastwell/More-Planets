@@ -10,6 +10,8 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IPlantableBlock;
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
@@ -33,7 +35,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
-public class BlockKapteynB extends BlockPlanetTileMP /*implements IDetectableResource, IPlantableBlock, ITerraformableBlock*/
+public class BlockKapteynB extends BlockPlanetTileMP implements /*IDetectableResource,*/ IPlantableBlock, ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -175,17 +177,15 @@ public class BlockKapteynB extends BlockPlanetTileMP /*implements IDetectableRes
 		return false;
 	}
 
-	/*@Override
+	@Override
 	public int requiredLiquidBlocksNearby()
 	{
 		return 4;
 	}
 
 	@Override
-	public boolean isPlantable(IBlockState state)
+	public boolean isPlantable(int meta)
 	{
-		int meta = this.getMetaFromState(state);
-
 		if (meta == 0 || meta == 1)
 		{
 			return true;
@@ -194,16 +194,16 @@ public class BlockKapteynB extends BlockPlanetTileMP /*implements IDetectableRes
 	}
 
 	@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		int meta = this.getMetaFromState(state);
+		int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta == 0 || meta == 1)
+		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
 		{
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 	@Override
 	protected BlockState createBlockState()

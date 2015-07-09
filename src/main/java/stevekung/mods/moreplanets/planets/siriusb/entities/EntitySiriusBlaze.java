@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.entities;
 
+import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -35,7 +36,7 @@ import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySiriusSmallFireball;
 
-public class EntitySiriusBlaze extends EntityMob implements /*IEntityBreathable,*/ IEntityLivingPlanet
+public class EntitySiriusBlaze extends EntityMob implements IEntityBreathable, IEntityLivingPlanet
 {
 	private float heightOffset = 0.5F;
 	private int heightOffsetUpdateTime;
@@ -211,11 +212,11 @@ public class EntitySiriusBlaze extends EntityMob implements /*IEntityBreathable,
 		return true;
 	}
 
-	//	@Override
-	//	public boolean canBreath()
-	//	{
-	//		return true;
-	//	}
+	@Override
+	public boolean canBreath()
+	{
+		return true;
+	}
 
 	@Override
 	public int canLivingInDimension()

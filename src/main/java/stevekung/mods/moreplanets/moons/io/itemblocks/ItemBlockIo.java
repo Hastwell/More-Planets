@@ -18,7 +18,7 @@ public class ItemBlockIo extends ItemBlockBaseMP
 	}
 
 	@Override
-	public String[] getBlockVariantsName()
+	protected String[] getBlockVariantsName()
 	{
 		return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "sulfur_ore", "ash_stone", "ash_cobblestone", "silicate_rock", "dungeon_brick" };
 	}

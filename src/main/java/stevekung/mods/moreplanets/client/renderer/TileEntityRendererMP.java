@@ -9,40 +9,64 @@ package stevekung.mods.moreplanets.client.renderer;
 
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import stevekung.mods.moreplanets.moons.koentus.client.render.tileentities.TileEntityKoentusAncientChestRenderer;
+import stevekung.mods.moreplanets.moons.koentus.client.render.tileentities.TileEntityKoentusTreasureChestRenderer;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
+import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusTreasureChest;
 import stevekung.mods.moreplanets.planets.diona.client.render.tileentities.TileEntityDionaAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.diona.client.render.tileentities.TileEntityDionaTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
+import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
 import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityFronosAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.fronos.client.render.tileentities.TileEntityFronosTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAncientChest;
+import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTreasureChest;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.tileentities.TileEntityIcyPoisonCrystalRenderer;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.tileentities.TileEntityKapteynBAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.kapteynb.client.render.tileentities.TileEntityKapteynBTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
+import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBTreasureChest;
 import stevekung.mods.moreplanets.planets.mercury.client.render.tileentities.TileEntityMercuryAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.mercury.client.render.tileentities.TileEntityMercuryTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryAncientChest;
+import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryTreasureChest;
 import stevekung.mods.moreplanets.planets.nibiru.client.render.tileentities.TileEntityNibiruAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.nibiru.client.render.tileentities.TileEntityNibiruTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruAncientChest;
+import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruTreasureChest;
 import stevekung.mods.moreplanets.planets.pluto.client.render.tileentities.TileEntityPlutoAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.pluto.client.render.tileentities.TileEntityPlutoTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoAncientChest;
+import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoTreasureChest;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.tileentities.TileEntityPolongniusAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.polongnius.client.render.tileentities.TileEntityPolongniusTreasureChestRenderer;
+import stevekung.mods.moreplanets.planets.polongnius.client.render.tileentities.TileEntityUltraVioletSolarPanelRenderer;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusAncientChest;
+import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusTreasureChest;
+import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityUltraVioletSolarPanel;
 import stevekung.mods.moreplanets.planets.siriusb.client.render.tileentities.TileEntitySiriusBAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.siriusb.client.render.tileentities.TileEntitySiriusBTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBAncientChest;
+import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBTreasureChest;
 import stevekung.mods.moreplanets.planets.venus.client.render.tileentities.TileEntityVenusAncientChestRenderer;
+import stevekung.mods.moreplanets.planets.venus.client.render.tileentities.TileEntityVenusTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
+import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
 
 public class TileEntityRendererMP
 {
 	public static void registerTileEntityRenderers()
 	{
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaTreasureChest.class, new TileEntityDionaTreasureChestRenderer());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusTreasureChest.class, new TileEntityPolongniusTreasureChestRenderer());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruTreasureChest.class, new TileEntityNibiruTreasureChestRenderer());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusTreasureChest.class, new TileEntityKoentusTreasureChestRenderer());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosTreasureChest.class, new TileEntityFronosTreasureChestRenderer());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBTreasureChest.class, new TileEntityKapteynBTreasureChestRenderer());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBTreasureChest.class, new TileEntitySiriusBTreasureChestRenderer());
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryTreasureChest.class, new TileEntityMercuryTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaTreasureChest.class, new TileEntityDionaTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusTreasureChest.class, new TileEntityPolongniusTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruTreasureChest.class, new TileEntityNibiruTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusTreasureChest.class, new TileEntityKoentusTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosTreasureChest.class, new TileEntityFronosTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBTreasureChest.class, new TileEntityKapteynBTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBTreasureChest.class, new TileEntitySiriusBTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryTreasureChest.class, new TileEntityMercuryTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusTreasureChest.class, new TileEntityVenusTreasureChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoTreasureChest.class, new TileEntityPlutoTreasureChestRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaAncientChest.class, new TileEntityDionaAncientChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusAncientChest.class, new TileEntityPolongniusAncientChestRenderer());
@@ -55,7 +79,7 @@ public class TileEntityRendererMP
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusAncientChest.class, new TileEntityVenusAncientChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoAncientChest.class, new TileEntityPlutoAncientChestRenderer());
 
-		//		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityUltraVioletSolarPanel.class, new TileEntityUltraVioletSolarPanelRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityUltraVioletSolarPanel.class, new TileEntityUltraVioletSolarPanelRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcyPoisonCrystal.class, new TileEntityIcyPoisonCrystalRenderer());
 	}
 }

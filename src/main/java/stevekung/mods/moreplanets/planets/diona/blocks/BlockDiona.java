@@ -10,6 +10,8 @@ package stevekung.mods.moreplanets.planets.diona.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -31,7 +33,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
-public class BlockDiona extends BlockPlanetTileMP /*implements IDetectableResource, ITerraformableBlock*/
+public class BlockDiona extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -126,17 +128,18 @@ public class BlockDiona extends BlockPlanetTileMP /*implements IDetectableResour
 	{
 		int meta = this.getMetaFromState(state);
 
-		/*if (meta == 8)
+		if (meta == 8)
 		{
 			return GCItems.basicItem;
-		}*/
+		}
 		return Item.getItemFromBlock(this);
 	}
 
 	@Override
 	public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
 	{
-		return true;
+		IBlockState state = world.getBlockState(pos);
+		return state == state.withProperty(VARIANT, BlockType.quontonium_block) || state == state.withProperty(VARIANT, BlockType.fronisium_block);
 	}
 
 	@Override
@@ -165,19 +168,19 @@ public class BlockDiona extends BlockPlanetTileMP /*implements IDetectableResour
 			return true;
 		}
 		return false;
-	}
+	}*/
 
 	@Override
-	public boolean isTerraformable(World world, BlockPos pos, IBlockState state)
+	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		int meta = this.getMetaFromState(state);
+		int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta == 0 || meta == 1)
+		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
 		{
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 	@Override
 	protected BlockState createBlockState()

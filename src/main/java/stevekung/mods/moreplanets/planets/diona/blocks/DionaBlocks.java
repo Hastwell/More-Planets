@@ -17,7 +17,7 @@ import stevekung.mods.stevecore.RegisterHelper;
 public class DionaBlocks
 {
 	public static Block diona_block;
-	//public static Block diona_treasure_chest;
+	public static Block diona_treasure_chest;
 	public static Block fronisium_tnt;
 	public static Block minion_creeper_egg;
 	public static Block diona_cobblestone_stairs;

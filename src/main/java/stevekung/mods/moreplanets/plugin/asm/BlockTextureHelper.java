@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.plugin.asm;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -76,6 +75,6 @@ public class BlockTextureHelper
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/fallen_ice_crystal_meteor");
 		}
-		return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(state).getTexture();
+		return RegisterHelper.getTexture(state);
 	}
 }

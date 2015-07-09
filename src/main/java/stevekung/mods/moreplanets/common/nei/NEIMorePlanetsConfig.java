@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -107,8 +108,8 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 	{
 		HashMap<Integer, PositionedStack> input1 = new HashMap<Integer, PositionedStack>();
 		input1.put(0, new PositionedStack(new ItemStack(PolongniusItems.polongnius_item, 1, 1), 10, 22));
-		//		input1.put(1, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 51));
-		//		input1.put(2, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 69));
+		input1.put(1, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 51));
+		input1.put(2, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 69));
 		input1.put(3, new PositionedStack(new ItemStack(Items.redstone), 117, 51));
 		input1.put(4, new PositionedStack(new ItemStack(Items.repeater), 140, 25));
 		this.registerCircuitFabricatorRecipe(input1, new PositionedStack(new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 0), 147, 91));
@@ -118,8 +119,8 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 	{
 		HashMap<Integer, PositionedStack> input1 = new HashMap<Integer, PositionedStack>();
 		input1.put(0, new PositionedStack(new ItemStack(Items.diamond), 10, 22));
-		//		input1.put(1, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 51));
-		//		input1.put(2, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 69));
+		input1.put(1, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 51));
+		input1.put(2, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 69));
 		input1.put(3, new PositionedStack(new ItemStack(Items.redstone), 117, 51));
 		input1.put(4, new PositionedStack(new ItemStack(PolongniusItems.polongnius_item, 1, 1), 140, 25));
 		this.registerCircuitFabricatorRecipe(input1, new PositionedStack(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), 147, 91));
@@ -127,7 +128,7 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 
 	private void registerHideBlocks()
 	{
-		//		API.hideItem(new ItemStack(PolongniusBlocks.ultra_violet_solar_fake, 1, 0));
+		API.hideItem(new ItemStack(PolongniusBlocks.ultra_violet_solar_fake, 1, 0));
 		API.hideItem(new ItemStack(PolongniusBlocks.cheese_of_milk));
 		API.hideItem(new ItemStack(NibiruBlocks.ancient_dark_door));
 		API.hideItem(new ItemStack(NibiruBlocks.orange_door));

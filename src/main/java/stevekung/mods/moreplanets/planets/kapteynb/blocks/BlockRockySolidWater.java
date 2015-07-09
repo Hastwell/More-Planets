@@ -22,6 +22,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
+import stevekung.mods.moreplanets.common.util.WorldUtilMP;
 
 public class BlockRockySolidWater extends BlockBaseMP
 {
@@ -62,11 +63,11 @@ public class BlockRockySolidWater extends BlockBaseMP
 				world.setBlockToAir(pos);
 				return;
 			}
-			/*else if (world.provider instanceof WorldProviderMercury && world.isDaytime() && world.canBlockSeeSky(pos))
+			else if (WorldUtilMP.isMercuryWorld(world, pos))
 			{
 				world.setBlockToAir(pos);
 				return;
-			}*/
+			}
 
 			int i = EnchantmentHelper.getFortuneModifier(player);
 			this.harvesters.set(player);

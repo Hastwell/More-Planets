@@ -74,8 +74,8 @@ public class Tier4RocketRecipeHandlerMP extends RocketRecipeHandlerMP
 	}
 
 	@Override
-	public String getRocketGuiTexture()
+	protected String getRocketGuiTexture()
 	{
-		return "diona:textures/gui/schematic_tier4_rocket.png";
+		return "moreplanets:textures/gui/schematic/tier_4_rocket.png";
 	}
 }

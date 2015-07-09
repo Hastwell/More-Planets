@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -26,7 +27,7 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
-public class BlockFrozenWaterGeyser extends BlockBaseMP
+public class BlockFrozenWaterGeyser extends BlockBaseMP implements ITerraformableBlock
 {
 	public BlockFrozenWaterGeyser(String name)
 	{
@@ -95,5 +96,11 @@ public class BlockFrozenWaterGeyser extends BlockBaseMP
 	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
 	{
 		return true;
+	}
+
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
+	{
+		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
 	}
 }
