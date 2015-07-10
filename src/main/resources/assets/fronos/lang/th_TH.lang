@@ -142,11 +142,11 @@ tile.fronos_tallgrass.golden_tall_grass.name=หญ้าสีทองสู�
 tile.fronos_flower.pink_butter_cup.name=ถ้วยเนยสีชมพู
 tile.fronos_flower.orange_butterfly_flower.name=ดอกไม้ผีเสื้อสีส้ม
 tile.fronos_flower.yellow_milk_cap.name=ฝาครอบนมสีเหลือง
-tile.fronos_flower.little_sun_flower.name=ดอกไม้ดวงอาทิตย์ขนาดเล็ก
+tile.fronos_flower.little_sun_flower.name=ดอกทานตะวันจิ๋ว
 tile.fronos_flower.sky_mushroom.name=เห็ดท้องฟ้า
-tile.fronos_flower.purple_spike_flower.name=ดอกไม้มีหนามสีม่วง
+tile.fronos_flower.purple_spike_flower.name=ดอกไม้หนามสีม่วง
 tile.fronos_flower.jungle_iris.name=ม่านตาป่าทึบ
-tile.fronos_flower.blue_poison_mushroom.name=เห็ดสีฟ้ามีพิษ
+tile.fronos_flower.blue_poison_mushroom.name=เห็ดพิษสีฟ้า
 tile.fronos_flower.white_moss.name=White Moss
 tile.orange_fronos_dandelion.name=Orange Dandelion
 tile.pink_fronos_dandelion.name=Pink Dandelion
@@ -388,4 +388,4 @@ container.fronos.ancientchest.name=กล่องโฟรนอสเก่า
 container.candy.extractor.name=เครื่องสกัดน้ำตาล
 
 # DEATH MESSAGES
-death.attack.purpleSpike=%1 โดนแทงโดยดอกไม้มีหนามสีม่วง
+death.attack.purpleSpike=%1 โดนแทงโดยดอกไม้หนามสีม่วง
