@@ -10,3 +10,6 @@ SteveKunG - Mod Creator, Texture
 
 # Link
 More Planets - http://minecraftforum.net/forums/thread/2358057
+
+# License
+License can be found here : https://github.com/SteveKunG/More-Planets/blob/master/LICENSE.txt
