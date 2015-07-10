@@ -13,6 +13,7 @@ import java.util.Random;
 import micdoodle8.mods.galacticraft.core.world.gen.StructureComponentGC;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -137,7 +138,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 					{
 						for (int j = -2; j < 7; j++)
 						{
-							if (world.getBlock(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j) == Blocks.air)
+							if (world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j)) == Blocks.air.getDefaultState())
 							{
 								this.placeBlockAtCurrentPosition(world, VenusBlocks.venus_block, 14, x + i, y, z + j, this.getBoundingBox());
 							}
@@ -162,7 +163,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 						{
 							for (int j = -2; j < 2; j++)
 							{
-								if (world.getBlock(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j) == Blocks.air)
+								if (world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j)) == Blocks.air.getDefaultState())
 								{
 									this.placeBlockAtCurrentPosition(world, VenusBlocks.venus_block, 14, x + i, y, z + j, this.getBoundingBox());
 								}
@@ -175,7 +176,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 									this.placeBlockAtCurrentPosition(world, Blocks.air, 0, x + 1, y, z + 1, this.getBoundingBox());
 								}
 
-								if (rand.nextInt(5) == 0 && world.getBlock(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y + 1, this.getBoundingBox().minZ + z + j) == Blocks.air && world.getBlock(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j) == VenusBlocks.venus_block)
+								if (rand.nextInt(5) == 0 && world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y + 1, this.getBoundingBox().minZ + z + j)) == Blocks.air.getDefaultState() && world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j)) == VenusBlocks.venus_block.getDefaultState())
 								{
 									this.placeBlockAtCurrentPosition(world, VenusBlocks.venusian_blaze_egg, 0, x + i, y + 1, z + j, this.getBoundingBox());
 								}
@@ -186,7 +187,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 						{
 							if (x > 0 && x < 7 && z > 0 && z < 7)
 							{
-								if (world.getBlock(this.getBoundingBox().minX + x, this.getBoundingBox().minY + y + 1, this.getBoundingBox().minZ + z) == Blocks.air)
+								if (world.getBlockState(new BlockPos(this.getBoundingBox().minX + x, this.getBoundingBox().minY + y + 1, this.getBoundingBox().minZ + z)) == Blocks.air.getDefaultState())
 								{
 									this.placeBlockAtCurrentPosition(world, VenusBlocks.venusian_blaze_egg, 0, x, y + 2, z, this.getBoundingBox());
 								}
@@ -198,7 +199,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 		}
 	}
 
-	protected int getAverageGroundLevel(World par1World, StructureBoundingBox par2StructureBoundingBox)
+	protected int getAverageGroundLevel(World world, StructureBoundingBox box)
 	{
 		int var3 = 0;
 		int var4 = 0;
@@ -207,9 +208,9 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 		{
 			for (int var6 = this.boundingBox.minX; var6 <= this.boundingBox.maxX; ++var6)
 			{
-				if (par2StructureBoundingBox.isVecInside(var6, 64, var5))
+				if (box.func_175898_b(new BlockPos(var6, 64, var5)))
 				{
-					var3 += Math.max(par1World.getTopSolidOrLiquidBlock(var6, var5), par1World.provider.getAverageGroundLevel());
+					var3 += Math.max(world.getTopSolidOrLiquidBlock(new BlockPos(var6, 64, var5)).getY(), world.provider.getAverageGroundLevel());
 					++var4;
 				}
 			}

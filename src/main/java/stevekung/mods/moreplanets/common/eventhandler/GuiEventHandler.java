@@ -20,6 +20,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.gui.GuiCandyExtractor;
 import stevekung.mods.moreplanets.planets.fronos.inventory.container.ContainerCandyExtractor;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCandyExtractor;
+import stevekung.mods.moreplanets.planets.nibiru.client.gui.GuiPowerCrystalGenerator;
+import stevekung.mods.moreplanets.planets.nibiru.inventory.container.ContainerPowerCrystalGenerator;
+import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityPowerCrystalGenerator;
+import stevekung.mods.moreplanets.planets.polongnius.client.gui.GuiUltraVioletSolarPanel;
+import stevekung.mods.moreplanets.planets.polongnius.inventory.container.ContainerUltraVioletSolarPanel;
+import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityUltraVioletSolarPanel;
 
 public class GuiEventHandler implements IGuiHandler
 {
@@ -36,7 +42,7 @@ public class GuiEventHandler implements IGuiHandler
 		}
 		if (tile != null)
 		{
-			/*if (tile instanceof TileEntityUltraVioletSolarPanel)
+			if (tile instanceof TileEntityUltraVioletSolarPanel)
 			{
 				return new ContainerUltraVioletSolarPanel(player.inventory, (TileEntityUltraVioletSolarPanel) tile);
 			}
@@ -44,7 +50,7 @@ public class GuiEventHandler implements IGuiHandler
 			{
 				return new ContainerPowerCrystalGenerator(player.inventory, (TileEntityPowerCrystalGenerator) tile);
 			}
-			else */if (tile instanceof TileEntityCandyExtractor)
+			else if (tile instanceof TileEntityCandyExtractor)
 			{
 				return new ContainerCandyExtractor(player.inventory, (TileEntityCandyExtractor)tile);
 			}
@@ -60,17 +66,18 @@ public class GuiEventHandler implements IGuiHandler
 	@SideOnly(Side.CLIENT)
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
-		TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+		BlockPos pos = new BlockPos(x, y, z);
+		TileEntity tile = world.getTileEntity(pos);
 
-		/*if (tile instanceof TileEntityUltraVioletSolarPanel)
+		if (tile instanceof TileEntityUltraVioletSolarPanel)
 		{
-			return new GuiUltraVioletSolarPanel(player.inventory, (TileEntityUltraVioletSolarPanel) world.getTileEntity(position.intX(), position.intY(), position.intZ()));
+			return new GuiUltraVioletSolarPanel(player.inventory, (TileEntityUltraVioletSolarPanel) world.getTileEntity(pos));
 		}
 		else if (tile instanceof TileEntityPowerCrystalGenerator)
 		{
-			return new GuiPowerCrystalGenerator(player.inventory, (TileEntityPowerCrystalGenerator) world.getTileEntity(position.intX(), position.intY(), position.intZ()));
+			return new GuiPowerCrystalGenerator(player.inventory, (TileEntityPowerCrystalGenerator) world.getTileEntity(pos));
 		}
-		else */if (tile instanceof TileEntityCandyExtractor)
+		else if (tile instanceof TileEntityCandyExtractor)
 		{
 			return new GuiCandyExtractor(player.inventory, (TileEntityCandyExtractor)tile);
 		}

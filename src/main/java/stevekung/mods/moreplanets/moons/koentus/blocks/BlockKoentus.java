@@ -187,9 +187,7 @@ public class BlockKoentus extends BlockPlanetTileMP implements /*IDetectableReso
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		int meta = this.getMetaFromState(state);
-
-		if (meta == 11)
+		if (state == state.withProperty(VARIANT, BlockType.koentus_dungeon_brick))
 		{
 			if (rand.nextInt(10) == 0)
 			{

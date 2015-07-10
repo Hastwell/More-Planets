@@ -5,9 +5,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.fronos.worldgen.biome;
+package stevekung.mods.moreplanets.planets.fronos.world.gen.biome;
 
-import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenGrassyPlains extends BiomeGenBaseFronos
@@ -17,12 +17,9 @@ public class BiomeGenGrassyPlains extends BiomeGenBaseFronos
 		super(ConfigManagerMP.idGrassyPlainsBiome);
 		this.enableRain = true;
 		this.enableSnow = true;
-		this.topBlock = FronosBlocks.plains_grass;
-		this.topMeta = 0;
-		this.fillerBlock = FronosBlocks.fronos_dirt;
-		this.fillerMeta = 0;
-		this.stoneBlock = FronosBlocks.fronos_block;
-		this.stoneMeta = 0;
+		this.topBlock = FronosBlocks.plains_grass.getDefaultState();
+		this.fillerBlock = FronosBlocks.fronos_dirt.getDefaultState();
+		this.stoneBlock = FronosBlocks.fronos_block.getDefaultState();
 		this.getBiomeDecorator().plainsTallGrassPerChunk = 300;
 		this.getBiomeDecorator().reedsPerChunk = 200;
 		this.getBiomeDecorator().normalSandPerChunk = 3;

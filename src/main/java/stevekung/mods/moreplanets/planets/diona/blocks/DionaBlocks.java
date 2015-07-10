@@ -36,9 +36,8 @@ public class DionaBlocks
 
 	private static void initBlocks()
 	{
-
 		DionaBlocks.diona_block = new BlockDiona("diona_block");
-		//		DionaBlocks.diona_treasure_chest = new BlockDionaTreasureChest("diona_treasure_chest");
+		DionaBlocks.diona_treasure_chest = new BlockDionaTreasureChest("diona_treasure_chest");
 		DionaBlocks.fronisium_tnt = new BlockFronisiumTNT("fronisium_tnt");
 		DionaBlocks.minion_creeper_egg = new BlockMinionCreeperEgg("minion_creeper_egg");
 		DionaBlocks.diona_cobblestone_stairs = new BlockStairsMP("diona_cobblestone_stairs", 2.5F, StairsCategory.diona_cobblestone, Blocks.stone.getDefaultState());
@@ -73,7 +72,7 @@ public class DionaBlocks
 		RegisterHelper.registerBlock(DionaBlocks.diona_dungeon_brick_stairs);
 		RegisterHelper.registerBlock(DionaBlocks.fronisium_tnt);
 		RegisterHelper.registerBlock(DionaBlocks.minion_creeper_egg);
-		//		RegisterHelper.registerBlock(DionaBlocks.diona_treasure_chest);
+		RegisterHelper.registerBlock(DionaBlocks.diona_treasure_chest);
 		RegisterHelper.registerBlock(DionaBlocks.diona_ancient_chest);
 	}
 }

@@ -71,7 +71,7 @@ public class StructureKoentusVillagePieces
 		}
 		else if (var9 == ComponentKoentusVillageHouse.class)
 		{
-			var10 = ComponentKoentusVillageHouse.func_74921_a(component, list, rand, x, y, z, side, type);
+			var10 = ComponentKoentusVillageHouse.func_74921_a(component, list, x, y, z, side, type);
 		}
 		return (ComponentKoentusVillage) var10;
 	}

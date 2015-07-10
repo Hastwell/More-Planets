@@ -9,8 +9,12 @@ package stevekung.mods.moreplanets.planets.kapteynb.items;
 
 import micdoodle8.mods.galacticraft.api.item.IItemElectric;
 import micdoodle8.mods.galacticraft.core.energy.item.ItemElectricBase;
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class ItemUraniumBattery extends ItemElectricBase implements IItemElectric
@@ -27,12 +31,12 @@ public class ItemUraniumBattery extends ItemElectricBase implements IItemElectri
 		return MorePlanetsCore.mpItemsTab;
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack par1ItemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
 
 	@Override
 	public float getMaxElectricityStored(ItemStack itemStack)

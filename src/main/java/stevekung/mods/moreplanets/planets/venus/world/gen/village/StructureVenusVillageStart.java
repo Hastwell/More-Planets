@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.venus.worldgen.village;
+package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,21 +17,18 @@ import net.minecraft.world.gen.structure.StructureStart;
 
 public class StructureVenusVillageStart extends StructureStart
 {
-	public StructureVenusVillageStart()
-	{
-	}
+	public StructureVenusVillageStart() {}
 
 	@SuppressWarnings("unchecked")
-	public StructureVenusVillageStart(World par1World, Random par2Random, int par3, int par4, int par5)
+	public StructureVenusVillageStart(World world, Random rand, int x, int z, int par5)
 	{
-		super(par3, par4);
-
-		final ArrayList<StructureVenusVillagePieceWeight> var6 = StructureVenusVillagePieces.getStructureVillageWeightedPieceList(par2Random, par5);
-		final ComponentVenusVillageStartPiece var7 = new ComponentVenusVillageStartPiece(par1World.getWorldChunkManager(), 0, par2Random, (par3 << 4) + 2, (par4 << 4) + 2, var6, par5);
+		super(x, z);
+		ArrayList<StructureVenusVillagePieceWeight> var6 = StructureVenusVillagePieces.getStructureVillageWeightedPieceList(rand, par5);
+		ComponentVenusVillageStartPiece var7 = new ComponentVenusVillageStartPiece(world.getWorldChunkManager(), 0, rand, (x << 4) + 2, (z << 4) + 2, var6, par5);
 		this.components.add(var7);
-		var7.buildComponent(var7, this.components, par2Random);
-		final ArrayList<Object> var8 = var7.field_74930_j;
-		final ArrayList<Object> var9 = var7.field_74932_i;
+		var7.buildComponent(var7, this.components, rand);
+		ArrayList<Object> var8 = var7.field_74930_j;
+		ArrayList<Object> var9 = var7.field_74932_i;
 		int var10;
 
 		while (!var8.isEmpty() || !var9.isEmpty())
@@ -40,25 +37,25 @@ public class StructureVenusVillageStart extends StructureStart
 
 			if (var8.isEmpty())
 			{
-				var10 = par2Random.nextInt(var9.size());
+				var10 = rand.nextInt(var9.size());
 				var11 = (StructureComponent) var9.remove(var10);
-				var11.buildComponent(var7, this.components, par2Random);
+				var11.buildComponent(var7, this.components, rand);
 			}
 			else
 			{
-				var10 = par2Random.nextInt(var8.size());
+				var10 = rand.nextInt(var8.size());
 				var11 = (StructureComponent) var8.remove(var10);
-				var11.buildComponent(var7, this.components, par2Random);
+				var11.buildComponent(var7, this.components, rand);
 			}
 		}
 
 		this.updateBoundingBox();
 		var10 = 0;
-		final Iterator<StructureComponent> var13 = this.components.iterator();
+		Iterator<StructureComponent> var13 = this.components.iterator();
 
 		while (var13.hasNext())
 		{
-			final StructureComponent var12 = var13.next();
+			StructureComponent var12 = var13.next();
 
 			if (!(var12 instanceof ComponentVenusVillageRoadPiece))
 			{

@@ -5,26 +5,27 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.venus.worldgen.village;
+package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 
 public class StructureVenusVillagePieces
 {
-	public static ArrayList<StructureVenusVillagePieceWeight> getStructureVillageWeightedPieceList(Random par0Random, int par1)
+	public static ArrayList<StructureVenusVillagePieceWeight> getStructureVillageWeightedPieceList(Random rand, int par1)
 	{
 		ArrayList<StructureVenusVillagePieceWeight> var2 = new ArrayList<StructureVenusVillagePieceWeight>();
-		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageHut.class, 5, MathHelper.getRandomIntegerInRange(par0Random, 2 + par1, 5 + par1 * 3)));
-		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageField.class, 5, MathHelper.getRandomIntegerInRange(par0Random, 3 + par1, 5 + par1)));
-		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageField2.class, 5, MathHelper.getRandomIntegerInRange(par0Random, 3 + par1, 5 + par1)));
-		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageHouse.class, 5, MathHelper.getRandomIntegerInRange(par0Random, 3 + par1, 4 + par1 * 2)));
+		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageHut.class, 5, MathHelper.getRandomIntegerInRange(rand, 2 + par1, 5 + par1 * 3)));
+		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageField.class, 5, MathHelper.getRandomIntegerInRange(rand, 3 + par1, 5 + par1)));
+		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageField2.class, 5, MathHelper.getRandomIntegerInRange(rand, 3 + par1, 5 + par1)));
+		var2.add(new StructureVenusVillagePieceWeight(ComponentVenusVillageHouse.class, 5, MathHelper.getRandomIntegerInRange(rand, 3 + par1, 4 + par1 * 2)));
 
 		Iterator<StructureVenusVillagePieceWeight> var3 = var2.iterator();
 
@@ -38,13 +39,13 @@ public class StructureVenusVillagePieces
 		return var2;
 	}
 
-	private static int func_75079_a(List<StructureVenusVillagePieceWeight> par0List)
+	private static int func_75079_a(List<StructureVenusVillagePieceWeight> list)
 	{
 		boolean var1 = false;
 		int var2 = 0;
 		StructureVenusVillagePieceWeight var4;
 
-		for (Iterator<StructureVenusVillagePieceWeight> var3 = par0List.iterator(); var3.hasNext(); var2 += var4.villagePieceWeight)
+		for (Iterator<StructureVenusVillagePieceWeight> var3 = list.iterator(); var3.hasNext(); var2 += var4.villagePieceWeight)
 		{
 			var4 = var3.next();
 
@@ -56,33 +57,33 @@ public class StructureVenusVillagePieces
 		return var1 ? var2 : -1;
 	}
 
-	private static ComponentVenusVillage func_75083_a(ComponentVenusVillageStartPiece par0ComponentVillageStartPiece, StructureVenusVillagePieceWeight par1StructureVillagePieceWeight, List<StructureComponent> par2List, Random par3Random, int par4, int par5, int par6, int par7, int par8)
+	private static ComponentVenusVillage func_75083_a(ComponentVenusVillageStartPiece component, StructureVenusVillagePieceWeight weight, List<StructureComponent> list, Random rand, int x, int y, int z, EnumFacing facing, int type)
 	{
-		Class<?> var9 = par1StructureVillagePieceWeight.villagePieceClass;
+		Class<?> var9 = weight.villagePieceClass;
 		Object var10 = null;
 
 		if (var9 == ComponentVenusVillageHut.class)
 		{
-			var10 = ComponentVenusVillageHut.func_74908_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
+			var10 = ComponentVenusVillageHut.func_74908_a(component, list, x, y, z, facing, type);
 		}
 		else if (var9 == ComponentVenusVillageField.class)
 		{
-			var10 = ComponentVenusVillageField.func_74900_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
+			var10 = ComponentVenusVillageField.func_74900_a(component, list, x, y, z, facing, type);
 		}
 		else if (var9 == ComponentVenusVillageField2.class)
 		{
-			var10 = ComponentVenusVillageField2.func_74900_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
+			var10 = ComponentVenusVillageField2.func_74900_a(component, list, rand, x, y, z, facing, type);
 		}
 		else if (var9 == ComponentVenusVillageHouse.class)
 		{
-			var10 = ComponentVenusVillageHouse.func_74921_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
+			var10 = ComponentVenusVillageHouse.func_74921_a(component, list, rand, x, y, z, facing, type);
 		}
 		return (ComponentVenusVillage) var10;
 	}
 
-	private static ComponentVenusVillage getNextVillageComponent(ComponentVenusVillageStartPiece par0ComponentVillageStartPiece, List<StructureComponent> par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+	private static ComponentVenusVillage getNextVillageComponent(ComponentVenusVillageStartPiece component, List<StructureComponent> list, Random rand, int x, int y, int z, EnumFacing facing, int type)
 	{
-		int var8 = StructureVenusVillagePieces.func_75079_a(par0ComponentVillageStartPiece.structureVillageWeightedPieceList);
+		int var8 = StructureVenusVillagePieces.func_75079_a(component.structureVillageWeightedPieceList);
 
 		if (var8 <= 0)
 		{
@@ -95,8 +96,8 @@ public class StructureVenusVillagePieces
 			while (var9 < 5)
 			{
 				++var9;
-				int var10 = par2Random.nextInt(var8);
-				Iterator<StructureVenusVillagePieceWeight> var11 = par0ComponentVillageStartPiece.structureVillageWeightedPieceList.iterator();
+				int var10 = rand.nextInt(var8);
+				Iterator<StructureVenusVillagePieceWeight> var11 = component.structureVillageWeightedPieceList.iterator();
 
 				while (var11.hasNext())
 				{
@@ -105,21 +106,21 @@ public class StructureVenusVillagePieces
 
 					if (var10 < 0)
 					{
-						if (!var12.canSpawnMoreVillagePiecesOfType(par7) || var12 == par0ComponentVillageStartPiece.structVillagePieceWeight && par0ComponentVillageStartPiece.structureVillageWeightedPieceList.size() > 1)
+						if (!var12.canSpawnMoreVillagePiecesOfType() || var12 == component.structVillagePieceWeight && component.structureVillageWeightedPieceList.size() > 1)
 						{
 							break;
 						}
 
-						ComponentVenusVillage var13 = StructureVenusVillagePieces.func_75083_a(par0ComponentVillageStartPiece, var12, par1List, par2Random, par3, par4, par5, par6, par7);
+						ComponentVenusVillage var13 = StructureVenusVillagePieces.func_75083_a(component, var12, list, rand, x, y, z, facing, type);
 
 						if (var13 != null)
 						{
 							++var12.villagePiecesSpawned;
-							par0ComponentVillageStartPiece.structVillagePieceWeight = var12;
+							component.structVillagePieceWeight = var12;
 
 							if (!var12.canSpawnMoreVillagePieces())
 							{
-								par0ComponentVillageStartPiece.structureVillageWeightedPieceList.remove(var12);
+								component.structureVillageWeightedPieceList.remove(var12);
 							}
 							return var13;
 						}
@@ -127,11 +128,11 @@ public class StructureVenusVillagePieces
 				}
 			}
 
-			StructureBoundingBox var14 = ComponentVenusVillageTorch.func_74904_a(par0ComponentVillageStartPiece, par1List, par2Random, par3, par4, par5, par6);
+			StructureBoundingBox var14 = ComponentVenusVillageTorch.func_74904_a(list, x, y, z, facing);
 
 			if (var14 != null)
 			{
-				return new ComponentVenusVillageTorch(par0ComponentVillageStartPiece, par7, par2Random, var14, par6);
+				return new ComponentVenusVillageTorch(component, type, var14, facing);
 			}
 			else
 			{
@@ -140,20 +141,20 @@ public class StructureVenusVillagePieces
 		}
 	}
 
-	private static StructureComponent getNextVillageStructureComponent(ComponentVenusVillageStartPiece par0ComponentVillageStartPiece, List<StructureComponent> par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+	private static StructureComponent getNextVillageStructureComponent(ComponentVenusVillageStartPiece component, List<StructureComponent> list, Random rand, int x, int y, int z, EnumFacing facing, int type)
 	{
-		if (par7 > 50)
+		if (type > 50)
 		{
 			return null;
 		}
-		else if (Math.abs(par3 - par0ComponentVillageStartPiece.getBoundingBox().minX) <= 112 && Math.abs(par5 - par0ComponentVillageStartPiece.getBoundingBox().minZ) <= 112)
+		else if (Math.abs(x - component.getBoundingBox().minX) <= 112 && Math.abs(z - component.getBoundingBox().minZ) <= 112)
 		{
-			ComponentVenusVillage var8 = StructureVenusVillagePieces.getNextVillageComponent(par0ComponentVillageStartPiece, par1List, par2Random, par3, par4, par5, par6, par7 + 1);
+			ComponentVenusVillage var8 = StructureVenusVillagePieces.getNextVillageComponent(component, list, rand, x, y, z, facing, type + 1);
 
 			if (var8 != null)
 			{
-				par1List.add(var8);
-				par0ComponentVillageStartPiece.field_74932_i.add(var8);
+				list.add(var8);
+				component.field_74932_i.add(var8);
 				return var8;
 			}
 			return null;
@@ -164,22 +165,21 @@ public class StructureVenusVillagePieces
 		}
 	}
 
-	private static StructureComponent getNextComponentVillagePath(ComponentVenusVillageStartPiece par0ComponentVillageStartPiece, List<StructureComponent> par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+	private static StructureComponent getNextComponentVillagePath(ComponentVenusVillageStartPiece component, List<StructureComponent> list, Random rand, int x, int y, int z, EnumFacing facing, int type)
 	{
-		if (par7 > 3 + par0ComponentVillageStartPiece.terrainType)
+		if (type > 3 + component.terrainType)
 		{
 			return null;
 		}
-		else if (Math.abs(par3 - par0ComponentVillageStartPiece.getBoundingBox().minX) <= 112 && Math.abs(par5 - par0ComponentVillageStartPiece.getBoundingBox().minZ) <= 112)
+		else if (Math.abs(x - component.getBoundingBox().minX) <= 112 && Math.abs(z - component.getBoundingBox().minZ) <= 112)
 		{
-			StructureBoundingBox var8 = ComponentVenusVillagePathGen.func_74933_a(par0ComponentVillageStartPiece, par1List, par2Random, par3, par4, par5, par6);
+			StructureBoundingBox var8 = ComponentVenusVillagePathGen.func_74933_a(list, rand, x, y, z, facing);
 
 			if (var8 != null && var8.minY > 10)
 			{
-				ComponentVenusVillagePathGen var9 = new ComponentVenusVillagePathGen(par0ComponentVillageStartPiece, par7, par2Random, var8, par6);
-
-				par1List.add(var9);
-				par0ComponentVillageStartPiece.field_74930_j.add(var9);
+				ComponentVenusVillagePathGen var9 = new ComponentVenusVillagePathGen(component, type, var8, facing);
+				list.add(var9);
+				component.field_74930_j.add(var9);
 				return var9;
 			}
 			return null;
@@ -190,13 +190,13 @@ public class StructureVenusVillagePieces
 		}
 	}
 
-	static StructureComponent getNextStructureComponent(ComponentVenusVillageStartPiece par0ComponentVillageStartPiece, List<StructureComponent> par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+	static StructureComponent getNextStructureComponent(ComponentVenusVillageStartPiece component, List<StructureComponent> list, Random rand, int x, int y, int z, EnumFacing facing, int type)
 	{
-		return StructureVenusVillagePieces.getNextVillageStructureComponent(par0ComponentVillageStartPiece, par1List, par2Random, par3, par4, par5, par6, par7);
+		return StructureVenusVillagePieces.getNextVillageStructureComponent(component, list, rand, x, y, z, facing, type);
 	}
 
-	static StructureComponent getNextStructureComponentVillagePath(ComponentVenusVillageStartPiece par0ComponentVillageStartPiece, List<StructureComponent> par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+	static StructureComponent getNextStructureComponentVillagePath(ComponentVenusVillageStartPiece component, List<StructureComponent> list, Random rand, int x, int y, int z, EnumFacing facing, int type)
 	{
-		return StructureVenusVillagePieces.getNextComponentVillagePath(par0ComponentVillageStartPiece, par1List, par2Random, par3, par4, par5, par6, par7);
+		return StructureVenusVillagePieces.getNextComponentVillagePath(component, list, rand, x, y, z, facing, type);
 	}
 }

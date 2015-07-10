@@ -55,7 +55,7 @@ public class KapteynBBlocks
 		KapteynBBlocks.kapteyn_b_redstone_ore = new BlockKapteynBRedstoneOre("kapteyn_b_redstone_ore", false);
 		KapteynBBlocks.kapteyn_b_redstone_ore_active = new BlockKapteynBRedstoneOre("kapteyn_b_redstone_ore_active", true);
 		KapteynBBlocks.kapteyn_b_ice = new BlockKapteynBIce("kapteyn_b_ice");
-		//KapteynBBlocks.kapteyn_b_treasure_chest = new BlockKapteynBTreasureChest("kapteyn-b_treasure_chest");
+		KapteynBBlocks.kapteyn_b_treasure_chest = new BlockKapteynBTreasureChest("kapteyn_b_treasure_chest");
 		KapteynBBlocks.kapteyn_b_cracked_ice_stairs = new BlockStairsMP("kapteyn_b_cracked_ice_stairs", 3.25F, StairsCategory.kapteyn_b_cracked_ice, Blocks.stone.getDefaultState());
 		KapteynBBlocks.kapteyn_b_dungeon_brick_stairs = new BlockStairsMP("kapteyn_b_dungeon_brick_stairs", 4.0F, StairsCategory.kapteyn_b_dungeon_brick, Blocks.stone.getDefaultState());
 		KapteynBBlocks.rocky_solid_water = new BlockRockySolidWater("rocky_solid_water");
@@ -104,7 +104,7 @@ public class KapteynBBlocks
 		RegisterHelper.registerBlock(KapteynBBlocks.frozen_water_geyser);
 		RegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_ice, ItemBlockKapteynBIce.class);
 		RegisterHelper.registerBlock(KapteynBBlocks.uranium_bomb);
-		//RegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_treasure_chest);
+		RegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_treasure_chest);
 		RegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_ancient_chest);
 		RegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_cracked_ice_stairs);
 		RegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_dungeon_brick_stairs);

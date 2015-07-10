@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.venus.worldgen.village;
+package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,9 +22,7 @@ public class ComponentVenusVillageStartPiece extends ComponentVenusVillageWell
 	public ArrayList<Object> field_74932_i = new ArrayList<Object>();
 	public ArrayList<Object> field_74930_j = new ArrayList<Object>();
 
-	public ComponentVenusVillageStartPiece()
-	{
-	}
+	public ComponentVenusVillageStartPiece() {}
 
 	public ComponentVenusVillageStartPiece(WorldChunkManager par1WorldChunkManager, int par2, Random par3Random, int par4, int par5, ArrayList<StructureVenusVillagePieceWeight> par6ArrayList, int par7)
 	{
@@ -36,18 +34,16 @@ public class ComponentVenusVillageStartPiece extends ComponentVenusVillageWell
 	}
 
 	@Override
-	protected void func_143012_a(NBTTagCompound nbt)
+	protected void writeStructureToNBT(NBTTagCompound nbt)
 	{
-		super.func_143012_a(nbt);
-
+		super.writeStructureToNBT(nbt);
 		nbt.setInteger("TerrainType", this.terrainType);
 	}
 
 	@Override
-	protected void func_143011_b(NBTTagCompound nbt)
+	protected void readStructureFromNBT(NBTTagCompound nbt)
 	{
-		super.func_143011_b(nbt);
-
+		super.readStructureFromNBT(nbt);
 		this.terrainType = nbt.getInteger("TerrainType");
 	}
 

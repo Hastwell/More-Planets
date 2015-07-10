@@ -5,13 +5,13 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.fronos.worldgen.biome;
+package stevekung.mods.moreplanets.planets.fronos.world.gen.biome;
 
 import java.util.Random;
 
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
@@ -21,12 +21,9 @@ public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
 		super(ConfigManagerMP.idPurpleMapleForestBiome);
 		this.enableRain = true;
 		this.enableSnow = true;
-		this.topBlock = FronosBlocks.purple_grass;
-		this.topMeta = 0;
-		this.fillerBlock = FronosBlocks.fronos_dirt;
-		this.fillerMeta = 0;
-		this.stoneBlock = FronosBlocks.fronos_block;
-		this.stoneMeta = 0;
+		this.topBlock = FronosBlocks.purple_grass.getDefaultState();
+		this.fillerBlock = FronosBlocks.fronos_dirt.getDefaultState();
+		this.stoneBlock = FronosBlocks.fronos_block.getDefaultState();
 		this.getBiomeDecorator().purpleTallGrassPerChunk = 200;
 		this.getBiomeDecorator().deadBushPerChunk = 1;
 		this.getBiomeDecorator().reedsPerChunk = 200;
@@ -47,8 +44,8 @@ public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
 	}
 
 	@Override
-	public WorldGenAbstractTree func_150567_a(Random rand)
+	public WorldGenAbstractTree genBigTreeChance(Random rand)
 	{
-		return new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false);
+		return new WorldGenTreeMP(6, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling);
 	}
 }

@@ -49,9 +49,9 @@ public class ComponentKoentusVillageTorch extends ComponentKoentusVillage
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static StructureBoundingBox func_74904_a(List list, int x, int y, int z, EnumFacing type)
+	public static StructureBoundingBox func_74904_a(List list, int x, int y, int z, EnumFacing facing)
 	{
-		StructureBoundingBox var7 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 4, 2, type);
+		StructureBoundingBox var7 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 4, 2, facing);
 		return StructureComponent.findIntersecting(list, var7) != null ? null : var7;
 	}
 
@@ -66,7 +66,6 @@ public class ComponentKoentusVillageTorch extends ComponentKoentusVillage
 			{
 				return true;
 			}
-
 			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
 		}
 

@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.recipe;
 
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -64,7 +65,7 @@ public class CraftingRecipesSiriusB
 		GameRegistry.addRecipe(new ItemStack(SiriusBArmorItems.sulfur_chestplate, 1, 0), new Object[] { "X X", "XXX", "XXX", 'X', new ItemStack(SiriusBItems.sirius_b_item, 1, 4) });
 		GameRegistry.addRecipe(new ItemStack(SiriusBArmorItems.sulfur_leggings, 1, 0), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(SiriusBItems.sirius_b_item, 1, 4) });
 		GameRegistry.addRecipe(new ItemStack(SiriusBArmorItems.sulfur_boots, 1, 0), new Object[] { "X X", "X X", 'X', new ItemStack(SiriusBItems.sirius_b_item, 1, 4) });
-		//		GameRegistry.addRecipe(new ItemStack(SiriusBArmorItems.breathable_sulfur_helmet), new Object[] { "PPP", "POP", 'O', new ItemStack(GCItems.oxMask), 'P', new ItemStack(SiriusBItems.sirius_b_item, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(SiriusBArmorItems.breathable_sulfur_helmet), new Object[] { "PPP", "POP", 'O', new ItemStack(GCItems.oxMask), 'P', new ItemStack(SiriusBItems.sirius_b_item, 1, 4) });
 
 		// Tools
 		GameRegistry.addRecipe(new ItemStack(SiriusBToolsItems.sulfur_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(SiriusBItems.sirius_b_item, 1, 4), 'Y', new ItemStack(SiriusBItems.sirius_b_item, 1, 5) });

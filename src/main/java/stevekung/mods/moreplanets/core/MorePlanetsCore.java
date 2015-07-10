@@ -9,12 +9,18 @@ package stevekung.mods.moreplanets.core;
 
 import java.io.File;
 
+import micdoodle8.mods.galacticraft.api.GalacticraftRegistry;
 import micdoodle8.mods.galacticraft.api.galaxies.Moon;
 import micdoodle8.mods.galacticraft.api.galaxies.Planet;
 import micdoodle8.mods.galacticraft.api.galaxies.SolarSystem;
 import micdoodle8.mods.galacticraft.api.galaxies.Star;
+import micdoodle8.mods.galacticraft.api.recipe.CircuitFabricatorRecipes;
+import micdoodle8.mods.galacticraft.api.recipe.SchematicRegistry;
+import micdoodle8.mods.galacticraft.core.items.GCItems;
+import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -39,12 +45,14 @@ import stevekung.mods.moreplanets.common.eventhandler.GuiEventHandler;
 import stevekung.mods.moreplanets.common.eventhandler.LightningStormHandler;
 import stevekung.mods.moreplanets.common.eventhandler.MainMenuEventHandlerMP;
 import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
+import stevekung.mods.moreplanets.common.eventhandler.SkyProviderEventHandler;
 import stevekung.mods.moreplanets.common.integration.DispenserRegistryMP;
 import stevekung.mods.moreplanets.common.integration.TreeCapitatorIntegrationMP;
 import stevekung.mods.moreplanets.common.network.MessageHandlerOnClient;
 import stevekung.mods.moreplanets.common.network.MessageHandlerOnServer;
 import stevekung.mods.moreplanets.common.network.MeteorMessageToServer;
 import stevekung.mods.moreplanets.common.network.NetworkMessageToClient;
+import stevekung.mods.moreplanets.common.recipe.CompressorRecipesMP;
 import stevekung.mods.moreplanets.common.util.FurnaceFuelMP;
 import stevekung.mods.moreplanets.core.init.MPArmors;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -64,22 +72,33 @@ import stevekung.mods.moreplanets.moons.phobos.recipe.CraftingRecipesPhobos;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.diona.recipe.CraftingRecipesDiona;
+import stevekung.mods.moreplanets.planets.diona.schematic.SchematicTier4Rocket;
+import stevekung.mods.moreplanets.planets.diona.schematic.SchematicTier4RocketNoFlag;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.items.armor.FronosArmorItems;
 import stevekung.mods.moreplanets.planets.fronos.recipe.CraftingRecipesFronos;
+import stevekung.mods.moreplanets.planets.fronos.schematics.SchematicTier7Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.client.IceCrystalMeteorTickHandler;
 import stevekung.mods.moreplanets.planets.kapteynb.items.tools.KapteynBToolsItems;
 import stevekung.mods.moreplanets.planets.kapteynb.recipe.CraftingRecipesKapteynB;
+import stevekung.mods.moreplanets.planets.kapteynb.schematics.SchematicTier8Rocket;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.mercury.recipe.CraftingRecipesMercury;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
+import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import stevekung.mods.moreplanets.planets.nibiru.recipe.CraftingRecipesNibiru;
+import stevekung.mods.moreplanets.planets.nibiru.schematics.SchematicTier6Rocket;
+import stevekung.mods.moreplanets.planets.nibiru.schematics.SchematicTier6RocketNoFlag;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.pluto.recipe.CraftingRecipesPluto;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.client.PolongniusMeteorTickHandler;
+import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.recipe.CraftingRecipesPolongnius;
+import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5Rocket;
+import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5RocketNoFlag;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.recipe.CraftingRecipesSiriusB;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
@@ -159,7 +178,7 @@ public class MorePlanetsCore
 		MPTools.init();
 		MPPotions.init();
 
-		//		FMLCommonHandler.instance().bus().register(new SkyProviderHandlerMP());
+		FMLCommonHandler.instance().bus().register(new SkyProviderEventHandler());
 		FMLCommonHandler.instance().bus().register(new PolongniusMeteorTickHandler());
 		FMLCommonHandler.instance().bus().register(new KoentusMeteorTickHandler());
 		FMLCommonHandler.instance().bus().register(new IceCrystalMeteorTickHandler());
@@ -198,26 +217,26 @@ public class MorePlanetsCore
 		MorePlanetsCore.mpToolsTab = new CreativeTabsHelper("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
 		MorePlanetsCore.mpArmorTab = new CreativeTabsHelper("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
 
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier4Rocket());
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier4RocketNoFlag());
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier5Rocket());
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier5RocketNoFlag());
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier6Rocket());
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier6RocketNoFlag());
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier7Rocket());
-		//		SchematicRegistry.registerSchematicRecipe(new SchematicTier8Rocket());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier4Rocket());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier4RocketNoFlag());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier5Rocket());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier5RocketNoFlag());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier6Rocket());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier6RocketNoFlag());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier7Rocket());
+		SchematicRegistry.registerSchematicRecipe(new SchematicTier8Rocket());
 
 		if (ConfigManagerMP.enableRocketWithThaiFlag)
 		{
-			//			GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier4_rocket_schematic, 1, 0));
-			//			GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier5_rocket_schematic, 1, 0));
-			//			GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier6_rocket_schematic, 1, 0));
+			GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier_4_rocket_schematic, 1, 0));
+			GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier_5_rocket_schematic, 1, 0));
+			GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier_6_rocket_schematic, 1, 0));
 		}
 
-		//		GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier4_rocket_schematic, 1, 1));
-		//		GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier5_rocket_schematic, 1, 1));
-		//		GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier6_rocket_schematic, 1, 1));
-		//		GalacticraftRegistry.addDungeonLoot(5, new ItemStack(FronosItems.tier7_rocket_schematic, 1, 0));
+		GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier_4_rocket_schematic, 1, 1));
+		GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier_5_rocket_schematic, 1, 1));
+		GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier_6_rocket_schematic, 1, 1));
+		GalacticraftRegistry.addDungeonLoot(5, new ItemStack(FronosItems.tier_7_rocket_schematic, 1, 0));
 
 		/*findOre = new Achievement("achievement.gc.mineOre", "gc.mineOre", 0, 0, new ItemStack(GCBlocks.basicBlock, 1, 6), null).registerStat();
 		AchievementPage.registerAchievementPage(new AchievementPage("Galacticraft", new Achievement[] { findOre }));*/
@@ -246,10 +265,10 @@ public class MorePlanetsCore
 		CraftingRecipesDeimos.loadRecipes();
 		CraftingRecipesIo.loadRecipes();
 
-		//		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
-		//		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
+		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
+		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
 
-		//		CompressorRecipesMP.registerCompressorRecipes();
+		CompressorRecipesMP.registerCompressorRecipes();
 
 		DispenserRegistryMP.initRegistry();
 

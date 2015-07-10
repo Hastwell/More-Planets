@@ -55,6 +55,7 @@ public class ComponentKoentusVillageWell extends ComponentKoentusVillage
 		this.averageGroundLevel = nbt.getInteger("AvgGroundLevel");
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void buildComponent(StructureComponent component, List list, Random rand)
 	{

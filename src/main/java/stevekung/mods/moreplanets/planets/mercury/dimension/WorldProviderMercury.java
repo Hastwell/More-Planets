@@ -227,4 +227,10 @@ public class WorldProviderMercury extends WorldProviderSpace implements IGalacti
 	{
 		return 20.0D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_mercury";
+	}
 }

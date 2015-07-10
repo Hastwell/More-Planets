@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.client.particle;
+package stevekung.mods.moreplanets.client.particles;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;

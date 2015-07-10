@@ -7,18 +7,23 @@
 
 package stevekung.mods.moreplanets.moons.io.items;
 
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 
@@ -152,11 +157,26 @@ public class ItemTitaniumBucket extends ItemBucket
 			}
 			else
 			{
-				if (!world.isRemote && flag && !material.isLiquid())
+				if (world.provider.doesWaterVaporize() && this.isFull == Blocks.flowing_water)
 				{
-					world.destroyBlock(pos, true);
+					int i = pos.getX();
+					int j = pos.getY();
+					int k = pos.getZ();
+					world.playSoundEffect((double)((float)i + 0.5F), (double)((float)j + 0.5F), (double)((float)k + 0.5F), "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+
+					for (int l = 0; l < 8; ++l)
+					{
+						world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (double)i + Math.random(), (double)j + Math.random(), (double)k + Math.random(), 0.0D, 0.0D, 0.0D, new int[0]);
+					}
 				}
-				world.setBlockState(pos, this.isFull.getDefaultState(), 3);
+				else
+				{
+					if (!world.isRemote && flag && !material.isLiquid())
+					{
+						world.destroyBlock(pos, true);
+					}
+					world.setBlockState(pos, this.isFull.getDefaultState(), 3);
+				}
 				return true;
 			}
 		}
@@ -168,10 +188,10 @@ public class ItemTitaniumBucket extends ItemBucket
 		return MorePlanetsCore.mpItemsTab;
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack itemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
 }

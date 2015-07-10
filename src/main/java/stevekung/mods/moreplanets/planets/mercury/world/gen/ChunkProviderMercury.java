@@ -30,15 +30,14 @@ import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import net.minecraftforge.common.util.ForgeDirection;
-import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
-import stevekung.mods.moreplanets.planets.mercury.worldgen.dungeon.RoomBossMercury;
-import stevekung.mods.moreplanets.planets.mercury.worldgen.dungeon.RoomChestsMercury;
-import stevekung.mods.moreplanets.planets.mercury.worldgen.dungeon.RoomTreasureMercury;
+import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomBossMercury;
+import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomChestsMercury;
+import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomTreasureMercury;
 
 public class ChunkProviderMercury extends ChunkProviderGenerate
 {

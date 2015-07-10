@@ -215,4 +215,10 @@ public class WorldProviderNibiru extends WorldProviderSpace implements IGalactic
 	{
 		return 2.0D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_nibiru";
+	}
 }

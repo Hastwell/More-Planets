@@ -7,9 +7,14 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.items;
 
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
@@ -28,10 +33,10 @@ public class ItemCheeseOfMilkBucket extends ItemBucket
 		return MorePlanetsCore.mpItemsTab;
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack itemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
 }

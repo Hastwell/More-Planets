@@ -7,18 +7,22 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.items;
 
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
@@ -148,10 +152,10 @@ public class ItemSiriusObsidianBucket extends ItemBucket
 		return MorePlanetsCore.mpItemsTab;
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack itemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
 }

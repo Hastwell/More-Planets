@@ -40,6 +40,10 @@ public abstract class ItemArmorMP extends ItemArmor
 	@Override
 	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
 	{
+		if (this.getRepairItems() == null && this.getRepairItemsMetadata() == -1)
+		{
+			return false;
+		}
 		if (itemStack2.getItem() == this.getRepairItems() && itemStack2.getItemDamage() == this.getRepairItemsMetadata())
 		{
 			return true;

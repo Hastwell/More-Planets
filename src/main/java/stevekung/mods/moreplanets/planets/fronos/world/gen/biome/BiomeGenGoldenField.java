@@ -5,9 +5,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.fronos.worldgen.biome;
+package stevekung.mods.moreplanets.planets.fronos.world.gen.biome;
 
-import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenGoldenField extends BiomeGenBaseFronos
@@ -17,12 +17,9 @@ public class BiomeGenGoldenField extends BiomeGenBaseFronos
 		super(ConfigManagerMP.idGoldenFieldBiome);
 		this.enableRain = true;
 		this.enableSnow = true;
-		this.topBlock = FronosBlocks.golden_grass;
-		this.topMeta = 0;
-		this.fillerBlock = FronosBlocks.fronos_dirt;
-		this.fillerMeta = 0;
-		this.stoneBlock = FronosBlocks.fronos_block;
-		this.stoneMeta = 0;
+		this.topBlock = FronosBlocks.golden_grass.getDefaultState();
+		this.fillerBlock = FronosBlocks.fronos_dirt.getDefaultState();
+		this.stoneBlock = FronosBlocks.fronos_block.getDefaultState();
 		this.getBiomeDecorator().goldenTallGrassPerChunk = 200;
 		this.getBiomeDecorator().deadBushPerChunk = 2;
 		this.getBiomeDecorator().reedsPerChunk = 200;

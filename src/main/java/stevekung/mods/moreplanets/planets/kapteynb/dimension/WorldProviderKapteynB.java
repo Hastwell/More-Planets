@@ -215,4 +215,10 @@ public class WorldProviderKapteynB extends WorldProviderSpace implements IGalact
 	{
 		return 3.5D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_kapteynb";
+	}
 }

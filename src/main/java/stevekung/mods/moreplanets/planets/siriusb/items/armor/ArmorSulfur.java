@@ -35,13 +35,6 @@ public class ArmorSulfur extends ItemArmorMP
 		return null;
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
-
 	@Override
 	protected Item getRepairItems()
 	{

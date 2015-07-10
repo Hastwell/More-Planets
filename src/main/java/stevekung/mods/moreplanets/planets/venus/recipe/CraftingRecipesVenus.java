@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.venus.recipe;
 
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -56,7 +57,7 @@ public class CraftingRecipesVenus
 	{
 		// Items
 		GameRegistry.addShapelessRecipe(new ItemStack(VenusItems.venus_item, 9, 0), new ItemStack(VenusBlocks.venus_block, 1, 11) );
-		//		GameRegistry.addRecipe(new ItemStack(VenusItems.sulfur_battery, 1, 99), new Object[] { " I ", "IUI", "IGI", 'I', new ItemStack(GCItems.basicItem, 1, 7), 'U', new ItemStack(Items.redstone), 'G', new ItemStack(SiriusBItems.sirius_b_item, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(VenusItems.sulfur_battery, 1, 99), new Object[] { " I ", "IUI", "IGI", 'I', new ItemStack(GCItems.basicItem, 1, 7), 'U', new ItemStack(Items.redstone), 'G', new ItemStack(SiriusBItems.sirius_b_item, 1, 2) });
 		//		GameRegistry.addShapelessRecipe(new ItemStack(KoentusItems.koentus_item, 9, 1), new ItemStack(KoentusBlocks.koentus_block, 1, 10) );
 		//		GameRegistry.addShapelessRecipe(new ItemStack(KoentusItems.koentus_item, 9, 4), new ItemStack(KoentusBlocks.koentus_block, 1, 15) );
 		//		GameRegistry.addShapelessRecipe(new ItemStack(KoentusItems.koentus_meteor_chunk, 3), new ItemStack(KoentusItems.koentus_item, 1, 3) );
@@ -102,8 +103,8 @@ public class CraftingRecipesVenus
 		GameRegistry.addSmelting(new ItemStack(MPBlocks.chondrite_rock, 1, 0), new ItemStack(MPBlocks.chondrite_rock, 1, 2), 0.4F);
 		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 5), new ItemStack(VenusItems.venus_item, 1, 0), 0.8F);
-		//GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		//GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 8), new ItemStack(Items.coal), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 9), new ItemStack(Items.iron_ingot), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(VenusBlocks.venus_block, 1, 10), new ItemStack(Items.gold_ingot), 0.8F);

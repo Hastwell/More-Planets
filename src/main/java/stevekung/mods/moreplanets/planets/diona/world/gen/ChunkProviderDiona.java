@@ -31,17 +31,16 @@ import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import net.minecraftforge.common.util.ForgeDirection;
-import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaMinionCreeper;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
-import stevekung.mods.moreplanets.planets.diona.worldgen.dungeon.RoomBossDiona;
-import stevekung.mods.moreplanets.planets.diona.worldgen.dungeon.RoomChestsDiona;
-import stevekung.mods.moreplanets.planets.diona.worldgen.dungeon.RoomTreasureDiona;
+import stevekung.mods.moreplanets.planets.diona.world.gen.dungeon.RoomBossDiona;
+import stevekung.mods.moreplanets.planets.diona.world.gen.dungeon.RoomChestsDiona;
+import stevekung.mods.moreplanets.planets.diona.world.gen.dungeon.RoomTreasureDiona;
 
 public class ChunkProviderDiona extends ChunkProviderGenerate
 {

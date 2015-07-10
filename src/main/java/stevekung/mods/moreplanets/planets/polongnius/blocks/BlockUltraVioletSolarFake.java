@@ -15,6 +15,7 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.particle.EffectRenderer;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -31,11 +32,18 @@ import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityUltr
 
 public class BlockUltraVioletSolarFake extends BlockContainerMP implements IPartialSealableBlock, ITileEntityProvider
 {
-	public BlockUltraVioletSolarFake(String assetName)
+	public BlockUltraVioletSolarFake(String name)
 	{
 		super(Material.iron);
+		this.setUnlocalizedName(name);
 		this.setStepSound(Block.soundTypeMetal);
 		this.setResistance(1000000000000000.0F);
+	}
+
+	@Override
+	public CreativeTabs getCreativeTabToDisplayOn()
+	{
+		return null;
 	}
 
 	@Override

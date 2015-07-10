@@ -13,7 +13,9 @@ import micdoodle8.mods.galacticraft.core.energy.tile.TileBaseUniversalElectrical
 import micdoodle8.mods.galacticraft.core.items.ItemBlockDesc.IBlockShiftDesc;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,6 +26,8 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityUltraVioletSolarPanel;
 
@@ -153,5 +157,36 @@ public class BlockUltraVioletSolarPanel extends BlockTileGC implements IPartialS
 	public boolean showDescription(int meta)
 	{
 		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IBlockState getStateForEntityRender(IBlockState state)
+	{
+		return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
+	}
+
+	@Override
+	public IBlockState getStateFromMeta(int meta)
+	{
+		EnumFacing enumfacing = EnumFacing.getFront(meta);
+
+		if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+		{
+			enumfacing = EnumFacing.NORTH;
+		}
+		return this.getDefaultState().withProperty(FACING, enumfacing);
+	}
+
+	@Override
+	public int getMetaFromState(IBlockState state)
+	{
+		return ((EnumFacing)state.getValue(FACING)).getIndex();
+	}
+
+	@Override
+	protected BlockState createBlockState()
+	{
+		return new BlockState(this, new IProperty[] {FACING});
 	}
 }

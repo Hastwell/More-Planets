@@ -7,9 +7,14 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.items;
 
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
@@ -23,12 +28,12 @@ public class ItemFrozenWaterBucket extends ItemBucket
 		this.setContainerItem(Items.bucket);
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack itemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
 
 	@Override
 	public CreativeTabs getCreativeTab()

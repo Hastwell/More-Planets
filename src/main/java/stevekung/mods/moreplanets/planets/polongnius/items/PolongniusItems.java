@@ -41,7 +41,7 @@ public class PolongniusItems
 		PolongniusItems.cheese_food = new ItemCheeseFood("cheese_food");
 		PolongniusItems.polongnius_dungeon_key = new ItemPolongniusDungeonKey("polongnius_dungeon_key");
 		PolongniusItems.cheese_slimeball = new ItemMorePlanets("cheese_slimeball");
-		//PolongniusItems.tier5_rocket = new ItemTier5Rocket("tier_5_rocket");
+		PolongniusItems.tier_5_rocket = new ItemTier5Rocket("tier_5_rocket");
 		PolongniusItems.tier_6_rocket_module = new ItemTier6RocketModule("tier_6_rocket_module");
 		PolongniusItems.tier_5_rocket_schematic = new ItemTier5RocketSchematic("tier_5_rocket_schematic");
 		PolongniusItems.cheese_of_milk_bucket = new ItemCheeseOfMilkBucket("cheese_of_milk_bucket");
@@ -57,7 +57,7 @@ public class PolongniusItems
 		RegisterHelper.registerItem(PolongniusItems.cheese_slimeball);
 		RegisterHelper.registerItem(PolongniusItems.cheese_food);
 		RegisterHelper.registerItem(PolongniusItems.cheese_of_milk_bucket);
-		//RegisterHelper.registerItem(PolongniusItems.tier5_rocket);
+		RegisterHelper.registerItem(PolongniusItems.tier_5_rocket);
 		RegisterHelper.registerItem(PolongniusItems.polongnius_meteor_chunk);
 		RegisterHelper.registerItem(PolongniusItems.polongnius_dungeon_key);
 	}

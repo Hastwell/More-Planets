@@ -239,4 +239,10 @@ public class WorldProviderFronos extends WorldProviderSpace implements IGalactic
 	{
 		return 2.4D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_fronos";
+	}
 }

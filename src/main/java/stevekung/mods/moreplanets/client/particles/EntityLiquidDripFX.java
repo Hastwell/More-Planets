@@ -1,11 +1,4 @@
-/*******************************************************************************
- * Copyright 2015 SteveKunG - More Planets Mod
- * 
- * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
- ******************************************************************************/
-
-package stevekung.mods.moreplanets.planets.polongnius.client.particles;
+package stevekung.mods.moreplanets.client.particles;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -18,16 +11,26 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class EntityCheeseOfMilkDripFX extends EntityFX
+public class EntityLiquidDripFX extends EntityFX
 {
 	private int bobTimer;
+	private boolean isLavaDrip;
+	private float newRed;
+	private float newGreen;
+	private float newBlue;
+	private float newAlpha;
 
-	public EntityCheeseOfMilkDripFX(World par1World, double par2, double par4, double par6)
+	public EntityLiquidDripFX(World world, double x, double y, double z, float r, float g, float b, float alpha, boolean isLavaDrip)
 	{
-		super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
+		super(world, x, y, z, 0.0D, 0.0D, 0.0D);
 		this.motionX = this.motionY = this.motionZ = 0.0D;
 		this.setParticleTextureIndex(113);
 		this.setSize(0.01F, 0.01F);
+		this.newRed = r;
+		this.newGreen = g;
+		this.newBlue = b;
+		this.newAlpha = alpha;
+		this.isLavaDrip = isLavaDrip;
 		this.particleGravity = 0.06F;
 		this.bobTimer = 40;
 		this.particleMaxAge = (int) (64.0D / (Math.random() * 0.8D + 0.2D));
@@ -35,15 +38,15 @@ public class EntityCheeseOfMilkDripFX extends EntityFX
 	}
 
 	@Override
-	public int getBrightnessForRender(float par1)
+	public int getBrightnessForRender(float light)
 	{
-		return super.getBrightnessForRender(par1);
+		return this.isLavaDrip ? 257 : super.getBrightnessForRender(light);
 	}
 
 	@Override
-	public float getBrightness(float par1)
+	public float getBrightness(float light)
 	{
-		return super.getBrightness(par1);
+		return this.isLavaDrip ? 1.0F : super.getBrightness(light);
 	}
 
 	@Override
@@ -52,10 +55,22 @@ public class EntityCheeseOfMilkDripFX extends EntityFX
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
-		this.particleGreen = 0.85F;
-		this.particleBlue = 0.5F;
-		this.particleRed = 1.0F;
-		this.particleAlpha = 0.4F;
+
+		//if (!this.isLavaDrip)
+		{
+			this.particleRed = this.newRed;
+			this.particleGreen = this.newGreen;
+			this.particleBlue = this.newBlue;
+			this.particleAlpha = this.newAlpha;
+		}
+		/*else
+		{
+			this.particleRed = this.newRed;
+			this.particleGreen = this.newGreen / (float)(40 - this.bobTimer + 16);
+			this.particleBlue = this.newBlue / (float)(40 - this.bobTimer + 8);
+			this.particleAlpha = this.newAlpha;
+		}*/
+
 		this.motionY -= this.particleGravity;
 
 		if (this.bobTimer-- > 0)
@@ -79,10 +94,16 @@ public class EntityCheeseOfMilkDripFX extends EntityFX
 		{
 			this.setDead();
 		}
-
 		if (this.onGround)
 		{
-			this.setDead();
+			if (!this.isLavaDrip)
+			{
+				this.setDead();
+			}
+			else
+			{
+				this.setParticleTextureIndex(114);
+			}
 			this.motionX *= 0.699999988079071D;
 			this.motionZ *= 0.699999988079071D;
 		}

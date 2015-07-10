@@ -7,14 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.items.armor;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.common.items.armor.ItemArmorMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
-public class ArmorPolongniusMeteoricIron extends ItemArmor
+public class ArmorPolongniusMeteoricIron extends ItemArmorMP
 {
 	public ArmorPolongniusMeteoricIron(String name, ArmorMaterial material, int render, int type)
 	{
@@ -36,26 +35,15 @@ public class ArmorPolongniusMeteoricIron extends ItemArmor
 		return null;
 	}
 
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public EnumRarity getRarity(ItemStack itemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
-
 	@Override
-	public CreativeTabs getCreativeTab()
+	protected Item getRepairItems()
 	{
-		return MorePlanetsCore.mpArmorTab;
+		return PolongniusItems.polongnius_item;
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+	protected int getRepairItemsMetadata()
 	{
-		if (itemStack2.getItem() == PolongniusItems.polongnius_item && itemStack2.getItemDamage() == 6)
-		{
-			return true;
-		}
-		return false;
+		return 6;
 	}
 }

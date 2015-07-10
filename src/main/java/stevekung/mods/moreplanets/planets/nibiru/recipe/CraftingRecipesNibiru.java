@@ -7,6 +7,11 @@
 
 package stevekung.mods.moreplanets.planets.nibiru.recipe;
 
+import java.util.HashMap;
+
+import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
+import micdoodle8.mods.galacticraft.core.items.GCItems;
+import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -30,8 +35,8 @@ public class CraftingRecipesNibiru
 		CraftingRecipesNibiru.addBlockSmelting();
 		CraftingRecipesNibiru.addItemSmelting();
 		CraftingRecipesNibiru.addOreDictRecipe();
-		//		CraftingRecipesNibiru.addTier6RocketRecipes();
-		//		CraftingRecipesNibiru.addTier6RocketNoFlagRecipes();
+		CraftingRecipesNibiru.addTier6RocketRecipes();
+		CraftingRecipesNibiru.addTier6RocketNoFlagRecipes();
 	}
 
 	private static void addBlockRecipes()
@@ -39,7 +44,7 @@ public class CraftingRecipesNibiru
 		// Blocks
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruBlocks.nibiru_planks, 4, 0), new ItemStack(NibiruBlocks.nibiru_log, 1, 0) );
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruBlocks.nibiru_planks, 4, 1), new ItemStack(NibiruBlocks.nibiru_log, 1, 1) );
-		//		GameRegistry.addRecipe(new ItemStack(NibiruBlocks.power_crystal_generator), new Object[] { "AAA", "TFT", "TWT", 'A', new ItemStack(AsteroidsItems.basicItem, 1, 6), 'F', new ItemStack(Blocks.furnace), 'W', new ItemStack(GCBlocks.aluminumWire, 1, 1), 'T', new ItemStack(AsteroidsItems.basicItem, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(NibiruBlocks.power_crystal_generator), new Object[] { "AAA", "TFT", "TWT", 'A', new ItemStack(AsteroidsItems.basicItem, 1, 6), 'F', new ItemStack(Blocks.furnace), 'W', new ItemStack(GCBlocks.aluminumWire, 1, 1), 'T', new ItemStack(AsteroidsItems.basicItem, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NibiruBlocks.ichorius_torch, 4), new Object[] { "I", "S", 'I', new ItemStack(NibiruItems.power_crystal), 'S', new ItemStack(Items.stick) });
 		GameRegistry.addRecipe(new ItemStack(NibiruBlocks.nibiru_block, 1, 9), new Object[] { "III", "III", "III", 'I', new ItemStack(NibiruItems.power_crystal) });
 		GameRegistry.addRecipe(new ItemStack(NibiruBlocks.nibiru_block, 1, 10), new Object[] { "NNN", "NNN", "NNN", 'N', new ItemStack(NibiruItems.nibiru_item, 1, 1) });
@@ -83,9 +88,9 @@ public class CraftingRecipesNibiru
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.nibiru_item, 2, 4), new Object[] { "M", "M", 'M', new ItemStack(NibiruItems.nibiru_item, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.nibiru_item, 2, 5), new Object[] { "P", "P", 'P', new ItemStack(NibiruItems.nibiru_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.space_fruits, 1, 2), new Object[] { "O", "B", 'O', new ItemStack(NibiruItems.space_fruits, 1, 1), 'B', new ItemStack(Items.potionitem, 1, 0) });
-		//		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier7_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(NibiruItems.tier7_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		//		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier7_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(NibiruItems.tier7_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		//		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier7_rocket_module, 1, 1), new Object[] { "PDP", "PCP", "NON", 'D', new ItemStack(NibiruBlocks.nibiru_block, 1, 10), 'P', new ItemStack(NibiruItems.nibiru_item, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'N', new ItemStack(NibiruItems.tier7_rocket_module, 1, 2), 'O', new ItemStack(GCItems.oxygenVent) });
+		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 1), new Object[] { "PDP", "PCP", "NON", 'D', new ItemStack(NibiruBlocks.nibiru_block, 1, 10), 'P', new ItemStack(NibiruItems.nibiru_item, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'N', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'O', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruItems.power_crystal, 9), new ItemStack(NibiruBlocks.nibiru_block, 1, 9) );
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruItems.nibiru_item, 9, 1), new ItemStack(NibiruBlocks.nibiru_block, 1, 10) );
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruItems.nibiru_item, 9, 0), new ItemStack(NibiruBlocks.nibiru_block, 1, 11) );
@@ -104,8 +109,8 @@ public class CraftingRecipesNibiru
 		GameRegistry.addRecipe(new ItemStack(NibiruArmorItems.norium_chestplate), new Object[] { "Q Q", "QQQ", "QQQ", 'Q', new ItemStack(NibiruItems.nibiru_item, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(NibiruArmorItems.norium_leggings), new Object[] { "QQQ", "Q Q", "Q Q", 'Q', new ItemStack(NibiruItems.nibiru_item, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(NibiruArmorItems.norium_boots), new Object[] { "Q Q", "Q Q", 'Q', new ItemStack(NibiruItems.nibiru_item, 1, 3) });
-		//		GameRegistry.addRecipe(new ItemStack(NibiruArmorItems.breathable_red_gem_helmet), new Object[] { "RRR", "ROR", 'R', new ItemStack(NibiruItems.nibiru_item, 1, 2), 'O', new ItemStack(GCItems.oxMask) });
-		//		GameRegistry.addRecipe(new ItemStack(NibiruArmorItems.breathable_norium_helmet), new Object[] { "NNN", "NON", 'N', new ItemStack(NibiruItems.nibiru_item, 1, 3), 'O', new ItemStack(GCItems.oxMask) });
+		GameRegistry.addRecipe(new ItemStack(NibiruArmorItems.breathable_red_gem_helmet), new Object[] { "RRR", "ROR", 'R', new ItemStack(NibiruItems.nibiru_item, 1, 2), 'O', new ItemStack(GCItems.oxMask) });
+		GameRegistry.addRecipe(new ItemStack(NibiruArmorItems.breathable_norium_helmet), new Object[] { "NNN", "NON", 'N', new ItemStack(NibiruItems.nibiru_item, 1, 3), 'O', new ItemStack(GCItems.oxMask) });
 
 		// Tools
 		GameRegistry.addRecipe(new ItemStack(NibiruToolsItems.red_gem_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(NibiruItems.nibiru_item, 1, 2), 'Y', new ItemStack(NibiruItems.nibiru_item, 1, 4) });
@@ -150,141 +155,141 @@ public class CraftingRecipesNibiru
 		OreDictionary.registerOre("logWood", new ItemStack(NibiruBlocks.nibiru_log, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
-	//	private static void addTier6RocketRecipes()
-	//	{
-	//		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
-	//		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 0));
-	//		input.put(2, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(3, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(4, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(5, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(6, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(7, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(8, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(9, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(10, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(11, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(12, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 1));
-	//		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(15, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 0));
-	//		input.put(16, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 1));
-	//		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(19, null);
-	//		input.put(20, null);
-	//		input.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 0), input);
-	//
-	//		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 3), input2);
-	//	}
-	//
-	//	private static void addTier6RocketNoFlagRecipes()
-	//	{
-	//		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
-	//		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 4));
-	//		input.put(2, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(3, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(4, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(5, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(6, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(7, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(8, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(9, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(10, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(11, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2));
-	//		input.put(12, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 1));
-	//		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(15, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 0));
-	//		input.put(16, new ItemStack(PolongniusItems.tier6_rocket_module, 1, 1));
-	//		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(19, null);
-	//		input.put(20, null);
-	//		input.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 10), input);
-	//
-	//		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 11), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 11), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 11), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 12), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 12), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 12), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier6_rocket, 1, 13), input2);
-	//	}
+	private static void addTier6RocketRecipes()
+	{
+		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
+		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 0));
+		input.put(2, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(3, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(4, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(5, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(6, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(7, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(8, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(9, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(10, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(11, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(12, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 1));
+		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(15, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 0));
+		input.put(16, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 1));
+		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(19, null);
+		input.put(20, null);
+		input.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 0), input);
+
+		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 3), input2);
+	}
+
+	private static void addTier6RocketNoFlagRecipes()
+	{
+		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
+		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 4));
+		input.put(2, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(3, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(4, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(5, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(6, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(7, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(8, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(9, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(10, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(11, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2));
+		input.put(12, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 1));
+		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(15, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 0));
+		input.put(16, new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 1));
+		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(19, null);
+		input.put(20, null);
+		input.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 10), input);
+
+		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 11), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 11), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 11), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 12), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 12), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 12), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier6RocketRecipes.addTier6RocketBenchNoFlagRecipe(new ItemStack(NibiruItems.tier_6_rocket, 1, 13), input2);
+	}
 }

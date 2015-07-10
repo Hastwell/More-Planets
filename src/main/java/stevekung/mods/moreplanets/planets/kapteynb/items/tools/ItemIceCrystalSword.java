@@ -7,9 +7,11 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.items.tools;
 
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
@@ -44,11 +46,12 @@ public class ItemIceCrystalSword extends ItemSword
 		return true;
 	}
 
-	//	@Override
-	//	public EnumRarity getRarity(ItemStack par1ItemStack)
-	//	{
-	//		return ClientProxyCore.galacticraftItem;
-	//	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)

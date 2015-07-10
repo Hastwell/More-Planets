@@ -48,6 +48,7 @@ public class ComponentKoentusVillagePathGen extends ComponentKoentusVillageRoadP
 		this.averageGroundLevel = nbt.getInteger("AvgGroundLevel");
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void buildComponent(StructureComponent component, List list, Random rand)
 	{

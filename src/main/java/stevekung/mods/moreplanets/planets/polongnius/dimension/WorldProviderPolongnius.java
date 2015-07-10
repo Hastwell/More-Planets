@@ -216,4 +216,10 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 	{
 		return 1.0D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_polongnius";
+	}
 }

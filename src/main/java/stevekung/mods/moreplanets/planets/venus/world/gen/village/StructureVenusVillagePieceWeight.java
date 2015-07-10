@@ -5,23 +5,23 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.venus.worldgen.village;
+package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 public class StructureVenusVillagePieceWeight
 {
 	public Class<? extends ComponentVenusVillage> villagePieceClass;
-	public final int villagePieceWeight;
+	public int villagePieceWeight;
 	public int villagePiecesSpawned;
 	public int villagePiecesLimit;
 
-	public StructureVenusVillagePieceWeight(Class<? extends ComponentVenusVillage> par1Class, int par2, int par3)
+	public StructureVenusVillagePieceWeight(Class<? extends ComponentVenusVillage> component, int weight, int limit)
 	{
-		this.villagePieceClass = par1Class;
-		this.villagePieceWeight = par2;
-		this.villagePiecesLimit = (int) (par3 / 1.5D);
+		this.villagePieceClass = component;
+		this.villagePieceWeight = weight;
+		this.villagePiecesLimit = (int) (limit / 1.5D);
 	}
 
-	public boolean canSpawnMoreVillagePiecesOfType(int par1)
+	public boolean canSpawnMoreVillagePiecesOfType()
 	{
 		return this.villagePiecesLimit == 0 || this.villagePiecesSpawned < this.villagePiecesLimit;
 	}

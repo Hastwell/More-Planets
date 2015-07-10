@@ -5,80 +5,78 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.venus.worldgen.village;
+package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.BlockTorch;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
+import stevekung.mods.moreplanets.planets.venus.blocks.BlockVenus;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 
 public class ComponentVenusVillageHouse extends ComponentVenusVillage
 {
 	private int averageGroundLevel = -1;
 
-	public ComponentVenusVillageHouse()
-	{
-	}
+	public ComponentVenusVillageHouse() {}
 
-	public ComponentVenusVillageHouse(ComponentVenusVillageStartPiece par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5)
+	public ComponentVenusVillageHouse(ComponentVenusVillageStartPiece component, int type, StructureBoundingBox box, EnumFacing facing)
 	{
-		super(par1ComponentVillageStartPiece, par2);
-		this.coordBaseMode = par5;
-		this.boundingBox = par4StructureBoundingBox;
+		super(component, type);
+		this.coordBaseMode = facing;
+		this.boundingBox = box;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static ComponentVenusVillageHouse func_74921_a(ComponentVenusVillageStartPiece par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
+	public static ComponentVenusVillageHouse func_74921_a(ComponentVenusVillageStartPiece component, List list, Random rand, int x, int y, int z, EnumFacing facing, int type)
 	{
-		final StructureBoundingBox var8 = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 17, 9, 17, par6);
-		return StructureComponent.findIntersecting(par1List, var8) == null ? new ComponentVenusVillageHouse(par0ComponentVillageStartPiece, par7, par2Random, var8, par6) : null;
+		StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 17, 9, 17, facing);
+		return StructureComponent.findIntersecting(list, var8) == null ? new ComponentVenusVillageHouse(component, type, var8, facing) : null;
 	}
 
 	@Override
-	protected void func_143012_a(NBTTagCompound nbt)
+	protected void writeStructureToNBT(NBTTagCompound nbt)
 	{
-		super.func_143012_a(nbt);
-
+		super.writeStructureToNBT(nbt);
 		nbt.setInteger("AvgGroundLevel", this.averageGroundLevel);
 	}
 
 	@Override
-	protected void func_143011_b(NBTTagCompound nbt)
+	protected void readStructureFromNBT(NBTTagCompound nbt)
 	{
-		super.func_143011_b(nbt);
-
+		super.readStructureFromNBT(nbt);
 		this.averageGroundLevel = nbt.getInteger("AvgGroundLevel");
 	}
 
 	@Override
-	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
+	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
 		if (this.averageGroundLevel < 0)
 		{
-			this.averageGroundLevel = this.getAverageGroundLevel(par1World, par3StructureBoundingBox);
+			this.averageGroundLevel = this.getAverageGroundLevel(world, box);
 
 			if (this.averageGroundLevel < 0)
 			{
 				return true;
 			}
-
 			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 9 - 1, 0);
 		}
 
-		this.fillWithAir(par1World, par3StructureBoundingBox, 3, 0, 3, 13, 9, 13);
-		this.fillWithAir(par1World, par3StructureBoundingBox, 5, 0, 2, 11, 9, 14);
-		this.fillWithAir(par1World, par3StructureBoundingBox, 2, 0, 5, 14, 9, 11);
+		this.fillWithAir(world, box, 3, 0, 3, 13, 9, 13);
+		this.fillWithAir(world, box, 5, 0, 2, 11, 9, 14);
+		this.fillWithAir(world, box, 2, 0, 5, 14, 9, 11);
 
 		for (int i = 3; i <= 13; i++)
 		{
 			for (int j = 3; j <= 13; j++)
 			{
-				this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, i, 0, j, par3StructureBoundingBox);
+				this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), i, 0, j, box);
 			}
 		}
 
@@ -86,7 +84,7 @@ public class ComponentVenusVillageHouse extends ComponentVenusVillage
 		{
 			for (int j = 2; j <= 14; j++)
 			{
-				this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, i, 0, j, par3StructureBoundingBox);
+				this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), i, 0, j, box);
 			}
 		}
 
@@ -94,7 +92,7 @@ public class ComponentVenusVillageHouse extends ComponentVenusVillage
 		{
 			for (int j = 5; j <= 11; j++)
 			{
-				this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, i, 0, j, par3StructureBoundingBox);
+				this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), i, 0, j, box);
 			}
 		}
 
@@ -102,343 +100,343 @@ public class ComponentVenusVillageHouse extends ComponentVenusVillage
 
 		for (yLevel = -8; yLevel < 4; yLevel++)
 		{
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 2, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 2, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 3, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 4, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 2, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 2, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 3, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 4, box);
 
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 5, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 6, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 7, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, yLevel <= 1 ? VenusBlocks.venus_block : Blocks.air, 12, 1, yLevel, 8, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 9, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 10, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 11, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 5, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 6, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 7, box);
+			this.func_175811_a(world, yLevel <= 1 ? VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick) : Blocks.air.getDefaultState(), 1, yLevel, 8, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 9, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 10, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 11, box);
 
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 12, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 13, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 14, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 14, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 12, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 13, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 14, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 14, box);
 
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 15, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 15, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 15, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, yLevel <= 1 ? VenusBlocks.venus_block : Blocks.air, 12, 8, yLevel, 15, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 15, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 15, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 15, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 15, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 15, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 15, box);
+			this.func_175811_a(world, yLevel <= 1 ? VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick) : Blocks.air.getDefaultState(), 8, yLevel, 15, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 15, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 15, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 15, box);
 
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 14, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 14, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 13, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 12, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 14, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 14, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 13, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 12, box);
 
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 11, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 10, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 9, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, yLevel <= 1 ? VenusBlocks.venus_block : Blocks.air, 12, 15, yLevel, 8, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 7, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 6, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 5, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 11, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 10, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 9, box);
+			this.func_175811_a(world, yLevel <= 1 ? VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick) : Blocks.air.getDefaultState(), 15, yLevel, 8, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 7, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 6, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 5, box);
 
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 4, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 3, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 2, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 2, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 4, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 3, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 2, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 2, box);
 
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 1, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 1, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 1, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, yLevel <= 1 ? VenusBlocks.venus_block : Blocks.air, 12, 8, yLevel, 1, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 1, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 1, par3StructureBoundingBox);
-			this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 1, par3StructureBoundingBox);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 1, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 1, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 1, box);
+			this.func_175811_a(world, yLevel <= 1 ? VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick) : Blocks.air.getDefaultState(), 8, yLevel, 1, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 1, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 1, box);
+			this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 1, box);
 		}
 
 		yLevel = 4;
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 4, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 4, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 6, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 10, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 11, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 6, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 10, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 11, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 14, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 14, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 15, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 15, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 12, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 12, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 10, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 6, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 5, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 10, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 6, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 5, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 2, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 2, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 1, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 1, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.sulfur_torch, 0, 8, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.sulfur_torch, 0, 14, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.sulfur_torch, 0, 8, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.sulfur_torch, 0, 2, yLevel, 8, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 8, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 14, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 8, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, yLevel, 8, box);
 
 		yLevel = 5;
 
 		// corner 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 5, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 5, box);
 
 		// side 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 6, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 1, yLevel, 10, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 6, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, yLevel, 10, box);
 
 		// corner 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 14, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 14, box);
 
 		// side 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 15, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 15, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 15, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 15, box);
 
 		// corner 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 11, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 11, box);
 
 		// side 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 10, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 15, yLevel, 6, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 10, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 15, yLevel, 6, box);
 
 		// corner 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 2, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 2, box);
 
 		// side 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 1, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 1, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 1, box);
 
 		yLevel = 6;
 
 		// corner 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 4, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 4, box);
 
 		// side 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 6, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 10, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 11, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 6, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 10, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 11, box);
 
 		// corner 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 13, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 13, box);
 
 		// side 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 14, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 14, box);
 
 		// corner 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 12, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 12, box);
 
 		// side 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 10, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 6, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 5, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 10, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 6, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 5, box);
 
 		// corner 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 3, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 3, box);
 
 		// side 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 2, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 2, box);
 
 		yLevel = 7;
 
 		// corner 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 6, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 6, box);
 
 		// side 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 2, yLevel, 9, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 2, yLevel, 9, box);
 
 		// corner 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 10, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 13, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 10, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 13, box);
 
 		// side 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 14, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 14, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 14, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 14, box);
 
 		// corner 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 10, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 10, box);
 
 		// side 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 14, yLevel, 7, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 14, yLevel, 7, box);
 
 		// corner 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 6, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 3, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 6, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 3, box);
 
 		// side 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 2, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 2, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 2, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 2, box);
 
 		yLevel = 8;
 
 		// corner 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 6, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 6, box);
 
 		// side 1
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 3, yLevel, 9, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 3, yLevel, 9, box);
 
 		// corner 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 10, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 6, yLevel, 12, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 10, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 6, yLevel, 12, box);
 
 		// side 2
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 13, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 13, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 13, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 13, box);
 
 		// corner 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 10, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 10, box);
 
 		// side 3
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 9, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 13, yLevel, 7, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 9, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 13, yLevel, 7, box);
 
 		// corner 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 6, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 10, yLevel, 4, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 6, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 10, yLevel, 4, box);
 
 		// side 4
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 3, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 3, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 3, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 3, box);
 
 		// extras
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 5, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 5, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 11, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 11, yLevel, 5, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 5, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 5, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 11, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 11, yLevel, 5, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 4, yLevel, 9, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 4, yLevel, 9, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 12, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 12, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 12, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 12, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 9, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 8, yLevel, 4, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 7, yLevel, 4, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 9, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 8, yLevel, 4, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 7, yLevel, 4, box);
 
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 7, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 8, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, 12, yLevel, 9, par3StructureBoundingBox);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 7, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 8, box);
+		this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 12, yLevel, 9, box);
 
 		yLevel = 9;
 
@@ -450,16 +448,16 @@ public class ComponentVenusVillageHouse extends ComponentVenusVillage
 				{
 					if (i >= 7 && i <= 9 && j >= 7 && j <= 9)
 					{
-						this.placeBlockAtCurrentPosition(par1World, Blocks.glass, 0, i, yLevel, j, par3StructureBoundingBox);
+						this.func_175808_b(world, Blocks.glass.getDefaultState(), i, yLevel, j, box);
 					}
 					else
 					{
-						this.placeBlockAtCurrentPosition(par1World, VenusBlocks.venus_block, 12, i, yLevel, j, par3StructureBoundingBox);
+						this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), i, yLevel, j, box);
 					}
 				}
 			}
 		}
-		this.spawnVillagers(par1World, par3StructureBoundingBox, 6, 5, 6, 4);
+		this.spawnVillagers(world, box, 6, 5, 6, 4);
 		return true;
 	}
 }

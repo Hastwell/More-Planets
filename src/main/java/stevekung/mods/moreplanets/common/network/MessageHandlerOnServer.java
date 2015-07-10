@@ -9,8 +9,8 @@ package stevekung.mods.moreplanets.common.network;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.core.entities.EntityMeteor;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -78,7 +78,7 @@ public class MessageHandlerOnServer implements IMessageHandler<MeteorMessageToSe
 			switch (message.getProjectile())
 			{
 			case METEOR:
-				entity = new EntityLightningBolt(world, releasePoint.xCoord, 0, releasePoint.zCoord);
+				entity = new EntityMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, 0.0D, 0.0D, rand.nextInt(10));
 				break;
 			case KOENTUS_METEOR:
 				entity = new EntityKoentusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, 0.0D, 0.0D, rand.nextInt(10));

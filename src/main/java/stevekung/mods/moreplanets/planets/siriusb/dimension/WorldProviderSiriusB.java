@@ -187,4 +187,10 @@ public class WorldProviderSiriusB extends WorldProviderSpace implements IGalacti
 	{
 		return 40.0D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_siriusb";
+	}
 }

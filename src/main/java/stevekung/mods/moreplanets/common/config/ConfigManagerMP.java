@@ -41,7 +41,12 @@ public class ConfigManagerMP
 	public static int idPolongniusBiome;
 	public static int idKoentusBiome;
 	public static int idNibiruBiome;
-	public static int idFronosBiome;
+	public static int idCoconutForestBiome;
+	public static int idGoldenFieldBiome;
+	public static int idPurpleMapleForestBiome;
+	public static int idMapleForestBiome;
+	public static int idGrassyPlainsBiome;
+	public static int idCandyLandBiome;
 	public static int idBiomeKapteynB;
 	public static int idBiomeSiriusB;
 
@@ -131,9 +136,15 @@ public class ConfigManagerMP
 			ConfigManagerMP.idPolongniusBiome = ConfigManagerMP.configuration.get("Biomes", "Polongnius Biome", 221).getInt(221);
 			ConfigManagerMP.idNibiruBiome = ConfigManagerMP.configuration.get("Biomes", "Nibiru Biome", 222).getInt(222);
 			ConfigManagerMP.idKoentusBiome = ConfigManagerMP.configuration.get("Biomes", "Koentus Biome", 223).getInt(223);
-			ConfigManagerMP.idFronosBiome = ConfigManagerMP.configuration.get("Biomes", "Fronos Biome", 224).getInt(224);
+			ConfigManagerMP.idCoconutForestBiome = ConfigManagerMP.configuration.get("Biomes", "Coconut Forest (Fronos Biome)", 224).getInt(224);
 			ConfigManagerMP.idBiomeKapteynB = ConfigManagerMP.configuration.get("Biomes", "Kapteyn B Biome", 225).getInt(225);
 			ConfigManagerMP.idBiomeSiriusB = ConfigManagerMP.configuration.get("Biomes", "Sirius B Biome", 226).getInt(226);
+
+			ConfigManagerMP.idGoldenFieldBiome = ConfigManagerMP.configuration.get("Biomes", "Golden Field (Fronos Biome)", 244).getInt(244);
+			ConfigManagerMP.idPurpleMapleForestBiome = ConfigManagerMP.configuration.get("Biomes", "Purple Maple Forest (Fronos Biome)", 245).getInt(245);
+			ConfigManagerMP.idMapleForestBiome = ConfigManagerMP.configuration.get("Biomes", "Maple Forest (Fronos Biome)", 246).getInt(246);
+			ConfigManagerMP.idGrassyPlainsBiome = ConfigManagerMP.configuration.get("Biomes", "Grassy Plains (Fronos Biome)", 247).getInt(247);
+			ConfigManagerMP.idCandyLandBiome = ConfigManagerMP.configuration.get("Biomes", "Candy Land (Fronos Biome)", 248).getInt(248);
 
 			ConfigManagerMP.idMercuryBiome = ConfigManagerMP.configuration.get("Biomes", "Mercury Biome", 240).getInt(240);
 			ConfigManagerMP.idVenusBiome = ConfigManagerMP.configuration.get("Biomes", "Venus Biome", 241).getInt(241);

@@ -32,19 +32,18 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSplashBlock;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
-import stevekung.mods.moreplanets.planets.kapteynb.worldgen.dungeon.RoomBossKapteynB;
-import stevekung.mods.moreplanets.planets.kapteynb.worldgen.dungeon.RoomChestsKapteynB;
-import stevekung.mods.moreplanets.planets.kapteynb.worldgen.dungeon.RoomTreasureKapteynB;
+import stevekung.mods.moreplanets.planets.kapteynb.world.gen.dungeon.RoomBossKapteynB;
+import stevekung.mods.moreplanets.planets.kapteynb.world.gen.dungeon.RoomChestsKapteynB;
+import stevekung.mods.moreplanets.planets.kapteynb.world.gen.dungeon.RoomTreasureKapteynB;
 
 public class ChunkProviderKapteynB extends ChunkProviderGenerate
 {

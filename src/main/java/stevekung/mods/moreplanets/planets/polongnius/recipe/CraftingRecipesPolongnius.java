@@ -7,11 +7,18 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.recipe;
 
+import java.util.HashMap;
+
+import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
+import micdoodle8.mods.galacticraft.core.items.GCItems;
+import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
+import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.items.armor.PolongniusArmorItems;
@@ -25,8 +32,8 @@ public class CraftingRecipesPolongnius
 		CraftingRecipesPolongnius.addItemRecipes();
 		CraftingRecipesPolongnius.addBlockSmelting();
 		CraftingRecipesPolongnius.addItemSmelting();
-		//		CraftingRecipesPolongnius.addTier5RocketRecipes();
-		//		CraftingRecipesPolongnius.addTier5RocketNoFlagRecipes();
+		CraftingRecipesPolongnius.addTier5RocketRecipes();
+		CraftingRecipesPolongnius.addTier5RocketNoFlagRecipes();
 		CraftingRecipesPolongnius.addOreDictionary();
 	}
 
@@ -38,7 +45,7 @@ public class CraftingRecipesPolongnius
 		GameRegistry.addRecipe(new ItemStack(PolongniusBlocks.polongnius_block, 1, 13), new Object[] { "PPP", "PPP", "PPP", 'P', new ItemStack(PolongniusItems.polongnius_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusBlocks.cheese_slime_block), new Object[] { "SSS", "SSS", "SSS", 'S', new ItemStack(PolongniusItems.cheese_slimeball) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusBlocks.flonium_torch, 4), new Object[] { "F", "S", 'F', new ItemStack(PolongniusItems.polongnius_item, 1, 0), 'S', new ItemStack(Items.stick) });
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusBlocks.ultra_violet_solar_panel), new Object[] { "TST", "TPT", "AWA", 'S', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 3), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1), 'T', new ItemStack(AsteroidsItems.basicItem, 1, 0), 'P', new ItemStack(GCItems.flagPole), 'W', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusBlocks.ultra_violet_solar_panel), new Object[] { "TST", "TPT", "AWA", 'S', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 3), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1), 'T', new ItemStack(AsteroidsItems.basicItem, 1, 0), 'P', new ItemStack(GCItems.flagPole), 'W', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusBlocks.cheese_of_milk_cake), new Object[] { "CCC", "CMC", "CCC", 'C', new ItemStack(PolongniusItems.cheese_food, 1, 0), 'M', new ItemStack(Items.milk_bucket) });
 
 		// Polongnius Cobblestone Stairs
@@ -66,12 +73,12 @@ public class CraftingRecipesPolongnius
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_item, 9, 4), new ItemStack(PolongniusBlocks.polongnius_block, 1, 11) );
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_item, 9, 1), new ItemStack(PolongniusBlocks.polongnius_block, 1, 12) );
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_item, 9, 5), new ItemStack(PolongniusBlocks.polongnius_block, 1, 13) );
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 2, 2), new Object[] { "GGG", "WWW", "AAA", 'G', new ItemStack(Blocks.glass), 'W', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 1), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1) });
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 3), new Object[] { "SSS", "AAA", "SSS", 'S', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 2), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 2, 2), new Object[] { "GGG", "WWW", "AAA", 'G', new ItemStack(Blocks.glass), 'W', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 1), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 3), new Object[] { "SSS", "AAA", "SSS", 'S', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 2), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1) });
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.cheese_slimeball, 9), new ItemStack(PolongniusBlocks.cheese_slime_block) );
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier6_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier6_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier6_rocket_module, 1, 1), new Object[] { "DQD", "DCD", "POP", 'Q', new ItemStack(PolongniusBlocks.polongnius_block, 1, 11), 'P', new ItemStack(PolongniusItems.tier6_rocket_module, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'D', new ItemStack(PolongniusItems.polongnius_item, 1, 7), 'O', new ItemStack(GCItems.oxygenVent) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 1), new Object[] { "DQD", "DCD", "POP", 'Q', new ItemStack(PolongniusBlocks.polongnius_block, 1, 11), 'P', new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'D', new ItemStack(PolongniusItems.polongnius_item, 1, 7), 'O', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_meteor_chunk, 3), new ItemStack(PolongniusItems.polongnius_item, 1, 2) );
 
 		// Armor
@@ -91,8 +98,8 @@ public class CraftingRecipesPolongnius
 		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.purple_crystal_chestplate), new Object[] { "Q Q", "QQQ", "QQQ", 'Q', new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.purple_crystal_leggings), new Object[] { "QQQ", "Q Q", "Q Q", 'Q', new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.purple_crystal_boots), new Object[] { "Q Q", "Q Q", 'Q', new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.breathable_polongnius_meteor_helmet), new Object[] { "MMM", "MOM", 'O', new ItemStack(GCItems.oxMask), 'M', new ItemStack(PolongniusItems.polongnius_item, 1, 6) });
-		//		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.breathable_palladium_helmet), new Object[] { "PPP", "POP", 'O', new ItemStack(GCItems.oxMask), 'P', new ItemStack(PolongniusItems.polongnius_item, 1, 7) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.breathable_polongnius_meteor_helmet), new Object[] { "MMM", "MOM", 'O', new ItemStack(GCItems.oxMask), 'M', new ItemStack(PolongniusItems.polongnius_item, 1, 6) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.breathable_palladium_helmet), new Object[] { "PPP", "POP", 'O', new ItemStack(GCItems.oxMask), 'P', new ItemStack(PolongniusItems.polongnius_item, 1, 7) });
 
 		// Tools
 		GameRegistry.addRecipe(new ItemStack(PolongniusToolsItems.polongnius_meteoric_iron_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(PolongniusItems.polongnius_item, 1, 6), 'Y', new ItemStack(PolongniusItems.polongnius_item, 1, 8) });
@@ -126,8 +133,8 @@ public class CraftingRecipesPolongnius
 
 	private static void addItemSmelting()
 	{
-		//		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 3), 0.7F);
-		//		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 3), 0.7F);
+		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.7F);
 		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 6), new ItemStack(Items.iron_ingot), 0.7F);
 		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 7), new ItemStack(PolongniusItems.polongnius_item, 1, 5), 0.7F);
 		GameRegistry.addSmelting(new ItemStack(PolongniusBlocks.polongnius_block, 1, 8), new ItemStack(PolongniusItems.polongnius_item, 1, 0), 0.7F);
@@ -139,143 +146,143 @@ public class CraftingRecipesPolongnius
 		GameRegistry.addSmelting(new ItemStack(PolongniusItems.cheese_food, 1, 1), new ItemStack(PolongniusItems.cheese_food, 1, 2), 0.6F);
 	}
 
-	//	private static void addTier5RocketRecipes()
-	//	{
-	//		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
-	//		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 0));
-	//		input.put(2, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(3, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(4, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(5, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(6, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(7, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(8, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(9, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(10, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(11, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(12, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
-	//		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(15, new ItemStack(DionaItems.tier_4_rocket_module, 1, 5));
-	//		input.put(16, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
-	//		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(19, null);
-	//		input.put(20, null);
-	//		input.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 0), input);
-	//
-	//		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 3), input2);
-	//	}
-	//
-	//	private static void addTier5RocketNoFlagRecipes()
-	//	{
-	//		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
-	//		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 4));
-	//		input.put(2, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(3, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(4, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(5, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(6, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(7, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(8, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(9, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(10, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(11, new ItemStack(DionaItems.diona_item, 1, 4));
-	//		input.put(12, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
-	//		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(15, new ItemStack(DionaItems.tier_4_rocket_module, 1, 5));
-	//		input.put(16, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
-	//		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-	//		input.put(19, null);
-	//		input.put(20, null);
-	//		input.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 10), input);
-	//
-	//		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 11), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 11), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 11), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 12), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 12), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 12), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier5_rocket, 1, 13), input2);
-	//	}
+	private static void addTier5RocketRecipes()
+	{
+		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
+		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 0));
+		input.put(2, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(3, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(4, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(5, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(6, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(7, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(8, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(9, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(10, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(11, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(12, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
+		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(15, new ItemStack(DionaItems.tier_4_rocket_module, 1, 5));
+		input.put(16, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
+		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(19, null);
+		input.put(20, null);
+		input.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 0), input);
+
+		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 3), input2);
+	}
+
+	private static void addTier5RocketNoFlagRecipes()
+	{
+		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
+		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 4));
+		input.put(2, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(3, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(4, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(5, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(6, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(7, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(8, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(9, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(10, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(11, new ItemStack(DionaItems.diona_item, 1, 4));
+		input.put(12, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
+		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(15, new ItemStack(DionaItems.tier_4_rocket_module, 1, 5));
+		input.put(16, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
+		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
+		input.put(19, null);
+		input.put(20, null);
+		input.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 10), input);
+
+		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 11), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 11), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 11), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 12), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 12), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 12), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 13), input2);
+	}
 
 	private static void addOreDictionary()
 	{

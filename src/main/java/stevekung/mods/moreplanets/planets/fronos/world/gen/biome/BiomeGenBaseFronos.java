@@ -13,8 +13,9 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -27,11 +28,11 @@ import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenBase.Height;
-import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
+import net.minecraft.world.chunk.ChunkPrimer;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
@@ -60,18 +61,15 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 	public static BiomeGenBase grassyPlains = new BiomeGenGrassyPlains().setBiomeName("Grassy Plains").setTemperatureRainfall(0.95F, 0.9F).setHeight(new Height(0.125F, 0.05F));
 	public static BiomeGenBase candyLand = new BiomeGenCandyLand().setBiomeName("Candy Land").setTemperatureRainfall(0.95F, 0.9F).setHeight(new Height(0.125F, 0.05F));
 
-	protected Block stoneBlock;
-	protected byte topMeta;
-	protected byte fillerMeta;
-	protected byte stoneMeta;
+	protected IBlockState stoneBlock;
 
 	public BiomeGenBaseFronos(int id)
 	{
 		super(id);
 		this.enableRain = true;
 		this.enableSnow = true;
-		this.topBlock = FronosBlocks.fronos_grass;
-		this.fillerBlock = FronosBlocks.fronos_dirt;
+		this.topBlock = FronosBlocks.fronos_grass.getDefaultState();
+		this.fillerBlock = FronosBlocks.fronos_dirt.getDefaultState();
 		this.getBiomeDecorator().strawberryCloudPerChunk = 8;
 		this.getBiomeDecorator().rainbowCloudPerChunk = 1;
 		this.getBiomeDecorator().coralPerChunk = 36;
@@ -131,107 +129,93 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 	}
 
 	@Override
-	public void genTerrainBlocks(World world, Random rand, Block[] block, byte[] meta, int x, int z, double stoneNoise)
+	public void genTerrainBlocks(World world, Random rand, ChunkPrimer chunk, int x, int z, double stoneNoise)
 	{
-		this.genFronosBiomeTerrain(world, rand, block, meta, x, z, stoneNoise);
+		this.genFronosBiomeTerrain(rand, chunk, x, z, stoneNoise);
 	}
 
-	public void genFronosBiomeTerrain(World world, Random rand, Block[] block, byte[] meta, int x, int z, double stoneNoise)
+	public void genFronosBiomeTerrain(Random rand, ChunkPrimer chunk, int x, int z, double stoneNoise)
 	{
-		Block topBlock = this.topBlock;
-		byte topMeta = this.topMeta;
-		Block fillerBlock = this.fillerBlock;
-		byte fillerMeta = this.fillerMeta;
-		int currentFillerDepth = -1;
-		int maxFillerDepth = (int)(stoneNoise / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
-		int maskX = x & 15;
-		int maskZ = z & 15;
-		int worldHeight = block.length / 256;
-		int seaLevel = 32;
+		boolean flag = true;
+		IBlockState iblockstate = this.topBlock;
+		IBlockState iblockstate1 = this.fillerBlock;
+		IBlockState iblockstate3 = this.stoneBlock;
+		int k = -1;
+		int l = (int)(stoneNoise / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		int i1 = x & 15;
+		int j1 = z & 15;
 
-		for (int y = 255; y >= 0; y--)
+		for (int k1 = 255; k1 >= 0; --k1)
 		{
-			int index = (maskZ * 16 + maskX) * worldHeight + y;
-
-			if (y <= 0 + rand.nextInt(5))
+			if (k1 <= rand.nextInt(5))
 			{
-				block[index] = Blocks.bedrock;
+				chunk.setBlockState(j1, k1, i1, Blocks.bedrock.getDefaultState());
 			}
 			else
 			{
-				Block currentBlock = block[index];
+				IBlockState iblockstate2 = chunk.getBlockState(j1, k1, i1);
 
-				if (currentBlock != null && currentBlock.getMaterial() != Material.air)
+				if (iblockstate2.getBlock().getMaterial() == Material.air)
 				{
-					if (currentBlock == Blocks.stone)
+					k = -1;
+				}
+				else if (iblockstate2.getBlock() == Blocks.stone)
+				{
+					if (this.stoneBlock != null)
 					{
-						if (this.stoneBlock != null)
+						iblockstate3 = this.stoneBlock;
+					}
+					if (k == -1)
+					{
+						if (l <= 0)
 						{
-							block[index] = this.stoneBlock;
-							meta[index] = this.stoneMeta;
+							iblockstate = null;
+							iblockstate1 = FronosBlocks.fronos_block.getDefaultState();
 						}
-						if (currentFillerDepth == -1)
+						else if (k1 >= 59 && k1 <= 64)
 						{
-							if (maxFillerDepth <= 0)
-							{
-								topBlock = null;
-								topMeta = 0;
-								fillerBlock = FronosBlocks.fronos_block;
-								fillerMeta = 0;
-							}
-							else if (y >= seaLevel - 5 && y <= seaLevel)
-							{
-								topBlock = this.topBlock;
-								topMeta = this.topMeta;
-								fillerBlock = this.fillerBlock;
-								fillerMeta = 0;
-							}
-							if (y < seaLevel - 1 && (topBlock == null || topBlock.getMaterial() == Material.air))
-							{
-								if (this.getFloatTemperature(x, y, z) < 0.15F)
-								{
-									topBlock = Blocks.ice;
-									topMeta = 0;
-								}
-								else
-								{
-									topBlock = Blocks.water;
-									topMeta = 0;
-								}
-							}
+							iblockstate = this.topBlock;
+							iblockstate1 = this.fillerBlock;
+						}
 
-							currentFillerDepth = maxFillerDepth;
-
-							if (y >= seaLevel - 2)
+						if (k1 < 63 && (iblockstate == null || iblockstate.getBlock().getMaterial() == Material.air))
+						{
+							if (this.getFloatTemperature(new BlockPos(x, k1, z)) < 0.15F)
 							{
-								block[index] = topBlock;
-								meta[index] = topMeta;
-							}
-							else if (y < seaLevel - 8 - maxFillerDepth)
-							{
-								topBlock = null;
-								fillerBlock = FronosBlocks.fronos_block;
-								fillerMeta = 0;
-								block[index] = Blocks.gravel;
+								iblockstate = Blocks.ice.getDefaultState();
 							}
 							else
 							{
-								block[index] = fillerBlock;
-								meta[index] = fillerMeta;
+								iblockstate = Blocks.water.getDefaultState();
 							}
 						}
-						else if (currentFillerDepth > 0)
-						{
-							currentFillerDepth--;
-							block[index] = fillerBlock;
-							meta[index] = fillerMeta;
 
-							if (currentFillerDepth == 0 && fillerBlock == Blocks.sand)
-							{
-								currentFillerDepth = rand.nextInt(4) + Math.max(0, y - (seaLevel - 1));
-								fillerBlock = Blocks.sandstone;
-								fillerMeta = 0;
-							}
+						k = l;
+
+						if (k1 >= 62)
+						{
+							chunk.setBlockState(j1, k1, i1, iblockstate);
+						}
+						else if (k1 < 56 - l)
+						{
+							iblockstate = null;
+							iblockstate1 = FronosBlocks.fronos_block.getDefaultState();
+							chunk.setBlockState(j1, k1, i1, Blocks.gravel.getDefaultState());
+						}
+						else
+						{
+							chunk.setBlockState(j1, k1, i1, iblockstate1);
+						}
+					}
+					else if (k > 0)
+					{
+						--k;
+						chunk.setBlockState(j1, k1, i1, iblockstate1);
+
+						if (k == 0 && iblockstate1.getBlock() == Blocks.sand)
+						{
+							k = rand.nextInt(4) + Math.max(0, k1 - 63);
+							iblockstate1 = iblockstate1.getValue(BlockSand.VARIANT) == BlockSand.EnumType.RED_SAND ? Blocks.red_sandstone.getDefaultState() : Blocks.sandstone.getDefaultState();
 						}
 					}
 				}

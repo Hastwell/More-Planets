@@ -208,4 +208,10 @@ public class WorldProviderKoentus extends WorldProviderSpace implements IGalacti
 	{
 		return 6.0D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_koentus";
+	}
 }

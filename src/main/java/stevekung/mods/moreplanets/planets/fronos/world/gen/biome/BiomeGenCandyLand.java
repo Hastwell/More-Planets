@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.planets.fronos.world.gen.biome;
 
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenCandyLand extends BiomeGenBaseFronos
@@ -17,12 +18,9 @@ public class BiomeGenCandyLand extends BiomeGenBaseFronos
 		super(ConfigManagerMP.idCandyLandBiome);
 		this.enableRain = true;
 		this.enableSnow = true;
-		this.topBlock = FronosBlocks.frosted_cake;
-		this.topMeta = 3;
-		this.fillerBlock = FronosBlocks.frosted_cake;
-		this.fillerMeta = 0;
-		this.stoneBlock = FronosBlocks.fronos_block;
-		this.stoneMeta = 0;
+		this.topBlock = FronosBlocks.frosted_cake.getDefaultState().withProperty(BlockFrostedCake.VARIANT, BlockFrostedCake.BlockType.frosted_white_cake_block);
+		this.fillerBlock = FronosBlocks.frosted_cake.getDefaultState();
+		this.stoneBlock = FronosBlocks.fronos_block.getDefaultState();
 		this.getBiomeDecorator().reedsPerChunk = -999;
 		this.getBiomeDecorator().normalSandPerChunk = -999;
 		this.getBiomeDecorator().fronosSandPerChunk = -999;

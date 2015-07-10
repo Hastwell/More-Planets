@@ -29,23 +29,22 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSplashBlock;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
-import stevekung.mods.moreplanets.planets.nibiru.worldgen.dungeon.RoomBossNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.worldgen.dungeon.RoomChestsNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.worldgen.dungeon.RoomSpawnerNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.worldgen.dungeon.RoomTreasureNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.worldgen.tree.WorldGenNibiruFruitTree;
+import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomBossNibiru;
+import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomChestsNibiru;
+import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomSpawnerNibiru;
+import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomTreasureNibiru;
+import stevekung.mods.moreplanets.planets.nibiru.world.gen.tree.WorldGenNibiruFruitTree;
 
 public class ChunkProviderNibiru extends ChunkProviderGenerate
 {

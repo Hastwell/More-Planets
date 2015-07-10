@@ -5,13 +5,13 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.fronos.worldgen.biome;
+package stevekung.mods.moreplanets.planets.fronos.world.gen.biome;
 
 import java.util.Random;
 
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenMapleForest extends BiomeGenBaseFronos
@@ -21,12 +21,9 @@ public class BiomeGenMapleForest extends BiomeGenBaseFronos
 		super(ConfigManagerMP.idMapleForestBiome);
 		this.enableRain = true;
 		this.enableSnow = true;
-		this.topBlock = FronosBlocks.pink_grass;
-		this.topMeta = 0;
-		this.fillerBlock = FronosBlocks.fronos_dirt;
-		this.fillerMeta = 0;
-		this.stoneBlock = FronosBlocks.fronos_block;
-		this.stoneMeta = 0;
+		this.topBlock = FronosBlocks.pink_grass.getDefaultState();
+		this.fillerBlock = FronosBlocks.fronos_dirt.getDefaultState();
+		this.stoneBlock = FronosBlocks.fronos_block.getDefaultState();
 		this.getBiomeDecorator().pinkTallGrassPerChunk = 200;
 		this.getBiomeDecorator().deadBushPerChunk = 1;
 		this.getBiomeDecorator().reedsPerChunk = 200;
@@ -49,16 +46,16 @@ public class BiomeGenMapleForest extends BiomeGenBaseFronos
 	}
 
 	@Override
-	public WorldGenAbstractTree func_150567_a(Random rand)
+	public WorldGenAbstractTree genBigTreeChance(Random rand)
 	{
 		if (rand.nextInt(2) == 0)
 		{
-			return new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, 5, 4, false);
+			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, FronosBlocks.fronos_sapling);
 		}
 		else if (rand.nextInt(4) == 0)
 		{
-			return new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, 5, 4, false);
+			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, FronosBlocks.fronos_sapling);
 		}
-		return new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false);
+		return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling);
 	}
 }

@@ -188,11 +188,11 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 	{
 		if (this.isDaytime())
 		{
-			return 0.0F;
+			return -1.0F;
 		}
 		else
 		{
-			return -15.0F;
+			return -7.5F;
 		}
 	}
 
@@ -206,5 +206,11 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 	public double getUltraVioletEnergyMultiplie()
 	{
 		return 0.25D;
+	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_pluto";
 	}
 }

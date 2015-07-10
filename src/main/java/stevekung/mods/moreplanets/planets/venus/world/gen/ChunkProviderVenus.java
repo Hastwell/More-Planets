@@ -22,29 +22,31 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.IProgressUpdate;
+import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSplashBlock;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
-import stevekung.mods.moreplanets.planets.venus.worldgen.blazepit.MapGenVenusianBlazePit;
-import stevekung.mods.moreplanets.planets.venus.worldgen.dungeon.RoomBossVenus;
-import stevekung.mods.moreplanets.planets.venus.worldgen.dungeon.RoomChestsVenus;
-import stevekung.mods.moreplanets.planets.venus.worldgen.dungeon.RoomTreasureVenus;
+import stevekung.mods.moreplanets.planets.venus.world.gen.blazepit.MapGenVenusianBlazePit;
+import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomBossVenus;
+import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomChestsVenus;
+import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomTreasureVenus;
 
 public class ChunkProviderVenus extends ChunkProviderGenerate
 {
@@ -384,42 +386,54 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
+	public void populate(IChunkProvider chunk, int x, int z)
 	{
 		BlockFalling.fallInstantly = true;
-		int var4 = chunkX * 16;
-		int var5 = chunkZ * 16;
-		this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
+		int i = x * 16;
+		int j = z * 16;
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
+		this.rand.setSeed(x * var7 + z * var9 ^ this.worldObj.getSeed());
+		this.decoratePlanet(this.worldObj, this.rand, i, j);
+		
+        BlockFalling.fallInstantly = true;
+        int k = x * 16;
+        int l = z * 16;
+        BlockPos blockpos = new BlockPos(k, 0, l);
+        BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(blockpos.add(16, 0, 16));
+        this.rand.setSeed(this.worldObj.getSeed());
+        long i1 = this.rand.nextLong() / 2L * 2L + 1L;
+        long j1 = this.rand.nextLong() / 2L * 2L + 1L;
+        this.rand.setSeed((long)x * i1 + (long)z * j1 ^ this.worldObj.getSeed());
+        boolean flag = false;
+        ChunkCoordIntPair chunkcoordintpair = new ChunkCoordIntPair(x, z);
 		this.dungeonGenerator.handleTileEntities(this.rand);
-		this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
-		this.blazePit.generateStructuresInChunk(this.worldObj, new Random(), chunkX, chunkZ);
-		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
+		this.villageGenerator.func_175794_a(this.worldObj, this.rand, chunkcoordintpair);
+		this.blazePit.generateStructuresInChunk(this.worldObj, new Random(), chunkcoordintpair);
+		
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, x, z, false));
 
-		boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, chunkX, chunkZ, false, EventType.FIRE);
+		boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, x, z, false, EventType.FIRE);
 
 		for (int i = 0; doGen && i < 4; i++)
 		{
 			if (this.rand.nextInt(5) == 0)
 			{
-				int x = var4 + this.rand.nextInt(16) + 8;
+				int x = i + this.rand.nextInt(16) + 8;
 				int y = this.rand.nextInt(128 - 32) + 32;
-				int z = var5 + this.rand.nextInt(16) + 8;
-				new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser, 0, VenusBlocks.venus_block, 0).generate(this.worldObj, this.rand, x, y, z);
+				int z = j + this.rand.nextInt(16) + 8;
+				new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser.getDefaultState(), VenusBlocks.venus_block.getDefaultState()).generate(this.worldObj, this.rand, x, y, z);
 			}
 		}
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, x, z, false));
 		BlockFalling.fallInstantly = false;
 	}
 
 	@Override
-	public void recreateStructures(int par1, int par2)
+	public void recreateStructures(Chunk chunk, int x, int z)
 	{
-		this.villageGenerator.func_151539_a(this, this.worldObj, par1, par2, (Block[]) null);
+		this.villageGenerator.func_175792_a(this, this.worldObj, x, z, (ChunkPrimer) null);
 	}
 
 	@Override
@@ -440,11 +454,10 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		return "VenusLevelSource";
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int i, int j, int k)
+	public List func_177458_a(EnumCreatureType type, BlockPos pos)
 	{
-		if (par1EnumCreatureType == EnumCreatureType.monster)
+		if (type == EnumCreatureType.MONSTER)
 		{
 			List monsters = new ArrayList();
 			monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));

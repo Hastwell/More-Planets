@@ -5,16 +5,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.venus.worldgen.village;
+package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 public abstract class ComponentVenusVillageRoadPiece extends ComponentVenusVillage
 {
-	public ComponentVenusVillageRoadPiece()
-	{
-	}
+	public ComponentVenusVillageRoadPiece() {}
 
-	protected ComponentVenusVillageRoadPiece(ComponentVenusVillageStartPiece par1ComponentVillageStartPiece, int par2)
+	protected ComponentVenusVillageRoadPiece(ComponentVenusVillageStartPiece component, int type)
 	{
-		super(par1ComponentVillageStartPiece, par2);
+		super(component, type);
 	}
 }

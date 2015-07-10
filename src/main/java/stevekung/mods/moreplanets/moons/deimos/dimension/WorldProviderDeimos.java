@@ -206,4 +206,10 @@ public class WorldProviderDeimos extends WorldProviderSpace implements IGalactic
 	{
 		return 5.0D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_deimos";
+	}
 }

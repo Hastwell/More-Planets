@@ -18,6 +18,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockFluidLavaBaseMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.io.blocks.BlockIo;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 
@@ -40,7 +42,7 @@ public class BlockFluidIoBlackLava extends BlockFluidLavaBaseMP
 				double d5 = pos.getX() + rand.nextFloat();
 				double d6 = pos.getY() + this.maxY;
 				double d7 = pos.getZ() + rand.nextFloat();
-				world.spawnParticle(EnumParticleTypes.LAVA, d5, d6, d7, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.LAVA, d5, d6, d7, 0.0D, 0.0D, 0.0D);//TODO Black Lava Flame
 				world.playSound(d5, d6, d7, "liquid.lavapop", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
 			}
 			if (rand.nextInt(200) == 0)
@@ -53,7 +55,7 @@ public class BlockFluidIoBlackLava extends BlockFluidLavaBaseMP
 			double d5 = pos.getX() + rand.nextFloat();
 			double d6 = pos.getY() - 1.05D;
 			double d7 = pos.getZ() + rand.nextFloat();
-			world.spawnParticle(EnumParticleTypes.DRIP_LAVA, d5, d6, d7, 0.0D, 0.0D, 0.0D);//TODO
+			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.BLACK_LAVA_DRIP, d5, d6, d7);
 		}
 		super.randomDisplayTick(world, pos, state, rand);
 	}

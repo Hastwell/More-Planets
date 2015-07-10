@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.pluto.recipe;
 
+import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -50,7 +51,7 @@ public class CraftingRecipesPluto
 	private static void addItemRecipes()
 	{
 		// Items
-		//GameRegistry.addRecipe(new ItemStack(MercuryItems.mercury_item, 1, 7), new Object[] { "MCM", "CAC", "MCM", 'M', new ItemStack(MercuryItems.mercury_item, 1, 5), 'C', new ItemStack(MercuryItems.mercury_item, 1, 6), 'A', new ItemStack(GCItems.basicItem, 1, 14) });
+		GameRegistry.addRecipe(new ItemStack(MercuryItems.mercury_item, 1, 7), new Object[] { "MCM", "CAC", "MCM", 'M', new ItemStack(MercuryItems.mercury_item, 1, 5), 'C', new ItemStack(MercuryItems.mercury_item, 1, 6), 'A', new ItemStack(GCItems.basicItem, 1, 14) });
 		GameRegistry.addRecipe(new ItemStack(MercuryItems.mercury_item, 1, 6), new Object[] { "PRP", "RDR", "PRP", 'P', new ItemStack(MercuryItems.mercury_item, 1, 4), 'R', new ItemStack(Items.redstone), 'D', new ItemStack(Items.diamond) });
 		GameRegistry.addRecipe(new ItemStack(MercuryItems.mercury_item, 1, 6), new Object[] { "PRP", "RDR", "PRP", 'P', new ItemStack(MercuryItems.mercury_item, 1, 5), 'R', new ItemStack(Items.redstone), 'D', new ItemStack(Items.diamond) });
 		GameRegistry.addRecipe(new ItemStack(PlutoItems.gravity_boots), new Object[] { "P P", "G G", 'P', new ItemStack(MercuryItems.mercury_item, 1, 4), 'G', new ItemStack(MercuryItems.mercury_item, 1, 7) });
@@ -94,7 +95,7 @@ public class CraftingRecipesPluto
 
 	private static void addItemSmelting()
 	{
-		//GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 4), new ItemStack(GCItems.meteoricIronIngot), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 4), new ItemStack(GCItems.meteoricIronIngot), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 5), new ItemStack(KapteynBItems.kapteyn_b_item, 1, 0), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 6), new ItemStack(Items.iron_ingot), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(PlutoBlocks.pluto_block, 1, 7), new ItemStack(PlutoItems.pluto_item, 1, 0), 0.8F);

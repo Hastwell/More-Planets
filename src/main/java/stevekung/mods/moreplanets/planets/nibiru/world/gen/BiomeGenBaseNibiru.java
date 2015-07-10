@@ -41,15 +41,15 @@ public class BiomeGenBaseNibiru extends BiomeGenBaseMP
 	}
 
 	@Override
-	public WorldGenAbstractTree func_150567_a(Random rand)
+	public WorldGenAbstractTree genBigTreeChance(Random rand)
 	{
 		if (rand.nextInt(1) == 0)
 		{
-			return new WorldGenNibiruFruitTree(NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 0, true);
+			return new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 0, true);
 		}
 		else if (rand.nextInt(2) == 0)
 		{
-			return new WorldGenNibiruFruitTree(NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 1, true);
+			return new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 1, true);
 		}
 		return null;
 	}

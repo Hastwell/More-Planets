@@ -239,11 +239,13 @@ import java.util.List;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldChunkManagerSpace;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeCache;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
+import stevekung.mods.moreplanets.planets.fronos.world.gen.biome.BiomeGenBaseFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.layer.GenLayerFronos;
 
 public class WorldChunkManagerFronos extends WorldChunkManagerSpace
@@ -289,9 +291,9 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 	}
 
 	@Override
-	public BiomeGenBase getBiomeGenAt(int par1, int par2)
+	public BiomeGenBase func_180300_a(BlockPos pos, BiomeGenBase biomeGen)
 	{
-		BiomeGenBase biome = this.myBiomeCache.getBiomeGenAt(par1, par2);
+		BiomeGenBase biome = this.myBiomeCache.func_180284_a(pos.getX(), pos.getZ(), biomeGen);
 
 		if (biome == null)
 		{
@@ -387,6 +389,7 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 		return par1ArrayOfBiomeGenBase;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean areBiomesViable(int par1, int par2, int par3, List par4List)
 	{
@@ -410,8 +413,9 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 		return true;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public ChunkPosition findBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random)
+	public BlockPos findBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random)
 	{
 		int i = par1 - par3 >> 2;
 		int j = par2 - par3 >> 2;
@@ -420,7 +424,7 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 		int i1 = k - i + 1;
 		int j1 = l - j + 1;
 		int[] ai = this.unzoomedBiomes.getInts(i, j, i1, j1);
-		ChunkPosition chunkposition = null;
+		BlockPos chunkposition = null;
 		int k1 = 0;
 
 		for (int l1 = 0; l1 < ai.length; l1++)
@@ -431,7 +435,7 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 
 			if (par4List.contains(biomegenbase) && (chunkposition == null || par5Random.nextInt(k1 + 1) == 0))
 			{
-				chunkposition = new ChunkPosition(i2, 0, j2);
+				chunkposition = new BlockPos(i2, 0, j2);
 				k1++;
 			}
 		}

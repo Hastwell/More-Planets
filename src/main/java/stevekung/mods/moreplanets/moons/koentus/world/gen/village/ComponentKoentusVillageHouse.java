@@ -34,7 +34,7 @@ public class ComponentKoentusVillageHouse extends ComponentKoentusVillage
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static ComponentKoentusVillageHouse func_74921_a(ComponentKoentusVillageStartPiece component, List list, Random rand, int x, int y, int z, EnumFacing side, int type)
+	public static ComponentKoentusVillageHouse func_74921_a(ComponentKoentusVillageStartPiece component, List list, int x, int y, int z, EnumFacing side, int type)
 	{
 		StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 17, 9, 17, side);
 		return StructureComponent.findIntersecting(list, var8) == null ? new ComponentKoentusVillageHouse(component, type, var8, side) : null;

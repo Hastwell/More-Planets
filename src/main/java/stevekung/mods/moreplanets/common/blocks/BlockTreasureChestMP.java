@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.common.blocks;
 import java.util.Iterator;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -28,7 +27,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.ILockableContainer;
 import net.minecraft.world.World;
 
-public abstract class BlockTreasureChestMP extends BlockContainerMP implements ITileEntityProvider
+public abstract class BlockTreasureChestMP extends BlockContainerMP
 {
 	public static PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 

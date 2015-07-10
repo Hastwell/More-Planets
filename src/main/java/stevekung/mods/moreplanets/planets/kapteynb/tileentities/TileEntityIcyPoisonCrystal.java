@@ -26,7 +26,7 @@ public class TileEntityIcyPoisonCrystal extends TileEntity
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-		this.facing = nbt.getShort("Facing");
+		this.facing = nbt.getInteger("Facing");
 	}
 
 	@Override

@@ -16,7 +16,8 @@ import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.client.FMLClientHandler;
-import stevekung.mods.moreplanets.client.particle.EntityBreakingFXMP;
+import stevekung.mods.moreplanets.client.particles.EntityBreakingFXMP;
+import stevekung.mods.moreplanets.client.particles.EntityLiquidDripFX;
 import stevekung.mods.moreplanets.client.renderer.EntityRendererMP;
 import stevekung.mods.moreplanets.client.renderer.ModelRendererMP;
 import stevekung.mods.moreplanets.client.renderer.TileEntityRendererHelper;
@@ -24,40 +25,31 @@ import stevekung.mods.moreplanets.client.renderer.TileEntityRendererMP;
 import stevekung.mods.moreplanets.common.util.BlockVariantsUtil;
 import stevekung.mods.moreplanets.common.util.ItemVariantsUtil;
 import stevekung.mods.moreplanets.common.util.StateMapperUtil;
-import stevekung.mods.moreplanets.moons.koentus.client.particles.EntityKoentusIceSludgeDripFX;
 import stevekung.mods.moreplanets.moons.koentus.client.particles.EntityKoentusMeteorSmokeFX;
 import stevekung.mods.moreplanets.moons.koentus.client.particles.EntityWhiteCrystalSmokeFX;
 import stevekung.mods.moreplanets.planets.diona.client.particles.EntityBluePortalFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityBlueFlameFX;
-import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityCaramelDripFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityCavernOysterFX;
-import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityCoconutMilkDripFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityCoconutMilkFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityGoldenGrassFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityGoldenSmokeFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityJungleIrisFX;
-import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityMineralWaterDripFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityMineralWaterFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityOrangeDandelionFX;
-import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityOvantineDripFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityOvantineSmokeFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityPinkDandelionFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityPurpleDandelionFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityPurpleSpikeFX;
-import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityTeaDripFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityTeaFluidFX;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
-import stevekung.mods.moreplanets.planets.kapteynb.client.particles.EntityFrozenWaterDripFX;
 import stevekung.mods.moreplanets.planets.kapteynb.client.particles.EntityGeyserFX;
 import stevekung.mods.moreplanets.planets.kapteynb.client.particles.EntityUraniumSmokeFX;
 import stevekung.mods.moreplanets.planets.nibiru.client.particles.EntityGeneratorSmokeFX;
 import stevekung.mods.moreplanets.planets.nibiru.client.particles.EntityInfectedSporeFX;
 import stevekung.mods.moreplanets.planets.pluto.client.particles.EntityXeoniumSmokeFX;
 import stevekung.mods.moreplanets.planets.polongnius.client.particles.EntityCheeseBubbleFX;
-import stevekung.mods.moreplanets.planets.polongnius.client.particles.EntityCheeseOfMilkDripFX;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.siriusb.client.particles.EntitySiriusFlameFX;
-import stevekung.mods.moreplanets.planets.siriusb.client.particles.EntitySiriusLavaDripFX;
 import stevekung.mods.moreplanets.planets.siriusb.client.particles.EntitySiriusLavaFX;
 import stevekung.mods.moreplanets.planets.venus.client.model.ModelJetpack;
 import stevekung.mods.moreplanets.planets.venus.client.particles.EntityVenusSmokeFX;
@@ -124,39 +116,43 @@ public class ClientProxyMP extends CommonProxyMP
 
 		if (type == ParticleTypesMP.KOENTUS_SLUDGE_DRIP)
 		{
-			entityfx = new EntityKoentusIceSludgeDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.0F, 0.1F, 0.5F, 0.9F, false);
 		}
 		else if (type == ParticleTypesMP.COCONUT_MILK_DRIP)
 		{
-			entityfx = new EntityCoconutMilkDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 1.0F, 1.0F, 1.0F, 0.9F, false);
 		}
 		else if (type == ParticleTypesMP.MINERAL_WATER_DRIP)
 		{
-			entityfx = new EntityMineralWaterDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.4F, 0.7F, 0.8F, 0.6F, false);
 		}
 		else if (type == ParticleTypesMP.OVANTINE_DRIP)
 		{
-			entityfx = new EntityOvantineDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.65F, 0.4F, 0.25F, 0.9F, false);
 		}
 		else if (type == ParticleTypesMP.CHEESE_OF_MILK_DRIP)
 		{
-			entityfx = new EntityCheeseOfMilkDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 1.0F, 0.85F, 0.5F, 0.4F, false);
 		}
 		else if (type == ParticleTypesMP.FROZEN_WATER_DRIP)
 		{
-			entityfx = new EntityFrozenWaterDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.55F, 0.6F, 0.8F, 0.6F, false);
 		}
 		else if (type == ParticleTypesMP.TEA_DRIP)
 		{
-			entityfx = new EntityTeaDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.25F, 0.5F, 0.15F, 0.7F, false);
 		}
 		else if (type == ParticleTypesMP.CARAMEL_DRIP)
 		{
-			entityfx = new EntityCaramelDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.8F, 0.5F, 0.4F, 0.9F, false);
 		}
 		else if (type == ParticleTypesMP.SIRIUS_LAVA_DRIP)
 		{
-			entityfx = new EntitySiriusLavaDripFX(mc.theWorld, x, y, z);
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.8F, 4.95F, 5.0F, 1.0F, true);
+		}
+		else if (type == ParticleTypesMP.BLACK_LAVA_DRIP)
+		{
+			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.1F, 0.1F, 0.1F, 1.0F, true);
 		}
 		else if (type == ParticleTypesMP.CHEESE_SLIME)
 		{
@@ -308,6 +304,7 @@ public class ClientProxyMP extends CommonProxyMP
 		TEA_DRIP,
 		CARAMEL_DRIP,
 		SIRIUS_LAVA_DRIP,
+		BLACK_LAVA_DRIP,
 		CHEESE_SLIME,
 		VANILLA_CREAM_BALL,
 		CHOCOLATE_CREAM_BALL,

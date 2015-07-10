@@ -213,4 +213,10 @@ public class WorldProviderDiona extends WorldProviderSpace implements IGalacticr
 	{
 		return 2.0D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_diona";
+	}
 }

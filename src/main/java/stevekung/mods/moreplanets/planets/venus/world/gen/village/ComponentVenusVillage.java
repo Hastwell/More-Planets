@@ -5,13 +5,15 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.venus.worldgen.village;
+package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -23,173 +25,192 @@ public abstract class ComponentVenusVillage extends StructureComponent
 	static
 	{
 		MapGenStructureIO.registerStructure(StructureVenusVillageStart.class, "VenusVillage");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillageField.class, "VenusField1");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillageField2.class, "VenusField2");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillageHouse.class, "VenusHouse");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillageRoadPiece.class, "VenusRoadPiece");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillagePathGen.class, "VenusPath");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillageTorch.class, "VenusTorch");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillageStartPiece.class, "VenusWell");
-		MapGenStructureIO.func_143031_a(ComponentVenusVillageHut.class, "VenusHut");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageField.class, "VenusField1");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageField2.class, "VenusField2");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageHouse.class, "VenusHouse");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageRoadPiece.class, "VenusRoadPiece");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillagePathGen.class, "VenusPath");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageTorch.class, "VenusTorch");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageStartPiece.class, "VenusWell");
+		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageHut.class, "VenusHut");
 	}
 
 	private int villagersSpawned;
 	protected ComponentVenusVillageStartPiece startPiece;
 
-	public ComponentVenusVillage()
-	{
-	}
+	public ComponentVenusVillage() {}
 
-	protected ComponentVenusVillage(ComponentVenusVillageStartPiece par1ComponentVillageStartPiece, int par2)
+	protected ComponentVenusVillage(ComponentVenusVillageStartPiece component, int type)
 	{
-		super(par2);
-		this.startPiece = par1ComponentVillageStartPiece;
-	}
-
-	@Override
-	protected void func_143012_a(NBTTagCompound nbttagcompound)
-	{
-		nbttagcompound.setInteger("VCount", this.villagersSpawned);
+		super(type);
+		this.startPiece = component;
 	}
 
 	@Override
-	protected void func_143011_b(NBTTagCompound nbttagcompound)
+	protected void writeStructureToNBT(NBTTagCompound nbt)
 	{
-		this.villagersSpawned = nbttagcompound.getInteger("VCount");
+		nbt.setInteger("VCount", this.villagersSpawned);
+	}
+
+	@Override
+	protected void readStructureFromNBT(NBTTagCompound nbt)
+	{
+		this.villagersSpawned = nbt.getInteger("VCount");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected StructureComponent getNextComponentNN(ComponentVenusVillageStartPiece par1ComponentVillageStartPiece, List par2List, Random par3Random, int par4, int par5)
+	protected StructureComponent getNextComponentNN(ComponentVenusVillageStartPiece component, List list, Random rand, int par4, int par5)
 	{
-		switch (this.coordBaseMode)
+		if (this.coordBaseMode != null)
 		{
-		case 0:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.minX - 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, 1, this.getComponentType());
-		case 1:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.minZ - 1, 2, this.getComponentType());
-		case 2:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.minX - 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, 1, this.getComponentType());
-		case 3:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.minZ - 1, 2, this.getComponentType());
-		default:
-			return null;
+			switch (SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()])
+			{
+			case 0:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX - 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, EnumFacing.WEST, this.getComponentType());
+			case 1:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
+			case 2:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX - 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, EnumFacing.WEST, this.getComponentType());
+			case 3:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
+			}
 		}
+		return null;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected StructureComponent getNextComponentPP(ComponentVenusVillageStartPiece par1ComponentVillageStartPiece, List par2List, Random par3Random, int par4, int par5)
+	protected StructureComponent getNextComponentPP(ComponentVenusVillageStartPiece component, List list, Random rand, int par4, int par5)
 	{
-		switch (this.coordBaseMode)
+		if (this.coordBaseMode != null)
 		{
-		case 0:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.maxX + 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, 3, this.getComponentType());
-		case 1:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.maxZ + 1, 0, this.getComponentType());
-		case 2:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.maxX + 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, 3, this.getComponentType());
-		case 3:
-			return StructureVenusVillagePieces.getNextStructureComponent(par1ComponentVillageStartPiece, par2List, par3Random, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.maxZ + 1, 0, this.getComponentType());
-		default:
-			return null;
-		}
-	}
-
-	protected int getAverageGroundLevel(World par1World, StructureBoundingBox par2StructureBoundingBox)
-	{
-		int var3 = 0;
-		int var4 = 0;
-
-		for (int var5 = this.boundingBox.minZ; var5 <= this.boundingBox.maxZ; ++var5)
-		{
-			for (int var6 = this.boundingBox.minX; var6 <= this.boundingBox.maxX; ++var6)
+			switch (SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()])
 			{
-				if (par2StructureBoundingBox.isVecInside(var6, 64, var5))
-				{
-					var3 += Math.max(par1World.getTopSolidOrLiquidBlock(var6, var5), par1World.provider.getAverageGroundLevel());
-					++var4;
-				}
+			case 0:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.maxX + 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, EnumFacing.EAST, this.getComponentType());
+			case 1:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
+			case 2:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.maxX + 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, EnumFacing.EAST, this.getComponentType());
+			case 3:
+				return StructureVenusVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
 			}
 		}
-
-		if (var4 == 0)
-		{
-			return -1;
-		}
-		else
-		{
-			return var3 / var4;
-		}
+		return null;
 	}
 
-	protected static boolean canVillageGoDeeper(StructureBoundingBox par0StructureBoundingBox)
+	protected int getAverageGroundLevel(World world, StructureBoundingBox box)
 	{
-		return par0StructureBoundingBox != null && par0StructureBoundingBox.minY > 10;
-	}
+		int i = 0;
+		int j = 0;
 
-	protected void spawnVillagers(World par1World, StructureBoundingBox par2StructureBoundingBox, int par3, int par4, int par5, int par6)
-	{
-		if (this.villagersSpawned < par6)
+		for (int k = this.boundingBox.minZ; k <= this.boundingBox.maxZ;)
 		{
-			for (int var7 = this.villagersSpawned; var7 < par6; ++var7)
+			for (int l = this.boundingBox.minX; l <= this.boundingBox.maxX; ++l)
 			{
-				int var8 = this.getXWithOffset(par3 + var7, par5);
-				int var9 = this.getYWithOffset(par4);
-				int var10 = this.getZWithOffset(par3 + var7, par5);
+				BlockPos pos = new BlockPos(l, 64, k);
 
-				var8 += par1World.rand.nextInt(3) - 1;
-				var10 += par1World.rand.nextInt(3) - 1;
-
-				if (!par2StructureBoundingBox.isVecInside(var8, var9, var10))
+				if (box.func_175898_b(pos))
 				{
-					break;
+					i += Math.max(world.getTopSolidOrLiquidBlock(pos).getY(), world.provider.getAverageGroundLevel());
+					++j;
 				}
-
-				++this.villagersSpawned;
-				EntityVenusianVillager var11 = new EntityVenusianVillager(par1World);
-				var11.setLocationAndAngles(var8 + 0.5D, var9, var10 + 0.5D, 0.0F, 0.0F);
-				par1World.spawnEntityInWorld(var11);
+			}
+			if (j == 0)
+			{
+				return -1;
+			}
+			else
+			{
+				return i / j;
 			}
 		}
-	}
-
-	protected int getVillagerType(int par1)
-	{
 		return 0;
 	}
 
-	protected Block getBiomeSpecificBlock(Block par1, int par2)
+	protected static boolean canVillageGoDeeper(StructureBoundingBox box)
 	{
-		return par1;
+		return box != null && box.minY > 10;
 	}
 
-	protected int getBiomeSpecificBlockMetadata(Block par1, int par2)
+	protected void spawnVillagers(World world, StructureBoundingBox box, int x, int y, int z, int par6)
 	{
-		return par2;
+		if (this.villagersSpawned < par6)
+		{
+			for (int i1 = this.villagersSpawned; i1 < par6; ++i1)
+			{
+				int j1 = this.getXWithOffset(x + i1, z);
+				int k1 = this.getYWithOffset(y);
+				int l1 = this.getZWithOffset(x + i1, z);
+
+				if (!box.func_175898_b(new BlockPos(j1, k1, l1)))
+				{
+					break;
+				}
+				++this.villagersSpawned;
+				EntityVenusianVillager entityvillager = new EntityVenusianVillager(world);
+				entityvillager.setLocationAndAngles(j1 + 0.5D, k1, l1 + 0.5D, 0.0F, 0.0F);
+				world.spawnEntityInWorld(entityvillager);
+			}
+		}
+	}
+
+	protected IBlockState func_175847_a(IBlockState state)
+	{
+		return state;
 	}
 
 	@Override
-	protected void placeBlockAtCurrentPosition(World par1World, Block par2, int par3, int par4, int par5, int par6, StructureBoundingBox par7StructureBoundingBox)
+	protected void func_175811_a(World world, IBlockState state, int x, int y, int z, StructureBoundingBox box)
 	{
-		Block var8 = this.getBiomeSpecificBlock(par2, par3);
-		int var9 = this.getBiomeSpecificBlockMetadata(par2, par3);
-		super.placeBlockAtCurrentPosition(par1World, var8, var9, par4, par5, par6, par7StructureBoundingBox);
+		IBlockState iblockstate1 = this.func_175847_a(state);
+		super.func_175811_a(world, iblockstate1, x, y, z, box);
 	}
 
 	@Override
-	protected void fillWithBlocks(World par1World, StructureBoundingBox par2StructureBoundingBox, int par3, int par4, int par5, int par6, int par7, int par8, Block par9, Block par10, boolean par11)
+	protected void func_175804_a(World world, StructureBoundingBox box, int x, int y, int z, int par6, int par7, int par8, IBlockState state, IBlockState state1, boolean bool)
 	{
-		Block var12 = this.getBiomeSpecificBlock(par9, 0);
-		int var13 = this.getBiomeSpecificBlockMetadata(par9, 0);
-		Block var14 = this.getBiomeSpecificBlock(par10, 0);
-		int var15 = this.getBiomeSpecificBlockMetadata(par10, 0);
-		super.fillWithMetadataBlocks(par1World, par2StructureBoundingBox, par3, par4, par5, par6, par7, par8, var12, var13, var14, var15, par11);
+		IBlockState iblockstate2 = this.func_175847_a(state);
+		IBlockState iblockstate3 = this.func_175847_a(state1);
+		super.func_175804_a(world, box, x, y, z, par6, par7, par8, iblockstate2, iblockstate3, bool);
 	}
 
-	@Override
-	protected void func_151554_b(World par1World, Block par2, int par3, int par4, int par5, int par6, StructureBoundingBox par7StructureBoundingBox)
+	protected static class SwitchEnumFacing
 	{
-		Block var8 = this.getBiomeSpecificBlock(par2, par3);
-		int var9 = this.getBiomeSpecificBlockMetadata(par2, par3);
-		super.func_151554_b(par1World, var8, var9, par4, par5, par6, par7StructureBoundingBox);
+		protected static int[] field_176064_a = new int[EnumFacing.values().length];
+
+		static
+		{
+			try
+			{
+				field_176064_a[EnumFacing.NORTH.ordinal()] = 1;
+			}
+			catch (NoSuchFieldError var4)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.SOUTH.ordinal()] = 2;
+			}
+			catch (NoSuchFieldError var3)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.WEST.ordinal()] = 3;
+			}
+			catch (NoSuchFieldError var2)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.EAST.ordinal()] = 4;
+			}
+			catch (NoSuchFieldError var1)
+			{
+			}
+		}
 	}
 }

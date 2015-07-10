@@ -7,13 +7,15 @@
 
 package stevekung.mods.moreplanets.planets.fronos.recipe;
 
+import java.util.HashMap;
+
+import micdoodle8.mods.galacticraft.core.items.GCItems;
+import micdoodle8.mods.galacticraft.core.util.RecipeUtil;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.recipe.CandyExtractorRecipes;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -21,6 +23,7 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.items.armor.FronosArmorItems;
 import stevekung.mods.moreplanets.planets.fronos.items.tools.FronosToolsItems;
+import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class CraftingRecipesFronos
 {
@@ -32,7 +35,7 @@ public class CraftingRecipesFronos
 		CraftingRecipesFronos.addItemSmelting();
 		CraftingRecipesFronos.addOreDictRecipe();
 		CraftingRecipesFronos.addExtractingRecipe();
-		//		CraftingRecipesFronos.addTier7RocketRecipes();
+		CraftingRecipesFronos.addTier7RocketRecipes();
 	}
 
 	private static void addBlockRecipes()
@@ -98,9 +101,9 @@ public class CraftingRecipesFronos
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 1, 1), new Object[] { "S", "S", 'S', new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 1, 4), new Object[] { "S", "S", 'S', new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.fronos_sandstone, 1, 7), new Object[] { "S", "S", 'S', new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, 2) });
-		addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 0), new Object[] { "SSS", 'S', "fronosSandstone" });
-		addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 1), new Object[] { "SSS", 'S', "whiteSandstone" });
-		addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 2), new Object[] { "SSS", 'S', "cheeseSandstone" });
+		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 0), new Object[] { "SSS", 'S', "fronosSandstone" });
+		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 1), new Object[] { "SSS", 'S', "whiteSandstone" });
+		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 2), new Object[] { "SSS", 'S', "cheeseSandstone" });
 
 		// Coconut Wood Stairs
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.coconut_wood_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', new ItemStack(FronosBlocks.fronos_planks, 1, 0) });
@@ -198,9 +201,9 @@ public class CraftingRecipesFronos
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.candy_food, 9, 2), new ItemStack(FronosBlocks.caramel_block));
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.fronos_item, 9, 2), new ItemStack(FronosBlocks.ore_block, 1, 1) );
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.fronos_item, 9, 3), new ItemStack(FronosBlocks.ore_block, 1, 0) );
-		//		GameRegistry.addRecipe(new ItemStack(FronosItems.tier8_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(FronosItems.tier8_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		//		GameRegistry.addRecipe(new ItemStack(FronosItems.tier8_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(FronosItems.tier8_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		//		GameRegistry.addRecipe(new ItemStack(FronosItems.tier8_rocket_module, 1, 1), new Object[] { "PDP", "PCP", "NON", 'D', new ItemStack(FronosBlocks.ore_block, 1, 0), 'P', new ItemStack(FronosItems.fronos_item, 1, 4), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'N', new ItemStack(FronosItems.tier8_rocket_module, 1, 2), 'O', new ItemStack(GCItems.oxygenVent) });
+		GameRegistry.addRecipe(new ItemStack(FronosItems.tier_8_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(FronosItems.tier_8_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosItems.tier_8_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(FronosItems.tier_8_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosItems.tier_8_rocket_module, 1, 1), new Object[] { "PDP", "PCP", "NON", 'D', new ItemStack(FronosBlocks.ore_block, 1, 0), 'P', new ItemStack(FronosItems.fronos_item, 1, 4), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'N', new ItemStack(FronosItems.tier_8_rocket_module, 1, 2), 'O', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.fronos_food, 1, 13), new ItemStack(FronosBlocks.fronos_flower, 1, 4), new ItemStack(Items.bowl), new ItemStack(Blocks.brown_mushroom) );
 		GameRegistry.addRecipe(new ItemStack(FronosItems.fronos_food, 1, 14), new Object[] { "R", "B", 'R', new ItemStack(FronosBlocks.cloud_block, 1, 1), 'B', new ItemStack(Items.bowl) });
 
@@ -230,20 +233,20 @@ public class CraftingRecipesFronos
 		else
 		{
 			// Candy Bow
-			//			RecipeUtil.addRecipe(new ItemStack(FronosItems.candy_bow), new Object[] { " CS", "C S", " CS", 'C', "candy", 'S', new ItemStack(FronosItems.fronos_item, 1, 9) });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosBlocks.cloud_block), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 5) });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosBlocks.cloud_block), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 7) });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosItems.fronos_item, 1, 8), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 5) });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosItems.fronos_item, 1, 8), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 7) });
+			RecipeUtil.addRecipe(new ItemStack(FronosItems.candy_bow), new Object[] { " CS", "C S", " CS", 'C', "candy", 'S', new ItemStack(FronosItems.fronos_item, 1, 9) });
+			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosBlocks.cloud_block), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 5) });
+			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosBlocks.cloud_block), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 7) });
+			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosItems.fronos_item, 1, 8), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 5) });
+			RecipeUtil.addRecipe(new ItemStack(FronosItems.poison_arrow, 4), new Object[] { "P", "C", "S", 'C', "candy", 'S', new ItemStack(FronosItems.fronos_item, 1, 8), 'P', new ItemStack(FronosBlocks.fronos_flower, 1, 7) });
 			//
 			//			// Candy Tools
-			//			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_hoe), new Object[] { "XX", " Y", " Y", 'X', "candyCane", 'Y', "candy" });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_hoe), new Object[] { "XX", "Y ", "Y ", 'X', "candyCane", 'Y', "candy" });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_axe), new Object[] { "XX", "XY", " Y", 'X', "candyCane", 'Y', "candy" });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_axe), new Object[] { "XX", "YX", "Y ", 'X', "candyCane", 'Y', "candy" });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', "candyCane", 'Y', "candy" });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_sword), new Object[] { "X", "X", "Y", 'X', "candyCane", 'Y', "candy" });
-			//			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_shovel), new Object[] { "X", "Y", "Y", 'X', "candyCane", 'Y', "candy" });
+			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_hoe), new Object[] { "XX", " Y", " Y", 'X', "candyCane", 'Y', "candy" });
+			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_hoe), new Object[] { "XX", "Y ", "Y ", 'X', "candyCane", 'Y', "candy" });
+			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_axe), new Object[] { "XX", "XY", " Y", 'X', "candyCane", 'Y', "candy" });
+			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_axe), new Object[] { "XX", "YX", "Y ", 'X', "candyCane", 'Y', "candy" });
+			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', "candyCane", 'Y', "candy" });
+			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_sword), new Object[] { "X", "X", "Y", 'X', "candyCane", 'Y', "candy" });
+			RecipeUtil.addRecipe(new ItemStack(FronosToolsItems.candy_shovel), new Object[] { "X", "Y", "Y", 'X', "candyCane", 'Y', "candy" });
 		}
 
 		// Armor
@@ -255,8 +258,8 @@ public class CraftingRecipesFronos
 		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.iridium_chestplate), new Object[] { "Q Q", "QQQ", "QQQ", 'Q', new ItemStack(FronosItems.fronos_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.iridium_leggings), new Object[] { "QQQ", "Q Q", "Q Q", 'Q', new ItemStack(FronosItems.fronos_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.iridium_boots), new Object[] { "Q Q", "Q Q", 'Q', new ItemStack(FronosItems.fronos_item, 1, 5) });
-		//		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.breathable_black_diamond_helmet), new Object[] { "DDD", "DOD", 'D', new ItemStack(FronosItems.fronos_item, 1, 4), 'O', new ItemStack(GCItems.oxMask) });
-		//		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.breathable_iridium_helmet), new Object[] { "III", "IOI", 'I', new ItemStack(FronosItems.fronos_item, 1, 5), 'O', new ItemStack(GCItems.oxMask) });
+		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.breathable_black_diamond_helmet), new Object[] { "DDD", "DOD", 'D', new ItemStack(FronosItems.fronos_item, 1, 4), 'O', new ItemStack(GCItems.oxMask) });
+		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.breathable_iridium_helmet), new Object[] { "III", "IOI", 'I', new ItemStack(FronosItems.fronos_item, 1, 5), 'O', new ItemStack(GCItems.oxMask) });
 
 		// Tools
 		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 4), 'Y', new ItemStack(Items.stick) });
@@ -305,9 +308,9 @@ public class CraftingRecipesFronos
 
 		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 2), new ItemStack(Items.iron_ingot), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 3), new ItemStack(Items.coal), 0.8F);
-		//		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 5), 0.8F);
-		//		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
-		//		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 4), new ItemStack(GCItems.basicItem, 1, 5), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 5), new ItemStack(GCItems.basicItem, 1, 4), 0.8F);
+		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 6), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 7), new ItemStack(Items.dye, 1, 4), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 8), new ItemStack(FronosItems.fronos_item, 1, 0), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(FronosBlocks.fronos_block, 1, 9), new ItemStack(FronosItems.fronos_item, 1, 2), 0.8F);
@@ -350,74 +353,74 @@ public class CraftingRecipesFronos
 		OreDictionary.registerOre("cheeseSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 8));
 	}
 
-	//	private static void addTier7RocketRecipes()
-	//	{
-	//		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
-	//		input.put(1, new ItemStack(NibiruItems.tier7_rocket_module, 1, 4));
-	//		input.put(2, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(3, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(4, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(5, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(6, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(7, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(8, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(9, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(10, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));
-	//		input.put(11, new ItemStack(NibiruItems.tier7_rocket_module, 1, 2));//Plate
-	//		input.put(12, new ItemStack(NibiruItems.tier7_rocket_module, 1, 1));//Booster
-	//		input.put(13, new ItemStack(NibiruItems.tier7_rocket_module, 1, 3));
-	//		input.put(14, new ItemStack(NibiruItems.tier7_rocket_module, 1, 3));
-	//		input.put(15, new ItemStack(NibiruItems.tier7_rocket_module, 1, 0));//Engine
-	//		input.put(16, new ItemStack(NibiruItems.tier7_rocket_module, 1, 1));
-	//		input.put(17, new ItemStack(NibiruItems.tier7_rocket_module, 1, 3));
-	//		input.put(18, new ItemStack(NibiruItems.tier7_rocket_module, 1, 3));
-	//		input.put(19, null);
-	//		input.put(20, null);
-	//		input.put(21, null);
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 0), input);
-	//
-	//		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, null);
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 1), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, null);
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, null);
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, null);
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 2), input2);
-	//
-	//		input2 = new HashMap<Integer, ItemStack>(input);
-	//		input2.put(19, new ItemStack(Blocks.chest));
-	//		input2.put(20, new ItemStack(Blocks.chest));
-	//		input2.put(21, new ItemStack(Blocks.chest));
-	//		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier7_rocket, 1, 3), input2);
-	//	}
+	private static void addTier7RocketRecipes()
+	{
+		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
+		input.put(1, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 4));
+		input.put(2, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(3, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(4, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(5, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(6, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(7, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(8, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(9, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(10, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));
+		input.put(11, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2));//Plate
+		input.put(12, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 1));//Booster
+		input.put(13, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 3));
+		input.put(14, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 3));
+		input.put(15, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 0));//Engine
+		input.put(16, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 1));
+		input.put(17, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 3));
+		input.put(18, new ItemStack(NibiruItems.tier_7_rocket_module, 1, 3));
+		input.put(19, null);
+		input.put(20, null);
+		input.put(21, null);
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 0), input);
+
+		HashMap<Integer, ItemStack> input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, null);
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 1), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, null);
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, null);
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, null);
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 2), input2);
+
+		input2 = new HashMap<Integer, ItemStack>(input);
+		input2.put(19, new ItemStack(Blocks.chest));
+		input2.put(20, new ItemStack(Blocks.chest));
+		input2.put(21, new ItemStack(Blocks.chest));
+		Tier7RocketRecipes.addTier7RocketRecipe(new ItemStack(FronosItems.tier_7_rocket, 1, 3), input2);
+	}
 
 	private static void addExtractingRecipe()
 	{
@@ -452,11 +455,5 @@ public class CraftingRecipesFronos
 		CandyExtractorRecipes.instance().addExtractingRecipe(new ItemStack(FronosBlocks.jelly_slime_egg, 1, 6), new ItemStack(FronosItems.jelly, 4, 6), 0.4F);
 		CandyExtractorRecipes.instance().addExtractingRecipe(new ItemStack(FronosBlocks.jelly_slime_egg, 1, 7), new ItemStack(FronosItems.jelly, 4, 7), 0.4F);
 		CandyExtractorRecipes.instance().addExtractingRecipe(new ItemStack(FronosBlocks.chocolate_block), new ItemStack(FronosItems.candy_food, 4, 1), 0.8F);
-	}
-
-	@SuppressWarnings("unchecked")
-	private static void addRecipe(ItemStack result, Object[] obj)
-	{
-		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(result, obj));
 	}
 }

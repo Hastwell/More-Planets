@@ -6,23 +6,22 @@
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.planets.diona.blocks;
-//package stevekung.mods.moreplanets.planets.diona.blocks;
-//
-//import stevekung.mods.moreplanets.core.blocks.BlockTreasureChestMP;
-//import stevekung.mods.moreplanets.core.tileentities.TileEntityTreasureChestMP;
-//import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
-//
-//public class BlockDionaTreasureChest extends BlockTreasureChestMP
-//{
-//	public BlockDionaTreasureChest(String name)
-//	{
-//		super();
-//		this.setUnlocalizedName(name);
-//	}
-//
-//	@Override
-//	public TileEntityTreasureChestMP getTreasureChest()
-//	{
-//		return new TileEntityDionaTreasureChest();
-//	}
-//}
+
+import stevekung.mods.moreplanets.common.blocks.BlockTreasureChestMP;
+import stevekung.mods.moreplanets.common.tileentities.TileEntityTreasureChestMP;
+import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
+
+public class BlockDionaTreasureChest extends BlockTreasureChestMP
+{
+	public BlockDionaTreasureChest(String name)
+	{
+		super();
+		this.setUnlocalizedName(name);
+	}
+
+	@Override
+	public TileEntityTreasureChestMP getTreasureChest()
+	{
+		return new TileEntityDionaTreasureChest();
+	}
+}

@@ -215,4 +215,10 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	{
 		return 0.5D;
 	}
+
+	@Override
+	public String getInternalNameSuffix()
+	{
+		return "_venus";
+	}
 }

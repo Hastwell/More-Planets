@@ -30,17 +30,16 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import net.minecraftforge.common.util.ForgeDirection;
-import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
-import stevekung.mods.moreplanets.planets.polongnius.worldgen.dungeon.RoomBossPolongnius;
-import stevekung.mods.moreplanets.planets.polongnius.worldgen.dungeon.RoomChestsPolongnius;
-import stevekung.mods.moreplanets.planets.polongnius.worldgen.dungeon.RoomTreasurePolongnius;
+import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomBossPolongnius;
+import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomChestsPolongnius;
+import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomTreasurePolongnius;
 
 public class ChunkProviderPolongnius extends ChunkProviderGenerate
 {
