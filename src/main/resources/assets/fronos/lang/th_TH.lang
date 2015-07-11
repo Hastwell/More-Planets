@@ -338,11 +338,11 @@ item.breathable_black_diamond_helmet.name=Breathable Black Diamond Helmet
 item.breathable_iridium_helmet.name=Breathable Iridium Helmet
 
 # TOOLS
-item.black_diamond_pickaxe.name=Black Diamond Pickaxe
-item.black_diamond_axe.name=Black Diamond Axe
-item.black_diamond_hoe.name=Black Diamond Hoe
-item.black_diamond_spade.name=Black Diamond Shovel
-item.black_diamond_sword.name=
+item.black_diamond_pickaxe.name=อีเต้อเพรชสีดำ
+item.black_diamond_axe.name=ขวานเพรชสีดำ
+item.black_diamond_hoe.name=จอบเพรชสีดำ
+item.black_diamond_spade.name=พลั่วเพรชสีดำ
+item.black_diamond_sword.name=ดาบเพรชสีดำ
 item.iridium_pickaxe.name=อีเต้อไอเรเดียม
 item.iridium_axe.name=ขวานไอเรเนียม
 item.iridium_hoe.name=จอบไอเรเดียม
