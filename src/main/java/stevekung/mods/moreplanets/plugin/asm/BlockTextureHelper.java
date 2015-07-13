@@ -35,41 +35,81 @@ public class BlockTextureHelper
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/diona_ancient_chest");
 		}
+		else if (block == DionaBlocks.diona_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/diona_treasure_chest");
+		}
 		else if (block == PolongniusBlocks.polongnius_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/polongnius_ancient_chest");
+		}
+		else if (block == PolongniusBlocks.polongnius_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/polongnius_treasure_chest");
 		}
 		else if (block == NibiruBlocks.nibiru_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/nibiru_ancient_chest");
 		}
+		else if (block == NibiruBlocks.nibiru_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/nibiru_treasure_chest");
+		}
 		else if (block == KoentusBlocks.koentus_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/koentus_ancient_chest");
+		}
+		else if (block == KoentusBlocks.koentus_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/koentus_treasure_chest");
 		}
 		else if (block == FronosBlocks.fronos_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/fronos_ancient_chest");
 		}
+		else if (block == FronosBlocks.fronos_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/fronos_treasure_chest");
+		}
 		else if (block == KapteynBBlocks.kapteyn_b_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/kapteyn_b_ancient_chest");
+		}
+		else if (block == KapteynBBlocks.kapteyn_b_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/kapteyn_b_treasure_chest");
 		}
 		else if (block == SiriusBBlocks.sirius_b_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/sirius_b_ancient_chest");
 		}
+		else if (block == SiriusBBlocks.sirius_b_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/sirius_b_treasure_chest");
+		}
 		else if (block == MercuryBlocks.mercury_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/mercury_ancient_chest");
+		}
+		else if (block == MercuryBlocks.mercury_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/mercury_treasure_chest");
 		}
 		else if (block == VenusBlocks.venus_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/venus_ancient_chest");
 		}
+		else if (block == VenusBlocks.venus_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/venus_treasure_chest");
+		}
 		else if (block == PlutoBlocks.pluto_ancient_chest)
 		{
 			return RegisterHelper.registerBlockTexture("moreplanets:blocks/pluto_ancient_chest");
+		}
+		else if (block == PlutoBlocks.pluto_treasure_chest)
+		{
+			return RegisterHelper.registerBlockTexture("moreplanets:blocks/pluto_treasure_chest");
 		}
 		else if (block == KapteynBBlocks.icy_poison_crystal)
 		{

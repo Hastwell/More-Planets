@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.venus.world.gen.blazepit;
 
 import java.util.Random;
 
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureStart;
 
@@ -18,7 +19,7 @@ public class StructureVenusianBlazePitStart extends StructureStart
 	{
 		int var5 = (x << 4) + 8;
 		int var6 = (z << 4) + 8;
-		ComponentVenusianBlazePitRoom room = new ComponentVenusianBlazePitRoom(0, var5, 90, var6, 40, 7, 0);
+		ComponentVenusianBlazePitRoom room = new ComponentVenusianBlazePitRoom(0, var5, 90, var6, 40, 7, EnumFacing.NORTH);
 
 		if (room != null)
 		{

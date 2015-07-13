@@ -136,10 +136,8 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 
 	public void genFronosBiomeTerrain(Random rand, ChunkPrimer chunk, int x, int z, double stoneNoise)
 	{
-		boolean flag = true;
 		IBlockState iblockstate = this.topBlock;
 		IBlockState iblockstate1 = this.fillerBlock;
-		IBlockState iblockstate3 = this.stoneBlock;
 		int k = -1;
 		int l = (int)(stoneNoise / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int i1 = x & 15;
@@ -161,16 +159,12 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 				}
 				else if (iblockstate2.getBlock() == Blocks.stone)
 				{
-					if (this.stoneBlock != null)
-					{
-						iblockstate3 = this.stoneBlock;
-					}
 					if (k == -1)
 					{
 						if (l <= 0)
 						{
 							iblockstate = null;
-							iblockstate1 = FronosBlocks.fronos_block.getDefaultState();
+							iblockstate1 = this.stoneBlock;
 						}
 						else if (k1 >= 59 && k1 <= 64)
 						{
@@ -199,7 +193,7 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 						else if (k1 < 56 - l)
 						{
 							iblockstate = null;
-							iblockstate1 = FronosBlocks.fronos_block.getDefaultState();
+							iblockstate1 = this.stoneBlock;
 							chunk.setBlockState(j1, k1, i1, Blocks.gravel.getDefaultState());
 						}
 						else

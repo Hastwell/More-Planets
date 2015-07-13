@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.venus.world.gen;
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
@@ -70,7 +71,7 @@ public class BiomeDecoratorVenus extends BiomeDecoratorSpace
 	@Override
 	protected void decorate()
 	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.chunkX, this.chunkZ));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.pos));
 
 		this.generateOre(32, this.dirtGen, 0, 255);
 		this.generateOre(16, this.ironGen, 0, 64);
@@ -94,19 +95,19 @@ public class BiomeDecoratorVenus extends BiomeDecoratorSpace
 		{
 			if (this.rand.nextInt(20) == 0)
 			{
-				x = this.chunkX + this.rand.nextInt(16) + 8;
+				x = this.rand.nextInt(16) + 8;
 				y = this.rand.nextInt(32 - 16) + 16;
-				z = this.chunkZ + this.rand.nextInt(16) + 8;
-				new WorldGenLiquidLakes(Blocks.lava).generate(this.world, this.rand, x, y, z);
+				z = this.rand.nextInt(16) + 8;
+				new WorldGenLiquidLakes(Blocks.lava).generate(this.world, this.rand, new BlockPos(x, y, z));
 			}
 		}
 		for (i = 0; i < 16; ++i)
 		{
-			x = this.chunkX + this.rand.nextInt(16) + 8;
+			x = this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(255);
-			z = this.chunkZ + this.rand.nextInt(16) + 8;
-			new WorldGenSurfaceLava().generate(this.world, this.rand, x, y, z);
+			z = this.rand.nextInt(16) + 8;
+			new WorldGenSurfaceLava().generate(this.world, this.rand, new BlockPos(x, y, z));
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.chunkX, this.chunkZ));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.pos));
 	}
 }

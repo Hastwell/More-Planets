@@ -8,7 +8,6 @@
 package stevekung.mods.moreplanets.planets.nibiru.client.render.tileentities;
 
 import micdoodle8.mods.galacticraft.core.client.model.block.ModelTreasureChest;
-import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -36,9 +35,6 @@ public class TileEntityNibiruTreasureChestRenderer extends TileEntitySpecialRend
 			chest.getBlockType();
 			j = chest.getBlockMetadata();
 		}
-
-		ModelChest modelchest;
-		modelchest = this.simpleChest;
 
 		if (p_180538_9_ >= 0)
 		{
@@ -89,8 +85,17 @@ public class TileEntityNibiruTreasureChestRenderer extends TileEntitySpecialRend
 		float f1 = chest.prevLidAngle + (chest.lidAngle - chest.prevLidAngle) * p_180538_8_;
 		f1 = 1.0F - f1;
 		f1 = 1.0F - f1 * f1 * f1;
-		modelchest.chestLid.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
-		modelchest.renderAll();
+		this.simpleChest.chestLid.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
+
+		if (chest.locked)
+		{
+			this.simpleChest.renderAll(false);
+		}
+		else
+		{
+			this.simpleChest.renderAll(true);
+		}
+
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

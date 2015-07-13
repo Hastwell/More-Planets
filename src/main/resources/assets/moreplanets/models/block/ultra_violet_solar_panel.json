@@ -1,0 +1,11 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "moreplanets:blocks/ultra_violet_solar_top",
+		"front": "moreplanets:blocks/ultra_violet_solar_side",
+        "side": "moreplanets:blocks/ultra_violet_solar_side",
+		"east": "galacticraftasteroids:blocks/machine_output",
+		"down": "galacticraftasteroids:blocks/machine",
+		"particle": "moreplanets:blocks/ultra_violet_solar_side"
+    }
+}

@@ -11,33 +11,34 @@ import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.ChunkPrimer;
 
 public class MapGenCaveMP extends MapGenBaseMeta
 {
 	private Block block;
+	public static int BREAK_THROUGH_CHANCE = 25; // 1 in n chance
 
 	public MapGenCaveMP(Block block)
 	{
 		this.block = block;
 	}
 
-	public static int BREAK_THROUGH_CHANCE = 25; // 1 in n chance
-
-	protected void generateLargeCaveNode(long par1, int par3, int par4, Block[] blockIdArray, byte[] metaArray, double par6, double par8, double par10)
+	protected void generateLargeCaveNode(long seed, int x, int z, ChunkPrimer chunk, double par6, double par8, double par10)
 	{
-		this.generateCaveNode(par1, par3, par4, blockIdArray, metaArray, par6, par8, par10, 1.0F + this.rand.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
+		this.generateCaveNode(seed, x, z, chunk, par6, par8, par10, 1.0F + this.rand.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
 	}
 
-	protected void generateCaveNode(long par1, int par3, int par4, Block[] blockIdArray, byte[] metaArray, double par6, double par8, double par10, float par12, float par13, float par14, int par15, int par16, double par17)
+	protected void generateCaveNode(long seed, int x, int z, ChunkPrimer chunk, double par6, double par8, double par10, float par12, float par13, float par14, int par15, int par16, double par17)
 	{
-		double d4 = par3 * 16 + 8;
-		double d5 = par4 * 16 + 8;
+		double d4 = x * 16 + 8;
+		double d5 = z * 16 + 8;
 		float f3 = 0.0F;
 		float f4 = 0.0F;
-		Random random = new Random(par1);
+		Random random = new Random(seed);
 
 		if (par16 <= 0)
 		{
@@ -83,8 +84,8 @@ public class MapGenCaveMP extends MapGenBaseMeta
 
 			if (!flag && par15 == k1 && par12 > 1.0F && par16 > 0)
 			{
-				this.generateCaveNode(random.nextLong(), par3, par4, blockIdArray, metaArray, par6, par8, par10, random.nextFloat() * 0.5F + 0.5F, par13 - (float) Math.PI / 2F, par14 / 3.0F, par15, par16, 1.0D);
-				this.generateCaveNode(random.nextLong(), par3, par4, blockIdArray, metaArray, par6, par8, par10, random.nextFloat() * 0.5F + 0.5F, par13 + (float) Math.PI / 2F, par14 / 3.0F, par15, par16, 1.0D);
+				this.generateCaveNode(random.nextLong(), x, z, chunk, par6, par8, par10, random.nextFloat() * 0.5F + 0.5F, par13 - (float) Math.PI / 2F, par14 / 3.0F, par15, par16, 1.0D);
+				this.generateCaveNode(random.nextLong(), x, z, chunk, par6, par8, par10, random.nextFloat() * 0.5F + 0.5F, par13 + (float) Math.PI / 2F, par14 / 3.0F, par15, par16, 1.0D);
 				return;
 			}
 
@@ -102,38 +103,33 @@ public class MapGenCaveMP extends MapGenBaseMeta
 
 				if (par6 >= d4 - 16.0D - d6 * 2.0D && par10 >= d5 - 16.0D - d6 * 2.0D && par6 <= d4 + 16.0D + d6 * 2.0D && par10 <= d5 + 16.0D + d6 * 2.0D)
 				{
-					int l1 = MathHelper.floor_double(par6 - d6) - par3 * 16 - 1;
-					int i2 = MathHelper.floor_double(par6 + d6) - par3 * 16 + 1;
+					int l1 = MathHelper.floor_double(par6 - d6) - x * 16 - 1;
+					int i2 = MathHelper.floor_double(par6 + d6) - x * 16 + 1;
 					int j2 = MathHelper.floor_double(par8 - d7) - 1;
 					int k2 = MathHelper.floor_double(par8 + d7) + 1;
-					int l2 = MathHelper.floor_double(par10 - d6) - par4 * 16 - 1;
-					int i3 = MathHelper.floor_double(par10 + d6) - par4 * 16 + 1;
+					int l2 = MathHelper.floor_double(par10 - d6) - z * 16 - 1;
+					int i3 = MathHelper.floor_double(par10 + d6) - z * 16 + 1;
 
 					if (l1 < 0)
 					{
 						l1 = 0;
 					}
-
 					if (i2 > 16)
 					{
 						i2 = 16;
 					}
-
 					if (j2 < 1)
 					{
 						j2 = 1;
 					}
-
 					if (k2 > 120)
 					{
 						k2 = 120;
 					}
-
 					if (l2 < 0)
 					{
 						l2 = 0;
 					}
-
 					if (i3 > 16)
 					{
 						i3 = 16;
@@ -167,12 +163,12 @@ public class MapGenCaveMP extends MapGenBaseMeta
 
 							for (int localX = l1; localX < i2; localX++)
 							{
-								double zfactor = (localX + par3 * 16 + 0.5D - par6) / d6;
+								double zfactor = (localX + x * 16 + 0.5D - par6) / d6;
 								double zfactorSq = zfactor * zfactor;
 
 								for (int localZ = l2; localZ < i3; localZ++)
 								{
-									double xfactor = (localZ + par4 * 16 + 0.5D - par10) / d6;
+									double xfactor = (localZ + z * 16 + 0.5D - par10) / d6;
 									double xfactorSq = xfactor * xfactor;
 
 									if (xfactorSq + zfactorSq < 1.0D)
@@ -181,15 +177,17 @@ public class MapGenCaveMP extends MapGenBaseMeta
 
 										if (yfactor > -0.7D && xfactorSq + yfactorSq + zfactorSq < 1.0D)
 										{
-											if (blockIdArray[coords] == this.block)
+											IBlockState state = chunk.getBlockState(coords);
+
+											if (state == this.block)
 											{
-												if (metaArray[coords] == 1 || metaArray[coords] == 2)
+												if (this.block.getMetaFromState(state) == 1 || this.block.getMetaFromState(state) == 2)
 												{
-													blockIdArray[coords] = Blocks.air;
+													chunk.setBlockState(coords, Blocks.air.getDefaultState());
 												}
-												else if (metaArray[coords] == 0 && random.nextInt(MapGenCaveMP.BREAK_THROUGH_CHANCE) == 0)
+												else if (this.block.getMetaFromState(state) == 0 && random.nextInt(MapGenCaveMP.BREAK_THROUGH_CHANCE) == 0)
 												{
-													blockIdArray[coords] = Blocks.air;
+													chunk.setBlockState(coords, Blocks.air.getDefaultState());
 												}
 											}
 										}
@@ -209,7 +207,7 @@ public class MapGenCaveMP extends MapGenBaseMeta
 	}
 
 	@Override
-	protected void recursiveGenerate(World par1World, int par2, int par3, int par4, int par5, Block[] blockIdArray, byte[] metaArray)
+	protected void recursiveGenerate(World world, int x, int z, int orX, int orZ, ChunkPrimer chunk)
 	{
 		int var7 = this.rand.nextInt(this.rand.nextInt(this.rand.nextInt(40) + 1) + 1);
 
@@ -220,14 +218,14 @@ public class MapGenCaveMP extends MapGenBaseMeta
 
 		for (int var8 = 0; var8 < var7; ++var8)
 		{
-			double var9 = par2 * 16 + this.rand.nextInt(16);
+			double var9 = x * 16 + this.rand.nextInt(16);
 			double var11 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-			double var13 = par3 * 16 + this.rand.nextInt(16);
+			double var13 = z * 16 + this.rand.nextInt(16);
 			int var15 = 1;
 
 			if (this.rand.nextInt(4) == 0)
 			{
-				this.generateLargeCaveNode(this.rand.nextLong(), par4, par5, blockIdArray, metaArray, var9, var11, var13);
+				this.generateLargeCaveNode(this.rand.nextLong(), orX, orZ, chunk, var9, var11, var13);
 				var15 += this.rand.nextInt(4);
 			}
 
@@ -241,7 +239,7 @@ public class MapGenCaveMP extends MapGenBaseMeta
 				{
 					var19 *= this.rand.nextFloat() * this.rand.nextFloat() * 3.0F + 1.0F;
 				}
-				this.generateCaveNode(this.rand.nextLong(), par4, par5, blockIdArray, metaArray, var9, var11, var13, var19, var17, var18, 0, 0, 1.0D);
+				this.generateCaveNode(this.rand.nextLong(), orX, orZ, chunk, var9, var11, var13, var19, var17, var18, 0, 0, 1.0D);
 			}
 		}
 	}

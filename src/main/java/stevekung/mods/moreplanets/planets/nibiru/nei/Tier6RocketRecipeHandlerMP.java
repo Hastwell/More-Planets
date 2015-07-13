@@ -14,7 +14,6 @@ import java.util.Set;
 
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.common.nei.RocketRecipeHandlerMP;
-import stevekung.mods.moreplanets.common.nei.RocketRecipeHandlerMP.CachedRocketRecipeMP;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 

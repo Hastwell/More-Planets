@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "moreplanets:ultra_violet_solar_panel" },
+        "facing=south": { "model": "moreplanets:ultra_violet_solar_panel", "y": 180 },
+        "facing=west":  { "model": "moreplanets:ultra_violet_solar_panel", "y": 270 },
+        "facing=east":  { "model": "moreplanets:ultra_violet_solar_panel", "y": 90 }
+    }
+}

@@ -92,7 +92,6 @@ public class BlockDandelion extends BlockFlowerMP
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		super.randomDisplayTick(world, pos, state, rand);
 		BlockType type = (BlockType)state.getValue(VARIANT);
 
 		if (type == BlockType.orange_dandelion)

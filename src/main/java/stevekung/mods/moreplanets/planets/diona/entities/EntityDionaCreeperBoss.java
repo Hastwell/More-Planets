@@ -84,12 +84,6 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 	}
 
-	/*public EntityDionaCreeperBoss(World world, Vector3 vec) TODO
-	{
-		this(world);
-		this.setPosition(vec.x, vec.y, vec.z);
-	}*/
-
 	@Override
 	public void knockBack(Entity entity, float knock, double x, double z) {}
 
@@ -134,6 +128,12 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 			this.spawner.spawned = false;
 		}
 		super.setDead();
+	}
+
+	@Override
+	public void onKillCommand()
+	{
+		this.setDead();
 	}
 
 	@Override
@@ -419,9 +419,9 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 		this.spawner = spawner;
 	}
 
-	private void func_82216_a(int par1, EntityLivingBase par2EntityLivingBase)
+	private void func_82216_a(int par1, EntityLivingBase living)
 	{
-		this.func_82209_a(par1, par2EntityLivingBase.posX, par2EntityLivingBase.posY + par2EntityLivingBase.getEyeHeight() * 0.5D, par2EntityLivingBase.posZ);
+		this.func_82209_a(par1, living.posX, living.posY + living.getEyeHeight() * 1.5D, living.posZ);
 	}
 
 	private void func_82209_a(int par1, double par2, double par4, double par6)
@@ -434,7 +434,7 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 		double d7 = par4 - d4;
 		double d8 = par6 - d5;
 
-		EntityProjectileFronisiumTNT tnt = new EntityProjectileFronisiumTNT(this.worldObj, this, d6 * 0.5D, d7 * 0.5D, d8 * 0.5D);
+		EntityProjectileFronisiumTNT tnt = new EntityProjectileFronisiumTNT(this.worldObj, this, d6, d7 * 1.0D, d8);
 		tnt.posY = d4;
 		tnt.posX = d3;
 		tnt.posZ = d5;

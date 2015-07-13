@@ -1,0 +1,11 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "galacticraftasteroids:blocks/machine",
+        "front": "moreplanets:blocks/mineral_water_generator",
+        "side": "galacticraftasteroids:blocks/machine_side_warning",
+		"east": "galacticraftasteroids:blocks/machine_input",
+		"down": "galacticraftasteroids:blocks/machine",
+		"particle": "galacticraftasteroids:blocks/machine_side"
+    }
+}

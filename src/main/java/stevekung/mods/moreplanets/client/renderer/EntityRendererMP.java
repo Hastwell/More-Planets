@@ -133,8 +133,10 @@ import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusMagmaCube
 import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySiriusSmallFireball;
 import stevekung.mods.moreplanets.planets.venus.client.render.entities.RenderVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.client.render.entities.RenderVenusianSlime;
+import stevekung.mods.moreplanets.planets.venus.client.render.entities.RenderVenusianVillager;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
+import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianVillager;
 
 public class EntityRendererMP
 {
@@ -193,6 +195,7 @@ public class EntityRendererMP
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityVenusianBlaze.class, new RenderVenusianBlaze(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVenusianSlime.class, new RenderVenusianSlime(render));
+		RenderingRegistry.registerEntityRenderingHandler(EntityVenusianVillager.class, new RenderVenusianVillager(render));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaGuardian.class, new RenderEuropaGuardian(render));

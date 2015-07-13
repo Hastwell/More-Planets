@@ -51,7 +51,7 @@ public abstract class ItemFoodMP extends ItemFood
 	{
 		if (this.getItemVariantsName() == null)
 		{
-			list.add(new ItemStack(this, 1, 0));
+			return;
 		}
 		for (int i = 0; i < this.getItemVariantsName().length; i++)
 		{

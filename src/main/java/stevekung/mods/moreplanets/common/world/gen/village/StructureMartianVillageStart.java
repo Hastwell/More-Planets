@@ -25,7 +25,7 @@ public class StructureMartianVillageStart extends StructureStart
 		super(x, z);
 
 		ArrayList<StructureMartianVillagePieceWeight> var6 = StructureMartianVillagePieces.getStructureVillageWeightedPieceList(rand, type);
-		ComponentMartianVillageStartPiece var7 = new ComponentMartianVillageStartPiece(world.getWorldChunkManager(), 0, rand, (x << 4) + 2, (z << 4) + 2, var6, type);
+		ComponentMartianVillageStartPiece var7 = new ComponentMartianVillageStartPiece(world.getWorldChunkManager(), rand, (x << 4) + 2, (z << 4) + 2, var6, type);
 		this.components.add(var7);
 		var7.buildComponent(var7, this.components, rand);
 		ArrayList<Object> var8 = var7.field_74930_j;

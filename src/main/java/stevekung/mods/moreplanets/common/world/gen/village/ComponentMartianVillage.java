@@ -73,10 +73,9 @@ public abstract class ComponentMartianVillage extends StructureComponent
 				return StructureMartianVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX - 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, EnumFacing.WEST, this.getComponentType());
 			case 3:
 				return StructureMartianVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
-			default:
-				return null;
 			}
 		}
+		return null;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -94,10 +93,9 @@ public abstract class ComponentMartianVillage extends StructureComponent
 				return StructureMartianVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.maxX + 1, this.boundingBox.minY + par4, this.boundingBox.minZ + par5, EnumFacing.EAST, this.getComponentType());
 			case 3:
 				return StructureMartianVillagePieces.getNextStructureComponent(component, list, rand, this.boundingBox.minX + par5, this.boundingBox.minY + par4, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
-			default:
-				return null;
 			}
 		}
+		return null;
 	}
 
 	protected int getAverageGroundLevel(World world, StructureBoundingBox box)

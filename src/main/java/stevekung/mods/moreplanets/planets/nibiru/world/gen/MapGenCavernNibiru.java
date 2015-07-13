@@ -11,68 +11,66 @@ import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
 import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
 public class MapGenCavernNibiru extends MapGenBaseMeta
 {
-	protected int range = 12;
-	protected Random rand = new Random();
-	protected World worldObj;
+	private int range = 12;
 
 	@Override
-	public void generate(IChunkProvider par1IChunkProvider, World par2World, int par3, int par4, Block[] arrayOfIDs, byte[] arrayOfMeta)
+	public void generate(IChunkProvider chunkProvider, World world, int x, int z, ChunkPrimer chunk)
 	{
-		final int var6 = this.range;
-		this.worldObj = par2World;
-		this.rand.setSeed(par2World.getSeed());
-		final long var7 = this.rand.nextLong();
-		final long var9 = this.rand.nextLong();
+		int var6 = this.range;
+		this.worldObj = world;
+		this.rand.setSeed(world.getSeed());
+		long var7 = this.rand.nextLong();
+		long var9 = this.rand.nextLong();
 
-		for (int var11 = par3 - var6; var11 <= par3 + var6; ++var11)
+		for (int var11 = x - var6; var11 <= x + var6; ++var11)
 		{
-			for (int var12 = par4 - var6; var12 <= par4 + var6; ++var12)
+			for (int var12 = z - var6; var12 <= z + var6; ++var12)
 			{
-				final long var13 = var11 * var7;
-				final long var15 = var12 * var9;
-				this.rand.setSeed(var13 ^ var15 ^ par2World.getSeed());
-				this.recursiveGenerate(par2World, var11, var12, par3, par4, arrayOfIDs, arrayOfMeta);
+				long var13 = var11 * var7;
+				long var15 = var12 * var9;
+				this.rand.setSeed(var13 ^ var15 ^ world.getSeed());
+				this.recursiveGenerate(world, var11, var12, x, z, chunk);
 			}
 		}
 	}
 
 	@Override
-	protected void recursiveGenerate(World par1World, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, Block[] arrayOfIDs, byte[] arrayOfMeta)
+	protected void recursiveGenerate(World world, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk)
 	{
 		if (this.rand.nextInt(100) == 0)
 		{
-			final double xPos = xChunkCoord * 16 + this.rand.nextInt(16);
-			final double yPos = 25;
-			final double zPos = zChunkCoord * 16 + this.rand.nextInt(16);
-			this.generateLargeCaveNode(this.rand.nextLong(), origXChunkCoord, origZChunkCoord, arrayOfIDs, arrayOfMeta, xPos, yPos, zPos);
+			double xPos = xChunkCoord * 16 + this.rand.nextInt(16);
+			double yPos = 25;
+			double zPos = zChunkCoord * 16 + this.rand.nextInt(16);
+			this.generateLargeCaveNode(this.rand.nextLong(), origXChunkCoord, origZChunkCoord, chunk, xPos, yPos, zPos);
 		}
 	}
 
-	protected void generateLargeCaveNode(long par1, int origXChunkCoord, int origZChunkCoord, Block[] arrayOfIDs, byte[] arrayOfMeta, double xPos, double yPos, double zPos)
+	protected void generateLargeCaveNode(long seed, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk, double xPos, double yPos, double zPos)
 	{
-		this.generateCaveNode(par1, origXChunkCoord, origZChunkCoord, arrayOfIDs, arrayOfMeta, xPos, yPos, zPos, 1.0F + this.rand.nextFloat() * 6.0F, 10.0F, 10.0F, -1, -1, 0.2D);
+		this.generateCaveNode(seed, origXChunkCoord, origZChunkCoord, chunk, xPos, yPos, zPos, 1.0F + this.rand.nextFloat() * 6.0F, 10.0F, 10.0F, -1, -1, 0.2D);
 	}
 
-	protected void generateCaveNode(long par1, int origXChunkCoord, int origZChunkCoord, Block[] arrayOfIDs, byte[] arrayOfMeta, double xPos, double yPos, double zPos, float par12, float par13, float par14, int par15, int par16, double heightMultiplier)
+	protected void generateCaveNode(long seed, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk, double xPos, double yPos, double zPos, float par12, float par13, float par14, int par15, int par16, double heightMultiplier)
 	{
-		final double var19 = origXChunkCoord * 16 + 8;
-		final double var21 = origZChunkCoord * 16 + 8;
+		double var19 = origXChunkCoord * 16 + 8;
+		double var21 = origZChunkCoord * 16 + 8;
 		float var23 = 0.0F;
 		float var24 = 0.0F;
-		final Random var25 = new Random(par1);
+		Random var25 = new Random(seed);
 
 		if (par16 <= 0)
 		{
-			final int var26 = this.range * 16 - 16;
+			int var26 = this.range * 16 - 16;
 			par16 = var26 - var25.nextInt(var26 / 4);
 		}
 
@@ -84,12 +82,12 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 			var54 = true;
 		}
 
-		final int var27 = var25.nextInt(par16 / 2) + par16 / 4;
+		int var27 = var25.nextInt(par16 / 2) + par16 / 4;
 
-		for (final boolean var28 = var25.nextInt(6) == 0; par15 < par16; ++par15)
+		for (boolean var28 = var25.nextInt(6) == 0; par15 < par16; ++par15)
 		{
-			final double caveWidth = 40;
-			final double caveHeight = caveWidth * heightMultiplier;
+			double caveWidth = 40;
+			double caveHeight = caveWidth * heightMultiplier;
 
 			if (var28)
 			{
@@ -114,10 +112,10 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 
 			if (var54 || var25.nextInt(4) != 0)
 			{
-				final double var35 = xPos - var19;
-				final double var37 = zPos - var21;
-				final double var39 = par16 - par15;
-				final double var41 = par12 + 2.0F + 16.0F;
+				double var35 = xPos - var19;
+				double var37 = zPos - var21;
+				double var39 = par16 - par15;
+				double var41 = par12 + 2.0F + 16.0F;
 
 				if (var35 * var35 + var37 * var37 - var39 * var39 > var41 * var41)
 				{
@@ -137,33 +135,28 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 					{
 						caveMinX = 0;
 					}
-
 					if (caveMaxX > 16)
 					{
 						caveMaxX = 16;
 					}
-
 					if (caveMinY < 1)
 					{
 						caveMinY = 1;
 					}
-
 					if (caveMaxY > 65)
 					{
 						caveMaxY = 65;
 					}
-
 					if (caveMinZ < 0)
 					{
 						caveMinZ = 0;
 					}
-
 					if (caveMaxZ > 16)
 					{
 						caveMaxZ = 16;
 					}
 
-					final boolean isBlockWater = false;
+					boolean isBlockWater = false;
 					int var42;
 					int var45;
 
@@ -188,27 +181,27 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 
 					for (var42 = caveMinX; var42 < caveMaxX; ++var42)
 					{
-						final double var59 = (var42 + origXChunkCoord * 16 + 0.5D - xPos) / caveWidth;
+						double var59 = (var42 + origXChunkCoord * 16 + 0.5D - xPos) / caveWidth;
 
 						for (var45 = caveMinZ; var45 < caveMaxZ; ++var45)
 						{
-							final double var46 = (var45 + origZChunkCoord * 16 + 0.5D - zPos) / caveWidth;
+							double var46 = (var45 + origZChunkCoord * 16 + 0.5D - zPos) / caveWidth;
 
 							if (var59 * var59 + var46 * var46 < 1.0D)
 							{
 								for (int var50 = caveMaxY - 1; var50 >= caveMinY; --var50)
 								{
-									final double var51 = (var50 + 0.5D - yPos) / caveHeight;
+									double var51 = (var50 + 0.5D - yPos) / caveHeight;
 
 									if (var59 * var59 + var51 * var51 + var46 * var46 < 1.0D)
 									{
 										if (var51 > -0.7D)
 										{
-											final int coords = (var42 * 16 + var45) * 256 + var50;
+											int coords = (var42 * 16 + var45) * 256 + var50;
 
-											if (arrayOfIDs[coords] == NibiruBlocks.nibiru_block || arrayOfIDs[coords] == GCBlocks.crudeOilStill || arrayOfIDs[coords] == NibiruBlocks.infected_cavernous_vine)
+											if (chunk.getBlockState(coords) == NibiruBlocks.nibiru_block.getDefaultState() || chunk.getBlockState(coords) == GCBlocks.crudeOilStill.getDefaultState() || chunk.getBlockState(coords) == NibiruBlocks.infected_cavernous_vine.getDefaultState())
 											{
-												arrayOfIDs[coords] = Blocks.air;
+												chunk.setBlockState(coords, Blocks.air.getDefaultState());
 											}
 										}
 									}
@@ -219,44 +212,42 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 
 					for (var42 = caveMinX; var42 < caveMaxX; ++var42)
 					{
-						final double var59 = (var42 + origXChunkCoord * 16 + 0.5D - xPos) / caveWidth;
+						double var59 = (var42 + origXChunkCoord * 16 + 0.5D - xPos) / caveWidth;
 
 						for (var45 = caveMinZ; var45 < caveMaxZ; ++var45)
 						{
-							final double var46 = (var45 + origZChunkCoord * 16 + 0.5D - zPos) / caveWidth;
+							double var46 = (var45 + origZChunkCoord * 16 + 0.5D - zPos) / caveWidth;
 
 							if (var59 * var59 + var46 * var46 < 1.0D)
 							{
 								for (int var50 = caveMaxY - 1; var50 >= caveMinY; --var50)
 								{
-									final double var51 = (var50 + 0.5D - yPos) / caveHeight;
+									double var51 = (var50 + 0.5D - yPos) / caveHeight;
 
 									if (var59 * var59 + var51 * var51 + var46 * var46 < 1.0D)
 									{
 										if (var51 > -0.7D)
 										{
-											final int coords = (var42 * 16 + var45) * 256 + var50;
-											final int coordsAbove = (var42 * 16 + var45) * 256 + var50 + 1;
+											int coords = (var42 * 16 + var45) * 256 + var50;
+											int coordsAbove = (var42 * 16 + var45) * 256 + var50 + 1;
 											int coordsBelow = (var42 * 16 + var45) * 256 + var50 - 1;
 
-											if (Blocks.air == arrayOfIDs[coords])
+											if (Blocks.air == chunk.getBlockState(coords).getBlock())
 											{
-												if (arrayOfIDs[coordsAbove] == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
+												if (chunk.getBlockState(coordsAbove).getBlock() == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
 												{
 													int modifier = 0;
 
-													while (Blocks.air == arrayOfIDs[coordsBelow])
+													while (Blocks.air == chunk.getBlockState(coordsBelow).getBlock())
 													{
-														arrayOfIDs[coordsBelow] = NibiruBlocks.infected_cavernous_vine;
-														arrayOfMeta[coordsBelow] = (byte) (Math.abs(modifier) % 3);
+														chunk.setBlockState(coords, NibiruBlocks.infected_cavernous_vine.getDefaultState());
 														modifier--;
 														coordsBelow = (var42 * 16 + var45) * 256 + var50 - 1 + modifier;
 													}
 												}
-												else if (arrayOfIDs[coordsBelow] == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
+												else if (chunk.getBlockState(coordsBelow).getBlock() == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
 												{
-													arrayOfIDs[coords] = GCBlocks.crudeOilStill;
-													arrayOfMeta[coords] = 0;
+													chunk.setBlockState(coords, GCBlocks.crudeOilStill.getDefaultState());
 												}
 											}
 										}

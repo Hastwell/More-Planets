@@ -21,7 +21,7 @@ import stevekung.mods.moreplanets.planets.diona.client.render.entities.layers.La
 
 public class RenderDionaCreeperBoss extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/diona_creeper.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/diona_minion_creeper.png");
 
 	public RenderDionaCreeperBoss(RenderManager render)
 	{
@@ -45,6 +45,7 @@ public class RenderDionaCreeperBoss extends RenderLiving
 	@Override
 	protected void preRenderCallback(EntityLivingBase entity, float par2)
 	{
+		GlStateManager.translate(0.0F, 0.5F, 0.0F);
 		GlStateManager.scale(3.8F, 3.8F, 3.8F);
 	}
 }

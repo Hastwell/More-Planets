@@ -40,6 +40,12 @@ public class BlockMineralWaterGenerator extends BlockTileGC
 	}
 
 	@Override
+	public int getRenderType()
+	{
+		return 3;
+	}
+
+	@Override
 	public CreativeTabs getCreativeTabToDisplayOn()
 	{
 		return MorePlanetsCore.mpBlocksTab;

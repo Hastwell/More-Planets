@@ -20,7 +20,7 @@ import stevekung.mods.moreplanets.planets.polongnius.client.model.ModelCheeseCub
 
 public class RenderCheeseCubeBoss extends RenderLiving
 {
-	private ResourceLocation cheeseCubeTexture = new ResourceLocation("polongnius:textures/model/cheese_cube_boss.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/cheese_cube_boss.png");
 
 	public RenderCheeseCubeBoss(RenderManager render)
 	{
@@ -30,7 +30,7 @@ public class RenderCheeseCubeBoss extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.cheeseCubeTexture;
+		return this.texture;
 	}
 
 	@Override

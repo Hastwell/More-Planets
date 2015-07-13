@@ -66,7 +66,7 @@ public class EntityDustSludgeling extends EntityMob implements IEntityBreathable
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(7.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.6000000238418579D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.8000000238418579D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0D);
 	}
 

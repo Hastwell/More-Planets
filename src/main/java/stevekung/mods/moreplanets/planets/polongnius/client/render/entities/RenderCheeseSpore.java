@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -30,7 +30,7 @@ public class RenderCheeseSpore extends Render
 		super(render);
 	}
 
-	public void doRender(EntityCheeseSpore entity, double x, double y, double z, float par5, float partialTicks)
+	public void doRender(EntityCheeseSpore entity, double x, double y, double z, float p_76986_8_, float partialTicks)
 	{
 		GlStateManager.pushMatrix();
 		this.bindEntityTexture(entity);
@@ -59,18 +59,23 @@ public class RenderCheeseSpore extends Render
 		tessellator.draw();
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();
-		super.doRender(entity, x, y, z, par5, partialTicks);
+		super.doRender(entity, x, y, z, p_76986_8_, partialTicks);
 	}
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
+	protected ResourceLocation func_180556_a(EntityCheeseSpore entity)
 	{
 		return TextureMap.locationBlocksTexture;
 	}
 
 	@Override
-	public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		this.doRender((EntityCheeseSpore)entity, x, y, z, par5, partialTicks);
+		return this.func_180556_a((EntityCheeseSpore)entity);
+	}
+
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks)
+	{
+		this.doRender((EntityCheeseSpore)entity, x, y, z, p_76986_8_, partialTicks);
 	}
 }

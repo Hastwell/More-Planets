@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.core.worldgen.village;
+package stevekung.mods.moreplanets.common.world.gen.village;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,32 +22,28 @@ public class ComponentMartianVillageStartPiece extends ComponentMartianVillageWe
 	public ArrayList<Object> field_74932_i = new ArrayList<Object>();
 	public ArrayList<Object> field_74930_j = new ArrayList<Object>();
 
-	public ComponentMartianVillageStartPiece()
-	{
-	}
+	public ComponentMartianVillageStartPiece() {}
 
-	public ComponentMartianVillageStartPiece(WorldChunkManager par1WorldChunkManager, int par2, Random par3Random, int par4, int par5, ArrayList<StructureMartianVillagePieceWeight> par6ArrayList, int par7)
+	public ComponentMartianVillageStartPiece(WorldChunkManager chunk, Random rand, int par4, int par5, ArrayList<StructureMartianVillagePieceWeight> weight, int type)
 	{
-		super((ComponentMartianVillageStartPiece) null, 0, par3Random, par4, par5);
-		this.worldChunkMngr = par1WorldChunkManager;
-		this.structureVillageWeightedPieceList = par6ArrayList;
-		this.terrainType = par7;
+		super((ComponentMartianVillageStartPiece) null, 0, rand, par4, par5);
+		this.worldChunkMngr = chunk;
+		this.structureVillageWeightedPieceList = weight;
+		this.terrainType = type;
 		this.startPiece = this;
 	}
 
 	@Override
-	protected void func_143012_a(NBTTagCompound nbt)
+	protected void writeStructureToNBT(NBTTagCompound nbt)
 	{
-		super.func_143012_a(nbt);
-
+		super.writeStructureToNBT(nbt);
 		nbt.setInteger("TerrainType", this.terrainType);
 	}
 
 	@Override
-	protected void func_143011_b(NBTTagCompound nbt)
+	protected void readStructureFromNBT(NBTTagCompound nbt)
 	{
-		super.func_143011_b(nbt);
-
+		super.readStructureFromNBT(nbt);
 		this.terrainType = nbt.getInteger("TerrainType");
 	}
 

@@ -20,6 +20,7 @@ import micdoodle8.mods.galacticraft.core.world.gen.EnumCraterSize;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
@@ -40,6 +41,7 @@ import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
+import stevekung.mods.moreplanets.planets.venus.blocks.BlockVenus;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
@@ -50,12 +52,9 @@ import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomTreasureVe
 
 public class ChunkProviderVenus extends ChunkProviderGenerate
 {
-	Block topBlockID = VenusBlocks.venus_block;
-	byte topBlockMeta = 0;
-	Block fillBlockID = VenusBlocks.venus_block;
-	byte fillBlockMeta = 1;
-	Block lowerBlockID = VenusBlocks.venus_block;
-	byte lowerBlockMeta = 2;
+	IBlockState topBlock = VenusBlocks.venus_block.getDefaultState();
+	IBlockState fillBlock = VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_sub_surface_rock);
+	IBlockState lowerBlock = VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_rock);
 
 	private Random rand;
 
@@ -76,19 +75,19 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	private MapGenDungeon dungeonGenerator = new MapGenDungeon(VenusBlocks.venus_block, 14, 8, 24, 4);
 
 	{
-		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.bossRooms.add(new RoomBossVenus(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.treasureRooms.add(new RoomTreasureVenus(null, 0, 0, 0, ForgeDirection.UNKNOWN));
+		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, null));
+		this.dungeonGenerator.bossRooms.add(new RoomBossVenus(null, 0, 0, 0, null));
+		this.dungeonGenerator.treasureRooms.add(new RoomTreasureVenus(null, 0, 0, 0, null));
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseVenus.venus };
@@ -108,12 +107,11 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	private static double LARGE_FEATURE_FILTER_MOD = 10;
 	private static double SMALL_FEATURE_FILTER_MOD = 10;
 
-	public ChunkProviderVenus(World par1World, long par2, boolean par4)
+	public ChunkProviderVenus(World world, long seed, boolean genFeature)
 	{
-		super(par1World, par2, par4);
-		this.worldObj = par1World;
-		this.rand = new Random(par2);
-
+		super(world, seed, genFeature, "");
+		this.worldObj = world;
+		this.rand = new Random(seed);
 		this.noiseGen1 = new Gradient(this.rand.nextLong(), 4, 0.25F);
 		this.noiseGen2 = new Gradient(this.rand.nextLong(), 4, 0.25F);
 		this.noiseGen3 = new Gradient(this.rand.nextLong(), 4, 0.25F);
@@ -123,7 +121,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		this.noiseGen7 = new Gradient(this.rand.nextLong(), 1, 0.25F);
 	}
 
-	public void generateTerrain(int chunkX, int chunkZ, Block[] idArray, byte[] metaArray)
+	public void generateTerrain(int chunkX, int chunkZ, ChunkPrimer chunk)
 	{
 		this.noiseGen1.setFrequency(0.0125F);
 		this.noiseGen2.setFrequency(0.015F);
@@ -155,8 +153,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 				{
 					if (y < ChunkProviderVenus.MID_HEIGHT + yDev)
 					{
-						idArray[this.getIndex(x, y, z)] = this.lowerBlockID;
-						metaArray[this.getIndex(x, y, z)] = this.lowerBlockMeta;
+						chunk.setBlockState(this.getIndex(x, y, z), this.lowerBlock);
 					}
 				}
 			}
@@ -198,21 +195,20 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void replaceBlocksForBiome(int par1, int par2, Block[] arrayOfIDs, byte[] arrayOfMeta, BiomeGenBase[] par4ArrayOfBiomeGenBase)
+	public void func_180517_a(int x, int z, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
 	{
 		int var5 = 20;
 		float var6 = 0.03125F;
 		this.noiseGen4.setFrequency(var6 * 2);
+
 		for (int var8 = 0; var8 < 16; ++var8)
 		{
 			for (int var9 = 0; var9 < 16; ++var9)
 			{
-				int var12 = (int) (this.noiseGen4.getNoise(par1 * 16 + var8, par2 * 16 + var9) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int var12 = (int) (this.noiseGen4.getNoise(x * 16 + var8, z * 16 + var9) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
-				Block var14 = this.topBlockID;
-				byte var14m = this.topBlockMeta;
-				Block var15 = this.fillBlockID;
-				byte var15m = this.fillBlockMeta;
+				IBlockState topBlock = this.topBlock;
+				IBlockState fillBlock = this.fillBlock;
 
 				for (int var16 = ChunkProviderVenus.CHUNK_SIZE_Y - 1; var16 >= 0; --var16)
 				{
@@ -220,55 +216,46 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 
 					if (var16 <= 0 + this.rand.nextInt(5))
 					{
-						arrayOfIDs[index] = Blocks.bedrock;
+						chunk.setBlockState(index, Blocks.bedrock.getDefaultState());
 					}
 					else
 					{
-						Block var18 = arrayOfIDs[index];
+						Block block = chunk.getBlockState(index).getBlock();
 
-						if (Blocks.air == var18)
+						if (Blocks.air == block)
 						{
 							var13 = -1;
 						}
-						else if (var18 == this.lowerBlockID)
+						else if (block == this.lowerBlock)
 						{
-							arrayOfMeta[index] = this.lowerBlockMeta;
-
 							if (var13 == -1)
 							{
 								if (var12 <= 0)
 								{
-									var14 = Blocks.air;
-									var14m = 0;
-									var15 = this.lowerBlockID;
-									var15m = this.lowerBlockMeta;
+									topBlock = Blocks.air.getDefaultState();
+									fillBlock = this.lowerBlock;
 								}
 								else if (var16 >= var5 - -16 && var16 <= var5 + 1)
 								{
-									var14 = this.topBlockID;
-									var14m = this.topBlockMeta;
-									var14 = this.fillBlockID;
-									var14m = this.fillBlockMeta;
+									topBlock = this.topBlock;
+									topBlock = this.fillBlock;
 								}
 
 								var13 = var12;
 
 								if (var16 >= var5 - 1)
 								{
-									arrayOfIDs[index] = var14;
-									arrayOfMeta[index] = var14m;
+									chunk.setBlockState(index, topBlock);
 								}
 								else
 								{
-									arrayOfIDs[index] = var15;
-									arrayOfMeta[index] = var15m;
+									chunk.setBlockState(index, fillBlock);
 								}
 							}
 							else if (var13 > 0)
 							{
 								--var13;
-								arrayOfIDs[index] = var15;
-								arrayOfMeta[index] = var15m;
+								chunk.setBlockState(index, fillBlock);
 							}
 						}
 					}
@@ -278,33 +265,31 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	}
 
 	@Override
-	public Chunk provideChunk(int par1, int par2)
+	public Chunk provideChunk(int x, int z)
 	{
-		this.rand.setSeed(par1 * 341873128712L + par2 * 132897987541L);
-		Block[] ids = new Block[32768 * 2];
-		byte[] meta = new byte[32768 * 2];
-		this.generateTerrain(par1, par2, ids, meta);
-		this.createCraters(par1, par2, ids, meta);
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
-		this.replaceBlocksForBiome(par1, par2, ids, meta, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, par1, par2, ids, meta);
-		this.ravineGenerator.func_151539_a(this, this.worldObj, par1, par2, ids);
-		this.blazePit.generate(this, this.worldObj, par1, par2, ids, meta);
-		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), par1 * 16, 30, par2 * 16, par1, par2, ids, meta);
+		ChunkPrimer primer = new ChunkPrimer();
+		this.rand.setSeed(x * 341873128712L + z * 132897987541L);
+		this.generateTerrain(x, z, primer);
+		this.createCraters(x, z, primer);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
+		this.func_180517_a(x, z, primer, this.biomesForGeneration);
+		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.ravineGenerator.func_175792_a(this, this.worldObj, x, z, primer);
+		this.blazePit.generate(this, this.worldObj, x, z, primer);
+		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 30, z * 16, x, z, primer);
 
-		Chunk var4 = new Chunk(this.worldObj, ids, meta, par1, par2);
+		Chunk var4 = new Chunk(this.worldObj, primer, x, z);
 		byte[] var5 = var4.getBiomeArray();
 
 		for (int var6 = 0; var6 < var5.length; ++var6)
 		{
 			var5[var6] = (byte) this.biomesForGeneration[var6].biomeID;
 		}
-
 		var4.generateSkylightMap();
 		return var4;
 	}
 
-	public void createCraters(int chunkX, int chunkZ, Block[] chunkArray, byte[] metaArray)
+	public void createCraters(int chunkX, int chunkZ, ChunkPrimer chunk)
 	{
 		for (int cx = chunkX - 2; cx <= chunkX + 2; cx++)
 		{
@@ -319,7 +304,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 							Random random = new Random(cx * 16 + x + (cz * 16 + z) * 5000);
 							EnumCraterSize cSize = EnumCraterSize.sizeArray[random.nextInt(EnumCraterSize.sizeArray.length)];
 							int size = random.nextInt(cSize.MAX_SIZE - cSize.MIN_SIZE) + cSize.MIN_SIZE;
-							this.makeCrater(cx * 16 + x, cz * 16 + z, chunkX * 16, chunkZ * 16, size, chunkArray, metaArray);
+							this.makeCrater(cx * 16 + x, cz * 16 + z, chunkX * 16, chunkZ * 16, size, chunk);
 						}
 					}
 				}
@@ -327,7 +312,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		}
 	}
 
-	public void makeCrater(int craterX, int craterZ, int chunkX, int chunkZ, int size, Block[] chunkArray, byte[] metaArray)
+	public void makeCrater(int craterX, int craterZ, int chunkX, int chunkZ, int size, ChunkPrimer chunk)
 	{
 		for (int x = 0; x < ChunkProviderVenus.CHUNK_SIZE_X; x++)
 		{
@@ -345,10 +330,9 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 					int helper = 0;
 					for (int y = 127; y > 0; y--)
 					{
-						if (Blocks.air != chunkArray[this.getIndex(x, y, z)] && helper <= yDev)
+						if (Blocks.air != chunk.getBlockState(this.getIndex(x, y, z)).getBlock() && helper <= yDev)
 						{
-							chunkArray[this.getIndex(x, y, z)] = Blocks.air;
-							metaArray[this.getIndex(x, y, z)] = 0;
+							chunk.setBlockState(this.getIndex(x, y, z), Blocks.air.getDefaultState());
 							helper++;
 						}
 						if (helper > yDev)
@@ -386,47 +370,35 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void populate(IChunkProvider chunk, int x, int z)
+	public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
 	{
 		BlockFalling.fallInstantly = true;
-		int i = x * 16;
-		int j = z * 16;
+		int var4 = chunkX * 16;
+		int var5 = chunkZ * 16;
+		this.worldObj.getBiomeGenForCoords(new BlockPos(var4 + 16, 0, var5 + 16));
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed(x * var7 + z * var9 ^ this.worldObj.getSeed());
-		this.decoratePlanet(this.worldObj, this.rand, i, j);
-		
-        BlockFalling.fallInstantly = true;
-        int k = x * 16;
-        int l = z * 16;
-        BlockPos blockpos = new BlockPos(k, 0, l);
-        BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(blockpos.add(16, 0, 16));
-        this.rand.setSeed(this.worldObj.getSeed());
-        long i1 = this.rand.nextLong() / 2L * 2L + 1L;
-        long j1 = this.rand.nextLong() / 2L * 2L + 1L;
-        this.rand.setSeed((long)x * i1 + (long)z * j1 ^ this.worldObj.getSeed());
-        boolean flag = false;
-        ChunkCoordIntPair chunkcoordintpair = new ChunkCoordIntPair(x, z);
+		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
 		this.dungeonGenerator.handleTileEntities(this.rand);
-		this.villageGenerator.func_175794_a(this.worldObj, this.rand, chunkcoordintpair);
-		this.blazePit.generateStructuresInChunk(this.worldObj, new Random(), chunkcoordintpair);
-		
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, x, z, false));
+		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
+		this.blazePit.generateStructuresInChunk(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
+		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
 
-		boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, x, z, false, EventType.FIRE);
+		boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, chunkX, chunkZ, false, EventType.FIRE);
 
 		for (int i = 0; doGen && i < 4; i++)
 		{
 			if (this.rand.nextInt(5) == 0)
 			{
-				int x = i + this.rand.nextInt(16) + 8;
+				int x = var4 + this.rand.nextInt(16) + 8;
 				int y = this.rand.nextInt(128 - 32) + 32;
-				int z = j + this.rand.nextInt(16) + 8;
-				new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser.getDefaultState(), VenusBlocks.venus_block.getDefaultState()).generate(this.worldObj, this.rand, x, y, z);
+				int z = var5 + this.rand.nextInt(16) + 8;
+				new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser.getDefaultState(), VenusBlocks.venus_block.getDefaultState()).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
 			}
 		}
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, x, z, false));
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
 		BlockFalling.fallInstantly = false;
 	}
 
@@ -437,7 +409,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	}
 
 	@Override
-	public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
+	public boolean saveChunks(boolean save, IProgressUpdate update)
 	{
 		return true;
 	}
@@ -454,6 +426,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		return "VenusLevelSource";
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List func_177458_a(EnumCreatureType type, BlockPos pos)
 	{

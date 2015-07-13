@@ -5,16 +5,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.core.worldgen.village;
+package stevekung.mods.moreplanets.common.world.gen.village;
 
 public abstract class ComponentMartianVillageRoadPiece extends ComponentMartianVillage
 {
-	public ComponentMartianVillageRoadPiece()
-	{
-	}
+	public ComponentMartianVillageRoadPiece() {}
 
-	protected ComponentMartianVillageRoadPiece(ComponentMartianVillageStartPiece par1ComponentVillageStartPiece, int par2)
+	protected ComponentMartianVillageRoadPiece(ComponentMartianVillageStartPiece component, int type)
 	{
-		super(par1ComponentVillageStartPiece, par2);
+		super(component, type);
 	}
 }

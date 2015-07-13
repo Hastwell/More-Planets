@@ -13,9 +13,9 @@ import java.util.Map;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
-import net.minecraft.block.Block;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureStart;
 
@@ -24,22 +24,20 @@ public abstract class MapGenSiriusBlazePitStructure extends MapGenBaseMeta
 	protected Map<Long, StructureStart> structureMap = new HashMap<Long, StructureStart>();
 
 	@Override
-	protected void recursiveGenerate(World world, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, Block[] blocks, byte[] metadata)
+	protected void recursiveGenerate(World world, int x, int z, int orX, int orZ, ChunkPrimer chunk)
 	{
-		this.rand.nextInt();
-
-		if (this.canSpawnStructureAtCoords(xChunkCoord, zChunkCoord))
+		if (this.canSpawnStructureAtCoords(x, z))
 		{
-			StructureStart var7 = this.getStructureStart(xChunkCoord, zChunkCoord);
-			this.structureMap.put(Long.valueOf(ChunkCoordIntPair.chunkXZ2Int(xChunkCoord, zChunkCoord)), var7);
+			StructureStart var7 = this.getStructureStart(x, z);
+			this.structureMap.put(Long.valueOf(ChunkCoordIntPair.chunkXZ2Int(x, z)), var7);
 		}
 	}
 
-	public boolean generateStructuresInChunk(World par1World, Random par2Random, int par3, int par4)
+	public boolean generateStructuresInChunk(World world, Random rand, int x, int z)
 	{
-		int var5 = (par3 << 4) + 8;
-		int var6 = (par4 << 4) + 8;
-		boolean var7 = false;
+		int var5 = (x << 4) + 8;
+		int var6 = (z << 4) + 8;
+		boolean flag = false;
 		Iterator<?> var8 = this.structureMap.values().iterator();
 
 		while (var8.hasNext())
@@ -48,14 +46,13 @@ public abstract class MapGenSiriusBlazePitStructure extends MapGenBaseMeta
 
 			if (var9 != null && var9.isSizeableStructure() && var9.getBoundingBox().intersectsWith(var5, var6, var5 + 15, var6 + 15))
 			{
-				var9.generateStructure(par1World, par2Random, new StructureBoundingBox(var5, var6, var5 + 15, var6 + 15));
-				var7 = true;
+				var9.generateStructure(world, rand, new StructureBoundingBox(var5, var6, var5 + 15, var6 + 15));
+				flag = true;
 			}
 		}
-		return var7;
+		return flag;
 	}
 
-	protected abstract boolean canSpawnStructureAtCoords(int var1, int var2);
-
-	protected abstract StructureStart getStructureStart(int var1, int var2);
+	protected abstract boolean canSpawnStructureAtCoords(int x, int z);
+	protected abstract StructureStart getStructureStart(int x, int z);
 }

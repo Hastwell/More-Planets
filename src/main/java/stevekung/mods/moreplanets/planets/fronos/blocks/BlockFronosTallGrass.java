@@ -115,8 +115,15 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
+		/*Block blockTemp = world.getBlockState(pos).getBlock();
+
+		if (!(blockTemp instanceof BlockFronosTallGrass))
+		{
+			return false;
+		}*/
+
+		int meta = ((BlockType)world.getBlockState(pos).getValue(VARIANT)).getMeta();
 		Block block = world.getBlockState(pos.down()).getBlock();
-		int meta = this.getMetaFromState(state);
 
 		if (meta >= 0 && meta <= 2)
 		{
@@ -145,7 +152,6 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		super.randomDisplayTick(world, pos, state, rand);
 		int meta = this.getMetaFromState(state);
 
 		if (meta >= 12)
@@ -203,16 +209,16 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+		return this.getDefaultState().withProperty(VARIANT, BlockType.byMetadata(meta));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
+		return ((BlockType)state.getValue(VARIANT)).getMeta();
 	}
 
-	public static enum BlockType implements IStringSerializable
+	/*public static enum BlockType implements IStringSerializable
 	{
 		fronos_short_grass,
 		fronos_medium_grass,
@@ -240,6 +246,71 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 		public String getName()
 		{
 			return this.name();
+		}
+	}*/
+
+	public static enum BlockType implements IStringSerializable
+	{
+		fronos_short_grass(0),
+		fronos_medium_grass(1),
+		fronos_tall_grass(2),
+		pink_short_grass(3),
+		pink_medium_grass(4),
+		pink_tall_grass(5),
+		purple_short_grass(6),
+		purple_medium_grass(7),
+		purple_tall_grass(8),
+		plains_short_grass(9),
+		plains_medium_grass(10),
+		plains_tall_grass(11),
+		golden_short_grass(12),
+		golden_medium_grass(13),
+		golden_tall_grass(14);
+
+		private static BlockType[] META_LOOKUP = new BlockType[values().length];
+		private int meta;
+
+		private BlockType(int meta)
+		{
+			this.meta = meta;
+		}
+
+		@Override
+		public String toString()
+		{
+			return this.getName();
+		}
+
+		@Override
+		public String getName()
+		{
+			return this.name();
+		}
+
+		public int getMeta()
+		{
+			return this.meta;
+		}
+
+		public static BlockType byMetadata(int meta)
+		{
+			if (meta < 0 || meta >= META_LOOKUP.length)
+			{
+				meta = 0;
+			}
+			return META_LOOKUP[meta];
+		}
+
+		static
+		{
+			BlockType[] var0 = values();
+			int var1 = var0.length;
+
+			for (int i = 0; i < var1; ++i)
+			{
+				BlockType var3 = var0[i];
+				META_LOOKUP[var3.getMeta()] = var3;
+			}
 		}
 	}
 }

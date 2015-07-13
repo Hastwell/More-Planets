@@ -5,63 +5,62 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.core.worldgen.village;
+package stevekung.mods.moreplanets.common.world.gen.village;
 
 import java.util.List;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
+import net.minecraft.block.BlockTorch;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
+import stevekung.mods.moreplanets.common.blocks.BlockChondriteRock;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 
 public class ComponentMartianVillageTorch extends ComponentMartianVillage
 {
 	private int averageGroundLevel = -1;
 
-	public ComponentMartianVillageTorch()
-	{
-	}
+	public ComponentMartianVillageTorch() {}
 
-	public ComponentMartianVillageTorch(ComponentMartianVillageStartPiece par1ComponentVillageStartPiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5)
+	public ComponentMartianVillageTorch(ComponentMartianVillageStartPiece component, int type, StructureBoundingBox box, EnumFacing facing)
 	{
-		super(par1ComponentVillageStartPiece, par2);
-		this.coordBaseMode = par5;
-		this.boundingBox = par4StructureBoundingBox;
+		super(component, type);
+		this.coordBaseMode = facing;
+		this.boundingBox = box;
 	}
 
 	@Override
-	protected void func_143012_a(NBTTagCompound nbt)
+	protected void writeStructureToNBT(NBTTagCompound nbt)
 	{
-		super.func_143012_a(nbt);
-
+		super.writeStructureToNBT(nbt);
 		nbt.setInteger("AvgGroundLevel", this.averageGroundLevel);
 	}
 
 	@Override
-	protected void func_143011_b(NBTTagCompound nbt)
+	protected void readStructureFromNBT(NBTTagCompound nbt)
 	{
-		super.func_143011_b(nbt);
-
+		super.readStructureFromNBT(nbt);
 		this.averageGroundLevel = nbt.getInteger("AvgGroundLevel");
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static StructureBoundingBox func_74904_a(ComponentMartianVillageStartPiece par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6)
+	public static StructureBoundingBox func_74904_a(List list, int x, int y, int z, EnumFacing facing)
 	{
-		final StructureBoundingBox var7 = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 3, 4, 2, par6);
-		return StructureComponent.findIntersecting(par1List, var7) != null ? null : var7;
+		StructureBoundingBox var7 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 4, 2, facing);
+		return StructureComponent.findIntersecting(list, var7) != null ? null : var7;
 	}
 
 	@Override
-	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
+	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
 		if (this.averageGroundLevel < 0)
 		{
-			this.averageGroundLevel = this.getAverageGroundLevel(par1World, par3StructureBoundingBox);
+			this.averageGroundLevel = this.getAverageGroundLevel(world, box);
 
 			if (this.averageGroundLevel < 0)
 			{
@@ -69,16 +68,16 @@ public class ComponentMartianVillageTorch extends ComponentMartianVillage
 			}
 			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
 		}
-
-		this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 2, 3, 1, Blocks.air, Blocks.air, false);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.fence, 0, 1, 0, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.fence, 0, 1, 1, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, Blocks.fence, 0, 1, 2, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, MPBlocks.chondrite_block, 2, 1, 3, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, GCBlocks.glowstoneTorch, 0, 0, 3, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, GCBlocks.glowstoneTorch, 0, 1, 3, 1, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, GCBlocks.glowstoneTorch, 0, 2, 3, 0, par3StructureBoundingBox);
-		this.placeBlockAtCurrentPosition(par1World, GCBlocks.glowstoneTorch, 0, 1, 3, -1, par3StructureBoundingBox);
+		this.func_175804_a(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+		this.func_175811_a(world, Blocks.oak_fence.getDefaultState(), 1, 0, 0, box);
+		this.func_175811_a(world, Blocks.oak_fence.getDefaultState(), 1, 1, 0, box);
+		this.func_175811_a(world, Blocks.oak_fence.getDefaultState(), 1, 2, 0, box);
+		this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.chondrite_stone_brick), 1, 3, 0, box);
+		boolean flag = this.coordBaseMode == EnumFacing.EAST || this.coordBaseMode == EnumFacing.NORTH;
+		this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), flag ? 2 : 0, 3, 0, box);
+		this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 1, 3, 1, box);
+		this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), flag ? 0 : 2, 3, 0, box);
+		this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 1, 3, -1, box);
 		return true;
 	}
 }

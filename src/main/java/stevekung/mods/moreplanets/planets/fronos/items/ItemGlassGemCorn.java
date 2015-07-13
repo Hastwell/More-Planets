@@ -59,12 +59,12 @@ public class ItemGlassGemCorn extends ItemFoodMP implements IPlantable
 		return FronosBlocks.glass_gem_corn.getDefaultState();
 	}
 
-		@Override
-		@SideOnly(Side.CLIENT)
-		public EnumRarity getRarity(ItemStack itemStack)
-		{
-			return ClientProxyCore.galacticraftItem;
-		}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack itemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
+	}
 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)

@@ -12,16 +12,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
-import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
-import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockInfectedGrass;
-import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockInfectedOrangeRoseBush;
-import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
 public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformableBlock
 {
@@ -55,26 +48,6 @@ public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformable
 			{
 				return false;
 			}
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
-	{
-		Block block = plant.getPlant(world, pos).getBlock();
-		IBlockState state = plant.getPlant(world, pos);
-
-		if (this instanceof IFronosGrass)
-		{
-			return block == FronosBlocks.candy_flower || block == FronosBlocks.fronos_dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_tall_grass || block == FronosBlocks.fronos_poppy || block == Blocks.deadbush || block == Blocks.reeds;
-		}
-		if (this instanceof BlockInfectedGrass)
-		{
-			return block == NibiruBlocks.nibiru_sapling || state == NibiruBlocks.infected_orange_rose_bush.getDefaultState().withProperty(BlockInfectedOrangeRoseBush.VARIANT, BlockInfectedOrangeRoseBush.BlockType.orange_rose_bush_bottom);
 		}
 		else
 		{

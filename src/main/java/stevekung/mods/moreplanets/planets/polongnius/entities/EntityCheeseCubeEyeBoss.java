@@ -22,8 +22,10 @@ import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import micdoodle8.mods.galacticraft.core.util.GCCoreUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIFindEntityNearestPlayer;
+import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -33,11 +35,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
@@ -48,7 +52,7 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.projectiles.Entity
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusTreasureChest;
 
-public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob, IEntityBreathable, IBossDisplayData, IRangedAttackMob, IBoss
+public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob, IEntityBreathable, IBossDisplayData, IBoss
 {
 	public int courseChangeCooldown;
 	public double waypointX;
@@ -60,7 +64,6 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	public int deathTicks = 0;
 	public int attackCounter;
 	public int prevAttackCounter;
-	private int aggroCooldown;
 	public int entitiesWithin;
 	public int entitiesWithinLast;
 	private Vector3 roomCoords;
@@ -70,6 +73,11 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	{
 		super(world);
 		this.setSize(1.8F, 2.0F);
+		this.moveHelper = new GhastMoveHelper();
+		this.tasks.addTask(5, new AIRandomFly());
+		this.tasks.addTask(7, new AILookAround());
+		this.tasks.addTask(7, new AIFireballAttack());
+		this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
 	}
 
 	@Override
@@ -84,6 +92,12 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(350.0F * ConfigManagerCore.dungeonBossHealthMod);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(15.0F);
+	}
+
+	@Override
+	public void onKillCommand()
+	{
+		this.setDead();
 	}
 
 	@Override
@@ -378,67 +392,6 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	}
 
 	@Override
-	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float f)
-	{
-		this.func_82216_a(0, entitylivingbase);
-	}
-
-	private void func_82216_a(int par1, EntityLivingBase par2EntityLivingBase)
-	{
-		this.func_82209_a(par1, par2EntityLivingBase.posX, par2EntityLivingBase.posY + par2EntityLivingBase.getEyeHeight() * 0.5D, par2EntityLivingBase.posZ);
-	}
-
-	private void func_82209_a(int par1, double par2, double par4, double par6)
-	{
-		this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1014, this.getPosition(), 0);
-		double d3 = this.func_82214_u(par1);
-		double d4 = this.func_82208_v(par1);
-		double d5 = this.func_82213_w(par1);
-		double d6 = par2 - d3;
-		double d7 = par4 - d4;
-		double d8 = par6 - d5;
-		EntityCheeseSpore entitywitherskull = new EntityCheeseSpore(this.worldObj, this, d6 * 0.5D, d7 * 0.5D, d8 * 0.5D);
-
-		entitywitherskull.posY = d4;
-		entitywitherskull.posX = d3;
-		entitywitherskull.posZ = d5;
-		this.worldObj.spawnEntityInWorld(entitywitherskull);
-	}
-
-	private double func_82214_u(int par1)
-	{
-		if (par1 <= 0)
-		{
-			return this.posX;
-		}
-		else
-		{
-			float f = (this.renderYawOffset + 180 * (par1 - 1)) / 180.0F * (float) Math.PI;
-			float f1 = MathHelper.cos(f);
-			return this.posX + f1 * 0.5D;
-		}
-	}
-
-	private double func_82208_v(int par1)
-	{
-		return par1 <= 0 ? this.posY + 0.0D : this.posY + 0.0D;
-	}
-
-	private double func_82213_w(int par1)
-	{
-		if (par1 <= 0)
-		{
-			return this.posZ;
-		}
-		else
-		{
-			float f = (this.renderYawOffset + 180 * (par1 - 1)) / 180.0F * (float) Math.PI;
-			float f1 = MathHelper.sin(f);
-			return this.posZ + f1 * 0.5D;
-		}
-	}
-
-	@Override
 	public boolean canBreath()
 	{
 		return true;
@@ -455,5 +408,216 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	public void onBossSpawned(TileEntityDungeonSpawner spawner)
 	{
 		this.spawner = spawner;
+	}
+
+	public void func_175454_a(boolean p_175454_1_)
+	{
+		this.dataWatcher.updateObject(16, Byte.valueOf((byte)(p_175454_1_ ? 1 : 0)));
+	}
+
+	@Override
+	protected void entityInit()
+	{
+		super.entityInit();
+		this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
+	}
+
+	class AIFireballAttack extends EntityAIBase
+	{
+		private EntityCheeseCubeEyeBoss field_179470_b = EntityCheeseCubeEyeBoss.this;
+		public int field_179471_a;
+
+		@Override
+		public boolean shouldExecute()
+		{
+			return this.field_179470_b.getAttackTarget() != null;
+		}
+
+		@Override
+		public void startExecuting()
+		{
+			this.field_179471_a = 0;
+		}
+
+		@Override
+		public void resetTask()
+		{
+			this.field_179470_b.func_175454_a(false);
+		}
+
+		@Override
+		public void updateTask()
+		{
+			EntityLivingBase entitylivingbase = this.field_179470_b.getAttackTarget();
+			double d0 = 64.0D;
+
+			if (entitylivingbase.getDistanceSqToEntity(this.field_179470_b) < d0 * d0 && this.field_179470_b.canEntityBeSeen(entitylivingbase))
+			{
+				World world = this.field_179470_b.worldObj;
+				++this.field_179471_a;
+
+				if (this.field_179471_a == 20)
+				{
+					double d1 = 4.0D;
+					Vec3 vec3 = this.field_179470_b.getLook(1.0F);
+					double d2 = entitylivingbase.posX - (this.field_179470_b.posX + vec3.xCoord * d1);
+					double d3 = entitylivingbase.getEntityBoundingBox().minY + entitylivingbase.height / 2.0F - (0.5D + this.field_179470_b.posY + this.field_179470_b.height / 2.0F);
+					double d4 = entitylivingbase.posZ - (this.field_179470_b.posZ + vec3.zCoord * d1);
+					world.playAuxSFXAtEntity((EntityPlayer)null, 1008, new BlockPos(this.field_179470_b), 0);
+					EntityCheeseSpore entitylargefireball = new EntityCheeseSpore(world, this.field_179470_b, d2, d3, d4);
+					entitylargefireball.posX = this.field_179470_b.posX + vec3.xCoord * d1;
+					entitylargefireball.posY = this.field_179470_b.posY + this.field_179470_b.height / 2.0F + 0.5D;
+					entitylargefireball.posZ = this.field_179470_b.posZ + vec3.zCoord * d1;
+					world.spawnEntityInWorld(entitylargefireball);
+					this.field_179471_a = -40;
+				}
+			}
+			else if (this.field_179471_a > 0)
+			{
+				--this.field_179471_a;
+			}
+			this.field_179470_b.func_175454_a(this.field_179471_a > 10);
+		}
+	}
+
+	class AILookAround extends EntityAIBase
+	{
+		private EntityCheeseCubeEyeBoss field_179472_a = EntityCheeseCubeEyeBoss.this;
+
+		public AILookAround()
+		{
+			this.setMutexBits(2);
+		}
+
+		@Override
+		public boolean shouldExecute()
+		{
+			return true;
+		}
+
+		@Override
+		public void updateTask()
+		{
+			if (this.field_179472_a.getAttackTarget() == null)
+			{
+				this.field_179472_a.renderYawOffset = this.field_179472_a.rotationYaw = -((float)Math.atan2(this.field_179472_a.motionX, this.field_179472_a.motionZ)) * 180.0F / (float)Math.PI;
+			}
+			else
+			{
+				EntityLivingBase entitylivingbase = this.field_179472_a.getAttackTarget();
+				double d0 = 64.0D;
+
+				if (entitylivingbase.getDistanceSqToEntity(this.field_179472_a) < d0 * d0)
+				{
+					double d1 = entitylivingbase.posX - this.field_179472_a.posX;
+					double d2 = entitylivingbase.posZ - this.field_179472_a.posZ;
+					this.field_179472_a.renderYawOffset = this.field_179472_a.rotationYaw = -((float)Math.atan2(d1, d2)) * 180.0F / (float)Math.PI;
+				}
+			}
+		}
+	}
+
+	class AIRandomFly extends EntityAIBase
+	{
+		private EntityCheeseCubeEyeBoss field_179454_a = EntityCheeseCubeEyeBoss.this;
+
+		public AIRandomFly()
+		{
+			this.setMutexBits(1);
+		}
+
+		@Override
+		public boolean shouldExecute()
+		{
+			EntityMoveHelper entitymovehelper = this.field_179454_a.getMoveHelper();
+
+			if (!entitymovehelper.isUpdating())
+			{
+				return true;
+			}
+			else
+			{
+				double d0 = entitymovehelper.func_179917_d() - this.field_179454_a.posX;
+				double d1 = entitymovehelper.func_179919_e() - this.field_179454_a.posY;
+				double d2 = entitymovehelper.func_179918_f() - this.field_179454_a.posZ;
+				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
+				return d3 < 1.0D || d3 > 3600.0D;
+			}
+		}
+
+		@Override
+		public boolean continueExecuting()
+		{
+			return false;
+		}
+
+		@Override
+		public void startExecuting()
+		{
+			Random random = this.field_179454_a.getRNG();
+			double d0 = this.field_179454_a.posX + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			double d1 = this.field_179454_a.posY + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			double d2 = this.field_179454_a.posZ + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			this.field_179454_a.getMoveHelper().setMoveTo(d0, d1, d2, 1.0D);
+		}
+	}
+
+	class GhastMoveHelper extends EntityMoveHelper
+	{
+		private EntityCheeseCubeEyeBoss field_179927_g = EntityCheeseCubeEyeBoss.this;
+		private int field_179928_h;
+
+		public GhastMoveHelper()
+		{
+			super(EntityCheeseCubeEyeBoss.this);
+		}
+
+		@Override
+		public void onUpdateMoveHelper()
+		{
+			if (this.update)
+			{
+				double d0 = this.posX - this.field_179927_g.posX;
+				double d1 = this.posY - this.field_179927_g.posY;
+				double d2 = this.posZ - this.field_179927_g.posZ;
+				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
+
+				if (this.field_179928_h-- <= 0)
+				{
+					this.field_179928_h += this.field_179927_g.getRNG().nextInt(5) + 2;
+					d3 = MathHelper.sqrt_double(d3);
+
+					if (this.func_179926_b(this.posX, this.posY, this.posZ, d3))
+					{
+						this.field_179927_g.motionX += d0 / d3 * 0.1D;
+						this.field_179927_g.motionY += d1 / d3 * 0.1D;
+						this.field_179927_g.motionZ += d2 / d3 * 0.1D;
+					}
+					else
+					{
+						this.update = false;
+					}
+				}
+			}
+		}
+
+		private boolean func_179926_b(double p_179926_1_, double p_179926_3_, double p_179926_5_, double p_179926_7_)
+		{
+			double d4 = (p_179926_1_ - this.field_179927_g.posX) / p_179926_7_;
+			double d5 = (p_179926_3_ - this.field_179927_g.posY) / p_179926_7_;
+			double d6 = (p_179926_5_ - this.field_179927_g.posZ) / p_179926_7_;
+			AxisAlignedBB axisalignedbb = this.field_179927_g.getEntityBoundingBox();
+
+			for (int i = 1; i < p_179926_7_; ++i)
+			{
+				axisalignedbb = axisalignedbb.offset(d4, d5, d6);
+
+				if (!this.field_179927_g.worldObj.getCollidingBoundingBoxes(this.field_179927_g, axisalignedbb).isEmpty())
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }

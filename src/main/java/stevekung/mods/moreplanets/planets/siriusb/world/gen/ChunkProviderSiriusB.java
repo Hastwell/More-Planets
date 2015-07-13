@@ -8,7 +8,6 @@
 package stevekung.mods.moreplanets.planets.siriusb.world.gen;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -17,6 +16,7 @@ import micdoodle8.mods.galacticraft.core.perlin.generator.Gradient;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
@@ -24,6 +24,7 @@ import net.minecraft.util.IProgressUpdate;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.MinecraftForge;
@@ -45,12 +46,9 @@ import stevekung.mods.moreplanets.planets.siriusb.world.gen.dungeon.RoomTreasure
 
 public class ChunkProviderSiriusB extends ChunkProviderGenerate
 {
-	Block topBlockID = SiriusBBlocks.sirius_b_block;
-	byte topBlockMeta = 0;
-	Block fillBlockID = SiriusBBlocks.sirius_b_block;
-	byte fillBlockMeta = 1;
-	Block lowerBlockID = SiriusBBlocks.sirius_b_block;
-	byte lowerBlockMeta = 2;
+	IBlockState topBlock = SiriusBBlocks.sirius_b_block.getDefaultState();
+	IBlockState fillBlock = SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_sub_surface_carbon_stone);
+	IBlockState lowerBlock = SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_carbon_stone);
 
 	private Random rand;
 
@@ -60,26 +58,23 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 	private NoiseModule noiseGen4;
 
 	public BiomeDecoratorSiriusB biomedecoratorplanet = new BiomeDecoratorSiriusB();
-
 	private MapGenSiriusBlazePit blazePit = new MapGenSiriusBlazePit();
-
 	private World worldObj;
 	private MapGenDungeon dungeonGenerator = new MapGenDungeon(SiriusBBlocks.sirius_b_block, 9, 8, 24, 4);
-
 	{
-		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.bossRooms.add(new RoomBossSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
-		this.dungeonGenerator.treasureRooms.add(new RoomTreasureSiriusB(null, 0, 0, 0, ForgeDirection.UNKNOWN));
+		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomChestsSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.otherRooms.add(new RoomChestsSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.bossRooms.add(new RoomBossSiriusB(null, 0, 0, 0, null));
+		this.dungeonGenerator.treasureRooms.add(new RoomTreasureSiriusB(null, 0, 0, 0, null));
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseSiriusB.siriusB };
@@ -90,18 +85,18 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 	private static int CHUNK_SIZE_Y = 128;
 	private static int CHUNK_SIZE_Z = 16;
 
-	public ChunkProviderSiriusB(World par1World, long par2, boolean par4)
+	public ChunkProviderSiriusB(World world, long seed, boolean genFeature)
 	{
-		super(par1World, par2, par4, "sirius");
-		this.worldObj = par1World;
-		this.rand = new Random(par2);
+		super(world, seed, genFeature, "");
+		this.worldObj = world;
+		this.rand = new Random(seed);
 		this.noiseGen1 = new Gradient(this.rand.nextLong(), 4, 0.25F);
 		this.noiseGen2 = new Gradient(this.rand.nextLong(), 4, 0.25F);
 		this.noiseGen3 = new Gradient(this.rand.nextLong(), 1, 0.25F);
 		this.noiseGen4 = new Gradient(this.rand.nextLong(), 1, 0.25F);
 	}
 
-	public void generateTerrain(int chunkX, int chunkZ, Block[] idArray, byte[] metaArray)
+	public void generateTerrain(int chunkX, int chunkZ, ChunkPrimer chunk)
 	{
 		this.noiseGen1.setFrequency(0.0125F);
 		this.noiseGen2.setFrequency(0.015F);
@@ -136,8 +131,7 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 				{
 					if (y < ChunkProviderSiriusB.MID_HEIGHT + yDev)
 					{
-						idArray[this.getIndex(x, y, z)] = this.lowerBlockID;
-						metaArray[this.getIndex(x, y, z)] = this.lowerBlockMeta;
+						chunk.setBlockState(this.getIndex(x, y, z), this.lowerBlock);
 					}
 				}
 			}
@@ -145,75 +139,65 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void replaceBlocksForBiome(int par1, int par2, Block[] arrayOfIDs, byte[] arrayOfMeta, BiomeGenBase[] par4ArrayOfBiomeGenBase)
+	public void func_180517_a(int x, int z, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
 	{
 		int var5 = 20;
+
 		for (int var8 = 0; var8 < 16; ++var8)
 		{
 			for (int var9 = 0; var9 < 16; ++var9)
 			{
-				int var12 = (int) (this.noiseGen4.getNoise(var8 + par1 * 16, var9 * par2 * 16) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int var12 = (int) (this.noiseGen4.getNoise(var8 + x * 16, var9 * z * 16) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
-				Block var14 = this.topBlockID;
-				byte var14m = this.topBlockMeta;
-				Block var15 = this.fillBlockID;
-				byte var15m = this.fillBlockMeta;
+				IBlockState topBlock = this.topBlock;
+				IBlockState fillBlock = this.fillBlock;
 
 				for (int var16 = 127; var16 >= 0; --var16)
 				{
 					int index = this.getIndex(var8, var16, var9);
-					arrayOfMeta[index] = 0;
 
 					if (var16 <= 0 + this.rand.nextInt(5))
 					{
-						arrayOfIDs[index] = Blocks.bedrock;
+						chunk.setBlockState(index, Blocks.bedrock.getDefaultState());
 					}
 					else
 					{
-						Block var18 = arrayOfIDs[index];
-						if (Blocks.air == var18)
+						Block block = chunk.getBlockState(index).getBlock();
+
+						if (Blocks.air == block)
 						{
 							var13 = -1;
 						}
-						else if (var18 == this.lowerBlockID)
+						else if (block == this.lowerBlock)
 						{
-							arrayOfMeta[index] = this.lowerBlockMeta;
-
 							if (var13 == -1)
 							{
 								if (var12 <= 0)
 								{
-									var14 = Blocks.air;
-									var14m = 0;
-									var15 = this.lowerBlockID;
-									var15m = this.lowerBlockMeta;
+									topBlock = Blocks.air.getDefaultState();
+									fillBlock = this.lowerBlock;
 								}
 								else if (var16 >= var5 - -16 && var16 <= var5 + 1)
 								{
-									var14 = this.topBlockID;
-									var14m = this.topBlockMeta;
-									var14 = this.fillBlockID;
-									var14m = this.fillBlockMeta;
+									topBlock = this.topBlock;
+									topBlock = this.fillBlock;
 								}
 
 								var13 = var12;
 
 								if (var16 >= var5 - 1)
 								{
-									arrayOfIDs[index] = var14;
-									arrayOfMeta[index] = var14m;
+									chunk.setBlockState(index, topBlock);
 								}
 								else if (var16 < var5 - 1 && var16 >= var5 - 2)
 								{
-									arrayOfIDs[index] = var15;
-									arrayOfMeta[index] = var15m;
+									chunk.setBlockState(index, fillBlock);
 								}
 							}
 							else if (var13 > 0)
 							{
 								--var13;
-								arrayOfIDs[index] = var15;
-								arrayOfMeta[index] = var15m;
+								chunk.setBlockState(index, fillBlock);
 							}
 						}
 					}
@@ -225,20 +209,20 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 	@Override
 	public Chunk provideChunk(int x, int z)
 	{
+		ChunkPrimer primer = new ChunkPrimer();
 		this.rand.setSeed(x * 341873128712L + z * 132897987541L);
-		Arrays.fill(ids, Blocks.air);
-		this.generateTerrain(x, z, ids, meta);
+		this.generateTerrain(x, z, primer);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
-		this.replaceBlocksForBiome(x, z, ids, meta, this.biomesForGeneration);
-		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, ids, meta);
-		this.blazePit.generate(this, this.worldObj, x, z, ids, meta);
+		this.func_180517_a(x, z, primer, this.biomesForGeneration);
+		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
+		this.blazePit.generate(this, this.worldObj, x, z, primer);
 		Chunk var4 = new Chunk(this.worldObj, x, z);
 		var4.generateSkylightMap();
 		return var4;
 	}
 
 	@Override
-	public boolean chunkExists(int par1, int par2)
+	public boolean chunkExists(int x, int z)
 	{
 		return true;
 	}
@@ -260,9 +244,9 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 		return (x * 16 + z) * 256 + y;
 	}
 
-	public void decoratePlanet(World par1World, Random par2Random, int par3, int par4)
+	public void decoratePlanet(World world, Random rand, int x, int z)
 	{
-		this.biomedecoratorplanet.decorate(par1World, par2Random, par3, par4);
+		this.biomedecoratorplanet.decorate(world, rand, x, z);
 	}
 
 	@Override
@@ -300,7 +284,7 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 	}
 
 	@Override
-	public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
+	public boolean saveChunks(boolean save, IProgressUpdate update)
 	{
 		return true;
 	}
@@ -317,6 +301,7 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 		return "SiriusBLevelSource";
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List func_177458_a(EnumCreatureType type, BlockPos pos)
 	{
@@ -332,7 +317,5 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void recreateStructures(Chunk chunk, int x, int z)
-	{
-	}
+	public void recreateStructures(Chunk chunk, int x, int z) {}
 }

@@ -31,7 +31,7 @@ public class SkyProviderDeimos extends IRenderHandler
 {
 	private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/sun.png");
 	private ResourceLocation marsTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/mars.png");
-	private ResourceLocation phobosTexture = new ResourceLocation("phobos:textures/gui/celestialbodies/phobos.png");
+	private ResourceLocation phobosTexture = new ResourceLocation("moreplanets:textures/gui/celestialbodies/phobos.png");
 
 	public int starGLCallList = GLAllocation.generateDisplayLists(3);
 	public int glSkyList;

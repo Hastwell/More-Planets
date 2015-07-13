@@ -69,7 +69,7 @@ public class BlockUltraVioletSolarFake extends BlockContainerMP implements IPart
 
 			if (mainBlockPosition != null)
 			{
-				return world.getBlockState(mainBlockPosition).getBlock().getBlockHardness(world, pos);
+				return world.getBlockState(mainBlockPosition).getBlock().getBlockHardness(world, mainBlockPosition);
 			}
 		}
 		return this.blockHardness;
@@ -101,7 +101,7 @@ public class BlockUltraVioletSolarFake extends BlockContainerMP implements IPart
 	}
 
 	@Override
-	public int quantityDropped(Random par1Random)
+	public int quantityDropped(Random rand)
 	{
 		return 0;
 	}
@@ -119,25 +119,27 @@ public class BlockUltraVioletSolarFake extends BlockContainerMP implements IPart
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World var1, int meta)
+	public TileEntity createNewTileEntity(World world, int meta)
 	{
 		return new TileEntityUltraVioletFake();
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
 	{
 		TileEntity tileEntity = world.getTileEntity(pos);
 
 		if (tileEntity instanceof TileEntityUltraVioletFake)
 		{
-			if (((TileEntityUltraVioletFake) tileEntity).mainBlockPosition != null)
-			{
-				Block mainBlockID = world.getBlockState(pos).getBlock();
+			BlockPos mainBlockPosition = ((TileEntityUltraVioletFake) tileEntity).mainBlockPosition;
 
-				if (Blocks.air != mainBlockID)
+			if (mainBlockPosition != null)
+			{
+				Block mainBlock = world.getBlockState(mainBlockPosition).getBlock();
+
+				if (Blocks.air != mainBlock)
 				{
-					return mainBlockID.getPickBlock(moving, world, pos, player);
+					return mainBlock.getPickBlock(moving, world, mainBlockPosition);
 				}
 			}
 		}
@@ -155,17 +157,10 @@ public class BlockUltraVioletSolarFake extends BlockContainerMP implements IPart
 		{
 			if (((TileEntityUltraVioletFake) tileEntity).mainBlockPosition != null)
 			{
-				effect.addBlockHitEffects(pos, moving);
+				effect.addBlockHitEffects(((TileEntityUltraVioletFake) tileEntity).mainBlockPosition, moving);
 			}
 		}
 		return super.addHitEffects(world, moving, effect);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean addDestroyEffects(World world, BlockPos pos, EffectRenderer effect)
-	{
-		return super.addDestroyEffects(world, pos, effect);
 	}
 
 	public void makeFakeBlock(World worldObj, BlockPos pos, BlockPos mainBlock, int meta)

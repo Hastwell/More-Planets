@@ -90,7 +90,7 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
 				}
 			}
 			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.poison.id, 5, 20, false, false));
-			entity.motionY = 0.09F;
+			entity.motionY = 0.125F;
 			entity.fallDistance = 0.0F;
 			return;
 		}
@@ -137,7 +137,7 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
 	{
 		if (!world.isRemote)
 		{
-			for (int y = pos.down().getY(); y >= pos.down(2).getY(); y--)
+			for (int y = pos.down().getY(); y >= pos.down(1).getY(); y--)
 			{
 				Block block = world.getBlockState(new BlockPos(pos.getX(), y, pos.getZ())).getBlock();
 

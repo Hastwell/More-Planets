@@ -33,6 +33,7 @@ import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruDu
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruTreasureChest;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityPowerCrystalGenerator;
 import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoAncientChest;
+import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoTreasureChest;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusAncientChest;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusDungeonSpawner;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusTreasureChest;
@@ -42,6 +43,7 @@ import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusB
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBDungeonSpawner;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBTreasureChest;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
+import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
 
 public class MPTileEntities
 {
@@ -102,8 +104,10 @@ public class MPTileEntities
 
 		// Venus
 		GameRegistry.registerTileEntity(TileEntityVenusAncientChest.class, "VenusAncientChest");
+		GameRegistry.registerTileEntity(TileEntityVenusTreasureChest.class, "VenusTreasureChest");
 
 		// Pluto
 		GameRegistry.registerTileEntity(TileEntityPlutoAncientChest.class, "PlutoAncientChest");
+		GameRegistry.registerTileEntity(TileEntityPlutoTreasureChest.class, "PlutoTreasureChest");
 	}
 }

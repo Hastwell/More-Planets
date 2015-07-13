@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.moons.koentus.world.gen;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
@@ -51,7 +52,7 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorSpace
 	@Override
 	public void decorate()
 	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.chunkX, this.chunkZ));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.pos));
 
 		int i;
 		int x;
@@ -69,12 +70,12 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorSpace
 
 		for (i = 0; i < this.rockSpiresPerChunk; ++i)
 		{
-			x = this.chunkX + this.rand.nextInt(16) + 8;
+			x = this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(256);
-			z = this.chunkZ + this.rand.nextInt(16) + 8;
-			this.rockSpiresGen.generate(this.world, this.rand, x, y, z);
+			z = this.rand.nextInt(16) + 8;
+			this.rockSpiresGen.generate(this.world, this.rand, new BlockPos(x, y, z));
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.chunkX, this.chunkZ));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.pos));
 	}
 
 	@Override

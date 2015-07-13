@@ -17,8 +17,11 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
+import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosLeaves;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
@@ -182,6 +185,30 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		if (block == FronosBlocks.fronos_sandstone)
 		{
 			return new ItemStack(FronosBlocks.fronos_sandstone, 1, meta);
+		}
+		if (block == PolongniusBlocks.ultra_violet_solar_fake)
+		{
+			return new ItemStack(PolongniusBlocks.ultra_violet_solar_panel, 1, 0);
+		}
+		if (block == DeimosBlocks.deimos_block)
+		{
+			return new ItemStack(DeimosBlocks.deimos_block, 1, meta);
+		}
+		if (block == FronosBlocks.fronos_farmland)
+		{
+			return new ItemStack(FronosBlocks.fronos_dirt, 1, 0);
+		}
+		if (block == KapteynBBlocks.fallen_ice_crystal_meteor)
+		{
+			return new ItemStack(KapteynBBlocks.fallen_ice_crystal_meteor, 1, 0);
+		}
+		if (block == PhobosBlocks.phobos_block)
+		{
+			return new ItemStack(PhobosBlocks.phobos_block, 1, meta);
+		}
+		if (block == IoBlocks.io_block)
+		{
+			return new ItemStack(IoBlocks.io_block, 1, meta);
 		}
 		return null;
 	}

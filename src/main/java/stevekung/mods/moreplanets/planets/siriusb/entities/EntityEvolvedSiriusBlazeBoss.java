@@ -75,8 +75,6 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 
 	private float heightOffset = 0.5F;
 	private int heightOffsetUpdateTime;
-	private int field_70846_g;
-
 	public EntityEvolvedSiriusBlazeBoss(World world)
 	{
 		super(world);

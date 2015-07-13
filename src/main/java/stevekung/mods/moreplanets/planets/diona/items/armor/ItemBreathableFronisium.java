@@ -7,10 +7,8 @@
 
 package stevekung.mods.moreplanets.planets.diona.items.armor;
 
-import micdoodle8.mods.galacticraft.api.item.IBreathableArmor.EnumGearType;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.common.items.armor.ItemBreathableArmor;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;

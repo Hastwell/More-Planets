@@ -29,8 +29,11 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -241,11 +244,11 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
 	@Override
 	public boolean onActivated(EntityPlayer entityPlayer)
 	{
-		return this.getBlockType().onBlockActivated(this.worldObj, this.pos, this.worldObj.getBlockState(this.pos), entityPlayer, this.facing, (float)this.pos.getX(), (float)this.pos.getY(), (float)this.pos.getZ());
+		return this.getBlockType().onBlockActivated(this.worldObj, this.pos, this.worldObj.getBlockState(this.pos), entityPlayer, this.facing, this.pos.getX(), this.pos.getY(), this.pos.getZ());
 	}
 
 	@Override
-	public void onCreate(BlockPos placedPosition)
+	public void onCreate(World world, BlockPos placedPosition)
 	{
 		int buildHeight = this.worldObj.getHeight() - 1;
 
@@ -351,13 +354,13 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
 	@Override
 	public EnumSet<EnumFacing> getElectricalOutputDirections()
 	{
-        return EnumSet.of(getFacing());
+		return EnumSet.of(this.getFacing());
 	}
 
 	@Override
 	public EnumFacing getElectricalOutputDirectionMain()
 	{
-        return getFacing();
+		return this.getFacing();
 	}
 
 	@Override
@@ -520,4 +523,28 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
 		}
 		return direction == this.getElectricalOutputDirectionMain();
 	}
+
+	@Override
+	public IChatComponent getDisplayName()
+	{
+		return new ChatComponentText(this.getName());
+	}
+
+	@Override
+	public int getField(int id)
+	{
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {}
+
+	@Override
+	public int getFieldCount()
+	{
+		return 0;
+	}
+
+	@Override
+	public void clear() {}
 }

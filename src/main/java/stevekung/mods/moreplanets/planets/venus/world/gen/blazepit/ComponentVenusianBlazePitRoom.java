@@ -14,9 +14,11 @@ import micdoodle8.mods.galacticraft.core.world.gen.StructureComponentGC;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
+import stevekung.mods.moreplanets.planets.venus.blocks.BlockVenus;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 
 public class ComponentVenusianBlazePitRoom extends StructureComponentGC
@@ -29,10 +31,10 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 	private int height;
 	private int width;
 
-	public ComponentVenusianBlazePitRoom(int type, int x, int y, int z, int height, int width, int cbm)
+	public ComponentVenusianBlazePitRoom(int type, int x, int y, int z, int height, int width, EnumFacing cbm)
 	{
 		super(type);
-		this.setCoordBaseMode(cbm);
+		this.coordBaseMode = cbm;
 		this.height = height;
 		this.width = width;
 		this.boundingBox = StructureComponentGC.getComponentToAddBoundingBox(x, 78 - this.height, z, 0, 0, 0, 7, this.height, 7, cbm);
@@ -46,7 +48,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 		for (var4 = 0; var4 < 4; ++var4)
 		{
 			int[] var5 = this.getValidOpening(var4);
-			this.makeCorridor(list, rand, 1, var5[0], var5[1], var5[2], this.width, 7, var4);
+			this.makeCorridor(list, 1, var5[0], var5[1], var5[2], this.width, 7);
 		}
 	}
 
@@ -71,9 +73,9 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 		return new int[] {0, 0, 0};
 	}
 
-	public boolean makeCorridor(List list, Random random, int type, int x, int y, int z, int width, int height, int cbm)
+	public boolean makeCorridor(List list, int type, int x, int y, int z, int width, int height)
 	{
-		int var10 = (this.getCoordBaseMode() + cbm) % 4;
+		int var10 = SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()] % 4;
 		this.offsetCorridorCoords(x, y, z, width, var10);
 		return true;
 	}
@@ -87,11 +89,11 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 	}
 
 	@Override
-	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
+	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
 		if (this.averageGroundLevel < 0)
 		{
-			this.averageGroundLevel = this.getAverageGroundLevel(par1World, par3StructureBoundingBox);
+			this.averageGroundLevel = this.getAverageGroundLevel(world, box);
 
 			if (this.averageGroundLevel < 0)
 			{
@@ -99,9 +101,9 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 			}
 			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 3, 0);
 		}
-		this.makeWallsDown(par1World);
-		this.makePlatforms(par1World, par2Random);
-		this.makeWallsFlat(par1World);
+		this.makeWallsDown(world);
+		this.makePlatforms(world, rand);
+		this.makeWallsFlat(world);
 		return true;
 	}
 
@@ -115,11 +117,11 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 				{
 					if ((x == 0 || x == 6 || z == 0 || z == 6) && (y == 0 || y > 0))
 					{
-						this.placeBlockAtCurrentPosition(world, VenusBlocks.venus_block, 14, x, y, z, this.getBoundingBox());
+						this.func_175808_b(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_dungeon_brick), x, y, z, this.getBoundingBox());
 					}
 					else
 					{
-						this.placeBlockAtCurrentPosition(world, Blocks.air, 0, x, y, z, this.getBoundingBox());
+						this.func_175808_b(world, Blocks.air.getDefaultState(), x, y, z, this.getBoundingBox());
 					}
 				}
 			}
@@ -140,7 +142,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 						{
 							if (world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j)) == Blocks.air.getDefaultState())
 							{
-								this.placeBlockAtCurrentPosition(world, VenusBlocks.venus_block, 14, x + i, y, z + j, this.getBoundingBox());
+								this.func_175808_b(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_dungeon_brick), x + i, y, z + j, this.getBoundingBox());
 							}
 						}
 					}
@@ -165,20 +167,20 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 							{
 								if (world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j)) == Blocks.air.getDefaultState())
 								{
-									this.placeBlockAtCurrentPosition(world, VenusBlocks.venus_block, 14, x + i, y, z + j, this.getBoundingBox());
+									this.func_175808_b(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_dungeon_brick), x + i, y, z + j, this.getBoundingBox());
 								}
 
 								if (y > 0)
 								{
-									this.placeBlockAtCurrentPosition(world, Blocks.air, 0, x - 2, y, z - 2, this.getBoundingBox());
-									this.placeBlockAtCurrentPosition(world, Blocks.air, 0, x + 1, y, z - 2, this.getBoundingBox());
-									this.placeBlockAtCurrentPosition(world, Blocks.air, 0, x - 2, y, z + 1, this.getBoundingBox());
-									this.placeBlockAtCurrentPosition(world, Blocks.air, 0, x + 1, y, z + 1, this.getBoundingBox());
+									this.func_175808_b(world, Blocks.air.getDefaultState(), x - 2, y, z - 2, this.getBoundingBox());
+									this.func_175808_b(world, Blocks.air.getDefaultState(), x + 1, y, z - 2, this.getBoundingBox());
+									this.func_175808_b(world, Blocks.air.getDefaultState(), x - 2, y, z + 1, this.getBoundingBox());
+									this.func_175808_b(world, Blocks.air.getDefaultState(), x + 1, y, z + 1, this.getBoundingBox());
 								}
 
 								if (rand.nextInt(5) == 0 && world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y + 1, this.getBoundingBox().minZ + z + j)) == Blocks.air.getDefaultState() && world.getBlockState(new BlockPos(this.getBoundingBox().minX + x + i, this.getBoundingBox().minY + y, this.getBoundingBox().minZ + z + j)) == VenusBlocks.venus_block.getDefaultState())
 								{
-									this.placeBlockAtCurrentPosition(world, VenusBlocks.venusian_blaze_egg, 0, x + i, y + 1, z + j, this.getBoundingBox());
+									this.func_175808_b(world, VenusBlocks.venusian_blaze_egg.getDefaultState(), x + i, y + 1, z + j, this.getBoundingBox());
 								}
 							}
 						}
@@ -189,7 +191,7 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 							{
 								if (world.getBlockState(new BlockPos(this.getBoundingBox().minX + x, this.getBoundingBox().minY + y + 1, this.getBoundingBox().minZ + z)) == Blocks.air.getDefaultState())
 								{
-									this.placeBlockAtCurrentPosition(world, VenusBlocks.venusian_blaze_egg, 0, x, y + 2, z, this.getBoundingBox());
+									this.func_175808_b(world, VenusBlocks.venusian_blaze_egg.getDefaultState(), x, y + 2, z, this.getBoundingBox());
 								}
 							}
 						}
@@ -231,4 +233,44 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 
 	@Override
 	protected void readStructureFromNBT(NBTTagCompound nbt) {}
+
+	protected static class SwitchEnumFacing
+	{
+		protected static int[] field_176064_a = new int[EnumFacing.values().length];
+
+		static
+		{
+			try
+			{
+				field_176064_a[EnumFacing.NORTH.ordinal()] = 1;
+			}
+			catch (NoSuchFieldError var4)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.SOUTH.ordinal()] = 2;
+			}
+			catch (NoSuchFieldError var3)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.WEST.ordinal()] = 3;
+			}
+			catch (NoSuchFieldError var2)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.EAST.ordinal()] = 4;
+			}
+			catch (NoSuchFieldError var1)
+			{
+			}
+		}
+	}
 }

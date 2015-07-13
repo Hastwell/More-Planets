@@ -27,7 +27,7 @@ import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityUltr
 
 public class GuiUltraVioletSolarPanel extends GuiContainerGC
 {
-	private ResourceLocation solarGuiTexture = new ResourceLocation("moreplanets:textures/gui/ultra_violet_solar.png");
+	private ResourceLocation solarGuiTexture = new ResourceLocation("moreplanets:textures/gui/ultra_violet_solar_panel.png");
 	private TileEntityUltraVioletSolarPanel solarPanel;
 	private GuiButton buttonEnableSolar;
 	private GuiElementInfoRegion electricInfoRegion = new GuiElementInfoRegion((this.width - this.xSize) / 2 + 107, (this.height - this.ySize) / 2 + 101, 56, 9, new ArrayList<String>(), this.width, this.height, this);

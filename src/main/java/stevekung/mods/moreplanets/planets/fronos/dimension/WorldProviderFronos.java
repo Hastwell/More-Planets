@@ -13,6 +13,7 @@ import micdoodle8.mods.galacticraft.api.vector.Vector3;
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.Chunk;
@@ -52,7 +53,7 @@ public class WorldProviderFronos extends WorldProviderSpace implements IGalactic
 	}
 
 	@Override
-	public boolean canBlockFreeze(int x, int y, int z, boolean byWater)
+	public boolean canBlockFreeze(BlockPos pos, boolean byWater)
 	{
 		return false;
 	}

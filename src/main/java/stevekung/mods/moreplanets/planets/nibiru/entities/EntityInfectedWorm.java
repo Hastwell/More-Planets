@@ -63,7 +63,8 @@ public class EntityInfectedWorm extends EntityMob implements IEntityBreathable, 
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(7.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0F);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.8000000238418579D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0D);
 	}
 
 	@Override

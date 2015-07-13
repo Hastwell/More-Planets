@@ -14,6 +14,7 @@ import micdoodle8.mods.galacticraft.core.world.gen.StructureComponentGC;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -30,10 +31,10 @@ public class ComponentSiriusBlazePitRoom extends StructureComponentGC
 	private int height;
 	private int width;
 
-	public ComponentSiriusBlazePitRoom(int type, World world, Random par2Random, int x, int y, int z, int height, int width, int cbm)
+	public ComponentSiriusBlazePitRoom(int type, World world, Random par2Random, int x, int y, int z, int height, int width, EnumFacing cbm)
 	{
 		super(type);
-		this.setCoordBaseMode(cbm);
+		this.coordBaseMode = cbm;
 		this.height = height;
 		this.width = width;
 		this.boundingBox = StructureComponentGC.getComponentToAddBoundingBox(x, 78 - this.height, z, 0, 0, 0, 7, this.height, 7, cbm);
@@ -46,12 +47,12 @@ public class ComponentSiriusBlazePitRoom extends StructureComponentGC
 
 		for (var4 = 0; var4 < 4; ++var4)
 		{
-			int[] var5 = this.getValidOpening(rand, var4);
-			this.makeCorridor(list, rand, 1, var5[0], var5[1], var5[2], this.width, 7, var4);
+			int[] var5 = this.getValidOpening(var4);
+			this.makeCorridor(list, 1, var5[0], var5[1], var5[2], this.width, 7);
 		}
 	}
 
-	public int[] getValidOpening(Random var1, int var2)
+	public int[] getValidOpening(int var2)
 	{
 		if (var2 == 0)
 		{
@@ -72,9 +73,9 @@ public class ComponentSiriusBlazePitRoom extends StructureComponentGC
 		return new int[] {0, 0, 0};
 	}
 
-	public boolean makeCorridor(List list, Random random, int type, int x, int y, int z, int width, int height, int cbm)
+	public boolean makeCorridor(List list, int type, int x, int y, int z, int width, int height)
 	{
-		int var10 = (this.getCoordBaseMode() + cbm) % 4;
+		int var10 = SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()] % 4;
 		this.offsetCorridorCoords(x, y, z, width, var10);
 		return true;
 	}
@@ -88,11 +89,11 @@ public class ComponentSiriusBlazePitRoom extends StructureComponentGC
 	}
 
 	@Override
-	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
+	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
 		if (this.averageGroundLevel < 0)
 		{
-			this.averageGroundLevel = this.getAverageGroundLevel(par1World, par3StructureBoundingBox);
+			this.averageGroundLevel = this.getAverageGroundLevel(world, box);
 
 			if (this.averageGroundLevel < 0)
 			{
@@ -100,9 +101,9 @@ public class ComponentSiriusBlazePitRoom extends StructureComponentGC
 			}
 			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 3, 0);
 		}
-		this.makeWallsDown(par1World);
-		this.makePlatforms(par1World, par2Random);
-		this.makeWallsFlat(par1World);
+		this.makeWallsDown(world);
+		this.makePlatforms(world, rand);
+		this.makeWallsFlat(world);
 		return true;
 	}
 
@@ -232,4 +233,44 @@ public class ComponentSiriusBlazePitRoom extends StructureComponentGC
 
 	@Override
 	protected void readStructureFromNBT(NBTTagCompound nbt) {}
+
+	protected static class SwitchEnumFacing
+	{
+		protected static int[] field_176064_a = new int[EnumFacing.values().length];
+
+		static
+		{
+			try
+			{
+				field_176064_a[EnumFacing.NORTH.ordinal()] = 1;
+			}
+			catch (NoSuchFieldError var4)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.SOUTH.ordinal()] = 2;
+			}
+			catch (NoSuchFieldError var3)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.WEST.ordinal()] = 3;
+			}
+			catch (NoSuchFieldError var2)
+			{
+			}
+
+			try
+			{
+				field_176064_a[EnumFacing.EAST.ordinal()] = 4;
+			}
+			catch (NoSuchFieldError var1)
+			{
+			}
+		}
+	}
 }

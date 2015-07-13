@@ -27,10 +27,10 @@ public class ComponentKoentusVillageTorch extends ComponentKoentusVillage
 
 	public ComponentKoentusVillageTorch() {}
 
-	public ComponentKoentusVillageTorch(ComponentKoentusVillageStartPiece component, int type, StructureBoundingBox box, EnumFacing side)
+	public ComponentKoentusVillageTorch(ComponentKoentusVillageStartPiece component, int type, StructureBoundingBox box, EnumFacing facing)
 	{
 		super(component, type);
-		this.coordBaseMode = side;
+		this.coordBaseMode = facing;
 		this.boundingBox = box;
 	}
 
@@ -68,7 +68,6 @@ public class ComponentKoentusVillageTorch extends ComponentKoentusVillage
 			}
 			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
 		}
-
 		this.func_175804_a(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
 		this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 0, 0, box);
 		this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 1, 0, box);

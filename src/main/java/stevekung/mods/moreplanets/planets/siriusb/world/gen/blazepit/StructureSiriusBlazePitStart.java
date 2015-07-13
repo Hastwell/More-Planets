@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.siriusb.world.gen.blazepit;
 
 import java.util.Random;
 
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureStart;
 
@@ -18,7 +19,7 @@ public class StructureSiriusBlazePitStart extends StructureStart
 	{
 		int var5 = (x << 4) + 8;
 		int var6 = (z << 4) + 8;
-		ComponentSiriusBlazePitRoom room = new ComponentSiriusBlazePitRoom(0, world, random, var5, 90, var6, 40, 7, 0);
+		ComponentSiriusBlazePitRoom room = new ComponentSiriusBlazePitRoom(0, world, random, var5, 90, var6, 40, 7, EnumFacing.NORTH);
 
 		if (room != null)
 		{

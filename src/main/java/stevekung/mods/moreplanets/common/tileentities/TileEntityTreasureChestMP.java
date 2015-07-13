@@ -14,6 +14,7 @@ import micdoodle8.mods.galacticraft.api.item.IKeyable;
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.network.PacketSimple;
 import micdoodle8.mods.galacticraft.core.network.PacketSimple.EnumSimplePacket;
+import micdoodle8.mods.galacticraft.core.tile.TileEntityAdvanced;
 import micdoodle8.mods.miccore.Annotations.NetworkedField;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,14 +27,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
-import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StatCollector;
+import net.minecraft.world.IInteractionObject;
+import net.minecraft.world.ILockableContainer;
+import net.minecraft.world.LockCode;
 import net.minecraftforge.fml.relauncher.Side;
 
-public abstract class TileEntityTreasureChestMP extends TileEntityLockable implements IUpdatePlayerListBox, IInventory, IKeyable
+public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUpdatePlayerListBox, IInventory, IKeyable, IInteractionObject, ILockableContainer
 {
 	private ItemStack[] chestContents = new ItemStack[27];
 	public float lidAngle;
@@ -41,12 +45,14 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 	public int numPlayersUsing;
 	private int ticksSinceSync;
 	public int tier;
+	private LockCode code;
 
 	@NetworkedField(targetSide = Side.CLIENT)
 	public boolean locked = true;
 
 	public TileEntityTreasureChestMP(int tier)
 	{
+		this.code = LockCode.EMPTY_CODE;
 		this.tier = this.getTreasureChestTier();
 	}
 
@@ -141,6 +147,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 		this.tier = nbt.getInteger("tier");
 		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
 		this.chestContents = new ItemStack[this.getSizeInventory()];
+		this.code = LockCode.fromNBT(nbt);
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
@@ -172,6 +179,10 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 				nbttaglist.appendTag(nbttagcompound1);
 			}
 		}
+		if (this.code != null)
+		{
+			this.code.toNBT(nbt);
+		}
 		nbt.setTag("Items", nbttaglist);
 	}
 
@@ -185,24 +196,6 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 	public boolean isUseableByPlayer(EntityPlayer player)
 	{
 		return this.worldObj.getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
-	}
-
-	@Override
-	public void updateContainingBlockInfo()
-	{
-		super.updateContainingBlockInfo();
-	}
-
-	protected boolean func_174912_b(BlockPos pos)
-	{
-		if (this.worldObj == null)
-		{
-			return false;
-		}
-		else
-		{
-			return this.worldObj.getBlockState(pos).getBlock() == this.getTreasureChestBlock();
-		}
 	}
 
 	@Override
@@ -337,6 +330,12 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 	}
 
 	@Override
+	public boolean canRenderBreaking()
+	{
+		return true;
+	}
+
+	@Override
 	public String getGuiID()
 	{
 		return "moreplanets:treasure_chest";
@@ -412,24 +411,6 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 		}
 	}
 
-	/*@Override TODO 
-	public double getPacketRange()
-	{
-		return 20.0D;
-	}
-
-	@Override
-	public int getPacketCooldown()
-	{
-		return 3;
-	}
-
-	@Override
-	public boolean isNetworkedTile()
-	{
-		return true;
-	}*/
-
 	@Override
 	public int getTierOfKeyRequired()
 	{
@@ -437,7 +418,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 	}
 
 	@Override
-	public boolean onValidKeyActivated(EntityPlayer player, ItemStack key, int face)
+	public boolean onValidKeyActivated(EntityPlayer player, ItemStack key, EnumFacing facing)
 	{
 		if (this.locked)
 		{
@@ -449,7 +430,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 			}
 			else
 			{
-				if (--player.inventory.getCurrentItem().stackSize == 0)
+				if (!player.capabilities.isCreativeMode && --player.inventory.getCurrentItem().stackSize == 0)
 				{
 					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
 				}
@@ -460,7 +441,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 	}
 
 	@Override
-	public boolean onActivatedWithoutKey(EntityPlayer player, int face)
+	public boolean onActivatedWithoutKey(EntityPlayer player, EnumFacing facing)
 	{
 		if (this.locked)
 		{
@@ -477,6 +458,48 @@ public abstract class TileEntityTreasureChestMP extends TileEntityLockable imple
 	public boolean canBreak()
 	{
 		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName()
+	{
+		return new ChatComponentText(this.getName());
+	}
+
+	@Override
+	public double getPacketRange()
+	{
+		return 20.0D;
+	}
+
+	@Override
+	public int getPacketCooldown()
+	{
+		return 3;
+	}
+
+	@Override
+	public boolean isNetworkedTile()
+	{
+		return true;
+	}
+
+	@Override
+	public boolean isLocked()
+	{
+		return this.code != null && !this.code.isEmpty();
+	}
+
+	@Override
+	public LockCode getLockCode()
+	{
+		return this.code;
+	}
+
+	@Override
+	public void setLockCode(LockCode code)
+	{
+		this.code = code;
 	}
 
 	protected abstract int getTreasureChestTier();

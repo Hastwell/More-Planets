@@ -19,9 +19,11 @@ import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
@@ -71,6 +73,12 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		API.registerHighlightIdentifier(PlutoBlocks.pluto_block, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(EuropaBlocks.europa_sea_lantern, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(FronosBlocks.fronos_sandstone, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(PolongniusBlocks.ultra_violet_solar_fake, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(DeimosBlocks.deimos_block, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(PhobosBlocks.phobos_block, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(FronosBlocks.fronos_farmland, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(KapteynBBlocks.fallen_ice_crystal_meteor, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(IoBlocks.io_block, new NEIHighlightHandlerMP());
 		this.registerRecipe();
 	}
 

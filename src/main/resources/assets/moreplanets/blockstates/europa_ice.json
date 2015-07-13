@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=europa_ice": { "model": "moreplanets:europa_ice" },
+        "variant=dirty_europa_ice": { "model": "moreplanets:dirty_europa_ice" },
+		"variant=dense_europa_ice": { "model": "moreplanets:dense_europa_ice" }
+    }
+}

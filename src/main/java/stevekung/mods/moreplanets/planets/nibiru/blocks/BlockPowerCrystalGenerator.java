@@ -16,6 +16,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -41,6 +42,12 @@ public class BlockPowerCrystalGenerator extends BlockTileGC implements IBlockShi
 		this.setHardness(2.0F);
 		this.setStepSound(soundTypeMetal);
 		this.setUnlocalizedName(name);
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return 3;
 	}
 
 	@Override
@@ -82,6 +89,12 @@ public class BlockPowerCrystalGenerator extends BlockTileGC implements IBlockShi
 				}
 			}
 		}
+	}
+
+	@Override
+	public CreativeTabs getCreativeTabToDisplayOn()
+	{
+		return MorePlanetsCore.mpBlocksTab;
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class BlockFronosCloud extends BlockBreakableMP
 		super(Material.cloth);
 		this.setStepSound(soundTypeCloth);
 		this.setHardness(0.55F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.rainbow_cloud));
+		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.strawberry_cloud));
 		this.setUnlocalizedName(name);
 	}
 

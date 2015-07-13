@@ -208,8 +208,8 @@ public class MorePlanetsCore
 
 		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 		{
-			RegisterHelper.registerBuiltInBlocks(DionaBlocks.diona_ancient_chest, PolongniusBlocks.polongnius_ancient_chest, NibiruBlocks.nibiru_ancient_chest, KoentusBlocks.koentus_ancient_chest, FronosBlocks.fronos_ancient_chest,
-					KapteynBBlocks.kapteyn_b_ancient_chest, SiriusBBlocks.sirius_b_ancient_chest, MercuryBlocks.mercury_ancient_chest, VenusBlocks.venus_ancient_chest, PlutoBlocks.pluto_ancient_chest);
+			RegisterHelper.registerBuiltInBlocks(DionaBlocks.diona_ancient_chest, DionaBlocks.diona_treasure_chest, PolongniusBlocks.polongnius_ancient_chest, PolongniusBlocks.polongnius_treasure_chest, NibiruBlocks.nibiru_ancient_chest, NibiruBlocks.nibiru_treasure_chest, KoentusBlocks.koentus_ancient_chest, KoentusBlocks.koentus_treasure_chest, FronosBlocks.fronos_ancient_chest, FronosBlocks.fronos_treasure_chest,
+					KapteynBBlocks.kapteyn_b_ancient_chest, KapteynBBlocks.kapteyn_b_treasure_chest, SiriusBBlocks.sirius_b_ancient_chest, SiriusBBlocks.sirius_b_treasure_chest, MercuryBlocks.mercury_ancient_chest, MercuryBlocks.mercury_treasure_chest, VenusBlocks.venus_ancient_chest, VenusBlocks.venus_treasure_chest, PlutoBlocks.pluto_ancient_chest, PlutoBlocks.pluto_treasure_chest);
 		}
 
 		MorePlanetsCore.mpBlocksTab = new CreativeTabsHelper("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));

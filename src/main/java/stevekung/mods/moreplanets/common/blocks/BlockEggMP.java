@@ -7,9 +7,17 @@
 
 package stevekung.mods.moreplanets.common.blocks;
 
+import micdoodle8.mods.galacticraft.planets.mars.items.MarsItems;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockEggMP extends BlockFalling
@@ -40,7 +48,7 @@ public class BlockEggMP extends BlockFalling
 		return MorePlanetsCore.mpBlocksTab;
 	}
 
-	/*@Override
+	@Override
 	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
 	{
 		ItemStack stack = player.inventory.getCurrentItem();
@@ -63,5 +71,5 @@ public class BlockEggMP extends BlockFalling
 			return 0.1F;
 		}
 		return ForgeHooks.blockStrength(state.getBlock().getDefaultState(), player, world, pos);
-	}*/
+	}
 }

@@ -448,7 +448,7 @@ public class ComponentKoentusVillageHouse extends ComponentKoentusVillage
 				{
 					if (i >= 7 && i <= 9 && j >= 7 && j <= 9)
 					{
-						this.func_175808_b(world, Blocks.glass.getDefaultState(), i, yLevel, j, box);
+						this.func_175811_a(world, Blocks.glass.getDefaultState(), i, yLevel, j, box);
 					}
 					else
 					{

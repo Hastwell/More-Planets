@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "moreplanets:power_crystal_generator" },
+        "facing=south": { "model": "moreplanets:power_crystal_generator", "y": 180 },
+        "facing=west":  { "model": "moreplanets:power_crystal_generator", "y": 270 },
+        "facing=east":  { "model": "moreplanets:power_crystal_generator", "y": 90 }
+    }
+}

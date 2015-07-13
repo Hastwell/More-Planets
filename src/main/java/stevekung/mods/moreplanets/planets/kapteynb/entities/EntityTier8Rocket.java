@@ -22,6 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -50,9 +51,9 @@ public class EntityTier8Rocket extends EntityTieredRocket
 	}
 
 	@Override
-	protected void onRocketLand(int x, int y, int z)
+	protected void onRocketLand(BlockPos pos)
 	{
-		this.setPositionAndRotation(x + 0.5, y + 2.0D, z + 0.5, this.rotationYaw, 0.0F);
+		this.setPositionAndRotation(pos.getX() + 0.5, pos.getY() + 2.0D, pos.getZ() + 0.5, this.rotationYaw, 0.0F);
 		this.stopRocketSound();
 	}
 
@@ -315,4 +316,22 @@ public class EntityTier8Rocket extends EntityTieredRocket
 		droppedItems.add(rocket);
 		return droppedItems;
 	}
+
+	@Override
+	public int getField(int id)
+	{
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {}
+
+	@Override
+	public int getFieldCount()
+	{
+		return 0;
+	}
+
+	@Override
+	public void clear() {}
 }

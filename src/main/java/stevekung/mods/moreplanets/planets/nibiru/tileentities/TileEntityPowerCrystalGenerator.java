@@ -21,7 +21,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.relauncher.Side;
 import stevekung.mods.moreplanets.common.items.IPowerCrystal;
@@ -302,18 +304,64 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
 	@Override
 	public int getField(int id)
 	{
-		return 0;
+		switch (id)
+		{
+		case 0:
+			return (int) this.prevGenerateWatts;
+		case 1:
+			return (int) this.heatGJperTick;
+		case 2:
+			return this.itemCookTime;
+		case 3:
+			return TileEntityPowerCrystalGenerator.MAX_GENERATE_GJ_PER_TICK;
+		case 4:
+			return TileEntityPowerCrystalGenerator.MIN_GENERATE_GJ_PER_TICK;
+		default:
+			return 0;
+		}
 	}
 
 	@Override
-	public void setField(int id, int value) {}
+	public void setField(int id, int value)
+	{
+		switch (id)
+		{
+		case 0:
+			this.prevGenerateWatts = value;
+			break;
+		case 1:
+			this.heatGJperTick = value;
+			break;
+		case 2:
+			this.itemCookTime = value;
+			break;
+		case 3:
+			TileEntityPowerCrystalGenerator.MAX_GENERATE_GJ_PER_TICK = value;
+			break;
+		case 4:
+			TileEntityPowerCrystalGenerator.MIN_GENERATE_GJ_PER_TICK = value;
+			break;
+		}
+	}
 
 	@Override
 	public int getFieldCount()
 	{
-		return 0;
+		return 5;
 	}
 
 	@Override
-	public void clear() {}
+	public void clear()
+	{
+		for (int i = 0; i < this.containingItems.length; ++i)
+		{
+			this.containingItems[i] = null;
+		}
+	}
+
+	@Override
+	public IChatComponent getDisplayName()
+	{
+		return new ChatComponentText(this.getName());
+	}
 }

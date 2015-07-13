@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.phobos.dimension.sky;
+package stevekung.mods.moreplanets.moons.phobos.client.sky;
 
 import java.util.Random;
 
@@ -20,18 +20,18 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.IRenderHandler;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import stevekung.mods.moreplanets.moons.phobos.dimension.WorldProviderPhobos;
-import cpw.mods.fml.client.FMLClientHandler;
 
 public class SkyProviderPhobos extends IRenderHandler
 {
 	private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/sun.png");
 	private ResourceLocation marsTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/mars.png");
-	private ResourceLocation deimosTexture = new ResourceLocation("deimos:textures/gui/celestialbodies/deimos.png");
+	private ResourceLocation deimosTexture = new ResourceLocation("moreplanets:textures/gui/celestialbodies/deimos.png");
 
 	public int starGLCallList = GLAllocation.generateDisplayLists(3);
 	public int glSkyList;
@@ -47,7 +47,7 @@ public class SkyProviderPhobos extends IRenderHandler
 		this.renderStars();
 		GL11.glEndList();
 		GL11.glPopMatrix();
-		Tessellator tessellator = Tessellator.instance;
+		Tessellator tessellator = Tessellator.getInstance();
 		this.glSkyList = this.starGLCallList + 1;
 		GL11.glNewList(this.glSkyList, GL11.GL_COMPILE);
 		byte byte2 = 64;
@@ -58,11 +58,11 @@ public class SkyProviderPhobos extends IRenderHandler
 		{
 			for (int l = -byte2 * i; l <= byte2 * i; l += byte2)
 			{
-				tessellator.startDrawingQuads();
-				tessellator.addVertex(j + 0, f, l + 0);
-				tessellator.addVertex(j + byte2, f, l + 0);
-				tessellator.addVertex(j + byte2, f, l + byte2);
-				tessellator.addVertex(j + 0, f, l + byte2);
+				tessellator.getWorldRenderer().startDrawingQuads();
+				tessellator.getWorldRenderer().addVertex(j + 0, f, l + 0);
+				tessellator.getWorldRenderer().addVertex(j + byte2, f, l + 0);
+				tessellator.getWorldRenderer().addVertex(j + byte2, f, l + byte2);
+				tessellator.getWorldRenderer().addVertex(j + 0, f, l + byte2);
 				tessellator.draw();
 			}
 		}
@@ -71,16 +71,16 @@ public class SkyProviderPhobos extends IRenderHandler
 		this.glSkyList2 = this.starGLCallList + 2;
 		GL11.glNewList(this.glSkyList2, GL11.GL_COMPILE);
 		f = -16F;
-		tessellator.startDrawingQuads();
+		tessellator.getWorldRenderer().startDrawingQuads();
 
 		for (int k = -byte2 * i; k <= byte2 * i; k += byte2)
 		{
 			for (int i1 = -byte2 * i; i1 <= byte2 * i; i1 += byte2)
 			{
-				tessellator.addVertex(k + byte2, f, i1 + 0);
-				tessellator.addVertex(k + 0, f, i1 + 0);
-				tessellator.addVertex(k + 0, f, i1 + byte2);
-				tessellator.addVertex(k + byte2, f, i1 + byte2);
+				tessellator.getWorldRenderer().addVertex(k + byte2, f, i1 + 0);
+				tessellator.getWorldRenderer().addVertex(k + 0, f, i1 + 0);
+				tessellator.getWorldRenderer().addVertex(k + 0, f, i1 + byte2);
+				tessellator.getWorldRenderer().addVertex(k + byte2, f, i1 + byte2);
 			}
 		}
 
@@ -119,7 +119,7 @@ public class SkyProviderPhobos extends IRenderHandler
 		}
 
 		GL11.glColor3f(1, 1, 1);
-		Tessellator var23 = Tessellator.instance;
+		Tessellator var23 = Tessellator.getInstance();
 		GL11.glDepthMask(false);
 		GL11.glEnable(GL11.GL_FOG);
 		GL11.glColor3f(0, 0, 0);
@@ -159,11 +159,11 @@ public class SkyProviderPhobos extends IRenderHandler
 		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
 		var12 = this.sunSize + 2.6F;
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.sunTexture);
-		var23.startDrawingQuads();
-		var23.addVertexWithUV(-var12, 150.0D, -var12, 0.0D, 0.0D);
-		var23.addVertexWithUV(var12, 150.0D, -var12, 1.0D, 0.0D);
-		var23.addVertexWithUV(var12, 150.0D, var12, 1.0D, 1.0D);
-		var23.addVertexWithUV(-var12, 150.0D, var12, 0.0D, 1.0D);
+		var23.getWorldRenderer().startDrawingQuads();
+		var23.getWorldRenderer().addVertexWithUV(-var12, 150.0D, -var12, 0.0D, 0.0D);
+		var23.getWorldRenderer().addVertexWithUV(var12, 150.0D, -var12, 1.0D, 0.0D);
+		var23.getWorldRenderer().addVertexWithUV(var12, 150.0D, var12, 1.0D, 1.0D);
+		var23.getWorldRenderer().addVertexWithUV(-var12, 150.0D, var12, 0.0D, 1.0D);
 		var23.draw();
 
 		GL11.glDisable(GL11.GL_BLEND);
@@ -175,11 +175,11 @@ public class SkyProviderPhobos extends IRenderHandler
 		GL11.glRotatef(-32F, -100.0F, -20.0F, 180.0F);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.marsTexture);
-		var23.startDrawingQuads();
-		var23.addVertexWithUV(-var12, -100.0D, var12, 0, 1);
-		var23.addVertexWithUV(var12, -100.0D, var12, 1, 1);
-		var23.addVertexWithUV(var12, -100.0D, -var12, 1, 0);
-		var23.addVertexWithUV(-var12, -100.0D, -var12, 0, 0);
+		var23.getWorldRenderer().startDrawingQuads();
+		var23.getWorldRenderer().addVertexWithUV(-var12, -100.0D, var12, 0, 1);
+		var23.getWorldRenderer().addVertexWithUV(var12, -100.0D, var12, 1, 1);
+		var23.getWorldRenderer().addVertexWithUV(var12, -100.0D, -var12, 1, 0);
+		var23.getWorldRenderer().addVertexWithUV(-var12, -100.0D, -var12, 0, 0);
 		var23.draw();
 
 		// Deimos
@@ -190,11 +190,11 @@ public class SkyProviderPhobos extends IRenderHandler
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F);
 		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.deimosTexture);
-		var23.startDrawingQuads();
-		var23.addVertexWithUV(-var12, -100.0D, var12, 0, 1);
-		var23.addVertexWithUV(var12, -100.0D, var12, 1, 1);
-		var23.addVertexWithUV(var12, -100.0D, -var12, 1, 0);
-		var23.addVertexWithUV(-var12, -100.0D, -var12, 0, 0);
+		var23.getWorldRenderer().startDrawingQuads();
+		var23.getWorldRenderer().addVertexWithUV(-var12, -100.0D, var12, 0, 1);
+		var23.getWorldRenderer().addVertexWithUV(var12, -100.0D, var12, 1, 1);
+		var23.getWorldRenderer().addVertexWithUV(var12, -100.0D, -var12, 1, 0);
+		var23.getWorldRenderer().addVertexWithUV(-var12, -100.0D, -var12, 0, 0);
 		var23.draw();
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -204,7 +204,7 @@ public class SkyProviderPhobos extends IRenderHandler
 		GL11.glPopMatrix();
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		GL11.glColor3f(0.0F, 0.0F, 0.0F);
-		double var25 = mc.thePlayer.getPosition(partialTicks).yCoord - world.getHorizon();
+		double var25 = mc.thePlayer.getPositionEyes(partialTicks).yCoord - world.getHorizon();
 
 		if (var25 < 0.0D)
 		{
@@ -215,28 +215,28 @@ public class SkyProviderPhobos extends IRenderHandler
 			var10 = 1.0F;
 			var11 = -((float) (var25 + 65.0D));
 			var12 = -var10;
-			var23.startDrawingQuads();
-			var23.setColorRGBA_I(0, 255);
-			var23.addVertex(-var10, var11, var10);
-			var23.addVertex(var10, var11, var10);
-			var23.addVertex(var10, var12, var10);
-			var23.addVertex(-var10, var12, var10);
-			var23.addVertex(-var10, var12, -var10);
-			var23.addVertex(var10, var12, -var10);
-			var23.addVertex(var10, var11, -var10);
-			var23.addVertex(-var10, var11, -var10);
-			var23.addVertex(var10, var12, -var10);
-			var23.addVertex(var10, var12, var10);
-			var23.addVertex(var10, var11, var10);
-			var23.addVertex(var10, var11, -var10);
-			var23.addVertex(-var10, var11, -var10);
-			var23.addVertex(-var10, var11, var10);
-			var23.addVertex(-var10, var12, var10);
-			var23.addVertex(-var10, var12, -var10);
-			var23.addVertex(-var10, var12, -var10);
-			var23.addVertex(-var10, var12, var10);
-			var23.addVertex(var10, var12, var10);
-			var23.addVertex(var10, var12, -var10);
+			var23.getWorldRenderer().startDrawingQuads();
+			var23.getWorldRenderer().setColorRGBA_I(0, 255);
+			var23.getWorldRenderer().addVertex(-var10, var11, var10);
+			var23.getWorldRenderer().addVertex(var10, var11, var10);
+			var23.getWorldRenderer().addVertex(var10, var12, var10);
+			var23.getWorldRenderer().addVertex(-var10, var12, var10);
+			var23.getWorldRenderer().addVertex(-var10, var12, -var10);
+			var23.getWorldRenderer().addVertex(var10, var12, -var10);
+			var23.getWorldRenderer().addVertex(var10, var11, -var10);
+			var23.getWorldRenderer().addVertex(-var10, var11, -var10);
+			var23.getWorldRenderer().addVertex(var10, var12, -var10);
+			var23.getWorldRenderer().addVertex(var10, var12, var10);
+			var23.getWorldRenderer().addVertex(var10, var11, var10);
+			var23.getWorldRenderer().addVertex(var10, var11, -var10);
+			var23.getWorldRenderer().addVertex(-var10, var11, -var10);
+			var23.getWorldRenderer().addVertex(-var10, var11, var10);
+			var23.getWorldRenderer().addVertex(-var10, var12, var10);
+			var23.getWorldRenderer().addVertex(-var10, var12, -var10);
+			var23.getWorldRenderer().addVertex(-var10, var12, -var10);
+			var23.getWorldRenderer().addVertex(-var10, var12, var10);
+			var23.getWorldRenderer().addVertex(var10, var12, var10);
+			var23.getWorldRenderer().addVertex(var10, var12, -var10);
 			var23.draw();
 		}
 
@@ -253,8 +253,8 @@ public class SkyProviderPhobos extends IRenderHandler
 	private void renderStars()
 	{
 		Random var1 = new Random(10842L);
-		Tessellator var2 = Tessellator.instance;
-		var2.startDrawingQuads();
+		Tessellator var2 = Tessellator.getInstance();
+		var2.getWorldRenderer().startDrawingQuads();
 
 		for (int var3 = 0; var3 < (ConfigManagerCore.moreStars ? 50000 : 6000); ++var3)
 		{
@@ -294,7 +294,7 @@ public class SkyProviderPhobos extends IRenderHandler
 					double var55 = var39 * var28 - var47 * var30;
 					double var57 = var55 * var22 - var49 * var24;
 					double var61 = var49 * var22 + var55 * var24;
-					var2.addVertex(var14 + var57, var16 + var53, var18 + var61);
+					var2.getWorldRenderer().addVertex(var14 + var57, var16 + var53, var18 + var61);
 				}
 			}
 		}
@@ -303,7 +303,7 @@ public class SkyProviderPhobos extends IRenderHandler
 
 	private Vec3 getCustomSkyColor()
 	{
-		return Vec3.createVectorHelper(0.26796875D, 0.1796875D, 0.0D);
+		return new Vec3(0.26796875D, 0.1796875D, 0.0D);
 	}
 
 	public float getSkyBrightness(float par1)

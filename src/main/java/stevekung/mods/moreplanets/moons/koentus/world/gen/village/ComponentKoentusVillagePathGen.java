@@ -116,11 +116,11 @@ public class ComponentKoentusVillagePathGen extends ComponentKoentusVillageRoadP
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static StructureBoundingBox func_74933_a(List list, Random rand, int x, int y, int z, EnumFacing side)
+	public static StructureBoundingBox func_74933_a(List list, Random rand, int x, int y, int z, EnumFacing facing)
 	{
 		for (int var7 = 7 * MathHelper.getRandomIntegerInRange(rand, 3, 5); var7 >= 7; var7 -= 7)
 		{
-			StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 3, var7, side);
+			StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 3, var7, facing);
 
 			if (StructureComponent.findIntersecting(list, var8) == null)
 			{

@@ -10,64 +10,61 @@ package stevekung.mods.moreplanets.planets.fronos.world.gen;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCavernOyster;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class MapGenCavernFronos extends MapGenBaseMeta
 {
-	protected int range = 8;
-	protected Random rand = new Random();
-	protected World worldObj;
-
 	@Override
-	public void generate(IChunkProvider par1IChunkProvider, World par2World, int par3, int par4, Block[] arrayOfIDs, byte[] arrayOfMeta)
+	public void generate(IChunkProvider chunkProvider, World world, int x, int z, ChunkPrimer chunk)
 	{
 		int var6 = this.range;
-		this.worldObj = par2World;
-		this.rand.setSeed(par2World.getSeed());
+		this.worldObj = world;
+		this.rand.setSeed(world.getSeed());
 		long var7 = this.rand.nextLong();
 		long var9 = this.rand.nextLong();
 
-		for (int var11 = par3 - var6; var11 <= par3 + var6; ++var11)
+		for (int var11 = x - var6; var11 <= x + var6; ++var11)
 		{
-			for (int var12 = par4 - var6; var12 <= par4 + var6; ++var12)
+			for (int var12 = z - var6; var12 <= z + var6; ++var12)
 			{
 				long var13 = var11 * var7;
 				long var15 = var12 * var9;
-				this.rand.setSeed(var13 ^ var15 ^ par2World.getSeed());
-				this.recursiveGenerate(par2World, var11, var12, par3, par4, arrayOfIDs, arrayOfMeta);
+				this.rand.setSeed(var13 ^ var15 ^ world.getSeed());
+				this.recursiveGenerate(world, var11, var12, x, z, chunk);
 			}
 		}
 	}
 
 	@Override
-	protected void recursiveGenerate(World par1World, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, Block[] arrayOfIDs, byte[] arrayOfMeta)
+	protected void recursiveGenerate(World world, int x, int z, int orX, int orZ, ChunkPrimer chunk)
 	{
 		if (this.rand.nextInt(100) == 0)
 		{
-			double xPos = xChunkCoord * 16 + this.rand.nextInt(16);
+			double xPos = x * 16 + this.rand.nextInt(16);
 			double yPos = 25;
-			double zPos = zChunkCoord * 16 + this.rand.nextInt(16);
-			this.generateLargeCaveNode(this.rand.nextLong(), origXChunkCoord, origZChunkCoord, arrayOfIDs, arrayOfMeta, xPos, yPos, zPos);
+			double zPos = z * 16 + this.rand.nextInt(16);
+			this.generateLargeCaveNode(this.rand.nextLong(), orX, orZ, chunk, xPos, yPos, zPos);
 		}
 	}
 
-	protected void generateLargeCaveNode(long par1, int origXChunkCoord, int origZChunkCoord, Block[] arrayOfIDs, byte[] arrayOfMeta, double xPos, double yPos, double zPos)
+	protected void generateLargeCaveNode(long seed, int x, int z, ChunkPrimer chunk, double xPos, double yPos, double zPos)
 	{
-		this.generateCaveNode(par1, origXChunkCoord, origZChunkCoord, arrayOfIDs, arrayOfMeta, xPos, yPos, zPos, 1.0F + this.rand.nextFloat() * 6.0F, 10.0F, 10.0F, -1, -1, 0.2D);
+		this.generateCaveNode(seed, x, z, chunk, xPos, yPos, zPos, 1.0F + this.rand.nextFloat() * 6.0F, 10.0F, 10.0F, -1, -1, 0.2D);
 	}
 
-	protected void generateCaveNode(long par1, int origXChunkCoord, int origZChunkCoord, Block[] arrayOfIDs, byte[] arrayOfMeta, double xPos, double yPos, double zPos, float par12, float par13, float par14, int par15, int par16, double heightMultiplier)
+	protected void generateCaveNode(long seed, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk, double xPos, double yPos, double zPos, float par12, float par13, float par14, int par15, int par16, double heightMultiplier)
 	{
 		double var19 = origXChunkCoord * 16 + 8;
 		double var21 = origZChunkCoord * 16 + 8;
 		float var23 = 0.0F;
 		float var24 = 0.0F;
-		Random var25 = new Random(par1);
+		Random var25 = new Random(seed);
 
 		if (par16 <= 0)
 		{
@@ -136,27 +133,22 @@ public class MapGenCavernFronos extends MapGenBaseMeta
 					{
 						caveMinX = 0;
 					}
-
 					if (caveMaxX > 16)
 					{
 						caveMaxX = 16;
 					}
-
 					if (caveMinY < 1)
 					{
 						caveMinY = 1;
 					}
-
 					if (caveMaxY > 65)
 					{
 						caveMaxY = 65;
 					}
-
 					if (caveMinZ < 0)
 					{
 						caveMinZ = 0;
 					}
-
 					if (caveMaxZ > 16)
 					{
 						caveMaxZ = 16;
@@ -205,9 +197,9 @@ public class MapGenCavernFronos extends MapGenBaseMeta
 										{
 											int coords = (var42 * 16 + var45) * 256 + var50;
 
-											if (arrayOfIDs[coords] == FronosBlocks.fronos_block || arrayOfIDs[coords] == FronosBlocks.cavern_oyster_open || arrayOfIDs[coords] == FronosBlocks.cavern_oyster_close)
+											if (chunk.getBlockState(coords).getBlock() == FronosBlocks.fronos_block || chunk.getBlockState(coords) == FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, true) || chunk.getBlockState(coords) == FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false))
 											{
-												arrayOfIDs[coords] = Blocks.air;
+												chunk.setBlockState(coords, Blocks.air.getDefaultState());
 											}
 										}
 									}
@@ -237,17 +229,15 @@ public class MapGenCavernFronos extends MapGenBaseMeta
 											int coords = (var42 * 16 + var45) * 256 + var50;
 											int coordsBelow = (var42 * 16 + var45) * 256 + var50 - 1;
 
-											if (Blocks.air == arrayOfIDs[coords])
+											if (Blocks.air.getDefaultState() == chunk.getBlockState(coords))
 											{
-												if (arrayOfIDs[coordsBelow] == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
+												if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
 												{
-													arrayOfIDs[coords] = FronosBlocks.cavern_oyster_open;
-													arrayOfMeta[coords] = (byte) this.rand.nextInt(4);
+													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, true));
 												}
-												else if (arrayOfIDs[coordsBelow] == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
+												else if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
 												{
-													arrayOfIDs[coords] = FronosBlocks.cavern_oyster_close;
-													arrayOfMeta[coords] = (byte) this.rand.nextInt(4);
+													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false));
 												}
 											}
 										}

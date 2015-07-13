@@ -14,11 +14,11 @@ import micdoodle8.mods.galacticraft.core.tile.TileEntityDungeonSpawner;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.DungeonBoundingBox;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.DungeonRoom;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.chunk.ChunkPrimer;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaDungeonSpawner;
 
@@ -44,7 +44,7 @@ public class RoomBossDiona extends DungeonRoom
 	}
 
 	@Override
-	public void generate(Block[] chunk, byte[] meta, int cx, int cz)
+	public void generate(ChunkPrimer chunk, int cx, int cz)
 	{
 		for (int i = this.posX - 1; i <= this.posX + this.sizeX; i++)
 		{
@@ -56,20 +56,20 @@ public class RoomBossDiona extends DungeonRoom
 					{
 						if (j == this.posY - 1 && (i <= this.posX + 1 || i >= this.posX + this.sizeX - 2 || k == this.posZ + 1 || k == this.posZ + this.sizeZ - 2) && this.rand.nextInt(4) == 0)
 						{
-							this.placeBlock(chunk, meta, i, j, k, cx, cz, Blocks.glowstone, 0);
+							this.placeBlock(chunk, i, j, k, cx, cz, Blocks.glowstone, 0);
 						}
 						else
 						{
-							this.placeBlock(chunk, meta, i, j, k, cx, cz, this.dungeonInstance.DUNGEON_WALL_ID, this.dungeonInstance.DUNGEON_WALL_META);
+							this.placeBlock(chunk, i, j, k, cx, cz, this.dungeonInstance.DUNGEON_WALL_ID, this.dungeonInstance.DUNGEON_WALL_META);
 						}
 					}
 					else if (j == this.posY && (i <= this.posX + 1 || i >= this.posX + this.sizeX - 2 || k == this.posZ + 1 || k == this.posZ + this.sizeZ - 2) && this.rand.nextInt(6) == 0)
 					{
-						this.placeBlock(chunk, meta, i, j, k, cx, cz, DionaBlocks.minion_creeper_egg, 0);
+						this.placeBlock(chunk, i, j, k, cx, cz, DionaBlocks.minion_creeper_egg, 0);
 					}
 					else
 					{
-						this.placeBlock(chunk, meta, i, j, k, cx, cz, Blocks.air, 0);
+						this.placeBlock(chunk, i, j, k, cx, cz, Blocks.air, 0);
 					}
 				}
 			}

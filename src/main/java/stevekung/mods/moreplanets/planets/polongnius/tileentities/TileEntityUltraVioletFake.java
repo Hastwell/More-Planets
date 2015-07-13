@@ -28,7 +28,7 @@ public class TileEntityUltraVioletFake extends TileEntityAdvanced implements IPa
 
 		if (!this.worldObj.isRemote)
 		{
-			this.worldObj.markBlockForUpdate(this.pos);
+			this.worldObj.markBlockForUpdate(this.mainBlockPosition);
 		}
 	}
 
@@ -36,7 +36,7 @@ public class TileEntityUltraVioletFake extends TileEntityAdvanced implements IPa
 	{
 		if (this.mainBlockPosition != null)
 		{
-			TileEntity tileEntity = this.worldObj.getTileEntity(this.pos);
+			TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition);
 
 			if (tileEntity instanceof IMultiBlock)
 			{
@@ -50,7 +50,7 @@ public class TileEntityUltraVioletFake extends TileEntityAdvanced implements IPa
 	{
 		if (this.mainBlockPosition != null)
 		{
-			TileEntity tileEntity = this.worldObj.getTileEntity(this.pos);
+			TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition);
 
 			if (tileEntity instanceof IMultiBlock)
 			{
@@ -64,7 +64,8 @@ public class TileEntityUltraVioletFake extends TileEntityAdvanced implements IPa
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-        this.mainBlockPosition = new BlockPos(nbt.getInteger("mainX"), nbt.getInteger("mainY"), nbt.getInteger("mainZ"));
+		NBTTagCompound tag = nbt.getCompoundTag("mainBlockPosition");
+		this.mainBlockPosition = new BlockPos(tag.getInteger("x"), tag.getInteger("y"), tag.getInteger("z"));
 	}
 
 	@Override
@@ -74,9 +75,11 @@ public class TileEntityUltraVioletFake extends TileEntityAdvanced implements IPa
 
 		if (this.mainBlockPosition != null)
 		{
-			nbt.setInteger("mainX", this.mainBlockPosition.getX());
-			nbt.setInteger("mainY", this.mainBlockPosition.getY());
-			nbt.setInteger("mainZ", this.mainBlockPosition.getZ());
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setInteger("x", this.mainBlockPosition.getX());
+			tag.setInteger("y", this.mainBlockPosition.getY());
+			tag.setInteger("z", this.mainBlockPosition.getZ());
+			nbt.setTag("mainBlockPosition", tag);
 		}
 	}
 

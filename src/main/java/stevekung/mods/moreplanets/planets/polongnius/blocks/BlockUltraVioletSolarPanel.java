@@ -45,6 +45,24 @@ public class BlockUltraVioletSolarPanel extends BlockTileGC implements IPartialS
 	}
 
 	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean isFullCube()
+	{
+		return true;
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return 3;
+	}
+
+	@Override
 	public CreativeTabs getCreativeTabToDisplayOn()
 	{
 		return MorePlanetsCore.mpBlocksTab;
@@ -80,7 +98,7 @@ public class BlockUltraVioletSolarPanel extends BlockTileGC implements IPartialS
 
 		if (tile instanceof TileEntityUltraVioletSolarPanel)
 		{
-			((TileEntityUltraVioletSolarPanel)tile).onCreate(pos);
+			((TileEntityUltraVioletSolarPanel)tile).onCreate(world, pos);
 		}
 	}
 
@@ -127,18 +145,6 @@ public class BlockUltraVioletSolarPanel extends BlockTileGC implements IPartialS
 	public TileEntity createNewTileEntity(World world, int meta)
 	{
 		return new TileEntityUltraVioletSolarPanel(5);
-	}
-
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
 	}
 
 	@Override

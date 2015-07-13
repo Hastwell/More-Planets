@@ -37,25 +37,24 @@ public class MapGenMartianVillage extends MapGenStructure
 	}
 
 	@Override
-	protected boolean canSpawnStructureAtCoords(int i, int j)
+	protected boolean canSpawnStructureAtCoords(int x, int z)
 	{
 		byte numChunks = 32;
 		byte offsetChunks = 8;
-		int oldi = i;
-		int oldj = j;
+		int oldi = x;
+		int oldj = z;
 
-		if (i < 0)
+		if (x < 0)
 		{
-			i -= numChunks - 1;
+			x -= numChunks - 1;
 		}
-		if (j < 0)
+		if (z < 0)
 		{
-			j -= numChunks - 1;
+			z -= numChunks - 1;
 		}
-
-		int randX = i / numChunks;
-		int randZ = j / numChunks;
-		Random var7 = this.worldObj.setRandomSeed(i, j, 10387312);
+		int randX = x / numChunks;
+		int randZ = z / numChunks;
+		Random var7 = this.worldObj.setRandomSeed(x, z, 10387312);
 		randX *= numChunks;
 		randZ *= numChunks;
 		randX += var7.nextInt(numChunks - offsetChunks);
@@ -64,10 +63,10 @@ public class MapGenMartianVillage extends MapGenStructure
 	}
 
 	@Override
-	protected StructureStart getStructureStart(int par1, int par2)
+	protected StructureStart getStructureStart(int x, int z)
 	{
-		FMLLog.info("Generating Martian Village at x" + par1 * 16 + " z" + par2 * 16);
-		return new StructureMartianVillageStart(this.worldObj, this.rand, par1, par2, this.terrainType);
+		FMLLog.info("Generating Martian Village at x" + x * 16 + " z" + z * 16);
+		return new StructureMartianVillageStart(this.worldObj, this.rand, x, z, this.terrainType);
 	}
 
 	@Override

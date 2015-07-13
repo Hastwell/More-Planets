@@ -37,8 +37,9 @@ public class BlockSpaceShell extends BlockBaseMP
 	{
 		super(Material.plants);
 		this.setUnlocalizedName(name);
+		this.setHardness(0.1F);
 		this.setDefaultState(this.getDefaultState().withProperty(COLOR, EnumDyeColor.WHITE));
-		this.setBlockBounds(0.3F, 0.0F, 0.275F, 0.675F, 0.175F, 0.775F);
+		this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 0.2F, 0.75F);
 	}
 
 	@Override
@@ -127,7 +128,7 @@ public class BlockSpaceShell extends BlockBaseMP
 
 	private boolean checkForDrop(World world, BlockPos pos, IBlockState state)
 	{
-		if (!this.canBlockStay(world, pos))
+		if (world.isAirBlock(pos.down()))
 		{
 			this.dropBlockAsItem(world, pos, state, 0);
 			world.setBlockToAir(pos);
@@ -137,11 +138,6 @@ public class BlockSpaceShell extends BlockBaseMP
 		{
 			return true;
 		}
-	}
-
-	private boolean canBlockStay(World world, BlockPos pos)
-	{
-		return !world.isAirBlock(pos.down());
 	}
 
 	@Override

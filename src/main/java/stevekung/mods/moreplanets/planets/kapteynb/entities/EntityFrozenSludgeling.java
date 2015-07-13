@@ -67,7 +67,8 @@ public class EntityFrozenSludgeling extends EntityMob implements IEntityBreathab
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(7.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0F);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.8000000238418579D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0D);
 	}
 
 	@Override
@@ -101,7 +102,7 @@ public class EntityFrozenSludgeling extends EntityMob implements IEntityBreathab
 		{
 			if (entity instanceof EntityLivingBase)
 			{
-				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60, 0));
+				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60, 2));
 			}
 			return true;
 		}

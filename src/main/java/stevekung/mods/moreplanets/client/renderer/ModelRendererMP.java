@@ -133,6 +133,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(DionaBlocks.fronisium_tnt, "fronisium_tnt", "moreplanets");
 		RegisterHelper.registerModelRender(DionaBlocks.minion_creeper_egg, "minion_creeper_egg", "moreplanets");
 		RegisterHelper.registerModelRender(DionaBlocks.diona_ancient_chest, "diona_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(DionaBlocks.diona_treasure_chest, "diona_treasure_chest", "moreplanets");
 
 		RegisterHelper.registerModelRender(PolongniusBlocks.polongnius_block, 0, "cheese_gas", "moreplanets");
 		RegisterHelper.registerModelRender(PolongniusBlocks.polongnius_block, 1, "solid_cheese_gas", "moreplanets");
@@ -158,7 +159,9 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(PolongniusBlocks.cheese_of_milk_cake, "cheese_of_milk_cake", "moreplanets");
 		RegisterHelper.registerModelRender(PolongniusBlocks.flonium_torch, "flonium_torch", "moreplanets");
 		RegisterHelper.registerModelRender(PolongniusBlocks.cheese_gas_block, "cheese_gas_block", "moreplanets");
+		RegisterHelper.registerModelRender(PolongniusBlocks.ultra_violet_solar_panel, "ultra_violet_solar_panel", "moreplanets");
 		RegisterHelper.registerModelRender(PolongniusBlocks.polongnius_ancient_chest, "polongnius_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(PolongniusBlocks.polongnius_treasure_chest, "polongnius_treasure_chest", "moreplanets");
 
 		RegisterHelper.registerModelRender(NibiruBlocks.nibiru_block, 0, "nibiru_surface_rock", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruBlocks.nibiru_block, 1, "nibiru_sub_surface_rock", "moreplanets");
@@ -206,8 +209,10 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(NibiruBlocks.orange_leaves, 3, "orange_leaves4", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruBlocks.nibiru_sapling, 0, "ancient_dark_sapling", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruBlocks.nibiru_sapling, 1, "orange_sapling", "moreplanets");
+		RegisterHelper.registerModelRender(NibiruBlocks.power_crystal_generator, "power_crystal_generator", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruBlocks.infected_orange_rose_bush, 0, "orange_rose_bush_bottom", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruBlocks.nibiru_ancient_chest, "nibiru_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(NibiruBlocks.nibiru_treasure_chest, "nibiru_treasure_chest", "moreplanets");
 
 		RegisterHelper.registerModelRender(KoentusBlocks.koentus_block, 0, "koentus_surface_rock", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.koentus_block, 1, "koentus_sub_surface_rock", "moreplanets");
@@ -244,6 +249,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(KoentusBlocks.koentus_ice, 1, "glowing_koentus_ice", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.crystal_sapling, "crystal_sapling", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusBlocks.koentus_ancient_chest, "koentus_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(KoentusBlocks.koentus_treasure_chest, "koentus_treasure_chest", "moreplanets");
 		RegisterHelper.registerModelRenderWithDyeColor(KoentusBlocks.glowing_ice_stone, "moreplanets");
 
 		RegisterHelper.registerModelRender(FronosBlocks.fronos_grass, "fronos_grass", "moreplanets");
@@ -314,6 +320,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosBlocks.chocolate_block, "chocolate_block", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.caramel_block, "caramel_block", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.fronos_ancient_chest, "fronos_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.fronos_treasure_chest, "fronos_treasure_chest", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.frosted_cake, 0, "cake_bread_block", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.frosted_cake, 1, "white_cake_bread_block", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.frosted_cake, 2, "chocolate_cake_bread_block", "moreplanets");
@@ -426,6 +433,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosBlocks.purple_candy_torch, "purple_candy_torch", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.space_oyster, "space_oyster", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.cavern_oyster, "cavern_oyster", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.mineral_water_generator, "mineral_water_generator", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 0, "fronos_sandstone", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 1, "chiseled_fronos_sandstone", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.fronos_sandstone, 2, "smooth_fronos_sandstone", "moreplanets");
@@ -469,6 +477,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(KapteynBBlocks.fallen_ice_crystal_meteor, "fallen_ice_crystal_meteor", "moreplanets");
 		RegisterHelper.registerModelRender(KapteynBBlocks.frozen_water_geyser, "frozen_water_geyser", "moreplanets");
 		RegisterHelper.registerModelRender(KapteynBBlocks.icy_poison_crystal, "icy_poison_crystal", "moreplanets");
+		RegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_treasure_chest, "kapteyn_b_treasure_chest", "moreplanets");
 
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_b_block, 0, "sirius_b_surface_carbon_stone", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_b_block, 1, "sirius_b_sub_surface_carbon_stone", "moreplanets");
@@ -481,6 +490,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_b_block, 8, "sulfur_block", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_b_block, 9, "sirius_b_dungeon_brick", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_b_ancient_chest, "sirius_b_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_b_treasure_chest, "sirius_b_treasure_chest", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_obsidian, "sirius_obsidian", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_glowstone, "sirius_glowstone", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBBlocks.sirius_redstone_lamp_off, "sirius_redstone_lamp", "moreplanets");
@@ -505,6 +515,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(MercuryBlocks.mercury_cobblestone_stairs, "mercury_cobblestone_stairs", "moreplanets");
 		RegisterHelper.registerModelRender(MercuryBlocks.mercury_dungeon_brick_stairs, "mercury_dungeon_brick_stairs", "moreplanets");
 		RegisterHelper.registerModelRender(MercuryBlocks.mercury_ancient_chest, "mercury_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(MercuryBlocks.mercury_treasure_chest, "mercury_treasure_chest", "moreplanets");
 
 		RegisterHelper.registerModelRender(PhobosBlocks.phobos_block, 0, "phobos_surface_rock", "moreplanets");
 		RegisterHelper.registerModelRender(PhobosBlocks.phobos_block, 1, "phobos_sub_surface_rock", "moreplanets");
@@ -558,6 +569,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(VenusBlocks.venusian_blaze_egg, "venusian_blaze_egg", "moreplanets");
 		RegisterHelper.registerModelRender(VenusBlocks.sulfur_torch, "sulfur_torch", "moreplanets");
 		RegisterHelper.registerModelRender(VenusBlocks.venus_ancient_chest, "venus_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(VenusBlocks.venus_treasure_chest, "venus_treasure_chest", "moreplanets");
 
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 0, "pluto_surface_rock", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 1, "pluto_sub_surface_rock", "moreplanets");
@@ -573,11 +585,18 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(PlutoBlocks.frozen_nitrogen_block, "frozen_nitrogen_block", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.xeonium_torch, "xeonium_torch", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_ancient_chest, "pluto_ancient_chest", "moreplanets");
+		RegisterHelper.registerModelRender(PlutoBlocks.pluto_treasure_chest, "pluto_treasure_chest", "moreplanets");
 
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_prismarine, 0, "europa_prismarine", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_prismarine, 1, "europa_prismarine_bricks", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_prismarine, 2, "dark_europa_prismarine", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_ice, 0, "europa_ice", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_ice, 1, "dirty_europa_ice", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_ice, 2, "dense_europa_ice", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_sea_lantern, "europa_sea_lantern", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.packed_europa_ice, "packed_europa_ice", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_snow_block, "europa_snow_block", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_snow_layer, "europa_snow_layer", "moreplanets");
 
 		// Items
 		RegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1000, "spawn_egg_mp", "moreplanets");
@@ -807,6 +826,8 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(KapteynBItems.frozen_water_bucket, "frozen_water_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(KapteynBItems.namerium_crystal, "namerium_crystal", "moreplanets");
 		RegisterHelper.registerModelRender(KapteynBItems.tier_8_rocket_schematic, "tier_8_rocket_schematic", "moreplanets");
+		RegisterHelper.registerModelRender(KapteynBItems.uranium_battery, 0, "uranium_battery", "moreplanets");
+		RegisterHelper.registerModelRender(KapteynBItems.uranium_battery, 100, "uranium_battery", "moreplanets");
 
 		RegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 0, "small_diamond_pieces", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 1, "large_diamond_pieces", "moreplanets");
@@ -827,6 +848,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(MercuryItems.mercury_item, 5, "compressed_metal_meteoric_iron", "moreplanets");
 		RegisterHelper.registerModelRender(MercuryItems.mercury_item, 6, "gravity_core", "moreplanets");
 		RegisterHelper.registerModelRender(MercuryItems.mercury_item, 7, "gravity_controller", "moreplanets");
+		RegisterHelper.registerModelRender(MercuryItems.dirty_water_bucket, "dirty_water_bucket", "moreplanets");
 
 		RegisterHelper.registerModelRender(IoItems.titanium_bucket, "titanium_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(IoItems.io_lava_bucket, "io_lava_bucket", "moreplanets");
@@ -838,6 +860,8 @@ public class ModelRendererMP
 
 		RegisterHelper.registerModelRender(VenusItems.venus_item, "lead_ingot", "moreplanets");
 		RegisterHelper.registerModelRender(VenusItems.jetpack, "jetpack", "moreplanets");
+		RegisterHelper.registerModelRender(VenusItems.sulfur_battery, 0, "sulfur_battery", "moreplanets");
+		RegisterHelper.registerModelRender(VenusItems.sulfur_battery, 100, "sulfur_battery", "moreplanets");
 
 		RegisterHelper.registerModelRender(PlutoItems.pluto_item, 0, "xeonium_gem", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoItems.space_potato, 0, "space_potato", "moreplanets");

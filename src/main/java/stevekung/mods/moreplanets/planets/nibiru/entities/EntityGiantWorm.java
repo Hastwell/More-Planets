@@ -54,7 +54,8 @@ public class EntityGiantWorm extends EntityMob implements IEntityBreathable, IEn
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(12.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3F);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.2500000238418579D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.25D);
 	}
 
 	@Override

@@ -11,6 +11,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 
 public class InventorySchematicRocket implements IInventory
 {
@@ -147,4 +149,28 @@ public class InventorySchematicRocket implements IInventory
 	{
 		return false;
 	}
+
+	@Override
+	public IChatComponent getDisplayName()
+	{
+		return new ChatComponentText(this.getName());
+	}
+
+	@Override
+	public int getField(int id)
+	{
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {}
+
+	@Override
+	public int getFieldCount()
+	{
+		return 0;
+	}
+
+	@Override
+	public void clear() {}
 }

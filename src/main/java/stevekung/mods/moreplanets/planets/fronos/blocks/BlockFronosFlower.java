@@ -182,7 +182,6 @@ public class BlockFronosFlower extends BlockFlowerMP
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		super.randomDisplayTick(world, pos, state, rand);
 		BlockType type = (BlockType)state.getValue(VARIANT);
 
 		if (type == BlockType.purple_spike_flower)
@@ -226,6 +225,13 @@ public class BlockFronosFlower extends BlockFlowerMP
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
+		/*Block blockTemp = world.getBlockState(pos).getBlock();
+
+		if (!(blockTemp instanceof BlockFronosFlower))
+		{
+			return false;
+		}*/
+
 		Block block = world.getBlockState(pos.down()).getBlock();
 		BlockType type = (BlockType)state.getValue(VARIANT);
 

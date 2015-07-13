@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "moreplanets:mineral_water_generator" },
+        "facing=south": { "model": "moreplanets:mineral_water_generator", "y": 180 },
+        "facing=west":  { "model": "moreplanets:mineral_water_generator", "y": 270 },
+        "facing=east":  { "model": "moreplanets:mineral_water_generator", "y": 90 }
+    }
+}

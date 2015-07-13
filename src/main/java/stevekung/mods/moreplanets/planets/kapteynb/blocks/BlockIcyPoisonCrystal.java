@@ -23,6 +23,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockContainerMP;
 import stevekung.mods.moreplanets.core.init.MPPotions;
@@ -59,6 +60,12 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 		{
 			super.harvestBlock(world, player, pos, state, tile);
 		}
+	}
+
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+	{
+		return new ItemStack(this, 1, 0);
 	}
 
 	@Override
