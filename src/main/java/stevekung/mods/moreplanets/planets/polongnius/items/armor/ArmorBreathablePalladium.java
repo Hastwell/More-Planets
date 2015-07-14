@@ -26,7 +26,7 @@ public class ArmorBreathablePalladium extends ItemBreathableArmor
 	{
 		if (stack.getItem() == PolongniusArmorItems.breathable_palladium_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_palladium_1.png";
+			return "moreplanets:textures/model/armor/breathable_palladium.png";
 		}
 		return null;
 	}

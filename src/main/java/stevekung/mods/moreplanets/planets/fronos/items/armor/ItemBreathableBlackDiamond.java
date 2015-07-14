@@ -26,7 +26,7 @@ public class ItemBreathableBlackDiamond extends ItemBreathableArmor
 	{
 		if (stack.getItem() == FronosArmorItems.breathable_black_diamond_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_black_diamond_1.png";
+			return "moreplanets:textures/model/armor/breathable_black_diamond.png";
 		}
 		return null;
 	}

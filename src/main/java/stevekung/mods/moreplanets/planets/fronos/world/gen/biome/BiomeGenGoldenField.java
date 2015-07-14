@@ -34,7 +34,7 @@ public class BiomeGenGoldenField extends BiomeGenBaseFronos
 		this.getBiomeDecorator().dandelionPerChunk = 8;
 		this.getBiomeDecorator().poppyPerChunk = 12;
 		this.getBiomeDecorator().goldMilkCapPerChunk = 12;
-		this.getBiomeDecorator().waterlilyPerChunk = 132;
+		this.getBiomeDecorator().waterlilyPerChunk = 2;
 		this.getBiomeDecorator().orangeFlowerPerChunk = 12;
 		this.getBiomeDecorator().pinkButterCupPerChunk = 12;
 		this.getBiomeDecorator().oysterPerChunk = 500;

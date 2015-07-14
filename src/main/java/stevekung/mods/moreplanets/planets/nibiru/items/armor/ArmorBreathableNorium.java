@@ -26,7 +26,7 @@ public class ArmorBreathableNorium extends ItemBreathableArmor
 	{
 		if (stack.getItem() == NibiruArmorItems.breathable_norium_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_norium_1.png";
+			return "moreplanets:textures/model/armor/breathable_norium.png";
 		}
 		return null;
 	}

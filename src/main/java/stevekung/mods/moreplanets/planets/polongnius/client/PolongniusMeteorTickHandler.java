@@ -24,13 +24,8 @@ public class PolongniusMeteorTickHandler
 	{
 		if (event.entityLiving instanceof EntityPlayerMP)
 		{
-			this.onPlayerUpdate((EntityPlayerMP) event.entityLiving);
+			this.throwPolongniusMeteors((EntityPlayerMP) event.entityLiving);
 		}
-	}
-
-	private void onPlayerUpdate(EntityPlayerMP player)
-	{
-		this.throwPolongniusMeteors(player);
 	}
 
 	private void throwPolongniusMeteors(EntityPlayerMP player)

@@ -36,6 +36,7 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.BlockSpaceOyster;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenCandyCane1;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenCandyCane2;
+import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenCandyFlower;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenCavernOyster;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenClayFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenCloud;
@@ -45,7 +46,6 @@ import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFrono
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosMelon;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosPumpkin;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosSand;
-import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosTallGrass;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenMapleIvy;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenSpaceOyster;
@@ -94,53 +94,6 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 	public int dungeonSpawnerPerChunk;
 	public int strawberryCloudPerChunk;
 	public int rainbowCloudPerChunk;
-
-	public BiomeDecoratorFronos()
-	{
-		/*this.waterlilyPerChunk = 150;
-		this.deadBushPerChunk = 5;
-		this.reedsPerChunk = 200;
-		this.normalSandPerChunk = 4;
-		this.fronosSandPerChunk = 3;
-		this.whiteSandPerChunk = 3;
-		this.cheeseSandPerChunk = 2;
-		this.gravelPerChunk = 3;
-		this.clayPerChunk = 2;
-
-		this.strawberryCloudPerChunk = 8;
-		this.rainbowCloudPerChunk = 1;
-
-		this.pinkButterCupPerChunk = 12;
-		this.orangeFlowerPerChunk = 12;
-		this.goldMilkCapPerChunk = 10;
-		this.littleSunFlowerPerChunk = 6;
-		this.skyMushroomPerChunk = 6;
-		this.purpleSpikeFlowerPerChunk = 2;
-		this.jungleIrisPerChunk = 4;
-		this.bluePoisonMushroomPerChunk = 2;
-		this.whiteMossPerChunk = 2;
-		this.candyFlowerPerChunk = 2;
-				this.dandelionPerChunk = 12;
-		this.poppyPerChunk = 8;
-
-		this.frostedCakePerChunk = 1;
-		this.lakesPerChunk = 1;
-		this.candyCanePerChunk = 180;
-		this.oysterPerChunk = 500;
-		this.oysterClosePerChunk = 500;
-
-		this.redMapleTreePerChunk = 64;
-		this.yellowMapleTreePerChunk = 64;
-
-		/*this.fronosTallGrassPerChunk = 200;
-		this.pinkTallGrassPerChunk = 200;
-		this.purpleTallGrassPerChunk = 200;
-		this.plainsTallGrassPerChunk = 200;
-		this.goldenTallGrassPerChunk = 200;
-		this.spaceShellPerChunk = 64;
-		this.mapleIvyPerChunk = 8;
-		 */
-	}
 
 	@Override
 	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
@@ -440,19 +393,19 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 		}
 
 		// Tall Grass
-		for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
+		for (i = 0; this.getGen(EventType.FLOWERS) && i < this.fronosTallGrassPerChunk; ++i)
 		{
-			/*x = this.randomGenerator.nextInt(16) + 8;
+			x = this.randomGenerator.nextInt(16) + 8;
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, pos);*/
-			
-            x = this.randomGenerator.nextInt(16) + 8;
+			new WorldGenFronosFlowers(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, pos);
+
+           /* x = this.randomGenerator.nextInt(16) + 8;
             z = this.randomGenerator.nextInt(16) + 8;
             y = nextInt(this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z)).getY() * 2);
             new WorldGenFronosTallGrass(BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
-		}
+		*/}
 		/*for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
 		{
 			x = this.randomGenerator.nextInt(16) + 8;
@@ -638,7 +591,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
 			new WorldGenFronosFlowers(FronosBlocks.fronos_flower, BlockFronosFlower.VARIANT, BlockFronosFlower.BlockType.white_moss).generate(this.currentWorld, this.randomGenerator, pos);
-		}
+		}*/
 		for (i = 0; this.getGen(EventType.FLOWERS) && i < this.candyFlowerPerChunk; ++i)
 		{
 			x = this.randomGenerator.nextInt(16) + 8;
@@ -646,7 +599,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
 			new WorldGenCandyFlower().generate(this.currentWorld, this.randomGenerator, pos);
-		}*/
+		}
 
 		// Frosted Cake
 		for (i = 0; this.getGen(EventType.CUSTOM) && i < this.frostedCakePerChunk; ++i)

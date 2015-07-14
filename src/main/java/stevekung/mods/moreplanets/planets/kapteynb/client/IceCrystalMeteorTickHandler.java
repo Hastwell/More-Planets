@@ -24,13 +24,8 @@ public class IceCrystalMeteorTickHandler
 	{
 		if (event.entityLiving instanceof EntityPlayerMP)
 		{
-			this.onPlayerUpdate((EntityPlayerMP) event.entityLiving);
+			this.throwMeteors((EntityPlayerMP) event.entityLiving);
 		}
-	}
-
-	private void onPlayerUpdate(EntityPlayerMP player)
-	{
-		this.throwMeteors(player);
 	}
 
 	private void throwMeteors(EntityPlayerMP player)

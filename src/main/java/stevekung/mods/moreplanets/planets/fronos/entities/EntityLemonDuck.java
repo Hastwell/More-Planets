@@ -50,6 +50,10 @@ public class EntityLemonDuck extends IFronosPet
 	@Override
 	public float getEyeHeight()
 	{
+		if (this.isChild())
+		{
+			return this.height - 0.075F;
+		}
 		return this.height - 0.15F;
 	}
 

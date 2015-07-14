@@ -21,6 +21,8 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
 public class EntitySiriusSmallFireball extends EntityFireball
 {
+	private boolean canExplode;
+
 	public EntitySiriusSmallFireball(World world)
 	{
 		super(world);
@@ -47,24 +49,25 @@ public class EntitySiriusSmallFireball extends EntityFireball
 	}
 
 	@Override
-	protected void onImpact(MovingObjectPosition movingObject)
+	protected void onImpact(MovingObjectPosition moving)
 	{
 		if (!this.worldObj.isRemote)
 		{
 			boolean flag;
 
-			if (movingObject.entityHit != null)
+			if (moving.entityHit != null)
 			{
-				flag = movingObject.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), this.getCanExplode() ? 6.0F : 5.0F);
+				flag = moving.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), this.getCanExplode() ? 6.0F : 5.0F);
 
 				if (flag)
 				{
-					this.func_174815_a(this.shootingEntity, movingObject.entityHit);
+					this.func_174815_a(this.shootingEntity, moving.entityHit);
 
-					if (!movingObject.entityHit.isImmuneToFire())
+					if (!moving.entityHit.isImmuneToFire())
 					{
-						movingObject.entityHit.setFire(5);
+						moving.entityHit.setFire(5);
 					}
+					this.worldObj.createExplosion((Entity)null, this.posX, this.posY, this.posZ, 4, true);
 				}
 			}
 			else
@@ -78,7 +81,7 @@ public class EntitySiriusSmallFireball extends EntityFireball
 
 				if (flag)
 				{
-					BlockPos blockpos = movingObject.getBlockPos().offset(movingObject.sideHit);
+					BlockPos blockpos = moving.getBlockPos().offset(moving.sideHit);
 
 					if (this.worldObj.isAirBlock(blockpos))
 					{
@@ -151,20 +154,16 @@ public class EntitySiriusSmallFireball extends EntityFireball
 	public void readEntityFromNBT(NBTTagCompound nbt)
 	{
 		super.readEntityFromNBT(nbt);
-
-		if (nbt.getBoolean("CanExplode"))
-		{
-			this.setCanExplode(true);
-		}
+		this.canExplode = nbt.getBoolean("CanExplode");
 	}
 
 	public boolean getCanExplode()
 	{
-		return this.getDataWatcher().getWatchableObjectByte(16) == 1;
+		return this.canExplode;
 	}
 
-	public void setCanExplode(boolean can)
+	public void setCanExplode(boolean explode)
 	{
-		this.getDataWatcher().updateObject(16, Byte.valueOf((byte) (can ? 1 : 0)));
+		this.canExplode = explode;
 	}
 }

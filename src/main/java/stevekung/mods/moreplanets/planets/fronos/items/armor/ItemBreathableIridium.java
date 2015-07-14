@@ -26,7 +26,7 @@ public class ItemBreathableIridium extends ItemBreathableArmor
 	{
 		if (stack.getItem() == FronosArmorItems.breathable_iridium_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_iridium_1.png";
+			return "moreplanets:textures/model/armor/breathable_iridium.png";
 		}
 		return null;
 	}

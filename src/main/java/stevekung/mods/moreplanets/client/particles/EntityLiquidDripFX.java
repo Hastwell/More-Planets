@@ -55,22 +55,10 @@ public class EntityLiquidDripFX extends EntityFX
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
-
-		//if (!this.isLavaDrip)
-		{
-			this.particleRed = this.newRed;
-			this.particleGreen = this.newGreen;
-			this.particleBlue = this.newBlue;
-			this.particleAlpha = this.newAlpha;
-		}
-		/*else
-		{
-			this.particleRed = this.newRed;
-			this.particleGreen = this.newGreen / (float)(40 - this.bobTimer + 16);
-			this.particleBlue = this.newBlue / (float)(40 - this.bobTimer + 8);
-			this.particleAlpha = this.newAlpha;
-		}*/
-
+		this.particleRed = this.newRed;
+		this.particleGreen = this.newGreen;
+		this.particleBlue = this.newBlue;
+		this.particleAlpha = this.newAlpha;
 		this.motionY -= this.particleGravity;
 
 		if (this.bobTimer-- > 0)

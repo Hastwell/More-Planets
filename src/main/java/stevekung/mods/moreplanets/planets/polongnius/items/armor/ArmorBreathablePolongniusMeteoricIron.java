@@ -24,9 +24,9 @@ public class ArmorBreathablePolongniusMeteoricIron extends ItemBreathableArmor
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if (stack.getItem() == PolongniusArmorItems.breathable_polongnius_meteor_helmet)
+		if (stack.getItem() == PolongniusArmorItems.breathable_polongnius_meteoric_iron_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_polongnius_meteoric_iron_1.png";
+			return "moreplanets:textures/model/armor/breathable_polongnius_meteoric_iron.png";
 		}
 		return null;
 	}
@@ -52,6 +52,6 @@ public class ArmorBreathablePolongniusMeteoricIron extends ItemBreathableArmor
 	@Override
 	protected Item getBreathableArmor()
 	{
-		return PolongniusArmorItems.breathable_polongnius_meteor_helmet;
+		return PolongniusArmorItems.breathable_polongnius_meteoric_iron_helmet;
 	}
 }

@@ -26,7 +26,7 @@ public class ArmorBreathableUranium extends ItemBreathableArmor
 	{
 		if (stack.getItem() == KapteynBArmorItems.breathable_uranium_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_uranium_1.png";
+			return "moreplanets:textures/model/armor/breathable_uranium.png";
 		}
 		return null;
 	}

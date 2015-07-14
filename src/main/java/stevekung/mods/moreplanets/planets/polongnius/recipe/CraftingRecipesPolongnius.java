@@ -98,7 +98,7 @@ public class CraftingRecipesPolongnius
 		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.purple_crystal_chestplate), new Object[] { "Q Q", "QQQ", "QQQ", 'Q', new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.purple_crystal_leggings), new Object[] { "QQQ", "Q Q", "Q Q", 'Q', new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.purple_crystal_boots), new Object[] { "Q Q", "Q Q", 'Q', new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
-		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.breathable_polongnius_meteor_helmet), new Object[] { "MMM", "MOM", 'O', new ItemStack(GCItems.oxMask), 'M', new ItemStack(PolongniusItems.polongnius_item, 1, 6) });
+		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.breathable_polongnius_meteoric_iron_helmet), new Object[] { "MMM", "MOM", 'O', new ItemStack(GCItems.oxMask), 'M', new ItemStack(PolongniusItems.polongnius_item, 1, 6) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusArmorItems.breathable_palladium_helmet), new Object[] { "PPP", "POP", 'O', new ItemStack(GCItems.oxMask), 'P', new ItemStack(PolongniusItems.polongnius_item, 1, 7) });
 
 		// Tools

@@ -58,6 +58,15 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
 	}
 
 	@Override
+	protected void updateAITasks()
+	{
+		if (this.isWet())
+		{
+			this.attackEntityFrom(DamageSource.drown, 1.0F);
+		}
+	}
+
+	@Override
 	public ItemStack getPickedResult(MovingObjectPosition target)
 	{
 		return new ItemStack(MPItems.spawn_egg_mp, 1, 1032);

@@ -1,0 +1,7 @@
+{
+    "parent": "moreplanets:block/oyster_close",
+    "textures": {
+        "oyster": "moreplanets:blocks/space_oyster",
+		"particle": "moreplanets:blocks/space_oyster_particle"
+    }
+}

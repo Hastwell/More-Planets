@@ -53,13 +53,13 @@ public class MPPlanets
 		MorePlanetsCore.siriusSolarSystem = new SolarSystem("sirius", "milkyWay").setMapPosition(new Vector3(1.1F, 1.2F, 0.4F));
 		MorePlanetsCore.sirius = new Star("sirius").setParentSolarSystem(MorePlanetsCore.siriusSolarSystem);
 		MorePlanetsCore.sirius.setTierRequired(-1);
-		MorePlanetsCore.sirius.setBodyIcon(new ResourceLocation("mpcore:textures/gui/celestialbodies/sirius_celestial.png"));
+		MorePlanetsCore.sirius.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/sirius_celestial.png"));
 		MorePlanetsCore.siriusSolarSystem.setMainStar(MorePlanetsCore.sirius);
 
 		MorePlanetsCore.kapteynBSolarSystem = new SolarSystem("kapteyn", "milkyWay").setMapPosition(new Vector3(-1.2F, 0.6F, -0.9F));
 		MorePlanetsCore.kapteyn = new Star("kapteyn").setParentSolarSystem(MorePlanetsCore.kapteynBSolarSystem);
 		MorePlanetsCore.kapteyn.setTierRequired(-1);
-		MorePlanetsCore.kapteyn.setBodyIcon(new ResourceLocation("kapteynb:textures/gui/celestialbodies/kapteyn_star_celestial.png"));
+		MorePlanetsCore.kapteyn.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/kapteyn_star_celestial.png"));
 		MorePlanetsCore.kapteynBSolarSystem.setMainStar(MorePlanetsCore.kapteyn);
 	}
 
@@ -71,7 +71,7 @@ public class MPPlanets
 		MorePlanetsCore.koentus.setRelativeOrbitTime(1 / 0.01F);
 		MorePlanetsCore.koentus.setTierRequired(4);
 		MorePlanetsCore.koentus.setRelativeSize(0.3867F);
-		MorePlanetsCore.koentus.setBodyIcon(new ResourceLocation("koentus:textures/gui/celestialbodies/koentus.png"));
+		MorePlanetsCore.koentus.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/koentus.png"));
 		MorePlanetsCore.koentus.setDimensionInfo(ConfigManagerMP.idDimensionKoentus, WorldProviderKoentus.class);
 		MorePlanetsCore.koentus.atmosphereComponent(IAtmosphericGas.HYDROGEN).atmosphereComponent(IAtmosphericGas.NITROGEN).atmosphereComponent(IAtmosphericGas.HELIUM);
 
@@ -82,7 +82,7 @@ public class MPPlanets
 			MorePlanetsCore.phobos.setRelativeOrbitTime(1 / 0.01F);
 			MorePlanetsCore.phobos.setTierRequired(2);
 			MorePlanetsCore.phobos.setRelativeSize(0.3867F);
-			MorePlanetsCore.phobos.setBodyIcon(new ResourceLocation("phobos:textures/gui/celestialbodies/phobos.png"));
+			MorePlanetsCore.phobos.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/phobos.png"));
 			MorePlanetsCore.phobos.setDimensionInfo(ConfigManagerMP.idDimensionPhobos, WorldProviderPhobos.class);
 
 			MorePlanetsCore.deimos = new Moon("deimos").setParentPlanet(MarsModule.planetMars);
@@ -90,7 +90,7 @@ public class MPPlanets
 			MorePlanetsCore.deimos.setRelativeOrbitTime(1 / 0.01F);
 			MorePlanetsCore.deimos.setTierRequired(2);
 			MorePlanetsCore.deimos.setRelativeSize(0.3867F);
-			MorePlanetsCore.deimos.setBodyIcon(new ResourceLocation("deimos:textures/gui/celestialbodies/deimos.png"));
+			MorePlanetsCore.deimos.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/deimos.png"));
 			MorePlanetsCore.deimos.setDimensionInfo(ConfigManagerMP.idDimensionDeimos, WorldProviderDeimos.class);
 		}
 	}
@@ -104,7 +104,7 @@ public class MPPlanets
 		MorePlanetsCore.diona.setRelativeOrbitTime(13.7685F);
 		MorePlanetsCore.diona.setTierRequired(4);
 		MorePlanetsCore.diona.setRelativeSize(0.876F);
-		MorePlanetsCore.diona.setBodyIcon(new ResourceLocation("diona:textures/gui/celestialbodies/diona.png"));
+		MorePlanetsCore.diona.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/diona.png"));
 		MorePlanetsCore.diona.setDimensionInfo(ConfigManagerMP.idDimensionDiona, WorldProviderDiona.class);
 		MorePlanetsCore.diona.atmosphereComponent(IAtmosphericGas.CO2);
 
@@ -115,7 +115,7 @@ public class MPPlanets
 		MorePlanetsCore.polongnius.setRelativeOrbitTime(76.4168F);
 		MorePlanetsCore.polongnius.setTierRequired(5);
 		MorePlanetsCore.polongnius.setRelativeSize(1.465F);
-		MorePlanetsCore.polongnius.setBodyIcon(new ResourceLocation("polongnius:textures/gui/celestialbodies/polongnius.png"));
+		MorePlanetsCore.polongnius.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/polongnius.png"));
 		MorePlanetsCore.polongnius.setDimensionInfo(ConfigManagerMP.idDimensionPolongnius, WorldProviderPolongnius.class);
 		MorePlanetsCore.polongnius.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.ARGON);
 
@@ -126,7 +126,7 @@ public class MPPlanets
 		MorePlanetsCore.nibiru.setRelativeOrbitTime(71.6582F);
 		MorePlanetsCore.nibiru.setTierRequired(6);
 		MorePlanetsCore.nibiru.setRelativeSize(4.678F);
-		MorePlanetsCore.nibiru.setBodyIcon(new ResourceLocation("nibiru:textures/gui/celestialbodies/nibiru.png"));
+		MorePlanetsCore.nibiru.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/nibiru.png"));
 		MorePlanetsCore.nibiru.setDimensionInfo(ConfigManagerMP.idDimensionNibiru, WorldProviderNibiru.class);
 		MorePlanetsCore.nibiru.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.ARGON).atmosphereComponent(IAtmosphericGas.HELIUM);
 
@@ -137,7 +137,7 @@ public class MPPlanets
 		MorePlanetsCore.fronos.setRelativeOrbitTime(1 / 0.05F);
 		MorePlanetsCore.fronos.setTierRequired(7);
 		MorePlanetsCore.fronos.setRelativeSize(0.5316F);
-		MorePlanetsCore.fronos.setBodyIcon(new ResourceLocation("fronos:textures/gui/celestialbodies/fronos.png"));
+		MorePlanetsCore.fronos.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/fronos.png"));
 		MorePlanetsCore.fronos.setDimensionInfo(ConfigManagerMP.idDimensionFronos, WorldProviderFronos.class);
 		MorePlanetsCore.fronos.atmosphereComponent(IAtmosphericGas.OXYGEN).atmosphereComponent(IAtmosphericGas.WATER).atmosphereComponent(IAtmosphericGas.NITROGEN).atmosphereComponent(IAtmosphericGas.HYDROGEN);
 
@@ -148,7 +148,7 @@ public class MPPlanets
 		MorePlanetsCore.kapteynB.setRelativeOrbitTime(1.9746F);
 		MorePlanetsCore.kapteynB.setTierRequired(7);
 		MorePlanetsCore.kapteynB.setRelativeSize(3.7654F);
-		MorePlanetsCore.kapteynB.setBodyIcon(new ResourceLocation("kapteynB:textures/gui/celestialbodies/kapteyn_b.png"));
+		MorePlanetsCore.kapteynB.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/kapteyn_b.png"));
 		MorePlanetsCore.kapteynB.setDimensionInfo(ConfigManagerMP.idDimensionKapteynB, WorldProviderKapteynB.class);
 		MorePlanetsCore.kapteynB.atmosphereComponent(IAtmosphericGas.NITROGEN).atmosphereComponent(IAtmosphericGas.WATER).atmosphereComponent(IAtmosphericGas.HELIUM).atmosphereComponent(IAtmosphericGas.HYDROGEN);
 
@@ -159,7 +159,7 @@ public class MPPlanets
 		MorePlanetsCore.siriusB.setRelativeOrbitTime(46.5F);
 		MorePlanetsCore.siriusB.setTierRequired(8);
 		MorePlanetsCore.siriusB.setRelativeSize(0.125F);
-		MorePlanetsCore.siriusB.setBodyIcon(new ResourceLocation("siriusb:textures/gui/celestialbodies/sirius_b.png"));
+		MorePlanetsCore.siriusB.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/sirius_b.png"));
 		MorePlanetsCore.siriusB.setDimensionInfo(ConfigManagerMP.idDimensionSiriusB, WorldProviderSiriusB.class);
 		MorePlanetsCore.siriusB.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.HELIUM);
 
@@ -192,7 +192,7 @@ public class MPPlanets
 			MorePlanetsCore.pluto.setTierRequired(5);
 			MorePlanetsCore.pluto.setRelativeDistanceFromCenter(new ScalableDistance(2.5F, 2.5F));
 			MorePlanetsCore.pluto.setRelativeOrbitTime(194.84119F);
-			MorePlanetsCore.pluto.setBodyIcon(new ResourceLocation("pluto:textures/gui/celestialbodies/pluto.png"));
+			MorePlanetsCore.pluto.setBodyIcon(new ResourceLocation("moreplanets:textures/gui/celestialbodies/pluto.png"));
 			MorePlanetsCore.pluto.setDimensionInfo(ConfigManagerMP.idDimensionPluto, WorldProviderPluto.class);
 			MorePlanetsCore.pluto.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.HELIUM).atmosphereComponent(IAtmosphericGas.NITROGEN);
 		}
@@ -244,19 +244,19 @@ public class MPPlanets
 
 	private static void registerRocketGui()
 	{
-		GalacticraftRegistry.registerRocketGui(WorldProviderDiona.class, new ResourceLocation("diona:textures/gui/diona_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderPolongnius.class, new ResourceLocation("polongnius:textures/gui/polongnius_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderNibiru.class, new ResourceLocation("nibiru:textures/gui/nibiru_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderKoentus.class, new ResourceLocation("koentus:textures/gui/koentus_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderFronos.class, new ResourceLocation("fronos:textures/gui/fronos_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderKapteynB.class, new ResourceLocation("kapteynb:textures/gui/kapteyn_b_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderSiriusB.class, new ResourceLocation("siriusb:textures/gui/sirius_b_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderDiona.class, new ResourceLocation("moreplanets:textures/gui/rocket/diona_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderPolongnius.class, new ResourceLocation("moreplanets:textures/gui/rocket/polongnius_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderNibiru.class, new ResourceLocation("moreplanets:textures/gui/rocket/nibiru_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderKoentus.class, new ResourceLocation("moreplanets:textures/gui/rocket/koentus_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderFronos.class, new ResourceLocation("moreplanets:textures/gui/rocket/fronos_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderKapteynB.class, new ResourceLocation("moreplanets:textures/gui/rocket/kapteyn_b_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderSiriusB.class, new ResourceLocation("moreplanets:textures/gui/rocket/sirius_b_rocket_gui.png"));
 
-		GalacticraftRegistry.registerRocketGui(WorldProviderMercury.class, new ResourceLocation("mercury:textures/gui/mercury_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderVenus.class, new ResourceLocation("venus:textures/gui/venus_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderPluto.class, new ResourceLocation("pluto:textures/gui/pluto_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderMercury.class, new ResourceLocation("moreplanets:textures/gui/rocket/mercury_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderVenus.class, new ResourceLocation("moreplanets:textures/gui/rocket/venus_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderPluto.class, new ResourceLocation("moreplanets:textures/gui/rocket/pluto_rocket_gui.png"));
 
-		GalacticraftRegistry.registerRocketGui(WorldProviderDeimos.class, new ResourceLocation("deimos:textures/gui/deimos_rocket_gui.png"));
-		GalacticraftRegistry.registerRocketGui(WorldProviderPhobos.class, new ResourceLocation("phobos:textures/gui/phobos_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderDeimos.class, new ResourceLocation("moreplanets:textures/gui/rocket/deimos_rocket_gui.png"));
+		GalacticraftRegistry.registerRocketGui(WorldProviderPhobos.class, new ResourceLocation("moreplanets:textures/gui/rocket/phobos_rocket_gui.png"));
 	}
 }

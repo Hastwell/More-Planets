@@ -34,6 +34,6 @@ public class BiomeGenCoconutForest extends BiomeGenBaseFronos
 		this.getBiomeDecorator().littleSunFlowerPerChunk = 12;
 		this.getBiomeDecorator().dandelionPerChunk = 6;
 		this.getBiomeDecorator().poppyPerChunk = 8;
-		this.getBiomeDecorator().waterlilyPerChunk = 164;
+		this.getBiomeDecorator().waterlilyPerChunk = 5;
 	}
 }

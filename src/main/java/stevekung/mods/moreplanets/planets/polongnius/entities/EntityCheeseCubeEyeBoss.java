@@ -54,10 +54,6 @@ import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolo
 
 public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob, IEntityBreathable, IBossDisplayData, IBoss
 {
-	public int courseChangeCooldown;
-	public double waypointX;
-	public double waypointY;
-	public double waypointZ;
 	private TileEntityDungeonSpawner spawner;
 	private Entity targetedEntity;
 	protected long ticks = 0;
@@ -73,11 +69,16 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	{
 		super(world);
 		this.setSize(1.8F, 2.0F);
-		this.moveHelper = new GhastMoveHelper();
-		this.tasks.addTask(5, new AIRandomFly());
-		this.tasks.addTask(7, new AILookAround());
-		this.tasks.addTask(7, new AIFireballAttack());
+		this.moveHelper = new EntityCheeseCubeEyeBoss.GhastMoveHelper();
+		this.tasks.addTask(5, new EntityCheeseCubeEyeBoss.AIRandomFly());
+		this.tasks.addTask(7, new EntityCheeseCubeEyeBoss.AILookAround());
+		this.tasks.addTask(7, new EntityCheeseCubeEyeBoss.AIFireballAttack());
 		this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
+	}
+
+	public void func_175454_a(boolean p_175454_1_)
+	{
+		this.dataWatcher.updateObject(16, Byte.valueOf((byte)(p_175454_1_ ? 1 : 0)));
 	}
 
 	@Override
@@ -92,6 +93,7 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(350.0F * ConfigManagerCore.dungeonBossHealthMod);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(15.0F);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(100.0D);
 	}
 
 	@Override
@@ -234,7 +236,7 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 
 		this.ticks++;
 
-		EntityPlayer player = this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 20.0);
+		EntityPlayer player = this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 256.0);
 
 		if (player != null && !player.equals(this.targetedEntity))
 		{
@@ -280,9 +282,9 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	}
 
 	@Override
-	public EntityItem entityDropItem(ItemStack par1ItemStack, float par2)
+	public EntityItem entityDropItem(ItemStack itemStack, float height)
 	{
-		EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY + par2, this.posZ, par1ItemStack);
+		EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY + height, this.posZ, itemStack);
 		entityitem.motionY = -2.0D;
 		entityitem.setDefaultPickupDelay();
 
@@ -301,6 +303,13 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	{
 		List<ItemStack> stackList = GalacticraftRegistry.getDungeonLoot(4);
 		return stackList.get(rand.nextInt(stackList.size()));
+	}
+
+	@Override
+	protected void entityInit()
+	{
+		super.entityInit();
+		this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
 	}
 
 	@Override
@@ -408,18 +417,6 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	public void onBossSpawned(TileEntityDungeonSpawner spawner)
 	{
 		this.spawner = spawner;
-	}
-
-	public void func_175454_a(boolean p_175454_1_)
-	{
-		this.dataWatcher.updateObject(16, Byte.valueOf((byte)(p_175454_1_ ? 1 : 0)));
-	}
-
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
 	}
 
 	class AIFireballAttack extends EntityAIBase

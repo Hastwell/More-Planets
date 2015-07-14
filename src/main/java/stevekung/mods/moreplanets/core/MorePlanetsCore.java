@@ -106,7 +106,7 @@ import stevekung.mods.moreplanets.planets.venus.recipe.CraftingRecipesVenus;
 import stevekung.mods.stevecore.CreativeTabsHelper;
 import stevekung.mods.stevecore.RegisterHelper;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars; required-after:Micdoodlecore;*/ "after:Forge@[11.14.3.1480,);")
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = "required-after:GalacticraftCore; required-after:GalacticraftMars; after:Forge@[11.14.3.1480,);")//TODO required-after:Micdoodlecore;
 public class MorePlanetsCore
 {
 	public static final String NAME = "More Planets";
@@ -238,8 +238,8 @@ public class MorePlanetsCore
 		GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier_6_rocket_schematic, 1, 1));
 		GalacticraftRegistry.addDungeonLoot(5, new ItemStack(FronosItems.tier_7_rocket_schematic, 1, 0));
 
-		/*findOre = new Achievement("achievement.gc.mineOre", "gc.mineOre", 0, 0, new ItemStack(GCBlocks.basicBlock, 1, 6), null).registerStat();
-		AchievementPage.registerAchievementPage(new AchievementPage("Galacticraft", new Achievement[] { findOre }));*/
+		//findOre = new Achievement("achievement.gc.mineOre", "gc.mineOre", 0, 0, new ItemStack(GCBlocks.basicBlock, 1, 6), null).func_180788_c();
+		//AchievementPage.registerAchievementPage(new AchievementPage("Galacticraft", new Achievement[] { findOre }));
 	}
 
 	@EventHandler

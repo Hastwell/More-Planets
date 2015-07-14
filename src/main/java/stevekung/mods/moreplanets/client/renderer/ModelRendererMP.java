@@ -974,6 +974,8 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(DionaArmorItems.fronisium_chestplate, "fronisium_chestplate", "moreplanets");
 		RegisterHelper.registerModelRender(DionaArmorItems.fronisium_leggings, "fronisium_leggings", "moreplanets");
 		RegisterHelper.registerModelRender(DionaArmorItems.fronisium_boots, "fronisium_boots", "moreplanets");
+		RegisterHelper.registerModelRender(DionaArmorItems.breathable_quontonium_helmet, "breathable_quontonium_helmet", "moreplanets");
+		RegisterHelper.registerModelRender(DionaArmorItems.breathable_fronisium_helmet, "breathable_fronisium_helmet", "moreplanets");
 
 		RegisterHelper.registerModelRender(PolongniusArmorItems.cheese_leather_helmet, "cheese_leather_helmet", "moreplanets");
 		RegisterHelper.registerModelRender(PolongniusArmorItems.cheese_leather_chestplate, "cheese_leather_chestplate", "moreplanets");
@@ -991,6 +993,8 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(PolongniusArmorItems.purple_crystal_chestplate, "purple_crystal_chestplate", "moreplanets");
 		RegisterHelper.registerModelRender(PolongniusArmorItems.purple_crystal_leggings, "purple_crystal_leggings", "moreplanets");
 		RegisterHelper.registerModelRender(PolongniusArmorItems.purple_crystal_boots, "purple_crystal_boots", "moreplanets");
+		RegisterHelper.registerModelRender(PolongniusArmorItems.breathable_polongnius_meteoric_iron_helmet, "breathable_polongnius_meteoric_iron_helmet", "moreplanets");
+		RegisterHelper.registerModelRender(PolongniusArmorItems.breathable_palladium_helmet, "breathable_palladium_helmet", "moreplanets");
 
 		RegisterHelper.registerModelRender(NibiruArmorItems.red_gem_helmet, "red_gem_helmet", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruArmorItems.red_gem_chestplate, "red_gem_chestplate", "moreplanets");
@@ -1000,6 +1004,8 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(NibiruArmorItems.norium_chestplate, "norium_chestplate", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruArmorItems.norium_leggings, "norium_leggings", "moreplanets");
 		RegisterHelper.registerModelRender(NibiruArmorItems.norium_boots, "norium_boots", "moreplanets");
+		RegisterHelper.registerModelRender(NibiruArmorItems.breathable_red_gem_helmet, "breathable_red_gem_helmet", "moreplanets");
+		RegisterHelper.registerModelRender(NibiruArmorItems.breathable_norium_helmet, "breathable_norium_helmet", "moreplanets");
 
 		RegisterHelper.registerModelRender(KoentusArmorItems.koentus_meteoric_iron_helmet, "koentus_meteoric_iron_helmet", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusArmorItems.koentus_meteoric_iron_chestplate, "koentus_meteoric_iron_chestplate", "moreplanets");
@@ -1009,6 +1015,8 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(KoentusArmorItems.white_crystal_chestplate, "white_crystal_chestplate", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusArmorItems.white_crystal_leggings, "white_crystal_leggings", "moreplanets");
 		RegisterHelper.registerModelRender(KoentusArmorItems.white_crystal_boots, "white_crystal_boots", "moreplanets");
+		RegisterHelper.registerModelRender(KoentusArmorItems.breathable_koentus_meteoric_iron_helmet, "breathable_koentus_meteoric_iron_helmet", "moreplanets");
+		RegisterHelper.registerModelRender(KoentusArmorItems.breathable_white_crystal_helmet, "breathable_white_crystal_helmet", "moreplanets");
 
 		RegisterHelper.registerModelRender(FronosArmorItems.black_diamond_helmet, "black_diamond_helmet", "moreplanets");
 		RegisterHelper.registerModelRender(FronosArmorItems.black_diamond_chestplate, "black_diamond_chestplate", "moreplanets");
@@ -1018,6 +1026,8 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosArmorItems.iridium_chestplate, "iridium_chestplate", "moreplanets");
 		RegisterHelper.registerModelRender(FronosArmorItems.iridium_leggings, "iridium_leggings", "moreplanets");
 		RegisterHelper.registerModelRender(FronosArmorItems.iridium_boots, "iridium_boots", "moreplanets");
+		RegisterHelper.registerModelRender(FronosArmorItems.breathable_black_diamond_helmet, "breathable_black_diamond_helmet", "moreplanets");
+		RegisterHelper.registerModelRender(FronosArmorItems.breathable_iridium_helmet, "breathable_iridium_helmet", "moreplanets");
 
 		RegisterHelper.registerModelRender(KapteynBArmorItems.uranium_helmet, "uranium_helmet", "moreplanets");
 		RegisterHelper.registerModelRender(KapteynBArmorItems.uranium_chestplate, "uranium_chestplate", "moreplanets");
@@ -1031,10 +1041,14 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(KapteynBArmorItems.ice_crystal_chestplate, "ice_crystal_chestplate", "moreplanets");
 		RegisterHelper.registerModelRender(KapteynBArmorItems.ice_crystal_leggings, "ice_crystal_leggings", "moreplanets");
 		RegisterHelper.registerModelRender(KapteynBArmorItems.ice_crystal_boots, "ice_crystal_boots", "moreplanets");
+		RegisterHelper.registerModelRender(KapteynBArmorItems.breathable_uranium_helmet, "breathable_uranium_helmet", "moreplanets");
+		RegisterHelper.registerModelRender(KapteynBArmorItems.breathable_frozen_iron_helmet, "breathable_frozen_iron_helmet", "moreplanets");
+		RegisterHelper.registerModelRender(KapteynBArmorItems.breathable_ice_crystal_helmet, "breathable_ice_crystal_helmet", "moreplanets");
 
 		RegisterHelper.registerModelRender(SiriusBArmorItems.sulfur_helmet, "sulfur_helmet", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBArmorItems.sulfur_chestplate, "sulfur_chestplate", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBArmorItems.sulfur_leggings, "sulfur_leggings", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBArmorItems.sulfur_boots, "sulfur_boots", "moreplanets");
+		RegisterHelper.registerModelRender(SiriusBArmorItems.breathable_sulfur_helmet, "breathable_sulfur_helmet", "moreplanets");
 	}
 }

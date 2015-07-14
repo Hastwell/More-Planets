@@ -369,9 +369,9 @@ public class FronosBlocks
 	private static void registerBlocks()
 	{
 		RegisterHelper.registerBlock(FronosBlocks.fronos_grass);
-		RegisterHelper.registerBlock(FronosBlocks.plains_grass);
 		RegisterHelper.registerBlock(FronosBlocks.pink_grass);
 		RegisterHelper.registerBlock(FronosBlocks.purple_grass);
+		RegisterHelper.registerBlock(FronosBlocks.plains_grass);
 		RegisterHelper.registerBlock(FronosBlocks.golden_grass);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_dirt, ItemBlockDirtMP.class);
 		RegisterHelper.registerBlock(FronosBlocks.fronos_block, ItemBlockFronosStone.class);

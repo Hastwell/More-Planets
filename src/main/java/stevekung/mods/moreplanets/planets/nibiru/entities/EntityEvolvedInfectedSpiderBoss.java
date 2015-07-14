@@ -26,7 +26,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -85,21 +84,19 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.field_175455_a);
 		this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
-		this.tasks.addTask(4, new AISpiderAttack(EntityPlayer.class));
-		this.tasks.addTask(4, new AISpiderAttack(EntityIronGolem.class));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-		this.targetTasks.addTask(2, new AISpiderTarget(EntityPlayer.class));
-		this.targetTasks.addTask(3, new AISpiderTarget(EntityIronGolem.class));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, false, true));
 	}
 
-	/*public EntityEvolvedInfectedSpiderBoss(World world, Vector3 vec) TODO
+	public EntityEvolvedInfectedSpiderBoss(World world, Vector3 vec)
 	{
 		this(world);
 		this.setPosition(vec.x, vec.y, vec.z);
-	}*/
+	}
 
 	@Override
 	protected PathNavigate func_175447_b(World world)
@@ -118,7 +115,7 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(350.0F * ConfigManagerCore.dungeonBossHealthMod);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.800000011920929D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
 	}
 
@@ -257,12 +254,9 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 							{
 								chest.setInventorySlotContents(k, null);
 							}
-
 							ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
-
 							WeightedRandomChestContent.generateChestContents(this.rand, info.getItems(this.rand), chest, info.getCount(this.rand));
 							WeightedRandomChestContent.generateChestContents(this.rand, info.getItems(this.rand), chest, info.getCount(this.rand));
-
 							ItemStack schematic = this.getGuaranteedLoot(this.rand);
 							int slot = this.rand.nextInt(chest.getSizeInventory());
 							chest.setInventorySlotContents(slot, schematic);
@@ -282,12 +276,6 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 				this.spawner.spawned = false;
 			}
 		}
-	}
-
-	@Override
-	public double getMountedYOffset()
-	{
-		return 0.0D;
 	}
 
 	@Override
@@ -541,50 +529,5 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 	public int canLivingInDimension()
 	{
 		return ConfigManagerMP.idDimensionSiriusB;
-	}
-
-	class AISpiderAttack extends EntityAIAttackOnCollide
-	{
-		public AISpiderAttack(Class p_i45819_2_)
-		{
-			super(EntityEvolvedInfectedSpiderBoss.this, p_i45819_2_, 1.0D, true);
-		}
-
-		@Override
-		public boolean continueExecuting()
-		{
-			float f = this.attacker.getBrightness(1.0F);
-
-			if (f >= 0.5F && this.attacker.getRNG().nextInt(100) == 0)
-			{
-				this.attacker.setAttackTarget((EntityLivingBase)null);
-				return false;
-			}
-			else
-			{
-				return super.continueExecuting();
-			}
-		}
-
-		@Override
-		protected double func_179512_a(EntityLivingBase p_179512_1_)
-		{
-			return 4.0F + p_179512_1_.width;
-		}
-	}
-
-	class AISpiderTarget extends EntityAINearestAttackableTarget
-	{
-		public AISpiderTarget(Class p_i45818_2_)
-		{
-			super(EntityEvolvedInfectedSpiderBoss.this, p_i45818_2_, true);
-		}
-
-		@Override
-		public boolean shouldExecute()
-		{
-			float f = this.taskOwner.getBrightness(1.0F);
-			return f >= 0.5F ? false : super.shouldExecute();
-		}
 	}
 }

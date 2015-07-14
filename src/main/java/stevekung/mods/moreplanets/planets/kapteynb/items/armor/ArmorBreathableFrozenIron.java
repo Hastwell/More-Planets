@@ -26,7 +26,7 @@ public class ArmorBreathableFrozenIron extends ItemBreathableArmor
 	{
 		if (stack.getItem() == KapteynBArmorItems.breathable_frozen_iron_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_frozen_iron_1.png";
+			return "moreplanets:textures/model/armor/breathable_frozen_iron.png";
 		}
 		return null;
 	}

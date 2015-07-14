@@ -26,7 +26,7 @@ public class ArmorBreathableWhiteCrystal extends ItemBreathableArmor
 	{
 		if (stack.getItem() == KoentusArmorItems.breathable_white_crystal_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_white_crystal_1.png";
+			return "moreplanets:textures/model/armor/breathable_white_crystal.png";
 		}
 		return null;
 	}

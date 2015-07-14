@@ -26,7 +26,7 @@ public class ItemBreathableFronisium extends ItemBreathableArmor
 	{
 		if (stack.getItem() == DionaArmorItems.breathable_fronisium_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_fronisium_1.png";
+			return "moreplanets:textures/model/armor/breathable_fronisium.png";
 		}
 		return null;
 	}

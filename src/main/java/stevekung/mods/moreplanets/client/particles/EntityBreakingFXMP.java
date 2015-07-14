@@ -20,26 +20,21 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EntityBreakingFXMP extends EntityFX
 {
-	public EntityBreakingFXMP(World worldIn, double p_i1195_2_, double p_i1195_4_, double p_i1195_6_, Item p_i1195_8_)
+	protected EntityBreakingFXMP(World world, double x, double y, double z, double moX, double moY, double moZ, Item item, int meta)
 	{
-		this(worldIn, p_i1195_2_, p_i1195_4_, p_i1195_6_, p_i1195_8_, 0);
-	}
-
-	protected EntityBreakingFXMP(World worldIn, double p_i1197_2_, double p_i1197_4_, double p_i1197_6_, double p_i1197_8_, double p_i1197_10_, double p_i1197_12_, Item p_i1197_14_, int p_i1197_15_)
-	{
-		this(worldIn, p_i1197_2_, p_i1197_4_, p_i1197_6_, p_i1197_14_, p_i1197_15_);
+		this(world, x, y, z, item, meta);
 		this.motionX *= 0.10000000149011612D;
 		this.motionY *= 0.10000000149011612D;
 		this.motionZ *= 0.10000000149011612D;
-		this.motionX += p_i1197_8_;
-		this.motionY += p_i1197_10_;
-		this.motionZ += p_i1197_12_;
+		this.motionX += moX;
+		this.motionY += moY;
+		this.motionZ += moZ;
 	}
 
-	public EntityBreakingFXMP(World worldIn, double p_i1196_2_, double p_i1196_4_, double p_i1196_6_, Item p_i1196_8_, int p_i1196_9_)
+	public EntityBreakingFXMP(World world, double x, double y, double z, Item item, int meta)
 	{
-		super(worldIn, p_i1196_2_, p_i1196_4_, p_i1196_6_, 0.0D, 0.0D, 0.0D);
-		this.func_180435_a(Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(p_i1196_8_, p_i1196_9_));
+		super(world, x, y, z, 0.0D, 0.0D, 0.0D);
+		this.func_180435_a(Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(item, meta));
 		this.particleRed = this.particleGreen = this.particleBlue = 1.0F;
 		this.particleGravity = Blocks.snow.blockParticleGravity;
 		this.particleScale /= 2.0F;
@@ -52,7 +47,7 @@ public class EntityBreakingFXMP extends EntityFX
 	}
 
 	@Override
-	public void func_180434_a(WorldRenderer p_180434_1_, Entity p_180434_2_, float p_180434_3_, float p_180434_4_, float p_180434_5_, float p_180434_6_, float p_180434_7_, float p_180434_8_)
+	public void func_180434_a(WorldRenderer worldRender, Entity entity, float p_180434_3_, float p_180434_4_, float p_180434_5_, float p_180434_6_, float p_180434_7_, float p_180434_8_)
 	{
 		float f6 = (this.particleTextureIndexX + this.particleTextureJitterX / 4.0F) / 16.0F;
 		float f7 = f6 + 0.015609375F;
@@ -67,14 +62,13 @@ public class EntityBreakingFXMP extends EntityFX
 			f8 = this.particleIcon.getInterpolatedV(this.particleTextureJitterY / 4.0F * 16.0F);
 			f9 = this.particleIcon.getInterpolatedV((this.particleTextureJitterY + 1.0F) / 4.0F * 16.0F);
 		}
-
 		float f11 = (float)(this.prevPosX + (this.posX - this.prevPosX) * p_180434_3_ - interpPosX);
 		float f12 = (float)(this.prevPosY + (this.posY - this.prevPosY) * p_180434_3_ - interpPosY);
 		float f13 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * p_180434_3_ - interpPosZ);
-		p_180434_1_.setColorOpaque_F(this.particleRed, this.particleGreen, this.particleBlue);
-		p_180434_1_.addVertexWithUV(f11 - p_180434_4_ * f10 - p_180434_7_ * f10, f12 - p_180434_5_ * f10, f13 - p_180434_6_ * f10 - p_180434_8_ * f10, f6, f9);
-		p_180434_1_.addVertexWithUV(f11 - p_180434_4_ * f10 + p_180434_7_ * f10, f12 + p_180434_5_ * f10, f13 - p_180434_6_ * f10 + p_180434_8_ * f10, f6, f8);
-		p_180434_1_.addVertexWithUV(f11 + p_180434_4_ * f10 + p_180434_7_ * f10, f12 + p_180434_5_ * f10, f13 + p_180434_6_ * f10 + p_180434_8_ * f10, f7, f8);
-		p_180434_1_.addVertexWithUV(f11 + p_180434_4_ * f10 - p_180434_7_ * f10, f12 - p_180434_5_ * f10, f13 + p_180434_6_ * f10 - p_180434_8_ * f10, f7, f9);
+		worldRender.setColorOpaque_F(this.particleRed, this.particleGreen, this.particleBlue);
+		worldRender.addVertexWithUV(f11 - p_180434_4_ * f10 - p_180434_7_ * f10, f12 - p_180434_5_ * f10, f13 - p_180434_6_ * f10 - p_180434_8_ * f10, f6, f9);
+		worldRender.addVertexWithUV(f11 - p_180434_4_ * f10 + p_180434_7_ * f10, f12 + p_180434_5_ * f10, f13 - p_180434_6_ * f10 + p_180434_8_ * f10, f6, f8);
+		worldRender.addVertexWithUV(f11 + p_180434_4_ * f10 + p_180434_7_ * f10, f12 + p_180434_5_ * f10, f13 + p_180434_6_ * f10 + p_180434_8_ * f10, f7, f8);
+		worldRender.addVertexWithUV(f11 + p_180434_4_ * f10 - p_180434_7_ * f10, f12 - p_180434_5_ * f10, f13 + p_180434_6_ * f10 - p_180434_8_ * f10, f7, f9);
 	}
 }

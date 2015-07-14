@@ -24,13 +24,8 @@ public class LightningStormHandler
 	{
 		if (event.entityLiving instanceof EntityPlayerMP)
 		{
-			this.onPlayerUpdate((EntityPlayerMP) event.entityLiving);
+			this.spawnLightning((EntityPlayerMP) event.entityLiving);
 		}
-	}
-
-	private void onPlayerUpdate(EntityPlayerMP player)
-	{
-		this.spawnLightning(player);
 	}
 
 	private void spawnLightning(EntityPlayerMP player)

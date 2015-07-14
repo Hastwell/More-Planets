@@ -44,7 +44,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
@@ -75,6 +74,7 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 
 	private float heightOffset = 0.5F;
 	private int heightOffsetUpdateTime;
+
 	public EntityEvolvedSiriusBlazeBoss(World world)
 	{
 		super(world);
@@ -101,12 +101,12 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 		return new ItemStack(MPItems.spawn_egg_mp, 1, 1033);
 	}
 
-	/*@Override TODO
+	/*@Override
 	public boolean attackEntityFrom(DamageSource damageSource, float damage)
 	{
-		if (damageSource.getDamageType().equals("water"))
+		if (damageSource.isExplosion())//TODO Water Gun damage
 		{
-			if (this.isEntityInvulnerable())
+			if (this.isEntityInvulnerable(damageSource))
 			{
 				return false;
 			}
@@ -118,7 +118,7 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 				{
 					if (entity != this)
 					{
-						this.entityToAttack = entity;
+						this.targetEntity = entity;
 					}
 					return true;
 				}
@@ -136,9 +136,7 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 	}*/
 
 	@Override
-	public void knockBack(Entity par1Entity, float par2, double par3, double par5)
-	{
-	}
+	public void knockBack(Entity entity, float knock, double x, double z) {}
 
 	@Override
 	public boolean canBePushed()
@@ -584,7 +582,7 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 						this.field_179468_c = 60;
 						this.field_179469_a.isBurn(true);
 					}
-					else if (this.field_179467_b <= 4)
+					else if (this.field_179467_b <= 2)
 					{
 						this.field_179468_c = 6;
 					}
@@ -597,16 +595,11 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 
 					if (this.field_179467_b > 1)
 					{
-						float f = MathHelper.sqrt_float(MathHelper.sqrt_double(d0)) * 0.5F;
 						this.field_179469_a.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, new BlockPos((int)this.field_179469_a.posX, (int)this.field_179469_a.posY, (int)this.field_179469_a.posZ), 0);
-
-						for (int i = 0; i < 1; ++i)
-						{
-							EntitySiriusSmallFireball entitysmallfireball = new EntitySiriusSmallFireball(this.field_179469_a.worldObj, this.field_179469_a, d1 + this.field_179469_a.getRNG().nextGaussian() * f, d2, d3 + this.field_179469_a.getRNG().nextGaussian() * f);
-							entitysmallfireball.setCanExplode(true);
-							entitysmallfireball.posY = this.field_179469_a.posY + this.field_179469_a.height / 2.0F + 0.5D;
-							this.field_179469_a.worldObj.spawnEntityInWorld(entitysmallfireball);
-						}
+						EntitySiriusSmallFireball entitysmallfireball = new EntitySiriusSmallFireball(this.field_179469_a.worldObj, this.field_179469_a, d1, d2, d3);
+						entitysmallfireball.setCanExplode(true);
+						entitysmallfireball.posY = this.field_179469_a.posY + this.field_179469_a.height / 2.0F + 0.5D;
+						this.field_179469_a.worldObj.spawnEntityInWorld(entitysmallfireball);
 					}
 				}
 				this.field_179469_a.getLookHelper().setLookPositionWithEntity(entitylivingbase, 10.0F, 10.0F);

@@ -18,14 +18,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class BlockFlowerMP extends BlockBaseMP implements IPlantable
+public abstract class BlockFlowerMP extends BlockBaseMP
 {
 	public BlockFlowerMP()
 	{
@@ -102,23 +99,5 @@ public abstract class BlockFlowerMP extends BlockBaseMP implements IPlantable
 	public boolean isFullCube()
 	{
 		return false;
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Plains;
-	}
-
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		IBlockState state = world.getBlockState(pos);
-
-		if (state.getBlock() != this)
-		{
-			return this.getDefaultState();
-		}
-		return state;
 	}
 }

@@ -68,6 +68,10 @@ public class EntityBearry extends IFronosPet
 	@Override
 	public float getEyeHeight()
 	{
+		if (this.isChild())
+		{
+			return this.height - 0.25F;
+		}
 		return this.height - 0.5F;
 	}
 

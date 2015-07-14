@@ -11,6 +11,7 @@ import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -24,6 +25,15 @@ public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreatha
 	{
 		super(world);
 		this.isImmuneToFire = true;
+	}
+
+	@Override
+	protected void updateAITasks()
+	{
+		if (this.isWet())
+		{
+			this.attackEntityFrom(DamageSource.drown, 1.0F);
+		}
 	}
 
 	@Override

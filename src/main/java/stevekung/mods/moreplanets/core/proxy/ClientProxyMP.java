@@ -156,7 +156,7 @@ public class ClientProxyMP extends CommonProxyMP
 		}
 		else if (type == ParticleTypesMP.CHEESE_SLIME)
 		{
-			entityfx = new EntityBreakingFXMP(mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball);
+			entityfx = new EntityBreakingFXMP(mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball, 0);
 		}
 		else if (type == ParticleTypesMP.VANILLA_CREAM_BALL)
 		{

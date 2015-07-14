@@ -26,7 +26,7 @@ public class ArmorBreathableKoentusMeteoricIron extends ItemBreathableArmor
 	{
 		if (stack.getItem() == KoentusArmorItems.breathable_koentus_meteoric_iron_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_koentus_meteoric_iron_1.png";
+			return "moreplanets:textures/model/armor/breathable_koentus_meteoric_iron.png";
 		}
 		return null;
 	}

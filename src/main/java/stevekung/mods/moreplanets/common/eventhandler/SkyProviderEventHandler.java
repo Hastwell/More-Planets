@@ -7,10 +7,38 @@
 
 package stevekung.mods.moreplanets.common.eventhandler;
 
+import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
+import micdoodle8.mods.galacticraft.core.client.CloudRenderer;
+import micdoodle8.mods.galacticraft.planets.mars.client.SkyProviderMars;
+import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.moons.deimos.client.sky.SkyProviderDeimos;
+import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
+import stevekung.mods.moreplanets.moons.koentus.client.sky.SkyProviderKoentus;
+import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
+import stevekung.mods.moreplanets.moons.phobos.client.sky.SkyProviderPhobos;
+import stevekung.mods.moreplanets.moons.phobos.dimension.WorldProviderPhobos;
+import stevekung.mods.moreplanets.planets.diona.client.sky.SkyProviderDiona;
+import stevekung.mods.moreplanets.planets.diona.dimension.WorldProviderDiona;
+import stevekung.mods.moreplanets.planets.fronos.client.sky.SkyProviderFronos;
+import stevekung.mods.moreplanets.planets.fronos.dimension.WorldProviderFronos;
+import stevekung.mods.moreplanets.planets.kapteynb.client.sky.SkyProviderKapteynB;
+import stevekung.mods.moreplanets.planets.kapteynb.dimension.WorldProviderKapteynB;
+import stevekung.mods.moreplanets.planets.mercury.client.sky.SkyProviderMercury;
+import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
+import stevekung.mods.moreplanets.planets.nibiru.client.sky.SkyProviderNibiru;
+import stevekung.mods.moreplanets.planets.nibiru.dimension.WorldProviderNibiru;
+import stevekung.mods.moreplanets.planets.polongnius.client.sky.SkyProviderPolongnius;
+import stevekung.mods.moreplanets.planets.polongnius.dimension.WorldProviderPolongnius;
+import stevekung.mods.moreplanets.planets.siriusb.client.sky.SkyProviderSiriusB;
+import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 
 public class SkyProviderEventHandler
 {
@@ -18,8 +46,8 @@ public class SkyProviderEventHandler
 	@SideOnly(Side.CLIENT)
 	public void onSkyRendererTick(ClientTickEvent event)
 	{
-		/*Minecraft minecraft = FMLClientHandler.instance().getClient();
-		WorldClient world = minecraft.theWorld;
+		Minecraft mc = FMLClientHandler.instance().getClient();
+		WorldClient world = mc.theWorld;
 
 		if (world != null)
 		{
@@ -140,6 +168,6 @@ public class SkyProviderEventHandler
 					world.provider.setCloudRenderer(new CloudRenderer());
 				}
 			}
-		}*/
+		}
 	}
 }

@@ -46,6 +46,10 @@ public class EntityMelon extends EntityAnimal
 	@Override
 	public float getEyeHeight()
 	{
+		if (this.isChild())
+		{
+			return this.height - 0.7F;
+		}
 		return this.height - 1.35F;
 	}
 

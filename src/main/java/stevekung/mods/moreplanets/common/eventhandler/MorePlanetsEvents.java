@@ -194,7 +194,7 @@ public class MorePlanetsEvents
 			{
 				event.setResult(Result.ALLOW);
 				event.entityPlayer.onItemPickup(event.item, itemStack.stackSize);
-				event.entityPlayer.triggerAchievement(MorePlanetCore.findOre);
+				event.entityPlayer.triggerAchievement(MorePlanetsCore.findOre);
 			}
 		}
 	}*/

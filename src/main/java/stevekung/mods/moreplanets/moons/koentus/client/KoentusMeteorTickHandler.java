@@ -24,13 +24,8 @@ public class KoentusMeteorTickHandler
 	{
 		if (event.entityLiving instanceof EntityPlayerMP)
 		{
-			this.onPlayerUpdate((EntityPlayerMP) event.entityLiving);
+			this.throwKoentusMeteors((EntityPlayerMP) event.entityLiving);
 		}
-	}
-
-	private void onPlayerUpdate(EntityPlayerMP player)
-	{
-		this.throwKoentusMeteors(player);
 	}
 
 	private void throwKoentusMeteors(EntityPlayerMP player)

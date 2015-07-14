@@ -27,6 +27,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
@@ -115,37 +116,30 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
-		/*Block blockTemp = world.getBlockState(pos).getBlock();
-
-		if (!(blockTemp instanceof BlockFronosTallGrass))
-		{
-			return false;
-		}*/
-
-		int meta = ((BlockType)world.getBlockState(pos).getValue(VARIANT)).getMeta();
 		Block block = world.getBlockState(pos.down()).getBlock();
+		BlockType type = (BlockType)state.getValue(VARIANT);
 
-		if (meta >= 0 && meta <= 2)
+		if (type == BlockType.fronos_short_grass || type == BlockType.fronos_medium_grass || type == BlockType.fronos_tall_grass)
 		{
 			return block == FronosBlocks.fronos_grass || block == FronosBlocks.fronos_dirt;
 		}
-		if (meta >= 3 && meta <= 5)
+		if (type == BlockType.pink_short_grass || type == BlockType.pink_medium_grass || type == BlockType.pink_tall_grass)
 		{
 			return block == FronosBlocks.pink_grass || block == FronosBlocks.fronos_dirt;
 		}
-		if (meta >= 5 && meta <= 8)
+		if (type == BlockType.purple_short_grass || type == BlockType.purple_medium_grass || type == BlockType.purple_tall_grass)
 		{
 			return block == FronosBlocks.purple_grass || block == FronosBlocks.fronos_dirt;
 		}
-		if (meta >= 8 && meta <= 11)
+		if (type == BlockType.plains_short_grass || type == BlockType.plains_medium_grass || type == BlockType.plains_tall_grass)
 		{
 			return block == FronosBlocks.plains_grass || block == FronosBlocks.fronos_dirt;
 		}
-		if (meta >= 12 && meta <= 14)
+		if (type == BlockType.golden_short_grass || type == BlockType.golden_medium_grass || type == BlockType.golden_tall_grass)
 		{
 			return block == FronosBlocks.golden_grass || block == FronosBlocks.fronos_dirt;
 		}
-		return false;
+		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
 	}
 
 	@Override
@@ -209,16 +203,16 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.byMetadata(meta));
+		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((BlockType)state.getValue(VARIANT)).getMeta();
+		return ((BlockType)state.getValue(VARIANT)).ordinal();
 	}
 
-	/*public static enum BlockType implements IStringSerializable
+	public static enum BlockType implements IStringSerializable
 	{
 		fronos_short_grass,
 		fronos_medium_grass,
@@ -246,71 +240,6 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 		public String getName()
 		{
 			return this.name();
-		}
-	}*/
-
-	public static enum BlockType implements IStringSerializable
-	{
-		fronos_short_grass(0),
-		fronos_medium_grass(1),
-		fronos_tall_grass(2),
-		pink_short_grass(3),
-		pink_medium_grass(4),
-		pink_tall_grass(5),
-		purple_short_grass(6),
-		purple_medium_grass(7),
-		purple_tall_grass(8),
-		plains_short_grass(9),
-		plains_medium_grass(10),
-		plains_tall_grass(11),
-		golden_short_grass(12),
-		golden_medium_grass(13),
-		golden_tall_grass(14);
-
-		private static BlockType[] META_LOOKUP = new BlockType[values().length];
-		private int meta;
-
-		private BlockType(int meta)
-		{
-			this.meta = meta;
-		}
-
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
-
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-
-		public int getMeta()
-		{
-			return this.meta;
-		}
-
-		public static BlockType byMetadata(int meta)
-		{
-			if (meta < 0 || meta >= META_LOOKUP.length)
-			{
-				meta = 0;
-			}
-			return META_LOOKUP[meta];
-		}
-
-		static
-		{
-			BlockType[] var0 = values();
-			int var1 = var0.length;
-
-			for (int i = 0; i < var1; ++i)
-			{
-				BlockType var3 = var0[i];
-				META_LOOKUP[var3.getMeta()] = var3;
-			}
 		}
 	}
 }

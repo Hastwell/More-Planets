@@ -26,7 +26,7 @@ public class ArmorBreathableRedGem extends ItemBreathableArmor
 	{
 		if (stack.getItem() == NibiruArmorItems.breathable_red_gem_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_red_gem_1.png";
+			return "moreplanets:textures/model/armor/breathable_red_gem.png";
 		}
 		return null;
 	}

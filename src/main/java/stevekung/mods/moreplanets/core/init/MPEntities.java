@@ -147,8 +147,8 @@ public class MPEntities
 			registerEntity(EntityVenusianVillager.class, CompatibilityUtilMP.is4SpaceVenusLoaded() ? "VenusianVillagerMP" : "VenusianVillager", 36, -13875061, -4875400);
 		}
 
-		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -4197121, -8197633);
-		registerEntity(EntityEuropaGuardian.class, "EuropaGuardian", 38, -4197121, -8197633);
+		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -12425324, -6163201);
+		registerEntity(EntityEuropaGuardian.class, "EuropaGuardian", 38, -13416598, -3409409);
 	}
 
 	private static void registerNonMobEntities()
@@ -188,7 +188,7 @@ public class MPEntities
 		RegisterHelper.registerNonMobEntity(EntityTier8Rocket.class, "Tier8Rocket", MorePlanetsCore.instance, false);
 	}
 
-	public static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour)
+	private static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour)
 	{
 		id = id + 1000;
 		EntityRegistry.registerModEntity(entity, name, id, MorePlanetsCore.instance, 80, 3, true);

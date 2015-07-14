@@ -26,7 +26,7 @@ public class ArmorBreathableSulfur extends ItemBreathableArmor
 	{
 		if (stack.getItem() == SiriusBArmorItems.breathable_sulfur_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_sulfur_1.png";
+			return "moreplanets:textures/model/armor/breathable_sulfur.png";
 		}
 		return null;
 	}

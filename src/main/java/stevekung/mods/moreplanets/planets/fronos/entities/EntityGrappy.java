@@ -92,6 +92,10 @@ public class EntityGrappy extends EntityAnimal implements IShearable
 	@Override
 	public float getEyeHeight()
 	{
+		if (this.isChild())
+		{
+			return this.height - 0.2F;
+		}
 		return this.height - 0.4F;
 	}
 

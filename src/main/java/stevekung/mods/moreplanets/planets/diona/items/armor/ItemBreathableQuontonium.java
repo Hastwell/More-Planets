@@ -26,7 +26,7 @@ public class ItemBreathableQuontonium extends ItemBreathableArmor
 	{
 		if (stack.getItem() == DionaArmorItems.breathable_quontonium_helmet)
 		{
-			return "moreplanets:textures/model/armor/breathable_quontonium_1.png";
+			return "moreplanets:textures/model/armor/breathable_quontonium.png";
 		}
 		return null;
 	}

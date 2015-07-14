@@ -225,13 +225,6 @@ public class BlockFronosFlower extends BlockFlowerMP
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
-		/*Block blockTemp = world.getBlockState(pos).getBlock();
-
-		if (!(blockTemp instanceof BlockFronosFlower))
-		{
-			return false;
-		}*/
-
 		Block block = world.getBlockState(pos.down()).getBlock();
 		BlockType type = (BlockType)state.getValue(VARIANT);
 
