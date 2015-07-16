@@ -29,25 +29,25 @@ public class ContainerCandyExtractor extends Container
 	private int field_178154_h;
 	private int field_178155_i;
 
-	public ContainerCandyExtractor(InventoryPlayer p_i45794_1_, IInventory furnaceInventory)
+	public ContainerCandyExtractor(InventoryPlayer invPlayer, IInventory furnaceInventory)
 	{
 		this.tileFurnace = furnaceInventory;
 		this.addSlotToContainer(new Slot(furnaceInventory, 0, 56, 17));
 		this.addSlotToContainer(new SlotCandyExtractorFuel(furnaceInventory, 1, 56, 53));
-		this.addSlotToContainer(new SlotCandyExtractorOutput(p_i45794_1_.player, furnaceInventory, 2, 116, 35));
+		this.addSlotToContainer(new SlotCandyExtractorOutput(invPlayer.player, furnaceInventory, 2, 116, 35));
 		int i;
 
 		for (i = 0; i < 3; ++i)
 		{
 			for (int j = 0; j < 9; ++j)
 			{
-				this.addSlotToContainer(new Slot(p_i45794_1_, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(invPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
 		for (i = 0; i < 9; ++i)
 		{
-			this.addSlotToContainer(new Slot(p_i45794_1_, i, 8 + i * 18, 142));
+			this.addSlotToContainer(new Slot(invPlayer, i, 8 + i * 18, 142));
 		}
 	}
 

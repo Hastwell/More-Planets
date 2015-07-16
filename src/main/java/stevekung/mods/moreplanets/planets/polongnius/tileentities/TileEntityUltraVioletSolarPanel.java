@@ -39,6 +39,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.world.IUltraVioletLevel;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.BlockUltraVioletSolarFake;
+import stevekung.mods.moreplanets.planets.polongnius.blocks.BlockUltraVioletSolarPanel;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
 public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectricalSource implements IMultiBlock, IPacketReceiver, IDisableableMachine, IInventory, ISidedInventory, IConnector
@@ -244,7 +245,7 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
 	@Override
 	public boolean onActivated(EntityPlayer entityPlayer)
 	{
-		return this.getBlockType().onBlockActivated(this.worldObj, this.pos, this.worldObj.getBlockState(this.pos), entityPlayer, this.facing, this.pos.getX(), this.pos.getY(), this.pos.getZ());
+		return this.getBlockType().onBlockActivated(this.worldObj, this.pos, this.worldObj.getBlockState(this.pos), entityPlayer, EnumFacing.DOWN, this.pos.getX(), this.pos.getY(), this.pos.getZ());
 	}
 
 	@Override
@@ -354,20 +355,20 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
 	@Override
 	public EnumSet<EnumFacing> getElectricalOutputDirections()
 	{
-		return EnumSet.of(this.getFacing());
+		return EnumSet.of((EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockUltraVioletSolarPanel.FACING));
 	}
 
 	@Override
 	public EnumFacing getElectricalOutputDirectionMain()
 	{
-		return this.getFacing();
+		return (EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockUltraVioletSolarPanel.FACING);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox()
 	{
-		return TileEntity.INFINITE_EXTENT_AABB;
+		return AxisAlignedBB.fromBounds(getPos().getX() - 1, getPos().getY(), getPos().getZ() - 1, getPos().getX() + 2, getPos().getY() + 4, getPos().getZ() + 2);
 	}
 
 	@Override

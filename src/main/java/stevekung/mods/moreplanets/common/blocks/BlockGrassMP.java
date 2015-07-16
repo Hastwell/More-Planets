@@ -14,7 +14,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
+import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformableBlock
 {
@@ -53,6 +56,18 @@ public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformable
 		{
 			return false;
 		}
+	}
+
+	@Override
+	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
+	{
+		Block block = plant.getPlant(world, pos).getBlock();
+
+		if (world.getBlockState(pos).getBlock() instanceof IFronosGrass)
+		{
+			return block == FronosBlocks.fronos_sapling;
+		}
+		return super.canSustainPlant(world, pos, side, plant);
 	}
 
 	@Override

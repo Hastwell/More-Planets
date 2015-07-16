@@ -13,7 +13,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockGrassMP;
@@ -55,6 +58,13 @@ public class BlockInfectedGrass extends BlockGrassMP
 				}
 			}
 		}
+	}
+
+	@Override
+	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
+	{
+		Block block = plant.getPlant(world, pos).getBlock();
+		return block == NibiruBlocks.nibiru_sapling;
 	}
 
 	@Override

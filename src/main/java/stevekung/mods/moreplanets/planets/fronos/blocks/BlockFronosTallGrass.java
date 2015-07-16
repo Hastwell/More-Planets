@@ -116,28 +116,57 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+		IBlockState blockState = world.getBlockState(pos.down());
+		Block block = blockState.getBlock();
+
+		boolean onFronosGrass = block == FronosBlocks.fronos_grass || block == FronosBlocks.fronos_dirt;
+		boolean onPinkGrass = block == FronosBlocks.pink_grass || block == FronosBlocks.fronos_dirt;
+		boolean onPurpleGrass = block == FronosBlocks.purple_grass || block == FronosBlocks.fronos_dirt;
+		boolean onPlainsGrass = block == FronosBlocks.plains_grass || block == FronosBlocks.fronos_dirt;
+		boolean onGoldenGrass = block == FronosBlocks.golden_grass || block == FronosBlocks.fronos_dirt;
+
+		if (block instanceof BlockFronosGrass || block instanceof BlockFronosDirt)
+		{
+			onFronosGrass = true;
+		}
+		else if (block instanceof BlockPinkGrass || block instanceof BlockFronosDirt)
+		{
+			onPinkGrass = true;
+		}
+		else if (block instanceof BlockPurpleGrass || block instanceof BlockFronosDirt)
+		{
+			onPurpleGrass = true;
+		}
+		else if (block instanceof BlockPlainsGrass || block instanceof BlockFronosDirt)
+		{
+			onPlainsGrass = true;
+		}
+		else if (block instanceof BlockGoldenGrass || block instanceof BlockFronosDirt)
+		{
+			onGoldenGrass = true;
+		}
+
 		BlockType type = (BlockType)state.getValue(VARIANT);
 
 		if (type == BlockType.fronos_short_grass || type == BlockType.fronos_medium_grass || type == BlockType.fronos_tall_grass)
 		{
-			return block == FronosBlocks.fronos_grass || block == FronosBlocks.fronos_dirt;
+			return onFronosGrass;
 		}
 		if (type == BlockType.pink_short_grass || type == BlockType.pink_medium_grass || type == BlockType.pink_tall_grass)
 		{
-			return block == FronosBlocks.pink_grass || block == FronosBlocks.fronos_dirt;
+			return onPinkGrass;
 		}
 		if (type == BlockType.purple_short_grass || type == BlockType.purple_medium_grass || type == BlockType.purple_tall_grass)
 		{
-			return block == FronosBlocks.purple_grass || block == FronosBlocks.fronos_dirt;
+			return onPurpleGrass;
 		}
 		if (type == BlockType.plains_short_grass || type == BlockType.plains_medium_grass || type == BlockType.plains_tall_grass)
 		{
-			return block == FronosBlocks.plains_grass || block == FronosBlocks.fronos_dirt;
+			return onPlainsGrass;
 		}
 		if (type == BlockType.golden_short_grass || type == BlockType.golden_medium_grass || type == BlockType.golden_tall_grass)
 		{
-			return block == FronosBlocks.golden_grass || block == FronosBlocks.fronos_dirt;
+			return onGoldenGrass;
 		}
 		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
 	}

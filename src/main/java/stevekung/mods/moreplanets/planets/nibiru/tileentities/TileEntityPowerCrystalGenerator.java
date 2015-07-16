@@ -27,6 +27,7 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.relauncher.Side;
 import stevekung.mods.moreplanets.common.items.IPowerCrystal;
+import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockPowerCrystalGenerator;
 
 public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectricalSource implements IInventory, ISidedInventory, IPacketReceiver, IConnector
 {
@@ -271,13 +272,13 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
 	@Override
 	public EnumSet<EnumFacing> getElectricalOutputDirections()
 	{
-		return EnumSet.of(this.getFacing());
+		return EnumSet.of((EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING));
 	}
 
 	@Override
 	public EnumFacing getElectricalOutputDirectionMain()
 	{
-		return this.getFacing();
+		return (EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING);
 	}
 
 	@Override
@@ -304,60 +305,20 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
 	@Override
 	public int getField(int id)
 	{
-		switch (id)
-		{
-		case 0:
-			return (int) this.prevGenerateWatts;
-		case 1:
-			return (int) this.heatGJperTick;
-		case 2:
-			return this.itemCookTime;
-		case 3:
-			return TileEntityPowerCrystalGenerator.MAX_GENERATE_GJ_PER_TICK;
-		case 4:
-			return TileEntityPowerCrystalGenerator.MIN_GENERATE_GJ_PER_TICK;
-		default:
-			return 0;
-		}
+		return 0;
 	}
 
 	@Override
-	public void setField(int id, int value)
-	{
-		switch (id)
-		{
-		case 0:
-			this.prevGenerateWatts = value;
-			break;
-		case 1:
-			this.heatGJperTick = value;
-			break;
-		case 2:
-			this.itemCookTime = value;
-			break;
-		case 3:
-			TileEntityPowerCrystalGenerator.MAX_GENERATE_GJ_PER_TICK = value;
-			break;
-		case 4:
-			TileEntityPowerCrystalGenerator.MIN_GENERATE_GJ_PER_TICK = value;
-			break;
-		}
-	}
+	public void setField(int id, int value) {}
 
 	@Override
 	public int getFieldCount()
 	{
-		return 5;
+		return 0;
 	}
 
 	@Override
-	public void clear()
-	{
-		for (int i = 0; i < this.containingItems.length; ++i)
-		{
-			this.containingItems[i] = null;
-		}
-	}
+	public void clear() {}
 
 	@Override
 	public IChatComponent getDisplayName()

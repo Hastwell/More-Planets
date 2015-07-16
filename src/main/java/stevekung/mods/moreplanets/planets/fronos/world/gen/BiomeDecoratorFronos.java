@@ -46,6 +46,7 @@ import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFrono
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosMelon;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosPumpkin;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosSand;
+import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFronosTallGrass;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenMapleIvy;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenSpaceOyster;
@@ -393,28 +394,27 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 		}
 
 		// Tall Grass
-		for (i = 0; this.getGen(EventType.FLOWERS) && i < this.fronosTallGrassPerChunk; ++i)
+		for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
 		{
 			x = this.randomGenerator.nextInt(16) + 8;
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
-			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosFlowers(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
 
-           /* x = this.randomGenerator.nextInt(16) + 8;
-            z = this.randomGenerator.nextInt(16) + 8;
-            y = nextInt(this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z)).getY() * 2);
-            new WorldGenFronosTallGrass(BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
-		*/}
+			/*x = this.randomGenerator.nextInt(16) + 8;
+			z = this.randomGenerator.nextInt(16) + 8;
+			y = nextInt(this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z)).getY() * 2);
+			new WorldGenFronosTallGrass(BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
+			 */}
 		/*for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
 		{
 			x = this.randomGenerator.nextInt(16) + 8;
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.fronos_medium_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosFlowers(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.fronos_medium_grass).generate(this.currentWorld, this.randomGenerator, pos);
 		}
-		for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
+		/*for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
 		{
 			x = this.randomGenerator.nextInt(16) + 8;
 			y = this.randomGenerator.nextInt(256);

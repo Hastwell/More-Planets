@@ -210,6 +210,14 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(IoBlocks.io_block, 1, meta);
 		}
+		if (block == NibiruBlocks.infected_farmland)
+		{
+			return new ItemStack(NibiruBlocks.infected_dirt, 1, 0);
+		}
+		if (block == KoentusBlocks.crystal_farmland)
+		{
+			return new ItemStack(KoentusBlocks.crystal_dirt, 1, 0);
+		}
 		return null;
 	}
 }
