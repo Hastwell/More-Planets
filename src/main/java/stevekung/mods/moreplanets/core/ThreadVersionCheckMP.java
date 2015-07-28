@@ -24,7 +24,7 @@ public class ThreadVersionCheckMP extends Thread
 {
 	public static ThreadVersionCheckMP INSTANCE = new ThreadVersionCheckMP();
 	private int count = 0;
-	private String URL = "http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2358057-more-planets-mod-v-1-2-6-galacticraft-add-on-the";
+	private String URL = "http://minecraftforum.net/forums/thread/2358057";
 
 	public static int remoteMajVer;
 	public static int remoteMinVer;
@@ -55,7 +55,7 @@ public class ThreadVersionCheckMP extends Thread
 		{
 			try
 			{
-				URL url = new URL("https://raw.githubusercontent.com/SteveKunG/More-Planets-GC/master/version.txt");
+				URL url = new URL("https://raw.githubusercontent.com/SteveKunG/More-Planets/1.8/version.txt");
 				HttpURLConnection http = (HttpURLConnection) url.openConnection();
 				http.addRequestProperty("User-Agent", "Mozilla/4.76");
 				BufferedReader in = new BufferedReader(new InputStreamReader(http.getInputStream()));
@@ -85,7 +85,7 @@ public class ThreadVersionCheckMP extends Thread
 								if (ConfigManagerMP.enableClientVersionCheck == true)
 								{
 									FMLClientHandler.instance().getClient().thePlayer.addChatMessage(Serializer.jsonToComponent("[{text:\"" + EnumChatFormatting.GRAY + "New \",extra:[{text:\"" + EnumChatFormatting.AQUA + "More Planets\"},{text:\"" + EnumChatFormatting.GRAY + " version available!\"},{text:\"" + EnumChatFormatting.GREEN + EnumChatFormatting.BOLD + " v" + String.valueOf(remoteMajVer) + "." + String.valueOf(remoteMinVer) + "." + String.valueOf(remoteBuildVer) + " \"},{text:\"" + EnumChatFormatting.RED + EnumChatFormatting.BOLD + "CLICK HERE!\",hoverEvent:{action:show_text,value:\"" + EnumChatFormatting.YELLOW + EnumChatFormatting.BOLD + "Download Latest Version\"},clickEvent:{action:open_url,value:\"" + this.URL + "\"}}]}]"));
-									FMLClientHandler.instance().getClient().thePlayer.addChatMessage(Serializer.jsonToComponent("[{text:\"" + EnumChatFormatting.GRAY + "Some minor improvement and fixes some issue\"}]"));
+									FMLClientHandler.instance().getClient().thePlayer.addChatMessage(Serializer.jsonToComponent("[{text:\"" + EnumChatFormatting.GRAY + "Now updated to 1.8 and adding new stuff!\"}]"));
 								}
 							}
 							else if (sideToCheck.equals(Side.SERVER))

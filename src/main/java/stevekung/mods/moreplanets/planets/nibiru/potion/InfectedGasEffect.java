@@ -16,7 +16,7 @@ public class InfectedGasEffect extends Potion
 {
 	public InfectedGasEffect(boolean isBad, int color)
 	{
-		super(MPPotions.getNextID(), new ResourceLocation("moreplanets:infected_gas"), isBad, color);
+		super(MPPotions.getNextPotionID(), new ResourceLocation("moreplanets:infected_gas"), isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

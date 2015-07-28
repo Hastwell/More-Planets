@@ -19,37 +19,23 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenFronosTallGrass extends WorldGenerator
 {
-	private IBlockState flower;
+	private int meta;
 
-	public WorldGenFronosTallGrass(BlockFronosTallGrass.BlockType flower)
+	public WorldGenFronosTallGrass(int meta)
 	{
-		this.flower = FronosBlocks.fronos_tall_grass.getDefaultState().withProperty(BlockFronosTallGrass.VARIANT, flower);
+		this.meta = meta;
 	}
 
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos)
 	{
-		Block block;
-
-		do
+		for (int i = 0; i < 64; ++i)
 		{
-			block = world.getBlockState(pos).getBlock();
+			BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (!block.isAir(world, pos) && !block.isLeaves(world, pos))
+			if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && FronosBlocks.fronos_tall_grass.canBlockStay(world, pos1, world.getBlockState(pos1)))
 			{
-				break;
-			}
-			pos = pos.down();
-		}
-		while (pos.getY() > 0);
-
-		for (int i = 0; i < 128; ++i)
-		{
-			BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-
-			if (world.isAirBlock(blockpos1) && FronosBlocks.fronos_tall_grass.canBlockStay(world, blockpos1, world.getBlockState(blockpos1)))
-			{
-				world.setBlockState(blockpos1, this.flower, 2);
+				world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(meta), 2);
 			}
 		}
 		return true;

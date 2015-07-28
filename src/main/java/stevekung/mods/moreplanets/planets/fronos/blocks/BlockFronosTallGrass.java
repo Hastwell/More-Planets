@@ -117,9 +117,10 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
 		IBlockState blockState = world.getBlockState(pos.down());
+		Block blockGrass = world.getBlockState(pos).getBlock();
 		Block block = blockState.getBlock();
 
-		boolean onFronosGrass = block == FronosBlocks.fronos_grass || block == FronosBlocks.fronos_dirt;
+		/*boolean onFronosGrass = block == FronosBlocks.fronos_grass || block == FronosBlocks.fronos_dirt;
 		boolean onPinkGrass = block == FronosBlocks.pink_grass || block == FronosBlocks.fronos_dirt;
 		boolean onPurpleGrass = block == FronosBlocks.purple_grass || block == FronosBlocks.fronos_dirt;
 		boolean onPlainsGrass = block == FronosBlocks.plains_grass || block == FronosBlocks.fronos_dirt;
@@ -144,15 +145,16 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 		else if (block instanceof BlockGoldenGrass || block instanceof BlockFronosDirt)
 		{
 			onGoldenGrass = true;
-		}
+		}*/
 
-		BlockType type = (BlockType)state.getValue(VARIANT);
+		//BlockType type = (BlockType)state.getValue(VARIANT);
+		/*int type = this.getMetaFromState(state);
 
-		if (type == BlockType.fronos_short_grass || type == BlockType.fronos_medium_grass || type == BlockType.fronos_tall_grass)
-		{
+		if (blockGrass == FronosBlocks.fronos_tall_grass && type == 0/*(type == BlockType.fronos_short_grass || type == BlockType.fronos_medium_grass || type == BlockType.fronos_tall_grass))
+		/*{
 			return onFronosGrass;
-		}
-		if (type == BlockType.pink_short_grass || type == BlockType.pink_medium_grass || type == BlockType.pink_tall_grass)
+		}*/
+		/*if (type == BlockType.pink_short_grass || type == BlockType.pink_medium_grass || type == BlockType.pink_tall_grass)
 		{
 			return onPinkGrass;
 		}
@@ -167,7 +169,7 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 		if (type == BlockType.golden_short_grass || type == BlockType.golden_medium_grass || type == BlockType.golden_tall_grass)
 		{
 			return onGoldenGrass;
-		}
+		}*/
 		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
 	}
 

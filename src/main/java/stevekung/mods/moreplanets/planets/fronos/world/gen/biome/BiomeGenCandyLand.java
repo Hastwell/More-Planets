@@ -31,7 +31,7 @@ public class BiomeGenCandyLand extends BiomeGenBaseFronos
 		this.getBiomeDecorator().lakesPerChunk = -999;
 		this.getBiomeDecorator().coralPerChunk = -999;
 		this.getBiomeDecorator().spaceShellPerChunk = -999;
-		this.getBiomeDecorator().candyFlowerPerChunk = 256;
-		this.getBiomeDecorator().candyCanePerChunk = 512;
+		this.getBiomeDecorator().candyFlowerPerChunk = 48;
+		this.getBiomeDecorator().candyCanePerChunk = 32;
 	}
 }

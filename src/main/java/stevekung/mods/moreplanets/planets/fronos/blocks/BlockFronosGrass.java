@@ -35,15 +35,8 @@ public class BlockFronosGrass extends BlockGrassMP implements IFronosGrass
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
-		if (pos == null)
-		{
-			return state;
-		}
-		else
-		{
-			Block block = world.getBlockState(pos.up()).getBlock();
-			return state.withProperty(HAS_VANILLA_CREAM, Boolean.valueOf(block == FronosBlocks.vanilla_cream_layer));
-		}
+		Block block = world.getBlockState(pos.up()).getBlock();
+		return state.withProperty(HAS_VANILLA_CREAM, Boolean.valueOf(block == FronosBlocks.vanilla_cream_layer));
 	}
 
 	@Override

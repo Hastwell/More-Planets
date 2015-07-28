@@ -172,11 +172,11 @@ public class MorePlanetsCore
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		MPPotions.init();
 		MPBlocks.init();
 		MPItems.init();
 		MPArmors.init();
 		MPTools.init();
-		MPPotions.init();
 
 		FMLCommonHandler.instance().bus().register(new SkyProviderEventHandler());
 		FMLCommonHandler.instance().bus().register(new PolongniusMeteorTickHandler());

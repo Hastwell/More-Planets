@@ -14,6 +14,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.diona.potion.EMPEffect;
 import stevekung.mods.moreplanets.planets.kapteynb.potion.ChemicalEffect;
 import stevekung.mods.moreplanets.planets.kapteynb.potion.IceCrystalEffect;
@@ -26,21 +27,9 @@ public class MPPotions
 	public static Potion electro_magnetic_pulse;
 	public static Potion icy_poison;
 
-	public static int potionOffset;
-	private static int nextPotionID = 8;
-
 	public static void init()
 	{
-		MPPotions.extendPotionsArray();
 		MPPotions.intializePotions();
-	}
-
-	private static void extendPotionsArray()
-	{
-		MPPotions.potionOffset = Potion.potionTypes.length;
-		Potion[] potionTypes = new Potion[MPPotions.potionOffset + MPPotions.nextPotionID];
-		System.arraycopy(Potion.potionTypes, 0, potionTypes, 0, MPPotions.potionOffset);
-		setPrivateFinalValue(Potion.class, null, potionTypes, "potionTypes", "field_76425_a");
 	}
 
 	private static void intializePotions()
@@ -51,25 +40,38 @@ public class MPPotions
 		MPPotions.icy_poison = new IceCrystalEffect(true, -6564921).setPotionName("potion.icy_poison").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
 	}
 
-	public static int getNextID()
+	public static int getNextPotionID()
 	{
-		return MPPotions.potionOffset++ - 1;
-	}
+		int n = Potion.potionTypes.length;
 
-	static <T, E> void setPrivateFinalValue(Class <? super T > classToAccess, T instance, E value, String... fieldNames)
-	{
-		Field field = ReflectionHelper.findField(classToAccess, ObfuscationReflectionHelper.remapFieldNames(classToAccess.getName(), fieldNames));
+		for (int i = 1; i < n; i++)
+		{
+			if (Potion.potionTypes[i] == null)
+			{
+				return i;
+			}
+		}
+
+		if (n >= 128)
+		{
+			MorePlanetsCore.severe("Cannot create potions, you might have to remove some mods (Potion Array is full!)");
+		}
+
+		Potion[] expandedPotionTypes = new Potion[n + 1];
+		System.arraycopy(Potion.potionTypes, 0, expandedPotionTypes, 0, n);   
+		Field field = ReflectionHelper.findField(Potion.class, ObfuscationReflectionHelper.remapFieldNames(Potion.class.getName(), "potionTypes", "field_76425_a"));
 
 		try
 		{
 			Field modifiersField = Field.class.getDeclaredField("modifiers");
 			modifiersField.setAccessible(true);
 			modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-			field.set(instance, value);
+			field.set(null, expandedPotionTypes);
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
+		return n;
 	}
 }

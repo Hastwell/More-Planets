@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCandyCane2;
+import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenCandyCane2 extends WorldGenerator
@@ -21,7 +22,7 @@ public class WorldGenCandyCane2 extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos)
 	{
-		if (world.isAirBlock(pos.up()) && world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass)
+		if (world.isAirBlock(pos.up()) && world.getBlockState(pos.down()) == FronosBlocks.frosted_cake.getDefaultState().withProperty(BlockFrostedCake.VARIANT, BlockFrostedCake.BlockType.frosted_white_cake_block))
 		{
 			world.setBlockState(pos.up(), FronosBlocks.candy_cane2.getDefaultState(), 2);
 			world.setBlockState(pos.up(2), FronosBlocks.candy_cane2.getDefaultState(), 2);

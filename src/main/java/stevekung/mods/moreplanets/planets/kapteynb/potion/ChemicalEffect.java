@@ -16,7 +16,7 @@ public class ChemicalEffect extends Potion
 {
 	public ChemicalEffect(boolean isBad, int color)
 	{
-		super(MPPotions.getNextID(), new ResourceLocation("moreplanets:chemical"), isBad, color);
+		super(MPPotions.getNextPotionID(), new ResourceLocation("moreplanets:chemical"), isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

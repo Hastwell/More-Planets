@@ -28,8 +28,8 @@ import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCavernOyster;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockDandelion;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosCloud;
+import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosFlower;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosSand;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosTallGrass;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockPoppy;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockSpaceOyster;
@@ -399,28 +399,23 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			x = this.randomGenerator.nextInt(16) + 8;
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
-			new WorldGenFronosTallGrass(BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
-
-			/*x = this.randomGenerator.nextInt(16) + 8;
-			z = this.randomGenerator.nextInt(16) + 8;
-			y = nextInt(this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z)).getY() * 2);
-			new WorldGenFronosTallGrass(BlockFronosTallGrass.BlockType.fronos_short_grass).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
-			 */}
-		/*for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
-		{
-			x = this.randomGenerator.nextInt(16) + 8;
-			y = this.randomGenerator.nextInt(256);
-			z = this.randomGenerator.nextInt(16) + 8;
-			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosFlowers(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.fronos_medium_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(0).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
 		}
-		/*for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
+		for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
 		{
 			x = this.randomGenerator.nextInt(16) + 8;
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.fronos_tall_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(1).generate(this.currentWorld, this.randomGenerator, pos);
+		}
+		for (i = 0; this.getGen(EventType.GRASS) && i < this.fronosTallGrassPerChunk; ++i)
+		{
+			x = this.randomGenerator.nextInt(16) + 8;
+			y = this.randomGenerator.nextInt(256);
+			z = this.randomGenerator.nextInt(16) + 8;
+			pos = this.field_180294_c.add(x, y, z);
+			new WorldGenFronosTallGrass(2).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.pinkTallGrassPerChunk; ++i)
 		{
@@ -428,7 +423,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.pink_short_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(3).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.pinkTallGrassPerChunk; ++i)
 		{
@@ -436,7 +431,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.pink_medium_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(4).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.pinkTallGrassPerChunk; ++i)
 		{
@@ -444,7 +439,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.pink_tall_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(5).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.purpleTallGrassPerChunk; ++i)
 		{
@@ -452,7 +447,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.purple_short_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(6).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.purpleTallGrassPerChunk; ++i)
 		{
@@ -460,7 +455,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.purple_medium_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(7).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.purpleTallGrassPerChunk; ++i)
 		{
@@ -468,7 +463,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.purple_tall_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(8).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.plainsTallGrassPerChunk; ++i)
 		{
@@ -476,7 +471,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.plains_short_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(9).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.plainsTallGrassPerChunk; ++i)
 		{
@@ -484,7 +479,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.plains_medium_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(10).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.plainsTallGrassPerChunk; ++i)
 		{
@@ -492,7 +487,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.plains_tall_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(11).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.goldenTallGrassPerChunk; ++i)
 		{
@@ -500,7 +495,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.golden_short_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(12).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.goldenTallGrassPerChunk; ++i)
 		{
@@ -508,7 +503,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.golden_medium_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(13).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.GRASS) && i < this.goldenTallGrassPerChunk; ++i)
 		{
@@ -516,7 +511,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenFronosTallGrass(FronosBlocks.fronos_tall_grass, BlockFronosTallGrass.VARIANT, BlockFronosTallGrass.BlockType.golden_tall_grass).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenFronosTallGrass(14).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 
 		// Fronos Flower
@@ -591,7 +586,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
 			new WorldGenFronosFlowers(FronosBlocks.fronos_flower, BlockFronosFlower.VARIANT, BlockFronosFlower.BlockType.white_moss).generate(this.currentWorld, this.randomGenerator, pos);
-		}*/
+		}
 		for (i = 0; this.getGen(EventType.FLOWERS) && i < this.candyFlowerPerChunk; ++i)
 		{
 			x = this.randomGenerator.nextInt(16) + 8;

@@ -228,7 +228,7 @@ public class BlockFronosFlower extends BlockFlowerMP
 		IBlockState blockState = world.getBlockState(pos.down());
 		Block block = blockState.getBlock();
 
-		boolean isMushroom = block == FronosBlocks.fronos_block && (blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
+		/*boolean isMushroom = block == FronosBlocks.fronos_block && (blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
 		boolean isWhiteMoss = block == FronosBlocks.fronos_sand && blockState.getValue(BlockFronosSand.VARIANT) == BlockFronosSand.BlockType.white_sand || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
 
 		if (block instanceof BlockFronos)
@@ -274,7 +274,7 @@ public class BlockFronosFlower extends BlockFlowerMP
 		if (type == BlockType.white_moss)
 		{
 			return isWhiteMoss;
-		}
+		}*/
 		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
 	}
 
