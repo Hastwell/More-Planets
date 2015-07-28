@@ -16,7 +16,7 @@ public class InfectedGasEffect extends Potion
 {
 	public InfectedGasEffect(boolean isBad, int color)
 	{
-		super(MPPotions.getNextID(), isBad, color);
+		super(MPPotions.getNextPotionID(), isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

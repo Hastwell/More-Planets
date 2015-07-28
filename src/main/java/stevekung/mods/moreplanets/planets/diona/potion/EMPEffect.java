@@ -16,7 +16,7 @@ public class EMPEffect extends Potion
 {
 	public EMPEffect(boolean isBad, int color)
 	{
-		super(MPPotions.getNextID(), isBad, color);
+		super(MPPotions.getNextPotionID(), isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

@@ -16,7 +16,7 @@ public class IceCrystalEffect extends Potion
 {
 	public IceCrystalEffect(boolean isBad, int color)
 	{
-		super(MPPotions.getNextID(), isBad, color);
+		super(MPPotions.getNextPotionID(), isBad, color);
 		this.setIconIndex(1, 0);
 	}
 
