@@ -157,7 +157,7 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 				{
 					k = -1;
 				}
-				else if (iblockstate2.getBlock() == Blocks.stone)
+				else if (iblockstate2.getBlock() == FronosBlocks.fronos_block)
 				{
 					if (k == -1)
 					{

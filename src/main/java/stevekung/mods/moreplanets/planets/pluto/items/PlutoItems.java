@@ -19,6 +19,7 @@ public class PlutoItems
 	public static Item space_potato;
 	public static Item xeonium_dust;
 	public static Item gravity_boots;
+	public static Item pluto_heart_crystal;
 
 	public static ArmorMaterial gravity = EnumHelper.addArmorMaterial("gravity", "gravity", 0, new int[] { 0, 0, 0, 0 }, 0);
 
@@ -31,8 +32,9 @@ public class PlutoItems
 	private static void initItems()
 	{
 		PlutoItems.pluto_item = new ItemPluto("pluto_item");
-		PlutoItems.space_potato = new ItemSpacePotato("space_potato");
 		PlutoItems.xeonium_dust = new ItemMorePlanets("xeonium_dust");
+		PlutoItems.space_potato = new ItemSpacePotato("space_potato");
+		PlutoItems.pluto_heart_crystal = new ItemPlutoHeartCrystal("pluto_heart_crystal_item");
 		PlutoItems.gravity_boots = new ItemGravityBoots("gravity_boots", PlutoItems.gravity, 7, 3);
 	}
 
@@ -41,6 +43,7 @@ public class PlutoItems
 		RegisterHelper.registerItem(PlutoItems.pluto_item);
 		RegisterHelper.registerItem(PlutoItems.xeonium_dust);
 		RegisterHelper.registerItem(PlutoItems.space_potato);
+		RegisterHelper.registerItem(PlutoItems.pluto_heart_crystal);
 		RegisterHelper.registerItem(PlutoItems.gravity_boots);
 	}
 }

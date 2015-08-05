@@ -11,10 +11,12 @@ import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.blocks.BlockOysterMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCavernOyster;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
@@ -233,11 +235,11 @@ public class MapGenCavernFronos extends MapGenBaseMeta
 											{
 												if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
 												{
-													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, true));
+													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, true).withProperty(BlockOysterMP.FACING, EnumFacing.Plane.HORIZONTAL.random(this.rand)));
 												}
 												else if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
 												{
-													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false));
+													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false).withProperty(BlockOysterMP.FACING, EnumFacing.Plane.HORIZONTAL.random(this.rand)));
 												}
 											}
 										}

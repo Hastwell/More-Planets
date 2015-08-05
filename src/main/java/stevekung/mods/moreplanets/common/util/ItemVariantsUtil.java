@@ -61,6 +61,6 @@ public class ItemVariantsUtil
 		RegisterHelper.registerVariantName(PlutoItems.space_potato, new String[] { "moreplanets:space_potato", "moreplanets:baked_space_potato" });
 		RegisterHelper.registerVariantName(MPItems.spawn_egg_mp, new String[] { "moreplanets:spawn_egg_mp" });
 		RegisterHelper.registerVariantName(EuropaItems.europa_prismarine, new String[] { "moreplanets:europa_prismarine_shard", "moreplanets:europa_prismarine_crystals" });
-
+		RegisterHelper.registerVariantName(PlutoItems.pluto_heart_crystal, new String[] { "moreplanets:pluto_heart_crystal_item", "moreplanets:damaged_pluto_heart_crystal_item", "moreplanets:broken_pluto_heart_crystal_item" });
 	}
 }

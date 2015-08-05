@@ -7,9 +7,12 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.blocks;
 
+import micdoodle8.mods.galacticraft.core.items.ItemBlockDesc.IBlockShiftDesc;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.StatCollector;
 import stevekung.mods.moreplanets.common.blocks.BlockCakeMP;
 
-public class BlockCheeseOfMilkCake extends BlockCakeMP /*implements IBlockShiftDesc*/
+public class BlockCheeseOfMilkCake extends BlockCakeMP implements IBlockShiftDesc
 {
 	public BlockCheeseOfMilkCake(String name)
 	{
@@ -17,17 +20,17 @@ public class BlockCheeseOfMilkCake extends BlockCakeMP /*implements IBlockShiftD
 		this.setUnlocalizedName(name);
 	}
 
-	//	@Override
-	//	public String getShiftDescription(IBlockState state)
-	//	{
-	//		return StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc");
-	//	}
-	//
-	//	@Override
-	//	public boolean showDescription(IBlockState state)
-	//	{
-	//		return true;
-	//	}
+	@Override
+	public String getShiftDescription(int meta)
+	{
+		return StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc");
+	}
+
+	@Override
+	public boolean showDescription(int meta)
+	{
+		return true;
+	}
 
 	@Override
 	public int getFoodAmount()

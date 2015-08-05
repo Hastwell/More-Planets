@@ -93,6 +93,7 @@ public class BlockVariantsUtil
 		RegisterHelper.registerVariantName(FronosBlocks.fronos_sandstone, new String[] { "moreplanets:fronos_sandstone", "moreplanets:chiseled_fronos_sandstone", "moreplanets:smooth_fronos_sandstone", "moreplanets:white_sandstone", "moreplanets:chiseled_white_sandstone", "moreplanets:smooth_white_sandstone", "moreplanets:cheese_sandstone", "moreplanets:chiseled_cheese_sandstone", "moreplanets:smooth_cheese_sandstone" });
 		RegisterHelper.registerVariantName(FronosBlocks.half_fronos_sandstone_slab, new String[] { "moreplanets:fronos_sandstone_slab", "moreplanets:white_sandstone_slab", "moreplanets:cheese_sandstone_slab" });
 		RegisterHelper.registerVariantName(EuropaBlocks.europa_ice, new String[] { "moreplanets:europa_ice", "moreplanets:dirty_europa_ice", "moreplanets:dense_europa_ice" });
+		RegisterHelper.registerVariantName(PlutoBlocks.pluto_heart_crystal, new String[] { "moreplanets:pluto_heart_crystal", "moreplanets:damaged_pluto_heart_crystal", "moreplanets:broken_pluto_heart_crystal" });
 
 		RegisterHelper.registerVariantNameWithDyeColor(KoentusBlocks.glowing_ice_stone, "moreplanets");
 		RegisterHelper.registerVariantNameWithDyeColor(FronosBlocks.space_shell, "moreplanets");

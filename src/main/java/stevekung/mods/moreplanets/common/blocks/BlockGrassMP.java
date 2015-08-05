@@ -65,7 +65,7 @@ public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformable
 
 		if (world.getBlockState(pos).getBlock() instanceof IFronosGrass)
 		{
-			return block == FronosBlocks.fronos_sapling;
+			return block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_coral || block == FronosBlocks.fronos_dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_poppy || block == FronosBlocks.fronos_tall_grass;
 		}
 		return super.canSustainPlant(world, pos, side, plant);
 	}

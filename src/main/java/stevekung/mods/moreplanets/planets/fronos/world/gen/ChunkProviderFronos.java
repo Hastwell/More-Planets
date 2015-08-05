@@ -220,7 +220,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 							{
 								if ((d15 += d16) > 0.0D)
 								{
-									chunk.setBlockState(j3 += short1, Blocks.stone.getDefaultState());
+									chunk.setBlockState(j3 += short1, FronosBlocks.fronos_block.getDefaultState());
 								}
 								else if (k2 * 8 + l2 < seaLevel)
 								{

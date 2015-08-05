@@ -1,0 +1,6 @@
+{
+    "parent": "moreplanets:block/heart_crystal",
+    "textures": {
+        "heart": "moreplanets:blocks/broken_pluto_heart_crystal"
+    }
+}

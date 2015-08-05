@@ -22,10 +22,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
@@ -148,6 +151,19 @@ public class BlockFronos extends BlockPlanetTileMP /*implements IDetectableResou
 			return 4 + rand.nextInt(5);
 		}
 		return super.quantityDropped(state, fortune, rand);
+	}
+
+	@Override
+	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing facing, IPlantable plant)
+	{
+		IBlockState state = plant.getPlant(world, pos);
+		Block block = state.getBlock();
+
+		//if (state == state.withProperty(VARIANT, BlockType.fronos_rock) || state == state.withProperty(VARIANT, BlockType.fronos_cobblestone))
+		{
+			return block == FronosBlocks.fronos_flower;
+		}
+		//return super.canSustainPlant(world, pos, facing, plant);
 	}
 
 	/*@Override

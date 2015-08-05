@@ -23,9 +23,9 @@ public abstract class BiomeGenBaseMP extends BiomeGenBase
 	}
 
 	@Override
-	public BiomeGenBaseMP setColor(int var1)
+	public BiomeGenBaseMP setColor(int color)
 	{
-		return (BiomeGenBaseMP) super.setColor(var1);
+		return (BiomeGenBaseMP) super.setColor(color);
 	}
 
 	@Override

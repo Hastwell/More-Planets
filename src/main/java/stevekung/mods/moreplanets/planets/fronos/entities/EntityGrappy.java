@@ -16,7 +16,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIEatGrass;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMate;
@@ -48,6 +47,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIGrappyEatGrass;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 import com.google.common.collect.Maps;
@@ -64,7 +64,7 @@ public class EntityGrappy extends EntityAnimal implements IShearable
 	}, 2, 1);
 	private static Map field_175514_bm = Maps.newEnumMap(EnumDyeColor.class);
 	private int sheepTimer;
-	private EntityAIEatGrass entityAIEatGrass = new EntityAIEatGrass(this);
+	private EntityAIGrappyEatGrass entityAIEatGrass = new EntityAIGrappyEatGrass(this);
 
 	public static float[] func_175513_a(EnumDyeColor dye)
 	{
@@ -287,7 +287,7 @@ public class EntityGrappy extends EntityAnimal implements IShearable
 	@Override
 	protected void playStepSound(BlockPos pos, Block block)
 	{
-		this.playSound("mob.sheep.step", 0.15F, 1.0F);
+		this.playSound("mob.sheep.step", 0.15F, 3.0F);
 	}
 
 	public EnumDyeColor getFleeceColor()

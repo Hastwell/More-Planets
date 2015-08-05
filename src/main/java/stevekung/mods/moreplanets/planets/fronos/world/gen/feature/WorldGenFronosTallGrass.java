@@ -9,12 +9,10 @@ package stevekung.mods.moreplanets.planets.fronos.world.gen.feature;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosTallGrass;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenFronosTallGrass extends WorldGenerator
@@ -33,9 +31,9 @@ public class WorldGenFronosTallGrass extends WorldGenerator
 		{
 			BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && FronosBlocks.fronos_tall_grass.canBlockStay(world, pos1, world.getBlockState(pos1)))
+			if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos.getY() < 255) && FronosBlocks.fronos_tall_grass.canPlaceBlockOnSide(world, pos1, EnumFacing.UP))
 			{
-				world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(meta), 2);
+				world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(this.meta), 2);
 			}
 		}
 		return true;

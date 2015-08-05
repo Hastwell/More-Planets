@@ -14,6 +14,8 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFrostedCake;
+import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenFrostedCake extends WorldGenerator
 {
@@ -31,7 +33,7 @@ public class WorldGenFrostedCake extends WorldGenerator
 		{
 			BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (world.isAirBlock(blockpos1) && world.getBlockState(blockpos1.down()).getBlock() instanceof IFronosGrass)
+			if (world.isAirBlock(blockpos1) && world.getBlockState(blockpos1.down()) == FronosBlocks.frosted_cake.getDefaultState().withProperty(BlockFrostedCake.VARIANT, BlockFrostedCake.BlockType.frosted_white_cake_block))
 			{
 				world.setBlockState(blockpos1, this.frostedCake, 2);
 			}

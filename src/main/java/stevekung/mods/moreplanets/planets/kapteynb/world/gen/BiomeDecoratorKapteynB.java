@@ -7,22 +7,23 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
+import java.util.Random;
+
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenLiquidLakes;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
-public class BiomeDecoratorKapteynB extends BiomeDecoratorSpace
+public class BiomeDecoratorKapteynB extends BiomeDecoratorMP
 {
-	private World world;
-
 	private WorldGenerator dirtGen;
 	private WorldGenerator nameriumGen;
 	private WorldGenerator copperGen;
@@ -50,9 +51,9 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorSpace
 	}
 
 	@Override
-	public void decorate()
+	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
 	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.pos));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.currentWorld, this.randomGenerator, this.field_180294_c));
 
 		this.generateOre(16, this.copperGen, 0, 64);
 		this.generateOre(16, this.tinGen, 0, 64);
@@ -67,31 +68,19 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorSpace
 
 		for (int i = 0; this.getGen(EventType.LAKE_WATER) && i < 1; ++i)
 		{
-			if (this.rand.nextInt(10) == 0)
+			if (this.randomGenerator.nextInt(10) == 0)
 			{
-				int x = this.rand.nextInt(16) + 8;
-				int y = this.rand.nextInt(32 - 16) + 16;
-				int z = this.rand.nextInt(16) + 8;
-				new WorldGenLiquidLakes(KapteynBBlocks.frozen_water).generate(this.world, this.rand, new BlockPos(x, y, z));
+				int x = this.randomGenerator.nextInt(16) + 8;
+				int y = this.randomGenerator.nextInt(32 - 16) + 16;
+				int z = this.randomGenerator.nextInt(16) + 8;
+				new WorldGenLiquidLakes(KapteynBBlocks.frozen_water).generate(this.currentWorld, this.randomGenerator, new BlockPos(x, y, z));
 			}
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.pos));
-	}
-
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
-
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.currentWorld, this.randomGenerator, this.field_180294_c));
 	}
 
 	private boolean getGen(EventType event)
 	{
-		return TerrainGen.decorate(this.world, this.rand, this.pos, event);
+		return TerrainGen.decorate(this.currentWorld, this.randomGenerator, this.field_180294_c, event);
 	}
 }

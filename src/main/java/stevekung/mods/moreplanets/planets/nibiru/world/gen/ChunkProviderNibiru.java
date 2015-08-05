@@ -424,11 +424,11 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 			}
 		}
 
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
-		boolean tree = TerrainGen.decorate(this.worldObj, this.rand, chunkX, chunkZ, DecorateBiomeEvent.Decorate.EventType.TREE);
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.worldObj, this.rand, chunkX, chunkZ));
+		//MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
+		//boolean tree = TerrainGen.decorate(this.worldObj, this.rand, chunkX, chunkZ, DecorateBiomeEvent.Decorate.EventType.TREE);
+		//MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.worldObj, this.rand, chunkX, chunkZ));
 
-		for (int i = 0; tree && i < 100; ++i)
+		for (int i = 0; /*tree &&*/ i < 100; ++i)
 		{
 			x = var4 + this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(256);
@@ -436,14 +436,14 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 			new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 0, true).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
 
 		}
-		for (int i = 0; tree && i < 100; ++i)
+		for (int i = 0; /*tree &&*/ i < 100; ++i)
 		{
 			x = var4 + this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(256);
 			z = var5 + this.rand.nextInt(16) + 8;
 			new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.orange_leaves, 1, true).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.worldObj, this.rand, chunkX, chunkZ));
+		//MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.worldObj, this.rand, chunkX, chunkZ));
 		BlockFalling.fallInstantly = false;
 	}
 

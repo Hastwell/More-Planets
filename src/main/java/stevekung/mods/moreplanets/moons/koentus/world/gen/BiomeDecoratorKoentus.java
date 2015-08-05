@@ -7,20 +7,21 @@
 
 package stevekung.mods.moreplanets.moons.koentus.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
+import java.util.Random;
+
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.feature.WorldGenKoentusRockSpires;
 
-public class BiomeDecoratorKoentus extends BiomeDecoratorSpace
+public class BiomeDecoratorKoentus extends BiomeDecoratorMP
 {
-	private World world;
-
 	private WorldGenerator dirtGen;
 	private WorldGenerator tinGen;
 	private WorldGenerator copperGen;
@@ -50,9 +51,9 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorSpace
 	}
 
 	@Override
-	public void decorate()
+	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
 	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.pos));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.currentWorld, this.randomGenerator, this.field_180294_c));
 
 		int i;
 		int x;
@@ -70,23 +71,11 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorSpace
 
 		for (i = 0; i < this.rockSpiresPerChunk; ++i)
 		{
-			x = this.rand.nextInt(16) + 8;
-			y = this.rand.nextInt(256);
-			z = this.rand.nextInt(16) + 8;
-			this.rockSpiresGen.generate(this.world, this.rand, new BlockPos(x, y, z));
+			x = this.randomGenerator.nextInt(16) + 8;
+			y = this.randomGenerator.nextInt(256);
+			z = this.randomGenerator.nextInt(16) + 8;
+			this.rockSpiresGen.generate(this.currentWorld, this.randomGenerator, new BlockPos(x, y, z));
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.pos));
-	}
-
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
-
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.currentWorld, this.randomGenerator, this.field_180294_c));
 	}
 }

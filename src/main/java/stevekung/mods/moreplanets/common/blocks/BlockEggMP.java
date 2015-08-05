@@ -24,7 +24,7 @@ public class BlockEggMP extends BlockFalling
 {
 	public BlockEggMP()
 	{
-		super(Material.dragonEgg);
+		super(Material.rock);
 		this.setResistance(0.0F);
 		this.setHardness(-1.0F);
 		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 1.0F, 0.9375F);

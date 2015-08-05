@@ -28,7 +28,7 @@ public class WorldGenSpaceOyster extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos)
 	{
-		Block block = world.getBlockState(pos).getBlock();
+		Block block = world.getBlockState(pos.down()).getBlock();
 
 		if (!(block instanceof IFronosGrass))
 		{

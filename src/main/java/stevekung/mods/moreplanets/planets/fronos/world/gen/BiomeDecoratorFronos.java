@@ -658,12 +658,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 		{
 			x = this.randomGenerator.nextInt(16) + 8;
 			z = this.randomGenerator.nextInt(16) + 8;
-			WorldGenMapleIvy ivy = new WorldGenMapleIvy();
-
-			for (z = 0; z < 50; ++z)
-			{
-				ivy.generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, 128, z));
-			}
+			new WorldGenMapleIvy().generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, 128, z));
 		}
 
 		// Dead Bush
