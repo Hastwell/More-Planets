@@ -47,7 +47,7 @@ public class MPPlanets
 		MPPlanets.registerRocketGui();
 	}
 
-	// GC Map still bug with planets coordinate when double click to zooming
+	// GC Map still bug with planets coordinate when double click to zoom
 	private static void initSolarSystems()
 	{
 		MorePlanetsCore.siriusSolarSystem = new SolarSystem("sirius", "milkyWay").setMapPosition(new Vector3(1.1F, 1.2F, 0.4F));

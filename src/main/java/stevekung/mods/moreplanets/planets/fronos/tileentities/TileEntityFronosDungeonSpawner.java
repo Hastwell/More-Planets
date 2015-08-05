@@ -17,14 +17,14 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import micdoodle8.mods.galacticraft.core.tile.TileEntityDungeonSpawner;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperBoss;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosCreeperBossTemp;
 
 public class TileEntityFronosDungeonSpawner extends TileEntityDungeonSpawner
 {
 	public TileEntityFronosDungeonSpawner()
 	{
-		super(EntityDionaCreeperBoss.class);
+		super(EntityFronosCreeperBossTemp.class);//TEMPLATE HOTFIX
 	}
 
 	@Override

@@ -61,6 +61,7 @@ import stevekung.mods.moreplanets.planets.fronos.items.armor.FronosArmorItems;
 import stevekung.mods.moreplanets.planets.fronos.recipe.CraftingRecipesFronos;
 import stevekung.mods.moreplanets.planets.fronos.schematics.SchematicTier7Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.handler.KapteynBMeteorHandler;
+import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.kapteynb.items.tools.KapteynBToolsItems;
 import stevekung.mods.moreplanets.planets.kapteynb.recipe.CraftingRecipesKapteynB;
 import stevekung.mods.moreplanets.planets.kapteynb.schematics.SchematicTier8Rocket;
@@ -101,8 +102,8 @@ public class MorePlanetsCore
 	public static final String VERSION = MorePlanetsCore.major_version + "." + MorePlanetsCore.minor_version + "." + MorePlanetsCore.build_version;
 
 	public static final int major_version = 1;
-	public static final int minor_version = 3;
-	public static final int build_version = 0;
+	public static final int minor_version = 2;
+	public static final int build_version = 9;
 
 	@SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
 	public static CommonProxyMP proxy;
@@ -232,6 +233,7 @@ public class MorePlanetsCore
 		GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier5_rocket_schematic, 1, 1));
 		GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier6_rocket_schematic, 1, 1));
 		GalacticraftRegistry.addDungeonLoot(5, new ItemStack(FronosItems.tier7_rocket_schematic, 1, 0));
+		GalacticraftRegistry.addDungeonLoot(6, new ItemStack(KapteynBItems.tier8_rocket_schematic, 1, 0));//TODO Adding Fronos boss
 
 		/*findOre = new Achievement("achievement.gc.mineOre", "gc.mineOre", 0, 0, new ItemStack(GCBlocks.basicBlock, 1, 6), null).registerStat();
 		craftingCoalGenerator = new Achievement("achievement.gc.craftingCoalGenerator", "gc.craftingCoalGenerator", 2, 0, new ItemStack(GCBlocks.machineBase, 1, 0), findOre).registerStat();

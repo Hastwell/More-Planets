@@ -37,6 +37,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityBerry;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamCat;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamGolem;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamSlime;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosCreeperBossTemp;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosVillager;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlime;
@@ -147,6 +148,9 @@ public class MPEntities
 		}
 
 		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -4197121, -8197633);
+
+		//TEMPLATE HOTFIX
+		registerEntity(EntityFronosCreeperBossTemp.class, "FronosBossTemp", 38, 0, 0);
 	}
 
 	private static void registerNonMobEntities()

@@ -51,6 +51,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityBerry;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamCat;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamGolem;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamSlime;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosCreeperBossTemp;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosVillager;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlime;
@@ -78,6 +79,7 @@ import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderBerry;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderCreamCat;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderCreamGolem;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderCreamSlime;
+import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderFronosCreeperBossTemp;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderFronosVillager;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderGrappy;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderJellySlime;
@@ -198,6 +200,9 @@ public class EntityRendererMP
 		RenderingRegistry.registerEntityRenderingHandler(EntityVenusianVillager.class, new RenderVenusianVillager());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid());
+
+		//TEMPLATE HOTFIX
+		RenderingRegistry.registerEntityRenderingHandler(EntityFronosCreeperBossTemp.class, new RenderFronosCreeperBossTemp());
 	}
 
 	private static void registerNonEntityRenderers()
