@@ -8,6 +8,13 @@
 package stevekung.mods.moreplanets.moons.europa.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
+import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.moons.europa.fluids.BlockFluidEuropaWater;
+import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaGeyser;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaIce;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaPrismarine;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSnowLayer;
@@ -21,6 +28,13 @@ public class EuropaBlocks
 	public static Block europa_snow_layer;
 	public static Block europa_prismarine;
 	public static Block europa_sea_lantern;
+	public static Block europa_ice_slush;
+	public static Block europa_salt;
+	public static Block europa_geyser;
+	public static Block europa_water;
+
+	// Fluid
+	public static Fluid europa_water_fluid;
 
 	public static void init()
 	{
@@ -37,6 +51,13 @@ public class EuropaBlocks
 		EuropaBlocks.europa_snow_layer = new BlockEuropaSnowLayer("europa_snow_layer");
 		EuropaBlocks.europa_prismarine = new BlockEuropaPrismarine("europa_prismarine");
 		EuropaBlocks.europa_sea_lantern = new BlockEuropaSeaLantern("europa_sea_lantern");
+		EuropaBlocks.europa_ice_slush = new BlockEuropaIceSlush("europa_ice_slush");
+		EuropaBlocks.europa_salt = new BlockBaseMP("europa_salt", Material.rock).setHardness(1.5F);
+		EuropaBlocks.europa_geyser = new BlockEuropaGeyser("europa_geyser");
+
+		EuropaBlocks.europa_water_fluid = new FluidMP("europa_water_fluid").setBlock(EuropaBlocks.europa_water);
+		FluidRegistry.registerFluid(EuropaBlocks.europa_water_fluid);
+		EuropaBlocks.europa_water = new BlockFluidEuropaWater("europa_water_fluid");
 	}
 
 	private static void setHarvestLevels()
@@ -44,6 +65,9 @@ public class EuropaBlocks
 		EuropaBlocks.europa_snow_block.setHarvestLevel("shovel", 0);
 		EuropaBlocks.europa_snow_layer.setHarvestLevel("shovel", 0);
 		EuropaBlocks.europa_prismarine.setHarvestLevel("pickaxe", 0);
+		EuropaBlocks.europa_ice_slush.setHarvestLevel("shovel", 0);
+		EuropaBlocks.europa_salt.setHarvestLevel("pickaxe", 0);
+		EuropaBlocks.europa_geyser.setHarvestLevel("pickaxe", 0);
 	}
 
 	private static void registerBlocks()
@@ -51,8 +75,11 @@ public class EuropaBlocks
 		RegisterHelper.registerBlock(EuropaBlocks.europa_ice, ItemBlockEuropaIce.class);
 		RegisterHelper.registerBlock(EuropaBlocks.packed_europa_ice);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_block);
-		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockEuropaSnowLayer.class);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_ice_slush);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_salt);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_geyser, ItemBlockEuropaGeyser.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_prismarine, ItemBlockEuropaPrismarine.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_sea_lantern);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockEuropaSnowLayer.class);
 	}
 }

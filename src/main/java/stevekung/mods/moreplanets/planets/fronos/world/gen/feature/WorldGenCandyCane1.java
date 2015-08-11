@@ -12,7 +12,6 @@ import java.util.Random;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCandyCane1;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;

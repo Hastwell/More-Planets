@@ -110,12 +110,10 @@ public class EntityKoentusMeteor extends Entity
 		{
 			moving = new MovingObjectPosition(entity);
 		}
-
 		if (moving != null)
 		{
 			this.onImpact(moving);
 		}
-
 		if (this.posY <= -20 || this.posY >= 400)
 		{
 			this.setDead();
@@ -145,7 +143,7 @@ public class EntityKoentusMeteor extends Entity
 				}
 				if (moving.entityHit != null)
 				{
-					moving.entityHit.attackEntityFrom(EntityKoentusMeteor.causeMeteorDamage(this, this.shootingEntity), 6);
+					moving.entityHit.attackEntityFrom(EntityKoentusMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12.0F : 6.0F);
 				}
 			}
 			this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
@@ -153,13 +151,13 @@ public class EntityKoentusMeteor extends Entity
 		this.setDead();
 	}
 
-	public static DamageSource causeMeteorDamage(EntityKoentusMeteor par0EntityMeteor, Entity par1Entity)
+	public static DamageSource causeMeteorDamage(EntityKoentusMeteor meteor, Entity entity)
 	{
-		if (par1Entity != null && par1Entity instanceof EntityPlayer)
+		if (entity != null && entity instanceof EntityPlayer)
 		{
-			StatCollector.translateToLocalFormatted("death." + "meteor", ((EntityPlayer) par1Entity).getGameProfile().getName() + " was hit by a meteor! That's gotta hurt!");
+			StatCollector.translateToLocalFormatted("death." + "meteor", ((EntityPlayer) entity).getGameProfile().getName() + " was hit by a meteor! That's gotta hurt!");
 		}
-		return new EntityDamageSourceIndirect("explosion", par0EntityMeteor, par1Entity).setProjectile();
+		return new EntityDamageSourceIndirect("explosion", meteor, entity).setProjectile();
 	}
 
 	@Override
@@ -180,9 +178,9 @@ public class EntityKoentusMeteor extends Entity
 		return this.dataWatcher.getWatchableObjectInt(16);
 	}
 
-	public void setSize(int par1)
+	public void setSize(int size)
 	{
-		this.dataWatcher.updateObject(16, Integer.valueOf(par1));
+		this.dataWatcher.updateObject(16, Integer.valueOf(size));
 	}
 
 	@Override

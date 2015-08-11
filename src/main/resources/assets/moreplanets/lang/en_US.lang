@@ -557,6 +557,11 @@ tile.sulfur_torch.name=Sulfur Torch
 tile.venusian_blaze_egg.name=Venusian Blaze Egg
 tile.venus_ancient_chest.name=Venus Ancient Chest
 tile.venus_treasure_chest.name=Venus Treasure Chest
+tile.venus_sandstone.venus_sandstone.name=Venus Sandstone
+tile.venus_sandstone.chiseled_venus_sandstone.name=Chiseled Venus Sandstone
+tile.venus_sandstone.smooth_venus_sandstone.name=Smooth Venus Sandstone
+tile.half_venus_sandstone_slab.venus_sandstone.name=Venus Sandstone Slab
+tile.venus_sandstone_stairs.name=Venus Sandstone Stairs
 
 #########Pluto Block#########
 tile.pluto_block.surface_rock.name=Pluto Surface Rock
@@ -574,6 +579,7 @@ tile.frozen_nitrogen_block.name=Frozen Nitrogen Block
 tile.pluto_ancient_chest.name=Pluto Ancient Chest
 tile.pluto_treasure_chest.name=Pluto Treasure Chest
 tile.xeonium_torch.name=Xeonium Torch
+tile.pluto_heart_crystal_block.name=Pluto Heart Crystal
 
 #########Europa Block#########
 tile.europa_prismarine.prismarine.name=Europa Prismarine
@@ -850,6 +856,7 @@ item.xeonium_dust.name=Xeonium Dust
 item.space_potato.space_potato.name=Space Potato
 item.space_potato.baked_space_potato.name=Baked Space Potato
 item.gravity_boots.name=Gravity Boots
+item.pluto_heart_crystal_item.name=Pluto Heart Crystal
 
 #########Europa Item#########
 item.europa_prismarine_item.europa_prismarine_shard.name=Europa Prismarine Shard

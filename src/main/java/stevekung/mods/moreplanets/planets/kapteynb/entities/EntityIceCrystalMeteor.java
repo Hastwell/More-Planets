@@ -110,12 +110,10 @@ public class EntityIceCrystalMeteor extends Entity
 		{
 			var3 = new MovingObjectPosition(var4);
 		}
-
 		if (var3 != null)
 		{
 			this.onImpact(var3);
 		}
-
 		if (this.posY <= -20 || this.posY >= 400)
 		{
 			this.setDead();
@@ -145,7 +143,7 @@ public class EntityIceCrystalMeteor extends Entity
 				}
 				if (moving.entityHit != null)
 				{
-					moving.entityHit.attackEntityFrom(EntityIceCrystalMeteor.causeMeteorDamage(this, this.shootingEntity), 6);
+					moving.entityHit.attackEntityFrom(EntityIceCrystalMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12.0F : 6.0F);
 				}
 			}
 			this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);

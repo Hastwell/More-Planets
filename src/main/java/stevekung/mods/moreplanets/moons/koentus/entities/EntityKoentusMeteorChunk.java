@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.moons.koentus.entities;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
+import micdoodle8.mods.galacticraft.core.util.WorldUtil;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -266,7 +268,7 @@ public class EntityKoentusMeteorChunk extends Entity implements IProjectile
 
 			float f2;
 			float f3;
-			double damage = 1.6D;//ConfigManagerCore.hardMode ? 3.2D : 1.6D; TODO
+			double damage = ConfigManagerCore.hardMode ? 3.2D : 1.6D;
 
 			if (moving != null)
 			{
@@ -386,7 +388,7 @@ public class EntityKoentusMeteorChunk extends Entity implements IProjectile
 			this.motionX *= f4;
 			this.motionY *= f4;
 			this.motionZ *= f4;
-			//this.motionY -= WorldUtil.getGravityForEntity(this); TODO
+			this.motionY -= WorldUtil.getGravityForEntity(this);
 			this.setPosition(this.posX, this.posY, this.posZ);
 			this.doBlockCollisions();
 		}

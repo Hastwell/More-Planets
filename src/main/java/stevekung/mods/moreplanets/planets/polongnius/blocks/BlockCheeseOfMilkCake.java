@@ -8,7 +8,6 @@
 package stevekung.mods.moreplanets.planets.polongnius.blocks;
 
 import micdoodle8.mods.galacticraft.core.items.ItemBlockDesc.IBlockShiftDesc;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.StatCollector;
 import stevekung.mods.moreplanets.common.blocks.BlockCakeMP;
 

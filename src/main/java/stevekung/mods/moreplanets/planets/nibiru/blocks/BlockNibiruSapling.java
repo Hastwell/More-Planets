@@ -61,7 +61,7 @@ public class BlockNibiruSapling extends BlockSaplingMP
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
 		super.updateTick(world, pos, state, rand);
-		this.checkAndDropBlock(world, pos, state);
+		this.canBlockStay(world, pos, state);
 
 		if (!world.isRemote)
 		{

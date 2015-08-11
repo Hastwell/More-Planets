@@ -1,0 +1,5 @@
+{
+    "variants": {
+		"variant=venus_sandstone_slab": { "model": "moreplanets:venus_sandstone" }
+    }
+}

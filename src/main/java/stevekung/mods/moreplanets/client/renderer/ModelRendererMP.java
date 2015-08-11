@@ -570,6 +570,11 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(VenusBlocks.sulfur_torch, "sulfur_torch", "moreplanets");
 		RegisterHelper.registerModelRender(VenusBlocks.venus_ancient_chest, "venus_ancient_chest", "moreplanets");
 		RegisterHelper.registerModelRender(VenusBlocks.venus_treasure_chest, "venus_treasure_chest", "moreplanets");
+		RegisterHelper.registerModelRender(VenusBlocks.venus_sandstone, 0, "venus_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(VenusBlocks.venus_sandstone, 1, "chiseled_venus_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(VenusBlocks.venus_sandstone, 2, "smooth_venus_sandstone", "moreplanets");
+		RegisterHelper.registerModelRender(VenusBlocks.half_venus_sandstone_slab, 0, "venus_sandstone_slab", "moreplanets");
+		RegisterHelper.registerModelRender(VenusBlocks.venus_sandstone_stairs, "venus_sandstone_stairs", "moreplanets");
 
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 0, "pluto_surface_rock", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 1, "pluto_sub_surface_rock", "moreplanets");
@@ -586,9 +591,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(PlutoBlocks.xeonium_torch, "xeonium_torch", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_ancient_chest, "pluto_ancient_chest", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_treasure_chest, "pluto_treasure_chest", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoBlocks.pluto_heart_crystal, 0, "pluto_heart_crystal", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoBlocks.pluto_heart_crystal, 1, "damaged_pluto_heart_crystal", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoBlocks.pluto_heart_crystal, 2, "broken_pluto_heart_crystal", "moreplanets");
+		RegisterHelper.registerModelRender(PlutoBlocks.pluto_heart_crystal, "pluto_heart_crystal_block", "moreplanets");
 
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_prismarine, 0, "europa_prismarine", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_prismarine, 1, "europa_prismarine_bricks", "moreplanets");
@@ -871,13 +874,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(PlutoItems.space_potato, 1, "baked_space_potato", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoItems.xeonium_dust, "xeonium_dust", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoItems.gravity_boots, "gravity_boots", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, 0, "pluto_heart_crystal_item", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, 1, "damaged_pluto_heart_crystal_item", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, 2, "damaged_pluto_heart_crystal_item", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, 3, "damaged_pluto_heart_crystal_item", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, 4, "damaged_pluto_heart_crystal_item", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, 5, "damaged_pluto_heart_crystal_item", "moreplanets");
-		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, 32, "broken_pluto_heart_crystal_item", "moreplanets");
+		RegisterHelper.registerModelRender(PlutoItems.pluto_heart_crystal, "pluto_heart_crystal_item", "moreplanets");
 
 		RegisterHelper.registerModelRender(EuropaItems.europa_prismarine, 0, "europa_prismarine_shard", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaItems.europa_prismarine, 1, "europa_prismarine_crystals", "moreplanets");

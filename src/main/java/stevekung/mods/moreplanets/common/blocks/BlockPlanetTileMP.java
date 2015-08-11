@@ -50,9 +50,9 @@ public abstract class BlockPlanetTileMP extends BlockBaseMP
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float par6, int fortune)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
-		super.dropBlockAsItemWithChance(world, pos, state, par6, fortune);
+		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 
 		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
 		{

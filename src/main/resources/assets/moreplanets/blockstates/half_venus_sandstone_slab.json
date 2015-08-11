@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=venus_sandstone_slab": { "model": "moreplanets:half_slab_venus_sandstone" },
+        "half=top,variant=venus_sandstone_slab": { "model": "moreplanets:upper_slab_venus_sandstone" }
+    }
+}

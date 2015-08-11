@@ -143,7 +143,7 @@ public class EntityPolongniusMeteor extends Entity
 				}
 				if (moving.entityHit != null)
 				{
-					moving.entityHit.attackEntityFrom(EntityPolongniusMeteor.causeMeteorDamage(this, this.shootingEntity), 6);
+					moving.entityHit.attackEntityFrom(EntityPolongniusMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12.0F : 6.0F);
 				}
 			}
 			this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);

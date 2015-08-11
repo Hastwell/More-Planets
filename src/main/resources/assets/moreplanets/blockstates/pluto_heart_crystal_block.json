@@ -1,22 +1,10 @@
 {
     "variants": {
-        "variant=pluto_heart_crystal": [
+        "normal": [
             { "model": "moreplanets:pluto_heart_crystal" },
             { "model": "moreplanets:pluto_heart_crystal", "y": 90 },
             { "model": "moreplanets:pluto_heart_crystal", "y": 180 },
             { "model": "moreplanets:pluto_heart_crystal", "y": 270 }
-        ],
-		"variant=damaged_pluto_heart_crystal": [
-            { "model": "moreplanets:damaged_pluto_heart_crystal" },
-            { "model": "moreplanets:damaged_pluto_heart_crystal", "y": 90 },
-            { "model": "moreplanets:damaged_pluto_heart_crystal", "y": 180 },
-            { "model": "moreplanets:damaged_pluto_heart_crystal", "y": 270 }
-        ],
-		"variant=broken_pluto_heart_crystal": [
-            { "model": "moreplanets:broken_pluto_heart_crystal" },
-            { "model": "moreplanets:broken_pluto_heart_crystal", "y": 90 },
-            { "model": "moreplanets:broken_pluto_heart_crystal", "y": 180 },
-            { "model": "moreplanets:broken_pluto_heart_crystal", "y": 270 }
         ]
     }
 }

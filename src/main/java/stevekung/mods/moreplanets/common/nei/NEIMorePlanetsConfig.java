@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import micdoodle8.mods.galacticraft.core.items.GCItems;
+import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -81,6 +82,7 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		API.registerHighlightIdentifier(IoBlocks.io_block, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(NibiruBlocks.infected_farmland, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(KoentusBlocks.crystal_farmland, new NEIHighlightHandlerMP());
+		API.registerHighlightIdentifier(PlutoBlocks.pluto_heart_crystal, new NEIHighlightHandlerMP());
 		this.registerRecipe();
 	}
 
@@ -122,7 +124,7 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		input1.put(2, new PositionedStack(new ItemStack(GCItems.basicItem, 1, 2), 69, 69));
 		input1.put(3, new PositionedStack(new ItemStack(Items.redstone), 117, 51));
 		input1.put(4, new PositionedStack(new ItemStack(Items.repeater), 140, 25));
-		this.registerCircuitFabricatorRecipe(input1, new PositionedStack(new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 0), 147, 91));
+		this.registerCircuitFabricatorRecipe(input1, new PositionedStack(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), 147, 91));
 	}
 
 	private void addPurpleCrystalSolarWaferRecipes()

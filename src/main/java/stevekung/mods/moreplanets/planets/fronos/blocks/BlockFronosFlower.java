@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.fronos.blocks;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -222,40 +221,10 @@ public class BlockFronosFlower extends BlockFlowerMP
 		return this.getMetaFromState(state);
 	}
 
-	/*@Override
+	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
-		IBlockState blockState = world.getBlockState(pos.down());
-		Block block = world.getBlockState(pos.down()).getBlock();
-		BlockType type = (BlockType)state.getValue(VARIANT);
-
-		if (type == BlockType.blue_poison_mushroom || type == BlockType.sky_mushroom)
-		{
-			return block == FronosBlocks.fronos_block && (blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
-		}
-		if (type == BlockType.white_moss)
-		{
-			return block == FronosBlocks.fronos_sand && blockState.getValue(BlockFronosSand.VARIANT) == BlockFronosSand.BlockType.white_sand || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
-		}
-		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
-	}*/
-	
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		IBlockState blockState = world.getBlockState(pos.down());
-		Block block = world.getBlockState(pos.down()).getBlock();
-		BlockType type = (BlockType)world.getBlockState(pos).getValue(VARIANT);
-
-		if (type == BlockType.blue_poison_mushroom || type == BlockType.sky_mushroom)
-		{
-			return block == FronosBlocks.fronos_block && (blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || blockState.getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
-		}
-		if (type == BlockType.white_moss)
-		{
-			return block == FronosBlocks.fronos_sand && blockState.getValue(BlockFronosSand.VARIANT) == BlockFronosSand.BlockType.white_sand || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
-		}
-		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
+		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_block && (world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) ? true : false;
 	}
 
 	@Override

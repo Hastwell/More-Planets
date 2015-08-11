@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=venus_sandstone": { "model": "moreplanets:venus_sandstone" },
+		"variant=chiseled_venus_sandstone": { "model": "moreplanets:chiseled_venus_sandstone" },
+		"variant=smooth_venus_sandstone": { "model": "moreplanets:smooth_venus_sandstone" }
+    }
+}

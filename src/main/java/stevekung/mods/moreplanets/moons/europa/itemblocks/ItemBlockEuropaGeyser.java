@@ -5,14 +5,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.pluto.itemblocks;
+package stevekung.mods.moreplanets.moons.europa.itemblocks;
 
 import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 
-public class ItemBlockPlutoHeartCrystal extends ItemBlockBaseMP
+public class ItemBlockEuropaGeyser extends ItemBlockBaseMP
 {
-	public ItemBlockPlutoHeartCrystal(Block block)
+	public ItemBlockEuropaGeyser(Block block)
 	{
 		super(block);
 	}
@@ -20,6 +20,6 @@ public class ItemBlockPlutoHeartCrystal extends ItemBlockBaseMP
 	@Override
 	public String[] getBlockVariantsName()
 	{
-		return new String[] { "default", "damaged", "broken" };
+		return new String[] { "default", "smoke" };
 	}
 }

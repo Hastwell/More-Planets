@@ -14,7 +14,6 @@ import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidMethane;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidNitrogen;
 import stevekung.mods.moreplanets.planets.pluto.itemblocks.ItemBlockPluto;
-import stevekung.mods.moreplanets.planets.pluto.itemblocks.ItemBlockPlutoHeartCrystal;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class PlutoBlocks
@@ -77,7 +76,7 @@ public class PlutoBlocks
 		RegisterHelper.registerBlock(PlutoBlocks.frozen_nitrogen_block);
 		RegisterHelper.registerBlock(PlutoBlocks.pluto_ancient_chest);
 		RegisterHelper.registerBlock(PlutoBlocks.pluto_treasure_chest);
-		RegisterHelper.registerBlock(PlutoBlocks.pluto_heart_crystal, ItemBlockPlutoHeartCrystal.class);
+		RegisterHelper.registerBlock(PlutoBlocks.pluto_heart_crystal);
 		RegisterHelper.registerBlock(PlutoBlocks.xeonium_torch);
 		RegisterHelper.registerBlock(PlutoBlocks.liquid_methane);
 		RegisterHelper.registerBlock(PlutoBlocks.liquid_nitrogen);

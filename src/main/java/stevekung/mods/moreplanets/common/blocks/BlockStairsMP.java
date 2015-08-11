@@ -51,7 +51,8 @@ public class BlockStairsMP extends BlockStairs
 		mercury_dungeon_brick ("stone"),
 		fronos_sandstone ("stone"),
 		white_sandstone ("stone"),
-		cheese_sandstone ("stone");
+		cheese_sandstone ("stone"),
+		venus_sandstone ("stone");
 
 		private List<String> values;
 		private String type;

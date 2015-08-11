@@ -58,7 +58,7 @@ public class MPPotions
 		}
 
 		Potion[] expandedPotionTypes = new Potion[n + 1];
-		System.arraycopy(Potion.potionTypes, 0, expandedPotionTypes, 0, n);   
+		System.arraycopy(Potion.potionTypes, 0, expandedPotionTypes, 0, n);
 		Field field = ReflectionHelper.findField(Potion.class, ObfuscationReflectionHelper.remapFieldNames(Potion.class.getName(), "potionTypes", "field_76425_a"));
 
 		try

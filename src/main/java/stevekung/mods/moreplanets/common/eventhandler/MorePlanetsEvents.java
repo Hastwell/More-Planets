@@ -48,6 +48,8 @@ import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.DamageSourceMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.io.items.IoItems;
 import stevekung.mods.moreplanets.moons.koentus.blocks.BlockCrystalSapling;
@@ -762,6 +764,12 @@ public class MorePlanetsEvents
 		{
 			world.setBlockToAir(pos);
 			event.result = new ItemStack(MercuryItems.dirty_water_bucket);
+			event.setResult(Result.ALLOW);
+		}
+		else if (block == EuropaBlocks.europa_water)
+		{
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(EuropaItems.europa_water_bucket);
 			event.setResult(Result.ALLOW);
 		}
 	}

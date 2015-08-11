@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "moreplanets:blocks/venus_sandstone_top",
+        "side": "moreplanets:blocks/venus_sandstone_smooth"
+    }
+}

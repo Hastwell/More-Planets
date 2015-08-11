@@ -7,21 +7,22 @@
 
 package stevekung.mods.moreplanets.common.blocks;
 
+import java.util.Random;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public abstract class BlockFlowerMP extends BlockBush
+public abstract class BlockFlowerMP extends BlockBaseMP
 {
 	public BlockFlowerMP()
 	{
@@ -52,37 +53,54 @@ public abstract class BlockFlowerMP extends BlockBush
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos)
 	{
-		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.down()).getBlock().canSustainPlant(world, pos.down(), EnumFacing.UP, this);
+		return this.canBlockStay(world, pos, world.getBlockState(pos));
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock)
 	{
-		BlockPos down = pos.down();
-		Block soil = world.getBlockState(down).getBlock();
-		
-		if (state.getBlock() != this)
+		super.onNeighborBlockChange(world, pos, state, neighborBlock);
+		this.checkAndDropBlock(world, pos, state);
+	}
+
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+	{
+		this.checkAndDropBlock(world, pos, state);
+	}
+
+	protected void checkAndDropBlock(World world, BlockPos pos, IBlockState state)
+	{
+		if (!this.canBlockStay(world, pos, state))
 		{
-			return this.canPlaceBlockOn(soil);
+			this.dropBlockAsItem(world, pos, state, 0);
+			world.setBlockState(pos, Blocks.air.getDefaultState(), 3);
 		}
-		return soil.canSustainPlant(world, down, EnumFacing.UP, this);
 	}
 
 	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
 	{
-		return EnumPlantType.Plains;
+		return null;
 	}
 
 	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+	public boolean isOpaqueCube()
 	{
-		IBlockState state = world.getBlockState(pos);
-		
-		if (state.getBlock() != this)
-		{
-			return this.getDefaultState();
-		}
-		return state;
+		return false;
 	}
+
+	@Override
+	public boolean isFullCube()
+	{
+		return false;
+	}
+
+	@Override
+	public EnumWorldBlockLayer getBlockLayer()
+	{
+		return EnumWorldBlockLayer.CUTOUT;
+	}
+
+	public abstract boolean canBlockStay(World world, BlockPos pos, IBlockState state);
 }
