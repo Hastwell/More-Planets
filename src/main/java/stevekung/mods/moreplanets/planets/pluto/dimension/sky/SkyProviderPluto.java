@@ -31,7 +31,6 @@ import cpw.mods.fml.client.FMLClientHandler;
 public class SkyProviderPluto extends IRenderHandler
 {
 	private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/planets/sun.png");
-	private ResourceLocation earthTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/earth.png");
 	private ResourceLocation venusTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/venus.png");
 
 	public int starGLCallList = GLAllocation.generateDisplayLists(3);
@@ -249,20 +248,6 @@ public class SkyProviderPluto extends IRenderHandler
 		tessellator1.draw();
 
 		GL11.glDisable(GL11.GL_BLEND);
-
-		// Earth
-		f10 = 0.35F;
-		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		GL11.glRotatef(15.0F, 5.0F, 0.0F, 0.0F);
-		GL11.glRotatef(-32F, -100.0F, -20.0F, 180.0F);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F);
-		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.earthTexture);
-		tessellator1.startDrawingQuads();
-		tessellator1.addVertexWithUV(-f10, -100.0D, f10, 0, 1);
-		tessellator1.addVertexWithUV(f10, -100.0D, f10, 1, 1);
-		tessellator1.addVertexWithUV(f10, -100.0D, -f10, 1, 0);
-		tessellator1.addVertexWithUV(-f10, -100.0D, -f10, 0, 0);
-		tessellator1.draw();
 
 		// Venus
 		f10 = 1.55F;

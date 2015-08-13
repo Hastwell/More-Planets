@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.core.init;
 
 import net.minecraft.item.Item;
 import stevekung.mods.moreplanets.core.items.ItemMonsterPlacerMP;
+import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.items.IoItems;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
@@ -41,6 +42,7 @@ public class MPItems
 		MercuryItems.init();
 		VenusItems.init();
 		PlutoItems.init();
+		EuropaItems.init();
 		IoItems.init();
 
 		MPItems.initItems();

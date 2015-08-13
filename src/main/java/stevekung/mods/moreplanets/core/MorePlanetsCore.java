@@ -102,8 +102,8 @@ public class MorePlanetsCore
 	public static final String VERSION = MorePlanetsCore.major_version + "." + MorePlanetsCore.minor_version + "." + MorePlanetsCore.build_version;
 
 	public static final int major_version = 1;
-	public static final int minor_version = 2;
-	public static final int build_version = 9;
+	public static final int minor_version = 3;
+	public static final int build_version = 0;
 
 	@SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
 	public static CommonProxyMP proxy;
