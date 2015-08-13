@@ -592,6 +592,10 @@ tile.europa_ice.dense.name=Dense Europa Ice
 tile.packed_europa_ice.name=Europa Packed Ice
 tile.europa_snow_block.name=Europa Snow
 tile.europa_snow_layer.name=Europa Snow
+tile.europa_ice_slush.name=Europa Ice Slush
+tile.europa_salt.name=Europa Salt
+tile.europa_underwater_geyser.default.name=Europa Underwater Geyser
+tile.europa_underwater_geyser.smoke.name=Europa Underwater Smoke Geyser
 
 # ITEMS
 #########Main Item#########
@@ -861,6 +865,7 @@ item.pluto_heart_crystal_item.name=Pluto Heart Crystal
 #########Europa Item#########
 item.europa_prismarine_item.europa_prismarine_shard.name=Europa Prismarine Shard
 item.europa_prismarine_item.europa_prismarine_crystals.name=Europa Prismarine Crystal
+item.europa_water_bucket.name=Europa Water Bucket
 
 # TOOLS
 #########Diona Tools#########
@@ -1169,7 +1174,7 @@ schematics.container.rocket.tier8=Tier 8 Rocket
 schematics.container.rocket.noflag.tier4=Tier 4 Rocket No Flag
 schematics.container.rocket.noflag.tier5=Tier 5 Rocket No Flag
 schematics.container.rocket.noflag.tier6=Tier 6 Rocket No Flag
-container.ultraviolet.solar.name=Ultra Violet Solar
+container.ultraviolet.solar.name=Ultra Violet Solar Panel
 container.powercrystal.name=Power Crystal Generator
 container.candy.extractor.name=Candy Extractor
 
@@ -1203,7 +1208,8 @@ potion.icy_poison=Icy Poison
 
 # DEATH MESSAGES
 death.attack.laser=%1$s was shot by laser
-death.attack.infectionVine=%1$s was infected by infected vine
-death.attack.infectedGas=%1$s was killed by Infected Gas
-death.attack.purpleSpike=%1$s was pricked by purple spike flower
+death.attack.infected_vine=%1$s was infected by infected vine
+death.attack.infected_gas=%1$s was killed by Infected Gas
+death.attack.purple_spike=%1$s was pricked by purple spike flower
 death.attack.chemical=%1$s was killed by chemical
+death.attack.icy_poison=%1$s was poisoned by icy poison crystal

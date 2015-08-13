@@ -218,10 +218,6 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(KoentusBlocks.crystal_dirt, 1, 0);
 		}
-		if (block == PlutoBlocks.pluto_heart_crystal)
-		{
-			return new ItemStack(PlutoBlocks.pluto_heart_crystal, 1, meta);
-		}
 		return null;
 	}
 }

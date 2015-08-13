@@ -94,54 +94,54 @@ public class RegisterHelper
 		EntityRegistry.registerModEntity(entity, name, id++, mod, 256, 1, sendVelocityUpdate);
 	}
 
-	public static void registerVariantName(Item item, String[] variant)
+	public static void registerVariantsName(Item item, String[] variant)
 	{
 		ModelBakery.addVariantName(item, variant);
 	}
 
-	public static void registerVariantName(Block block, String[] variant)
+	public static void registerVariantsName(Block block, String[] variant)
 	{
-		RegisterHelper.registerVariantName(Item.getItemFromBlock(block), variant);
+		RegisterHelper.registerVariantsName(Item.getItemFromBlock(block), variant);
 	}
 
 	public static void registerVariantNameWithDyeColor(Block block, String folder)
 	{
-		RegisterHelper.registerVariantName(block, "white_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "orange_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "magenta_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "light_blue_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "yellow_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "lime_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "pink_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "gray_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "silver_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "cyan_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "purple_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "blue_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "brown_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "green_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "red_" + getBlockName(block), folder);
-		RegisterHelper.registerVariantName(block, "black_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "white_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "orange_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "magenta_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "light_blue_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "yellow_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "lime_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "pink_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "gray_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "silver_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "cyan_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "purple_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "blue_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "brown_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "green_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "red_" + getBlockName(block), folder);
+		RegisterHelper.registerVariantsName(block, "black_" + getBlockName(block), folder);
 	}
 
 	public static void registerVariantNameWithDyeColor(Item item, String folder)
 	{
-		RegisterHelper.registerVariantName(item, "white_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "orange_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "magenta_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "light_blue_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "yellow_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "lime_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "pink_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "gray_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "silver_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "cyan_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "purple_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "blue_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "brown_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "green_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "red_" + getItemName(item), folder);
-		RegisterHelper.registerVariantName(item, "black_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "white_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "orange_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "magenta_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "light_blue_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "yellow_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "lime_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "pink_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "gray_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "silver_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "cyan_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "purple_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "blue_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "brown_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "green_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "red_" + getItemName(item), folder);
+		RegisterHelper.registerVariantsName(item, "black_" + getItemName(item), folder);
 	}
 
 	public static void registerModelRender(Block block, int meta, String variantName, String folder)
@@ -234,12 +234,12 @@ public class RegisterHelper
 		return item.getUnlocalizedName().substring(5);
 	}
 
-	private static void registerVariantName(Block block, String variant, String folder)
+	private static void registerVariantsName(Block block, String variant, String folder)
 	{
-		RegisterHelper.registerVariantName(Item.getItemFromBlock(block), variant, folder);
+		RegisterHelper.registerVariantsName(Item.getItemFromBlock(block), variant, folder);
 	}
 
-	private static void registerVariantName(Item item, String variant, String folder)
+	private static void registerVariantsName(Item item, String variant, String folder)
 	{
 		ModelBakery.addVariantName(item, folder + ":" + variant);
 	}

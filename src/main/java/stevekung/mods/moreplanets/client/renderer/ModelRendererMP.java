@@ -603,6 +603,10 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(EuropaBlocks.packed_europa_ice, "packed_europa_ice", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_snow_block, "europa_snow_block", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaBlocks.europa_snow_layer, "europa_snow_layer", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_underwater_geyser, 0, "europa_underwater_geyser", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_underwater_geyser, 1, "europa_underwater_smoke_geyser", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_ice_slush, "europa_ice_slush", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaBlocks.europa_salt, "europa_salt", "moreplanets");
 
 		// Items
 		RegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1000, "spawn_egg_mp", "moreplanets");
@@ -878,6 +882,7 @@ public class ModelRendererMP
 
 		RegisterHelper.registerModelRender(EuropaItems.europa_prismarine, 0, "europa_prismarine_shard", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaItems.europa_prismarine, 1, "europa_prismarine_crystals", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaItems.europa_water_bucket, "europa_water_bucket", "moreplanets");
 
 		// Tools
 		RegisterHelper.registerModelRender(DionaToolsItems.quontonium_sword, "quontonium_sword", "moreplanets");

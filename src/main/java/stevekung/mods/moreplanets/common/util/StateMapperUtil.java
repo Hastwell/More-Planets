@@ -14,6 +14,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.block.statemap.StateMap.Builder;
 import net.minecraftforge.fluids.BlockFluidBase;
 import stevekung.mods.moreplanets.common.blocks.BlockLeavesMP;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.BlockFronisiumTNT;
@@ -69,5 +70,6 @@ public class StateMapperUtil
 		RegisterHelper.registerBlockWithStateMapper(MercuryBlocks.dirty_water, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
 		RegisterHelper.registerBlockWithStateMapper(PlutoBlocks.liquid_methane, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
 		RegisterHelper.registerBlockWithStateMapper(PlutoBlocks.liquid_nitrogen, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
+		RegisterHelper.registerBlockWithStateMapper(EuropaBlocks.europa_water, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
 	}
 }

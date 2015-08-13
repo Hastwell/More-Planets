@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "moreplanets:items/green_redstone_torch"
+        "layer0": "moreplanets:items/europa_water_bucket"
     },
     "display": {
         "thirdperson": {

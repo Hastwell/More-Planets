@@ -51,8 +51,6 @@ public class BlockFluidCaramel extends BlockFluidFinite
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		super.randomDisplayTick(world, pos, state, rand);
-
 		if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, pos.down()) && !world.getBlockState(pos.down(2)).getBlock().getMaterial().blocksMovement())
 		{
 			double d5 = pos.getX() + rand.nextFloat();

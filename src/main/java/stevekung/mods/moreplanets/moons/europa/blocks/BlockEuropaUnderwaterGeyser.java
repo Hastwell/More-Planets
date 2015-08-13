@@ -27,11 +27,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
-public class BlockEuropaGeyser extends BlockBaseMP
+public class BlockEuropaUnderwaterGeyser extends BlockBaseMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockEuropaGeyser(String name)
+	public BlockEuropaUnderwaterGeyser(String name)
 	{
 		super(Material.rock);
 		this.setHardness(2.0F);
@@ -77,7 +77,7 @@ public class BlockEuropaGeyser extends BlockBaseMP
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		return Item.getItemFromBlock(EuropaBlocks.europa_geyser);
+		return Item.getItemFromBlock(EuropaBlocks.europa_underwater_geyser);
 	}
 
 	@Override

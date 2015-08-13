@@ -224,6 +224,12 @@ public class BlockFronosFlower extends BlockFlowerMP
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
+		BlockType type = (BlockType) world.getBlockState(pos).getValue(VARIANT);
+		
+		if (world.getBlockState(pos) == FronosBlocks.fronos_flower && type == BlockType.white_moss)
+		{
+			return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_sand && world.getBlockState(pos.down()).getValue(BlockFronosSand.VARIANT) == BlockFronosSand.BlockType.white_sand ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : false;
+		}
 		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_block && (world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) ? true : false;
 	}
 

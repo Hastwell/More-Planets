@@ -485,7 +485,7 @@ public class MorePlanetsEvents
 			{
 				if (entity.ticksExisted % 35 == 0)
 				{
-					entity.attackEntityFrom(DamageSourceMP.infected_gas, 0.5F);
+					entity.attackEntityFrom(DamageSourceMP.infected_gas, 0.5F + entity.getActivePotionEffect(MPPotions.infected_gas).getAmplifier());
 				}
 				if (entity.getActivePotionEffect(MPPotions.infected_gas).getDuration() == 0)
 				{
@@ -497,7 +497,7 @@ public class MorePlanetsEvents
 			{
 				if (entity.ticksExisted % 8 == 0)
 				{
-					entity.attackEntityFrom(DamageSourceMP.chemical, 1.0F);
+					entity.attackEntityFrom(DamageSourceMP.chemical, 1.0F + entity.getActivePotionEffect(MPPotions.chemical).getAmplifier());
 				}
 				if (entity.getActivePotionEffect(MPPotions.chemical).getDuration() == 0)
 				{
@@ -521,7 +521,7 @@ public class MorePlanetsEvents
 			}
 			else if (entity.isPotionActive(MPPotions.icy_poison))
 			{
-				entity.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F);
+				entity.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F + entity.getActivePotionEffect(MPPotions.icy_poison).getAmplifier());
 
 				if (entity.getActivePotionEffect(MPPotions.icy_poison).getDuration() == 0)
 				{

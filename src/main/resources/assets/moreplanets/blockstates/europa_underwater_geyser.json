@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=europa_underwater_geyser": { "model": "moreplanets:europa_underwater_geyser" },
+        "variant=europa_underwater_smoke_geyser": { "model": "moreplanets:europa_underwater_smoke_geyser" }
+    }
+}

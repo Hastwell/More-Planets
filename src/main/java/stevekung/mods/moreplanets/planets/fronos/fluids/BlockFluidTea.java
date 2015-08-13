@@ -38,8 +38,6 @@ public class BlockFluidTea extends BlockFluidBaseMP
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		super.randomDisplayTick(world, pos, state, rand);
-
 		if (rand.nextInt(1) == 0)
 		{
 			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.TEA, pos.getX() + rand.nextFloat(), pos.getY() + 1, pos.getZ() + rand.nextFloat());

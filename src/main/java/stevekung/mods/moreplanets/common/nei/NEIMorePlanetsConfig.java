@@ -82,7 +82,6 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		API.registerHighlightIdentifier(IoBlocks.io_block, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(NibiruBlocks.infected_farmland, new NEIHighlightHandlerMP());
 		API.registerHighlightIdentifier(KoentusBlocks.crystal_farmland, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(PlutoBlocks.pluto_heart_crystal, new NEIHighlightHandlerMP());
 		this.registerRecipe();
 	}
 

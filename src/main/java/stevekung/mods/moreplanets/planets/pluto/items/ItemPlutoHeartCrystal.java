@@ -7,9 +7,14 @@
 
 package stevekung.mods.moreplanets.planets.pluto.items;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
 public class ItemPlutoHeartCrystal extends ItemMorePlanets
@@ -31,5 +36,15 @@ public class ItemPlutoHeartCrystal extends ItemMorePlanets
 			itemStack.damageItem(1, player);
 		}
 		return itemStack;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+	{
+		if (player.worldObj.isRemote)
+		{
+			list.add(EnumChatFormatting.YELLOW + "Right clicked for increase your health");
+		}
 	}
 }

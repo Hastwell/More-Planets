@@ -28,7 +28,7 @@ public class BlockPlutoHeartCrystal extends BlockPlanetTileMP /*implements IDete
 		super(Material.glass);
 		this.setUnlocalizedName(name);
 		this.setHardness(0.55F);
-		this.setBlockBounds(0.1F, 0.0F, 0.2F, 0.9F, 0.975F, 0.8F);
+		this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.975F, 0.9F);
 	}
 
 	@Override

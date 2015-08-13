@@ -30,7 +30,7 @@ public class EuropaBlocks
 	public static Block europa_sea_lantern;
 	public static Block europa_ice_slush;
 	public static Block europa_salt;
-	public static Block europa_geyser;
+	public static Block europa_underwater_geyser;
 	public static Block europa_water;
 
 	// Fluid
@@ -53,7 +53,7 @@ public class EuropaBlocks
 		EuropaBlocks.europa_sea_lantern = new BlockEuropaSeaLantern("europa_sea_lantern");
 		EuropaBlocks.europa_ice_slush = new BlockEuropaIceSlush("europa_ice_slush");
 		EuropaBlocks.europa_salt = new BlockBaseMP("europa_salt", Material.rock).setHardness(1.5F);
-		EuropaBlocks.europa_geyser = new BlockEuropaGeyser("europa_geyser");
+		EuropaBlocks.europa_underwater_geyser = new BlockEuropaUnderwaterGeyser("europa_underwater_geyser");
 
 		EuropaBlocks.europa_water_fluid = new FluidMP("europa_water_fluid").setBlock(EuropaBlocks.europa_water);
 		FluidRegistry.registerFluid(EuropaBlocks.europa_water_fluid);
@@ -67,7 +67,7 @@ public class EuropaBlocks
 		EuropaBlocks.europa_prismarine.setHarvestLevel("pickaxe", 0);
 		EuropaBlocks.europa_ice_slush.setHarvestLevel("shovel", 0);
 		EuropaBlocks.europa_salt.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.europa_geyser.setHarvestLevel("pickaxe", 0);
+		EuropaBlocks.europa_underwater_geyser.setHarvestLevel("pickaxe", 0);
 	}
 
 	private static void registerBlocks()
@@ -77,9 +77,10 @@ public class EuropaBlocks
 		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_block);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_ice_slush);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_salt);
-		RegisterHelper.registerBlock(EuropaBlocks.europa_geyser, ItemBlockEuropaGeyser.class);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_underwater_geyser, ItemBlockEuropaGeyser.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_prismarine, ItemBlockEuropaPrismarine.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_sea_lantern);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockEuropaSnowLayer.class);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_water);
 	}
 }

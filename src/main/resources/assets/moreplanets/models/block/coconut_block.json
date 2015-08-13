@@ -1,7 +1,21 @@
 {
-    "parent": "moreplanets:block/cream_head",
     "textures": {
-        "particle": "moreplanets:blocks/coconut_block",
-        "texture": "moreplanets:blocks/coconut_block"
-    }
+		"particle": "moreplanets:blocks/coconut_block_particle",
+        "texture": "moreplanets:blocks/coconut_block",
+		"top": "moreplanets:blocks/coconut_block_top"
+    },
+    "elements": [
+		{
+            "from": [ 3.0, 3.0, 3.0 ], 
+            "to": [ 13.0, 13.0, 13.0 ], 
+            "faces": {
+                "north": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "east": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "south": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "west": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "up": { "texture": "#top", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "down": { "texture": "#top", "uv": [ 3.0, 3.0, 13.0, 13.0 ] }
+            }
+        }
+    ]
 }

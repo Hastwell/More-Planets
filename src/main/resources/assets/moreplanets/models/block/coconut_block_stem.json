@@ -1,31 +1,34 @@
 {
     "textures": {
-        "particle": "moreplanets:blocks/coconut_block",
+		"particle": "moreplanets:blocks/coconut_block_particle",
         "texture": "moreplanets:blocks/coconut_block",
+		"top": "moreplanets:blocks/coconut_block_top",
 		"stem": "moreplanets:blocks/log_coconut_side",
 		"stem_top": "moreplanets:blocks/log_coconut_top"
     },
     "elements": [
-        {   "from": [ 3, 3, 3 ],
-            "to": [ 13, 13, 13 ],
+		{
+            "from": [ 3.0, 3.0, 3.0 ], 
+            "to": [ 13.0, 13.0, 13.0 ], 
             "faces": {
-                "down":  { "uv": [ 3, 3, 13, 13 ], "texture": "#texture" },
-                "up":    { "uv": [ 3, 3, 13, 13 ], "texture": "#texture" },
-                "north": { "uv": [ 3, 3, 13, 13 ], "texture": "#texture" },
-                "south": { "uv": [ 3, 3, 13, 13 ], "texture": "#texture" },
-                "west":  { "uv": [ 3, 3, 13, 13 ], "texture": "#texture" },
-                "east":  { "uv": [ 3, 3, 13, 13 ], "texture": "#texture" }
+                "north": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "east": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "south": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "west": { "texture": "#texture", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "up": { "texture": "#top", "uv": [ 3.0, 3.0, 13.0, 13.0 ] },
+                "down": { "texture": "#top", "uv": [ 3.0, 3.0, 13.0, 13.0 ] }
             }
         },
-		{   "from": [ 7, 13, 7 ],
-            "to": [ 9, 16, 9 ],
+		{
+            "from": [ 7.0, 13.0, 7.0 ], 
+            "to": [ 9.0, 16.0, 9.0 ], 
             "faces": {
-                "down":  { "uv": [ 7, 7, 9, 9 ], "texture": "#stem_top" },
-                "up":    { "uv": [ 7, 7, 9, 9 ], "texture": "#stem_top" },
-                "north": { "uv": [ 7, 0, 9, 3 ], "texture": "#stem" },
-                "south": { "uv": [ 7, 0, 9, 3 ], "texture": "#stem" },
-                "west":  { "uv": [ 7, 0, 9, 3 ], "texture": "#stem" },
-                "east":  { "uv": [ 7, 0, 9, 3 ], "texture": "#stem" }
+                "north": { "texture": "#stem", "uv": [ 7.0, 6.0, 9.0, 9.0 ] },
+                "east": { "texture": "#stem", "uv": [ 7.0, 6.0, 9.0, 9.0 ] },
+                "south": { "texture": "#stem", "uv": [ 7.0, 6.0, 9.0, 9.0 ] },
+                "west": { "texture": "#stem", "uv": [ 7.0, 6.0, 9.0, 9.0 ] },
+                "up": { "texture": "#stem_top", "uv": [ 7.0, 7.0, 9.0, 9.0 ] },
+                "down": { "texture": "#stem_top", "uv": [ 7.0, 7.0, 9.0, 9.0 ] }
             }
         }
     ]
