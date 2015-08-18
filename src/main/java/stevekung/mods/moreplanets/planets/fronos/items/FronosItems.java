@@ -110,7 +110,7 @@ public class FronosItems
 	{
 		RegisterHelper.registerFluidContainer(FronosBlocks.coconut_milk_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
 		RegisterHelper.registerFluidContainer(FronosBlocks.mineral_water_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 1), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.ovantine_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 2), new ItemStack(Items.bucket, 1, 0));
+		RegisterHelper.registerFluidContainer(FronosBlocks.ovaltine_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 2), new ItemStack(Items.bucket, 1, 0));
 		RegisterHelper.registerFluidContainer(FronosBlocks.tea_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 3), new ItemStack(Items.bucket, 1, 0));
 		RegisterHelper.registerFluidContainer(FronosBlocks.caramel_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 4), new ItemStack(Items.bucket, 1, 0));
 	}

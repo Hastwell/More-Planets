@@ -64,6 +64,6 @@ public class ItemCandyFood extends ItemFoodMP
 	@Override
 	protected String[] getItemVariantsName()
 	{
-		return new String[] { "ovantine_powder", "chocolate_bars", "caramel" };
+		return new String[] { "ovaltine_powder", "chocolate_bars", "caramel" };
 	}
 }

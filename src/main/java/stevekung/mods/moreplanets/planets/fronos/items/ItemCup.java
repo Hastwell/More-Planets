@@ -153,7 +153,7 @@ public class ItemCup extends ItemFoodMP
 							player.dropPlayerItemWithRandomChoice(new ItemStack(this, 1, 1), false);
 						}
 					}
-					else if (world.getBlockState(pos) == FronosBlocks.ovantine.getDefaultState())
+					else if (world.getBlockState(pos) == FronosBlocks.ovaltine.getDefaultState())
 					{
 						--itemStack.stackSize;
 						world.setBlockToAir(pos);
@@ -316,7 +316,7 @@ public class ItemCup extends ItemFoodMP
 			}
 			else if (itemStack.getItemDamage() == 2)
 			{
-				cup = FronosBlocks.ovantine_cup;
+				cup = FronosBlocks.ovaltine_cup;
 			}
 			else if (itemStack.getItemDamage() == 3)
 			{
@@ -367,6 +367,6 @@ public class ItemCup extends ItemFoodMP
 	@Override
 	protected String[] getItemVariantsName()
 	{
-		return new String[] { "empty_cup", "mineral_water_cup", "ovantine_cup", "coconut_milk_cup", "cheese_of_milk_cup", "tea_cup", "caramel_cup" };
+		return new String[] { "empty_cup", "mineral_water_cup", "ovaltine_cup", "coconut_milk_cup", "cheese_of_milk_cup", "tea_cup", "caramel_cup" };
 	}
 }

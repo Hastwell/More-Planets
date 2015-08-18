@@ -84,7 +84,7 @@ public class ItemFronosBucket extends ItemBaseMP
 					}
 					else if (meta == 2)
 					{
-						if (state == FronosBlocks.ovantine.getDefaultState().withProperty(BlockFluidBase.LEVEL, 0))
+						if (state == FronosBlocks.ovaltine.getDefaultState().withProperty(BlockFluidBase.LEVEL, 0))
 						{
 							world.setBlockToAir(pos);
 							return this.fillBucket(itemStack, player, new ItemStack(this, 1, 2));
@@ -157,7 +157,7 @@ public class ItemFronosBucket extends ItemBaseMP
 		case 1:
 			return FronosBlocks.mineral_water;
 		case 2:
-			return FronosBlocks.ovantine;
+			return FronosBlocks.ovaltine;
 		case 3:
 			return FronosBlocks.tea;
 		case 4:
@@ -207,6 +207,6 @@ public class ItemFronosBucket extends ItemBaseMP
 	@Override
 	protected String[] getItemVariantsName()
 	{
-		return new String[] { "coconut_milk_bucket", "mineral_water_bucket", "ovantine_bucket", "tea_bucket", "caramel_bucket" };
+		return new String[] { "coconut_milk_bucket", "mineral_water_bucket", "ovaltine_bucket", "tea_bucket", "caramel_bucket" };
 	}
 }

@@ -153,13 +153,13 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		API.hideItem(new ItemStack(FronosBlocks.maple_door_block));
 		API.hideItem(new ItemStack(FronosBlocks.coconut_milk));
 		API.hideItem(new ItemStack(FronosBlocks.mineral_water));
-		API.hideItem(new ItemStack(FronosBlocks.ovantine));
+		API.hideItem(new ItemStack(FronosBlocks.ovaltine));
 		API.hideItem(new ItemStack(FronosBlocks.tea));
 		API.hideItem(new ItemStack(FronosBlocks.caramel));
 		API.hideItem(new ItemStack(FronosBlocks.cup));
 		API.hideItem(new ItemStack(FronosBlocks.mineral_water_cup));
 		API.hideItem(new ItemStack(FronosBlocks.cheese_of_milk_cup));
-		API.hideItem(new ItemStack(FronosBlocks.ovantine_cup));
+		API.hideItem(new ItemStack(FronosBlocks.ovaltine_cup));
 		API.hideItem(new ItemStack(FronosBlocks.coconut_milk_cup));
 		API.hideItem(new ItemStack(FronosBlocks.tea_cup));
 		API.hideItem(new ItemStack(FronosBlocks.caramel_cup));

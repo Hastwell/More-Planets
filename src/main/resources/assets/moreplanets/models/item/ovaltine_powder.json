@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "moreplanets:items/ovantine_powder"
+        "layer0": "moreplanets:items/ovaltine_powder"
     },
     "display": {
         "thirdperson": {

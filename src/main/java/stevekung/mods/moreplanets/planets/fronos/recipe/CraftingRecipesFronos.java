@@ -57,7 +57,7 @@ public class CraftingRecipesFronos
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.lemon_cream_layer, 6), new Object[] { "LLL", 'L', new ItemStack(FronosBlocks.cream_block, 1, 5) });
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosBlocks.fronos_planks, 4, 0), new ItemStack(FronosBlocks.fronos_log, 1, 0) );
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosBlocks.fronos_planks, 4, 1), new ItemStack(FronosBlocks.fronos_log, 1, 1) );
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.ovantine_block), new Object[] { "OO", "OO", 'O', new ItemStack(FronosItems.candy_food, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.ovaltine_block), new Object[] { "OO", "OO", 'O', new ItemStack(FronosItems.candy_food, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.chocolate_block), new Object[] { "CC", "CC", 'C', new ItemStack(FronosItems.candy_food, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.pink_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.orange_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 1) });

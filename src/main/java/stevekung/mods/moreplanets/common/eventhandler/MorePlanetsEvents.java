@@ -625,7 +625,7 @@ public class MorePlanetsEvents
 			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 1);
 			event.setResult(Result.ALLOW);
 		}
-		else if (block == FronosBlocks.ovantine)
+		else if (block == FronosBlocks.ovaltine)
 		{
 			world.setBlockToAir(pos);
 			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 2);

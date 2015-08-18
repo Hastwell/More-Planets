@@ -126,7 +126,7 @@ public class ClientProxyMP extends CommonProxyMP
 		{
 			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.4F, 0.7F, 0.8F, 0.6F, false);
 		}
-		else if (type == ParticleTypesMP.OVANTINE_DRIP)
+		else if (type == ParticleTypesMP.OVALTINE_DRIP)
 		{
 			entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.65F, 0.4F, 0.25F, 0.9F, false);
 		}
@@ -250,7 +250,7 @@ public class ClientProxyMP extends CommonProxyMP
 		{
 			entityfx = new EntityMineralWaterFX(mc.theWorld, x, y, z);
 		}
-		else if (type == ParticleTypesMP.OVANTINE)
+		else if (type == ParticleTypesMP.OVALTINE)
 		{
 			entityfx = new EntityOvantineSmokeFX(mc.theWorld, x, y, z);
 		}
@@ -298,7 +298,7 @@ public class ClientProxyMP extends CommonProxyMP
 		KOENTUS_SLUDGE_DRIP,
 		COCONUT_MILK_DRIP,
 		MINERAL_WATER_DRIP,
-		OVANTINE_DRIP,
+		OVALTINE_DRIP,
 		CHEESE_OF_MILK_DRIP,
 		FROZEN_WATER_DRIP,
 		TEA_DRIP,
@@ -329,7 +329,7 @@ public class ClientProxyMP extends CommonProxyMP
 		PURPLE_SPIKE,
 		COCONUT_MILK,
 		MINERAL_WATER,
-		OVANTINE,
+		OVALTINE,
 		TEA,
 		SIRIUS_LAVA,
 		GOLDEN_DUST,

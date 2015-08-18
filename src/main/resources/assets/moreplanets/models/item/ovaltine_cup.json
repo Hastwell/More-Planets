@@ -1,5 +1,5 @@
 {
-    "parent": "moreplanets:block/ovantine_cup",
+    "parent": "moreplanets:block/ovaltine_cup",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

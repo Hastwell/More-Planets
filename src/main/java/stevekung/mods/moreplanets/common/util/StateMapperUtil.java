@@ -55,7 +55,7 @@ public class StateMapperUtil
 		RegisterHelper.registerBlockWithStateMapper(SiriusBBlocks.sirius_fire, new Builder().addPropertiesToIgnore(new IProperty[] {BlockSiriusFire.AGE}).build());
 		RegisterHelper.registerBlockWithStateMapper(FronosBlocks.coconut_milk, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
 		RegisterHelper.registerBlockWithStateMapper(FronosBlocks.mineral_water, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
-		RegisterHelper.registerBlockWithStateMapper(FronosBlocks.ovantine, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
+		RegisterHelper.registerBlockWithStateMapper(FronosBlocks.ovaltine, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
 		RegisterHelper.registerBlockWithStateMapper(FronosBlocks.caramel, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
 		RegisterHelper.registerBlockWithStateMapper(FronosBlocks.tea, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());
 		RegisterHelper.registerBlockWithStateMapper(PolongniusBlocks.cheese_of_milk, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build());

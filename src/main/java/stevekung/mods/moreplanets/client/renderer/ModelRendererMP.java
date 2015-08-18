@@ -316,7 +316,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosBlocks.tea_cream_layer, "tea_cream_layer", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.lemon_cream_layer, "lemon_cream_layer", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.cookie_block, "cookie_block", "moreplanets");
-		RegisterHelper.registerModelRender(FronosBlocks.ovantine_block, "ovantine_block", "moreplanets");
+		RegisterHelper.registerModelRender(FronosBlocks.ovaltine_block, "ovaltine_block", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.chocolate_block, "chocolate_block", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.caramel_block, "caramel_block", "moreplanets");
 		RegisterHelper.registerModelRender(FronosBlocks.fronos_ancient_chest, "fronos_ancient_chest", "moreplanets");
@@ -750,7 +750,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosItems.fronos_food, 13, "sky_mushroom_stew", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.fronos_food, 14, "rainbow_cloud_ice_cream", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.fronos_food, 15, "lemon_ice_cream", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.candy_food, 0, "ovantine_powder", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.candy_food, 0, "ovaltine_powder", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.candy_food, 1, "chocolate_bars", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.candy_food, 2, "caramel", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.candy_cane, 0, "pink_candy_cane_item", "moreplanets");
@@ -810,7 +810,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosItems.tier_8_rocket_module, 2, "tier_8_heavy_duty_plate", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 0, "coconut_milk_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 1, "mineral_water_bucket", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 2, "ovantine_bucket", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 2, "ovaltine_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 3, "tea_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 4, "caramel_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.candy_bow, 0, "candy_bow", "moreplanets");
@@ -821,7 +821,7 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosItems.maple_door, "maple_door", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.cup, 0, "empty_cup", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.cup, 1, "mineral_water_cup", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.cup, 2, "ovantine_cup", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.cup, 2, "ovaltine_cup", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.cup, 3, "coconut_milk_cup", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.cup, 4, "cheese_of_milk_cup", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.cup, 5, "tea_cup", "moreplanets");

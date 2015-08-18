@@ -24,7 +24,7 @@ import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDirtMP;
 import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidCaramel;
 import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidCoconutMilk;
 import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidMineralWater;
-import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidOvantine;
+import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidOvaltine;
 import stevekung.mods.moreplanets.planets.fronos.fluids.BlockFluidTea;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockCandyCane1;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockCandyCane2;
@@ -73,7 +73,7 @@ public class FronosBlocks
 	public static Block frosted_cake;
 	public static Block jelly_block;
 	public static Block cookie_block;
-	public static Block ovantine_block;
+	public static Block ovaltine_block;
 	public static Block chocolate_block;
 	public static Block caramel_block;
 	public static Block cloud_block;
@@ -142,7 +142,7 @@ public class FronosBlocks
 	public static Block purple_candy_torch;
 	public static Block cup;
 	public static Block mineral_water_cup;
-	public static Block ovantine_cup;
+	public static Block ovaltine_cup;
 	public static Block coconut_milk_cup;
 	public static Block cheese_of_milk_cup;
 	public static Block tea_cup;
@@ -151,7 +151,7 @@ public class FronosBlocks
 	public static Block maple_door_block;
 	public static Block coconut_milk;
 	public static Block mineral_water;
-	public static Block ovantine;
+	public static Block ovaltine;
 	public static Block tea;
 	public static Block caramel;
 	public static Block fronos_sandstone;
@@ -164,7 +164,7 @@ public class FronosBlocks
 	// Fluids
 	public static Fluid coconut_milk_fluid;
 	public static Fluid mineral_water_fluid;
-	public static Fluid ovantine_fluid;
+	public static Fluid ovaltine_fluid;
 	public static Fluid tea_fluid;
 	public static Fluid caramel_fluid;
 
@@ -191,7 +191,7 @@ public class FronosBlocks
 		FronosBlocks.frosted_cake = new BlockFrostedCake("frosted_cake_block");
 		FronosBlocks.jelly_block = new BlockJelly("jelly_block");
 		FronosBlocks.cookie_block = new BlockCookie("cookie_block");
-		FronosBlocks.ovantine_block = new BlockOvantine("ovantine_block");
+		FronosBlocks.ovaltine_block = new BlockOvaltine("ovaltine_block");
 		FronosBlocks.chocolate_block = new BlockBaseMP("chocolate_block", Material.clay).setStepSound(Block.soundTypeSnow).setHardness(0.55F);
 		FronosBlocks.caramel_block = new BlockCaramel("caramel_block");
 		FronosBlocks.cloud_block = new BlockFronosCloud("fronos_cloud");
@@ -260,7 +260,7 @@ public class FronosBlocks
 		FronosBlocks.purple_candy_torch = new BlockCandyTorch("purple_candy_torch");
 		FronosBlocks.cup = new BlockCup("cup_block");
 		FronosBlocks.mineral_water_cup = new BlockMineralWaterCup("mineral_water_cup");
-		FronosBlocks.ovantine_cup = new BlockOvantineCup("ovantine_cup");
+		FronosBlocks.ovaltine_cup = new BlockOvaltineCup("ovaltine_cup");
 		FronosBlocks.coconut_milk_cup = new BlockCoconutMilkCup("coconut_milk_cup");
 		FronosBlocks.cheese_of_milk_cup = new BlockCheeseOfMilkCup("cheese_of_milk_cup");
 		FronosBlocks.tea_cup = new BlockTeaCup("tea_cup");
@@ -276,17 +276,17 @@ public class FronosBlocks
 
 		FronosBlocks.coconut_milk_fluid = new FluidMP("coconut_milk_fluid").setBlock(FronosBlocks.coconut_milk).setViscosity(2000);
 		FronosBlocks.mineral_water_fluid = new FluidMP("mineral_water_fluid").setBlock(FronosBlocks.mineral_water);
-		FronosBlocks.ovantine_fluid = new FluidMP("ovantine_fluid").setBlock(FronosBlocks.ovantine).setViscosity(2000);
+		FronosBlocks.ovaltine_fluid = new FluidMP("ovaltine_fluid").setBlock(FronosBlocks.ovaltine).setViscosity(2000);
 		FronosBlocks.tea_fluid = new FluidMP("tea_fluid").setBlock(FronosBlocks.tea).setViscosity(2000);
 		FronosBlocks.caramel_fluid = new FluidMP("caramel_fluid").setBlock(FronosBlocks.caramel).setViscosity(3000);
 		RegisterHelper.registerFluid(FronosBlocks.coconut_milk_fluid);
 		RegisterHelper.registerFluid(FronosBlocks.mineral_water_fluid);
-		RegisterHelper.registerFluid(FronosBlocks.ovantine_fluid);
+		RegisterHelper.registerFluid(FronosBlocks.ovaltine_fluid);
 		RegisterHelper.registerFluid(FronosBlocks.tea_fluid);
 		RegisterHelper.registerFluid(FronosBlocks.caramel_fluid);
 		FronosBlocks.coconut_milk = new BlockFluidCoconutMilk("coconut_milk_fluid");
 		FronosBlocks.mineral_water = new BlockFluidMineralWater("mineral_water_fluid");
-		FronosBlocks.ovantine = new BlockFluidOvantine("ovantine_fluid");
+		FronosBlocks.ovaltine = new BlockFluidOvaltine("ovaltine_fluid");
 		FronosBlocks.tea = new BlockFluidTea("tea_fluid");
 		FronosBlocks.caramel = new BlockFluidCaramel("caramel_fluid");
 	}
@@ -308,7 +308,7 @@ public class FronosBlocks
 		FronosBlocks.orange_cream_layer.setHarvestLevel("shovel", 0);
 		FronosBlocks.tea_cream_layer.setHarvestLevel("shovel", 0);
 		FronosBlocks.lemon_cream_layer.setHarvestLevel("shovel", 0);
-		FronosBlocks.ovantine_block.setHarvestLevel("shovel", 0);
+		FronosBlocks.ovaltine_block.setHarvestLevel("shovel", 0);
 		FronosBlocks.chocolate_block.setHarvestLevel("shovel", 0);
 		FronosBlocks.cookie_block.setHarvestLevel("shovel", 0);
 		FronosBlocks.frosted_cake.setHarvestLevel("shovel", 0);
@@ -381,7 +381,7 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.frosted_cake, ItemBlockFrostedCake.class);
 		RegisterHelper.registerBlock(FronosBlocks.jelly_block, ItemBlockJelly.class);
 		RegisterHelper.registerBlock(FronosBlocks.cookie_block);
-		RegisterHelper.registerBlock(FronosBlocks.ovantine_block);
+		RegisterHelper.registerBlock(FronosBlocks.ovaltine_block);
 		RegisterHelper.registerBlock(FronosBlocks.chocolate_block);
 		RegisterHelper.registerBlock(FronosBlocks.caramel_block);
 		RegisterHelper.registerBlock(FronosBlocks.cloud_block, ItemBlockFronosCloud.class);
@@ -456,7 +456,7 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.purple_candy_torch);
 		RegisterHelper.registerBlock(FronosBlocks.cup);
 		RegisterHelper.registerBlock(FronosBlocks.mineral_water_cup);
-		RegisterHelper.registerBlock(FronosBlocks.ovantine_cup);
+		RegisterHelper.registerBlock(FronosBlocks.ovaltine_cup);
 		RegisterHelper.registerBlock(FronosBlocks.coconut_milk_cup);
 		RegisterHelper.registerBlock(FronosBlocks.cheese_of_milk_cup);
 		RegisterHelper.registerBlock(FronosBlocks.tea_cup);
@@ -465,7 +465,7 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.maple_door_block);
 		RegisterHelper.registerBlock(FronosBlocks.coconut_milk);
 		RegisterHelper.registerBlock(FronosBlocks.mineral_water);
-		RegisterHelper.registerBlock(FronosBlocks.ovantine);
+		RegisterHelper.registerBlock(FronosBlocks.ovaltine);
 		RegisterHelper.registerBlock(FronosBlocks.tea);
 		RegisterHelper.registerBlock(FronosBlocks.caramel);
 	}

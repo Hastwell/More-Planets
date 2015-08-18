@@ -1,5 +1,5 @@
 {
-    "parent": "moreplanets:block/ovantine_block",
+    "parent": "moreplanets:block/ovaltine_block",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

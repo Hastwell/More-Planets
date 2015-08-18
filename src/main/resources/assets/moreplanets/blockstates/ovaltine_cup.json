@@ -1,0 +1,8 @@
+{
+    "variants": {
+		"facing=north": { "model": "moreplanets:ovaltine_cup" },
+        "facing=south": { "model": "moreplanets:ovaltine_cup", "y": 180 },
+        "facing=east":  { "model": "moreplanets:ovaltine_cup", "y": 270 },
+        "facing=west":  { "model": "moreplanets:ovaltine_cup", "y": 90 }
+    }
+}

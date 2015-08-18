@@ -35,7 +35,7 @@ public class WorldGenCandyCane1 extends WorldGenerator
 
 			if (rand.nextInt(1) == 0)
 			{
-				world.setBlockState(pos.up(10), FronosBlocks.ovantine_block.getDefaultState(), 2);
+				world.setBlockState(pos.up(10), FronosBlocks.ovaltine_block.getDefaultState(), 2);
 			}
 			if (rand.nextInt(2) == 0)
 			{
