@@ -185,7 +185,7 @@ public class SkyProviderPluto extends IRenderHandler
 		tessellator1.setColorRGBA_F(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F);
 
 		// Render sun aura
-		f10 = 5.0F;
+		f10 = 3.5F;
 		tessellator1.addVertex(-f10, 100.0D, -f10);
 		tessellator1.addVertex(0, 100.0D, (double) -f10 * 1.5F);
 		tessellator1.addVertex(f10, 100.0D, -f10);
@@ -203,7 +203,7 @@ public class SkyProviderPluto extends IRenderHandler
 		tessellator1.setColorRGBA_F(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F);
 
 		// Render larger sun aura
-		f10 = 7.0F;
+		f10 = 5.0F;
 		tessellator1.addVertex(-f10, 100.0D, -f10);
 		tessellator1.addVertex(0, 100.0D, (double) -f10 * 1.5F);
 		tessellator1.addVertex(f10, 100.0D, -f10);
@@ -238,7 +238,7 @@ public class SkyProviderPluto extends IRenderHandler
 
 		// Render sun
 		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
-		f10 = this.sunSize - 5.75F;
+		f10 = this.sunSize - 6.5F;
 		mc.renderEngine.bindTexture(this.sunTexture);
 		tessellator1.startDrawingQuads();
 		tessellator1.addVertexWithUV(-f10, 100.0D, -f10, 0.0D, 0.0D);

@@ -122,7 +122,7 @@ public class EntityBearry extends IFronosPet
 			marshmallow.onSpawnWithEgg((IEntityLivingData)null);
 			this.worldObj.spawnEntityInWorld(marshmallow);
 			marshmallow.mountEntity(this);
-			marshmallow.setGrowingAge(-8000);
+			marshmallow.setGrowingAge(-24000);
 		}
 		return par1EntityLivingData;
 	}

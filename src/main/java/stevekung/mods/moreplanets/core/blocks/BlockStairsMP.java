@@ -54,7 +54,8 @@ public class BlockStairsMP extends BlockStairs
 		mercury_brick ("stone"),
 		fronos_sandstone ("stone"),
 		white_sandstone ("stone"),
-		cheese_sandstone ("stone");
+		cheese_sandstone ("stone"),
+		venus_sandstone ("stone");
 
 		private List<String> values;
 		private String type;
@@ -202,7 +203,7 @@ public class BlockStairsMP extends BlockStairs
 			this.blockIcon = par1IconRegister.registerIcon("mercury:mercury_dungeon_brick");
 		}
 
-		this.fronosSandstoneIcon = new IIcon[10];
+		this.fronosSandstoneIcon = new IIcon[12];
 		this.fronosSandstoneIcon[0] = par1IconRegister.registerIcon("fronos:fronos_sandstone");
 		this.fronosSandstoneIcon[1] = par1IconRegister.registerIcon("fronos:fronos_sandstone_top");
 		this.fronosSandstoneIcon[2] = par1IconRegister.registerIcon("fronos:fronos_sandstone_bottom");
@@ -212,6 +213,9 @@ public class BlockStairsMP extends BlockStairs
 		this.fronosSandstoneIcon[6] = par1IconRegister.registerIcon("fronos:cheese_sandstone");
 		this.fronosSandstoneIcon[7] = par1IconRegister.registerIcon("fronos:cheese_sandstone_top");
 		this.fronosSandstoneIcon[8] = par1IconRegister.registerIcon("fronos:cheese_sandstone_bottom");
+		this.fronosSandstoneIcon[9] = par1IconRegister.registerIcon("venus:venus_sandstone");
+		this.fronosSandstoneIcon[10] = par1IconRegister.registerIcon("venus:venus_sandstone_top");
+		this.fronosSandstoneIcon[11] = par1IconRegister.registerIcon("venus:venus_sandstone_bottom");
 	}
 
 	public boolean isWoodCategory(String block)
@@ -280,6 +284,24 @@ public class BlockStairsMP extends BlockStairs
 				return this.fronosSandstoneIcon[6]; //X-
 			case 5:
 				return this.fronosSandstoneIcon[6]; //X+
+			}
+		}
+		else if (this.category == StairsCategory.venus_sandstone)
+		{
+			switch (side)
+			{
+			case 0:
+				return this.fronosSandstoneIcon[11]; //BOTTOM
+			case 1:
+				return this.fronosSandstoneIcon[10]; //TOP
+			case 2:
+				return this.fronosSandstoneIcon[9]; //Z-
+			case 3:
+				return this.fronosSandstoneIcon[9]; //Z+
+			case 4:
+				return this.fronosSandstoneIcon[9]; //X-
+			case 5:
+				return this.fronosSandstoneIcon[9]; //X+
 			}
 		}
 		return this.blockIcon;
