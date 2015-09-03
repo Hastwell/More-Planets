@@ -52,7 +52,7 @@ tile.polongnius_block.palladium_ore.name=แร่ โพลิเดียม
 tile.polongnius_block.flonium_ore.name=แร่ โฟรเนียม
 tile.polongnius_block.purple_crystal_ore.name=แร่สีม่วงคริสตัล
 tile.polongnius_block.cheese_of_milk_ore.name=แร่ชีสนม
-tile.polongnius_block.meteor_block.name=เหล็กบรรยากาศ ดาวโปลองเนีส
+tile.polongnius_block.meteor_block.name=เหล็กที่มาจาก ดาวโปลองเนีส
 tile.polongnius_block.purple_crystal_block.name=บล็อกคริสตัลสีม่วง
 tile.polongnius_block.palladium_block.name=บล็อก โพลิเดียม
 tile.polongnius_block.dungeon_brick.name=อิฐดันเจี้ยน ดาวโปลองเนีส
@@ -146,7 +146,7 @@ tile.koentus_block.emp_crystal_block.name=บล็อกคริสตัล E
 tile.koentus_block.dungeon_brick.name=อิฐดันเจี้ยน ดาวโคน์ตัส
 tile.koentus_block.ancient_stone.name=หินโบราณ ดาวโคน์ตัส
 tile.koentus_block.ancient_stone_brick.name=หินอิฐโบราณ ดาวโคน์ตัส
-tile.koentus_block.solid_meteoric_iron.name=เหล็กบรรยากาศ ดาวโคน์ตัส
+tile.koentus_block.solid_meteoric_iron.name=เหล็กที่มาจาก ดาวโคน์ตัส
 tile.default_koentus_ice.name=น้ำแข็ง ดาวโคน์ตัส
 tile.glowing_koentus_ice.name=หินน้ำแข็งเรืองแสง ดาวโคน์ตัส
 tile.glowing_ice_stone.white.name=หินน้ำแข็งเรืองแสงสีขาว
@@ -485,9 +485,9 @@ tile.mercury_block.tin_ore.name=แร่ดีบุก
 tile.mercury_block.copper_ore.name=แร่ทองแดง
 tile.mercury_block.aluminum_ore.name=แร่อลูมิเนียม
 tile.mercury_block.iron_ore.name=แร่เหล็ก
-tile.mercury_block.metal_meteoric_iron_ore.name=แร่เหล็กหินซิลิเกตโลหะบรรยากาศ
+tile.mercury_block.metal_meteoric_iron_ore.name=แร่เหล็กหินซิลิเกตโลหะที่มาจาก
 tile.mercury_block.silicate_rock.name=หินซิลิเกต
-tile.mercury_block.solid_metal_meteoric_iron.name=เหล็กโลหะของแข็งบรรยากาศ
+tile.mercury_block.solid_metal_meteoric_iron.name=เหล็กโลหะของแข็งที่มาจาก
 tile.mercury_block.dungeon_brick.name=อิฐดันเจี้ยน ดาวพุธ
 tile.metallic_rock.name=หิน ที่เป็นโลหะ
 tile.mercury_ice.name=น้ำแข็งสกปรก ดาวพุธ
@@ -568,7 +568,7 @@ tile.pluto_block.surface_rock.name=พื้นผิวหินดาวพล
 tile.pluto_block.sub_surface_rock.name=พื้นผิวหินย่อย ดาวพลูโต
 tile.pluto_block.rock.name=หินดาวพลูโต
 tile.pluto_block.cobblestone.name=หินกรวดดาวพลูโต
-tile.pluto_block.meteoric_iron_ore.name=แร่เหล็กบรรยากาศ
+tile.pluto_block.meteoric_iron_ore.name=แร่เหล็กที่มาจาก
 tile.pluto_block.frozen_iron_ore.name=แร่เหล็กแช่แข็ง
 tile.pluto_block.iron_ore.name=แร่เหล็ก
 tile.pluto_block.xeonium_ore.name=แร่ ซีออนเนียม
@@ -646,12 +646,12 @@ item.tier_4_rocket.name=จรวด เทียร์ 4
 #########Polongnius Item#########
 item.polongnius_item.flonium.name=โฟรเนียม
 item.polongnius_item.purple_crystal.name=คริสตัลสีม่วง
-item.polongnius_item.raw_polongnius_meteoric_iron.name=เหล็กบรรยากาศ ดาวโปลองเนีส ดิบ
+item.polongnius_item.raw_polongnius_meteoric_iron.name=เหล็กที่มาจาก ดาวโปลองเนีส ดิบ
 item.polongnius_item.raw_palladium.name=แพลเลเดียมดิบ
-item.polongnius_item.polongnius_meteoric_iron_ingot.name=ก้อนเหล็กบรรยากาศ ดาวโปลองเนีส
+item.polongnius_item.polongnius_meteoric_iron_ingot.name=ก้อนเหล็กที่มาจาก ดาวโปลองเนีส
 item.polongnius_item.palladium_ingot.name=ก้อนแพลเลเดียม
-item.polongnius_item.compressed_polongnius_meteoric_iron.name=เหล็กบรรยากาศ ดาวโปลองเนีส ที่ถูกบีบอัด
-item.polongnius_item.polongnius_meteoric_iron_stick.name=แท่งเหล็กบรรยากาศ ดาวโปลองเนีส
+item.polongnius_item.compressed_polongnius_meteoric_iron.name=เหล็กที่มาจาก ดาวโปลองเนีส ที่ถูกบีบอัด
+item.polongnius_item.polongnius_meteoric_iron_stick.name=แท่งเหล็กที่มาจาก ดาวโปลองเนีส
 item.polongnius_item.palladium_stick.name=แท่ง แพลเลเดียม
 item.polongnius_item.cheese_leather.name=หนังชีส
 item.cheese_food.cheese_of_milk_curd.name=ชีสนมเต้าหู้
@@ -700,10 +700,10 @@ item.orange_door.name=ประตูส้ม
 item.koentus_item.white_crystal.name=คริสตัลสีขาว
 item.koentus_item.emp_shard.name=โล้ อีเอ็มพี
 item.koentus_item.becterial_fossil.name=ฟอสซิลแบคทีเรีย
-item.koentus_item.raw_koentus_meteoric_iron.name=เหล็กบรรยากาศดิบ ดาวโคน์ตัส
-item.koentus_item.koentus_meteoric_iron_ingot.name=แท่งเหล็กบรรยากาศ ดาวโคน์ตัส
+item.koentus_item.raw_koentus_meteoric_iron.name=เหล็กที่มาจากดิบ ดาวโคน์ตัส
+item.koentus_item.koentus_meteoric_iron_ingot.name=แท่งเหล็กที่มาจาก ดาวโคน์ตัส
 item.koentus_item.compressed_white_crystal.name=คริสตัลสีขาวที่ถูกบีบอัด
-item.koentus_item.compressed_koentus_meteoric_iron.name=เหล็กบรรยากาศ ดาวโคน์ตัส ที่ถูกบีบอัด
+item.koentus_item.compressed_koentus_meteoric_iron.name=เหล็กที่มาจาก ดาวโคน์ตัส ที่ถูกบีบอัด
 item.koentus_meteor_chunk.name=ก้อนดาวตก ดาวโคน์ตัส
 item.crystal_door.name=ประตูคริสตัล
 
@@ -830,11 +830,11 @@ item.sirius_b_item.sulfur_stick.name=แถ้งกำมะถัน
 
 #########Mercury Item#########
 item.mercury_item.metallic_shard.name=โล้ โลหะ
-item.mercury_item.raw_metal_meteoric_iron.name=วัตถุดิบบรรยากาศโลหะเหล็ก
+item.mercury_item.raw_metal_meteoric_iron.name=วัตถุดิบที่มาจากโลหะเหล็ก
 item.mercury_item.metallic_ingot.name=แท่งโลหะ
-item.mercury_item.metal_meteoric_iron_ingot.name=แท่งโลหะเหล็กบรรยากาศ
+item.mercury_item.metal_meteoric_iron_ingot.name=แท่งโลหะเหล็กที่มาจาก
 item.mercury_item.compressed_metallic.name=โลหะที่บีบอัด
-item.mercury_item.compressed_metal_meteoric_iron.name=บรรยากาศโลหะเหล็กที่บีบอัด
+item.mercury_item.compressed_metal_meteoric_iron.name=ที่มาจากโลหะเหล็กที่บีบอัด
 item.mercury_item.gravity_core.name=แกนแรงโน้มถ่วง
 item.mercury_item.gravity_controller.name=ตัวควบคุมแรงโน้มถ่วง
 item.dirty_water_bucket.name=ถังน้ำสกปรก
@@ -881,11 +881,11 @@ item.fronisium_shovel.name=พลั่ว โฟนัสเซียม
 item.fronisium_sword.name=ดาบ โฟนัสเซียม
 
 #########Polongnius Tools#########
-item.polongnius_meteoric_iron_pickaxe.name=ที่ขุดเหล็กบรรยากาศ ดาวโปลองเนีส
-item.polongnius_meteoric_iron_axe.name=ขวานเหล็กบรรยากาศ ดาวโปลองเนีส
-item.polongnius_meteoric_iron_hoe.name=จอบเหล็กบรรยากาศ ดาวโปลองเนีส
+item.polongnius_meteoric_iron_pickaxe.name=ที่ขุดเหล็กที่มาจาก ดาวโปลองเนีส
+item.polongnius_meteoric_iron_axe.name=ขวานเหล็กที่มาจาก ดาวโปลองเนีส
+item.polongnius_meteoric_iron_hoe.name=จอบเหล็กที่มาจาก ดาวโปลองเนีส
 item.polongnius_meteoric_iron_shovel.name=พลั่วเหล็กบรรยากศ ดาวโปลองเนีส
-item.polongnius_meteoric_iron_sword.name=ดาบเหล็กบรรยากาศ ดาวโปลองเนีส
+item.polongnius_meteoric_iron_sword.name=ดาบเหล็กที่มาจาก ดาวโปลองเนีส
 item.palladium_pickaxe.name=ที่ขุด แพลเลเดียม
 item.palladium_axe.name=ขวาน แพลเลเดียม
 item.palladium_hoe.name=จอบ แพลเลเดียม
@@ -915,11 +915,11 @@ item.white_crystal_axe.name=ขวาน คริสตัลสีขาว
 item.white_crystal_hoe.name=จอบ คริสตัลสีขาว
 item.white_crystal_shovel.name=พลั่ว คริสตัลสีขาว
 item.white_crystal_sword.name=ดาบ คริสตัลสีขาว
-item.koentus_meteoric_iron_pickaxe.name=ที่ขุดบรรยากาศ ดาวโคน์ตัส
-item.koentus_meteoric_iron_axe.name=ขวานเหล็กบรรยากาศ ดาวโคน์ตัส
-item.koentus_meteoric_iron_hoe.name=จอบเหล็กบรรยากาศ ดาวโคน์ตัส
+item.koentus_meteoric_iron_pickaxe.name=ที่ขุดที่มาจาก ดาวโคน์ตัส
+item.koentus_meteoric_iron_axe.name=ขวานเหล็กที่มาจาก ดาวโคน์ตัส
+item.koentus_meteoric_iron_hoe.name=จอบเหล็กที่มาจาก ดาวโคน์ตัส
 item.koentus_meteoric_iron_shovel.name=พลั่วเหล็กบรรยากศ ดาวโคน์ตัส
-item.koentus_meteoric_iron_sword.name=ดาบเหล็กบรรยากาศ ดาวโคน์ตัส
+item.koentus_meteoric_iron_sword.name=ดาบเหล็กที่มาจาก ดาวโคน์ตัส
 
 #########Fronos Tools#########
 item.black_diamond_pickaxe.name=ที่ขุดเพชรสีดำ
@@ -981,10 +981,10 @@ item.breathable_quontonium_helmet.name=หมวกกันน็อคคว�
 item.breathable_fronisium_helmet.name=หมวกกันน็อคเฟอร์นิสเซียมระบายอากาศ
 
 #########Polongnius Armor#########
-item.polongnius_meteoric_iron_helmet.name=หมวกเหล็กบรรยากาศ ดาวโปลองเนีส
-item.polongnius_meteoric_iron_chestplate.name=เกราะเหล็กบรรยากาศ ดาวโปลองเนีส
-item.polongnius_meteoric_iron_leggings.name=กางเกงเหล็กบรรยากาศ ดาวโปลองเนีส
-item.polongnius_meteoric_iron_boots.name=รองเท้าเหล็กบรรยากาศ ดาวโปลองเนีส
+item.polongnius_meteoric_iron_helmet.name=หมวกเหล็กที่มาจาก ดาวโปลองเนีส
+item.polongnius_meteoric_iron_chestplate.name=เกราะเหล็กที่มาจาก ดาวโปลองเนีส
+item.polongnius_meteoric_iron_leggings.name=กางเกงเหล็กที่มาจาก ดาวโปลองเนีส
+item.polongnius_meteoric_iron_boots.name=รองเท้าเหล็กที่มาจาก ดาวโปลองเนีส
 item.cheese_leather_helmet.name=หมวกหนัง ชีส
 item.cheese_leather_chestplate.name=เกราะหนัง ชัส
 item.cheese_leather_leggings.name=กางเกงหนัง ชีส
@@ -997,7 +997,7 @@ item.purple_crystal_helmet.name=หมวก คริสตัลสีม่�
 item.purple_crystal_chestplate.name=เกราะ คริสตัลสีม่วง
 item.purple_crystal_leggings.name=กางเกง คริสตัลสีม่วง
 item.purple_crystal_boots.name=รองเท้า คริสตัลสีม่วง
-item.breathable_polongnius_meteoric_iron_helmet.name=หมวกเหล็กบรรยากาศ ดาวโปลองเนีสระบายอากาศได้
+item.breathable_polongnius_meteoric_iron_helmet.name=หมวกเหล็กที่มาจาก ดาวโปลองเนีสระบายอากาศได้
 item.breathable_palladium_helmet.name=หมวกแพลเลเดียมระบายอากาศ
 
 #########Nibiru Armor#########
@@ -1013,15 +1013,15 @@ item.breathable_red_gem_helmet.name=หมวกอัญมณีสีแด�
 item.breathable_norium_helmet.name=หมวกนอร์เรียมระบายอากาศได้
 
 #########Koentus Armor#########
-item.koentus_meteoric_iron_helmet.name=หมวกเหล็กบรรยากาศ ดาวโคน์ตัส
-item.koentus_meteoric_iron_chestplate.name=เกราะเหล็กบรรยากาศ ดาวโคน์ตัส
-item.koentus_meteoric_iron_leggings.name=กางเกงเหล็กบรรยากาศ ดาวโคน์ตัส
-item.koentus_meteoric_iron_boots.name=รองเท้าเหล็กบรรยากาศ ดาวโคน์ตัส
+item.koentus_meteoric_iron_helmet.name=หมวกเหล็กที่มาจาก ดาวโคน์ตัส
+item.koentus_meteoric_iron_chestplate.name=เกราะเหล็กที่มาจาก ดาวโคน์ตัส
+item.koentus_meteoric_iron_leggings.name=กางเกงเหล็กที่มาจาก ดาวโคน์ตัส
+item.koentus_meteoric_iron_boots.name=รองเท้าเหล็กที่มาจาก ดาวโคน์ตัส
 item.white_crystal_helmet.name=หมวกคริสตัลสีขาว
 item.white_crystal_chestplate.name=เกราะคริสตัลสีขาว
 item.white_crystal_leggings.name=กางเกงคริสตัลสีขาว
 item.white_crystal_boots.name=รองเท้าคริสตัลสีขาว
-item.breathable_koentus_meteoric_iron_helmet.name=หมวกเหล็กบรรยากาศ ดาวโคน์ตัสระบายอากาศได้
+item.breathable_koentus_meteoric_iron_helmet.name=หมวกเหล็กที่มาจาก ดาวโคน์ตัสระบายอากาศได้
 item.breathable_white_crystal_helmet.name=หมวกคริสตัลสีขาวระบายอากาศได้
 
 #########Fronos Armor#########
