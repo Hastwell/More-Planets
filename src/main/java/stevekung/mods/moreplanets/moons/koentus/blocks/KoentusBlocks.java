@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.moons.koentus.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.core.blocks.BlockFenceGateMP;
@@ -141,5 +143,14 @@ public class KoentusBlocks
 		RegisterHelper.registerBlock(KoentusBlocks.white_crystal_torch);
 		RegisterHelper.registerBlock(KoentusBlocks.crystal_sapling);
 		RegisterHelper.registerBlock(KoentusBlocks.crystal_door);
+
+		OreDictionary.registerOre("oreTin", new ItemStack(KoentusBlocks.koentus_block, 1, 4));
+		OreDictionary.registerOre("oreCopper", new ItemStack(KoentusBlocks.koentus_block, 1, 5));
+		OreDictionary.registerOre("oreWhiteCrystal", new ItemStack(KoentusBlocks.koentus_block, 1, 6));
+		OreDictionary.registerOre("oreEMP", new ItemStack(KoentusBlocks.koentus_block, 1, 7));
+		OreDictionary.registerOre("oreBecterialFossil", new ItemStack(KoentusBlocks.koentus_block, 1, 8));
+
+		OreDictionary.registerOre("blockWhiteCrystal", new ItemStack(KoentusBlocks.koentus_block, 1, 9));
+		OreDictionary.registerOre("blockEMP", new ItemStack(KoentusBlocks.koentus_block, 1, 10));
 	}
 }

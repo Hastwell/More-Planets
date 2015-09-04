@@ -8,6 +8,8 @@
 package stevekung.mods.moreplanets.moons.deimos.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.moons.deimos.itemblocks.ItemBlockDeimos;
 import stevekung.mods.stevecore.RegisterHelper;
 
@@ -35,5 +37,10 @@ public class DeimosBlocks
 	private static void registerBlocks()
 	{
 		RegisterHelper.registerBlock(DeimosBlocks.deimos_block, ItemBlockDeimos.class);
+
+		OreDictionary.registerOre("oreTin", new ItemStack(DeimosBlocks.deimos_block, 1, 4));
+		OreDictionary.registerOre("oreCopper", new ItemStack(DeimosBlocks.deimos_block, 1, 5));
+		OreDictionary.registerOre("oreIron", new ItemStack(DeimosBlocks.deimos_block, 1, 6));
+		OreDictionary.registerOre("oreDesh", new ItemStack(DeimosBlocks.deimos_block, 1, 7));
 	}
 }

@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
@@ -68,13 +69,13 @@ public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformable
 
 		if (this instanceof IFronosGrass)
 		{
-			return block == FronosBlocks.candy_flower || block == FronosBlocks.dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_tall_grass || block == FronosBlocks.poppy || block == Blocks.deadbush || block == Blocks.reeds;
+			return block == FronosBlocks.candy_flower || block == FronosBlocks.dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_tall_grass || block == FronosBlocks.poppy || block == Blocks.deadbush || block == Blocks.reeds || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
 		}
 		if (this instanceof BlockInfectedGrass)
 		{
-			return block == NibiruBlocks.nibiru_sapling;
+			return block == NibiruBlocks.nibiru_sapling || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
 		}
-		return true;
+		return true && super.canSustainPlant(world, x, y, z, side, plant) || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
 	}
 
 	@Override

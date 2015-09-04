@@ -20,6 +20,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
@@ -56,6 +57,19 @@ public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreatha
 	public boolean canBreath()
 	{
 		return true;
+	}
+
+	@Override
+	public void onLivingUpdate()
+	{
+		if (!this.worldObj.isRemote)
+		{
+			if (this.isWet())
+			{
+				this.attackEntityFrom(DamageSource.drown, 1.0F);
+			}
+		}
+		super.onLivingUpdate();
 	}
 
 	@Override

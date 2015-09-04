@@ -134,6 +134,12 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 		this.genFronosBiomeTerrain(world, rand, block, meta, x, z, stoneNoise);
 	}
 
+	@Override
+	public boolean canSpawnLightningBolt()
+	{
+		return this.func_150559_j() ? false : this.enableRain;
+	}
+
 	public void genFronosBiomeTerrain(World world, Random rand, Block[] block, byte[] meta, int x, int z, double stoneNoise)
 	{
 		Block topBlock = this.topBlock;

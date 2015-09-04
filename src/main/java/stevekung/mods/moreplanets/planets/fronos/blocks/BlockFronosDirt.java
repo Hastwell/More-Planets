@@ -19,7 +19,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockFronosDirt extends BlockBaseMP implements ITerraformableBlock
@@ -79,6 +83,12 @@ public class BlockFronosDirt extends BlockBaseMP implements ITerraformableBlock
 		{
 			list.add(new ItemStack(this, 1, i));
 		}
+	}
+
+	@Override
+	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection side, IPlantable plant)
+	{
+		return plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains || super.canSustainPlant(world, x, y, z, side, plant);
 	}
 
 	@Override

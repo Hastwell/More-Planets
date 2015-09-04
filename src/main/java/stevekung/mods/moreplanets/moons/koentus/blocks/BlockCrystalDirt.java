@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
@@ -58,9 +59,9 @@ public class BlockCrystalDirt extends Block implements ITerraformableBlock
 	}
 
 	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection side, IPlantable plant)
 	{
-		return true;
+		return plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains || super.canSustainPlant(world, x, y, z, side, plant);
 	}
 
 	@Override

@@ -81,6 +81,19 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
 		this.experienceValue = par1;
 	}
 
+	@Override
+	public void onLivingUpdate()
+	{
+		if (!this.worldObj.isRemote)
+		{
+			if (this.isWet())
+			{
+				this.attackEntityFrom(DamageSource.drown, 1.0F);
+			}
+		}
+		super.onLivingUpdate();
+	}
+
 	public int getSlimeSize()
 	{
 		return this.dataWatcher.getWatchableObjectByte(16);

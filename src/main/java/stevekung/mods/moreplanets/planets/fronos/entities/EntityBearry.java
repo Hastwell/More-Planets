@@ -115,7 +115,7 @@ public class EntityBearry extends IFronosPet
 	@Override
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1EntityLivingData)
 	{
-		if (this.worldObj.rand.nextInt(10) == 0)
+		if (this.worldObj.rand.nextInt(1) == 0)
 		{
 			EntityMarshmallow marshmallow = new EntityMarshmallow(this.worldObj);
 			marshmallow.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);

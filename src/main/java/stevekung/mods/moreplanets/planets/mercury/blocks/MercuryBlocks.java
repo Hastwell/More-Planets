@@ -9,8 +9,10 @@ package stevekung.mods.moreplanets.planets.mercury.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.core.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.planets.mercury.fluids.BlockFluidDirtyWater;
@@ -71,5 +73,15 @@ public class MercuryBlocks
 		RegisterHelper.registerBlock(MercuryBlocks.mercury_ancient_chest);
 		RegisterHelper.registerBlock(MercuryBlocks.mercury_treasure_chest);
 		RegisterHelper.registerBlock(MercuryBlocks.dirty_water);
+
+		OreDictionary.registerOre("oreTin", new ItemStack(MercuryBlocks.mercury_block, 1, 4));
+		OreDictionary.registerOre("oreCopper", new ItemStack(MercuryBlocks.mercury_block, 1, 5));
+		OreDictionary.registerOre("oreAluminum", new ItemStack(MercuryBlocks.mercury_block, 1, 6));
+		OreDictionary.registerOre("oreAluminium", new ItemStack(MercuryBlocks.mercury_block, 1, 6));
+		OreDictionary.registerOre("oreIron", new ItemStack(MercuryBlocks.mercury_block, 1, 7));
+		OreDictionary.registerOre("oreMetalMeteor", new ItemStack(MercuryBlocks.mercury_block, 1, 8));
+		OreDictionary.registerOre("oreMetallic", new ItemStack(MercuryBlocks.metallic_rock, 1, 0));
+
+		OreDictionary.registerOre("blockMetalMeteor", new ItemStack(MercuryBlocks.mercury_block, 1, 10));
 	}
 }

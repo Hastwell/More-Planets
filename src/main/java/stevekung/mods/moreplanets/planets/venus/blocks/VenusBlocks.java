@@ -10,6 +10,8 @@ package stevekung.mods.moreplanets.planets.venus.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.core.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.planets.venus.blocks.BlockVenusSandstoneSlab.VenusSlabCategory;
@@ -91,5 +93,18 @@ public class VenusBlocks
 		RegisterHelper.registerBlock(VenusBlocks.venusian_blaze_egg);
 		RegisterHelper.registerBlock(VenusBlocks.venus_ancient_chest);
 		RegisterHelper.registerBlock(VenusBlocks.venus_treasure_chest);
+
+		OreDictionary.registerOre("oreSulfur", new ItemStack(VenusBlocks.venus_block, 1, 4));
+		OreDictionary.registerOre("oreLead", new ItemStack(VenusBlocks.venus_block, 1, 5));
+		OreDictionary.registerOre("oreTin", new ItemStack(VenusBlocks.venus_block, 1, 6));
+		OreDictionary.registerOre("oreCopper", new ItemStack(VenusBlocks.venus_block, 1, 7));
+		OreDictionary.registerOre("oreCoal", new ItemStack(VenusBlocks.venus_block, 1, 8));
+		OreDictionary.registerOre("oreIron", new ItemStack(VenusBlocks.venus_block, 1, 9));
+		OreDictionary.registerOre("oreGold", new ItemStack(VenusBlocks.venus_block, 1, 10));
+		OreDictionary.registerOre("oreRedstone", new ItemStack(VenusBlocks.venus_redstone_ore, 1, 0));
+
+		OreDictionary.registerOre("blockLead", new ItemStack(VenusBlocks.venus_block, 1, 11));
+
+		OreDictionary.registerOre("sand", VenusBlocks.venus_sand);
 	}
 }

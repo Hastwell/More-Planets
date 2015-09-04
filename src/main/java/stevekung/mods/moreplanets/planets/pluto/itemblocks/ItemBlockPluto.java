@@ -20,6 +20,6 @@ public class ItemBlockPluto extends ItemBlockBaseMP
 	@Override
 	public String[] getBlockVariantsName()
 	{
-		return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "meteoric_iron_ore", "frozen_iron_ore", "iron_ore", "xeonium_ore", "dungeon_brick" };
+		return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "meteoric_iron_ore", "frozen_iron_ore", "iron_ore", "xeonium_ore", "dungeon_brick", "", "surface_rock_brown", "surface_rock_light_brown" };
 	}
 }

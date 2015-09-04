@@ -51,6 +51,8 @@ public class BlockBasicPluto extends BlockBasicMP implements IDetectableResource
 		this.plutoBlockIcon[7] = par1IconRegister.registerIcon("pluto:xeonium_gem_ore");
 		this.plutoBlockIcon[8] = par1IconRegister.registerIcon("pluto:pluto_dungeon_brick");
 		this.plutoBlockIcon[9] = par1IconRegister.registerIcon("galacticraftcore:blank");
+		this.plutoBlockIcon[10] = par1IconRegister.registerIcon("pluto:pluto_surface_rock_brown");
+		this.plutoBlockIcon[11] = par1IconRegister.registerIcon("pluto:pluto_surface_rock_light_brown");
 	}
 
 	@Override
@@ -63,9 +65,12 @@ public class BlockBasicPluto extends BlockBasicMP implements IDetectableResource
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		for (int i = 0; i < 9; ++i)
+		for (int i = 0; i < 12; ++i)
 		{
-			list.add(new ItemStack(this, 1, i));
+			if (i != 9)
+			{
+				list.add(new ItemStack(this, 1, i));
+			}
 		}
 	}
 

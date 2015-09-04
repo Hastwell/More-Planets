@@ -10,7 +10,9 @@ package stevekung.mods.moreplanets.planets.fronos.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.core.blocks.BlockFenceGateMP;
@@ -483,5 +485,20 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.ovantine);
 		RegisterHelper.registerBlock(FronosBlocks.tea);
 		RegisterHelper.registerBlock(FronosBlocks.caramel);
+
+		OreDictionary.registerOre("oreIron", new ItemStack(FronosBlocks.fronos_block, 1, 2));
+		OreDictionary.registerOre("oreCoal", new ItemStack(FronosBlocks.fronos_block, 1, 3));
+		OreDictionary.registerOre("oreAluminum", new ItemStack(FronosBlocks.fronos_block, 1, 4));
+		OreDictionary.registerOre("oreAluminium", new ItemStack(FronosBlocks.fronos_block, 1, 4));
+		OreDictionary.registerOre("oreTin", new ItemStack(FronosBlocks.fronos_block, 1, 5));
+		OreDictionary.registerOre("oreCopper", new ItemStack(FronosBlocks.fronos_block, 1, 6));
+		OreDictionary.registerOre("oreLapis", new ItemStack(FronosBlocks.fronos_block, 1, 7));
+		OreDictionary.registerOre("oreMineral", new ItemStack(FronosBlocks.fronos_block, 1, 8));
+		OreDictionary.registerOre("oreBlackDiamond", new ItemStack(FronosBlocks.fronos_block, 1, 9));
+		OreDictionary.registerOre("oreIridium", new ItemStack(FronosBlocks.fronos_block, 1, 10));
+		OreDictionary.registerOre("oreJelly", FronosBlocks.jelly_ore);
+
+		OreDictionary.registerOre("blockIridium", new ItemStack(FronosBlocks.ore_block, 1, 0));
+		OreDictionary.registerOre("blockBlackDiamond", new ItemStack(FronosBlocks.ore_block, 1, 1));
 	}
 }

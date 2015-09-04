@@ -51,6 +51,19 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
 	}
 
 	@Override
+	public void onLivingUpdate()
+	{
+		if (!this.worldObj.isRemote)
+		{
+			if (this.isWet())
+			{
+				this.attackEntityFrom(DamageSource.drown, 1.0F);
+			}
+		}
+		super.onLivingUpdate();
+	}
+
+	@Override
 	public ItemStack getPickedResult(MovingObjectPosition target)
 	{
 		return new ItemStack(MPItems.spawn_egg_mp, 1, 1035);
