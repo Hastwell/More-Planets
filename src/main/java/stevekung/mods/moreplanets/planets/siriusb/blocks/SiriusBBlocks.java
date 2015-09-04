@@ -10,8 +10,10 @@ package stevekung.mods.moreplanets.planets.siriusb.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
@@ -86,5 +88,11 @@ public class SiriusBBlocks
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_dungeon_brick_stairs);
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_fire);
 		RegisterHelper.registerBlock(SiriusBBlocks.sirius_lava);
+
+		OreDictionary.registerOre("oreSulfur", new ItemStack(SiriusBBlocks.sirius_b_block, 1, 4));
+		OreDictionary.registerOre("oreDiamond", new ItemStack(SiriusBBlocks.sirius_b_block, 1, 5));
+		OreDictionary.registerOre("oreSiriusGlowstone", new ItemStack(SiriusBBlocks.sirius_b_block, 1, 6));
+
+		OreDictionary.registerOre("blockSulfur", new ItemStack(SiriusBBlocks.sirius_b_block, 1, 8));
 	}
 }

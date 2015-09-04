@@ -25,7 +25,11 @@ public class FronosItems
 	public static Item pearl;
 	public static Item fronos_dungeon_key;
 	public static Item candy_cane;
-	public static Item fronos_bucket;
+	public static Item coconut_milk_bucket;
+	public static Item mineral_water_bucket;
+	public static Item ovaltine_bucket;
+	public static Item tea_bucket;
+	public static Item caramel_bucket;
 	public static Item jelly;
 	public static Item candy_food;
 	public static Item fronos_fruits;
@@ -59,7 +63,11 @@ public class FronosItems
 		FronosItems.pearl = new ItemPearl("pearl");
 		FronosItems.fronos_dungeon_key = new ItemFronosDungeonKey("fronos_dungeon_key");
 		FronosItems.candy_cane = new ItemCandyCane("candy_cane");
-		FronosItems.fronos_bucket = new ItemFronosBucket("fronos_bucket");
+		FronosItems.coconut_milk_bucket = new ItemCoconutMilkBucket("coconut_milk_bucket");
+		FronosItems.mineral_water_bucket = new ItemMineralWaterBucket("mineral_water_bucket");
+		FronosItems.ovaltine_bucket = new ItemOvaltineBucket("ovaltine_bucket");
+		FronosItems.tea_bucket = new ItemTeaBucket("tea_bucket");
+		FronosItems.caramel_bucket = new ItemCaramelBucket("caramel_bucket");
 		FronosItems.jelly = new ItemJelly("jelly");
 		FronosItems.candy_food = new ItemCandyFood("candy_food");
 		FronosItems.fronos_fruits = new ItemFruits("fronos_fruits");
@@ -98,7 +106,11 @@ public class FronosItems
 		RegisterHelper.registerItem(FronosItems.tier_7_rocket_schematic);
 		RegisterHelper.registerItem(FronosItems.tier_8_rocket_module);
 		RegisterHelper.registerItem(FronosItems.candy_bow);
-		RegisterHelper.registerItem(FronosItems.fronos_bucket);
+		RegisterHelper.registerItem(FronosItems.coconut_milk_bucket);
+		RegisterHelper.registerItem(FronosItems.mineral_water_bucket);
+		RegisterHelper.registerItem(FronosItems.ovaltine_bucket);
+		RegisterHelper.registerItem(FronosItems.tea_bucket);
+		RegisterHelper.registerItem(FronosItems.caramel_bucket);
 		RegisterHelper.registerItem(FronosItems.coconut_door);
 		RegisterHelper.registerItem(FronosItems.maple_door);
 		RegisterHelper.registerItem(FronosItems.cup);
@@ -108,10 +120,10 @@ public class FronosItems
 
 	private static void registerFluidContainer()
 	{
-		RegisterHelper.registerFluidContainer(FronosBlocks.coconut_milk_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.mineral_water_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 1), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.ovaltine_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 2), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.tea_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 3), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.caramel_fluid, new ItemStack(FronosItems.fronos_bucket, 1, 4), new ItemStack(Items.bucket, 1, 0));
+		RegisterHelper.registerFluidContainer(FronosBlocks.coconut_milk_fluid, new ItemStack(FronosItems.coconut_milk_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
+		RegisterHelper.registerFluidContainer(FronosBlocks.mineral_water_fluid, new ItemStack(FronosItems.mineral_water_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
+		RegisterHelper.registerFluidContainer(FronosBlocks.ovaltine_fluid, new ItemStack(FronosItems.ovaltine_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
+		RegisterHelper.registerFluidContainer(FronosBlocks.tea_fluid, new ItemStack(FronosItems.tea_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
+		RegisterHelper.registerFluidContainer(FronosBlocks.caramel_fluid, new ItemStack(FronosItems.caramel_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
 	}
 }

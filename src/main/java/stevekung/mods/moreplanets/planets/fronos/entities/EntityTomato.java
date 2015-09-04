@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.fronos.entities;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIFollowParent;
@@ -59,8 +58,7 @@ public class EntityTomato extends EntityAnimal
 	@Override
 	public boolean getCanSpawnHere()
 	{
-		Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
-		return block == FronosBlocks.fronos_grass;
+		return this.worldObj.getBlockState(this.getPosition().down()).getBlock() == FronosBlocks.fronos_grass;
 	}
 
 	@Override

@@ -16,7 +16,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
@@ -34,7 +33,6 @@ public class CraftingRecipesPolongnius
 		CraftingRecipesPolongnius.addItemSmelting();
 		CraftingRecipesPolongnius.addTier5RocketRecipes();
 		CraftingRecipesPolongnius.addTier5RocketNoFlagRecipes();
-		CraftingRecipesPolongnius.addOreDictionary();
 	}
 
 	private static void addBlockRecipes()
@@ -282,10 +280,5 @@ public class CraftingRecipesPolongnius
 		input2.put(20, new ItemStack(Blocks.chest));
 		input2.put(21, new ItemStack(Blocks.chest));
 		Tier5RocketRecipes.addTier5RocketBenchNoFlagRecipe(new ItemStack(PolongniusItems.tier_5_rocket, 1, 13), input2);
-	}
-
-	private static void addOreDictionary()
-	{
-		OreDictionary.registerOre("slimeball", PolongniusItems.cheese_slimeball);
 	}
 }

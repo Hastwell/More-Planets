@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockFluidBaseMP;
+import stevekung.mods.moreplanets.common.util.WorldUtilMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
@@ -39,7 +40,10 @@ public class BlockFluidEuropaWater extends BlockFluidBaseMP
 	{
 		if (entity instanceof EntityLivingBase)
 		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 50, 1));
+			if (WorldUtilMP.isEuropaWorld(world))
+			{
+				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 50, 1));
+			}
 		}
 	}
 

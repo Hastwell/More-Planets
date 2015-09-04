@@ -585,6 +585,8 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 6, "pluto_iron_ore", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 7, "xeonium_gem_ore", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 8, "pluto_dungeon_brick", "moreplanets");
+		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 9, "pluto_surface_rock_brown", "moreplanets");
+		RegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 10, "pluto_surface_rock_light_brown", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.xeonium_glowstone, "xeonium_glowstone", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.frozen_methane_block, "frozen_methane_block", "moreplanets");
 		RegisterHelper.registerModelRender(PlutoBlocks.frozen_nitrogen_block, "frozen_nitrogen_block", "moreplanets");
@@ -808,11 +810,11 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(FronosItems.tier_8_rocket_module, 0, "tier_8_rocket_engine", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.tier_8_rocket_module, 1, "tier_8_booster", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.tier_8_rocket_module, 2, "tier_8_heavy_duty_plate", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 0, "coconut_milk_bucket", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 1, "mineral_water_bucket", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 2, "ovaltine_bucket", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 3, "tea_bucket", "moreplanets");
-		RegisterHelper.registerModelRender(FronosItems.fronos_bucket, 4, "caramel_bucket", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.coconut_milk_bucket, "coconut_milk_bucket", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.mineral_water_bucket, "mineral_water_bucket", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.ovaltine_bucket, "ovaltine_bucket", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.tea_bucket, "tea_bucket", "moreplanets");
+		RegisterHelper.registerModelRender(FronosItems.caramel_bucket, "caramel_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.candy_bow, 0, "candy_bow", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.candy_bow, 1, "candy_bow_pulling_0", "moreplanets");
 		RegisterHelper.registerModelRender(FronosItems.candy_bow, 2, "candy_bow_pulling_1", "moreplanets");
@@ -846,7 +848,6 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 4, "compressed_sulfur", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 5, "sulfur_stick", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBItems.sirius_fire_charge, "sirius_fire_charge", "moreplanets");
-		RegisterHelper.registerModelRender(SiriusBItems.sirius_obsidian_bucket, "sirius_obsidian_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBItems.sirius_lava_bucket, "sirius_lava_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(SiriusBItems.sirius_glowstone_dust, "sirius_glowstone_dust", "moreplanets");
 
@@ -860,7 +861,6 @@ public class ModelRendererMP
 		RegisterHelper.registerModelRender(MercuryItems.mercury_item, 7, "gravity_controller", "moreplanets");
 		RegisterHelper.registerModelRender(MercuryItems.dirty_water_bucket, "dirty_water_bucket", "moreplanets");
 
-		RegisterHelper.registerModelRender(IoItems.titanium_bucket, "titanium_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(IoItems.io_lava_bucket, "io_lava_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(IoItems.io_black_lava_bucket, "io_black_lava_bucket", "moreplanets");
 		RegisterHelper.registerModelRender(IoItems.liquid_red_sulfur_bucket, "liquid_red_sulfur_bucket", "moreplanets");
@@ -882,6 +882,7 @@ public class ModelRendererMP
 
 		RegisterHelper.registerModelRender(EuropaItems.europa_prismarine, 0, "europa_prismarine_shard", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaItems.europa_prismarine, 1, "europa_prismarine_crystals", "moreplanets");
+		RegisterHelper.registerModelRender(EuropaItems.europa_apple, "europa_apple", "moreplanets");
 		RegisterHelper.registerModelRender(EuropaItems.europa_water_bucket, "europa_water_bucket", "moreplanets");
 
 		// Tools

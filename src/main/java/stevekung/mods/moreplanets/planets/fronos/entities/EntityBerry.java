@@ -169,7 +169,7 @@ public class EntityBerry extends IFronosPet
 			marshmallow.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
 			marshmallow.func_180482_a(diff, (IEntityLivingData)null);
 			marshmallow.mountEntity(this);
-			marshmallow.setGrowingAge(-8000);
+			marshmallow.setGrowingAge(-24000);
 			this.worldObj.spawnEntityInWorld(marshmallow);
 		}
 		return data;

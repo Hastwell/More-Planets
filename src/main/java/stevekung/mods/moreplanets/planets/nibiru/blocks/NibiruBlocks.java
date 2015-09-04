@@ -10,6 +10,8 @@ package stevekung.mods.moreplanets.planets.nibiru.blocks;
 import micdoodle8.mods.galacticraft.core.items.ItemBlockDesc;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
@@ -166,5 +168,17 @@ public class NibiruBlocks
 		RegisterHelper.registerBlock(NibiruBlocks.infected_farmland);
 		RegisterHelper.registerBlock(NibiruBlocks.ancient_dark_door);
 		RegisterHelper.registerBlock(NibiruBlocks.orange_door);
+
+		OreDictionary.registerOre("oreIchorius", new ItemStack(NibiruBlocks.nibiru_block, 1, 4));
+		OreDictionary.registerOre("oreNorium", new ItemStack(NibiruBlocks.nibiru_block, 1, 5));
+		OreDictionary.registerOre("oreDiamond", new ItemStack(NibiruBlocks.nibiru_block, 1, 6));
+		OreDictionary.registerOre("oreCoal", new ItemStack(NibiruBlocks.nibiru_block, 1, 7));
+		OreDictionary.registerOre("oreRedGem", new ItemStack(NibiruBlocks.nibiru_block, 1, 8));
+		OreDictionary.registerOre("oreOil", new ItemStack(NibiruBlocks.oil_rock, 1, 0));
+		OreDictionary.registerOre("oreOil", new ItemStack(NibiruBlocks.oil_rock, 1, 1));
+
+		OreDictionary.registerOre("blockIchorius", new ItemStack(NibiruBlocks.nibiru_block, 1, 9));
+		OreDictionary.registerOre("blockNorium", new ItemStack(NibiruBlocks.nibiru_block, 1, 10));
+		OreDictionary.registerOre("blockRedGem", new ItemStack(NibiruBlocks.nibiru_block, 1, 11));
 	}
 }

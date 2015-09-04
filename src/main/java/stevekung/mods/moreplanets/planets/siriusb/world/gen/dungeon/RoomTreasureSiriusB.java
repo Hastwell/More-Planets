@@ -94,10 +94,8 @@ public class RoomTreasureSiriusB extends DungeonRoom
 		switch (rand.nextInt(4))
 		{
 		case 0:
-			return new ItemStack(SiriusBItems.sirius_obsidian_bucket, 1, 0);
-		case 1:
 			return new ItemStack(SiriusBItems.sirius_glowstone_dust, rand.nextInt(16) + 1, 0);
-		case 2:
+		case 1:
 		default:
 			return new ItemStack(SiriusBItems.sirius_fire_charge, rand.nextInt(6) + 1, 0);
 		}

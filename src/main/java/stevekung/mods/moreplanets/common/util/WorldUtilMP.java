@@ -23,4 +23,9 @@ public class WorldUtilMP
 	{
 		return world.provider instanceof WorldProviderPluto;
 	}
+
+	public static boolean isEuropaWorld(World world)
+	{
+		return false;//world.provider instanceof WorldProviderEuropa; TODO
+	}
 }

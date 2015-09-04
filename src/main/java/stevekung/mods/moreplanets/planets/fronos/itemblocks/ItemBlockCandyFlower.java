@@ -8,8 +8,6 @@
 package stevekung.mods.moreplanets.planets.fronos.itemblocks;
 
 import net.minecraft.block.Block;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockCandyFlower extends ItemBlockBaseMP
@@ -17,13 +15,6 @@ public class ItemBlockCandyFlower extends ItemBlockBaseMP
 	public ItemBlockCandyFlower(Block block)
 	{
 		super(block);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
 	}
 
 	@Override

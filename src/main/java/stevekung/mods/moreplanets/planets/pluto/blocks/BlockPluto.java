@@ -46,7 +46,7 @@ public class BlockPluto extends BlockPlanetTileMP implements /*IDetectableResour
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		for (int i = 0; i < 9; ++i)
+		for (int i = 0; i < 11; ++i)
 		{
 			list.add(new ItemStack(this, 1, i));
 		}
@@ -64,10 +64,6 @@ public class BlockPluto extends BlockPlanetTileMP implements /*IDetectableResour
 
 		int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta == 0 || meta == 1 || meta == 8)
-		{
-			return 4.0F;
-		}
 		if (meta == 2)
 		{
 			return 4.5F;
@@ -92,15 +88,11 @@ public class BlockPluto extends BlockPlanetTileMP implements /*IDetectableResour
 		{
 			return 6.0F;
 		}
-		if (meta >= 2 && meta <= 8)
+		if (meta >= 2 && meta <= 7)
 		{
 			return 5.0F;
 		}
-		if (meta >= 9 && meta <= 11)
-		{
-			return 8.0F;
-		}
-		if (meta == 12)
+		if (meta == 8)
 		{
 			return 40.0F;
 		}
@@ -185,7 +177,9 @@ public class BlockPluto extends BlockPlanetTileMP implements /*IDetectableResour
 		pluto_frozen_iron_ore,
 		pluto_iron_ore,
 		xeonium_gem_ore,
-		pluto_dungeon_brick;
+		pluto_dungeon_brick,
+		pluto_surface_rock_brown,
+		pluto_surface_rock_light_brown;
 
 		@Override
 		public String toString()

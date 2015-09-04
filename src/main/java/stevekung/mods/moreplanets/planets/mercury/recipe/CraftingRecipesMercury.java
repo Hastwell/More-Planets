@@ -48,39 +48,7 @@ public class CraftingRecipesMercury
 
 	private static void addItemRecipes()
 	{
-		/**@ItemsRecipes**/
-		/*GameRegistry.addRecipe(new ItemStack(KoentusItems.koentus_item, 9, 0), new Object[] { "C", 'C', new ItemStack(KoentusBlocks.koentus_block, 1, 9) });
-		GameRegistry.addRecipe(new ItemStack(KoentusItems.koentus_item, 9, 1), new Object[] { "M", 'M', new ItemStack(KoentusBlocks.koentus_block, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusItems.koentus_item, 9, 4), new Object[] { "M", 'M', new ItemStack(KoentusBlocks.koentus_block, 1, 15) });
-		GameRegistry.addRecipe(new ItemStack(KoentusItems.koentus_meteor_chunk, 3), new Object[] { "M", 'M', new ItemStack(KoentusItems.koentus_item, 1, 3) });
 
-		/**@ArmorRecipes**/
-		/*GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.koentus_meteoric_iron_helmet), new Object[] { "QQQ", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 6) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.koentus_meteoric_iron_chestplate), new Object[] { "Q Q", "QQQ", "QQQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 6) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.koentus_meteoric_iron_leggings), new Object[] { "QQQ", "Q Q", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 6) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.koentus_meteoric_iron_boots), new Object[] { "Q Q", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 6) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_helmet), new Object[] { "QQQ", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_chestplate), new Object[] { "Q Q", "QQQ", "QQQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_leggings), new Object[] { "QQQ", "Q Q", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_boots), new Object[] { "Q Q", "Q Q", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathableKoentusMeteorHelmet), new Object[] { "QQQ", "QOQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 6), 'O', new ItemStack(GCItems.oxMask) });
-		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathableWhiteCrystalHelmet), new Object[] { "QQQ", "QOQ", 'Q', new ItemStack(KoentusItems.koentus_item, 1, 5), 'O', new ItemStack(GCItems.oxMask) });
-
-		/**@ToolsRecipes**/
-		/*GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_hoe), new Object[] { "XX", "Y ", "Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_axe), new Object[] { "XX", "XY", " Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_axe), new Object[] { "XX", "YX", "Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_sword), new Object[] { "X", "X", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.koentus_meteoric_iron_shovel), new Object[] { "X", "Y", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_hoe), new Object[] { "XX", "Y ", "Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_axe), new Object[] { "XX", "XY", " Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_axe), new Object[] { "XX", "YX", "Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_sword), new Object[] { "X", "X", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_shovel), new Object[] { "X", "Y", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 10) });*/
 	}
 
 	private static void addBlockSmelting()

@@ -94,9 +94,9 @@ public class EntityBearry extends IFronosPet
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
+	protected void dropFewItems(boolean drop, int fortune)
 	{
-		int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
+		int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + fortune);
 
 		for (int i = 0; i < j; ++i)
 		{
@@ -169,7 +169,7 @@ public class EntityBearry extends IFronosPet
 			marshmallow.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
 			marshmallow.func_180482_a(diff, (IEntityLivingData)null);
 			marshmallow.mountEntity(this);
-			marshmallow.setGrowingAge(-8000);
+			marshmallow.setGrowingAge(-24000);
 			this.worldObj.spawnEntityInWorld(marshmallow);
 		}
 		return data;

@@ -10,8 +10,10 @@ package stevekung.mods.moreplanets.planets.polongnius.blocks;
 import micdoodle8.mods.galacticraft.core.items.ItemBlockDesc;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
@@ -108,5 +110,16 @@ public class PolongniusBlocks
 		RegisterHelper.registerBlock(PolongniusBlocks.flonium_torch);
 		RegisterHelper.registerBlock(PolongniusBlocks.cheese_of_milk);
 		RegisterHelper.registerBlock(PolongniusBlocks.ultra_violet_solar_fake);
+
+		OreDictionary.registerOre("oreCopper", new ItemStack(PolongniusBlocks.polongnius_block, 1, 4));
+		OreDictionary.registerOre("oreTin", new ItemStack(PolongniusBlocks.polongnius_block, 1, 5));
+		OreDictionary.registerOre("oreIron", new ItemStack(PolongniusBlocks.polongnius_block, 1, 6));
+		OreDictionary.registerOre("orePalladium", new ItemStack(PolongniusBlocks.polongnius_block, 1, 7));
+		OreDictionary.registerOre("oreFlonium", new ItemStack(PolongniusBlocks.polongnius_block, 1, 8));
+		OreDictionary.registerOre("orePurpleCrystal", new ItemStack(PolongniusBlocks.polongnius_block, 1, 8));
+
+		OreDictionary.registerOre("blockPolongniusMeteor", new ItemStack(PolongniusBlocks.polongnius_block, 1, 10));
+		OreDictionary.registerOre("blockPurpleCrystal", new ItemStack(PolongniusBlocks.polongnius_block, 1, 11));
+		OreDictionary.registerOre("blockPalladium", new ItemStack(PolongniusBlocks.polongnius_block, 1, 12));
 	}
 }

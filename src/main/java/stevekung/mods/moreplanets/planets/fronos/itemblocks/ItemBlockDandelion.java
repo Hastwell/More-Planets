@@ -17,8 +17,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
@@ -29,13 +27,6 @@ public class ItemBlockDandelion extends ItemBlockBaseMP
 	public ItemBlockDandelion(Block block)
 	{
 		super(block);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
 	}
 
 	@Override
@@ -64,6 +55,10 @@ public class ItemBlockDandelion extends ItemBlockBaseMP
 		if (meta >= 3 && meta <= 5)
 		{
 			if (!player.isPotionActive(Potion.regeneration.id))
+			{
+				player.setItemInUse(itemStack, this.getMaxItemUseDuration(itemStack));
+			}
+			if (player.capabilities.isCreativeMode)
 			{
 				player.setItemInUse(itemStack, this.getMaxItemUseDuration(itemStack));
 			}

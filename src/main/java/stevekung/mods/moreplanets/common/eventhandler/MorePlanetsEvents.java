@@ -616,31 +616,31 @@ public class MorePlanetsEvents
 		else if (block == FronosBlocks.coconut_milk)
 		{
 			world.setBlockToAir(pos);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 0);
+			event.result = new ItemStack(FronosItems.coconut_milk_bucket);
 			event.setResult(Result.ALLOW);
 		}
 		else if (block == FronosBlocks.mineral_water)
 		{
 			world.setBlockToAir(pos);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 1);
+			event.result = new ItemStack(FronosItems.mineral_water_bucket);
 			event.setResult(Result.ALLOW);
 		}
 		else if (block == FronosBlocks.ovaltine)
 		{
 			world.setBlockToAir(pos);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 2);
+			event.result = new ItemStack(FronosItems.ovaltine_bucket);
 			event.setResult(Result.ALLOW);
 		}
 		else if (block == FronosBlocks.tea)
 		{
 			world.setBlockToAir(pos);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 3);
+			event.result = new ItemStack(FronosItems.tea_bucket);
 			event.setResult(Result.ALLOW);
 		}
 		else if (block == FronosBlocks.caramel)
 		{
 			world.setBlockToAir(pos);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 4);
+			event.result = new ItemStack(FronosItems.caramel_bucket);
 			event.setResult(Result.ALLOW);
 		}
 		else if (block == SiriusBBlocks.sirius_lava)

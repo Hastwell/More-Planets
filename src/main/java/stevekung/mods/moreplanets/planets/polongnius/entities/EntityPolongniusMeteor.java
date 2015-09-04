@@ -133,22 +133,39 @@ public class EntityPolongniusMeteor extends Entity
 	{
 		if (!this.worldObj.isRemote)
 		{
-			if (moving != null)
-			{
-				BlockPos pos = moving.getBlockPos().offset(moving.sideHit);
+			boolean flag;
 
-				if (this.worldObj.isAirBlock(pos))
+			if (moving.entityHit != null)
+			{
+				flag = moving.entityHit.attackEntityFrom(EntityPolongniusMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12.0F : 6.0F);
+
+				if (flag)
 				{
-					this.worldObj.setBlockState(moving.getBlockPos(), PolongniusBlocks.fallen_polongnius_meteor.getDefaultState(), 3);
-				}
-				if (moving.entityHit != null)
-				{
-					moving.entityHit.attackEntityFrom(EntityPolongniusMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12.0F : 6.0F);
+					this.func_174815_a(this.shootingEntity, moving.entityHit);
 				}
 			}
-			this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
+			else
+			{
+				flag = true;
+
+				if (this.shootingEntity != null && this.shootingEntity instanceof EntityLiving)
+				{
+					flag = true;
+				}
+
+				if (flag)
+				{
+					BlockPos blockpos = moving.getBlockPos().offset(moving.sideHit);
+
+					if (this.worldObj.isAirBlock(blockpos))
+					{
+						this.worldObj.setBlockState(blockpos, PolongniusBlocks.fallen_polongnius_meteor.getDefaultState());
+					}
+				}
+				this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
+			}
+			this.setDead();
 		}
-		this.setDead();
 	}
 
 	public static DamageSource causeMeteorDamage(EntityPolongniusMeteor meteor, Entity entity)

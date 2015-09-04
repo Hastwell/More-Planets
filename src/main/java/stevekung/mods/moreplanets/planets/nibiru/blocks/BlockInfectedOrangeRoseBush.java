@@ -23,7 +23,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
 
 public class BlockInfectedOrangeRoseBush extends BlockFlowerMP implements IGrowable
@@ -154,6 +156,18 @@ public class BlockInfectedOrangeRoseBush extends BlockFlowerMP implements IGrowa
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+	{
+		return EnumPlantType.Plains;
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+	{
+		return NibiruBlocks.infected_orange_rose_bush.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

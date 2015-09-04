@@ -49,10 +49,6 @@ public abstract class ItemFoodMP extends ItemFood
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
 	{
-		if (this.getItemVariantsName() == null)
-		{
-			return;
-		}
 		for (int i = 0; i < this.getItemVariantsName().length; i++)
 		{
 			list.add(new ItemStack(this, 1, i));
@@ -65,10 +61,6 @@ public abstract class ItemFoodMP extends ItemFood
 		if (this.reverseName())
 		{
 			return "item." + this.getItemVariantsName()[itemStack.getItemDamage()] + "." + super.getUnlocalizedName(itemStack).replace("item.", "");
-		}
-		if (this.getItemVariantsName() == null)
-		{
-			return super.getUnlocalizedName(itemStack);
 		}
 		return super.getUnlocalizedName(itemStack) + "." + this.getItemVariantsName()[itemStack.getItemDamage()];
 	}

@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.planets.diona.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.planets.diona.itemblocks.ItemBlockDiona;
@@ -74,5 +76,16 @@ public class DionaBlocks
 		RegisterHelper.registerBlock(DionaBlocks.minion_creeper_egg);
 		RegisterHelper.registerBlock(DionaBlocks.diona_treasure_chest);
 		RegisterHelper.registerBlock(DionaBlocks.diona_ancient_chest);
+
+		OreDictionary.registerOre("oreQuontonium", new ItemStack(DionaBlocks.diona_block, 1, 4));
+		OreDictionary.registerOre("oreFronisium", new ItemStack(DionaBlocks.diona_block, 1, 5));
+		OreDictionary.registerOre("oreTin", new ItemStack(DionaBlocks.diona_block, 1, 6));
+		OreDictionary.registerOre("oreCopper", new ItemStack(DionaBlocks.diona_block, 1, 7));
+		OreDictionary.registerOre("oreSilicon", new ItemStack(DionaBlocks.diona_block, 1, 8));
+		OreDictionary.registerOre("oreAluminum", new ItemStack(DionaBlocks.diona_block, 1, 9));
+		OreDictionary.registerOre("oreAluminium", new ItemStack(DionaBlocks.diona_block, 1, 9));
+
+		OreDictionary.registerOre("blockQuontonium", new ItemStack(DionaBlocks.diona_block, 1, 10));
+		OreDictionary.registerOre("blockFronisium", new ItemStack(DionaBlocks.diona_block, 1, 11));
 	}
 }

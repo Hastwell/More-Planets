@@ -18,10 +18,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
-public class BlockPlutoHeartCrystal extends BlockPlanetTileMP /*implements IDetectableResource*/
+public class BlockPlutoHeartCrystal extends BlockBaseMP /*implements IDetectableResource*/
 {
 	public BlockPlutoHeartCrystal(String name)
 	{
@@ -70,7 +70,7 @@ public class BlockPlutoHeartCrystal extends BlockPlanetTileMP /*implements IDete
 	{
 		if (!this.canPlaceBlockAt(world, pos))
 		{
-			Block.spawnAsEntity(world, pos, new ItemStack(this, 1, this.getMetaFromState(state)));
+			Block.spawnAsEntity(world, pos, new ItemStack(this, 1, 0));
 			world.setBlockToAir(pos);
 		}
 	}

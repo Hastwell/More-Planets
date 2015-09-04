@@ -8,8 +8,10 @@
 package stevekung.mods.moreplanets.planets.pluto.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidMethane;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidNitrogen;
@@ -81,5 +83,10 @@ public class PlutoBlocks
 		RegisterHelper.registerBlock(PlutoBlocks.liquid_methane);
 		RegisterHelper.registerBlock(PlutoBlocks.liquid_nitrogen);
 		RegisterHelper.registerBlock(PlutoBlocks.space_potato_block);
+
+		OreDictionary.registerOre("oreMeteor", new ItemStack(PlutoBlocks.pluto_block, 1, 4));
+		OreDictionary.registerOre("oreFrozenIron", new ItemStack(PlutoBlocks.pluto_block, 1, 5));
+		OreDictionary.registerOre("oreIron", new ItemStack(PlutoBlocks.pluto_block, 1, 6));
+		OreDictionary.registerOre("oreXeonium", new ItemStack(PlutoBlocks.pluto_block, 1, 7));
 	}
 }

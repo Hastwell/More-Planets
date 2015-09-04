@@ -9,8 +9,10 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
@@ -112,5 +114,16 @@ public class KapteynBBlocks
 		RegisterHelper.registerBlock(KapteynBBlocks.uranium_waste, ItemBlockUraniumWaste.class);
 		RegisterHelper.registerBlock(KapteynBBlocks.icy_poison_crystal, ItemBlockIcyPoisonCrystal.class);
 		RegisterHelper.registerBlock(KapteynBBlocks.frozen_water);
+
+		OreDictionary.registerOre("oreNamerium", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 4));
+		OreDictionary.registerOre("oreFrozenIron", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 5));
+		OreDictionary.registerOre("oreUranium", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 6));
+		OreDictionary.registerOre("oreTin", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 7));
+		OreDictionary.registerOre("oreCopper", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 8));
+		OreDictionary.registerOre("oreRedstone", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 9));
+
+		OreDictionary.registerOre("blockNamerium", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 11));
+		OreDictionary.registerOre("blockFrozenIron", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 12));
+		OreDictionary.registerOre("blockUranium", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 13));
 	}
 }

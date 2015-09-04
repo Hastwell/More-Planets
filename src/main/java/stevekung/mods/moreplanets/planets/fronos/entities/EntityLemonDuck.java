@@ -132,7 +132,7 @@ public class EntityLemonDuck extends IFronosPet
 			EntityLemonDuck duck = new EntityLemonDuck(this.worldObj);
 			duck.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
 			duck.mountEntity(this);
-			duck.setGrowingAge(-8000);
+			duck.setGrowingAge(-24000);
 			this.worldObj.spawnEntityInWorld(duck);
 		}
 		return data;

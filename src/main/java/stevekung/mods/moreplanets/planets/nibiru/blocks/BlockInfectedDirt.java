@@ -25,6 +25,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -47,7 +48,7 @@ public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBloc
 	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
 	{
 		Block block = plant.getPlant(world, pos).getBlock();
-		return block == NibiruBlocks.nibiru_sapling;
+		return block == NibiruBlocks.nibiru_sapling || plant.getPlantType(world, pos) == EnumPlantType.Plains;
 	}
 
 	@Override

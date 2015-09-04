@@ -31,6 +31,7 @@ public class EuropaBlocks
 	public static Block europa_ice_slush;
 	public static Block europa_salt;
 	public static Block europa_underwater_geyser;
+	public static Block europa_water_bomb;
 	public static Block europa_water;
 
 	// Fluid
@@ -54,6 +55,7 @@ public class EuropaBlocks
 		EuropaBlocks.europa_ice_slush = new BlockEuropaIceSlush("europa_ice_slush");
 		EuropaBlocks.europa_salt = new BlockBaseMP("europa_salt", Material.rock).setHardness(1.5F);
 		EuropaBlocks.europa_underwater_geyser = new BlockEuropaUnderwaterGeyser("europa_underwater_geyser");
+		EuropaBlocks.europa_water_bomb = new BlockEuropaWaterBomb("europa_water_bomb");
 
 		EuropaBlocks.europa_water_fluid = new FluidMP("europa_water_fluid").setBlock(EuropaBlocks.europa_water);
 		FluidRegistry.registerFluid(EuropaBlocks.europa_water_fluid);
@@ -80,6 +82,7 @@ public class EuropaBlocks
 		RegisterHelper.registerBlock(EuropaBlocks.europa_underwater_geyser, ItemBlockEuropaGeyser.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_prismarine, ItemBlockEuropaPrismarine.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_sea_lantern);
+		RegisterHelper.registerBlock(EuropaBlocks.europa_water_bomb);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockEuropaSnowLayer.class);
 		RegisterHelper.registerBlock(EuropaBlocks.europa_water);
 	}

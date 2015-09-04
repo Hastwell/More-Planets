@@ -56,7 +56,6 @@ public class CraftingRecipesSiriusB
 		// Items
 		GameRegistry.addRecipe(new ItemStack(SiriusBItems.sirius_b_item, 1, 1), new Object[] { "SSS", "SSS", "SSS", 'S', new ItemStack(SiriusBItems.sirius_b_item, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(Items.diamond), new Object[] { "LLL", "LLL", "LLL", 'L', new ItemStack(SiriusBItems.sirius_b_item, 1, 1) });
-		GameRegistry.addRecipe(new ItemStack(SiriusBItems.sirius_obsidian_bucket), new Object[] { "O O", " O ", 'O', new ItemStack(SiriusBBlocks.sirius_obsidian) });
 		GameRegistry.addShapelessRecipe(new ItemStack(SiriusBItems.sirius_b_item, 9, 3), new ItemStack(SiriusBBlocks.sirius_b_block, 1, 8) );
 		GameRegistry.addRecipe(new ItemStack(SiriusBItems.sirius_b_item, 2, 5), new Object[] { "S", "S", 'S', new ItemStack(SiriusBItems.sirius_b_item, 1, 3) });
 

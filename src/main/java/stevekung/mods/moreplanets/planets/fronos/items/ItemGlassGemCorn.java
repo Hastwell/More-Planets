@@ -20,10 +20,10 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.items.ItemFoodMP;
+import stevekung.mods.moreplanets.common.items.ItemFoodMP2;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
-public class ItemGlassGemCorn extends ItemFoodMP implements IPlantable
+public class ItemGlassGemCorn extends ItemFoodMP2 implements IPlantable
 {
 	public ItemGlassGemCorn(String name)
 	{
@@ -93,11 +93,5 @@ public class ItemGlassGemCorn extends ItemFoodMP implements IPlantable
 		{
 			return false;
 		}
-	}
-
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return null;
 	}
 }

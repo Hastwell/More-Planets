@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.polongnius.items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.stevecore.RegisterHelper;
@@ -60,6 +61,8 @@ public class PolongniusItems
 		RegisterHelper.registerItem(PolongniusItems.tier_5_rocket);
 		RegisterHelper.registerItem(PolongniusItems.polongnius_meteor_chunk);
 		RegisterHelper.registerItem(PolongniusItems.polongnius_dungeon_key);
+
+		OreDictionary.registerOre("slimeball", PolongniusItems.cheese_slimeball);
 	}
 
 	private static void registerFluidContainer()

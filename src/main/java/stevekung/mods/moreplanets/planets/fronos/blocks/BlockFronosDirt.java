@@ -25,6 +25,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -47,7 +48,7 @@ public class BlockFronosDirt extends BlockBaseMP implements ITerraformableBlock
 	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
 	{
 		Block block = plant.getPlant(world, pos).getBlock();
-		return block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_coral || block == FronosBlocks.fronos_dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_poppy || block == FronosBlocks.fronos_tall_grass;
+		return block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_coral || block == FronosBlocks.fronos_dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_poppy || block == FronosBlocks.fronos_tall_grass || plant.getPlantType(world, pos) == EnumPlantType.Plains;
 	}
 
 	@Override

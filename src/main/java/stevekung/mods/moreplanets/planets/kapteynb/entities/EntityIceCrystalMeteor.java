@@ -133,31 +133,48 @@ public class EntityIceCrystalMeteor extends Entity
 	{
 		if (!this.worldObj.isRemote)
 		{
-			if (moving != null)
-			{
-				BlockPos pos = moving.getBlockPos().offset(moving.sideHit);
+			boolean flag;
 
-				if (this.worldObj.isAirBlock(pos))
+			if (moving.entityHit != null)
+			{
+				flag = moving.entityHit.attackEntityFrom(EntityIceCrystalMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12.0F : 6.0F);
+
+				if (flag)
 				{
-					this.worldObj.setBlockState(moving.getBlockPos(), KapteynBBlocks.fallen_ice_crystal_meteor.getDefaultState(), 3);
-				}
-				if (moving.entityHit != null)
-				{
-					moving.entityHit.attackEntityFrom(EntityIceCrystalMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12.0F : 6.0F);
+					this.func_174815_a(this.shootingEntity, moving.entityHit);
 				}
 			}
-			this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
+			else
+			{
+				flag = true;
+
+				if (this.shootingEntity != null && this.shootingEntity instanceof EntityLiving)
+				{
+					flag = true;
+				}
+
+				if (flag)
+				{
+					BlockPos blockpos = moving.getBlockPos().offset(moving.sideHit);
+
+					if (this.worldObj.isAirBlock(blockpos))
+					{
+						this.worldObj.setBlockState(blockpos, KapteynBBlocks.fallen_ice_crystal_meteor.getDefaultState());
+					}
+				}
+				this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
+			}
+			this.setDead();
 		}
-		this.setDead();
 	}
 
-	public static DamageSource causeMeteorDamage(EntityIceCrystalMeteor par0EntityMeteor, Entity par1Entity)
+	public static DamageSource causeMeteorDamage(EntityIceCrystalMeteor meteor, Entity entity)
 	{
-		if (par1Entity != null && par1Entity instanceof EntityPlayer)
+		if (entity != null && entity instanceof EntityPlayer)
 		{
-			StatCollector.translateToLocalFormatted("death." + "meteor", ((EntityPlayer) par1Entity).getGameProfile().getName() + " was hit by a meteor! That's gotta hurt!");
+			StatCollector.translateToLocalFormatted("death." + "meteor", ((EntityPlayer) entity).getGameProfile().getName() + " was hit by a meteor! That's gotta hurt!");
 		}
-		return new EntityDamageSourceIndirect("explosion", par0EntityMeteor, par1Entity).setProjectile();
+		return new EntityDamageSourceIndirect("explosion", meteor, entity).setProjectile();
 	}
 
 	@Override

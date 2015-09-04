@@ -16,6 +16,7 @@ import stevekung.mods.stevecore.RegisterHelper;
 public class EuropaItems
 {
 	public static Item europa_prismarine;
+	public static Item europa_apple;
 	public static Item europa_water_bucket;
 
 	public static void init()
@@ -28,12 +29,14 @@ public class EuropaItems
 	private static void initItems()
 	{
 		EuropaItems.europa_prismarine = new ItemEuropaPrismarine("europa_prismarine_item");
+		EuropaItems.europa_apple = new ItemEuropaApple("europa_apple");
 		EuropaItems.europa_water_bucket = new ItemEuropaWaterBucket("europa_water_bucket");
 	}
 
 	private static void registerItems()
 	{
 		RegisterHelper.registerItem(EuropaItems.europa_prismarine);
+		RegisterHelper.registerItem(EuropaItems.europa_apple);
 		RegisterHelper.registerItem(EuropaItems.europa_water_bucket);
 	}
 

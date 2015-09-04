@@ -114,11 +114,11 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 	}
 
 	@Override
-	public void updateTick(World par1World, BlockPos pos, IBlockState state, Random rand)
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		if (!par1World.isRemote)
+		if (!world.isRemote)
 		{
-			this.tryToFall(par1World, pos);
+			this.tryToFall(world, pos);
 		}
 	}
 
@@ -133,7 +133,7 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 			{
 			}
 
-			if (blockpos1.getY() > 0)
+			if (blockpos1.getY() >= 0)
 			{
 				world.setBlockState(blockpos1.up(), this.getDefaultState(), 3);
 			}

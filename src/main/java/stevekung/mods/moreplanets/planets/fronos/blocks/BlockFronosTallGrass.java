@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -23,6 +22,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -114,9 +114,10 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)//FIXME My block getting crash when try to place T_T
 	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt || world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass;
+		/*Block block = world.getBlockState(pos.down()).getBlock();
 		BlockType type = (BlockType)state.getValue(VARIANT);
 
 		if (type == BlockType.fronos_short_grass || type == BlockType.fronos_medium_grass || type == BlockType.fronos_tall_grass)
@@ -139,7 +140,7 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 		{
 			return block == FronosBlocks.golden_grass || block == FronosBlocks.fronos_dirt;
 		}
-		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
+		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;*/
 	}
 
 	@Override
@@ -210,6 +211,18 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+	{
+		return EnumPlantType.getPlantType("Fronos");
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+	{
+		return FronosBlocks.fronos_tall_grass.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

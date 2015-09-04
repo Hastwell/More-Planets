@@ -24,7 +24,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
@@ -213,6 +215,18 @@ public class BlockDandelion extends BlockFlowerMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+	{
+		return EnumPlantType.getPlantType("Fronos");
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+	{
+		return FronosBlocks.fronos_dandelion.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

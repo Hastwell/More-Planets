@@ -26,6 +26,7 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
 import stevekung.mods.moreplanets.common.blocks.IPlantMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
@@ -212,6 +213,18 @@ public class BlockGlassGemCorn extends BlockFlowerMP implements IPlantMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(STAGE)).ordinal();
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+	{
+		return EnumPlantType.Crop;
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+	{
+		return FronosBlocks.glass_gem_corn.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

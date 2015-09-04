@@ -36,12 +36,12 @@ import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 import codechicken.nei.api.IHighlightHandler;
-import codechicken.nei.api.ItemInfo;
+import codechicken.nei.api.ItemInfo.Layout;
 
 public class NEIHighlightHandlerMP implements IHighlightHandler
 {
 	@Override
-	public List<String> handleTextData(ItemStack stack, World world, EntityPlayer player, MovingObjectPosition moving, List<String> currenttip, ItemInfo.Layout layout)
+	public List<String> handleTextData(ItemStack stack, World world, EntityPlayer player, MovingObjectPosition moving, List<String> currenttip, Layout layout)
 	{
 		return currenttip;
 	}

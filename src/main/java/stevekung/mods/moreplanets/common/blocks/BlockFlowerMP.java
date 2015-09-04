@@ -18,11 +18,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public abstract class BlockFlowerMP extends BlockBaseMP
+public abstract class BlockFlowerMP extends BlockBaseMP implements IPlantable
 {
 	public BlockFlowerMP()
 	{

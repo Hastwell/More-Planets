@@ -107,7 +107,7 @@ public class BlockFallenPolongniusMeteor extends BlockBaseMP
 			{
 			}
 
-			if (blockpos1.getY() > 0)
+			if (blockpos1.getY() >= 0)
 			{
 				world.setBlockState(blockpos1.up(), this.getDefaultState(), 3);
 			}

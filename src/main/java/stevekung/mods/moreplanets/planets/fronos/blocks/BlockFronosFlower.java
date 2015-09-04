@@ -29,6 +29,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
@@ -222,15 +223,16 @@ public class BlockFronosFlower extends BlockFlowerMP
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)//FIXME My block getting crash when try to place T_T
 	{
-		BlockType type = (BlockType) world.getBlockState(pos).getValue(VARIANT);
-		
+		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt || world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass;
+		/*BlockType type = (BlockType) world.getBlockState(pos).getValue(VARIANT);
+
 		if (world.getBlockState(pos) == FronosBlocks.fronos_flower && type == BlockType.white_moss)
 		{
 			return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_sand && world.getBlockState(pos.down()).getValue(BlockFronosSand.VARIANT) == BlockFronosSand.BlockType.white_sand ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : false;
 		}
-		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_block && (world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) ? true : false;
+		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_block && (world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) ? true : false;*/
 	}
 
 	@Override
@@ -255,6 +257,18 @@ public class BlockFronosFlower extends BlockFlowerMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+	{
+		return EnumPlantType.getPlantType("Fronos");
+	}
+
+	@Override
+	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+	{
+		return FronosBlocks.fronos_flower.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

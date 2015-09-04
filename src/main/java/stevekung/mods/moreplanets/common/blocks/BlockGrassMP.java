@@ -16,6 +16,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
@@ -65,9 +66,9 @@ public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformable
 
 		if (world.getBlockState(pos).getBlock() instanceof IFronosGrass)
 		{
-			return block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_coral || block == FronosBlocks.fronos_dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_poppy || block == FronosBlocks.fronos_tall_grass;
+			return block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_coral || block == FronosBlocks.fronos_dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_poppy || block == FronosBlocks.fronos_tall_grass || plant.getPlantType(world, pos) == EnumPlantType.Plains || plant.getPlantType(world, pos) == EnumPlantType.getPlantType("Fronos");
 		}
-		return super.canSustainPlant(world, pos, side, plant);
+		return super.canSustainPlant(world, pos, side, plant) || plant.getPlantType(world, pos) == EnumPlantType.Plains;
 	}
 
 	@Override

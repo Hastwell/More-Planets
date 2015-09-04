@@ -10,12 +10,6 @@ package stevekung.mods.moreplanets.planets.kapteynb.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.common.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class KapteynBToolsItems
@@ -50,11 +44,11 @@ public class KapteynBToolsItems
 
 	private static void initItems()
 	{
-		KapteynBToolsItems.frozen_iron_pickaxe = new ItemPickaxeMP("frozen_iron_pickaxe", KapteynBToolsItems.frozen_iron, KapteynBItems.kapteyn_b_item, 2);
-		KapteynBToolsItems.frozen_iron_axe = new ItemAxeMP("frozen_iron_axe", KapteynBToolsItems.frozen_iron, KapteynBItems.kapteyn_b_item, 2);
-		KapteynBToolsItems.frozen_iron_hoe = new ItemHoeMP("frozen_iron_hoe", KapteynBToolsItems.frozen_iron, KapteynBItems.kapteyn_b_item, 2);
-		KapteynBToolsItems.frozen_iron_shovel = new ItemShovelMP("frozen_iron_shovel", KapteynBToolsItems.frozen_iron, KapteynBItems.kapteyn_b_item, 2);
-		KapteynBToolsItems.frozen_iron_sword = new ItemSwordMP("frozen_iron_sword", KapteynBToolsItems.frozen_iron, KapteynBItems.kapteyn_b_item, 2);
+		KapteynBToolsItems.frozen_iron_pickaxe = new ItemFrozenIronPickaxe("frozen_iron_pickaxe", KapteynBToolsItems.frozen_iron);
+		KapteynBToolsItems.frozen_iron_axe = new ItemFrozenIronAxe("frozen_iron_axe", KapteynBToolsItems.frozen_iron);
+		KapteynBToolsItems.frozen_iron_hoe = new ItemFrozenIronHoe("frozen_iron_hoe", KapteynBToolsItems.frozen_iron);
+		KapteynBToolsItems.frozen_iron_shovel = new ItemFrozenIronShovel("frozen_iron_shovel", KapteynBToolsItems.frozen_iron);
+		KapteynBToolsItems.frozen_iron_sword = new ItemFrozenIronSword("frozen_iron_sword", KapteynBToolsItems.frozen_iron);
 		KapteynBToolsItems.uranium_pickaxe = new ItemUraniumPickaxe("uranium_pickaxe", KapteynBToolsItems.uranium);
 		KapteynBToolsItems.uranium_axe = new ItemUraniumAxe("uranium_axe", KapteynBToolsItems.uranium);
 		KapteynBToolsItems.uranium_hoe = new ItemUraniumHoe("uranium_hoe", KapteynBToolsItems.uranium);

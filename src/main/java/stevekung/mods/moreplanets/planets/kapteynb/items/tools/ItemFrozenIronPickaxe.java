@@ -35,24 +35,24 @@ public class ItemFrozenIronPickaxe extends ItemPickaxe
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
+	public boolean hitEntity(ItemStack itemStack, EntityLivingBase entity, EntityLivingBase entity2)
 	{
 		entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
-		stack.damageItem(1, entity2);
+		itemStack.damageItem(1, entity2);
 		return true;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
+	public EnumRarity getRarity(ItemStack itemStack)
 	{
 		return ClientProxyCore.galacticraftItem;
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
 	{
-		if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 2)
+		if (itemStack2.getItem() == KapteynBItems.kapteyn_b_item && itemStack2.getItemDamage() == 2)
 		{
 			return true;
 		}

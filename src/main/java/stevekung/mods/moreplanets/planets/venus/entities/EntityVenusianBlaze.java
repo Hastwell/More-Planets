@@ -22,14 +22,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntityVenusianBlaze extends EntityMob implements IEntityBreathable
 {
@@ -95,6 +98,12 @@ public class EntityVenusianBlaze extends EntityMob implements IEntityBreathable
 	public float getBrightness(float light)
 	{
 		return 1.0F;
+	}
+
+	@Override
+	public ItemStack getPickedResult(MovingObjectPosition moving)
+	{
+		return new ItemStack(MPItems.spawn_egg_mp, 1, 1034);
 	}
 
 	@Override

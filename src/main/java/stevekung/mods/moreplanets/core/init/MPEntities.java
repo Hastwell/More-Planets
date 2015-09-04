@@ -22,6 +22,7 @@ import stevekung.mods.moreplanets.common.util.CompatibilityUtilMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaGuardian;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
+import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteor;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteorChunk;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusSludgeling;
@@ -186,6 +187,8 @@ public class MPEntities
 		RegisterHelper.registerNonMobEntity(EntityUraniumBomb.class, "UraniumBomb", MorePlanetsCore.instance, true);
 		RegisterHelper.registerNonMobEntity(EntityIceCrystalMeteor.class, "IceCrystalMeteor", MorePlanetsCore.instance, true);
 		RegisterHelper.registerNonMobEntity(EntityTier8Rocket.class, "Tier8Rocket", MorePlanetsCore.instance, false);
+
+		RegisterHelper.registerNonMobEntity(EntityEuropaWaterBomb.class, "EuropaWaterBomb", MorePlanetsCore.instance, true);
 	}
 
 	private static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour)

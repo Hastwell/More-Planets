@@ -22,8 +22,10 @@ import stevekung.mods.moreplanets.common.entities.models.ModelRocketMP;
 import stevekung.mods.moreplanets.common.entities.models.ModelRocketNoFlagMP;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaGuardian;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaSquid;
+import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaWaterBomb;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaGuardian;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
+import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
 import stevekung.mods.moreplanets.moons.koentus.client.render.entities.RenderKoentusMeteor;
 import stevekung.mods.moreplanets.moons.koentus.client.render.entities.RenderKoentusMeteorChunk;
 import stevekung.mods.moreplanets.moons.koentus.client.render.entities.RenderKoentusSludgeling;
@@ -92,9 +94,11 @@ import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityTeaC
 import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityVanillaCreamBall;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderFrozenSludgeling;
+import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderUraniumBomb;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityFrozenSludgeling;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 import stevekung.mods.moreplanets.planets.nibiru.client.render.entities.RenderGiantWorm;
@@ -235,8 +239,10 @@ public class EntityRendererMP
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityUraniumBomb.class, new RenderUraniumBomb(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTier8Rocket.class, new RenderTier8Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_8_rocket"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteor.class, new RenderIceCrystalMeteor(render));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntitySiriusSmallFireball.class, new RenderSiriusSmallFireball(render));
 
+		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb(render));
 	}
 }
