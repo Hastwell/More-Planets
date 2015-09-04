@@ -645,94 +645,45 @@ public class MorePlanetsEvents
 		}
 		else if (block == SiriusBBlocks.sirius_lava)
 		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = new ItemStack(SiriusBItems.sirius_lava_bucket);
-				event.setResult(Result.ALLOW);
-			}
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(SiriusBItems.sirius_lava_bucket);
+			event.setResult(Result.ALLOW);
 		}
 		else if (block == IoBlocks.io_lava)
 		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = new ItemStack(IoItems.io_lava_bucket);
-				event.setResult(Result.ALLOW);
-			}
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(IoItems.io_lava_bucket);
+			event.setResult(Result.ALLOW);
 		}
 		else if (block == IoBlocks.liquid_red_sulfur)
 		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = new ItemStack(IoItems.liquid_red_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(IoItems.liquid_red_sulfur_bucket);
+			event.setResult(Result.ALLOW);
 		}
 		else if (block == IoBlocks.liquid_yellow_sulfur)
 		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = new ItemStack(IoItems.liquid_yellow_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(IoItems.liquid_yellow_sulfur_bucket);
+			event.setResult(Result.ALLOW);
 		}
 		else if (block == IoBlocks.liquid_orange_sulfur)
 		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = new ItemStack(IoItems.liquid_orange_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(IoItems.liquid_orange_sulfur_bucket);
+			event.setResult(Result.ALLOW);
 		}
 		else if (block == IoBlocks.liquid_brown_sulfur)
 		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = new ItemStack(IoItems.liquid_brown_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(IoItems.liquid_brown_sulfur_bucket);
+			event.setResult(Result.ALLOW);
 		}
 		else if (block == IoBlocks.io_black_lava)
 		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = new ItemStack(IoItems.io_black_lava_bucket);
-				event.setResult(Result.ALLOW);
-			}
+			world.setBlockToAir(pos);
+			event.result = new ItemStack(IoItems.io_black_lava_bucket);
+			event.setResult(Result.ALLOW);
 		}
 		else if (block == PlutoBlocks.liquid_methane)
 		{
