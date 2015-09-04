@@ -1,0 +1,52 @@
+# More Planets : Venus = THAI
+
+# BLOCK
+tile.venus_block.surface.name=พื้นผิวหิน จากดาวศุกร์
+tile.venus_block.sub_surface.name=พื้นผิวหินชั้นที่ 2 จากดาวศุกร์
+tile.venus_block.rock.name=หิน จากดาวศุกร์
+tile.venus_block.cobblestone.name=หินกรวด จากดาวศุกร์
+tile.venus_block.sulfur_ore.name=แร่กำมะถัน จากดาวศุกร์
+tile.venus_block.lead_ore.name=แร่ตะกั่ว จากดาวศุกร์
+tile.venus_block.tin_ore.name=แร่ดีบุก จากดาวศุกร์
+tile.venus_block.copper_ore.name=แร่ทองแดง จากดาวศุกร์
+tile.venus_block.coal_ore.name=แร่ถ่านหิน จากดาวศุกร์
+tile.venus_block.iron_ore.name=แร่เหล็ก จากดาวศุกร์
+tile.venus_block.gold_ore.name=แร่ทองคำ จากดาวศุกร์
+tile.venus_block.lead_block.name=บล็อกตะกั่ว จากดาวศุกร์
+tile.venus_block.stone_brick.name=อิฐหิน จากดาวศุกร์
+tile.venus_block.cracked_stone_brick.name=อิฐหินที่แตก จากดาวศุกร์
+tile.venus_block.dungeon_brick.name=อิฐในดันเจี้ยน จากดาวศุกร์
+tile.venus_redstone_ore.name=แร่หินแดง จากดาวศุกร์
+tile.venus_smoke_geyser.name=ควันน้ำพุร้อน จากดาวศุกร์
+tile.venus_magma_rock.name=หินแม็กม่า จากดาวศุกร์
+tile.venus_sand.name=ทราย จากดาวศุกร์
+tile.sulfur_torch.name=คบเพลิงกำมะถัน จากดาวศุกร์
+tile.venusian_blaze_egg.name=ไข่แบลช จากดาวศุกร์
+tile.venus_ancient_chest.name=หีบโบราณ จากดาวศุกร์
+tile.venus_treasure_chest.name=หีบสมบัติ เทียร์ 3 จากดาวศุกร์
+
+# ITEMS
+item.venus_item.lead_ingot.name=แท่งตะกั่ว
+item.sulfur_battery.name=แบตเตอรี่กำมะถัน
+item.jetpack.name=ไอพ่น
+item.venus_dungeon_key.name=กุญแจดันเจี้ยน เทียร์ 3 ดาวศุกร์
+
+# TOOLS
+
+# ARMORS
+
+# ENTITIES
+entity.MorePlanet.VenusianBlaze.name=แบลช จากดาวศุกร์
+entity.MorePlanet.VenusianSlime.name=สไลม์ จากดาวศุกร์ 
+entity.MorePlanet.VenusianVillager.name=ชาวบ้าน จากดาวศุกร์
+entity.MorePlanet.VenusianBlazeMP.name=แบลช จากดาวศุกร์
+entity.MorePlanet.VenusianSlimeMP.name=สไลม์ จากดาวศุกร์
+entity.MorePlanet.VenusianVillagerMP.name=ชาวบ้าน จากดาวศุกร์
+
+# DESCRIFTION
+
+# CONTAINER
+container.venus.treasurechest.name=หีบสมบัติ จากดาวศุกร์
+container.venus.ancientchest.name=หีบโบราณ จากดาวศุกร์
+
+# PLANET
