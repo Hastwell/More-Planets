@@ -1,0 +1,18 @@
+# More Planets : Core = THAI
+
+tile.chondrite_block.rock.name=หินอนุภาคของนิวเคลียส
+tile.chondrite_block.polished.name=หินอนุภาคของนิวเคลียสที่เป็นที่ถูกขัด
+tile.chondrite_block.stone_brick.name=อิฐหินอนุภาคของนิวเคลียส
+
+# GUI
+itemGroup.MorePlanetsBlocks=บล็อกเมอร์เพลเน็ท
+itemGroup.MorePlanetsItems=ไอเท็มเมอร์เพลเน็ท
+itemGroup.MorePlanetsTools=เครื่องมือเมอร์เพลเน็ท
+itemGroup.MorePlanetsArmor=ชุดเกราะเมอร์เพลเน็ท
+
+# PLANET
+star.sirius=ซิริอุส
+solarsystem.sirius=ระบบสุริยะซิริอุส
+
+mp.failed.name=การตรวจสอบอัพเดตล้มเหลว!
+mp.success.name=การตรวจสอบอัพเดตสำเร็จ :
