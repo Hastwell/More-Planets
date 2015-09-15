@@ -28,5 +28,10 @@
 	{
 	"category": "player",
 	"sounds": ["player/unlockTreasureChest"]
+	},
+	"player.meteor":
+	{
+	"category": "player",
+	"sounds": ["player/meteor"]
 	}
 }

@@ -35,6 +35,7 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
 		super(Material.glass);
 		this.setBlockBounds(0.186F, 0.186F, 0.186F, 0.814F, 0.814F, 0.814F);
 		this.setHardness(1.0F);
+		this.setResistance(50.0F);
 		this.setStepSound(soundTypeGlass);
 		this.setUnlocalizedName(name);
 	}

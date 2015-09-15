@@ -14,8 +14,6 @@ import net.minecraft.block.BlockFire;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -28,19 +26,11 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.planets.diona.blocks.BlockFronisiumTNT;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 
 public class BlockSiriusFire extends BlockFire
 {
-	public static PropertyInteger AGE = PropertyInteger.create("age", 0, 15);
-	public static PropertyBool FLIP = PropertyBool.create("flip");
-	public static PropertyBool ALT = PropertyBool.create("alt");
-	public static PropertyBool NORTH = PropertyBool.create("north");
-	public static PropertyBool EAST = PropertyBool.create("east");
-	public static PropertyBool SOUTH = PropertyBool.create("south");
-	public static PropertyBool WEST = PropertyBool.create("west");
-	public static PropertyInteger UPPER = PropertyInteger.create("upper", 0, 2);
-
 	public BlockSiriusFire(String name)
 	{
 		super();
@@ -173,7 +163,6 @@ public class BlockSiriusFire extends BlockFire
 				{
 					l = 15;
 				}
-
 				world.setBlockState(pos, this.getDefaultState().withProperty(AGE, Integer.valueOf(l)), 3);
 			}
 			else
@@ -187,7 +176,7 @@ public class BlockSiriusFire extends BlockFire
 			}
 			else if (state.getBlock() == DionaBlocks.fronisium_tnt)
 			{
-				DionaBlocks.fronisium_tnt.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockTNT.EXPLODE, Boolean.valueOf(true)));
+				DionaBlocks.fronisium_tnt.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockFronisiumTNT.EXPLODE, Boolean.valueOf(true)));
 			}
 		}
 	}

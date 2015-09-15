@@ -8,9 +8,11 @@
 package stevekung.mods.moreplanets.planets.polongnius.blocks;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockEggMP;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
@@ -21,6 +23,7 @@ public class BlockCheeseSlimeEgg extends BlockEggMP
 	{
 		super();
 		this.setStepSound(SLIME_SOUND);
+		this.setHardness(0.0F);
 		this.setUnlocalizedName(name);
 	}
 
@@ -81,5 +84,11 @@ public class BlockCheeseSlimeEgg extends BlockEggMP
 			entity.motionZ *= d;
 		}
 		super.onEntityCollidedWithBlock(world, pos, entity);
+	}
+
+	@Override
+	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
+	{
+		return true;
 	}
 }

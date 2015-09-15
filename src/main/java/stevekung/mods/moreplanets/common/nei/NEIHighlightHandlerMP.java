@@ -21,6 +21,7 @@ import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosLeaves;
@@ -31,6 +32,7 @@ import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockAncientDarkLeaves;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockOrangeLeaves;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
+import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
@@ -217,6 +219,26 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		if (block == KoentusBlocks.crystal_farmland)
 		{
 			return new ItemStack(KoentusBlocks.crystal_dirt, 1, 0);
+		}
+		if (block == NibiruBlocks.ancient_dark_door)
+		{
+			return new ItemStack(NibiruItems.ancient_dark_door);
+		}
+		if (block == NibiruBlocks.orange_door)
+		{
+			return new ItemStack(NibiruItems.orange_door);
+		}
+		if (block == FronosBlocks.coconut_door_block)
+		{
+			return new ItemStack(FronosItems.coconut_door);
+		}
+		if (block == FronosBlocks.maple_door_block)
+		{
+			return new ItemStack(FronosItems.maple_door);
+		}
+		if (block == KoentusBlocks.crystal_door)
+		{
+			return new ItemStack(KoentusItems.crystal_door);
 		}
 		return null;
 	}

@@ -14,6 +14,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
@@ -47,7 +49,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 				this.triggerMixEffects(world, pos.down());
 				return;
 			}
-		}
+		}*/
 		if (world.getGameRules().getGameRuleBooleanValue("doFireTick"))
 		{
 			int i = rand.nextInt(3);
@@ -87,11 +89,11 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 					}
 				}
 			}
-		}*/
+		}
 		super.updateTick(world, pos, state, rand);
 	}
 
-	/*protected void triggerMixEffects(World world, BlockPos pos)
+	protected void triggerMixEffects(World world, BlockPos pos)
 	{
 		double d0 = pos.getX();
 		double d1 = pos.getY();
@@ -102,7 +104,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 		{
 			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0 + Math.random(), d1 + 1.2D, d2 + Math.random(), 0.0D, 0.0D, 0.0D, new int[0]);
 		}
-	}*/
+	}
 
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
@@ -171,7 +173,6 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 				}
 			}
 		}
-
 		return false;
 	}
 
@@ -185,7 +186,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 	{
 		Block block = world.getBlockState(pos).getBlock();
 		return !(block instanceof BlockDoor) && block != Blocks.standing_sign && block != Blocks.ladder && block != Blocks.reeds ? block.getMaterial() == Material.portal ? true : block.getMaterial().blocksMovement() : true;
-	}
+	}*/
 
 	protected boolean isSurroundingBlockFlammable(World world, BlockPos pos)
 	{
@@ -207,7 +208,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 	private boolean getCanBlockBurn(World world, BlockPos pos)
 	{
 		return world.getBlockState(pos).getBlock().getMaterial().getCanBurn();
-	}*/
+	}
 
 	protected abstract IBlockState getBlockFromWaterTo();
 	protected abstract IBlockState getObsidianBlock();

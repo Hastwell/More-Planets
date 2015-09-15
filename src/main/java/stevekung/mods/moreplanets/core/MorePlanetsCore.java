@@ -106,7 +106,7 @@ import stevekung.mods.moreplanets.planets.venus.recipe.CraftingRecipesVenus;
 import stevekung.mods.stevecore.CreativeTabsHelper;
 import stevekung.mods.stevecore.RegisterHelper;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = "required-after:GalacticraftCore; required-after:GalacticraftMars; after:Forge@[11.14.3.1480,);")//TODO required-after:Micdoodlecore;
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.14.3.1480,);")//TODO required-after:Micdoodlecore;
 public class MorePlanetsCore
 {
 	public static final String NAME = "More Planets";

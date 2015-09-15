@@ -1174,42 +1174,42 @@ schematics.container.rocket.tier8=จรวด เทียร์  8
 schematics.container.rocket.noflag.tier4=จรวด เทียร์  4 ไม่มีธง
 schematics.container.rocket.noflag.tier5=จรวด เทียร์  5 ไม่มีธง
 schematics.container.rocket.noflag.tier6=จรวด เทียร์  6 ไม่มีธง
-container.ultraviolet.solar.name=แผงพลังงานแสงอาทิตย์ อัลตร้าไวโอเล็ต
+container.ultraviolet.solar.name=แผงโซลาร์เซลล์อัลตร้าไวโอเล็ต
 container.powercrystal.name=เครื่องกำเนิดไฟฟ้าพลังงานคริสตัล
-container.candy.extractor.name=ตัวดูดลูกอม
+container.candy.extractor.name=เครื่องคัดแยกขนมหวาน
 
 # GUI
-gui.status.star.blockedfully.name=ดาวไม่สามารถมองเห็น
-gui.status.star.blockedpartial.name=ดาวที่มองเห็นได้บางส่วน
-gui.status.starVisible.name=ดาวที่มองเห็นได้
+gui.status.star.blockedfully.name=ไม่สามารถมองเห็นดาว
+gui.status.star.blockedpartial.name=มองเห็นดาวได้บางส่วน
+gui.status.starVisible.name=มองเห็นได้
 gui.status.power.name=กำลังรวบรวม
 
 # PLANET
 planet.diona=ดาวไดโอนา
-planet.polongnius=ดาวโปลองเนีส
+planet.polongnius=ดาวโพลองเนียส
 planet.nibiru=ดาวนิบิรุ
-planet.koentus=ดาวโคน์ตัส
-planet.fronos=ดาวฟาวโน
-planet.kapteynB=เค็บเทน บี
-planet.siriusB=ซีเรียส บี
+planet.koentus=ดาวโคเอ็นทัส
+planet.fronos=ดาวโฟรนอส
+planet.kapteynB=เคปทีน บี
+planet.siriusB=ซิริอุส บี
 planet.mercury=ดาวพุธ
 planet.venus=ดาวศุกร์
-planet.pluto=ดาวพลูโต
-star.kapteyn=เค็บเทน
-star.sirius=ซีเรียส
-solarsystem.kapteyn=ระบบสุริยะเค็บเทน
-solarsystem.sirius=ระบบสุริยะซีเรียส
+planet.pluto=พลูโต
+star.kapteyn=เคปทีน
+star.sirius=ซิริอุส
+solarsystem.kapteyn=ระบบสุริยะเคปทีน
+solarsystem.sirius=ระบบสุริยะซิริอุส
 
 # POTION
-potion.emp=อีเอ็มพี
-potion.infected.gas=เชื้อจากแก๊ส
+potion.emp=EMP
+potion.infected.gas=แก๊สพิษ
 potion.chemical=สารเคมี
-potion.icy_poison=หนาวเย็น
+potion.icy_poison=น้ำแข็งพิษ
 
 # DEATH MESSAGES
 death.attack.laser=%1$s ถูกยิงด้วยเลเซอร์
-death.attack.infected_vine=%1$s ถูกทำให้ติดเชื้อโดยเถาวัลย์
-death.attack.infected_gas=%1$s ถูกฆ่าโดยเชื้อจากแก๊ส
-death.attack.purple_spike=%1$s ถูกแทงโดยดอกเข็มสีม่วง
+death.attack.infected_vine=%1$s ถูกติดเชื้อโดยเถาวัลย์
+death.attack.infected_gas=%1$s ถูกฆ่าโดยแก๊สพิษ
+death.attack.purple_spike=%1$s ถูกแทงโดยดอกไม้หนามสีม่วง
 death.attack.chemical=%1$s ถูกฆ่าโดยสารเคมี
 death.attack.icy_poison=%1$s ถูกพิษโดยผลึกน้ำแข็งพิษ

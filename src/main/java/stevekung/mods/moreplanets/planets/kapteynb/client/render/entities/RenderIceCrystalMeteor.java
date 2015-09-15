@@ -44,8 +44,11 @@ public class RenderIceCrystalMeteor extends Render
 		GlStateManager.rotate(par8, 1.0F, 0.0F, 0.0F);
 		float f = entity.getSize();
 		GlStateManager.scale(f / 2, f / 2, f / 2);
+		GlStateManager.enableBlend();
+		GlStateManager.blendFunc(770, 771);
 		this.bindEntityTexture(entity);
 		this.modelMeteor.render(entity, 0.0F, 0.0F, -0.5F, 0.0F, 0.0F, 0.1F);
+		GlStateManager.disableBlend();
 		GlStateManager.popMatrix();
 	}
 

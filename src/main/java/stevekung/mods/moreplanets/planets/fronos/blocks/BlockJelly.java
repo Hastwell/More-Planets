@@ -35,7 +35,6 @@ public class BlockJelly extends BlockBreakableMP
 	{
 		super(Material.cloth);
 		this.setStepSound(MorePlanetsCore.soundTypeSmallSlime);
-		this.setHardness(0.2F);
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_block));
 		this.setUnlocalizedName(name);
 	}

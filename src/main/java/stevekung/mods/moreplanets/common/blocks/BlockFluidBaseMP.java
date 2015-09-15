@@ -65,6 +65,10 @@ public abstract class BlockFluidBaseMP extends BlockFluidClassic
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, EnumFacing side)
 	{
+		if (world.getBlockState(pos).getBlock() instanceof BlockFluidLavaBaseMP || world.getBlockState(pos).getBlock() instanceof BlockFluidBaseMP && world.getBlockState(pos).getBlock() != this)
+		{
+			return true;
+		}
 		return super.shouldSideBeRendered(world, pos, side);
 	}
 }

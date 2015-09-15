@@ -20,7 +20,6 @@ public class BlockCheeseSlime extends BlockBreakableMP
 	{
 		super(Material.glass);
 		this.setStepSound(SLIME_SOUND);
-		this.setHardness(0.2F);
 		this.setUnlocalizedName(name);
 	}
 

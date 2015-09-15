@@ -573,6 +573,8 @@ tile.pluto_block.frozen_iron_ore.name=Frozen Iron Ore
 tile.pluto_block.iron_ore.name=Iron Ore
 tile.pluto_block.xeonium_ore.name=Xeonium Ore
 tile.pluto_block.dungeon_brick.name=Pluto Dungeon Brick
+tile.pluto_block.surface_rock_brown.name=Pluto Brown Surface Rock
+tile.pluto_block.surface_rock_light_brown.name=Pluto Light Brown Surface Rock
 tile.xeonium_glowstone.name=Xeonium Glowstone
 tile.frozen_methane_block.name=Frozen Methane Block
 tile.frozen_nitrogen_block.name=Frozen Nitrogen Block
@@ -596,6 +598,7 @@ tile.europa_ice_slush.name=Europa Ice Slush
 tile.europa_salt.name=Europa Salt
 tile.europa_underwater_geyser.default.name=Europa Underwater Geyser
 tile.europa_underwater_geyser.smoke.name=Europa Underwater Smoke Geyser
+tile.europa_water_bomb.name=Europa Water Bomb
 
 # ITEMS
 #########Main Item#########
@@ -739,10 +742,10 @@ item.cream_golem.strawberry_cream_golem.name=Strawberry Cream Golem
 item.cream_golem.orange_cream_golem.name=Orange Cream Golem
 item.cream_golem.tea_cream_golem.name=Tea Cream Golem
 item.fronos_item.fronos_rock_item.name=Fronos Rock
-item.fronos_bucket.coconut_milk_bucket.name=Coconut Milk Bucket
-item.fronos_bucket.mineral_water_bucket.name=Mineral Water Bucket
-item.fronos_bucket.ovaltine_bucket.name=Ovaltine Bucket
-item.fronos_bucket.tea_bucket.name=Tea Bucket
+item.coconut_milk_bucket.name=Coconut Milk Bucket
+item.mineral_water_bucket.name=Mineral Water Bucket
+item.ovaltine_bucket.name=Ovaltine Bucket
+item.tea_bucket.name=Tea Bucket
 item.cup.empty_cup.name=Empty Cup
 item.cup.mineral_water_cup.name=Mineral Water Cup
 item.cup.ovaltine_cup.name=Ovaltine Cup
@@ -789,7 +792,7 @@ item.fruits_juice.berry_juice.name=Berry Juice
 item.fronos_food.berry_salad.name=Berry Salad
 item.fronos_food.sky_mushroom_stew.name=Sky Mushroom Stew
 item.fronos_food.rainbow_cloud_ice_cream.name=Rainbow Cloud Ice Cream
-item.fronos_bucket.caramel_bucket.name=Caramel Bucket
+item.caramel_bucket.name=Caramel Bucket
 item.candy_food.caramel.name=Caramel
 item.fruits_juice.kiwi_juice.name=Kiwi Juice
 item.fruits_juice.lemon_juice.name=Lemon Juice
@@ -819,7 +822,6 @@ item.tier_8_rocket_module.tier_8_heavy_duty_plate.name=Heavy Duty Plate
 item.sirius_b_item.small_diamond_pieces.name=Small Diamond Pieces
 item.sirius_b_item.large_diamond_pieces.name=Large Diamond Pieces
 item.sirius_fire_charge.name=Sirius Fire Charge
-item.sirius_obsidian_bucket.name=Sirius Obsidian Bucket
 item.sirius_lava_bucket.name=Sirius Lava Bucket
 item.sirius_b_dungeon_key.name=Tier 8 Sirius B Dungeon Key
 item.sirius_b_item.sulfur_dust.name=Sulfur Dust
@@ -840,13 +842,12 @@ item.mercury_item.gravity_controller.name=Gravity Controller
 item.dirty_water_bucket.name=Dirty Water Bucket
 
 #########Io Item#########
-item.titanium_bucket.name=Titanium Bucket
 item.io_lava_bucket.name=Io Lava Bucket
 item.liquid_red_sulfur_bucket.name=Liquid Red Sulfur Bucket
 item.liquid_yellow_sulfur_bucket.name=Liquid Yellow Sulfur Bucket
 item.liquid_orange_sulfur_bucket.name=Liquid Orange Sulfur Bucket
 item.liquid_brown_sulfur_bucket.name=Liquid Brown Sulfur Bucket
-item.io_black_lava_bucket.name=Black Lava Bucket
+item.io_black_lava_bucket.name=Black Io Lava Bucket
 
 #########Venus Item#########
 item.venus_item.lead_ingot.name=Lead Ingot
@@ -866,6 +867,7 @@ item.pluto_heart_crystal_item.name=Pluto Heart Crystal
 item.europa_prismarine_item.europa_prismarine_shard.name=Europa Prismarine Shard
 item.europa_prismarine_item.europa_prismarine_crystals.name=Europa Prismarine Crystal
 item.europa_water_bucket.name=Europa Water Bucket
+item.europa_apple.name=Europa Apple
 
 # TOOLS
 #########Diona Tools#########

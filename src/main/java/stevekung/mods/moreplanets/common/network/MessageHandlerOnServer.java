@@ -78,23 +78,23 @@ public class MessageHandlerOnServer implements IMessageHandler<MeteorMessageToSe
 			switch (message.getProjectile())
 			{
 			case METEOR:
-				entity = new EntityMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, 0.0D, 0.0D, rand.nextInt(10));
+				entity = new EntityMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
 				break;
 			case KOENTUS_METEOR:
-				entity = new EntityKoentusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, 0.0D, 0.0D, rand.nextInt(10));
+				entity = new EntityKoentusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
 				break;
 			case POLONGNIUS_METEOR:
-				entity = new EntityPolongniusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, 0.0D, 0.0D, rand.nextInt(10));
+				entity = new EntityPolongniusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
 				break;
 			case ICE_CRYSTAL_METEOR:
-				entity = new EntityIceCrystalMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, 0.0D, 0.0D, rand.nextInt(10));
+				entity = new EntityIceCrystalMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
 				break;
 			default:
 				System.err.println("Invalid projectile type in " + String.valueOf(message.getProjectile()));
 				return;
 			}
 			world.spawnEntityInWorld(entity);
-			world.playSoundEffect(releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, "ambient.weather.thunder", 10000.0F, 0.8F + rand.nextFloat() * 0.2F);
+			world.playSoundEffect(releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, "moreplanets:player.meteor", 5000.0F, 1.0F + rand.nextFloat() * 0.2F);
 		}
 		return;
 	}

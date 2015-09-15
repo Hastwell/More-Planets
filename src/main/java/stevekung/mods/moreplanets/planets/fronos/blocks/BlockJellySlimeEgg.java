@@ -15,6 +15,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -22,6 +23,7 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -37,6 +39,7 @@ public class BlockJellySlimeEgg extends BlockEggMP
 	{
 		super();
 		this.setStepSound(MorePlanetsCore.soundTypeSmallSlime);
+		this.setHardness(0.0F);
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_slime_egg));
 		this.setUnlocalizedName(name);
 	}
@@ -120,6 +123,12 @@ public class BlockJellySlimeEgg extends BlockEggMP
 		world.setBlockToAir(pos);
 		world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "mob.slime.big", 1.0F, 1.0F);
 		this.onBlockDestroyedByExplosion(world, pos, explosion);
+	}
+
+	@Override
+	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
+	{
+		return true;
 	}
 
 	@Override
