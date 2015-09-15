@@ -1,40 +1,40 @@
 # More Planet's : Mercury = THAI
 
 # BLOCK
-tile.mercury_block.surface_rock.name=พื้นผิวหิน ดาวพุธ
-tile.mercury_block.sub_surface_rock.name=พื้นผิวหินลอง ดาวพุธ
+tile.mercury_block.surface_rock.name=หินพื้นผิวดาวพุธ
+tile.mercury_block.sub_surface_rock.name=หินรองพื้นผิวดาวพุธ
 tile.mercury_block.rock.name=หินดาวพุธ
-tile.mercury_block.cobblestone.name=หินกรวดดาวพุธ
+tile.mercury_block.cobblestone.name=หินหยาบดาวพุธ
 tile.mercury_block.tin_ore.name=แร่ดีบุก
 tile.mercury_block.copper_ore.name=แร่ทองแดง
 tile.mercury_block.aluminum_ore.name=แร่อลูมิเนียม
 tile.mercury_block.iron_ore.name=แร่เหล็ก
-tile.mercury_block.metal_meteoric_iron_ore.name=แร่เหล็กหินซิลิเกตโลหะบรรยากาศ
+tile.mercury_block.metal_meteoric_iron_ore.name=แร่โลหะอุกกาบาต
 tile.mercury_block.silicate_rock.name=หินซิลิเกต
-tile.mercury_block.solid_metal_meteoric_iron.name=เหล็กโลหะของแข็งบรรยากาศ
-tile.mercury_block.dungeon_brick.name=อิฐดันเจี้ยน ดาวพุธ
-tile.metallic_rock.name=หิน ที่เป็นโลหะ
-tile.mercury_ice.name=น้ำแข็งสกปรก ดาวพุธ
-tile.mercury_ancient_chest.name=หีบโบราณ ดาวพุธ
-tile.mercury_treasure_chest.name=หีบสมบัติ ดาวพุธ
-tile.mercury_cobblestone_stairs.name=บันไดหินกรวด ดาวพุธ
-tile.mercury_dungeon_brick_stairs.name=อิฐบันไดดันเจี้ยน ดาวพุธ
+tile.mercury_block.solid_metal_meteoric_iron.name=บล็อกโลหะอุกกาบาต
+tile.mercury_block.dungeon_brick.name=อิฐดันเจี้ยนดาวพุธ
+tile.metallic_rock.name=หินโลหะ
+tile.mercury_ice.name=น้ำแข็งสกปรก
+tile.mercury_ancient_chest.name=กล่องดาวพุธโบราณ
+tile.mercury_treasure_chest.name=กล่องสมบัติดาวพุธ
+tile.mercury_cobblestone_stairs.name=บันไดหินหยาบดาวพุธ
+tile.mercury_dungeon_brick_stairs.name=บันไดอิฐดันเจี้ยนดาวพุธ
 
 # SLABS
-tile.mp_stone_half_slab2.mercury.name=แผ่นหินกรวดดาวพุธ
-tile.dungeon_brick_half_slab1.mercury.name=แผ่นอิฐหินกรวดดาวพุธ
+tile.mp_stone_half_slab2.mercury.name=แผ่นหินหยาบดาวพุธ
+tile.dungeon_brick_half_slab1.mercury.name=แผ่นอิฐดันเจี้ยนดาวพุธ
 
 # WALLS
-tile.mp_wall.mercury.name=กำแพงหินกรวด ดาวพุธ
-tile.mp_dungeon_brick_wall.mercury.name=ผนังอิฐดันเจี้ยน ดาวพุธ
+tile.mp_wall.mercury.name=กำแพงหินหยาบดาวพุธ
+tile.mp_dungeon_brick_wall.mercury.name=กำแพงอิฐดันเจี้ยนดาวพุธ
 
 # ITEMS
-item.mercury_item.metallic_shard.name=สะเก็ด เมทัลลิ
-item.mercury_item.raw_metal_meteoric_iron.name=โลหะดิบประเภทเหล็ก ดาวพุธ
-item.mercury_item.metallic_ingot.name=แท่งโลหะ ดาวพุธ
-item.mercury_item.metal_meteoric_iron_ingot.name=แท่งโลหะประเภทเหล็ก ดาวพุธ
-item.mercury_item.compressed_metallic.name=โลหะดาวพุธ ที่บีบอัด
-item.mercury_item.compressed_metal_meteoric_iron.name=โลหะประเภทเหล็ก ดาวพุธ ที่บีบอัด
+item.mercury_item.metallic_shard.name=สะเก็ดโลหะ
+item.mercury_item.raw_metal_meteoric_iron.name=โลหะอุกกาบาตดิบ
+item.mercury_item.metallic_ingot.name=แท่งโลหะ
+item.mercury_item.metal_meteoric_iron_ingot.name=แท่งโลหะอุกกาบาต
+item.mercury_item.compressed_metallic.name=แผ่นโลหะ
+item.mercury_item.compressed_metal_meteoric_iron.name=แผ่นโลหะอุกกาบาต
 item.mercury_item.gravity_core.name=แกนแรงโน้มถ่วง
 item.mercury_item.gravity_controller.name=ตัวควบคุมแรงโน้มถ่วง
 
@@ -49,7 +49,7 @@ item.mercury_item.gravity_controller.name=ตัวควบคุมแรง�
 # DEATH MESSSAGE
 
 # CONTAINER
-container.mercury.treasurechest.name=หีบสมบัติ ของ ดาวพุธ
-container.mercury.ancientchest.name=หีบสมบัติโบราณ ดาวพุธ
+container.mercury.treasurechest.name=กล่องสมบัติดาวพุธ
+container.mercury.ancientchest.name=กล่องสมบัติดาวพุธโบราณ
 
 # PLANET

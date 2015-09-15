@@ -1,15 +1,15 @@
 # More Planet's : Io = THAI
 
 # BLOCKS
-tile.io_block.surface_rock.name=พื้นผิวหินดาวไอโอ
-tile.io_block.sub_surface_rock.name=พื้นผิวหินลองดาวไอโอ
-tile.io_block.rock.name=หินดาวไอโอ
-tile.io_block.cobblestone.name=หินกรวดดาวไอโอ
+tile.io_block.surface_rock.name=หินพื้นผิวไอโอ
+tile.io_block.sub_surface_rock.name=หินรองพื้นผิวไอโอ
+tile.io_block.rock.name=หินไอโอ
+tile.io_block.cobblestone.name=หินหยาบไอโอ
 tile.io_block.sulfur_ore.name=แร่กำมะถัน
 tile.io_block.ash_stone.name=เถ้าถ่านหิน
-tile.io_block.ash_cobblestone.name=เถ้าถ่านหินกรวด
+tile.io_block.ash_cobblestone.name=เถ้าถ่านหินหยาบ
 tile.io_block.silicate_rock.name=หินซิลิเกต
-tile.io_block.dungeon_brick.name=อิฐดันเจี้ยนดาวไอโอ
+tile.io_block.dungeon_brick.name=อิฐดันเจี้ยนไอโอ
 tile.io_magma_rock.magma_rock.name=หินแม็กม่า
 tile.io_magma_rock.sulfur_rock.name=หินกำมะถัน
 
@@ -18,8 +18,8 @@ tile.io_magma_rock.sulfur_rock.name=หินกำมะถัน
 # WALLS
 
 # ITEMS
-item.titanium_bucket.name=ถังที่ทำจากไทเทเนี่ยม
-item.io_lava_bucket.name=ถังลาวาดาวพลูโต
+item.titanium_bucket.name=ถังไทเทเนี่ยม
+item.io_lava_bucket.name=ถังลาวาไอโอ
 item.liquid_red_sulfur_bucket.name=ถังกำมะถันเหลวสีแดง
 item.liquid_yellow_sulfur_bucket.name=ถังกำมะถันเหลวสีเหลือง
 item.liquid_orange_sulfur_bucket.name=ถังกำมะถันเหลวสีส้ม

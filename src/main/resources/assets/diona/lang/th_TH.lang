@@ -127,7 +127,7 @@ entity.MorePlanet.DionaMinionCreeper.name=ลูกน้องครีปเ�
 
 # CONTAINER
 container.diona.treasurechest.name=กล่องสมบัติไดโอนา
-container.diona.ancientchest.name=กล่องไดโอนาเก่า
+container.diona.ancientchest.name=กล่องไดโอนาโบราณ
 schematics.container.rocket.tier4=จรวดเทียร์ 4
 schematics.container.rocket.noflag.tier4=จรวดเทียร์ 4 ไม่มีธง
 

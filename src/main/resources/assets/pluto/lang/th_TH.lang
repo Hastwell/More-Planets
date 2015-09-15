@@ -1,20 +1,20 @@
-# More Planets : Pluto = THAI
+# More Planets : Pluto = THAILAND
 
 # BLOCKS
-tile.pluto_block.surface_rock.name=พื้นผิวหินดาวพลูโต
-tile.pluto_block.sub_surface_rock.name=พื้นผิวหินย่อย ดาวพลูโต
+tile.pluto_block.surface_rock.name=หินพื้นผิวดาวพลูโต
+tile.pluto_block.sub_surface_rock.name=หินรองพื้นผิวดาวพลูโต
 tile.pluto_block.rock.name=หินดาวพลูโต
-tile.pluto_block.cobblestone.name=หินกรวดดาวพลูโต
-tile.pluto_block.meteoric_iron_ore.name=แร่เหล็กบรรยากาศ
+tile.pluto_block.cobblestone.name=หินหยาบดาวพลูโต
+tile.pluto_block.meteoric_iron_ore.name=แร่อุกกาบาตเหล็ก
 tile.pluto_block.frozen_iron_ore.name=แร่เหล็กแช่แข็ง
 tile.pluto_block.iron_ore.name=แร่เหล็ก
-tile.pluto_block.xeonium_ore.name=แร่ ซีออนเนียม
-tile.pluto_block.dungeon_brick.name=อิฐดันเจี้ย ดาวพลูโต
-tile.xeonium_glowstone.name=หินเรืองแสง ซีออนเนียม
-tile.frozen_methane_block.name=บล็อกก๊าซมีเทนแช่แข็ง
+tile.pluto_block.xeonium_ore.name=แร่ซีออนเนียม
+tile.pluto_block.dungeon_brick.name=อิฐดันเจี้ยนดาวพลูโต
+tile.xeonium_glowstone.name=หินเรืองแสงซีออนเนียม
+tile.frozen_methane_block.name=บล็อกมีเทนแช่แข็ง
 tile.frozen_nitrogen_block.name=บล็อกไนโตรเจนแช่แข็ง
-tile.pluto_ancient_chest.name=หีบโบราณ ดาวพลูโต
-tile.pluto_treasure_chest.name=หีบสมบัติ ดาวพลูโต
+tile.pluto_ancient_chest.name=กล่องโบราณพลูโต
+tile.pluto_treasure_chest.name=กล่องสมบัติดาวพลูโต
 tile.xeonium_torch.name=คบเพลิงซีออนเนียม
 
 # SLABS
@@ -23,10 +23,10 @@ tile.xeonium_torch.name=คบเพลิงซีออนเนียม
 
 # ITEMS
 item.pluto_item.xeonium_gem.name=อัญมณีซีออนเนียม
-item.xeonium_dust.name=ฝุ่น ซีออนเนียม
+item.xeonium_dust.name=ผงซีออนเนียม
 item.space_potato.space_potato.name=มันฝรั่งอวกาศ
 item.space_potato.baked_space_potato.name=มันฝรั่งอวกาศอบ
-item.gravity_boots.name=รองเท้า แรงโน้มถ่วง
+item.gravity_boots.name=รองเท้าต้านแรงโน้มถ่วง
 
 # TOOLS
 
@@ -37,8 +37,8 @@ item.gravity_boots.name=รองเท้า แรงโน้มถ่วง
 # GUI
 
 # CONTAINER
-container.pluto.treasurechest.name=หีบสมบัติ จาก ดาวพลูโต
-container.pluto.ancientchest.name=หีบโบราณ จาก ดาวพลูโต
+container.pluto.treasurechest.name=กล่องสมบัติดาวพลูโต
+container.pluto.ancientchest.name=กล่องโบราณพลูโต
 
 # PLANET
-planet.pluto=ดาวพลูโต
+planet.pluto=พลูโต
