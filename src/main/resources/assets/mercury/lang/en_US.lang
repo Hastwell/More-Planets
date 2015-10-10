@@ -30,7 +30,7 @@ tile.mp_dungeon_brick_wall.mercury.name=Mercury Dungeon Brick Wall
 
 # ITEMS
 item.mercury_item.metallic_shard.name=Metallic Shard
-item.mercury_item.raw_metal_meteoric_iron.name=Raw Metal Meteoric Iron
+item.mercury_item.raw_metal_meteoric_iron.name=Raw Metal Meteoric Iron Ingot
 item.mercury_item.metallic_ingot.name=Metallic Ingot
 item.mercury_item.metal_meteoric_iron_ingot.name=Metal Meteoric Iron Ingot
 item.mercury_item.compressed_metallic.name=Compressed Metallic
