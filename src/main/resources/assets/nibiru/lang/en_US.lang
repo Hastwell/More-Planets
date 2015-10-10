@@ -144,5 +144,5 @@ potion.infected.gas=Infected Gas
 message.warning.infected.gas=Invalid Purple Crystal Armor!
 
 # DEATH MESSAGES
-death.attack.infectionVine=%1$s was infected by infected vine
+death.attack.infectionVine=%1$s was infected by an infected vine
 death.attack.infectedGas=%1$s was killed by Infected Gas
