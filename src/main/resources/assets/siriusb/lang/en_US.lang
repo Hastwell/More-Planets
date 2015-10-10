@@ -42,6 +42,7 @@ item.sirius-b_item.compressed_sulfur.name=Compressed Sulfur
 item.sirius_glowstone_dust.name=Sirius Glowstone Dust
 item.sirius-b_item.sulfur_stick.name=Sulfur Stick
 
+# ARMOR
 item.sulfur_helmet.name=Sulfur Helmet
 item.sulfur_chestplate.name=Sulfur Chestplate
 item.sulfur_leggings.name=Sulfur Leggings
