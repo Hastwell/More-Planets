@@ -1,7 +1,7 @@
 # More Planets : Core = ENGLISH
 
 tile.chondrite_block.rock.name=Chondrite Rock
-tile.chondrite_block.polished.name=Polished Chondrite
+tile.chondrite_block.polished.name=Polished Chondrite Rock
 tile.chondrite_block.stone_brick.name=Chondrite Stone Brick
 
 # GUI

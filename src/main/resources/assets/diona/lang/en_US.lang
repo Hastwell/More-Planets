@@ -21,7 +21,7 @@ tile.quontonium_brick_stairs.name=Quontonium Brick Stairs
 tile.chiseled_quontonium_stairs.name=Chiseled Quontonium Stairs
 tile.diona_dungeon_brick_stairs.name=Diona Dungeon Brick Stairs
 tile.fronisium_tnt.name=Fronisium TNT
-tile.minion_creeper_egg.name=Minion Creeper Egg
+tile.minion_creeper_egg.name= Creeper Minion Egg
 tile.diona_treasure_chest.name=Tier 4 Diona Treasure Chest
 tile.diona_ancient_chest.name=Diona Ancient Chest
 tile.fronisium_block.name=Fronisium Block
@@ -138,4 +138,4 @@ planet.diona=Diona
 potion.emp=EMP
 
 DEATH MESSAGES
-death.attack.laser=%1$s was shot by laser
+death.attack.laser=%1$s was shot by a laser

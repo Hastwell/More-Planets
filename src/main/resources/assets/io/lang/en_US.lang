@@ -20,10 +20,10 @@ tile.io_magma_rock.sulfur_rock.name=Sulfur Rock
 # ITEMS
 item.titanium_bucket.name=Titanium Bucket
 item.io_lava_bucket.name=Io Lava Bucket
-item.liquid_red_sulfur_bucket.name=Liquid Red Sulfur Bucket
-item.liquid_yellow_sulfur_bucket.name=Liquid Yellow Sulfur Bucket
-item.liquid_orange_sulfur_bucket.name=Liquid Orange Sulfur Bucket
-item.liquid_brown_sulfur_bucket.name=Liquid Brown Sulfur Bucket
+item.liquid_red_sulfur_bucket.name=Red Liquid Sulfur Bucket
+item.liquid_yellow_sulfur_bucket.name=Yellow Liquid Sulfur Bucket
+item.liquid_orange_sulfur_bucket.name=Orange Liquid Sulfur Bucket
+item.liquid_brown_sulfur_bucket.name=Brown Liquid Sulfur Bucket
 item.io_black_lava_bucket.name=Black Lava Bucket
 
 # TOOLS
