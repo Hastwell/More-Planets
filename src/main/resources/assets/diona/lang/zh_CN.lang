@@ -21,7 +21,7 @@ tile.quontonium_brick_stairs.name=昆顿砖楼梯
 tile.chiseled_quontonium_stairs.name=昆顿裂砖楼梯
 tile.diona_dungeon_brick_stairs.name=狄俄娜地牢石砖楼梯
 tile.fronisium_tnt.name=方尼斯TNT
-tile.minion_creeper_egg.name=苦力怕奴隶蛋
+tile.minion_creeper_egg.name=狄俄娜小苦力怕蛋
 tile.diona_treasure_chest.name=4阶宝箱
 tile.diona_ancient_chest.name=狄俄娜箱子
 tile.fronisium_block.name=方尼斯块
@@ -64,7 +64,7 @@ item.tier_4_rocket_module.tier5_booster.name=5阶助推器
 item.tier_4_rocket_schematic.tier4_rocket_schematic.name=NASA工作台图纸
 item.tier_4_rocket_schematic.tier4_rocket_schematic_no_flag.name=NASA工作台图纸
 item.laser_gun.name=激光枪
-item.normal_charge.laser_charge.name=一般激光弹
+item.normal_charge.laser_charge.name=普通激光弹
 item.hyper_charge.laser_charge.name=高级激光弹
 item.emp_charge.laser_charge.name=电磁激光弹
 item.uranium_charge.laser_charge.name=铀激光弹
@@ -121,7 +121,7 @@ entity.MorePlanet.SpaceWolf.name=太空狼
 entity.MorePlanet.EvolvedEnderman.name=末影人(进化体)
 entity.MorePlanet.DustSludgeling.name=尘土泥浆怪
 entity.MorePlanet.DionaCreeperBoss.name=狄俄娜苦力怕之王
-entity.MorePlanet.DionaMinionCreeper.name=狄俄娜苦力怕奴隶
+entity.MorePlanet.DionaMinionCreeper.name=狄俄娜小苦力怕
 
 # GUI
 
@@ -135,7 +135,7 @@ schematics.container.rocket.noflag.tier4=4阶火箭(没有旗帜)
 planet.diona=狄俄娜
 
 # POTION
-potion.emp=电磁
+potion.emp=麻痹
 
 DEATH MESSAGES
 death.attack.laser=%1$s 被激光射死了
