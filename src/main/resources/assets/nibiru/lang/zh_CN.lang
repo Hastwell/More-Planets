@@ -19,7 +19,7 @@ tile.oil_rock.oil_ore.name=石油矿石
 tile.helium_block.name=氦方块
 tile.nibiru_treasure_chest.name=6阶宝箱
 tile.nibiru_ancient_chest.name=尼比鲁箱子
-tile.infected_worm_egg.name=被感染的蠕虫怪蛋
+tile.infected_worm_egg.name=小型蠕虫怪蛋
 tile.infected_zombie_egg.name=被感染的僵尸蛋
 tile.power_crystal_generator.name=电力水晶发电机
 tile.nibiru_cobblestone_stairs.name=尼比鲁圆石楼梯
@@ -116,10 +116,10 @@ item.breathable_red_gem_helmet.name=透氧红宝石头盔
 item.breathable_norium_helmet.name=透氧稀土头盔
 
 # ENTITIES
-entity.MorePlanet.InfectedWorm.name=被感染的蠕虫
+entity.MorePlanet.InfectedWorm.name=小型蠕虫
 entity.MorePlanet.GiantWorm.name=巨型蠕虫
 entity.MorePlanet.InfectedZombie.name=被感染的僵尸
-entity.MorePlanet.EvolvedInfectedSpiderBoss.name=被感染的蜘蛛之王(进化体)
+entity.MorePlanet.EvolvedInfectedSpiderBoss.name=进化被感染的蜘蛛之王
 
 # DESCRIPTION
 tile.power_crystal_generator.desc=电力水晶发电机将从电力水晶/宝石中收集能量
