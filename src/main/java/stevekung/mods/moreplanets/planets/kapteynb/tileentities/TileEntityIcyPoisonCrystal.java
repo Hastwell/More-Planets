@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.tileentities;
 
+import micdoodle8.mods.galacticraft.core.util.OxygenUtil;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -20,6 +21,25 @@ public class TileEntityIcyPoisonCrystal extends TileEntity
 	public TileEntityIcyPoisonCrystal()
 	{
 		this.orientation = 1;
+	}
+
+	@Override
+	public void updateEntity()
+	{
+		if (!this.worldObj.isRemote)
+		{
+			if (OxygenUtil.inOxygenBubble(this.worldObj, this.xCoord, this.yCoord, this.zCoord))
+			{
+				this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 2.0F, true);
+			}
+			if (this.worldObj.provider.dimensionId == 0)
+			{
+				if (this.worldObj.rand.nextInt(100) == 0)
+				{
+					this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 2.0F, true);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -47,7 +67,6 @@ public class TileEntityIcyPoisonCrystal extends TileEntity
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		super.onDataPacket(net, pkt);
 		this.readFromNBT(pkt.func_148857_g());
 	}
 }

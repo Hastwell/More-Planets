@@ -17,6 +17,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.core.util.EnumDimensionType;
+import stevekung.mods.moreplanets.moons.europa.dimension.WorldProviderEuropa;
 
 public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathable, IEntityLivingPlanet
 {
@@ -198,8 +200,11 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 	@Override
 	public boolean getCanSpawnHere()
 	{
-		//if (this.worldObj.provider instanceof WorldProviderEuropa)
-		return this.posY > 12.0D && this.posY < 64.0D && super.getCanSpawnHere();
+		if (this.worldObj.provider instanceof WorldProviderEuropa)
+		{
+			return this.posY > 12.0D && this.posY < 64.0D && super.getCanSpawnHere();
+		}
+		return false;
 	}
 
 	@Override
@@ -209,8 +214,8 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return 0;//TODO Europa Dimension
+		return EnumDimensionType.NULL;//TODO Europa Dimension
 	}
 }

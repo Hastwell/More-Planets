@@ -26,6 +26,8 @@ import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityPois
 
 public class BlockEuropaWaterBomb extends BlockBaseMP
 {
+	private IIcon TNTTop;
+	private IIcon TNTBottom;
 	private IIcon TNTSide;
 
 	public BlockEuropaWaterBomb(String name)
@@ -39,7 +41,7 @@ public class BlockEuropaWaterBomb extends BlockBaseMP
 	@Override
 	public IIcon getIcon(int par1, int par2)
 	{
-		return par1 == 0 ? this.TNTSide : par1 == 1 ? this.TNTSide : this.blockIcon;
+		return par1 == 0 ? this.TNTBottom : par1 == 1 ? this.TNTTop : this.TNTSide;
 	}
 
 	@Override
@@ -147,7 +149,8 @@ public class BlockEuropaWaterBomb extends BlockBaseMP
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		this.TNTSide = par1IconRegister.registerIcon("ice");
-		this.blockIcon = par1IconRegister.registerIcon("ice");
+		this.TNTSide = par1IconRegister.registerIcon("europa:europa_water_bomb_side");
+		this.TNTTop = par1IconRegister.registerIcon("europa:europa_water_bomb_top");
+		this.TNTBottom = par1IconRegister.registerIcon("europa:europa_water_bomb_bottom");
 	}
 }

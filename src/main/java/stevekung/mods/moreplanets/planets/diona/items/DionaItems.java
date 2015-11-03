@@ -8,6 +8,8 @@
 package stevekung.mods.moreplanets.planets.diona.items;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class DionaItems
@@ -46,5 +48,10 @@ public class DionaItems
 		RegisterHelper.registerItem(DionaItems.laser_charge);
 		RegisterHelper.registerItem(DionaItems.tier4_rocket);
 		RegisterHelper.registerItem(DionaItems.diona_dungeon_key);
+
+		OreDictionary.registerOre("ingotQuontonium", new ItemStack(DionaItems.diona_item, 1, 0));
+		OreDictionary.registerOre("ingotFronisium", new ItemStack(DionaItems.diona_item, 1, 1));
+		OreDictionary.registerOre("compressedQuontonium", new ItemStack(DionaItems.diona_item, 1, 2));
+		OreDictionary.registerOre("compressedFronisium", new ItemStack(DionaItems.diona_item, 1, 3));
 	}
 }

@@ -19,6 +19,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.blocks.BlockAncientChestMP;
+import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruAncientChest;
 
@@ -190,5 +191,12 @@ public class BlockNibiruAncientChest extends BlockAncientChestMP
 	public TileEntity getChestTile()
 	{
 		return new TileEntityNibiruAncientChest();
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+	{
+		super.harvestBlock(world, player, x, y, z, fortune);
+		MorePlanetEvents.getActivateInfectedGas(player);
 	}
 }

@@ -8,6 +8,11 @@
 package stevekung.mods.moreplanets.core.proxy;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.INetHandler;
+import net.minecraft.network.NetHandlerPlayServer;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 public class CommonProxyMP
@@ -27,5 +32,25 @@ public class CommonProxyMP
 	public int getBlockRender(Block block)
 	{
 		return -1;
+	}
+
+	public EntityPlayer getPlayerFromNetHandler(INetHandler handler)
+	{
+		if (handler instanceof NetHandlerPlayServer)
+		{
+			return ((NetHandlerPlayServer) handler).playerEntity;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	public void resetPlayerFloatingTick(EntityPlayer player)
+	{
+		if (player instanceof EntityPlayerMP)
+		{
+			ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, ((EntityPlayerMP)player).playerNetServerHandler, Integer.valueOf(0), new String[] { "field_147365_f", "floatingTickCount" });
+		}
 	}
 }

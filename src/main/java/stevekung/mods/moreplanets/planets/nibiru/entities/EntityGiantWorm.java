@@ -23,10 +23,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.core.util.EnumDimensionType;
 
 public class EntityGiantWorm extends EntityMob implements IEntityBreathable, IEntityLivingPlanet
 {
@@ -159,8 +159,8 @@ public class EntityGiantWorm extends EntityMob implements IEntityBreathable, IEn
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return ConfigManagerMP.idDimensionNibiru;
+		return EnumDimensionType.NIBIRU;
 	}
 }

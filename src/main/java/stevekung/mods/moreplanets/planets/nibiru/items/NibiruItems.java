@@ -8,6 +8,8 @@
 package stevekung.mods.moreplanets.planets.nibiru.items;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.core.items.ItemDoorMP;
 import stevekung.mods.stevecore.RegisterHelper;
@@ -54,5 +56,9 @@ public class NibiruItems
 		RegisterHelper.registerItem(NibiruItems.space_fruits);
 		RegisterHelper.registerItem(NibiruItems.tier6_rocket);
 		RegisterHelper.registerItem(NibiruItems.nibiru_dungeon_key);
+
+		OreDictionary.registerOre("ingotNorium", new ItemStack(NibiruItems.nibiru_item, 1, 1));
+		OreDictionary.registerOre("compressedNorium", new ItemStack(NibiruItems.nibiru_item, 1, 3));
+		OreDictionary.registerOre("compressedRedGem", new ItemStack(NibiruItems.nibiru_item, 1, 2));
 	}
 }

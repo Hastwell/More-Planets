@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 
 import org.apache.commons.lang3.tuple.Pair;
 
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
@@ -35,6 +36,7 @@ public class FurnaceFuelMP implements IFuelHandler
 		addFuel(NibiruBlocks.nibiru_sapling, 100);
 		addFuel(KoentusBlocks.crystal_sapling, 100);
 		addFuel(FronosBlocks.fronos_sapling, 100);
+		addFuel(EuropaBlocks.europa_sapling, 100);
 	}
 
 	private static void addFuel(Item item, int metadata, int value)

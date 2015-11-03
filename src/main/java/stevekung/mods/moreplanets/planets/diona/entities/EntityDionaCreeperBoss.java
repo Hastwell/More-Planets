@@ -319,8 +319,6 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 			this.targetEntity = null;
 		}
 
-		new Vector3(this);
-
 		if (this.roomCoords != null && this.roomSize != null)
 		{
 			@SuppressWarnings("unchecked")

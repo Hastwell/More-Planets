@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.polongnius.items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.stevecore.RegisterHelper;
 
@@ -59,6 +60,11 @@ public class PolongniusItems
 		RegisterHelper.registerItem(PolongniusItems.tier5_rocket);
 		RegisterHelper.registerItem(PolongniusItems.polongnius_meteor_chunk);
 		RegisterHelper.registerItem(PolongniusItems.polongnius_dungeon_key);
+
+		OreDictionary.registerOre("ingotPolongniusMeteoricIron", new ItemStack(PolongniusItems.polongnius_item, 1, 4));
+		OreDictionary.registerOre("ingotPalladium", new ItemStack(PolongniusItems.polongnius_item, 1, 5));
+		OreDictionary.registerOre("compressedPolongniusMeteoricIron", new ItemStack(PolongniusItems.polongnius_item, 1, 6));
+		OreDictionary.registerOre("compressedPalladium", new ItemStack(PolongniusItems.polongnius_item, 1, 7));
 	}
 
 	private static void registerFluidContainer()

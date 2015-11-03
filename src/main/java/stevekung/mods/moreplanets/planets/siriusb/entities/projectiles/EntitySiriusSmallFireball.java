@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.entities.projectiles;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,6 +15,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
+import stevekung.mods.moreplanets.planets.siriusb.world.SiriusExplosion;
 
 public class EntitySiriusSmallFireball extends EntityFireball
 {
@@ -89,11 +89,24 @@ public class EntitySiriusSmallFireball extends EntityFireball
 				}
 				if (this.getCanExplode())
 				{
-					this.worldObj.createExplosion((Entity)null, this.posX, this.posY, this.posZ, 4, true);
+					this.explode();
 				}
+			}
+			if (this.getCanExplode())
+			{
+				this.explode();
 			}
 			this.setDead();
 		}
+	}
+
+	private void explode()
+	{
+		SiriusExplosion explosion = new SiriusExplosion(this.worldObj, this, this.posX, this.posY, this.posZ, 4.0F);
+		explosion.isFlaming = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+		explosion.isSmoking = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+		explosion.doExplosionA();
+		explosion.doExplosionB(true);
 	}
 
 	@Override

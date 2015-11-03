@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.planets.nibiru.worldgen;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.core.perlin.NoiseModule;
 import micdoodle8.mods.galacticraft.core.perlin.generator.Gradient;
 import micdoodle8.mods.galacticraft.core.world.gen.EnumCraterSize;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
@@ -65,6 +67,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 	private Gradient noiseGen5;
 	private Gradient noiseGen6;
 	private Gradient noiseGen7;
+	private NoiseModule noiseCraterGen;
 
 	private World worldObj;
 	public BiomeDecoratorNibiru biomedecoratorplanet = new BiomeDecoratorNibiru();
@@ -119,6 +122,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		this.noiseGen5 = new Gradient(this.rand.nextLong(), 1, 0.25F);
 		this.noiseGen6 = new Gradient(this.rand.nextLong(), 1, 0.25F);
 		this.noiseGen7 = new Gradient(this.rand.nextLong(), 1, 0.25F);
+		this.noiseCraterGen = new Gradient(this.rand.nextLong(), 1, 0.25F);
 	}
 
 	public void generateTerrain(int chunkX, int chunkZ, Block[] idArray, byte[] metaArray)
@@ -130,6 +134,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		this.noiseGen5.setFrequency(0.01F);
 		this.noiseGen6.setFrequency(0.001F);
 		this.noiseGen7.setFrequency(0.005F);
+		this.noiseCraterGen.setFrequency(0.02F);
 
 		for (int x = 0; x < ChunkProviderNibiru.CHUNK_SIZE_X; x++)
 		{
@@ -199,8 +204,8 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 	public void replaceBlocksForBiome(int par1, int par2, Block[] arrayOfIDs, byte[] arrayOfMeta, BiomeGenBase[] par4ArrayOfBiomeGenBase)
 	{
 		int var5 = 20;
-		float var6 = 0.03125F;
-		this.noiseGen4.setFrequency(var6 * 2);
+		//float var6 = 0.03125F;
+		//this.noiseGen4.setFrequency(var6 * 2);
 		for (int var8 = 0; var8 < 16; ++var8)
 		{
 			for (int var9 = 0; var9 < 16; ++var9)
@@ -281,9 +286,10 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		this.rand.setSeed(par1 * 341873128712L + par2 * 132897987541L);
 		Block[] ids = new Block[32768 * 2];
 		byte[] meta = new byte[32768 * 2];
+		Arrays.fill(ids, Blocks.air);
 		this.generateTerrain(par1, par2, ids, meta);
-		this.createCraters(par1, par2, ids, meta);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
+		this.createCraters(par1, par2, ids, meta);
 		this.replaceBlocksForBiome(par1, par2, ids, meta, this.biomesForGeneration);
 		this.caveGenerator.generate(this, this.worldObj, par1, par2, ids, meta);
 		this.cavernGenerator.generate(this, this.worldObj, par1, par2, ids, meta);
@@ -308,11 +314,11 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		{
 			for (int cz = chunkZ - 2; cz <= chunkZ + 2; cz++)
 			{
-				for (int x = 0; x < ChunkProviderNibiru.CHUNK_SIZE_X; x++)
+				for (int x = 0; x < CHUNK_SIZE_X; x++)
 				{
-					for (int z = 0; z < ChunkProviderNibiru.CHUNK_SIZE_Z; z++)
+					for (int z = 0; z < CHUNK_SIZE_Z; z++)
 					{
-						if (Math.abs(this.randFromPoint(cx * 16 + x, (cz * 16 + z) * 1000)) < this.noiseGen4.getNoise(x * ChunkProviderNibiru.CHUNK_SIZE_X + x, cz * ChunkProviderNibiru.CHUNK_SIZE_Z + z) / ChunkProviderNibiru.CRATER_PROB)
+						if (Math.abs(this.randFromPoint(cx * 16 + x, (cz * 16 + z) * 1000)) < this.noiseCraterGen.getNoise(x * CHUNK_SIZE_X + x, cz * CHUNK_SIZE_Z + z) / CRATER_PROB)
 						{
 							Random random = new Random(cx * 16 + x + (cz * 16 + z) * 5000);
 							EnumCraterSize cSize = EnumCraterSize.sizeArray[random.nextInt(EnumCraterSize.sizeArray.length)];
@@ -327,12 +333,13 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 
 	public void makeCrater(int craterX, int craterZ, int chunkX, int chunkZ, int size, Block[] chunkArray, byte[] metaArray)
 	{
-		for (int x = 0; x < ChunkProviderNibiru.CHUNK_SIZE_X; x++)
+		for (int x = 0; x < CHUNK_SIZE_X; x++)
 		{
-			for (int z = 0; z < ChunkProviderNibiru.CHUNK_SIZE_Z; z++)
+			for (int z = 0; z < CHUNK_SIZE_Z; z++)
 			{
 				double xDev = craterX - (chunkX + x);
 				double zDev = craterZ - (chunkZ + z);
+
 				if (xDev * xDev + zDev * zDev < size * size)
 				{
 					xDev /= size;
@@ -341,6 +348,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 					double yDev = sqrtY * sqrtY * 6;
 					yDev = 5 - yDev;
 					int helper = 0;
+
 					for (int y = 127; y > 0; y--)
 					{
 						if (Blocks.air != chunkArray[this.getIndex(x, y, z)] && helper <= yDev)

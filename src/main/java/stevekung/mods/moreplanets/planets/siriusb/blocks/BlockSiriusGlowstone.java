@@ -13,7 +13,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
@@ -51,5 +53,17 @@ public class BlockSiriusGlowstone extends Block
 	public MapColor getMapColor(int meta)
 	{
 		return MapColor.diamondColor;
+	}
+
+	@Override
+	public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+
+		if (meta == 1)
+		{
+			return 100.0F;
+		}
+		return super.getExplosionResistance(par1Entity, world, x, y, z, explosionX, explosionY, explosionZ);
 	}
 }

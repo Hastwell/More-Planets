@@ -16,6 +16,8 @@ tile.frozen_nitrogen_block.name=Frozen Nitrogen Block
 tile.pluto_ancient_chest.name=Pluto Ancient Chest
 tile.pluto_treasure_chest.name=Pluto Treasure Chest
 tile.xeonium_torch.name=Xeonium Torch
+tile.pluto_block.surface_rock_brown.name=Brown Pluto Surface Rock
+tile.pluto_block.surface_rock_light_brown.name=Light Brown Pluto Surface Rock
 
 # SLABS
 

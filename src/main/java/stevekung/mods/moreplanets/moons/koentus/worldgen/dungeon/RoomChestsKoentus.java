@@ -15,11 +15,13 @@ import micdoodle8.mods.galacticraft.core.world.gen.dungeon.DungeonRoom;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.util.ForgeDirection;
+import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 
 public class RoomChestsKoentus extends DungeonRoom
 {
@@ -27,14 +29,15 @@ public class RoomChestsKoentus extends DungeonRoom
 	int sizeY;
 	int sizeZ;
 
-	private final ArrayList<ChunkCoordinates> chests = new ArrayList<ChunkCoordinates>();
+	private ArrayList<ChunkCoordinates> chests = new ArrayList<ChunkCoordinates>();
 
 	public RoomChestsKoentus(MapGenDungeon dungeon, int posX, int posY, int posZ, ForgeDirection entranceDir)
 	{
 		super(dungeon, posX, posY, posZ, entranceDir);
+
 		if (this.worldObj != null)
 		{
-			final Random rand = new Random(this.worldObj.getSeed() * posX * posY * 57 * posZ);
+			Random rand = new Random(this.worldObj.getSeed() * posX * posY * 57 * posZ);
 			this.sizeX = rand.nextInt(5) + 6;
 			this.sizeY = rand.nextInt(2) + 4;
 			this.sizeZ = rand.nextInt(5) + 6;
@@ -61,9 +64,10 @@ public class RoomChestsKoentus extends DungeonRoom
 				}
 			}
 		}
-		final int hx = (this.posX + this.posX + this.sizeX) / 2;
-		final int hz = (this.posZ + this.posZ + this.sizeZ) / 2;
-		if (this.placeBlock(chunk, meta, hx, this.posY, hz, cx, cz, Blocks.chest, 0))
+		int hx = (this.posX + this.posX + this.sizeX) / 2;
+		int hz = (this.posZ + this.posZ + this.sizeZ) / 2;
+
+		if (this.placeBlock(chunk, meta, hx, this.posY, hz, cx, cz, KoentusBlocks.koentus_ancient_chest, 0))
 		{
 			this.chests.add(new ChunkCoordinates(hx, this.posY, hz));
 		}
@@ -86,8 +90,8 @@ public class RoomChestsKoentus extends DungeonRoom
 	{
 		if (!this.chests.isEmpty())
 		{
-			this.worldObj.setBlock(this.chests.get(0).posX, this.chests.get(0).posY, this.chests.get(0).posZ, Blocks.chest, 0, 2);
-			final TileEntityChest chest = (TileEntityChest) this.worldObj.getTileEntity(this.chests.get(0).posX, this.chests.get(0).posY, this.chests.get(0).posZ);
+			this.worldObj.setBlock(this.chests.get(0).posX, this.chests.get(0).posY, this.chests.get(0).posZ, KoentusBlocks.koentus_ancient_chest, 0, 2);
+			TileEntityKoentusAncientChest chest = (TileEntityKoentusAncientChest) this.worldObj.getTileEntity(this.chests.get(0).posX, this.chests.get(0).posY, this.chests.get(0).posZ);
 
 			if (chest != null)
 			{
@@ -95,8 +99,9 @@ public class RoomChestsKoentus extends DungeonRoom
 				{
 					chest.setInventorySlotContents(i, null);
 				}
-				final ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
+				ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
 				WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), chest, info.getCount(rand));
+				chest.setInventorySlotContents(rand.nextInt(chest.getSizeInventory()), new ItemStack(KoentusBlocks.eledos_egg, 1, 0));
 			}
 			this.chests.clear();
 		}

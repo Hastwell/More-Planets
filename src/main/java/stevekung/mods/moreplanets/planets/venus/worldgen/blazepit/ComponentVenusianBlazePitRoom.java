@@ -87,11 +87,11 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 	}
 
 	@Override
-	public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
+	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
 		if (this.averageGroundLevel < 0)
 		{
-			this.averageGroundLevel = this.getAverageGroundLevel(par1World, par3StructureBoundingBox);
+			this.averageGroundLevel = this.getAverageGroundLevel(world, box);
 
 			if (this.averageGroundLevel < 0)
 			{
@@ -99,9 +99,9 @@ public class ComponentVenusianBlazePitRoom extends StructureComponentGC
 			}
 			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 3, 0);
 		}
-		this.makeWallsDown(par1World);
-		this.makePlatforms(par1World, par2Random);
-		this.makeWallsFlat(par1World);
+		this.makeWallsDown(world);
+		this.makePlatforms(world, rand);
+		this.makeWallsFlat(world);
 		return true;
 	}
 

@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.kapteynb.items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.stevecore.RegisterHelper;
 
@@ -50,6 +51,10 @@ public class KapteynBItems
 		RegisterHelper.registerItem(KapteynBItems.frozen_water_bucket);
 		RegisterHelper.registerItem(KapteynBItems.tier8_rocket);
 		RegisterHelper.registerItem(KapteynBItems.tier8_rocket_schematic);
+
+		OreDictionary.registerOre("ingotFrozenIron", new ItemStack(KapteynBItems.kapteyn_b_item, 1, 0));
+		OreDictionary.registerOre("uranium", new ItemStack(KapteynBItems.kapteyn_b_item, 1, 1));
+		OreDictionary.registerOre("compressedFrozenIron", new ItemStack(KapteynBItems.kapteyn_b_item, 1, 2));
 	}
 
 	private static void registerFluidContainer()

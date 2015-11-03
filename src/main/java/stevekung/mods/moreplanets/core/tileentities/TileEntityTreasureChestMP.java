@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import micdoodle8.mods.galacticraft.api.item.IKeyable;
+import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.network.IPacketReceiver;
 import micdoodle8.mods.galacticraft.core.network.PacketSimple;
@@ -209,14 +210,14 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 		}
 
 		this.prevLidAngle = this.lidAngle;
-		f = 0.05F;
+		f = this.worldObj.provider instanceof IGalacticraftWorldProvider ? 0.05F : 0.1F;
 		double d0;
 
 		if (this.numUsingPlayers > 0 && this.lidAngle == 0.0F)
 		{
 			double d1 = this.xCoord + 0.5D;
 			d0 = this.zCoord + 0.5D;
-			this.worldObj.playSoundEffect(d1, this.yCoord + 0.5D, d0, "random.chestopen", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.6F);
+			this.worldObj.playSoundEffect(d1, this.yCoord + 0.5D, d0, "random.chestopen", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 		}
 
 		if (this.numUsingPlayers == 0 && this.lidAngle > 0.0F || this.numUsingPlayers > 0 && this.lidAngle < 1.0F)
@@ -242,7 +243,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 			{
 				d0 = this.xCoord + 0.5D;
 				double d2 = this.zCoord + 0.5D;
-				this.worldObj.playSoundEffect(d0, this.yCoord + 0.5D, d2, "random.chestclosed", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.6F);
+				this.worldObj.playSoundEffect(d0, this.yCoord + 0.5D, d2, "random.chestclosed", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 			}
 			if (this.lidAngle < 0.0F)
 			{

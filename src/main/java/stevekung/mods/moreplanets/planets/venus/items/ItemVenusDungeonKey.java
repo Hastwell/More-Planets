@@ -8,9 +8,11 @@
 package stevekung.mods.moreplanets.planets.venus.items;
 
 import micdoodle8.mods.galacticraft.api.item.IKeyItem;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
 
+@Deprecated //Removed in 1.8
 public class ItemVenusDungeonKey extends ItemMorePlanet implements IKeyItem
 {
 	public ItemVenusDungeonKey(String name)
@@ -25,5 +27,11 @@ public class ItemVenusDungeonKey extends ItemMorePlanet implements IKeyItem
 	public int getTier(ItemStack keyStack)
 	{
 		return 3;
+	}
+
+	@Override
+	public CreativeTabs getCreativeTab()
+	{
+		return null;
 	}
 }

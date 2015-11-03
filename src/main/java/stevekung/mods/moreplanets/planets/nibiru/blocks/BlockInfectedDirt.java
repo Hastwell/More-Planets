@@ -25,6 +25,7 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
+import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -136,5 +137,12 @@ public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBloc
 		{
 			return false;
 		}
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+	{
+		super.harvestBlock(world, player, x, y, z, fortune);
+		MorePlanetEvents.getActivateInfectedGas(player);
 	}
 }

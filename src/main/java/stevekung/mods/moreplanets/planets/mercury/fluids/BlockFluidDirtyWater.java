@@ -21,6 +21,7 @@ public class BlockFluidDirtyWater extends BlockFluidBaseMP
 	{
 		super(MercuryBlocks.dirty_water_fluid);
 		this.setRenderPass(1);
+		this.setLightOpacity(5);
 		this.setBlockName(name);
 	}
 

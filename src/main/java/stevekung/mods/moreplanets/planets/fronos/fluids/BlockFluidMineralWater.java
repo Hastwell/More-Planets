@@ -26,6 +26,7 @@ public class BlockFluidMineralWater extends BlockFluidBaseMP
 	{
 		super(FronosBlocks.mineral_water_fluid);
 		this.setRenderPass(1);
+		this.setLightOpacity(3);
 		this.setBlockName(name);
 	}
 

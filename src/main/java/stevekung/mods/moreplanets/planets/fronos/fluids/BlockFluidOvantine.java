@@ -27,6 +27,7 @@ public class BlockFluidOvantine extends BlockFluidBaseMP
 		super(FronosBlocks.ovantine_fluid);
 		this.setQuantaPerBlock(4);
 		this.setRenderPass(1);
+		this.setLightOpacity(3);
 		this.setBlockName(name);
 	}
 

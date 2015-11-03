@@ -9,23 +9,21 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
+import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityFrozenWaterGeyser;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFrozenWaterGeyser extends BlockBaseMP
+public class BlockFrozenWaterGeyser extends BlockBaseMP implements ITileEntityProvider
 {
 	private IIcon[] geyserBlockIcon;
 
@@ -69,35 +67,6 @@ public class BlockFrozenWaterGeyser extends BlockBaseMP
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		if (entity instanceof EntityPlayer)
-		{
-			entity.motionY = 2.0F;
-			entity.fallDistance = 0.0F;
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
-
-			if (((EntityPlayer)entity).capabilities.isFlying)
-			{
-				return;
-			}
-		}
-		if (entity instanceof EntityLivingBase)
-		{
-			entity.motionY = 2.0F;
-			entity.fallDistance = 0.0F;
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
-		}
-	}
-
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		float f = 0.100F;
-		return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
-	}
-
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
 	{
@@ -126,5 +95,11 @@ public class BlockFrozenWaterGeyser extends BlockBaseMP
 	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
 	{
 		return true;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		return new TileEntityFrozenWaterGeyser();
 	}
 }

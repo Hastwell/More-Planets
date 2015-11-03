@@ -18,10 +18,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.core.util.EnumDimensionType;
 
 public class EntityInfectedZombie extends EntityZombie implements IEntityBreathable, IEntityLivingPlanet
 {
@@ -90,8 +90,8 @@ public class EntityInfectedZombie extends EntityZombie implements IEntityBreatha
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return ConfigManagerMP.idDimensionNibiru;
+		return EnumDimensionType.NIBIRU;
 	}
 }

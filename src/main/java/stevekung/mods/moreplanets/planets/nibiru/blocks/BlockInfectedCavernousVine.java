@@ -28,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
+import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 
 public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearable
@@ -215,12 +216,6 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
 	}
 
 	@Override
-	public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6)
-	{
-		super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
-	}
-
-	@Override
 	public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z)
 	{
 		return true;
@@ -238,5 +233,12 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
 	public boolean isLadder(IBlockAccess world, int x, int y, int z, EntityLivingBase entity)
 	{
 		return true;
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+	{
+		super.harvestBlock(world, player, x, y, z, fortune);
+		MorePlanetEvents.getActivateInfectedGas(player);
 	}
 }

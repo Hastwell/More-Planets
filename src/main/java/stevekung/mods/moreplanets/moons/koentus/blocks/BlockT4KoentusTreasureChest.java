@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.moons.koentus.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,12 +17,19 @@ import stevekung.mods.moreplanets.core.blocks.BlockTreasureChestMP;
 import stevekung.mods.moreplanets.core.tileentities.TileEntityTreasureChestMP;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusTreasureChest;
 
+@Deprecated //Removed in 1.8
 public class BlockT4KoentusTreasureChest extends BlockTreasureChestMP
 {
 	public BlockT4KoentusTreasureChest(String name)
 	{
 		super();
 		this.setBlockName(name);
+	}
+
+	@Override
+	public CreativeTabs getCreativeTabToDisplayOn()
+	{
+		return null;
 	}
 
 	@Override

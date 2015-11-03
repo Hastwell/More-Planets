@@ -8,22 +8,18 @@
 package stevekung.mods.moreplanets.planets.mercury.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.planets.mercury.worldgen.ChunkProviderMercury;
 import stevekung.mods.moreplanets.planets.mercury.worldgen.WorldChunkManagerMercury;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderMercury extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel
+public class WorldProviderMercury extends WorldProviderMP
 {
 	@Override
 	public Vector3 getFogColor()
@@ -38,27 +34,9 @@ public class WorldProviderMercury extends WorldProviderSpace implements IGalacti
 	}
 
 	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 1416000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -132,24 +110,6 @@ public class WorldProviderMercury extends WorldProviderSpace implements IGalacti
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int var1, int var2)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
 		return 12.0D;
@@ -168,12 +128,6 @@ public class WorldProviderMercury extends WorldProviderSpace implements IGalacti
 	}
 
 	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
-	}
-
-	@Override
 	public boolean canSpaceshipTierPass(int tier)
 	{
 		return tier >= 4;
@@ -188,7 +142,7 @@ public class WorldProviderMercury extends WorldProviderSpace implements IGalacti
 	@Override
 	public float getSoundVolReductionAmount()
 	{
-		return 30.0F;
+		return 20.0F;
 	}
 
 	@Override
@@ -208,23 +162,23 @@ public class WorldProviderMercury extends WorldProviderSpace implements IGalacti
 	{
 		if (this.isDaytime())
 		{
-			return 15.0F;
+			return 5.0F;
 		}
 		else
 		{
-			return -15.0F;
+			return -5.0F;
 		}
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 0F;
+		return 0.05F;
 	}
 
 	@Override
 	public double getUltraVioletEnergyMultiplie()
 	{
-		return 20.0D;
+		return 50.0D;
 	}
 }

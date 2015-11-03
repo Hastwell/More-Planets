@@ -8,7 +8,10 @@
 package stevekung.mods.moreplanets.core.init;
 
 import net.minecraft.item.Item;
+import stevekung.mods.moreplanets.core.items.ItemAchievementTemp;
+import stevekung.mods.moreplanets.core.items.ItemFeces;
 import stevekung.mods.moreplanets.core.items.ItemMonsterPlacerMP;
+import stevekung.mods.moreplanets.core.items.ItemTier2ThermalPadding;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.items.IoItems;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
@@ -28,6 +31,9 @@ public class MPItems
 {
 	public static Item flag;
 	public static Item spawn_egg_mp;
+	public static Item feces;
+	public static Item achievement_temp;
+	public static Item tier_2_thermal_padding;
 
 	public static void init()
 	{
@@ -53,11 +59,17 @@ public class MPItems
 	{
 		MPItems.flag = new ItemFlagMP("mp_flag");
 		MPItems.spawn_egg_mp = new ItemMonsterPlacerMP("spawn_egg_mp").setTextureName("spawn_egg");
+		MPItems.feces = new ItemFeces("feces");
+		MPItems.achievement_temp = new ItemAchievementTemp("achievement_temp");
+		MPItems.tier_2_thermal_padding = new ItemTier2ThermalPadding("tier_2_thermal_padding");
 	}
 
 	private static void registerItems()
 	{
 		RegisterHelper.registerItem(MPItems.flag);
 		RegisterHelper.registerItem(MPItems.spawn_egg_mp);
+		RegisterHelper.registerItem(MPItems.feces);
+		RegisterHelper.registerItem(MPItems.achievement_temp);
+		RegisterHelper.registerItem(MPItems.tier_2_thermal_padding);
 	}
 }

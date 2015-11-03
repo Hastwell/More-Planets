@@ -8,23 +8,19 @@
 package stevekung.mods.moreplanets.planets.fronos.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.planets.fronos.worldgen.ChunkProviderFronos;
 import stevekung.mods.moreplanets.planets.fronos.worldgen.WorldChunkManagerFronos;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderFronos extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel
+public class WorldProviderFronos extends WorldProviderMP
 {
 	@Override
 	public Vector3 getFogColor()
@@ -78,21 +74,9 @@ public class WorldProviderFronos extends WorldProviderSpace implements IGalactic
 	}
 
 	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 180000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -110,7 +94,7 @@ public class WorldProviderFronos extends WorldProviderSpace implements IGalactic
 	@Override
 	public float getCloudHeight()
 	{
-		return 128F;
+		return 128.0F;
 	}
 
 	@Override
@@ -151,24 +135,6 @@ public class WorldProviderFronos extends WorldProviderSpace implements IGalactic
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int var1, int var2)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
 		return 5.0D;
@@ -177,19 +143,13 @@ public class WorldProviderFronos extends WorldProviderSpace implements IGalactic
 	@Override
 	public float getGravity()
 	{
-		return 0.0F;
+		return 0.0025F;
 	}
 
 	@Override
 	public double getMeteorFrequency()
 	{
-		return 20.0D;
-	}
-
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
+		return 500.0D;
 	}
 
 	@Override
@@ -225,7 +185,11 @@ public class WorldProviderFronos extends WorldProviderSpace implements IGalactic
 	@Override
 	public float getThermalLevelModifier()
 	{
-		return 0.0F;
+		if (this.isDaytime())
+		{
+			return 0.0F;
+		}
+		return -0.25F;
 	}
 
 	@Override

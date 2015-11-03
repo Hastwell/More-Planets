@@ -206,7 +206,7 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 										{
 											final int coords = (var42 * 16 + var45) * 256 + var50;
 
-											if (arrayOfIDs[coords] == NibiruBlocks.nibiru_block || arrayOfIDs[coords] == GCBlocks.crudeOilStill || arrayOfIDs[coords] == NibiruBlocks.infected_cavernous_vine)
+											if (arrayOfIDs[coords] == NibiruBlocks.nibiru_block || arrayOfIDs[coords] == GCBlocks.crudeOil || arrayOfIDs[coords] == NibiruBlocks.infected_cavernous_vine)
 											{
 												arrayOfIDs[coords] = Blocks.air;
 											}
@@ -255,7 +255,7 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 												}
 												else if (arrayOfIDs[coordsBelow] == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
 												{
-													arrayOfIDs[coords] = GCBlocks.crudeOilStill;
+													arrayOfIDs[coords] = GCBlocks.crudeOil;
 													arrayOfMeta[coords] = 0;
 												}
 											}

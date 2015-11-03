@@ -12,13 +12,12 @@ import java.lang.reflect.Modifier;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.planets.diona.potion.EMPEffect;
 import stevekung.mods.moreplanets.planets.kapteynb.potion.ChemicalEffect;
 import stevekung.mods.moreplanets.planets.kapteynb.potion.IceCrystalEffect;
 import stevekung.mods.moreplanets.planets.nibiru.potion.InfectedGasEffect;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class MPPotions
 {
@@ -26,52 +25,45 @@ public class MPPotions
 	public static Potion chemical;
 	public static Potion electro_magnetic_pulse;
 	public static Potion icy_poison;
+	public static Potion[] potionTypes;
 
 	public static void init()
 	{
+		MPPotions.initPotionHook();
 		MPPotions.intializePotions();
 	}
 
 	private static void intializePotions()
 	{
-		MPPotions.infected_gas = new InfectedGasEffect(true, -4502242).setPotionName("potion.infected.gas");
-		MPPotions.chemical = new ChemicalEffect(true, -16718336).setPotionName("potion.chemical");
-		MPPotions.electro_magnetic_pulse = new EMPEffect(true, -14258727).setPotionName("potion.emp").func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -2.5D, 2);
-		MPPotions.icy_poison = new IceCrystalEffect(true, -6564921).setPotionName("potion.icy_poison").func_111184_a(SharedMonsterAttributes.movementSpeed, "7107DE5E-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
+		MPPotions.infected_gas = new InfectedGasEffect(ConfigManagerMP.idPotionInfectedGas, true, -4502242).setPotionName("potion.infected.gas");
+		MPPotions.chemical = new ChemicalEffect(ConfigManagerMP.idPotionChemical, true, -16718336).setPotionName("potion.chemical");
+		MPPotions.electro_magnetic_pulse = new EMPEffect(ConfigManagerMP.idPotionEMP, true, -14258727).setPotionName("potion.emp").func_111184_a(SharedMonsterAttributes.movementSpeed, "45166E8E-7CE8-4030-940E-514C1F160890", -2.5D, 2);
+		MPPotions.icy_poison = new IceCrystalEffect(ConfigManagerMP.idPotionIcyPoison, true, -6564921).setPotionName("potion.icy_poison").func_111184_a(SharedMonsterAttributes.movementSpeed, "9623E0072-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
 	}
 
-	public static int getNextPotionID()
+	private static void initPotionHook()
 	{
-		int n = Potion.potionTypes.length;
-
-		for (int i = 1; i < n; i++)
+		for (Field f : Potion.class.getDeclaredFields())
 		{
-			if (Potion.potionTypes[i] == null)
+			f.setAccessible(true);
+
+			try
 			{
-				return i;
+				if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a"))
+				{
+					Field modfield = Field.class.getDeclaredField("modifiers");
+					modfield.setAccessible(true);
+					modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
+					potionTypes = (Potion[])f.get(null);
+					Potion[] newPotionTypes = new Potion[256];
+					System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
+					f.set(null, newPotionTypes);
+				}
+			}
+			catch (Exception e)
+			{
+				MPLog.error("Potion registering failed, please report this to More Planets GitHub");
 			}
 		}
-
-		if (n >= 128)
-		{
-			MorePlanetsCore.severe("Cannot create potions, you might have to remove some mods (Potion Array is full!)");
-		}
-
-		Potion[] expandedPotionTypes = new Potion[n + 1];
-		System.arraycopy(Potion.potionTypes, 0, expandedPotionTypes, 0, n);
-		Field field = ReflectionHelper.findField(Potion.class, ObfuscationReflectionHelper.remapFieldNames(Potion.class.getName(), "potionTypes", "field_76425_a"));
-
-		try
-		{
-			Field modifiersField = Field.class.getDeclaredField("modifiers");
-			modifiersField.setAccessible(true);
-			modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-			field.set(null, expandedPotionTypes);
-		}
-		catch (Exception e)
-		{
-			throw new RuntimeException(e);
-		}
-		return n;
 	}
 }

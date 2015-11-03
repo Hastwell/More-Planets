@@ -16,9 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.items.armor.ItemArmorMP;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP;
 import cpw.mods.fml.relauncher.Side;
@@ -26,7 +24,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemJetpack extends ItemArmorMP
 {
-	int tick;
+	public static int tick;
+	private boolean keyDown;
+	private boolean keySneak;
 
 	public ItemJetpack(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
 	{
@@ -79,8 +79,6 @@ public class ItemJetpack extends ItemArmorMP
 	@Override
 	public void onCreated(ItemStack itemStack, World world, EntityPlayer player)
 	{
-		super.onCreated(itemStack, world, player);
-
 		if (!itemStack.hasTagCompound())
 		{
 			itemStack.setTagCompound(new NBTTagCompound());
@@ -95,17 +93,11 @@ public class ItemJetpack extends ItemArmorMP
 
 		if (itemStack.getItem() == this)
 		{
-			if (flag || player.inventory.hasItem(Items.coal))
+			if (!flag && player.inventory.hasItem(Items.coal))
 			{
-				if (Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+				if (this.getJetpackKeyDown() == true)
 				{
-					player.motionY = 0.4D;
 					this.tick++;
-
-					for (int i = 0; i < 5; i++)
-					{
-						world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
-					}
 
 					if (this.tick >= 1000)
 					{
@@ -113,33 +105,31 @@ public class ItemJetpack extends ItemArmorMP
 						{
 							player.inventory.consumeInventoryItem(Items.coal);
 						}
-						if (this.tick >= 1001)
+						if (this.tick >= 1000)
 						{
 							this.tick = 0;
 						}
 					}
 				}
-				if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && !player.onGround)
+				if (this.getJetpackKeySneak() == true)
 				{
-					player.motionY *= 0.7D;
+					this.tick++;
 
-					for (int i = 0; i < 5; i++)
-					{
-						world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
-					}
 					if (this.tick >= 1000)
 					{
 						if (!world.isRemote && !flag)
 						{
 							player.inventory.consumeInventoryItem(Items.coal);
 						}
-						if (this.tick >= 1001)
+						if (this.tick >= 1000)
 						{
 							this.tick = 0;
 						}
 					}
 				}
 			}
+			//MorePlanetsCore.packetPipeline.sendToAll(new PacketUpdateItem());
+			MorePlanetsCore.proxy.resetPlayerFloatingTick(player);
 		}
 	}
 
@@ -159,5 +149,25 @@ public class ItemJetpack extends ItemArmorMP
 	public int getRepairItemsMetadata()
 	{
 		return -1;
+	}
+
+	public void setJetpackKeyDown(boolean bool)
+	{
+		this.keyDown = bool;
+	}
+
+	public boolean getJetpackKeyDown()
+	{
+		return this.keyDown;
+	}
+
+	public void setJetpackKeySneak(boolean bool)
+	{
+		this.keySneak = bool;
+	}
+
+	public boolean getJetpackKeySneak()
+	{
+		return this.keySneak;
 	}
 }

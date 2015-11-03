@@ -43,7 +43,7 @@ item.kapteyn-b_dungeon_key.name=Tier 8 Kapteyn B Dungeon Key
 item.uranium_battery.name=Uranium Battery
 item.kapteyn-b_item.frozen_iron_ingot.name=Frozen Iron Ingot
 item.kapteyn-b_item.uranium_gem.name=Uranium Gem
-item.kapteyn-b_item.compressed_frozen_iron.name=Compressed Frozen Iron Ingot
+item.kapteyn-b_item.compressed_frozen_iron.name=Compressed Frozen Iron
 item.frozen_water_bucket.name=Frozen Water Bucket
 item.kapteyn-b_item.uranium_stick.name=Uranium Stick
 item.kapteyn-b_item.frozen_iron_stick.name=Frozen Iron Stick
@@ -98,7 +98,7 @@ desc.tier8.name=Tier 8
 
 # DEATH MESSSAGE
 death.attack.chemical=%1$s was killed by a chemical
-death.attack.icy_poison=%1$s was poisoned by an Icy Poison Crystal
+death.attack.icy_poison=%1$s was poisoned by an icy poison crystal
 
 # CONTAINER
 container.kapteynb.treasurechest.name=Kapteyn B Treasure Chest

@@ -54,7 +54,8 @@ public class BlockSlabMP extends BlockSlab
 		"orangeWood",
 		"coconutWood",
 		"redMapleWood",
-		"crystalWood"
+		"crystalWood",
+		"europaWood"
 	};
 
 	private IIcon[] textures;
@@ -105,12 +106,13 @@ public class BlockSlabMP extends BlockSlab
 		/**Wood Type**/
 		if (this.category == SlabCategory.STONE)
 		{
-			this.textures = new IIcon[5];
+			this.textures = new IIcon[6];
 			this.textures[0] = par1IconRegister.registerIcon("nibiru:ancient_dark_wood_planks");
 			this.textures[1] = par1IconRegister.registerIcon("nibiru:orange_wood_planks");
 			this.textures[2] = par1IconRegister.registerIcon("fronos:coconut_wood_planks");
 			this.textures[3] = par1IconRegister.registerIcon("fronos:maple_wood_planks");
 			this.textures[4] = par1IconRegister.registerIcon("koentus:crystal_planks");
+			this.textures[5] = par1IconRegister.registerIcon("europa:europa_planks");
 		}
 		/**Stone Type 2**/
 		else if (this.category == SlabCategory.WOOD2)
@@ -171,7 +173,7 @@ public class BlockSlabMP extends BlockSlab
 		}
 		else if (this.category == SlabCategory.STONE)
 		{
-			max = 5;
+			max = 6;
 		}
 		for (int i = 0; i < max; ++i)
 		{

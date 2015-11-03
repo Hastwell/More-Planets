@@ -45,6 +45,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.core.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.ai.EntityAISpaceWolfBeg;
@@ -453,6 +454,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
 					this.func_152115_b(player.getUniqueID().toString());
 					this.playTameEffect(true);
 					this.worldObj.setEntityState(this, (byte)7);
+					player.triggerAchievement(AchievementsMP.tameSpaceWolf);
 				}
 				else
 				{

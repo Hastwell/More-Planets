@@ -8,22 +8,18 @@
 package stevekung.mods.moreplanets.planets.polongnius.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.planets.polongnius.worldgen.ChunkProviderPolongnius;
 import stevekung.mods.moreplanets.planets.polongnius.worldgen.WorldChunkManagerPolongnius;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderPolongnius extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel, IPolongniusMeteor
+public class WorldProviderPolongnius extends WorldProviderMP implements IPolongniusMeteor
 {
 	@Override
 	public Vector3 getFogColor()
@@ -40,27 +36,9 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 	}
 
 	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 44000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -77,16 +55,15 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float par1)
+	public float getStarBrightness(float bright)
 	{
-		float f1 = this.worldObj.getCelestialAngle(par1);
+		float f1 = this.worldObj.getCelestialAngle(bright);
 		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
 
 		if (f2 < 0.0F)
 		{
 			f2 = 0.0F;
 		}
-
 		if (f2 > 1.0F)
 		{
 			f2 = 1.0F;
@@ -96,7 +73,7 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getSunBrightness(float par1)
+	public float getSunBrightness(float bright)
 	{
 		float f1 = this.worldObj.getCelestialAngle(1.0F);
 		float f2 = 0.675F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
@@ -114,24 +91,6 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int var1, int var2)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
 		return 1.2D;
@@ -146,13 +105,7 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 	@Override
 	public double getMeteorFrequency()
 	{
-		return 8.0D;
-	}
-
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
+		return 10.0D;
 	}
 
 	@Override
@@ -170,7 +123,7 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 	@Override
 	public float getSoundVolReductionAmount()
 	{
-		return 20.0F;
+		return 10.0F;
 	}
 
 	@Override
@@ -190,18 +143,18 @@ public class WorldProviderPolongnius extends WorldProviderSpace implements IGala
 	{
 		if (this.isDaytime())
 		{
-			return 3.75F;
+			return 1.75F;
 		}
 		else
 		{
-			return -0.25F;
+			return -1.5F;
 		}
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 1.8F;
+		return 0.9F;
 	}
 
 	@Override

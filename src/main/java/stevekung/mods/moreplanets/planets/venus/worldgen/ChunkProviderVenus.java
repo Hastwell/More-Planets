@@ -33,6 +33,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import scala.actors.threadpool.Arrays;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
@@ -95,7 +96,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	private static double SMALL_FEATURE_HEIGHT_MOD = 36;
 	private static double MOUNTAIN_HEIGHT_MOD = 120;
 	private static double VALLEY_HEIGHT_MOD = 64;
-	private static int CRATER_PROB = 300;
+	private static int CRATER_PROB = 2000;
 
 	// DO NOT CHANGE
 	private static int MID_HEIGHT = 86;
@@ -281,6 +282,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		this.rand.setSeed(par1 * 341873128712L + par2 * 132897987541L);
 		Block[] ids = new Block[32768 * 2];
 		byte[] meta = new byte[32768 * 2];
+		Arrays.fill(ids, Blocks.air);
 		this.generateTerrain(par1, par2, ids, meta);
 		this.createCraters(par1, par2, ids, meta);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);

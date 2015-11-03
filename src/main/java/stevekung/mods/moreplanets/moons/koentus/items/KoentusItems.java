@@ -8,6 +8,8 @@
 package stevekung.mods.moreplanets.moons.koentus.items;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.core.items.ItemDoorMP;
 import stevekung.mods.stevecore.RegisterHelper;
@@ -36,5 +38,9 @@ public class KoentusItems
 		RegisterHelper.registerItem(KoentusItems.koentus_item);
 		RegisterHelper.registerItem(KoentusItems.koentus_meteor_chunk);
 		RegisterHelper.registerItem(KoentusItems.crystal_door);
+
+		OreDictionary.registerOre("ingotKoentusMeteoricIron", new ItemStack(KoentusItems.koentus_item, 1, 4));
+		OreDictionary.registerOre("compressedKoentusMeteoricIron", new ItemStack(KoentusItems.koentus_item, 1, 6));
+		OreDictionary.registerOre("compressedWhiteCrystal", new ItemStack(KoentusItems.koentus_item, 1, 5));
 	}
 }

@@ -15,6 +15,7 @@ import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -76,6 +77,18 @@ public class BlockBasicSiriusB extends BlockBasicMP implements IDetectableResour
 		{
 			list.add(new ItemStack(block, 1, i));
 		}
+	}
+
+	@Override
+	public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+
+		if (meta == 9)
+		{
+			return 100.0F;
+		}
+		return super.getExplosionResistance(par1Entity, world, x, y, z, explosionX, explosionY, explosionZ);
 	}
 
 	@Override

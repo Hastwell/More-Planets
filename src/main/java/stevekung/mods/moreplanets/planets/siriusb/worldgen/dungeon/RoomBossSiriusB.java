@@ -55,7 +55,7 @@ public class RoomBossSiriusB extends DungeonRoom
 					{
 						if (j == this.posY - 1 && (i <= this.posX + 1 || i >= this.posX + this.sizeX - 2 || k == this.posZ + 1 || k == this.posZ + this.sizeZ - 2) && this.rand.nextInt(4) == 0)
 						{
-							this.placeBlock(chunk, meta, i, j, k, cx, cz, SiriusBBlocks.sirius_glowstone, 0);
+							this.placeBlock(chunk, meta, i, j, k, cx, cz, SiriusBBlocks.sirius_glowstone, 1);
 						}
 						else
 						{

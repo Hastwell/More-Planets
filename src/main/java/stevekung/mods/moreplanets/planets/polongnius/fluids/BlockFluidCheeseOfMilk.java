@@ -27,7 +27,7 @@ public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
 		super(PolongniusBlocks.cheese_of_milk_fluid);
 		this.setQuantaPerBlock(6);
 		this.setRenderPass(1);
-		this.needsRandomTick = true;
+		this.setLightOpacity(3);
 		this.setBlockName(name);
 	}
 
@@ -35,7 +35,6 @@ public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random rand)
 	{
-		super.randomDisplayTick(par1World, par2, par3, par4, rand);
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
 
 		if (rand.nextInt(1) == 0)

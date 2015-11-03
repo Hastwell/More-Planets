@@ -58,23 +58,4 @@ public class ItemBasicKapteynB extends ItemBaseMP implements IPowerCrystal
 	{
 		return meta == 1 ? 16000 : meta == 5 ? 6400 : 0;
 	}
-
-	/*@Override
-	public boolean onEntityItemUpdate(EntityItem item)
-	{
-		ItemStack itemStack = item.getEntityItem();
-		World world = item.worldObj;
-
-		if (item.worldObj.getBlock((int)Math.floor(item.posX), (int)Math.floor(item.posY), (int)Math.floor(item.posZ)) == KapteynBBlocks.frozen_water)
-		{
-			if (itemStack.getItemDamage() == 5 && itemStack.stackSize == 5)
-			{
-				if (item.ticksExisted % 50 == 0)
-				{
-					item.setEntityItemStack(new ItemStack(Items.diamond));
-				}
-			}
-		}
-		return false;
-	}*/
 }

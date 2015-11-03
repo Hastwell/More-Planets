@@ -8,22 +8,18 @@
 package stevekung.mods.moreplanets.planets.kapteynb.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.planets.kapteynb.worldgen.ChunkProviderKapteynB;
 import stevekung.mods.moreplanets.planets.kapteynb.worldgen.WorldChunkManagerKapteynB;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderKapteynB extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel, IIceCrystalMeteor
+public class WorldProviderKapteynB extends WorldProviderMP implements IIceCrystalMeteor
 {
 	@Override
 	public Vector3 getFogColor()
@@ -40,27 +36,9 @@ public class WorldProviderKapteynB extends WorldProviderSpace implements IGalact
 	}
 
 	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 246000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -113,24 +91,6 @@ public class WorldProviderKapteynB extends WorldProviderSpace implements IGalact
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int var1, int var2)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
 		return 4.0D;
@@ -149,12 +109,6 @@ public class WorldProviderKapteynB extends WorldProviderSpace implements IGalact
 	}
 
 	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
-	}
-
-	@Override
 	public boolean canSpaceshipTierPass(int tier)
 	{
 		return tier >= 7;
@@ -169,7 +123,7 @@ public class WorldProviderKapteynB extends WorldProviderSpace implements IGalact
 	@Override
 	public float getSoundVolReductionAmount()
 	{
-		return 15.0F;
+		return 2.5F;
 	}
 
 	@Override
@@ -181,7 +135,7 @@ public class WorldProviderKapteynB extends WorldProviderSpace implements IGalact
 	@Override
 	public boolean hasBreathableAtmosphere()
 	{
-		return false;
+		return !this.isDaytime();
 	}
 
 	@Override
@@ -189,11 +143,11 @@ public class WorldProviderKapteynB extends WorldProviderSpace implements IGalact
 	{
 		if (this.isDaytime())
 		{
-			return 3.0F;
+			return 0.25F;
 		}
 		else
 		{
-			return -10.0F;
+			return -1.25F;
 		}
 	}
 

@@ -10,13 +10,12 @@ package stevekung.mods.moreplanets.planets.diona.potion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
-import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class EMPEffect extends Potion
 {
-	public EMPEffect(boolean isBad, int color)
+	public EMPEffect(int id, boolean isBad, int color)
 	{
-		super(MPPotions.getNextPotionID(), isBad, color);
+		super(id, isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

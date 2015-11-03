@@ -8,23 +8,19 @@
 package stevekung.mods.moreplanets.planets.diona.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.moons.koentus.dimension.IKoentusMeteor;
 import stevekung.mods.moreplanets.planets.diona.worldgen.ChunkProviderDiona;
 import stevekung.mods.moreplanets.planets.diona.worldgen.WorldChunkManagerDiona;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderDiona extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel, IKoentusMeteor
+public class WorldProviderDiona extends WorldProviderMP implements IKoentusMeteor
 {
 	@Override
 	public Vector3 getFogColor()
@@ -39,27 +35,9 @@ public class WorldProviderDiona extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 150000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -112,24 +90,6 @@ public class WorldProviderDiona extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int var1, int var2)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
 		return 2.4D;
@@ -148,12 +108,6 @@ public class WorldProviderDiona extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
-	}
-
-	@Override
 	public boolean canSpaceshipTierPass(int tier)
 	{
 		return tier >= 4;
@@ -168,7 +122,7 @@ public class WorldProviderDiona extends WorldProviderSpace implements IGalacticr
 	@Override
 	public float getSoundVolReductionAmount()
 	{
-		return 20.0F;
+		return 10.0F;
 	}
 
 	@Override
@@ -188,18 +142,18 @@ public class WorldProviderDiona extends WorldProviderSpace implements IGalacticr
 	{
 		if (this.isDaytime())
 		{
-			return 2.0F;
+			return 0.0F;
 		}
 		else
 		{
-			return -0.5F;
+			return -0.75F;
 		}
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 0F;
+		return 0.0F;
 	}
 
 	@Override

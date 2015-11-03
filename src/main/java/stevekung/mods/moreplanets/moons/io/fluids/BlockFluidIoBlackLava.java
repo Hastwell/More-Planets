@@ -52,7 +52,6 @@ public class BlockFluidIoBlackLava extends BlockFluidLavaBaseMP
 			double d7 = z + rand.nextFloat();
 			world.spawnParticle("dripLava", d5, d6, d7, 0.0D, 0.0D, 0.0D);//TODO
 		}
-		super.randomDisplayTick(world, x, y, z, rand);
 	}
 
 	@Override
@@ -76,7 +75,7 @@ public class BlockFluidIoBlackLava extends BlockFluidLavaBaseMP
 	@Override
 	protected int getBlockMetaFromWaterTo()
 	{
-		return 2;
+		return 5;
 	}
 
 	@Override
@@ -94,7 +93,7 @@ public class BlockFluidIoBlackLava extends BlockFluidLavaBaseMP
 	@Override
 	protected int getCobblestoneBlockMeta()
 	{
-		return 3;
+		return 6;
 	}
 
 	@Override

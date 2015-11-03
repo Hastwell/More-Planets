@@ -13,11 +13,10 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.world.biome.BiomeGenBase;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.core.handler.IPlanetFog;
 import stevekung.mods.moreplanets.core.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
-public class BiomeGenBaseVenus extends BiomeGenBaseMP implements IPlanetFog
+public class BiomeGenBaseVenus extends BiomeGenBaseMP /*implements IPlanetFog*/
 {
 	public static BiomeGenBase venus = new BiomeGenBaseVenus().setBiomeName("Venus");
 
@@ -31,7 +30,7 @@ public class BiomeGenBaseVenus extends BiomeGenBaseMP implements IPlanetFog
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 8, 1, 2));
 	}
 
-	@Override
+	/*@Override
 	public float getFogDensity(int x, int y, int z)
 	{
 		return 0.2F;
@@ -40,6 +39,6 @@ public class BiomeGenBaseVenus extends BiomeGenBaseMP implements IPlanetFog
 	@Override
 	public int getFogColor(int x, int y, int z)
 	{
-		return -4227008;
-	}
+		return 0;
+	}*/
 }

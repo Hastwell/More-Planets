@@ -176,6 +176,7 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
 					else
 					{
 						Block var18 = arrayOfIDs[index];
+
 						if (Blocks.air == var18)
 						{
 							var13 = -1;

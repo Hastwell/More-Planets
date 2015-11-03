@@ -188,7 +188,8 @@ public class ItemMonsterPlacerMP extends ItemMorePlanet
 	@Override
 	public String getItemStackDisplayName(ItemStack itemStack)
 	{
-		return "Spawn " + StatCollector.translateToLocal("entity.MorePlanet." + MPEntities.getStringFromID(itemStack.getItemDamage()) + ".name");
+		String s = StatCollector.translateToLocal(Items.spawn_egg.getUnlocalizedName() + ".name");
+		return s + " " + StatCollector.translateToLocal("entity.MorePlanet." + MPEntities.getStringFromID(itemStack.getItemDamage()) + ".name");
 	}
 
 	@Override

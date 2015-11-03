@@ -118,7 +118,6 @@ public class BlockFronosSapling extends BlockSapling
 	{
 		int meta = world.getBlockMetadata(x, y, z);
 		Object obj = null;
-		random.nextInt(8);
 
 		if (obj == null)
 		{

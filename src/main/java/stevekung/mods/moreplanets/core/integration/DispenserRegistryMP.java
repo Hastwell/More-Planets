@@ -21,7 +21,7 @@ import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 public class DispenserRegistryMP
 {
-	public static void initRegistry()
+	public static void init()
 	{
 		BlockDispenser.dispenseBehaviorRegistry.putObject(SiriusBItems.sirius_fire_charge, new BehaviorDefaultDispenseItem()
 		{

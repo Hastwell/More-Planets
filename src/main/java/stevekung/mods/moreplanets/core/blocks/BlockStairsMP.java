@@ -21,6 +21,7 @@ public class BlockStairsMP extends BlockStairs
 {
 	private StairsCategory category;
 	private IIcon[] fronosSandstoneIcon;
+	private IIcon[] europaSandstoneIcon;
 
 	public static enum StairsCategory
 	{
@@ -29,6 +30,7 @@ public class BlockStairsMP extends BlockStairs
 		COCONUT_WOOD ("wood"),
 		RED_MAPLE_WOOD ("wood"),
 		CRYSTAL_WOOD ("wood"),
+		EUROPA_WOOD ("wood"),
 
 		DIONA_COBBLESTONE ("stone"),
 		DIONA_BRICK ("stone"),
@@ -55,7 +57,8 @@ public class BlockStairsMP extends BlockStairs
 		fronos_sandstone ("stone"),
 		white_sandstone ("stone"),
 		cheese_sandstone ("stone"),
-		venus_sandstone ("stone");
+		venus_sandstone ("stone"),
+		europa_sandstone ("stone");
 
 		private List<String> values;
 		private String type;
@@ -202,6 +205,10 @@ public class BlockStairsMP extends BlockStairs
 		{
 			this.blockIcon = par1IconRegister.registerIcon("mercury:mercury_dungeon_brick");
 		}
+		else if (this.category == StairsCategory.EUROPA_WOOD)//Crystal Wood
+		{
+			this.blockIcon = par1IconRegister.registerIcon("europa:europa_planks");
+		}
 
 		this.fronosSandstoneIcon = new IIcon[12];
 		this.fronosSandstoneIcon[0] = par1IconRegister.registerIcon("fronos:fronos_sandstone");
@@ -216,6 +223,11 @@ public class BlockStairsMP extends BlockStairs
 		this.fronosSandstoneIcon[9] = par1IconRegister.registerIcon("venus:venus_sandstone");
 		this.fronosSandstoneIcon[10] = par1IconRegister.registerIcon("venus:venus_sandstone_top");
 		this.fronosSandstoneIcon[11] = par1IconRegister.registerIcon("venus:venus_sandstone_bottom");
+
+		this.europaSandstoneIcon = new IIcon[12];
+		this.europaSandstoneIcon[0] = par1IconRegister.registerIcon("europa:europa_sandstone");
+		this.europaSandstoneIcon[1] = par1IconRegister.registerIcon("europa:europa_sandstone_top");
+		this.europaSandstoneIcon[2] = par1IconRegister.registerIcon("europa:europa_sandstone_bottom");
 	}
 
 	public boolean isWoodCategory(String block)
@@ -302,6 +314,24 @@ public class BlockStairsMP extends BlockStairs
 				return this.fronosSandstoneIcon[9]; //X-
 			case 5:
 				return this.fronosSandstoneIcon[9]; //X+
+			}
+		}
+		else if (this.category == StairsCategory.europa_sandstone)
+		{
+			switch (side)
+			{
+			case 0:
+				return this.europaSandstoneIcon[2]; //BOTTOM
+			case 1:
+				return this.europaSandstoneIcon[1]; //TOP
+			case 2:
+				return this.europaSandstoneIcon[0]; //Z-
+			case 3:
+				return this.europaSandstoneIcon[0]; //Z+
+			case 4:
+				return this.europaSandstoneIcon[0]; //X-
+			case 5:
+				return this.europaSandstoneIcon[0]; //X+
 			}
 		}
 		return this.blockIcon;

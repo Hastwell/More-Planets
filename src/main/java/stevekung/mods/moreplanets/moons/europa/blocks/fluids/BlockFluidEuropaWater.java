@@ -26,6 +26,7 @@ public class BlockFluidEuropaWater extends BlockFluidBaseMP
 	{
 		super(EuropaBlocks.europa_water_fluid);
 		this.setRenderPass(1);
+		this.setLightOpacity(3);
 		this.setBlockName(name);
 	}
 
@@ -42,7 +43,6 @@ public class BlockFluidEuropaWater extends BlockFluidBaseMP
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
 	{
-		super.randomDisplayTick(world, x, y, z, rand);
 		int meta = world.getBlockMetadata(x, y, z);
 
 		if (rand.nextInt(64) == 0)

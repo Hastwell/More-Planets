@@ -39,9 +39,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
-import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.core.util.EnumDimensionType;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
 import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySiriusSmallFireball;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
@@ -492,16 +492,16 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 
 				if (this.field_70846_g == 1)
 				{
-					this.attackTime = 60;
+					this.attackTime = this.getHealth() <= this.getMaxHealth() / 2.0F ? 0 : 60;
 					this.isBurn(true);
 				}
-				else if (this.field_70846_g <= 4)
+				else if (this.getHealth() <= this.getMaxHealth() / 2.0F ? this.field_70846_g <= 6 : this.field_70846_g <= 3)
 				{
 					this.attackTime = 6;
 				}
 				else
 				{
-					this.attackTime = 100;
+					this.attackTime = this.getHealth() <= this.getMaxHealth() / 2.0F ? 25 : 100;
 					this.field_70846_g = 0;
 					this.isBurn(false);
 				}
@@ -559,8 +559,8 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return ConfigManagerMP.idDimensionSiriusB;
+		return EnumDimensionType.SIRIUS_B;
 	}
 }

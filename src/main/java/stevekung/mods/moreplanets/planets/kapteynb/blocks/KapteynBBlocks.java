@@ -15,7 +15,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.core.blocks.BlockStairsMP.StairsCategory;
-import stevekung.mods.moreplanets.planets.kapteynb.fluids.blocks.BlockFluidFrozenWater;
+import stevekung.mods.moreplanets.planets.kapteynb.fluids.BlockFluidFrozenWater;
 import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockKapteynB;
 import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockKapteynBIce;

@@ -20,6 +20,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -118,5 +119,12 @@ public class BlockInfectedZombieEgg extends BlockDragonEgg
 		}
 		world.setBlockToAir(x, y, z);
 		this.onBlockDestroyedByExplosion(world, x, y, z, explosion);
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+	{
+		super.harvestBlock(world, player, x, y, z, fortune);
+		MorePlanetEvents.getActivateInfectedGas(player);
 	}
 }

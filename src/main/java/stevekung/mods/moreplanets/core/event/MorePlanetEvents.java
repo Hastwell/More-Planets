@@ -10,19 +10,28 @@ package stevekung.mods.moreplanets.core.event;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent;
+import micdoodle8.mods.galacticraft.api.inventory.AccessInventoryGC;
+import micdoodle8.mods.galacticraft.api.inventory.IInventoryGC;
 import micdoodle8.mods.galacticraft.core.client.gui.screen.GuiCelestialSelection;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
@@ -32,32 +41,44 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.FOVUpdateEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.ZombieEvent.SummonAidEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.achievement.AchievementsMP;
+import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.core.util.DamageSourceMP;
+import stevekung.mods.moreplanets.core.world.ILightningStorm;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.io.items.IoItems;
 import stevekung.mods.moreplanets.moons.koentus.blocks.BlockCrystalSapling;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.dimension.IKoentusMeteor;
 import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
+import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteor;
+import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
+import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
+import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosSapling;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.items.ItemCandyBow;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
+import stevekung.mods.moreplanets.planets.kapteynb.dimension.IIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
@@ -69,14 +90,21 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
+import stevekung.mods.moreplanets.planets.polongnius.dimension.IPolongniusMeteor;
+import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteor;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.items.armor.PolongniusArmorItems;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
+import stevekung.mods.moreplanets.planets.venus.items.ItemJetpack;
 import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -106,7 +134,7 @@ public class MorePlanetEvents
 			{
 				if (KapteynBBlocks.icy_poison_crystal.canPlaceBlockAt(event.entityLiving.worldObj, (int)event.entityLiving.posX, (int)event.entityLiving.posY, (int)event.entityLiving.posZ))
 				{
-					if (event.entityLiving.worldObj.rand.nextInt(100) == 0)
+					if (event.entityLiving.worldObj.rand.nextInt(50) == 0)
 					{
 						event.entityLiving.worldObj.setBlock((int)event.entityLiving.posX, (int)event.entityLiving.posY, (int)event.entityLiving.posZ, KapteynBBlocks.icy_poison_crystal);
 					}
@@ -114,6 +142,90 @@ public class MorePlanetEvents
 			}
 		}
 	}
+
+	@SubscribeEvent
+	public void onLivingJump(LivingJumpEvent event)
+	{
+		if (event.entityLiving.isPotionActive(MPPotions.electro_magnetic_pulse))
+		{
+			event.entityLiving.motionY -= 1.0D;
+		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onClientTick(ClientTickEvent event)
+	{
+		Minecraft mc = Minecraft.getMinecraft();
+		WorldClient world = mc.theWorld;
+		EntityClientPlayerMP player = mc.thePlayer;
+
+		if (Side.CLIENT != null)
+		{
+			if (player != null && world != null)
+			{
+				if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
+				{
+					boolean flag = player.capabilities.isCreativeMode;
+
+					if (!flag && player.inventory.hasItem(Items.coal))
+					{
+						if (mc.gameSettings.keyBindJump.getIsKeyPressed())
+						{
+							((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeyDown(true);
+							player.motionY = 0.5D;
+							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
+						}
+						else if (!mc.gameSettings.keyBindJump.getIsKeyPressed())
+						{
+							((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeyDown(false);
+						}
+
+						if (!player.onGround)
+						{
+							if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
+							{
+								player.motionY *= 0.85D;
+								world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
+								((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeySneak(true);
+							}
+							else if (!mc.gameSettings.keyBindSneak.getIsKeyPressed())
+							{
+								((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeySneak(false);
+							}
+						}
+						else
+						{
+							((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeySneak(false);
+						}
+					}
+					if (flag)
+					{
+						if (mc.gameSettings.keyBindJump.getIsKeyPressed())
+						{
+							player.motionY = 0.5D;
+							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
+						}
+						if (!player.onGround)
+						{
+							if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
+							{
+								player.motionY *= 0.85D;
+								world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*@SideOnly(Side.SERVER)
+	private void useJetpack()
+	{
+		MorePlanetsCore.packetPipeline.sendToServer(new PacketUpdateItem());
+		MPLog.info("Send packet");
+	}*/
 
 	@SubscribeEvent
 	public void onLivingFall(LivingFallEvent event)
@@ -182,24 +294,7 @@ public class MorePlanetEvents
 		}
 	}
 
-	/*@SubscribeEvent
-	public void onItemUpdate(ItemEvent event)
-	{
-		if (event.entityItem.getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && event.entityItem.getEntityItem().getItemDamage() == 5)
-		{
-			if (event.entityItem.worldObj.getBlock((int)event.entityItem.posX, (int)event.entityItem.posY, (int)event.entityItem.posZ) == KapteynBBlocks.frozen_water)
-			{
-				if (!event.entity.worldObj.isRemote)
-				{
-					EntityItem item = new EntityItem(event.entityItem.worldObj, event.entityItem.posX, event.entityItem.posY, event.entityItem.posZ, new ItemStack(Items.diamond));
-					event.entityItem.worldObj.spawnEntityInWorld(item);
-					event.setResult(Result.ALLOW);
-				}
-			}
-		}
-	}*/
-
-	/*@SubscribeEvent
+	@SubscribeEvent
 	public void onPickupItem(EntityItemPickupEvent event)
 	{
 		ItemStack itemStack = event.item.getEntityItem();
@@ -208,28 +303,41 @@ public class MorePlanetEvents
 
 		if (event.entityPlayer.inventory.addItemStackToInventory(itemStack))
 		{
-			// Tin/Copper/Aluminum and Silicon Ore
-			if (item == Item.getItemFromBlock(GCBlocks.basicBlock) && (meta >= 5 && meta <= 7) || item == GCItems.basicItem && meta == 2)
+			if (item == DionaItems.tier4_rocket_schematic && meta == 1)
 			{
-				event.setResult(Result.ALLOW);
-				event.entityPlayer.onItemPickup(event.item, itemStack.stackSize);
-				event.entityPlayer.triggerAchievement(MorePlanetsCore.findOre);
+				event.entityPlayer.triggerAchievement(AchievementsMP.getTier4Schematic);
 			}
+			if (item == Item.getItemFromBlock(DionaBlocks.diona_block) && (meta == 4 || meta == 5))
+			{
+				event.entityPlayer.triggerAchievement(AchievementsMP.mineDionaOre);
+			}
+			event.entityPlayer.onItemPickup(event.item, itemStack.stackSize);
 		}
 	}
 
 	@SubscribeEvent
-	public void onCraftItem(PlayerEvent.ItemCraftedEvent event)
+	public void onChangeDimension(PlayerChangedDimensionEvent event)
+	{
+		if (event.toDim == ConfigManagerMP.idDimensionDiona)
+		{
+			event.player.triggerAchievement(AchievementsMP.reachDiona);
+		}
+	}
+
+	@SubscribeEvent
+	public void onCraftItem(ItemCraftedEvent event)
 	{
 		Item item = event.crafting.getItem();
-		int meta = event.crafting.getItemDamage();
 
-		// Coal Generator
-		if (event.crafting.getItem() == Item.getItemFromBlock(GCBlocks.machineBase) && meta == 0)
+		if (item == DionaToolsItems.quontonium_pickaxe || item == DionaToolsItems.fronisium_pickaxe)
 		{
-			event.player.triggerAchievement(MorePlanetsCore.craftingCoalGenerator);
+			event.player.triggerAchievement(AchievementsMP.getSpacePick);
 		}
-	}*/
+		if (item == DionaItems.laser_gun)
+		{
+			event.player.triggerAchievement(AchievementsMP.laserGun);
+		}
+	}
 
 	@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event)
@@ -515,56 +623,282 @@ public class MorePlanetEvents
 	public void onEntityUpdate(LivingUpdateEvent event)
 	{
 		EntityLivingBase entity = event.entityLiving;
+		World world = entity.worldObj;
 
 		// Potion tick
-		if (entity instanceof EntityLivingBase)
+		if (entity.isPotionActive(MPPotions.infected_gas))
 		{
-			if (entity.isPotionActive(MPPotions.infected_gas))
+			if (entity.ticksExisted % 35 == 0)
 			{
-				if (entity.ticksExisted % 35 == 0)
-				{
-					entity.attackEntityFrom(DamageSourceMP.infectedGas, 0.5F);
-				}
-				if (entity.getActivePotionEffect(MPPotions.infected_gas).getDuration() == 0)
-				{
-					entity.removePotionEffect(MPPotions.infected_gas.id);
-					return;
-				}
+				entity.attackEntityFrom(DamageSourceMP.infectedGas, 1.0F + entity.getActivePotionEffect(MPPotions.infected_gas).getAmplifier());
 			}
-			else if (entity.isPotionActive(MPPotions.chemical))
+			if (entity.getActivePotionEffect(MPPotions.infected_gas).getDuration() == 0)
 			{
-				if (entity.ticksExisted % 8 == 0)
-				{
-					entity.attackEntityFrom(DamageSourceMP.chemical, 1.0F);
-				}
-				if (entity.getActivePotionEffect(MPPotions.chemical).getDuration() == 0)
-				{
-					entity.removePotionEffect(MPPotions.chemical.id);
-					return;
-				}
+				entity.removePotionEffect(MPPotions.infected_gas.id);
+				return;
 			}
-			else if (entity.isPotionActive(MPPotions.electro_magnetic_pulse))
+		}
+		else if (entity.isPotionActive(MPPotions.chemical))
+		{
+			if (entity.ticksExisted % 8 == 0)
 			{
-				if (!event.entityLiving.worldObj.isRemote)
-				{
-					entity.motionX = 0.0F;
-					entity.motionY = -1.0F;
-					entity.motionZ = 0.0F;
-				}
-				if (entity.getActivePotionEffect(MPPotions.electro_magnetic_pulse).getDuration() == 0)
-				{
-					entity.removePotionEffect(MPPotions.electro_magnetic_pulse.id);
-					return;
-				}
+				entity.attackEntityFrom(DamageSourceMP.chemical, 1.0F + entity.getActivePotionEffect(MPPotions.chemical).getAmplifier());
 			}
-			else if (entity.isPotionActive(MPPotions.icy_poison))
+			if (entity.getActivePotionEffect(MPPotions.chemical).getDuration() == 0)
 			{
-				entity.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F);
+				entity.removePotionEffect(MPPotions.chemical.id);
+				return;
+			}
+		}
+		else if (entity.isPotionActive(MPPotions.electro_magnetic_pulse))
+		{
+			if (!entity.worldObj.isRemote)
+			{
+				entity.motionX = 0.0F;
+				entity.motionY = -1.0F;
+				entity.motionZ = 0.0F;
+			}
+			if (entity.getActivePotionEffect(MPPotions.electro_magnetic_pulse).getDuration() == 0)
+			{
+				entity.removePotionEffect(MPPotions.electro_magnetic_pulse.id);
+				return;
+			}
+		}
+		else if (entity.isPotionActive(MPPotions.icy_poison))
+		{
+			entity.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F + entity.getActivePotionEffect(MPPotions.icy_poison).getAmplifier());
 
-				if (entity.getActivePotionEffect(MPPotions.icy_poison).getDuration() == 0)
+			if (entity.getActivePotionEffect(MPPotions.icy_poison).getDuration() == 0)
+			{
+				entity.removePotionEffect(MPPotions.icy_poison.id);
+				return;
+			}
+		}
+
+		if (entity instanceof EntityPlayerMP)
+		{
+			EntityPlayerMP player = (EntityPlayerMP) entity;
+
+			if (world.provider instanceof WorldProviderMars)
+			{
+				if (world.getWorldTime() == 7000L)
 				{
-					entity.removePotionEffect(MPPotions.icy_poison.id);
-					return;
+					EntityItem item = new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(MPItems.feces));
+					item.delayBeforeCanPickup = 10;
+					world.playSoundAtEntity(player, "mob.chicken.plop", 0.75F, (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 0.6F);
+					world.spawnEntityInWorld(item);
+				}
+				if (world.getWorldTime() == 12000L)
+				{
+					EntityItem item = new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(MPItems.feces));
+					item.delayBeforeCanPickup = 10;
+					world.playSoundAtEntity(player, "mob.chicken.plop", 0.75F, (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 0.6F);
+					world.spawnEntityInWorld(item);
+				}
+			}
+			if (world.provider instanceof IKoentusMeteor && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+			{
+				if (((IKoentusMeteor) world.provider).getKoentusMeteorFrequency() > 0)
+				{
+					int f = (int) (((IKoentusMeteor) world.provider).getKoentusMeteorFrequency() * 1000D);
+
+					if (world.rand.nextInt(f) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
+
+							EntityKoentusMeteor meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+							}
+						}
+					}
+
+					if (world.rand.nextInt(f * 3) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
+
+							EntityKoentusMeteor meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 6);
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+							}
+						}
+					}
+				}
+			}
+			if (world.provider instanceof IPolongniusMeteor && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+			{
+				if (((IPolongniusMeteor) world.provider).getPolongniusMeteorFrequency() > 0)
+				{
+					int f = (int) (((IPolongniusMeteor) world.provider).getPolongniusMeteorFrequency() * 1000D);
+
+					if (world.rand.nextInt(f) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
+
+							EntityPolongniusMeteor meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+							}
+						}
+					}
+
+					if (world.rand.nextInt(f * 3) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
+
+							EntityPolongniusMeteor meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 6);
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+							}
+						}
+					}
+				}
+			}
+			if (world.provider instanceof IIceCrystalMeteor && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+			{
+				if (((IIceCrystalMeteor) world.provider).getIceCrystalMeteorFrequency() > 0)
+				{
+					int f = (int) (((IIceCrystalMeteor) world.provider).getIceCrystalMeteorFrequency() * 1000D);
+
+					if (world.rand.nextInt(f) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
+
+							EntityIceCrystalMeteor meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+							}
+						}
+					}
+
+					if (world.rand.nextInt(f * 3) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
+
+							EntityIceCrystalMeteor meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 6);
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+							}
+						}
+					}
+				}
+			}
+			if (world.provider instanceof ILightningStorm && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+			{
+				if (((ILightningStorm)world.provider).getLightningStormFrequency() > 0)
+				{
+					int f = (int)(((ILightningStorm)world.provider).getLightningStormFrequency() * 1000D);
+
+					if (world.rand.nextInt(f) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							double x = player.posX + world.rand.nextInt(10) - 5;
+							double y = player.posY + world.rand.nextInt(10) + 10;
+							double z = player.posZ + world.rand.nextInt(10) - 5;
+							EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(lightning);
+							}
+						}
+					}
+
+					if (world.rand.nextInt(f * 3) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							double x = player.posX + world.rand.nextInt(10) - 5;
+							double y = player.posY + world.rand.nextInt(10) + 10;
+							double z = player.posZ + world.rand.nextInt(10) - 5;
+							EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
+
+							if (!world.isRemote)
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									world.spawnEntityInWorld(lightning);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -574,37 +908,54 @@ public class MorePlanetEvents
 		{
 			if (!(entity instanceof EntityPlayer))
 			{
-				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(entity.worldObj.provider.dimensionId == ((IEntityLivingPlanet)entity).canLivingInDimension())) && !(entity.getClass() == EntityEvolvedZombie.class || entity.getClass() == EntityEvolvedSpider.class || entity.getClass() == EntityEvolvedSkeleton.class || entity.getClass() == EntityEvolvedCreeper.class || entity.getClass() == EntityEvolvedEnderman.class))
+				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(entity.worldObj.provider.dimensionId == ((IEntityLivingPlanet)entity).canLivingInDimension().dimID)) && !(entity.getClass() == EntityEvolvedZombie.class || entity.getClass() == EntityEvolvedSpider.class || entity.getClass() == EntityEvolvedSkeleton.class || entity.getClass() == EntityEvolvedCreeper.class || entity.getClass() == EntityEvolvedEnderman.class))
 				{
-					PlanetEvents livingEvent = new PlanetEvents.Pre(entity);
-					MinecraftForge.EVENT_BUS.post(livingEvent);
-
-					if (livingEvent.isCanceled())
+					if (!ConfigManagerMP.disableInfectedGas)
 					{
-						return;
+						entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
 					}
-					entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 60));
-					PlanetEvents livingEventPost = new PlanetEvents.Post(entity);
-					MinecraftForge.EVENT_BUS.post(livingEventPost);
 				}
 			}
-			else if (entity instanceof EntityPlayer)
+			if (entity instanceof EntityPlayer)
 			{
 				EntityPlayer player = (EntityPlayer)entity;
 				InventoryPlayer inventory = player.inventory;
+				IInventoryGC inv = AccessInventoryGC.getGCInventoryForPlayer((EntityPlayerMP) player);
+				boolean armor1 = inv.getStackInSlot(6) != null && inv.getStackInSlot(6).getItem() == MPItems.tier_2_thermal_padding && inv.getStackInSlot(6).getItemDamage() == 0;
+				boolean armor2 = inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == PolongniusArmorItems.purple_crystal_leggings;
+				boolean armor3 = inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == PolongniusArmorItems.purple_crystal_chestplate;
+				boolean armor4 = inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == PolongniusArmorItems.purple_crystal_helmet;
+				boolean fullArmor = armor1 && armor2 && armor3 && armor4;
 
-				if (entity.ticksExisted % 100 == 0)
+				if (ConfigManagerMP.disableInfectedGas)
 				{
-					if (!(inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == PolongniusArmorItems.purple_crystal_boots) || !(inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == PolongniusArmorItems.purple_crystal_leggings) || !(inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == PolongniusArmorItems.purple_crystal_chestplate) || !(inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == PolongniusArmorItems.purple_crystal_helmet))
+					if (player.isPotionActive(MPPotions.infected_gas.id) && fullArmor)
+					{
+						player.removePotionEffect(MPPotions.infected_gas.id);
+					}
+				}
+				if (!ConfigManagerMP.disableInfectedGas)
+				{
+					if (!fullArmor)
 					{
 						if (!player.capabilities.isCreativeMode)
 						{
-							if (entity.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
+							if (player.ticksExisted % 200 == 0)
 							{
-								player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
+								player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
 							}
-							entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
 						}
+					}
+					else
+					{
+						player.removePotionEffect(MPPotions.infected_gas.id);
+					}
+				}
+				if (player.isPotionActive(MPPotions.infected_gas.id))
+				{
+					if (player.ticksExisted % 2000 == 0)
+					{
+						player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
 					}
 				}
 			}
@@ -614,18 +965,9 @@ public class MorePlanetEvents
 		{
 			if (!(entity instanceof EntityPlayer))
 			{
-				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(entity.worldObj.provider.dimensionId == ((IEntityLivingPlanet)entity).canLivingInDimension())))
+				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(entity.worldObj.provider.dimensionId == ((IEntityLivingPlanet)entity).canLivingInDimension().dimID)))
 				{
-					PlanetEvents livingEvent = new PlanetEvents.Pre(entity);
-					MinecraftForge.EVENT_BUS.post(livingEvent);
-
-					if (livingEvent.isCanceled())
-					{
-						return;
-					}
 					entity.setFire(50);
-					PlanetEvents livingEventPost = new PlanetEvents.Post(entity);
-					MinecraftForge.EVENT_BUS.post(livingEventPost);
 				}
 			}
 		}
@@ -842,6 +1184,21 @@ public class MorePlanetEvents
 					event.setResult(Result.ALLOW);
 				}
 			}
+		}
+	}
+
+	public static void getActivateInfectedGas(EntityPlayer player)
+	{
+		IInventoryGC inv = AccessInventoryGC.getGCInventoryForPlayer((EntityPlayerMP) player);
+		boolean armor1 = player.inventory.armorInventory[0] != null && player.inventory.armorInventory[0].getItem() == PolongniusArmorItems.purple_crystal_boots;
+		boolean armor2 = player.inventory.armorInventory[1] != null && player.inventory.armorInventory[1].getItem() == PolongniusArmorItems.purple_crystal_leggings;
+		boolean armor3 = player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() == PolongniusArmorItems.purple_crystal_chestplate;
+		boolean armor4 = player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() == PolongniusArmorItems.purple_crystal_helmet;
+		boolean fullArmor = armor1 && armor2 && armor3 && armor4;
+
+		if (ConfigManagerMP.disableInfectedGas && !fullArmor)
+		{
+			player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
 		}
 	}
 }

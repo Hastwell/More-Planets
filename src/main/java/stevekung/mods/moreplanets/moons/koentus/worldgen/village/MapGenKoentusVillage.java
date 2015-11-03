@@ -15,8 +15,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureStart;
+import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.moons.koentus.worldgen.BiomeGenBaseKoentus;
-import cpw.mods.fml.common.FMLLog;
 
 public class MapGenKoentusVillage extends MapGenStructure
 {
@@ -87,7 +87,7 @@ public class MapGenKoentusVillage extends MapGenStructure
 	@Override
 	protected StructureStart getStructureStart(int par1, int par2)
 	{
-		FMLLog.info("Generating Koentus Village at x" + par1 * 16 + " z" + par2 * 16);
+		MPLog.debug("Generating Koentus Village at x : " + par1 * 16 + " z : " + par2 * 16);
 		return new StructureKoentusVillageStart(this.worldObj, this.rand, par1, par2, this.terrainType);
 	}
 

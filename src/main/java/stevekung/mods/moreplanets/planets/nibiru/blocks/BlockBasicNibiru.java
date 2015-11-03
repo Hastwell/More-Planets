@@ -17,6 +17,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,6 +26,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.blocks.BlockBasicMP;
+import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruDungeonSpawner;
 
@@ -195,5 +197,12 @@ public class BlockBasicNibiru extends BlockBasicMP implements IDetectableResourc
 	public TileEntity getDungeonSpawner()
 	{
 		return new TileEntityNibiruDungeonSpawner();
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+	{
+		super.harvestBlock(world, player, x, y, z, fortune);
+		MorePlanetEvents.getActivateInfectedGas(player);
 	}
 }

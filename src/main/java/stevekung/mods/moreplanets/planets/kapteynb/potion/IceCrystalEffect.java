@@ -10,13 +10,12 @@ package stevekung.mods.moreplanets.planets.kapteynb.potion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
-import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class IceCrystalEffect extends Potion
 {
-	public IceCrystalEffect(boolean isBad, int color)
+	public IceCrystalEffect(int id, boolean isBad, int color)
 	{
-		super(MPPotions.getNextPotionID(), isBad, color);
+		super(id, isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

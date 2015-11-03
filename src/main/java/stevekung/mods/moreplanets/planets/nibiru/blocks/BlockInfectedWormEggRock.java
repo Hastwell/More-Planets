@@ -10,9 +10,11 @@ package stevekung.mods.moreplanets.planets.nibiru.blocks;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
+import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 
 public class BlockInfectedWormEggRock extends BlockBaseMP
@@ -48,6 +50,12 @@ public class BlockInfectedWormEggRock extends BlockBaseMP
 			par1World.spawnEntityInWorld(infectedWorm);
 			infectedWorm.spawnExplosionParticle();
 		}
-		super.onBlockDestroyedByPlayer(par1World, par2, par3, par4, par5);
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+	{
+		super.harvestBlock(world, player, x, y, z, fortune);
+		MorePlanetEvents.getActivateInfectedGas(player);
 	}
 }

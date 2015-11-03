@@ -19,6 +19,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
@@ -35,7 +36,7 @@ public class BlockDoorMP extends BlockDoor
 
 	public static enum DoorType
 	{
-		ANCIENT_DARK, ORANGE, COCONUT, MAPLE, CRYSTAL;
+		ANCIENT_DARK, ORANGE, COCONUT, MAPLE, CRYSTAL, EUROPA;
 	}
 
 	public BlockDoorMP(String name, String texture, DoorType type)
@@ -152,11 +153,14 @@ public class BlockDoorMP extends BlockDoor
 		{
 			return (meta & 8) != 0 ? null : KoentusItems.crystal_door;
 		}
+		else if (this.doorType == DoorType.EUROPA)
+		{
+			return (meta & 8) != 0 ? null : EuropaItems.europa_door;
+		}
 		return null;
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public ItemStack getPickBlock(MovingObjectPosition mov, World world, int x, int y, int z)
 	{
 		if (this.doorType == DoorType.ANCIENT_DARK)
@@ -178,6 +182,10 @@ public class BlockDoorMP extends BlockDoor
 		else if (this.doorType == DoorType.CRYSTAL)
 		{
 			return new ItemStack(KoentusItems.crystal_door);
+		}
+		else if (this.doorType == DoorType.EUROPA)
+		{
+			return new ItemStack(EuropaItems.europa_door);
 		}
 		return null;
 	}

@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.planets.venus.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,12 +17,19 @@ import stevekung.mods.moreplanets.core.blocks.BlockTreasureChestMP;
 import stevekung.mods.moreplanets.core.tileentities.TileEntityTreasureChestMP;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
 
+@Deprecated //Removed in 1.8
 public class BlockVenusTreasureChest extends BlockTreasureChestMP
 {
 	public BlockVenusTreasureChest(String name)
 	{
 		super();
 		this.setBlockName(name);
+	}
+
+	@Override
+	public CreativeTabs getCreativeTabToDisplayOn()
+	{
+		return null;
 	}
 
 	@Override

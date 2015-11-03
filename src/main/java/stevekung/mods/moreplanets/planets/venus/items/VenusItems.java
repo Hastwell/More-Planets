@@ -9,7 +9,9 @@ package stevekung.mods.moreplanets.planets.venus.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class VenusItems
@@ -41,5 +43,7 @@ public class VenusItems
 		RegisterHelper.registerItem(VenusItems.sulfur_battery);
 		RegisterHelper.registerItem(VenusItems.jetpack);
 		RegisterHelper.registerItem(VenusItems.venus_dungeon_key);
+
+		OreDictionary.registerOre("ingotLead", new ItemStack(VenusItems.venus_item, 1, 0));
 	}
 }

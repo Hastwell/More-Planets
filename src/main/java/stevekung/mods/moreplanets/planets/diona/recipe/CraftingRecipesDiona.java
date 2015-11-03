@@ -12,6 +12,7 @@ import java.util.HashMap;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import micdoodle8.mods.galacticraft.planets.mars.items.MarsItems;
+import net.minecraft.block.BlockColored;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -75,6 +76,16 @@ public class CraftingRecipesDiona
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.stone_wall, 6, 1), new Object[] { "XXX", "XXX", 'X', new ItemStack(DionaBlocks.diona_block, 1, 12) });
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.stone_wall, 6, 2), new Object[] { "XXX", "XXX", 'X', new ItemStack(DionaBlocks.diona_block, 1, 13) });
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.dungeon_brick_wall, 6, 0), new Object[] { "XXX", "XXX", 'X', new ItemStack(DionaBlocks.diona_block, 1, 14) });
+
+		for (int i = 0; i < 16; ++i)
+		{
+			if (i != 15)
+			{
+				GameRegistry.addRecipe(new ItemStack(MPBlocks.tinted_glass, 8, BlockColored.func_150032_b(i)), new Object[] {"III", "IDI", "III", 'I', new ItemStack(MPBlocks.tinted_glass, 1, 0), 'D', new ItemStack(Items.dye, 1, i)});
+			}
+			GameRegistry.addRecipe(new ItemStack(MPBlocks.tinted_glass_pane, 16, i), new Object[] {"GGG", "GGG", 'G', new ItemStack(MPBlocks.tinted_glass, 1, i)});
+		}
+		GameRegistry.addRecipe(new ItemStack(MPBlocks.tinted_glass, 8, 0), new Object[] {"III", "IDI", "III", 'I', new ItemStack(Blocks.glass), 'D', new ItemStack(MarsItems.marsItemBasic, 1, 5)});
 	}
 
 	private static void addItemRecipes()

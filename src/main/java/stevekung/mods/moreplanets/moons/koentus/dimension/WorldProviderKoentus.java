@@ -8,23 +8,19 @@
 package stevekung.mods.moreplanets.moons.koentus.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
 import micdoodle8.mods.galacticraft.api.world.IExitHeight;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.moons.koentus.worldgen.ChunkProviderKoentus;
 import stevekung.mods.moreplanets.moons.koentus.worldgen.WorldChunkManagerKoentus;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderKoentus extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IExitHeight, IUltraVioletLevel
+public class WorldProviderKoentus extends WorldProviderMP implements IExitHeight
 {
 	@Override
 	public Vector3 getFogColor()
@@ -41,27 +37,9 @@ public class WorldProviderKoentus extends WorldProviderSpace implements IGalacti
 	}
 
 	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 12000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -114,24 +92,6 @@ public class WorldProviderKoentus extends WorldProviderSpace implements IGalacti
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int var1, int var2)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
 		return 1.6D;
@@ -140,19 +100,13 @@ public class WorldProviderKoentus extends WorldProviderSpace implements IGalacti
 	@Override
 	public float getGravity()
 	{
-		return 0.071459F;
+		return 0.070F;
 	}
 
 	@Override
 	public double getMeteorFrequency()
 	{
 		return 3.5D;
-	}
-
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
 	}
 
 	@Override
@@ -194,13 +148,17 @@ public class WorldProviderKoentus extends WorldProviderSpace implements IGalacti
 	@Override
 	public float getThermalLevelModifier()
 	{
-		return -1F;
+		if (this.isDaytime())
+		{
+			return 0.5F;
+		}
+		return -1.0F;
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 0.5F;
+		return 0.05F;
 	}
 
 	@Override

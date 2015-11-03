@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP.DoorType;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
@@ -54,6 +55,10 @@ public class ItemDoorMP extends ItemMorePlanet
 		{
 			this.itemIcon = iconRegister.registerIcon("koentus:crystal_door");
 		}
+		else if (this.doorType == DoorType.EUROPA)
+		{
+			this.itemIcon = iconRegister.registerIcon("europa:europa_door");
+		}
 	}
 
 	@Override
@@ -81,6 +86,10 @@ public class ItemDoorMP extends ItemMorePlanet
 		else if (this.doorType == DoorType.CRYSTAL)
 		{
 			block = KoentusBlocks.crystal_door;
+		}
+		else if (this.doorType == DoorType.EUROPA)
+		{
+			block = EuropaBlocks.europa_door;
 		}
 
 		if (side != 1)

@@ -136,6 +136,7 @@ tile.fronos_tallgrass.purple_tall_grass.name=Tall Purple Grass
 tile.fronos_tallgrass.plains_short_grass.name=Short Plains Grass
 tile.fronos_tallgrass.plains_medium_grass.name=Medium Plains Grass
 tile.fronos_tallgrass.plains_tall_grass.name=Short Golden Grass
+tile.fronos_tallgrass.golden_short_grass.name=Short Golden Grass
 tile.fronos_tallgrass.golden_medium_grass.name=Medium Golden Grass
 tile.fronos_tallgrass.golden_tall_grass.name=Tall Golden Grass
 tile.fronos_flower.pink_butter_cup.name=Pink Butter Cup
@@ -237,7 +238,7 @@ item.golden_seeds.name=Golden Seeds
 item.fronos_food.berry.name=Berry
 item.fronos_food.marshmallow.name=Marshmallow
 item.fronos_food.cooked_marshmallow.name=Cooked Marshmallow
-item.bearry_egg.name=Berry Egg
+item.bearry_egg.name=Bearry Egg
 item.fronos_food.little_sun_flower_seeds.name=Little Sun Flower Seeds
 item.cream_ball.vanilla_cream_ball.name=Vanilla Cream Ball
 item.cream_ball.chocolate_cream_ball.name=Chocolate Cream Ball
@@ -359,7 +360,7 @@ item.fronos_rock_axe.name=Fronos Rock Axe
 item.fronos_rock_hoe.name=Fronos Rock Hoe
 
 # ENTITIES
-entity.MorePlanet.Bearry.name=Berry
+entity.MorePlanet.Bearry.name=Bearry
 entity.MorePlanet.Berry.name=Berry
 entity.MorePlanet.Marshmallow.name=Marshmallow
 entity.MorePlanet.Kiwi.name=Kiwi

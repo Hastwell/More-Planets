@@ -27,6 +27,7 @@ public class BlockFluidTea extends BlockFluidBaseMP
 		super(FronosBlocks.tea_fluid);
 		this.setRenderPass(1);
 		this.setQuantaPerBlock(4);
+		this.setLightOpacity(3);
 		this.setBlockName(name);
 	}
 

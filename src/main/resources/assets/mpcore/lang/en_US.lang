@@ -1,8 +1,47 @@
 # More Planets : Core = ENGLISH
 
 tile.chondrite_block.rock.name=Chondrite Rock
-tile.chondrite_block.polished.name=Polished Chondrite Rock
+tile.chondrite_block.polished.name=Polished Chondrite
 tile.chondrite_block.stone_brick.name=Chondrite Stone Brick
+tile.tinted_glass_pane.white.name=Tinted Glass Pane
+tile.tinted_glass_pane.orange.name=Orange Tinted Glass Pane
+tile.tinted_glass_pane.magenta.name=Magenta Tinted Glass Pane
+tile.tinted_glass_pane.light_blue.name=Light Blue Tinted Glass Pane
+tile.tinted_glass_pane.yellow.name=Yellow Tinted Glass Pane
+tile.tinted_glass_pane.lime.name=Lime Tinted Glass Pane
+tile.tinted_glass_pane.pink.name=Pink Tinted Glass Pane
+tile.tinted_glass_pane.gray.name=Gray Tinted Glass Pane
+tile.tinted_glass_pane.silver.name=Light Gray Tinted Glass Pane
+tile.tinted_glass_pane.cyan.name=Cyan Tinted Glass Pane
+tile.tinted_glass_pane.purple.name=Purple Tinted Glass Pane
+tile.tinted_glass_pane.blue.name=Blue Tinted Glass Pane
+tile.tinted_glass_pane.brown.name=Brown Tinted Glass Pane
+tile.tinted_glass_pane.green.name=Green Tinted Glass Pane
+tile.tinted_glass_pane.red.name=Red Tinted Glass Pane
+tile.tinted_glass_pane.black.name=Black Tinted Glass Pane
+tile.tinted_glass.white.name=Tinted Glass
+tile.tinted_glass.orange.name=Orange Tinted Glass
+tile.tinted_glass.magenta.name=Magenta Tinted Glass
+tile.tinted_glass.light_blue.name=Light Blue Tinted Glass
+tile.tinted_glass.yellow.name=Yellow Tinted Glass
+tile.tinted_glass.lime.name=Lime Tinted Glass
+tile.tinted_glass.pink.name=Pink Tinted Glass
+tile.tinted_glass.gray.name=Gray Tinted Glass
+tile.tinted_glass.silver.name=Light Gray Tinted Glass
+tile.tinted_glass.cyan.name=Cyan Tinted Glass
+tile.tinted_glass.purple.name=Purple Tinted Glass
+tile.tinted_glass.blue.name=Blue Tinted Glass
+tile.tinted_glass.brown.name=Brown Tinted Glass
+tile.tinted_glass.green.name=Green Tinted Glass
+tile.tinted_glass.red.name=Red Tinted Glass
+tile.tinted_glass.black.name=Black Tinted Glass
+
+item.feces.name=Feces
+item.decompose.name=Decompose
+item.tier_2_thermal_padding.thermalHelm.name=Tier 2 Thermal Padding Helm
+item.tier_2_thermal_padding.thermalChestplate.name=Tier 2 Thermal Padding Chestpiece
+item.tier_2_thermal_padding.thermalLeggings.name=Tier 2 Thermal Padding Leggings
+item.tier_2_thermal_padding.thermalBoots.name=Tier 2 Thermal Padding Boots
 
 # GUI
 itemGroup.MorePlanetsBlocks=More Planets Blocks

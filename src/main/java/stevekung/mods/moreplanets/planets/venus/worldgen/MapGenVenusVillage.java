@@ -12,6 +12,7 @@ import java.util.Random;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureStart;
+import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.planets.venus.worldgen.village.ComponentVenusVillageField;
 import stevekung.mods.moreplanets.planets.venus.worldgen.village.ComponentVenusVillageField2;
 import stevekung.mods.moreplanets.planets.venus.worldgen.village.ComponentVenusVillageHouse;
@@ -21,7 +22,6 @@ import stevekung.mods.moreplanets.planets.venus.worldgen.village.ComponentVenusV
 import stevekung.mods.moreplanets.planets.venus.worldgen.village.ComponentVenusVillageStartPiece;
 import stevekung.mods.moreplanets.planets.venus.worldgen.village.ComponentVenusVillageTorch;
 import stevekung.mods.moreplanets.planets.venus.worldgen.village.StructureVenusVillageStart;
-import cpw.mods.fml.common.FMLLog;
 
 public class MapGenVenusVillage extends MapGenStructure
 {
@@ -75,7 +75,7 @@ public class MapGenVenusVillage extends MapGenStructure
 	@Override
 	protected StructureStart getStructureStart(int par1, int par2)
 	{
-		FMLLog.info("Generating Venus Village at x" + par1 * 16 + " z" + par2 * 16);
+		MPLog.debug("Generating Venus Village at x : " + par1 * 16 + " z : " + par2 * 16);
 		return new StructureVenusVillageStart(this.worldObj, this.rand, par1, par2, this.terrainType);
 	}
 

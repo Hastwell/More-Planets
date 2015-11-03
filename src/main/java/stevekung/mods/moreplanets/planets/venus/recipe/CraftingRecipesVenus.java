@@ -34,6 +34,13 @@ public class CraftingRecipesVenus
 		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_block, 4, 12), new Object[] { "SS", "SS", 'S', new ItemStack(VenusBlocks.venus_block, 1, 2) });
 		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_block, 1, 11), new Object[] { "AAA", "AAA", "AAA" ,'A', new ItemStack(VenusItems.venus_item, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(Blocks.tnt), new Object[] { "GSG", "SGS", "GSG" ,'G', new ItemStack(Items.gunpowder), 'S', new ItemStack(VenusBlocks.venus_sand) });
+		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_sandstone, 4, 0), new Object[] { "SS", "SS", 'S', new ItemStack(VenusBlocks.venus_sand) });
+		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_sandstone, 1, 1), new Object[] { "S", "S", 'S', new ItemStack(VenusBlocks.half_venus_sandstone_slab) });
+		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_sandstone, 4, 2), new Object[] { "SS", "SS", 'S', new ItemStack(VenusBlocks.venus_sandstone, 4, 0) });
+		GameRegistry.addRecipe(new ItemStack(VenusBlocks.half_venus_sandstone_slab, 6), new Object[] { "SSS", 'S', VenusBlocks.venus_sandstone });
+
+		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_sandstone_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', VenusBlocks.venus_sandstone });
+		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_sandstone_stairs, 4), new Object[] { "X  ", "XX ", "XXX", 'X', VenusBlocks.venus_sandstone });
 	}
 
 	private static void addItemRecipes()

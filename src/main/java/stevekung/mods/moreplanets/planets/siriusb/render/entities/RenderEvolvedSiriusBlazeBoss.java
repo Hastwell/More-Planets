@@ -22,7 +22,7 @@ import stevekung.mods.moreplanets.planets.siriusb.entities.EntityEvolvedSiriusBl
 
 public class RenderEvolvedSiriusBlazeBoss extends RenderLiving
 {
-	private ResourceLocation blazeTextures = new ResourceLocation("siriusb:textures/model/sirius_blaze.png");
+	private ResourceLocation blazeTextures = new ResourceLocation("siriusb:textures/model/evolved_sirius_blaze_boss.png");
 	private ResourceLocation powerTexture = new ResourceLocation("galacticraftcore:textures/model/power.png");
 
 	public RenderEvolvedSiriusBlazeBoss()
@@ -76,7 +76,7 @@ public class RenderEvolvedSiriusBlazeBoss extends RenderLiving
 	{
 		if (par2 == 1)
 		{
-			if (blaze.getHealth() <= 32.0F)
+			if (blaze.getHealth() <= blaze.getMaxHealth() / 2.0F)
 			{
 				float var4 = blaze.ticksExisted + par3;
 				this.bindTexture(this.powerTexture);

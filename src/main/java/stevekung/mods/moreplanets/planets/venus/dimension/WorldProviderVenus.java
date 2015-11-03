@@ -8,60 +8,38 @@
 package stevekung.mods.moreplanets.planets.venus.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.core.world.ILightningStorm;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
 import stevekung.mods.moreplanets.planets.venus.worldgen.ChunkProviderVenus;
 import stevekung.mods.moreplanets.planets.venus.worldgen.WorldChunkManagerVenus;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderVenus extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel, ILightningStorm
+public class WorldProviderVenus extends WorldProviderMP implements ILightningStorm
 {
+	private double solarMultiplier = -1D;
+
 	@Override
 	public Vector3 getFogColor()
 	{
-		float f = 1.0F - this.getStarBrightness(1.0F);
-		return new Vector3(109F / 255F * f, 86F / 255F * f, 45F / 255F * f);
+		return new Vector3(177 / 855.0F * 0.45F, 83 / 855.0F * 0.45F, 13 / 855.0F * 0.45F);
 	}
 
 	@Override
 	public Vector3 getSkyColor()
 	{
-		float f = 1.0F - this.getStarBrightness(1.0F);
-		return new Vector3(180 / 255F * f, 134 / 255F * f, 59 / 255F * f);
-	}
-
-	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
+		return new Vector3(177 / 455.0F * 0.45F, 83 / 455.0F * 0.45F, 13 / 455.0F * 0.45F);
 	}
 
 	@Override
 	public long getDayLength()
 	{
 		return 5832000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -114,45 +92,26 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int x, int z)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
-		return 7.5D;
+		if (this.solarMultiplier < 0D)
+		{
+			double s = this.getSolarSize();
+			this.solarMultiplier = s * s * s;
+		}
+		return this.solarMultiplier;
 	}
 
 	@Override
 	public float getGravity()
 	{
-		return 0.053F;
+		return 0.058F;
 	}
 
 	@Override
 	public double getMeteorFrequency()
 	{
 		return 100.0D;
-	}
-
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
 	}
 
 	@Override
@@ -164,13 +123,13 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	@Override
 	public float getFallDamageModifier()
 	{
-		return 0.42F;
+		return 0.38F;
 	}
 
 	@Override
 	public float getSoundVolReductionAmount()
 	{
-		return 10.0F;
+		return 5.0F;
 	}
 
 	@Override
@@ -188,20 +147,13 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	@Override
 	public float getThermalLevelModifier()
 	{
-		if (this.isDaytime())
-		{
-			return 15.0F;
-		}
-		else
-		{
-			return 7.5F;
-		}
+		return -1.0F;
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 1.5F;
+		return 0.3F;
 	}
 
 	@Override
@@ -213,6 +165,13 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	@Override
 	public double getLightningStormFrequency()
 	{
-		return 0.5D;
+		return 1.5D;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public float getCloudHeight()
+	{
+		return this.terrainType.getCloudHeight();
 	}
 }

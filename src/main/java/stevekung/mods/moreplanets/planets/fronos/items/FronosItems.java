@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.fronos.items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.core.items.ItemDoorMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
@@ -103,6 +104,11 @@ public class FronosItems
 		RegisterHelper.registerItem(FronosItems.tier7_rocket);
 		RegisterHelper.registerItem(FronosItems.tier7_rocket_schematic);
 		RegisterHelper.registerItem(FronosItems.fronos_dungeon_key);
+
+		OreDictionary.registerOre("blackDiamond", new ItemStack(FronosItems.fronos_item, 1, 2));
+		OreDictionary.registerOre("ingotIridium", new ItemStack(FronosItems.fronos_item, 1, 3));
+		OreDictionary.registerOre("compressedBlackDiamond", new ItemStack(FronosItems.fronos_item, 1, 4));
+		OreDictionary.registerOre("compressedIridium", new ItemStack(FronosItems.fronos_item, 1, 5));
 	}
 
 	private static void registerFluidContainer()

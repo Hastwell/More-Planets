@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.items.tools.KoentusToolsItems;
 import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
@@ -42,6 +43,9 @@ public class TreeCapitatorIntegrationMP
 		String fronosLog = blockName(FronosBlocks.fronos_log);
 		String fronosColorizedLeaves = blockName(FronosBlocks.fronos_colorized_leaves);
 		String fronosLeaves = blockName(FronosBlocks.fronos_leaves);
+
+		String europaLog = blockName(EuropaBlocks.europa_log);
+		String europaLeaves = blockName(EuropaBlocks.europa_leaves);
 
 		String quontoniumAxe = itemName(DionaToolsItems.quontonium_axe);
 		String fronisiumAxe = itemName(DionaToolsItems.fronisium_axe);
@@ -109,6 +113,13 @@ public class TreeCapitatorIntegrationMP
 		tree.setString("treeName", "crystal");
 		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", koentusLog, koentusLog, koentusLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 8", koentusLeaves, koentusLeaves));
+		tree.setBoolean("requireLeafDecayCheck", false);
+		treeList.appendTag(tree);
+
+		//Europa Tree
+		tree.setString("treeName", "europa");
+		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", europaLog, europaLog, europaLog));
+		tree.setString("leaves", String.format("%s, 0; %s, 8", europaLeaves, europaLeaves));
 		tree.setBoolean("requireLeafDecayCheck", false);
 		treeList.appendTag(tree);
 

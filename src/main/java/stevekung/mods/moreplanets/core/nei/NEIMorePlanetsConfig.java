@@ -13,6 +13,7 @@ import java.util.Set;
 
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
+import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -20,18 +21,8 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
-import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
-import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
-import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
-import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
-import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
-import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
-import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
-import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
+import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
-import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
-import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
@@ -45,35 +36,19 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 	{
 		API.registerRecipeHandler(new CircuitFabricatorRecipeHandlerMP());
 		API.registerUsageHandler(new CircuitFabricatorRecipeHandlerMP());
-		API.registerHighlightIdentifier(MPBlocks.stone_slab_full, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(MPBlocks.stone_slab_full2, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(MPBlocks.wooden_slab_full, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(MPBlocks.dungeon_brick_slab_full, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(DionaBlocks.diona_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(PolongniusBlocks.polongnius_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(NibiruBlocks.nibiru_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(NibiruBlocks.ancient_dark_leaves, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(NibiruBlocks.orange_leaves, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(KoentusBlocks.koentus_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(KoentusBlocks.koentus_ice, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(FronosBlocks.fronos_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(FronosBlocks.frosted_cake, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(FronosBlocks.fronos_tall_grass, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(KapteynBBlocks.kapteyn_b_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(KapteynBBlocks.kapteyn_b_ice, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(KapteynBBlocks.uranium_waste, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(SiriusBBlocks.sirius_b_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(MercuryBlocks.mercury_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(VenusBlocks.venus_block, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(VenusBlocks.venus_redstone_ore_active, new NEIHighlightHandlerMP());
-		API.registerHighlightIdentifier(PlutoBlocks.pluto_block, new NEIHighlightHandlerMP());
+
+		for (Block block : MPBlocks.highlightBlockList)
+		{
+			API.registerHighlightIdentifier(block, new NEIHighlightHandlerMP());
+			MPLog.debug("Register NEI Highlight %s [%s]", block.getClass().getSimpleName(), block.getUnlocalizedName().substring(5));
+		}
 		this.registerRecipe();
 	}
 
 	@Override
 	public String getName()
 	{
-		return "More Planet's NEI Plugin";
+		return "More Planets NEI Plugin";
 	}
 
 	@Override
@@ -142,72 +117,19 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 
 	private void registerHideBlocks()
 	{
-		API.hideItem(new ItemStack(PolongniusBlocks.ultra_violet_solar_fake, 1, 0));
-		API.hideItem(new ItemStack(PolongniusBlocks.cheese_of_milk));
-		API.hideItem(new ItemStack(NibiruBlocks.ancient_dark_door, 1, 0));
-		API.hideItem(new ItemStack(NibiruBlocks.orange_door, 1, 0));
-		API.hideItem(new ItemStack(NibiruBlocks.infected_farmland, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.fronos_farmland, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.candy_extractor_active, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.strawberry_crops, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.golden_crops, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.glass_gem_corn1, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.glass_gem_corn2, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.glass_gem_corn3, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.coconut_door, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.maple_door, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.glass_gem_corn3, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.coconut_milk, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.mineral_water, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.ovantine, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.tea, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.caramel, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.cup, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.mineral_water_cup, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.cheese_of_milk_cup, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.ovantine_cup, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.coconut_milk_cup, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.tea_cup, 1, 0));
-		API.hideItem(new ItemStack(FronosBlocks.caramel_cup, 1, 0));
-		API.hideItem(new ItemStack(KapteynBBlocks.frozen_water, 1, 0));
-		API.hideItem(new ItemStack(KapteynBBlocks.chest_temp, 1, 0));
-		API.hideItem(new ItemStack(KoentusBlocks.crystal_door, 1, 0));
-		API.hideItem(new ItemStack(KoentusBlocks.crystal_farmland, 1, 0));
-		API.hideItem(new ItemStack(SiriusBBlocks.sirius_lava, 1, 0));
-		API.hideItem(new ItemStack(SiriusBBlocks.sirius_fire, 1, 0));
-		API.hideItem(new ItemStack(SiriusBBlocks.sirius_redstone_lamp_on, 1, 0));
-		API.hideItem(new ItemStack(IoBlocks.io_lava, 1, 0));
-		API.hideItem(new ItemStack(IoBlocks.liquid_red_sulfur, 1, 0));
-		API.hideItem(new ItemStack(IoBlocks.liquid_yellow_sulfur, 1, 0));
-		API.hideItem(new ItemStack(IoBlocks.liquid_orange_sulfur, 1, 0));
-		API.hideItem(new ItemStack(IoBlocks.liquid_brown_sulfur, 1, 0));
-		API.hideItem(new ItemStack(IoBlocks.io_black_lava, 1, 0));
-		API.hideItem(new ItemStack(VenusBlocks.venus_redstone_ore_active, 1, 0));
-		API.hideItem(new ItemStack(PlutoBlocks.liquid_methane, 1, 0));
-		API.hideItem(new ItemStack(PlutoBlocks.liquid_nitrogen, 1, 0));
-		API.hideItem(new ItemStack(PlutoBlocks.space_potato_block, 1, 0));
-		API.hideItem(new ItemStack(MercuryBlocks.dirty_water, 1, 0));
-		API.hideItem(new ItemStack(MPBlocks.stone_slab_full, 1, OreDictionary.WILDCARD_VALUE));
-		API.hideItem(new ItemStack(MPBlocks.stone_slab_full2, 1, OreDictionary.WILDCARD_VALUE));
-		API.hideItem(new ItemStack(MPBlocks.wooden_slab_full, 1, OreDictionary.WILDCARD_VALUE));
-		API.hideItem(new ItemStack(MPBlocks.dungeon_brick_slab_full, 1, OreDictionary.WILDCARD_VALUE));
-		API.hideItem(new ItemStack(FronosBlocks.double_fronos_sandstone_slab, 1, OreDictionary.WILDCARD_VALUE));
+		for (Block block : MPBlocks.hideBlockList)
+		{
+			API.hideItem(new ItemStack(block, 1, OreDictionary.WILDCARD_VALUE));
+			MPLog.debug("Register NEI Hide Block %s [%s]", block.getClass().getSimpleName(), block.getUnlocalizedName().substring(5));
+		}
 	}
 
 	private void registerHideItems()
 	{
 		if (ConfigManagerMP.enableThaiFlagAndCanvas == false)
 		{
-			API.hideItem(new ItemStack(MPItems.flag, 1, 0));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 1));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 2));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 3));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 4));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 5));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 6));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 7));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 8));
-			API.hideItem(new ItemStack(MPItems.flag, 1, 9));
+			API.hideItem(new ItemStack(MPItems.flag, 1, OreDictionary.WILDCARD_VALUE));
+			API.hideItem(new ItemStack(MPItems.achievement_temp, 1, OreDictionary.WILDCARD_VALUE));
 		}
 	}
 }

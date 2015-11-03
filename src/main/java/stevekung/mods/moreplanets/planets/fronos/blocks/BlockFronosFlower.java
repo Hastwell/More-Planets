@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,10 +30,11 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.blocks.BlockFlowerMP;
 import stevekung.mods.moreplanets.core.util.DamageSourceMP;
+import stevekung.mods.moreplanets.planets.fronos.worldgen.feature.WorldGenBigSkyMushroom;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFronosFlower extends BlockFlowerMP
+public class BlockFronosFlower extends BlockFlowerMP implements IGrowable
 {
 	private static String[] plants = new String[] {
 		"pink_butter_cup",
@@ -56,6 +58,63 @@ public class BlockFronosFlower extends BlockFlowerMP
 		this.setStepSound(Block.soundTypeGrass);
 		this.setBlockName(name);
 		this.setBlockBounds(0.5F - var4, 0.0F, 0.5F - var4, 0.5F + var4, var4 * 3.0F, 0.5F + var4);
+	}
+
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand)
+	{
+		if (world.getBlockMetadata(x, y, z) == 4)
+		{
+			if (rand.nextInt(25) == 0)
+			{
+				byte b0 = 4;
+				int l = 5;
+				int i1;
+				int j1;
+				int k1;
+
+				for (i1 = x - b0; i1 <= x + b0; ++i1)
+				{
+					for (j1 = z - b0; j1 <= z + b0; ++j1)
+					{
+						for (k1 = y - 1; k1 <= y + 1; ++k1)
+						{
+							if (world.getBlock(i1, k1, j1) == this && world.getBlockMetadata(x, y, z) == 4)
+							{
+								--l;
+
+								if (l <= 0)
+								{
+									return;
+								}
+							}
+						}
+					}
+				}
+
+				i1 = x + rand.nextInt(3) - 1;
+				j1 = y + rand.nextInt(2) - rand.nextInt(2);
+				k1 = z + rand.nextInt(3) - 1;
+
+				for (int l1 = 0; l1 < 4; ++l1)
+				{
+					if (world.isAirBlock(i1, j1, k1) && this.isValidPosition(world, i1, j1, k1, 4))
+					{
+						x = i1;
+						y = j1;
+						z = k1;
+					}
+					i1 = x + rand.nextInt(3) - 1;
+					j1 = y + rand.nextInt(2) - rand.nextInt(2);
+					k1 = z + rand.nextInt(3) - 1;
+				}
+
+				if (world.isAirBlock(i1, j1, k1) && this.isValidPosition(world, i1, j1, k1, 4))
+				{
+					world.setBlock(i1, j1, k1, this, 4, 2);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -221,7 +280,6 @@ public class BlockFronosFlower extends BlockFlowerMP
 	@Override
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random rand)
 	{
-		super.randomDisplayTick(par1World, par2, par3, par4, rand);
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
 
 		if (meta == 5)
@@ -285,5 +343,42 @@ public class BlockFronosFlower extends BlockFlowerMP
 	public int damageDropped(int meta)
 	{
 		return meta;
+	}
+
+	@Override
+	public boolean func_149851_a(World world, int x, int y, int z, boolean p_149851_5_)
+	{
+		return world.getBlockMetadata(x, y, z) == 4 ? true : false;
+	}
+
+	@Override
+	public boolean func_149852_a(World world, Random rand, int x, int y, int z)
+	{
+		return world.getBlockMetadata(x, y, z) == 4 ? rand.nextFloat() < 0.4D : false;
+	}
+
+	@Override
+	public void func_149853_b(World world, Random rand, int x, int y, int z)
+	{
+		if (world.getBlockMetadata(x, y, z) == 4)
+		{
+			this.func_149884_c(world, x, y, z, rand);
+		}
+	}
+
+	public boolean func_149884_c(World world, int x, int y, int z, Random rand)
+	{
+		world.setBlockToAir(x, y, z);
+		WorldGenBigSkyMushroom worldgenbigmushroom = new WorldGenBigSkyMushroom();
+
+		if (worldgenbigmushroom != null && worldgenbigmushroom.generate(world, rand, x, y, z))
+		{
+			return true;
+		}
+		else
+		{
+			world.setBlock(x, y, z, this, 4, 3);
+			return false;
+		}
 	}
 }

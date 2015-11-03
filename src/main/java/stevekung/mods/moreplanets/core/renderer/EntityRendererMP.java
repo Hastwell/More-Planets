@@ -15,8 +15,10 @@ import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketMP;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketNoFlagMP;
+import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
+import stevekung.mods.moreplanets.moons.europa.render.entities.RenderEuropaCrab;
 import stevekung.mods.moreplanets.moons.europa.render.entities.RenderEuropaSquid;
 import stevekung.mods.moreplanets.moons.europa.render.entities.RenderEuropaWaterBomb;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteor;
@@ -203,6 +205,7 @@ public class EntityRendererMP
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid());
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb());
+		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab());
 
 		//TEMPLATE HOTFIX
 		RenderingRegistry.registerEntityRenderingHandler(EntityFronosCreeperBossTemp.class, new RenderFronosCreeperBossTemp());

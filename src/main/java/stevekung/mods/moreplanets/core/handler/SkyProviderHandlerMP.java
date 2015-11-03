@@ -9,10 +9,15 @@ package stevekung.mods.moreplanets.core.handler;
 
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import micdoodle8.mods.galacticraft.core.client.CloudRenderer;
+import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStatsClient;
 import micdoodle8.mods.galacticraft.planets.mars.client.SkyProviderMars;
 import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.multiplayer.WorldClient;
+import stevekung.mods.moreplanets.core.event.CloudRendererVenus;
+import stevekung.mods.moreplanets.core.spacestation.SkyProviderJupiterOrbit;
+import stevekung.mods.moreplanets.core.spacestation.jupiter.WorldProviderJupiterOrbit;
 import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
 import stevekung.mods.moreplanets.moons.deimos.dimension.sky.SkyProviderDeimos;
 import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
@@ -38,6 +43,7 @@ import stevekung.mods.moreplanets.planets.siriusb.dimension.sky.SkyProviderSiriu
 import stevekung.mods.moreplanets.planets.venus.dimension.WorldProviderVenus;
 import stevekung.mods.moreplanets.planets.venus.dimension.sky.SkyProviderVenus;
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -51,6 +57,7 @@ public class SkyProviderHandlerMP
 	{
 		Minecraft minecraft = FMLClientHandler.instance().getClient();
 		WorldClient world = minecraft.theWorld;
+		EntityClientPlayerMP player = minecraft.thePlayer;
 
 		if (world != null)
 		{
@@ -173,6 +180,12 @@ public class SkyProviderHandlerMP
 				{
 					world.provider.setSkyRenderer(new SkyProviderVenus((IGalacticraftWorldProvider) world.provider));
 				}
+				if (world.provider.getCloudRenderer() == null)
+				{
+					CloudRendererVenus cloudRendererVenus = new CloudRendererVenus();
+					FMLCommonHandler.instance().bus().register(cloudRendererVenus);
+					world.provider.setCloudRenderer(cloudRendererVenus);
+				}
 			}
 			else if (world.provider instanceof WorldProviderPluto)
 			{
@@ -180,6 +193,20 @@ public class SkyProviderHandlerMP
 				{
 					world.provider.setSkyRenderer(new SkyProviderPluto((IGalacticraftWorldProvider) world.provider));
 				}
+				if (world.provider.getCloudRenderer() == null)
+				{
+					world.provider.setCloudRenderer(new CloudRenderer());
+				}
+			}
+			else if (world.provider instanceof WorldProviderJupiterOrbit)
+			{
+				if (world.provider.getSkyRenderer() == null)
+				{
+					world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
+					((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
+					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+				}
+
 				if (world.provider.getCloudRenderer() == null)
 				{
 					world.provider.setCloudRenderer(new CloudRenderer());

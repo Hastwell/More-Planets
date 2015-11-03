@@ -167,6 +167,7 @@ public class FronosBlocks
 	public static Block fronos_sandstone_stairs;
 	public static Block white_sandstone_stairs;
 	public static Block cheese_sandstone_stairs;
+	public static Block huge_sky_mushroom;
 
 	// Fluids
 	public static Fluid coconut_milk_fluid;
@@ -284,6 +285,7 @@ public class FronosBlocks
 		FronosBlocks.fronos_sandstone_stairs = new BlockStairsMP("fronos_sandstone_stairs", 0.8F, StairsCategory.fronos_sandstone, Blocks.stone);
 		FronosBlocks.white_sandstone_stairs = new BlockStairsMP("white_sandstone_stairs", 0.8F, StairsCategory.white_sandstone, Blocks.stone);
 		FronosBlocks.cheese_sandstone_stairs = new BlockStairsMP("cheese_sandstone_stairs", 0.8F, StairsCategory.cheese_sandstone, Blocks.stone);
+		FronosBlocks.huge_sky_mushroom = new BlockHugeSkyMushroom("huge_sky_mushroom");
 
 		FronosBlocks.coconut_milk_fluid = new Fluid("coconut_milk_fluid").setBlock(FronosBlocks.coconut_milk).setViscosity(2000);
 		FronosBlocks.mineral_water_fluid = new Fluid("mineral_water_fluid").setBlock(FronosBlocks.mineral_water);
@@ -354,6 +356,7 @@ public class FronosBlocks
 		FronosBlocks.coconut_fence_gate.setHarvestLevel("axe", 0);
 		FronosBlocks.maple_fence_gate.setHarvestLevel("axe", 0);
 		FronosBlocks.fronos_ancient_chest.setHarvestLevel("axe", 0);
+		FronosBlocks.huge_sky_mushroom.setHarvestLevel("axe", 0);
 	}
 
 	private static void setFireBurn()
@@ -485,6 +488,7 @@ public class FronosBlocks
 		RegisterHelper.registerBlock(FronosBlocks.ovantine);
 		RegisterHelper.registerBlock(FronosBlocks.tea);
 		RegisterHelper.registerBlock(FronosBlocks.caramel);
+		RegisterHelper.registerBlock(FronosBlocks.huge_sky_mushroom);
 
 		OreDictionary.registerOre("oreIron", new ItemStack(FronosBlocks.fronos_block, 1, 2));
 		OreDictionary.registerOre("oreCoal", new ItemStack(FronosBlocks.fronos_block, 1, 3));

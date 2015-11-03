@@ -351,6 +351,7 @@ public class CraftingRecipesFronos
 		OreDictionary.registerOre("cheeseSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 6));
 		OreDictionary.registerOre("cheeseSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 7));
 		OreDictionary.registerOre("cheeseSandstone", new ItemStack(FronosBlocks.fronos_sandstone, 1, 8));
+		OreDictionary.registerOre("sand", FronosBlocks.fronos_sand);
 	}
 
 	private static void addTier7RocketRecipes()

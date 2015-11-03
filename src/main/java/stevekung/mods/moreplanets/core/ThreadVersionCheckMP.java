@@ -16,6 +16,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent.Serializer;
 import net.minecraft.util.StatCollector;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.core.util.MPLog;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -47,7 +48,7 @@ public class ThreadVersionCheckMP extends Thread
 	{
 		Side sideToCheck = FMLCommonHandler.instance().getSide();
 
-		if (sideToCheck == null)
+		if (sideToCheck == null || !ConfigManagerMP.enableVersionCheck)
 		{
 			return;
 		}
@@ -83,17 +84,11 @@ public class ThreadVersionCheckMP extends Thread
 
 							if (sideToCheck.equals(Side.CLIENT))
 							{
-								if (ConfigManagerMP.enableClientVersionCheck == true)
-								{
-									FMLClientHandler.instance().getClient().thePlayer.addChatMessage(Serializer.func_150699_a("[{text:\"" + EnumChatFormatting.GRAY + "New \",extra:[{text:\"" + EnumChatFormatting.AQUA + "More Planets\"},{text:\"" + EnumChatFormatting.GRAY + " version available!\"},{text:\"" + EnumChatFormatting.GREEN + EnumChatFormatting.BOLD + " v" + String.valueOf(remoteMajVer) + "." + String.valueOf(remoteMinVer) + "." + String.valueOf(remoteBuildVer) + " \"},{text:\"" + EnumChatFormatting.RED + EnumChatFormatting.BOLD + "CLICK HERE!\",hoverEvent:{action:show_text,value:\"" + EnumChatFormatting.YELLOW + EnumChatFormatting.BOLD + "Download Latest Version\"},clickEvent:{action:open_url,value:\"" + this.URL + "\"}}]}]"));
-								}
+								FMLClientHandler.instance().getClient().thePlayer.addChatMessage(Serializer.func_150699_a("[{text:\"" + EnumChatFormatting.GRAY + "New \",extra:[{text:\"" + EnumChatFormatting.AQUA + "More Planets\"},{text:\"" + EnumChatFormatting.GRAY + " version available!\"},{text:\"" + EnumChatFormatting.GREEN + EnumChatFormatting.BOLD + " v" + String.valueOf(remoteMajVer) + "." + String.valueOf(remoteMinVer) + "." + String.valueOf(remoteBuildVer) + " \"},{text:\"" + EnumChatFormatting.RED + EnumChatFormatting.BOLD + "CLICK HERE!\",hoverEvent:{action:show_text,value:\"" + EnumChatFormatting.YELLOW + EnumChatFormatting.BOLD + "Download Latest Version\"},clickEvent:{action:open_url,value:\"" + this.URL + "\"}}]}]"));
 							}
 							else if (sideToCheck.equals(Side.SERVER))
 							{
-								if (ConfigManagerMP.enableServerVersionCheck == true)
-								{
-									MorePlanetsCore.info("New version available! v" + String.valueOf(remoteMajVer) + "." + String.valueOf(remoteMinVer) + "." + String.valueOf(remoteBuildVer) + " ");
-								}
+								MPLog.info("New version available! v" + String.valueOf(remoteMajVer) + "." + String.valueOf(remoteMinVer) + "." + String.valueOf(remoteBuildVer) + " ");
 							}
 						}
 					}
@@ -105,14 +100,14 @@ public class ThreadVersionCheckMP extends Thread
 			{
 				try
 				{
-					MorePlanetsCore.severe(StatCollector.translateToLocal("mp.failed.name"));
+					MPLog.error(StatCollector.translateToLocal("mp.failed.name"));
 					Thread.sleep(15000);
 				}
 				catch (InterruptedException e) {}
 			}
 			else
 			{
-				MorePlanetsCore.info(StatCollector.translateToLocal("mp.success.name") + " " + remoteMajVer + "." + remoteMinVer + "." + remoteBuildVer);
+				MPLog.info(StatCollector.translateToLocal("mp.success.name") + " " + remoteMajVer + "." + remoteMinVer + "." + remoteBuildVer);
 			}
 			this.count++;
 		}

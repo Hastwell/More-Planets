@@ -16,6 +16,8 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.util.CompatibilityUtilMP;
+import stevekung.mods.moreplanets.core.util.MPLog;
+import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteor;
@@ -136,19 +138,20 @@ public class MPEntities
 
 		registerEntity(EntityFrozenSludgeling.class, "FrozenSludgeling", 29, -4996406, -2038040);
 
-		registerEntity(EntitySiriusCreeper.class, "SiriusCreeper", 30, -4197121, -8197633);
-		registerEntity(EntitySiriusBlaze.class, "SiriusBlaze", 31, -4197121, -8197633);
-		registerEntity(EntitySiriusMagmaCube.class, "SiriusMagmaCube", 32, -4197121, -8197633);
-		registerEntity(EntityEvolvedSiriusBlazeBoss.class, "EvolvedSiriusBlazeBoss", 33, -4197121, -8197633);
+		registerEntity(EntitySiriusCreeper.class, "SiriusCreeper", 30, -4259841, 0);
+		registerEntity(EntitySiriusBlaze.class, "SiriusBlaze", 31, -4390913, -6758433);
+		registerEntity(EntitySiriusMagmaCube.class, "SiriusMagmaCube", 32, -12163225, -5769739);
+		registerEntity(EntityEvolvedSiriusBlazeBoss.class, "EvolvedSiriusBlazeBoss", 33, -4390913, -892881);
 
-		if (ConfigManagerMP.enableMorePlanetsBasicPlanets)
+		if (ConfigManagerMP.enableVenusPlanet)
 		{
 			registerEntity(EntityVenusianBlaze.class, CompatibilityUtilMP.is4SpaceVenusLoaded() ? "VenusianBlazeMP" : "VenusianBlaze", 34, -27809, -45282);
 			registerEntity(EntityVenusianSlime.class, CompatibilityUtilMP.is4SpaceVenusLoaded() ? "VenusianSlimeMP" : "VenusianSlime", 35, -262144, -205056);
 			registerEntity(EntityVenusianVillager.class, CompatibilityUtilMP.is4SpaceVenusLoaded() ? "VenusianVillagerMP" : "VenusianVillager", 36, -13875061, -4875400);
 		}
 
-		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -4197121, -8197633);
+		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -12425324, -6163201);
+		registerEntity(EntityEuropaCrab.class, "EuropaCrab", 39, -11574413, -12167066);
 
 		//TEMPLATE HOTFIX
 		registerEntity(EntityFronosCreeperBossTemp.class, "FronosBossTemp", 38, 0, 0);
@@ -231,7 +234,7 @@ public class MPEntities
 		}
 		if (entity == null)
 		{
-			MorePlanetsCore.severe("Skipping Entity with id " + id);
+			MPLog.error("Skipping Entity with id " + id);
 		}
 		return entity;
 	}

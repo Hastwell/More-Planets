@@ -8,22 +8,18 @@
 package stevekung.mods.moreplanets.planets.pluto.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.planets.pluto.worldgen.ChunkProviderPluto;
 import stevekung.mods.moreplanets.planets.pluto.worldgen.WorldChunkManagerPluto;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderPluto extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel
+public class WorldProviderPluto extends WorldProviderMP
 {
 	@Override
 	public Vector3 getFogColor()
@@ -39,27 +35,9 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 144000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -76,9 +54,9 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float par1)
+	public float getStarBrightness(float bright)
 	{
-		float var2 = this.worldObj.getCelestialAngle(par1);
+		float var2 = this.worldObj.getCelestialAngle(bright);
 		float var3 = 1.0F - (MathHelper.cos(var2 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
 
 		if (var3 < 0.0F)
@@ -94,7 +72,7 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getSunBrightness(float par1)
+	public float getSunBrightness(float bright)
 	{
 		float f1 = this.worldObj.getCelestialAngle(1.0F);
 		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
@@ -112,24 +90,6 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int var1, int var2)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
 		return 1.0D;
@@ -144,13 +104,7 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 	@Override
 	public double getMeteorFrequency()
 	{
-		return 4.5D;
-	}
-
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
+		return 2.5D;
 	}
 
 	@Override
@@ -162,13 +116,13 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 	@Override
 	public float getFallDamageModifier()
 	{
-		return 0.24F;
+		return 0.16F;
 	}
 
 	@Override
 	public float getSoundVolReductionAmount()
 	{
-		return 30.0F;
+		return 20.0F;
 	}
 
 	@Override
@@ -192,19 +146,19 @@ public class WorldProviderPluto extends WorldProviderSpace implements IGalacticr
 		}
 		else
 		{
-			return -15.0F;
+			return -1.5F;
 		}
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 0F;
+		return 0.0F;
 	}
 
 	@Override
 	public double getUltraVioletEnergyMultiplie()
 	{
-		return 0.25D;
+		return 1.25D;
 	}
 }

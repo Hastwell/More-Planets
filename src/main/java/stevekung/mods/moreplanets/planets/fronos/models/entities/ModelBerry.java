@@ -93,8 +93,6 @@ public class ModelBerry extends ModelBase
 		if (this.isChild)
 		{
 			GL11.glPushMatrix();
-			GL11.glPopMatrix();
-			GL11.glPushMatrix();
 			GL11.glScalef(0.5F, 0.5F, 0.5F);
 			GL11.glTranslatef(0.0F, 24.0F * par7, 0.0F);
 			this.body.render(par7);

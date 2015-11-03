@@ -242,7 +242,7 @@ public class MapGenNibiruRavine extends MapGenBase
 			{
 				if (this.worldObj.rand.nextInt(5) == 0)
 				{
-					data[index] = GCBlocks.crudeOilStill;
+					data[index] = GCBlocks.crudeOil;
 				}
 				else
 				{
