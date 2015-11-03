@@ -1,0 +1,6 @@
+{
+	"parent": "moreplanets:item/dungeon_key",
+    "textures": {
+        "key": "moreplanets:items/polongnius_dungeon_key"
+    }
+}

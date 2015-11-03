@@ -19,7 +19,6 @@ import stevekung.mods.moreplanets.common.inventory.InventorySchematicRocket;
 public class Tier4RocketRecipes
 {
 	private static List<INasaWorkbenchRecipe> tier4RocketRecipes = new ArrayList<INasaWorkbenchRecipe>();
-	private static List<INasaWorkbenchRecipe> tier4RocketNoFlagRecipes = new ArrayList<INasaWorkbenchRecipe>();
 
 	public static ItemStack findMatchingTier4RocketRecipe(InventorySchematicRocket inventoryRocketBench)
 	{
@@ -46,32 +45,5 @@ public class Tier4RocketRecipes
 	public static List<INasaWorkbenchRecipe> getTier4RocketRecipes()
 	{
 		return Tier4RocketRecipes.tier4RocketRecipes;
-	}
-
-	public static ItemStack findMatchingTier4RocketNoFlagRecipe(InventorySchematicRocket inventoryRocketBench)
-	{
-		for (INasaWorkbenchRecipe recipe : Tier4RocketRecipes.getTier4RocketNoFlagRecipes())
-		{
-			if (recipe.matches(inventoryRocketBench))
-			{
-				return recipe.getRecipeOutput();
-			}
-		}
-		return null;
-	}
-
-	public static void addTier4RocketNoFlagRecipe(ItemStack result, HashMap<Integer, ItemStack> input)
-	{
-		Tier4RocketRecipes.addTier4RocketNoFlagRecipe(new NasaWorkbenchRecipe(result, input));
-	}
-
-	public static void addTier4RocketNoFlagRecipe(INasaWorkbenchRecipe recipe)
-	{
-		Tier4RocketRecipes.tier4RocketNoFlagRecipes.add(recipe);
-	}
-
-	public static List<INasaWorkbenchRecipe> getTier4RocketNoFlagRecipes()
-	{
-		return Tier4RocketRecipes.tier4RocketNoFlagRecipes;
 	}
 }

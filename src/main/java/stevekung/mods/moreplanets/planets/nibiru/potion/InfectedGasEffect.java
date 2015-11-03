@@ -10,13 +10,12 @@ package stevekung.mods.moreplanets.planets.nibiru.potion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
-import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class InfectedGasEffect extends Potion
 {
-	public InfectedGasEffect(boolean isBad, int color)
+	public InfectedGasEffect(int id, boolean isBad, int color)
 	{
-		super(MPPotions.getNextPotionID(), new ResourceLocation("moreplanets:infected_gas"), isBad, color);
+		super(id, new ResourceLocation("moreplanets:infected_gas"), isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

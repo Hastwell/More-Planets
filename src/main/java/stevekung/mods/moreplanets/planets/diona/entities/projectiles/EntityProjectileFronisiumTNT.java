@@ -18,7 +18,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaMinionCreeper;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 
 public class EntityProjectileFronisiumTNT extends EntityFireball
 {
@@ -72,7 +72,7 @@ public class EntityProjectileFronisiumTNT extends EntityFireball
 
 				for (int i = 0; i < b0; ++i)
 				{
-					EntityDionaMinionCreeper creeper = new EntityDionaMinionCreeper(this.worldObj);
+					EntityDionaCreeperMinion creeper = new EntityDionaCreeperMinion(this.worldObj);
 					creeper.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
 					creeper.setAbsorptionAmount(16.0F);
 

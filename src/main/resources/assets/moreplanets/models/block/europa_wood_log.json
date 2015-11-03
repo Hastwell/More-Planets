@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "moreplanets:blocks/log_europa_top",
+        "side": "moreplanets:blocks/log_europa_side"
+    }
+}

@@ -7,10 +7,21 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.items.armor;
 
+import java.util.List;
+
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.armor.ItemArmorMP;
+import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class ArmorUranium extends ItemArmorMP
@@ -45,5 +56,69 @@ public class ArmorUranium extends ItemArmorMP
 	protected int getRepairItemsMetadata()
 	{
 		return 1;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+	{
+		if (player.worldObj.isRemote)
+		{
+			if (itemStack.getItem() == KapteynBArmorItems.uranium_helmet)
+			{
+				list.add(EnumChatFormatting.GRAY + "Ice Crystal Helmet Upgrade Required : 24");
+			}
+			else if (itemStack.getItem() == KapteynBArmorItems.uranium_chestplate)
+			{
+				list.add(EnumChatFormatting.GRAY + "Ice Crystal Chestplate Upgrade Required : 32");
+			}
+			else if (itemStack.getItem() == KapteynBArmorItems.uranium_leggings)
+			{
+				list.add(EnumChatFormatting.GRAY + "Ice Crystal Leggings Upgrade Required : 27");
+			}
+			else if (itemStack.getItem() == KapteynBArmorItems.uranium_boots)
+			{
+				list.add(EnumChatFormatting.GRAY + "Ice Crystal Boots Upgrade Required : 22");
+			}
+		}
+	}
+
+	@Override
+	public boolean onEntityItemUpdate(EntityItem item)
+	{
+		ItemStack itemStack = item.getEntityItem();
+		World world = item.worldObj;
+		List<EntityItem> item1 = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.fromBounds(item.posX, item.posY, item.posZ, item.posX + 1, item.posY + 1, item.posZ + 1));
+
+		if (item.worldObj.getBlockState(new BlockPos((int)Math.floor(item.posX), (int)Math.floor(item.posY), (int)Math.floor(item.posZ))) == KapteynBBlocks.frozen_water.getDefaultState())
+		{
+			int stackSize = 0;
+
+			if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5)
+			{
+				if (item1.get(0).getEntityItem().stackSize >= 24 && itemStack.getItem() == KapteynBArmorItems.uranium_helmet)
+				{
+					item.setEntityItemStack(new ItemStack(KapteynBArmorItems.ice_crystal_helmet));
+					stackSize = 24;
+				}
+				else if (item1.get(0).getEntityItem().stackSize >= 32 && itemStack.getItem() == KapteynBArmorItems.uranium_chestplate)
+				{
+					item.setEntityItemStack(new ItemStack(KapteynBArmorItems.ice_crystal_chestplate));
+					stackSize = 32;
+				}
+				else if (item1.get(0).getEntityItem().stackSize >= 27 && itemStack.getItem() == KapteynBArmorItems.uranium_leggings)
+				{
+					item.setEntityItemStack(new ItemStack(KapteynBArmorItems.ice_crystal_leggings));
+					stackSize = 27;
+				}
+				else if (item1.get(0).getEntityItem().stackSize >= 22 && itemStack.getItem() == KapteynBArmorItems.uranium_boots)
+				{
+					item.setEntityItemStack(new ItemStack(KapteynBArmorItems.ice_crystal_boots));
+					stackSize = 22;
+				}
+				item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - stackSize, 5));
+			}
+		}
+		return false;
 	}
 }

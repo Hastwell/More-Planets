@@ -33,5 +33,9 @@
 	{
 	"category": "player",
 	"sounds": ["player/meteor"]
-	}
+	},
+	"mob.crab": {
+    "category": "neutral",
+    "sounds": ["mob/crab/crab1", "mob/crab/crab2"]
+  }
 }

@@ -31,7 +31,7 @@ public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
 		super(PolongniusBlocks.cheese_of_milk_fluid);
 		this.setQuantaPerBlock(6);
 		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
-		this.setTickRandomly(true);
+		this.setLightOpacity(3);
 		this.setUnlocalizedName(name);
 	}
 

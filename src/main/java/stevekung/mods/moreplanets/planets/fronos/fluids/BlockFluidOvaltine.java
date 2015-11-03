@@ -31,6 +31,7 @@ public class BlockFluidOvaltine extends BlockFluidBaseMP
 		super(FronosBlocks.ovaltine_fluid);
 		this.setQuantaPerBlock(4);
 		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+		this.setLightOpacity(3);
 		this.setUnlocalizedName(name);
 	}
 

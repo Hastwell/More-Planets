@@ -31,6 +31,7 @@ public class BlockFluidMineralWater extends BlockFluidBaseMP
 	{
 		super(FronosBlocks.mineral_water_fluid);
 		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+		this.setLightOpacity(3);
 		this.setUnlocalizedName(name);
 	}
 

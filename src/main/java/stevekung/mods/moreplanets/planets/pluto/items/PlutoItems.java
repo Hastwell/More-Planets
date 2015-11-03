@@ -11,7 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PlutoItems
 {
@@ -25,25 +25,18 @@ public class PlutoItems
 
 	public static void init()
 	{
-		PlutoItems.initItems();
-		PlutoItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		PlutoItems.pluto_item = new ItemPluto("pluto_item");
 		PlutoItems.xeonium_dust = new ItemMorePlanets("xeonium_dust");
 		PlutoItems.space_potato = new ItemSpacePotato("space_potato");
 		PlutoItems.pluto_heart_crystal = new ItemPlutoHeartCrystal("pluto_heart_crystal_item");
 		PlutoItems.gravity_boots = new ItemGravityBoots("gravity_boots", PlutoItems.gravity, 7, 3);
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(PlutoItems.pluto_item);
-		RegisterHelper.registerItem(PlutoItems.xeonium_dust);
-		RegisterHelper.registerItem(PlutoItems.space_potato);
-		RegisterHelper.registerItem(PlutoItems.pluto_heart_crystal);
-		RegisterHelper.registerItem(PlutoItems.gravity_boots);
+		// Register
+		CommonRegisterHelper.registerItem(PlutoItems.pluto_item);
+		CommonRegisterHelper.registerItem(PlutoItems.xeonium_dust);
+		CommonRegisterHelper.registerItem(PlutoItems.space_potato);
+		CommonRegisterHelper.registerItem(PlutoItems.pluto_heart_crystal);
+		CommonRegisterHelper.registerItem(PlutoItems.gravity_boots);
 	}
 }

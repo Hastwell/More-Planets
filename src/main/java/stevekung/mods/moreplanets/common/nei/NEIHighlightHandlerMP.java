@@ -10,10 +10,8 @@ package stevekung.mods.moreplanets.common.nei;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -24,13 +22,10 @@ import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosLeaves;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
-import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockAncientDarkLeaves;
-import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockOrangeLeaves;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
@@ -51,10 +46,8 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 	@Override
 	public ItemStack identifyHighlight(World world, EntityPlayer player, MovingObjectPosition moving)
 	{
-		BlockPos pos = moving.getBlockPos();
-		Block block = world.getBlockState(pos).getBlock();
-		IBlockState state = world.getBlockState(pos);
-		int meta = block.getMetaFromState(state);
+		Block block = world.getBlockState(moving.getBlockPos()).getBlock();
+		int meta = block.getMetaFromState(world.getBlockState(moving.getBlockPos()));
 
 		if (block == MPBlocks.double_stone_slab_1)
 		{
@@ -84,35 +77,35 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(NibiruBlocks.nibiru_block, 1, meta);
 		}
-		if (block == NibiruBlocks.ancient_dark_leaves && state.getValue(BlockAncientDarkLeaves.VARIANT) == BlockAncientDarkLeaves.BlockType.ancient_dark_leaves_stage_1)
+		if (block == NibiruBlocks.ancient_dark_leaves && meta == 0)
 		{
 			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 0);
 		}
-		if (block == NibiruBlocks.ancient_dark_leaves && state.getValue(BlockAncientDarkLeaves.VARIANT) == BlockAncientDarkLeaves.BlockType.ancient_dark_leaves_stage_2)
+		if (block == NibiruBlocks.ancient_dark_leaves && meta == 1)
 		{
 			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 1);
 		}
-		if (block == NibiruBlocks.ancient_dark_leaves && state.getValue(BlockAncientDarkLeaves.VARIANT) == BlockAncientDarkLeaves.BlockType.ancient_dark_leaves_stage_3)
+		if (block == NibiruBlocks.ancient_dark_leaves && meta == 2)
 		{
 			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 2);
 		}
-		if (block == NibiruBlocks.ancient_dark_leaves && state.getValue(BlockAncientDarkLeaves.VARIANT) == BlockAncientDarkLeaves.BlockType.ancient_dark_leaves_stage_4)
+		if (block == NibiruBlocks.ancient_dark_leaves && meta == 3)
 		{
 			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 3);
 		}
-		if (block == NibiruBlocks.orange_leaves && state.getValue(BlockOrangeLeaves.VARIANT) == BlockOrangeLeaves.BlockType.orange_leaves_stage_1)
+		if (block == NibiruBlocks.orange_leaves && meta == 0)
 		{
 			return new ItemStack(NibiruBlocks.orange_leaves, 1, 0);
 		}
-		if (block == NibiruBlocks.orange_leaves && state.getValue(BlockOrangeLeaves.VARIANT) == BlockOrangeLeaves.BlockType.orange_leaves_stage_2)
+		if (block == NibiruBlocks.orange_leaves && meta == 1)
 		{
 			return new ItemStack(NibiruBlocks.orange_leaves, 1, 1);
 		}
-		if (block == NibiruBlocks.orange_leaves && state.getValue(BlockOrangeLeaves.VARIANT) == BlockOrangeLeaves.BlockType.orange_leaves_stage_3)
+		if (block == NibiruBlocks.orange_leaves && meta == 2)
 		{
 			return new ItemStack(NibiruBlocks.orange_leaves, 1, 2);
 		}
-		if (block == NibiruBlocks.orange_leaves && state.getValue(BlockOrangeLeaves.VARIANT) == BlockOrangeLeaves.BlockType.orange_leaves_stage_4)
+		if (block == NibiruBlocks.orange_leaves && meta == 3)
 		{
 			return new ItemStack(NibiruBlocks.orange_leaves, 1, 3);
 		}
@@ -132,11 +125,11 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(FronosBlocks.frosted_cake, 1, meta);
 		}
-		if (block == FronosBlocks.fronos_leaves && state.getValue(BlockFronosLeaves.VARIANT) == BlockFronosLeaves.BlockType.red_maple_leaves)
+		if (block == FronosBlocks.fronos_leaves && meta == 0)
 		{
 			return new ItemStack(FronosBlocks.fronos_leaves, 1, 0);
 		}
-		if (block == FronosBlocks.fronos_leaves && state.getValue(BlockFronosLeaves.VARIANT) == BlockFronosLeaves.BlockType.yellow_maple_leaves)
+		if (block == FronosBlocks.fronos_leaves && meta == 1)
 		{
 			return new ItemStack(FronosBlocks.fronos_leaves, 1, 1);
 		}
@@ -236,7 +229,7 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(FronosItems.maple_door);
 		}
-		if (block == KoentusBlocks.crystal_door)
+		if (block == KoentusBlocks.crystal_door_block)
 		{
 			return new ItemStack(KoentusItems.crystal_door);
 		}

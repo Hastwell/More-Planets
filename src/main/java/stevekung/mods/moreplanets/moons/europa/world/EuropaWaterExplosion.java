@@ -23,12 +23,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
 
@@ -164,17 +165,17 @@ public class EuropaWaterExplosion extends Explosion
 	}
 
 	@Override
-	public void doExplosionB(boolean p_77279_1_)
+	public void doExplosionB(boolean bool)
 	{
 		this.worldObj.playSoundEffect(this.explosionX, this.explosionY, this.explosionZ, "random.explode", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 
 		if (this.explosionSize >= 2.0F && this.isSmoking)
 		{
-			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D, new int[0]);
+			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.MC_EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ);
 		}
 		else
 		{
-			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D, new int[0]);
+			MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
 		}
 
 		Iterator iterator;
@@ -189,7 +190,7 @@ public class EuropaWaterExplosion extends Explosion
 				blockpos = (BlockPos)iterator.next();
 				Block block = this.worldObj.getBlockState(blockpos).getBlock();
 
-				if (p_77279_1_)
+				if (bool)
 				{
 					double d0 = blockpos.getX() + this.worldObj.rand.nextFloat();
 					double d1 = blockpos.getY() + this.worldObj.rand.nextFloat();
@@ -206,8 +207,8 @@ public class EuropaWaterExplosion extends Explosion
 					d3 *= d7;
 					d4 *= d7;
 					d5 *= d7;
-					this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, (d0 + this.explosionX * 1.0D) / 2.0D, (d1 + this.explosionY * 1.0D) / 2.0D, (d2 + this.explosionZ * 1.0D) / 2.0D, d3, d4, d5, new int[0]);
-					this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, d3, d4, d5, new int[0]);
+					MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_EXPLOSION_NORMAL, (d0 + this.explosionX * 1.0D) / 2.0D, (d1 + this.explosionY * 1.0D) / 2.0D, (d2 + this.explosionZ * 1.0D) / 2.0D, d3, d4, d5);
+					MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_NORMAL_SMOKE, d0, d1, d2, d3, d4, d5);
 				}
 
 				if (block.getMaterial() != Material.air)

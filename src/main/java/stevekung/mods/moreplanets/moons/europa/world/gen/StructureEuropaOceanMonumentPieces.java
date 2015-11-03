@@ -1526,7 +1526,7 @@ public class StructureEuropaOceanMonumentPieces
 		protected static IBlockState field_175827_c = EuropaBlocks.europa_prismarine.getDefaultState().withProperty(BlockEuropaPrismarine.VARIANT, BlockEuropaPrismarine.BlockType.dark_europa_prismarine);
 		protected static IBlockState field_175824_d = field_175826_b;
 		protected static IBlockState field_175825_e = EuropaBlocks.europa_sea_lantern.getDefaultState();
-		protected static IBlockState field_175822_f = Blocks.water.getDefaultState();//TODO Europa Water
+		protected static IBlockState field_175822_f = EuropaBlocks.europa_water.getDefaultState();
 		protected static int field_175823_g = func_175820_a(2, 0, 0);
 		protected static int field_175831_h = func_175820_a(2, 2, 0);
 		protected static int field_175832_i = func_175820_a(0, 1, 0);
@@ -1959,7 +1959,7 @@ public class StructureEuropaOceanMonumentPieces
 					if (p_74875_2_.nextInt(3) != 0)
 					{
 						int k = 2 + (p_74875_2_.nextInt(4) == 0 ? 0 : 1);
-						this.func_175804_a(world, p_74875_3_, i, k, j, i, 3, j, Blocks.sponge.getStateFromMeta(1), Blocks.sponge.getStateFromMeta(1), false);
+						this.func_175804_a(world, p_74875_3_, i, k, j, i, 3, j, EuropaBlocks.europa_sponge.getStateFromMeta(1), EuropaBlocks.europa_sponge.getStateFromMeta(1), false);
 					}
 				}
 			}

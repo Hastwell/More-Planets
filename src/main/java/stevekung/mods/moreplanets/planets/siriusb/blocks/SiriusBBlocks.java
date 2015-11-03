@@ -16,11 +16,10 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
-import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.siriusb.fluids.BlockFluidSiriusLava;
 import stevekung.mods.moreplanets.planets.siriusb.itemblocks.ItemBlockSiriusB;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class SiriusBBlocks
 {
@@ -41,21 +40,15 @@ public class SiriusBBlocks
 
 	public static void init()
 	{
-		SiriusBBlocks.initBlocks();
-		SiriusBBlocks.setHarvestLevels();
-		SiriusBBlocks.registerBlocks();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		SiriusBBlocks.sirius_b_block = new BlockSiriusB("sirius_b_block");
 		SiriusBBlocks.sirius_blaze_egg = new BlockSiriusBlazeEgg("sirius_blaze_egg");
 		SiriusBBlocks.sirius_b_treasure_chest = new BlockSiriusBTreasureChest("sirius_b_treasure_chest");
 		SiriusBBlocks.sirius_fire = new BlockSiriusFire("sirius_fire");
 		SiriusBBlocks.sirius_b_ancient_chest = new BlockSiriusBAncientChest("sirius_b_ancient_chest");
 		SiriusBBlocks.sirius_obsidian = new BlockBaseMP("sirius_obsidian", Material.rock).setHardness(70.0F).setResistance(5000.0F).setLightLevel(1.0F);
-		SiriusBBlocks.sirius_b_carbon_cobblestone_stairs = new BlockStairsMP("sirius_b_carbon_cobblestone_stairs", 4.0F, StairsCategory.sirius_carbon_cobblestone, Blocks.stone.getDefaultState());
-		SiriusBBlocks.sirius_b_dungeon_brick_stairs = new BlockStairsMP("sirius_b_dungeon_brick_stairs", 4.0F, StairsCategory.sirius_dungeon_brick, Blocks.stone.getDefaultState());
+		SiriusBBlocks.sirius_b_carbon_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "sirius_b_carbon_cobblestone_stairs", null, "sirius", 4.0F);
+		SiriusBBlocks.sirius_b_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "sirius_b_dungeon_brick_stairs", null, "sirius", 4.0F);
 		SiriusBBlocks.sirius_glowstone = new BlockSiriusGlowstone("sirius_glowstone");
 		SiriusBBlocks.sirius_redstone_lamp_off = new BlockSiriusRedstoneLamp("sirius_redstone_lamp", false);
 		SiriusBBlocks.sirius_redstone_lamp_on = new BlockSiriusRedstoneLamp("sirius_redstone_lamp_on", true);
@@ -63,32 +56,29 @@ public class SiriusBBlocks
 		SiriusBBlocks.sirius_lava_fluid = new FluidMP("sirius_lava").setBlock(SiriusBBlocks.sirius_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
 		FluidRegistry.registerFluid(SiriusBBlocks.sirius_lava_fluid);
 		SiriusBBlocks.sirius_lava = new BlockFluidSiriusLava("sirius_lava");
-	}
 
-	private static void setHarvestLevels()
-	{
-		SiriusBBlocks.sirius_obsidian.setHarvestLevel("pickaxe", 1);
-		SiriusBBlocks.sirius_b_block.setHarvestLevel("pickaxe", 1);
-		SiriusBBlocks.sirius_b_carbon_cobblestone_stairs.setHarvestLevel("pickaxe", 1);
-		SiriusBBlocks.sirius_b_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
+		// Register
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_b_block, ItemBlockSiriusB.class);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_obsidian);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_glowstone);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_redstone_lamp_off);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_redstone_lamp_on);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_b_ancient_chest);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_b_treasure_chest);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_blaze_egg);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_b_carbon_cobblestone_stairs);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_b_dungeon_brick_stairs);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_fire);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_lava);
+
+		// Set harvest level
+		SiriusBBlocks.sirius_obsidian.setHarvestLevel("pickaxe", 3);
+		SiriusBBlocks.sirius_b_block.setHarvestLevel("pickaxe", 0);
+		SiriusBBlocks.sirius_b_carbon_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+		SiriusBBlocks.sirius_b_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
 		SiriusBBlocks.sirius_b_ancient_chest.setHarvestLevel("axe", 0);
-	}
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_block, ItemBlockSiriusB.class);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_obsidian);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_glowstone);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_redstone_lamp_off);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_redstone_lamp_on);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_ancient_chest);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_treasure_chest);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_blaze_egg);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_carbon_cobblestone_stairs);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_b_dungeon_brick_stairs);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_fire);
-		RegisterHelper.registerBlock(SiriusBBlocks.sirius_lava);
-
+		// Register ore dictionary
 		OreDictionary.registerOre("oreSulfur", new ItemStack(SiriusBBlocks.sirius_b_block, 1, 4));
 		OreDictionary.registerOre("oreDiamond", new ItemStack(SiriusBBlocks.sirius_b_block, 1, 5));
 		OreDictionary.registerOre("oreSiriusGlowstone", new ItemStack(SiriusBBlocks.sirius_b_block, 1, 6));

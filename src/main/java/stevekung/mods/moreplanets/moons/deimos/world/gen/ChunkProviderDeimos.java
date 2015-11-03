@@ -56,7 +56,7 @@ public class ChunkProviderDeimos extends ChunkProviderGenerate
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseDeimos.deimos };
 
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(DeimosBlocks.deimos_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(DeimosBlocks.deimos_block, new int[] {0, 1, 2});
 	private MapGenMartianVillage villageGenerator = new MapGenMartianVillage();
 
 	private static int CRATER_PROB = 300;
@@ -196,7 +196,7 @@ public class ChunkProviderDeimos extends ChunkProviderGenerate
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.createCraters(x, z, primer);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		Chunk var4 = new Chunk(this.worldObj, primer, x, z);
 		var4.generateSkylightMap();
 		return var4;

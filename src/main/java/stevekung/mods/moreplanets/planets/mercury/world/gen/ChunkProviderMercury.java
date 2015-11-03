@@ -40,7 +40,6 @@ import stevekung.mods.moreplanets.planets.mercury.blocks.BlockMercury;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomBossMercury;
 import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomChestsMercury;
-import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomTreasureMercury;
 
 public class ChunkProviderMercury extends ChunkProviderGenerate
 {
@@ -70,11 +69,10 @@ public class ChunkProviderMercury extends ChunkProviderGenerate
 		this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
 		this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
 		this.dungeonGenerator.bossRooms.add(new RoomBossMercury(null, 0, 0, 0, null));
-		this.dungeonGenerator.treasureRooms.add(new RoomTreasureMercury(null, 0, 0, 0, null));
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMercury.mercury };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(MercuryBlocks.mercury_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(MercuryBlocks.mercury_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 300;
 
@@ -213,7 +211,7 @@ public class ChunkProviderMercury extends ChunkProviderGenerate
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.createCraters(x, z, primer);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
 		Chunk var4 = new Chunk(this.worldObj, primer, x, z);
 		var4.generateSkylightMap();

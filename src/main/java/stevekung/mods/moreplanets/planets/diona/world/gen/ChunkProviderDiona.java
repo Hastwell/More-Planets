@@ -38,7 +38,7 @@ import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.blocks.BlockDiona;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaMinionCreeper;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
 import stevekung.mods.moreplanets.planets.diona.world.gen.dungeon.RoomBossDiona;
@@ -77,7 +77,7 @@ public class ChunkProviderDiona extends ChunkProviderGenerate
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseDiona.diona };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(DionaBlocks.diona_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(DionaBlocks.diona_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 300;
 
@@ -216,7 +216,7 @@ public class ChunkProviderDiona extends ChunkProviderGenerate
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.createCraters(x, z, primer);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
 		Chunk var4 = new Chunk(this.worldObj, primer, x, z);
 		var4.generateSkylightMap();
@@ -362,7 +362,7 @@ public class ChunkProviderDiona extends ChunkProviderGenerate
 			monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-			monsters.add(new SpawnListEntry(EntityDionaMinionCreeper.class, 100, 4, 4));
+			monsters.add(new SpawnListEntry(EntityDionaCreeperMinion.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
 			return monsters;
 		}

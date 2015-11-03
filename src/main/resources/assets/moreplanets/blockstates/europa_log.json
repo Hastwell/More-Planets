@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y,variant=europa_wood":    { "model": "moreplanets:europa_wood_log" },
+        "axis=z,variant=europa_wood":     { "model": "moreplanets:europa_wood_log_side" },
+        "axis=x,variant=europa_wood":     { "model": "moreplanets:europa_wood_log_side", "y": 90 },
+        "axis=none,variant=europa_wood":   { "model": "moreplanets:europa_wood_bark" }
+    }
+}

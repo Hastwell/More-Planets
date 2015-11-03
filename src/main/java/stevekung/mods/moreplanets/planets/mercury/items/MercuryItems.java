@@ -10,8 +10,9 @@ package stevekung.mods.moreplanets.planets.mercury.items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class MercuryItems
 {
@@ -20,25 +21,21 @@ public class MercuryItems
 
 	public static void init()
 	{
-		MercuryItems.initItems();
-		MercuryItems.registerItems();
-		MercuryItems.registerFluidContainer();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		MercuryItems.mercury_item = new ItemMercury("mercury_item");
 		MercuryItems.dirty_water_bucket = new ItemDirtyWaterBucket("dirty_water_bucket");
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(MercuryItems.mercury_item);
-		RegisterHelper.registerItem(MercuryItems.dirty_water_bucket);
-	}
+		// Register
+		CommonRegisterHelper.registerItem(MercuryItems.mercury_item);
+		CommonRegisterHelper.registerItem(MercuryItems.dirty_water_bucket);
 
-	private static void registerFluidContainer()
-	{
-		RegisterHelper.registerFluidContainer(MercuryBlocks.dirty_water_fluid, new ItemStack(MercuryItems.dirty_water_bucket), new ItemStack(Items.bucket));
+		// Register ore dictionary
+		OreDictionary.registerOre("ingotMetallic", new ItemStack(MercuryItems.mercury_item, 1, 2));
+		OreDictionary.registerOre("ingotMetalMeteoricIron", new ItemStack(MercuryItems.mercury_item, 1, 3));
+		OreDictionary.registerOre("compressedMetallic", new ItemStack(MercuryItems.mercury_item, 1, 4));
+		OreDictionary.registerOre("compressedMetalMeteoricIron", new ItemStack(MercuryItems.mercury_item, 1, 5));
+
+		// Register fluid container
+		CommonRegisterHelper.registerFluidContainer(MercuryBlocks.dirty_water_fluid, new ItemStack(MercuryItems.dirty_water_bucket), new ItemStack(Items.bucket));
 	}
 }

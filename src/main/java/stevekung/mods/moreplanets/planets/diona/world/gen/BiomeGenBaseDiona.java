@@ -14,7 +14,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.world.biome.BiomeGenBase;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaMinionCreeper;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
 
@@ -29,7 +29,7 @@ public class BiomeGenBaseDiona extends BiomeGenBaseMP
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityDionaMinionCreeper.class, 100, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityDionaCreeperMinion.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
 		this.spawnableCreatureList.add(new SpawnListEntry(EntitySpaceWolf.class, 8, 4, 4));
 	}

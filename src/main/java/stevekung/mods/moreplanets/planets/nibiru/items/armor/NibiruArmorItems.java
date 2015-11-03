@@ -10,7 +10,7 @@ package stevekung.mods.moreplanets.planets.nibiru.items.armor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class NibiruArmorItems
 {
@@ -31,12 +31,7 @@ public class NibiruArmorItems
 
 	public static void init()
 	{
-		NibiruArmorItems.initItems();
-		NibiruArmorItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		NibiruArmorItems.red_gem_helmet = new ArmorRedGem("red_gem_helmet", NibiruArmorItems.red_gem, 7, 0);
 		NibiruArmorItems.red_gem_chestplate = new ArmorRedGem("red_gem_chestplate", NibiruArmorItems.red_gem, 7, 1);
 		NibiruArmorItems.red_gem_leggings = new ArmorRedGem("red_gem_leggings", NibiruArmorItems.red_gem, 7, 2);
@@ -47,19 +42,17 @@ public class NibiruArmorItems
 		NibiruArmorItems.norium_boots = new ArmorNorium("norium_boots", NibiruArmorItems.norium, 7, 3);
 		NibiruArmorItems.breathable_red_gem_helmet = new ArmorBreathableRedGem("breathable_red_gem_helmet", NibiruArmorItems.red_gem, 7, 0);
 		NibiruArmorItems.breathable_norium_helmet = new ArmorBreathableNorium("breathable_norium_helmet", NibiruArmorItems.norium, 7, 0);
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(NibiruArmorItems.red_gem_helmet);
-		RegisterHelper.registerItem(NibiruArmorItems.red_gem_chestplate);
-		RegisterHelper.registerItem(NibiruArmorItems.red_gem_leggings);
-		RegisterHelper.registerItem(NibiruArmorItems.red_gem_boots);
-		RegisterHelper.registerItem(NibiruArmorItems.norium_helmet);
-		RegisterHelper.registerItem(NibiruArmorItems.norium_chestplate);
-		RegisterHelper.registerItem(NibiruArmorItems.norium_leggings);
-		RegisterHelper.registerItem(NibiruArmorItems.norium_boots);
-		RegisterHelper.registerItem(NibiruArmorItems.breathable_red_gem_helmet);
-		RegisterHelper.registerItem(NibiruArmorItems.breathable_norium_helmet);
+		// Register
+		CommonRegisterHelper.registerItem(NibiruArmorItems.red_gem_helmet);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.red_gem_chestplate);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.red_gem_leggings);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.red_gem_boots);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.norium_helmet);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.norium_chestplate);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.norium_leggings);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.norium_boots);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.breathable_red_gem_helmet);
+		CommonRegisterHelper.registerItem(NibiruArmorItems.breathable_norium_helmet);
 	}
 }

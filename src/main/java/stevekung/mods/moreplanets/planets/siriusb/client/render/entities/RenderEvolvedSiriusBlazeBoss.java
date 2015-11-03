@@ -21,7 +21,7 @@ import stevekung.mods.moreplanets.planets.siriusb.client.render.entities.layers.
 
 public class RenderEvolvedSiriusBlazeBoss extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/sirius_blaze.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/evolved_sirius_blaze_boss.png");
 
 	public RenderEvolvedSiriusBlazeBoss(RenderManager render)
 	{

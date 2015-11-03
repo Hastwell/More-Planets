@@ -19,6 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
+import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBDungeonSpawner;
 
@@ -56,7 +58,7 @@ public class RoomBossSiriusB extends DungeonRoom
 					{
 						if (j == this.posY - 1 && (i <= this.posX + 1 || i >= this.posX + this.sizeX - 2 || k == this.posZ + 1 || k == this.posZ + this.sizeZ - 2) && this.rand.nextInt(4) == 0)
 						{
-							this.placeBlock(chunk, i, j, k, cx, cz, SiriusBBlocks.sirius_glowstone, 0);
+							this.placeBlock(chunk, i, j, k, cx, cz, SiriusBBlocks.sirius_glowstone, 1);
 						}
 						else
 						{
@@ -99,7 +101,7 @@ public class RoomBossSiriusB extends DungeonRoom
 			return;
 		}
 
-		this.worldObj.setBlockState(this.spawnerCoords, SiriusBBlocks.sirius_b_block.getDefaultState(), 3);//TODO Boss Dungeon Spawner
+		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.sirius_b), 3);
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 
 		if (tile == null || !(tile instanceof TileEntitySiriusBDungeonSpawner))

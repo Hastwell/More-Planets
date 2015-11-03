@@ -13,6 +13,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.registry.GameData;
+import stevekung.mods.moreplanets.common.util.MPLog;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.items.tools.KoentusToolsItems;
 import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
@@ -43,6 +46,9 @@ public class TreeCapitatorIntegrationMP
 		String fronosColorizedLeaves = blockName(FronosBlocks.fronos_colorized_leaves);
 		String fronosLeaves = blockName(FronosBlocks.fronos_leaves);
 
+		String europaLog = blockName(EuropaBlocks.europa_log);
+		String europaLeaves = blockName(EuropaBlocks.europa_leaves);
+
 		String quontoniumAxe = itemName(DionaToolsItems.quontonium_axe);
 		String fronisiumAxe = itemName(DionaToolsItems.fronisium_axe);
 		String polongniusMeteorAxe = itemName(PolongniusToolsItems.polongnius_meteoric_iron_axe);
@@ -59,7 +65,7 @@ public class TreeCapitatorIntegrationMP
 		String uraniumAxe = itemName(KapteynBToolsItems.uranium_axe);
 		String sulfurAxe = itemName(SiriusBToolsItems.sulfur_axe);
 
-		tpModCfg.setString("modID", "MorePlanets");
+		tpModCfg.setString("modID", MorePlanetsCore.MOD_ID);
 		tpModCfg.setString("axeIDList", quontoniumAxe + "; " + fronisiumAxe + "; " + polongniusMeteorAxe + "; " + palladiumAxe + "; " + purpleCrystalAxe + "; " + redGemAxe + "; " + noriumAxe + "; " + koentusMeteorAxe + "; " + whiteCrystalAxe + "; " + blackDiamondAxe + "; " +
 				iridiumAxe + "; " + candyAxe + "; " + frozenIronAxe + "; " + uraniumAxe + "; " + sulfurAxe);
 
@@ -112,8 +118,15 @@ public class TreeCapitatorIntegrationMP
 		tree.setBoolean("requireLeafDecayCheck", false);
 		treeList.appendTag(tree);
 
+		// Europa Tree
+		tree.setString("treeName", "europa");
+		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", europaLog, europaLog, europaLog));
+		tree.setString("leaves", String.format("%s, 0; %s, 8", europaLeaves, europaLeaves));
+		tree.setBoolean("requireLeafDecayCheck", false);
+		treeList.appendTag(tree);
+
 		FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", tpModCfg);
-		FMLInterModComms.sendMessage("Treecapitator", "ThirdPartyModConfig", tpModCfg);
+		MPLog.info("Enable Tree Capitator Integration");
 	}
 
 	private static String blockName(Block block)

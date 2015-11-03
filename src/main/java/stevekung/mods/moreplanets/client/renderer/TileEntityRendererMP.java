@@ -9,9 +9,7 @@ package stevekung.mods.moreplanets.client.renderer;
 
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import stevekung.mods.moreplanets.moons.koentus.client.render.tileentities.TileEntityKoentusAncientChestRenderer;
-import stevekung.mods.moreplanets.moons.koentus.client.render.tileentities.TileEntityKoentusTreasureChestRenderer;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
-import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusTreasureChest;
 import stevekung.mods.moreplanets.planets.diona.client.render.tileentities.TileEntityDionaAncientChestRenderer;
 import stevekung.mods.moreplanets.planets.diona.client.render.tileentities.TileEntityDionaTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
@@ -27,9 +25,7 @@ import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoi
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBTreasureChest;
 import stevekung.mods.moreplanets.planets.mercury.client.render.tileentities.TileEntityMercuryAncientChestRenderer;
-import stevekung.mods.moreplanets.planets.mercury.client.render.tileentities.TileEntityMercuryTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryAncientChest;
-import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryTreasureChest;
 import stevekung.mods.moreplanets.planets.nibiru.client.render.tileentities.TileEntityNibiruAncientChestRenderer;
 import stevekung.mods.moreplanets.planets.nibiru.client.render.tileentities.TileEntityNibiruTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruAncientChest;
@@ -49,9 +45,7 @@ import stevekung.mods.moreplanets.planets.siriusb.client.render.tileentities.Til
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBAncientChest;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBTreasureChest;
 import stevekung.mods.moreplanets.planets.venus.client.render.tileentities.TileEntityVenusAncientChestRenderer;
-import stevekung.mods.moreplanets.planets.venus.client.render.tileentities.TileEntityVenusTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
-import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
 
 public class TileEntityRendererMP
 {
@@ -60,12 +54,9 @@ public class TileEntityRendererMP
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaTreasureChest.class, new TileEntityDionaTreasureChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusTreasureChest.class, new TileEntityPolongniusTreasureChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruTreasureChest.class, new TileEntityNibiruTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusTreasureChest.class, new TileEntityKoentusTreasureChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosTreasureChest.class, new TileEntityFronosTreasureChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBTreasureChest.class, new TileEntityKapteynBTreasureChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBTreasureChest.class, new TileEntitySiriusBTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryTreasureChest.class, new TileEntityMercuryTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusTreasureChest.class, new TileEntityVenusTreasureChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoTreasureChest.class, new TileEntityPlutoTreasureChestRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaAncientChest.class, new TileEntityDionaAncientChestRenderer());

@@ -7,23 +7,20 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.items;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemCheeseFood extends ItemFoodMP
 {
-	private static int[] foodHunger = new int[] {
-		3,
-		3,
-		8
+	private int[] foodHunger = new int[] {
+			3,
+			3,
+			8
 	};
-	private static float[] foodSaturation = new float[] {
-		0.35F,
-		0.2F,
-		0.8F
+	private float[] foodSaturation = new float[] {
+			0.35F,
+			0.2F,
+			0.8F
 	};
 
 	public ItemCheeseFood(String name)
@@ -31,16 +28,6 @@ public class ItemCheeseFood extends ItemFoodMP
 		super();
 		this.setUnlocalizedName(name);
 		this.setHasSubtypes(true);
-	}
-
-	@Override
-	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		--itemStack.stackSize;
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
-		player.getFoodStats().addStats(this, itemStack);
-		return itemStack;
 	}
 
 	@Override
@@ -54,21 +41,15 @@ public class ItemCheeseFood extends ItemFoodMP
 	}
 
 	@Override
-	public EnumAction getItemUseAction(ItemStack itemStack)
-	{
-		return EnumAction.EAT;
-	}
-
-	@Override
 	public int getHealAmount(ItemStack itemStack)
 	{
-		return foodHunger[itemStack.getItemDamage()];
+		return this.foodHunger[itemStack.getItemDamage()];
 	}
 
 	@Override
 	public float getSaturationModifier(ItemStack itemStack)
 	{
-		return foodSaturation[itemStack.getItemDamage()];
+		return this.foodSaturation[itemStack.getItemDamage()];
 	}
 
 	@Override

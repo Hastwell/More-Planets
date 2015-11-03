@@ -27,11 +27,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
-import stevekung.mods.moreplanets.common.blocks.IPlantMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
+import stevekung.mods.moreplanets.common.blocks.IPlantableMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockGlassGemCorn extends BlockFlowerMP implements IPlantMP
+public class BlockGlassGemCorn extends BlockBushMP implements IPlantableMP
 {
 	public static PropertyEnum STAGE = PropertyEnum.create("stage", BlockType.class);
 

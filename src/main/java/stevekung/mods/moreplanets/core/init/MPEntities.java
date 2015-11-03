@@ -16,10 +16,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry.EntityRegistration;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.common.entities.EntityFlagMP;
-import stevekung.mods.moreplanets.common.util.CompatibilityUtilMP;
+import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaGuardian;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
@@ -28,13 +27,12 @@ import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteorChun
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusSludgeling;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusianVillager;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperBoss;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaMinionCreeper;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDustSludgeling;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityFronisiumTNT;
 import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityTier4Rocket;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityTier4RocketNoFlag;
 import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityLaserMP;
 import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityProjectileFronisiumTNT;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityBearry;
@@ -69,24 +67,23 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6Rocket;
-import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6RocketNoFlag;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCubeEyeBoss;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteor;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteorChunk;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityTier5Rocket;
-import stevekung.mods.moreplanets.planets.polongnius.entities.EntityTier5RocketNoFlag;
 import stevekung.mods.moreplanets.planets.polongnius.entities.projectiles.EntityCheeseSpore;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntityEvolvedSiriusBlazeBoss;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusBlaze;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusCreeper;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusMagmaCube;
-import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySiriusSmallFireball;
+import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntityLargeSiriusFireball;
+import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySmallSiriusFireball;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianVillager;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class MPEntities
 {
@@ -96,6 +93,7 @@ public class MPEntities
 	{
 		MPEntities.registerEntities();
 		MPEntities.registerNonMobEntities();
+		MPLog.debug("Register Entities");
 	}
 
 	private static void registerEntities()
@@ -104,7 +102,7 @@ public class MPEntities
 		registerEntity(EntityEvolvedEnderman.class, "EvolvedEnderman", 1, 1447446, 0);
 		registerEntity(EntityDustSludgeling.class, "DustSludgeling", 2, -4144960, -8355712);
 		registerEntity(EntityDionaCreeperBoss.class, "DionaCreeperBoss", 3, -8355712, -16726874);
-		registerEntity(EntityDionaMinionCreeper.class, "DionaMinionCreeper", 4, -8355712, -9269647);
+		registerEntity(EntityDionaCreeperMinion.class, "DionaCreeperMinion", 4, -8355712, -9269647);
 
 		registerEntity(EntityCheeseCow.class, "CheeseCow", 5, -19712, -6985197);
 		registerEntity(EntityCheeseSlime.class, "CheeseSlime", 6, -14848, -8323);
@@ -136,59 +134,52 @@ public class MPEntities
 
 		registerEntity(EntityFrozenSludgeling.class, "FrozenSludgeling", 29, -4996406, -2038040);
 
-		registerEntity(EntitySiriusCreeper.class, "SiriusCreeper", 30, -4197121, -8197633);
-		registerEntity(EntitySiriusBlaze.class, "SiriusBlaze", 31, -4197121, -8197633);
-		registerEntity(EntitySiriusMagmaCube.class, "SiriusMagmaCube", 32, -4197121, -8197633);
-		registerEntity(EntityEvolvedSiriusBlazeBoss.class, "EvolvedSiriusBlazeBoss", 33, -4197121, -8197633);
-
-		if (ConfigManagerMP.enableMorePlanetsBasicPlanets)
-		{
-			registerEntity(EntityVenusianBlaze.class, CompatibilityUtilMP.is4SpaceVenusLoaded() ? "VenusianBlazeMP" : "VenusianBlaze", 34, -27809, -45282);
-			registerEntity(EntityVenusianSlime.class, CompatibilityUtilMP.is4SpaceVenusLoaded() ? "VenusianSlimeMP" : "VenusianSlime", 35, -262144, -205056);
-			registerEntity(EntityVenusianVillager.class, CompatibilityUtilMP.is4SpaceVenusLoaded() ? "VenusianVillagerMP" : "VenusianVillager", 36, -13875061, -4875400);
-		}
-
+		registerEntity(EntitySiriusCreeper.class, "SiriusCreeper", 30, -4259841, 0);
+		registerEntity(EntitySiriusBlaze.class, "SiriusBlaze", 31, -4390913, -6758433);
+		registerEntity(EntitySiriusMagmaCube.class, "SiriusMagmaCube", 32, -12163225, -5769739);
+		registerEntity(EntityEvolvedSiriusBlazeBoss.class, "EvolvedSiriusBlazeBoss", 33, -4390913, -892881);
+		registerEntity(EntityVenusianBlaze.class, "VenusianBlaze", 34, -27809, -45282);
+		registerEntity(EntityVenusianSlime.class, "VenusianSlime", 35, -262144, -205056);
+		registerEntity(EntityVenusianVillager.class, "VenusianVillager", 36, -13875061, -4875400);
 		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -12425324, -6163201);
-		registerEntity(EntityEuropaGuardian.class, "EuropaGuardian", 38, -13416598, -3409409);
+		registerEntity(EntityEuropaGuardian.class, "EuropaGuardian", 38, -9010279, -12268469);
+		registerEntity(EntityEuropaCrab.class, "EuropaCrab", 39, -11574413, -12167066);
 	}
 
 	private static void registerNonMobEntities()
 	{
-		RegisterHelper.registerNonMobEntity(EntityFlagMP.class, "MPFlag", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityTier4Rocket.class, "Tier4Rocket", MorePlanetsCore.instance, false);
-		RegisterHelper.registerNonMobEntity(EntityTier4RocketNoFlag.class, "Tier4RocketNoFlag", MorePlanetsCore.instance, false);
-		RegisterHelper.registerNonMobEntity(EntityProjectileFronisiumTNT.class, "ProjectileFronisiumTNT", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityFronisiumTNT.class, "FronisiumTNT", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityLaserMP.class, "ProjectileLaser", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier4Rocket.class, "Tier4Rocket", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityProjectileFronisiumTNT.class, "ProjectileFronisiumTNT", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityFronisiumTNT.class, "FronisiumTNT", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityLaserMP.class, "ProjectileLaser", MorePlanetsCore.instance, true);
 
-		RegisterHelper.registerNonMobEntity(EntityTier5Rocket.class, "Tier5Rocket", MorePlanetsCore.instance, false);
-		RegisterHelper.registerNonMobEntity(EntityTier5RocketNoFlag.class, "Tier5RocketNoFlag", MorePlanetsCore.instance, false);
-		RegisterHelper.registerNonMobEntity(EntityCheeseSpore.class, "CheeseSpore", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityPolongniusMeteorChunk.class, "PolongniusMeteorChunk", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityPolongniusMeteor.class, "PolongniusMeteor", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier5Rocket.class, "Tier5Rocket", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityCheeseSpore.class, "CheeseSpore", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityPolongniusMeteorChunk.class, "PolongniusMeteorChunk", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityPolongniusMeteor.class, "PolongniusMeteor", MorePlanetsCore.instance, true);
 
-		RegisterHelper.registerNonMobEntity(EntityTier6Rocket.class, "Tier6Rocket", MorePlanetsCore.instance, false);
-		RegisterHelper.registerNonMobEntity(EntityTier6RocketNoFlag.class, "Tier6RocketNoFlag", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier6Rocket.class, "Tier6Rocket", MorePlanetsCore.instance, false);
 
-		RegisterHelper.registerNonMobEntity(EntityKoentusMeteorChunk.class, "KoentusMeteorChunk", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityKoentusMeteor.class, "KoentusMeteor", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteorChunk.class, "KoentusMeteorChunk", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteor.class, "KoentusMeteor", MorePlanetsCore.instance, true);
 
-		RegisterHelper.registerNonMobEntity(EntityVanillaCreamBall.class, "VanillaCreamBall", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityChocolateCreamBall.class, "ChocolateCreamBall", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityStrawberryCreamBall.class, "StrawberryCreamBall", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityOrangeCreamBall.class, "OrangeCreamBall", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityTeaCreamBall.class, "TeaCreamBall", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityLemonCreamBall.class, "LemonCreamBall", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityPoisonArrow.class, "PoisonArrow", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityTier7Rocket.class, "Tier7Rocket", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityVanillaCreamBall.class, "VanillaCreamBall", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityChocolateCreamBall.class, "ChocolateCreamBall", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityStrawberryCreamBall.class, "StrawberryCreamBall", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityOrangeCreamBall.class, "OrangeCreamBall", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTeaCreamBall.class, "TeaCreamBall", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityLemonCreamBall.class, "LemonCreamBall", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityPoisonArrow.class, "PoisonArrow", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier7Rocket.class, "Tier7Rocket", MorePlanetsCore.instance, false);
 
-		RegisterHelper.registerNonMobEntity(EntitySiriusSmallFireball.class, "SiriusFireball", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntitySmallSiriusFireball.class, "SmallSiriusFireball", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityLargeSiriusFireball.class, "LargeSiriusFireball", MorePlanetsCore.instance, true);
 
-		RegisterHelper.registerNonMobEntity(EntityUraniumBomb.class, "UraniumBomb", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityIceCrystalMeteor.class, "IceCrystalMeteor", MorePlanetsCore.instance, true);
-		RegisterHelper.registerNonMobEntity(EntityTier8Rocket.class, "Tier8Rocket", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityUraniumBomb.class, "UraniumBomb", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityIceCrystalMeteor.class, "IceCrystalMeteor", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier8Rocket.class, "Tier8Rocket", MorePlanetsCore.instance, false);
 
-		RegisterHelper.registerNonMobEntity(EntityEuropaWaterBomb.class, "EuropaWaterBomb", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityEuropaWaterBomb.class, "EuropaWaterBomb", MorePlanetsCore.instance, true);
 	}
 
 	private static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour)
@@ -229,7 +220,7 @@ public class MPEntities
 		}
 		if (entity == null)
 		{
-			MorePlanetsCore.severe("Skipping Entity with id " + id);
+			MPLog.error("Skipping Entity with id " + id);
 		}
 		return entity;
 	}

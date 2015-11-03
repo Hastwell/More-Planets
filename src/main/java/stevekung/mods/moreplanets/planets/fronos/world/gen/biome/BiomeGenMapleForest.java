@@ -50,12 +50,12 @@ public class BiomeGenMapleForest extends BiomeGenBaseFronos
 	{
 		if (rand.nextInt(2) == 0)
 		{
-			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, FronosBlocks.fronos_sapling);
+			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, FronosBlocks.fronos_sapling, null);
 		}
 		else if (rand.nextInt(4) == 0)
 		{
-			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, FronosBlocks.fronos_sapling);
+			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, FronosBlocks.fronos_sapling, FronosBlocks.maple_ivy);
 		}
-		return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling);
+		return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling, null);
 	}
 }

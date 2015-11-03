@@ -16,6 +16,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
@@ -60,7 +61,11 @@ public class ItemDoorMP extends ItemMorePlanets
 			}
 			else if (this.doorType == DoorType.CRYSTAL)
 			{
-				block = KoentusBlocks.crystal_door;
+				block = KoentusBlocks.crystal_door_block;
+			}
+			else if (this.doorType == DoorType.EUROPA)
+			{
+				block = EuropaBlocks.europa_door_block;
 			}
 
 			if (!block.isReplaceable(world, pos))

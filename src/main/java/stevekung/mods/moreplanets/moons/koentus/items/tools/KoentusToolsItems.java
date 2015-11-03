@@ -16,7 +16,7 @@ import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class KoentusToolsItems
 {
@@ -37,13 +37,7 @@ public class KoentusToolsItems
 
 	public static void init()
 	{
-		KoentusToolsItems.initItems();
-		KoentusToolsItems.registerItems();
-		KoentusToolsItems.registerHarvestLevels();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		KoentusToolsItems.white_crystal_pickaxe = new ItemPickaxeMP("white_crystal_pickaxe", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5);
 		KoentusToolsItems.white_crystal_axe = new ItemAxeMP("white_crystal_axe", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5);
 		KoentusToolsItems.white_crystal_hoe = new ItemHoeMP("white_crystal_hoe", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5);
@@ -54,29 +48,25 @@ public class KoentusToolsItems
 		KoentusToolsItems.koentus_meteoric_iron_hoe = new ItemHoeMP("koentus_meteoric_iron_hoe", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6);
 		KoentusToolsItems.koentus_meteoric_iron_shovel = new ItemShovelMP("koentus_meteoric_iron_shovel", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6);
 		KoentusToolsItems.koentus_meteoric_iron_sword = new ItemSwordMP("koentus_meteoric_iron_sword", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6);
-	}
 
-	private static void registerHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerItem(KoentusToolsItems.white_crystal_sword);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.white_crystal_shovel);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.white_crystal_pickaxe);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.white_crystal_axe);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.white_crystal_hoe);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_sword);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_shovel);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_pickaxe);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_axe);
+		CommonRegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_hoe);
+
+		// Set harvest level
 		KoentusToolsItems.white_crystal_pickaxe.setHarvestLevel("pickaxe", 4);
 		KoentusToolsItems.white_crystal_axe.setHarvestLevel("axe", 4);
 		KoentusToolsItems.white_crystal_shovel.setHarvestLevel("shovel", 4);
 		KoentusToolsItems.koentus_meteoric_iron_pickaxe.setHarvestLevel("pickaxe", 4);
 		KoentusToolsItems.koentus_meteoric_iron_axe.setHarvestLevel("axe", 4);
 		KoentusToolsItems.koentus_meteoric_iron_shovel.setHarvestLevel("shovel", 4);
-	}
-
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(KoentusToolsItems.white_crystal_sword);
-		RegisterHelper.registerItem(KoentusToolsItems.white_crystal_shovel);
-		RegisterHelper.registerItem(KoentusToolsItems.white_crystal_pickaxe);
-		RegisterHelper.registerItem(KoentusToolsItems.white_crystal_axe);
-		RegisterHelper.registerItem(KoentusToolsItems.white_crystal_hoe);
-		RegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_sword);
-		RegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_shovel);
-		RegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_pickaxe);
-		RegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_axe);
-		RegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_hoe);
 	}
 }

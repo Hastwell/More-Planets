@@ -20,6 +20,6 @@ public class ItemBlockFronosTallGrass extends ItemBlockBaseMP
 	@Override
 	public String[] getBlockVariantsName()
 	{
-		return new String[] { "short_grass", "medium_grass", "tall_grass", "pink_short_grass", "pink_medium_grass", "pink_tall_grass", "purple_short_grass", "purple_medium_grass", "purple_tall_grass", "plains_short_grass", "plains_medium_grass", "plains_tall_grass", "golden_short_grass", "golden_medium_grass", "golden_tall_grass" };
+		return new String[] { "short_grass", "medium_grass", "tall_grass", "short_pink_grass", "medium_pink_grass", "tall_pink_grass", "short_purple_grass", "medium_purple_grass", "tall_purple_grass", "short_plains_grass", "medium_plains_grass", "tall_plains_grass", "short_golden_grass", "medium_golden_grass", "tall_golden_grass" };
 	}
 }

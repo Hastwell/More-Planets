@@ -20,6 +20,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
@@ -30,7 +31,7 @@ public class BlockDoorMP extends BlockDoor
 
 	public static enum DoorType
 	{
-		ANCIENT_DARK, ORANGE, COCONUT, MAPLE, CRYSTAL;
+		ANCIENT_DARK, ORANGE, COCONUT, MAPLE, CRYSTAL, EUROPA;
 	}
 
 	public BlockDoorMP(String name, DoorType type)
@@ -66,6 +67,10 @@ public class BlockDoorMP extends BlockDoor
 		{
 			return new ItemStack(KoentusItems.crystal_door);
 		}
+		else if (this.doorType == DoorType.EUROPA)
+		{
+			return new ItemStack(EuropaItems.europa_door);
+		}
 		return null;
 	}
 
@@ -93,6 +98,10 @@ public class BlockDoorMP extends BlockDoor
 			else if (this.doorType == DoorType.CRYSTAL)
 			{
 				return KoentusItems.crystal_door;
+			}
+			else if (this.doorType == DoorType.EUROPA)
+			{
+				return EuropaItems.europa_door;
 			}
 		}
 		return null;

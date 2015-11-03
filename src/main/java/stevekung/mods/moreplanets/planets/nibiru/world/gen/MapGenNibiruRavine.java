@@ -208,7 +208,7 @@ public class MapGenNibiruRavine extends MapGenBase
 	protected boolean isOceanBlock(ChunkPrimer data, int x, int y, int z, int chunkX, int chunkZ)
 	{
 		Block block = data.getBlockState(x, y, z).getBlock();
-		return block == GCBlocks.crudeOilStill;
+		return block == GCBlocks.crudeOil;
 	}
 
 	private boolean isTopBlock(ChunkPrimer data, int x, int y, int z, int chunkX, int chunkZ)
@@ -229,7 +229,7 @@ public class MapGenNibiruRavine extends MapGenBase
 		{
 			if (y < 20)
 			{
-				data.setBlockState(x, y, z, GCBlocks.crudeOilStill.getDefaultState());
+				data.setBlockState(x, y, z, GCBlocks.crudeOil.getDefaultState());
 			}
 			else if (y < 10)
 			{

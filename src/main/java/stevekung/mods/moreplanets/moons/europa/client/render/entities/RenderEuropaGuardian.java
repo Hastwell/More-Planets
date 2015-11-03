@@ -33,7 +33,7 @@ import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaGuardian;
 public class RenderEuropaGuardian extends RenderLiving
 {
 	private ResourceLocation mainTexture = new ResourceLocation("moreplanets:textures/entity/europa_guardian.png");
-	private ResourceLocation elderTexture = new ResourceLocation("textures/entity/guardian_elder.png");
+	private ResourceLocation elderTexture = new ResourceLocation("moreplanets:textures/entity/europa_guardian_elder.png");
 	private ResourceLocation beamTexture = new ResourceLocation("textures/entity/guardian_beam.png");
 	int field_177115_a;
 
@@ -123,7 +123,16 @@ public class RenderEuropaGuardian extends RenderLiving
 			double d4 = f4 * 0.05D * (1.0D - (b0 & 1) * 2.5D);
 			worldrenderer.startDrawingQuads();
 			float f9 = f2 * f2;
-			worldrenderer.setColorRGBA(64 + (int)(f9 * 240.0F), 32 + (int)(f9 * 192.0F), 128 - (int)(f9 * 64.0F), 255);
+
+			if (entity.isElder())
+			{
+				worldrenderer.setColorRGBA(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255);
+			}
+			else
+			{
+				worldrenderer.setColorRGBA(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255);
+			}
+
 			double d5 = b0 * 0.2D;
 			double d6 = d5 * 1.41D;
 			double d7 = 0.0D + Math.cos(d4 + 2.356194490192345D) * d6;
@@ -166,15 +175,10 @@ public class RenderEuropaGuardian extends RenderLiving
 			worldrenderer.addVertexWithUV(d13, d3, d14, 1.0D, d27);
 			worldrenderer.addVertexWithUV(d11, d3, d12, 0.5D, d27);
 			tessellator.draw();
+			GlStateManager.enableLighting();
+			GlStateManager.enableCull();
+			GlStateManager.enableBlend();
 			GlStateManager.popMatrix();
-		}
-	}
-
-	protected void func_177112_a(EntityEuropaGuardian entity)
-	{
-		if (entity.isElder())
-		{
-			GlStateManager.scale(2.5F, 2.5F, 2.5F);
 		}
 	}
 
@@ -191,9 +195,12 @@ public class RenderEuropaGuardian extends RenderLiving
 	}
 
 	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float p_77041_2_)
+	protected void preRenderCallback(EntityLivingBase entity, float par2)
 	{
-		this.func_177112_a((EntityEuropaGuardian)entity);
+		if (((EntityEuropaGuardian)entity).isElder())
+		{
+			GlStateManager.scale(2.5F, 2.5F, 2.5F);
+		}
 	}
 
 	@Override

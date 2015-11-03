@@ -31,6 +31,7 @@ public class BlockFluidTea extends BlockFluidBaseMP
 		super(FronosBlocks.tea_fluid);
 		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
 		this.setQuantaPerBlock(4);
+		this.setLightOpacity(3);
 		this.setUnlocalizedName(name);
 	}
 

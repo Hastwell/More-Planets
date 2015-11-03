@@ -35,10 +35,7 @@ public class ItemFruitsJuice extends ItemFoodMP
 	@Override
 	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
 	{
-		--itemStack.stackSize;
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
-		player.getFoodStats().addStats(this, itemStack);
+		super.onItemUseFinish(itemStack, world, player);
 
 		if (!player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle)))
 		{

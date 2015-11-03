@@ -8,10 +8,10 @@
 package stevekung.mods.moreplanets.core.init;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityEledosEgg;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusDungeonSpawner;
-import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusTreasureChest;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaDungeonSpawner;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
@@ -20,6 +20,7 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAn
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosDungeonSpawner;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTreasureChest;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityMineralWaterGenerator;
+import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityFrozenWaterGeyser;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBDungeonSpawner;
@@ -27,12 +28,12 @@ import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKaptey
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityUraniumWaste;
 import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryAncientChest;
 import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryDungeonSpawner;
-import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryTreasureChest;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruAncientChest;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruDungeonSpawner;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruTreasureChest;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityPowerCrystalGenerator;
 import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoAncientChest;
+import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoDungeonSpawner;
 import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoTreasureChest;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusAncientChest;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusDungeonSpawner;
@@ -43,17 +44,13 @@ import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusB
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBDungeonSpawner;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBTreasureChest;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
-import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
 
 public class MPTileEntities
 {
 	public static void init()
 	{
-		MPTileEntities.registerTileEntities();
-	}
+		MPLog.debug("Register Tile Entities");
 
-	private static void registerTileEntities()
-	{
 		// Diona
 		GameRegistry.registerTileEntity(TileEntityDionaTreasureChest.class, "DionaTreasureChest");
 		GameRegistry.registerTileEntity(TileEntityDionaDungeonSpawner.class, "DionaDungeonSpawner");
@@ -73,7 +70,6 @@ public class MPTileEntities
 		GameRegistry.registerTileEntity(TileEntityNibiruDungeonSpawner.class, "NibiruDungeonSpawner");
 
 		// Koentus
-		GameRegistry.registerTileEntity(TileEntityKoentusTreasureChest.class, "KoentusTreasureChest");
 		GameRegistry.registerTileEntity(TileEntityEledosEgg.class, "EledosEgg");
 		GameRegistry.registerTileEntity(TileEntityKoentusAncientChest.class, "KoentusAncientChest");
 		GameRegistry.registerTileEntity(TileEntityKoentusDungeonSpawner.class, "KoentusDungeonSpawner");
@@ -91,6 +87,7 @@ public class MPTileEntities
 		GameRegistry.registerTileEntity(TileEntityKapteynBDungeonSpawner.class, "KapteynBDungeonSpawner");
 		GameRegistry.registerTileEntity(TileEntityUraniumWaste.class, "UraniumWaste");
 		GameRegistry.registerTileEntity(TileEntityIcyPoisonCrystal.class, "IcyPoisonCrystal");
+		GameRegistry.registerTileEntity(TileEntityFrozenWaterGeyser.class, "FrozenWaterGeyser");
 
 		// Sirius B
 		GameRegistry.registerTileEntity(TileEntitySiriusBTreasureChest.class, "SiriusBTreasureChest");
@@ -100,14 +97,13 @@ public class MPTileEntities
 		// Mercury
 		GameRegistry.registerTileEntity(TileEntityMercuryDungeonSpawner.class, "MercuryDungeonSpawner");
 		GameRegistry.registerTileEntity(TileEntityMercuryAncientChest.class, "MercuryAncientChest");
-		GameRegistry.registerTileEntity(TileEntityMercuryTreasureChest.class, "MercuryTreasureChest");
 
 		// Venus
 		GameRegistry.registerTileEntity(TileEntityVenusAncientChest.class, "VenusAncientChest");
-		GameRegistry.registerTileEntity(TileEntityVenusTreasureChest.class, "VenusTreasureChest");
 
 		// Pluto
 		GameRegistry.registerTileEntity(TileEntityPlutoAncientChest.class, "PlutoAncientChest");
 		GameRegistry.registerTileEntity(TileEntityPlutoTreasureChest.class, "PlutoTreasureChest");
+		GameRegistry.registerTileEntity(TileEntityPlutoDungeonSpawner.class, "PlutoDungeonSpawner");
 	}
 }

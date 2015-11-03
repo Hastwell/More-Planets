@@ -19,7 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
-import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
+import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBDungeonSpawner;
 
 public class RoomBossKapteynB extends DungeonRoom
@@ -100,7 +101,7 @@ public class RoomBossKapteynB extends DungeonRoom
 			return;
 		}
 
-		this.worldObj.setBlockState(this.spawnerCoords, KapteynBBlocks.kapteyn_b_block.getDefaultState(), 3);
+		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.kapteyn_b), 3);
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 
 		if (tile == null || !(tile instanceof TileEntityKapteynBDungeonSpawner))

@@ -10,7 +10,7 @@ package stevekung.mods.moreplanets.planets.kapteynb.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class KapteynBToolsItems
 {
@@ -37,13 +37,7 @@ public class KapteynBToolsItems
 
 	public static void init()
 	{
-		KapteynBToolsItems.initItems();
-		KapteynBToolsItems.registerItems();
-		KapteynBToolsItems.registerHarvestLevels();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		KapteynBToolsItems.frozen_iron_pickaxe = new ItemFrozenIronPickaxe("frozen_iron_pickaxe", KapteynBToolsItems.frozen_iron);
 		KapteynBToolsItems.frozen_iron_axe = new ItemFrozenIronAxe("frozen_iron_axe", KapteynBToolsItems.frozen_iron);
 		KapteynBToolsItems.frozen_iron_hoe = new ItemFrozenIronHoe("frozen_iron_hoe", KapteynBToolsItems.frozen_iron);
@@ -59,10 +53,25 @@ public class KapteynBToolsItems
 		KapteynBToolsItems.ice_crystal_hoe = new ItemIceCrystalHoe("ice_crystal_hoe", KapteynBToolsItems.ice_crystal);
 		KapteynBToolsItems.ice_crystal_shovel = new ItemIceCrystalShovel("ice_crystal_shovel", KapteynBToolsItems.ice_crystal);
 		KapteynBToolsItems.ice_crystal_sword = new ItemIceCrystalSword("ice_crystal_sword", KapteynBToolsItems.ice_crystal);
-	}
 
-	private static void registerHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_sword);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_shovel);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_pickaxe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_axe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_hoe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.uranium_sword);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.uranium_shovel);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.uranium_pickaxe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.uranium_axe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.uranium_hoe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_sword);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_shovel);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_pickaxe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_axe);
+		CommonRegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_hoe);
+
+		// Set harvest level
 		KapteynBToolsItems.frozen_iron_pickaxe.setHarvestLevel("pickaxe", 4);
 		KapteynBToolsItems.frozen_iron_axe.setHarvestLevel("axe", 4);
 		KapteynBToolsItems.frozen_iron_shovel.setHarvestLevel("shovel", 4);
@@ -72,24 +81,5 @@ public class KapteynBToolsItems
 		KapteynBToolsItems.ice_crystal_pickaxe.setHarvestLevel("pickaxe", 4);
 		KapteynBToolsItems.ice_crystal_axe.setHarvestLevel("axe", 4);
 		KapteynBToolsItems.ice_crystal_shovel.setHarvestLevel("shovel", 4);
-	}
-
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_sword);
-		RegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_shovel);
-		RegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_pickaxe);
-		RegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_axe);
-		RegisterHelper.registerItem(KapteynBToolsItems.frozen_iron_hoe);
-		RegisterHelper.registerItem(KapteynBToolsItems.uranium_sword);
-		RegisterHelper.registerItem(KapteynBToolsItems.uranium_shovel);
-		RegisterHelper.registerItem(KapteynBToolsItems.uranium_pickaxe);
-		RegisterHelper.registerItem(KapteynBToolsItems.uranium_axe);
-		RegisterHelper.registerItem(KapteynBToolsItems.uranium_hoe);
-		RegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_sword);
-		RegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_shovel);
-		RegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_pickaxe);
-		RegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_axe);
-		RegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_hoe);
 	}
 }

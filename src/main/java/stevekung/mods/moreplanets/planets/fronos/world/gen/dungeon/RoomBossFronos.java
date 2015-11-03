@@ -19,6 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
+import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosDungeonSpawner;
 
@@ -104,7 +106,7 @@ public class RoomBossFronos extends DungeonRoom
 			return;
 		}
 
-		this.worldObj.setBlockState(this.spawnerCoords, FronosBlocks.fronos_block.getDefaultState(), 3);//TODO Boss Dungeon Spawner
+		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.fronos), 3);
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 
 		if (tile == null || !(tile instanceof TileEntityFronosDungeonSpawner))

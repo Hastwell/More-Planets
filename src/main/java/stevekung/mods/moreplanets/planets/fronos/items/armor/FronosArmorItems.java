@@ -10,7 +10,7 @@ package stevekung.mods.moreplanets.planets.fronos.items.armor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class FronosArmorItems
 {
@@ -31,12 +31,7 @@ public class FronosArmorItems
 
 	public static void init()
 	{
-		FronosArmorItems.initItems();
-		FronosArmorItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		FronosArmorItems.black_diamond_helmet = new ItemArmorBlackDiamond("black_diamond_helmet", FronosArmorItems.black_diamond, 7, 0);
 		FronosArmorItems.black_diamond_chestplate = new ItemArmorBlackDiamond("black_diamond_chestplate", FronosArmorItems.black_diamond, 7, 1);
 		FronosArmorItems.black_diamond_leggings = new ItemArmorBlackDiamond("black_diamond_leggings", FronosArmorItems.black_diamond, 7, 2);
@@ -47,19 +42,17 @@ public class FronosArmorItems
 		FronosArmorItems.iridium_boots = new ItemArmorIridium("iridium_boots", FronosArmorItems.iridium, 7, 3);
 		FronosArmorItems.breathable_black_diamond_helmet = new ItemBreathableBlackDiamond("breathable_black_diamond_helmet", FronosArmorItems.black_diamond, 7, 0);
 		FronosArmorItems.breathable_iridium_helmet = new ItemBreathableIridium("breathable_iridium_helmet", FronosArmorItems.iridium, 7, 0);
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(FronosArmorItems.black_diamond_helmet);
-		RegisterHelper.registerItem(FronosArmorItems.black_diamond_chestplate);
-		RegisterHelper.registerItem(FronosArmorItems.black_diamond_leggings);
-		RegisterHelper.registerItem(FronosArmorItems.black_diamond_boots);
-		RegisterHelper.registerItem(FronosArmorItems.iridium_helmet);
-		RegisterHelper.registerItem(FronosArmorItems.iridium_chestplate);
-		RegisterHelper.registerItem(FronosArmorItems.iridium_leggings);
-		RegisterHelper.registerItem(FronosArmorItems.iridium_boots);
-		RegisterHelper.registerItem(FronosArmorItems.breathable_black_diamond_helmet);
-		RegisterHelper.registerItem(FronosArmorItems.breathable_iridium_helmet);
+		// Register
+		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_helmet);
+		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_chestplate);
+		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_leggings);
+		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_boots);
+		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_helmet);
+		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_chestplate);
+		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_leggings);
+		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_boots);
+		CommonRegisterHelper.registerItem(FronosArmorItems.breathable_black_diamond_helmet);
+		CommonRegisterHelper.registerItem(FronosArmorItems.breathable_iridium_helmet);
 	}
 }

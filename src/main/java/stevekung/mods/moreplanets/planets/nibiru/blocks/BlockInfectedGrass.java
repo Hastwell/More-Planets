@@ -11,7 +11,9 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
@@ -21,6 +23,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockGrassMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
@@ -91,5 +94,12 @@ public class BlockInfectedGrass extends BlockGrassMP
 	public Block getFarmlandBlock()
 	{
 		return NibiruBlocks.infected_farmland;
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+	{
+		super.harvestBlock(world, player, pos, state, tile);
+		MorePlanetsEvents.getActivateInfectedGas(player);
 	}
 }

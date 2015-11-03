@@ -20,7 +20,6 @@ import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,11 +30,12 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
+import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntityBreathable, IEntityLivingPlanet
 {
@@ -195,11 +195,6 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
 		return this.rand.nextInt(20) + 10;
 	}
 
-	protected EntitySiriusMagmaCube createInstance()
-	{
-		return new EntitySiriusMagmaCube(this.worldObj);
-	}
-
 	@Override
 	public void func_145781_i(int par1)
 	{
@@ -231,7 +226,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
 			{
 				float f = (k % 2 - 0.5F) * i / 4.0F;
 				float f1 = (k / 2 - 0.5F) * i / 4.0F;
-				EntitySiriusMagmaCube entityslime = this.createInstance();
+				EntitySiriusMagmaCube entityslime = new EntitySiriusMagmaCube(this.worldObj);
 
 				if (this.hasCustomName())
 				{
@@ -307,7 +302,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
 	@Override
 	protected Item getDropItem()
 	{
-		return Items.magma_cream;
+		return SiriusBItems.sirius_magma_cream;
 	}
 
 	@Override
@@ -560,8 +555,8 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return ConfigManagerMP.idDimensionSiriusB;
+		return EnumDimensionType.SIRIUS_B;
 	}
 }

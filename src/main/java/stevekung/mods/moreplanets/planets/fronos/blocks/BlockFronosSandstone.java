@@ -8,7 +8,6 @@
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -33,12 +32,6 @@ public class BlockFronosSandstone extends BlockBaseMP
 		this.setHardness(0.8F);
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_sandstone));
 		this.setUnlocalizedName(name);
-	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(this);
 	}
 
 	@Override

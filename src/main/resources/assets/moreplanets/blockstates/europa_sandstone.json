@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=europa_sandstone": { "model": "moreplanets:europa_sandstone" },
+		"variant=chiseled_europa_sandstone": { "model": "moreplanets:chiseled_europa_sandstone" },
+		"variant=smooth_europa_sandstone": { "model": "moreplanets:smooth_europa_sandstone" }
+    }
+}

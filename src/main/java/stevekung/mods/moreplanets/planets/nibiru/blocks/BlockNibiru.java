@@ -20,9 +20,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IStringSerializable;
@@ -32,6 +34,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class BlockNibiru extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
@@ -191,6 +194,13 @@ public class BlockNibiru extends BlockPlanetTileMP implements /*IDetectableResou
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+	{
+		super.harvestBlock(world, player, pos, state, tile);
+		MorePlanetsEvents.getActivateInfectedGas(player);
 	}
 
 	@Override

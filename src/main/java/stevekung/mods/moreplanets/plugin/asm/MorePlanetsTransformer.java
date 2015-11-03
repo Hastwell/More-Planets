@@ -13,7 +13,6 @@ import java.util.Iterator;
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraft.launchwrapper.Launch;
 
-import org.apache.logging.log4j.LogManager;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
@@ -29,11 +28,11 @@ public class MorePlanetsTransformer implements IClassTransformer
 {
 	private boolean foundOnce = false;
 	private static boolean obfuscated;
-	private static String iBlockStateName;
-	private static String blockModelShapesName;
-	private static String getTextureName;
-	private static String textureAtlasSpriteName;
-	private static String textureHelperName;
+	private static String IBLOCKSTATE_NAME;
+	private static String BLOCK_MODEL_SHAPES_NAME;
+	private static String METHOD_GET_TEXTURE_NAME;
+	private static String TEXTURE_ATLAS_SPRITE_NAME;
+	private static String BLOCK_TEXTURE_HELPER_NAME;
 
 	static
 	{
@@ -49,28 +48,28 @@ public class MorePlanetsTransformer implements IClassTransformer
 		}
 
 		MorePlanetsTransformer.obfuscated = obfuscated;
-		iBlockStateName = obfuscated ? "bec" : "net/minecraft/block/state/IBlockState";
-		blockModelShapesName = obfuscated ? "clc" : "net/minecraft/client/renderer/BlockModelShapes";
-		getTextureName = obfuscated ? "a" : "getTexture";
-		textureAtlasSpriteName = obfuscated ? "cue" : "net/minecraft/client/renderer/texture/TextureAtlasSprite";
-		textureHelperName = "stevekung/mods/moreplanets/plugin/asm/BlockTextureHelper";
+		IBLOCKSTATE_NAME = obfuscated ? "bec" : "net/minecraft/block/state/IBlockState";
+		BLOCK_MODEL_SHAPES_NAME = obfuscated ? "clc" : "net/minecraft/client/renderer/BlockModelShapes";
+		METHOD_GET_TEXTURE_NAME = obfuscated ? "a" : "getTexture";
+		TEXTURE_ATLAS_SPRITE_NAME = obfuscated ? "cue" : "net/minecraft/client/renderer/texture/TextureAtlasSprite";
+		BLOCK_TEXTURE_HELPER_NAME = "stevekung/mods/moreplanets/plugin/asm/BlockTextureHelper";
 	}
 
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] clazz)
 	{
-		if (name.equals(blockModelShapesName.replace("/", ".")))
+		ClassNode classNode = this.getClassNode(clazz);
+
+		if (name.equals(BLOCK_MODEL_SHAPES_NAME.replace("/", ".")))
 		{
-			LogManager.getLogger().info("Patching features into game...");
-			ClassNode classNode = this.getClassNode(clazz);
-			MethodNode renderMethodNode = this.getMethodNode(classNode, getTextureName, "(L" + iBlockStateName + ";)L" + textureAtlasSpriteName + ";");
+			MethodNode renderMethodNode = this.getMethodNode(classNode, METHOD_GET_TEXTURE_NAME, "(L" + IBLOCKSTATE_NAME + ";)L" + TEXTURE_ATLAS_SPRITE_NAME + ";");
 			InsnList instructions = new InsnList();
 			instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
-			instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, textureHelperName, "getTexture", "(L" + iBlockStateName + ";)L" + textureAtlasSpriteName + ";", false));
+			instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, BLOCK_TEXTURE_HELPER_NAME, "getTexture", "(L" + IBLOCKSTATE_NAME + ";)L" + TEXTURE_ATLAS_SPRITE_NAME + ";", false));
 			instructions.add(new InsnNode(Opcodes.ARETURN));
 			renderMethodNode.instructions.insertBefore(this.getInsertionPoint(renderMethodNode, "getTexture()"), instructions);
-			LogManager.getLogger().info(MorePlanetsTransformer.obfuscated ? "Successfully patched clc" : "Successfully patched " + blockModelShapesName);
-			return this.getBytes(classNode);
+			Logger.info(MorePlanetsTransformer.obfuscated ? "Successfully patched into clc" : "Successfully patched into " + BLOCK_MODEL_SHAPES_NAME);
+			return this.getBytes(classNode, 0);
 		}
 		return clazz;
 	}
@@ -108,9 +107,9 @@ public class MorePlanetsTransformer implements IClassTransformer
 		return node;
 	}
 
-	private byte[] getBytes(ClassNode classNode)
+	private byte[] getBytes(ClassNode classNode, int flag)
 	{
-		ClassWriter writer = new ClassWriter(0);
+		ClassWriter writer = new ClassWriter(flag);
 		classNode.accept(writer);
 		return writer.toByteArray();
 	}

@@ -19,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -29,6 +30,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 
 public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearable
@@ -195,5 +197,12 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(this, 1, 0));
 		return ret;
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+	{
+		super.harvestBlock(world, player, pos, state, tile);
+		MorePlanetsEvents.getActivateInfectedGas(player);
 	}
 }

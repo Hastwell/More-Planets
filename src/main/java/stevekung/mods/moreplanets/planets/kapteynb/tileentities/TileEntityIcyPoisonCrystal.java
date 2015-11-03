@@ -7,19 +7,40 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.tileentities;
 
+import micdoodle8.mods.galacticraft.core.util.OxygenUtil;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityIcyPoisonCrystal extends TileEntity
+public class TileEntityIcyPoisonCrystal extends TileEntity implements IUpdatePlayerListBox
 {
 	public int facing;
 
 	public TileEntityIcyPoisonCrystal()
 	{
 		this.facing = 1;
+	}
+
+	@Override
+	public void update()
+	{
+		if (!this.worldObj.isRemote)
+		{
+			if (OxygenUtil.inOxygenBubble(this.worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ()))
+			{
+				this.worldObj.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.0F, true);
+			}
+			if (this.worldObj.provider.getDimensionId() == 0)
+			{
+				if (this.worldObj.rand.nextInt(100) == 0)
+				{
+					this.worldObj.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.0F, true);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -47,7 +68,6 @@ public class TileEntityIcyPoisonCrystal extends TileEntity
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		super.onDataPacket(net, pkt);
 		this.readFromNBT(pkt.getNbtCompound());
 	}
 

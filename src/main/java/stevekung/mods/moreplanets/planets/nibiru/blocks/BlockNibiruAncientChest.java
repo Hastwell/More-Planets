@@ -21,6 +21,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.ILockableContainer;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockAncientChestMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruAncientChest;
 
@@ -137,7 +138,6 @@ public class BlockNibiruAncientChest extends BlockAncientChestMP
 				world.spawnEntityInWorld(infectedWorm);
 			}
 		}
-		super.onBlockDestroyedByPlayer(world, pos, state);
 	}
 
 	@Override
@@ -150,5 +150,12 @@ public class BlockNibiruAncientChest extends BlockAncientChestMP
 	public int getComparatorInputOverride(World world, BlockPos pos)
 	{
 		return Container.calcRedstoneFromInventory(this.getLockableContainer(world, pos));
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+	{
+		super.harvestBlock(world, player, pos, state, tile);
+		MorePlanetsEvents.getActivateInfectedGas(player);
 	}
 }

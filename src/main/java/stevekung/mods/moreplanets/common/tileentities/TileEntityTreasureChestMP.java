@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import micdoodle8.mods.galacticraft.api.item.IKeyable;
+import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.network.PacketSimple;
 import micdoodle8.mods.galacticraft.core.network.PacketSimple.EnumSimplePacket;
@@ -33,11 +34,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IInteractionObject;
-import net.minecraft.world.ILockableContainer;
-import net.minecraft.world.LockCode;
 import net.minecraftforge.fml.relauncher.Side;
 
-public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUpdatePlayerListBox, IInventory, IKeyable, IInteractionObject, ILockableContainer
+public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUpdatePlayerListBox, IInventory, IKeyable, IInteractionObject
 {
 	private ItemStack[] chestContents = new ItemStack[27];
 	public float lidAngle;
@@ -45,14 +44,12 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 	public int numPlayersUsing;
 	private int ticksSinceSync;
 	public int tier;
-	private LockCode code;
 
 	@NetworkedField(targetSide = Side.CLIENT)
 	public boolean locked = true;
 
 	public TileEntityTreasureChestMP(int tier)
 	{
-		this.code = LockCode.EMPTY_CODE;
 		this.tier = this.getTreasureChestTier();
 	}
 
@@ -147,7 +144,6 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 		this.tier = nbt.getInteger("tier");
 		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
 		this.chestContents = new ItemStack[this.getSizeInventory()];
-		this.code = LockCode.fromNBT(nbt);
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
@@ -178,10 +174,6 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 				this.chestContents[i].writeToNBT(nbttagcompound1);
 				nbttaglist.appendTag(nbttagcompound1);
 			}
-		}
-		if (this.code != null)
-		{
-			this.code.toNBT(nbt);
 		}
 		nbt.setTag("Items", nbttaglist);
 	}
@@ -231,14 +223,14 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 		}
 
 		this.prevLidAngle = this.lidAngle;
-		f = 0.1F;
+		f = this.worldObj.provider instanceof IGalacticraftWorldProvider ? 0.05F : 0.1F;
 		double d2;
 
 		if (this.numPlayersUsing > 0 && this.lidAngle == 0.0F)
 		{
 			double d1 = i + 0.5D;
 			d2 = k + 0.5D;
-			this.worldObj.playSoundEffect(d1, j + 0.5D, d2, "random.chestopen", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+			this.worldObj.playSoundEffect(d1, j + 0.5D, d2, "random.chestopen", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 		}
 
 		if (this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F)
@@ -265,7 +257,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 			{
 				d2 = i + 0.5D;
 				double d0 = k + 0.5D;
-				this.worldObj.playSoundEffect(d2, j + 0.5D, d0, "random.chestclosed", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+				this.worldObj.playSoundEffect(d2, j + 0.5D, d0, "random.chestclosed", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 			}
 			if (this.lidAngle < 0.0F)
 			{
@@ -482,24 +474,6 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 	public boolean isNetworkedTile()
 	{
 		return true;
-	}
-
-	@Override
-	public boolean isLocked()
-	{
-		return this.code != null && !this.code.isEmpty();
-	}
-
-	@Override
-	public LockCode getLockCode()
-	{
-		return this.code;
-	}
-
-	@Override
-	public void setLockCode(LockCode code)
-	{
-		this.code = code;
 	}
 
 	protected abstract int getTreasureChestTier();

@@ -7,7 +7,9 @@
 
 package stevekung.mods.moreplanets.common.entities;
 
+import stevekung.mods.moreplanets.common.util.EnumDimensionType;
+
 public interface IEntityLivingPlanet
 {
-	int canLivingInDimension();
+	EnumDimensionType canLivingInDimension();
 }

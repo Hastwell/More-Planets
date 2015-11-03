@@ -46,6 +46,6 @@ public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
 	@Override
 	public WorldGenAbstractTree genBigTreeChance(Random rand)
 	{
-		return new WorldGenTreeMP(6, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling);
+		return new WorldGenTreeMP(6, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling, null);
 	}
 }

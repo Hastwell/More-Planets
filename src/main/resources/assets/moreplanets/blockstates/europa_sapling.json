@@ -1,0 +1,6 @@
+{
+	"variants": {
+        "up=false": { "model": "moreplanets:europa_sapling" },
+        "up=true": { "model": "moreplanets:europa_sapling_flip" }
+    }
+}

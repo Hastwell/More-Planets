@@ -19,6 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
+import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusDungeonSpawner;
 
@@ -104,7 +106,7 @@ public class RoomBossPolongnius extends DungeonRoom
 			return;
 		}
 
-		this.worldObj.setBlockState(this.spawnerCoords, PolongniusBlocks.polongnius_block.getDefaultState(), 3);//TODO Boss Dungeon Spawner
+		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.polongnius), 3);
 
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 

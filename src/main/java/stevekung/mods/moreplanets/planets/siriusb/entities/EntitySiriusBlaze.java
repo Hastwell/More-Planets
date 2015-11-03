@@ -31,10 +31,10 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySiriusSmallFireball;
+import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySmallSiriusFireball;
 
 public class EntitySiriusBlaze extends EntityMob implements IEntityBreathable, IEntityLivingPlanet
 {
@@ -219,9 +219,9 @@ public class EntitySiriusBlaze extends EntityMob implements IEntityBreathable, I
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return ConfigManagerMP.idDimensionSiriusB;
+		return EnumDimensionType.SIRIUS_B;
 	}
 
 	class AIFireballAttack extends EntityAIBase
@@ -303,8 +303,7 @@ public class EntitySiriusBlaze extends EntityMob implements IEntityBreathable, I
 
 						for (int i = 0; i < 1; ++i)
 						{
-							EntitySiriusSmallFireball entitysmallfireball = new EntitySiriusSmallFireball(this.field_179469_a.worldObj, this.field_179469_a, d1 + this.field_179469_a.getRNG().nextGaussian() * f, d2, d3 + this.field_179469_a.getRNG().nextGaussian() * f);
-							entitysmallfireball.setCanExplode(false);
+							EntitySmallSiriusFireball entitysmallfireball = new EntitySmallSiriusFireball(this.field_179469_a.worldObj, this.field_179469_a, d1 + this.field_179469_a.getRNG().nextGaussian() * f, d2, d3 + this.field_179469_a.getRNG().nextGaussian() * f);
 							entitysmallfireball.posY = this.field_179469_a.posY + this.field_179469_a.height / 2.0F + 0.5D;
 							this.field_179469_a.worldObj.spawnEntityInWorld(entitysmallfireball);
 						}

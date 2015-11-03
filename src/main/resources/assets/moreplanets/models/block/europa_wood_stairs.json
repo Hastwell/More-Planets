@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "moreplanets:blocks/europa_planks",
+        "top": "moreplanets:blocks/europa_planks",
+        "side": "moreplanets:blocks/europa_planks"
+    }
+}

@@ -17,7 +17,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 
 public class ItemDiona extends ItemBaseMP
@@ -30,7 +29,7 @@ public class ItemDiona extends ItemBaseMP
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
 	{
 		int meta = itemStack.getItemDamage();
 
@@ -40,18 +39,6 @@ public class ItemDiona extends ItemBaseMP
 			{
 				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.tier5.name"));
 			}
-			else if (meta == 8)
-			{
-				list.add(EnumChatFormatting.DARK_RED + StatCollector.translateToLocal("desc.red.canvas.name"));
-				list.add(EnumChatFormatting.WHITE + StatCollector.translateToLocal("desc.white.canvas.name"));
-				list.add(EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("desc.blue.canvas.name"));
-			}
-			else if (meta == 9)
-			{
-				list.add(EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("desc.blue.canvas.name"));
-				list.add(EnumChatFormatting.WHITE + StatCollector.translateToLocal("desc.white.canvas.name"));
-				list.add(EnumChatFormatting.DARK_RED + StatCollector.translateToLocal("desc.red.canvas.name"));
-			}
 		}
 	}
 
@@ -59,28 +46,15 @@ public class ItemDiona extends ItemBaseMP
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
 	{
-		if (ConfigManagerMP.enableThaiFlagAndCanvas)
+		for (int i = 0; i < this.getItemVariantsName().length; i++)
 		{
-			for (int i = 0; i < this.getItemVariantsName().length; i++)
-			{
-				list.add(new ItemStack(this, 1, i));
-			}
-		}
-		else
-		{
-			for (int i = 0; i < this.getItemVariantsName().length; i++)
-			{
-				if (i != 5 && i != 6 && i != 7 && i != 8 && i != 9)
-				{
-					list.add(new ItemStack(this, 1, i));
-				}
-			}
+			list.add(new ItemStack(this, 1, i));
 		}
 	}
 
 	@Override
 	protected String[] getItemVariantsName()
 	{
-		return new String[] { "quontonium_ingot", "fronisium_ingot", "compressed_quontonium", "compressed_fronisium", "tier_5_heavy_duty_plate", "red_canvas", "white_canvas", "blue_canvas", "thai_canvas_bottom", "thai_canvas_top", "quontonium_stick", "fronisium_stick", "green_redstone_torch" };
+		return new String[] { "quontonium_ingot", "fronisium_ingot", "compressed_quontonium", "compressed_fronisium", "tier_5_heavy_duty_plate", "quontonium_stick", "fronisium_stick", "green_redstone_torch" };
 	}
 }

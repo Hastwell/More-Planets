@@ -94,7 +94,7 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBasePolongnius.polongnius };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(PolongniusBlocks.polongnius_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(PolongniusBlocks.polongnius_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 600;
 
@@ -234,7 +234,7 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.createCraters(x, z, primer);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
 		this.dungeonGenerator2.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
 		Chunk var4 = new Chunk(this.worldObj, primer, x, z);

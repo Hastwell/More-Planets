@@ -19,7 +19,7 @@ import stevekung.mods.moreplanets.planets.fronos.inventory.container.ContainerSc
 
 public class GuiSchematicTier7Rocket extends GuiContainer implements ISchematicResultPage
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/tier_7_rocket_schematic.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/schematics/tier_7_rocket.png");
 	private int pageIndex;
 
 	public GuiSchematicTier7Rocket(InventoryPlayer par1InventoryPlayer, int x, int y, int z)

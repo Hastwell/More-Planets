@@ -95,7 +95,7 @@ public class RoomTreasurePluto extends DungeonRoom
 		{
 		case 0:
 		default:
-			return new ItemStack(PlutoItems.space_potato, rand.nextInt(8) + 1, 0);
+			return new ItemStack(PlutoItems.space_potato, 1 + rand.nextInt(8), 0);
 		}
 	}
 

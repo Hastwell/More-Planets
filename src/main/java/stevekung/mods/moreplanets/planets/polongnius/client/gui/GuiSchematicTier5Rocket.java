@@ -20,7 +20,7 @@ import stevekung.mods.moreplanets.planets.polongnius.inventory.container.Contain
 
 public class GuiSchematicTier5Rocket extends GuiContainer implements ISchematicResultPage
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/tier_5_rocket_schematic.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/schematics/tier_5_rocket.png");
 	private int pageIndex;
 
 	public GuiSchematicTier5Rocket(InventoryPlayer par1InventoryPlayer, int x, int y, int z)

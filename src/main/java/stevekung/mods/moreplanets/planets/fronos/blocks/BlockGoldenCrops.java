@@ -12,10 +12,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.blocks.IPlantMP;
+import stevekung.mods.moreplanets.common.blocks.IPlantableMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockGoldenCrops extends BlockCrops implements IPlantMP
+public class BlockGoldenCrops extends BlockCrops implements IPlantableMP
 {
 	public BlockGoldenCrops(String name)
 	{

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "wet=false": { "model": "moreplanets:europa_sponge" },
+		"wet=true": { "model": "moreplanets:europa_sponge_wet" }
+    }
+}

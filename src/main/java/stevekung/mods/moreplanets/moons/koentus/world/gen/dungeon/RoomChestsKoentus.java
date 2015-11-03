@@ -14,12 +14,14 @@ import micdoodle8.mods.galacticraft.core.world.gen.dungeon.DungeonBoundingBox;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.DungeonRoom;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.common.ChestGenHooks;
+import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 
 public class RoomChestsKoentus extends DungeonRoom
 {
@@ -66,7 +68,7 @@ public class RoomChestsKoentus extends DungeonRoom
 		int hx = (this.posX + this.posX + this.sizeX) / 2;
 		int hz = (this.posZ + this.posZ + this.sizeZ) / 2;
 
-		if (this.placeBlock(chunk, hx, this.posY, hz, cx, cz, Blocks.chest, 0))
+		if (this.placeBlock(chunk, hx, this.posY, hz, cx, cz, KoentusBlocks.koentus_ancient_chest, 0))
 		{
 			this.chests.add(new BlockPos(hx, this.posY, hz));
 		}
@@ -89,8 +91,8 @@ public class RoomChestsKoentus extends DungeonRoom
 	{
 		if (!this.chests.isEmpty())
 		{
-			this.worldObj.setBlockState(this.chests.get(0), Blocks.chest.getDefaultState(), 2);
-			TileEntityChest chest = (TileEntityChest) this.worldObj.getTileEntity(this.chests.get(0));
+			this.worldObj.setBlockState(this.chests.get(0), KoentusBlocks.koentus_ancient_chest.getDefaultState(), 2);
+			TileEntityKoentusAncientChest chest = (TileEntityKoentusAncientChest) this.worldObj.getTileEntity(this.chests.get(0));
 
 			if (chest != null)
 			{
@@ -100,6 +102,7 @@ public class RoomChestsKoentus extends DungeonRoom
 				}
 				ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
 				WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), chest, info.getCount(rand));
+				chest.setInventorySlotContents(rand.nextInt(chest.getSizeInventory()), new ItemStack(KoentusBlocks.eledos_egg, 1, 0));
 			}
 			this.chests.clear();
 		}

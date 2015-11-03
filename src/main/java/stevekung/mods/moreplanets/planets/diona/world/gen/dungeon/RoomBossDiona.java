@@ -19,6 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
+import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaDungeonSpawner;
 
@@ -65,7 +67,7 @@ public class RoomBossDiona extends DungeonRoom
 					}
 					else if (j == this.posY && (i <= this.posX + 1 || i >= this.posX + this.sizeX - 2 || k == this.posZ + 1 || k == this.posZ + this.sizeZ - 2) && this.rand.nextInt(6) == 0)
 					{
-						this.placeBlock(chunk, i, j, k, cx, cz, DionaBlocks.minion_creeper_egg, 0);
+						this.placeBlock(chunk, i, j, k, cx, cz, DionaBlocks.creeper_minion_egg, 0);
 					}
 					else
 					{
@@ -99,8 +101,7 @@ public class RoomBossDiona extends DungeonRoom
 			return;
 		}
 
-		this.worldObj.setBlockState(this.spawnerCoords, DionaBlocks.diona_block.getDefaultState(), 3);//TODO Boss Dungeon Spawner
-
+		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.diona), 3);
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 
 		if (tile == null || !(tile instanceof TileEntityDionaDungeonSpawner))

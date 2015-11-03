@@ -15,6 +15,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.core.perlin.NoiseModule;
 import micdoodle8.mods.galacticraft.core.perlin.generator.Gradient;
 import micdoodle8.mods.galacticraft.core.world.gen.EnumCraterSize;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
@@ -32,6 +33,7 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
@@ -64,10 +66,11 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 	private Gradient noiseGen5;
 	private Gradient noiseGen6;
 	private Gradient noiseGen7;
+	private NoiseModule noiseCraterGen;
 
 	private World worldObj;
 	public BiomeDecoratorNibiru biomedecoratorplanet = new BiomeDecoratorNibiru();
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(NibiruBlocks.nibiru_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(NibiruBlocks.nibiru_block, new int[] {0, 1, 2});
 	private MapGenCavernNibiru cavernGenerator = new MapGenCavernNibiru();
 	private MapGenNibiruRavine ravineGenerator = new MapGenNibiruRavine();
 	private MapGenDungeon dungeonGenerator = new MapGenDungeon(NibiruBlocks.nibiru_block, 12, 8, 24, 4);
@@ -116,6 +119,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		this.noiseGen5 = new Gradient(this.rand.nextLong(), 1, 0.25F);
 		this.noiseGen6 = new Gradient(this.rand.nextLong(), 1, 0.25F);
 		this.noiseGen7 = new Gradient(this.rand.nextLong(), 1, 0.25F);
+		this.noiseCraterGen = new Gradient(this.rand.nextLong(), 1, 0.25F);
 	}
 
 	public void generateTerrain(int chunkX, int chunkZ, ChunkPrimer chunk)
@@ -127,6 +131,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		this.noiseGen5.setFrequency(0.01F);
 		this.noiseGen6.setFrequency(0.001F);
 		this.noiseGen7.setFrequency(0.005F);
+		this.noiseCraterGen.setFrequency(0.02F);
 
 		for (int x = 0; x < ChunkProviderNibiru.CHUNK_SIZE_X; x++)
 		{
@@ -270,7 +275,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		this.createCraters(x, z, primer);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.cavernGenerator.generate(this, this.worldObj, x, z, primer);
 		this.ravineGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 30, z * 16, x, z, primer);
@@ -296,7 +301,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 				{
 					for (int z = 0; z < ChunkProviderNibiru.CHUNK_SIZE_Z; z++)
 					{
-						if (Math.abs(this.randFromPoint(cx * 16 + x, (cz * 16 + z) * 1000)) < this.noiseGen4.getNoise(x * ChunkProviderNibiru.CHUNK_SIZE_X + x, cz * ChunkProviderNibiru.CHUNK_SIZE_Z + z) / ChunkProviderNibiru.CRATER_PROB)
+						if (Math.abs(this.randFromPoint(cx * 16 + x, (cz * 16 + z) * 1000)) < this.noiseCraterGen.getNoise(x * ChunkProviderNibiru.CHUNK_SIZE_X + x, cz * ChunkProviderNibiru.CHUNK_SIZE_Z + z) / ChunkProviderNibiru.CRATER_PROB)
 						{
 							Random random = new Random(cx * 16 + x + (cz * 16 + z) * 5000);
 							EnumCraterSize cSize = EnumCraterSize.sizeArray[random.nextInt(EnumCraterSize.sizeArray.length)];
@@ -382,7 +387,6 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		this.dungeonGenerator.handleTileEntities(this.rand);
 		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
-
 		boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, chunkX, chunkZ, false, EventType.FIRE);
 
 		int x;
@@ -423,11 +427,11 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 			}
 		}
 
-		//MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
-		//boolean tree = TerrainGen.decorate(this.worldObj, this.rand, chunkX, chunkZ, DecorateBiomeEvent.Decorate.EventType.TREE);
-		//MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.worldObj, this.rand, chunkX, chunkZ));
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
+		boolean tree = TerrainGen.decorate(this.worldObj, this.rand, new BlockPos(chunkX * 16, 0, chunkZ * 16), DecorateBiomeEvent.Decorate.EventType.TREE);
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.worldObj, this.rand, new BlockPos(chunkX * 16, 0, chunkZ * 16)));
 
-		for (int i = 0; /*tree &&*/ i < 100; ++i)
+		for (int i = 0; tree && i < 100; ++i)
 		{
 			x = var4 + this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(256);
@@ -435,14 +439,14 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 			new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 0, true).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
 
 		}
-		for (int i = 0; /*tree &&*/ i < 100; ++i)
+		for (int i = 0; tree && i < 100; ++i)
 		{
 			x = var4 + this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(256);
 			z = var5 + this.rand.nextInt(16) + 8;
 			new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.orange_leaves, 1, true).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
 		}
-		//MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.worldObj, this.rand, chunkX, chunkZ));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.worldObj, this.rand, new BlockPos(chunkX * 16, 0, chunkZ * 16)));
 		BlockFalling.fallInstantly = false;
 	}
 
@@ -467,7 +471,6 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 		return "NibiruLevelSource";
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List func_177458_a(EnumCreatureType type, BlockPos pos)
 	{

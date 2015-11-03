@@ -41,8 +41,6 @@ import stevekung.mods.moreplanets.moons.koentus.blocks.BlockKoentus;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.dungeon.RoomBossKoentus;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.dungeon.RoomChestsKoentus;
-import stevekung.mods.moreplanets.moons.koentus.world.gen.dungeon.RoomTreasureKoentus;
-import stevekung.mods.moreplanets.moons.koentus.world.gen.village.MapGenKoentusVillage;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public class ChunkProviderKoentus extends ChunkProviderGenerate
@@ -59,8 +57,8 @@ public class ChunkProviderKoentus extends ChunkProviderGenerate
 
 	private World worldObj;
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseKoentus.koentus };
-	private BiomeDecoratorKoentus koentusBiomeDecorator = new BiomeDecoratorKoentus();
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(KoentusBlocks.koentus_block);
+	private BiomeDecoratorKoentus biomedecoratorplanet = new BiomeDecoratorKoentus();
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(KoentusBlocks.koentus_block, new int[] {0, 1, 2});
 	private MapGenKoentusVillage villageGenerator = new MapGenKoentusVillage();
 
 	private MapGenDungeon dungeonGenerator = new MapGenDungeon(KoentusBlocks.koentus_block, 11, 8, 24, 4);
@@ -77,7 +75,6 @@ public class ChunkProviderKoentus extends ChunkProviderGenerate
 		this.dungeonGenerator.otherRooms.add(new RoomChestsKoentus(null, 0, 0, 0, null));
 		this.dungeonGenerator.otherRooms.add(new RoomChestsKoentus(null, 0, 0, 0, null));
 		this.dungeonGenerator.bossRooms.add(new RoomBossKoentus(null, 0, 0, 0, null));
-		this.dungeonGenerator.treasureRooms.add(new RoomTreasureKoentus(null, 0, 0, 0, null));
 	}
 
 	private static int CRATER_PROB = 100;
@@ -216,7 +213,7 @@ public class ChunkProviderKoentus extends ChunkProviderGenerate
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.createCraters(x, z, primer);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
 		Chunk var4 = new Chunk(this.worldObj, primer, x, z);
 		var4.generateSkylightMap();
@@ -314,7 +311,7 @@ public class ChunkProviderKoentus extends ChunkProviderGenerate
 
 	public void decoratePlanet(World world, Random rand, int x, int z)
 	{
-		this.koentusBiomeDecorator.decorate(world, rand, x, z);
+		this.biomedecoratorplanet.decorate(world, rand, null, new BlockPos(x, 0, z));//TODO
 	}
 
 	@Override

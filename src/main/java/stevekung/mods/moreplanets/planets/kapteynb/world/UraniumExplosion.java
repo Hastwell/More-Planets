@@ -23,11 +23,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 
@@ -128,7 +130,7 @@ public class UraniumExplosion extends Explosion
 		int k1 = MathHelper.floor_double(this.explosionZ - f3 - 1.0D);
 		int i1 = MathHelper.floor_double(this.explosionZ + f3 + 1.0D);
 		List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.exploder, new AxisAlignedBB(j, j1, k1, k, l, i1));
-		net.minecraftforge.event.ForgeEventFactory.onExplosionDetonate(this.worldObj, this, list, f3);
+		ForgeEventFactory.onExplosionDetonate(this.worldObj, this, list, f3);
 		Vec3 vec3 = new Vec3(this.explosionX, this.explosionY, this.explosionZ);
 
 		for (int l1 = 0; l1 < list.size(); ++l1)
@@ -170,17 +172,17 @@ public class UraniumExplosion extends Explosion
 	}
 
 	@Override
-	public void doExplosionB(boolean p_77279_1_)
+	public void doExplosionB(boolean bool)
 	{
 		this.worldObj.playSoundEffect(this.explosionX, this.explosionY, this.explosionZ, "random.explode", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 
 		if (this.explosionSize >= 2.0F && this.isSmoking)
 		{
-			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D, new int[0]);
+			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.MC_EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ);
 		}
 		else
 		{
-			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D, new int[0]);
+			MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
 		}
 
 		Iterator iterator;
@@ -194,27 +196,6 @@ public class UraniumExplosion extends Explosion
 			{
 				blockpos = (BlockPos)iterator.next();
 				Block block = this.worldObj.getBlockState(blockpos).getBlock();
-
-				if (p_77279_1_)
-				{
-					double d0 = blockpos.getX() + this.worldObj.rand.nextFloat();
-					double d1 = blockpos.getY() + this.worldObj.rand.nextFloat();
-					double d2 = blockpos.getZ() + this.worldObj.rand.nextFloat();
-					double d3 = d0 - this.explosionX;
-					double d4 = d1 - this.explosionY;
-					double d5 = d2 - this.explosionZ;
-					double d6 = MathHelper.sqrt_double(d3 * d3 + d4 * d4 + d5 * d5);
-					d3 /= d6;
-					d4 /= d6;
-					d5 /= d6;
-					double d7 = 0.5D / (d6 / this.explosionSize + 0.1D);
-					d7 *= this.worldObj.rand.nextFloat() * this.worldObj.rand.nextFloat() + 0.3F;
-					d3 *= d7;
-					d4 *= d7;
-					d5 *= d7;
-					this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, (d0 + this.explosionX * 1.0D) / 2.0D, (d1 + this.explosionY * 1.0D) / 2.0D, (d2 + this.explosionZ * 1.0D) / 2.0D, d3, d4, d5, new int[0]);
-					this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, d3, d4, d5, new int[0]);
-				}
 
 				if (block.getMaterial() != Material.air)
 				{

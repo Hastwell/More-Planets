@@ -9,22 +9,31 @@ package stevekung.mods.moreplanets.planets.siriusb.blocks;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 public class BlockSiriusGlowstone extends BlockBaseMP
 {
+	public static PropertyBool IMMUNE = PropertyBool.create("immune_to_explosion");
+
 	public BlockSiriusGlowstone(String name)
 	{
 		super(Material.glass);
 		this.setHardness(0.3F);
 		this.setLightLevel(1.0F);
-		this.setStepSound(Block.soundTypeGlass);
+		this.setStepSound(soundTypeGlass);
+		this.setDefaultState(this.getDefaultState().withProperty(IMMUNE, false));
 		this.setUnlocalizedName(name);
 	}
 
@@ -44,5 +53,49 @@ public class BlockSiriusGlowstone extends BlockBaseMP
 	public MapColor getMapColor(IBlockState state)
 	{
 		return MapColor.diamondColor;
+	}
+
+	@Override
+	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
+	{
+		int meta = this.getMetaFromState(world.getBlockState(pos));
+
+		if (meta == 1)
+		{
+			return 100.0F;
+		}
+		return super.getExplosionResistance(world, pos, entity, explosion);
+	}
+
+	@Override
+	protected BlockState createBlockState()
+	{
+		return new BlockState(this, new IProperty[] { IMMUNE });
+	}
+
+	@Override
+	public IBlockState getStateFromMeta(int meta)
+	{
+		if (meta == 0)
+		{
+			return this.getDefaultState().withProperty(IMMUNE, false);
+		}
+		else
+		{
+			return this.getDefaultState().withProperty(IMMUNE, true);
+		}
+	}
+
+	@Override
+	public int getMetaFromState(IBlockState state)
+	{
+		if (state == this.getDefaultState().withProperty(IMMUNE, false))
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 }

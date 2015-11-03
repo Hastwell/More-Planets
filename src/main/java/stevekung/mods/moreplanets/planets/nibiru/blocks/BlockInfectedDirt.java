@@ -20,6 +20,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
@@ -30,6 +31,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 
 public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBlock
 {
@@ -115,6 +117,13 @@ public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBloc
 		{
 			return false;
 		}
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+	{
+		super.harvestBlock(world, player, pos, state, tile);
+		MorePlanetsEvents.getActivateInfectedGas(player);
 	}
 
 	@Override

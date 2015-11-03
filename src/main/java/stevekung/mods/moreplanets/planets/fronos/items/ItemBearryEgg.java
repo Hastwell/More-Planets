@@ -15,14 +15,12 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.MobSpawnerBaseLogic;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
@@ -59,7 +57,7 @@ public class ItemBearryEgg extends ItemMorePlanets
 				if (localTileEntity instanceof TileEntityMobSpawner)
 				{
 					MobSpawnerBaseLogic mobSpawner = ((TileEntityMobSpawner)localTileEntity).getSpawnerBaseLogic();
-					mobSpawner.setEntityName("Bearry");
+					mobSpawner.setEntityName("MorePlanets.Bearry");
 					localTileEntity.markDirty();
 					world.markBlockForUpdate(pos);
 
@@ -80,7 +78,7 @@ public class ItemBearryEgg extends ItemMorePlanets
 			d = 0.5D;
 		}
 
-		Entity localEntity = spawnCreature(world, pos.getX() + 0.5D, pos.getY() + d, pos.getZ() + 0.5D);
+		Entity localEntity = this.spawnCreature(world, pos.getX() + 0.7D, pos.getY() + d, pos.getZ() + 0.7D);
 
 		if (localEntity != null)
 		{
@@ -123,7 +121,7 @@ public class ItemBearryEgg extends ItemMorePlanets
 			}
 			if (world.getBlockState(pos).getBlock() instanceof BlockLiquid)
 			{
-				Entity localEntity = spawnCreature(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D);
+				Entity localEntity = this.spawnCreature(world, pos.getX() + 0.7D, pos.getY() + 0.5D, pos.getZ() + 0.7D);
 
 				if (localEntity != null)
 				{
@@ -135,29 +133,22 @@ public class ItemBearryEgg extends ItemMorePlanets
 					{
 						itemStack.stackSize -= 1;
 					}
-					player.triggerAchievement(net.minecraft.stats.StatList.objectUseStats[Item.getIdFromItem(this)]);
 				}
 			}
 		}
 		return itemStack;
 	}
 
-	private static Entity spawnCreature(World world, double x, double y, double z)
+	private Entity spawnCreature(World world, double x, double y, double z)
 	{
 		EntityBearry entity = new EntityBearry(world);
 
-		for (int i = 0; i < 1; i++)
+		if (entity instanceof EntityLivingBase)
 		{
-			if (entity instanceof EntityLivingBase)
-			{
-				entity.setLocationAndAngles(x, y, z, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
-				entity.rotationYawHead = entity.rotationYaw;
-				entity.renderYawOffset = entity.rotationYaw;
-				entity.func_180482_a(world.getDifficultyForLocation(new BlockPos(entity)), null);
-				entity.setGrowingAge(-24000);
-				world.spawnEntityInWorld(entity);
-				entity.playLivingSound();
-			}
+			entity.setLocationAndAngles(x, y, z, world.rand.nextFloat() * 360.0F, 0.0F);
+			entity.setGrowingAge(-24000);
+			world.spawnEntityInWorld(entity);
+			entity.playLivingSound();
 		}
 		return entity;
 	}

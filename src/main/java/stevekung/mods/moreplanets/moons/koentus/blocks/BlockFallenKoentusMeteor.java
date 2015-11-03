@@ -96,8 +96,8 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 
 		if (this.getItemDropped(state, world.rand, par7) != Item.getItemFromBlock(this))
 		{
-			int var8 =  MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
-			this.dropXpOnBlockBreak(world, pos, var8);
+			int xp = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
+			this.dropXpOnBlockBreak(world, pos, xp);
 		}
 	}
 
@@ -154,8 +154,8 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 		}
 		else
 		{
-			Material var5 = block.getMaterial();
-			return var5 == Material.water ? true : var5 == Material.lava;
+			Material material = block.getMaterial();
+			return material == Material.water ? true : material == Material.lava;
 		}
 	}
 

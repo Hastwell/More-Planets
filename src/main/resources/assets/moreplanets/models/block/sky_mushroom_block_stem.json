@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "side": "moreplanets:blocks/sky_mushroom_block_stem",
+        "end": "moreplanets:blocks/sky_mushroom_block_inside"
+    }
+}

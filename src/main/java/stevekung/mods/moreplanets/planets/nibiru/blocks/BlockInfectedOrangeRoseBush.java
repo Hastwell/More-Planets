@@ -17,18 +17,19 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 
-public class BlockInfectedOrangeRoseBush extends BlockFlowerMP implements IGrowable
+public class BlockInfectedOrangeRoseBush extends BlockBushMP implements IGrowable
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -36,6 +37,7 @@ public class BlockInfectedOrangeRoseBush extends BlockFlowerMP implements IGrowa
 	{
 		super();
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.orange_rose_bush_bottom));
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 		this.setUnlocalizedName(name);
 	}
 
@@ -52,31 +54,40 @@ public class BlockInfectedOrangeRoseBush extends BlockFlowerMP implements IGrowa
 	}
 
 	@Override
+	protected boolean canPlaceBlockOn(Block ground)
+	{
+		return ground == NibiruBlocks.infected_grass || ground == NibiruBlocks.infected_dirt;
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
+	{
+		return super.canPlaceBlockAt(world, pos) && world.getBlockState(pos.up()).getBlock() == Blocks.air;
+	}
+
+	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+		IBlockState block = world.getBlockState(pos.down());
 
+		if (state.getBlock() != this)
+		{
+			return super.canBlockStay(world, pos, state);
+		}
 		if (state == state.withProperty(VARIANT, BlockType.orange_rose_bush_top))
 		{
-			return block == this && world.getBlockState(pos.down()).getValue(VARIANT) == BlockType.orange_rose_bush_bottom;
+			return block.getBlock() == this && world.getBlockState(pos.down()).getValue(VARIANT) == BlockType.orange_rose_bush_bottom;
 		}
 		else
 		{
-			return block == NibiruBlocks.infected_grass || block == NibiruBlocks.infected_dirt;
+			return block.getBlock() == NibiruBlocks.infected_grass || block.getBlock() == NibiruBlocks.infected_dirt;
 		}
 	}
 
 	@Override
 	public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side)
 	{
-		return this.canBlockStay(world, pos, world.getBlockState(pos));
-	}
-
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
-	{
-		super.onNeighborBlockChange(world, pos, state, block);
-		this.canBlockStay(world, pos, state);
+		return super.canBlockStay(world, pos, world.getBlockState(pos)) && world.getBlockState(pos.up()).getBlock() == Blocks.air;
 	}
 
 	@Override
@@ -141,6 +152,13 @@ public class BlockInfectedOrangeRoseBush extends BlockFlowerMP implements IGrowa
 	}
 
 	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+	{
+		super.harvestBlock(world, player, pos, state, tile);
+		MorePlanetsEvents.getActivateInfectedGas(player);
+	}
+
+	@Override
 	protected BlockState createBlockState()
 	{
 		return new BlockState(this, new IProperty[] { VARIANT });
@@ -156,18 +174,6 @@ public class BlockInfectedOrangeRoseBush extends BlockFlowerMP implements IGrowa
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Plains;
-	}
-
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return NibiruBlocks.infected_orange_rose_bush.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

@@ -48,7 +48,6 @@ import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
 import stevekung.mods.moreplanets.planets.venus.world.gen.blazepit.MapGenVenusianBlazePit;
 import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomBossVenus;
 import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomChestsVenus;
-import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomTreasureVenus;
 
 public class ChunkProviderVenus extends ChunkProviderGenerate
 {
@@ -68,7 +67,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 
 	private World worldObj;
 	public BiomeDecoratorVenus biomedecoratorplanet = new BiomeDecoratorVenus();
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(VenusBlocks.venus_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(VenusBlocks.venus_block, new int[] {0, 1, 2});
 	private MapGenVenusRavine ravineGenerator = new MapGenVenusRavine();
 	private MapGenVenusVillage villageGenerator = new MapGenVenusVillage();
 	private MapGenVenusianBlazePit blazePit = new MapGenVenusianBlazePit();
@@ -87,7 +86,6 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, null));
 		this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, null));
 		this.dungeonGenerator.bossRooms.add(new RoomBossVenus(null, 0, 0, 0, null));
-		this.dungeonGenerator.treasureRooms.add(new RoomTreasureVenus(null, 0, 0, 0, null));
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseVenus.venus };
@@ -273,7 +271,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		this.createCraters(x, z, primer);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.ravineGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.blazePit.generate(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 30, z * 16, x, z, primer);
@@ -359,23 +357,23 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 	}
 
 	@Override
-	public boolean chunkExists(int par1, int par2)
+	public boolean chunkExists(int x, int z)
 	{
 		return true;
 	}
 
-	public void decoratePlanet(World par1World, Random par2Random, int par3, int par4)
+	public void decoratePlanet(World world, Random rand, BiomeGenBase biome, BlockPos pos)
 	{
-		this.biomedecoratorplanet.decorate(par1World, par2Random, par3, par4);
+		this.biomedecoratorplanet.decorate(world, rand, biome, pos);
 	}
 
 	@Override
 	public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
 	{
 		BlockFalling.fallInstantly = true;
-		int var4 = chunkX * 16;
-		int var5 = chunkZ * 16;
-		this.worldObj.getBiomeGenForCoords(new BlockPos(var4 + 16, 0, var5 + 16));
+		int x = chunkX * 16;
+		int z = chunkZ * 16;
+		this.worldObj.getBiomeGenForCoords(new BlockPos(x + 16, 0, z + 16));
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
@@ -383,7 +381,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		this.dungeonGenerator.handleTileEntities(this.rand);
 		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
 		this.blazePit.generateStructuresInChunk(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
-		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+		//this.decoratePlanet(this.worldObj, this.rand, this.biomesForGeneration, new BlockPos(x, 0, z)); TODO
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
 
 		boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, chunkX, chunkZ, false, EventType.FIRE);
@@ -392,10 +390,10 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		{
 			if (this.rand.nextInt(5) == 0)
 			{
-				int x = var4 + this.rand.nextInt(16) + 8;
-				int y = this.rand.nextInt(128 - 32) + 32;
-				int z = var5 + this.rand.nextInt(16) + 8;
-				new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser.getDefaultState(), VenusBlocks.venus_block.getDefaultState()).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
+				int x1 = x + this.rand.nextInt(16) + 8;
+				int y1 = this.rand.nextInt(128 - 32) + 32;
+				int z1 = z + this.rand.nextInt(16) + 8;
+				new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser.getDefaultState(), VenusBlocks.venus_block.getDefaultState()).generate(this.worldObj, this.rand, new BlockPos(x1, y1, z1));
 			}
 		}
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
@@ -426,7 +424,6 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 		return "VenusLevelSource";
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List func_177458_a(EnumCreatureType type, BlockPos pos)
 	{

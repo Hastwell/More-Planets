@@ -19,9 +19,10 @@ public class MicroBlockIntegrationMP
 		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 2, "tile.diona_block.rock.name");
 		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 3, "tile.diona_block.cobblestone.name");
 		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 10, "tile.diona_block.quontonium_block.name");
-		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 11, "tile.diona_block.smooth_quontonium.name");
-		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 12, "tile.diona_block.quontonium_brick.name");
-		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 13, "tile.diona_block.chiseled_quontonium.name");
-		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 14, "tile.diona_block.dungeon_brick.name");
+		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 11, "tile.diona_block.fronisium_block.name");
+		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 12, "tile.diona_block.smooth_quontonium.name");
+		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 13, "tile.diona_block.quontonium_brick.name");
+		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 14, "tile.diona_block.chiseled_quontonium.name");
+		CompatibilityUtilMP.registerMicroBlocks(DionaBlocks.diona_block, 15, "tile.diona_block.dungeon_brick.name");
 	}
 }

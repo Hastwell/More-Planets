@@ -20,7 +20,7 @@ import stevekung.mods.moreplanets.planets.diona.inventory.container.ContainerSch
 
 public class GuiSchematicTier4Rocket extends GuiContainer implements ISchematicResultPage
 {
-	private ResourceLocation texture = new ResourceLocation("diona:textures/gui/schematic_tier4_rocket.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/schematics/tier_4_rocket.png");
 	private int pageIndex;
 
 	public GuiSchematicTier4Rocket(InventoryPlayer par1InventoryPlayer, int x, int y, int z)

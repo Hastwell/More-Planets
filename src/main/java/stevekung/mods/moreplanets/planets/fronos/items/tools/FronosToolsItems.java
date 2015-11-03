@@ -17,7 +17,7 @@ import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class FronosToolsItems
 {
@@ -50,13 +50,7 @@ public class FronosToolsItems
 
 	public static void init()
 	{
-		FronosToolsItems.initItems();
-		FronosToolsItems.registerItems();
-		FronosToolsItems.registerHarvestLevels();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		for (int i = 0; i < 8; ++i)
 		{
 			FronosToolsItems.candy_pickaxe = new ItemPickaxeMP("candy_pickaxe", FronosToolsItems.candy, FronosItems.candy_cane, i);
@@ -81,10 +75,30 @@ public class FronosToolsItems
 		FronosToolsItems.fronos_rock_hoe = new ItemHoeMP("fronos_rock_hoe", FronosToolsItems.fronos_rock, Item.getItemFromBlock(FronosBlocks.fronos_block), 1);
 		FronosToolsItems.fronos_rock_shovel = new ItemShovelMP("fronos_rock_shovel", FronosToolsItems.fronos_rock, Item.getItemFromBlock(FronosBlocks.fronos_block), 1);
 		FronosToolsItems.fronos_rock_sword = new ItemSwordMP("fronos_rock_sword", FronosToolsItems.fronos_rock, Item.getItemFromBlock(FronosBlocks.fronos_block), 1);
-	}
 
-	private static void registerHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerItem(FronosToolsItems.candy_sword);
+		CommonRegisterHelper.registerItem(FronosToolsItems.candy_shovel);
+		CommonRegisterHelper.registerItem(FronosToolsItems.candy_pickaxe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.candy_axe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.candy_hoe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.black_diamond_sword);
+		CommonRegisterHelper.registerItem(FronosToolsItems.black_diamond_shovel);
+		CommonRegisterHelper.registerItem(FronosToolsItems.black_diamond_pickaxe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.black_diamond_axe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.black_diamond_hoe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.iridium_sword);
+		CommonRegisterHelper.registerItem(FronosToolsItems.iridium_shovel);
+		CommonRegisterHelper.registerItem(FronosToolsItems.iridium_pickaxe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.iridium_axe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.iridium_hoe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.fronos_rock_sword);
+		CommonRegisterHelper.registerItem(FronosToolsItems.fronos_rock_shovel);
+		CommonRegisterHelper.registerItem(FronosToolsItems.fronos_rock_pickaxe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.fronos_rock_axe);
+		CommonRegisterHelper.registerItem(FronosToolsItems.fronos_rock_hoe);
+
+		// Set harvest level
 		FronosToolsItems.candy_pickaxe.setHarvestLevel("pickaxe", 1);
 		FronosToolsItems.candy_axe.setHarvestLevel("axe", 1);
 		FronosToolsItems.candy_shovel.setHarvestLevel("shovel", 1);
@@ -97,29 +111,5 @@ public class FronosToolsItems
 		FronosToolsItems.fronos_rock_pickaxe.setHarvestLevel("pickaxe", 1);
 		FronosToolsItems.fronos_rock_axe.setHarvestLevel("axe", 1);
 		FronosToolsItems.fronos_rock_shovel.setHarvestLevel("shovel", 1);
-	}
-
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(FronosToolsItems.candy_sword);
-		RegisterHelper.registerItem(FronosToolsItems.candy_shovel);
-		RegisterHelper.registerItem(FronosToolsItems.candy_pickaxe);
-		RegisterHelper.registerItem(FronosToolsItems.candy_axe);
-		RegisterHelper.registerItem(FronosToolsItems.candy_hoe);
-		RegisterHelper.registerItem(FronosToolsItems.black_diamond_sword);
-		RegisterHelper.registerItem(FronosToolsItems.black_diamond_shovel);
-		RegisterHelper.registerItem(FronosToolsItems.black_diamond_pickaxe);
-		RegisterHelper.registerItem(FronosToolsItems.black_diamond_axe);
-		RegisterHelper.registerItem(FronosToolsItems.black_diamond_hoe);
-		RegisterHelper.registerItem(FronosToolsItems.iridium_sword);
-		RegisterHelper.registerItem(FronosToolsItems.iridium_shovel);
-		RegisterHelper.registerItem(FronosToolsItems.iridium_pickaxe);
-		RegisterHelper.registerItem(FronosToolsItems.iridium_axe);
-		RegisterHelper.registerItem(FronosToolsItems.iridium_hoe);
-		RegisterHelper.registerItem(FronosToolsItems.fronos_rock_sword);
-		RegisterHelper.registerItem(FronosToolsItems.fronos_rock_shovel);
-		RegisterHelper.registerItem(FronosToolsItems.fronos_rock_pickaxe);
-		RegisterHelper.registerItem(FronosToolsItems.fronos_rock_axe);
-		RegisterHelper.registerItem(FronosToolsItems.fronos_rock_hoe);
 	}
 }

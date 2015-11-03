@@ -10,13 +10,12 @@ package stevekung.mods.moreplanets.planets.kapteynb.potion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
-import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class ChemicalEffect extends Potion
 {
-	public ChemicalEffect(boolean isBad, int color)
+	public ChemicalEffect(int id, boolean isBad, int color)
 	{
-		super(MPPotions.getNextPotionID(), new ResourceLocation("moreplanets:chemical"), isBad, color);
+		super(id, new ResourceLocation("moreplanets:chemical"), isBad, color);
 		this.setIconIndex(1, 0);
 	}
 

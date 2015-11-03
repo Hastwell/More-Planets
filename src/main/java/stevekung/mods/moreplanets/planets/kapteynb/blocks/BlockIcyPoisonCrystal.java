@@ -124,7 +124,7 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 	}
 
 	@Override
-	public Item getItemDropped(IBlockState state, Random random, int fortune)
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
 		return KapteynBItems.kapteyn_b_item;
 	}
@@ -138,8 +138,6 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
 	{
-		super.onNeighborBlockChange(world, pos, state, block);
-
 		if (this.checkIfAttachedToBlock(world, pos, state))
 		{
 			TileEntityIcyPoisonCrystal crystal = (TileEntityIcyPoisonCrystal)world.getTileEntity(pos);

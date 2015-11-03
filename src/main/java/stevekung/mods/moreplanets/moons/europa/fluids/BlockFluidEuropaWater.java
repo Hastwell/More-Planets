@@ -32,6 +32,7 @@ public class BlockFluidEuropaWater extends BlockFluidBaseMP
 	{
 		super(EuropaBlocks.europa_water_fluid);
 		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+		this.setLightOpacity(3);
 		this.setUnlocalizedName(name);
 	}
 

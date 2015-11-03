@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PolongniusItems
 {
@@ -30,13 +30,7 @@ public class PolongniusItems
 
 	public static void init()
 	{
-		PolongniusItems.initItems();
-		PolongniusItems.registerItems();
-		PolongniusItems.registerFluidContainer();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		PolongniusItems.polongnius_item = new ItemPolongnius("polongnius_item");
 		PolongniusItems.purple_crystal_solar_module = new ItemPurpleCrystalSolarModule("purple_crystal_solar_module");
 		PolongniusItems.cheese_food = new ItemCheeseFood("cheese_food");
@@ -47,26 +41,27 @@ public class PolongniusItems
 		PolongniusItems.tier_5_rocket_schematic = new ItemTier5RocketSchematic("tier_5_rocket_schematic");
 		PolongniusItems.cheese_of_milk_bucket = new ItemCheeseOfMilkBucket("cheese_of_milk_bucket");
 		PolongniusItems.polongnius_meteor_chunk = new ItemPolongniusMeteorChunk("polongnius_meteor_chunk");
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(PolongniusItems.polongnius_item);
-		RegisterHelper.registerItem(PolongniusItems.purple_crystal_solar_module);
-		RegisterHelper.registerItem(PolongniusItems.tier_5_rocket_schematic);
-		RegisterHelper.registerItem(PolongniusItems.tier_6_rocket_module);
-		RegisterHelper.registerItem(PolongniusItems.cheese_slimeball);
-		RegisterHelper.registerItem(PolongniusItems.cheese_food);
-		RegisterHelper.registerItem(PolongniusItems.cheese_of_milk_bucket);
-		RegisterHelper.registerItem(PolongniusItems.tier_5_rocket);
-		RegisterHelper.registerItem(PolongniusItems.polongnius_meteor_chunk);
-		RegisterHelper.registerItem(PolongniusItems.polongnius_dungeon_key);
+		// Register
+		CommonRegisterHelper.registerItem(PolongniusItems.polongnius_item);
+		CommonRegisterHelper.registerItem(PolongniusItems.purple_crystal_solar_module);
+		CommonRegisterHelper.registerItem(PolongniusItems.tier_5_rocket_schematic);
+		CommonRegisterHelper.registerItem(PolongniusItems.tier_6_rocket_module);
+		CommonRegisterHelper.registerItem(PolongniusItems.cheese_slimeball);
+		CommonRegisterHelper.registerItem(PolongniusItems.cheese_food);
+		CommonRegisterHelper.registerItem(PolongniusItems.cheese_of_milk_bucket);
+		CommonRegisterHelper.registerItem(PolongniusItems.tier_5_rocket);
+		CommonRegisterHelper.registerItem(PolongniusItems.polongnius_meteor_chunk);
+		CommonRegisterHelper.registerItem(PolongniusItems.polongnius_dungeon_key);
 
+		// Register ore dictionary
 		OreDictionary.registerOre("slimeball", PolongniusItems.cheese_slimeball);
-	}
+		OreDictionary.registerOre("ingotPolongniusMeteoricIron", new ItemStack(PolongniusItems.polongnius_item, 1, 4));
+		OreDictionary.registerOre("ingotPalladium", new ItemStack(PolongniusItems.polongnius_item, 1, 5));
+		OreDictionary.registerOre("compressedPolongniusMeteoricIron", new ItemStack(PolongniusItems.polongnius_item, 1, 6));
+		OreDictionary.registerOre("compressedPalladium", new ItemStack(PolongniusItems.polongnius_item, 1, 7));
 
-	private static void registerFluidContainer()
-	{
-		RegisterHelper.registerFluidContainer(PolongniusBlocks.cheese_of_milk_fluid, new ItemStack(PolongniusItems.cheese_of_milk_bucket), new ItemStack(Items.bucket));
+		// Register fluid container
+		CommonRegisterHelper.registerFluidContainer(PolongniusBlocks.cheese_of_milk_fluid, new ItemStack(PolongniusItems.cheese_of_milk_bucket), new ItemStack(Items.bucket));
 	}
 }

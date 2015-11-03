@@ -12,7 +12,7 @@ import java.util.Random;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureStart;
-import net.minecraftforge.fml.common.FMLLog;
+import stevekung.mods.moreplanets.common.util.MPLog;
 
 public class MapGenMartianVillage extends MapGenStructure
 {
@@ -65,7 +65,7 @@ public class MapGenMartianVillage extends MapGenStructure
 	@Override
 	protected StructureStart getStructureStart(int x, int z)
 	{
-		FMLLog.info("Generating Martian Village at x" + x * 16 + " z" + z * 16);
+		MPLog.info("Generating Martian Village at x : " + x * 16 + " z : " + z * 16);
 		return new StructureMartianVillageStart(this.worldObj, this.rand, x, z, this.terrainType);
 	}
 

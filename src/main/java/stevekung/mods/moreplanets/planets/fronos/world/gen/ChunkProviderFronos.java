@@ -64,7 +64,6 @@ import stevekung.mods.moreplanets.planets.fronos.world.gen.dungeon.RoomBossFrono
 import stevekung.mods.moreplanets.planets.fronos.world.gen.dungeon.RoomChestsFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.dungeon.RoomSpawnerFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.dungeon.RoomTreasureFronos;
-import stevekung.mods.moreplanets.planets.fronos.world.gen.village.MapGenFronosVillage;
 
 public class ChunkProviderFronos extends ChunkProviderGenerate
 {

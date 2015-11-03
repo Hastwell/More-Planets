@@ -31,6 +31,7 @@ public class BlockFluidFrozenWater extends BlockFluidBaseMP
 	{
 		super(KapteynBBlocks.frozen_water_fluid);
 		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+		this.setLightOpacity(3);
 		this.setUnlocalizedName(name);
 	}
 

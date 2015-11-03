@@ -51,11 +51,11 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
-import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySiriusSmallFireball;
+import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntityLargeSiriusFireball;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBreathable, IBossDisplayData, IBoss, IEntityLivingPlanet
@@ -185,7 +185,7 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(400.0F * ConfigManagerCore.dungeonBossHealthMod);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(6.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.0000000001D);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -516,9 +516,9 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return ConfigManagerMP.idDimensionSiriusB;
+		return EnumDimensionType.SIRIUS_B;
 	}
 
 	class AIFireballAttack extends EntityAIBase
@@ -579,16 +579,16 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 
 					if (this.field_179467_b == 1)
 					{
-						this.field_179468_c = 60;
+						this.field_179468_c = this.field_179469_a.getHealth() <= this.field_179469_a.getMaxHealth() / 2.0F ? 0 : 60;
 						this.field_179469_a.isBurn(true);
 					}
-					else if (this.field_179467_b <= 2)
+					else if (this.field_179469_a.getHealth() <= this.field_179469_a.getMaxHealth() / 2.0F ? this.field_179467_b <= 6 : this.field_179467_b <= 3)
 					{
 						this.field_179468_c = 6;
 					}
 					else
 					{
-						this.field_179468_c = 100;
+						this.field_179468_c = this.field_179469_a.getHealth() <= this.field_179469_a.getMaxHealth() / 2.0F ? 25 : 100;
 						this.field_179467_b = 0;
 						this.field_179469_a.isBurn(false);
 					}
@@ -596,8 +596,7 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
 					if (this.field_179467_b > 1)
 					{
 						this.field_179469_a.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, new BlockPos((int)this.field_179469_a.posX, (int)this.field_179469_a.posY, (int)this.field_179469_a.posZ), 0);
-						EntitySiriusSmallFireball entitysmallfireball = new EntitySiriusSmallFireball(this.field_179469_a.worldObj, this.field_179469_a, d1, d2, d3);
-						entitysmallfireball.setCanExplode(true);
+						EntityLargeSiriusFireball entitysmallfireball = new EntityLargeSiriusFireball(this.field_179469_a.worldObj, this.field_179469_a, d1, d2, d3);
 						entitysmallfireball.posY = this.field_179469_a.posY + this.field_179469_a.height / 2.0F + 0.5D;
 						this.field_179469_a.worldObj.spawnEntityInWorld(entitysmallfireball);
 					}

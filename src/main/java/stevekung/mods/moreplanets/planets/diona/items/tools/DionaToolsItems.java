@@ -16,7 +16,7 @@ import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DionaToolsItems
 {
@@ -37,13 +37,7 @@ public class DionaToolsItems
 
 	public static void init()
 	{
-		DionaToolsItems.initItems();
-		DionaToolsItems.registerItems();
-		DionaToolsItems.registerHarvestLevels();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		DionaToolsItems.quontonium_sword = new ItemSwordMP("quontonium_sword", DionaToolsItems.quontonium, DionaItems.diona_item, 2);
 		DionaToolsItems.quontonium_shovel = new ItemShovelMP("quontonium_shovel", DionaToolsItems.quontonium, DionaItems.diona_item, 2);
 		DionaToolsItems.quontonium_pickaxe = new ItemPickaxeMP("quontonium_pickaxe", DionaToolsItems.quontonium, DionaItems.diona_item, 2);
@@ -54,29 +48,25 @@ public class DionaToolsItems
 		DionaToolsItems.fronisium_pickaxe = new ItemPickaxeMP("fronisium_pickaxe", fronisium, DionaItems.diona_item, 3);
 		DionaToolsItems.fronisium_axe = new ItemAxeMP("fronisium_axe", fronisium, DionaItems.diona_item, 3);
 		DionaToolsItems.fronisium_hoe = new ItemHoeMP("fronisium_hoe", fronisium, DionaItems.diona_item, 3);
-	}
 
-	private static void registerHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerItem(DionaToolsItems.quontonium_sword);
+		CommonRegisterHelper.registerItem(DionaToolsItems.quontonium_shovel);
+		CommonRegisterHelper.registerItem(DionaToolsItems.quontonium_pickaxe);
+		CommonRegisterHelper.registerItem(DionaToolsItems.quontonium_axe);
+		CommonRegisterHelper.registerItem(DionaToolsItems.quontonium_hoe);
+		CommonRegisterHelper.registerItem(DionaToolsItems.fronisium_sword);
+		CommonRegisterHelper.registerItem(DionaToolsItems.fronisium_shovel);
+		CommonRegisterHelper.registerItem(DionaToolsItems.fronisium_pickaxe);
+		CommonRegisterHelper.registerItem(DionaToolsItems.fronisium_axe);
+		CommonRegisterHelper.registerItem(DionaToolsItems.fronisium_hoe);
+
+		// Set harvest level
 		DionaToolsItems.quontonium_shovel.setHarvestLevel("shovel", 4);
 		DionaToolsItems.quontonium_pickaxe.setHarvestLevel("pickaxe", 4);
 		DionaToolsItems.quontonium_axe.setHarvestLevel("axe", 4);
 		DionaToolsItems.fronisium_shovel.setHarvestLevel("shovel", 4);
 		DionaToolsItems.fronisium_pickaxe.setHarvestLevel("pickaxe", 4);
 		DionaToolsItems.fronisium_axe.setHarvestLevel("axe", 4);
-	}
-
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_sword);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_shovel);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_pickaxe);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_axe);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_hoe);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_sword);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_shovel);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_pickaxe);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_axe);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_hoe);
 	}
 }

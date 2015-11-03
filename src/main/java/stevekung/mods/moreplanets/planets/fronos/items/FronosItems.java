@@ -10,11 +10,12 @@ package stevekung.mods.moreplanets.planets.fronos.items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.items.ItemDoorMP;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class FronosItems
 {
@@ -49,13 +50,7 @@ public class FronosItems
 
 	public static void init()
 	{
-		FronosItems.initItems();
-		FronosItems.registerItems();
-		FronosItems.registerFluidContainer();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		FronosItems.fronos_food = new ItemFronosFood("fronos_food");
 		FronosItems.strawberry_seed = new ItemStrawberrySeed("strawberry_seed");
 		FronosItems.bearry_egg = new ItemBearryEgg("bearry_egg");
@@ -84,46 +79,57 @@ public class FronosItems
 		FronosItems.maple_door = new ItemDoorMP("maple_door", DoorType.MAPLE);
 		FronosItems.fruits_juice = new ItemFruitsJuice("fruits_juice");
 		FronosItems.tier_8_rocket_module = new ItemTier8RocketModule("tier_8_rocket_module");
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(FronosItems.fronos_food);
-		RegisterHelper.registerItem(FronosItems.candy_food);
-		RegisterHelper.registerItem(FronosItems.candy_cane);
-		RegisterHelper.registerItem(FronosItems.fronos_fruits);
-		RegisterHelper.registerItem(FronosItems.glass_gem_corn);
-		RegisterHelper.registerItem(FronosItems.jelly);
-		RegisterHelper.registerItem(FronosItems.fruits_juice);
-		RegisterHelper.registerItem(FronosItems.cream_ball);
-		RegisterHelper.registerItem(FronosItems.strawberry_seed);
-		RegisterHelper.registerItem(FronosItems.golden_seeds);
-		RegisterHelper.registerItem(FronosItems.pearl);
-		RegisterHelper.registerItem(FronosItems.poison_arrow);
-		RegisterHelper.registerItem(FronosItems.bearry_egg);
-		RegisterHelper.registerItem(FronosItems.cream_golem);
-		RegisterHelper.registerItem(FronosItems.fronos_item);
-		RegisterHelper.registerItem(FronosItems.tier_7_rocket_schematic);
-		RegisterHelper.registerItem(FronosItems.tier_8_rocket_module);
-		RegisterHelper.registerItem(FronosItems.candy_bow);
-		RegisterHelper.registerItem(FronosItems.coconut_milk_bucket);
-		RegisterHelper.registerItem(FronosItems.mineral_water_bucket);
-		RegisterHelper.registerItem(FronosItems.ovaltine_bucket);
-		RegisterHelper.registerItem(FronosItems.tea_bucket);
-		RegisterHelper.registerItem(FronosItems.caramel_bucket);
-		RegisterHelper.registerItem(FronosItems.coconut_door);
-		RegisterHelper.registerItem(FronosItems.maple_door);
-		RegisterHelper.registerItem(FronosItems.cup);
-		RegisterHelper.registerItem(FronosItems.tier_7_rocket);
-		RegisterHelper.registerItem(FronosItems.fronos_dungeon_key);
-	}
+		// Register
+		CommonRegisterHelper.registerItem(FronosItems.fronos_food);
+		CommonRegisterHelper.registerItem(FronosItems.candy_food);
+		CommonRegisterHelper.registerItem(FronosItems.candy_cane);
+		CommonRegisterHelper.registerItem(FronosItems.fronos_fruits);
+		CommonRegisterHelper.registerItem(FronosItems.glass_gem_corn);
+		CommonRegisterHelper.registerItem(FronosItems.jelly);
+		CommonRegisterHelper.registerItem(FronosItems.fruits_juice);
+		CommonRegisterHelper.registerItem(FronosItems.cream_ball);
+		CommonRegisterHelper.registerItem(FronosItems.strawberry_seed);
+		CommonRegisterHelper.registerItem(FronosItems.golden_seeds);
+		CommonRegisterHelper.registerItem(FronosItems.pearl);
+		CommonRegisterHelper.registerItem(FronosItems.poison_arrow);
+		CommonRegisterHelper.registerItem(FronosItems.bearry_egg);
+		CommonRegisterHelper.registerItem(FronosItems.cream_golem);
+		CommonRegisterHelper.registerItem(FronosItems.fronos_item);
+		CommonRegisterHelper.registerItem(FronosItems.tier_7_rocket_schematic);
+		CommonRegisterHelper.registerItem(FronosItems.tier_8_rocket_module);
+		CommonRegisterHelper.registerItem(FronosItems.candy_bow);
+		CommonRegisterHelper.registerItem(FronosItems.coconut_milk_bucket);
+		CommonRegisterHelper.registerItem(FronosItems.mineral_water_bucket);
+		CommonRegisterHelper.registerItem(FronosItems.ovaltine_bucket);
+		CommonRegisterHelper.registerItem(FronosItems.tea_bucket);
+		CommonRegisterHelper.registerItem(FronosItems.caramel_bucket);
+		CommonRegisterHelper.registerItem(FronosItems.coconut_door);
+		CommonRegisterHelper.registerItem(FronosItems.maple_door);
+		CommonRegisterHelper.registerItem(FronosItems.cup);
+		CommonRegisterHelper.registerItem(FronosItems.tier_7_rocket);
+		CommonRegisterHelper.registerItem(FronosItems.fronos_dungeon_key);
 
-	private static void registerFluidContainer()
-	{
-		RegisterHelper.registerFluidContainer(FronosBlocks.coconut_milk_fluid, new ItemStack(FronosItems.coconut_milk_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.mineral_water_fluid, new ItemStack(FronosItems.mineral_water_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.ovaltine_fluid, new ItemStack(FronosItems.ovaltine_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.tea_fluid, new ItemStack(FronosItems.tea_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
-		RegisterHelper.registerFluidContainer(FronosBlocks.caramel_fluid, new ItemStack(FronosItems.caramel_bucket, 1, 0), new ItemStack(Items.bucket, 1, 0));
+		// Register ore dictionary
+		OreDictionary.registerOre("blackDiamond", new ItemStack(FronosItems.fronos_item, 1, 2));
+		OreDictionary.registerOre("ingotIridium", new ItemStack(FronosItems.fronos_item, 1, 3));
+		OreDictionary.registerOre("compressedBlackDiamond", new ItemStack(FronosItems.fronos_item, 1, 4));
+		OreDictionary.registerOre("compressedIridium", new ItemStack(FronosItems.fronos_item, 1, 5));
+
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 0));
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 1));
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 2));
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 3));
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 4));
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 5));
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 6));
+		OreDictionary.registerOre("candy", new ItemStack(FronosItems.candy_cane, 1, 7));
+
+		// Register fluid container
+		CommonRegisterHelper.registerFluidContainer(FronosBlocks.coconut_milk_fluid, new ItemStack(FronosItems.coconut_milk_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(FronosBlocks.mineral_water_fluid, new ItemStack(FronosItems.mineral_water_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(FronosBlocks.ovaltine_fluid, new ItemStack(FronosItems.ovaltine_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(FronosBlocks.tea_fluid, new ItemStack(FronosItems.tea_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(FronosBlocks.caramel_fluid, new ItemStack(FronosItems.caramel_bucket), new ItemStack(Items.bucket));
 	}
 }

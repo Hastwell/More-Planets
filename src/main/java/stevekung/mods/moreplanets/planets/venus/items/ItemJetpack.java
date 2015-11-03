@@ -15,19 +15,18 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import org.lwjgl.input.Keyboard;
-
 import stevekung.mods.moreplanets.common.items.armor.ItemArmorMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP;
 
 public class ItemJetpack extends ItemArmorMP
 {
-	int tick;
+	private int tick;
+	private boolean keyDown;
+	private boolean keySneak;
 
 	public ItemJetpack(String name, ArmorMaterial material, int type, int render)
 	{
@@ -36,9 +35,9 @@ public class ItemJetpack extends ItemArmorMP
 	}
 
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+	public String getArmorTexture(ItemStack itemStack, Entity entity, int slot, String type)
 	{
-		if (stack.getItem() == this)
+		if (itemStack.getItem() == this)
 		{
 			return "moreplanets:textures/model/jetpack.png";
 		}
@@ -80,8 +79,6 @@ public class ItemJetpack extends ItemArmorMP
 	@Override
 	public void onCreated(ItemStack itemStack, World world, EntityPlayer player)
 	{
-		super.onCreated(itemStack, world, player);
-
 		if (!itemStack.hasTagCompound())
 		{
 			itemStack.setTagCompound(new NBTTagCompound());
@@ -98,15 +95,9 @@ public class ItemJetpack extends ItemArmorMP
 		{
 			if (flag || player.inventory.hasItem(Items.coal))
 			{
-				if (Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+				if (this.getJetpackKeyDown() == true)
 				{
-					player.motionY = 0.4D;
 					this.tick++;
-
-					for (int i = 0; i < 5; i++)
-					{
-						world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
-					}
 
 					if (this.tick >= 1000)
 					{
@@ -120,14 +111,10 @@ public class ItemJetpack extends ItemArmorMP
 						}
 					}
 				}
-				if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && !player.onGround)
+				if (this.getJetpackKeySneak() == true)
 				{
-					player.motionY *= 0.7D;
+					this.tick++;
 
-					for (int i = 0; i < 5; i++)
-					{
-						world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
-					}
 					if (this.tick >= 1000)
 					{
 						if (!world.isRemote && !flag)
@@ -141,6 +128,7 @@ public class ItemJetpack extends ItemArmorMP
 					}
 				}
 			}
+			MorePlanetsCore.proxy.resetPlayerFloatingTick(player);
 		}
 	}
 
@@ -155,4 +143,29 @@ public class ItemJetpack extends ItemArmorMP
 	{
 		return -1;
 	}
+
+	public void setJetpackKeyDown(boolean bool)
+	{
+		this.keyDown = bool;
+	}
+
+	private boolean getJetpackKeyDown()
+	{
+		return this.keyDown;
+	}
+
+	public void setJetpackKeySneak(boolean bool)
+	{
+		this.keySneak = bool;
+	}
+
+	private boolean getJetpackKeySneak()
+	{
+		return this.keySneak;
+	}
+
+	/*public static void resetTick()
+	{
+		tick = 0;
+	}*/
 }

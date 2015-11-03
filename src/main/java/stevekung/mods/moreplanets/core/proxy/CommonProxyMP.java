@@ -7,6 +7,11 @@
 
 package stevekung.mods.moreplanets.core.proxy;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.network.INetHandler;
+import net.minecraft.network.NetHandlerPlayServer;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public class CommonProxyMP
@@ -16,4 +21,24 @@ public class CommonProxyMP
 	public void spawnParticle(ParticleTypesMP type, double x, double y, double z) {}
 
 	public void spawnMotionParticle(ParticleTypesMP type, double x, double y, double z, double motionX, double motionY, double motionZ) {}
+
+	public EntityPlayer getPlayerFromNetHandler(INetHandler handler)
+	{
+		if (handler instanceof NetHandlerPlayServer)
+		{
+			return ((NetHandlerPlayServer) handler).playerEntity;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	public void resetPlayerFloatingTick(EntityPlayer player)
+	{
+		if (player instanceof EntityPlayerMP)
+		{
+			ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, ((EntityPlayerMP)player).playerNetServerHandler, Integer.valueOf(0), new String[] { "field_147365_f", "floatingTickCount" });
+		}
+	}
 }

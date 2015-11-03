@@ -9,22 +9,24 @@ package stevekung.mods.moreplanets.common.world.gen;
 
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.MapGenBase;
 
-public class MapGenCaveMP extends MapGenBaseMeta
+public class MapGenCaveMP extends MapGenBase
 {
 	private Block block;
+	private int[] meta;
 	public static int BREAK_THROUGH_CHANCE = 25; // 1 in n chance
 
-	public MapGenCaveMP(Block block)
+	public MapGenCaveMP(Block block, int[] meta)
 	{
 		this.block = block;
+		this.meta = meta;
 	}
 
 	protected void generateLargeCaveNode(long seed, int x, int z, ChunkPrimer chunk, double par6, double par8, double par10)
@@ -181,11 +183,11 @@ public class MapGenCaveMP extends MapGenBaseMeta
 
 											if (state == this.block)
 											{
-												if (this.block.getMetaFromState(state) == 1 || this.block.getMetaFromState(state) == 2)
+												if (this.block.getMetaFromState(state) == this.meta[1] || this.block.getMetaFromState(state) == this.meta[2])
 												{
 													chunk.setBlockState(coords, Blocks.air.getDefaultState());
 												}
-												else if (this.block.getMetaFromState(state) == 0 && random.nextInt(MapGenCaveMP.BREAK_THROUGH_CHANCE) == 0)
+												else if (this.block.getMetaFromState(state) == this.meta[0] && random.nextInt(MapGenCaveMP.BREAK_THROUGH_CHANCE) == 0)
 												{
 													chunk.setBlockState(coords, Blocks.air.getDefaultState());
 												}
@@ -207,7 +209,7 @@ public class MapGenCaveMP extends MapGenBaseMeta
 	}
 
 	@Override
-	protected void recursiveGenerate(World world, int x, int z, int orX, int orZ, ChunkPrimer chunk)
+	protected void func_180701_a(World world, int x, int z, int orX, int orZ, ChunkPrimer chunk)
 	{
 		int var7 = this.rand.nextInt(this.rand.nextInt(this.rand.nextInt(40) + 1) + 1);
 

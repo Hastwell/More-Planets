@@ -9,37 +9,32 @@ package stevekung.mods.moreplanets.planets.venus.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class VenusItems
 {
 	public static Item venus_item;
 	public static Item sulfur_battery;
 	public static Item jetpack;
-	public static Item venus_dungeon_key;
 
-	public static ArmorMaterial jetpackArmor = EnumHelper.addArmorMaterial("jetpack", "jetpack", 16, new int[] { 0, 8, 0, 0 }, 8);
+	public static ArmorMaterial jetpackArmor = EnumHelper.addArmorMaterial("jetpack", "jetpack", 0, new int[] { 0, 0, 0, 0 }, 0);
 
 	public static void init()
 	{
-		VenusItems.initItems();
-		VenusItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		VenusItems.venus_item = new ItemVenus("venus_item");
 		VenusItems.sulfur_battery = new ItemSulfurBattery("sulfur_battery");
 		VenusItems.jetpack = new ItemJetpack("jetpack", VenusItems.jetpackArmor, 7, 1);
-		VenusItems.venus_dungeon_key = new ItemVenusDungeonKey("venus_dungeon_key");
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(VenusItems.venus_item);
-		RegisterHelper.registerItem(VenusItems.sulfur_battery);
-		RegisterHelper.registerItem(VenusItems.jetpack);
-		RegisterHelper.registerItem(VenusItems.venus_dungeon_key);
+		// Register
+		CommonRegisterHelper.registerItem(VenusItems.venus_item);
+		CommonRegisterHelper.registerItem(VenusItems.sulfur_battery);
+		CommonRegisterHelper.registerItem(VenusItems.jetpack);
+
+		// Register ore dictionary
+		OreDictionary.registerOre("ingotLead", new ItemStack(VenusItems.venus_item, 1, 0));
 	}
 }

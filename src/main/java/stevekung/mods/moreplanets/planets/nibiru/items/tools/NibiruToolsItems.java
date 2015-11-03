@@ -16,7 +16,7 @@ import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class NibiruToolsItems
 {
@@ -37,13 +37,7 @@ public class NibiruToolsItems
 
 	public static void init()
 	{
-		NibiruToolsItems.initItems();
-		NibiruToolsItems.registerItems();
-		NibiruToolsItems.registerHarvestLevels();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		NibiruToolsItems.red_gem_pickaxe = new ItemPickaxeMP("red_gem_pickaxe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
 		NibiruToolsItems.red_gem_axe = new ItemAxeMP("red_gem_axe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
 		NibiruToolsItems.red_gem_hoe = new ItemHoeMP("red_gem_hoe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
@@ -54,29 +48,25 @@ public class NibiruToolsItems
 		NibiruToolsItems.norium_hoe = new ItemHoeMP("norium_hoe", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
 		NibiruToolsItems.norium_shovel = new ItemShovelMP("norium_shovel", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
 		NibiruToolsItems.norium_sword = new ItemSwordMP("norium_sword", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
-	}
 
-	private static void registerHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerItem(NibiruToolsItems.red_gem_sword);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.red_gem_shovel);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.red_gem_pickaxe);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.red_gem_axe);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.red_gem_hoe);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.norium_sword);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.norium_shovel);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.norium_pickaxe);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.norium_axe);
+		CommonRegisterHelper.registerItem(NibiruToolsItems.norium_hoe);
+
+		// Set harvest level
 		NibiruToolsItems.red_gem_pickaxe.setHarvestLevel("pickaxe", 4);
 		NibiruToolsItems.red_gem_axe.setHarvestLevel("axe", 4);
 		NibiruToolsItems.red_gem_shovel.setHarvestLevel("shovel", 4);
 		NibiruToolsItems.norium_pickaxe.setHarvestLevel("pickaxe", 4);
 		NibiruToolsItems.norium_axe.setHarvestLevel("axe", 4);
 		NibiruToolsItems.norium_shovel.setHarvestLevel("shovel", 4);
-	}
-
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(NibiruToolsItems.red_gem_sword);
-		RegisterHelper.registerItem(NibiruToolsItems.red_gem_shovel);
-		RegisterHelper.registerItem(NibiruToolsItems.red_gem_pickaxe);
-		RegisterHelper.registerItem(NibiruToolsItems.red_gem_axe);
-		RegisterHelper.registerItem(NibiruToolsItems.red_gem_hoe);
-		RegisterHelper.registerItem(NibiruToolsItems.norium_sword);
-		RegisterHelper.registerItem(NibiruToolsItems.norium_shovel);
-		RegisterHelper.registerItem(NibiruToolsItems.norium_pickaxe);
-		RegisterHelper.registerItem(NibiruToolsItems.norium_axe);
-		RegisterHelper.registerItem(NibiruToolsItems.norium_hoe);
 	}
 }

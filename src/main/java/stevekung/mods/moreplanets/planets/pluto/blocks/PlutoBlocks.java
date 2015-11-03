@@ -16,7 +16,7 @@ import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidMethane;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidNitrogen;
 import stevekung.mods.moreplanets.planets.pluto.itemblocks.ItemBlockPluto;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PlutoBlocks
 {
@@ -37,13 +37,7 @@ public class PlutoBlocks
 
 	public static void init()
 	{
-		PlutoBlocks.initBlocks();
-		PlutoBlocks.setHarvestLevels();
-		PlutoBlocks.registerBlocks();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		PlutoBlocks.pluto_block = new BlockPluto("pluto_block");
 		PlutoBlocks.xeonium_glowstone = new BlockXeoniumGlowstone("xeonium_glowstone");
 		PlutoBlocks.xeonium_torch = new BlockXeoniumTorch("xeonium_torch");
@@ -60,30 +54,27 @@ public class PlutoBlocks
 		FluidRegistry.registerFluid(PlutoBlocks.liquid_nitrogen_fluid);
 		PlutoBlocks.liquid_methane = new BlockFluidMethane("liquid_methane_fluid");
 		PlutoBlocks.liquid_nitrogen = new BlockFluidNitrogen("liquid_nitrogen_fluid");
-	}
 
-	private static void setHarvestLevels()
-	{
-		PlutoBlocks.pluto_block.setHarvestLevel("pickaxe", 3);
-		PlutoBlocks.frozen_methane_block.setHarvestLevel("pickaxe", 2);
-		PlutoBlocks.frozen_nitrogen_block.setHarvestLevel("pickaxe", 2);
+		// Register
+		CommonRegisterHelper.registerBlock(PlutoBlocks.pluto_block, ItemBlockPluto.class);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.xeonium_glowstone);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.frozen_methane_block);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.frozen_nitrogen_block);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.pluto_ancient_chest);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.pluto_treasure_chest);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.pluto_heart_crystal);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.xeonium_torch);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.liquid_methane);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.liquid_nitrogen);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.space_potato_block);
+
+		// Set harvest level
+		PlutoBlocks.pluto_block.setHarvestLevel("pickaxe", 1);
+		PlutoBlocks.frozen_methane_block.setHarvestLevel("pickaxe", 1);
+		PlutoBlocks.frozen_nitrogen_block.setHarvestLevel("pickaxe", 1);
 		PlutoBlocks.pluto_ancient_chest.setHarvestLevel("axe", 0);
-	}
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(PlutoBlocks.pluto_block, ItemBlockPluto.class);
-		RegisterHelper.registerBlock(PlutoBlocks.xeonium_glowstone);
-		RegisterHelper.registerBlock(PlutoBlocks.frozen_methane_block);
-		RegisterHelper.registerBlock(PlutoBlocks.frozen_nitrogen_block);
-		RegisterHelper.registerBlock(PlutoBlocks.pluto_ancient_chest);
-		RegisterHelper.registerBlock(PlutoBlocks.pluto_treasure_chest);
-		RegisterHelper.registerBlock(PlutoBlocks.pluto_heart_crystal);
-		RegisterHelper.registerBlock(PlutoBlocks.xeonium_torch);
-		RegisterHelper.registerBlock(PlutoBlocks.liquid_methane);
-		RegisterHelper.registerBlock(PlutoBlocks.liquid_nitrogen);
-		RegisterHelper.registerBlock(PlutoBlocks.space_potato_block);
-
+		// Register ore dictionary
 		OreDictionary.registerOre("oreMeteor", new ItemStack(PlutoBlocks.pluto_block, 1, 4));
 		OreDictionary.registerOre("oreFrozenIron", new ItemStack(PlutoBlocks.pluto_block, 1, 5));
 		OreDictionary.registerOre("oreIron", new ItemStack(PlutoBlocks.pluto_block, 1, 6));

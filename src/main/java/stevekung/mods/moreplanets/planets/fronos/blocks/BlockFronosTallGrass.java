@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -26,20 +27,19 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockFronosTallGrass extends BlockFlowerMP
+public class BlockFronosTallGrass extends BlockBushMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
 	public BlockFronosTallGrass(String name)
 	{
 		super();
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_short_grass));
+		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.short_fronos_grass));
 		this.setUnlocalizedName(name);
 	}
 
@@ -114,33 +114,42 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)//FIXME My block getting crash when try to place T_T
+	protected boolean canPlaceBlockOn(Block ground)
 	{
-		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt || world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass;
-		/*Block block = world.getBlockState(pos.down()).getBlock();
-		BlockType type = (BlockType)state.getValue(VARIANT);
+		return ground == FronosBlocks.fronos_grass || ground == FronosBlocks.pink_grass || ground == FronosBlocks.purple_grass || ground == FronosBlocks.plains_grass || ground == FronosBlocks.golden_grass || ground == FronosBlocks.fronos_dirt;
+	}
 
-		if (type == BlockType.fronos_short_grass || type == BlockType.fronos_medium_grass || type == BlockType.fronos_tall_grass)
+	@Override
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+	{
+		IBlockState block = world.getBlockState(pos.down());
+		int meta = this.getMetaFromState(world.getBlockState(pos));
+
+		if (state.getBlock() != this)
 		{
-			return block == FronosBlocks.fronos_grass || block == FronosBlocks.fronos_dirt;
+			return super.canBlockStay(world, pos, state);
 		}
-		if (type == BlockType.pink_short_grass || type == BlockType.pink_medium_grass || type == BlockType.pink_tall_grass)
+		if (meta >= 0 && meta <= 2)
 		{
-			return block == FronosBlocks.pink_grass || block == FronosBlocks.fronos_dirt;
+			return block.getBlock() == FronosBlocks.fronos_grass || block.getBlock() == FronosBlocks.fronos_dirt;
 		}
-		if (type == BlockType.purple_short_grass || type == BlockType.purple_medium_grass || type == BlockType.purple_tall_grass)
+		if (meta >= 3 && meta <= 5)
 		{
-			return block == FronosBlocks.purple_grass || block == FronosBlocks.fronos_dirt;
+			return block.getBlock() == FronosBlocks.pink_grass || block.getBlock() == FronosBlocks.fronos_dirt;
 		}
-		if (type == BlockType.plains_short_grass || type == BlockType.plains_medium_grass || type == BlockType.plains_tall_grass)
+		if (meta >= 6 && meta <= 8)
 		{
-			return block == FronosBlocks.plains_grass || block == FronosBlocks.fronos_dirt;
+			return block.getBlock() == FronosBlocks.purple_grass || block.getBlock() == FronosBlocks.fronos_dirt;
 		}
-		if (type == BlockType.golden_short_grass || type == BlockType.golden_medium_grass || type == BlockType.golden_tall_grass)
+		if (meta >= 9 && meta <= 11)
 		{
-			return block == FronosBlocks.golden_grass || block == FronosBlocks.fronos_dirt;
+			return block.getBlock() == FronosBlocks.plains_grass || block.getBlock() == FronosBlocks.fronos_dirt;
 		}
-		return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;*/
+		if (meta >= 12 && meta <= 14)
+		{
+			return block.getBlock() == FronosBlocks.golden_grass || block.getBlock() == FronosBlocks.fronos_dirt;
+		}
+		return super.canBlockStay(world, pos, state);
 	}
 
 	@Override
@@ -154,31 +163,6 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 			if (rand.nextInt(1) == 0)
 			{
 				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.GOLDEN_SMOKE, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
-			}
-		}
-	}
-
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		BlockType type = (BlockType)state.getValue(VARIANT);
-
-		if (!world.isRemote)
-		{
-			if (rand.nextInt(1500) == 0)
-			{
-				if (type == BlockType.golden_short_grass)
-				{
-					world.setBlockState(pos, FronosBlocks.fronos_tall_grass.getDefaultState().withProperty(VARIANT, BlockType.fronos_short_grass), 3);
-				}
-				else if (type == BlockType.golden_short_grass)
-				{
-					world.setBlockState(pos, FronosBlocks.fronos_tall_grass.getDefaultState().withProperty(VARIANT, BlockType.fronos_medium_grass), 3);
-				}
-				else if (type == BlockType.golden_tall_grass)
-				{
-					world.setBlockState(pos, FronosBlocks.fronos_tall_grass.getDefaultState().withProperty(VARIANT, BlockType.fronos_tall_grass), 3);
-				}
 			}
 		}
 	}
@@ -227,21 +211,21 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 
 	public static enum BlockType implements IStringSerializable
 	{
-		fronos_short_grass,
-		fronos_medium_grass,
-		fronos_tall_grass,
-		pink_short_grass,
-		pink_medium_grass,
-		pink_tall_grass,
-		purple_short_grass,
-		purple_medium_grass,
-		purple_tall_grass,
-		plains_short_grass,
-		plains_medium_grass,
-		plains_tall_grass,
-		golden_short_grass,
-		golden_medium_grass,
-		golden_tall_grass;
+		short_fronos_grass,
+		medium_fronos_grass,
+		tall_fronos_grass,
+		short_pink_grass,
+		medium_pink_grass,
+		tall_pink_grass,
+		short_purple_grass,
+		medium_purple_grass,
+		tall_purple_grass,
+		short_plains_grass,
+		medium_plains_grass,
+		tall_plains_grass,
+		short_golden_grass,
+		medium_golden_grass,
+		tall_golden_grass;
 
 		@Override
 		public String toString()

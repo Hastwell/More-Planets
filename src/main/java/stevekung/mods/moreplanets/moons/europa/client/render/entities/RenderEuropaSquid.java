@@ -30,11 +30,6 @@ public class RenderEuropaSquid extends RenderLiving
 		this.addLayer(new LayerEuropaSquidEyes(this));
 	}
 
-	protected ResourceLocation getEntityTexture(EntityEuropaSquid entity)
-	{
-		return this.squidTextures;
-	}
-
 	protected void rotateCorpse(EntityEuropaSquid p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
 	{
 		float f3 = p_77043_1_.prevSquidPitch + (p_77043_1_.squidPitch - p_77043_1_.prevSquidPitch) * p_77043_4_;
@@ -66,6 +61,6 @@ public class RenderEuropaSquid extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.getEntityTexture((EntityEuropaSquid)entity);
+		return this.squidTextures;
 	}
 }

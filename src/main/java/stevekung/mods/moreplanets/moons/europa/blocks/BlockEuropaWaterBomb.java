@@ -42,8 +42,6 @@ public class BlockEuropaWaterBomb extends BlockBaseMP
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		super.onBlockAdded(world, pos, state);
-
 		if (world.isBlockPowered(pos))
 		{
 			this.onBlockDestroyedByPlayer(world, pos, state.withProperty(EXPLODE, true));

@@ -7,10 +7,8 @@
 
 package stevekung.mods.moreplanets.planets.fronos.items;
 
-import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -18,8 +16,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP2;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
@@ -44,26 +40,9 @@ public class ItemGlassGemCorn extends ItemFoodMP2 implements IPlantable
 	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		--itemStack.stackSize;
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
-		player.getFoodStats().addStats(this, itemStack);
-		return itemStack;
-	}
-
-	@Override
 	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
 	{
 		return FronosBlocks.glass_gem_corn.getDefaultState();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
 	}
 
 	@Override

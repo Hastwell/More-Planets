@@ -49,7 +49,7 @@ public class BlockWoodenSlab1MP extends BlockSlab
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		for (int i = 0; i < 5; ++i)
+		for (int i = 0; i < 6; ++i)
 		{
 			list.add(new ItemStack(this, 1, i));
 		}
@@ -134,7 +134,8 @@ public class BlockWoodenSlab1MP extends BlockSlab
 		orange_wood_slab(1),
 		crystal_wood_slab(2),
 		coconut_wood_slab(3),
-		maple_wood_slab(4);
+		maple_wood_slab(4),
+		europa_wood_slab(5);
 
 		private int meta;
 		private static BlockType[] META_LOOKUP = new BlockType[values().length];

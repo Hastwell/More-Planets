@@ -14,6 +14,7 @@ import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GLAllocation;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
@@ -48,11 +49,11 @@ public class SkyProviderMarsMP extends IRenderHandler
 		this.glSkyList2 = displayLists + 2;
 
 		// Bind stars to display list
-		GL11.glPushMatrix();
+		GlStateManager.pushMatrix();
 		GL11.glNewList(this.starList, GL11.GL_COMPILE);
 		this.renderStars();
 		GL11.glEndList();
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 
 		Tessellator tessellator = Tessellator.getInstance();
 		WorldRenderer worldRender = tessellator.getWorldRenderer();
@@ -96,7 +97,7 @@ public class SkyProviderMarsMP extends IRenderHandler
 	@Override
 	public void render(float partialTicks, WorldClient world, Minecraft mc)
 	{
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GlStateManager.disableTexture2D();
 		Vec3 vec3 = world.getSkyColor(mc.getRenderViewEntity(), partialTicks);
 		float f1 = (float) vec3.xCoord;
 		float f2 = (float) vec3.yCoord;
@@ -113,16 +114,16 @@ public class SkyProviderMarsMP extends IRenderHandler
 			f3 = f6;
 		}
 
-		GL11.glColor3f(f1, f2, f3);
+		GlStateManager.color(f1, f2, f3);
 		Tessellator tessellator1 = Tessellator.getInstance();
 		WorldRenderer worldRender = tessellator1.getWorldRenderer();
-		GL11.glDepthMask(false);
-		GL11.glEnable(GL11.GL_FOG);
-		GL11.glColor3f(f1, f2, f3);
-		GL11.glCallList(this.glSkyList);
-		GL11.glDisable(GL11.GL_FOG);
-		GL11.glDisable(GL11.GL_ALPHA_TEST);
-		GL11.glEnable(GL11.GL_BLEND);
+		GlStateManager.depthMask(false);
+		GlStateManager.enableFog();
+		GlStateManager.color(f1, f2, f3);
+		GlStateManager.callList(this.glSkyList);
+		GlStateManager.disableFog();
+		GlStateManager.disableAlpha();
+		GlStateManager.enableBlend();
 		OpenGlHelper.glBlendFunc(770, 771, 1, 0);
 		RenderHelper.disableStandardItemLighting();
 		float f7;
@@ -133,16 +134,16 @@ public class SkyProviderMarsMP extends IRenderHandler
 
 		if (f18 > 0.0F)
 		{
-			GL11.glColor4f(f18, f18, f18, f18);
-			GL11.glCallList(this.starList);
+			GlStateManager.color(f18, f18, f18, f18);
+			GlStateManager.callList(this.starList);
 		}
 
 		float[] afloat = new float[4];
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		GL11.glShadeModel(GL11.GL_SMOOTH);
-		GL11.glPushMatrix();
-		GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
+		GlStateManager.disableTexture2D();
+		GlStateManager.shadeModel(GL11.GL_SMOOTH);
+		GlStateManager.pushMatrix();
+		GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
 		afloat[0] = 255 / 255.0F;
 		afloat[1] = 194 / 255.0F;
 		afloat[2] = 180 / 255.0F;
@@ -200,22 +201,22 @@ public class SkyProviderMarsMP extends IRenderHandler
 		worldRender.addVertex(-f10, 100.0D, -f10);
 
 		tessellator1.draw();
-		GL11.glPopMatrix();
-		GL11.glShadeModel(GL11.GL_FLAT);
+		GlStateManager.popMatrix();
+		GlStateManager.shadeModel(GL11.GL_FLAT);
 
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GlStateManager.enableTexture2D();
 		OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ZERO);
-		GL11.glPushMatrix();
+		GlStateManager.pushMatrix();
 		f7 = 0.0F;
 		f8 = 0.0F;
 		f9 = 0.0F;
-		GL11.glTranslatef(f7, f8, f9);
-		GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
+		GlStateManager.translate(f7, f8, f9);
+		GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
 
 		// Render sun
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		GL11.glColor4f(0.0F, 0.0F, 0.0F, 1.0F);
+		GlStateManager.disableTexture2D();
+		GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
 		//Some blanking to conceal the stars
 		f10 = this.sunSize / 3.5F;
 		worldRender.startDrawingQuads();
@@ -224,8 +225,8 @@ public class SkyProviderMarsMP extends IRenderHandler
 		worldRender.addVertex(f10, 99.9D, f10);
 		worldRender.addVertex(-f10, 99.9D, f10);
 		tessellator1.draw();
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.enableTexture2D();
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		f10 = this.sunSize;
 		mc.renderEngine.bindTexture(this.sunTexture);
 		worldRender.startDrawingQuads();
@@ -237,10 +238,10 @@ public class SkyProviderMarsMP extends IRenderHandler
 
 		// Render earth
 		f10 = 0.5F;
-		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		GL11.glRotatef(40.0F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(200F, 1.0F, 0.0F, 0.0F);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F);
+		GlStateManager.scale(0.6F, 0.6F, 0.6F);
+		GlStateManager.rotate(40.0F, 0.0F, 0.0F, 1.0F);
+		GlStateManager.rotate(200F, 1.0F, 0.0F, 0.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.overworldTexture);
 		worldRender.startDrawingQuads();
 		worldRender.addVertexWithUV(-f10, -100.0D, f10, 0, 1);
@@ -251,11 +252,11 @@ public class SkyProviderMarsMP extends IRenderHandler
 
 		// Phobos
 		f10 = 3.8F;
-		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		GL11.glRotatef(40.0F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(200F, 1.0F, 0.0F, 0.0F);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F);
-		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
+		GlStateManager.scale(0.6F, 0.6F, 0.6F);
+		GlStateManager.rotate(40.0F, 0.0F, 0.0F, 1.0F);
+		GlStateManager.rotate(200F, 1.0F, 0.0F, 0.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
+		GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.phobosTexture);
 		worldRender.startDrawingQuads();
 		worldRender.addVertexWithUV(-f10, -100.0D, f10, 0, 1);
@@ -266,11 +267,11 @@ public class SkyProviderMarsMP extends IRenderHandler
 
 		// Deimos
 		f10 = 1.2F;
-		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		GL11.glRotatef(40.0F, 0.0F, 0.0F, 1.0F);
-		GL11.glRotatef(200F, 1.0F, 0.0F, 0.0F);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F);
-		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
+		GlStateManager.scale(0.6F, 0.6F, 0.6F);
+		GlStateManager.rotate(40.0F, 0.0F, 0.0F, 1.0F);
+		GlStateManager.rotate(200F, 1.0F, 0.0F, 0.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
+		GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.deimosTexture);
 		worldRender.startDrawingQuads();
 		worldRender.addVertexWithUV(-f10, -100.0D, f10, 0, 1);
@@ -279,23 +280,23 @@ public class SkyProviderMarsMP extends IRenderHandler
 		worldRender.addVertexWithUV(-f10, -100.0D, -f10, 0, 0);
 		tessellator1.draw();
 
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GlStateManager.disableTexture2D();
 
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glDisable(GL11.GL_BLEND);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
-		GL11.glEnable(GL11.GL_FOG);
-		GL11.glPopMatrix();
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		GL11.glColor3f(0.0F, 0.0F, 0.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.disableBlend();
+		GlStateManager.enableAlpha();
+		GlStateManager.enableFog();
+		GlStateManager.popMatrix();
+		GlStateManager.disableTexture2D();
+		GlStateManager.color(0.0F, 0.0F, 0.0F);
 		double d0 = mc.thePlayer.getPositionEyes(partialTicks).yCoord - world.getHorizon();
 
 		if (d0 < 0.0D)
 		{
-			GL11.glPushMatrix();
-			GL11.glTranslatef(0.0F, 12.0F, 0.0F);
-			GL11.glCallList(this.glSkyList2);
-			GL11.glPopMatrix();
+			GlStateManager.pushMatrix();
+			GlStateManager.translate(0.0F, 12.0F, 0.0F);
+			GlStateManager.callList(this.glSkyList2);
+			GlStateManager.popMatrix();
 			f8 = 1.0F;
 			f9 = -((float) (d0 + 65.0D));
 			f10 = -f8;
@@ -326,18 +327,18 @@ public class SkyProviderMarsMP extends IRenderHandler
 
 		if (world.provider.isSkyColored())
 		{
-			GL11.glColor3f(f1 * 0.2F + 0.04F, f2 * 0.2F + 0.04F, f3 * 0.6F + 0.1F);
+			GlStateManager.color(f1 * 0.2F + 0.04F, f2 * 0.2F + 0.04F, f3 * 0.6F + 0.1F);
 		}
 		else
 		{
-			GL11.glColor3f(f1, f2, f3);
+			GlStateManager.color(f1, f2, f3);
 		}
-		GL11.glPushMatrix();
-		GL11.glTranslatef(0.0F, -((float) (d0 - 16.0D)), 0.0F);
-		GL11.glCallList(this.glSkyList2);
-		GL11.glPopMatrix();
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		GL11.glDepthMask(true);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(0.0F, -((float) (d0 - 16.0D)), 0.0F);
+		GlStateManager.callList(this.glSkyList2);
+		GlStateManager.popMatrix();
+		GlStateManager.enableTexture2D();
+		GlStateManager.depthMask(true);
 	}
 
 	private void renderStars()

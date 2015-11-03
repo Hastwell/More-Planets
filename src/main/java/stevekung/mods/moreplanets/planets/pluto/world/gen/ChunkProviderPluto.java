@@ -21,7 +21,6 @@ import micdoodle8.mods.galacticraft.core.world.gen.EnumCraterSize;
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
@@ -37,7 +36,6 @@ import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
-import stevekung.mods.moreplanets.planets.pluto.blocks.BlockPluto;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomBossPluto;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomChestsPluto;
@@ -45,9 +43,10 @@ import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomTreasurePl
 
 public class ChunkProviderPluto extends ChunkProviderGenerate
 {
-	IBlockState topBlock = PlutoBlocks.pluto_block.getDefaultState();
-	IBlockState fillBlock = PlutoBlocks.pluto_block.getDefaultState().withProperty(BlockPluto.VARIANT, BlockPluto.BlockType.pluto_sub_surface_rock);
-	IBlockState lowerBlock = PlutoBlocks.pluto_block.getDefaultState().withProperty(BlockPluto.VARIANT, BlockPluto.BlockType.pluto_rock);
+	Block baseBlock = PlutoBlocks.pluto_block;
+	int topBlockMeta = 0;
+	int fillBlockMeta = 1;
+	int lowerBlockMeta = 2;
 
 	private NoiseModule noiseGen1;
 	private NoiseModule noiseGen2;
@@ -75,10 +74,9 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBasePluto.pluto };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(PlutoBlocks.pluto_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(PlutoBlocks.pluto_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 300;
-
 	private static int MID_HEIGHT = 64;
 	private static int CHUNK_SIZE_X = 16;
 	private static int CHUNK_SIZE_Y = 128;
@@ -130,7 +128,7 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 				{
 					if (y < ChunkProviderPluto.MID_HEIGHT + yDev)
 					{
-						chunk.setBlockState(this.getIndex(x, y, z), this.lowerBlock);
+						chunk.setBlockState(this.getIndex(x, y, z), this.baseBlock.getStateFromMeta(this.lowerBlockMeta));
 					}
 				}
 			}
@@ -148,8 +146,10 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 			{
 				int var12 = (int) (this.noiseGen4.getNoise(var8 + x * 16, var9 * z * 16) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
-				IBlockState topBlock = this.topBlock;
-				IBlockState fillBlock = this.fillBlock;
+				Block topBlock = this.baseBlock;
+				int topBlockMeta = this.topBlockMeta;
+				Block fillBlock = this.baseBlock;
+				int fillBlockMeta = this.fillBlockMeta;
 
 				for (int var16 = 127; var16 >= 0; --var16)
 				{
@@ -167,36 +167,40 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 						{
 							var13 = -1;
 						}
-						else if (block == this.lowerBlock)
+						else if (block == this.baseBlock)
 						{
 							if (var13 == -1)
 							{
 								if (var12 <= 0)
 								{
-									topBlock = Blocks.air.getDefaultState();
-									fillBlock = this.lowerBlock;
+									topBlock = Blocks.air;
+									topBlockMeta = 0;
+									fillBlock = this.baseBlock;
+									fillBlockMeta = this.fillBlockMeta;
 								}
 								else if (var16 >= var5 - -16 && var16 <= var5 + 1)
 								{
-									topBlock = this.topBlock;
-									topBlock = this.fillBlock;
+									topBlock = this.baseBlock;
+									topBlockMeta = this.topBlockMeta;
+									topBlock = this.baseBlock;
+									topBlockMeta = this.fillBlockMeta;
 								}
 
 								var13 = var12;
 
 								if (var16 >= var5 - 1)
 								{
-									chunk.setBlockState(index, topBlock);
+									chunk.setBlockState(index, topBlock.getStateFromMeta(topBlockMeta));
 								}
 								else if (var16 < var5 - 1 && var16 >= var5 - 2)
 								{
-									chunk.setBlockState(index, fillBlock);
+									chunk.setBlockState(index, fillBlock.getStateFromMeta(fillBlockMeta));
 								}
 							}
 							else if (var13 > 0)
 							{
 								--var13;
-								chunk.setBlockState(index, fillBlock);
+								chunk.setBlockState(index, fillBlock.getStateFromMeta(fillBlockMeta));
 							}
 						}
 					}
@@ -214,11 +218,11 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.createCraters(x, z, primer);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
-		Chunk var4 = new Chunk(this.worldObj, primer, x, z);
-		var4.generateSkylightMap();
-		return var4;
+		Chunk chunk = new Chunk(this.worldObj, primer, x, z);
+		chunk.generateSkylightMap();
+		return chunk;
 	}
 
 	public void createCraters(int chunkX, int chunkZ, ChunkPrimer chunk)
@@ -316,18 +320,18 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void populate(IChunkProvider par1IChunkProvider, int x, int z)
+	public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
 	{
 		BlockFalling.fallInstantly = true;
-		int var4 = x * 16;
-		int var5 = z * 16;
-		this.worldObj.getBiomeGenForCoords(new BlockPos(var4 + 16, 0, var5 + 16));
+		int x = chunkX * 16;
+		int z = chunkZ * 16;
+		this.worldObj.getBiomeGenForCoords(new BlockPos(x + 16, 0, z + 16));
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed(x * var7 + z * var9 ^ this.worldObj.getSeed());
+		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
 		this.dungeonGenerator.handleTileEntities(this.rand);
-		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+		//this.decoratePlanet(this.worldObj, this.rand, var4, var5);
 		BlockFalling.fallInstantly = false;
 	}
 
@@ -349,7 +353,6 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 		return "PlutoLevelSource";
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List func_177458_a(EnumCreatureType type, BlockPos pos)
 	{

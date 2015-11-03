@@ -25,6 +25,7 @@ public class BlockFluidDirtyWater extends BlockFluidBaseMP
 	{
 		super(MercuryBlocks.dirty_water_fluid);
 		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+		this.setLightOpacity(5);
 		this.setUnlocalizedName(name);
 	}
 

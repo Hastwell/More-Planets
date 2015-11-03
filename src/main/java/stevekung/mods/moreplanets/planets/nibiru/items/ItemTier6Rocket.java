@@ -26,16 +26,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6Rocket;
-import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6RocketNoFlag;
 
 public class ItemTier6Rocket extends ItemMorePlanets implements IHoldableItem
 {
@@ -99,17 +96,7 @@ public class ItemTier6Rocket extends ItemMorePlanets implements IHoldableItem
 					return false;
 				}
 
-				EntityAutoRocket rocket;
-
-				if (itemStack.getItemDamage() < 10)
-				{
-					rocket = new EntityTier6Rocket(world, centerX, centerY, centerZ, EnumRocketType.values()[itemStack.getItemDamage()]);
-				}
-				else
-				{
-					rocket = new EntityTier6RocketNoFlag(world, centerX, centerY, centerZ, EnumRocketType.values()[itemStack.getItemDamage() - 10]);
-				}
-
+				EntityAutoRocket rocket = new EntityTier6Rocket(world, centerX, centerY, centerZ, EnumRocketType.values()[itemStack.getItemDamage()]);
 				rocket.setPosition(rocket.posX, rocket.posY + rocket.getOnPadYOffset(), rocket.posZ);
 				world.spawnEntityInWorld(rocket);
 
@@ -132,10 +119,6 @@ public class ItemTier6Rocket extends ItemMorePlanets implements IHoldableItem
 					{
 						((EntityTier6Rocket) rocket).fuelTank.fill(new FluidStack(GalacticraftCore.fluidFuel, rocket.getMaxFuel()), true);
 					}
-					else if (rocket instanceof EntityTier6RocketNoFlag)
-					{
-						((EntityTier6RocketNoFlag) rocket).fuelTank.fill(new FluidStack(GalacticraftCore.fluidFuel, rocket.getMaxFuel()), true);
-					}
 				}
 			}
 			else
@@ -150,14 +133,7 @@ public class ItemTier6Rocket extends ItemMorePlanets implements IHoldableItem
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
 	{
-		if (ConfigManagerMP.enableRocketWithThaiFlag)
-		{
-			for (int i = 0; i < EnumRocketType.values().length; i++)
-			{
-				list.add(new ItemStack(item, 1, i));
-			}
-		}
-		for (int i = 10; i < 10 + EnumRocketType.values().length; i++)
+		for (int i = 0; i < EnumRocketType.values().length; i++)
 		{
 			list.add(new ItemStack(item, 1, i));
 		}
@@ -165,22 +141,9 @@ public class ItemTier6Rocket extends ItemMorePlanets implements IHoldableItem
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
 	{
-		EnumRocketType type = null;
-
-		if (itemStack.getItemDamage() < 10)
-		{
-			type = EnumRocketType.values()[itemStack.getItemDamage()];
-		}
-		else
-		{
-			if (ConfigManagerMP.enableRocketWithThaiFlag)
-			{
-				list.add(EnumChatFormatting.GRAY + "\u00a7o" + StatCollector.translateToLocal("desc.rocket.noflag.name"));
-			}
-			type = EnumRocketType.values()[itemStack.getItemDamage() - 10];
-		}
+		EnumRocketType type = EnumRocketType.values()[itemStack.getItemDamage()];
 
 		if (!type.getTooltip().isEmpty())
 		{
@@ -192,16 +155,7 @@ public class ItemTier6Rocket extends ItemMorePlanets implements IHoldableItem
 		}
 		if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
 		{
-			EntityAutoRocket rocket;
-
-			if (itemStack.getItemDamage() < 10)
-			{
-				rocket = new EntityTier6Rocket(FMLClientHandler.instance().getWorldClient(), 0, 0, 0, EnumRocketType.values()[itemStack.getItemDamage()]);
-			}
-			else
-			{
-				rocket = new EntityTier6RocketNoFlag(FMLClientHandler.instance().getWorldClient(), 0, 0, 0, EnumRocketType.values()[itemStack.getItemDamage() - 10]);
-			}
+			EntityAutoRocket rocket = new EntityTier6Rocket(FMLClientHandler.instance().getWorldClient(), 0, 0, 0, EnumRocketType.values()[itemStack.getItemDamage()]);
 			list.add(GCCoreUtil.translate("gui.message.fuel.name") + ": " + itemStack.getTagCompound().getInteger("RocketFuel") + " / " + rocket.fuelTank.getCapacity());
 		}
 	}

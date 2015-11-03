@@ -199,7 +199,7 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 										{
 											int coords = (var42 * 16 + var45) * 256 + var50;
 
-											if (chunk.getBlockState(coords) == NibiruBlocks.nibiru_block.getDefaultState() || chunk.getBlockState(coords) == GCBlocks.crudeOilStill.getDefaultState() || chunk.getBlockState(coords) == NibiruBlocks.infected_cavernous_vine.getDefaultState())
+											if (chunk.getBlockState(coords) == NibiruBlocks.nibiru_block.getDefaultState() || chunk.getBlockState(coords) == GCBlocks.crudeOil.getDefaultState() || chunk.getBlockState(coords) == NibiruBlocks.infected_cavernous_vine.getDefaultState())
 											{
 												chunk.setBlockState(coords, Blocks.air.getDefaultState());
 											}
@@ -247,7 +247,7 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 												}
 												else if (chunk.getBlockState(coordsBelow).getBlock() == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
 												{
-													chunk.setBlockState(coords, GCBlocks.crudeOilStill.getDefaultState());
+													chunk.setBlockState(coords, GCBlocks.crudeOil.getDefaultState());
 												}
 											}
 										}

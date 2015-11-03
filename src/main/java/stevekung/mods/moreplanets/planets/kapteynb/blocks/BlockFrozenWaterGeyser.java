@@ -10,15 +10,12 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -26,8 +23,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
+import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityFrozenWaterGeyser;
 
-public class BlockFrozenWaterGeyser extends BlockBaseMP implements ITerraformableBlock
+public class BlockFrozenWaterGeyser extends BlockBaseMP implements ITerraformableBlock, ITileEntityProvider
 {
 	public BlockFrozenWaterGeyser(String name)
 	{
@@ -35,36 +33,6 @@ public class BlockFrozenWaterGeyser extends BlockBaseMP implements ITerraformabl
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setUnlocalizedName(name);
-	}
-
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (entity instanceof EntityPlayer)
-		{
-			if (((EntityPlayer)entity).capabilities.isFlying)
-			{
-				return;
-			}
-			entity.motionY = 3.0F;
-			entity.fallDistance = 0.0F;
-			((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
-			return;
-		}
-		if (entity instanceof EntityLivingBase)
-		{
-			entity.motionY = 3.0F;
-			entity.fallDistance = 0.0F;
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
-			return;
-		}
-	}
-
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		float f = 0.100F;
-		return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
 	}
 
 	@Override
@@ -102,5 +70,17 @@ public class BlockFrozenWaterGeyser extends BlockBaseMP implements ITerraformabl
 	public boolean isTerraformable(World world, BlockPos pos)
 	{
 		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		return new TileEntityFrozenWaterGeyser();
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return 3;
 	}
 }

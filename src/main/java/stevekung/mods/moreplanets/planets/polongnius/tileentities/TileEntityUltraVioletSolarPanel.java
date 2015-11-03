@@ -71,7 +71,7 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
 
 		if (tier == 5)
 		{
-			this.storage.setCapacity(30000);
+			this.storage.setCapacity(60000);
 		}
 
 		this.setTierGC(tier);
@@ -83,7 +83,7 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
 	{
 		if (!this.initialised)
 		{
-			this.storage.setCapacity(30000);
+			this.storage.setCapacity(60000);
 			this.setTierGC(5);
 			this.initialised = true;
 		}

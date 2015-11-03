@@ -1,0 +1,7 @@
+{
+    "variants": {
+		"variant=europa_prismarine_slab": { "model": "moreplanets:europa_prismarine" },
+		"variant=europa_prismarine_brick_slab": { "model": "moreplanets:europa_prismarine_bricks" },
+		"variant=dark_europa_prismarine_slab": { "model": "moreplanets:dark_europa_prismarine" }
+    }
+}

@@ -21,9 +21,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathable
+public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathable, IEntityLivingPlanet
 {
 	public float squidPitch;
 	public float prevSquidPitch;
@@ -270,5 +272,11 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 	public boolean canBreath()
 	{
 		return true;
+	}
+
+	@Override
+	public EnumDimensionType canLivingInDimension()
+	{
+		return EnumDimensionType.NULL;
 	}
 }

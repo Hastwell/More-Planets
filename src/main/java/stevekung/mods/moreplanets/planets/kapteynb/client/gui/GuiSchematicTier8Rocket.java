@@ -19,7 +19,7 @@ import stevekung.mods.moreplanets.planets.kapteynb.inventory.container.Container
 
 public class GuiSchematicTier8Rocket extends GuiContainer implements ISchematicResultPage
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/tier_8_rocket_schematic.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/schematics/tier_8_rocket.png");
 	private int pageIndex;
 
 	public GuiSchematicTier8Rocket(InventoryPlayer par1InventoryPlayer, int x, int y, int z)

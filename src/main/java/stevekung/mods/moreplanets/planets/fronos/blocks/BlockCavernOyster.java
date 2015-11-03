@@ -112,18 +112,14 @@ public class BlockCavernOyster extends BlockOysterMP
 	{
 		List<ItemStack> ret = new ArrayList<ItemStack>();
 		Random rand = world instanceof World ? ((World)world).rand : RANDOM;
-		int count = this.quantityDropped(state, fortune, rand);
+		ret.add(new ItemStack(this, 1, 0));
 
-		for (int i = 0; i < count; i++)
+		if (state == state.withProperty(OPEN, true))
 		{
-			if (state == state.withProperty(OPEN, true))
+			if (rand.nextInt(20) == 0)
 			{
-				if (rand.nextInt(20) == 0)
-				{
-					ret.add(new ItemStack(FronosItems.pearl, 1, 1));
-				}
+				ret.add(new ItemStack(FronosItems.pearl, 1, 1));
 			}
-			ret.add(new ItemStack(this, 1, 0));
 		}
 		return ret;
 	}

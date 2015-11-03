@@ -10,7 +10,7 @@ package stevekung.mods.moreplanets.planets.diona.items.armor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DionaArmorItems
 {
@@ -31,12 +31,7 @@ public class DionaArmorItems
 
 	public static void init()
 	{
-		DionaArmorItems.initItems();
-		DionaArmorItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		DionaArmorItems.quontonium_helmet = new ItemArmorQuontonium("quontonium_helmet", DionaArmorItems.quontonium, 7, 0);
 		DionaArmorItems.quontonium_chestplate = new ItemArmorQuontonium("quontonium_chestplate", DionaArmorItems.quontonium, 7, 1);
 		DionaArmorItems.quontonium_leggings = new ItemArmorQuontonium("quontonium_leggings", DionaArmorItems.quontonium, 7, 2);
@@ -47,19 +42,17 @@ public class DionaArmorItems
 		DionaArmorItems.fronisium_boots = new ItemArmorFronisium("fronisium_boots", DionaArmorItems.fronisium, 7, 3);
 		DionaArmorItems.breathable_quontonium_helmet = new ItemBreathableQuontonium("breathable_quontonium_helmet", DionaArmorItems.quontonium, 7, 0);
 		DionaArmorItems.breathable_fronisium_helmet = new ItemBreathableFronisium("breathable_fronisium_helmet", DionaArmorItems.fronisium, 7, 0);
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(DionaArmorItems.quontonium_helmet);
-		RegisterHelper.registerItem(DionaArmorItems.quontonium_chestplate);
-		RegisterHelper.registerItem(DionaArmorItems.quontonium_leggings);
-		RegisterHelper.registerItem(DionaArmorItems.quontonium_boots);
-		RegisterHelper.registerItem(DionaArmorItems.fronisium_helmet);
-		RegisterHelper.registerItem(DionaArmorItems.fronisium_chestplate);
-		RegisterHelper.registerItem(DionaArmorItems.fronisium_leggings);
-		RegisterHelper.registerItem(DionaArmorItems.fronisium_boots);
-		RegisterHelper.registerItem(DionaArmorItems.breathable_quontonium_helmet);
-		RegisterHelper.registerItem(DionaArmorItems.breathable_fronisium_helmet);
+		// Register
+		CommonRegisterHelper.registerItem(DionaArmorItems.quontonium_helmet);
+		CommonRegisterHelper.registerItem(DionaArmorItems.quontonium_chestplate);
+		CommonRegisterHelper.registerItem(DionaArmorItems.quontonium_leggings);
+		CommonRegisterHelper.registerItem(DionaArmorItems.quontonium_boots);
+		CommonRegisterHelper.registerItem(DionaArmorItems.fronisium_helmet);
+		CommonRegisterHelper.registerItem(DionaArmorItems.fronisium_chestplate);
+		CommonRegisterHelper.registerItem(DionaArmorItems.fronisium_leggings);
+		CommonRegisterHelper.registerItem(DionaArmorItems.fronisium_boots);
+		CommonRegisterHelper.registerItem(DionaArmorItems.breathable_quontonium_helmet);
+		CommonRegisterHelper.registerItem(DionaArmorItems.breathable_fronisium_helmet);
 	}
 }

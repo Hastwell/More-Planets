@@ -12,16 +12,15 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
-import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.planets.diona.itemblocks.ItemBlockDiona;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DionaBlocks
 {
 	public static Block diona_block;
 	public static Block diona_treasure_chest;
 	public static Block fronisium_tnt;
-	public static Block minion_creeper_egg;
+	public static Block creeper_minion_egg;
 	public static Block diona_cobblestone_stairs;
 	public static Block chiseled_quontonium_stairs;
 	public static Block quontonium_brick_stairs;
@@ -30,53 +29,40 @@ public class DionaBlocks
 
 	public static void init()
 	{
-		DionaBlocks.initBlocks();
-		DionaBlocks.setHarvestLevels();
-		DionaBlocks.registerBlocks();
-		DionaBlocks.setFireBurn();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		DionaBlocks.diona_block = new BlockDiona("diona_block");
 		DionaBlocks.diona_treasure_chest = new BlockDionaTreasureChest("diona_treasure_chest");
 		DionaBlocks.fronisium_tnt = new BlockFronisiumTNT("fronisium_tnt");
-		DionaBlocks.minion_creeper_egg = new BlockMinionCreeperEgg("minion_creeper_egg");
-		DionaBlocks.diona_cobblestone_stairs = new BlockStairsMP("diona_cobblestone_stairs", 2.5F, StairsCategory.diona_cobblestone, Blocks.stone.getDefaultState());
-		DionaBlocks.chiseled_quontonium_stairs = new BlockStairsMP("chiseled_quontonium_stairs", 3.25F, StairsCategory.chiseled_quontonium, Blocks.stone.getDefaultState());
-		DionaBlocks.quontonium_brick_stairs = new BlockStairsMP("quontonium_brick_stairs", 3.25F, StairsCategory.quontonium_brick, Blocks.stone.getDefaultState());
-		DionaBlocks.diona_dungeon_brick_stairs = new BlockStairsMP("diona_dungeon_brick_stairs", 4.0F, StairsCategory.diona_dungeon_brick, Blocks.stone.getDefaultState());
+		DionaBlocks.creeper_minion_egg = new BlockCreeperMinionEgg("creeper_minion_egg");
+		DionaBlocks.diona_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "diona_cobblestone_stairs", 2.5F);
+		DionaBlocks.chiseled_quontonium_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "chiseled_quontonium_stairs", 3.25F);
+		DionaBlocks.quontonium_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "quontonium_brick_stairs", 3.25F);
+		DionaBlocks.diona_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "diona_dungeon_brick_stairs", 4.0F);
 		DionaBlocks.diona_ancient_chest = new BlockDionaAncientChest("diona_ancient_chest");
 
-	}
+		// Register
+		CommonRegisterHelper.registerBlock(DionaBlocks.diona_block, ItemBlockDiona.class);
+		CommonRegisterHelper.registerBlock(DionaBlocks.diona_cobblestone_stairs);
+		CommonRegisterHelper.registerBlock(DionaBlocks.quontonium_brick_stairs);
+		CommonRegisterHelper.registerBlock(DionaBlocks.chiseled_quontonium_stairs);
+		CommonRegisterHelper.registerBlock(DionaBlocks.diona_dungeon_brick_stairs);
+		CommonRegisterHelper.registerBlock(DionaBlocks.fronisium_tnt);
+		CommonRegisterHelper.registerBlock(DionaBlocks.creeper_minion_egg);
+		CommonRegisterHelper.registerBlock(DionaBlocks.diona_treasure_chest);
+		CommonRegisterHelper.registerBlock(DionaBlocks.diona_ancient_chest);
 
-	private static void setHarvestLevels()
-	{
-		DionaBlocks.diona_block.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.diona_cobblestone_stairs.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.chiseled_quontonium_stairs.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.quontonium_brick_stairs.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.diona_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
+		// Set harvest level
+		DionaBlocks.diona_block.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.diona_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.chiseled_quontonium_stairs.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.quontonium_brick_stairs.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.diona_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
 		DionaBlocks.diona_ancient_chest.setHarvestLevel("axe", 0);
-	}
 
-	private static void setFireBurn()
-	{
-		RegisterHelper.setFireBurn(DionaBlocks.fronisium_tnt, 15, 100);
-	}
+		// Set fire burn
+		CommonRegisterHelper.setFireBurn(DionaBlocks.fronisium_tnt, 15, 100);
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(DionaBlocks.diona_block, ItemBlockDiona.class);
-		RegisterHelper.registerBlock(DionaBlocks.diona_cobblestone_stairs);
-		RegisterHelper.registerBlock(DionaBlocks.quontonium_brick_stairs);
-		RegisterHelper.registerBlock(DionaBlocks.chiseled_quontonium_stairs);
-		RegisterHelper.registerBlock(DionaBlocks.diona_dungeon_brick_stairs);
-		RegisterHelper.registerBlock(DionaBlocks.fronisium_tnt);
-		RegisterHelper.registerBlock(DionaBlocks.minion_creeper_egg);
-		RegisterHelper.registerBlock(DionaBlocks.diona_treasure_chest);
-		RegisterHelper.registerBlock(DionaBlocks.diona_ancient_chest);
-
+		// Register ore dictionary
 		OreDictionary.registerOre("oreQuontonium", new ItemStack(DionaBlocks.diona_block, 1, 4));
 		OreDictionary.registerOre("oreFronisium", new ItemStack(DionaBlocks.diona_block, 1, 5));
 		OreDictionary.registerOre("oreTin", new ItemStack(DionaBlocks.diona_block, 1, 6));

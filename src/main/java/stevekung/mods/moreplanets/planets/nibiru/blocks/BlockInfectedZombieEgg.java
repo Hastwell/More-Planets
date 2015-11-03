@@ -7,10 +7,14 @@
 
 package stevekung.mods.moreplanets.planets.nibiru.blocks;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockEggMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 
 public class BlockInfectedZombieEgg extends BlockEggMP
@@ -33,6 +37,12 @@ public class BlockInfectedZombieEgg extends BlockEggMP
 			world.spawnEntityInWorld(zombie);
 		}
 		world.setBlockToAir(pos);
-		this.onBlockDestroyedByExplosion(world, pos, explosion);
+	}
+
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+	{
+		super.harvestBlock(world, player, pos, state, tile);
+		MorePlanetsEvents.getActivateInfectedGas(player);
 	}
 }

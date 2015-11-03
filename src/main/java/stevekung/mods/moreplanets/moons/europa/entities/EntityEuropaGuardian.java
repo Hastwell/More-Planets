@@ -23,12 +23,11 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityLookHelper;
 import net.minecraft.entity.ai.EntityMoveHelper;
-import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityFishHook;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFishFood;
 import net.minecraft.item.ItemStack;
@@ -50,12 +49,16 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 
 import com.google.common.base.Predicate;
 
-public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
+public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreathable, IEntityLivingPlanet
 {
 	private float field_175482_b;
 	private float field_175484_c;
@@ -72,7 +75,7 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		super(world);
 		this.experienceValue = 10;
 		this.setSize(0.85F, 0.85F);
-		this.tasks.addTask(4, new EntityEuropaGuardian.AIGuardianAttack());
+		this.tasks.addTask(4, new AIGuardianAttack());
 		EntityAIMoveTowardsRestriction entityaimovetowardsrestriction;
 		this.tasks.addTask(5, entityaimovetowardsrestriction = new EntityAIMoveTowardsRestriction(this, 1.0D));
 		this.tasks.addTask(7, this.wander = new EntityAIWander(this, 1.0D, 80));
@@ -81,8 +84,8 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		this.tasks.addTask(9, new EntityAILookIdle(this));
 		this.wander.setMutexBits(3);
 		entityaimovetowardsrestriction.setMutexBits(3);
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, 10, true, false, new EntityEuropaGuardian.GuardianTargetSelector()));
-		this.moveHelper = new EntityEuropaGuardian.GuardianMoveHelper();
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityLivingBase.class, 10, true, false, new GuardianTargetSelector()));
+		this.moveHelper = new GuardianMoveHelper();
 		this.field_175484_c = this.field_175482_b = this.rand.nextFloat();
 	}
 
@@ -122,14 +125,6 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		return new PathNavigateSwimmer(this, world);
 	}
 
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, Integer.valueOf(0));
-		this.dataWatcher.addObject(17, Integer.valueOf(0));
-	}
-
 	private boolean func_175468_a(int p_175468_1_)
 	{
 		return (this.dataWatcher.getWatchableObjectInt(16) & p_175468_1_) != 0;
@@ -149,6 +144,7 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		}
 	}
 
+	@Override
 	public boolean func_175472_n()
 	{
 		return this.func_175468_a(2);
@@ -159,16 +155,19 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		this.func_175473_a(2, p_175476_1_);
 	}
 
+	@Override
 	public int func_175464_ck()
 	{
 		return this.isElder() ? 60 : 80;
 	}
 
+	@Override
 	public boolean isElder()
 	{
 		return this.func_175468_a(4);
 	}
 
+	@Override
 	public void func_175467_a(boolean p_175467_1_)
 	{
 		this.func_175473_a(4, p_175467_1_);
@@ -184,6 +183,7 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		}
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void func_175465_cm()
 	{
@@ -196,11 +196,13 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		this.dataWatcher.updateObject(17, Integer.valueOf(p_175463_1_));
 	}
 
+	@Override
 	public boolean func_175474_cn()
 	{
 		return this.dataWatcher.getWatchableObjectInt(17) != 0;
 	}
 
+	@Override
 	public EntityLivingBase getTargetedEntity()
 	{
 		if (!this.func_175474_cn())
@@ -407,21 +409,24 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 		super.onLivingUpdate();
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public float func_175471_a(float p_175471_1_)
 	{
 		return this.field_175484_c + (this.field_175482_b - this.field_175484_c) * p_175471_1_;
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public float func_175469_o(float p_175469_1_)
 	{
 		return this.field_175486_bm + (this.field_175485_bl - this.field_175486_bm) * p_175469_1_;
 	}
 
-	public float func_175477_p(float p_175477_1_)
+	@Override
+	public float func_175477_p(float par1)
 	{
-		return (this.field_175479_bo + p_175477_1_) / this.func_175464_ck();
+		return (this.field_175479_bo + par1) / this.func_175464_ck();
 	}
 
 	@Override
@@ -429,6 +434,33 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 	{
 		super.updateAITasks();
 
+		if (this.ticksExisted % 128 == 0)
+		{
+			Potion potion = MPPotions.chemical;
+			List list = this.worldObj.getPlayers(EntityPlayerMP.class, new Predicate()
+			{
+				public boolean func_179913_a(EntityPlayerMP player)
+				{
+					return EntityEuropaGuardian.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.func_180239_c();
+				}
+				@Override
+				public boolean apply(Object player)
+				{
+					return this.func_179913_a((EntityPlayerMP)player);
+				}
+			});
+			Iterator iterator = list.iterator();
+
+			while (iterator.hasNext())
+			{
+				EntityPlayerMP entityplayermp = (EntityPlayerMP)iterator.next();
+
+				if (!entityplayermp.isPotionActive(potion))
+				{
+					entityplayermp.addPotionEffect(new PotionEffect(potion.id, 64, 0));
+				}
+			}
+		}
 		if (this.isElder())
 		{
 			if ((this.ticksExisted + this.getEntityId()) % 1200 == 0)
@@ -436,14 +468,14 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 				Potion potion = Potion.digSlowdown;
 				List list = this.worldObj.getPlayers(EntityPlayerMP.class, new Predicate()
 				{
-					public boolean func_179913_a(EntityPlayerMP p_179913_1_)
+					public boolean func_179913_a(EntityPlayerMP player)
 					{
-						return EntityEuropaGuardian.this.getDistanceSqToEntity(p_179913_1_) < 2500.0D && p_179913_1_.theItemInWorldManager.func_180239_c();
+						return EntityEuropaGuardian.this.getDistanceSqToEntity(player) < 2500.0D && player.theItemInWorldManager.func_180239_c();
 					}
 					@Override
-					public boolean apply(Object p_apply_1_)
+					public boolean apply(Object player)
 					{
-						return this.func_179913_a((EntityPlayerMP)p_apply_1_);
+						return this.func_179913_a((EntityPlayerMP)player);
 					}
 				});
 				Iterator iterator = list.iterator();
@@ -488,7 +520,7 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 
 		if (drop && this.isElder())
 		{
-			this.entityDropItem(new ItemStack(Blocks.sponge, 1, 1), 1.0F);
+			this.entityDropItem(new ItemStack(EuropaBlocks.europa_sponge, 1, 1), 1.0F);
 		}
 	}
 
@@ -530,6 +562,7 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 				entitylivingbase.attackEntityFrom(DamageSource.causeThornsDamage(this), 2.0F);
 				entitylivingbase.playSound(null, 0.5F, 1.0F);
 			}
+			entitylivingbase.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 64, 0));
 		}
 		this.wander.func_179480_f();
 		return super.attackEntityFrom(source, amount);
@@ -628,7 +661,7 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 				if (this.field_179455_b == 0)
 				{
 					this.field_179456_a.func_175463_b(this.field_179456_a.getAttackTarget().getEntityId());
-					//this.field_179456_a.worldObj.setEntityState(this.field_179456_a, (byte)21); //FIXME
+					this.field_179456_a.worldObj.setEntityState(this.field_179456_a, (byte)21);
 				}
 				else if (this.field_179455_b >= this.field_179456_a.func_175464_ck())
 				{
@@ -638,7 +671,6 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 					{
 						f += 2.0F;
 					}
-
 					if (this.field_179456_a.isElder())
 					{
 						f += 2.0F;
@@ -731,5 +763,11 @@ public class EntityEuropaGuardian extends EntityMob implements IEntityBreathable
 	public boolean canBreath()
 	{
 		return true;
+	}
+
+	@Override
+	public EnumDimensionType canLivingInDimension()
+	{
+		return EnumDimensionType.NULL;
 	}
 }

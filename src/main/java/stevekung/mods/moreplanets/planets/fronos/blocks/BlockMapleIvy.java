@@ -20,12 +20,10 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -407,15 +405,9 @@ public class BlockMapleIvy extends BlockBaseMP implements IShearable
 	}
 
 	@Override
-	public int quantityDropped(Random random)
+	public int quantityDropped(Random rand)
 	{
 		return 0;
-	}
-
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te)
-	{
-		super.harvestBlock(world, player, pos, state, te);
 	}
 
 	@Override

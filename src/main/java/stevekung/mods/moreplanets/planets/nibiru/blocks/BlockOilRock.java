@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
+import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -32,6 +33,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 
 public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/ ITerraformableBlock
 {
@@ -125,9 +127,10 @@ public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/
 
 			if (material.blocksMovement() || material.isLiquid())
 			{
-				//world.setBlockState(pos, GCBlocks.crudeOilStill.getDefaultState());
+				world.setBlockState(pos, GCBlocks.crudeOil.getDefaultState());
 			}
 		}
+		MorePlanetsEvents.getActivateInfectedGas(player);
 	}
 
 	@Override
@@ -135,6 +138,12 @@ public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/
 	{
 		entity.motionX *= 0.4D;
 		entity.motionZ *= 0.4D;
+	}
+
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
+	{
+		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
 	}
 
 	@Override
@@ -171,11 +180,5 @@ public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/
 		{
 			return this.name();
 		}
-	}
-
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
 	}
 }

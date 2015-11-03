@@ -82,7 +82,7 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseKapteynB.kapteynB };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(KapteynBBlocks.kapteyn_b_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(KapteynBBlocks.kapteyn_b_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 2000;
 
@@ -221,7 +221,7 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.createCraters(x, z, primer);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.ravineGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 25, z * 16, x, z, primer);
 		Chunk var4 = new Chunk(this.worldObj, primer, x, z);
@@ -320,7 +320,7 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
 
 	public void decoratePlanet(World world, Random rand, int x, int z)
 	{
-		this.biomedecoratorplanet.decorate(world, rand, x, z);
+		this.biomedecoratorplanet.decorate(world, rand, null, new BlockPos(x, 0, z));//TODO
 	}
 
 	@Override

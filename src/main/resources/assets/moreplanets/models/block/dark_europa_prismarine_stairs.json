@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "moreplanets:blocks/dark_europa_prismarine",
+        "top": "moreplanets:blocks/dark_europa_prismarine",
+        "side": "moreplanets:blocks/dark_europa_prismarine"
+    }
+}

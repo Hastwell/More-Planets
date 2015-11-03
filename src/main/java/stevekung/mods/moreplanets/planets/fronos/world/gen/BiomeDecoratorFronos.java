@@ -364,7 +364,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, FronosBlocks.fronos_sapling).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, FronosBlocks.fronos_sapling, FronosBlocks.maple_ivy).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.TREE) && i < this.yellowMapleTreePerChunk; ++i)
 		{
@@ -372,7 +372,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, FronosBlocks.fronos_sapling).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, FronosBlocks.fronos_sapling, null).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 		for (i = 0; this.getGen(EventType.TREE) && i < this.purpleMapleTreePerChunk; ++i)
 		{
@@ -380,7 +380,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 			y = this.randomGenerator.nextInt(256);
 			z = this.randomGenerator.nextInt(16) + 8;
 			pos = this.field_180294_c.add(x, y, z);
-			new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling).generate(this.currentWorld, this.randomGenerator, pos);
+			new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling, null).generate(this.currentWorld, this.randomGenerator, pos);
 		}
 
 		// Coral

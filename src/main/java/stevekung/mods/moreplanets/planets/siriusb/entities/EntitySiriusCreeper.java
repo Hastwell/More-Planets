@@ -15,8 +15,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreathable, IEntityLivingPlanet
@@ -49,9 +49,9 @@ public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreatha
 	}
 
 	@Override
-	public int canLivingInDimension()
+	public EnumDimensionType canLivingInDimension()
 	{
-		return ConfigManagerMP.idDimensionSiriusB;
+		return EnumDimensionType.SIRIUS_B;
 	}
 
 	@Override

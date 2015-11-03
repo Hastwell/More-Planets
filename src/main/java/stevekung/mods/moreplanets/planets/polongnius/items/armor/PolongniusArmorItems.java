@@ -10,7 +10,7 @@ package stevekung.mods.moreplanets.planets.polongnius.items.armor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PolongniusArmorItems
 {
@@ -41,12 +41,7 @@ public class PolongniusArmorItems
 
 	public static void init()
 	{
-		PolongniusArmorItems.initItems();
-		PolongniusArmorItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		PolongniusArmorItems.cheese_leather_helmet = new ArmorCheeseLeather("cheese_leather_helmet", PolongniusArmorItems.cheese_leather, 7, 0);
 		PolongniusArmorItems.cheese_leather_chestplate = new ArmorCheeseLeather("cheese_leather_chestplate", PolongniusArmorItems.cheese_leather, 7, 1);
 		PolongniusArmorItems.cheese_leather_leggings = new ArmorCheeseLeather("cheese_leather_leggings", PolongniusArmorItems.cheese_leather, 7, 2);
@@ -65,27 +60,25 @@ public class PolongniusArmorItems
 		PolongniusArmorItems.purple_crystal_boots = new ArmorPurpleCrystal("purple_crystal_boots", PolongniusArmorItems.purple_crystal, 7, 3);
 		PolongniusArmorItems.breathable_polongnius_meteoric_iron_helmet = new ArmorBreathablePolongniusMeteoricIron("breathable_polongnius_meteoric_iron_helmet", PolongniusArmorItems.polongnius_meteoric_iron, 7, 0);
 		PolongniusArmorItems.breathable_palladium_helmet = new ArmorBreathablePalladium("breathable_palladium_helmet", PolongniusArmorItems.palladium, 7, 0);
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_helmet);
-		RegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_chestplate);
-		RegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_leggings);
-		RegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_boots);
-		RegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_helmet);
-		RegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_chestplate);
-		RegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_leggings);
-		RegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_boots);
-		RegisterHelper.registerItem(PolongniusArmorItems.palladium_helmet);
-		RegisterHelper.registerItem(PolongniusArmorItems.palladium_chestplate);
-		RegisterHelper.registerItem(PolongniusArmorItems.palladium_leggings);
-		RegisterHelper.registerItem(PolongniusArmorItems.palladium_boots);
-		RegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_helmet);
-		RegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_chestplate);
-		RegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_leggings);
-		RegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_boots);
-		RegisterHelper.registerItem(PolongniusArmorItems.breathable_polongnius_meteoric_iron_helmet);
-		RegisterHelper.registerItem(PolongniusArmorItems.breathable_palladium_helmet);
+		// Register
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_helmet);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_chestplate);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_leggings);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.cheese_leather_boots);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_helmet);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_chestplate);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_leggings);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.polongnius_meteoric_iron_boots);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.palladium_helmet);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.palladium_chestplate);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.palladium_leggings);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.palladium_boots);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_helmet);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_chestplate);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_leggings);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.purple_crystal_boots);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.breathable_polongnius_meteoric_iron_helmet);
+		CommonRegisterHelper.registerItem(PolongniusArmorItems.breathable_palladium_helmet);
 	}
 }

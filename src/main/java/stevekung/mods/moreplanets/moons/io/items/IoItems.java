@@ -11,51 +11,41 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class IoItems
 {
 	public static Item io_lava_bucket;
-	public static Item io_black_lava_bucket;
-	public static Item liquid_red_sulfur_bucket;
-	public static Item liquid_yellow_sulfur_bucket;
-	public static Item liquid_orange_sulfur_bucket;
-	public static Item liquid_brown_sulfur_bucket;
+	public static Item black_io_lava_bucket;
+	public static Item red_liquid_sulfur_bucket;
+	public static Item yellow_liquid_sulfur_bucket;
+	public static Item orange_liquid_sulfur_bucket;
+	public static Item brown_liquid_sulfur_bucket;
 
 	public static void init()
 	{
-		IoItems.initItems();
-		IoItems.registerItems();
-		IoItems.registerFluidContainer();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		IoItems.io_lava_bucket = new ItemIoLavaBucket("io_lava_bucket");
-		IoItems.io_black_lava_bucket = new ItemIoBlackLavaBucket("io_black_lava_bucket");
-		IoItems.liquid_red_sulfur_bucket = new ItemLiquidRedSulfurBucket("liquid_red_sulfur_bucket");
-		IoItems.liquid_yellow_sulfur_bucket = new ItemLiquidYellowSulfurBucket("liquid_yellow_sulfur_bucket");
-		IoItems.liquid_orange_sulfur_bucket = new ItemLiquidOrangeSulfurBucket("liquid_orange_sulfur_bucket");
-		IoItems.liquid_brown_sulfur_bucket = new ItemLiquidBrownSulfurBucket("liquid_brown_sulfur_bucket");
-	}
+		IoItems.black_io_lava_bucket = new ItemBlackIoLavaBucket("black_io_lava_bucket");
+		IoItems.red_liquid_sulfur_bucket = new ItemRedLiquidSulfurBucket("red_liquid_sulfur_bucket");
+		IoItems.yellow_liquid_sulfur_bucket = new ItemYellowLiquidSulfurBucket("yellow_liquid_sulfur_bucket");
+		IoItems.orange_liquid_sulfur_bucket = new ItemOrangeLiquidSulfurBucket("orange_liquid_sulfur_bucket");
+		IoItems.brown_liquid_sulfur_bucket = new ItemBrownLiquidSulfurBucket("brown_liquid_sulfur_bucket");
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(IoItems.io_lava_bucket);
-		RegisterHelper.registerItem(IoItems.io_black_lava_bucket);
-		RegisterHelper.registerItem(IoItems.liquid_red_sulfur_bucket);
-		RegisterHelper.registerItem(IoItems.liquid_yellow_sulfur_bucket);
-		RegisterHelper.registerItem(IoItems.liquid_orange_sulfur_bucket);
-		RegisterHelper.registerItem(IoItems.liquid_brown_sulfur_bucket);
-	}
+		// Register
+		CommonRegisterHelper.registerItem(IoItems.io_lava_bucket);
+		CommonRegisterHelper.registerItem(IoItems.black_io_lava_bucket);
+		CommonRegisterHelper.registerItem(IoItems.red_liquid_sulfur_bucket);
+		CommonRegisterHelper.registerItem(IoItems.yellow_liquid_sulfur_bucket);
+		CommonRegisterHelper.registerItem(IoItems.orange_liquid_sulfur_bucket);
+		CommonRegisterHelper.registerItem(IoItems.brown_liquid_sulfur_bucket);
 
-	private static void registerFluidContainer()
-	{
-		RegisterHelper.registerFluidContainer(IoBlocks.io_lava_fluid, new ItemStack(IoItems.io_lava_bucket), new ItemStack(Items.bucket));
-		RegisterHelper.registerFluidContainer(IoBlocks.io_black_lava_fluid, new ItemStack(IoItems.io_black_lava_bucket), new ItemStack(Items.bucket));
-		RegisterHelper.registerFluidContainer(IoBlocks.liquid_red_sulfur_fluid, new ItemStack(IoItems.liquid_red_sulfur_bucket), new ItemStack(Items.bucket));
-		RegisterHelper.registerFluidContainer(IoBlocks.liquid_yellow_sulfur_fluid, new ItemStack(IoItems.liquid_yellow_sulfur_bucket), new ItemStack(Items.bucket));
-		RegisterHelper.registerFluidContainer(IoBlocks.liquid_orange_sulfur_fluid, new ItemStack(IoItems.liquid_orange_sulfur_bucket), new ItemStack(Items.bucket));
-		RegisterHelper.registerFluidContainer(IoBlocks.liquid_brown_sulfur_fluid, new ItemStack(IoItems.liquid_brown_sulfur_bucket), new ItemStack(Items.bucket));
+		// Register fluid container
+		CommonRegisterHelper.registerFluidContainer(IoBlocks.io_lava_fluid, new ItemStack(IoItems.io_lava_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(IoBlocks.black_io_lava_fluid, new ItemStack(IoItems.black_io_lava_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(IoBlocks.red_liquid_sulfur_fluid, new ItemStack(IoItems.red_liquid_sulfur_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(IoBlocks.yellow_liquid_sulfur_fluid, new ItemStack(IoItems.yellow_liquid_sulfur_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(IoBlocks.orange_liquid_sulfur_fluid, new ItemStack(IoItems.orange_liquid_sulfur_bucket), new ItemStack(Items.bucket));
+		CommonRegisterHelper.registerFluidContainer(IoBlocks.brown_liquid_sulfur_fluid, new ItemStack(IoItems.brown_liquid_sulfur_bucket), new ItemStack(Items.bucket));
 	}
 }

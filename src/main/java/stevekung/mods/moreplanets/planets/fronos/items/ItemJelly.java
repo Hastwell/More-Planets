@@ -7,10 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.fronos.items;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemJelly extends ItemFoodMP
@@ -20,22 +17,6 @@ public class ItemJelly extends ItemFoodMP
 		super();
 		this.setUnlocalizedName(name);
 		this.setHasSubtypes(true);
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack)
-	{
-		return EnumAction.EAT;
-	}
-
-	@Override
-	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		--itemStack.stackSize;
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
-		player.getFoodStats().addStats(this, itemStack);
-		return itemStack;
 	}
 
 	@Override

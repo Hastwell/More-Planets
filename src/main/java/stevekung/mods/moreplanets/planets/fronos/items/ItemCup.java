@@ -22,8 +22,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockOysterMP;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCavernOyster;
@@ -346,7 +344,6 @@ public class ItemCup extends ItemFoodMP
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public EnumAction getItemUseAction(ItemStack itemStack)
 	{
 		return itemStack.getItemDamage() == 0 ? EnumAction.NONE : EnumAction.DRINK;

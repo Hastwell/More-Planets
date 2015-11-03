@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "half=lower,variant=fronos_double_tallgrass": { "model": "moreplanets:double_fronos_tallgrass_bottom" },
+        "half=upper,variant=fronos_double_tallgrass": { "model": "moreplanets:double_fronos_tallgrass_top" },
+		"half=lower,variant=pink_double_tallgrass": { "model": "moreplanets:double_pink_tallgrass_bottom" },
+        "half=upper,variant=pink_double_tallgrass": { "model": "moreplanets:double_pink_tallgrass_top" },
+		"half=lower,variant=purple_double_tallgrass": { "model": "moreplanets:double_purple_tallgrass_bottom" },
+        "half=upper,variant=purple_double_tallgrass": { "model": "moreplanets:double_purple_tallgrass_top" },
+		"half=lower,variant=plains_double_tallgrass": { "model": "moreplanets:double_plains_tallgrass_bottom" },
+        "half=upper,variant=plains_double_tallgrass": { "model": "moreplanets:double_plains_tallgrass_top" },
+		"half=lower,variant=golden_double_tallgrass": { "model": "moreplanets:double_golden_tallgrass_bottom" },
+        "half=upper,variant=golden_double_tallgrass": { "model": "moreplanets:double_golden_tallgrass_top" }
+    }
+}

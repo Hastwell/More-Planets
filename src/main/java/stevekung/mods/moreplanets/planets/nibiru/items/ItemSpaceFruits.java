@@ -18,15 +18,15 @@ import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemSpaceFruits extends ItemFoodMP
 {
-	private static int[] foodHunger = new int[] {
-		4,
-		4,
-		5
+	private int[] foodHunger = new int[] {
+			4,
+			4,
+			5
 	};
-	private static float[] foodSaturation = new float[] {
-		0.2F,
-		0.4F,
-		0.6F
+	private float[] foodSaturation = new float[] {
+			0.2F,
+			0.4F,
+			0.6F
 	};
 
 	public ItemSpaceFruits(String name)
@@ -59,10 +59,7 @@ public class ItemSpaceFruits extends ItemFoodMP
 	@Override
 	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
 	{
-		--itemStack.stackSize;
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
-		player.getFoodStats().addStats(this, itemStack);
+		super.onItemUseFinish(itemStack, world, player);
 
 		if (itemStack.getItemDamage() == 2)
 		{
@@ -85,13 +82,13 @@ public class ItemSpaceFruits extends ItemFoodMP
 	@Override
 	public int getHealAmount(ItemStack itemStack)
 	{
-		return foodHunger[itemStack.getItemDamage()];
+		return this.foodHunger[itemStack.getItemDamage()];
 	}
 
 	@Override
 	public float getSaturationModifier(ItemStack itemStack)
 	{
-		return foodSaturation[itemStack.getItemDamage()];
+		return this.foodSaturation[itemStack.getItemDamage()];
 	}
 
 	@Override

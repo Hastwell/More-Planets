@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 
-public abstract class BlockSaplingMP extends BlockFlowerMP implements IGrowable, IPlantable
+public abstract class BlockSaplingMP extends BlockBushMP implements IGrowable, IPlantable
 {
 	public BlockSaplingMP()
 	{

@@ -16,7 +16,7 @@ import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class SiriusBToolsItems
 {
@@ -31,33 +31,23 @@ public class SiriusBToolsItems
 
 	public static void init()
 	{
-		SiriusBToolsItems.initItems();
-		SiriusBToolsItems.registerItems();
-		SiriusBToolsItems.registerHarvestLevels();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		SiriusBToolsItems.sulfur_pickaxe = new ItemPickaxeMP("sulfur_pickaxe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
 		SiriusBToolsItems.sulfur_axe = new ItemAxeMP("sulfur_axe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
 		SiriusBToolsItems.sulfur_hoe = new ItemHoeMP("sulfur_hoe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
 		SiriusBToolsItems.sulfur_shovel = new ItemShovelMP("sulfur_shovel", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
 		SiriusBToolsItems.sulfur_sword = new ItemSwordMP("sulfur_sword", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
-	}
 
-	private static void registerHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerItem(SiriusBToolsItems.sulfur_sword);
+		CommonRegisterHelper.registerItem(SiriusBToolsItems.sulfur_shovel);
+		CommonRegisterHelper.registerItem(SiriusBToolsItems.sulfur_pickaxe);
+		CommonRegisterHelper.registerItem(SiriusBToolsItems.sulfur_axe);
+		CommonRegisterHelper.registerItem(SiriusBToolsItems.sulfur_hoe);
+
+		// Set harvest level
 		SiriusBToolsItems.sulfur_pickaxe.setHarvestLevel("pickaxe", 3);
 		SiriusBToolsItems.sulfur_axe.setHarvestLevel("axe", 3);
 		SiriusBToolsItems.sulfur_shovel.setHarvestLevel("shovel", 3);
-	}
-
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_sword);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_shovel);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_pickaxe);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_axe);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_hoe);
 	}
 }

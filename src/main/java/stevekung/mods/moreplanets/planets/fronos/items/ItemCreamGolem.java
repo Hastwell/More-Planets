@@ -49,7 +49,7 @@ public class ItemCreamGolem extends ItemBaseMP
 				if (localTileEntity instanceof TileEntityMobSpawner)
 				{
 					MobSpawnerBaseLogic mobSpawner = ((TileEntityMobSpawner)localTileEntity).getSpawnerBaseLogic();
-					mobSpawner.setEntityName("CreamGolem");
+					mobSpawner.setEntityName("MorePlanets.CreamGolem");
 					localTileEntity.markDirty();
 					world.markBlockForUpdate(pos);
 

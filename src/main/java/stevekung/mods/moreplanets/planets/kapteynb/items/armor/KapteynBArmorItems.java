@@ -10,7 +10,7 @@ package stevekung.mods.moreplanets.planets.kapteynb.items.armor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class KapteynBArmorItems
 {
@@ -37,12 +37,7 @@ public class KapteynBArmorItems
 
 	public static void init()
 	{
-		KapteynBArmorItems.initItems();
-		KapteynBArmorItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		KapteynBArmorItems.uranium_helmet = new ArmorUranium("uranium_helmet", KapteynBArmorItems.uranium, 7, 0);
 		KapteynBArmorItems.uranium_chestplate = new ArmorUranium("uranium_chestplate", KapteynBArmorItems.uranium, 7, 1);
 		KapteynBArmorItems.uranium_leggings = new ArmorUranium("uranium_leggings", KapteynBArmorItems.uranium, 7, 2);
@@ -58,24 +53,22 @@ public class KapteynBArmorItems
 		KapteynBArmorItems.breathable_uranium_helmet = new ArmorBreathableUranium("breathable_uranium_helmet", KapteynBArmorItems.uranium, 7, 0);
 		KapteynBArmorItems.breathable_frozen_iron_helmet = new ArmorBreathableFrozenIron("breathable_frozen_iron_helmet", KapteynBArmorItems.frozen_iron, 7, 0);
 		KapteynBArmorItems.breathable_ice_crystal_helmet = new ArmorBreathableIceCrystal("breathable_ice_crystal_helmet", KapteynBArmorItems.ice_crystal, 7, 0);
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(KapteynBArmorItems.uranium_helmet);
-		RegisterHelper.registerItem(KapteynBArmorItems.uranium_chestplate);
-		RegisterHelper.registerItem(KapteynBArmorItems.uranium_leggings);
-		RegisterHelper.registerItem(KapteynBArmorItems.uranium_boots);
-		RegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_helmet);
-		RegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_chestplate);
-		RegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_leggings);
-		RegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_boots);
-		RegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_helmet);
-		RegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_chestplate);
-		RegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_leggings);
-		RegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_boots);
-		RegisterHelper.registerItem(KapteynBArmorItems.breathable_uranium_helmet);
-		RegisterHelper.registerItem(KapteynBArmorItems.breathable_frozen_iron_helmet);
-		RegisterHelper.registerItem(KapteynBArmorItems.breathable_ice_crystal_helmet);
+		// Register
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.uranium_helmet);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.uranium_chestplate);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.uranium_leggings);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.uranium_boots);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_helmet);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_chestplate);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_leggings);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.frozen_iron_boots);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_helmet);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_chestplate);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_leggings);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.ice_crystal_boots);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.breathable_uranium_helmet);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.breathable_frozen_iron_helmet);
+		CommonRegisterHelper.registerItem(KapteynBArmorItems.breathable_ice_crystal_helmet);
 	}
 }

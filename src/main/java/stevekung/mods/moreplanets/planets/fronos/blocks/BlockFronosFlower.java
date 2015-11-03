@@ -7,9 +7,12 @@
 
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
@@ -29,16 +32,16 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.util.DamageSourceMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
+import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenBigSkyMushroom;
 
-public class BlockFronosFlower extends BlockFlowerMP
+public class BlockFronosFlower extends BlockBushMP implements IGrowable
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -49,6 +52,49 @@ public class BlockFronosFlower extends BlockFlowerMP
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.pink_butter_cup));
 		this.setUnlocalizedName(name);
 		this.setBlockBounds(0.5F - var4, 0.0F, 0.5F - var4, 0.5F + var4, var4 * 3.0F, 0.5F + var4);
+	}
+
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+	{
+		if (this.getMetaFromState(state) == 4)
+		{
+			if (rand.nextInt(25) == 0)
+			{
+				int i = 5;
+				Iterator iterator = BlockPos.getAllInBoxMutable(pos.add(-4, -1, -4), pos.add(4, 1, 4)).iterator();
+
+				while (iterator.hasNext())
+				{
+					BlockPos blockpos1 = (BlockPos)iterator.next();
+
+					if (world.getBlockState(blockpos1).getBlock() == this && this.getMetaFromState(state) == 4)
+					{
+						--i;
+
+						if (i <= 0)
+						{
+							return;
+						}
+					}
+				}
+
+				BlockPos blockpos2 = pos.add(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
+
+				for (int j = 0; j < 4; ++j)
+				{
+					if (world.isAirBlock(blockpos2) && this.canPlaceBlockOn(world.getBlockState(blockpos2.down()).getBlock()))
+					{
+						pos = blockpos2;
+					}
+					blockpos2 = pos.add(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
+				}
+				if (world.isAirBlock(blockpos2) && this.canPlaceBlockOn(world.getBlockState(blockpos2.down()).getBlock()))
+				{
+					world.setBlockState(blockpos2, this.getDefaultState().withProperty(VARIANT, BlockType.sky_mushroom), 2);
+				}
+			}
+		}
 	}
 
 	@Override
@@ -223,22 +269,81 @@ public class BlockFronosFlower extends BlockFlowerMP
 	}
 
 	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)//FIXME My block getting crash when try to place T_T
+	protected boolean canPlaceBlockOn(Block ground)
 	{
-		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt || world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass;
-		/*BlockType type = (BlockType) world.getBlockState(pos).getValue(VARIANT);
+		return ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt || ground == FronosBlocks.fronos_sand || ground == FronosBlocks.fronos_block || ground == FronosBlocks.mossy_fronos_cobblestone || ground == FronosBlocks.jelly_ore;
+	}
 
-		if (world.getBlockState(pos) == FronosBlocks.fronos_flower && type == BlockType.white_moss)
+	@Override
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+	{
+		IBlockState ground = world.getBlockState(pos.down());
+		int meta = this.getMetaFromState(world.getBlockState(pos));
+
+		if (state.getBlock() != this)
 		{
-			return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_sand && world.getBlockState(pos.down()).getValue(BlockFronosSand.VARIANT) == BlockFronosSand.BlockType.white_sand ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : false;
+			return super.canBlockStay(world, pos, state);
 		}
-		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_dirt ? true : world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass ? true : world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_block && (world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_rock || world.getBlockState(pos.down()).getValue(BlockFronos.VARIANT) == BlockFronos.BlockType.fronos_cobblestone) ? true : false;*/
+		if (meta >= 0 && meta <= 3 || meta == 5 || meta == 6)
+		{
+			return ground.getBlock() instanceof IFronosGrass || ground.getBlock() == FronosBlocks.fronos_dirt;
+		}
+		if (meta == 4)
+		{
+			return ground.getBlock() == FronosBlocks.fronos_block || ground.getBlock() == FronosBlocks.jelly_ore || ground.getBlock() == FronosBlocks.mossy_fronos_cobblestone;
+		}
+		if (meta == 7)
+		{
+			return ground.getBlock() == FronosBlocks.fronos_block || ground.getBlock() instanceof IFronosGrass || ground.getBlock() == FronosBlocks.fronos_dirt || ground.getBlock() == FronosBlocks.jelly_ore || ground.getBlock() == FronosBlocks.mossy_fronos_cobblestone;
+		}
+		if (meta == 8)
+		{
+			return ground == FronosBlocks.fronos_sand.getDefaultState().withProperty(BlockFronosSand.VARIANT, BlockFronosSand.BlockType.white_sand);
+		}
+		return super.canBlockStay(world, pos, state);
 	}
 
 	@Override
 	public boolean isReplaceable(World world, BlockPos pos)
 	{
 		return false;
+	}
+
+	@Override
+	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
+	{
+		return this.getMetaFromState(state) == 4 ? true : false;
+	}
+
+	@Override
+	public boolean canUseBonemeal(World world, Random rand, BlockPos pos, IBlockState state)
+	{
+		return this.getMetaFromState(state) == 4 ? rand.nextFloat() < 0.4D : false;
+	}
+
+	@Override
+	public void grow(World world, Random rand, BlockPos pos, IBlockState state)
+	{
+		if (this.getMetaFromState(state) == 4)
+		{
+			this.generateBigMushroom(world, pos, state, rand);
+		}
+	}
+
+	private boolean generateBigMushroom(World world, BlockPos pos, IBlockState state, Random rand)
+	{
+		world.setBlockToAir(pos);
+		WorldGenBigSkyMushroom worldgenbigmushroom = new WorldGenBigSkyMushroom();
+
+		if (worldgenbigmushroom != null && worldgenbigmushroom.generate(world, rand, pos))
+		{
+			return true;
+		}
+		else
+		{
+			world.setBlockState(pos, state.withProperty(VARIANT, BlockType.sky_mushroom), 3);
+			return false;
+		}
 	}
 
 	@Override
@@ -257,18 +362,6 @@ public class BlockFronosFlower extends BlockFlowerMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.getPlantType("Fronos");
-	}
-
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return FronosBlocks.fronos_flower.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

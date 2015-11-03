@@ -10,15 +10,9 @@ package stevekung.mods.moreplanets.common.util;
 import java.lang.reflect.Method;
 
 import net.minecraft.block.Block;
-import net.minecraftforge.fml.common.Loader;
 
 public class CompatibilityUtilMP
 {
-	public static boolean is4SpaceVenusLoaded()
-	{
-		return Loader.isModLoaded("SpaceCore") && Loader.isModLoaded("SpaceVenus");
-	}
-
 	public static void registerMicroBlocks(Block block, int meta, String unlocalized)
 	{
 		try

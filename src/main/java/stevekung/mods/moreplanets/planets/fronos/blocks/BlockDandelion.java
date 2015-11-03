@@ -24,17 +24,15 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
-public class BlockDandelion extends BlockFlowerMP
+public class BlockDandelion extends BlockBushMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -200,6 +198,12 @@ public class BlockDandelion extends BlockFlowerMP
 	}
 
 	@Override
+	protected boolean canPlaceBlockOn(Block ground)
+	{
+		return ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
+	}
+
+	@Override
 	protected BlockState createBlockState()
 	{
 		return new BlockState(this, new IProperty[] { VARIANT });
@@ -215,18 +219,6 @@ public class BlockDandelion extends BlockFlowerMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.getPlantType("Fronos");
-	}
-
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return FronosBlocks.fronos_dandelion.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

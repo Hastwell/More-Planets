@@ -136,7 +136,7 @@ public class BlockSiriusB extends BlockPlanetTileMP implements /*IDetectableReso
 		}
 		if (meta == 9)
 		{
-			return 40.0F;
+			return 100.0F;
 		}
 		return super.getExplosionResistance(world, pos, entity, explosion);
 	}

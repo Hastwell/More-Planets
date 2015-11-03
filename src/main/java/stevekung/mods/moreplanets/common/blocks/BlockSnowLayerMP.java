@@ -34,7 +34,7 @@ public abstract class BlockSnowLayerMP extends BlockBaseMP
 {
 	public static PropertyInteger LAYERS = PropertyInteger.create("layers", 1, 8);
 
-	protected BlockSnowLayerMP()
+	public BlockSnowLayerMP()
 	{
 		super(Material.snow);
 		this.setDefaultState(this.getDefaultState().withProperty(LAYERS, Integer.valueOf(1)));

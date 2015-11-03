@@ -53,6 +53,12 @@ public class BlockFronosSapling extends BlockSaplingMP
 	}
 
 	@Override
+	protected boolean canPlaceBlockOn(Block ground)
+	{
+		return ground == Blocks.grass || ground == Blocks.dirt || ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
+	}
+
+	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
 		Block block = world.getBlockState(pos.down()).getBlock();
@@ -90,13 +96,13 @@ public class BlockFronosSapling extends BlockSaplingMP
 				obj = new WorldGenCoconutTree(35, 10, 1.3D);
 				break;
 			case red_maple_sapling:
-				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, this);
+				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, this, FronosBlocks.maple_ivy);
 				break;
 			case yellow_maple_sapling:
-				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, this);
+				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, this, null);
 				break;
 			case purple_maple_sapling:
-				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, this);
+				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, this, null);
 				break;
 			}
 		}

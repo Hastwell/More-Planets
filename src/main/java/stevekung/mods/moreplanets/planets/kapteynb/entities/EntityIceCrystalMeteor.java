@@ -27,6 +27,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.planets.kapteynb.blocks.BlockFallenIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class EntityIceCrystalMeteor extends Entity
@@ -159,10 +160,10 @@ public class EntityIceCrystalMeteor extends Entity
 
 					if (this.worldObj.isAirBlock(blockpos))
 					{
-						this.worldObj.setBlockState(blockpos, KapteynBBlocks.fallen_ice_crystal_meteor.getDefaultState());
+						this.worldObj.setBlockState(blockpos, KapteynBBlocks.fallen_ice_crystal_meteor.getDefaultState().withProperty(BlockFallenIceCrystalMeteor.IMMUNE, true));
 					}
 				}
-				this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
+				this.worldObj.newExplosion((Entity)null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);
 			}
 			this.setDead();
 		}

@@ -19,14 +19,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 
-public class BlockCandyFlower extends BlockFlowerMP
+public class BlockCandyFlower extends BlockBushMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -57,8 +55,13 @@ public class BlockCandyFlower extends BlockFlowerMP
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
-		Block block = world.getBlockState(pos.down()).getBlock();
-		return block == FronosBlocks.frosted_cake;
+		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.frosted_cake;
+	}
+
+	@Override
+	protected boolean canPlaceBlockOn(Block ground)
+	{
+		return ground == FronosBlocks.frosted_cake;
 	}
 
 	@Override
@@ -83,18 +86,6 @@ public class BlockCandyFlower extends BlockFlowerMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.getPlantType("Fronos");
-	}
-
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return FronosBlocks.candy_flower.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

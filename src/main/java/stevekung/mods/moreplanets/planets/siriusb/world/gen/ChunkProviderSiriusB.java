@@ -246,7 +246,7 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
 
 	public void decoratePlanet(World world, Random rand, int x, int z)
 	{
-		this.biomedecoratorplanet.decorate(world, rand, x, z);
+		this.biomedecoratorplanet.decorate(world, rand, null, new BlockPos(x, 0, z));//TODO
 	}
 
 	@Override

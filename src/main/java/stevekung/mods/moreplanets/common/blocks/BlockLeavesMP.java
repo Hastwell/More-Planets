@@ -31,7 +31,7 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 {
 	public static PropertyBool DECAYABLE = PropertyBool.create("decayable");
 	public static PropertyBool CHECK_DECAY = PropertyBool.create("check_decay");
-	int[] surroundings;
+	protected int[] surroundings;
 
 	public BlockLeavesMP()
 	{
@@ -142,27 +142,22 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 										{
 											this.surroundings[(l1 + j1 - 1) * i1 + (i2 + j1) * b1 + j2 + j1] = k1;
 										}
-
 										if (this.surroundings[(l1 + j1 + 1) * i1 + (i2 + j1) * b1 + j2 + j1] == -2)
 										{
 											this.surroundings[(l1 + j1 + 1) * i1 + (i2 + j1) * b1 + j2 + j1] = k1;
 										}
-
 										if (this.surroundings[(l1 + j1) * i1 + (i2 + j1 - 1) * b1 + j2 + j1] == -2)
 										{
 											this.surroundings[(l1 + j1) * i1 + (i2 + j1 - 1) * b1 + j2 + j1] = k1;
 										}
-
 										if (this.surroundings[(l1 + j1) * i1 + (i2 + j1 + 1) * b1 + j2 + j1] == -2)
 										{
 											this.surroundings[(l1 + j1) * i1 + (i2 + j1 + 1) * b1 + j2 + j1] = k1;
 										}
-
 										if (this.surroundings[(l1 + j1) * i1 + (i2 + j1) * b1 + j2 + j1 - 1] == -2)
 										{
 											this.surroundings[(l1 + j1) * i1 + (i2 + j1) * b1 + j2 + j1 - 1] = k1;
 										}
-
 										if (this.surroundings[(l1 + j1) * i1 + (i2 + j1) * b1 + j2 + j1 + 1] == -2)
 										{
 											this.surroundings[(l1 + j1) * i1 + (i2 + j1) * b1 + j2 + j1 + 1] = k1;
@@ -188,7 +183,7 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 		}
 	}
 
-	private void destroy(World world, BlockPos pos)
+	protected void destroy(World world, BlockPos pos)
 	{
 		this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
 		world.setBlockToAir(pos);

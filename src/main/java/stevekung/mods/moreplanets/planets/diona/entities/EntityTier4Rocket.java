@@ -30,15 +30,15 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class EntityTier4Rocket extends EntityTieredRocket
 {
-	public EntityTier4Rocket(World par1World)
+	public EntityTier4Rocket(World world)
 	{
-		super(par1World);
+		super(world);
 		this.setSize(1.2F, 4.0F);
 	}
 
-	public EntityTier4Rocket(World par1World, double par2, double par4, double par6, EnumRocketType rocketType)
+	public EntityTier4Rocket(World world, double x, double y, double z, EnumRocketType rocketType)
 	{
-		super(par1World, par2, par4, par6);
+		super(world, x, y, z);
 		this.rocketType = rocketType;
 		this.cargoItems = new ItemStack[this.getSizeInventory()];
 		this.setSize(1.2F, 4.0F);
@@ -58,33 +58,21 @@ public class EntityTier4Rocket extends EntityTieredRocket
 	}
 
 	@Override
+	public ItemStack getPickedResult(MovingObjectPosition target)
+	{
+		return new ItemStack(DionaItems.tier_4_rocket, 1, this.rocketType.getIndex());
+	}
+
+	@Override
 	public double getMountedYOffset()
 	{
-		return -0.15D;
+		return this.height * -0.035D;
 	}
 
 	@Override
 	public float getRotateOffset()
 	{
 		return -0.6F;
-	}
-
-	@Override
-	public double getOnPadYOffset()
-	{
-		return 1.5D;
-	}
-
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-	}
-
-	@Override
-	public ItemStack getPickedResult(MovingObjectPosition target)
-	{
-		return new ItemStack(DionaItems.tier_4_rocket, 1, this.rocketType.getIndex());
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -111,7 +99,6 @@ public class EntityTier4Rocket extends EntityTieredRocket
 				this.spawnParticles(this.getLaunched());
 			}
 		}
-
 		if (this.launchPhase == EnumLaunchPhase.LAUNCHED.ordinal() && this.hasValidFuel())
 		{
 			if (!this.landing)
@@ -164,7 +151,7 @@ public class EntityTier4Rocket extends EntityTieredRocket
 	@Override
 	public void onTeleport(EntityPlayerMP player)
 	{
-		final EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
+		EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
 
 		if (playerBase != null)
 		{
@@ -178,8 +165,7 @@ public class EntityTier4Rocket extends EntityTieredRocket
 			{
 				stats.rocketStacks = this.cargoItems;
 			}
-
-			stats.rocketType = this.rocketType.getIndex();
+			stats.rocketType = this.rocketType.getIndex() + 10;
 			stats.rocketItem = DionaItems.tier_4_rocket;
 			stats.fuelLevel = this.fuelTank.getFluidAmount();
 		}
@@ -189,17 +175,16 @@ public class EntityTier4Rocket extends EntityTieredRocket
 	{
 		if (!this.isDead)
 		{
-			final double x1 = 2.9 * Math.cos(this.rotationYaw * Math.PI / 180.0D) * Math.sin(this.rotationPitch * Math.PI / 180.0D);
-			final double z1 = 2.9 * Math.sin(this.rotationYaw * Math.PI / 180.0D) * Math.sin(this.rotationPitch * Math.PI / 180.0D);
-			final double y1 = 2.9 * Math.cos((this.rotationPitch - 180) * Math.PI / 180.0D);
-
-			final double y = this.prevPosY + (this.posY - this.prevPosY) + y1;
-			final double x2 = this.posX + x1;
-			final double z2 = this.posZ + z1;
-			final double x3 = x2 + x1 / 2D;
-			final double y3 = y + y1 / 2D;
-			final double z3 = z2 + z1 / 2D;
-			final Vector3 motionVec = new Vector3(x1, y1, z1);
+			double x1 = 2.9 * Math.cos(this.rotationYaw * Math.PI / 180.0D) * Math.sin(this.rotationPitch * Math.PI / 180.0D);
+			double z1 = 2.9 * Math.sin(this.rotationYaw * Math.PI / 180.0D) * Math.sin(this.rotationPitch * Math.PI / 180.0D);
+			double y1 = 2.9 * Math.cos((this.rotationPitch - 180) * Math.PI / 180.0D);
+			double y = this.prevPosY + (this.posY - this.prevPosY) + y1;
+			double x2 = this.posX + x1;
+			double z2 = this.posZ + z1;
+			double x3 = x2 + x1 / 2D;
+			double y3 = y + y1 / 2D;
+			double z3 = z2 + z1 / 2D;
+			Vector3 motionVec = new Vector3(x1, y1, z1);
 
 			GalacticraftCore.proxy.spawnParticle(this.getLaunched() ? "launchFlameLaunched" : "launchFlameIdle", new Vector3(x2 + 0.4 - this.rand.nextDouble() / 10, y, z2 + 0.4 - this.rand.nextDouble() / 10), motionVec, new Object[] { this.riddenByEntity });
 			GalacticraftCore.proxy.spawnParticle(this.getLaunched() ? "launchFlameLaunched" : "launchFlameIdle", new Vector3(x2 - 0.4 + this.rand.nextDouble() / 10, y, z2 + 0.4 - this.rand.nextDouble() / 10), motionVec, new Object[] { this.riddenByEntity });
@@ -235,21 +220,9 @@ public class EntityTier4Rocket extends EntityTieredRocket
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
+	public boolean isUseableByPlayer(EntityPlayer player)
 	{
-		return this.isDead ? false : par1EntityPlayer.getDistanceSqToEntity(this) <= 64.0D;
-	}
-
-	@Override
-	protected void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-	}
-
-	@Override
-	protected void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.readEntityFromNBT(par1NBTTagCompound);
+		return this.isDead ? false : player.getDistanceSqToEntity(this) <= 64.0D;
 	}
 
 	@Override

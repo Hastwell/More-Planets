@@ -10,7 +10,7 @@ package stevekung.mods.moreplanets.planets.siriusb.items.armor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class SiriusBArmorItems
 {
@@ -25,25 +25,18 @@ public class SiriusBArmorItems
 
 	public static void init()
 	{
-		SiriusBArmorItems.initItems();
-		SiriusBArmorItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		SiriusBArmorItems.sulfur_helmet = new ArmorSulfur("sulfur_helmet", SiriusBArmorItems.sulfur, 7, 0);
 		SiriusBArmorItems.sulfur_chestplate = new ArmorSulfur("sulfur_chestplate", SiriusBArmorItems.sulfur, 7, 1);
 		SiriusBArmorItems.sulfur_leggings = new ArmorSulfur("sulfur_leggings", SiriusBArmorItems.sulfur, 7, 2);
 		SiriusBArmorItems.sulfur_boots = new ArmorSulfur("sulfur_boots", SiriusBArmorItems.sulfur, 7, 3);
 		SiriusBArmorItems.breathable_sulfur_helmet = new ArmorBreathableSulfur("breathable_sulfur_helmet", SiriusBArmorItems.sulfur, 7, 0);
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(SiriusBArmorItems.sulfur_helmet);
-		RegisterHelper.registerItem(SiriusBArmorItems.sulfur_chestplate);
-		RegisterHelper.registerItem(SiriusBArmorItems.sulfur_leggings);
-		RegisterHelper.registerItem(SiriusBArmorItems.sulfur_boots);
-		RegisterHelper.registerItem(SiriusBArmorItems.breathable_sulfur_helmet);
+		// Register
+		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_helmet);
+		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_chestplate);
+		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_leggings);
+		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_boots);
+		CommonRegisterHelper.registerItem(SiriusBArmorItems.breathable_sulfur_helmet);
 	}
 }

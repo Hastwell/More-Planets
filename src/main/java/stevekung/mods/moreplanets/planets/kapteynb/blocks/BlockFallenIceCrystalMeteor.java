@@ -11,7 +11,11 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -21,6 +25,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,13 +35,16 @@ import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class BlockFallenIceCrystalMeteor extends BlockBaseMP
 {
+	public static PropertyBool IMMUNE = PropertyBool.create("immune_to_explosion");
+
 	public BlockFallenIceCrystalMeteor(String name)
 	{
 		super(Material.glass);
 		this.setBlockBounds(0.186F, 0.186F, 0.186F, 0.814F, 0.814F, 0.814F);
 		this.setHardness(1.0F);
-		this.setResistance(50.0F);
+		this.setResistance(5.0F);
 		this.setStepSound(soundTypeGlass);
+		this.setDefaultState(this.getDefaultState().withProperty(IMMUNE, false));
 		this.setUnlocalizedName(name);
 	}
 
@@ -47,8 +55,8 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
 
 		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
 		{
-			int var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
-			this.dropXpOnBlockBreak(world, pos, var8);
+			int xp = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
+			this.dropXpOnBlockBreak(world, pos, xp);
 		}
 	}
 
@@ -141,8 +149,7 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
 		}
 		else
 		{
-			Material var5 = block.getMaterial();
-			return var5 == Material.water ? true : var5 == Material.lava;
+			return block.getMaterial() == Material.water ? true : block.getMaterial() == Material.lava;
 		}
 	}
 
@@ -163,5 +170,49 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this, 1, 0);
+	}
+
+	@Override
+	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
+	{
+		int meta = this.getMetaFromState(world.getBlockState(pos));
+
+		if (meta == 1)
+		{
+			return 100.0F;
+		}
+		return super.getExplosionResistance(world, pos, entity, explosion);
+	}
+
+	@Override
+	protected BlockState createBlockState()
+	{
+		return new BlockState(this, new IProperty[] { IMMUNE });
+	}
+
+	@Override
+	public IBlockState getStateFromMeta(int meta)
+	{
+		if (meta == 0)
+		{
+			return this.getDefaultState().withProperty(IMMUNE, false);
+		}
+		else
+		{
+			return this.getDefaultState().withProperty(IMMUNE, true);
+		}
+	}
+
+	@Override
+	public int getMetaFromState(IBlockState state)
+	{
+		if (state == this.getDefaultState().withProperty(IMMUNE, false))
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 }

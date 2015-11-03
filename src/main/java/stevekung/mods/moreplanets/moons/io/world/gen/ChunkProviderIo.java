@@ -60,7 +60,7 @@ public class ChunkProviderIo extends ChunkProviderGenerate
 
 	public BiomeDecoratorIo biomedecoratorplanet = new BiomeDecoratorIo();
 	private World worldObj;
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(IoBlocks.io_block);
+	private MapGenCaveMP caveGenerator = new MapGenCaveMP(IoBlocks.io_block, new int[] {0, 1, 2});
 	private MapGenDungeon dungeonGenerator = new MapGenDungeon(IoBlocks.io_block, 9, 8, 16, 4);
 	{
 		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
@@ -260,7 +260,7 @@ public class ChunkProviderIo extends ChunkProviderGenerate
 		this.createCraters(x, z, primer);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 30, z * 16, x, z, primer);
 
 		Chunk var4 = new Chunk(this.worldObj, primer, x, z);

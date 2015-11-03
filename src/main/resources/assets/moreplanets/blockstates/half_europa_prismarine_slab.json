@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=bottom,variant=europa_prismarine_slab": { "model": "moreplanets:half_slab_europa_prismarine" },
+        "half=top,variant=europa_prismarine_slab": { "model": "moreplanets:upper_slab_europa_prismarine" },
+		"half=bottom,variant=europa_prismarine_brick_slab": { "model": "moreplanets:half_slab_europa_prismarine_brick" },
+        "half=top,variant=europa_prismarine_brick_slab": { "model": "moreplanets:upper_slab_europa_prismarine_brick" },
+		"half=bottom,variant=dark_europa_prismarine_slab": { "model": "moreplanets:half_slab_dark_europa_prismarine" },
+        "half=top,variant=dark_europa_prismarine_slab": { "model": "moreplanets:upper_slab_dark_europa_prismarine" }
+    }
+}

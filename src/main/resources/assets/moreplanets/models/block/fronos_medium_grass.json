@@ -1,6 +1,0 @@
-{
-    "parent": "block/tallgrass",
-    "textures": {
-        "cross": "moreplanets:blocks/fronos_medium_grass"
-    }
-}

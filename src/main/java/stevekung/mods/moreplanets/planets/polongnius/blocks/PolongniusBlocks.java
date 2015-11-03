@@ -15,11 +15,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
-import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.planets.polongnius.fluids.BlockFluidCheeseOfMilk;
 import stevekung.mods.moreplanets.planets.polongnius.itemblocks.ItemBlockPolongnius;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PolongniusBlocks
 {
@@ -38,26 +37,19 @@ public class PolongniusBlocks
 	public static Block ultra_violet_solar_fake;
 	public static Block cheese_gas_block;
 
-	// Fluid
 	public static Fluid cheese_of_milk_fluid;
 
 	public static void init()
 	{
-		PolongniusBlocks.initBlocks();
-		PolongniusBlocks.setHarvestLevels();
-		PolongniusBlocks.registerBlocks();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		PolongniusBlocks.polongnius_block = new BlockPolongnius("polongnius_block");
 		PolongniusBlocks.polongnius_treasure_chest = new BlockPolongniusTreasureChest("polongnius_treasure_chest");
 		PolongniusBlocks.fallen_polongnius_meteor = new BlockFallenPolongniusMeteor("fallen_polongnius_meteor");
 		PolongniusBlocks.cheese_of_milk_cake = new BlockCheeseOfMilkCake("cheese_of_milk_cake");
 		PolongniusBlocks.flonium_torch = new BlockFloniumTorch("flonium_torch");
 		PolongniusBlocks.ultra_violet_solar_panel = new BlockUltraVioletSolarPanel("ultra_violet_solar_panel");
-		PolongniusBlocks.polongnius_cobblestone_stairs = new BlockStairsMP("polongnius_cobblestone_stairs", 3.0F, StairsCategory.polongnius_cobblestone, Blocks.stone.getDefaultState());
-		PolongniusBlocks.polongnius_dungeon_brick_stairs = new BlockStairsMP("polongnius_dungeon_brick_stairs", 4.0F, StairsCategory.polongnius_dungeon_brick, Blocks.stone.getDefaultState());
+		PolongniusBlocks.polongnius_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "polongnius_cobblestone_stairs", 3.0F);
+		PolongniusBlocks.polongnius_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "polongnius_dungeon_brick_stairs", 4.0F);
 		PolongniusBlocks.polongnius_ancient_chest = new BlockPolongniusAncientChest("polongnius_ancient_chest");
 		PolongniusBlocks.cheese_slime_block = new BlockCheeseSlime("cheese_slime_block");
 		PolongniusBlocks.cheese_slime_egg = new BlockCheeseSlimeEgg("cheese_slime_egg");
@@ -67,50 +59,47 @@ public class PolongniusBlocks
 		PolongniusBlocks.cheese_of_milk_fluid = new FluidMP("cheese_of_milk_fluid").setBlock(PolongniusBlocks.cheese_of_milk).setViscosity(2000);
 		FluidRegistry.registerFluid(PolongniusBlocks.cheese_of_milk_fluid);
 		PolongniusBlocks.cheese_of_milk = new BlockFluidCheeseOfMilk("cheese_of_milk_fluid");
-	}
 
-	private static void setHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.polongnius_block, ItemBlockPolongnius.class);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.cheese_gas_block);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.cheese_slime_block);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.ultra_violet_solar_panel, ItemBlockDesc.class);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.polongnius_treasure_chest);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.polongnius_ancient_chest);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.polongnius_cobblestone_stairs);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.polongnius_dungeon_brick_stairs);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.fallen_polongnius_meteor);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.cheese_slime_egg);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.cheese_of_milk_cake);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.flonium_torch);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.cheese_of_milk);
+		CommonRegisterHelper.registerBlock(PolongniusBlocks.ultra_violet_solar_fake);
+
+		// Set harvest level
 		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("shovel", 0, 0);
 		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("shovel", 0, 1);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 2);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 3);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 4);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 5);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 6);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 7);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 8);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 9);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 10);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 11);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 12);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 13);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 14);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 1, 15);
-		PolongniusBlocks.polongnius_cobblestone_stairs.setHarvestLevel("pickaxe", 1);
-		PolongniusBlocks.polongnius_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 2);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 3);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 4);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 5);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 6);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 7);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 8);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 9);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 10);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 11);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 12);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 13);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 14);
+		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 15);
+		PolongniusBlocks.polongnius_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+		PolongniusBlocks.polongnius_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
 		PolongniusBlocks.fallen_polongnius_meteor.setHarvestLevel("pickaxe", 2);
-		PolongniusBlocks.ultra_violet_solar_panel.setHarvestLevel("pickaxe", 1);
+		PolongniusBlocks.ultra_violet_solar_panel.setHarvestLevel("pickaxe", 0);
 		PolongniusBlocks.polongnius_ancient_chest.setHarvestLevel("axe", 0);
-	}
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(PolongniusBlocks.polongnius_block, ItemBlockPolongnius.class);
-		RegisterHelper.registerBlock(PolongniusBlocks.cheese_gas_block);
-		RegisterHelper.registerBlock(PolongniusBlocks.cheese_slime_block);
-		RegisterHelper.registerBlock(PolongniusBlocks.ultra_violet_solar_panel, ItemBlockDesc.class);
-		RegisterHelper.registerBlock(PolongniusBlocks.polongnius_treasure_chest);
-		RegisterHelper.registerBlock(PolongniusBlocks.polongnius_ancient_chest);
-		RegisterHelper.registerBlock(PolongniusBlocks.polongnius_cobblestone_stairs);
-		RegisterHelper.registerBlock(PolongniusBlocks.polongnius_dungeon_brick_stairs);
-		RegisterHelper.registerBlock(PolongniusBlocks.fallen_polongnius_meteor);
-		RegisterHelper.registerBlock(PolongniusBlocks.cheese_slime_egg);
-		RegisterHelper.registerBlock(PolongniusBlocks.cheese_of_milk_cake);
-		RegisterHelper.registerBlock(PolongniusBlocks.flonium_torch);
-		RegisterHelper.registerBlock(PolongniusBlocks.cheese_of_milk);
-		RegisterHelper.registerBlock(PolongniusBlocks.ultra_violet_solar_fake);
-
+		// Register ore dictionary
 		OreDictionary.registerOre("oreCopper", new ItemStack(PolongniusBlocks.polongnius_block, 1, 4));
 		OreDictionary.registerOre("oreTin", new ItemStack(PolongniusBlocks.polongnius_block, 1, 5));
 		OreDictionary.registerOre("oreIron", new ItemStack(PolongniusBlocks.polongnius_block, 1, 6));

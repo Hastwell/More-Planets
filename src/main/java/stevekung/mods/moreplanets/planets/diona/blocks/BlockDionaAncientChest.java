@@ -21,7 +21,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.ILockableContainer;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockAncientChestMP;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaMinionCreeper;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
 
 public class BlockDionaAncientChest extends BlockAncientChestMP
@@ -55,7 +55,7 @@ public class BlockDionaAncientChest extends BlockAncientChestMP
 		{
 			if (!world.isRemote)
 			{
-				EntityDionaMinionCreeper creeper = new EntityDionaMinionCreeper(world);
+				EntityDionaCreeperMinion creeper = new EntityDionaCreeperMinion(world);
 				creeper.setPosition(pos.getX() + 0.5, pos.getY() + 2, pos.getZ() + 0.5);
 				world.spawnEntityInWorld(creeper);
 			}
@@ -132,7 +132,7 @@ public class BlockDionaAncientChest extends BlockAncientChestMP
 		{
 			if (!world.isRemote)
 			{
-				EntityDionaMinionCreeper creeper = new EntityDionaMinionCreeper(world);
+				EntityDionaCreeperMinion creeper = new EntityDionaCreeperMinion(world);
 				creeper.setPosition(pos.getX() + 0.5, pos.getY() + 2, pos.getZ() + 0.5);
 				world.spawnEntityInWorld(creeper);
 			}

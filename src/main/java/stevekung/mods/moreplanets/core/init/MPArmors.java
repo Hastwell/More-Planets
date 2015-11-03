@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.core.init;
 
+import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.moons.koentus.items.armor.KoentusArmorItems;
 import stevekung.mods.moreplanets.planets.diona.items.armor.DionaArmorItems;
 import stevekung.mods.moreplanets.planets.fronos.items.armor.FronosArmorItems;
@@ -26,5 +27,6 @@ public class MPArmors
 		FronosArmorItems.init();
 		KapteynBArmorItems.init();
 		SiriusBArmorItems.init();
+		MPLog.debug("Register Armors");
 	}
 }

@@ -14,15 +14,15 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 
 public class WorldGenFronosFlowers extends WorldGenerator
 {
 	private IProperty prop;
 	private Comparable value;
-	private BlockFlowerMP flower;
+	private BlockBushMP flower;
 
-	public WorldGenFronosFlowers(BlockFlowerMP flower, IProperty prop, Comparable value)
+	public WorldGenFronosFlowers(BlockBushMP flower, IProperty prop, Comparable value)
 	{
 		this.prop = prop;
 		this.flower = flower;

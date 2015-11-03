@@ -28,17 +28,24 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 	private Block wood;
 	private Block leaves;
 	private Block sapling;
+	private Block vine;
 
-	public WorldGenTreeMP(int minHeight, Block wood, Block leaves, int woodMeta, int leavesMeta, boolean vine, Block sapling)
+	public WorldGenTreeMP(int minHeight, Block wood, Block leaves, int woodMeta, int leavesMeta, boolean hasVine, Block sapling, Block vine)
 	{
 		super(false);
 		this.minTreeHeight = minHeight;
 		this.woodMeta = woodMeta;
-		this.vinesGrow = vine;
+		this.vinesGrow = hasVine;
 		this.wood = wood;
 		this.leaves = leaves;
 		this.sapling = sapling;
 		this.leavesMeta = leavesMeta;
+		this.vine = vine;
+
+		if (this.vine == null)
+		{
+			this.vine = Blocks.air;
+		}
 	}
 
 	@Override
@@ -96,7 +103,6 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 
 				if (isSoil && pos.getY() < 256 - i - 1)
 				{
-					block1.onPlantGrow(world, down, pos);
 					b0 = 3;
 					byte b1 = 0;
 					int i1;
@@ -145,19 +151,19 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 							{
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(-1, l, 0)))
 								{
-									this.func_175905_a(world, pos.add(-1, l, 0), Blocks.vine, BlockVine.EAST_FLAG);
+									this.func_175905_a(world, pos.add(-1, l, 0), this.vine, BlockVine.EAST_FLAG);
 								}
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(1, l, 0)))
 								{
-									this.func_175905_a(world, pos.add(1, l, 0), Blocks.vine, BlockVine.WEST_FLAG);
+									this.func_175905_a(world, pos.add(1, l, 0), this.vine, BlockVine.WEST_FLAG);
 								}
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(0, l, -1)))
 								{
-									this.func_175905_a(world, pos.add(0, l, -1), Blocks.vine, BlockVine.SOUTH_FLAG);
+									this.func_175905_a(world, pos.add(0, l, -1), this.vine, BlockVine.SOUTH_FLAG);
 								}
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(0, l, 1)))
 								{
-									this.func_175905_a(world, pos.add(0, l, 1), Blocks.vine, BlockVine.NORTH_FLAG);
+									this.func_175905_a(world, pos.add(0, l, 1), this.vine, BlockVine.NORTH_FLAG);
 								}
 							}
 						}
@@ -204,7 +210,7 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 							}
 						}
 
-						if (rand.nextInt(5) == 0 && i > 5)
+						/*if (rand.nextInt(5) == 0 && i > 5)
 						{
 							for (l = 0; l < 2; ++l)
 							{
@@ -218,7 +224,7 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 									}
 								}
 							}
-						}
+						}*/
 					}
 					return true;
 				}
@@ -236,12 +242,12 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 
 	private void func_175923_a(World world, BlockPos pos, int par3)
 	{
-		this.func_175905_a(world, pos, Blocks.vine, par3);
+		this.func_175905_a(world, pos, this.vine, par3);
 		int j = 4;
 
 		for (pos = pos.down(); world.getBlockState(pos).getBlock().isAir(world, pos) && j > 0; --j)
 		{
-			this.func_175905_a(world, pos, Blocks.vine, par3);
+			this.func_175905_a(world, pos, this.vine, par3);
 			pos = pos.down();
 		}
 	}

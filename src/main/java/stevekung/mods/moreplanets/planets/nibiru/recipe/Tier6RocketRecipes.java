@@ -19,7 +19,6 @@ import stevekung.mods.moreplanets.common.inventory.InventorySchematicRocket;
 public class Tier6RocketRecipes
 {
 	private static List<INasaWorkbenchRecipe> tier6RocketBenchRecipes = new ArrayList<INasaWorkbenchRecipe>();
-	private static List<INasaWorkbenchRecipe> tier6RocketBenchNoFlagRecipes = new ArrayList<INasaWorkbenchRecipe>();
 
 	public static ItemStack findMatchingTier6RocketRecipe(InventorySchematicRocket inventoryRocketBench)
 	{
@@ -46,32 +45,5 @@ public class Tier6RocketRecipes
 	public static List<INasaWorkbenchRecipe> getTier6RocketRecipes()
 	{
 		return Tier6RocketRecipes.tier6RocketBenchRecipes;
-	}
-
-	public static ItemStack findMatchingTier6RocketNoFlagRecipe(InventorySchematicRocket inventoryRocketBench)
-	{
-		for (INasaWorkbenchRecipe recipe : Tier6RocketRecipes.getTier6RocketNoFlagRecipes())
-		{
-			if (recipe.matches(inventoryRocketBench))
-			{
-				return recipe.getRecipeOutput();
-			}
-		}
-		return null;
-	}
-
-	public static void addTier6RocketBenchNoFlagRecipe(ItemStack result, HashMap<Integer, ItemStack> input)
-	{
-		Tier6RocketRecipes.addTier6RocketNoFlagRecipe(new NasaWorkbenchRecipe(result, input));
-	}
-
-	public static void addTier6RocketNoFlagRecipe(INasaWorkbenchRecipe recipe)
-	{
-		Tier6RocketRecipes.tier6RocketBenchNoFlagRecipes.add(recipe);
-	}
-
-	public static List<INasaWorkbenchRecipe> getTier6RocketNoFlagRecipes()
-	{
-		return Tier6RocketRecipes.tier6RocketBenchNoFlagRecipes;
 	}
 }

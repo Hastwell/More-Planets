@@ -19,15 +19,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockFlowerMP;
+import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 
-public class BlockPoppy extends BlockFlowerMP
+public class BlockPoppy extends BlockBushMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -63,6 +61,12 @@ public class BlockPoppy extends BlockFlowerMP
 	}
 
 	@Override
+	protected boolean canPlaceBlockOn(Block ground)
+	{
+		return ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
+	}
+
+	@Override
 	public boolean isReplaceable(World world, BlockPos pos)
 	{
 		return false;
@@ -84,18 +88,6 @@ public class BlockPoppy extends BlockFlowerMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.getPlantType("Fronos");
-	}
-
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return FronosBlocks.fronos_poppy.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

@@ -11,81 +11,71 @@ import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
-import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidIoBlackLava;
+import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidBlackIoLava;
+import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidBrownLiquidSulfur;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidIoLava;
-import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidLiquidBrownSulfur;
-import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidLiquidOrangeSulfur;
-import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidLiquidRedSulfur;
-import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidLiquidYellowSulfur;
+import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidOrangeLiquidSulfur;
+import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidRedLiquidSulfur;
+import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidYellowLiquidSulfur;
 import stevekung.mods.moreplanets.moons.io.itemblocks.ItemBlockIo;
 import stevekung.mods.moreplanets.moons.io.itemblocks.ItemBlockIoMagmaRock;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class IoBlocks
 {
 	public static Block io_block;
 	public static Block io_magma_rock;
-	public static Block liquid_red_sulfur;
-	public static Block liquid_yellow_sulfur;
-	public static Block liquid_orange_sulfur;
-	public static Block liquid_brown_sulfur;
+	public static Block red_liquid_sulfur;
+	public static Block yellow_liquid_sulfur;
+	public static Block orange_liquid_sulfur;
+	public static Block brown_liquid_sulfur;
 	public static Block io_lava;
-	public static Block io_black_lava;
+	public static Block black_io_lava;
 
-	public static Fluid liquid_red_sulfur_fluid;
-	public static Fluid liquid_yellow_sulfur_fluid;
-	public static Fluid liquid_orange_sulfur_fluid;
-	public static Fluid liquid_brown_sulfur_fluid;
+	public static Fluid red_liquid_sulfur_fluid;
+	public static Fluid yellow_liquid_sulfur_fluid;
+	public static Fluid orange_liquid_sulfur_fluid;
+	public static Fluid brown_liquid_sulfur_fluid;
 	public static Fluid io_lava_fluid;
-	public static Fluid io_black_lava_fluid;
+	public static Fluid black_io_lava_fluid;
 
 	public static void init()
 	{
-		initBlocks();
-		setHarvestLevels();
-		registerBlocks();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		IoBlocks.io_block = new BlockIo("io_block");
 		IoBlocks.io_magma_rock = new BlockIoMagmaRock("io_magma_rock");
 
 		IoBlocks.io_lava_fluid = new FluidMP("io_lava", "blocks/lava_still", "blocks/lava_flow").setBlock(IoBlocks.io_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.io_black_lava_fluid = new FluidMP("io_black_lava").setBlock(IoBlocks.io_black_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_red_sulfur_fluid = new FluidMP("liquid_red_sulfur").setBlock(IoBlocks.liquid_red_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_yellow_sulfur_fluid = new FluidMP("liquid_yellow_sulfur").setBlock(IoBlocks.liquid_yellow_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_orange_sulfur_fluid = new FluidMP("liquid_orange_sulfur").setBlock(IoBlocks.liquid_orange_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
-		IoBlocks.liquid_brown_sulfur_fluid = new FluidMP("liquid_brown_sulfur").setBlock(IoBlocks.liquid_brown_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.black_io_lava_fluid = new FluidMP("black_io_lava").setBlock(IoBlocks.black_io_lava).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.red_liquid_sulfur_fluid = new FluidMP("red_liquid_sulfur").setBlock(IoBlocks.red_liquid_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.yellow_liquid_sulfur_fluid = new FluidMP("yellow_liquid_sulfur").setBlock(IoBlocks.yellow_liquid_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.orange_liquid_sulfur_fluid = new FluidMP("orange_liquid_sulfur").setBlock(IoBlocks.orange_liquid_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
+		IoBlocks.brown_liquid_sulfur_fluid = new FluidMP("brown_liquid_sulfur").setBlock(IoBlocks.brown_liquid_sulfur).setLuminosity(15).setDensity(3000).setViscosity(6000).setTemperature(1300);
 		FluidRegistry.registerFluid(IoBlocks.io_lava_fluid);
-		FluidRegistry.registerFluid(IoBlocks.io_black_lava_fluid);
-		FluidRegistry.registerFluid(IoBlocks.liquid_red_sulfur_fluid);
-		FluidRegistry.registerFluid(IoBlocks.liquid_yellow_sulfur_fluid);
-		FluidRegistry.registerFluid(IoBlocks.liquid_orange_sulfur_fluid);
-		FluidRegistry.registerFluid(IoBlocks.liquid_brown_sulfur_fluid);
+		FluidRegistry.registerFluid(IoBlocks.black_io_lava_fluid);
+		FluidRegistry.registerFluid(IoBlocks.red_liquid_sulfur_fluid);
+		FluidRegistry.registerFluid(IoBlocks.yellow_liquid_sulfur_fluid);
+		FluidRegistry.registerFluid(IoBlocks.orange_liquid_sulfur_fluid);
+		FluidRegistry.registerFluid(IoBlocks.brown_liquid_sulfur_fluid);
 		IoBlocks.io_lava = new BlockFluidIoLava("io_lava");
-		IoBlocks.io_black_lava = new BlockFluidIoBlackLava("io_black_lava");
-		IoBlocks.liquid_red_sulfur = new BlockFluidLiquidRedSulfur("liquid_red_sulfur");
-		IoBlocks.liquid_yellow_sulfur = new BlockFluidLiquidYellowSulfur("liquid_yellow_sulfur");
-		IoBlocks.liquid_orange_sulfur = new BlockFluidLiquidOrangeSulfur("liquid_orange_sulfur");
-		IoBlocks.liquid_brown_sulfur = new BlockFluidLiquidBrownSulfur("liquid_brown_sulfur");
-	}
+		IoBlocks.black_io_lava = new BlockFluidBlackIoLava("black_io_lava");
+		IoBlocks.red_liquid_sulfur = new BlockFluidRedLiquidSulfur("red_liquid_sulfur");
+		IoBlocks.yellow_liquid_sulfur = new BlockFluidYellowLiquidSulfur("yellow_liquid_sulfur");
+		IoBlocks.orange_liquid_sulfur = new BlockFluidOrangeLiquidSulfur("orange_liquid_sulfur");
+		IoBlocks.brown_liquid_sulfur = new BlockFluidBrownLiquidSulfur("brown_liquid_sulfur");
 
-	public static void setHarvestLevels()
-	{
-		IoBlocks.io_block.setHarvestLevel("pickaxe", 1);
-		IoBlocks.io_magma_rock.setHarvestLevel("pickaxe", 1);
-	}
+		// Register
+		CommonRegisterHelper.registerBlock(IoBlocks.io_block, ItemBlockIo.class);
+		CommonRegisterHelper.registerBlock(IoBlocks.io_magma_rock, ItemBlockIoMagmaRock.class);
+		CommonRegisterHelper.registerBlock(IoBlocks.io_lava);
+		CommonRegisterHelper.registerBlock(IoBlocks.black_io_lava);
+		CommonRegisterHelper.registerBlock(IoBlocks.red_liquid_sulfur);
+		CommonRegisterHelper.registerBlock(IoBlocks.yellow_liquid_sulfur);
+		CommonRegisterHelper.registerBlock(IoBlocks.orange_liquid_sulfur);
+		CommonRegisterHelper.registerBlock(IoBlocks.brown_liquid_sulfur);
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(IoBlocks.io_block, ItemBlockIo.class);
-		RegisterHelper.registerBlock(IoBlocks.io_magma_rock, ItemBlockIoMagmaRock.class);
-		RegisterHelper.registerBlock(IoBlocks.io_lava);
-		RegisterHelper.registerBlock(IoBlocks.io_black_lava);
-		RegisterHelper.registerBlock(IoBlocks.liquid_red_sulfur);
-		RegisterHelper.registerBlock(IoBlocks.liquid_yellow_sulfur);
-		RegisterHelper.registerBlock(IoBlocks.liquid_orange_sulfur);
-		RegisterHelper.registerBlock(IoBlocks.liquid_brown_sulfur);
+		// Set harvest level
+		IoBlocks.io_block.setHarvestLevel("pickaxe", 0);
+		IoBlocks.io_magma_rock.setHarvestLevel("pickaxe", 0);
 	}
 }

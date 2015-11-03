@@ -22,6 +22,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.MobSpawnerBaseLogic;
@@ -204,6 +205,7 @@ public class ItemMonsterPlacerMP extends ItemMorePlanets
 	@Override
 	public String getItemStackDisplayName(ItemStack itemStack)
 	{
-		return "Spawn " + StatCollector.translateToLocal("entity.MorePlanets." + MPEntities.getStringFromID(itemStack.getItemDamage()) + ".name");
+		String s = StatCollector.translateToLocal(Items.spawn_egg.getUnlocalizedName() + ".name");
+		return s + " " + StatCollector.translateToLocal("entity.MorePlanets." + MPEntities.getStringFromID(itemStack.getItemDamage()) + ".name");
 	}
 }

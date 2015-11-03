@@ -9,48 +9,47 @@ package stevekung.mods.moreplanets.planets.fronos.items;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemFronosFood extends ItemFoodMP
 {
-	private static int[] foodHunger = new int[] {
-		4,//0
-		4,//1
-		3,//2
-		6,//3
-		4,//4
-		4,//5
-		4,//6
-		4,//7
-		4,//8
-		5,//9
-		2,//10
-		4,//11
-		5,//12
-		6,//13
-		6,//14
-		4//15
+	private int[] foodHunger = new int[] {
+			4,
+			4,
+			3,
+			6,
+			4,
+			4,
+			4,
+			4,
+			4,
+			5,
+			2,
+			4,
+			5,
+			6,
+			6,
+			4
 	};
-	private static float[] foodSaturation = new float[] {
-		0.25F,//0
-		0.25F,//1
-		0.15F,//2
-		0.35F,//3
-		0.45F,//4
-		0.45F,//5
-		0.45F,//6
-		0.45F,//7
-		0.45F,//8
-		0.5F,//9
-		0.15F,//10
-		0.45F,//11
-		0.4F,//12
-		0.6F,//13
-		0.55F,//14
-		0.45F,//15
+	private float[] foodSaturation = new float[] {
+			0.25F,
+			0.25F,
+			0.15F,
+			0.35F,
+			0.45F,
+			0.45F,
+			0.45F,
+			0.45F,
+			0.45F,
+			0.5F,
+			0.15F,
+			0.45F,
+			0.4F,
+			0.6F,
+			0.55F,
+			0.45F,
 	};
 
 	public ItemFronosFood(String name)
@@ -61,20 +60,10 @@ public class ItemFronosFood extends ItemFoodMP
 	}
 
 	@Override
-	public EnumAction getItemUseAction(ItemStack itemStack)
-	{
-		return EnumAction.EAT;
-	}
-
-	@Override
 	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
 	{
+		super.onItemUseFinish(itemStack, world, player);
 		int meta = itemStack.getItemDamage();
-		--itemStack.stackSize;
-
-		player.getFoodStats().addStats(this, itemStack);
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
 
 		if (meta >= 4 && meta <= 8 || meta >= 11 && meta <= 15)
 		{
@@ -99,13 +88,13 @@ public class ItemFronosFood extends ItemFoodMP
 	@Override
 	public int getHealAmount(ItemStack itemStack)
 	{
-		return foodHunger[itemStack.getItemDamage()];
+		return this.foodHunger[itemStack.getItemDamage()];
 	}
 
 	@Override
 	public float getSaturationModifier(ItemStack itemStack)
 	{
-		return foodSaturation[itemStack.getItemDamage()];
+		return this.foodSaturation[itemStack.getItemDamage()];
 	}
 
 	@Override

@@ -9,6 +9,8 @@
 		"half=bottom,variant=coconut_wood_slab": { "model": "moreplanets:half_slab_coconut_wood" },
         "half=top,variant=coconut_wood_slab": { "model": "moreplanets:upper_slab_coconut_wood" },
 		"half=bottom,variant=maple_wood_slab": { "model": "moreplanets:half_slab_maple_wood" },
-        "half=top,variant=maple_wood_slab": { "model": "moreplanets:upper_slab_maple_wood" }
+        "half=top,variant=maple_wood_slab": { "model": "moreplanets:upper_slab_maple_wood" },
+		"half=bottom,variant=europa_wood_slab": { "model": "moreplanets:half_slab_europa_wood" },
+        "half=top,variant=europa_wood_slab": { "model": "moreplanets:upper_slab_europa_wood" }
     }
 }

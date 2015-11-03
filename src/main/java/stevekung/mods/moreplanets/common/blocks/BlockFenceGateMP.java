@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.common.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.creativetab.CreativeTabs;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
@@ -18,7 +17,7 @@ public class BlockFenceGateMP extends BlockFenceGate
 	{
 		super();
 		this.setUnlocalizedName(name);
-		this.setStepSound(Block.soundTypeWood);
+		this.setStepSound(soundTypeWood);
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 	}

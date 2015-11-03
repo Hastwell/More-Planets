@@ -5,6 +5,38 @@
 tile.chondrite_rock.rock.name=Chondrite Rock
 tile.chondrite_rock.polished.name=Polished Chondrite
 tile.chondrite_rock.stone_brick.name=Chondrite Stone Brick
+tile.tinted_glass_pane.white.name=Tinted Glass Pane
+tile.tinted_glass_pane.orange.name=Orange Tinted Glass Pane
+tile.tinted_glass_pane.magenta.name=Magenta Tinted Glass Pane
+tile.tinted_glass_pane.lightBlue.name=Light Blue Tinted Glass Pane
+tile.tinted_glass_pane.yellow.name=Yellow Tinted Glass Pane
+tile.tinted_glass_pane.lime.name=Lime Tinted Glass Pane
+tile.tinted_glass_pane.pink.name=Pink Tinted Glass Pane
+tile.tinted_glass_pane.gray.name=Gray Tinted Glass Pane
+tile.tinted_glass_pane.silver.name=Light Gray Tinted Glass Pane
+tile.tinted_glass_pane.cyan.name=Cyan Tinted Glass Pane
+tile.tinted_glass_pane.purple.name=Purple Tinted Glass Pane
+tile.tinted_glass_pane.blue.name=Blue Tinted Glass Pane
+tile.tinted_glass_pane.brown.name=Brown Tinted Glass Pane
+tile.tinted_glass_pane.green.name=Green Tinted Glass Pane
+tile.tinted_glass_pane.red.name=Red Tinted Glass Pane
+tile.tinted_glass_pane.black.name=Black Tinted Glass Pane
+tile.tinted_glass.white.name=Tinted Glass
+tile.tinted_glass.orange.name=Orange Tinted Glass
+tile.tinted_glass.magenta.name=Magenta Tinted Glass
+tile.tinted_glass.lightBlue.name=Light Blue Tinted Glass
+tile.tinted_glass.yellow.name=Yellow Tinted Glass
+tile.tinted_glass.lime.name=Lime Tinted Glass
+tile.tinted_glass.pink.name=Pink Tinted Glass
+tile.tinted_glass.gray.name=Gray Tinted Glass
+tile.tinted_glass.silver.name=Light Gray Tinted Glass
+tile.tinted_glass.cyan.name=Cyan Tinted Glass
+tile.tinted_glass.purple.name=Purple Tinted Glass
+tile.tinted_glass.blue.name=Blue Tinted Glass
+tile.tinted_glass.brown.name=Brown Tinted Glass
+tile.tinted_glass.green.name=Green Tinted Glass
+tile.tinted_glass.red.name=Red Tinted Glass
+tile.tinted_glass.black.name=Black Tinted Glass
 
 #########Diona Block#########
 tile.diona_block.surface_rock.name=Diona Surface Rock
@@ -28,7 +60,7 @@ tile.quontonium_brick_stairs.name=Quontonium Brick Stairs
 tile.chiseled_quontonium_stairs.name=Chiseled Quontonium Stairs
 tile.diona_dungeon_brick_stairs.name=Diona Dungeon Brick Stairs
 tile.fronisium_tnt.name=Fronisium TNT
-tile.minion_creeper_egg.name=Minion Creeper Egg
+tile.creeper_minion_egg.name=Creeper Minion Egg
 tile.diona_treasure_chest.name=Diona Treasure Chest
 tile.diona_ancient_chest.name=Diona Ancient Chest
 tile.half_stone_slab_1.diona_cobblestone.name=Diona Cobblestone Slab
@@ -317,21 +349,21 @@ tile.cavern_oyster.name=Cavern Oyster
 tile.fronos_sapling.coconut.name=Coconut Sapling
 tile.fronos_sapling.red_maple.name=Red Maple Sapling
 tile.fronos_sapling.purple_maple.name=Purple Maple Sapling
-tile.fronos_tall_grass.short_grass.name=Fronos Short Grass
-tile.fronos_tall_grass.medium_grass.name=Fronos Medium Grass
-tile.fronos_tall_grass.tall_grass.name=Fronos Tall Grass
-tile.fronos_tall_grass.pink_short_grass.name=Pink Short Grass
-tile.fronos_tall_grass.pink_medium_grass.name=Pink Medium Grass
-tile.fronos_tall_grass.pink_tall_grass.name=Pink Tall Grass
-tile.fronos_tall_grass.purple_short_grass.name=Purple Short Grass
-tile.fronos_tall_grass.purple_medium_grass.name=Purple Medium Grass
-tile.fronos_tall_grass.purple_tall_grass.name=Purple Tall Grass
-tile.fronos_tall_grass.plains_short_grass.name=Plains Short Grass
-tile.fronos_tall_grass.plains_medium_grass.name=Plains Medium Grass
-tile.fronos_tall_grass.plains_tall_grass.name=Plains Tall Grass
-tile.fronos_tall_grass.golden_short_grass.name=Golden Short Grass
-tile.fronos_tall_grass.golden_medium_grass.name=Golden Medium Grass
-tile.fronos_tall_grass.golden_tall_grass.name=Golden Tall Grass
+tile.fronos_tall_grass.short_grass.name=Short Fronos Grass
+tile.fronos_tall_grass.medium_grass.name=Medium Fronos Grass
+tile.fronos_tall_grass.tall_grass.name=Tall Fronos Grass
+tile.fronos_tall_grass.short_pink_grass.name=Short Pink Grass
+tile.fronos_tall_grass.medium_pink_grass.name=Medium Pink Grass
+tile.fronos_tall_grass.tall_pink_grass.name=Tall Pink Grass
+tile.fronos_tall_grass.short_purple_grass.name=Short Purple Grass
+tile.fronos_tall_grass.medium_purple_grass.name=Medium Purple Grass
+tile.fronos_tall_grass.tall_purple_grass.name=Tall Purple Grass
+tile.fronos_tall_grass.short_plains_grass.name=Short Plains Grass
+tile.fronos_tall_grass.medium_plains_grass.name=Medium Plains Grass
+tile.fronos_tall_grass.tall_plains_grass.name=Tall Plains Grass
+tile.fronos_tall_grass.short_golden_grass.name=Short Golden Grass
+tile.fronos_tall_grass.medium_golden_grass.name=Medium Golden Grass
+tile.fronos_tall_grass.tall_golden_grass.name=Tall Golden Grass
 tile.fronos_flower.pink_butter_cup.name=Pink Butter Cup
 tile.fronos_flower.orange_butterfly_flower.name=Orange Butterfly Flower
 tile.fronos_flower.yellow_milk_cap.name=Yellow Milk Cap
@@ -418,6 +450,11 @@ tile.half_fronos_sandstone_slab.cheese_sandstone.name=Cheese Sandstone Slab
 tile.fronos_sandstone_stairs.name=Fronos Sandstone Stairs
 tile.white_sandstone_stairs.name=White Sandstone Stairs
 tile.cheese_sandstone_stairs.name=Cheese Sandstone Stairs
+tile.fronos_double_tallgrass.fronos.name=Double Fronos Tallgrass
+tile.fronos_double_tallgrass.pink.name=Double Pink Tallgrass
+tile.fronos_double_tallgrass.purple.name=Double Purple Tallgrass
+tile.fronos_double_tallgrass.plains.name=Double Plains Tallgrass
+tile.fronos_double_tallgrass.golden.name=Double Golden Tallgrass
 
 #########Kapteyn B Block#########
 tile.kapteyn_b_block.surface_ice.name=Kapteyn B Surface Ice
@@ -599,31 +636,39 @@ tile.europa_salt.name=Europa Salt
 tile.europa_underwater_geyser.default.name=Europa Underwater Geyser
 tile.europa_underwater_geyser.smoke.name=Europa Underwater Smoke Geyser
 tile.europa_water_bomb.name=Europa Water Bomb
+tile.europa_log.europa_wood.name=Europa Wood
+tile.europa_planks.name=Europa Wood Planks
+tile.europa_leaves.name=Europa Leaves
+tile.europa_sapling.name=Europa Sapling
+tile.europa_sand.name=Europa Sand
+tile.europa_sandstone.europa_sandstone.name=Europa Sandstone
+tile.europa_sandstone.chiseled_europa_sandstone.name=Chiseled Europa Sandstone
+tile.europa_sandstone.smooth_europa_sandstone.name=Smooth Europa Sandstone
+tile.half_europa_sandstone_slab.europa_sandstone.name=Europa Sandstone Slab
+tile.half_wooden_slab_1.europa_wood.name=Europa Wood Slab
+tile.europa_sandstone_stairs.name=Europa Sandstone Stairs
+tile.europa_wood_stairs.name=Europa Wood Stairs
+tile.europa_fence.name=Europa Fence
+tile.europa_fence_gate.name=Europa Fence Gate
+tile.half_europa_prismarine_slab.europa_prismarine.name=Europa Prismarine Slab
+tile.half_europa_prismarine_slab.europa_prismarine_brick.name=Europa Prismarine Bricks Slab
+tile.half_europa_prismarine_slab.dark_europa_prismarine.name=Dark Europa Prismarine Slab
+tile.europa_prismarine_stairs.name=Europa Prismarine Stairs
+tile.europa_prismarine_brick_stairs.name=Europa Prismarine Bricks Stairs
+tile.dark_europa_prismarine_stairs.name=Dark Europa Prismarine Stairs
+tile.europa_sponge.default.name=Europa Sponge
+tile.europa_sponge.wet.name=Wet Europa Sponge
 
 # ITEMS
 #########Main Item#########
 item.meteor_shower.name=Meteor Shower
-item.mp_flag.thai.name=Thai Flag
-item.mp_flag.laos.name=Laos Flag
-item.mp_flag.singapore.name=Singapore Flag
-item.mp_flag.myanmar.name=Myanmar Flag
-item.mp_flag.marlaysia.name=Marlaysia Flag
-item.mp_flag.vietnam.name=Vietnam Flag
-item.mp_flag.indonesia.name=Indonesia Flag
-item.mp_flag.philippines.name=Philippines Flag
-item.mp_flag.cambodia.name=Cambodia Flag
-item.mp_flag.brunei.name=Brunei Flag
+item.feces.name=Feces
 
 #########Diona Item#########
 item.diona_item.quontonium_ingot.name=Quontonium Ingot
 item.diona_item.fronisium_ingot.name=Fronisium Ingot
 item.diona_item.compressed_quontonium.name=Compressed Quontonium
 item.diona_item.compressed_fronisium.name=Compressed Fronisium
-item.diona_item.red_canvas.name=Red Canvas
-item.diona_item.white_canvas.name=White Canvas
-item.diona_item.blue_canvas.name=Blue Canvas
-item.diona_item.thai_canvas_bottom.name=Thai Canvas
-item.diona_item.thai_canvas_top.name=Thai Canvas
 item.diona_item.quontonium_stick.name=Quontonium Stick
 item.diona_item.fronisium_stick.name=Fronisium Stick
 item.diona_item.green_redstone_torch.name=Green Redstone Torch
@@ -633,11 +678,9 @@ item.tier_4_rocket_module.tier_4_nose_cone.name=Tier 4 Nose Cone
 item.diona_item.tier_5_heavy_duty_plate.name=Heavy Duty Plate
 item.tier_4_rocket_module.tier_4_rocket_engine.name=Tier 4 Rocket Engine
 item.tier_4_rocket_module.tier_4_booster.name=Tier 4 Booster
-item.tier_4_rocket_module.tier_4_nose_cone_no_flag.name=Tier 4 Nose Cone
 item.tier_4_rocket_module.tier_5_rocket_engine.name=Tier 5 Rocket Engine
 item.tier_4_rocket_module.tier_5_booster.name=Tier 5 Booster
-item.tier_4_rocket_schematic.tier_4_rocket_schematic.name=NASA Workbench Schematic
-item.tier_4_rocket_schematic.tier_4_rocket_schematic_no_flag.name=NASA Workbench Schematic
+item.tier_4_rocket_schematic.name=NASA Workbench Schematic
 item.laser_gun.name=Laser Gun
 item.normal_laser_ammo.laser_ammo.name=Normal Laser Ammo
 item.hyper_laser_ammo.laser_ammo.name=Hyper Laser Ammo
@@ -672,8 +715,7 @@ item.tier_5_rocket.name=Tier 5 Rocket
 item.tier_6_rocket_module.tier_6_heavy_duty_plate.name=Heavy Duty Plate
 item.tier_6_rocket_module.tier_6_rocket_engine.name=Tier 6 Rocket Engine
 item.tier_6_rocket_module.tier_6_booster.name=Tier 6 Booster
-item.tier_5_rocket_schematic.tier_5_rocket_schematic_no_flag.name=NASA Workbench Schematic
-item.tier_5_rocket_schematic.tier_5_rocket_schematic.name=NASA Workbench Schematic
+item.tier_5_rocket_schematic.name=NASA Workbench Schematic
 item.polongnius_meteor_chunk.name=Polongnius Meteor Chunk
 
 #########Nibiru Item#########
@@ -694,8 +736,7 @@ item.tier_7_rocket_module.tier_7_rocket_engine.name=Tier 7 Rocket Engine
 item.tier_7_rocket_module.tier_7_heavy_duty_plate.name=Heavy Duty Plate
 item.tier_7_rocket_module.tier_7_rocket_fin.name=Tier 7 Rocket Fin
 item.tier_7_rocket_module.tier_7_nose_cone.name=Tier 7 Nose Cone
-item.tier_6_rocket_schematic.tier_6_rocket_schematic_no_flag.name=NASA Workbench Schematic
-item.tier_6_rocket_schematic.tier_6_rocket_schematic.name=NASA Workbench Schematic
+item.tier_6_rocket_schematic.name=NASA Workbench Schematic
 item.ancient_dark_door.name=Ancient Dark Door
 item.orange_door.name=Orange Door
 
@@ -709,6 +750,7 @@ item.koentus_item.compressed_white_crystal.name=Compressed White Crystal
 item.koentus_item.compressed_koentus_meteoric_iron.name=Compressed Koentus Meteoric Iron
 item.koentus_meteor_chunk.name=Koentus Meteor Chunk
 item.crystal_door.name=Crystal Door
+item.crystal_cocoa.name=Crystal Cocoa
 
 #########Fronos Item#########
 item.fronos_food.strawberry.name=Strawberry
@@ -829,6 +871,7 @@ item.sirius_b_item.sulfur_ingot.name=Sulfur Ingot
 item.sirius_b_item.compressed_sulfur.name=Compressed Sulfur
 item.sirius_glowstone_dust.name=Sirius Glowstone Dust
 item.sirius_b_item.sulfur_stick.name=Sulfur Stick
+item.sirius_magma_cream.name=Sirius Magma Cream
 
 #########Mercury Item#########
 item.mercury_item.metallic_shard.name=Metallic Shard
@@ -843,11 +886,11 @@ item.dirty_water_bucket.name=Dirty Water Bucket
 
 #########Io Item#########
 item.io_lava_bucket.name=Io Lava Bucket
-item.liquid_red_sulfur_bucket.name=Liquid Red Sulfur Bucket
-item.liquid_yellow_sulfur_bucket.name=Liquid Yellow Sulfur Bucket
-item.liquid_orange_sulfur_bucket.name=Liquid Orange Sulfur Bucket
-item.liquid_brown_sulfur_bucket.name=Liquid Brown Sulfur Bucket
-item.io_black_lava_bucket.name=Black Io Lava Bucket
+item.black_io_lava_bucket.name=Black Io Lava Bucket
+item.red_liquid_sulfur_bucket.name=Red Liquid Sulfur Bucket
+item.yellow_liquid_sulfur_bucket.name=Yellow Liquid Sulfur Bucket
+item.orange_liquid_sulfur_bucket.name=Orange Liquid Sulfur Bucket
+item.brown_liquid_sulfur_bucket.name=Brown Liquid Sulfur Bucket
 
 #########Venus Item#########
 item.venus_item.lead_ingot.name=Lead Ingot
@@ -868,6 +911,10 @@ item.europa_prismarine_item.europa_prismarine_shard.name=Europa Prismarine Shard
 item.europa_prismarine_item.europa_prismarine_crystals.name=Europa Prismarine Crystal
 item.europa_water_bucket.name=Europa Water Bucket
 item.europa_apple.name=Europa Apple
+item.europa_door.name=Europa Door
+item.europa_food.raw_europa_eel_meat.name=Raw Europa Eel Meat
+item.europa_food.cooked_europa_eel_meat.name=Cooked Europa Eel Meat
+item.europa_gunpowder.name=Europa Gunpowder
 
 # TOOLS
 #########Diona Tools#########
@@ -1078,7 +1125,7 @@ entity.MorePlanets.SpaceWolf.name=Space Wolf
 entity.MorePlanets.EvolvedEnderman.name=Evolved Enderman
 entity.MorePlanets.DustSludgeling.name=Dust Sludgeling
 entity.MorePlanets.DionaCreeperBoss.name=Diona Creeper Boss
-entity.MorePlanets.DionaMinionCreeper.name=Diona Minion Creeper
+entity.MorePlanets.DionaCreeperMinion.name=Diona Creeper Minion
 entity.MorePlanets.CheeseCow.name=Cheese Cow
 entity.MorePlanets.CheeseSlime.name=Cheese Slime
 entity.MorePlanets.CheeseCubeBoss.name=Cheese Cube Boss
@@ -1116,6 +1163,7 @@ entity.MorePlanets.VenusianSlimeMP.name=Venusian Slime
 entity.MorePlanets.VenusianVillagerMP.name=Venusian Villager
 entity.MorePlanets.EuropaSquid.name=Europa Squid
 entity.MorePlanets.EuropaGuardian.name=Europa Guardian
+entity.MorePlanets.EuropaCrab.name=Europa Crab
 
 # DESCRIPTION
 desc.tier4.name=Tier 4
@@ -1123,14 +1171,17 @@ desc.tier5.name=Tier 5
 desc.tier6.name=Tier 6
 desc.tier7.name=Tier 7
 desc.tier8.name=Tier 8
-desc.rocket.noflag.name=No Flag
 desc.red.canvas.name=Red
 desc.white.canvas.name=White
 desc.blue.canvas.name=Blue
 desc.slime.name=Slime type
+desc.decompose.name=Decompose
 tile.cheese_of_milk_cake.desc=Cheese of Milk Blocks are created from cheese of milk of the Polongnius, place-able and editble.
 tile.ultra_violet_solar_panel.desc=Ultra Violet Solar Panel will collect energy from the sun or ultra violet light from stars, storing it for further use. Automatically adjusts panel angle for optimal energy collection.
 tile.power_crystal_generator.desc=Power Crystal Generator will collect energy from power crystal gem for energy collection.
+desc.europasapling1.name=Can be placed on an Europa Ice Slush
+desc.europasapling2.name=And can be placed under of Europa Ice or Packed Europa Ice
+desc.europasapling3.name=Note : You need to grow it manually
 
 # SCHEMATIC
 schematic.tier4.rocket.name=Tier 4 Rocket
@@ -1138,9 +1189,6 @@ schematic.tier5.rocket.name=Tier 5 Rocket
 schematic.tier6.rocket.name=Tier 6 Rocket
 schematic.tier7.rocket.name=Tier 7 Rocket
 schematic.tier8.rocket.name=Tier 8 Rocket
-schematic.tier4.rocket.noflag.name=Tier 4 Rocket No Flag
-schematic.tier5.rocket.noflag.name=Tier 5 Rocket No Flag
-schematic.tier6.rocket.noflag.name=Tier 6 Rocket No Flag
 
 # MESSAGE
 mp.failed.name=Update check failed!
@@ -1173,9 +1221,6 @@ schematics.container.rocket.tier5=Tier 5 Rocket
 schematics.container.rocket.tier6=Tier 6 Rocket
 schematics.container.rocket.tier7=Tier 7 Rocket
 schematics.container.rocket.tier8=Tier 8 Rocket
-schematics.container.rocket.noflag.tier4=Tier 4 Rocket No Flag
-schematics.container.rocket.noflag.tier5=Tier 5 Rocket No Flag
-schematics.container.rocket.noflag.tier6=Tier 6 Rocket No Flag
 container.ultraviolet.solar.name=Ultra Violet Solar Panel
 container.powercrystal.name=Power Crystal Generator
 container.candy.extractor.name=Candy Extractor
@@ -1209,9 +1254,9 @@ potion.chemical=Chemical
 potion.icy_poison=Icy Poison
 
 # DEATH MESSAGES
-death.attack.laser=%1$s was shot by laser
-death.attack.infected_vine=%1$s was infected by infected vine
-death.attack.infected_gas=%1$s was killed by Infected Gas
-death.attack.purple_spike=%1$s was pricked by purple spike flower
-death.attack.chemical=%1$s was killed by chemical
-death.attack.icy_poison=%1$s was poisoned by icy poison crystal
+death.attack.laser=%1$s was shot by a laser
+death.attack.infected_vine=%1$s was infected by an infected vine
+death.attack.infected_gas=%1$s was killed by infected gas
+death.attack.purple_spike=%1$s was pricked by a purple spike flower
+death.attack.chemical=%1$s was killed by a chemical
+death.attack.icy_poison=%1$s was poisoned by an icy poison crystal

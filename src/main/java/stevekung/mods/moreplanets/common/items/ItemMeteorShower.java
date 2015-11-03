@@ -7,6 +7,8 @@
 
 package stevekung.mods.moreplanets.common.items;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +20,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.network.MeteorMessageToServer;
+import stevekung.mods.moreplanets.common.network.meteor.MeteorServerMessage;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class ItemMeteorShower extends ItemMorePlanets
@@ -38,7 +40,7 @@ public class ItemMeteorShower extends ItemMorePlanets
 			return true;
 		}
 		Vec3 targetLocation = new Vec3(pos.getX()+ 0.5, pos.getY() + 1.1, pos.getZ() + 0.5);
-		this.callAirstrikeOnTarget(targetLocation);
+		this.callAirstrikeOnTarget(targetLocation, world);
 		return true;
 	}
 
@@ -52,16 +54,18 @@ public class ItemMeteorShower extends ItemMorePlanets
 		Vec3 playerLook = player.getLookVec();
 		Vec3 playerFeetPosition = player.getPositionEyes(1.0F).subtract(0, player.getEyeHeight(), 0);
 		Vec3 targetPosition = playerFeetPosition.addVector(playerLook.xCoord * 6.0D, 0.1D, playerLook.zCoord * 6.0D);
-		this.callAirstrikeOnTarget(targetPosition);
+		this.callAirstrikeOnTarget(targetPosition, world);
 		return itemStack;
 	}
 
-	public void callAirstrikeOnTarget(Vec3 targetPosition)
+	public void callAirstrikeOnTarget(Vec3 targetPosition, World world)
 	{
-		MeteorMessageToServer.EnumMeteorType [] choices = MeteorMessageToServer.EnumMeteorType.values();
-		MeteorMessageToServer.EnumMeteorType projectile = choices[new Random().nextInt(choices.length)];
-		MeteorMessageToServer airstrikeMessageToServer = new MeteorMessageToServer(projectile, targetPosition);
+		MeteorServerMessage.EnumMeteorType [] choices = MeteorServerMessage.EnumMeteorType.values();
+		MeteorServerMessage.EnumMeteorType projectile = choices[new Random().nextInt(choices.length)];
+		MeteorServerMessage airstrikeMessageToServer = new MeteorServerMessage(projectile, targetPosition);
 		MorePlanetsCore.simpleNetworkWrapper.sendToServer(airstrikeMessageToServer);
+		List<Object> objList = new ArrayList<Object>();
+		objList.add(targetPosition);
 		return;
 	}
 

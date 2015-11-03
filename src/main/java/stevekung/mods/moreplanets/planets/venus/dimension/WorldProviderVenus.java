@@ -8,24 +8,22 @@
 package stevekung.mods.moreplanets.planets.venus.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.common.world.ILightningStorm;
-import stevekung.mods.moreplanets.common.world.IUltraVioletLevel;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.venus.world.gen.ChunkProviderVenus;
 import stevekung.mods.moreplanets.planets.venus.world.gen.WorldChunkManagerVenus;
 
-public class WorldProviderVenus extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel, ILightningStorm
+public class WorldProviderVenus extends WorldProviderMP implements ILightningStorm
 {
+	private double solarMultiplier = -1D;
+
 	@Override
 	public Vector3 getFogColor()
 	{
@@ -41,27 +39,9 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
-
-	@Override
 	public long getDayLength()
 	{
 		return 5832000L;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -78,9 +58,9 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float par1)
+	public float getStarBrightness(float bright)
 	{
-		float f1 = this.worldObj.getCelestialAngle(par1);
+		float f1 = this.worldObj.getCelestialAngle(bright);
 		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
 
 		if (f2 < 0.0F)
@@ -96,7 +76,7 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float getSunBrightness(float par1)
+	public float getSunBrightness(float bright)
 	{
 		float f1 = this.worldObj.getCelestialAngle(1.0F);
 		float f2 = 1.25F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
@@ -114,45 +94,26 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	}
 
 	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
-
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
-
-	@Override
-	public boolean canCoordinateBeSpawn(int x, int z)
-	{
-		return true;
-	}
-
-	@Override
 	public double getSolarEnergyMultiplier()
 	{
-		return 7.5D;
+		if (this.solarMultiplier < 0D)
+		{
+			double s = this.getSolarSize();
+			this.solarMultiplier = s * s * s;
+		}
+		return this.solarMultiplier;
 	}
 
 	@Override
 	public float getGravity()
 	{
-		return 0.053F;
+		return 0.058F;
 	}
 
 	@Override
 	public double getMeteorFrequency()
 	{
 		return 100.0D;
-	}
-
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
 	}
 
 	@Override
@@ -164,13 +125,13 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	@Override
 	public float getFallDamageModifier()
 	{
-		return 0.42F;
+		return 0.38F;
 	}
 
 	@Override
 	public float getSoundVolReductionAmount()
 	{
-		return 10.0F;
+		return 5.0F;
 	}
 
 	@Override
@@ -188,20 +149,13 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	@Override
 	public float getThermalLevelModifier()
 	{
-		if (this.isDaytime())
-		{
-			return 15.0F;
-		}
-		else
-		{
-			return 7.5F;
-		}
+		return -1.0F;
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 1.5F;
+		return 0.3F;
 	}
 
 	@Override
@@ -213,12 +167,19 @@ public class WorldProviderVenus extends WorldProviderSpace implements IGalacticr
 	@Override
 	public double getLightningStormFrequency()
 	{
-		return 0.5D;
+		return 1.5D;
 	}
 
 	@Override
 	public String getInternalNameSuffix()
 	{
 		return "_venus";
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public float getCloudHeight()
+	{
+		return 128.0F;
 	}
 }

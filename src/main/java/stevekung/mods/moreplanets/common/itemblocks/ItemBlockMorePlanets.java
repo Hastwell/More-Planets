@@ -24,7 +24,7 @@ public class ItemBlockMorePlanets extends ItemBlock
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
+	public EnumRarity getRarity(ItemStack itemStack)
 	{
 		return ClientProxyCore.galacticraftItem;
 	}

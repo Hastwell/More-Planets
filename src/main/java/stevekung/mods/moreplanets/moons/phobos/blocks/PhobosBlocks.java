@@ -11,7 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.moons.phobos.itemblocks.ItemBlockPhobos;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PhobosBlocks
 {
@@ -19,25 +19,16 @@ public class PhobosBlocks
 
 	public static void init()
 	{
-		PhobosBlocks.initBlocks();
-		PhobosBlocks.setHarvestLevels();
-		PhobosBlocks.registerBlocks();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		PhobosBlocks.phobos_block = new BlockPhobos("phobos_block");
-	}
 
-	private static void setHarvestLevels()
-	{
-		PhobosBlocks.phobos_block.setHarvestLevel("pickaxe", 1);
-	}
+		// Register
+		CommonRegisterHelper.registerBlock(PhobosBlocks.phobos_block, ItemBlockPhobos.class);
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(PhobosBlocks.phobos_block, ItemBlockPhobos.class);
+		// Set harvest level
+		PhobosBlocks.phobos_block.setHarvestLevel("pickaxe", 0);
 
+		// Register ore dictionary
 		OreDictionary.registerOre("oreTin", new ItemStack(PhobosBlocks.phobos_block, 1, 4));
 		OreDictionary.registerOre("oreCopper", new ItemStack(PhobosBlocks.phobos_block, 1, 5));
 		OreDictionary.registerOre("oreIron", new ItemStack(PhobosBlocks.phobos_block, 1, 6));

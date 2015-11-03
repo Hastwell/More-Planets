@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.venus.blocks;
 
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.BlockFalling;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -18,7 +19,7 @@ public class BlockVenusSand extends BlockFalling implements ITerraformableBlock
 {
 	public BlockVenusSand(String name)
 	{
-		super();
+		super(Material.sand);
 		this.setStepSound(soundTypeSand);
 		this.setHardness(0.55F);
 		this.setUnlocalizedName(name);

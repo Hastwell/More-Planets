@@ -244,7 +244,7 @@ public class BlockUraniumWaste extends BlockBreakableMP implements IShearable, I
 	}
 
 	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune)
+	public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
 	{
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		ret.add(new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos))));
@@ -259,14 +259,6 @@ public class BlockUraniumWaste extends BlockBreakableMP implements IShearable, I
 			return new TileEntityUraniumWaste();
 		}
 		return null;
-	}
-
-	public static void updateState(boolean flag, World world, BlockPos pos)
-	{
-		if (flag)
-		{
-			world.setBlockState(pos, KapteynBBlocks.uranium_waste.getDefaultState().withProperty(VARIANT, BlockType.inactive_uranium_waste), 3);
-		}
 	}
 
 	@Override

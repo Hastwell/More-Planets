@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=europa_sandstone_slab": { "model": "moreplanets:half_slab_europa_sandstone" },
+        "half=top,variant=europa_sandstone_slab": { "model": "moreplanets:upper_slab_europa_sandstone" }
+    }
+}

@@ -20,7 +20,7 @@ import stevekung.mods.moreplanets.planets.nibiru.inventory.container.ContainerSc
 
 public class GuiSchematicTier6Rocket extends GuiContainer implements ISchematicResultPage
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/tier_6_rocket_schematic.png");
+	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/gui/schematics/tier_6_rocket.png");
 	private int pageIndex;
 
 	public GuiSchematicTier6Rocket(InventoryPlayer par1InventoryPlayer, int x, int y, int z)

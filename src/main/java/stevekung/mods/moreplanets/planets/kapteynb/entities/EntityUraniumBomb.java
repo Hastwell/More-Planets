@@ -94,7 +94,7 @@ public class EntityUraniumBomb extends Entity
 
 	private void explode()
 	{
-		float f = 1000.0F;
+		float f = 25.0F;
 		UraniumExplosion explosion = new UraniumExplosion(this.worldObj, this, this.posX, this.posY, this.posZ, f, true, true);
 		explosion.doExplosionA();
 		explosion.doExplosionB(true);

@@ -20,7 +20,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
-import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
+import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.io.tileentities.TileEntityIoDungeonSpawner;
 
 public class RoomBossIo extends DungeonRoom
@@ -100,7 +101,7 @@ public class RoomBossIo extends DungeonRoom
 			return;
 		}
 
-		this.worldObj.setBlockState(this.spawnerCoords, IoBlocks.io_block.getDefaultState(), 3);//TODO Boss Dungeon Spawner
+		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.io), 3);
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 
 		if (tile == null || !(tile instanceof TileEntityIoDungeonSpawner))

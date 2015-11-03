@@ -19,7 +19,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
-import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
+import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryDungeonSpawner;
 
 public class RoomBossMercury extends DungeonRoom
@@ -96,7 +97,7 @@ public class RoomBossMercury extends DungeonRoom
 			return;
 		}
 
-		this.worldObj.setBlockState(this.spawnerCoords, MercuryBlocks.mercury_block.getDefaultState(), 3);//TODO Boss Dungeon Spawn
+		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.mercury), 3);
 
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 

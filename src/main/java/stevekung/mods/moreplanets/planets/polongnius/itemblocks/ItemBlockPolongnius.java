@@ -27,7 +27,7 @@ public class ItemBlockPolongnius extends ItemBlockBaseMP
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
 	{
 		if (player.worldObj.isRemote)
 		{

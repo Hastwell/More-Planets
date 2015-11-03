@@ -195,9 +195,9 @@ public class WorldGenFronosDungeons extends WorldGenerator
 	{
 		if (rand.nextInt(5) == 0)
 		{
-			return "MorePlanet.JellySlime";
+			return "MorePlanets.JellySlime";
 		}
-		return "MorePlanet.CreamSlime";
+		return "MorePlanets.CreamSlime";
 	}
 
 	static

@@ -16,8 +16,8 @@ import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
-import stevekung.mods.moreplanets.common.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDirtMP;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockFruitsLeaves;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruFence;
@@ -25,7 +25,7 @@ import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruLog;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruSapling;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruWoodenPlanks;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockOilRock;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class NibiruBlocks
 {
@@ -61,14 +61,7 @@ public class NibiruBlocks
 
 	public static void init()
 	{
-		NibiruBlocks.initBlocks();
-		NibiruBlocks.setHarvestLevels();
-		NibiruBlocks.registerBlocks();
-		NibiruBlocks.setFireBurn();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		NibiruBlocks.nibiru_block = new BlockNibiru("nibiru_block");
 		NibiruBlocks.nibiru_treasure_chest = new BlockNibiruTreasureChest("nibiru_treasure_chest");
 		NibiruBlocks.nibiru_ancient_chest = new BlockNibiruAncientChest("nibiru_ancient_chest");
@@ -81,16 +74,16 @@ public class NibiruBlocks
 		NibiruBlocks.nibiru_planks = new BlockNibiruWoodenPlanks("nibiru_planks");
 		NibiruBlocks.power_crystal_generator = new BlockPowerCrystalGenerator("power_crystal_generator");
 		NibiruBlocks.ichorius_torch = new BlockIchoriusTorch("ichorius_torch");
-		NibiruBlocks.ancient_dark_wood_stairs = new BlockStairsMP("ancient_dark_wood_stairs", 2.0F, StairsCategory.ancient_dark_wood, Blocks.log.getDefaultState());
-		NibiruBlocks.nibiru_cobblestone_stairs = new BlockStairsMP("nibiru_cobblestone_stairs", 4.25F, StairsCategory.nibiru_cobblestone, Blocks.stone.getDefaultState());
+		NibiruBlocks.ancient_dark_wood_stairs = new BlockStairsMP(Blocks.planks.getDefaultState(), "ancient_dark_wood_stairs", "wood", null, 2.0F);
+		NibiruBlocks.nibiru_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "nibiru_cobblestone_stairs", 4.25F);
 		NibiruBlocks.orange_leaves = new BlockOrangeLeaves("orange_leaves");
-		NibiruBlocks.orange_wood_stairs = new BlockStairsMP("orange_wood_stairs", 2.0F, StairsCategory.orange_wood, Blocks.log.getDefaultState());
+		NibiruBlocks.orange_wood_stairs = new BlockStairsMP(Blocks.planks.getDefaultState(), "orange_wood_stairs", "wood", null, 2.0F);
 		NibiruBlocks.infected_grass = new BlockInfectedGrass("infected_grass");
 		NibiruBlocks.infected_dirt = new BlockInfectedDirt("infected_dirt");
 		NibiruBlocks.oil_rock = new BlockOilRock("oil_rock");
 		NibiruBlocks.infected_vine = new BlockInfectedVine("infected_vine");
 		NibiruBlocks.infected_orange_rose_bush = new BlockInfectedOrangeRoseBush("infected_orange_rose_bush");
-		NibiruBlocks.nibiru_dungeon_brick_stairs = new BlockStairsMP("nibiru_dungeon_brick_stairs", 4.0F, StairsCategory.nibiru_dungeon_brick, Blocks.stone.getDefaultState());
+		NibiruBlocks.nibiru_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "nibiru_dungeon_brick_stairs", 4.0F);
 		NibiruBlocks.infected_farmland = new BlockInfectedFarmland("infected_farmland");
 		NibiruBlocks.nibiru_fence = new BlockNibiruFence("nibiru_fence");
 		NibiruBlocks.ancient_dark_fence_gate = new BlockFenceGateMP("ancient_dark_fence_gate");
@@ -98,10 +91,39 @@ public class NibiruBlocks
 		NibiruBlocks.infected_cavernous_vine = new BlockInfectedCavernousVine("infected_cavernous_vine");
 		NibiruBlocks.ancient_dark_door = new BlockDoorMP("ancient_dark_door_block", DoorType.ANCIENT_DARK);
 		NibiruBlocks.orange_door = new BlockDoorMP("orange_door_block", DoorType.ORANGE);
-	}
 
-	private static void setHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_block, ItemBlockNibiru.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_grass);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_dirt, ItemBlockDirtMP.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.oil_rock, ItemBlockOilRock.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.helium_block);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_worm_egg_rock);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_log, ItemBlockNibiruLog.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockNibiruWoodenPlanks.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_leaves, ItemBlockFruitsLeaves.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_leaves, ItemBlockFruitsLeaves.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_wood_stairs);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_wood_stairs);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_cobblestone_stairs);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_dungeon_brick_stairs);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.power_crystal_generator, ItemBlockDesc.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_fence, ItemBlockNibiruFence.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_fence_gate);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_fence_gate);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_treasure_chest);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_ancient_chest);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_zombie_egg);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_sapling, ItemBlockNibiruSapling.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_vine);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_orange_rose_bush);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_cavernous_vine);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.ichorius_torch);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_farmland);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_door);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_door);
+
+		// Set harvest level
 		NibiruBlocks.ancient_dark_wood_stairs.setHarvestLevel("axe", 0);
 		NibiruBlocks.nibiru_ancient_chest.setHarvestLevel("axe", 0);
 		NibiruBlocks.nibiru_log.setHarvestLevel("axe", 0);
@@ -110,65 +132,33 @@ public class NibiruBlocks
 		NibiruBlocks.nibiru_fence.setHarvestLevel("axe", 0);
 		NibiruBlocks.ancient_dark_fence_gate.setHarvestLevel("axe", 0);
 		NibiruBlocks.orange_fence_gate.setHarvestLevel("axe", 0);
+		NibiruBlocks.ancient_dark_door.setHarvestLevel("axe", 0);
+		NibiruBlocks.orange_door.setHarvestLevel("axe", 0);
 		NibiruBlocks.infected_grass.setHarvestLevel("shovel", 0);
 		NibiruBlocks.infected_dirt.setHarvestLevel("shovel", 0);
 		NibiruBlocks.infected_farmland.setHarvestLevel("shovel", 0);
-		NibiruBlocks.nibiru_block.setHarvestLevel("pickaxe", 1);
-		NibiruBlocks.nibiru_cobblestone_stairs.setHarvestLevel("pickaxe", 1);
-		NibiruBlocks.nibiru_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
-		NibiruBlocks.oil_rock.setHarvestLevel("pickaxe", 1);
-		NibiruBlocks.infected_worm_egg_rock.setHarvestLevel("pickaxe", 1);
-		NibiruBlocks.power_crystal_generator.setHarvestLevel("pickaxe", 1);
-	}
+		NibiruBlocks.nibiru_block.setHarvestLevel("pickaxe", 0);
+		NibiruBlocks.nibiru_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+		NibiruBlocks.nibiru_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
+		NibiruBlocks.oil_rock.setHarvestLevel("pickaxe", 0);
+		NibiruBlocks.infected_worm_egg_rock.setHarvestLevel("pickaxe", 0);
+		NibiruBlocks.power_crystal_generator.setHarvestLevel("pickaxe", 2);
 
-	private static void setFireBurn()
-	{
-		RegisterHelper.setFireBurn(NibiruBlocks.ancient_dark_leaves, 30, 60);
-		RegisterHelper.setFireBurn(NibiruBlocks.orange_leaves, 30, 60);
-		RegisterHelper.setFireBurn(NibiruBlocks.nibiru_planks, 5, 20);
-		RegisterHelper.setFireBurn(NibiruBlocks.ancient_dark_wood_stairs, 5, 20);
-		RegisterHelper.setFireBurn(NibiruBlocks.nibiru_fence, 5, 20);
-		RegisterHelper.setFireBurn(NibiruBlocks.ancient_dark_fence_gate, 5, 20);
-		RegisterHelper.setFireBurn(NibiruBlocks.orange_fence_gate, 5, 20);
-		RegisterHelper.setFireBurn(NibiruBlocks.orange_wood_stairs, 5, 20);
-		RegisterHelper.setFireBurn(NibiruBlocks.nibiru_sapling, 60, 100);
-		RegisterHelper.setFireBurn(NibiruBlocks.infected_vine, 15, 100);
-		RegisterHelper.setFireBurn(NibiruBlocks.infected_orange_rose_bush, 15, 100);
-		RegisterHelper.setFireBurn(NibiruBlocks.nibiru_log, 5, 5);
-	}
+		// Set fire burn
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.ancient_dark_leaves, 30, 60);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.orange_leaves, 30, 60);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.nibiru_planks, 5, 20);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.ancient_dark_wood_stairs, 5, 20);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.nibiru_fence, 5, 20);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.ancient_dark_fence_gate, 5, 20);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.orange_fence_gate, 5, 20);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.orange_wood_stairs, 5, 20);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.nibiru_sapling, 60, 100);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.infected_vine, 15, 100);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.infected_orange_rose_bush, 15, 100);
+		CommonRegisterHelper.setFireBurn(NibiruBlocks.nibiru_log, 5, 5);
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_block, ItemBlockNibiru.class);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_grass);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_dirt, ItemBlockDirtMP.class);
-		RegisterHelper.registerBlock(NibiruBlocks.oil_rock, ItemBlockOilRock.class);
-		RegisterHelper.registerBlock(NibiruBlocks.helium_block);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_worm_egg_rock);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_log, ItemBlockNibiruLog.class);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockNibiruWoodenPlanks.class);
-		RegisterHelper.registerBlock(NibiruBlocks.ancient_dark_leaves, ItemBlockFruitsLeaves.class);
-		RegisterHelper.registerBlock(NibiruBlocks.orange_leaves, ItemBlockFruitsLeaves.class);
-		RegisterHelper.registerBlock(NibiruBlocks.ancient_dark_wood_stairs);
-		RegisterHelper.registerBlock(NibiruBlocks.orange_wood_stairs);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_cobblestone_stairs);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_dungeon_brick_stairs);
-		RegisterHelper.registerBlock(NibiruBlocks.power_crystal_generator, ItemBlockDesc.class);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_fence, ItemBlockNibiruFence.class);
-		RegisterHelper.registerBlock(NibiruBlocks.ancient_dark_fence_gate);
-		RegisterHelper.registerBlock(NibiruBlocks.orange_fence_gate);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_treasure_chest);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_ancient_chest);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_zombie_egg);
-		RegisterHelper.registerBlock(NibiruBlocks.nibiru_sapling, ItemBlockNibiruSapling.class);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_vine);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_orange_rose_bush);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_cavernous_vine);
-		RegisterHelper.registerBlock(NibiruBlocks.ichorius_torch);
-		RegisterHelper.registerBlock(NibiruBlocks.infected_farmland);
-		RegisterHelper.registerBlock(NibiruBlocks.ancient_dark_door);
-		RegisterHelper.registerBlock(NibiruBlocks.orange_door);
-
+		// Register ore dictionary
 		OreDictionary.registerOre("oreIchorius", new ItemStack(NibiruBlocks.nibiru_block, 1, 4));
 		OreDictionary.registerOre("oreNorium", new ItemStack(NibiruBlocks.nibiru_block, 1, 5));
 		OreDictionary.registerOre("oreDiamond", new ItemStack(NibiruBlocks.nibiru_block, 1, 6));
@@ -176,6 +166,15 @@ public class NibiruBlocks
 		OreDictionary.registerOre("oreRedGem", new ItemStack(NibiruBlocks.nibiru_block, 1, 8));
 		OreDictionary.registerOre("oreOil", new ItemStack(NibiruBlocks.oil_rock, 1, 0));
 		OreDictionary.registerOre("oreOil", new ItemStack(NibiruBlocks.oil_rock, 1, 1));
+
+		OreDictionary.registerOre("plankWood", new ItemStack(NibiruBlocks.nibiru_planks, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("slabWood", new ItemStack(MPBlocks.half_wooden_slab_1, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("stairWood", new ItemStack(NibiruBlocks.ancient_dark_wood_stairs));
+		OreDictionary.registerOre("stairWood", new ItemStack(NibiruBlocks.orange_wood_stairs));
+		OreDictionary.registerOre("treeSapling", new ItemStack(NibiruBlocks.nibiru_sapling, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(NibiruBlocks.orange_leaves, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("logWood", new ItemStack(NibiruBlocks.nibiru_log, 1, OreDictionary.WILDCARD_VALUE));
 
 		OreDictionary.registerOre("blockIchorius", new ItemStack(NibiruBlocks.nibiru_block, 1, 9));
 		OreDictionary.registerOre("blockNorium", new ItemStack(NibiruBlocks.nibiru_block, 1, 10));

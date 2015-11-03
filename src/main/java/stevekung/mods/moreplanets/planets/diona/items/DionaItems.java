@@ -8,7 +8,9 @@
 package stevekung.mods.moreplanets.planets.diona.items;
 
 import net.minecraft.item.Item;
-import stevekung.mods.stevecore.RegisterHelper;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DionaItems
 {
@@ -22,12 +24,7 @@ public class DionaItems
 
 	public static void init()
 	{
-		DionaItems.initItems();
-		DionaItems.registerItems();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		DionaItems.diona_item = new ItemDiona("diona_item");
 		DionaItems.tier_4_rocket_schematic = new ItemTier4RocketSchematic("tier_4_rocket_schematic");
 		DionaItems.tier_4_rocket_module = new ItemTier4RocketModule("tier_4_rocket_module");
@@ -35,16 +32,20 @@ public class DionaItems
 		DionaItems.laser_ammo = new ItemLaserAmmo("laser_ammo");
 		DionaItems.tier_4_rocket = new ItemTier4Rocket("tier_4_rocket");
 		DionaItems.diona_dungeon_key = new ItemDionaDungeonKey("diona_dungeon_key");
-	}
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(DionaItems.diona_item);
-		RegisterHelper.registerItem(DionaItems.tier_4_rocket_schematic);
-		RegisterHelper.registerItem(DionaItems.tier_4_rocket_module);
-		RegisterHelper.registerItem(DionaItems.laser_gun);
-		RegisterHelper.registerItem(DionaItems.laser_ammo);
-		RegisterHelper.registerItem(DionaItems.tier_4_rocket);
-		RegisterHelper.registerItem(DionaItems.diona_dungeon_key);
+		// Register
+		CommonRegisterHelper.registerItem(DionaItems.diona_item);
+		CommonRegisterHelper.registerItem(DionaItems.tier_4_rocket_schematic);
+		CommonRegisterHelper.registerItem(DionaItems.tier_4_rocket_module);
+		CommonRegisterHelper.registerItem(DionaItems.laser_gun);
+		CommonRegisterHelper.registerItem(DionaItems.laser_ammo);
+		CommonRegisterHelper.registerItem(DionaItems.tier_4_rocket);
+		CommonRegisterHelper.registerItem(DionaItems.diona_dungeon_key);
+
+		// Register ore dictionary
+		OreDictionary.registerOre("ingotQuontonium", new ItemStack(DionaItems.diona_item, 1, 0));
+		OreDictionary.registerOre("ingotFronisium", new ItemStack(DionaItems.diona_item, 1, 1));
+		OreDictionary.registerOre("compressedQuontonium", new ItemStack(DionaItems.diona_item, 1, 2));
+		OreDictionary.registerOre("compressedFronisium", new ItemStack(DionaItems.diona_item, 1, 3));
 	}
 }

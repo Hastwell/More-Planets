@@ -11,7 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.moons.deimos.itemblocks.ItemBlockDeimos;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DeimosBlocks
 {
@@ -19,25 +19,16 @@ public class DeimosBlocks
 
 	public static void init()
 	{
-		DeimosBlocks.initBlocks();
-		DeimosBlocks.setHarvestLevels();
-		DeimosBlocks.registerBlocks();
-	}
-
-	private static void initBlocks()
-	{
+		// Init
 		DeimosBlocks.deimos_block = new BlockDeimos("deimos_block");
-	}
 
-	private static void setHarvestLevels()
-	{
-		DeimosBlocks.deimos_block.setHarvestLevel("pickaxe", 1);
-	}
+		// Register
+		CommonRegisterHelper.registerBlock(DeimosBlocks.deimos_block, ItemBlockDeimos.class);
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(DeimosBlocks.deimos_block, ItemBlockDeimos.class);
+		// Set harvest level
+		DeimosBlocks.deimos_block.setHarvestLevel("pickaxe", 0);
 
+		// Register ore dictionary
 		OreDictionary.registerOre("oreTin", new ItemStack(DeimosBlocks.deimos_block, 1, 4));
 		OreDictionary.registerOre("oreCopper", new ItemStack(DeimosBlocks.deimos_block, 1, 5));
 		OreDictionary.registerOre("oreIron", new ItemStack(DeimosBlocks.deimos_block, 1, 6));

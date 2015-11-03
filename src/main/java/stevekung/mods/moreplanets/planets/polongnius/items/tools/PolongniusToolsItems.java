@@ -16,7 +16,7 @@ import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
 import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
-import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PolongniusToolsItems
 {
@@ -43,13 +43,7 @@ public class PolongniusToolsItems
 
 	public static void init()
 	{
-		PolongniusToolsItems.initItems();
-		PolongniusToolsItems.registerItems();
-		PolongniusToolsItems.registerHarvestLevels();
-	}
-
-	private static void initItems()
-	{
+		// Init
 		PolongniusToolsItems.polongnius_meteoric_iron_pickaxe = new ItemPickaxeMP("polongnius_meteoric_iron_pickaxe", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
 		PolongniusToolsItems.polongnius_meteoric_iron_axe = new ItemAxeMP("polongnius_meteoric_iron_axe", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
 		PolongniusToolsItems.polongnius_meteoric_iron_hoe = new ItemHoeMP("polongnius_meteoric_iron_hoe", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
@@ -65,10 +59,25 @@ public class PolongniusToolsItems
 		PolongniusToolsItems.purple_crystal_hoe = new ItemHoeMP("purple_crystal_hoe", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
 		PolongniusToolsItems.purple_crystal_shovel = new ItemShovelMP("purple_crystal_shovel", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
 		PolongniusToolsItems.purple_crystal_sword = new ItemSwordMP("purple_crystal_sword", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
-	}
 
-	private static void registerHarvestLevels()
-	{
+		// Register
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_sword);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_shovel);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_pickaxe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_axe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_hoe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.palladium_sword);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.palladium_shovel);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.palladium_pickaxe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.palladium_axe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.palladium_hoe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_sword);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_shovel);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_pickaxe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_axe);
+		CommonRegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_hoe);
+
+		// Set harvest level
 		PolongniusToolsItems.polongnius_meteoric_iron_pickaxe.setHarvestLevel("pickaxe", 4);
 		PolongniusToolsItems.polongnius_meteoric_iron_axe.setHarvestLevel("axe", 4);
 		PolongniusToolsItems.polongnius_meteoric_iron_shovel.setHarvestLevel("shovel", 4);
@@ -78,24 +87,5 @@ public class PolongniusToolsItems
 		PolongniusToolsItems.purple_crystal_pickaxe.setHarvestLevel("pickaxe", 4);
 		PolongniusToolsItems.purple_crystal_axe.setHarvestLevel("axe", 4);
 		PolongniusToolsItems.purple_crystal_shovel.setHarvestLevel("shovel", 4);
-	}
-
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_sword);
-		RegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_shovel);
-		RegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_pickaxe);
-		RegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_axe);
-		RegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_hoe);
-		RegisterHelper.registerItem(PolongniusToolsItems.palladium_sword);
-		RegisterHelper.registerItem(PolongniusToolsItems.palladium_shovel);
-		RegisterHelper.registerItem(PolongniusToolsItems.palladium_pickaxe);
-		RegisterHelper.registerItem(PolongniusToolsItems.palladium_axe);
-		RegisterHelper.registerItem(PolongniusToolsItems.palladium_hoe);
-		RegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_sword);
-		RegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_shovel);
-		RegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_pickaxe);
-		RegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_axe);
-		RegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_hoe);
 	}
 }

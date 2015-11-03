@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.planets.pluto.items;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -22,13 +21,13 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 
 public class ItemSpacePotato extends ItemFoodMP implements IPlantable
 {
-	private static int[] foodHunger = new int[] {
-		1,//0
-		6//1
+	private int[] foodHunger = new int[] {
+			1,
+			6
 	};
-	private static float[] foodSaturation = new float[] {
-		0.3F,//0
-		0.6F//1
+	private float[] foodSaturation = new float[] {
+			0.3F,
+			0.6F
 	};
 
 	public ItemSpacePotato(String name)
@@ -48,12 +47,6 @@ public class ItemSpacePotato extends ItemFoodMP implements IPlantable
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
 	{
 		return EnumPlantType.Crop;
-	}
-
-	@Override
-	public EnumAction getItemUseAction(ItemStack itemStack)
-	{
-		return EnumAction.EAT;
 	}
 
 	@Override
@@ -82,13 +75,13 @@ public class ItemSpacePotato extends ItemFoodMP implements IPlantable
 	@Override
 	public int getHealAmount(ItemStack itemStack)
 	{
-		return foodHunger[itemStack.getItemDamage()];
+		return this.foodHunger[itemStack.getItemDamage()];
 	}
 
 	@Override
 	public float getSaturationModifier(ItemStack itemStack)
 	{
-		return foodSaturation[itemStack.getItemDamage()];
+		return this.foodSaturation[itemStack.getItemDamage()];
 	}
 
 	@Override

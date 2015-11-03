@@ -1,5 +1,6 @@
 {
     "variants": {
-        "normal": { "model": "moreplanets:sirius_glowstone" }
+        "immune_to_explosion=false": { "model": "moreplanets:sirius_glowstone" },
+		"immune_to_explosion=true": { "model": "moreplanets:sirius_glowstone" }
     }
 }

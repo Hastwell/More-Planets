@@ -10,15 +10,18 @@ package stevekung.mods.moreplanets.common.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 {
@@ -39,17 +42,21 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 	}
 
 	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)//FIXME Can anyone fix this? T_T
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		/*if (this.canFlowingInto(world, pos.down(), state))
+		super.updateTick(world, pos, state, rand);
+		this.checkForMixing(world, pos, state);
+
+		if (this.canFlowingInto(world, pos.down(), world.getBlockState(pos.down())))
 		{
 			if (this.blockMaterial == Material.lava && world.getBlockState(pos.down()).getBlock().getMaterial() == Material.water)
 			{
-				world.setBlockState(pos.down(), this.getBlockFromWaterTo(), 3);
+				world.setBlockState(pos.down(), this.getBlockFromWaterTo());
 				this.triggerMixEffects(world, pos.down());
 				return;
 			}
-		}*/
+		}
+
 		if (world.getGameRules().getGameRuleBooleanValue("doFireTick"))
 		{
 			int i = rand.nextInt(3);
@@ -90,32 +97,16 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 				}
 			}
 		}
-		super.updateTick(world, pos, state, rand);
 	}
 
 	protected void triggerMixEffects(World world, BlockPos pos)
 	{
-		double d0 = pos.getX();
-		double d1 = pos.getY();
-		double d2 = pos.getZ();
-		world.playSoundEffect(d0 + 0.5D, d1 + 0.5D, d2 + 0.5D, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+		world.playSoundEffect(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 
 		for (int i = 0; i < 8; ++i)
 		{
-			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d0 + Math.random(), d1 + 1.2D, d2 + Math.random(), 0.0D, 0.0D, 0.0D, new int[0]);
+			MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_LARGE_SMOKE, pos.getX() + Math.random(), pos.getY() + 1.2D, pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
 		}
-	}
-
-	@Override
-	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
-	{
-		//this.checkForMixing(world, pos, state);
-
-		if (world.getBlockState(pos).getBlock() == this)
-		{
-			world.scheduleUpdate(pos, this, this.tickRate(world));
-		}
-		super.onBlockAdded(world, pos, state);
 	}
 
 	@Override
@@ -127,7 +118,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 	@Override
 	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
 	{
-		//this.checkForMixing(world, pos, state);
+		this.checkForMixing(world, pos, state);
 
 		if (block.getMaterial() != Material.lava)
 		{
@@ -136,41 +127,38 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 		super.onNeighborBlockChange(world, pos, state, block);
 	}
 
-	/*public boolean checkForMixing(World world, BlockPos pos, IBlockState state)
+	public boolean checkForMixing(World world, BlockPos pos, IBlockState state)
 	{
-		if (this.blockMaterial == Material.lava)
+		boolean flag = false;
+		EnumFacing[] aenumfacing = EnumFacing.values();
+		int i = aenumfacing.length;
+
+		for (int j = 0; j < i; ++j)
 		{
-			boolean flag = false;
-			EnumFacing[] aenumfacing = EnumFacing.values();
-			int i = aenumfacing.length;
+			EnumFacing enumfacing = aenumfacing[j];
 
-			for (int j = 0; j < i; ++j)
+			if (enumfacing != EnumFacing.DOWN && world.getBlockState(pos.offset(enumfacing)).getBlock().getMaterial() == Material.water)
 			{
-				EnumFacing enumfacing = aenumfacing[j];
-
-				if (enumfacing != EnumFacing.DOWN && world.getBlockState(pos.offset(enumfacing)).getBlock().getMaterial() == Material.water)
-				{
-					flag = true;
-					break;
-				}
+				flag = true;
+				break;
 			}
+		}
 
-			if (flag)
+		if (flag)
+		{
+			Integer integer = (Integer)state.getValue(LEVEL);
+
+			if (integer.intValue() == 0)
 			{
-				Integer integer = (Integer)state.getValue(LEVEL);
-
-				if (integer.intValue() == 0)
-				{
-					world.setBlockState(pos, this.getObsidianBlock());
-					this.triggerMixEffects(world, pos);
-					return true;
-				}
-				if (integer.intValue() <= 4)
-				{
-					world.setBlockState(pos, this.getCobblestoneBlock());
-					this.triggerMixEffects(world, pos);
-					return true;
-				}
+				world.setBlockState(pos, this.getObsidianBlock());
+				this.triggerMixEffects(world, pos);
+				return true;
+			}
+			if (integer.intValue() <= 4)
+			{
+				world.setBlockState(pos, this.getCobblestoneBlock());
+				this.triggerMixEffects(world, pos);
+				return true;
 			}
 		}
 		return false;
@@ -186,7 +174,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 	{
 		Block block = world.getBlockState(pos).getBlock();
 		return !(block instanceof BlockDoor) && block != Blocks.standing_sign && block != Blocks.ladder && block != Blocks.reeds ? block.getMaterial() == Material.portal ? true : block.getMaterial().blocksMovement() : true;
-	}*/
+	}
 
 	protected boolean isSurroundingBlockFlammable(World world, BlockPos pos)
 	{

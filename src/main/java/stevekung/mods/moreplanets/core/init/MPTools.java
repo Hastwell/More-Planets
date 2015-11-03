@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.core.init;
 
+import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.moons.koentus.items.tools.KoentusToolsItems;
 import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
 import stevekung.mods.moreplanets.planets.fronos.items.tools.FronosToolsItems;
@@ -26,5 +27,6 @@ public class MPTools
 		FronosToolsItems.init();
 		KapteynBToolsItems.init();
 		SiriusBToolsItems.init();
+		MPLog.debug("Register Tools");
 	}
 }

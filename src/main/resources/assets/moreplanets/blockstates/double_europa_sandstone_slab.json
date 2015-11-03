@@ -1,0 +1,5 @@
+{
+    "variants": {
+		"variant=europa_sandstone_slab": { "model": "moreplanets:europa_sandstone" }
+    }
+}

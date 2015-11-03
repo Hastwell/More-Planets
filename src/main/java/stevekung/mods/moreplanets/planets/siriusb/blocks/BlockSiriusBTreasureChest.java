@@ -7,16 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.blocks;
 
-import java.util.Iterator;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.world.ILockableContainer;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockTreasureChestMP;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBTreasureChest;
@@ -39,17 +36,17 @@ public class BlockSiriusBTreasureChest extends BlockTreasureChestMP
 		}
 		else
 		{
-			ILockableContainer ilockablecontainer = this.getLockableContainer(world, pos);
+			IInventory inv = this.getContainer(world, pos);
 
-			if (ilockablecontainer != null)
+			if (inv != null)
 			{
-				player.displayGUIChest(ilockablecontainer);
+				player.displayGUIChest(inv);
 			}
 			return true;
 		}
 	}
 
-	public ILockableContainer getLockableContainer(World world, BlockPos pos)
+	public IInventory getContainer(World world, BlockPos pos)
 	{
 		TileEntity tileentity = world.getTileEntity(pos);
 
@@ -67,23 +64,7 @@ public class BlockSiriusBTreasureChest extends BlockTreasureChestMP
 			}
 			else
 			{
-				Iterator iterator = EnumFacing.Plane.HORIZONTAL.iterator();
-
-				while (iterator.hasNext())
-				{
-					EnumFacing enumfacing = (EnumFacing)iterator.next();
-					BlockPos blockpos1 = pos.offset(enumfacing);
-					Block block = world.getBlockState(blockpos1).getBlock();
-
-					if (block == this)
-					{
-						if (this.cannotOpenChest(world, blockpos1))
-						{
-							return null;
-						}
-					}
-				}
-				return (ILockableContainer)object;
+				return (IInventory)object;
 			}
 		}
 	}
@@ -91,7 +72,7 @@ public class BlockSiriusBTreasureChest extends BlockTreasureChestMP
 	@Override
 	public int getComparatorInputOverride(World world, BlockPos pos)
 	{
-		return Container.calcRedstoneFromInventory(this.getLockableContainer(world, pos));
+		return Container.calcRedstoneFromInventory(this.getContainer(world, pos));
 	}
 
 	@Override
