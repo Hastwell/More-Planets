@@ -18,7 +18,10 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -36,7 +39,7 @@ public class CommonRegisterHelper
 			}
 			catch (ClassNotFoundException e)
 			{
-				throw new RuntimeException("Could not find Galacticraft ItemBlockGC class. Something wrong?");
+				throw new RuntimeException("Could not find Galacticraft ItemBlockGC class");
 			}
 		}
 		else
@@ -78,5 +81,15 @@ public class CommonRegisterHelper
 	public static void setFireBurn(Block block, int encouragement, int flammibility)
 	{
 		Blocks.fire.setFireInfo(block, encouragement, flammibility);
+	}
+
+	public static void registerFuelHandler(IFuelHandler handler)
+	{
+		GameRegistry.registerFuelHandler(handler);
+	}
+
+	public static void registerGUIHandler(Object mod, IGuiHandler handler)
+	{
+		NetworkRegistry.INSTANCE.registerGuiHandler(mod, handler);
 	}
 }

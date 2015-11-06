@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.common.world.ILightningStorm;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.planets.venus.world.gen.ChunkProviderVenus;
 import stevekung.mods.moreplanets.planets.venus.world.gen.WorldChunkManagerVenus;
 
@@ -137,7 +137,7 @@ public class WorldProviderVenus extends WorldProviderMP implements ILightningSto
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return MorePlanetsCore.venus;
+		return MPPlanets.venus;
 	}
 
 	@Override

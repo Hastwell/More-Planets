@@ -15,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
@@ -26,6 +27,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockContainerMP;
+import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
@@ -52,7 +54,7 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 	{
 		ItemStack itemStack = player.getCurrentEquippedItem();
 
-		if (itemStack == null || !(player.getCurrentEquippedItem().getItem() instanceof ItemPickaxe))
+		if (itemStack == null || !(player.getCurrentEquippedItem().getItem() instanceof ItemPickaxe) || !MorePlanetsEvents.getTier3ThermalArmor((EntityPlayerMP)player) || !MorePlanetsEvents.getIceCrystalArmor((EntityPlayerMP)player))
 		{
 			player.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false, true));
 		}
@@ -73,7 +75,17 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 	{
 		if (entity instanceof EntityLivingBase)
 		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false, true));
+			if (entity instanceof EntityPlayerMP)
+			{
+				if (!MorePlanetsEvents.getTier3ThermalArmor((EntityPlayerMP)entity))
+				{
+					((EntityPlayerMP)entity).addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false, true));
+				}
+			}
+			else
+			{
+				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false, true));
+			}
 		}
 	}
 

@@ -20,9 +20,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.blocks.BlockRotatedMP;
+import stevekung.mods.moreplanets.common.blocks.BlockLogMP;
 
-public class BlockCandyCane1 extends BlockRotatedMP
+public class BlockCandyCane1 extends BlockLogMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 

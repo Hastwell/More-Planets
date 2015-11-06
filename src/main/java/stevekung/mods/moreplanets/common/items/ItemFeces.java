@@ -12,6 +12,7 @@ import java.util.List;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -134,6 +135,27 @@ public class ItemFeces extends ItemMorePlanets
 				}
 				return true;
 			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean onEntityItemUpdate(EntityItem item)
+	{
+		if (item.getEntityItem().hasTagCompound())
+		{
+			float time = item.getEntityItem().getTagCompound().getFloat("Decompose");
+
+			if (time >= 0.5F)
+			{
+				time -= 1.0F;
+				item.getEntityItem().getTagCompound().setFloat("Decompose", time);
+			}
+		}
+		else
+		{
+			item.getEntityItem().setTagCompound(new NBTTagCompound());
+			item.getEntityItem().getTagCompound().setFloat("Decompose", DECOMPOSE);
 		}
 		return false;
 	}

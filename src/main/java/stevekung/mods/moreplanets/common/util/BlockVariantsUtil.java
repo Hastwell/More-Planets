@@ -102,6 +102,7 @@ public class BlockVariantsUtil
 		ClientRegisterHelper.registerVariantsName(FronosBlocks.fronos_double_tallgrass, new String[] { "moreplanets:fronos_double_tallgrass", "moreplanets:pink_double_tallgrass", "moreplanets:purple_double_tallgrass", "moreplanets:plains_double_tallgrass", "moreplanets:golden_double_tallgrass" });
 		ClientRegisterHelper.registerVariantsName(EuropaBlocks.half_europa_prismarine_slab, new String[] { "moreplanets:europa_prismarine_slab", "moreplanets:europa_prismarine_brick_slab", "moreplanets:dark_europa_prismarine_slab" });
 		ClientRegisterHelper.registerVariantsName(EuropaBlocks.europa_sponge, new String[] { "moreplanets:europa_sponge", "moreplanets:europa_sponge_wet" });
+		ClientRegisterHelper.registerVariantsName(MPBlocks.polished_space_decoration, new String[] { "moreplanets:polished_tin_decoration_block", "moreplanets:polished_aluminum_decoration_block" });
 
 		ClientRegisterHelper.registerVariantNameWithDyeColor(MPBlocks.tinted_glass, "moreplanets");
 		ClientRegisterHelper.registerVariantNameWithDyeColor(MPBlocks.tinted_glass_pane, "moreplanets");

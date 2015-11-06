@@ -15,12 +15,12 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.planets.polongnius.world.IPolongniusMeteor;
+import stevekung.mods.moreplanets.common.world.IMeteorType;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.planets.polongnius.world.gen.ChunkProviderPolongnius;
 import stevekung.mods.moreplanets.planets.polongnius.world.gen.WorldChunkManagerPolongnius;
 
-public class WorldProviderPolongnius extends WorldProviderMP implements IPolongniusMeteor
+public class WorldProviderPolongnius extends WorldProviderMP implements IMeteorType
 {
 	@Override
 	public Vector3 getFogColor()
@@ -130,7 +130,7 @@ public class WorldProviderPolongnius extends WorldProviderMP implements IPolongn
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return MorePlanetsCore.polongnius;
+		return MPPlanets.polongnius;
 	}
 
 	@Override
@@ -165,9 +165,15 @@ public class WorldProviderPolongnius extends WorldProviderMP implements IPolongn
 	}
 
 	@Override
-	public double getPolongniusMeteorFrequency()
+	public int getMeteorEventType()
 	{
-		return 1.0D;
+		return 0;
+	}
+
+	@Override
+	public double getMeteorSpawnFrequency()
+	{
+		return 1.25D;
 	}
 
 	@Override

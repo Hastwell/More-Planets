@@ -130,7 +130,7 @@ public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/
 				world.setBlockState(pos, GCBlocks.crudeOil.getDefaultState());
 			}
 		}
-		MorePlanetsEvents.getActivateInfectedGas(player);
+		MorePlanetsEvents.addInfectedGas(player);
 	}
 
 	@Override

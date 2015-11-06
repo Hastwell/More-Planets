@@ -17,7 +17,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.ChunkProviderFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.WorldChunkManagerFronos;
 
@@ -174,7 +174,7 @@ public class WorldProviderFronos extends WorldProviderMP
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return MorePlanetsCore.fronos;
+		return MPPlanets.fronos;
 	}
 
 	@Override

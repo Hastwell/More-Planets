@@ -56,4 +56,7 @@ public abstract class BlockSaplingMP extends BlockBushMP implements IGrowable, I
 		}
 		return state;
 	}
+
+	@Override
+	public abstract void grow(World world, Random rand, BlockPos pos, IBlockState state);
 }

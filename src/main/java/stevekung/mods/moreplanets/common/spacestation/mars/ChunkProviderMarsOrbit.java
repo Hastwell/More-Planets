@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright 2015 SteveKunG - More Planets Mod
+ * 
+ * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ ******************************************************************************/
+
 package stevekung.mods.moreplanets.common.spacestation.mars;
 
 import java.util.List;
@@ -15,7 +22,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
+import stevekung.mods.moreplanets.common.spacestation.BiomeGenBaseOrbitMP;
 
 public class ChunkProviderMarsOrbit extends ChunkProviderGenerate
 {
@@ -54,19 +61,19 @@ public class ChunkProviderMarsOrbit extends ChunkProviderGenerate
 	}
 
 	@Override
-	public Chunk provideChunk(int x, int z)
+	public Chunk provideChunk(int chunkX, int chunkZ)
 	{
 		ChunkPrimer chunkprimer = new ChunkPrimer();
-		this.rand.setSeed(x * 341873128712L + z * 132897987541L);
-		Chunk chunk = new Chunk(this.worldObj, chunkprimer, x, z);
-		byte[] biomesArray = chunk.getBiomeArray();
+		this.rand.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
+		Chunk var4 = new Chunk(this.worldObj, chunkprimer, chunkX, chunkZ);
+		byte[] biomesArray = var4.getBiomeArray();
 
 		for (int i = 0; i < biomesArray.length; ++i)
 		{
-			biomesArray[i] = (byte) 213;
+			biomesArray[i] = (byte) BiomeGenBaseOrbitMP.spaceStation.biomeID;
 		}
-		chunk.generateSkylightMap();
-		return chunk;
+		var4.generateSkylightMap();
+		return var4;
 	}
 
 	@Override
@@ -89,33 +96,13 @@ public class ChunkProviderMarsOrbit extends ChunkProviderGenerate
 		if (x == 0 && z == 0)
 		{
 			BlockPos pos = new BlockPos(x, 64, z);
-			BlockPos pos1 = new BlockPos(x, 69, z);
-			BlockPos pos2 = new BlockPos(x, 69, z + 3);
-			BlockPos pos3 = new BlockPos(x, 69, z - 3);
 			this.worldObj.setBlockState(pos, GCBlocks.spaceStationBase.getDefaultState(), 3);
-			this.worldObj.setBlockState(pos1, PolongniusBlocks.ultra_violet_solar_panel.getDefaultState(), 3);
-			this.worldObj.setBlockState(pos2, PolongniusBlocks.ultra_violet_solar_panel.getDefaultState(), 3);
-			this.worldObj.setBlockState(pos3, PolongniusBlocks.ultra_violet_solar_panel.getDefaultState(), 3);
+
 			TileEntity tile = this.worldObj.getTileEntity(pos);
-			TileEntity tile1 = this.worldObj.getTileEntity(pos1);
-			TileEntity tile2 = this.worldObj.getTileEntity(pos2);
-			TileEntity tile3 = this.worldObj.getTileEntity(pos3);
 
 			if (tile instanceof IMultiBlock)
 			{
 				((IMultiBlock)tile).onCreate(this.worldObj, pos);
-			}
-			if (tile1 instanceof IMultiBlock)
-			{
-				((IMultiBlock)tile1).onCreate(this.worldObj, pos1);
-			}
-			if (tile2 instanceof IMultiBlock)
-			{
-				((IMultiBlock)tile2).onCreate(this.worldObj, pos2);
-			}
-			if (tile3 instanceof IMultiBlock)
-			{
-				((IMultiBlock)tile3).onCreate(this.worldObj, pos3);
 			}
 			new WorldGenMarsSpaceStation().generate(this.worldObj, this.rand, new BlockPos(x - 10, 62, z - 3));
 		}

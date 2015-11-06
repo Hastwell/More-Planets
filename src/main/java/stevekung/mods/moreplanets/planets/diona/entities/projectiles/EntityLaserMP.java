@@ -110,6 +110,7 @@ public class EntityLaserMP extends Entity implements IProjectile
 		x += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * inaccuracy;
 		y += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * inaccuracy;
 		z += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * inaccuracy;
+		velocity = 4.0F;
 		x *= velocity;
 		y *= velocity;
 		z *= velocity;
@@ -396,7 +397,7 @@ public class EntityLaserMP extends Entity implements IProjectile
 		}
 
 		this.motionX *= f3;
-		this.motionY += 0.0F;
+		this.motionY *= f3;
 		this.motionZ *= f3;
 		this.setPosition(this.posX, this.posY, this.posZ);
 		this.doBlockCollisions();

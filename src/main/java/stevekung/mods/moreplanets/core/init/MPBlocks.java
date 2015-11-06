@@ -20,6 +20,7 @@ import stevekung.mods.moreplanets.common.blocks.BlockDummy;
 import stevekung.mods.moreplanets.common.blocks.BlockDungeonBrickSlab1;
 import stevekung.mods.moreplanets.common.blocks.BlockDungeonBrickWall;
 import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.common.blocks.BlockPolishedSpaceDecoration;
 import stevekung.mods.moreplanets.common.blocks.BlockStoneSlab1MP;
 import stevekung.mods.moreplanets.common.blocks.BlockStoneSlab2MP;
 import stevekung.mods.moreplanets.common.blocks.BlockTintedGlass;
@@ -30,6 +31,7 @@ import stevekung.mods.moreplanets.common.itemblocks.ItemBlockChondrite;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockColoredMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDungeonBrickSlab1;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDungeonBrickWall;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockPolishedSpaceDecoration;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockStoneSlab1MP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockStoneSlab2MP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockWallMP;
@@ -70,6 +72,7 @@ public class MPBlocks
 	public static Block chondrite_rock;
 	public static Block tinted_glass;
 	public static Block tinted_glass_pane;
+	public static Block polished_space_decoration;
 
 	public static ArrayList<Block> highlightBlockList = new ArrayList();
 	public static ArrayList<Block> hideBlockList = new ArrayList();
@@ -94,6 +97,7 @@ public class MPBlocks
 		MPBlocks.chondrite_rock = new BlockChondriteRock("chondrite_rock");
 		MPBlocks.tinted_glass = new BlockTintedGlass("tinted_glass");
 		MPBlocks.tinted_glass_pane = new BlockTintedGlassPane("tinted_glass_pane");
+		MPBlocks.polished_space_decoration = new BlockPolishedSpaceDecoration("polished_space_decoration");
 
 		// Register
 		CommonRegisterHelper.registerBlock(MPBlocks.stone_wall, ItemBlockWallMP.class);
@@ -107,6 +111,7 @@ public class MPBlocks
 		CommonRegisterHelper.registerBlock(MPBlocks.half_dungeon_brick_slab_1, ItemBlockDungeonBrickSlab1.class, MPBlocks.half_dungeon_brick_slab_1, MPBlocks.double_dungeon_brick_slab_1);
 		CommonRegisterHelper.registerBlock(MPBlocks.double_dungeon_brick_slab_1, ItemBlockDungeonBrickSlab1.class, MPBlocks.half_dungeon_brick_slab_1, MPBlocks.double_dungeon_brick_slab_1);
 		CommonRegisterHelper.registerBlock(MPBlocks.chondrite_rock, ItemBlockChondrite.class);
+		CommonRegisterHelper.registerBlock(MPBlocks.polished_space_decoration, ItemBlockPolishedSpaceDecoration.class);
 		CommonRegisterHelper.registerBlock(MPBlocks.tinted_glass, ItemBlockColoredMP.class);
 		CommonRegisterHelper.registerBlock(MPBlocks.tinted_glass_pane, ItemBlockColoredMP.class);
 		CommonRegisterHelper.registerBlock(MPBlocks.dummy_block);

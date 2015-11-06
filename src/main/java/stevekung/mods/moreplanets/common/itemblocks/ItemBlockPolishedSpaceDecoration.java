@@ -5,9 +5,20 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.kapteynb.world;
+package stevekung.mods.moreplanets.common.itemblocks;
 
-public interface IIceCrystalMeteor
+import net.minecraft.block.Block;
+
+public class ItemBlockPolishedSpaceDecoration extends ItemBlockBaseMP
 {
-	public double getIceCrystalMeteorFrequency();
+	public ItemBlockPolishedSpaceDecoration(Block block)
+	{
+		super(block);
+	}
+
+	@Override
+	public String[] getBlockVariantsName()
+	{
+		return new String[] { "tin", "aluminum" };
+	}
 }

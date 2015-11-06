@@ -16,7 +16,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.ChunkProviderKoentus;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.WorldChunkManagerKoentus;
 
@@ -136,7 +136,7 @@ public class WorldProviderKoentus extends WorldProviderMP implements IExitHeight
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return MorePlanetsCore.koentus;
+		return MPPlanets.koentus;
 	}
 
 	@Override

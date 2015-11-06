@@ -15,7 +15,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.planets.mercury.world.gen.ChunkProviderMercury;
 import stevekung.mods.moreplanets.planets.mercury.world.gen.WorldChunkManagerMercury;
 
@@ -147,7 +147,7 @@ public class WorldProviderMercury extends WorldProviderMP
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return MorePlanetsCore.mercury;
+		return MPPlanets.mercury;
 	}
 
 	@Override

@@ -5,6 +5,8 @@
 tile.chondrite_rock.rock.name=Chondrite Rock
 tile.chondrite_rock.polished.name=Polished Chondrite
 tile.chondrite_rock.stone_brick.name=Chondrite Stone Brick
+tile.polished_space_decoration.tin.name=Polished Tin Decoration Block
+tile.polished_space_decoration.aluminum.name=Polished Aluminum Decoration Block
 tile.tinted_glass_pane.white.name=Tinted Glass Pane
 tile.tinted_glass_pane.orange.name=Orange Tinted Glass Pane
 tile.tinted_glass_pane.magenta.name=Magenta Tinted Glass Pane
@@ -663,6 +665,7 @@ tile.europa_sponge.wet.name=Wet Europa Sponge
 #########Main Item#########
 item.meteor_shower.name=Meteor Shower
 item.feces.name=Feces
+item.desh_thermal_cloth.name=Desh Thermal Cloth
 
 #########Diona Item#########
 item.diona_item.quontonium_ingot.name=Quontonium Ingot
@@ -1193,7 +1196,7 @@ schematic.tier8.rocket.name=Tier 8 Rocket
 # MESSAGE
 mp.failed.name=Update check failed!
 mp.success.name=More Planets remote version found:
-message.warning.infected.gas=Invalid Purple Crystal Armor!
+message.warning.infected.gas=Invalid Tiered Thermal Armor!
 
 # CONTAINER
 container.diona.treasurechest.name=Diona Treasure Chest
@@ -1235,13 +1238,13 @@ gui.status.power.name=Collecting
 planet.diona=Diona
 planet.polongnius=Polongnius
 planet.nibiru=Nibiru
-planet.koentus=Koentus
 planet.fronos=Fronos
 planet.kapteynB=Kapteyn B
 planet.siriusB=Sirius B
 planet.mercury=Mercury
 planet.venus=Venus
 planet.pluto=Pluto
+moon.koentus=Koentus
 star.kapteyn=Kapteyn
 star.sirius=Sirius
 solarsystem.kapteyn=Kapteyn Solar System

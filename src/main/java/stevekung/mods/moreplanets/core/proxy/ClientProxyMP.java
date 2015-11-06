@@ -429,7 +429,7 @@ public class ClientProxyMP extends CommonProxyMP
 		GlStateManager.popMatrix();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GlStateManager.disableBlend();*/
-		
+
 		Tessellator tessellator = Tessellator.getInstance();
 		GL11.glColor4f(f1, f1, f1, 1.0F);
 		GL11.glEnable(GL11.GL_BLEND);

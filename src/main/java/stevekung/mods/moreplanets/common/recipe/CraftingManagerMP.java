@@ -26,6 +26,7 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
+import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
@@ -206,6 +207,8 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(EuropaBlocks.europa_sea_lantern), new Object[] { "PSP", "SSS", "PSP", 'P', new ItemStack(EuropaItems.europa_prismarine, 1, 0), 'S', new ItemStack(EuropaItems.europa_prismarine, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(EuropaBlocks.europa_water_bomb), new Object[] { "GSG", "SGS", "GSG", 'S', new ItemStack(EuropaBlocks.europa_sand), 'G', new ItemStack(EuropaItems.europa_gunpowder) });
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.tinted_glass, 8, 0), new Object[] {"III", "IDI", "III", 'I', new ItemStack(Blocks.glass), 'D', new ItemStack(MarsItems.marsItemBasic, 1, 5)});
+		GameRegistry.addRecipe(new ItemStack(MPBlocks.polished_space_decoration, 4, 0), new Object[] { "TT", "TT", 'T', new ItemStack(GCBlocks.basicBlock, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(MPBlocks.polished_space_decoration, 8, 1), new Object[] { "TTT", "TAT", "TTT", 'T', new ItemStack(MPBlocks.polished_space_decoration, 1, 0), 'A', new ItemStack(GCItems.basicItem, 1, 8) });
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruBlocks.nibiru_planks, 4, 0), new ItemStack(NibiruBlocks.nibiru_log, 1, 0) );
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruBlocks.nibiru_planks, 4, 1), new ItemStack(NibiruBlocks.nibiru_log, 1, 1) );
 		GameRegistry.addShapelessRecipe(new ItemStack(KoentusBlocks.crystal_planks, 4), new ItemStack(KoentusBlocks.crystal_log) );
@@ -311,6 +314,11 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(PlutoItems.gravity_boots), new Object[] { "P P", "G G", 'P', new ItemStack(MercuryItems.mercury_item, 1, 5), 'G', new ItemStack(MercuryItems.mercury_item, 1, 7) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.laser_ammo, 8, 4), new Object[] { " E", "I ", 'I', new ItemStack(Items.iron_ingot), 'E', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(EuropaItems.europa_door, 3), new Object[] { "EE", "EE", "EE", 'E', new ItemStack(EuropaBlocks.europa_planks) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 0), new Object[] { "XXX", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 1), new Object[] { "X X", "XXX", "XXX", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 2), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 3), new Object[] { "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.desh_thermal_cloth), new Object[] { " X ", "XRX", " X ", 'X', new ItemStack(MarsItems.marsItemBasic, 1, 5), 'R', Items.redstone });
 		GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 0), new ItemStack(DionaBlocks.diona_block, 1, 10) );
 		GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 1), new ItemStack(DionaBlocks.diona_block, 1, 11) );
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_meteor_chunk, 3), new ItemStack(PolongniusItems.polongnius_item, 1, 2) );
@@ -1163,13 +1171,24 @@ public class CraftingManagerMP
 		Tier8RocketRecipes.addTier8RocketRecipe(new ItemStack(KapteynBItems.tier_8_rocket, 1, 3), input2);
 	}
 
+	public static HashMap<Object, Integer> getMarsSpaceStationRecipe()
+	{
+		HashMap<Object, Integer> inputMap = new HashMap<Object, Integer>();
+		inputMap.put("ingotTin", 64);
+		inputMap.put(RecipeManagerGC.aluminumIngots, 24);
+		inputMap.put("waferAdvanced", 3);
+		inputMap.put("ingotIron", 48);
+		return inputMap;
+	}
+
 	public static HashMap<Object, Integer> getJupiterSpaceStationRecipe()
 	{
 		HashMap<Object, Integer> inputMap = new HashMap<Object, Integer>();
-		inputMap.put("ingotTin", 32);
-		inputMap.put(RecipeManagerGC.aluminumIngots, 16);
-		inputMap.put("waferAdvanced", 1);
-		inputMap.put("ingotIron", 24);
+		inputMap.put("ingotTin", 80);
+		inputMap.put(RecipeManagerGC.aluminumIngots, 48);
+		inputMap.put("waferAdvanced", 10);
+		inputMap.put("ingotIron", 32);
+		inputMap.put("ingotDesh", 16);
 		return inputMap;
 	}
 }

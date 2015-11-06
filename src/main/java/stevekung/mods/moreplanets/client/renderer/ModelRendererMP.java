@@ -59,6 +59,8 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(MPBlocks.chondrite_rock, 0, "chondrite_rock", "moreplanets");
 		ClientRegisterHelper.registerModelRender(MPBlocks.chondrite_rock, 1, "polished_chondrite", "moreplanets");
 		ClientRegisterHelper.registerModelRender(MPBlocks.chondrite_rock, 2, "chondrite_stone_brick", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPBlocks.polished_space_decoration, 0, "polished_tin_decoration_block", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPBlocks.polished_space_decoration, 1, "polished_aluminum_decoration_block", "moreplanets");
 
 		ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_1, 0, "diona_cobblestone_slab", "moreplanets");
 		ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_1, 1, "quontonium_brick_slab", "moreplanets");

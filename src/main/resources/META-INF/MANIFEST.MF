@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-FMLCorePlugin: stevekung.mods.moreplanets.plugin.asm.MorePlanetsPlugin
-AccessTransformer: moreplanets_at.cfg

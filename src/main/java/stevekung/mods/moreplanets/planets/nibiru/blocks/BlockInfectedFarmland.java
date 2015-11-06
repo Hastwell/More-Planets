@@ -34,6 +34,6 @@ public class BlockInfectedFarmland extends BlockFarmlandMP
 	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
 	{
 		super.harvestBlock(world, player, pos, state, tile);
-		MorePlanetsEvents.getActivateInfectedGas(player);
+		MorePlanetsEvents.addInfectedGas(player);
 	}
 }

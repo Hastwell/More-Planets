@@ -19,7 +19,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.world.IUltraVioletLevel;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.moons.io.world.gen.ChunkProviderIo;
 import stevekung.mods.moreplanets.moons.io.world.gen.WorldChunkManagerIo;
 
@@ -143,7 +143,7 @@ public class WorldProviderIo extends WorldProviderSpace implements IGalacticraft
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return MorePlanetsCore.io;
+		return MPPlanets.io;
 	}
 
 	@Override

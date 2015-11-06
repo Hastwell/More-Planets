@@ -384,8 +384,6 @@ public class PlanetFogHandler
 		gBiomeFog = (float)processedColor.yCoord;
 		bBiomeFog = (float)processedColor.zCoord;
 
-		// Mix default fog component with BiomeFog component
-		float weightMixed = distance * 2 * distance * 2;
 		return processedColor;
 	}
 }

@@ -9,15 +9,8 @@ package stevekung.mods.moreplanets.core;
 
 import java.io.File;
 
-import micdoodle8.mods.galacticraft.api.GalacticraftRegistry;
-import micdoodle8.mods.galacticraft.api.galaxies.Moon;
-import micdoodle8.mods.galacticraft.api.galaxies.Planet;
-import micdoodle8.mods.galacticraft.api.galaxies.Satellite;
-import micdoodle8.mods.galacticraft.api.galaxies.SolarSystem;
-import micdoodle8.mods.galacticraft.api.galaxies.Star;
-import micdoodle8.mods.galacticraft.api.recipe.SchematicRegistry;
-import micdoodle8.mods.galacticraft.api.recipe.SpaceStationRecipe;
-import micdoodle8.mods.galacticraft.api.world.SpaceStationType;
+import micdoodle8.mods.galacticraft.core.GalacticraftCore;
+import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -33,7 +26,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
@@ -51,6 +43,7 @@ import stevekung.mods.moreplanets.common.network.meteor.MeteorServerMessage;
 import stevekung.mods.moreplanets.common.recipe.CraftingManagerMP;
 import stevekung.mods.moreplanets.common.util.FurnaceFuelMP;
 import stevekung.mods.moreplanets.common.util.MPLog;
+import stevekung.mods.moreplanets.common.util.MorePlanetsRegistry;
 import stevekung.mods.moreplanets.core.init.MPArmors;
 import stevekung.mods.moreplanets.core.init.MPBiomes;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -73,6 +66,7 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import stevekung.mods.moreplanets.planets.nibiru.schematics.SchematicTier6Rocket;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5Rocket;
+import stevekung.mods.stevecore.CommonRegisterHelper;
 import stevekung.mods.stevecore.CreativeTabsHelper;
 
 @Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.14.3.1480,);")//TODO required-after:Micdoodlecore;
@@ -98,33 +92,6 @@ public class MorePlanetsCore
 	public static CreativeTabs mpArmorTab;
 
 	public static SimpleNetworkWrapper simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("MorePlanets");
-
-	public static Planet siriusB;
-	public static Planet diona;
-	public static Planet polongnius;
-	public static Planet nibiru;
-	public static Planet fronos;
-	public static Planet kapteynB;
-
-	public static Planet mercury;
-	public static Planet venus;
-	public static Planet pluto;
-	public static Planet jupiter;
-
-	public static Planet koentus;//TODO Again -.-
-	public static Moon phobos;
-	public static Moon deimos;
-	public static Moon io;
-
-	public static Star sirius;
-	public static Star kapteyn;
-
-	public static SolarSystem siriusSolarSystem;
-	public static SolarSystem kapteynBSolarSystem;
-
-	public static Satellite marsSpaceStation;
-	public static Satellite jupiterSpaceStation;
-	public static Satellite kapteynBSpaceStation;
 
 	public static SoundType soundTypeSmallSlime = new SoundType("slime", 1.0F, 1.0F)
 	{
@@ -173,23 +140,23 @@ public class MorePlanetsCore
 		MPEntities.init();
 		TreeCapitatorIntegrationMP.init();
 		AchievementsMP.init();
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiEventHandler());
+		CommonRegisterHelper.registerGUIHandler(this, new GuiEventHandler());
 
 		MorePlanetsCore.mpBlocksTab = new CreativeTabsHelper("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));
 		MorePlanetsCore.mpItemsTab = new CreativeTabsHelper("MorePlanetsItems", new ItemStack(DionaItems.laser_gun));
 		MorePlanetsCore.mpToolsTab = new CreativeTabsHelper("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
 		MorePlanetsCore.mpArmorTab = new CreativeTabsHelper("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
 
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier4Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier5Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier6Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier7Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier8Rocket());
+		MorePlanetsRegistry.registerSchematic(new SchematicTier4Rocket());
+		MorePlanetsRegistry.registerSchematic(new SchematicTier5Rocket());
+		MorePlanetsRegistry.registerSchematic(new SchematicTier6Rocket());
+		MorePlanetsRegistry.registerSchematic(new SchematicTier7Rocket());
+		MorePlanetsRegistry.registerSchematic(new SchematicTier8Rocket());
 
-		GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier_4_rocket_schematic, 1, 1));
-		GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier_5_rocket_schematic, 1, 1));
-		GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier_6_rocket_schematic, 1, 1));
-		GalacticraftRegistry.addDungeonLoot(5, new ItemStack(FronosItems.tier_7_rocket_schematic, 1, 0));
+		MorePlanetsRegistry.registerDungeonLoot(GalacticraftCore.moonMoon, new ItemStack(DionaItems.tier_4_rocket_schematic));
+		MorePlanetsRegistry.registerDungeonLoot(MPPlanets.diona, new ItemStack(PolongniusItems.tier_5_rocket_schematic));
+		MorePlanetsRegistry.registerDungeonLoot(MPPlanets.polongnius, new ItemStack(NibiruItems.tier_6_rocket_schematic));
+		MorePlanetsRegistry.registerDungeonLoot(MPPlanets.nibiru, new ItemStack(FronosItems.tier_7_rocket_schematic));
 	}
 
 	@EventHandler
@@ -197,7 +164,7 @@ public class MorePlanetsCore
 	{
 		MPTileEntities.init();
 		MorePlanetsCore.proxy.registerRenderer();
-		GameRegistry.registerFuelHandler(new FurnaceFuelMP());
+		CommonRegisterHelper.registerFuelHandler(new FurnaceFuelMP());
 
 		CraftingManagerMP.init();
 		DispenserRegistryMP.init();
@@ -205,7 +172,8 @@ public class MorePlanetsCore
 		MorePlanetsCore.simpleNetworkWrapper.registerMessage(MeteorServerHandler.class, MeteorServerMessage.class, 0, Side.SERVER);
 		MorePlanetsCore.simpleNetworkWrapper.registerMessage(MeteorClientHandler.class, MeteorClientMessage.class, 1, Side.CLIENT);
 
-		GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionJupiter, new SpaceStationRecipe(CraftingManagerMP.getJupiterSpaceStationRecipe())));
+		MorePlanetsRegistry.registerSpaceStation(MPPlanets.marsSpaceStation, MarsModule.planetMars, CraftingManagerMP.getMarsSpaceStationRecipe());
+		MorePlanetsRegistry.registerSpaceStation(MPPlanets.jupiterSpaceStation, MPPlanets.jupiter, CraftingManagerMP.getJupiterSpaceStationRecipe());
 	}
 
 	@EventHandler

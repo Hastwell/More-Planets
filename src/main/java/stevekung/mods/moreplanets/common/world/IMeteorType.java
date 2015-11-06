@@ -5,9 +5,10 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.koentus.world;
+package stevekung.mods.moreplanets.common.world;
 
-public interface IKoentusMeteor
+public interface IMeteorType
 {
-	public double getKoentusMeteorFrequency();
+	int getMeteorEventType();
+	double getMeteorSpawnFrequency();
 }

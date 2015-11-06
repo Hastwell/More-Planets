@@ -15,12 +15,12 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.planets.kapteynb.world.IIceCrystalMeteor;
+import stevekung.mods.moreplanets.common.world.IMeteorType;
+import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.planets.kapteynb.world.gen.ChunkProviderKapteynB;
 import stevekung.mods.moreplanets.planets.kapteynb.world.gen.WorldChunkManagerKapteynB;
 
-public class WorldProviderKapteynB extends WorldProviderMP implements IIceCrystalMeteor
+public class WorldProviderKapteynB extends WorldProviderMP implements IMeteorType
 {
 	@Override
 	public Vector3 getFogColor()
@@ -130,7 +130,7 @@ public class WorldProviderKapteynB extends WorldProviderMP implements IIceCrysta
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return MorePlanetsCore.kapteynB;
+		return MPPlanets.kapteynB;
 	}
 
 	@Override
@@ -165,7 +165,13 @@ public class WorldProviderKapteynB extends WorldProviderMP implements IIceCrysta
 	}
 
 	@Override
-	public double getIceCrystalMeteorFrequency()
+	public int getMeteorEventType()
+	{
+		return 2;
+	}
+
+	@Override
+	public double getMeteorSpawnFrequency()
 	{
 		return 3.5D;
 	}

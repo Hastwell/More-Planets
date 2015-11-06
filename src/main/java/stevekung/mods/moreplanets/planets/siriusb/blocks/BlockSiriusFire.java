@@ -340,7 +340,7 @@ public class BlockSiriusFire extends BlockFire
 		{
 			return;
 		}
-		entity.setFire(10);
+		entity.setFire(8);
 	}
 
 	@Override
