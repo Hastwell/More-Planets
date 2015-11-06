@@ -34,9 +34,12 @@ public class ConfigManagerMP
 	public static int idDimensionPluto;
 	public static int idDimensionDeimos;
 	public static int idDimensionPhobos;
+	public static int idDimensionJupiter;
+	public static int idDimensionDarkAsteroids;
 	public static int idDimensionJupiterSpaceStation;
 	public static int idDimensionStaticJupiterSpaceStation;
-	public static int idDimensionJupiter;
+	public static int idDimensionMarsSpaceStation;
+	public static int idDimensionStaticMarsSpaceStation;
 
 	//Biomes
 	public static int idDionaBiome;
@@ -58,6 +61,7 @@ public class ConfigManagerMP
 	public static int idPhobosBiome;
 	public static int idIoBiome;
 	public static int idMPSpaceStationBiome;
+	public static int idDarkAsteroidsBiome;
 
 	//Schematics
 	public static int idSchematicTier4Rocket;
@@ -103,6 +107,7 @@ public class ConfigManagerMP
 	public static boolean enableDeimosMoon;
 	public static boolean enableJupiterPlanet;
 	public static boolean enableJupiterSpaceStation;
+	public static boolean enableMarsSpaceStation;
 
 	public ConfigManagerMP(File file)
 	{
@@ -132,8 +137,11 @@ public class ConfigManagerMP
 			ConfigManagerMP.idDimensionPluto = ConfigManagerMP.configuration.get("Dimensions", "Pluto Dimension", -2551).getInt(-2551);
 			ConfigManagerMP.idDimensionDeimos = ConfigManagerMP.configuration.get("Dimensions", "Deimos Dimension", -2552).getInt(-2552);
 			ConfigManagerMP.idDimensionPhobos = ConfigManagerMP.configuration.get("Dimensions", "Phobos Dimension", -2553).getInt(-2553);
-			ConfigManagerMP.idDimensionJupiterSpaceStation = ConfigManagerMP.configuration.get("Dimensions", "Space Station Dimension", -2600).getInt(-2600);
-			ConfigManagerMP.idDimensionStaticJupiterSpaceStation = ConfigManagerMP.configuration.get("Dimensions", "Static Space Station Dimension", -2601).getInt(-2601);
+			ConfigManagerMP.idDimensionDarkAsteroids = ConfigManagerMP.configuration.get("Dimensions", "Dark Asteroids Dimension", -2554).getInt(-2554);
+			ConfigManagerMP.idDimensionJupiterSpaceStation = ConfigManagerMP.configuration.get("Dimensions", "Jupiter Space Station Dimension", -2600).getInt(-2600);
+			ConfigManagerMP.idDimensionStaticJupiterSpaceStation = ConfigManagerMP.configuration.get("Dimensions", "Jupiter Static Space Station Dimension", -2601).getInt(-2601);
+			ConfigManagerMP.idDimensionMarsSpaceStation = ConfigManagerMP.configuration.get("Dimensions", "Mars Space Station Dimension", -2602).getInt(-2602);
+			ConfigManagerMP.idDimensionStaticMarsSpaceStation = ConfigManagerMP.configuration.get("Dimensions", "Mars Static Space Station Dimension", -2603).getInt(-2603);
 
 			ConfigManagerMP.idDimensionJupiter = ConfigManagerMP.configuration.get("Dimensions", "Jupiter Dimension", -5000).getInt(-5000);
 
@@ -159,7 +167,8 @@ public class ConfigManagerMP
 			ConfigManagerMP.enableDeimosMoon = ConfigManagerMP.configuration.get("Moons", "Enable Deimos Moon", true).getBoolean(true);
 
 			// Space Stations
-			ConfigManagerMP.enableJupiterSpaceStation = ConfigManagerMP.configuration.get("Space Stations", "Enable Jupiter Space Station", true, "If you disable Jupiter and then enable the Jupiter Space Station. Game will get crashes!").getBoolean(true);
+			ConfigManagerMP.enableJupiterSpaceStation = ConfigManagerMP.configuration.get("Space Stations", "Enable Jupiter Space Station", true, "If you disable Jupiter and enable the Jupiter Space Station. The game will get crashes!").getBoolean(true);
+			ConfigManagerMP.enableMarsSpaceStation = ConfigManagerMP.configuration.get("Space Stations", "Enable Mars Space Station", true).getBoolean(true);
 
 			//Biomes
 			ConfigManagerMP.idDionaBiome = ConfigManagerMP.configuration.get("Biomes", "Diona Biome", 220).getInt(220);
@@ -180,6 +189,7 @@ public class ConfigManagerMP
 			ConfigManagerMP.idDeimosBiome = ConfigManagerMP.configuration.get("Biomes", "Deimos Biome", 210).getInt(210);
 			ConfigManagerMP.idPhobosBiome = ConfigManagerMP.configuration.get("Biomes", "Phobos Biome", 211).getInt(211);
 			ConfigManagerMP.idIoBiome = ConfigManagerMP.configuration.get("Biomes", "Io Biome", 212).getInt(212);
+			ConfigManagerMP.idDarkAsteroidsBiome = ConfigManagerMP.configuration.get("Biomes", "Dark Asteroids Biome", 213).getInt(213);
 			ConfigManagerMP.idMPSpaceStationBiome = ConfigManagerMP.configuration.get("Biomes", "More Planets Space Station Biome", 130).getInt(130);
 
 			//Schematics

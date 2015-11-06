@@ -453,6 +453,6 @@ public class BlockInfectedVine extends BlockBaseMP implements IShearable
 	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
 	{
 		super.harvestBlock(world, player, x, y, z, fortune);
-		MorePlanetEvents.getActivateInfectedGas(player);
+		MorePlanetEvents.addInfectedGas(player);
 	}
 }

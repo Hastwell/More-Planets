@@ -14,13 +14,13 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
-import stevekung.mods.moreplanets.moons.koentus.dimension.IKoentusMeteor;
+import stevekung.mods.moreplanets.core.world.IMeteorType;
 import stevekung.mods.moreplanets.planets.diona.worldgen.ChunkProviderDiona;
 import stevekung.mods.moreplanets.planets.diona.worldgen.WorldChunkManagerDiona;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderDiona extends WorldProviderMP implements IKoentusMeteor
+public class WorldProviderDiona extends WorldProviderMP implements IMeteorType
 {
 	@Override
 	public Vector3 getFogColor()
@@ -163,7 +163,13 @@ public class WorldProviderDiona extends WorldProviderMP implements IKoentusMeteo
 	}
 
 	@Override
-	public double getKoentusMeteorFrequency()
+	public int getMeteorEventType()
+	{
+		return 1;
+	}
+
+	@Override
+	public double getMeteorSpawnFrequency()
 	{
 		return 2.0D;
 	}

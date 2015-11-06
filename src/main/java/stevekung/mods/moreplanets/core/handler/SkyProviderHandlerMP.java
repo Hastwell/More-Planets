@@ -16,8 +16,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.multiplayer.WorldClient;
 import stevekung.mods.moreplanets.core.event.CloudRendererVenus;
-import stevekung.mods.moreplanets.core.spacestation.SkyProviderJupiterOrbit;
+import stevekung.mods.moreplanets.core.spacestation.jupiter.SkyProviderJupiterOrbit;
 import stevekung.mods.moreplanets.core.spacestation.jupiter.WorldProviderJupiterOrbit;
+import stevekung.mods.moreplanets.core.spacestation.mars.SkyProviderMarsOrbit;
+import stevekung.mods.moreplanets.core.spacestation.mars.WorldProviderMarsOrbit;
 import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
 import stevekung.mods.moreplanets.moons.deimos.dimension.sky.SkyProviderDeimos;
 import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
@@ -206,7 +208,19 @@ public class SkyProviderHandlerMP
 					((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
 					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
 				}
-
+				if (world.provider.getCloudRenderer() == null)
+				{
+					world.provider.setCloudRenderer(new CloudRenderer());
+				}
+			}
+			else if (world.provider instanceof WorldProviderMarsOrbit)
+			{
+				if (world.provider.getSkyRenderer() == null)
+				{
+					world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
+					((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
+					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+				}
 				if (world.provider.getCloudRenderer() == null)
 				{
 					world.provider.setCloudRenderer(new CloudRenderer());

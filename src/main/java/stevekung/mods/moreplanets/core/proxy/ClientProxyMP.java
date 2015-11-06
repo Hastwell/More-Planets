@@ -10,6 +10,9 @@ package stevekung.mods.moreplanets.core.proxy;
 import java.util.HashMap;
 import java.util.Map;
 
+import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent.CelestialRingRenderEvent;
+import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
+import micdoodle8.mods.galacticraft.core.client.gui.screen.GuiCelestialSelection;
 import micdoodle8.mods.galacticraft.core.client.render.block.BlockRendererMachine;
 import micdoodle8.mods.galacticraft.core.client.render.block.BlockRendererMeteor;
 import micdoodle8.mods.galacticraft.planets.mars.client.render.block.BlockRendererEgg;
@@ -27,11 +30,13 @@ import net.minecraft.item.Item;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.IFluidBlock;
 
 import org.lwjgl.opengl.GL11;
 
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.particles.EntitySmokeFXMP;
 import stevekung.mods.moreplanets.core.renderer.EntityRendererMP;
 import stevekung.mods.moreplanets.core.renderer.ItemRendererMP;
@@ -120,8 +125,12 @@ import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAnci
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ClientProxyMP extends CommonProxyMP
 {
@@ -184,6 +193,8 @@ public class ClientProxyMP extends CommonProxyMP
 		ModelJetpack jetpack = new ModelJetpack(0.75F);
 		jetpackModel.put(VenusItems.jetpack, jetpack);
 
+		FMLCommonHandler.instance().bus().register(new RenderRingEvent());
+		MinecraftForge.EVENT_BUS.register(new RenderRingEvent());
 		//RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerMP()); TODO
 	}
 
@@ -723,6 +734,156 @@ public class ClientProxyMP extends CommonProxyMP
 		else
 		{
 			return false;
+		}
+	}
+	
+	public static class RenderRingEvent
+	{
+		private void renderRing(CelestialRingRenderEvent.Pre event, CelestialBody celestial, float r, float g, float b)
+		{
+			if (event.celestialBody.equals(celestial))
+			{
+				if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
+				{
+					GL11.glColor4f(r, g, b, 1.0F);
+				}
+				else
+				{
+					GL11.glColor4f(0.3F, 0.1F, 0.1F, 1.0F);
+				}
+
+				event.setCanceled(true);
+				GL11.glBegin(GL11.GL_LINE_LOOP);
+				float theta = (float) (2 * Math.PI / 90);
+				float cos = (float) Math.cos(theta);
+				float sin = (float) Math.sin(theta);
+				float min = 72.0F;
+				float max = 78.0F;
+				float x = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				float y = 0;
+				float temp;
+
+				for (int i = 0; i < 90; i++)
+				{
+					GL11.glVertex2f(x, y);
+					temp = x;
+					x = cos * x - sin * y;
+					y = sin * temp + cos * y;
+				}
+
+				GL11.glEnd();
+				GL11.glBegin(GL11.GL_LINE_LOOP);
+
+				x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				y = 0;
+
+				for (int i = 0; i < 90; i++)
+				{
+					GL11.glVertex2f(x, y);
+					temp = x;
+					x = cos * x - sin * y;
+					y = sin * temp + cos * y;
+				}
+
+				GL11.glEnd();
+				GL11.glColor4f(0.7F, 0.0F, 0.0F, 0.1F);
+				GL11.glBegin(GL11.GL_QUADS);
+
+				x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				y = 0;
+				float x2 = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				float y2 = 0;
+
+				for (int i = 0; i < 90; i++)
+				{
+					GL11.glVertex2f(x2, y2);
+					GL11.glVertex2f(x, y);
+					temp = x;
+					x = cos * x - sin * y;
+					y = sin * temp + cos * y;
+					temp = x2;
+					x2 = cos * x2 - sin * y2;
+					y2 = sin * temp + cos * y2;
+					GL11.glVertex2f(x, y);
+					GL11.glVertex2f(x2, y2);
+				}
+				GL11.glEnd();
+			}
+		}
+
+		@SubscribeEvent
+		@SideOnly(Side.CLIENT)
+		public void onRingRender(CelestialRingRenderEvent.Pre event)
+		{
+			this.renderRing(event, MorePlanetsCore.darkAsteroids, 0.1F, 0.1F, 0.1F);
+			/*if (event.celestialBody == MorePlanetsCore.darkAsteroids)
+			{
+				if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
+				{
+					GL11.glColor4f(0.1F, 0.1F, 0.1F, 0.5F);
+				}
+				else
+				{
+					GL11.glColor4f(0.3F, 0.1F, 0.1F, 1.0F);
+				}
+
+				event.setCanceled(true);
+				GL11.glBegin(GL11.GL_LINE_LOOP);
+				float theta = (float) (2 * Math.PI / 90);
+				float cos = (float) Math.cos(theta);
+				float sin = (float) Math.sin(theta);
+				float min = 72.0F;
+				float max = 78.0F;
+				float x = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				float y = 0;
+				float temp;
+
+				for (int i = 0; i < 90; i++)
+				{
+					GL11.glVertex2f(x, y);
+					temp = x;
+					x = cos * x - sin * y;
+					y = sin * temp + cos * y;
+				}
+
+				GL11.glEnd();
+				GL11.glBegin(GL11.GL_LINE_LOOP);
+
+				x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				y = 0;
+
+				for (int i = 0; i < 90; i++)
+				{
+					GL11.glVertex2f(x, y);
+					temp = x;
+					x = cos * x - sin * y;
+					y = sin * temp + cos * y;
+				}
+
+				GL11.glEnd();
+				GL11.glColor4f(0.7F, 0.0F, 0.0F, 0.1F);
+				GL11.glBegin(GL11.GL_QUADS);
+
+				x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				y = 0;
+				float x2 = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+				float y2 = 0;
+
+				for (int i = 0; i < 90; i++)
+				{
+					GL11.glVertex2f(x2, y2);
+					GL11.glVertex2f(x, y);
+					temp = x;
+					x = cos * x - sin * y;
+					y = sin * temp + cos * y;
+					temp = x2;
+					x2 = cos * x2 - sin * y2;
+					y2 = sin * temp + cos * y2;
+					GL11.glVertex2f(x, y);
+					GL11.glVertex2f(x2, y2);
+				}
+				GL11.glEnd();
+			}*/
 		}
 	}
 }

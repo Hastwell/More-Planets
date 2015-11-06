@@ -172,7 +172,7 @@ public class BlockOilRock extends Block implements IDetectableResource
 				par1World.setBlock(par3, par4, par5, GCBlocks.crudeOil, 0, 3);
 			}
 		}
-		MorePlanetEvents.getActivateInfectedGas(player);
+		MorePlanetEvents.addInfectedGas(player);
 	}
 
 	@Override

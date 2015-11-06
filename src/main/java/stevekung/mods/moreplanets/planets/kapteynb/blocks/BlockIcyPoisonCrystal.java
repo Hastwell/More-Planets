@@ -14,6 +14,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.blocks.base.BlockContainerMP;
+import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
@@ -51,7 +53,7 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 	{
 		ItemStack itemStack = player.getCurrentEquippedItem();
 
-		if (itemStack == null || !(player.getCurrentEquippedItem().getItem() instanceof ItemPickaxe))
+		if (itemStack == null || !(player.getCurrentEquippedItem().getItem() instanceof ItemPickaxe) || !MorePlanetEvents.getTier3ThermalArmor((EntityPlayerMP)player) || !MorePlanetEvents.getIceCrystalArmor((EntityPlayerMP)player))
 		{
 			player.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false));
 		}
@@ -66,7 +68,17 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 	{
 		if (entity instanceof EntityLivingBase)
 		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false));
+			if (entity instanceof EntityPlayerMP)
+			{
+				if (!MorePlanetEvents.getTier3ThermalArmor((EntityPlayerMP)entity))
+				{
+					((EntityPlayerMP)entity).addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false));
+				}
+			}
+			else
+			{
+				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 60, 0, false));
+			}
 		}
 	}
 

@@ -8,57 +8,37 @@
 package stevekung.mods.moreplanets.moons.io.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
-import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.moons.io.worldgen.ChunkProviderIo;
 import stevekung.mods.moreplanets.moons.io.worldgen.WorldChunkManagerIo;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderIo extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel
+public class WorldProviderIo extends WorldProviderMP
 {
 	@Override
 	public Vector3 getFogColor()
 	{
-		return new Vector3(182, 108, 10);
+		float f = 1.0F - this.getStarBrightness(1.0F);
+		return new Vector3(182F / 255F * f, 108F / 255F * f, 10F / 255F * f);
 	}
 
 	@Override
 	public Vector3 getSkyColor()
 	{
-		return new Vector3(242, 145, 13);
-	}
-
-	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
+		float f = 1.0F - this.getStarBrightness(1.0F);
+		return new Vector3(242 / 255F * f, 145 / 255F * f, 13 / 255F * f);
 	}
 
 	@Override
 	public long getDayLength()
 	{
 		return (long) 2122.9653432;
-	}
-
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
 	}
 
 	@Override
@@ -84,7 +64,6 @@ public class WorldProviderIo extends WorldProviderSpace implements IGalacticraft
 		{
 			f2 = 0.0F;
 		}
-
 		if (f2 > 1.0F)
 		{
 			f2 = 1.0F;
@@ -93,15 +72,22 @@ public class WorldProviderIo extends WorldProviderSpace implements IGalacticraft
 	}
 
 	@Override
-	public double getHorizon()
+	@SideOnly(Side.CLIENT)
+	public float getSunBrightness(float par1)
 	{
-		return 44.0D;
-	}
+		float f1 = this.worldObj.getCelestialAngle(1.0F);
+		float f2 = 0.45F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
 
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
+		if (f2 < 0.0F)
+		{
+			f2 = 0.0F;
+		}
+		if (f2 > 1.0F)
+		{
+			f2 = 1.0F;
+		}
+		f2 = 1.0F - f2;
+		return f2 * 1.0F;
 	}
 
 	@Override
@@ -114,12 +100,6 @@ public class WorldProviderIo extends WorldProviderSpace implements IGalacticraft
 	public double getMeteorFrequency()
 	{
 		return 10.0D;
-	}
-
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
 	}
 
 	@Override
@@ -147,21 +127,19 @@ public class WorldProviderIo extends WorldProviderSpace implements IGalacticraft
 	}
 
 	@Override
-	public boolean hasBreathableAtmosphere()
-	{
-		return false;
-	}
-
-	@Override
 	public float getThermalLevelModifier()
 	{
-		return 4.0F;
+		if (this.isDaytime())
+		{
+			return 3.25F;
+		}
+		return -2.0F;
 	}
 
 	@Override
 	public float getWindLevel()
 	{
-		return 0.8F;
+		return 0.4F;
 	}
 
 	@Override

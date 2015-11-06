@@ -15,6 +15,7 @@ import net.minecraftforge.client.model.IModelCustom;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketNoFlagMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.renderer.items.ItemRendererTier2ThermalArmor;
+import stevekung.mods.moreplanets.core.renderer.items.ItemRendererTier3ThermalArmor;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.moons.koentus.render.items.ItemRendererKoentusMeteorChunk;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
@@ -60,5 +61,6 @@ public class ItemRendererMP
 		MinecraftForgeClient.registerItemRenderer(FronosItems.candy_bow, new ItemRendererCandyBow());
 		MinecraftForgeClient.registerItemRenderer(VenusItems.venus_dungeon_key, new ItemRendererKey(new ResourceLocation("venus:textures/model/venus_treasure_chest.png")));
 		MinecraftForgeClient.registerItemRenderer(MPItems.tier_2_thermal_padding, new ItemRendererTier2ThermalArmor());
+		MinecraftForgeClient.registerItemRenderer(MPItems.tier_3_thermal_padding, new ItemRendererTier3ThermalArmor());
 	}
 }

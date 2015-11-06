@@ -5,9 +5,20 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.polongnius.dimension;
+package stevekung.mods.moreplanets.core.itemblocks;
 
-public interface IPolongniusMeteor
+import net.minecraft.block.Block;
+
+public class ItemBlockSpaceDecoration extends ItemBlockBaseMP
 {
-	public double getPolongniusMeteorFrequency();
+	public ItemBlockSpaceDecoration(Block block)
+	{
+		super(block);
+	}
+
+	@Override
+	public String[] getBlockVariantsName()
+	{
+		return new String[] { "tin", "aluminum" };
+	}
 }

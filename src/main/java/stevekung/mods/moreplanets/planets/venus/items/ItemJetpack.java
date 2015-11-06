@@ -17,12 +17,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.items.armor.ItemArmorMP;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemJetpack extends ItemArmorMP
+public class ItemJetpack extends ItemElectricArmorMP
 {
 	public static int tick;
 	private boolean keyDown;
@@ -73,7 +72,7 @@ public class ItemJetpack extends ItemArmorMP
 		{
 			itemStack.setTagCompound(new NBTTagCompound());
 		}
-		itemStack.getTagCompound().setInteger("JetpackTick", this.tick);
+		itemStack.getTagCompound().setInteger("JetpackTick", ItemJetpack.tick);
 	}
 
 	@Override
@@ -83,7 +82,7 @@ public class ItemJetpack extends ItemArmorMP
 		{
 			itemStack.setTagCompound(new NBTTagCompound());
 		}
-		itemStack.getTagCompound().setInteger("JetpackTick", this.tick);
+		itemStack.getTagCompound().setInteger("JetpackTick", ItemJetpack.tick);
 	}
 
 	@Override
@@ -97,38 +96,37 @@ public class ItemJetpack extends ItemArmorMP
 			{
 				if (this.getJetpackKeyDown() == true)
 				{
-					this.tick++;
+					ItemJetpack.tick++;
 
-					if (this.tick >= 1000)
+					if (ItemJetpack.tick >= 1000)
 					{
 						if (!world.isRemote && !flag)
 						{
 							player.inventory.consumeInventoryItem(Items.coal);
 						}
-						if (this.tick >= 1000)
+						if (ItemJetpack.tick >= 1000)
 						{
-							this.tick = 0;
+							ItemJetpack.tick = 0;
 						}
 					}
 				}
 				if (this.getJetpackKeySneak() == true)
 				{
-					this.tick++;
+					ItemJetpack.tick++;
 
-					if (this.tick >= 1000)
+					if (ItemJetpack.tick >= 1000)
 					{
 						if (!world.isRemote && !flag)
 						{
 							player.inventory.consumeInventoryItem(Items.coal);
 						}
-						if (this.tick >= 1000)
+						if (ItemJetpack.tick >= 1000)
 						{
-							this.tick = 0;
+							ItemJetpack.tick = 0;
 						}
 					}
 				}
 			}
-			//MorePlanetsCore.packetPipeline.sendToAll(new PacketUpdateItem());
 			MorePlanetsCore.proxy.resetPlayerFloatingTick(player);
 		}
 	}
@@ -169,5 +167,11 @@ public class ItemJetpack extends ItemArmorMP
 	public boolean getJetpackKeySneak()
 	{
 		return this.keySneak;
+	}
+
+	@Override
+	public float getMaxElectricityStored(ItemStack theItem)
+	{
+		return 100000.0F;
 	}
 }

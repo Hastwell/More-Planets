@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.diona.recipe;
 
 import java.util.HashMap;
 
+import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import micdoodle8.mods.galacticraft.planets.mars.items.MarsItems;
@@ -48,6 +49,8 @@ public class CraftingRecipesDiona
 		GameRegistry.addRecipe(new ItemStack(DionaBlocks.diona_block, 4, 12), new Object[] { "QQ", "QQ", 'Q', new ItemStack(DionaBlocks.diona_block, 1, 11) });
 		GameRegistry.addRecipe(new ItemStack(DionaBlocks.fronisium_tnt, 1), new Object[] { "GFG", "FGF", "GFG", 'G', new ItemStack(Items.gunpowder), 'F', new ItemStack(DionaItems.diona_item, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(DionaBlocks.diona_block, 1, 13), new Object[] { "Q", "Q", 'Q', new ItemStack(MPBlocks.stone_slab_half, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(MPBlocks.space_decoration_block, 4, 0), new Object[] { "TT", "TT", 'T', new ItemStack(GCBlocks.basicBlock, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(MPBlocks.space_decoration_block, 8, 1), new Object[] { "TTT", "TAT", "TTT", 'T', new ItemStack(MPBlocks.space_decoration_block, 1, 0), 'A', new ItemStack(GCItems.basicItem, 1, 8) });
 
 		// Diona Cobblestone Stairs
 		GameRegistry.addRecipe(new ItemStack(DionaBlocks.diona_cobblestone_stairs, 4), new Object[] { "  X", " XX", "XXX", 'X', new ItemStack(DionaBlocks.diona_block, 1, 3) });
@@ -115,6 +118,11 @@ public class CraftingRecipesDiona
 		GameRegistry.addRecipe(new ItemStack(DionaItems.tier4_rocket_module, 1, 5), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.tier4_rocket_module, 1, 5), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.tier4_rocket_module, 1, 6), new Object[] { "DMD", "DCD", "TAT", 'M', new ItemStack(DionaBlocks.diona_block, 1, 10), 'D', new ItemStack(DionaItems.diona_item, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 0), new Object[] { "XXX", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 1), new Object[] { "X X", "XXX", "XXX", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 2), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 3), new Object[] { "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
+		GameRegistry.addRecipe(new ItemStack(MPItems.desh_thermal_cloth), new Object[] { " X ", "XRX", " X ", 'X', new ItemStack(MarsItems.marsItemBasic, 1, 5), 'R', Items.redstone });
 
 		// Armor
 		GameRegistry.addRecipe(new ItemStack(DionaArmorItems.quontonium_helmet, 1, 0), new Object[] { "QQQ", "Q Q", 'Q', new ItemStack(DionaItems.diona_item, 1, 2) });

@@ -5,38 +5,23 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.core.todo;
+package stevekung.mods.moreplanets.asteroids.darkasteroids.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
-public class BlockDarkAsteroidsQuicksand extends Block
+public class BlockDarkAsteroidsQuicksand extends BlockBaseMP
 {
-	public BlockDarkAsteroidsQuicksand()
+	public BlockDarkAsteroidsQuicksand(String name)
 	{
 		super(Material.sand);
-		this.setHardness(1.0F);//TODO
-		this.setStepSound(Block.soundTypeSand);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		this.blockIcon = iconRegister.registerIcon("quicksand");
-	}
-
-	@Override
-	public IIcon getIcon(int side, int metadata)
-	{
-		return this.blockIcon;
+		this.setHardness(0.5F);
+		this.setStepSound(soundTypeSand);
+		this.setBlockTextureName("mpcore:darkasteroids/dark_asteroids_quicksand");
+		this.setBlockName(name);
 	}
 
 	@Override

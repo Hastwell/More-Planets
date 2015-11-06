@@ -5,9 +5,10 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.kapteynb.dimension;
+package stevekung.mods.moreplanets.core.world;
 
-public interface IIceCrystalMeteor
+public interface IMeteorType
 {
-	public double getIceCrystalMeteorFrequency();
+	int getMeteorEventType();
+	double getMeteorSpawnFrequency();
 }

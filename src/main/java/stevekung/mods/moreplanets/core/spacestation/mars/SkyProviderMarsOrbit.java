@@ -1,4 +1,11 @@
-package stevekung.mods.moreplanets.core.spacestation;
+/*******************************************************************************
+ * Copyright 2015 SteveKunG - More Planets Mod
+ * 
+ * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ ******************************************************************************/
+
+package stevekung.mods.moreplanets.core.spacestation.mars;
 
 import java.util.Random;
 
@@ -16,9 +23,9 @@ import net.minecraftforge.client.IRenderHandler;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-public class SkyProviderJupiterOrbit extends IRenderHandler
+public class SkyProviderMarsOrbit extends IRenderHandler
 {
-	private ResourceLocation moonTexture = new ResourceLocation("mpcore:textures/jupiter_phases.png");
+	private ResourceLocation moonTexture = new ResourceLocation("mpcore:textures/gui/celestialbodies/mars.png");
 	private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/planets/sun.png");
 
 	public int starGLCallList = GLAllocation.generateDisplayLists(3);
@@ -30,7 +37,7 @@ public class SkyProviderJupiterOrbit extends IRenderHandler
 	private float prevPartialTicks = 0;
 	private long prevTick;
 
-	public SkyProviderJupiterOrbit()
+	public SkyProviderMarsOrbit()
 	{
 		this.renderSun = true;
 		GL11.glPushMatrix();
@@ -193,14 +200,14 @@ public class SkyProviderJupiterOrbit extends IRenderHandler
 		GL11.glCallList(this.starGLCallList);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glPushMatrix();
-		GL11.glRotatef(80.0F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(-80.0F, 1.0F, 0.0F, 0.0F);
 
 		if (this.renderSun)
 		{
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			GL11.glDisable(GL11.GL_TEXTURE_2D);
 			GL11.glColor4f(0.0F, 0.0F, 0.0F, 1.0F);
-			var12 = 3.8F;
+			var12 = 6.3F;
 			var23.startDrawingQuads();
 			var23.addVertex(-var12, 99.9D, -var12);
 			var23.addVertex(var12, 99.9D, -var12);
@@ -210,7 +217,7 @@ public class SkyProviderJupiterOrbit extends IRenderHandler
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			var12 = 2.0F;
+			var12 = 5.0F;
 			mc.renderEngine.bindTexture(this.sunTexture);
 			var23.startDrawingQuads();
 			var23.addVertexWithUV(-var12, 100.0D, -var12, 0.0D, 0.0D);
@@ -223,7 +230,7 @@ public class SkyProviderJupiterOrbit extends IRenderHandler
 		GL11.glPopMatrix();
 		GL11.glDisable(GL11.GL_BLEND);
 
-		// Jupiter
+		// Mars
 		float size = 80.0F;
 		GL11.glTranslatef(70.0F, 0.0F, 0.0F);
 		GL11.glRotatef(-90.0F, 0.0F, 90.0F, 1.0F);
@@ -232,18 +239,11 @@ public class SkyProviderJupiterOrbit extends IRenderHandler
 		mc.renderEngine.bindTexture(this.moonTexture);
 		float alpha = 0.75F;
 		GL11.glColor4f(Math.min(alpha, 1.0F), Math.min(alpha, 1.0F), Math.min(alpha, 1.0F), Math.min(alpha, 1.0F));
-		float var28 = (int)(mc.theWorld.getWorldTime() / 512L % 8L + 8L) % 8;/*mc.theWorld.getMoonPhase();*/
-		int var30 = (int) (var28 % 4);
-		int var29 = (int) (var28 / 4 % 2);
-		float var16 = (var30 + 0) / 4.0F;
-		float var17 = (var29 + 0) / 2.0F;
-		float var18 = (var30 + 1) / 4.0F;
-		float var19 = (var29 + 1) / 2.0F;
 		var23.startDrawingQuads();
-		var23.addVertexWithUV(-size, -100.0D, size, var18, var19);
-		var23.addVertexWithUV(size, -100.0D, size, var16, var19);
-		var23.addVertexWithUV(size, -100.0D, -size, var16, var17);
-		var23.addVertexWithUV(-size, -100.0D, -size, var18, var17);
+		var23.addVertexWithUV(-size, -100.0D, size, 0.0D, 0.0D);
+		var23.addVertexWithUV(size, -100.0D, size, 1.0D, 0.0D);
+		var23.addVertexWithUV(size, -100.0D, -size, 1.0D, 1.0D);
+		var23.addVertexWithUV(-size, -100.0D, -size, 0.0D, 1.0D);
 		var23.draw();
 
 		GL11.glDisable(GL11.GL_TEXTURE_2D);

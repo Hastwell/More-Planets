@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright 2015 SteveKunG - More Planets Mod
+ * 
+ * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ ******************************************************************************/
+
 package stevekung.mods.moreplanets.core.spacestation.jupiter;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
@@ -8,7 +15,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.client.IRenderHandler;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.spacestation.SkyProviderJupiterOrbit;
 import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -206,7 +212,7 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
 	@Override
 	public boolean canSpaceshipTierPass(int tier)
 	{
-		return tier > 0;
+		return tier > 3;
 	}
 
 	@Override

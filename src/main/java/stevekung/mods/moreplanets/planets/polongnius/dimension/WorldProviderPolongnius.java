@@ -14,12 +14,13 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
+import stevekung.mods.moreplanets.core.world.IMeteorType;
 import stevekung.mods.moreplanets.planets.polongnius.worldgen.ChunkProviderPolongnius;
 import stevekung.mods.moreplanets.planets.polongnius.worldgen.WorldChunkManagerPolongnius;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderPolongnius extends WorldProviderMP implements IPolongniusMeteor
+public class WorldProviderPolongnius extends WorldProviderMP implements IMeteorType
 {
 	@Override
 	public Vector3 getFogColor()
@@ -164,8 +165,14 @@ public class WorldProviderPolongnius extends WorldProviderMP implements IPolongn
 	}
 
 	@Override
-	public double getPolongniusMeteorFrequency()
+	public int getMeteorEventType()
 	{
-		return 1.0D;
+		return 0;
+	}
+
+	@Override
+	public double getMeteorSpawnFrequency()
+	{
+		return 1.25D;
 	}
 }

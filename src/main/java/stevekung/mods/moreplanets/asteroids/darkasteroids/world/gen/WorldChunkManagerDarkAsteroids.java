@@ -5,9 +5,16 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.koentus.dimension;
+package stevekung.mods.moreplanets.asteroids.darkasteroids.world.gen;
 
-public interface IKoentusMeteor
+import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldChunkManagerSpace;
+import net.minecraft.world.biome.BiomeGenBase;
+
+public class WorldChunkManagerDarkAsteroids extends WorldChunkManagerSpace
 {
-	public double getKoentusMeteorFrequency();
+	@Override
+	public BiomeGenBase getBiome()
+	{
+		return BiomeGenBaseDarkAsteroids.darkAsteroids;
+	}
 }

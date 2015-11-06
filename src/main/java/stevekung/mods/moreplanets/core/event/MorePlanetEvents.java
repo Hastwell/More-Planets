@@ -10,6 +10,8 @@ package stevekung.mods.moreplanets.core.event;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent;
+import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent.CelestialRingRenderEvent;
+import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
 import micdoodle8.mods.galacticraft.api.inventory.AccessInventoryGC;
 import micdoodle8.mods.galacticraft.api.inventory.IInventoryGC;
 import micdoodle8.mods.galacticraft.core.client.gui.screen.GuiCelestialSelection;
@@ -17,9 +19,12 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerHandler.ThermalArmorEvent;
+import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerHandler.ThermalArmorEvent.ArmorAddResult;
 import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -50,6 +55,12 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+
+import org.lwjgl.Sys;
+import org.lwjgl.opengl.GL11;
+
+import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
@@ -57,32 +68,30 @@ import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.core.util.DamageSourceMP;
+import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.core.world.ILightningStorm;
+import stevekung.mods.moreplanets.core.world.IMeteorType;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.io.items.IoItems;
-import stevekung.mods.moreplanets.moons.koentus.blocks.BlockCrystalSapling;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
-import stevekung.mods.moreplanets.moons.koentus.dimension.IKoentusMeteor;
 import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteor;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosSapling;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.items.ItemCandyBow;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
-import stevekung.mods.moreplanets.planets.kapteynb.dimension.IIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
+import stevekung.mods.moreplanets.planets.kapteynb.items.armor.KapteynBArmorItems;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
-import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockNibiruSapling;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.dimension.WorldProviderNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
@@ -90,15 +99,14 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
-import stevekung.mods.moreplanets.planets.polongnius.dimension.IPolongniusMeteor;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteor;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
-import stevekung.mods.moreplanets.planets.polongnius.items.armor.PolongniusArmorItems;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 import stevekung.mods.moreplanets.planets.venus.items.ItemJetpack;
 import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -149,6 +157,181 @@ public class MorePlanetEvents
 		if (event.entityLiving.isPotionActive(MPPotions.electro_magnetic_pulse))
 		{
 			event.entityLiving.motionY -= 1.0D;
+		}
+	}
+
+	@SubscribeEvent
+	public void onThermalArmorEvent(ThermalArmorEvent event)
+	{
+		if (event.armorStack == null)
+		{
+			event.setArmorAddResult(ArmorAddResult.REMOVE);
+		}
+		if (event.armorStack.getItem() == MPItems.tier_2_thermal_padding && event.armorStack.getItemDamage() == event.armorIndex)
+		{
+			event.setArmorAddResult(ArmorAddResult.ADD);
+		}
+		else if (event.armorStack.getItem() == MPItems.tier_3_thermal_padding && event.armorStack.getItemDamage() == event.armorIndex)
+		{
+			event.setArmorAddResult(ArmorAddResult.ADD);
+		}
+		event.setArmorAddResult(ArmorAddResult.NOTHING);
+	}
+	
+	private void renderRing(CelestialRingRenderEvent.Pre event, CelestialBody celestial, float r, float g, float b)
+	{
+		if (event.celestialBody.equals(celestial))
+		{
+			if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
+			{
+				GL11.glColor4f(r, g, b, 0.5F);
+			}
+			else
+			{
+				GL11.glColor4f(0.3F, 0.1F, 0.1F, 1.0F);
+			}
+
+			event.setCanceled(true);
+			GL11.glBegin(GL11.GL_LINE_LOOP);
+			float theta = (float) (2 * Math.PI / 90);
+			float cos = (float) Math.cos(theta);
+			float sin = (float) Math.sin(theta);
+			float min = 72.0F;
+			float max = 78.0F;
+			float x = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			float y = 0;
+			float temp;
+
+			for (int i = 0; i < 90; i++)
+			{
+				GL11.glVertex2f(x, y);
+				temp = x;
+				x = cos * x - sin * y;
+				y = sin * temp + cos * y;
+			}
+
+			GL11.glEnd();
+			GL11.glBegin(GL11.GL_LINE_LOOP);
+
+			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			y = 0;
+
+			for (int i = 0; i < 90; i++)
+			{
+				GL11.glVertex2f(x, y);
+				temp = x;
+				x = cos * x - sin * y;
+				y = sin * temp + cos * y;
+			}
+
+			GL11.glEnd();
+			GL11.glColor4f(0.7F, 0.0F, 0.0F, 0.1F);
+			GL11.glBegin(GL11.GL_QUADS);
+
+			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			y = 0;
+			float x2 = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			float y2 = 0;
+
+			for (int i = 0; i < 90; i++)
+			{
+				GL11.glVertex2f(x2, y2);
+				GL11.glVertex2f(x, y);
+				temp = x;
+				x = cos * x - sin * y;
+				y = sin * temp + cos * y;
+				temp = x2;
+				x2 = cos * x2 - sin * y2;
+				y2 = sin * temp + cos * y2;
+				GL11.glVertex2f(x, y);
+				GL11.glVertex2f(x2, y2);
+			}
+			GL11.glEnd();
+		}
+	}
+
+	/*@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onRingRender(CelestialRingRenderEvent.Pre event)
+	{
+		this.renderRing(event, MorePlanetsCore.darkAsteroids, 0.1F, 0.1F, 0.1F);
+		/*if (event.celestialBody == MorePlanetsCore.darkAsteroids)
+		{
+			if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
+			{
+				GL11.glColor4f(0.1F, 0.1F, 0.1F, 0.5F);
+			}
+			else
+			{
+				GL11.glColor4f(0.3F, 0.1F, 0.1F, 1.0F);
+			}
+
+			event.setCanceled(true);
+			GL11.glBegin(GL11.GL_LINE_LOOP);
+			float theta = (float) (2 * Math.PI / 90);
+			float cos = (float) Math.cos(theta);
+			float sin = (float) Math.sin(theta);
+			float min = 72.0F;
+			float max = 78.0F;
+			float x = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			float y = 0;
+			float temp;
+
+			for (int i = 0; i < 90; i++)
+			{
+				GL11.glVertex2f(x, y);
+				temp = x;
+				x = cos * x - sin * y;
+				y = sin * temp + cos * y;
+			}
+
+			GL11.glEnd();
+			GL11.glBegin(GL11.GL_LINE_LOOP);
+
+			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			y = 0;
+
+			for (int i = 0; i < 90; i++)
+			{
+				GL11.glVertex2f(x, y);
+				temp = x;
+				x = cos * x - sin * y;
+				y = sin * temp + cos * y;
+			}
+
+			GL11.glEnd();
+			GL11.glColor4f(0.7F, 0.0F, 0.0F, 0.1F);
+			GL11.glBegin(GL11.GL_QUADS);
+
+			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			y = 0;
+			float x2 = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
+			float y2 = 0;
+
+			for (int i = 0; i < 90; i++)
+			{
+				GL11.glVertex2f(x2, y2);
+				GL11.glVertex2f(x, y);
+				temp = x;
+				x = cos * x - sin * y;
+				y = sin * temp + cos * y;
+				temp = x2;
+				x2 = cos * x2 - sin * y2;
+				y2 = sin * temp + cos * y2;
+				GL11.glVertex2f(x, y);
+				GL11.glVertex2f(x2, y2);
+			}
+			GL11.glEnd();
+		}*/
+	//}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onBodyRender(CelestialBodyRenderEvent.Pre renderEvent)
+	{
+		if (renderEvent.celestialBody == MorePlanetsCore.darkAsteroids)
+		{
+			GL11.glRotatef(Sys.getTime() / 10.0F % 360, 0, 0, 1);
 		}
 	}
 
@@ -342,181 +525,26 @@ public class MorePlanetEvents
 	@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event)
 	{
-		Random rand = event.world.rand;
+		World world = event.world;
+		Random rand = world.rand;
 		int x = event.x;
 		int z = event.z;
 
-		if (event.block == NibiruBlocks.nibiru_sapling)
-		{
-			event.setResult(Result.ALLOW);
+		this.glowSapling(event, world, NibiruBlocks.nibiru_sapling);
+		this.glowSapling(event, world, KoentusBlocks.crystal_sapling);
+		this.glowSapling(event, world, FronosBlocks.fronos_sapling);
 
-			if (!event.world.isRemote)
-			{
-				if (event.world.rand.nextFloat() < 0.45D)
-				{
-					((BlockNibiruSapling)NibiruBlocks.nibiru_sapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
-				}
-			}
-		}
-		else if (event.block == KoentusBlocks.crystal_sapling)
-		{
-			event.setResult(Result.ALLOW);
+		this.glowTallGrass(event, rand, x, z, FronosBlocks.fronos_grass, FronosBlocks.fronos_tall_grass, 3, 0, true);
+		this.glowTallGrass(event, rand, x, z, FronosBlocks.pink_grass, FronosBlocks.fronos_tall_grass, 3, 3, true);
+		this.glowTallGrass(event, rand, x, z, FronosBlocks.purple_grass, FronosBlocks.fronos_tall_grass, 3, 6, true);
+		this.glowTallGrass(event, rand, x, z, FronosBlocks.plains_grass, FronosBlocks.fronos_tall_grass, 3, 9, true);
+		this.glowTallGrass(event, rand, x, z, FronosBlocks.golden_grass, FronosBlocks.fronos_tall_grass, 3, 12, true);
 
-			if (!event.world.isRemote)
-			{
-				if (event.world.rand.nextFloat() < 0.45D)
-				{
-					((BlockCrystalSapling)KoentusBlocks.crystal_sapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
-				}
-			}
-		}
-		else if (event.block == FronosBlocks.fronos_sapling)
-		{
-			event.setResult(Result.ALLOW);
-
-			if (!event.world.isRemote)
-			{
-				if (event.world.rand.nextFloat() < 0.45D)
-				{
-					((BlockFronosSapling)FronosBlocks.fronos_sapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
-				}
-			}
-		}
-		else if (event.block == FronosBlocks.fronos_grass)
-		{
-			int var14 = event.y + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += event.world.rand.nextInt(3) - 1;
-					var14 += (event.world.rand.nextInt(3) - 1) * event.world.rand.nextInt(3) / 2;
-					z += event.world.rand.nextInt(3) - 1;
-				}
-				if (event.world.getBlock(x, var14, z).isAir(event.world, x, var14, z))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(event.world, x, var14, z, 0, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3))))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!event.world.isRemote)
-						{
-							event.world.setBlock(x, var14, z, FronosBlocks.fronos_tall_grass, rand.nextInt(3), 2);
-						}
-					}
-				}
-			}
-		}
-		else if (event.block == FronosBlocks.pink_grass)
-		{
-			int var14 = event.y + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += event.world.rand.nextInt(3) - 1;
-					var14 += (event.world.rand.nextInt(3) - 1) * event.world.rand.nextInt(3) / 2;
-					z += event.world.rand.nextInt(3) - 1;
-				}
-				if (event.world.getBlock(x, var14, z).isAir(event.world, x, var14, z))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(event.world, x, var14, z, 0, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 3)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!event.world.isRemote)
-						{
-							event.world.setBlock(x, var14, z, FronosBlocks.fronos_tall_grass, rand.nextInt(3) + 3, 2);
-						}
-					}
-				}
-			}
-		}
-		else if (event.block == FronosBlocks.purple_grass)
-		{
-			int var14 = event.y + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += event.world.rand.nextInt(3) - 1;
-					var14 += (event.world.rand.nextInt(3) - 1) * event.world.rand.nextInt(3) / 2;
-					z += event.world.rand.nextInt(3) - 1;
-				}
-				if (event.world.getBlock(x, var14, z).isAir(event.world, x, var14, z))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(event.world, x, var14, z, 0, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 6)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!event.world.isRemote)
-						{
-							event.world.setBlock(x, var14, z, FronosBlocks.fronos_tall_grass, rand.nextInt(3) + 6, 2);
-						}
-					}
-				}
-			}
-		}
-		else if (event.block == FronosBlocks.plains_grass)
-		{
-			int var14 = event.y + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += event.world.rand.nextInt(3) - 1;
-					var14 += (event.world.rand.nextInt(3) - 1) * event.world.rand.nextInt(3) / 2;
-					z += event.world.rand.nextInt(3) - 1;
-				}
-				if (event.world.getBlock(x, var14, z).isAir(event.world, x, var14, z))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(event.world, x, var14, z, 0, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 9)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!event.world.isRemote)
-						{
-							event.world.setBlock(x, var14, z, FronosBlocks.fronos_tall_grass, rand.nextInt(3) + 9, 2);
-						}
-					}
-				}
-			}
-		}
-		else if (event.block == FronosBlocks.golden_grass)
-		{
-			int var14 = event.y + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += event.world.rand.nextInt(3) - 1;
-					var14 += (event.world.rand.nextInt(3) - 1) * event.world.rand.nextInt(3) / 2;
-					z += event.world.rand.nextInt(3) - 1;
-				}
-				if (event.world.getBlock(x, var14, z).isAir(event.world, x, var14, z))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(event.world, x, var14, z, 0, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 12)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!event.world.isRemote)
-						{
-							event.world.setBlock(x, var14, z, FronosBlocks.fronos_tall_grass, rand.nextInt(3) + 12, 2);
-						}
-					}
-				}
-			}
-		}
-		else if (event.block == FronosBlocks.glass_gem_corn1)
+		if (event.block == FronosBlocks.glass_gem_corn1)
 		{
 			int y = event.y;
 
-			if (event.world.getBlock(x, y + 1, z).isAir(event.world, x, y + 1, z) && event.world.getBlock(x, y + 2, z).isAir(event.world, x, y + 2, z))
+			if (world.getBlock(x, y + 1, z).isAir(world, x, y + 1, z) && world.getBlock(x, y + 2, z).isAir(world, x, y + 2, z))
 			{
 				event.setResult(Result.ALLOW);
 
@@ -622,355 +650,33 @@ public class MorePlanetEvents
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event)
 	{
-		EntityLivingBase entity = event.entityLiving;
-		World world = entity.worldObj;
+		EntityLivingBase living = event.entityLiving;
+		World world = living.worldObj;
 
-		// Potion tick
-		if (entity.isPotionActive(MPPotions.infected_gas))
+		if (living instanceof EntityPlayerMP)
 		{
-			if (entity.ticksExisted % 35 == 0)
+			EntityPlayerMP player = (EntityPlayerMP)living;
+
+			this.spawnFeces(world, player);
+			this.doInfectedGasForEntity(world, living, player);
+			this.doSiriusFire(world, living);
+			this.removeIcyPoison(player);
+
+			if (world.provider instanceof IMeteorType)
 			{
-				entity.attackEntityFrom(DamageSourceMP.infectedGas, 1.0F + entity.getActivePotionEffect(MPPotions.infected_gas).getAmplifier());
+				this.spawnMeteor(world, player, (IMeteorType)world.provider);
 			}
-			if (entity.getActivePotionEffect(MPPotions.infected_gas).getDuration() == 0)
+			else if (world.provider instanceof ILightningStorm)
 			{
-				entity.removePotionEffect(MPPotions.infected_gas.id);
-				return;
+				this.spawnLightningBolt(world, player);
+			}
+			if ((player.isPotionActive(MPPotions.infected_gas.id) || player.isPotionActive(MPPotions.icy_poison.id)) && MorePlanetEvents.getTier3ThermalArmor(player))
+			{
+				player.removePotionEffect(MPPotions.infected_gas.id);
+				player.removePotionEffect(MPPotions.icy_poison.id);
 			}
 		}
-		else if (entity.isPotionActive(MPPotions.chemical))
-		{
-			if (entity.ticksExisted % 8 == 0)
-			{
-				entity.attackEntityFrom(DamageSourceMP.chemical, 1.0F + entity.getActivePotionEffect(MPPotions.chemical).getAmplifier());
-			}
-			if (entity.getActivePotionEffect(MPPotions.chemical).getDuration() == 0)
-			{
-				entity.removePotionEffect(MPPotions.chemical.id);
-				return;
-			}
-		}
-		else if (entity.isPotionActive(MPPotions.electro_magnetic_pulse))
-		{
-			if (!entity.worldObj.isRemote)
-			{
-				entity.motionX = 0.0F;
-				entity.motionY = -1.0F;
-				entity.motionZ = 0.0F;
-			}
-			if (entity.getActivePotionEffect(MPPotions.electro_magnetic_pulse).getDuration() == 0)
-			{
-				entity.removePotionEffect(MPPotions.electro_magnetic_pulse.id);
-				return;
-			}
-		}
-		else if (entity.isPotionActive(MPPotions.icy_poison))
-		{
-			entity.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F + entity.getActivePotionEffect(MPPotions.icy_poison).getAmplifier());
-
-			if (entity.getActivePotionEffect(MPPotions.icy_poison).getDuration() == 0)
-			{
-				entity.removePotionEffect(MPPotions.icy_poison.id);
-				return;
-			}
-		}
-
-		if (entity instanceof EntityPlayerMP)
-		{
-			EntityPlayerMP player = (EntityPlayerMP) entity;
-
-			if (world.provider instanceof WorldProviderMars)
-			{
-				if (world.getWorldTime() == 7000L)
-				{
-					EntityItem item = new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(MPItems.feces));
-					item.delayBeforeCanPickup = 10;
-					world.playSoundAtEntity(player, "mob.chicken.plop", 0.75F, (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 0.6F);
-					world.spawnEntityInWorld(item);
-				}
-				if (world.getWorldTime() == 12000L)
-				{
-					EntityItem item = new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(MPItems.feces));
-					item.delayBeforeCanPickup = 10;
-					world.playSoundAtEntity(player, "mob.chicken.plop", 0.75F, (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 0.6F);
-					world.spawnEntityInWorld(item);
-				}
-			}
-			if (world.provider instanceof IKoentusMeteor && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
-			{
-				if (((IKoentusMeteor) world.provider).getKoentusMeteorFrequency() > 0)
-				{
-					int f = (int) (((IKoentusMeteor) world.provider).getKoentusMeteorFrequency() * 1000D);
-
-					if (world.rand.nextInt(f) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							int x, y, z;
-							double motX, motZ;
-							x = world.rand.nextInt(20) - 10;
-							y = world.rand.nextInt(20) + 200;
-							z = world.rand.nextInt(20) - 10;
-							motX = world.rand.nextDouble() * 5;
-							motZ = world.rand.nextDouble() * 5;
-
-							EntityKoentusMeteor meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-
-							if (!world.isRemote)
-							{
-								world.spawnEntityInWorld(meteor);
-							}
-						}
-					}
-
-					if (world.rand.nextInt(f * 3) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							int x, y, z;
-							double motX, motZ;
-							x = world.rand.nextInt(20) - 10;
-							y = world.rand.nextInt(20) + 200;
-							z = world.rand.nextInt(20) - 10;
-							motX = world.rand.nextDouble() * 5;
-							motZ = world.rand.nextDouble() * 5;
-
-							EntityKoentusMeteor meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 6);
-
-							if (!world.isRemote)
-							{
-								world.spawnEntityInWorld(meteor);
-							}
-						}
-					}
-				}
-			}
-			if (world.provider instanceof IPolongniusMeteor && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
-			{
-				if (((IPolongniusMeteor) world.provider).getPolongniusMeteorFrequency() > 0)
-				{
-					int f = (int) (((IPolongniusMeteor) world.provider).getPolongniusMeteorFrequency() * 1000D);
-
-					if (world.rand.nextInt(f) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							int x, y, z;
-							double motX, motZ;
-							x = world.rand.nextInt(20) - 10;
-							y = world.rand.nextInt(20) + 200;
-							z = world.rand.nextInt(20) - 10;
-							motX = world.rand.nextDouble() * 5;
-							motZ = world.rand.nextDouble() * 5;
-
-							EntityPolongniusMeteor meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-
-							if (!world.isRemote)
-							{
-								world.spawnEntityInWorld(meteor);
-							}
-						}
-					}
-
-					if (world.rand.nextInt(f * 3) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							int x, y, z;
-							double motX, motZ;
-							x = world.rand.nextInt(20) - 10;
-							y = world.rand.nextInt(20) + 200;
-							z = world.rand.nextInt(20) - 10;
-							motX = world.rand.nextDouble() * 5;
-							motZ = world.rand.nextDouble() * 5;
-
-							EntityPolongniusMeteor meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 6);
-
-							if (!world.isRemote)
-							{
-								world.spawnEntityInWorld(meteor);
-							}
-						}
-					}
-				}
-			}
-			if (world.provider instanceof IIceCrystalMeteor && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
-			{
-				if (((IIceCrystalMeteor) world.provider).getIceCrystalMeteorFrequency() > 0)
-				{
-					int f = (int) (((IIceCrystalMeteor) world.provider).getIceCrystalMeteorFrequency() * 1000D);
-
-					if (world.rand.nextInt(f) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							int x, y, z;
-							double motX, motZ;
-							x = world.rand.nextInt(20) - 10;
-							y = world.rand.nextInt(20) + 200;
-							z = world.rand.nextInt(20) - 10;
-							motX = world.rand.nextDouble() * 5;
-							motZ = world.rand.nextDouble() * 5;
-
-							EntityIceCrystalMeteor meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-
-							if (!world.isRemote)
-							{
-								world.spawnEntityInWorld(meteor);
-							}
-						}
-					}
-
-					if (world.rand.nextInt(f * 3) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							int x, y, z;
-							double motX, motZ;
-							x = world.rand.nextInt(20) - 10;
-							y = world.rand.nextInt(20) + 200;
-							z = world.rand.nextInt(20) - 10;
-							motX = world.rand.nextDouble() * 5;
-							motZ = world.rand.nextDouble() * 5;
-
-							EntityIceCrystalMeteor meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 6);
-
-							if (!world.isRemote)
-							{
-								world.spawnEntityInWorld(meteor);
-							}
-						}
-					}
-				}
-			}
-			if (world.provider instanceof ILightningStorm && FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
-			{
-				if (((ILightningStorm)world.provider).getLightningStormFrequency() > 0)
-				{
-					int f = (int)(((ILightningStorm)world.provider).getLightningStormFrequency() * 1000D);
-
-					if (world.rand.nextInt(f) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							double x = player.posX + world.rand.nextInt(10) - 5;
-							double y = player.posY + world.rand.nextInt(10) + 10;
-							double z = player.posZ + world.rand.nextInt(10) - 5;
-							EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
-
-							if (!world.isRemote)
-							{
-								world.spawnEntityInWorld(lightning);
-							}
-						}
-					}
-
-					if (world.rand.nextInt(f * 3) == 0)
-					{
-						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-						{
-							double x = player.posX + world.rand.nextInt(10) - 5;
-							double y = player.posY + world.rand.nextInt(10) + 10;
-							double z = player.posZ + world.rand.nextInt(10) - 5;
-							EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
-
-							if (!world.isRemote)
-							{
-								for (int i = 0; i < 3; i++)
-								{
-									world.spawnEntityInWorld(lightning);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		// Nibiru planet
-		if (entity.worldObj.provider instanceof WorldProviderNibiru)
-		{
-			if (!(entity instanceof EntityPlayer))
-			{
-				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(entity.worldObj.provider.dimensionId == ((IEntityLivingPlanet)entity).canLivingInDimension().dimID)) && !(entity.getClass() == EntityEvolvedZombie.class || entity.getClass() == EntityEvolvedSpider.class || entity.getClass() == EntityEvolvedSkeleton.class || entity.getClass() == EntityEvolvedCreeper.class || entity.getClass() == EntityEvolvedEnderman.class))
-				{
-					if (!ConfigManagerMP.disableInfectedGas)
-					{
-						entity.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
-					}
-				}
-			}
-			if (entity instanceof EntityPlayer)
-			{
-				EntityPlayer player = (EntityPlayer)entity;
-				InventoryPlayer inventory = player.inventory;
-				IInventoryGC inv = AccessInventoryGC.getGCInventoryForPlayer((EntityPlayerMP) player);
-				boolean armor1 = inv.getStackInSlot(6) != null && inv.getStackInSlot(6).getItem() == MPItems.tier_2_thermal_padding && inv.getStackInSlot(6).getItemDamage() == 0;
-				boolean armor2 = inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == PolongniusArmorItems.purple_crystal_leggings;
-				boolean armor3 = inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == PolongniusArmorItems.purple_crystal_chestplate;
-				boolean armor4 = inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == PolongniusArmorItems.purple_crystal_helmet;
-				boolean fullArmor = armor1 && armor2 && armor3 && armor4;
-
-				if (ConfigManagerMP.disableInfectedGas)
-				{
-					if (player.isPotionActive(MPPotions.infected_gas.id) && fullArmor)
-					{
-						player.removePotionEffect(MPPotions.infected_gas.id);
-					}
-				}
-				if (!ConfigManagerMP.disableInfectedGas)
-				{
-					if (!fullArmor)
-					{
-						if (!player.capabilities.isCreativeMode)
-						{
-							if (player.ticksExisted % 200 == 0)
-							{
-								player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
-							}
-						}
-					}
-					else
-					{
-						player.removePotionEffect(MPPotions.infected_gas.id);
-					}
-				}
-				if (player.isPotionActive(MPPotions.infected_gas.id))
-				{
-					if (player.ticksExisted % 2000 == 0)
-					{
-						player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
-					}
-				}
-			}
-		}
-		// Sirius planet
-		else if (entity.worldObj.provider instanceof WorldProviderSiriusB)
-		{
-			if (!(entity instanceof EntityPlayer))
-			{
-				if (entity.ticksExisted % 100 == 0 && (!(entity instanceof IEntityLivingPlanet) || !(entity.worldObj.provider.dimensionId == ((IEntityLivingPlanet)entity).canLivingInDimension().dimID)))
-				{
-					entity.setFire(50);
-				}
-			}
-		}
+		this.potionTick(living);
 	}
 
 	@SubscribeEvent
@@ -979,142 +685,25 @@ public class MorePlanetEvents
 		World world = event.world;
 		MovingObjectPosition pos = event.target;
 		Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
-		int meta = world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
 
-		if (block == KapteynBBlocks.frozen_water && meta == 0)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(KapteynBItems.frozen_water_bucket);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == PolongniusBlocks.cheese_of_milk && meta == 0)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(PolongniusItems.cheese_of_milk_bucket);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == FronosBlocks.coconut_milk && meta == 0)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 0);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == FronosBlocks.mineral_water && meta == 0)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 1);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == FronosBlocks.ovantine && meta == 0)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 2);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == FronosBlocks.tea && meta == 0)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 3);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == FronosBlocks.caramel && meta == 3)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(FronosItems.fronos_bucket, 1, 4);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == SiriusBBlocks.sirius_lava && meta == 0)
-		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				event.result = new ItemStack(SiriusBItems.sirius_lava_bucket);
-				event.setResult(Result.ALLOW);
-			}
-		}
-		else if (block == IoBlocks.io_lava)
-		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				event.result = new ItemStack(IoItems.io_lava_bucket);
-				event.setResult(Result.ALLOW);
-			}
-		}
-		else if (block == IoBlocks.liquid_red_sulfur)
-		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				event.result = new ItemStack(IoItems.liquid_red_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
-		}
-		else if (block == IoBlocks.liquid_yellow_sulfur)
-		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				event.result = new ItemStack(IoItems.liquid_yellow_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
-		}
-		else if (block == IoBlocks.liquid_orange_sulfur)
-		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				event.result = new ItemStack(IoItems.liquid_orange_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
-		}
-		else if (block == IoBlocks.liquid_brown_sulfur)
-		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				event.result = new ItemStack(IoItems.liquid_brown_sulfur_bucket);
-				event.setResult(Result.ALLOW);
-			}
-		}
-		else if (block == IoBlocks.io_black_lava)
-		{
-			if (event.current.getItem() == Items.bucket)
-			{
-				event.setCanceled(true);
-			}
-			else
-			{
-				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-				event.result = new ItemStack(IoItems.io_black_lava_bucket);
-				event.setResult(Result.ALLOW);
-			}
-		}
-		else if (block == PlutoBlocks.liquid_methane)
+		MorePlanetEvents.registerBucket(event, world, pos, KapteynBBlocks.frozen_water, 0, new ItemStack(KapteynBItems.frozen_water_bucket), false);
+		MorePlanetEvents.registerBucket(event, world, pos, PolongniusBlocks.cheese_of_milk, 0, new ItemStack(PolongniusItems.cheese_of_milk_bucket), false);
+		MorePlanetEvents.registerBucket(event, world, pos, FronosBlocks.coconut_milk, 0, new ItemStack(FronosItems.fronos_bucket, 1, 0), false);
+		MorePlanetEvents.registerBucket(event, world, pos, FronosBlocks.mineral_water, 0, new ItemStack(FronosItems.fronos_bucket, 1, 1), false);
+		MorePlanetEvents.registerBucket(event, world, pos, FronosBlocks.ovantine, 0, new ItemStack(FronosItems.fronos_bucket, 1, 2), false);
+		MorePlanetEvents.registerBucket(event, world, pos, FronosBlocks.tea, 0, new ItemStack(FronosItems.fronos_bucket, 1, 3), false);
+		MorePlanetEvents.registerBucket(event, world, pos, FronosBlocks.caramel, 3, new ItemStack(FronosItems.fronos_bucket, 1, 4), false);
+		MorePlanetEvents.registerBucket(event, world, pos, SiriusBBlocks.sirius_lava, 0, new ItemStack(SiriusBItems.sirius_lava_bucket), true);
+		MorePlanetEvents.registerBucket(event, world, pos, IoBlocks.io_lava, 0, new ItemStack(IoItems.io_lava_bucket), true);
+		MorePlanetEvents.registerBucket(event, world, pos, IoBlocks.liquid_red_sulfur, 0, new ItemStack(IoItems.liquid_red_sulfur_bucket), true);
+		MorePlanetEvents.registerBucket(event, world, pos, IoBlocks.liquid_yellow_sulfur, 0, new ItemStack(IoItems.liquid_yellow_sulfur_bucket), true);
+		MorePlanetEvents.registerBucket(event, world, pos, IoBlocks.liquid_orange_sulfur, 0, new ItemStack(IoItems.liquid_orange_sulfur_bucket), true);
+		MorePlanetEvents.registerBucket(event, world, pos, IoBlocks.liquid_brown_sulfur, 0, new ItemStack(IoItems.liquid_brown_sulfur_bucket), true);
+		MorePlanetEvents.registerBucket(event, world, pos, IoBlocks.io_black_lava, 0, new ItemStack(IoItems.io_black_lava_bucket), true);
+		MorePlanetEvents.registerBucket(event, world, pos, MercuryBlocks.dirty_water, 0, new ItemStack(MercuryItems.dirty_water_bucket), false);
+		MorePlanetEvents.registerBucket(event, world, pos, EuropaBlocks.europa_water, 0, new ItemStack(EuropaItems.europa_water_bucket), false);
+
+		if (block == PlutoBlocks.liquid_methane)
 		{
 			if (event.current.getItem() == Items.bucket)
 			{
@@ -1139,18 +728,6 @@ public class MorePlanetEvents
 				//event.result = new ItemStack(IoItems.liquid_brown_sulfur_bucket);
 				//event.setResult(Result.ALLOW);
 			}
-		}
-		else if (block == MercuryBlocks.dirty_water)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(MercuryItems.dirty_water_bucket);
-			event.setResult(Result.ALLOW);
-		}
-		else if (block == EuropaBlocks.europa_water)
-		{
-			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-			event.result = new ItemStack(EuropaItems.europa_water_bucket);
-			event.setResult(Result.ALLOW);
 		}
 	}
 
@@ -1187,18 +764,436 @@ public class MorePlanetEvents
 		}
 	}
 
-	public static void getActivateInfectedGas(EntityPlayer player)
+	private void potionTick(EntityLivingBase living)
 	{
-		IInventoryGC inv = AccessInventoryGC.getGCInventoryForPlayer((EntityPlayerMP) player);
-		boolean armor1 = player.inventory.armorInventory[0] != null && player.inventory.armorInventory[0].getItem() == PolongniusArmorItems.purple_crystal_boots;
-		boolean armor2 = player.inventory.armorInventory[1] != null && player.inventory.armorInventory[1].getItem() == PolongniusArmorItems.purple_crystal_leggings;
-		boolean armor3 = player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() == PolongniusArmorItems.purple_crystal_chestplate;
-		boolean armor4 = player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() == PolongniusArmorItems.purple_crystal_helmet;
+		if (living.isPotionActive(MPPotions.infected_gas))
+		{
+			if (living.ticksExisted % 35 == 0)
+			{
+				living.attackEntityFrom(DamageSourceMP.infectedGas, 1.0F + living.getActivePotionEffect(MPPotions.infected_gas).getAmplifier());
+			}
+			if (living.getActivePotionEffect(MPPotions.infected_gas).getDuration() == 0)
+			{
+				living.removePotionEffect(MPPotions.infected_gas.id);
+			}
+		}
+		else if (living.isPotionActive(MPPotions.chemical))
+		{
+			if (living.ticksExisted % 8 == 0)
+			{
+				living.attackEntityFrom(DamageSourceMP.chemical, 1.0F + living.getActivePotionEffect(MPPotions.chemical).getAmplifier());
+			}
+			if (living.getActivePotionEffect(MPPotions.chemical).getDuration() == 0)
+			{
+				living.removePotionEffect(MPPotions.chemical.id);
+			}
+		}
+		else if (living.isPotionActive(MPPotions.electro_magnetic_pulse))
+		{
+			if (!living.worldObj.isRemote)
+			{
+				living.motionX = 0.0F;
+				living.motionY = -1.0F;
+				living.motionZ = 0.0F;
+			}
+			if (living.getActivePotionEffect(MPPotions.electro_magnetic_pulse).getDuration() == 0)
+			{
+				living.removePotionEffect(MPPotions.electro_magnetic_pulse.id);
+			}
+		}
+		else if (living.isPotionActive(MPPotions.icy_poison))
+		{
+			living.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F + living.getActivePotionEffect(MPPotions.icy_poison).getAmplifier());
+
+			if (living.getActivePotionEffect(MPPotions.icy_poison).getDuration() == 0)
+			{
+				living.removePotionEffect(MPPotions.icy_poison.id);
+			}
+		}
+	}
+
+	private void spawnFeces(World world, EntityPlayerMP player)
+	{
+		if (world.provider instanceof WorldProviderMars)
+		{
+			if (world.getWorldTime() == 7000L)
+			{
+				EntityItem item = new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(MPItems.feces));
+				item.delayBeforeCanPickup = 10;
+				world.playSoundAtEntity(player, "mob.chicken.plop", 0.75F, (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 0.6F);
+				world.spawnEntityInWorld(item);
+			}
+			if (world.getWorldTime() == 12000L)
+			{
+				EntityItem item = new EntityItem(world, player.posX, player.posY, player.posZ, new ItemStack(MPItems.feces));
+				item.delayBeforeCanPickup = 10;
+				world.playSoundAtEntity(player, "mob.chicken.plop", 0.75F, (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 0.6F);
+				world.spawnEntityInWorld(item);
+			}
+		}
+	}
+
+	private void spawnMeteor(World world, EntityPlayerMP player, IMeteorType type)
+	{
+		Entity meteor = null;
+
+		if (FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+		{
+			if (((IMeteorType)world.provider).getMeteorSpawnFrequency() > 0.0D)
+			{
+				int f = (int) (((IMeteorType)world.provider).getMeteorSpawnFrequency() * 1000D);
+
+				if (world.rand.nextInt(f) == 0)
+				{
+					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+					{
+						int x, y, z;
+						double motX, motZ;
+						x = world.rand.nextInt(20) - 10;
+						y = world.rand.nextInt(20) + 200;
+						z = world.rand.nextInt(20) - 10;
+						motX = world.rand.nextDouble() * 5;
+						motZ = world.rand.nextDouble() * 5;
+
+						switch (type.getMeteorEventType())
+						{
+						case 0:
+							meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+							break;
+						case 1:
+							meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+							break;
+						case 2:
+							meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+							break;
+						}
+
+						if (!world.isRemote)
+						{
+							world.spawnEntityInWorld(meteor);
+							MPLog.debug("Spawn %s at %s %s %s", meteor.getClass().getSimpleName(), (int)meteor.posX, (int)meteor.posY, (int)meteor.posZ);
+						}
+					}
+				}
+				if (world.rand.nextInt(f * 3) == 0)
+				{
+					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+					{
+						int x, y, z;
+						double motX, motZ;
+						x = world.rand.nextInt(20) - 10;
+						y = world.rand.nextInt(20) + 200;
+						z = world.rand.nextInt(20) - 10;
+						motX = world.rand.nextDouble() * 5;
+						motZ = world.rand.nextDouble() * 5;
+
+						switch (type.getMeteorEventType())
+						{
+						case 0:
+							meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+							break;
+						case 1:
+							meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+							break;
+						case 2:
+							meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+							break;
+						}
+
+						if (!world.isRemote)
+						{
+							world.spawnEntityInWorld(meteor);
+							MPLog.debug("Spawn %s at %s %s %s", meteor.getClass().getSimpleName(), (int)meteor.posX, (int)meteor.posY, (int)meteor.posZ);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	private void spawnLightningBolt(World world, EntityPlayerMP player)
+	{
+		if (FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+		{
+			if (((ILightningStorm)world.provider).getLightningStormFrequency() > 0.0D)
+			{
+				int f = (int)(((ILightningStorm)world.provider).getLightningStormFrequency() * 1000D);
+
+				if (world.rand.nextInt(f) == 0)
+				{
+					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+					{
+						double x = player.posX + world.rand.nextInt(25) - 5;
+						double y = player.posY + world.rand.nextInt(10);
+						double z = player.posZ + world.rand.nextInt(25) - 5;
+						EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
+
+						if (!world.isRemote)
+						{
+							world.spawnEntityInWorld(lightning);
+							MPLog.debug("Spawn Bolt at %s %s %s", (int)lightning.posX, (int)lightning.posY, (int)lightning.posZ);
+						}
+					}
+				}
+				if (world.rand.nextInt(f * 3) == 0)
+				{
+					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+					{
+						double x = player.posX + world.rand.nextInt(25) - 5;
+						double y = player.posY + world.rand.nextInt(10);
+						double z = player.posZ + world.rand.nextInt(25) - 5;
+						EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
+
+						if (!world.isRemote)
+						{
+							for (int i = 0; i < 3; i++)
+							{
+								world.spawnEntityInWorld(lightning);
+								MPLog.debug("Spawn Bolt at %s %s %s", (int)lightning.posX, (int)lightning.posY, (int)lightning.posZ);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	private void spawnDarkAsteroids(World world, EntityPlayerMP player)
+	{
+		if (!world.isRemote && world.provider instanceof WorldProviderDarkAsteroids)
+		{
+			int f = 50;
+
+			if (world.rand.nextInt(f) == 0 && player.posY < 260D)
+			{
+				EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+				if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+				{
+					double x, y, z;
+					double motX, motY, motZ;
+					double r = world.rand.nextInt(60)+30D;
+					double theta = Math.PI * 2.0 * world.rand.nextDouble();
+					x = player.posX + Math.cos(theta) * r;
+					y = player.posY + world.rand.nextInt(5);
+					z = player.posZ + Math.sin(theta) * r;
+					motX = (player.posX - x + (world.rand.nextDouble() - 0.5) * 40) / 400.0F;
+					motY = (world.rand.nextDouble() - 0.5) * 0.4;
+					motZ = (player.posZ - z + (world.rand.nextDouble() - 0.5) * 40) / 400.0F;
+
+					EntityDarkAsteroid smallAsteroid = new EntityDarkAsteroid(world);
+					smallAsteroid.setPosition(x, y, z);
+					smallAsteroid.motionX = motX;
+					smallAsteroid.motionY = motY;
+					smallAsteroid.motionZ = motZ;
+					smallAsteroid.spinYaw = world.rand.nextFloat() * 4;
+					smallAsteroid.spinPitch = world.rand.nextFloat() * 2;
+					world.spawnEntityInWorld(smallAsteroid);
+				}
+			}
+		}
+	}
+
+	private void doInfectedGasForEntity(World world, EntityLivingBase living, EntityPlayerMP player)
+	{
+		if (world.provider instanceof WorldProviderNibiru)
+		{
+			if (!(living instanceof EntityPlayerMP))
+			{
+				if (living.ticksExisted % 100 == 0 && (!(living instanceof IEntityLivingPlanet) || !(world.provider.dimensionId == ((IEntityLivingPlanet)living).canLivingInDimension().dimID)) && !(living.getClass() == EntityEvolvedZombie.class || living.getClass() == EntityEvolvedSpider.class || living.getClass() == EntityEvolvedSkeleton.class || living.getClass() == EntityEvolvedCreeper.class || living.getClass() == EntityEvolvedEnderman.class))
+				{
+					living.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+				}
+			}
+			if (ConfigManagerMP.disableInfectedGas)
+			{
+				if (player.isPotionActive(MPPotions.infected_gas.id) && MorePlanetEvents.getTier2ThermalArmor(player))
+				{
+					player.removePotionEffect(MPPotions.infected_gas.id);
+				}
+			}
+			else
+			{
+				if (!MorePlanetEvents.getTier2ThermalArmor(player))
+				{
+					if (player.ticksExisted % 200 == 0 && !player.capabilities.isCreativeMode)
+					{
+						player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+					}
+				}
+				else
+				{
+					player.removePotionEffect(MPPotions.infected_gas.id);
+				}
+			}
+		}
+		if (player.isPotionActive(MPPotions.infected_gas.id))
+		{
+			if (player.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
+			{
+				player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
+			}
+		}
+	}
+
+	private void doSiriusFire(World world, EntityLivingBase living)
+	{
+		if (world.provider instanceof WorldProviderSiriusB)
+		{
+			if (!(living instanceof EntityPlayerMP))
+			{
+				if (living.ticksExisted % 100 == 0 && (!(living instanceof IEntityLivingPlanet) || !(world.provider.dimensionId == ((IEntityLivingPlanet)living).canLivingInDimension().dimID)))
+				{
+					living.setFire(15);
+				}
+			}
+		}
+	}
+
+	private void removeIcyPoison(EntityPlayerMP player)
+	{
+		InventoryPlayer inventory = player.inventory;
+		boolean armor1 = inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == KapteynBArmorItems.ice_crystal_boots;
+		boolean armor2 = inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == KapteynBArmorItems.ice_crystal_leggings;
+		boolean armor3 = inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == KapteynBArmorItems.ice_crystal_chestplate;
+		boolean armor4 = inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == KapteynBArmorItems.ice_crystal_helmet || inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == KapteynBArmorItems.breathable_ice_crystal_helmet;
 		boolean fullArmor = armor1 && armor2 && armor3 && armor4;
 
-		if (ConfigManagerMP.disableInfectedGas && !fullArmor)
+		if (fullArmor && player.isPotionActive(MPPotions.icy_poison.id))
 		{
-			player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+			player.removePotionEffect(MPPotions.icy_poison.id);
+		}
+	}
+
+	private void glowSapling(BonemealEvent event, World world, Block block)
+	{
+		if (event.block == block)
+		{
+			event.setResult(Result.ALLOW);
+
+			if (!world.isRemote)
+			{
+				if (world.rand.nextFloat() < 0.45D)
+				{
+					((BlockSapling)block).func_149878_d(world, event.x, event.y, event.z, world.rand);
+				}
+			}
+		}
+	}
+
+	private void glowTallGrass(BonemealEvent event, Random rand, int x, int z, Block grass, Block tallGrass, int meta, int randMeta, boolean useRand)
+	{
+		if (event.block == grass)
+		{
+			int y = event.y + 1;
+
+			for (int i1 = 0; i1 < 128; ++i1)
+			{
+				for (int i2 = 0; i2 < i1 / 16; ++i2)
+				{
+					x += event.world.rand.nextInt(3) - 1;
+					y += (event.world.rand.nextInt(3) - 1) * event.world.rand.nextInt(3) / 2;
+					z += event.world.rand.nextInt(3) - 1;
+				}
+				if (event.world.getBlock(x, y, z).isAir(event.world, x, y, z))
+				{
+					if (!useRand)
+					{
+						if (tallGrass.canReplace(event.world, x, y, z, 0, new ItemStack(tallGrass, 1, meta)))
+						{
+							event.setResult(Result.ALLOW);
+
+							if (!event.world.isRemote)
+							{
+								event.world.setBlock(x, y, z, tallGrass, meta, 2);
+							}
+						}
+					}
+					else
+					{
+						if (tallGrass.canReplace(event.world, x, y, z, 0, new ItemStack(tallGrass, 1, rand.nextInt(meta) + randMeta)))
+						{
+							event.setResult(Result.ALLOW);
+
+							if (!event.world.isRemote)
+							{
+								event.world.setBlock(x, y, z, tallGrass, rand.nextInt(meta) + randMeta, 2);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public static void addInfectedGas(EntityPlayer player)
+	{
+		if (player instanceof EntityPlayerMP)
+		{
+			EntityPlayerMP playerMP = (EntityPlayerMP)player;
+
+			if (ConfigManagerMP.disableInfectedGas && !MorePlanetEvents.getTier2ThermalArmor(playerMP))
+			{
+				playerMP.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+			}
+		}
+	}
+
+	public static boolean getTier2ThermalArmor(EntityPlayerMP player)
+	{
+		IInventoryGC inv = AccessInventoryGC.getGCInventoryForPlayer(player);
+		boolean armor1 = inv.getStackInSlot(6) != null && inv.getStackInSlot(6).getItem() == MPItems.tier_2_thermal_padding && inv.getStackInSlot(6).getItemDamage() == 0;
+		boolean armor2 = inv.getStackInSlot(7) != null && inv.getStackInSlot(7).getItem() == MPItems.tier_2_thermal_padding && inv.getStackInSlot(7).getItemDamage() == 1;
+		boolean armor3 = inv.getStackInSlot(8) != null && inv.getStackInSlot(8).getItem() == MPItems.tier_2_thermal_padding && inv.getStackInSlot(8).getItemDamage() == 2;
+		boolean armor4 = inv.getStackInSlot(9) != null && inv.getStackInSlot(9).getItem() == MPItems.tier_2_thermal_padding && inv.getStackInSlot(9).getItemDamage() == 3;
+		return armor1 && armor2 && armor3 && armor4;
+	}
+
+	public static boolean getTier3ThermalArmor(EntityPlayerMP player)
+	{
+		IInventoryGC inv = AccessInventoryGC.getGCInventoryForPlayer(player);
+		boolean armor1 = inv.getStackInSlot(6) != null && inv.getStackInSlot(6).getItem() == MPItems.tier_3_thermal_padding && inv.getStackInSlot(6).getItemDamage() == 0;
+		boolean armor2 = inv.getStackInSlot(7) != null && inv.getStackInSlot(7).getItem() == MPItems.tier_3_thermal_padding && inv.getStackInSlot(7).getItemDamage() == 1;
+		boolean armor3 = inv.getStackInSlot(8) != null && inv.getStackInSlot(8).getItem() == MPItems.tier_3_thermal_padding && inv.getStackInSlot(8).getItemDamage() == 2;
+		boolean armor4 = inv.getStackInSlot(9) != null && inv.getStackInSlot(9).getItem() == MPItems.tier_3_thermal_padding && inv.getStackInSlot(9).getItemDamage() == 3;
+		return armor1 && armor2 && armor3 && armor4;
+	}
+
+	public static boolean getIceCrystalArmor(EntityPlayerMP player)
+	{
+		InventoryPlayer inventory = player.inventory;
+		boolean armor1 = inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == KapteynBArmorItems.ice_crystal_boots;
+		boolean armor2 = inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == KapteynBArmorItems.ice_crystal_leggings;
+		boolean armor3 = inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == KapteynBArmorItems.ice_crystal_chestplate;
+		boolean armor4 = inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == KapteynBArmorItems.ice_crystal_helmet || inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == KapteynBArmorItems.breathable_ice_crystal_helmet;
+		return armor1 && armor2 && armor3 && armor4;
+	}
+
+	private static void registerBucket(FillBucketEvent event, World world, MovingObjectPosition pos, Block block, int meta, ItemStack itemStack, boolean cancelBucket)
+	{
+		if (world.getBlock(pos.blockX, pos.blockY, pos.blockZ) == block && world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == meta)
+		{
+			if (cancelBucket)
+			{
+				if (event.current.getItem() == Items.bucket)
+				{
+					event.setCanceled(true);
+				}
+			}
+			else
+			{
+				world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
+				event.result = itemStack;
+				event.setResult(Result.ALLOW);
+			}
 		}
 	}
 }

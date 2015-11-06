@@ -23,6 +23,7 @@ import micdoodle8.mods.galacticraft.api.world.SpaceStationType;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import micdoodle8.mods.galacticraft.core.recipe.RecipeManagerGC;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
+import micdoodle8.mods.galacticraft.planets.mars.ConfigManagerMars;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -116,7 +117,7 @@ public class MorePlanetsCore
 	public static CreativeTabs mpItemsTab;
 	public static CreativeTabs mpToolsTab;
 	public static CreativeTabs mpArmorTab;
-	
+
 	public static MorePlanetsChannelHandler packetPipeline;
 
 	public static Planet siriusB;
@@ -125,22 +126,25 @@ public class MorePlanetsCore
 	public static Planet nibiru;
 	public static Planet fronos;
 	public static Planet kapteynB;
+	public static Planet darkAsteroids;
 
 	public static Planet mercury;
 	public static Planet venus;
 	public static Planet pluto;
 	public static Planet jupiter;
 
-	public static Planet koentus; // TODO Again -.-
+	public static Moon koentus;
 	public static Moon phobos;
 	public static Moon deimos;
 	public static Moon io;
 
 	public static Star sirius;
 	public static Star kapteyn;
+	public static Star darkStar;
 
 	public static SolarSystem siriusSolarSystem;
 	public static SolarSystem kapteynBSolarSystem;
+	public static SolarSystem darkSolarSystem;
 
 	public static Satellite marsSpaceStation;
 	public static Satellite jupiterSpaceStation;
@@ -269,11 +273,19 @@ public class MorePlanetsCore
 		DispenserRegistryMP.init();
 
 		HashMap<Object, Integer> inputMap = new HashMap<Object, Integer>();
-		inputMap.put("ingotTin", 32);
-		inputMap.put(RecipeManagerGC.aluminumIngots, 16);
-		inputMap.put("waferAdvanced", 1);
-		inputMap.put("ingotIron", 24);
+		inputMap.put("ingotTin", 80);
+		inputMap.put(RecipeManagerGC.aluminumIngots, 48);
+		inputMap.put("waferAdvanced", 10);
+		inputMap.put("ingotIron", 32);
+		inputMap.put("ingotDesh", 16);
 		GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionJupiter, new SpaceStationRecipe(inputMap)));
+
+		HashMap<Object, Integer> inputMap2 = new HashMap<Object, Integer>();
+		inputMap2.put("ingotTin", 64);
+		inputMap2.put(RecipeManagerGC.aluminumIngots, 24);
+		inputMap2.put("waferAdvanced", 3);
+		inputMap2.put("ingotIron", 48);
+		GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMars.dimensionIDMars, new SpaceStationRecipe(inputMap2)));
 	}
 
 	@EventHandler

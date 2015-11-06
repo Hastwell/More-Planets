@@ -30,12 +30,6 @@ public class ItemRendererTier2ThermalArmor implements IItemRenderer
 				float time = FMLClientHandler.instance().getClientPlayerEntity().ticksExisted / 15.0F;
 				float r = (float) Math.max(Math.cos(time), 0.0F);
 				float b = (float) Math.max(Math.cos(time) * -1, 0.0F);
-
-				if (r <= 0.6 && b <= 0.6)
-				{
-					r = 0.0F;
-					b = 0.0F;
-				}
 				GL11.glColor4f(r * 1.0F, b / 2.0F, b * 5.0F, r + b / 1.5F);
 			}
 

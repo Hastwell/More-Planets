@@ -11,9 +11,11 @@ import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickSlab;
 import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickSlab.DungeonSlabCategory;
 import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickWall;
+import stevekung.mods.moreplanets.core.blocks.BlockPolishedSpaceDecoration;
 import stevekung.mods.moreplanets.core.blocks.BlockSlabMP;
 import stevekung.mods.moreplanets.core.blocks.BlockSlabMP.SlabCategory;
 import stevekung.mods.moreplanets.core.blocks.BlockTintedGlass;
@@ -24,6 +26,7 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockChondrite;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickSlab;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickWall;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSlabMP;
+import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSpaceDecoration;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockTintedGlassPane;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockWallMP;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
@@ -55,6 +58,7 @@ public class MPBlocks
 	public static Block chondrite_block;
 	public static Block tinted_glass;
 	public static Block tinted_glass_pane;
+	public static Block space_decoration_block;
 
 	public static Block stone_wall;
 	public static Block dungeon_brick_wall;
@@ -85,6 +89,7 @@ public class MPBlocks
 		DeimosBlocks.init();
 		IoBlocks.init();
 		EuropaBlocks.init();
+		DarkAsteroidsBlocks.init();
 
 		MPBlocks.initNEI();
 	}
@@ -96,6 +101,7 @@ public class MPBlocks
 		MPBlocks.chondrite_block = new BlockChondrite("chondrite_block");
 		MPBlocks.tinted_glass = new BlockTintedGlass("tinted_glass");
 		MPBlocks.tinted_glass_pane = new BlockTintedGlassPane("tinted_glass_pane");
+		MPBlocks.space_decoration_block = new BlockPolishedSpaceDecoration("space_decoration_block");
 	}
 
 	private static void initSlabBlocks()
@@ -153,6 +159,7 @@ public class MPBlocks
 		MPBlocks.chondrite_block.setHarvestLevel("pickaxe", 1);
 		MPBlocks.dungeon_brick_slab_half.setHarvestLevel("pickaxe", 1);
 		MPBlocks.dungeon_brick_slab_full.setHarvestLevel("pickaxe", 1);
+		MPBlocks.space_decoration_block.setHarvestLevel("pickaxe", 1);
 
 		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 0);
 		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 1);
@@ -181,6 +188,7 @@ public class MPBlocks
 	private static void registerBlocks()
 	{
 		RegisterHelper.registerBlock(MPBlocks.chondrite_block, ItemBlockChondrite.class);
+		RegisterHelper.registerBlock(MPBlocks.space_decoration_block, ItemBlockSpaceDecoration.class);
 		RegisterHelper.registerBlock(MPBlocks.tinted_glass, ItemBlockTintedGlassPane.class);
 		RegisterHelper.registerBlock(MPBlocks.tinted_glass_pane, ItemBlockTintedGlassPane.class);
 		RegisterHelper.registerBlock(MPBlocks.stone_wall, ItemBlockWallMP.class);

@@ -7,23 +7,39 @@
 
 package stevekung.mods.moreplanets.planets.diona.items;
 
+import micdoodle8.mods.galacticraft.core.energy.item.ItemElectricBase;
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityLaserMP;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemLaserGun extends ItemMorePlanet
+public class ItemLaserGun extends ItemElectricBase
 {
 	public ItemLaserGun(String name)
 	{
 		super();
 		this.setMaxStackSize(1);
-		this.setMaxDamage(860);
 		this.setUnlocalizedName(name);
+	}
+
+	@Override
+	public CreativeTabs getCreativeTab()
+	{
+		return MorePlanetsCore.mpItemsTab;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack itemStack)
+	{
+		return ClientProxyCore.galacticraftItem;
 	}
 
 	@Override
@@ -45,10 +61,14 @@ public class ItemLaserGun extends ItemMorePlanet
 	{
 		boolean flag = player.capabilities.isCreativeMode;
 
-		if (flag || player.inventory.hasItem(DionaItems.laser_charge))
+		if (this.getElectricityStored(itemStack) == 0.0F)
+		{
+			flag = false;
+		}
+		if (flag || player.inventory.hasItem(DionaItems.laser_charge) && this.getElectricityStored(itemStack) >= 500.0F)
 		{
 			EntityLaserMP laser = new EntityLaserMP(world, player, 1.0F);
-			itemStack.damageItem(1, player);
+			this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 500.0F);
 			world.playSoundAtEntity(player, "mpcore:player.laser", 1.0F, 2.0F / (1.0F * 0.4F + 1.2F) + 1.0F * 0.5F);
 			int slot = -1;
 
@@ -127,5 +147,11 @@ public class ItemLaserGun extends ItemMorePlanet
 			}
 		}
 		return itemStack;
+	}
+
+	@Override
+	public float getMaxElectricityStored(ItemStack itemStack)
+	{
+		return 100000.0F;
 	}
 }

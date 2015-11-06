@@ -27,8 +27,11 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.core.util.DamageSourceMP;
+import cpw.mods.fml.common.registry.IThrowableEntity;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityLaserMP extends EntityArrow
+public class EntityLaserMP extends EntityArrow implements IThrowableEntity
 {
 	private int xTile = -1;
 	private int yTile = -1;
@@ -49,6 +52,47 @@ public class EntityLaserMP extends EntityArrow
 	public EntityLaserMP(World par1World, double par2, double par4, double par6)
 	{
 		super(par1World, par2, par4, par6);
+	}
+
+	@Override
+	public void setThrowableHeading(double headingX, double headingY, double headingZ, float speed, float randMod)
+	{
+		float f2 = MathHelper.sqrt_double(headingX * headingX + headingY * headingY + headingZ * headingZ);
+		headingX /= f2;
+		headingY /= f2;
+		headingZ /= f2;
+		headingX += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * randMod;
+		headingY += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * randMod;
+		headingZ += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * randMod;
+		speed = 4.0F;
+		headingX *= speed;
+		headingY *= speed;
+		headingZ *= speed;
+		this.motionX = headingX;
+		this.motionY = headingY;
+		this.motionZ = headingZ;
+		float f3 = MathHelper.sqrt_double(headingX * headingX + headingZ * headingZ);
+		this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(headingX, headingZ) * 180.0D / Math.PI);
+		this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(headingY, f3) * 180.0D / Math.PI);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void setVelocity(double x, double y, double z)
+	{
+		this.motionX = x;
+		this.motionY = y;
+		this.motionZ = z;
+
+		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
+		{
+			float f = MathHelper.sqrt_double(x * x + z * z);
+			this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(x, z) * 180.0D / Math.PI);
+			this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(y, f) * 180.0D / Math.PI);
+			this.prevRotationPitch = this.rotationPitch;
+			this.prevRotationYaw = this.rotationYaw;
+			this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
+		}
 	}
 
 	@Override
@@ -316,7 +360,7 @@ public class EntityLaserMP extends EntityArrow
 		}
 
 		this.motionX *= f4;
-		this.motionY += 0.0F;
+		this.motionY *= f4;
 		this.motionZ *= f4;
 		this.setPosition(this.posX, this.posY, this.posZ);
 		this.func_145775_I();
@@ -325,5 +369,17 @@ public class EntityLaserMP extends EntityArrow
 		{
 			this.setDead();
 		}
+	}
+
+	@Override
+	public Entity getThrower()
+	{
+		return this.shootingEntity;
+	}
+
+	@Override
+	public void setThrower(Entity entity)
+	{
+		this.shootingEntity = entity;
 	}
 }
