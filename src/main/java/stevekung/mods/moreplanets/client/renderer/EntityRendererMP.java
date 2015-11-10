@@ -11,11 +11,11 @@ import micdoodle8.mods.galacticraft.core.client.objload.AdvancedModelLoader;
 import micdoodle8.mods.galacticraft.core.client.objload.IModelCustom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.client.renderer.entities.RenderRocketMP;
-import stevekung.mods.moreplanets.client.renderer.entities.RenderSnowballMP;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaCrab;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaGuardian;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaSquid;
@@ -57,6 +57,7 @@ import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderCr
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderFronosVillager;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderGrappy;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderJellySlime;
+import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderJellySlimePet;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderKiwi;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderMarshmallow;
@@ -66,6 +67,7 @@ import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderSt
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderTier7Rocket;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderTomato;
+import stevekung.mods.moreplanets.planets.fronos.client.render.projectile.RenderCreamBall;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityBearry;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityBerry;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamCat;
@@ -74,6 +76,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamSlime;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosVillager;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlime;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlimePet;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
@@ -82,14 +85,8 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTier7Rocket;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityChocolateCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityLemonCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityOrangeCreamBall;
+import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityCreamBall;
 import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityPoisonArrow;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityStrawberryCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityTeaCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityVanillaCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderTier8Rocket;
@@ -176,6 +173,7 @@ public class EntityRendererMP
 		RenderingRegistry.registerEntityRenderingHandler(EntityMarshmallow.class, new RenderMarshmallow(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityKiwi.class, new RenderKiwi(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityJellySlime.class, new RenderJellySlime(render));
+		RenderingRegistry.registerEntityRenderingHandler(EntityJellySlimePet.class, new RenderJellySlimePet(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCreamSlime.class, new RenderCreamSlime(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLemonDuck.class, new RenderLemonDuck(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityStarfish.class, new RenderStarfish(render));
@@ -222,12 +220,7 @@ public class EntityRendererMP
 		RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteorChunk.class, new RenderKoentusMeteorChunk(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteor.class, new RenderKoentusMeteor(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityVanillaCreamBall.class, new RenderSnowballMP(render, new ItemStack(FronosItems.cream_ball, 1, 0)));
-		RenderingRegistry.registerEntityRenderingHandler(EntityChocolateCreamBall.class, new RenderSnowballMP(render, new ItemStack(FronosItems.cream_ball, 1, 1)));
-		RenderingRegistry.registerEntityRenderingHandler(EntityStrawberryCreamBall.class, new RenderSnowballMP(render, new ItemStack(FronosItems.cream_ball, 1, 2)));
-		RenderingRegistry.registerEntityRenderingHandler(EntityOrangeCreamBall.class, new RenderSnowballMP(render, new ItemStack(FronosItems.cream_ball, 1, 3)));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTeaCreamBall.class, new RenderSnowballMP(render, new ItemStack(FronosItems.cream_ball, 1, 4)));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLemonCreamBall.class, new RenderSnowballMP(render, new ItemStack(FronosItems.cream_ball, 1, 5)));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCreamBall.class, new RenderCreamBall(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPoisonArrow.class, new RenderPoisonArrow(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTier7Rocket.class, new RenderTier7Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_7_rocket"));
 
@@ -239,5 +232,7 @@ public class EntityRendererMP
 		RenderingRegistry.registerEntityRenderingHandler(EntityLargeSiriusFireball.class, new RenderLargeSiriusFireball(render));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb(render));
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new RenderDarkAsteroid(render));
 	}
 }

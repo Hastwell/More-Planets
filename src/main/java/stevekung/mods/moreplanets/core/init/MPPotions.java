@@ -36,10 +36,10 @@ public class MPPotions
 
 	private static void intializePotions()
 	{
-		MPPotions.infected_gas = new InfectedGasEffect(ConfigManagerMP.idPotionInfectedGas, true, -4502242).setPotionName("potion.infected.gas");
-		MPPotions.chemical = new ChemicalEffect(ConfigManagerMP.idPotionChemical, true, -16718336).setPotionName("potion.chemical");
-		MPPotions.electro_magnetic_pulse = new EMPEffect(ConfigManagerMP.idPotionEMP, true, -14258727).setPotionName("potion.emp").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "45166E8E-7CE8-4030-940E-514C1F160890", -2.5D, 2);
-		MPPotions.icy_poison = new IcyPoisonEffect(ConfigManagerMP.idPotionIcyPoison, true, -6564921).setPotionName("potion.icy_poison").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "9623E0072-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
+		MPPotions.infected_gas = new InfectedGasEffect(ConfigManagerMP.idPotionInfectedGas, -4502242).setPotionName("potion.infected.gas");
+		MPPotions.chemical = new ChemicalEffect(ConfigManagerMP.idPotionChemical, -16718336).setPotionName("potion.chemical");
+		MPPotions.electro_magnetic_pulse = new EMPEffect(ConfigManagerMP.idPotionEMP, -14258727).setPotionName("potion.emp").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "45166E8E-7CE8-4030-940E-514C1F160890", -2.5D, 2);
+		MPPotions.icy_poison = new IcyPoisonEffect(ConfigManagerMP.idPotionIcyPoison, -6564921).setPotionName("potion.icy_poison").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "9623E0072-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
 	}
 
 	private static void initPotionHook()
@@ -64,6 +64,7 @@ public class MPPotions
 			catch (Exception e)
 			{
 				MPLog.error("Potion registering failed, please report this to More Planets GitHub");
+				e.printStackTrace();
 			}
 		}
 	}

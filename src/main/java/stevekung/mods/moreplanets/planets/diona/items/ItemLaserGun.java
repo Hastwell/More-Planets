@@ -42,13 +42,6 @@ public class ItemLaserGun extends ItemElectricBase
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
-
-	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
 	{
 		boolean flag = player.capabilities.isCreativeMode;
@@ -57,12 +50,16 @@ public class ItemLaserGun extends ItemElectricBase
 		{
 			flag = false;
 		}
-		if (flag || player.inventory.hasItem(DionaItems.laser_ammo) && this.getElectricityStored(itemStack) >= 500.0F)
+		if (this.getElectricityStored(itemStack) >= 250.0F && (flag || player.inventory.hasItem(DionaItems.laser_ammo)))
 		{
 			EntityLaserMP laser = new EntityLaserMP(world, player, 1.0F);
-			this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 500.0F);
 			world.playSoundAtEntity(player, "moreplanets:player.laser", 1.0F, 2.0F / (1.0F * 0.4F + 1.2F) + 1.0F * 0.5F);
 			int slot = -1;
+
+			if (!flag)
+			{
+				this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 250.0F);
+			}
 
 			if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 0)))
 			{

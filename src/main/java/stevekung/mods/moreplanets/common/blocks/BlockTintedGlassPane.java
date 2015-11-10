@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.common.blocks;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.BlockPane;
@@ -32,7 +33,7 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
-public class BlockTintedGlassPane extends BlockPane
+public class BlockTintedGlassPane extends BlockPane implements IPartialSealableBlock
 {
 	public static PropertyEnum COLOR = PropertyEnum.create("color", EnumDyeColor.class);
 
@@ -40,7 +41,7 @@ public class BlockTintedGlassPane extends BlockPane
 	{
 		super(Material.glass, false);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)).withProperty(COLOR, EnumDyeColor.WHITE));
-		this.setHardness(0.3F);
+		this.setHardness(0.5F);
 		this.setResistance(20.0F);
 		this.setStepSound(soundTypeGlass);
 		this.setUnlocalizedName(name);
@@ -169,5 +170,11 @@ public class BlockTintedGlassPane extends BlockPane
 		BlockPos off = pos.offset(facing);
 		Block block = world.getBlockState(off).getBlock();
 		return block == MPBlocks.tinted_glass || block == FronosBlocks.cheese_glass || super.canPaneConnectTo(world, pos, facing);
+	}
+
+	@Override
+	public boolean isSealed(World world, BlockPos pos, EnumFacing facing)
+	{
+		return true;
 	}
 }

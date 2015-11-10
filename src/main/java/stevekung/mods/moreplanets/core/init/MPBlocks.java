@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.common.blocks.BlockChondriteRock;
 import stevekung.mods.moreplanets.common.blocks.BlockDoubleDungeonBrickSlab1;
 import stevekung.mods.moreplanets.common.blocks.BlockDoubleStoneSlab1MP;
@@ -133,6 +134,7 @@ public class MPBlocks
 		DeimosBlocks.init();
 		IoBlocks.init();
 		EuropaBlocks.init();
+		DarkAsteroidsBlocks.init();
 
 		// Set harvest level
 		MPBlocks.half_stone_slab_1.setHarvestLevel("pickaxe", 0);
@@ -195,6 +197,8 @@ public class MPBlocks
 		highlightBlockList.add(DeimosBlocks.deimos_block);
 		highlightBlockList.add(PhobosBlocks.phobos_block);
 		highlightBlockList.add(IoBlocks.io_block);
+		highlightBlockList.add(DarkAsteroidsBlocks.dark_asteroid_rock);
+		highlightBlockList.add(KoentusBlocks.crystal_cocoa);
 
 		hideBlockList.add(MPBlocks.dungeon_spawner);
 		hideBlockList.add(MPBlocks.double_stone_slab_1);
@@ -252,6 +256,7 @@ public class MPBlocks
 		hideBlockList.add(EuropaBlocks.europa_door_block);
 		hideBlockList.add(EuropaBlocks.double_europa_sandstone_slab);
 		hideBlockList.add(EuropaBlocks.double_europa_prismarine_slab);
+		hideBlockList.add(DarkAsteroidsBlocks.dark_air);
 
 		MPLog.debug("Register Blocks");
 	}

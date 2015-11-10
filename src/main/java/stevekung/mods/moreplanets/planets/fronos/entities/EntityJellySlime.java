@@ -40,7 +40,7 @@ public class EntityJellySlime extends EntityLiving implements IMob
 	public EntityJellySlime(World world)
 	{
 		super(world);
-		this.moveHelper = new EntityJellySlime.SlimeMoveHelper();
+		this.moveHelper = new SlimeMoveHelper();
 		this.tasks.addTask(1, new AISlimeFloat());
 		this.tasks.addTask(2, new AISlimeAttack());
 		this.tasks.addTask(3, new AISlimeFaceRandom());
@@ -254,17 +254,17 @@ public class EntityJellySlime extends EntityLiving implements IMob
 		return this.dataWatcher.getWatchableObjectByte(17);
 	}
 
-	public void setJellySlimeType(int par1)
+	public void setJellySlimeType(int type)
 	{
-		this.dataWatcher.updateObject(17, Byte.valueOf((byte)par1));
+		this.dataWatcher.updateObject(17, Byte.valueOf((byte)type));
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
+	protected void dropFewItems(boolean drop, int fortune)
 	{
 		if (this.getSlimeSize() == 1)
 		{
-			int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
+			int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + fortune);
 
 			for (int i = 0; i < j; ++i)
 			{

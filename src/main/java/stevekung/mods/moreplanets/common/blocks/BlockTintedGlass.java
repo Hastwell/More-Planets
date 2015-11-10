@@ -3,6 +3,7 @@ package stevekung.mods.moreplanets.common.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -16,12 +17,13 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockTintedGlass extends BlockBreakableMP
+public class BlockTintedGlass extends BlockBreakableMP implements IPartialSealableBlock
 {
 	public static PropertyEnum COLOR = PropertyEnum.create("color", EnumDyeColor.class);
 
@@ -29,7 +31,7 @@ public class BlockTintedGlass extends BlockBreakableMP
 	{
 		super(Material.glass);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
-		this.setHardness(0.3F);
+		this.setHardness(0.5F);
 		this.setResistance(20.0F);
 		this.setStepSound(soundTypeGlass);
 		this.setUnlocalizedName(name);
@@ -120,5 +122,11 @@ public class BlockTintedGlass extends BlockBreakableMP
 	protected BlockState createBlockState()
 	{
 		return new BlockState(this, new IProperty[] {COLOR});
+	}
+
+	@Override
+	public boolean isSealed(World world, BlockPos pos, EnumFacing facing)
+	{
+		return true;
 	}
 }

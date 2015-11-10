@@ -10,6 +10,10 @@ package stevekung.mods.moreplanets.common.eventhandler;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent;
+import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent.CelestialRingRenderEvent;
+import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
+import micdoodle8.mods.galacticraft.api.galaxies.Moon;
+import micdoodle8.mods.galacticraft.api.galaxies.Planet;
 import micdoodle8.mods.galacticraft.api.inventory.AccessInventoryGC;
 import micdoodle8.mods.galacticraft.api.inventory.IInventoryGC;
 import micdoodle8.mods.galacticraft.core.client.gui.screen.GuiCelestialSelection;
@@ -17,11 +21,13 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.core.util.OxygenUtil;
 import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -52,6 +58,7 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -60,11 +67,17 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensio
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import org.lwjgl.Sys;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.vector.Vector3f;
+
+import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
-import stevekung.mods.moreplanets.common.util.DamageSourceMP;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.common.world.ILightningStorm;
 import stevekung.mods.moreplanets.common.world.IMeteorType;
@@ -150,6 +163,26 @@ public class MorePlanetsEvents
 		if (event.entityLiving.isPotionActive(MPPotions.electro_magnetic_pulse))
 		{
 			event.entityLiving.motionY -= 1.0D;
+		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onBodyRender(CelestialBodyRenderEvent.Pre renderEvent)
+	{
+		if (renderEvent.celestialBody == MPPlanets.darkAsteroids)
+		{
+			GlStateManager.rotate(Sys.getTime() / 10.0F % 360, 0, 0, 1);
+		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onRingRender(CelestialRingRenderEvent.Pre event)
+	{
+		if (event.celestialBody == MPPlanets.darkAsteroids)
+		{
+			this.renderRing(event, event.celestialBody, 0.1F, 0.1F, 0.1F, 1.0F, 0.5F);
 		}
 	}
 
@@ -352,189 +385,7 @@ public class MorePlanetsEvents
 		this.glowTallGrass(event, rand, x, z, FronosBlocks.plains_grass, FronosBlocks.fronos_tall_grass, 3, 9, true);
 		this.glowTallGrass(event, rand, x, z, FronosBlocks.golden_grass, FronosBlocks.fronos_tall_grass, 3, 12, true);
 
-
-		/*if (block == NibiruBlocks.nibiru_sapling)
-		{
-			event.setResult(Result.ALLOW);
-
-			if (!world.isRemote)
-			{
-				if (world.rand.nextFloat() < 0.45D)
-				{
-					((BlockNibiruSapling)NibiruBlocks.nibiru_sapling).grow(world, world.rand, event.pos, event.block);
-				}
-			}
-		}
-		else if (block == KoentusBlocks.crystal_sapling)
-		{
-			event.setResult(Result.ALLOW);
-
-			if (!world.isRemote)
-			{
-				if (world.rand.nextFloat() < 0.45D)
-				{
-					((BlockCrystalSapling)KoentusBlocks.crystal_sapling).grow(world, world.rand, event.pos, event.block);
-				}
-			}
-		}
-		else if (block == FronosBlocks.fronos_sapling)
-		{
-			event.setResult(Result.ALLOW);
-
-			if (!world.isRemote)
-			{
-				if (world.rand.nextFloat() < 0.45D)
-				{
-					((BlockFronosSapling)FronosBlocks.fronos_sapling).grow(world, world.rand, event.pos, event.block);
-				}
-			}
-		}
-		else if (block == FronosBlocks.fronos_grass)
-		{
-			int var14 = pos.getY() + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += world.rand.nextInt(3) - 1;
-					var14 += (world.rand.nextInt(3) - 1) * world.rand.nextInt(3) / 2;
-					z += world.rand.nextInt(3) - 1;
-				}
-
-				BlockPos pos1 = new BlockPos(x, var14, z);
-
-				if (world.getBlockState(pos1).getBlock().isAir(world, pos1))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(world, pos1, EnumFacing.UP, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3))))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!world.isRemote)
-						{
-							world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(rand.nextInt(3)), 2);
-						}
-					}
-				}
-			}
-		}
-		else if (block == FronosBlocks.pink_grass)
-		{
-			int var14 = pos.getY() + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += world.rand.nextInt(3) - 1;
-					var14 += (world.rand.nextInt(3) - 1) * world.rand.nextInt(3) / 2;
-					z += world.rand.nextInt(3) - 1;
-				}
-
-				BlockPos pos1 = new BlockPos(x, var14, z);
-
-				if (world.getBlockState(pos1).getBlock().isAir(world, pos1))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(world, pos1, EnumFacing.UP, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 3)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!world.isRemote)
-						{
-							world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(rand.nextInt(3) + 3), 2);
-						}
-					}
-				}
-			}
-		}
-		else if (block == FronosBlocks.purple_grass)
-		{
-			int var14 = pos.getY() + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += world.rand.nextInt(3) - 1;
-					var14 += (world.rand.nextInt(3) - 1) * world.rand.nextInt(3) / 2;
-					z += world.rand.nextInt(3) - 1;
-				}
-
-				BlockPos pos1 = new BlockPos(x, var14, z);
-
-				if (world.getBlockState(pos1).getBlock().isAir(world, pos1))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(world, pos1, EnumFacing.UP, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 6)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!world.isRemote)
-						{
-							world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(rand.nextInt(3) + 6), 2);
-						}
-					}
-				}
-			}
-		}
-		else if (block == FronosBlocks.plains_grass)
-		{
-			int var14 = pos.getY() + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += world.rand.nextInt(3) - 1;
-					var14 += (world.rand.nextInt(3) - 1) * world.rand.nextInt(3) / 2;
-					z += world.rand.nextInt(3) - 1;
-				}
-
-				BlockPos pos1 = new BlockPos(x, var14, z);
-
-				if (world.getBlockState(pos1).getBlock().isAir(world, pos1))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(world, pos1, EnumFacing.UP, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 9)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!world.isRemote)
-						{
-							world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(rand.nextInt(3) + 9), 2);
-						}
-					}
-				}
-			}
-		}
-		else if (block == FronosBlocks.golden_grass)
-		{
-			int var14 = pos.getY() + 1;
-
-			for (int i1 = 0; i1 < 128; ++i1)
-			{
-				for (int i2 = 0; i2 < i1 / 16; ++i2)
-				{
-					x += world.rand.nextInt(3) - 1;
-					var14 += (world.rand.nextInt(3) - 1) * world.rand.nextInt(3) / 2;
-					z += world.rand.nextInt(3) - 1;
-				}
-
-				BlockPos pos1 = new BlockPos(x, var14, z);
-
-				if (world.getBlockState(pos1).getBlock().isAir(world, pos1))
-				{
-					if (FronosBlocks.fronos_tall_grass.canReplace(world, pos1, EnumFacing.UP, new ItemStack(FronosBlocks.fronos_tall_grass, 1, rand.nextInt(3) + 12)))
-					{
-						event.setResult(Result.ALLOW);
-
-						if (!world.isRemote)
-						{
-							world.setBlockState(pos1, FronosBlocks.fronos_tall_grass.getStateFromMeta(rand.nextInt(3) + 12), 2);
-						}
-					}
-				}
-			}
-		}
-		else */if (event.block == FronosBlocks.glass_gem_corn.getDefaultState())
+		if (event.block == FronosBlocks.glass_gem_corn.getDefaultState())
 		{
 			if (world.getBlockState(pos.up()).getBlock().isAir(world, pos.up()) && world.getBlockState(pos.up(2)).getBlock().isAir(world, pos.up(2)))
 			{
@@ -627,8 +478,7 @@ public class MorePlanetsEvents
 			EntityPlayerMP player = (EntityPlayerMP)living;
 
 			this.spawnFeces(world, player);
-			this.doInfectedGasForEntity(world, living, player);
-			this.doSiriusFire(world, living);
+			this.spawnDarkAsteroids(world, player);
 			this.removeIcyPoison(player);
 
 			if (world.provider instanceof IMeteorType)
@@ -645,7 +495,8 @@ public class MorePlanetsEvents
 				player.removePotionEffect(MPPotions.icy_poison.id);
 			}
 		}
-		this.potionTick(living);
+		this.doSiriusFire(world, living);
+		this.doInfectedGasForEntity(world, living);
 	}
 
 	@SubscribeEvent
@@ -655,22 +506,22 @@ public class MorePlanetsEvents
 		BlockPos pos = event.target.getBlockPos();
 		Block block = world.getBlockState(pos).getBlock();
 
-		MorePlanetsEvents.registerBucket(event, world, pos, KapteynBBlocks.frozen_water, new ItemStack(KapteynBItems.frozen_water_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, PolongniusBlocks.cheese_of_milk, new ItemStack(PolongniusItems.cheese_of_milk_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, FronosBlocks.coconut_milk, new ItemStack(FronosItems.coconut_milk_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, FronosBlocks.mineral_water, new ItemStack(FronosItems.mineral_water_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, FronosBlocks.ovaltine, new ItemStack(FronosItems.ovaltine_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, FronosBlocks.tea, new ItemStack(FronosItems.tea_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, FronosBlocks.caramel, new ItemStack(FronosItems.caramel_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, SiriusBBlocks.sirius_lava, new ItemStack(SiriusBItems.sirius_lava_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, IoBlocks.io_lava, new ItemStack(IoItems.io_lava_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, IoBlocks.red_liquid_sulfur, new ItemStack(IoItems.red_liquid_sulfur_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, IoBlocks.yellow_liquid_sulfur, new ItemStack(IoItems.yellow_liquid_sulfur_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, IoBlocks.orange_liquid_sulfur, new ItemStack(IoItems.orange_liquid_sulfur_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, IoBlocks.brown_liquid_sulfur, new ItemStack(IoItems.brown_liquid_sulfur_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, IoBlocks.black_io_lava, new ItemStack(IoItems.black_io_lava_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, MercuryBlocks.dirty_water, new ItemStack(MercuryItems.dirty_water_bucket), false);
-		MorePlanetsEvents.registerBucket(event, world, pos, EuropaBlocks.europa_water, new ItemStack(EuropaItems.europa_water_bucket), false);
+		this.registerBucket(event, world, pos, KapteynBBlocks.frozen_water, new ItemStack(KapteynBItems.frozen_water_bucket), false);
+		this.registerBucket(event, world, pos, PolongniusBlocks.cheese_of_milk, new ItemStack(PolongniusItems.cheese_of_milk_bucket), false);
+		this.registerBucket(event, world, pos, FronosBlocks.coconut_milk, new ItemStack(FronosItems.coconut_milk_bucket), false);
+		this.registerBucket(event, world, pos, FronosBlocks.mineral_water, new ItemStack(FronosItems.mineral_water_bucket), false);
+		this.registerBucket(event, world, pos, FronosBlocks.ovaltine, new ItemStack(FronosItems.ovaltine_bucket), false);
+		this.registerBucket(event, world, pos, FronosBlocks.tea, new ItemStack(FronosItems.tea_bucket), false);
+		this.registerBucket(event, world, pos, FronosBlocks.caramel, new ItemStack(FronosItems.caramel_bucket), false);
+		this.registerBucket(event, world, pos, SiriusBBlocks.sirius_lava, new ItemStack(SiriusBItems.sirius_lava_bucket), false);
+		this.registerBucket(event, world, pos, IoBlocks.io_lava, new ItemStack(IoItems.io_lava_bucket), false);
+		this.registerBucket(event, world, pos, IoBlocks.red_liquid_sulfur, new ItemStack(IoItems.red_liquid_sulfur_bucket), false);
+		this.registerBucket(event, world, pos, IoBlocks.yellow_liquid_sulfur, new ItemStack(IoItems.yellow_liquid_sulfur_bucket), false);
+		this.registerBucket(event, world, pos, IoBlocks.orange_liquid_sulfur, new ItemStack(IoItems.orange_liquid_sulfur_bucket), false);
+		this.registerBucket(event, world, pos, IoBlocks.brown_liquid_sulfur, new ItemStack(IoItems.brown_liquid_sulfur_bucket), false);
+		this.registerBucket(event, world, pos, IoBlocks.black_io_lava, new ItemStack(IoItems.black_io_lava_bucket), false);
+		this.registerBucket(event, world, pos, MercuryBlocks.dirty_water, new ItemStack(MercuryItems.dirty_water_bucket), false);
+		this.registerBucket(event, world, pos, EuropaBlocks.europa_water, new ItemStack(EuropaItems.europa_water_bucket), false);
 
 		if (block == PlutoBlocks.liquid_methane)
 		{
@@ -729,54 +580,6 @@ public class MorePlanetsEvents
 					}
 					event.setResult(Result.ALLOW);
 				}
-			}
-		}
-	}
-
-	private void potionTick(EntityLivingBase living)
-	{
-		if (living.isPotionActive(MPPotions.infected_gas))
-		{
-			if (living.ticksExisted % 35 == 0)
-			{
-				living.attackEntityFrom(DamageSourceMP.infected_gas, 1.0F + living.getActivePotionEffect(MPPotions.infected_gas).getAmplifier());
-			}
-			if (living.getActivePotionEffect(MPPotions.infected_gas).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.infected_gas.id);
-			}
-		}
-		else if (living.isPotionActive(MPPotions.chemical))
-		{
-			if (living.ticksExisted % 8 == 0)
-			{
-				living.attackEntityFrom(DamageSourceMP.chemical, 1.0F + living.getActivePotionEffect(MPPotions.chemical).getAmplifier());
-			}
-			if (living.getActivePotionEffect(MPPotions.chemical).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.chemical.id);
-			}
-		}
-		else if (living.isPotionActive(MPPotions.electro_magnetic_pulse))
-		{
-			if (!living.worldObj.isRemote)
-			{
-				living.motionX = 0.0F;
-				living.motionY = -1.0F;
-				living.motionZ = 0.0F;
-			}
-			if (living.getActivePotionEffect(MPPotions.electro_magnetic_pulse).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.electro_magnetic_pulse.id);
-			}
-		}
-		else if (living.isPotionActive(MPPotions.icy_poison))
-		{
-			living.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F + living.getActivePotionEffect(MPPotions.icy_poison).getAmplifier());
-
-			if (living.getActivePotionEffect(MPPotions.icy_poison).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.icy_poison.id);
 			}
 		}
 	}
@@ -935,44 +738,83 @@ public class MorePlanetsEvents
 		}
 	}
 
-	private void doInfectedGasForEntity(World world, EntityLivingBase living, EntityPlayerMP player)
+	private void spawnDarkAsteroids(World world, EntityPlayerMP player)
+	{
+		if (!world.isRemote && world.provider instanceof WorldProviderDarkAsteroids)
+		{
+			int f = 50;
+
+			if (world.rand.nextInt(f) == 0 && player.posY < 260D)
+			{
+				EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+				if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+				{
+					double x, y, z;
+					double motX, motY, motZ;
+					double r = world.rand.nextInt(60)+30D;
+					double theta = Math.PI * 2.0 * world.rand.nextDouble();
+					x = player.posX + Math.cos(theta) * r;
+					y = player.posY + world.rand.nextInt(5);
+					z = player.posZ + Math.sin(theta) * r;
+					motX = (player.posX - x + (world.rand.nextDouble() - 0.5) * 40) / 400.0F;
+					motY = (world.rand.nextDouble() - 0.5) * 0.4;
+					motZ = (player.posZ - z + (world.rand.nextDouble() - 0.5) * 40) / 400.0F;
+
+					EntityDarkAsteroid smallAsteroid = new EntityDarkAsteroid(world);
+					smallAsteroid.setPosition(x, y, z);
+					smallAsteroid.motionX = motX;
+					smallAsteroid.motionY = motY;
+					smallAsteroid.motionZ = motZ;
+					smallAsteroid.spinYaw = world.rand.nextFloat() * 4;
+					smallAsteroid.spinPitch = world.rand.nextFloat() * 2;
+					world.spawnEntityInWorld(smallAsteroid);
+					MPLog.debug("Spawn Dark Asteroid at %s %s %s", (int)smallAsteroid.posX, (int)smallAsteroid.posY, (int)smallAsteroid.posZ);
+				}
+			}
+		}
+	}
+
+	private void doInfectedGasForEntity(World world, EntityLivingBase living)
 	{
 		if (world.provider instanceof WorldProviderNibiru)
 		{
-			if (!(living instanceof EntityPlayerMP))
+			if (!(living instanceof EntityPlayer))
 			{
 				if (living.ticksExisted % 100 == 0 && (!(living instanceof IEntityLivingPlanet) || !(world.provider.getDimensionId() == ((IEntityLivingPlanet)living).canLivingInDimension().dimID)) && !(living.getClass() == EntityEvolvedZombie.class || living.getClass() == EntityEvolvedSpider.class || living.getClass() == EntityEvolvedSkeleton.class || living.getClass() == EntityEvolvedCreeper.class || living.getClass() == EntityEvolvedEnderman.class))
 				{
 					living.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
 				}
 			}
-			if (ConfigManagerMP.disableInfectedGas)
+			else if (living instanceof EntityPlayerMP)
 			{
-				if (player.isPotionActive(MPPotions.infected_gas.id) && MorePlanetsEvents.getTier2ThermalArmor(player))
+				EntityPlayerMP player = (EntityPlayerMP)living;
+
+				if (player.isPotionActive(MPPotions.infected_gas.id))
 				{
-					player.removePotionEffect(MPPotions.infected_gas.id);
-				}
-			}
-			else
-			{
-				if (!MorePlanetsEvents.getTier2ThermalArmor(player))
-				{
-					if (player.ticksExisted % 200 == 0 && !player.capabilities.isCreativeMode)
+					if (player.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
 					{
-						player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+						player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
+					}
+				}
+				if (ConfigManagerMP.disableInfectedGas)
+				{
+					if (player.isPotionActive(MPPotions.infected_gas.id) && MorePlanetsEvents.getTier2ThermalArmor(player))
+					{
+						player.removePotionEffect(MPPotions.infected_gas.id);
 					}
 				}
 				else
 				{
-					player.removePotionEffect(MPPotions.infected_gas.id);
+					if (player.ticksExisted % 200 == 0 && !player.capabilities.isCreativeMode && !(MorePlanetsEvents.getTier2ThermalArmor(player) || OxygenUtil.inOxygenBubble(world, player.posX, player.posY, player.posZ) || OxygenUtil.isAABBInBreathableAirBlock(player)))
+					{
+						player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+					}
+					else if (MorePlanetsEvents.getTier2ThermalArmor(player) || OxygenUtil.inOxygenBubble(world, player.posX, player.posY, player.posZ) || OxygenUtil.isAABBInBreathableAirBlock(player))
+					{
+						player.removePotionEffect(MPPotions.infected_gas.id);
+					}
 				}
-			}
-		}
-		if (player.isPotionActive(MPPotions.infected_gas.id))
-		{
-			if (player.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
-			{
-				player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
 			}
 		}
 	}
@@ -1070,6 +912,106 @@ public class MorePlanetsEvents
 		}
 	}
 
+	//Credit to AmunRa mod :) (Why Galacticraft can do this without map pos? -.-)
+	private void renderRing(CelestialRingRenderEvent.Pre event, CelestialBody celestial, float r, float g, float b, float outerAlpha, float innerAlpha)
+	{
+		Vector3f mapPos = event.parentOffset;
+		float xOffset = mapPos.x;
+		float yOffset = mapPos.y;
+
+		if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
+		{
+			GlStateManager.color(r, g, b, outerAlpha);
+		}
+
+		event.setCanceled(true);
+		GL11.glBegin(GL11.GL_LINE_LOOP);
+		float theta = (float) (2 * Math.PI / 90);
+		float cos = (float) Math.cos(theta);
+		float sin = (float) Math.sin(theta);
+		float min = 0.0F;
+		float max = 0.0F;
+
+		if (celestial instanceof Planet)
+		{
+			min = 72.0F;
+			max = 78.0F;
+		}
+		else if (celestial instanceof Moon)
+		{
+			max = 1 / 1.5F;
+			min = 1 / 1.9F;
+		}
+
+		float x = max * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		float y = 0;
+		float temp;
+
+		for (int i = 0; i < 90; i++)
+		{
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			temp = x;
+			x = cos * x - sin * y;
+			y = sin * temp + cos * y;
+		}
+
+		GL11.glEnd();
+		GL11.glBegin(GL11.GL_LINE_LOOP);
+		x = min * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		y = 0;
+
+		for (int i = 0; i < 90; i++)
+		{
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			temp = x;
+			x = cos * x - sin * y;
+			y = sin * temp + cos * y;
+		}
+
+		GL11.glEnd();
+		GlStateManager.color(r, g, b, innerAlpha);// Inner ring
+		GL11.glBegin(GL11.GL_QUADS);
+		x = min * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		y = 0;
+		float x2 = max * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		float y2 = 0;
+
+		for (int i = 0; i < 90; i++)
+		{
+			GL11.glVertex2f(x2 + xOffset, y2 + yOffset);
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			temp = x;
+			x = cos * x - sin * y;
+			y = sin * temp + cos * y;
+			temp = x2;
+			x2 = cos * x2 - sin * y2;
+			y2 = sin * temp + cos * y2;
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			GL11.glVertex2f(x2 + xOffset, y2 + yOffset);
+		}
+		GL11.glEnd();
+	}
+
+	private void registerBucket(FillBucketEvent event, World world, BlockPos pos, Block block, ItemStack itemStack, boolean cancelBucket)
+	{
+		if (world.getBlockState(pos) == block.getDefaultState())
+		{
+			if (cancelBucket)
+			{
+				if (event.current.getItem() == Items.bucket)
+				{
+					event.setCanceled(true);
+				}
+			}
+			else
+			{
+				world.setBlockToAir(pos);
+				event.result = itemStack;
+				event.setResult(Result.ALLOW);
+			}
+		}
+	}
+
 	public static void addInfectedGas(EntityPlayer player)
 	{
 		if (player instanceof EntityPlayerMP)
@@ -1111,25 +1053,5 @@ public class MorePlanetsEvents
 		boolean armor3 = inventory.armorInventory[2] != null && inventory.armorInventory[2].getItem() == KapteynBArmorItems.ice_crystal_chestplate;
 		boolean armor4 = inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == KapteynBArmorItems.ice_crystal_helmet || inventory.armorInventory[3] != null && inventory.armorInventory[3].getItem() == KapteynBArmorItems.breathable_ice_crystal_helmet;
 		return armor1 && armor2 && armor3 && armor4;
-	}
-
-	private static void registerBucket(FillBucketEvent event, World world, BlockPos pos, Block block, ItemStack itemStack, boolean cancelBucket)
-	{
-		if (world.getBlockState(pos) == block.getDefaultState())
-		{
-			if (cancelBucket)
-			{
-				if (event.current.getItem() == Items.bucket)
-				{
-					event.setCanceled(true);
-				}
-			}
-			else
-			{
-				world.setBlockToAir(pos);
-				event.result = itemStack;
-				event.setResult(Result.ALLOW);
-			}
-		}
 	}
 }

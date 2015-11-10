@@ -94,9 +94,10 @@ public class MorePlanetsRegistry
 		MPLog.debug("Using recipes %s", recipe.toString());
 	}
 
-	public static void registerProvider(int id, int staticId, Class<? extends WorldProvider> provider)
+	public static void registerSpaceStationProvider(int id, int staticId, Class<? extends WorldProvider> provider)
 	{
 		GalacticraftRegistry.registerProvider(id, provider, false);
 		GalacticraftRegistry.registerProvider(staticId, provider, true);
+		MPLog.debug("Register Space Station Provider ID: %s, Static ID: %s, Provider: %s", id, staticId, provider);
 	}
 }

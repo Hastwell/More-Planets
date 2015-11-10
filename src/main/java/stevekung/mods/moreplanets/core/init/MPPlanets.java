@@ -19,6 +19,7 @@ import micdoodle8.mods.galacticraft.api.world.IAtmosphericGas;
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
 import net.minecraft.util.ResourceLocation;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.dimension.TeleportTypeMP;
 import stevekung.mods.moreplanets.common.dimension.TeleportTypeOrbitMP;
@@ -51,14 +52,17 @@ public class MPPlanets
 	public static Planet venus;
 	public static Planet pluto;
 	public static Planet jupiter;
+	public static Planet darkAsteroids;
 	public static Moon koentus;
 	public static Moon phobos;
 	public static Moon deimos;
 	public static Moon io;
 	public static Star sirius;
 	public static Star kapteyn;
+	public static Star darkStar;
 	public static SolarSystem siriusSolarSystem;
 	public static SolarSystem kapteynBSolarSystem;
+	public static SolarSystem darkSolarSystem;
 	public static Satellite marsSpaceStation;
 	public static Satellite jupiterSpaceStation;
 	public static Satellite kapteynBSpaceStation;
@@ -75,6 +79,10 @@ public class MPPlanets
 		MPPlanets.kapteynBSolarSystem = new SolarSystem("kapteyn", "milkyWay").setMapPosition(new Vector3(-1.5F, 0.8F, 0.0F));
 		MPPlanets.kapteyn = MorePlanetsRegistry.createStar("kapteyn", MPPlanets.kapteynBSolarSystem, new ResourceLocation("moreplanets:textures/gui/celestialbodies/kapteyn_star_celestial.png"));
 		MPPlanets.kapteynBSolarSystem.setMainStar(MPPlanets.kapteyn);
+
+		MPPlanets.darkSolarSystem = new SolarSystem("dark", "milkyWay").setMapPosition(new Vector3(-3.5F, 2.2F, 0.0F));
+		MPPlanets.darkStar = MorePlanetsRegistry.createStar("dark", MPPlanets.darkSolarSystem, new ResourceLocation("moreplanets:textures/gui/celestialbodies/dark_star_celestial.png"));
+		MPPlanets.darkSolarSystem.setMainStar(MPPlanets.darkStar);
 
 		// Init Planets
 		MPPlanets.diona = MorePlanetsRegistry.createPlanet("diona", MPPlanets.siriusSolarSystem, 8.7446F, 5.0F, 13.7685F, 0.876F, 4, new ResourceLocation("moreplanets:textures/gui/celestialbodies/diona.png"));
@@ -126,6 +134,9 @@ public class MPPlanets
 			MPPlanets.pluto.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.HELIUM).atmosphereComponent(IAtmosphericGas.NITROGEN);
 		}
 
+		MPPlanets.darkAsteroids = MorePlanetsRegistry.createPlanet("darkAsteroids", MPPlanets.darkSolarSystem, (float)(Math.random() * (2 * Math.PI)), 1.375F, 45.0F, 0.0F, 5, new ResourceLocation("moreplanets:textures/gui/celestialbodies/dark_asteroids.png"));
+		MPPlanets.darkAsteroids.setDimensionInfo(ConfigManagerMP.idDimensionDarkAsteroids, WorldProviderDarkAsteroids.class);
+
 		// Init Moons
 		MPPlanets.koentus = MorePlanetsRegistry.createMoon("koentus", MPPlanets.diona, 2.436F, 9.5F, 1 / 0.01F, 0.3867F, 4, new ResourceLocation("moreplanets:textures/gui/celestialbodies/koentus.png"));
 		MPPlanets.koentus.setDimensionInfo(ConfigManagerMP.idDimensionKoentus, WorldProviderKoentus.class);
@@ -157,6 +168,7 @@ public class MPPlanets
 		// Register
 		GalaxyRegistry.registerSolarSystem(MPPlanets.siriusSolarSystem);
 		GalaxyRegistry.registerSolarSystem(MPPlanets.kapteynBSolarSystem);
+		GalaxyRegistry.registerSolarSystem(MPPlanets.darkSolarSystem);
 
 		GalaxyRegistry.registerPlanet(MPPlanets.diona);
 		GalaxyRegistry.registerPlanet(MPPlanets.polongnius);
@@ -164,6 +176,7 @@ public class MPPlanets
 		GalaxyRegistry.registerPlanet(MPPlanets.fronos);
 		GalaxyRegistry.registerPlanet(MPPlanets.kapteynB);
 		GalaxyRegistry.registerPlanet(MPPlanets.siriusB);
+		GalaxyRegistry.registerPlanet(MPPlanets.darkAsteroids);
 
 		GalaxyRegistry.registerMoon(MPPlanets.koentus);
 
@@ -178,8 +191,8 @@ public class MPPlanets
 		if (ConfigManagerMP.enablePhobosMoon) { GalaxyRegistry.registerMoon(MPPlanets.deimos); }
 		if (ConfigManagerMP.enableDeimosMoon) { GalaxyRegistry.registerMoon(MPPlanets.phobos); }
 
-		if (ConfigManagerMP.enableJupiterSpaceStation) { MorePlanetsRegistry.registerProvider(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionStaticJupiterSpaceStation, WorldProviderJupiterOrbit.class); }
-		if (ConfigManagerMP.enableMarsSpaceStation) { MorePlanetsRegistry.registerProvider(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMP.idDimensionStaticMarsSpaceStation, WorldProviderMarsOrbit.class); }
+		if (ConfigManagerMP.enableJupiterSpaceStation) { MorePlanetsRegistry.registerSpaceStationProvider(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionStaticJupiterSpaceStation, WorldProviderJupiterOrbit.class); }
+		if (ConfigManagerMP.enableMarsSpaceStation) { MorePlanetsRegistry.registerSpaceStationProvider(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMP.idDimensionStaticMarsSpaceStation, WorldProviderMarsOrbit.class); }
 
 		GalacticraftRegistry.registerTeleportType(WorldProviderDiona.class, teleport);
 		GalacticraftRegistry.registerTeleportType(WorldProviderPolongnius.class, teleport);

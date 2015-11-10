@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.tileentities;
 
-import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.tileentities.TileEntityTreasureChestMP;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
@@ -15,24 +14,6 @@ public class TileEntitySiriusBTreasureChest extends TileEntityTreasureChestMP
 {
 	public TileEntitySiriusBTreasureChest()
 	{
-		super(8);
-	}
-
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 8;
-	}
-
-	@Override
-	public String getTreasureChestName()
-	{
-		return "siriusb";
-	}
-
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return SiriusBBlocks.sirius_b_treasure_chest;
+		super(8, "siriusb", SiriusBBlocks.sirius_b_treasure_chest);
 	}
 }

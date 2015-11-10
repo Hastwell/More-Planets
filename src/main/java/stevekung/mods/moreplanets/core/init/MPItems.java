@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.core.init;
 import java.util.ArrayList;
 
 import net.minecraft.item.Item;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.items.DarkAsteroidsItems;
 import stevekung.mods.moreplanets.common.items.ItemFeces;
 import stevekung.mods.moreplanets.common.items.ItemMeteorShower;
 import stevekung.mods.moreplanets.common.items.ItemMonsterPlacerMP;
@@ -59,6 +60,7 @@ public class MPItems
 		PlutoItems.init();
 		IoItems.init();
 		EuropaItems.init();
+		DarkAsteroidsItems.init();
 
 		// Init
 		MPItems.meteor_shower = new ItemMeteorShower("meteor_shower");

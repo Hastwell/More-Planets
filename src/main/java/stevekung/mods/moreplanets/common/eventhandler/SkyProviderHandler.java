@@ -15,14 +15,17 @@ import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.client.SkyProviderDarkAsteroids;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.common.spacestation.jupiter.SkyProviderJupiterOrbit;
 import stevekung.mods.moreplanets.common.spacestation.jupiter.WorldProviderJupiterOrbit;
+import stevekung.mods.moreplanets.common.spacestation.mars.SkyProviderMarsOrbit;
+import stevekung.mods.moreplanets.common.spacestation.mars.WorldProviderMarsOrbit;
 import stevekung.mods.moreplanets.moons.deimos.client.sky.SkyProviderDeimos;
 import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
 import stevekung.mods.moreplanets.moons.koentus.client.sky.SkyProviderKoentus;
@@ -52,9 +55,9 @@ public class SkyProviderHandler
 {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public void onSkyRendererTick(ClientTickEvent event)
+	public void onSkyRenderer(ClientTickEvent event)
 	{
-		Minecraft mc = FMLClientHandler.instance().getClient();
+		Minecraft mc = Minecraft.getMinecraft();
 		WorldClient world = mc.theWorld;
 		EntityPlayerSP player = mc.thePlayer;
 
@@ -206,6 +209,30 @@ public class SkyProviderHandler
 					world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
 					((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
 					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+				}
+				if (world.provider.getCloudRenderer() == null)
+				{
+					world.provider.setCloudRenderer(new CloudRenderer());
+				}
+			}
+			else if (world.provider instanceof WorldProviderMarsOrbit)
+			{
+				if (world.provider.getSkyRenderer() == null)
+				{
+					world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
+					((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
+					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+				}
+				if (world.provider.getCloudRenderer() == null)
+				{
+					world.provider.setCloudRenderer(new CloudRenderer());
+				}
+			}
+			else if (world.provider instanceof WorldProviderDarkAsteroids)
+			{
+				if (world.provider.getSkyRenderer() == null)
+				{
+					world.provider.setSkyRenderer(new SkyProviderDarkAsteroids((IGalacticraftWorldProvider) world.provider));
 				}
 				if (world.provider.getCloudRenderer() == null)
 				{

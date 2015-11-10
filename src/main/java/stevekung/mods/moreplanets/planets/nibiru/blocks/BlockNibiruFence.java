@@ -9,27 +9,22 @@ package stevekung.mods.moreplanets.planets.nibiru.blocks;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFence;
-import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.common.blocks.BlockFenceMP;
 
-public class BlockNibiruFence extends BlockFence
+public class BlockNibiruFence extends BlockFenceMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -37,53 +32,10 @@ public class BlockNibiruFence extends BlockFence
 	{
 		super(Material.wood);
 		this.setHardness(2.0F);
+		this.setResistance(5.0F);
 		this.setStepSound(soundTypeWood);
 		this.setDefaultState(this.getDefaultState().withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)).withProperty(VARIANT, BlockType.ancient_dark_fence));
 		this.setUnlocalizedName(name);
-	}
-
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
-
-	@Override
-	public boolean canPlaceTorchOnTop(IBlockAccess world, BlockPos pos)
-	{
-		return true;
-	}
-
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean isPassable(IBlockAccess world, BlockPos pos)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean canConnectTo(IBlockAccess world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
-		return block == Blocks.barrier ? false : (!(block instanceof BlockFence) || block.getMaterial() != this.blockMaterial) && !(block instanceof BlockFenceGate) ? block.getMaterial().isOpaque() && block.isFullCube() ? block.getMaterial() != Material.gourd : false : true;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, EnumFacing side)
-	{
-		return true;
 	}
 
 	@Override

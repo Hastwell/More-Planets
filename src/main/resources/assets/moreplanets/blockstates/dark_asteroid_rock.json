@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "variant=dark_asteroid_rock_1": { "model": "moreplanets:dark_asteroid_rock_1" },
+        "variant=dark_asteroid_rock_2": { "model": "moreplanets:dark_asteroid_rock_2" },
+        "variant=dark_asteroid_rock_3": { "model": "moreplanets:dark_asteroid_rock_3" },
+		"variant=dark_asteroid_aluminum_ore": { "model": "moreplanets:dark_asteroid_aluminum_ore" },
+		"variant=dark_asteroid_ilmenite_ore": { "model": "moreplanets:dark_asteroid_ilmenite_ore" },
+		"variant=dark_asteroid_iron_ore": { "model": "moreplanets:dark_asteroid_iron_ore" },
+		"variant=dark_asteroid_meteoric_iron_ore": { "model": "moreplanets:dark_asteroid_meteoric_iron_ore" },
+		"variant=dark_asteroid_silicon_ore": { "model": "moreplanets:dark_asteroid_silicon_ore" },
+		"variant=dark_asteroid_diamond_ore": { "model": "moreplanets:dark_asteroid_diamond_ore" },
+		"variant=dark_asteroid_emerald_ore": { "model": "moreplanets:dark_asteroid_emerald_ore" },
+		"variant=dark_asteroid_lapis_ore": { "model": "moreplanets:dark_asteroid_lapis_ore" }
+    }
+}

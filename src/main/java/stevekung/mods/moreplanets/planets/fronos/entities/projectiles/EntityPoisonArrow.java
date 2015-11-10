@@ -298,7 +298,7 @@ public class EntityPoisonArrow extends EntityArrow
 							{
 								((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
 							}
-							((EntityLivingBase)movingobjectposition.entityHit).addPotionEffect(new PotionEffect(Potion.poison.id, 160, 1));
+							entitylivingbase.addPotionEffect(new PotionEffect(Potion.poison.id, 160, 1));
 						}
 
 						this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));

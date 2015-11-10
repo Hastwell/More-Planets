@@ -318,7 +318,7 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 1), new Object[] { "X X", "XXX", "XXX", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
 		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 2), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
 		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 3), new Object[] { "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
-		GameRegistry.addRecipe(new ItemStack(MPItems.desh_thermal_cloth), new Object[] { " X ", "XRX", " X ", 'X', new ItemStack(MarsItems.marsItemBasic, 1, 5), 'R', Items.redstone });
+		GameRegistry.addRecipe(new ItemStack(MPItems.desh_thermal_cloth), new Object[] { "WXW", "XRX", "WXW", 'X', new ItemStack(MarsItems.marsItemBasic, 1, 5), 'R', Items.redstone, 'W', Blocks.wool });
 		GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 0), new ItemStack(DionaBlocks.diona_block, 1, 10) );
 		GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 1), new ItemStack(DionaBlocks.diona_block, 1, 11) );
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_meteor_chunk, 3), new ItemStack(PolongniusItems.polongnius_item, 1, 2) );

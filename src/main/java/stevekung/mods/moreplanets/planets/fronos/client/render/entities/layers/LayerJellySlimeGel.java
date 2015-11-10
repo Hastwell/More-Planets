@@ -50,7 +50,7 @@ public class LayerJellySlimeGel implements LayerRenderer
 	}
 
 	@Override
-	public void doRenderLayer(EntityLivingBase  entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
+	public void doRenderLayer(EntityLivingBase entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
 	{
 		this.doRenderLayer((EntityJellySlime)entity, par2, par3, par5, par6, par7, par8);
 	}

@@ -30,12 +30,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityChocolateCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityLemonCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityOrangeCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityStrawberryCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityTeaCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityVanillaCreamBall;
+import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityCreamBall;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityCreamGolem extends EntityGolem implements IRangedAttackMob
@@ -169,7 +164,7 @@ public class EntityCreamGolem extends EntityGolem implements IRangedAttackMob
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
+	protected void dropFewItems(boolean drop, int fortune)
 	{
 		int j = this.rand.nextInt(16);
 
@@ -198,9 +193,9 @@ public class EntityCreamGolem extends EntityGolem implements IRangedAttackMob
 		return this.dataWatcher.getWatchableObjectByte(16);
 	}
 
-	public void setCreamGolemType(int par1)
+	public void setCreamGolemType(int type)
 	{
-		this.dataWatcher.updateObject(16, Byte.valueOf((byte)par1));
+		this.dataWatcher.updateObject(16, Byte.valueOf((byte)type));
 	}
 
 	@Override
@@ -212,50 +207,10 @@ public class EntityCreamGolem extends EntityGolem implements IRangedAttackMob
 		float f1 = MathHelper.sqrt_double(d1 * d1 + d3 * d3) * 0.2F;
 		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 
-		int golemType = this.getCreamGolemType();
-
-		if (golemType == 0)
-		{
-			EntityVanillaCreamBall entitysnowball = new EntityVanillaCreamBall(this.worldObj, this);
-			double d2 = d0 - entitysnowball.posY;
-			entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
-			this.worldObj.spawnEntityInWorld(entitysnowball);
-		}
-		else if (golemType == 1)
-		{
-			EntityChocolateCreamBall entitysnowball = new EntityChocolateCreamBall(this.worldObj, this);
-			double d2 = d0 - entitysnowball.posY;
-			entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
-			this.worldObj.spawnEntityInWorld(entitysnowball);
-		}
-		else if (golemType == 2)
-		{
-			EntityStrawberryCreamBall entitysnowball = new EntityStrawberryCreamBall(this.worldObj, this);
-			double d2 = d0 - entitysnowball.posY;
-			entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
-			this.worldObj.spawnEntityInWorld(entitysnowball);
-		}
-		else if (golemType == 3)
-		{
-			EntityOrangeCreamBall entitysnowball = new EntityOrangeCreamBall(this.worldObj, this);
-			double d2 = d0 - entitysnowball.posY;
-			entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
-			this.worldObj.spawnEntityInWorld(entitysnowball);
-		}
-		else if (golemType == 4)
-		{
-			EntityTeaCreamBall entitysnowball = new EntityTeaCreamBall(this.worldObj, this);
-			double d2 = d0 - entitysnowball.posY;
-			entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
-			this.worldObj.spawnEntityInWorld(entitysnowball);
-		}
-		else if (golemType == 5)
-		{
-			EntityLemonCreamBall entitysnowball = new EntityLemonCreamBall(this.worldObj, this);
-			double d2 = d0 - entitysnowball.posY;
-			entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
-			this.worldObj.spawnEntityInWorld(entitysnowball);
-		}
+		EntityCreamBall entitysnowball = new EntityCreamBall(this.worldObj, this, this.getCreamGolemType());
+		double d2 = d0 - entitysnowball.posY;
+		entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
+		this.worldObj.spawnEntityInWorld(entitysnowball);
 	}
 
 	@Override

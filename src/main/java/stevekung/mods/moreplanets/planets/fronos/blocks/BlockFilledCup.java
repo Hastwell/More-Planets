@@ -15,6 +15,7 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -73,7 +74,7 @@ public abstract class BlockFilledCup extends BlockBaseMP
 
 	private boolean canBlockStay(World world, BlockPos pos)
 	{
-		return !world.isAirBlock(pos.down());
+		return world.getBlockState(pos.down()).getBlock().getMaterial() == Material.glass || !world.isAirBlock(pos.down());
 	}
 
 	@Override
@@ -88,6 +89,10 @@ public abstract class BlockFilledCup extends BlockBaseMP
 		if (world.getBlockState(pos).getBlock().getMaterial() == Material.water || world.getBlockState(pos).getBlock().getMaterial() == Material.lava)
 		{
 			return false;
+		}
+		if (world.getBlockState(pos.down()).getBlock().getMaterial() == Material.glass)
+		{
+			return true;
 		}
 		if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
 		{

@@ -56,8 +56,7 @@ public abstract class BlockPlanetTileMP extends BlockBaseMP
 
 		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
 		{
-			int var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
-			this.dropXpOnBlockBreak(world, pos, var8);
+			this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
 		}
 	}
 }

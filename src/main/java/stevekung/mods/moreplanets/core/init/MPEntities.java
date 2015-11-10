@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry.EntityRegistration;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
@@ -43,6 +44,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamSlime;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosVillager;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlime;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlimePet;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
@@ -51,13 +53,8 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTier7Rocket;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityChocolateCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityLemonCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityOrangeCreamBall;
+import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityCreamBall;
 import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityPoisonArrow;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityStrawberryCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityTeaCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityVanillaCreamBall;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
@@ -144,6 +141,8 @@ public class MPEntities
 		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -12425324, -6163201);
 		registerEntity(EntityEuropaGuardian.class, "EuropaGuardian", 38, -9010279, -12268469);
 		registerEntity(EntityEuropaCrab.class, "EuropaCrab", 39, -11574413, -12167066);
+
+		registerEntity(EntityJellySlimePet.class, "JellySlimePet", 40, -2005303, -2208060);
 	}
 
 	private static void registerNonMobEntities()
@@ -163,12 +162,7 @@ public class MPEntities
 		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteorChunk.class, "KoentusMeteorChunk", MorePlanetsCore.instance, true);
 		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteor.class, "KoentusMeteor", MorePlanetsCore.instance, true);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityVanillaCreamBall.class, "VanillaCreamBall", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityChocolateCreamBall.class, "ChocolateCreamBall", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityStrawberryCreamBall.class, "StrawberryCreamBall", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityOrangeCreamBall.class, "OrangeCreamBall", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityTeaCreamBall.class, "TeaCreamBall", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityLemonCreamBall.class, "LemonCreamBall", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityCreamBall.class, "CreamBall", MorePlanetsCore.instance, true);
 		CommonRegisterHelper.registerNonMobEntity(EntityPoisonArrow.class, "PoisonArrow", MorePlanetsCore.instance, true);
 		CommonRegisterHelper.registerNonMobEntity(EntityTier7Rocket.class, "Tier7Rocket", MorePlanetsCore.instance, false);
 
@@ -180,6 +174,8 @@ public class MPEntities
 		CommonRegisterHelper.registerNonMobEntity(EntityTier8Rocket.class, "Tier8Rocket", MorePlanetsCore.instance, false);
 
 		CommonRegisterHelper.registerNonMobEntity(EntityEuropaWaterBomb.class, "EuropaWaterBomb", MorePlanetsCore.instance, true);
+
+		CommonRegisterHelper.registerNonMobEntity(EntityDarkAsteroid.class, "DarkAsteroid", MorePlanetsCore.instance, true);
 	}
 
 	private static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour)

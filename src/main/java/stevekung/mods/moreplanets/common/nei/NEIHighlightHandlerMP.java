@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
@@ -77,37 +78,13 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(NibiruBlocks.nibiru_block, 1, meta);
 		}
-		if (block == NibiruBlocks.ancient_dark_leaves && meta == 0)
+		if (block == NibiruBlocks.ancient_dark_leaves)
 		{
-			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 0);
+			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, meta & 3);
 		}
-		if (block == NibiruBlocks.ancient_dark_leaves && meta == 1)
+		if (block == NibiruBlocks.orange_leaves)
 		{
-			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 1);
-		}
-		if (block == NibiruBlocks.ancient_dark_leaves && meta == 2)
-		{
-			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 2);
-		}
-		if (block == NibiruBlocks.ancient_dark_leaves && meta == 3)
-		{
-			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, 3);
-		}
-		if (block == NibiruBlocks.orange_leaves && meta == 0)
-		{
-			return new ItemStack(NibiruBlocks.orange_leaves, 1, 0);
-		}
-		if (block == NibiruBlocks.orange_leaves && meta == 1)
-		{
-			return new ItemStack(NibiruBlocks.orange_leaves, 1, 1);
-		}
-		if (block == NibiruBlocks.orange_leaves && meta == 2)
-		{
-			return new ItemStack(NibiruBlocks.orange_leaves, 1, 2);
-		}
-		if (block == NibiruBlocks.orange_leaves && meta == 3)
-		{
-			return new ItemStack(NibiruBlocks.orange_leaves, 1, 3);
+			return new ItemStack(NibiruBlocks.orange_leaves, 1, meta & 3);
 		}
 		if (block == KoentusBlocks.koentus_block)
 		{
@@ -125,21 +102,17 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(FronosBlocks.frosted_cake, 1, meta);
 		}
-		if (block == FronosBlocks.fronos_leaves && meta == 0)
+		if (block == FronosBlocks.fronos_leaves)
 		{
-			return new ItemStack(FronosBlocks.fronos_leaves, 1, 0);
-		}
-		if (block == FronosBlocks.fronos_leaves && meta == 1)
-		{
-			return new ItemStack(FronosBlocks.fronos_leaves, 1, 1);
+			return new ItemStack(FronosBlocks.fronos_leaves, 1, meta & 3);
 		}
 		if (block == FronosBlocks.fronos_tall_grass)
 		{
 			return new ItemStack(FronosBlocks.fronos_tall_grass, 1, meta);
 		}
-		if (block == FronosBlocks.golden_crops && meta >= 0)
+		if (block == FronosBlocks.golden_crops)
 		{
-			return new ItemStack(FronosItems.golden_seeds, 1, 0);
+			return new ItemStack(FronosItems.golden_seeds);
 		}
 		if (block == KapteynBBlocks.kapteyn_b_block)
 		{
@@ -155,7 +128,7 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		}
 		if (block == KapteynBBlocks.icy_poison_crystal)
 		{
-			return new ItemStack(KapteynBBlocks.icy_poison_crystal, 1, 0);
+			return new ItemStack(KapteynBBlocks.icy_poison_crystal);
 		}
 		if (block == SiriusBBlocks.sirius_b_block)
 		{
@@ -175,7 +148,7 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		}
 		if (block == EuropaBlocks.europa_sea_lantern)
 		{
-			return new ItemStack(EuropaBlocks.europa_sea_lantern, 1, 0);
+			return new ItemStack(EuropaBlocks.europa_sea_lantern);
 		}
 		if (block == FronosBlocks.fronos_sandstone)
 		{
@@ -183,7 +156,7 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		}
 		if (block == PolongniusBlocks.ultra_violet_solar_fake)
 		{
-			return new ItemStack(PolongniusBlocks.ultra_violet_solar_panel, 1, 0);
+			return new ItemStack(PolongniusBlocks.ultra_violet_solar_panel);
 		}
 		if (block == DeimosBlocks.deimos_block)
 		{
@@ -191,11 +164,11 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		}
 		if (block == FronosBlocks.fronos_farmland)
 		{
-			return new ItemStack(FronosBlocks.fronos_dirt, 1, 0);
+			return new ItemStack(FronosBlocks.fronos_dirt);
 		}
 		if (block == KapteynBBlocks.fallen_ice_crystal_meteor)
 		{
-			return new ItemStack(KapteynBBlocks.fallen_ice_crystal_meteor, 1, 0);
+			return new ItemStack(KapteynBBlocks.fallen_ice_crystal_meteor);
 		}
 		if (block == PhobosBlocks.phobos_block)
 		{
@@ -207,11 +180,11 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		}
 		if (block == NibiruBlocks.infected_farmland)
 		{
-			return new ItemStack(NibiruBlocks.infected_dirt, 1, 0);
+			return new ItemStack(NibiruBlocks.infected_dirt);
 		}
 		if (block == KoentusBlocks.crystal_farmland)
 		{
-			return new ItemStack(KoentusBlocks.crystal_dirt, 1, 0);
+			return new ItemStack(KoentusBlocks.crystal_dirt);
 		}
 		if (block == NibiruBlocks.ancient_dark_door)
 		{
@@ -232,6 +205,14 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		if (block == KoentusBlocks.crystal_door_block)
 		{
 			return new ItemStack(KoentusItems.crystal_door);
+		}
+		if (block == DarkAsteroidsBlocks.dark_asteroid_rock)
+		{
+			return new ItemStack(DarkAsteroidsBlocks.dark_asteroid_rock, 1, meta);
+		}
+		if (block == KoentusBlocks.crystal_cocoa)
+		{
+			return new ItemStack(KoentusItems.crystal_cocoa);
 		}
 		return null;
 	}

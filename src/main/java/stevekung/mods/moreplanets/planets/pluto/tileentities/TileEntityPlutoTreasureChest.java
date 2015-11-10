@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.pluto.tileentities;
 
-import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.tileentities.TileEntityTreasureChestMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 
@@ -15,24 +14,6 @@ public class TileEntityPlutoTreasureChest extends TileEntityTreasureChestMP
 {
 	public TileEntityPlutoTreasureChest()
 	{
-		super(5);
-	}
-
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 5;
-	}
-
-	@Override
-	public String getTreasureChestName()
-	{
-		return "pluto";
-	}
-
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return PlutoBlocks.pluto_treasure_chest;
+		super(5, "pluto", PlutoBlocks.pluto_treasure_chest);
 	}
 }

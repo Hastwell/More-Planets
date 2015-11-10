@@ -8,14 +8,17 @@
 package stevekung.mods.moreplanets.planets.nibiru.potion;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import stevekung.mods.moreplanets.common.util.DamageSourceMP;
+import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class InfectedGasEffect extends Potion
 {
-	public InfectedGasEffect(int id, boolean isBad, int color)
+	public InfectedGasEffect(int id, int color)
 	{
-		super(id, new ResourceLocation("moreplanets:infected_gas"), isBad, color);
+		super(id, new ResourceLocation("moreplanets:infected_gas"), true, color);
 		this.setIconIndex(1, 0);
 	}
 
@@ -29,6 +32,20 @@ public class InfectedGasEffect extends Potion
 	@Override
 	public boolean isReady(int duration, int amplifier)
 	{
-		return duration >= 1;
+		if (this.id == MPPotions.infected_gas.id)
+		{
+			int k = 20 >> amplifier;
+			return k > 0 ? duration % k == 0 : true;
+		}
+		return false;
+	}
+
+	@Override
+	public void performEffect(EntityLivingBase living, int food)
+	{
+		if (this.id == MPPotions.infected_gas.id)
+		{
+			living.attackEntityFrom(DamageSourceMP.infected_gas, 1.0F);
+		}
 	}
 }

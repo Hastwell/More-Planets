@@ -10,6 +10,7 @@ package stevekung.mods.stevecore;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.ModelBakery;
@@ -86,6 +87,16 @@ public class ClientRegisterHelper
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(folder + ":" + variantName, "inventory"));
 	}
 
+	public static void registerModelRender(Item item, ItemMeshDefinition itemMesh)
+	{
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, itemMesh);
+	}
+
+	public static void registerModelRender(Block block, ItemMeshDefinition itemMesh)
+	{
+		ClientRegisterHelper.registerModelRender(Item.getItemFromBlock(block), itemMesh);
+	}
+
 	public static void registerModelRender(Item item, String variantName, String folder)
 	{
 		ClientRegisterHelper.registerModelRender(item, 0, variantName, folder);
@@ -131,12 +142,12 @@ public class ClientRegisterHelper
 		ClientRegisterHelper.registerModelRender(item, 15, "black_" + getItemName(item), folder);
 	}
 
-	public static void registerBlockWithStateMapper(Block block, EnumStateMapper mapper)
+	public static void registerStateMapper(Block block, EnumStateMapper mapper)
 	{
-		ClientRegisterHelper.registerBlockWithStateMapper(block, mapper.builder);
+		ClientRegisterHelper.registerStateMapper(block, mapper.builder);
 	}
 
-	public static void registerBlockWithStateMapper(Block block, IStateMapper mapper)
+	public static void registerStateMapper(Block block, IStateMapper mapper)
 	{
 		Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(block, mapper);
 	}

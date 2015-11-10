@@ -7,6 +7,11 @@
 
 package stevekung.mods.moreplanets.client.renderer;
 
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.item.ItemStack;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.items.DarkAsteroidsItems;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
@@ -640,49 +645,46 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(EuropaBlocks.europa_sponge, 1, "europa_sponge_wet", "moreplanets");
 		ClientRegisterHelper.registerModelRender(EuropaBlocks.europa_water_bomb, "europa_water_bomb", "moreplanets");
 
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 0, "dark_asteroid_rock_1", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 1, "dark_asteroid_rock_2", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 2, "dark_asteroid_rock_3", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 3, "dark_asteroid_aluminum_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 4, "dark_asteroid_ilmenite_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 5, "dark_asteroid_iron_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 6, "dark_asteroid_meteoric_iron_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 7, "dark_asteroid_silicon_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 8, "dark_asteroid_diamond_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 9, "dark_asteroid_emerald_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_rock, 10, "dark_asteroid_lapis_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.alphere_ore, "alphere_ore", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.dark_asteroid_quicksand, "dark_asteroid_quicksand", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.alien_grass, "alien_grass", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.alien_dirt, 0, "alien_dirt", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.alien_dirt, 1, "coarse_alien_dirt", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.alien_log, "alien_wood_log", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.alien_leaves, "alien_leaves", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsBlocks.alien_glowstone, "alien_glowstone", "moreplanets");
+
 		// Items
 		ClientRegisterHelper.registerModelRender(MPItems.feces, "feces", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1000, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1001, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1002, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1003, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1004, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1005, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1006, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1007, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1008, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1009, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1010, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1011, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1012, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1013, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1014, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1015, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1016, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1017, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1018, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1019, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1020, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1021, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1022, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1023, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1024, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1025, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1026, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1027, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1028, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1029, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1030, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1031, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1032, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1033, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1034, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1035, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1036, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1037, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1038, "spawn_egg_mp", "moreplanets");
-		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, 1039, "spawn_egg_mp", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.desh_thermal_cloth, "desh_thermal_cloth", "moreplanets");
 		ClientRegisterHelper.registerModelRender(MPItems.achievement_temp, 0, "diona_planet", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_2_thermal_padding, 0, "tier_2_thermal_helmet", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_2_thermal_padding, 1, "tier_2_thermal_chestplate", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_2_thermal_padding, 2, "tier_2_thermal_leggings", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_2_thermal_padding, 3, "tier_2_thermal_boots", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_3_thermal_padding, 0, "tier_3_thermal_helmet", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_3_thermal_padding, 1, "tier_3_thermal_chestplate", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_3_thermal_padding, 2, "tier_3_thermal_leggings", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.tier_3_thermal_padding, 3, "tier_3_thermal_boots", "moreplanets");
+		ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, new ItemMeshDefinition()
+		{
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack itemStack)
+			{
+				return new ModelResourceLocation("moreplanets:spawn_egg_mp", "inventory");
+			}
+		});
 
 		ClientRegisterHelper.registerModelRender(DionaItems.diona_item, 0, "quontonium_ingot", "moreplanets");
 		ClientRegisterHelper.registerModelRender(DionaItems.diona_item, 1, "fronisium_ingot", "moreplanets");
@@ -923,6 +925,8 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(EuropaItems.europa_food, 0, "raw_europa_eel_meat", "moreplanets");
 		ClientRegisterHelper.registerModelRender(EuropaItems.europa_food, 1, "cooked_europa_eel_meat", "moreplanets");
 		ClientRegisterHelper.registerModelRender(EuropaItems.europa_gunpowder, "europa_gunpowder", "moreplanets");
+
+		ClientRegisterHelper.registerModelRender(DarkAsteroidsItems.alphere, "alphere", "moreplanets");
 
 		// Tools
 		ClientRegisterHelper.registerModelRender(DionaToolsItems.quontonium_sword, "quontonium_sword", "moreplanets");

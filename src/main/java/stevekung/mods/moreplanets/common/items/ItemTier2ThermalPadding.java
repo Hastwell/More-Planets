@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright 2015 SteveKunG - More Planets Mod
+ * 
+ * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ ******************************************************************************/
+
 package stevekung.mods.moreplanets.common.items;
 
 import java.util.List;
@@ -37,7 +44,7 @@ public class ItemTier2ThermalPadding extends ItemBaseMP implements IItemThermal
 	@Override
 	protected String[] getItemVariantsName()
 	{
-		return new String[] { "thermal_helm", "thermal_chestplate", "thermal_leggings", "thermal_boots" };
+		return new String[] { "tier_2_thermal_helmet", "tier_2_thermal_chestplate", "tier_2_thermal_leggings", "tier_2_thermal_boots" };
 	}
 
 	@Override
@@ -112,5 +119,12 @@ public class ItemTier2ThermalPadding extends ItemBaseMP implements IItemThermal
 			}
 		}
 		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getColorFromItemStack(ItemStack itemStack, int layer)
+	{
+		return layer == 0 ? super.getColorFromItemStack(itemStack, layer) : 0;//TODO
 	}
 }

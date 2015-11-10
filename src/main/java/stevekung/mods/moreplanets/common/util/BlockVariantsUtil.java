@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.common.util;
 
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
@@ -103,6 +104,9 @@ public class BlockVariantsUtil
 		ClientRegisterHelper.registerVariantsName(EuropaBlocks.half_europa_prismarine_slab, new String[] { "moreplanets:europa_prismarine_slab", "moreplanets:europa_prismarine_brick_slab", "moreplanets:dark_europa_prismarine_slab" });
 		ClientRegisterHelper.registerVariantsName(EuropaBlocks.europa_sponge, new String[] { "moreplanets:europa_sponge", "moreplanets:europa_sponge_wet" });
 		ClientRegisterHelper.registerVariantsName(MPBlocks.polished_space_decoration, new String[] { "moreplanets:polished_tin_decoration_block", "moreplanets:polished_aluminum_decoration_block" });
+		ClientRegisterHelper.registerVariantsName(DarkAsteroidsBlocks.dark_asteroid_rock, new String[] { "moreplanets:dark_asteroid_rock_1", "moreplanets:dark_asteroid_rock_2", "moreplanets:dark_asteroid_rock_3", "moreplanets:dark_asteroid_aluminum_ore", "moreplanets:dark_asteroid_ilmenite_ore", "moreplanets:dark_asteroid_iron_ore", "moreplanets:dark_asteroid_meteoric_iron_ore", "moreplanets:dark_asteroid_silicon_ore", "moreplanets:dark_asteroid_diamond_ore", "moreplanets:dark_asteroid_emerald_ore", "moreplanets:dark_asteroid_lapis_ore" });
+		ClientRegisterHelper.registerVariantsName(DarkAsteroidsBlocks.alien_dirt, new String[] { "moreplanets:alien_dirt", "moreplanets:coarse_alien_dirt" });
+		ClientRegisterHelper.registerVariantsName(DarkAsteroidsBlocks.alien_log, new String[] { "moreplanets:alien_wood_log" });
 
 		ClientRegisterHelper.registerVariantNameWithDyeColor(MPBlocks.tinted_glass, "moreplanets");
 		ClientRegisterHelper.registerVariantNameWithDyeColor(MPBlocks.tinted_glass_pane, "moreplanets");

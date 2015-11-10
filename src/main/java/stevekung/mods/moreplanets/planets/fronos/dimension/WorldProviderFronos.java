@@ -93,6 +93,7 @@ public class WorldProviderFronos extends WorldProviderMP
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public float getCloudHeight()
 	{
 		return 128.0F;
@@ -150,7 +151,7 @@ public class WorldProviderFronos extends WorldProviderMP
 	@Override
 	public double getMeteorFrequency()
 	{
-		return 500.0D;
+		return 0.0D;
 	}
 
 	@Override

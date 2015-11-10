@@ -16,6 +16,7 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
+import stevekung.mods.moreplanets.common.blocks.BlockFenceMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockColoredMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDirtMP;
@@ -71,7 +72,7 @@ public class KoentusBlocks
 		KoentusBlocks.crystal_log = new BlockCrystalLog("crystal_log");
 		KoentusBlocks.crystal_sapling = new BlockCrystalSapling("crystal_sapling");
 		KoentusBlocks.crystal_leaves = new BlockCrystalLeaves("crystal_leaves");
-		KoentusBlocks.crystal_fence = new BlockCrystalFence("crystal_fence");
+		KoentusBlocks.crystal_fence = new BlockFenceMP("crystal_fence");
 		KoentusBlocks.crystal_fence_gate = new BlockFenceGateMP("crystal_fence_gate");
 		KoentusBlocks.crystal_farmland = new BlockCrystalFarmland("crystal_farmland");
 		KoentusBlocks.crystal_wood_stairs = new BlockStairsMP(Blocks.planks.getDefaultState(), "crystal_wood_stairs", "wood", null, 2.0F);

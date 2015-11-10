@@ -145,7 +145,20 @@ public class BlockFronos extends BlockPlanetTileMP /*implements IDetectableResou
 	{
 		if (state == state.withProperty(VARIANT, BlockType.fronos_lapis_ore))
 		{
-			return 4 + rand.nextInt(5);
+			if (fortune > 0)
+			{
+				int j = rand.nextInt(fortune + 2) - 1;
+
+				if (j < 0)
+				{
+					j = 0;
+				}
+				return 4 + rand.nextInt(5) * (j + 1);
+			}
+			else
+			{
+				return 4 + rand.nextInt(5);
+			}
 		}
 		return super.quantityDropped(state, fortune, rand);
 	}

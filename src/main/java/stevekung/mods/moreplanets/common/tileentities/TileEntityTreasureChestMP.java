@@ -36,21 +36,25 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.IInteractionObject;
 import net.minecraftforge.fml.relauncher.Side;
 
-public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUpdatePlayerListBox, IInventory, IKeyable, IInteractionObject
+public class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUpdatePlayerListBox, IInventory, IKeyable, IInteractionObject
 {
 	private ItemStack[] chestContents = new ItemStack[27];
 	public float lidAngle;
 	public float prevLidAngle;
 	public int numPlayersUsing;
 	private int ticksSinceSync;
-	public int tier;
+	private int tier;
+	private String name;
+	private Block block;
 
 	@NetworkedField(targetSide = Side.CLIENT)
 	public boolean locked = true;
 
-	public TileEntityTreasureChestMP(int tier)
+	public TileEntityTreasureChestMP(int tier, String name, Block block)
 	{
-		this.tier = this.getTreasureChestTier();
+		this.tier = tier;
+		this.name = name;
+		this.block = block;
 	}
 
 	@Override
@@ -127,7 +131,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 	@Override
 	public String getName()
 	{
-		return StatCollector.translateToLocal("container." + this.getTreasureChestName() + ".treasurechest.name");
+		return StatCollector.translateToLocal("container." + this.name + ".treasurechest.name");
 	}
 
 	@Override
@@ -299,7 +303,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 	@Override
 	public void closeInventory(EntityPlayer player)
 	{
-		if (!player.isSpectator() && this.getBlockType() == this.getTreasureChestBlock())
+		if (!player.isSpectator() && this.getBlockType() == this.block)
 		{
 			--this.numPlayersUsing;
 			this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
@@ -406,7 +410,7 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 	@Override
 	public int getTierOfKeyRequired()
 	{
-		return this.getTreasureChestTier();
+		return this.tier;
 	}
 
 	@Override
@@ -475,8 +479,4 @@ public abstract class TileEntityTreasureChestMP extends TileEntityAdvanced imple
 	{
 		return true;
 	}
-
-	protected abstract int getTreasureChestTier();
-	protected abstract Block getTreasureChestBlock();
-	protected abstract String getTreasureChestName();
 }

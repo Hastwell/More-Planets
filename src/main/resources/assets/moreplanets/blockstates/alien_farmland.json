@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "moisture=0": { "model": "moreplanets:alien_farmland_dry" },
+        "moisture=1": { "model": "moreplanets:alien_farmland_moist" }
+    }
+}

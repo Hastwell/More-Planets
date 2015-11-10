@@ -134,18 +134,12 @@ tile.ancient_dark_wood_stairs.name=Ancient Dark Wood Stairs
 tile.nibiru_dungeon_brick_stairs.name=Nibiru Dungeon Brick Stairs
 tile.nibiru_planks.ancient_dark.name=Ancient Dark Wood Planks
 tile.nibiru_sapling.ancient_dark.name=Ancient Dark Sapling
-tile.ancient_dark_leaves.state1.name=Ancient Dark Leaves
-tile.ancient_dark_leaves.state2.name=Ancient Dark Flower Leaves
-tile.ancient_dark_leaves.state3.name=Ancient Dark Raw Apple Leaves
-tile.ancient_dark_leaves.state4.name=Ancient Dark Fruit Leaves
+tile.ancient_dark_leaves.name=Ancient Dark Leaves
 tile.nibiru_log.ancient_dark_wood.name=Ancient Dark Wood
 tile.nibiru_log.orange_wood.name=Orange Wood
 tile.ichorius_torch.name=Ichorius Torch
 tile.nibiru_sapling.orange.name=Orange Sapling
-tile.orange_leaves.state1.name=Orange Leaves
-tile.orange_leaves.state2.name=Orange Flower Leaves
-tile.orange_leaves.state3.name=Raw Orange Leaves
-tile.orange_leaves.state4.name=Orange Fruit Leaves
+tile.orange_leaves.name=Orange Leaves
 tile.nibiru_planks.orange.name=Orange Wood Planks
 tile.orange_wood_stairs.name=Orange Wood Stairs
 tile.infected_grass.name=Infected Grass
@@ -661,6 +655,19 @@ tile.dark_europa_prismarine_stairs.name=Dark Europa Prismarine Stairs
 tile.europa_sponge.default.name=Europa Sponge
 tile.europa_sponge.wet.name=Wet Europa Sponge
 
+#########Dark Asteroids Block#########
+tile.dark_asteroid_rock.rock.name=Dark Asteroid Rock
+tile.dark_asteroid_rock.aluminum_ore.name=Aluminum Ore
+tile.dark_asteroid_rock.ilmenite_ore.name=Ilmenite Ore
+tile.dark_asteroid_rock.iron_ore.name=Iron Ore
+tile.dark_asteroid_rock.meteoric_iron_ore.name=Meteoric Iron Ore
+tile.dark_asteroid_rock.silicon_ore.name=Silicon Ore
+tile.dark_asteroid_rock.diamond_ore.name=Diamond Ore
+tile.dark_asteroid_rock.emerald_ore.name=Emerald Ore
+tile.dark_asteroid_rock.lapis_ore.name=Lapis Lazuli Ore
+tile.dark_asteroid_quicksand.name=Dark Asteroid Quicksand
+tile.alphere_ore.name=Alphere Ore
+
 # ITEMS
 #########Main Item#########
 item.meteor_shower.name=Meteor Shower
@@ -919,6 +926,9 @@ item.europa_food.raw_europa_eel_meat.name=Raw Europa Eel Meat
 item.europa_food.cooked_europa_eel_meat.name=Cooked Europa Eel Meat
 item.europa_gunpowder.name=Europa Gunpowder
 
+#########Dark Asteroids Item#########
+item.alphere.name=Alphere
+
 # TOOLS
 #########Diona Tools#########
 item.quontonium_pickaxe.name=Quontonium Pickaxe
@@ -1167,6 +1177,7 @@ entity.MorePlanets.VenusianVillagerMP.name=Venusian Villager
 entity.MorePlanets.EuropaSquid.name=Europa Squid
 entity.MorePlanets.EuropaGuardian.name=Europa Guardian
 entity.MorePlanets.EuropaCrab.name=Europa Crab
+entity.MorePlanets.JellySlimePet.name=Jelly Slime Pet
 
 # DESCRIPTION
 desc.tier4.name=Tier 4

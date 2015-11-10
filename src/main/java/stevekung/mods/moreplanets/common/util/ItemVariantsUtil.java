@@ -59,5 +59,7 @@ public class ItemVariantsUtil
 		ClientRegisterHelper.registerVariantsName(EuropaItems.europa_prismarine, new String[] { "moreplanets:europa_prismarine_shard", "moreplanets:europa_prismarine_crystals" });
 		ClientRegisterHelper.registerVariantsName(EuropaItems.europa_food, new String[] { "moreplanets:raw_europa_eel_meat", "moreplanets:cooked_europa_eel_meat" });
 		ClientRegisterHelper.registerVariantsName(MPItems.achievement_temp, new String[] { "moreplanets:diona_planet" });
+		ClientRegisterHelper.registerVariantsName(MPItems.tier_2_thermal_padding, new String[] { "moreplanets:tier_2_thermal_helmet", "moreplanets:tier_2_thermal_chestplate", "moreplanets:tier_2_thermal_leggings", "moreplanets:tier_2_thermal_boots" });
+		ClientRegisterHelper.registerVariantsName(MPItems.tier_3_thermal_padding, new String[] { "moreplanets:tier_3_thermal_helmet", "moreplanets:tier_3_thermal_chestplate", "moreplanets:tier_3_thermal_leggings", "moreplanets:tier_3_thermal_boots" });
 	}
 }

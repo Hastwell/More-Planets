@@ -8,14 +8,17 @@
 package stevekung.mods.moreplanets.planets.kapteynb.potion;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import stevekung.mods.moreplanets.common.util.DamageSourceMP;
+import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class ChemicalEffect extends Potion
 {
-	public ChemicalEffect(int id, boolean isBad, int color)
+	public ChemicalEffect(int id, int color)
 	{
-		super(id, new ResourceLocation("moreplanets:chemical"), isBad, color);
+		super(id, new ResourceLocation("moreplanets:chemical"), true, color);
 		this.setIconIndex(1, 0);
 	}
 
@@ -29,6 +32,20 @@ public class ChemicalEffect extends Potion
 	@Override
 	public boolean isReady(int duration, int amplifier)
 	{
-		return duration >= 1;
+		if (this.id == MPPotions.chemical.id)
+		{
+			int k = 15 >> amplifier;
+			return k > 0 ? duration % k == 0 : true;
+		}
+		return false;
+	}
+
+	@Override
+	public void performEffect(EntityLivingBase living, int food)
+	{
+		if (this.id == MPPotions.chemical.id)
+		{
+			living.attackEntityFrom(DamageSourceMP.chemical, 0.75F);
+		}
 	}
 }

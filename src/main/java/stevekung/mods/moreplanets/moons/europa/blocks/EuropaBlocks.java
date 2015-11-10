@@ -18,6 +18,7 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
+import stevekung.mods.moreplanets.common.blocks.BlockFenceMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockSingleLeaves;
@@ -88,7 +89,7 @@ public class EuropaBlocks
 		EuropaBlocks.europa_leaves = new BlockEuropaLeaves("europa_leaves");
 		EuropaBlocks.europa_planks = new BlockBaseMP("europa_planks", Material.wood).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundTypeWood);
 		EuropaBlocks.europa_sand = new BlockEuropaSand("europa_sand");
-		EuropaBlocks.europa_fence = new BlockEuropaFence("europa_fence");
+		EuropaBlocks.europa_fence = new BlockFenceMP("europa_fence");
 		EuropaBlocks.europa_sandstone = new BlockEuropaSandstone("europa_sandstone");
 		EuropaBlocks.half_europa_sandstone_slab = new BlockEuropaSandstoneSlab("half_europa_sandstone_slab", Material.rock);
 		EuropaBlocks.double_europa_sandstone_slab = new BlockDoubleEuropaSandstoneSlab("double_europa_sandstone_slab", Material.rock);

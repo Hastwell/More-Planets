@@ -14,6 +14,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityIcyPoisonCrystal extends TileEntity implements IUpdatePlayerListBox
 {
@@ -29,11 +30,11 @@ public class TileEntityIcyPoisonCrystal extends TileEntity implements IUpdatePla
 	{
 		if (!this.worldObj.isRemote)
 		{
-			if (OxygenUtil.inOxygenBubble(this.worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ()))
+			if (OxygenUtil.inOxygenBubble(this.worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ()) || OxygenUtil.isInOxygenBlock(this.worldObj, AxisAlignedBB.fromBounds(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.pos.getX(), this.pos.getY(), this.pos.getZ())))
 			{
 				this.worldObj.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.0F, true);
 			}
-			if (this.worldObj.provider.getDimensionId() == 0)
+			if (this.worldObj.provider.getDimensionId() == 0 || !OxygenUtil.noAtmosphericCombustion(this.worldObj.provider))
 			{
 				if (this.worldObj.rand.nextInt(100) == 0)
 				{

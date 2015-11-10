@@ -8,14 +8,18 @@
 package stevekung.mods.moreplanets.planets.kapteynb.potion;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import stevekung.mods.moreplanets.common.util.DamageSourceMP;
+import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class IcyPoisonEffect extends Potion
 {
-	public IcyPoisonEffect(int id, boolean isBad, int color)
+	public IcyPoisonEffect(int id, int color)
 	{
-		super(id, new ResourceLocation("moreplanets:icy_poison"), isBad, color);
+		super(id, new ResourceLocation("moreplanets:icy_poison"), true, color);
 		this.setIconIndex(1, 0);
 	}
 
@@ -29,6 +33,25 @@ public class IcyPoisonEffect extends Potion
 	@Override
 	public boolean isReady(int duration, int amplifier)
 	{
-		return duration >= 1;
+		if (this.id == MPPotions.icy_poison.id)
+		{
+			int k = 20 >> amplifier;
+			return k > 0 ? duration % k == 0 : true;
+		}
+		return false;
+	}
+
+	@Override
+	public void performEffect(EntityLivingBase living, int food)
+	{
+		if (this.id == MPPotions.icy_poison.id)
+		{
+			living.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F);
+
+			if (living instanceof EntityPlayer)
+			{
+				((EntityPlayer)living).addExhaustion(0.075F * (food + 1));
+			}
+		}
 	}
 }

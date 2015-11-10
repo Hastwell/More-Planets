@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.nibiru.tileentities;
 
-import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.tileentities.TileEntityTreasureChestMP;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
@@ -15,24 +14,6 @@ public class TileEntityNibiruTreasureChest extends TileEntityTreasureChestMP
 {
 	public TileEntityNibiruTreasureChest()
 	{
-		super(6);
-	}
-
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 6;
-	}
-
-	@Override
-	public String getTreasureChestName()
-	{
-		return "nibiru";
-	}
-
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return NibiruBlocks.nibiru_treasure_chest;
+		super(6, "nibiru", NibiruBlocks.nibiru_treasure_chest);
 	}
 }

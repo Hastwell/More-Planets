@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "bottom": "moreplanets:blocks/alien_dirt",
+        "top": "moreplanets:blocks/alien_grass_top",
+        "side": "moreplanets:blocks/alien_grass_side"
+    }
+}

@@ -12,12 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.items.ItemBaseMP;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityChocolateCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityLemonCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityOrangeCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityStrawberryCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityTeaCreamBall;
-import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityVanillaCreamBall;
+import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityCreamBall;
 
 public class ItemCreamBall extends ItemBaseMP
 {
@@ -35,37 +30,11 @@ public class ItemCreamBall extends ItemBaseMP
 		{
 			--itemStack.stackSize;
 		}
-
-		int meta = itemStack.getItemDamage();
-		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (Item.itemRand.nextFloat() * 0.4F + 0.8F));
-
 		if (!world.isRemote)
 		{
-			if (meta == 0)
-			{
-				world.spawnEntityInWorld(new EntityVanillaCreamBall(world, player));
-			}
-			else if (meta == 1)
-			{
-				world.spawnEntityInWorld(new EntityChocolateCreamBall(world, player));
-			}
-			else if (meta == 2)
-			{
-				world.spawnEntityInWorld(new EntityStrawberryCreamBall(world, player));
-			}
-			else if (meta == 3)
-			{
-				world.spawnEntityInWorld(new EntityOrangeCreamBall(world, player));
-			}
-			else if (meta == 4)
-			{
-				world.spawnEntityInWorld(new EntityTeaCreamBall(world, player));
-			}
-			else if (meta == 5)
-			{
-				world.spawnEntityInWorld(new EntityLemonCreamBall(world, player));
-			}
+			world.spawnEntityInWorld(new EntityCreamBall(world, player, itemStack.getItemDamage()));
 		}
+		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (Item.itemRand.nextFloat() * 0.4F + 0.8F));
 		return itemStack;
 	}
 

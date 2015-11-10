@@ -8,14 +8,16 @@
 package stevekung.mods.moreplanets.planets.diona.potion;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
+import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class EMPEffect extends Potion
 {
-	public EMPEffect(int id, boolean isBad, int color)
+	public EMPEffect(int id, int color)
 	{
-		super(id, new ResourceLocation("moreplanets:emp"), isBad, color);
+		super(id, new ResourceLocation("moreplanets:emp"), true, color);
 		this.setIconIndex(1, 0);
 	}
 
@@ -30,5 +32,16 @@ public class EMPEffect extends Potion
 	public boolean isReady(int duration, int amplifier)
 	{
 		return duration >= 1;
+	}
+
+	@Override
+	public void performEffect(EntityLivingBase living, int food)
+	{
+		if (this.id == MPPotions.electro_magnetic_pulse.id)
+		{
+			living.motionX = 0.0D;
+			living.motionY = -1.0D;
+			living.motionZ = 0.0D;
+		}
 	}
 }
