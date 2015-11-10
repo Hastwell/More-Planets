@@ -2,6 +2,7 @@ package stevekung.mods.moreplanets.core.blocks;
 
 import java.util.List;
 
+import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -19,14 +21,14 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTintedGlassPane extends BlockPane
+public class BlockTintedGlassPane extends BlockPane implements IPartialSealableBlock
 {
 	private static IIcon[] field_150106_a = new IIcon[16];
 
 	public BlockTintedGlassPane(String name)
 	{
 		super("glass", "mpcore:tinted_glass_pane_top", Material.glass, false);
-		this.setHardness(0.3F);
+		this.setHardness(0.5F);
 		this.setResistance(20.0F);
 		this.setStepSound(soundTypeGlass);
 		this.setBlockName(name);
@@ -98,5 +100,11 @@ public class BlockTintedGlassPane extends BlockPane
 	{
 		Block block = world.getBlock(x, y, z);
 		return block == FronosBlocks.cheese_glass || block == MPBlocks.tinted_glass || super.canPaneConnectTo(world, x, y, z, dir);
+	}
+
+	@Override
+	public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
+	{
+		return true;
 	}
 }

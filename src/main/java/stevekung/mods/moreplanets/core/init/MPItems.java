@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.core.init;
 
 import net.minecraft.item.Item;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.items.DarkAsteroidsItems;
 import stevekung.mods.moreplanets.core.items.ItemAchievementTemp;
 import stevekung.mods.moreplanets.core.items.ItemFeces;
 import stevekung.mods.moreplanets.core.items.ItemMonsterPlacerMP;
@@ -54,6 +55,7 @@ public class MPItems
 		PlutoItems.init();
 		EuropaItems.init();
 		IoItems.init();
+		DarkAsteroidsItems.init();
 
 		MPItems.initItems();
 		MPItems.registerItems();

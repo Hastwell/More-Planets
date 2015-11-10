@@ -227,6 +227,7 @@ public class MPBlocks
 		highlightBlockList.add(VenusBlocks.venus_block);
 		highlightBlockList.add(VenusBlocks.venus_redstone_ore_active);
 		highlightBlockList.add(PlutoBlocks.pluto_block);
+		highlightBlockList.add(DarkAsteroidsBlocks.dark_asteroid_block);
 
 		hideBlockList.add(MPBlocks.stone_slab_full);
 		hideBlockList.add(MPBlocks.stone_slab_full2);
@@ -281,5 +282,6 @@ public class MPBlocks
 		hideBlockList.add(EuropaBlocks.double_europa_sandstone_slab);
 		hideBlockList.add(VenusBlocks.double_venus_sandstone_slab);
 		hideBlockList.add(FronosBlocks.double_fronos_sandstone_slab);
+		hideBlockList.add(DarkAsteroidsBlocks.dark_air);
 	}
 }

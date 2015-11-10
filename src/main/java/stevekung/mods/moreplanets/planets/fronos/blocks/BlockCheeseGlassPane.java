@@ -7,18 +7,20 @@
 
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
+import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCheeseGlassPane extends BlockPane
+public class BlockCheeseGlassPane extends BlockPane implements IPartialSealableBlock
 {
 	public BlockCheeseGlassPane(String name)
 	{
@@ -52,5 +54,11 @@ public class BlockCheeseGlassPane extends BlockPane
 	{
 		Block block = world.getBlock(x, y, z);
 		return block == FronosBlocks.cheese_glass || block == MPBlocks.tinted_glass || super.canPaneConnectTo(world, x, y, z, dir);
+	}
+
+	@Override
+	public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
+	{
+		return true;
 	}
 }

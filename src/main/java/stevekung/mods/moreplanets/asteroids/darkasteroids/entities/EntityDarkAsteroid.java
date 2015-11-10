@@ -14,6 +14,7 @@ public class EntityDarkAsteroid extends Entity
 	public EntityDarkAsteroid(World world)
 	{
 		super(world);
+		this.setSize(1.0F, 1.0F);
 		this.isImmuneToFire = true;
 	}
 

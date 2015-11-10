@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
@@ -144,6 +145,12 @@ public class BlockIcyPoisonCrystal extends BlockContainerMP
 	public int damageDropped(int meta)
 	{
 		return 5;
+	}
+
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition moving, World world, int x, int y, int z)
+	{
+		return new ItemStack(this, 1, 0);
 	}
 
 	@Override

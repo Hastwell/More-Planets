@@ -65,7 +65,6 @@ public class WorldProviderMercury extends WorldProviderMP
 		{
 			--var5;
 		}
-
 		float var6 = var5;
 		var5 = 1.0F - (float) ((Math.cos(var5 * Math.PI) + 1.0D) / 2.0D);
 		var5 = var6 + (var5 - var6) / 3.0F;

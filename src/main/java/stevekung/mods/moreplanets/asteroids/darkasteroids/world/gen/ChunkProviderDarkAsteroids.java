@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.vector.BlockVec3;
-import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
@@ -40,12 +39,13 @@ import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 {
-	Block ASTEROID_STONE = AsteroidBlocks.blockBasic;
+	Block ASTEROID_STONE = DarkAsteroidsBlocks.dark_asteroid_block;
 	byte ASTEROID_STONE_META_0 = 0;
 	byte ASTEROID_STONE_META_1 = 1;
 	byte ASTEROID_STONE_META_2 = 2;
@@ -83,22 +83,21 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 
 	private static int MAX_ASTEROID_RADIUS = 20;
 	private static int MIN_ASTEROID_RADIUS = 5;
-
 	private static int MAX_ASTEROID_SKEW = 8;
 
 	private static int MIN_ASTEROID_Y = 48;
 	private static int MAX_ASTEROID_Y = ChunkProviderDarkAsteroids.CHUNK_SIZE_Y - 48;
 
 	private static int ASTEROID_CHANCE = 800; //About 1 / n chance per XZ pair
-
 	private static int ASTEROID_SHELL_CHANCE = 2; //1 / n chance per asteroid
 
 	private static int MIN_BLOCKS_PER_CHUNK = 50;
 	private static int MAX_BLOCKS_PER_CHUNK = 200;
 
+	private static int ALUMINUM_CHANCE = 250;
 	private static int ILMENITE_CHANCE = 400;
 	private static int IRON_CHANCE = 300;
-	private static int ALUMINUM_CHANCE = 250;
+	private static int METEORIC_IRON_CHANCE = 450;
 
 	private static int NOISE_OFFSET_SIZE = 256;
 
@@ -150,12 +149,15 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, this.ASTEROID_STONE_META_2, 5, .3));
 		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, this.ASTEROID_STONE_META_1, 7, .3));
 		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, this.ASTEROID_STONE_META_0, 11, .25));
-		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 3, 5, .2));
-		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 4, 4, .15));
-		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 5, 3, .2));
-		this.coreHandler.addBlock(new SpecialAsteroidBlock(GCBlocks.basicBlock, (byte) 8, 2, .15));
-		this.coreHandler.addBlock(new SpecialAsteroidBlock(GCBlocks.basicBlock, (byte) 12, 2, .13));
-		this.coreHandler.addBlock(new SpecialAsteroidBlock(Blocks.diamond_ore, (byte) 0, 1, .1));
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 3, 5, .2));//Aluminum
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 4, 4, .15));//Ilmenite
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 5, 3, .2));//Iron
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 7, 2, .15));//Silicon
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 6, 2, .13));//Meteoric Iron
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 8, 1, .1));//Diamond
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 9, 3, .4));//Emerald
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 10, 3, .6));//Lapis
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(DarkAsteroidsBlocks.alphere_ore, (byte) 0, 2, .4));//Alphere
 		this.shellHandler = new SpecialAsteroidBlockHandler();
 		this.shellHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, this.ASTEROID_STONE_META_1, 3, .15));
 		this.shellHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, this.ASTEROID_STONE_META_0, 1, .15));
@@ -597,19 +599,21 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 					block = this.ASTEROID_STONE;
 					meta = this.ASTEROID_STONE_META_1;
 
-					if (this.rand.nextInt(ILMENITE_CHANCE) == 0)
+					if (this.rand.nextInt(ALUMINUM_CHANCE) == 0)
+					{
+						meta = 3;
+					}
+					else if (this.rand.nextInt(ILMENITE_CHANCE) == 0)
 					{
 						meta = 4;
 					}
 					else if (this.rand.nextInt(IRON_CHANCE) == 0)
 					{
 						meta = 5;
-						continue;
 					}
-					else if (this.rand.nextInt(ALUMINUM_CHANCE) == 0)
+					else if (this.rand.nextInt(METEORIC_IRON_CHANCE) == 0)
 					{
-						meta = 3;
-						continue;
+						meta = 6;
 					}
 
 					this.worldObj.setBlock(px, y, pz, block, meta, 2);
@@ -847,17 +851,17 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 								}
 							}
 
-							if (count > 12)
+							if (count > 5)
 							{
-								count = 12;
+								count = 5;
 							}
 
-							chunk.func_150807_a(x - 1, y & 15, z, GCBlocks.brightAir, 15 - count);
+							chunk.func_150807_a(x - 1, y & 5, z, DarkAsteroidsBlocks.dark_air, 5 - count);
 							ExtendedBlockStorage extendedblockstorage = chunk.getBlockStorageArray()[y >> 4];
 
 							if (extendedblockstorage != null)
 							{
-								extendedblockstorage.setExtBlocklightValue(x - 1, y & 15, z, count);
+								extendedblockstorage.setExtBlocklightValue(x - 1, y & 5, z, count);
 							}
 						}
 					}

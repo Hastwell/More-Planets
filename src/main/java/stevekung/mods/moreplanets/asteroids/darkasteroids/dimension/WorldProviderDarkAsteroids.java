@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright 2015 SteveKunG - More Planets Mod
+ * 
+ * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ ******************************************************************************/
+
 package stevekung.mods.moreplanets.asteroids.darkasteroids.dimension;
 
 import java.util.ArrayList;
@@ -8,8 +15,8 @@ import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
 import micdoodle8.mods.galacticraft.api.vector.BlockVec3;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
-import micdoodle8.mods.galacticraft.planets.asteroids.AsteroidsModule;
 import micdoodle8.mods.galacticraft.planets.asteroids.dimension.AsteroidSaveData;
+import micdoodle8.mods.galacticraft.planets.asteroids.dimension.WorldProviderAsteroids;
 import micdoodle8.mods.galacticraft.planets.asteroids.entities.EntityAstroMiner;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -17,23 +24,24 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.world.gen.ChunkProviderDarkAsteroids;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.world.gen.WorldChunkManagerDarkAsteroids;
-import stevekung.mods.moreplanets.core.dimension.WorldProviderMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.util.MPLog;
+import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderDarkAsteroids extends WorldProviderMP
+public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implements IUltraVioletLevel
 {
 	//Used to list asteroid centres to external code that needs to know them
 	private HashSet<BlockVec3> asteroidCentres = new HashSet();
 	private boolean dataNotLoaded = true;
 	private AsteroidSaveData datafile;
-	private double solarMultiplier = -1D;
+	private double solarMultiplier = -2.0D;
 
 	@Override
 	public CelestialBody getCelestialBody()
 	{
-		return AsteroidsModule.planetAsteroids;
+		return MorePlanetsCore.darkAsteroids;
 	}
 
 	@Override
@@ -121,6 +129,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderMP
 		return -2.5F;
 	}
 
+	@Override
 	public void addAsteroid(int x, int y, int z)
 	{
 		BlockVec3 coords = new BlockVec3(x, y, z);
@@ -139,6 +148,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderMP
 		}
 	}
 
+	@Override
 	public void removeAsteroid(int x, int y, int z)
 	{
 		BlockVec3 coords = new BlockVec3(x, y, z);
@@ -214,6 +224,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderMP
 		this.datafile.markDirty();
 	}
 
+	@Override
 	public BlockVec3 getClosestAsteroidXZ(int x, int y, int z)
 	{
 		if (this.dataNotLoaded)
@@ -243,6 +254,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderMP
 		return result.clone();
 	}
 
+	@Override
 	public ArrayList<BlockVec3> getClosestAsteroidsXZ(int x, int y, int z, int facing, int count)
 	{
 		if (this.dataNotLoaded)
@@ -371,6 +383,6 @@ public class WorldProviderDarkAsteroids extends WorldProviderMP
 	@Override
 	public double getUltraVioletEnergyMultiplie()
 	{
-		return 0.0D;
+		return 0.5D;
 	}
 }

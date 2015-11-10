@@ -15,6 +15,8 @@ import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.multiplayer.WorldClient;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.client.SkyProviderDarkAsteroids;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.core.event.CloudRendererVenus;
 import stevekung.mods.moreplanets.core.spacestation.jupiter.SkyProviderJupiterOrbit;
 import stevekung.mods.moreplanets.core.spacestation.jupiter.WorldProviderJupiterOrbit;
@@ -220,6 +222,17 @@ public class SkyProviderHandlerMP
 					world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
 					((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
 					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+				}
+				if (world.provider.getCloudRenderer() == null)
+				{
+					world.provider.setCloudRenderer(new CloudRenderer());
+				}
+			}
+			else if (world.provider instanceof WorldProviderDarkAsteroids)
+			{
+				if (world.provider.getSkyRenderer() == null)
+				{
+					world.provider.setSkyRenderer(new SkyProviderDarkAsteroids((IGalacticraftWorldProvider) world.provider));
 				}
 				if (world.provider.getCloudRenderer() == null)
 				{

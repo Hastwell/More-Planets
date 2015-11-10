@@ -9,15 +9,18 @@ package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockCheeseGlass extends BlockBreakable
+public class BlockCheeseGlass extends BlockBreakable implements IPartialSealableBlock
 {
 	public BlockCheeseGlass(String name)
 	{
@@ -60,6 +63,12 @@ public class BlockCheeseGlass extends BlockBreakable
 
 	@Override
 	protected boolean canSilkHarvest()
+	{
+		return true;
+	}
+
+	@Override
+	public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
 	{
 		return true;
 	}

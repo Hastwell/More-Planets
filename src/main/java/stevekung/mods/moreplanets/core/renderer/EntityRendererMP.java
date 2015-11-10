@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketMP;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketNoFlagMP;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
@@ -247,6 +249,6 @@ public class EntityRendererMP
 
 		RenderingRegistry.registerEntityRenderingHandler(EntitySiriusSmallFireball.class, new RenderSiriusSmallFireball());
 
-
+		RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new RenderDarkAsteroid());
 	}
 }

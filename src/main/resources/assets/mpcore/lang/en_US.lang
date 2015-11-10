@@ -38,9 +38,22 @@ tile.tinted_glass.black.name=Black Tinted Glass
 tile.space_decoration_block.tin.name=Polished Tin Decoration Block
 tile.space_decoration_block.aluminum.name=Polished Aluminum Decoration Block
 
+tile.dark_asteroid_block.rock.name=Dark Asteroid Rock
+tile.dark_asteroid_block.aluminum_ore.name=Aluminum Ore
+tile.dark_asteroid_block.ilmenite_ore.name=Ilmenite Ore
+tile.dark_asteroid_block.iron_ore.name=Iron Ore
+tile.dark_asteroid_block.meteoric_iron_ore.name=Meteoric Iron Ore
+tile.dark_asteroid_block.silicon_ore.name=Silicon Ore
+tile.dark_asteroid_block.diamond_ore.name=Diamond Ore
+tile.dark_asteroid_block.emerald_ore.name=Emerald Ore
+tile.dark_asteroid_block.lapis_ore.name=Lapis Lazuli Ore
+tile.dark_asteroid_quicksand.name=Dark Asteroid Quicksand
+tile.alphere_ore.name=Alphere Ore
+
 item.feces.name=Feces
 item.decompose.name=Decompose
 item.desh_thermal_cloth.name=Desh Thermal Cloth
+item.alphere.name=Alphere
 
 # GUI
 itemGroup.MorePlanetsBlocks=More Planets Blocks

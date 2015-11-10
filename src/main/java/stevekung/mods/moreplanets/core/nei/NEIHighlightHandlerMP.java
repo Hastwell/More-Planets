@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
@@ -132,6 +133,10 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		if (block == PlutoBlocks.pluto_block)
 		{
 			return new ItemStack(PlutoBlocks.pluto_block, 1, meta);
+		}
+		if (block == DarkAsteroidsBlocks.dark_asteroid_block)
+		{
+			return new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, meta);
 		}
 		return null;
 	}

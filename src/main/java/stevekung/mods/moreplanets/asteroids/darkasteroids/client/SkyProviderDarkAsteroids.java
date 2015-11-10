@@ -3,9 +3,7 @@ package stevekung.mods.moreplanets.asteroids.darkasteroids.client;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
-import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
-import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GLAllocation;
@@ -22,8 +20,8 @@ import cpw.mods.fml.client.FMLClientHandler;
 
 public class SkyProviderDarkAsteroids extends IRenderHandler
 {
-	private ResourceLocation overworldTexture = new ResourceLocation(GalacticraftCore.ASSET_PREFIX, "textures/gui/celestialbodies/earth.png");
-	private ResourceLocation sunTexture = new ResourceLocation("textures/environment/sun.png");
+	//private ResourceLocation overworldTexture = new ResourceLocation(GalacticraftCore.ASSET_PREFIX, "textures/gui/celestialbodies/earth.png");
+	private ResourceLocation sunTexture = new ResourceLocation("mpcore:textures/gui/celestialbodies/dark_star.png");
 
 	public int starGLCallList = GLAllocation.generateDisplayLists(3);
 	public int glSkyList;
@@ -111,7 +109,7 @@ public class SkyProviderDarkAsteroids extends IRenderHandler
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		GL11.glColor4f(0.0F, 0.0F, 0.0F, 1.0F);
-		var12 = this.sunSize / 4.2F;
+		var12 = this.sunSize / 5.8F;
 		var23.startDrawingQuads();
 		var23.addVertex(-var12, 90.0D, -var12);
 		var23.addVertex(var12, 90.0D, -var12);
@@ -121,7 +119,7 @@ public class SkyProviderDarkAsteroids extends IRenderHandler
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		var12 = this.sunSize / 1.2F;
+		var12 = this.sunSize / 1.8F;
 		//110 distance instead of the normal 100, because there is no atmosphere to make the disk seem larger
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.sunTexture);
 		var23.startDrawingQuads();
@@ -134,7 +132,7 @@ public class SkyProviderDarkAsteroids extends IRenderHandler
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 
-		// HOME:
+		/*// HOME:
 		var12 = 0.5F;
 		GL11.glScalef(0.6F, 0.6F, 0.6F);
 		GL11.glRotatef(40.0F, 0.0F, 0.0F, 1.0F);
@@ -146,7 +144,7 @@ public class SkyProviderDarkAsteroids extends IRenderHandler
 		var23.addVertexWithUV(var12, -100.0D, var12, 1, 1);
 		var23.addVertexWithUV(var12, -100.0D, -var12, 1, 0);
 		var23.addVertexWithUV(-var12, -100.0D, -var12, 0, 0);
-		var23.draw();
+		var23.draw();*/
 
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glDisable(GL11.GL_BLEND);

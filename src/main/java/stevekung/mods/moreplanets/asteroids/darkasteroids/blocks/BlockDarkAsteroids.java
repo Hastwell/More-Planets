@@ -39,6 +39,7 @@ public class BlockDarkAsteroids extends BlockBasicMP implements IDetectableResou
 	{
 		super(Material.rock);
 		this.setHardness(3.0F);
+		this.setResistance(15.0F);
 		this.setBlockName(name);
 	}
 
@@ -110,8 +111,7 @@ public class BlockDarkAsteroids extends BlockBasicMP implements IDetectableResou
 			{
 				ret.add(new ItemStack(AsteroidsItems.basicItem, 1, 4));
 			}
-			int xp = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
-			this.dropXpOnBlockBreak(world, x, y, z, xp);
+			this.dropXpOnBlockBreak(world, x, y, z, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
 			return ret;
 		default:
 			return super.getDrops(world, x, y, z, metadata, fortune);
@@ -139,12 +139,28 @@ public class BlockDarkAsteroids extends BlockBasicMP implements IDetectableResou
 	@Override
 	public int quantityDropped(int meta, int fortune, Random rand)
 	{
-		switch (meta)
+		if (meta == 4)
 		{
-		case 4:
 			if (fortune >= 1)
 			{
 				return rand.nextFloat() < fortune * 0.29F - 0.25F ? 2 : 1;
+			}
+		}
+		if (meta == 10)
+		{
+			if (fortune > 0)
+			{
+				int j = rand.nextInt(fortune + 2) - 1;
+
+				if (j < 0)
+				{
+					j = 0;
+				}
+				return 4 + rand.nextInt(5) * (j + 1);
+			}
+			else
+			{
+				return 4 + rand.nextInt(5);
 			}
 		}
 		return super.quantityDropped(meta, fortune, rand);

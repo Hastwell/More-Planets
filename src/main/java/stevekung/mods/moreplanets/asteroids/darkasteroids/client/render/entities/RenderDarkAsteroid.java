@@ -26,7 +26,7 @@ public class RenderDarkAsteroid extends Render
 		GL11.glRotatef(asteroid.rotationPitch, 1, 0, 0);
 		GL11.glRotatef(asteroid.rotationYaw, 0, 1, 0);
 		this.bindEntityTexture(asteroid);
-		this.blockRenderer.renderBlockAsItem(DarkAsteroidsBlocks.dark_asteroids_block, 0, 1.0F);
+		this.blockRenderer.renderBlockAsItem(DarkAsteroidsBlocks.dark_asteroid_block, 0, 1.0F);
 		GL11.glPopMatrix();
 	}
 

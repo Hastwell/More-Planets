@@ -9,7 +9,7 @@ package stevekung.mods.moreplanets.core.world.biome;
 
 import net.minecraft.world.biome.BiomeGenBase;
 
-public abstract class BiomeGenBaseMP extends BiomeGenBase
+public class BiomeGenBaseMP extends BiomeGenBase
 {
 	public BiomeGenBaseMP(int id)
 	{
@@ -23,9 +23,9 @@ public abstract class BiomeGenBaseMP extends BiomeGenBase
 	}
 
 	@Override
-	public BiomeGenBaseMP setColor(int var1)
+	public BiomeGenBase setColor(int color)
 	{
-		return (BiomeGenBaseMP) super.setColor(var1);
+		return this.func_150557_a(-16744448, false);
 	}
 
 	@Override

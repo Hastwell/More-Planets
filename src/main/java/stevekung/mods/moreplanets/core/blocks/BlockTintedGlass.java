@@ -3,6 +3,7 @@ package stevekung.mods.moreplanets.core.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IPartialSealableBlock;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,11 +12,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTintedGlass extends BlockBreakable
+public class BlockTintedGlass extends BlockBreakable implements IPartialSealableBlock
 {
 	private static IIcon[] field_149998_a = new IIcon[16];
 
@@ -23,7 +26,7 @@ public class BlockTintedGlass extends BlockBreakable
 	{
 		super("", Material.glass, false);
 		this.setStepSound(soundTypeGlass);
-		this.setHardness(0.3F);
+		this.setHardness(0.5F);
 		this.setResistance(20.0F);
 		this.setBlockName(name);
 	}
@@ -96,5 +99,11 @@ public class BlockTintedGlass extends BlockBreakable
 	public boolean renderAsNormalBlock()
 	{
 		return false;
+	}
+
+	@Override
+	public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
+	{
+		return true;
 	}
 }

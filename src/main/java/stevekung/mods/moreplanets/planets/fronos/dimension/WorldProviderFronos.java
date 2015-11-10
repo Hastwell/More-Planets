@@ -149,7 +149,7 @@ public class WorldProviderFronos extends WorldProviderMP
 	@Override
 	public double getMeteorFrequency()
 	{
-		return 500.0D;
+		return 0.0D;
 	}
 
 	@Override

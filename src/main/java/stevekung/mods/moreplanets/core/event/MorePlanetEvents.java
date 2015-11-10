@@ -12,6 +12,8 @@ import java.util.Random;
 import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent;
 import micdoodle8.mods.galacticraft.api.event.client.CelestialBodyRenderEvent.CelestialRingRenderEvent;
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
+import micdoodle8.mods.galacticraft.api.galaxies.Moon;
+import micdoodle8.mods.galacticraft.api.galaxies.Planet;
 import micdoodle8.mods.galacticraft.api.inventory.AccessInventoryGC;
 import micdoodle8.mods.galacticraft.api.inventory.IInventoryGC;
 import micdoodle8.mods.galacticraft.core.client.gui.screen.GuiCelestialSelection;
@@ -19,8 +21,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
-import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerHandler.ThermalArmorEvent;
-import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerHandler.ThermalArmorEvent.ArmorAddResult;
+import micdoodle8.mods.galacticraft.core.util.OxygenUtil;
 import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
@@ -58,6 +59,7 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.vector.Vector3f;
 
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
@@ -67,7 +69,6 @@ import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
-import stevekung.mods.moreplanets.core.util.DamageSourceMP;
 import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.core.world.ILightningStorm;
 import stevekung.mods.moreplanets.core.world.IMeteorType;
@@ -161,177 +162,22 @@ public class MorePlanetEvents
 	}
 
 	@SubscribeEvent
-	public void onThermalArmorEvent(ThermalArmorEvent event)
-	{
-		if (event.armorStack == null)
-		{
-			event.setArmorAddResult(ArmorAddResult.REMOVE);
-		}
-		if (event.armorStack.getItem() == MPItems.tier_2_thermal_padding && event.armorStack.getItemDamage() == event.armorIndex)
-		{
-			event.setArmorAddResult(ArmorAddResult.ADD);
-		}
-		else if (event.armorStack.getItem() == MPItems.tier_3_thermal_padding && event.armorStack.getItemDamage() == event.armorIndex)
-		{
-			event.setArmorAddResult(ArmorAddResult.ADD);
-		}
-		event.setArmorAddResult(ArmorAddResult.NOTHING);
-	}
-	
-	private void renderRing(CelestialRingRenderEvent.Pre event, CelestialBody celestial, float r, float g, float b)
-	{
-		if (event.celestialBody.equals(celestial))
-		{
-			if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
-			{
-				GL11.glColor4f(r, g, b, 0.5F);
-			}
-			else
-			{
-				GL11.glColor4f(0.3F, 0.1F, 0.1F, 1.0F);
-			}
-
-			event.setCanceled(true);
-			GL11.glBegin(GL11.GL_LINE_LOOP);
-			float theta = (float) (2 * Math.PI / 90);
-			float cos = (float) Math.cos(theta);
-			float sin = (float) Math.sin(theta);
-			float min = 72.0F;
-			float max = 78.0F;
-			float x = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			float y = 0;
-			float temp;
-
-			for (int i = 0; i < 90; i++)
-			{
-				GL11.glVertex2f(x, y);
-				temp = x;
-				x = cos * x - sin * y;
-				y = sin * temp + cos * y;
-			}
-
-			GL11.glEnd();
-			GL11.glBegin(GL11.GL_LINE_LOOP);
-
-			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			y = 0;
-
-			for (int i = 0; i < 90; i++)
-			{
-				GL11.glVertex2f(x, y);
-				temp = x;
-				x = cos * x - sin * y;
-				y = sin * temp + cos * y;
-			}
-
-			GL11.glEnd();
-			GL11.glColor4f(0.7F, 0.0F, 0.0F, 0.1F);
-			GL11.glBegin(GL11.GL_QUADS);
-
-			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			y = 0;
-			float x2 = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			float y2 = 0;
-
-			for (int i = 0; i < 90; i++)
-			{
-				GL11.glVertex2f(x2, y2);
-				GL11.glVertex2f(x, y);
-				temp = x;
-				x = cos * x - sin * y;
-				y = sin * temp + cos * y;
-				temp = x2;
-				x2 = cos * x2 - sin * y2;
-				y2 = sin * temp + cos * y2;
-				GL11.glVertex2f(x, y);
-				GL11.glVertex2f(x2, y2);
-			}
-			GL11.glEnd();
-		}
-	}
-
-	/*@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onRingRender(CelestialRingRenderEvent.Pre event)
-	{
-		this.renderRing(event, MorePlanetsCore.darkAsteroids, 0.1F, 0.1F, 0.1F);
-		/*if (event.celestialBody == MorePlanetsCore.darkAsteroids)
-		{
-			if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
-			{
-				GL11.glColor4f(0.1F, 0.1F, 0.1F, 0.5F);
-			}
-			else
-			{
-				GL11.glColor4f(0.3F, 0.1F, 0.1F, 1.0F);
-			}
-
-			event.setCanceled(true);
-			GL11.glBegin(GL11.GL_LINE_LOOP);
-			float theta = (float) (2 * Math.PI / 90);
-			float cos = (float) Math.cos(theta);
-			float sin = (float) Math.sin(theta);
-			float min = 72.0F;
-			float max = 78.0F;
-			float x = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			float y = 0;
-			float temp;
-
-			for (int i = 0; i < 90; i++)
-			{
-				GL11.glVertex2f(x, y);
-				temp = x;
-				x = cos * x - sin * y;
-				y = sin * temp + cos * y;
-			}
-
-			GL11.glEnd();
-			GL11.glBegin(GL11.GL_LINE_LOOP);
-
-			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			y = 0;
-
-			for (int i = 0; i < 90; i++)
-			{
-				GL11.glVertex2f(x, y);
-				temp = x;
-				x = cos * x - sin * y;
-				y = sin * temp + cos * y;
-			}
-
-			GL11.glEnd();
-			GL11.glColor4f(0.7F, 0.0F, 0.0F, 0.1F);
-			GL11.glBegin(GL11.GL_QUADS);
-
-			x = min * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			y = 0;
-			float x2 = max * event.celestialBody.getRelativeDistanceFromCenter().unScaledDistance;
-			float y2 = 0;
-
-			for (int i = 0; i < 90; i++)
-			{
-				GL11.glVertex2f(x2, y2);
-				GL11.glVertex2f(x, y);
-				temp = x;
-				x = cos * x - sin * y;
-				y = sin * temp + cos * y;
-				temp = x2;
-				x2 = cos * x2 - sin * y2;
-				y2 = sin * temp + cos * y2;
-				GL11.glVertex2f(x, y);
-				GL11.glVertex2f(x2, y2);
-			}
-			GL11.glEnd();
-		}*/
-	//}
-
-	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onBodyRender(CelestialBodyRenderEvent.Pre renderEvent)
 	{
 		if (renderEvent.celestialBody == MorePlanetsCore.darkAsteroids)
 		{
 			GL11.glRotatef(Sys.getTime() / 10.0F % 360, 0, 0, 1);
+		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onRingRender(CelestialRingRenderEvent.Pre event)
+	{
+		if (event.celestialBody == MorePlanetsCore.darkAsteroids)
+		{
+			this.renderRing(event, event.celestialBody, 0.1F, 0.1F, 0.1F, 1.0F, 0.5F);
 		}
 	}
 
@@ -658,8 +504,7 @@ public class MorePlanetEvents
 			EntityPlayerMP player = (EntityPlayerMP)living;
 
 			this.spawnFeces(world, player);
-			this.doInfectedGasForEntity(world, living, player);
-			this.doSiriusFire(world, living);
+			this.spawnDarkAsteroids(world, player);
 			this.removeIcyPoison(player);
 
 			if (world.provider instanceof IMeteorType)
@@ -676,7 +521,8 @@ public class MorePlanetEvents
 				player.removePotionEffect(MPPotions.icy_poison.id);
 			}
 		}
-		this.potionTick(living);
+		this.doSiriusFire(world, living);
+		this.doInfectedGasForEntity(world, living);
 	}
 
 	@SubscribeEvent
@@ -760,54 +606,6 @@ public class MorePlanetEvents
 					}
 					event.setResult(Result.ALLOW);
 				}
-			}
-		}
-	}
-
-	private void potionTick(EntityLivingBase living)
-	{
-		if (living.isPotionActive(MPPotions.infected_gas))
-		{
-			if (living.ticksExisted % 35 == 0)
-			{
-				living.attackEntityFrom(DamageSourceMP.infectedGas, 1.0F + living.getActivePotionEffect(MPPotions.infected_gas).getAmplifier());
-			}
-			if (living.getActivePotionEffect(MPPotions.infected_gas).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.infected_gas.id);
-			}
-		}
-		else if (living.isPotionActive(MPPotions.chemical))
-		{
-			if (living.ticksExisted % 8 == 0)
-			{
-				living.attackEntityFrom(DamageSourceMP.chemical, 1.0F + living.getActivePotionEffect(MPPotions.chemical).getAmplifier());
-			}
-			if (living.getActivePotionEffect(MPPotions.chemical).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.chemical.id);
-			}
-		}
-		else if (living.isPotionActive(MPPotions.electro_magnetic_pulse))
-		{
-			if (!living.worldObj.isRemote)
-			{
-				living.motionX = 0.0F;
-				living.motionY = -1.0F;
-				living.motionZ = 0.0F;
-			}
-			if (living.getActivePotionEffect(MPPotions.electro_magnetic_pulse).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.electro_magnetic_pulse.id);
-			}
-		}
-		else if (living.isPotionActive(MPPotions.icy_poison))
-		{
-			living.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F + living.getActivePotionEffect(MPPotions.icy_poison).getAmplifier());
-
-			if (living.getActivePotionEffect(MPPotions.icy_poison).getDuration() == 0)
-			{
-				living.removePotionEffect(MPPotions.icy_poison.id);
 			}
 		}
 	}
@@ -997,49 +795,52 @@ public class MorePlanetEvents
 					smallAsteroid.spinYaw = world.rand.nextFloat() * 4;
 					smallAsteroid.spinPitch = world.rand.nextFloat() * 2;
 					world.spawnEntityInWorld(smallAsteroid);
+					MPLog.debug("Spawn Dark Asteroid at %s %s %s", (int)smallAsteroid.posX, (int)smallAsteroid.posY, (int)smallAsteroid.posZ);
 				}
 			}
 		}
 	}
 
-	private void doInfectedGasForEntity(World world, EntityLivingBase living, EntityPlayerMP player)
+	private void doInfectedGasForEntity(World world, EntityLivingBase living)
 	{
 		if (world.provider instanceof WorldProviderNibiru)
 		{
-			if (!(living instanceof EntityPlayerMP))
+			if (!(living instanceof EntityPlayer))
 			{
 				if (living.ticksExisted % 100 == 0 && (!(living instanceof IEntityLivingPlanet) || !(world.provider.dimensionId == ((IEntityLivingPlanet)living).canLivingInDimension().dimID)) && !(living.getClass() == EntityEvolvedZombie.class || living.getClass() == EntityEvolvedSpider.class || living.getClass() == EntityEvolvedSkeleton.class || living.getClass() == EntityEvolvedCreeper.class || living.getClass() == EntityEvolvedEnderman.class))
 				{
 					living.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
 				}
 			}
-			if (ConfigManagerMP.disableInfectedGas)
+			else if (living instanceof EntityPlayerMP)
 			{
-				if (player.isPotionActive(MPPotions.infected_gas.id) && MorePlanetEvents.getTier2ThermalArmor(player))
+				EntityPlayerMP player = (EntityPlayerMP)living;
+
+				if (player.isPotionActive(MPPotions.infected_gas.id))
 				{
-					player.removePotionEffect(MPPotions.infected_gas.id);
-				}
-			}
-			else
-			{
-				if (!MorePlanetEvents.getTier2ThermalArmor(player))
-				{
-					if (player.ticksExisted % 200 == 0 && !player.capabilities.isCreativeMode)
+					if (player.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
 					{
-						player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+						player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
+					}
+				}
+				if (ConfigManagerMP.disableInfectedGas)
+				{
+					if (player.isPotionActive(MPPotions.infected_gas.id) && MorePlanetEvents.getTier2ThermalArmor(player))
+					{
+						player.removePotionEffect(MPPotions.infected_gas.id);
 					}
 				}
 				else
 				{
-					player.removePotionEffect(MPPotions.infected_gas.id);
+					if (player.ticksExisted % 200 == 0 && !player.capabilities.isCreativeMode && !(MorePlanetEvents.getTier2ThermalArmor(player) || OxygenUtil.inOxygenBubble(world, player.posX, player.posY, player.posZ) || OxygenUtil.isAABBInBreathableAirBlock(player)))
+					{
+						player.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
+					}
+					else if (MorePlanetEvents.getTier2ThermalArmor(player) || OxygenUtil.inOxygenBubble(world, player.posX, player.posY, player.posZ) || OxygenUtil.isAABBInBreathableAirBlock(player))
+					{
+						player.removePotionEffect(MPPotions.infected_gas.id);
+					}
 				}
-			}
-		}
-		if (player.isPotionActive(MPPotions.infected_gas.id))
-		{
-			if (player.ticksExisted % 2000 == 0 && !player.capabilities.isCreativeMode)
-			{
-				player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + StatCollector.translateToLocal("message.warning.infected.gas")));
 			}
 		}
 	}
@@ -1048,11 +849,11 @@ public class MorePlanetEvents
 	{
 		if (world.provider instanceof WorldProviderSiriusB)
 		{
-			if (!(living instanceof EntityPlayerMP))
+			if (!(living instanceof EntityPlayer))
 			{
 				if (living.ticksExisted % 100 == 0 && (!(living instanceof IEntityLivingPlanet) || !(world.provider.dimensionId == ((IEntityLivingPlanet)living).canLivingInDimension().dimID)))
 				{
-					living.setFire(15);
+					living.setFire(8);
 				}
 			}
 		}
@@ -1132,6 +933,86 @@ public class MorePlanetEvents
 				}
 			}
 		}
+	}
+
+	//Credit to AmunRa mod :) (Why Galacticraft can do this without map pos? -.-)
+	private void renderRing(CelestialRingRenderEvent.Pre event, CelestialBody celestial, float r, float g, float b, float outerAlpha, float innerAlpha)
+	{
+		Vector3f mapPos = event.parentOffset;
+		float xOffset = mapPos.x;
+		float yOffset = mapPos.y;
+
+		if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
+		{
+			GL11.glColor4f(r, g, b, outerAlpha);
+		}
+
+		event.setCanceled(true);
+		GL11.glBegin(GL11.GL_LINE_LOOP);
+		float theta = (float) (2 * Math.PI / 90);
+		float cos = (float) Math.cos(theta);
+		float sin = (float) Math.sin(theta);
+		float min = 0.0F;
+		float max = 0.0F;
+
+		if (celestial instanceof Planet)
+		{
+			min = 72.0F;
+			max = 78.0F;
+		}
+		else if (celestial instanceof Moon)
+		{
+			max = 1 / 1.5F;
+			min = 1 / 1.9F;
+		}
+
+		float x = max * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		float y = 0;
+		float temp;
+
+		for (int i = 0; i < 90; i++)
+		{
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			temp = x;
+			x = cos * x - sin * y;
+			y = sin * temp + cos * y;
+		}
+
+		GL11.glEnd();
+		GL11.glBegin(GL11.GL_LINE_LOOP);
+		x = min * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		y = 0;
+
+		for (int i = 0; i < 90; i++)
+		{
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			temp = x;
+			x = cos * x - sin * y;
+			y = sin * temp + cos * y;
+		}
+
+		GL11.glEnd();
+		GL11.glColor4f(r, g, b, innerAlpha);// Inner ring
+		GL11.glBegin(GL11.GL_QUADS);
+		x = min * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		y = 0;
+		float x2 = max * celestial.getRelativeDistanceFromCenter().unScaledDistance;
+		float y2 = 0;
+
+		for (int i = 0; i < 90; i++)
+		{
+			GL11.glVertex2f(x2 + xOffset, y2 + yOffset);
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			temp = x;
+			x = cos * x - sin * y;
+			y = sin * temp + cos * y;
+			temp = x2;
+			x2 = cos * x2 - sin * y2;
+			y2 = sin * temp + cos * y2;
+			GL11.glVertex2f(x + xOffset, y + yOffset);
+			GL11.glVertex2f(x2 + xOffset, y2 + yOffset);
+		}
+		GL11.glEnd();
 	}
 
 	public static void addInfectedGas(EntityPlayer player)

@@ -13,6 +13,6 @@ public class ItemBlockDarkAsteroids extends ItemBlockBaseMP
 	@Override
 	public String[] getBlockVariantsName()
 	{
-		return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "iron_ore", "desh_ore" };
+		return new String[] { "rock", "rock", "rock", "aluminum_ore", "ilmenite_ore", "iron_ore", "meteoric_iron_ore", "silicon_ore", "diamond_ore", "emerald_ore", "lapis_ore" };
 	}
 }

@@ -145,13 +145,26 @@ public class BlockFronosStone extends BlockBasicMP implements IDetectableResourc
 	}
 
 	@Override
-	public int quantityDropped(int meta, int fortune, Random random)
+	public int quantityDropped(int meta, int fortune, Random rand)
 	{
 		if (meta == 7)
 		{
-			return 4 + random.nextInt(5);
+			if (fortune > 0)
+			{
+				int j = rand.nextInt(fortune + 2) - 1;
+
+				if (j < 0)
+				{
+					j = 0;
+				}
+				return 4 + rand.nextInt(5) * (j + 1);
+			}
+			else
+			{
+				return 4 + rand.nextInt(5);
+			}
 		}
-		return super.quantityDropped(meta, fortune, random);
+		return super.quantityDropped(meta, fortune, rand);
 	}
 
 	@Override

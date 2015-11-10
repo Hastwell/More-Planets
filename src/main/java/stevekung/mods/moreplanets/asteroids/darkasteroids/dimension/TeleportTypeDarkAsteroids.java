@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright 2015 SteveKunG - More Planets Mod
+ * 
+ * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ ******************************************************************************/
+
 package stevekung.mods.moreplanets.asteroids.darkasteroids.dimension;
 
 import java.util.Random;
@@ -7,8 +14,6 @@ import micdoodle8.mods.galacticraft.api.vector.Vector3;
 import micdoodle8.mods.galacticraft.api.world.ITeleportType;
 import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
-import micdoodle8.mods.galacticraft.planets.asteroids.blocks.AsteroidBlocks;
-import micdoodle8.mods.galacticraft.planets.asteroids.dimension.WorldProviderAsteroids;
 import micdoodle8.mods.galacticraft.planets.asteroids.entities.EntityEntryPod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,6 +21,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.gen.ChunkProviderServer;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.core.util.MPLog;
 
 public class TeleportTypeDarkAsteroids implements ITeleportType
@@ -83,7 +89,7 @@ public class TeleportTypeDarkAsteroids implements ITeleportType
 					}
 					//Failed to find an asteroid even though there should be one there
 					MPLog.debug("Removing drilled out asteroid at x" + bv3.x + " z" + bv3.z);
-					((WorldProviderAsteroids) world.provider).removeAsteroid(bv3.x, bv3.y, bv3.z);
+					((WorldProviderDarkAsteroids) world.provider).removeAsteroid(bv3.x, bv3.y, bv3.z);
 				}
 				attemptCount++;
 			}
@@ -109,19 +115,19 @@ public class TeleportTypeDarkAsteroids implements ITeleportType
 				//Clear the downward path of small asteroids and any other asteroid rock
 				for (int y = k + 2; y < 256; y++)
 				{
-					if (world.getBlock(x, y, z) == AsteroidBlocks.blockBasic)
+					if (world.getBlock(x, y, z) == DarkAsteroidsBlocks.dark_asteroid_block)
 					{
 						world.setBlockToAir(x, y, z);
 					}
-					if (world.getBlock(x - 1, y, z) == AsteroidBlocks.blockBasic)
+					if (world.getBlock(x - 1, y, z) == DarkAsteroidsBlocks.dark_asteroid_block)
 					{
 						world.setBlockToAir(x - 1, y, z);
 					}
-					if (world.getBlock(x, y, z - 1) == AsteroidBlocks.blockBasic)
+					if (world.getBlock(x, y, z - 1) == DarkAsteroidsBlocks.dark_asteroid_block)
 					{
 						world.setBlockToAir(x, y, z - 1);
 					}
-					if (world.getBlock(x - 1, y, z - 1) == AsteroidBlocks.blockBasic)
+					if (world.getBlock(x - 1, y, z - 1) == DarkAsteroidsBlocks.dark_asteroid_block)
 					{
 						world.setBlockToAir(x - 1, y, z - 1);
 					}
@@ -220,7 +226,7 @@ public class TeleportTypeDarkAsteroids implements ITeleportType
 
 		if (world.isAirBlock(x, y, z))
 		{
-			world.setBlock(x, y, z, AsteroidBlocks.blockBasic, meta, 2);
+			world.setBlock(x, y, z, DarkAsteroidsBlocks.dark_asteroid_block, meta, 2);
 		}
 	}
 
@@ -278,7 +284,6 @@ public class TeleportTypeDarkAsteroids implements ITeleportType
 				if (!newWorld.isRemote)
 				{
 					EntityEntryPod entryPod = new EntityEntryPod(player);
-
 					newWorld.spawnEntityInWorld(entryPod);
 				}
 				stats.teleportCooldown = 10;

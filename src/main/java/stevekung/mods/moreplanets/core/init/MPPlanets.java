@@ -56,7 +56,7 @@ public class MPPlanets
 		MorePlanetsCore.kapteynBSolarSystem = new SolarSystem("kapteyn", "milkyWay").setMapPosition(new Vector3(-1.5F, 0.8F, 0.0F));
 		MorePlanetsCore.kapteyn = MPPlanets.createStar("kapteyn", MorePlanetsCore.kapteynBSolarSystem, new ResourceLocation("kapteynb:textures/gui/celestialbodies/kapteyn_star_celestial.png"));
 		MorePlanetsCore.kapteynBSolarSystem.setMainStar(MorePlanetsCore.kapteyn);
-		
+
 		MorePlanetsCore.darkSolarSystem = new SolarSystem("dark", "milkyWay").setMapPosition(new Vector3(-3.5F, 2.2F, 0.0F));
 		MorePlanetsCore.darkStar = MPPlanets.createStar("dark", MorePlanetsCore.darkSolarSystem, new ResourceLocation("mpcore:textures/gui/celestialbodies/dark_star_celestial.png"));
 		MorePlanetsCore.darkSolarSystem.setMainStar(MorePlanetsCore.darkStar);
@@ -110,7 +110,7 @@ public class MPPlanets
 			MorePlanetsCore.pluto.setDimensionInfo(ConfigManagerMP.idDimensionPluto, WorldProviderPluto.class);
 			MorePlanetsCore.pluto.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.HELIUM).atmosphereComponent(IAtmosphericGas.NITROGEN);
 		}
-		
+
 		MorePlanetsCore.darkAsteroids = MPPlanets.createPlanet("darkAsteroids", MorePlanetsCore.darkSolarSystem, (float)(Math.random() * (2 * Math.PI)), 1.375F, 45.0F, 0.0F, 5, new ResourceLocation("mpcore:textures/gui/celestialbodies/dark_asteroids.png"));
 		MorePlanetsCore.darkAsteroids.setDimensionInfo(ConfigManagerMP.idDimensionDarkAsteroids, WorldProviderDarkAsteroids.class);
 

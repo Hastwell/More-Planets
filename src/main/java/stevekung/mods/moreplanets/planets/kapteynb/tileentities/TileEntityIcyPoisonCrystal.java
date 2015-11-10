@@ -13,6 +13,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityIcyPoisonCrystal extends TileEntity
 {
@@ -28,11 +29,11 @@ public class TileEntityIcyPoisonCrystal extends TileEntity
 	{
 		if (!this.worldObj.isRemote)
 		{
-			if (OxygenUtil.inOxygenBubble(this.worldObj, this.xCoord, this.yCoord, this.zCoord))
+			if (OxygenUtil.inOxygenBubble(this.worldObj, this.xCoord, this.yCoord, this.zCoord) || OxygenUtil.isInOxygenBlock(this.worldObj, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord, this.yCoord, this.zCoord)))
 			{
 				this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 2.0F, true);
 			}
-			if (this.worldObj.provider.dimensionId == 0)
+			if (this.worldObj.provider.dimensionId == 0 || !OxygenUtil.noAtmosphericCombustion(this.worldObj.provider))
 			{
 				if (this.worldObj.rand.nextInt(100) == 0)
 				{

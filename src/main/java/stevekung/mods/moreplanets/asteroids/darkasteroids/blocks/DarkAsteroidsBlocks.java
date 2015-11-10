@@ -15,27 +15,39 @@ import stevekung.mods.stevecore.RegisterHelper;
 
 public class DarkAsteroidsBlocks
 {
-	public static Block dark_asteroids_block;
-	public static Block dark_asteroids_quicksand;
+	public static Block dark_asteroid_block;
+	public static Block dark_asteroid_quicksand;
+	public static Block alphere_ore;
+	public static Block dark_air;
 
 	public static void init()
 	{
 		// Init
-		DarkAsteroidsBlocks.dark_asteroids_block = new BlockDarkAsteroids("dark_asteroids_block");
-		DarkAsteroidsBlocks.dark_asteroids_quicksand = new BlockDarkAsteroidsQuicksand("dark_asteroids_quicksand");
+		DarkAsteroidsBlocks.dark_asteroid_block = new BlockDarkAsteroids("dark_asteroid_block");
+		DarkAsteroidsBlocks.dark_asteroid_quicksand = new BlockDarkAsteroidsQuicksand("dark_asteroid_quicksand");
+		DarkAsteroidsBlocks.alphere_ore = new BlockAlphereOre("alphere_ore");
+		DarkAsteroidsBlocks.dark_air = new BlockDarkAir("dark_air");
 
 		// Register
-		RegisterHelper.registerBlock(DarkAsteroidsBlocks.dark_asteroids_block, ItemBlockDarkAsteroids.class);
-		RegisterHelper.registerBlock(DarkAsteroidsBlocks.dark_asteroids_quicksand);
+		RegisterHelper.registerBlock(DarkAsteroidsBlocks.dark_asteroid_block, ItemBlockDarkAsteroids.class);
+		RegisterHelper.registerBlock(DarkAsteroidsBlocks.alphere_ore);
+		RegisterHelper.registerBlock(DarkAsteroidsBlocks.dark_asteroid_quicksand);
+		RegisterHelper.registerBlock(DarkAsteroidsBlocks.dark_air);
 
 		// Set harvest level
-		DarkAsteroidsBlocks.dark_asteroids_block.setHarvestLevel("pickaxe", 1);
-		DarkAsteroidsBlocks.dark_asteroids_quicksand.setHarvestLevel("shovel", 0);
+		DarkAsteroidsBlocks.dark_asteroid_block.setHarvestLevel("pickaxe", 1);
+		DarkAsteroidsBlocks.alphere_ore.setHarvestLevel("pickaxe", 1);
+		DarkAsteroidsBlocks.dark_asteroid_quicksand.setHarvestLevel("shovel", 0);
 
 		// Register ore dictionary
-		OreDictionary.registerOre("oreTin", new ItemStack(DarkAsteroidsBlocks.dark_asteroids_block, 1, 4));
-		OreDictionary.registerOre("oreCopper", new ItemStack(DarkAsteroidsBlocks.dark_asteroids_block, 1, 5));
-		OreDictionary.registerOre("oreIron", new ItemStack(DarkAsteroidsBlocks.dark_asteroids_block, 1, 6));
-		OreDictionary.registerOre("oreDesh", new ItemStack(DarkAsteroidsBlocks.dark_asteroids_block, 1, 7));
+		OreDictionary.registerOre("oreAluminum", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 3));
+		OreDictionary.registerOre("oreAluminium", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 3));
+		OreDictionary.registerOre("oreIlmenite", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 4));
+		OreDictionary.registerOre("oreIron", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 5));
+		OreDictionary.registerOre("oreMeteor", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 6));
+		OreDictionary.registerOre("oreSilicon", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 7));
+		OreDictionary.registerOre("oreDiamond", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 8));
+		OreDictionary.registerOre("oreEmerald", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 9));
+		OreDictionary.registerOre("oreLapis", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 10));
 	}
 }
