@@ -14,13 +14,10 @@
 		"11": "moreplanets:blocks/diona_treasure_chest",
 		"12": "moreplanets:blocks/polongnius_treasure_chest",
 		"13": "moreplanets:blocks/nibiru_treasure_chest",
-		"14": "moreplanets:blocks/koentus_treasure_chest",
-		"15": "moreplanets:blocks/fronos_treasure_chest",
-		"16": "moreplanets:blocks/kapteyn_b_treasure_chest",
-		"17": "moreplanets:blocks/sirius_b_treasure_chest",
-		"18": "moreplanets:blocks/mercury_treasure_chest",
-		"19": "moreplanets:blocks/venus_treasure_chest",
-		"20": "moreplanets:blocks/pluto_treasure_chest"
+		"14": "moreplanets:blocks/fronos_treasure_chest",
+		"15": "moreplanets:blocks/kapteyn_b_treasure_chest",
+		"16": "moreplanets:blocks/sirius_b_treasure_chest",
+		"17": "moreplanets:blocks/pluto_treasure_chest"
     },
 	"elements": [
         {   "from": [ 0, 0, 0 ],
@@ -53,14 +50,14 @@
                 "north": { "texture": "#15" },
                 "south": { "texture": "#16" },
                 "west":  { "texture": "#17" },
-                "east":  { "texture": "#18" }
+                "east":  { "texture": "#17" }
             }
         },
 		{   "from": [ 0, 0, 0 ],
             "to": [ 16, 16, 16 ],
             "faces": {
-                "down":  { "texture": "#19" },
-                "up":    { "texture": "#20" },
+                "down":  { "texture": "#17" },
+                "up":    { "texture": "#17" },
                 "north": { "texture": "#15" },
                 "south": { "texture": "#16" },
                 "west":  { "texture": "#17" },

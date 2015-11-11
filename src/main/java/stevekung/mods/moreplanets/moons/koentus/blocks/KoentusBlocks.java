@@ -24,6 +24,7 @@ import stevekung.mods.moreplanets.common.itemblocks.ItemBlockSingleLeaves;
 import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockCrystalLog;
 import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockKoentus;
 import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockKoentusIce;
+import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockKoentusMeteor;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class KoentusBlocks
@@ -97,7 +98,7 @@ public class KoentusBlocks
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_fence_gate);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_farmland);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.eledos_egg);
-		CommonRegisterHelper.registerBlock(KoentusBlocks.fallen_koentus_meteor);
+		CommonRegisterHelper.registerBlock(KoentusBlocks.fallen_koentus_meteor, ItemBlockKoentusMeteor.class);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_segment);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.white_crystal_torch);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_sapling);

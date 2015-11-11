@@ -44,13 +44,13 @@ import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 {
-	Block ASTEROID_STONE = DarkAsteroidsBlocks.dark_asteroid_rock;
+	Block ASTEROID_STONE = DarkAsteroidBlocks.dark_asteroid_rock;
 	byte ASTEROID_STONE_META_0 = 0;
 	byte ASTEROID_STONE_META_1 = 1;
 	byte ASTEROID_STONE_META_2 = 2;
@@ -159,7 +159,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 8, 1, .1));//Diamond
 		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 9, 3, .4));//Emerald
 		this.coreHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, (byte) 10, 3, .6));//Lapis
-		this.coreHandler.addBlock(new SpecialAsteroidBlock(DarkAsteroidsBlocks.alphere_ore, (byte) 0, 2, .4));//Alphere
+		this.coreHandler.addBlock(new SpecialAsteroidBlock(DarkAsteroidBlocks.alphere_ore, (byte) 0, 2, .4));//Alphere
 		this.shellHandler = new SpecialAsteroidBlockHandler();
 		this.shellHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, this.ASTEROID_STONE_META_1, 3, .15));
 		this.shellHandler.addBlock(new SpecialAsteroidBlock(this.ASTEROID_STONE, this.ASTEROID_STONE_META_0, 1, .15));
@@ -851,7 +851,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 								count = 5;
 							}
 
-							chunk.setBlockState(new BlockPos(x - 1, y & 5, z), DarkAsteroidsBlocks.dark_air.getStateFromMeta(5 - count));
+							chunk.setBlockState(new BlockPos(x - 1, y & 5, z), DarkAsteroidBlocks.dark_air.getStateFromMeta(5 - count));
 							ExtendedBlockStorage extendedblockstorage = chunk.getBlockStorageArray()[y >> 4];
 
 							if (extendedblockstorage != null)

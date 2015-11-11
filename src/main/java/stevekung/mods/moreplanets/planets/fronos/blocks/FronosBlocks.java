@@ -46,7 +46,7 @@ import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSands
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSapling;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosStone;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosTallGrass;
-import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosWoodenPlanks;
+import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosWoodPlanks;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockGolemCreamHead;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockJelly;
@@ -204,7 +204,7 @@ public class FronosBlocks
 		FronosBlocks.cheese_glass = new BlockCheeseGlass("cheese_glass");
 		FronosBlocks.cheese_glass_pane = new BlockCheeseGlassPane("cheese_glass_pane");
 		FronosBlocks.fronos_log = new BlockFronosLog("fronos_log");
-		FronosBlocks.fronos_planks = new BlockFronosWoodenPlanks("fronos_planks");
+		FronosBlocks.fronos_planks = new BlockFronosPlanks("fronos_planks");
 		FronosBlocks.fronos_colorized_leaves = new BlockFronosColorizedLeaves("fronos_leaves");
 		FronosBlocks.fronos_leaves = new BlockFronosLeaves("fronos_leaves2");
 		FronosBlocks.fronos_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "fronos_cobblestone_stairs", 1.75F);
@@ -322,7 +322,7 @@ public class FronosBlocks
 		CommonRegisterHelper.registerBlock(FronosBlocks.cheese_glass);
 		CommonRegisterHelper.registerBlock(FronosBlocks.cheese_glass_pane);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_log, ItemBlockFronosLog.class);
-		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_planks, ItemBlockFronosWoodenPlanks.class);
+		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_planks, ItemBlockFronosWoodPlanks.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_colorized_leaves, ItemBlockFronosColorizedLeaves.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_leaves, ItemBlockFronosLeaves.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_cobblestone_stairs);
@@ -334,7 +334,7 @@ public class FronosBlocks
 		CommonRegisterHelper.registerBlock(FronosBlocks.cheese_sandstone_stairs);
 		CommonRegisterHelper.registerBlock(FronosBlocks.coconut_wood_stairs);
 		CommonRegisterHelper.registerBlock(FronosBlocks.maple_wood_stairs);
-		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_fence, ItemBlockFronosWoodenPlanks.class);
+		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_fence, ItemBlockFronosWoodPlanks.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.coconut_fence_gate);
 		CommonRegisterHelper.registerBlock(FronosBlocks.maple_fence_gate);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_treasure_chest);

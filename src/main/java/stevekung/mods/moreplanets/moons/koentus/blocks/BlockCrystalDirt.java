@@ -92,7 +92,7 @@ public class BlockCrystalDirt extends BlockBaseMP implements ITerraformableBlock
 					}
 					player.getCurrentEquippedItem().damageItem(1, player);
 				}
-				else if (state == state.withProperty(VARIANT, BlockType.coarse_crystal_dirt))
+				else if (state == state.withProperty(VARIANT, BlockType.crystal_coarse_dirt))
 				{
 					Block farmland = this;
 
@@ -138,7 +138,7 @@ public class BlockCrystalDirt extends BlockBaseMP implements ITerraformableBlock
 	public static enum BlockType implements IStringSerializable
 	{
 		crystal_dirt,
-		coarse_crystal_dirt;
+		crystal_coarse_dirt;
 
 		@Override
 		public String toString()

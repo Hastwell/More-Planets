@@ -1,5 +1,5 @@
 {
-    "parent": "moreplanets:block/coarse_alien_dirt",
+    "parent": "moreplanets:block/crystal_coarse_dirt",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

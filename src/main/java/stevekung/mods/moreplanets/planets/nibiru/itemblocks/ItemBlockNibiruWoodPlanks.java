@@ -10,9 +10,9 @@ package stevekung.mods.moreplanets.planets.nibiru.itemblocks;
 import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 
-public class ItemBlockNibiruWoodenPlanks extends ItemBlockBaseMP
+public class ItemBlockNibiruWoodPlanks extends ItemBlockBaseMP
 {
-	public ItemBlockNibiruWoodenPlanks(Block block)
+	public ItemBlockNibiruWoodPlanks(Block block)
 	{
 		super(block);
 	}

@@ -10,10 +10,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityJellySlimePet extends EntityTameable
@@ -98,6 +103,45 @@ public class EntityJellySlimePet extends EntityTameable
 
 		if (this.onGround && !this.wasOnGround)
 		{
+			for (int j = 0; j < 1 * 8; ++j)
+			{
+				float f = this.rand.nextFloat() * (float)Math.PI * 2.0F;
+				float f1 = this.rand.nextFloat() * 0.5F + 0.5F;
+				float f2 = MathHelper.sin(f) * 1 * 0.5F * f1;
+				float f3 = MathHelper.cos(f) * 1 * 0.5F * f1;
+				double d0 = this.posX + f2;
+				double d1 = this.posZ + f3;
+				ParticleTypesMP type = null;
+
+				switch (this.getJellySlimeType())
+				{
+				case 0:
+					type = ParticleTypesMP.GRAPE_JELLY;
+					break;
+				case 1:
+					type = ParticleTypesMP.RASPBERRY_JELLY;
+					break;
+				case 2:
+					type = ParticleTypesMP.STRAWBERRY_JELLY;
+					break;
+				case 3:
+					type = ParticleTypesMP.BERRY_JELLY;
+					break;
+				case 4:
+					type = ParticleTypesMP.LIME_JELLY;
+					break;
+				case 5:
+					type = ParticleTypesMP.ORANGE_JELLY;
+					break;
+				case 6:
+					type = ParticleTypesMP.GREEN_JELLY;
+					break;
+				case 7:
+					type = ParticleTypesMP.LEMON_JELLY;
+					break;
+				}
+				MorePlanetsCore.proxy.spawnParticle(type, d0, this.getEntityBoundingBox().minY, d1);
+			}
 			this.squishAmount = -0.5F;
 		}
 		else if (!this.onGround && this.wasOnGround)
@@ -234,17 +278,9 @@ public class EntityJellySlimePet extends EntityTameable
 	}
 
 	@Override
-	public EntityJellySlimePet createChild(EntityAgeable ageable)
+	public EntityAgeable createChild(EntityAgeable ageable)
 	{
-		EntityJellySlimePet entitywolf = new EntityJellySlimePet(this.worldObj);
-		String s = this.getOwnerId();
-
-		if (s != null && s.trim().length() > 0)
-		{
-			entitywolf.setOwnerId(s);
-			entitywolf.setTamed(true);
-		}
-		return entitywolf;
+		return null;
 	}
 
 	@Override
@@ -256,6 +292,11 @@ public class EntityJellySlimePet extends EntityTameable
 	@Override
 	protected void jump()
 	{
+		if (this.getOwner() != null && this.getDistanceSqToEntity(this.getOwner()) >= 125.0D)
+		{
+			this.stepHeight = 2.0F;
+			this.addPotionEffect(new PotionEffect(Potion.resistance.id, 48, 5, false, false));
+		}
 		this.motionY = 0.41999998688697815D;
 		this.isAirBorne = true;
 	}

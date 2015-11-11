@@ -38,7 +38,7 @@ public class BlockFronosDirt extends BlockBaseMP implements ITerraformableBlock
 	public BlockFronosDirt(String name)
 	{
 		super(Material.ground);
-		this.setStepSound(Block.soundTypeGravel);
+		this.setStepSound(soundTypeGravel);
 		this.setHardness(0.55F);
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_dirt));
 		this.setUnlocalizedName(name);
@@ -92,7 +92,7 @@ public class BlockFronosDirt extends BlockBaseMP implements ITerraformableBlock
 					}
 					player.getCurrentEquippedItem().damageItem(1, player);
 				}
-				else if (state == state.withProperty(VARIANT, BlockType.coarse_fronos_dirt))
+				else if (state == state.withProperty(VARIANT, BlockType.fronos_coarse_dirt))
 				{
 					Block farmland = this;
 
@@ -138,7 +138,7 @@ public class BlockFronosDirt extends BlockBaseMP implements ITerraformableBlock
 	public static enum BlockType implements IStringSerializable
 	{
 		fronos_dirt,
-		coarse_fronos_dirt;
+		fronos_coarse_dirt;
 
 		@Override
 		public String toString()

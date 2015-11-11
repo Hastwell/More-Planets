@@ -468,7 +468,7 @@ public class MorePlanetsEvents
 	}
 
 	@SubscribeEvent
-	public void onEntityUpdate(LivingUpdateEvent event)
+	public void onLivingUpdate(LivingUpdateEvent event)
 	{
 		EntityLivingBase living = event.entityLiving;
 		World world = living.worldObj;
@@ -480,15 +480,9 @@ public class MorePlanetsEvents
 			this.spawnFeces(world, player);
 			this.spawnDarkAsteroids(world, player);
 			this.removeIcyPoison(player);
+			this.spawnMeteor(world, player);
+			this.spawnLightningBolt(world, player);
 
-			if (world.provider instanceof IMeteorType)
-			{
-				this.spawnMeteor(world, player, (IMeteorType)world.provider);
-			}
-			else if (world.provider instanceof ILightningStorm)
-			{
-				this.spawnLightningBolt(world, player);
-			}
 			if ((player.isPotionActive(MPPotions.infected_gas.id) || player.isPotionActive(MPPotions.icy_poison.id)) && MorePlanetsEvents.getTier3ThermalArmor(player))
 			{
 				player.removePotionEffect(MPPotions.infected_gas.id);
@@ -605,81 +599,86 @@ public class MorePlanetsEvents
 		}
 	}
 
-	private void spawnMeteor(World world, EntityPlayerMP player, IMeteorType type)
+	private void spawnMeteor(World world, EntityPlayerMP player)
 	{
 		Entity meteor = null;
 
-		if (FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+		if (world.provider instanceof IMeteorType)
 		{
-			if (((IMeteorType)world.provider).getMeteorSpawnFrequency() > 0.0D)
+			IMeteorType type = (IMeteorType) world.provider;
+
+			if (FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
 			{
-				int f = (int) (((IMeteorType)world.provider).getMeteorSpawnFrequency() * 1000D);
-
-				if (world.rand.nextInt(f) == 0)
+				if (((IMeteorType)world.provider).getMeteorSpawnFrequency() > 0.0D)
 				{
-					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+					int f = (int) (((IMeteorType)world.provider).getMeteorSpawnFrequency() * 1000D);
 
-					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+					if (world.rand.nextInt(f) == 0)
 					{
-						int x, y, z;
-						double motX, motZ;
-						x = world.rand.nextInt(20) - 10;
-						y = world.rand.nextInt(20) + 200;
-						z = world.rand.nextInt(20) - 10;
-						motX = world.rand.nextDouble() * 5;
-						motZ = world.rand.nextDouble() * 5;
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
 
-						switch (type.getMeteorEventType())
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
 						{
-						case 0:
-							meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-							break;
-						case 1:
-							meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-							break;
-						case 2:
-							meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-							break;
-						}
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
 
-						if (!world.isRemote)
-						{
-							world.spawnEntityInWorld(meteor);
-							MPLog.debug("Spawn %s at %s %s %s", meteor.getClass().getSimpleName(), (int)meteor.posX, (int)meteor.posY, (int)meteor.posZ);
+							switch (type.getMeteorEventType())
+							{
+							case 0:
+								meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+								break;
+							case 1:
+								meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+								break;
+							case 2:
+								meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+								break;
+							}
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+								MPLog.debug("Spawn %s at %s %s %s", meteor.getClass().getSimpleName(), (int)meteor.posX, (int)meteor.posY, (int)meteor.posZ);
+							}
 						}
 					}
-				}
-				if (world.rand.nextInt(f * 3) == 0)
-				{
-					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
-
-					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+					if (world.rand.nextInt(f * 3) == 0)
 					{
-						int x, y, z;
-						double motX, motZ;
-						x = world.rand.nextInt(20) - 10;
-						y = world.rand.nextInt(20) + 200;
-						z = world.rand.nextInt(20) - 10;
-						motX = world.rand.nextDouble() * 5;
-						motZ = world.rand.nextDouble() * 5;
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
 
-						switch (type.getMeteorEventType())
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
 						{
-						case 0:
-							meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-							break;
-						case 1:
-							meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-							break;
-						case 2:
-							meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
-							break;
-						}
+							int x, y, z;
+							double motX, motZ;
+							x = world.rand.nextInt(20) - 10;
+							y = world.rand.nextInt(20) + 200;
+							z = world.rand.nextInt(20) - 10;
+							motX = world.rand.nextDouble() * 5;
+							motZ = world.rand.nextDouble() * 5;
 
-						if (!world.isRemote)
-						{
-							world.spawnEntityInWorld(meteor);
-							MPLog.debug("Spawn %s at %s %s %s", meteor.getClass().getSimpleName(), (int)meteor.posX, (int)meteor.posY, (int)meteor.posZ);
+							switch (type.getMeteorEventType())
+							{
+							case 0:
+								meteor = new EntityPolongniusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+								break;
+							case 1:
+								meteor = new EntityKoentusMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+								break;
+							case 2:
+								meteor = new EntityIceCrystalMeteor(world, player.posX + x, player.posY + y, player.posZ + z, motX - 2.5D, 0, motZ - 2.5D, 1);
+								break;
+							}
+
+							if (!world.isRemote)
+							{
+								world.spawnEntityInWorld(meteor);
+								MPLog.debug("Spawn %s at %s %s %s", meteor.getClass().getSimpleName(), (int)meteor.posX, (int)meteor.posY, (int)meteor.posZ);
+							}
 						}
 					}
 				}
@@ -689,47 +688,50 @@ public class MorePlanetsEvents
 
 	private void spawnLightningBolt(World world, EntityPlayerMP player)
 	{
-		if (FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
+		if (world.provider instanceof ILightningStorm)
 		{
-			if (((ILightningStorm)world.provider).getLightningStormFrequency() > 0.0D)
+			if (FMLCommonHandler.instance().getEffectiveSide() != Side.CLIENT)
 			{
-				int f = (int)(((ILightningStorm)world.provider).getLightningStormFrequency() * 1000D);
-
-				if (world.rand.nextInt(f) == 0)
+				if (((ILightningStorm)world.provider).getLightningStormFrequency() > 0.0D)
 				{
-					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+					int f = (int)(((ILightningStorm)world.provider).getLightningStormFrequency() * 1000D);
 
-					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+					if (world.rand.nextInt(f) == 0)
 					{
-						double x = player.posX + world.rand.nextInt(25) - 5;
-						double y = player.posY + world.rand.nextInt(10);
-						double z = player.posZ + world.rand.nextInt(25) - 5;
-						EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
 
-						if (!world.isRemote)
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
 						{
-							world.spawnEntityInWorld(lightning);
-							MPLog.debug("Spawn Bolt at %s %s %s", (int)lightning.posX, (int)lightning.posY, (int)lightning.posZ);
-						}
-					}
-				}
-				if (world.rand.nextInt(f * 3) == 0)
-				{
-					EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+							double x = player.posX + world.rand.nextInt(25) - 5;
+							double y = player.posY + world.rand.nextInt(10);
+							double z = player.posZ + world.rand.nextInt(25) - 5;
+							EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
 
-					if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
-					{
-						double x = player.posX + world.rand.nextInt(25) - 5;
-						double y = player.posY + world.rand.nextInt(10);
-						double z = player.posZ + world.rand.nextInt(25) - 5;
-						EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
-
-						if (!world.isRemote)
-						{
-							for (int i = 0; i < 3; i++)
+							if (!world.isRemote)
 							{
 								world.spawnEntityInWorld(lightning);
 								MPLog.debug("Spawn Bolt at %s %s %s", (int)lightning.posX, (int)lightning.posY, (int)lightning.posZ);
+							}
+						}
+					}
+					if (world.rand.nextInt(f * 3) == 0)
+					{
+						EntityPlayer closestPlayer = world.getClosestPlayerToEntity(player, 100);
+
+						if (closestPlayer == null || closestPlayer.getEntityId() <= player.getEntityId())
+						{
+							double x = player.posX + world.rand.nextInt(25) - 5;
+							double y = player.posY + world.rand.nextInt(10);
+							double z = player.posZ + world.rand.nextInt(25) - 5;
+							EntityLightningBolt lightning = new EntityLightningBolt(world, x, y, z);
+
+							if (!world.isRemote)
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									world.spawnEntityInWorld(lightning);
+									MPLog.debug("Spawn Bolt at %s %s %s", (int)lightning.posX, (int)lightning.posY, (int)lightning.posZ);
+								}
 							}
 						}
 					}

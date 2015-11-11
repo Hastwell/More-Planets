@@ -20,9 +20,9 @@ import stevekung.mods.moreplanets.common.entities.IImmuneMapleIvy;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public abstract class IFronosPet extends EntityTameable implements IImmuneMapleIvy
+public abstract class FronosPet extends EntityTameable implements IImmuneMapleIvy
 {
-	public IFronosPet(World world)
+	public FronosPet(World world)
 	{
 		super(world);
 	}
@@ -124,12 +124,12 @@ public abstract class IFronosPet extends EntityTameable implements IImmuneMapleI
 		{
 			return false;
 		}
-		if (!(entity instanceof IFronosPet))
+		if (!(entity instanceof FronosPet))
 		{
 			return false;
 		}
 
-		IFronosPet pet = (IFronosPet)entity;
+		FronosPet pet = (FronosPet)entity;
 
 		if (!pet.isTamed())
 		{

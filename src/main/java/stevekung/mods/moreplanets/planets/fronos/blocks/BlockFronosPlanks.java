@@ -5,11 +5,10 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.nibiru.blocks;
+package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -23,15 +22,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
-public class BlockNibiruWoodenPlanks extends BlockBaseMP
+public class BlockFronosPlanks extends BlockBaseMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockNibiruWoodenPlanks(String name)
+	public BlockFronosPlanks(String name)
 	{
 		super(Material.wood);
 		this.setHardness(2.0F);
-		this.setStepSound(Block.soundTypeWood);
+		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.coconut_wood_planks));
+		this.setStepSound(soundTypeWood);
 		this.setUnlocalizedName(name);
 	}
 
@@ -71,8 +71,8 @@ public class BlockNibiruWoodenPlanks extends BlockBaseMP
 
 	public static enum BlockType implements IStringSerializable
 	{
-		ancient_dark_wood_planks,
-		orange_wood_planks;
+		coconut_wood_planks,
+		maple_wood_planks;
 
 		@Override
 		public String toString()

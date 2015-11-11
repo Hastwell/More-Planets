@@ -1,5 +1,5 @@
 {
-    "parent": "moreplanets:block/crystal_wood_planks",
+    "parent": "moreplanets:block/alien_wood_planks",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

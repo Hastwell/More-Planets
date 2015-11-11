@@ -23,7 +23,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
@@ -41,12 +44,12 @@ public class BlockAlienDirt extends BlockBaseMP implements ITerraformableBlock
 		this.setUnlocalizedName(name);
 	}
 
-	/*@Override
+	@Override
 	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
 	{
 		Block block = plant.getPlant(world, pos).getBlock();
-		return block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_coral || block == FronosBlocks.fronos_dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_poppy || block == FronosBlocks.fronos_tall_grass || plant.getPlantType(world, pos) == EnumPlantType.Plains;
-	}*/
+		return block == DarkAsteroidBlocks.alien_sapling || plant.getPlantType(world, pos) == EnumPlantType.Plains;
+	}
 
 	@Override
 	public int damageDropped(IBlockState state)
@@ -79,7 +82,7 @@ public class BlockAlienDirt extends BlockBaseMP implements ITerraformableBlock
 			{
 				if (state == state.withProperty(VARIANT, BlockType.alien_dirt))
 				{
-					Block farmland = DarkAsteroidsBlocks.alien_farmland;
+					Block farmland = DarkAsteroidBlocks.alien_farmland;
 
 					world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, farmland.stepSound.getStepSound(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getFrequency() * 0.8F);
 
@@ -89,7 +92,7 @@ public class BlockAlienDirt extends BlockBaseMP implements ITerraformableBlock
 					}
 					player.getCurrentEquippedItem().damageItem(1, player);
 				}
-				else if (state == state.withProperty(VARIANT, BlockType.coarse_alien_dirt))
+				else if (state == state.withProperty(VARIANT, BlockType.alien_coarse_dirt))
 				{
 					Block farmland = this;
 
@@ -135,7 +138,7 @@ public class BlockAlienDirt extends BlockBaseMP implements ITerraformableBlock
 	public static enum BlockType implements IStringSerializable
 	{
 		alien_dirt,
-		coarse_alien_dirt;
+		alien_coarse_dirt;
 
 		@Override
 		public String toString()

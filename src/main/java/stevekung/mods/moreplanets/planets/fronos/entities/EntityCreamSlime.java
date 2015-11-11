@@ -131,32 +131,30 @@ public class EntityCreamSlime extends EntityLiving implements IMob
 				float f3 = MathHelper.cos(f) * i * 0.5F * f1;
 				double d0 = this.posX + f2;
 				double d1 = this.posZ + f3;
-				int particles = this.getCreamSlimeType();
+				ParticleTypesMP type = null;
 
-				if (particles == 0)
+				switch (this.getCreamSlimeType())
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.VANILLA_CREAM_BALL, d0, this.getEntityBoundingBox().minY, d1);
+				case 0:
+					type = ParticleTypesMP.VANILLA_CREAM_BALL;
+					break;
+				case 1:
+					type = ParticleTypesMP.CHOCOLATE_CREAM_BALL;
+					break;
+				case 2:
+					type = ParticleTypesMP.STRAWBERRY_CREAM_BALL;
+					break;
+				case 3:
+					type = ParticleTypesMP.ORANGE_CREAM_BALL;
+					break;
+				case 4:
+					type = ParticleTypesMP.TEA_CREAM_BALL;
+					break;
+				case 5:
+					type = ParticleTypesMP.LEMON_CREAM_BALL;
+					break;
 				}
-				else if (particles == 1)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.CHOCOLATE_CREAM_BALL, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 2)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.STRAWBERRY_CREAM_BALL, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 3)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ORANGE_CREAM_BALL, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 4)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.TEA_CREAM_BALL, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 5)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.LEMON_CREAM_BALL, d0, this.getEntityBoundingBox().minY, d1);
-				}
+				MorePlanetsCore.proxy.spawnParticle(type, d0, this.getEntityBoundingBox().minY, d1);
 			}
 
 			if (this.makesSoundOnLand())

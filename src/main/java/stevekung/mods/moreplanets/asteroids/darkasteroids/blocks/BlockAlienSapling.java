@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.koentus.blocks;
+package stevekung.mods.moreplanets.asteroids.darkasteroids.blocks;
 
 import java.util.Random;
 
@@ -19,9 +19,9 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 
-public class BlockCrystalSapling extends BlockSaplingMP
+public class BlockAlienSapling extends BlockSaplingMP
 {
-	public BlockCrystalSapling(String name)
+	public BlockAlienSapling(String name)
 	{
 		super();
 		this.setUnlocalizedName(name);
@@ -31,7 +31,7 @@ public class BlockCrystalSapling extends BlockSaplingMP
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
 		Block block = world.getBlockState(pos.down()).getBlock();
-		return block == Blocks.grass || block == Blocks.dirt || block == KoentusBlocks.crystal_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
+		return block == Blocks.grass || block == Blocks.dirt || block == DarkAsteroidBlocks.alien_grass || block == DarkAsteroidBlocks.alien_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class BlockCrystalSapling extends BlockSaplingMP
 
 		if (obj == null)
 		{
-			obj = new WorldGenTreeMP(6, KoentusBlocks.crystal_log, KoentusBlocks.crystal_leaves, 0, 0, false, this, null);
+			obj = new WorldGenTreeMP(6, DarkAsteroidBlocks.alien_log, DarkAsteroidBlocks.alien_leaves, 0, 0, false, this, null);
 		}
 		if (obj != null)
 		{

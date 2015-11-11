@@ -29,7 +29,7 @@ import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class EntityBearry extends IFronosPet
+public class EntityBearry extends FronosPet
 {
 	private int timeUntilToDropStrawberry;
 

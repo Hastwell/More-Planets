@@ -21,7 +21,7 @@ public class BlockAlienFarmland extends BlockFarmlandMP
 	@Override
 	public Block getDirtBlock()
 	{
-		return DarkAsteroidsBlocks.alien_dirt;
+		return DarkAsteroidBlocks.alien_dirt;
 	}
 
 	/*@Override

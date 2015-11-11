@@ -59,7 +59,9 @@ public class ItemSpaceFruits extends ItemFoodMP
 	@Override
 	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
 	{
-		super.onItemUseFinish(itemStack, world, player);
+		--itemStack.stackSize;
+		player.getFoodStats().addStats(this, itemStack);
+		this.onFoodEaten(itemStack, world, player);
 
 		if (itemStack.getItemDamage() == 2)
 		{
@@ -75,6 +77,10 @@ public class ItemSpaceFruits extends ItemFoodMP
 					player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2500, 1));
 				}
 			}
+		}
+		else
+		{
+			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		}
 		return itemStack;
 	}

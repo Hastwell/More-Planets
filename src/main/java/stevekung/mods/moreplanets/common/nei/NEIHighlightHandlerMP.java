@@ -14,7 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
@@ -206,9 +206,9 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(KoentusItems.crystal_door);
 		}
-		if (block == DarkAsteroidsBlocks.dark_asteroid_rock)
+		if (block == DarkAsteroidBlocks.dark_asteroid_rock)
 		{
-			return new ItemStack(DarkAsteroidsBlocks.dark_asteroid_rock, 1, meta);
+			return new ItemStack(DarkAsteroidBlocks.dark_asteroid_rock, 1, meta);
 		}
 		if (block == KoentusBlocks.crystal_cocoa)
 		{

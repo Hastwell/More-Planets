@@ -22,7 +22,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.gen.ChunkProviderServer;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.common.util.MPLog;
 
 public class TeleportTypeDarkAsteroids implements ITeleportType
@@ -116,19 +116,19 @@ public class TeleportTypeDarkAsteroids implements ITeleportType
 				//Clear the downward path of small asteroids and any other asteroid rock
 				for (int y = k + 2; y < 256; y++)
 				{
-					if (world.getBlockState(new BlockPos(x, y, z)) == DarkAsteroidsBlocks.dark_asteroid_rock)
+					if (world.getBlockState(new BlockPos(x, y, z)) == DarkAsteroidBlocks.dark_asteroid_rock)
 					{
 						world.setBlockToAir(new BlockPos(x, y, z));
 					}
-					if (world.getBlockState(new BlockPos(x - 1, y, z)) == DarkAsteroidsBlocks.dark_asteroid_rock)
+					if (world.getBlockState(new BlockPos(x - 1, y, z)) == DarkAsteroidBlocks.dark_asteroid_rock)
 					{
 						world.setBlockToAir(new BlockPos(x - 1, y, z));
 					}
-					if (world.getBlockState(new BlockPos(x, y, z - 1)) == DarkAsteroidsBlocks.dark_asteroid_rock)
+					if (world.getBlockState(new BlockPos(x, y, z - 1)) == DarkAsteroidBlocks.dark_asteroid_rock)
 					{
 						world.setBlockToAir(new BlockPos(x, y, z - 1));
 					}
-					if (world.getBlockState(new BlockPos(x - 1, y, z - 1)) == DarkAsteroidsBlocks.dark_asteroid_rock)
+					if (world.getBlockState(new BlockPos(x - 1, y, z - 1)) == DarkAsteroidBlocks.dark_asteroid_rock)
 					{
 						world.setBlockToAir(new BlockPos(x - 1, y, z - 1));
 					}
@@ -227,7 +227,7 @@ public class TeleportTypeDarkAsteroids implements ITeleportType
 
 		if (world.isAirBlock(new BlockPos(x, y, z)))
 		{
-			world.setBlockState(new BlockPos(x, y, z), DarkAsteroidsBlocks.dark_asteroid_rock.getStateFromMeta(meta), 2);
+			world.setBlockState(new BlockPos(x, y, z), DarkAsteroidBlocks.dark_asteroid_rock.getStateFromMeta(meta), 2);
 		}
 	}
 

@@ -1,6 +1,6 @@
 {
     "parent": "block/wall_gate_open",
     "textures": {
-        "texture": "moreplanets:blocks/europa_planks"
+        "texture": "moreplanets:blocks/europa_wood_planks"
     }
 }

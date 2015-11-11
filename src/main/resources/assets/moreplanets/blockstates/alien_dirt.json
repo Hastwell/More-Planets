@@ -1,6 +1,6 @@
 {
     "variants": {
         "variant=alien_dirt": { "model": "moreplanets:alien_dirt" },
-        "variant=coarse_alien_dirt": { "model": "moreplanets:coarse_alien_dirt" }
+        "variant=alien_coarse_dirt": { "model": "moreplanets:alien_coarse_dirt" }
     }
 }

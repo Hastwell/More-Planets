@@ -11,18 +11,18 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.planets.fronos.entities.IFronosPet;
+import stevekung.mods.moreplanets.planets.fronos.entities.FronosPet;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityAIFronosBeg extends EntityAIBase
 {
-	private IFronosPet pet;
+	private FronosPet pet;
 	private EntityPlayer thePlayer;
 	private World world;
 	private float minPlayerDistance;
 	private int field_75384_e;
 
-	public EntityAIFronosBeg(IFronosPet pet, float distance)
+	public EntityAIFronosBeg(FronosPet pet, float distance)
 	{
 		this.pet = pet;
 		this.world = pet.worldObj;

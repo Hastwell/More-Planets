@@ -133,40 +133,36 @@ public class EntityJellySlime extends EntityLiving implements IMob
 				float f3 = MathHelper.cos(f) * i * 0.5F * f1;
 				double d0 = this.posX + f2;
 				double d1 = this.posZ + f3;
-				int particles = this.getJellySlimeType();
+				ParticleTypesMP type = null;
 
-				if (particles == 0)
+				switch (this.getJellySlimeType())
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.GRAPE_JELLY, d0, this.getEntityBoundingBox().minY, d1);
+				case 0:
+					type = ParticleTypesMP.GRAPE_JELLY;
+					break;
+				case 1:
+					type = ParticleTypesMP.RASPBERRY_JELLY;
+					break;
+				case 2:
+					type = ParticleTypesMP.STRAWBERRY_JELLY;
+					break;
+				case 3:
+					type = ParticleTypesMP.BERRY_JELLY;
+					break;
+				case 4:
+					type = ParticleTypesMP.LIME_JELLY;
+					break;
+				case 5:
+					type = ParticleTypesMP.ORANGE_JELLY;
+					break;
+				case 6:
+					type = ParticleTypesMP.GREEN_JELLY;
+					break;
+				case 7:
+					type = ParticleTypesMP.LEMON_JELLY;
+					break;
 				}
-				else if (particles == 1)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.RASPBERRY_JELLY, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 2)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.STRAWBERRY_JELLY, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 3)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.BERRY_JELLY, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 4)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.LIME_JELLY, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 5)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ORANGE_JELLY, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 6)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.GREEN_JELLY, d0, this.getEntityBoundingBox().minY, d1);
-				}
-				else if (particles == 7)
-				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.GREEN_JELLY, d0, this.getEntityBoundingBox().minY, d1);
-				}
+				MorePlanetsCore.proxy.spawnParticle(type, d0, this.getEntityBoundingBox().minY, d1);
 			}
 
 			if (this.makesSoundOnLand())

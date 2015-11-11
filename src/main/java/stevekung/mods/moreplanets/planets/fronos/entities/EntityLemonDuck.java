@@ -28,7 +28,7 @@ import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class EntityLemonDuck extends IFronosPet
+public class EntityLemonDuck extends FronosPet
 {
 	public EntityLemonDuck(World world)
 	{

@@ -9,7 +9,7 @@ package stevekung.mods.moreplanets.common.util;
 
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.block.statemap.StateMap.Builder;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.common.blocks.BlockLeavesMP;
 import stevekung.mods.moreplanets.moons.europa.blocks.BlockEuropaWaterBomb;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
@@ -74,6 +74,6 @@ public class StateMapperUtil
 		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_door_block, EnumStateMapper.DOOR);
 		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_fence_gate, EnumStateMapper.FENCE_GATE);
 		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_water_bomb, new Builder().addPropertiesToIgnore(new IProperty[] {BlockEuropaWaterBomb.EXPLODE}).build());
-		ClientRegisterHelper.registerStateMapper(DarkAsteroidsBlocks.alien_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
+		ClientRegisterHelper.registerStateMapper(DarkAsteroidBlocks.alien_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
 	}
 }

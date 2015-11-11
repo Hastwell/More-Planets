@@ -31,7 +31,7 @@ public class BlockAlienGrass extends BlockGrassMP
 		{
 			if (world.getLightFromNeighbors(pos.up()) < 4 && world.getBlockLightOpacity(pos.up()) > 2)
 			{
-				world.setBlockState(pos, DarkAsteroidsBlocks.alien_dirt.getDefaultState());
+				world.setBlockState(pos, DarkAsteroidBlocks.alien_dirt.getDefaultState());
 			}
 			else if (world.getLightFromNeighbors(pos.up()) >= 9)
 			{
@@ -39,11 +39,11 @@ public class BlockAlienGrass extends BlockGrassMP
 				{
 					BlockPos pos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
 
-					if (world.getBlockState(pos1) == DarkAsteroidsBlocks.alien_dirt.getDefaultState())
+					if (world.getBlockState(pos1) == DarkAsteroidBlocks.alien_dirt.getDefaultState())
 					{
 						if (world.getLightFromNeighbors(pos1.up()) >= 4 && world.getBlockState(pos1.up()).getBlock().getLightOpacity() <= 2)
 						{
-							world.setBlockState(pos1, DarkAsteroidsBlocks.alien_grass.getDefaultState());
+							world.setBlockState(pos1, DarkAsteroidBlocks.alien_grass.getDefaultState());
 						}
 					}
 				}
@@ -54,12 +54,12 @@ public class BlockAlienGrass extends BlockGrassMP
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		return Item.getItemFromBlock(DarkAsteroidsBlocks.alien_dirt);
+		return Item.getItemFromBlock(DarkAsteroidBlocks.alien_dirt);
 	}
 
 	@Override
 	public Block getFarmlandBlock()
 	{
-		return DarkAsteroidsBlocks.alien_farmland;
+		return DarkAsteroidBlocks.alien_farmland;
 	}
 }

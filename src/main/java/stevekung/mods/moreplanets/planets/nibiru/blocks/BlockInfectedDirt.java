@@ -94,7 +94,7 @@ public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBloc
 					}
 					player.getCurrentEquippedItem().damageItem(1, player);
 				}
-				else if (state == state.withProperty(VARIANT, BlockType.coarse_infected_dirt))
+				else if (state == state.withProperty(VARIANT, BlockType.infected_coarse_dirt))
 				{
 					Block block = this;
 
@@ -147,7 +147,7 @@ public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBloc
 	public static enum BlockType implements IStringSerializable
 	{
 		infected_dirt,
-		coarse_infected_dirt;
+		infected_coarse_dirt;
 
 		@Override
 		public String toString()

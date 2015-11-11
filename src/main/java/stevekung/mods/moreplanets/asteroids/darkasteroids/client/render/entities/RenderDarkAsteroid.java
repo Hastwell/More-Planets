@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright 2015 SteveKunG - More Planets Mod
+ * 
+ * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
+ ******************************************************************************/
+
 package stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities;
 
 import net.minecraft.block.Block;
@@ -16,7 +23,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 
 public class RenderDarkAsteroid extends Render
@@ -31,7 +38,7 @@ public class RenderDarkAsteroid extends Render
 	{
 		EntityDarkAsteroid asteroid = (EntityDarkAsteroid) entity;
 		this.bindTexture(TextureMap.locationBlocksTexture);
-		IBlockState iblockstate = DarkAsteroidsBlocks.dark_asteroid_rock.getDefaultState();
+		IBlockState iblockstate = DarkAsteroidBlocks.dark_asteroid_rock.getDefaultState();
 		Block block = iblockstate.getBlock();
 		BlockPos blockpos = new BlockPos(asteroid);
 		World world = asteroid.worldObj;
@@ -52,7 +59,7 @@ public class RenderDarkAsteroid extends Render
 				int i = blockpos.getX();
 				int j = blockpos.getY();
 				int k = blockpos.getZ();
-				worldrenderer.setTranslation((double)((float)(-i) - 0.5F), (double)(-j), (double)((float)(-k) - 0.5F));
+				worldrenderer.setTranslation((-i) - 0.5F, -j, (-k) - 0.5F);
 				BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
 				IBakedModel ibakedmodel = blockrendererdispatcher.getModelFromBlockState(iblockstate, world, (BlockPos)null);
 				blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, iblockstate, blockpos, worldrenderer, false);

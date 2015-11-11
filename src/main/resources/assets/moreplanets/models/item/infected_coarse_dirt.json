@@ -1,5 +1,5 @@
 {
-    "parent": "moreplanets:block/coarse_fronos_dirt",
+    "parent": "moreplanets:block/infected_coarse_dirt",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

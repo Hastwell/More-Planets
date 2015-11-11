@@ -1,6 +1,6 @@
 {
     "parent": "block/fence_ns",
     "textures": {
-        "texture": "moreplanets:blocks/europa_planks"
+        "texture": "moreplanets:blocks/europa_wood_planks"
     }
 }

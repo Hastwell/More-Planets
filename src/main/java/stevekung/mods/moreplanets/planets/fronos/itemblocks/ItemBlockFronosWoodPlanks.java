@@ -10,9 +10,9 @@ package stevekung.mods.moreplanets.planets.fronos.itemblocks;
 import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 
-public class ItemBlockFronosWoodenPlanks extends ItemBlockBaseMP
+public class ItemBlockFronosWoodPlanks extends ItemBlockBaseMP
 {
-	public ItemBlockFronosWoodenPlanks(Block block)
+	public ItemBlockFronosWoodPlanks(Block block)
 	{
 		super(block);
 	}

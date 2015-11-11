@@ -23,7 +23,7 @@ import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruFence;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruLog;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruSapling;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruWoodenPlanks;
+import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruWoodPlanks;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockOilRock;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -71,7 +71,7 @@ public class NibiruBlocks
 		NibiruBlocks.infected_zombie_egg = new BlockInfectedZombieEgg("infected_zombie_egg");
 		NibiruBlocks.ancient_dark_leaves = new BlockAncientDarkLeaves("ancient_dark_leaves");
 		NibiruBlocks.nibiru_log = new BlockNibiruLog("nibiru_log");
-		NibiruBlocks.nibiru_planks = new BlockNibiruWoodenPlanks("nibiru_planks");
+		NibiruBlocks.nibiru_planks = new BlockNibiruPlanks("nibiru_planks");
 		NibiruBlocks.power_crystal_generator = new BlockPowerCrystalGenerator("power_crystal_generator");
 		NibiruBlocks.ichorius_torch = new BlockIchoriusTorch("ichorius_torch");
 		NibiruBlocks.ancient_dark_wood_stairs = new BlockStairsMP(Blocks.planks.getDefaultState(), "ancient_dark_wood_stairs", "wood", null, 2.0F);
@@ -100,7 +100,7 @@ public class NibiruBlocks
 		CommonRegisterHelper.registerBlock(NibiruBlocks.helium_block);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_worm_egg_rock);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_log, ItemBlockNibiruLog.class);
-		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockNibiruWoodenPlanks.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockNibiruWoodPlanks.class);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_leaves, ItemBlockSingleLeaves.class);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_leaves, ItemBlockSingleLeaves.class);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_wood_stairs);
