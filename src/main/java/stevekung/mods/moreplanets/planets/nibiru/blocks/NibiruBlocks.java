@@ -22,8 +22,8 @@ import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruFence;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruLog;
+import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruPlanks;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruSapling;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruWoodPlanks;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockOilRock;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -100,7 +100,7 @@ public class NibiruBlocks
 		CommonRegisterHelper.registerBlock(NibiruBlocks.helium_block);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_worm_egg_rock);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_log, ItemBlockNibiruLog.class);
-		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockNibiruWoodPlanks.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockNibiruPlanks.class);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_leaves, ItemBlockSingleLeaves.class);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_leaves, ItemBlockSingleLeaves.class);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_wood_stairs);

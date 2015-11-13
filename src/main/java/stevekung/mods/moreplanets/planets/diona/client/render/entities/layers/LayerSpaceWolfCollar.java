@@ -21,7 +21,7 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
 @SideOnly(Side.CLIENT)
 public class LayerSpaceWolfCollar implements LayerRenderer
 {
-	private ResourceLocation field_177147_a = new ResourceLocation("moreplanets:textures/model/space_wolf/space_wolf_collar.png");
+	private ResourceLocation field_177147_a = new ResourceLocation("moreplanets:textures/entity/space_wolf/space_wolf_collar.png");
 	private RenderSpaceWolf render;
 
 	public LayerSpaceWolfCollar(RenderSpaceWolf render)

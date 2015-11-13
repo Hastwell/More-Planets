@@ -7,9 +7,11 @@
 
 package stevekung.mods.moreplanets.common.util;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.IFuelHandler;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
@@ -22,10 +24,15 @@ public class FurnaceFuelMP implements IFuelHandler
 	{
 		Item item = itemStack.getItem();
 
-		if (item == Item.getItemFromBlock(NibiruBlocks.nibiru_sapling) || item == Item.getItemFromBlock(KoentusBlocks.crystal_sapling) || item == Item.getItemFromBlock(FronosBlocks.fronos_sapling) || item == Item.getItemFromBlock(EuropaBlocks.europa_sapling))
+		if (item == this.getBlock(NibiruBlocks.nibiru_sapling) || item == this.getBlock(KoentusBlocks.crystal_sapling) || item == this.getBlock(FronosBlocks.fronos_sapling) || item == this.getBlock(EuropaBlocks.europa_sapling) || item == this.getBlock(DarkAsteroidBlocks.alien_sapling))
 		{
 			return 100;
 		}
 		return 0;
+	}
+
+	private Item getBlock(Block block)
+	{
+		return Item.getItemFromBlock(block);
 	}
 }

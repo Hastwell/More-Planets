@@ -50,26 +50,6 @@ public class RenderCreamSlime extends RenderLiving
 		GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
 	}
 
-	protected ResourceLocation getEntityTexture(EntityCreamSlime par1Entity)
-	{
-		switch (par1Entity.getCreamSlimeType())
-		{
-		case 0:
-		default:
-			return this.vanillaCreamSlimeTextures;
-		case 1:
-			return this.chocolateCreamSlimeTextures;
-		case 2:
-			return this.strawberryCreamSlimeTextures;
-		case 3:
-			return this.orangeCreamSlimeTextures;
-		case 4:
-			return this.teaCreamSlimeTextures;
-		case 5:
-			return this.lemonCreamSlimeTextures;
-		}
-	}
-
 	@Override
 	public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
 	{
@@ -91,7 +71,22 @@ public class RenderCreamSlime extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.getEntityTexture((EntityCreamSlime)entity);
+		switch (((EntityCreamSlime)entity).getCreamSlimeType())
+		{
+		case 0:
+		default:
+			return this.vanillaCreamSlimeTextures;
+		case 1:
+			return this.chocolateCreamSlimeTextures;
+		case 2:
+			return this.strawberryCreamSlimeTextures;
+		case 3:
+			return this.orangeCreamSlimeTextures;
+		case 4:
+			return this.teaCreamSlimeTextures;
+		case 5:
+			return this.lemonCreamSlimeTextures;
+		}
 	}
 
 	@Override

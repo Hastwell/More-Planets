@@ -45,9 +45,16 @@ public class RenderJellySlimePet extends RenderLiving
 		GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
 	}
 
-	protected ResourceLocation getEntityTexture(EntityJellySlimePet par1Entity)
+	@Override
+	protected void preRenderCallback(EntityLivingBase entity, float par2)
 	{
-		switch (par1Entity.getJellySlimeType())
+		this.preRenderCallback((EntityJellySlimePet)entity, par2);
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
+		switch (((EntityJellySlimePet)entity).getJellySlimeType())
 		{
 		case 0:
 		default:
@@ -67,17 +74,5 @@ public class RenderJellySlimePet extends RenderLiving
 		case 7:
 			return this.lemonSlimeTextures;
 		}
-	}
-
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		this.preRenderCallback((EntityJellySlimePet)entity, par2);
-	}
-
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.getEntityTexture((EntityJellySlimePet)entity);
 	}
 }

@@ -14,7 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelLemonDuck;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 
 @SideOnly(Side.CLIENT)
 public class RenderLemonDuck extends RenderLiving
@@ -26,14 +25,9 @@ public class RenderLemonDuck extends RenderLiving
 		super(render, new ModelLemonDuck(), 0.35F);
 	}
 
-	protected ResourceLocation duckTexture(EntityLemonDuck entity)
-	{
-		return this.lemonDuckTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.duckTexture((EntityLemonDuck)entity);
+		return this.lemonDuckTextures;
 	}
 }

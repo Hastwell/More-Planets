@@ -14,7 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelStarfish;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 
 @SideOnly(Side.CLIENT)
 public class RenderStarfish extends RenderLiving
@@ -26,14 +25,9 @@ public class RenderStarfish extends RenderLiving
 		super(render, new ModelStarfish(), 0.3F);
 	}
 
-	protected ResourceLocation starFishTexture(EntityStarfish entity)
-	{
-		return this.starfishTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.starFishTexture((EntityStarfish)entity);
+		return this.starfishTextures;
 	}
 }

@@ -23,7 +23,6 @@ public class ModelLaser extends ModelBase
 		this.laser = new ModelRenderer(this, 0, 0);
 		this.laser.addBox(0F, 0F, 0F, 1, 1, 2, 0F);
 		this.laser.setRotationPoint(0F, 0F, 0F);
-		this.laser.mirror = true;
 	}
 
 	@Override

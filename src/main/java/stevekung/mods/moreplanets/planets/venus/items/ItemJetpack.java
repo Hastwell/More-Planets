@@ -18,11 +18,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.common.items.armor.ItemArmorMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP;
 
-public class ItemJetpack extends ItemArmorMP
+public class ItemJetpack extends ItemElectricArmorMP
 {
 	private int tick;
 	private boolean keyDown;
@@ -164,8 +163,9 @@ public class ItemJetpack extends ItemArmorMP
 		return this.keySneak;
 	}
 
-	/*public static void resetTick()
+	@Override
+	public float getMaxElectricityStored(ItemStack itemStack)
 	{
-		tick = 0;
-	}*/
+		return 100000.0F;
+	}
 }

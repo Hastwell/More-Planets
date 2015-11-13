@@ -95,15 +95,10 @@ public class RenderPoisonArrow extends Render
 		super.doRender(entity, par2, par3, par4, par5, par6);
 	}
 
-	protected ResourceLocation getEntityTexture(EntityPoisonArrow entity)
-	{
-		return this.arrowTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.getEntityTexture((EntityPoisonArrow)entity);
+		return this.arrowTextures;
 	}
 
 	@Override

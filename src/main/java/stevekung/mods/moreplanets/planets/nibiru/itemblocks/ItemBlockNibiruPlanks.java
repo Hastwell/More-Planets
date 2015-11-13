@@ -5,14 +5,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.fronos.itemblocks;
+package stevekung.mods.moreplanets.planets.nibiru.itemblocks;
 
 import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 
-public class ItemBlockFronosWoodPlanks extends ItemBlockBaseMP
+public class ItemBlockNibiruPlanks extends ItemBlockBaseMP
 {
-	public ItemBlockFronosWoodPlanks(Block block)
+	public ItemBlockNibiruPlanks(Block block)
 	{
 		super(block);
 	}
@@ -20,6 +20,6 @@ public class ItemBlockFronosWoodPlanks extends ItemBlockBaseMP
 	@Override
 	public String[] getBlockVariantsName()
 	{
-		return new String[] { "coconut", "maple" };
+		return new String[] { "ancient_dark", "orange" };
 	}
 }

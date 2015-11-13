@@ -141,16 +141,12 @@ public class MPBlocks
 		MPBlocks.double_stone_slab_1.setHarvestLevel("pickaxe", 0);
 		MPBlocks.half_stone_slab_2.setHarvestLevel("pickaxe", 0);
 		MPBlocks.double_stone_slab_2.setHarvestLevel("pickaxe", 0);
-
 		MPBlocks.half_wooden_slab_1.setHarvestLevel("axe", 0);
 		MPBlocks.half_wooden_slab_1.setHarvestLevel("axe", 0);
-
 		MPBlocks.double_wooden_slab_1.setHarvestLevel("axe", 0);
 		MPBlocks.double_wooden_slab_1.setHarvestLevel("axe", 0);
-
 		MPBlocks.half_dungeon_brick_slab_1.setHarvestLevel("pickaxe", 0);
 		MPBlocks.double_dungeon_brick_slab_1.setHarvestLevel("pickaxe", 0);
-
 		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 0);
 		MPBlocks.dungeon_brick_wall.setHarvestLevel("pickaxe", 0);
 		MPBlocks.chondrite_rock.setHarvestLevel("pickaxe", 0);
@@ -200,6 +196,7 @@ public class MPBlocks
 		highlightBlockList.add(IoBlocks.io_block);
 		highlightBlockList.add(DarkAsteroidBlocks.dark_asteroid_rock);
 		highlightBlockList.add(KoentusBlocks.crystal_cocoa);
+		highlightBlockList.add(DarkAsteroidBlocks.alien_farmland);
 
 		hideBlockList.add(MPBlocks.dungeon_spawner);
 		hideBlockList.add(MPBlocks.double_stone_slab_1);

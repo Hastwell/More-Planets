@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.siriusb.blocks;
 import java.util.List;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -32,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
-public class BlockSiriusB extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockSiriusB extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -173,17 +172,11 @@ public class BlockSiriusB extends BlockPlanetTileMP implements /*IDetectableReso
 		return super.quantityDropped(state, fortune, rand);
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		int meta = (Integer)state.getValue(VARIANT);
-
-		if (meta >= 3 && meta <= 6)
-		{
-			return true;
-		}
-		return false;
-	}*/
+		return this.getMetaFromState(state) >= 3 && this.getMetaFromState(state) <= 6;
+	}
 
 	@Override
 	public boolean isTerraformable(World world, BlockPos pos)

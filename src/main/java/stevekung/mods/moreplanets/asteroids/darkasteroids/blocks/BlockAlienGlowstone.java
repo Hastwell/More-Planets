@@ -15,7 +15,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
-import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
 public class BlockAlienGlowstone extends BlockBaseMP
 {
@@ -43,7 +42,7 @@ public class BlockAlienGlowstone extends BlockBaseMP
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		return PlutoItems.xeonium_dust;
+		return null;//TODO
 	}
 
 	@Override

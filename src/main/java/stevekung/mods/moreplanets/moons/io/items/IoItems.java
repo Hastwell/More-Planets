@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.moons.io.items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import stevekung.mods.moreplanets.common.items.ItemBucketMP;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -25,12 +26,12 @@ public class IoItems
 	public static void init()
 	{
 		// Init
-		IoItems.io_lava_bucket = new ItemIoLavaBucket("io_lava_bucket");
-		IoItems.black_io_lava_bucket = new ItemBlackIoLavaBucket("black_io_lava_bucket");
-		IoItems.red_liquid_sulfur_bucket = new ItemRedLiquidSulfurBucket("red_liquid_sulfur_bucket");
-		IoItems.yellow_liquid_sulfur_bucket = new ItemYellowLiquidSulfurBucket("yellow_liquid_sulfur_bucket");
-		IoItems.orange_liquid_sulfur_bucket = new ItemOrangeLiquidSulfurBucket("orange_liquid_sulfur_bucket");
-		IoItems.brown_liquid_sulfur_bucket = new ItemBrownLiquidSulfurBucket("brown_liquid_sulfur_bucket");
+		IoItems.io_lava_bucket = new ItemBucketMP("io_lava_bucket", IoBlocks.io_lava, null);
+		IoItems.black_io_lava_bucket = new ItemBucketMP("black_io_lava_bucket", IoBlocks.black_io_lava, null);
+		IoItems.red_liquid_sulfur_bucket = new ItemBucketMP("red_liquid_sulfur_bucket", IoBlocks.red_liquid_sulfur, null);
+		IoItems.yellow_liquid_sulfur_bucket = new ItemBucketMP("yellow_liquid_sulfur_bucket", IoBlocks.yellow_liquid_sulfur, null);
+		IoItems.orange_liquid_sulfur_bucket = new ItemBucketMP("orange_liquid_sulfur_bucket", IoBlocks.orange_liquid_sulfur, null);
+		IoItems.brown_liquid_sulfur_bucket = new ItemBucketMP("brown_liquid_sulfur_bucket", IoBlocks.brown_liquid_sulfur, null);
 
 		// Register
 		CommonRegisterHelper.registerItem(IoItems.io_lava_bucket);

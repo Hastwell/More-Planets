@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.polongnius.blocks;
 import java.util.List;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -35,7 +34,7 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
-public class BlockPolongnius extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockPolongnius extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -207,17 +206,11 @@ public class BlockPolongnius extends BlockPlanetTileMP implements /*IDetectableR
 		return super.quantityDropped(state, fortune, rand);
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		int meta = (Integer)state.getValue(VARIANT);
-
-		if (meta >= 4 && meta <= 9)
-		{
-			return true;
-		}
-		return false;
-	}*/
+		return this.getMetaFromState(state) >= 4 && this.getMetaFromState(state) <= 9;
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)

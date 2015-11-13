@@ -40,13 +40,13 @@ import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosDoubl
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosFlower;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosLeaves;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosLog;
+import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosPlanks;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSand;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSandstone;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSandstoneSlab;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSapling;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosStone;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosTallGrass;
-import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosWoodPlanks;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFrostedCake;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockGolemCreamHead;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockJelly;
@@ -322,7 +322,7 @@ public class FronosBlocks
 		CommonRegisterHelper.registerBlock(FronosBlocks.cheese_glass);
 		CommonRegisterHelper.registerBlock(FronosBlocks.cheese_glass_pane);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_log, ItemBlockFronosLog.class);
-		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_planks, ItemBlockFronosWoodPlanks.class);
+		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_planks, ItemBlockFronosPlanks.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_colorized_leaves, ItemBlockFronosColorizedLeaves.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_leaves, ItemBlockFronosLeaves.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_cobblestone_stairs);
@@ -334,7 +334,7 @@ public class FronosBlocks
 		CommonRegisterHelper.registerBlock(FronosBlocks.cheese_sandstone_stairs);
 		CommonRegisterHelper.registerBlock(FronosBlocks.coconut_wood_stairs);
 		CommonRegisterHelper.registerBlock(FronosBlocks.maple_wood_stairs);
-		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_fence, ItemBlockFronosWoodPlanks.class);
+		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_fence, ItemBlockFronosPlanks.class);
 		CommonRegisterHelper.registerBlock(FronosBlocks.coconut_fence_gate);
 		CommonRegisterHelper.registerBlock(FronosBlocks.maple_fence_gate);
 		CommonRegisterHelper.registerBlock(FronosBlocks.fronos_treasure_chest);

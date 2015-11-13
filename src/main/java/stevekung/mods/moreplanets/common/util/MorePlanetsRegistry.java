@@ -24,9 +24,16 @@ import micdoodle8.mods.galacticraft.api.world.SpaceStationType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.WorldProvider;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class MorePlanetsRegistry
 {
+	public static SimpleNetworkWrapper simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("MorePlanets");
+
 	public static Planet createPlanet(String name, SolarSystem solar, float phaseShift, float distance, float orbitTime, float size, int tier, ResourceLocation resource)
 	{
 		Planet planet = new Planet(name).setParentSolarSystem(solar);
@@ -99,5 +106,11 @@ public class MorePlanetsRegistry
 		GalacticraftRegistry.registerProvider(id, provider, false);
 		GalacticraftRegistry.registerProvider(staticId, provider, true);
 		MPLog.debug("Register Space Station Provider ID: %s, Static ID: %s, Provider: %s", id, staticId, provider);
+	}
+
+	public static <REQ extends IMessage, REPLY extends IMessage> void registerMessageHandler(Class<? extends IMessageHandler<REQ, REPLY>> messageHandler, Class<REQ> requestMessageType, int discriminator, Side side)
+	{
+		MorePlanetsRegistry.simpleNetworkWrapper.registerMessage(messageHandler, requestMessageType, discriminator, side);
+		MPLog.debug("Register Message Handler : %s, %s", messageHandler.getSimpleName(), requestMessageType.getSimpleName());
 	}
 }

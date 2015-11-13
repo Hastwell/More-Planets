@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.pluto.blocks;
 import java.util.List;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -31,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
-public class BlockPluto extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockPluto extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -127,15 +126,11 @@ public class BlockPluto extends BlockPlanetTileMP implements /*IDetectableResour
 		return this.getMetaFromState(state);
 	}
 
-	/*@Override
-	public boolean isValueable(int metadata)
+	@Override
+	public boolean isValueable(IBlockState state)
 	{
-		if (metadata >= 4 && metadata <= 7)
-		{
-			return true;
-		}
-		return false;
-	}*/
+		return this.getMetaFromState(state) >= 4 && this.getMetaFromState(state) <= 7;
+	}
 
 	@Override
 	public boolean isTerraformable(World world, BlockPos pos)

@@ -74,15 +74,10 @@ public class RenderUraniumBomb extends Render
 		super.doRender(entity, x, y, z, p_76986_8_, partialTicks);
 	}
 
-	protected ResourceLocation func_180563_a(EntityUraniumBomb entity)
-	{
-		return TextureMap.locationBlocksTexture;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_180563_a((EntityUraniumBomb)entity);
+		return TextureMap.locationBlocksTexture;
 	}
 
 	@Override

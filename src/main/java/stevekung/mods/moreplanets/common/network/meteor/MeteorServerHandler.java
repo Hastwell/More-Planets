@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import stevekung.mods.moreplanets.common.util.MPLog;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.common.util.MorePlanetsRegistry;
 import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteor;
@@ -63,7 +63,7 @@ public class MeteorServerHandler implements IMessageHandler<MeteorServerMessage,
 	void processMessage(MeteorServerMessage message, EntityPlayerMP sendingPlayer)
 	{
 		MeteorClientMessage msg = new MeteorClientMessage(message.getTargetCoordinates());
-		MorePlanetsCore.simpleNetworkWrapper.sendToDimension(msg, sendingPlayer.dimension);
+		MorePlanetsRegistry.simpleNetworkWrapper.sendToDimension(msg, sendingPlayer.dimension);
 		Random rand = new Random();
 		int numberOfProjectiles = 2 + rand.nextInt(20 - 2 + 1);
 

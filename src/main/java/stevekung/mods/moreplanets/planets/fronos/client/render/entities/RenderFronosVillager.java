@@ -34,11 +34,6 @@ public class RenderFronosVillager extends RenderLiving
 		return (ModelVillager)super.getMainModel();
 	}
 
-	protected ResourceLocation getEntityTexture(EntityFronosVillager entity)
-	{
-		return this.villagerTextures;
-	}
-
 	protected void preRenderCallback(EntityFronosVillager entity)
 	{
 		float f1 = 0.9375F;
@@ -70,6 +65,6 @@ public class RenderFronosVillager extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.getEntityTexture((EntityFronosVillager)entity);
+		return this.villagerTextures;
 	}
 }

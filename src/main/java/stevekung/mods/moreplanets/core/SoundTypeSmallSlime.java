@@ -5,21 +5,26 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.europa.itemblocks;
+package stevekung.mods.moreplanets.core;
 
-import net.minecraft.block.Block;
-import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
+import net.minecraft.block.Block.SoundType;
 
-public class ItemBlockEuropaSandstone extends ItemBlockBaseMP
+public class SoundTypeSmallSlime extends SoundType
 {
-	public ItemBlockEuropaSandstone(Block block)
+	public SoundTypeSmallSlime(String name, float volume, float frequency)
 	{
-		super(block);
+		super(name, volume, frequency);
 	}
 
 	@Override
-	public String[] getBlockVariantsName()
+	public String getBreakSound()
 	{
-		return new String[] { "europa_sandstone", "chiseled_europa_sandstone", "smooth_europa_sandstone" };
+		return "mob.slime.small";
+	}
+
+	@Override
+	public String getStepSound()
+	{
+		return "mob.slime.small";
 	}
 }

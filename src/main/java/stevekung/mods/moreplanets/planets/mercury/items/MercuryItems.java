@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.moreplanets.common.items.ItemBucketMP;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -23,7 +24,7 @@ public class MercuryItems
 	{
 		// Init
 		MercuryItems.mercury_item = new ItemMercury("mercury_item");
-		MercuryItems.dirty_water_bucket = new ItemDirtyWaterBucket("dirty_water_bucket");
+		MercuryItems.dirty_water_bucket = new ItemBucketMP("dirty_water_bucket", MercuryBlocks.dirty_water, null);
 
 		// Register
 		CommonRegisterHelper.registerItem(MercuryItems.mercury_item);

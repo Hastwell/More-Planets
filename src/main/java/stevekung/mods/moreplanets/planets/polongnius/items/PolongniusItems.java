@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.moreplanets.common.items.ItemBucketMP;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.stevecore.CommonRegisterHelper;
@@ -39,7 +40,7 @@ public class PolongniusItems
 		PolongniusItems.tier_5_rocket = new ItemTier5Rocket("tier_5_rocket");
 		PolongniusItems.tier_6_rocket_module = new ItemTier6RocketModule("tier_6_rocket_module");
 		PolongniusItems.tier_5_rocket_schematic = new ItemTier5RocketSchematic("tier_5_rocket_schematic");
-		PolongniusItems.cheese_of_milk_bucket = new ItemCheeseOfMilkBucket("cheese_of_milk_bucket");
+		PolongniusItems.cheese_of_milk_bucket = new ItemBucketMP("cheese_of_milk_bucket", PolongniusBlocks.cheese_of_milk, null);
 		PolongniusItems.polongnius_meteor_chunk = new ItemPolongniusMeteorChunk("polongnius_meteor_chunk");
 
 		// Register

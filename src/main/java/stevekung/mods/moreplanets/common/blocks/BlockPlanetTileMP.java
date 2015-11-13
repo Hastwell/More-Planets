@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.common.blocks;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
+import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +21,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public abstract class BlockPlanetTileMP extends BlockBaseMP
+public abstract class BlockPlanetTileMP extends BlockBaseMP implements IDetectableResource, ITerraformableBlock
 {
 	public BlockPlanetTileMP(Material material)
 	{

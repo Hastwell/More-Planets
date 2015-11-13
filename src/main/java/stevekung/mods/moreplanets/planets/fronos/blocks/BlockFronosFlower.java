@@ -24,6 +24,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -150,36 +151,45 @@ public class BlockFronosFlower extends BlockBushMP implements IGrowable
 	{
 		BlockType type = (BlockType)state.getValue(VARIANT);
 
-		if (type == BlockType.purple_spike_flower)
+		if (entity instanceof EntityLivingBase)
 		{
-			if (entity instanceof EntityLivingBase)
+			if (type == BlockType.purple_spike_flower)
 			{
 				if (entity instanceof EntityPlayer)
 				{
+					EntityPlayer player = (EntityPlayer) entity;
 					InventoryPlayer inventory = ((EntityPlayer)entity).inventory;
+					boolean boots = inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() instanceof ItemArmor && ((ItemArmor)inventory.armorInventory[0].getItem()).armorType == 3;
+					boolean leggings = inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() instanceof ItemArmor && ((ItemArmor)inventory.armorInventory[1].getItem()).armorType == 2;
+					boolean full = leggings && boots;
 
-					if (!(inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == Items.leather_boots && inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == Items.leather_leggings))
+					if (!full)
 					{
-						entity.attackEntityFrom(DamageSourceMP.purple_spike, (int) (4.0D * 0.15 + 1.0D));
+						player.attackEntityFrom(DamageSourceMP.purple_spike, (int) (4.0D * 0.15 + 1.0D));
 					}
 				}
 				else
 				{
-					entity.attackEntityFrom(DamageSourceMP.purple_spike, (int) (4.0D * 0.15 + 1.0D));
+					((EntityLivingBase)entity).attackEntityFrom(DamageSourceMP.purple_spike, (int) (4.0D * 0.15 + 1.0D));
 				}
 			}
-		}
-		else if (type == BlockType.blue_poison_mushroom)
-		{
-			if (entity instanceof EntityLivingBase)
+			else if (type == BlockType.blue_poison_mushroom)
 			{
 				if (entity instanceof EntityPlayer)
 				{
+					EntityPlayer player = (EntityPlayer) entity;
 					InventoryPlayer inventory = ((EntityPlayer)entity).inventory;
+					boolean boots = inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() instanceof ItemArmor && ((ItemArmor)inventory.armorInventory[0].getItem()).armorType == 3;
+					boolean leggings = inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() instanceof ItemArmor && ((ItemArmor)inventory.armorInventory[1].getItem()).armorType == 2;
+					boolean full = leggings && boots;
 
-					if (!(inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == Items.leather_boots && inventory.armorInventory[1] != null && inventory.armorInventory[1].getItem() == Items.leather_leggings))
+					if (player.capabilities.isCreativeMode)
 					{
-						((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.poison.id, 120));
+						return;
+					}
+					if (!full)
+					{
+						player.addPotionEffect(new PotionEffect(Potion.poison.id, 120));
 					}
 				}
 				else

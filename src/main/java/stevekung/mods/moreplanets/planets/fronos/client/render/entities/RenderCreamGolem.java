@@ -34,12 +34,7 @@ public class RenderCreamGolem extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110874_a((EntityCreamGolem)entity);
-	}
-
-	protected ResourceLocation func_110874_a(EntityCreamGolem entity)
-	{
-		switch (entity.getCreamGolemType())
+		switch (((EntityCreamGolem)entity).getCreamGolemType())
 		{
 		case 0:
 		default:

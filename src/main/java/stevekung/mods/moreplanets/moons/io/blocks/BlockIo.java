@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.moons.io.blocks;
 
 import java.util.List;
 
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -28,7 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
-public class BlockIo extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockIo extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -41,7 +40,7 @@ public class BlockIo extends BlockPlanetTileMP implements /*IDetectableResource,
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
 		for (int i = 0; i < 9; ++i)
 		{
@@ -122,11 +121,11 @@ public class BlockIo extends BlockPlanetTileMP implements /*IDetectableResource,
 		return false;
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		return state == state.withProperty(VARIANT, BlockType.sulfur_ore);
-	}*/
+		return state == state.withProperty(VARIANT, BlockType.io_sulfur_ore);
+	}
 
 	@Override
 	protected BlockState createBlockState()

@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.diona.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.Block;
@@ -33,7 +34,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
-public class BlockDiona extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockDiona extends BlockPlanetTileMP implements IDetectableResource, ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -61,12 +62,16 @@ public class BlockDiona extends BlockPlanetTileMP implements /*IDetectableResour
 
 		if (entity instanceof EntityLivingBase)
 		{
-			if (state == state.withProperty(VARIANT, BlockType.diona_dungeon_brick))
+			EntityLivingBase living = (EntityLivingBase) entity;
+
+			if (living.motionX > 0 || living.motionX < 0 || living.motionZ > 0 || living.motionZ < 0)
 			{
-				world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, pos.getX() + world.rand.nextFloat(), pos.getY() + 1.0F, pos.getZ() + world.rand.nextFloat(), 0.0D, 0.0D, 0.0D, new int[] {Block.getStateId(state.withProperty(VARIANT, BlockType.diona_dungeon_brick))});
+				if (state == state.withProperty(VARIANT, BlockType.diona_dungeon_brick))
+				{
+					world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, living.posX + (world.rand.nextFloat() - 0.5D) * living.width, living.getEntityBoundingBox().minY + 0.1D, living.posZ + (world.rand.nextFloat() - 0.5D) * living.width, -living.motionX, 0.6D, -living.motionZ, new int[] {Block.getStateId(state.withProperty(VARIANT, BlockType.diona_dungeon_brick))});
+				}
 			}
 		}
-		super.onEntityCollidedWithBlock(world, pos, entity);
 	}
 
 	@Override
@@ -158,7 +163,7 @@ public class BlockDiona extends BlockPlanetTileMP implements /*IDetectableResour
 		return meta;
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
 		int meta = this.getMetaFromState(state);
@@ -168,7 +173,7 @@ public class BlockDiona extends BlockPlanetTileMP implements /*IDetectableResour
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 	@Override
 	public boolean isTerraformable(World world, BlockPos pos)

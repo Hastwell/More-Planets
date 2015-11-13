@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.pluto.blocks;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -21,7 +22,7 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
-public class BlockPlutoHeartCrystal extends BlockBaseMP /*implements IDetectableResource*/
+public class BlockPlutoHeartCrystal extends BlockBaseMP implements IDetectableResource
 {
 	public BlockPlutoHeartCrystal(String name)
 	{
@@ -43,11 +44,11 @@ public class BlockPlutoHeartCrystal extends BlockBaseMP /*implements IDetectable
 		return 0;
 	}
 
-	/*@Override
-	public boolean isValueable(int metadata)
+	@Override
+	public boolean isValueable(IBlockState state)
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	public boolean canPlaceBlockAt(World world, BlockPos pos)

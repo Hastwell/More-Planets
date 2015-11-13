@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.moons.deimos.blocks;
 
 import java.util.List;
 
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -28,7 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
-public class BlockDeimos extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockDeimos extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -100,17 +99,11 @@ public class BlockDeimos extends BlockPlanetTileMP implements /*IDetectableResou
 		return meta;
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		int meta = this.getMetaFromState(state);
-
-		if (meta >= 4)
-		{
-			return true;
-		}
-		return false;
-	}*/
+		return this.getMetaFromState(state) >= 4;
+	}
 
 	@Override
 	public boolean isTerraformable(World world, BlockPos pos)

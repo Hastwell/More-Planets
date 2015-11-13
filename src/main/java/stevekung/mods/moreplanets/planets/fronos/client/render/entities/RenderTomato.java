@@ -15,7 +15,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelTomato;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.layers.LayerTomato;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
 
 @SideOnly(Side.CLIENT)
 public class RenderTomato extends RenderLiving
@@ -28,14 +27,9 @@ public class RenderTomato extends RenderLiving
 		this.addLayer(new LayerTomato(this));
 	}
 
-	protected ResourceLocation entityTexture(EntityTomato entity)
-	{
-		return this.tomatoTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.entityTexture((EntityTomato)entity);
+		return this.tomatoTextures;
 	}
 }

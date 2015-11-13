@@ -14,7 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelMelon;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
 
 @SideOnly(Side.CLIENT)
 public class RenderMelon extends RenderLiving
@@ -26,14 +25,9 @@ public class RenderMelon extends RenderLiving
 		super(render, new ModelMelon(), 1.0F);
 	}
 
-	protected ResourceLocation berryTexture(EntityMelon entity)
-	{
-		return this.melonTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.berryTexture((EntityMelon)entity);
+		return this.melonTextures;
 	}
 }

@@ -14,8 +14,6 @@ import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -24,13 +22,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.eventhandler.GuiEventHandler;
-import stevekung.mods.moreplanets.common.eventhandler.MainMenuHandlerMP;
 import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.common.eventhandler.PlanetFogHandler;
 import stevekung.mods.moreplanets.common.eventhandler.SkyProviderHandler;
@@ -67,7 +62,6 @@ import stevekung.mods.moreplanets.planets.nibiru.schematics.SchematicTier6Rocket
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5Rocket;
 import stevekung.mods.stevecore.CommonRegisterHelper;
-import stevekung.mods.stevecore.CreativeTabsHelper;
 
 @Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.14.3.1480,);")//TODO required-after:Micdoodlecore;
 public class MorePlanetsCore
@@ -91,22 +85,7 @@ public class MorePlanetsCore
 	public static CreativeTabs mpToolsTab;
 	public static CreativeTabs mpArmorTab;
 
-	public static SimpleNetworkWrapper simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel("MorePlanets");
-
-	public static SoundType soundTypeSmallSlime = new SoundType("slime", 1.0F, 1.0F)
-	{
-		@Override
-		public String getBreakSound()
-		{
-			return "mob.slime.small";
-		}
-
-		@Override
-		public String getStepSound()
-		{
-			return "mob.slime.small";
-		}
-	};
+	public static SoundType soundTypeSmallSlime = new SoundTypeSmallSlime("slime", 1.0F, 1.0F);
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -121,16 +100,9 @@ public class MorePlanetsCore
 		MPTools.init();
 		MPBiomes.init();
 
-		FMLCommonHandler.instance().bus().register(new SkyProviderHandler());
-		FMLCommonHandler.instance().bus().register(new MorePlanetsEvents());
-
-		MinecraftForge.EVENT_BUS.register(new MorePlanetsEvents());
-		MinecraftForge.EVENT_BUS.register(new PlanetFogHandler());
-
-		if (FMLCommonHandler.instance().getSide() == Side.CLIENT)
-		{
-			MinecraftForge.EVENT_BUS.register(new MainMenuHandlerMP());
-		}
+		CommonRegisterHelper.registerForgeEvent(new MorePlanetsEvents());
+		CommonRegisterHelper.registerForgeEvent(new SkyProviderHandler());
+		CommonRegisterHelper.registerForgeEvent(new PlanetFogHandler());
 	}
 
 	@EventHandler
@@ -142,10 +114,10 @@ public class MorePlanetsCore
 		AchievementsMP.init();
 		CommonRegisterHelper.registerGUIHandler(this, new GuiEventHandler());
 
-		MorePlanetsCore.mpBlocksTab = new CreativeTabsHelper("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));
-		MorePlanetsCore.mpItemsTab = new CreativeTabsHelper("MorePlanetsItems", new ItemStack(DionaItems.laser_gun));
-		MorePlanetsCore.mpToolsTab = new CreativeTabsHelper("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
-		MorePlanetsCore.mpArmorTab = new CreativeTabsHelper("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
+		MorePlanetsCore.mpBlocksTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));
+		MorePlanetsCore.mpItemsTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsItems", new ItemStack(DionaItems.laser_gun));
+		MorePlanetsCore.mpToolsTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
+		MorePlanetsCore.mpArmorTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
 
 		MorePlanetsRegistry.registerSchematic(new SchematicTier4Rocket());
 		MorePlanetsRegistry.registerSchematic(new SchematicTier5Rocket());
@@ -169,8 +141,8 @@ public class MorePlanetsCore
 		CraftingManagerMP.init();
 		DispenserRegistryMP.init();
 
-		MorePlanetsCore.simpleNetworkWrapper.registerMessage(MeteorServerHandler.class, MeteorServerMessage.class, 0, Side.SERVER);
-		MorePlanetsCore.simpleNetworkWrapper.registerMessage(MeteorClientHandler.class, MeteorClientMessage.class, 1, Side.CLIENT);
+		MorePlanetsRegistry.registerMessageHandler(MeteorServerHandler.class, MeteorServerMessage.class, 0, Side.SERVER);
+		MorePlanetsRegistry.registerMessageHandler(MeteorClientHandler.class, MeteorClientMessage.class, 1, Side.CLIENT);
 
 		MorePlanetsRegistry.registerSpaceStation(MPPlanets.marsSpaceStation, MarsModule.planetMars, CraftingManagerMP.getMarsSpaceStationRecipe());
 		MorePlanetsRegistry.registerSpaceStation(MPPlanets.jupiterSpaceStation, MPPlanets.jupiter, CraftingManagerMP.getJupiterSpaceStationRecipe());

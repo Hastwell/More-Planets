@@ -14,7 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelBearry;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityBearry;
 
 @SideOnly(Side.CLIENT)
 public class RenderBearry extends RenderLiving
@@ -26,14 +25,9 @@ public class RenderBearry extends RenderLiving
 		super(render, new ModelBearry(), 0.5F);
 	}
 
-	protected ResourceLocation bearryTexture(EntityBearry entity)
-	{
-		return this.bearryTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.bearryTexture((EntityBearry)entity);
+		return this.bearryTextures;
 	}
 }

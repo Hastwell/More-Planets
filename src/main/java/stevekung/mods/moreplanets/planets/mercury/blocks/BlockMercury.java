@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.mercury.blocks;
 import java.util.List;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -31,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
 
-public class BlockMercury extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockMercury extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -136,17 +135,11 @@ public class BlockMercury extends BlockPlanetTileMP implements /*IDetectableReso
 		return meta;
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		int meta = this.getMetaFromState(state);
-
-		if (meta >= 4 && meta <= 7)
-		{
-			return true;
-		}
-		return false;
-	}*/
+		return this.getMetaFromState(state) >= 4 && this.getMetaFromState(state) <= 7;
+	}
 
 	@Override
 	public boolean isTerraformable(World world, BlockPos pos)

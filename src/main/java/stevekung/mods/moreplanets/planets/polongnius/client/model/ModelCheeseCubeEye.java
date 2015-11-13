@@ -37,7 +37,6 @@ public class ModelCheeseCubeEye extends ModelBase
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
 	{
-		super.render(entity, f, f1, f2, f3, f4, f5);
 		this.updateBodyRotation(entity, f2);
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		GlStateManager.enableBlend();
@@ -46,12 +45,6 @@ public class ModelCheeseCubeEye extends ModelBase
 		this.body2.render(f5);
 		this.eye.render(f5);
 		GlStateManager.disableBlend();
-	}
-
-	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
-	{
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 
 	private void updateBodyRotation(Entity e, float f)

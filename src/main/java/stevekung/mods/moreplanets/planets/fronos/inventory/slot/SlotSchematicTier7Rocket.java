@@ -58,48 +58,48 @@ public class SlotSchematicTier7Rocket extends Slot
 	}
 
 	@Override
-	public boolean isItemValid(ItemStack par1ItemStack)
+	public boolean isItemValid(ItemStack itemStack)
 	{
-		int meta = par1ItemStack.getItemDamage();
+		int meta = itemStack.getItemDamage();
 
 		switch (this.index)
 		{
 		case 1:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 4;//Nose Cone
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 4;//Nose Cone
 		case 2:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 3:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 4:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 5:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 6:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 7:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 8:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 9:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 10:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;
 		case 11:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;//Plate
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 2;//Plate
 		case 12:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 1;//Booster
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 1;//Booster
 		case 13:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
 		case 14:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
 		case 15:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 0;//Engine
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 0;//Engine
 		case 16:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 1;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 1;
 		case 17:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
 		case 18:
-			return par1ItemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
+			return itemStack.getItem() == NibiruItems.tier_7_rocket_module && meta == 3;
 		case 19:
 			return true;
 		case 20:

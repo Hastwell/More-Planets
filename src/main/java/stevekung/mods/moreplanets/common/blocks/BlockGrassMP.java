@@ -67,7 +67,7 @@ public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformable
 	@Override
 	public boolean isTerraformable(World world, BlockPos pos)
 	{
-		return true && !world.getBlockState(pos).getBlock().isOpaqueCube();
+		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
 	}
 
 	protected abstract Block getFarmlandBlock();

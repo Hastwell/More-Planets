@@ -14,6 +14,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
 public class BlockSpacePotato extends BlockCrops
@@ -28,9 +29,9 @@ public class BlockSpacePotato extends BlockCrops
 	@Override
 	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
 	{
-		//if (world.provider instanceof IGalacticraftWorldProvider)
+		if (world.provider instanceof WorldProviderPluto)
 		{
-			//return ((Integer)state.getValue(AGE)).intValue() < 7;
+			return ((Integer)state.getValue(AGE)).intValue() < 7;
 		}
 		return false;
 	}
@@ -38,14 +39,13 @@ public class BlockSpacePotato extends BlockCrops
 	@Override
 	public boolean canUseBonemeal(World world, Random rand, BlockPos pos, IBlockState state)
 	{
-		return false;
-		//return world.provider instanceof IGalacticraftWorldProvider;
+		return world.provider instanceof WorldProviderPluto;
 	}
 
 	@Override
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state)
 	{
-		//if (world.provider instanceof IGalacticraftWorldProvider)
+		if (world.provider instanceof WorldProviderPluto)
 		{
 			this.grow(world, pos, state);
 		}
@@ -56,7 +56,7 @@ public class BlockSpacePotato extends BlockCrops
 	{
 		super.updateTick(world, pos, state, rand);
 
-		//if (world.provider instanceof IGalacticraftWorldProvider)
+		if (world.provider instanceof WorldProviderPluto)
 		{
 			if (world.getLightFromNeighbors(pos.up()) >= 9)
 			{

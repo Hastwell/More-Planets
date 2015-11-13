@@ -8,16 +8,19 @@
 package stevekung.mods.stevecore;
 
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -27,7 +30,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonRegisterHelper
 {
-	static int entityIDs = 0;
+	private static int entityIDs = 0;
 
 	public static void registerBlock(Block block)
 	{
@@ -91,5 +94,16 @@ public class CommonRegisterHelper
 	public static void registerGUIHandler(Object mod, IGuiHandler handler)
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(mod, handler);
+	}
+
+	public static void registerForgeEvent(Object event)
+	{
+		FMLCommonHandler.instance().bus().register(event);
+		MinecraftForge.EVENT_BUS.register(event);
+	}
+
+	public static CreativeTabs createCreativeTabs(String name, ItemStack itemStack)
+	{
+		return new CreativeTabsHelper(name, itemStack);
 	}
 }

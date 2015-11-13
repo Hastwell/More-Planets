@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.moons.koentus.blocks;
 import java.util.List;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -33,7 +32,7 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
-public class BlockKoentus extends BlockPlanetTileMP implements /*IDetectableResource,*/ ITerraformableBlock
+public class BlockKoentus extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -164,17 +163,11 @@ public class BlockKoentus extends BlockPlanetTileMP implements /*IDetectableReso
 		return super.quantityDropped(state, fortune, rand);
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		int meta = this.getMetaFromState(state);
-
-		if (meta >= 4 && meta <= 8)
-		{
-			return true;
-		}
-		return false;
-	}*/
+		return this.getMetaFromState(state) >= 4 && this.getMetaFromState(state) <= 8;
+	}
 
 	@Override
 	public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)

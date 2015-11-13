@@ -214,6 +214,10 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(KoentusItems.crystal_cocoa);
 		}
+		if (block == DarkAsteroidBlocks.alien_farmland)
+		{
+			return new ItemStack(DarkAsteroidBlocks.alien_dirt);
+		}
 		return null;
 	}
 }

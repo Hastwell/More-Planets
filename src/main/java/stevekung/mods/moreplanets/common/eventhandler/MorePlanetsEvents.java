@@ -26,6 +26,7 @@ import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -45,10 +46,12 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.FOVUpdateEvent;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -72,6 +75,7 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
@@ -81,9 +85,11 @@ import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.common.world.ILightningStorm;
 import stevekung.mods.moreplanets.common.world.IMeteorType;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
@@ -124,6 +130,18 @@ import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
 
 public class MorePlanetsEvents
 {
+	private static ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("moreplanets:textures/gui/title/background/panorama_0.png"), new ResourceLocation("moreplanets:textures/gui/title/background/panorama_1.png"), new ResourceLocation("moreplanets:textures/gui/title/background/panorama_2.png"), new ResourceLocation("moreplanets:textures/gui/title/background/panorama_3.png"), new ResourceLocation("moreplanets:textures/gui/title/background/panorama_4.png"), new ResourceLocation("moreplanets:textures/gui/title/background/panorama_5.png")};
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void openMainMenu(GuiOpenEvent event)
+	{
+		if (event.gui instanceof GuiMainMenu && ConfigManagerMP.enableNewMainManu == true)
+		{
+			GuiMainMenu.titlePanoramaPaths = MorePlanetsEvents.titlePanoramaPaths;
+		}
+	}
+
 	@SubscribeEvent
 	public void onZombieSummonAid(SummonAidEvent event)
 	{
@@ -491,6 +509,7 @@ public class MorePlanetsEvents
 		}
 		this.doSiriusFire(world, living);
 		this.doInfectedGasForEntity(world, living);
+		this.doSplashParticleOnAlienGrass(world, living);
 	}
 
 	@SubscribeEvent
@@ -1010,6 +1029,33 @@ public class MorePlanetsEvents
 				world.setBlockToAir(pos);
 				event.result = itemStack;
 				event.setResult(Result.ALLOW);
+			}
+		}
+	}
+
+	private void doSplashParticleOnAlienGrass(World world, EntityLivingBase living)
+	{
+		if (world.getBlockState(new BlockPos((int) Math.floor(living.posX), (int) Math.floor(living.posY), (int) Math.floor(living.posZ)).down()).getBlock() == DarkAsteroidBlocks.alien_grass)
+		{
+			if (living.motionX > 0 || living.motionX < 0 || living.motionZ > 0 || living.motionZ < 0)
+			{
+				if (living.isCollidedVertically)
+				{
+					if (world.rand.nextInt(2) == 0)
+					{
+						if (world.rand.nextInt(2) == 0)
+						{
+							float f = MathHelper.sqrt_double(living.motionX * living.motionX * 0.20000000298023224D + living.motionY * living.motionY + living.motionZ * living.motionZ * 0.20000000298023224D) * 0.4F;
+
+							if (f > 1.0F)
+							{
+								f = 1.0F;
+							}
+							living.playSound("mob.slime.big", f, 0.4F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+						}
+						MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.ALIEN_SPLASH, living.posX + (world.rand.nextFloat() - 0.5D) * living.width, living.getEntityBoundingBox().minY + 0.1D, living.posZ + (world.rand.nextFloat() - 0.5D) * living.width, -living.motionX, 0.6D, -living.motionZ);
+					}
+				}
 			}
 		}
 	}

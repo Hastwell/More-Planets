@@ -34,9 +34,19 @@ public class RenderCreamCat extends RenderLiving
 		super(render, new ModelCreamCat(), 0.1F);
 	}
 
-	protected ResourceLocation func_110874_a(EntityCreamCat entity)
+	@Override
+	protected void preRenderCallback(EntityLivingBase entity, float par2)
 	{
-		switch (entity.getTameSkin())
+		if (((EntityCreamCat)entity).isTamed())
+		{
+			GlStateManager.scale(0.8F, 0.8F, 0.8F);
+		}
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
+	{
+		switch (((EntityCreamCat)entity).getTameSkin())
 		{
 		case 0:
 		default:
@@ -54,27 +64,5 @@ public class RenderCreamCat extends RenderLiving
 		case 6:
 			return this.lemonCatTextures;
 		}
-	}
-
-	protected void preRenderOcelot(EntityCreamCat par1EntityOcelot, float par2)
-	{
-		super.preRenderCallback(par1EntityOcelot, par2);
-
-		if (par1EntityOcelot.isTamed())
-		{
-			GlStateManager.scale(0.8F, 0.8F, 0.8F);
-		}
-	}
-
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		this.preRenderOcelot((EntityCreamCat)entity, par2);
-	}
-
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.func_110874_a((EntityCreamCat)entity);
 	}
 }

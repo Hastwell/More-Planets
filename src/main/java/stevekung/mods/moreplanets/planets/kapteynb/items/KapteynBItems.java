@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.moreplanets.common.items.ItemBucketMP;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -30,7 +31,7 @@ public class KapteynBItems
 		KapteynBItems.kapteyn_b_item = new ItemKapteynB("kapteyn_b_item");
 		KapteynBItems.kapteyn_b_dungeon_key = new ItemKapteynBDungeonKey("kapteyn_b_dungeon_key");
 		KapteynBItems.uranium_battery = new ItemUraniumBattery("uranium_battery");
-		KapteynBItems.frozen_water_bucket = new ItemFrozenWaterBucket("frozen_water_bucket");
+		KapteynBItems.frozen_water_bucket = new ItemBucketMP("frozen_water_bucket", KapteynBBlocks.frozen_water, null);
 		KapteynBItems.namerium_crystal = new ItemNameriumCrystal("namerium_crystal");
 		KapteynBItems.tier_8_rocket = new ItemTier8Rocket("tier_8_rocket");
 		KapteynBItems.tier_8_rocket_schematic = new ItemTier8RocketSchematic("tier_8_rocket_schematic");

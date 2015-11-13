@@ -14,7 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelKiwi;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 
 @SideOnly(Side.CLIENT)
 public class RenderKiwi extends RenderLiving
@@ -26,14 +25,9 @@ public class RenderKiwi extends RenderLiving
 		super(render, new ModelKiwi(), 0.4F);
 	}
 
-	protected ResourceLocation kiwiTexture(EntityKiwi entity)
-	{
-		return this.kiwiTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.kiwiTexture((EntityKiwi)entity);
+		return this.kiwiTextures;
 	}
 }

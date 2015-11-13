@@ -92,94 +92,93 @@ public class ModelSpaceWolf extends ModelBase
 		this.wolfHeadMain.setTextureOffset(0, 10).addBox(-1.5F, 0.0F, -5.0F, 3, 3, 4, f);
 
 		this.oxygenMask = new ModelRenderer(this, 0, 44);
-		this.oxygenMask.addBox(-1F, 13F, -5F, 10, 10, 10);
-		this.oxygenMask.setRotationPoint(-5F, -5F, -9F);
+		this.oxygenMask.addBox(-5F, -5F, -9F, 10, 10, 10);
+		this.oxygenMask.setRotationPoint(-1F, 13F, -5F);
 
 		this.tank1 = new ModelRenderer(this, 40, 46);
-		this.tank1.addBox(0F, 0F, 0F, 3, 3, 7);
-		this.tank1.setRotationPoint(-1F, 8F, 0F);
+		this.tank1.addBox(-1.5F, -2F, -2.5F, 3, 3, 7);
+		this.tank1.setRotationPoint(0.5F, 10F, 3F);
 
 		this.tank2 = new ModelRenderer(this, 40, 46);
-		this.tank2.addBox(0F, 0F, 0F, 3, 3, 7);
-		this.tank2.setRotationPoint(-4F, 8F, 0F);
+		this.tank2.addBox(-1.5F, -2F, -3.5F, 3, 3, 7);
+		this.tank2.setRotationPoint(-2.5F, 10F, 4F);
 
 		this.tube1 = new ModelRenderer(this, 40, 44);
-		this.tube1.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube1.setRotationPoint(0F, 7F, 0.5F);
+		this.tube1.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube1.setRotationPoint(0.5F, 7F, 1F);
 
 		this.tube2 = new ModelRenderer(this, 40, 44);
-		this.tube2.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube2.setRotationPoint(0F, 6F, 0F);
+		this.tube2.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube2.setRotationPoint(0.5F, 6F, 0F);
 
 		this.tube3 = new ModelRenderer(this, 40, 44);
-		this.tube3.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube3.setRotationPoint(0F, 5F, -1F);
+		this.tube3.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube3.setRotationPoint(0.5F, 5F, -1F);
 
 		this.tube4 = new ModelRenderer(this, 40, 44);
-		this.tube4.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube4.setRotationPoint(0F, 5F, -2F);
+		this.tube4.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube4.setRotationPoint(0.5F, 5F, -2F);
 
 		this.tube5 = new ModelRenderer(this, 40, 44);
-		this.tube5.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube5.setRotationPoint(0F, 5F, -3F);
+		this.tube5.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube5.setRotationPoint(0.5F, 5F, -3F);
 
 		this.tube6 = new ModelRenderer(this, 40, 44);
-		this.tube6.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube6.setRotationPoint(0F, 6F, -4F);
+		this.tube6.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube6.setRotationPoint(0.5F, 6F, -4F);
 
 		this.tube7 = new ModelRenderer(this, 40, 44);
-		this.tube7.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube7.setRotationPoint(-3F, 7F, 0.5F);
+		this.tube7.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube7.setRotationPoint(-2.5F, 7F, 1F);
 
 		this.tube8 = new ModelRenderer(this, 40, 44);
-		this.tube8.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube8.setRotationPoint(-3F, 6F, 0F);
+		this.tube8.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube8.setRotationPoint(-2.5F, 6F, 0F);
 
 		this.tube9 = new ModelRenderer(this, 40, 44);
-		this.tube9.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube9.setRotationPoint(-3F, 5F, -1F);
+		this.tube9.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube9.setRotationPoint(-2.5F, 5F, -1F);
 
 		this.tube10 = new ModelRenderer(this, 40, 44);
-		this.tube10.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube10.setRotationPoint(-3F, 5F, -2F);
+		this.tube10.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube10.setRotationPoint(-2.5F, 5F, -2F);
 
 		this.tube11 = new ModelRenderer(this, 40, 44);
-		this.tube11.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube11.setRotationPoint(-3F, 5F, -3F);
+		this.tube11.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube11.setRotationPoint(-2.5F, 5F, -3F);
 
 		this.tube12 = new ModelRenderer(this, 40, 44);
-		this.tube12.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube12.setRotationPoint(-3F, 6F, -4F);
+		this.tube12.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube12.setRotationPoint(-2.5F, 6F, -4F);
 
 		this.tube13 = new ModelRenderer(this, 40, 44);
-		this.tube13.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube13.setRotationPoint(0F, 7F, -5F);
+		this.tube13.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube13.setRotationPoint(0.5F, 7F, -5F);
 
 		this.tube14 = new ModelRenderer(this, 40, 44);
-		this.tube14.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube14.setRotationPoint(-3F, 7F, -5F);
+		this.tube14.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube14.setRotationPoint(-2.5F, 7F, -5F);
 
 		this.tube15 = new ModelRenderer(this, 40, 44);
-		this.tube15.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube15.setRotationPoint(-3F, 7F, -5F);
+		this.tube15.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube15.setRotationPoint(-2.5F, 7F, -5F);
 
 		this.tube16 = new ModelRenderer(this, 40, 44);
-		this.tube16.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube16.setRotationPoint(-3F, 7F, -5F);
+		this.tube16.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube16.setRotationPoint(-2.5F, 7F, -5F);
 
 		this.tube17 = new ModelRenderer(this, 40, 44);
-		this.tube17.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube17.setRotationPoint(-3F, 7F, -5F);
+		this.tube17.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube17.setRotationPoint(-2.5F, 7F, -5F);
 
 		this.tube18 = new ModelRenderer(this, 40, 44);
-		this.tube18.addBox(0F, 0F, 0F, 1, 1, 1);
-		this.tube18.setRotationPoint(-3F, 7F, -5F);
+		this.tube18.addBox(-0.5F, 0F, -0.5F, 1, 1, 1);
+		this.tube18.setRotationPoint(-2.5F, 7F, -5F);
 	}
 
 	@Override
 	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
 	{
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 		this.setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
 
 		if (this.isChild)
@@ -188,7 +187,7 @@ public class ModelSpaceWolf extends ModelBase
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(0.0F, 5.0F * par7, 2.0F * par7);
 			this.wolfHeadMain.renderWithRotation(par7);
-			this.oxygenMask.render(par7);
+			this.oxygenMask.renderWithRotation(par7);
 			GlStateManager.popMatrix();
 			GlStateManager.pushMatrix();
 			GlStateManager.scale(1.0F / f6, 1.0F / f6, 1.0F / f6);
@@ -232,7 +231,7 @@ public class ModelSpaceWolf extends ModelBase
 			this.wolfLeg4.render(par7);
 			this.wolfTail.renderWithRotation(par7);
 			this.wolfMane.render(par7);
-			this.oxygenMask.render(par7);
+			this.oxygenMask.renderWithRotation(par7);
 			this.tank1.render(par7);
 			this.tank2.render(par7);
 			this.tube1.render(par7);
@@ -257,9 +256,9 @@ public class ModelSpaceWolf extends ModelBase
 	}
 
 	@Override
-	public void setLivingAnimations(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4)
+	public void setLivingAnimations(EntityLivingBase living, float par2, float par3, float par4)
 	{
-		EntitySpaceWolf entitywolf = (EntitySpaceWolf)par1EntityLivingBase;
+		EntitySpaceWolf entitywolf = (EntitySpaceWolf)living;
 
 		if (entitywolf.isAngry())
 		{
@@ -287,38 +286,38 @@ public class ModelSpaceWolf extends ModelBase
 			this.wolfLeg4.rotateAngleX = 5.811947F;
 			this.wolfLeg4.setRotationPoint(0.51F, 17.0F, -4.0F);
 
-			this.tank1.rotateAngleX = -0.7853981F;
-			this.tank1.setRotationPoint(-1.0F, 12.35F, 3.0F);
-			this.tank2.rotateAngleX = -0.7853981F;
-			this.tank2.setRotationPoint(-4.0F, 12.35F, 3.0F);
+			this.tank1.rotateAngleX = -0.7879449F;
+			this.tank1.setRotationPoint(0.5F, 16.1F, 3.75F);
+			this.tank2.rotateAngleX = -0.7879449F;
+			this.tank2.setRotationPoint(-2.5F, 16.8F, 4.45F);
 
-			this.tube1.rotateAngleX = -0.6806784F;
-			this.tube1.setRotationPoint(0.0F, 11.8F, 3.2F);
+			this.tube1.rotateAngleX = -0.7879449F;
+			this.tube1.setRotationPoint(0.5F, 12.7F, 3.1F);
 			this.tube2.rotateAngleX = -0.5235987F;
-			this.tube2.setRotationPoint(0.0F, 10.8F, 2.8F);
+			this.tube2.setRotationPoint(0.5F, 11.6F, 2.7F);
 			this.tube3.rotateAngleX = -0.3490658F;
-			this.tube3.setRotationPoint(0.0F, 10.0F, 2.0F);
+			this.tube3.setRotationPoint(0.5F, 10.5F, 2.2F);
 			this.tube4.rotateAngleX = -0.1745329F;
-			this.tube4.setRotationPoint(0.0F, 9.6F, 1.0F);
-			this.tube5.setRotationPoint(0.0F, 9.0F, 0.0F);
-			this.tube6.setRotationPoint(0.0F, 8.0F, -1.0F);
+			this.tube4.setRotationPoint(0.5F, 9.4F, 1.4F);
+			this.tube5.setRotationPoint(0.5F, 9.0F, 0.4F);
+			this.tube6.setRotationPoint(0.5F, 8.4F, -0.5F);
 
-			this.tube7.rotateAngleX = -0.6806784F;
-			this.tube7.setRotationPoint(-3.0F, 11.8F, 3.2F);
+			this.tube7.rotateAngleX = -0.7879449F;
+			this.tube7.setRotationPoint(-2.5F, 12.7F, 3.1F);
 			this.tube8.rotateAngleX = -0.5235987F;
-			this.tube8.setRotationPoint(-3.0F, 10.8F, 2.8F);
+			this.tube8.setRotationPoint(-2.5F, 11.6F, 2.7F);
 			this.tube9.rotateAngleX = -0.3490658F;
-			this.tube9.setRotationPoint(-3.0F, 10.0F, 2.0F);
+			this.tube9.setRotationPoint(-2.5F, 10.5F, 2.2F);
 			this.tube10.rotateAngleX = -0.1745329F;
-			this.tube10.setRotationPoint(-3.0F, 9.6F, 1.0F);
-			this.tube11.setRotationPoint(-3.0F, 9.0F, 0.0F);
-			this.tube12.setRotationPoint(-3.0F, 8.0F, -1.0F);
-			this.tube13.setRotationPoint(0.0F, 8.0F, -2.0F);
-			this.tube14.setRotationPoint(-3.0F, 8.0F, -2.0F);
-			this.tube15.setRotationPoint(0.0F, 8.0F, -3.0F);
-			this.tube16.setRotationPoint(-3.0F, 8.0F, -3.0F);
-			this.tube17.setRotationPoint(0.0F, 9.0F, -4.0F);
-			this.tube18.setRotationPoint(-3.0F, 9.0F, -4.0F);
+			this.tube10.setRotationPoint(-2.5F, 9.4F, 1.4F);
+			this.tube11.setRotationPoint(-2.5F, 9.0F, 0.4F);
+			this.tube12.setRotationPoint(-2.5F, 8.4F, -0.5F);
+			this.tube13.setRotationPoint(0.5F, 8.0F, -1.5F);
+			this.tube14.setRotationPoint(-2.5F, 8.0F, -1.5F);
+			this.tube15.setRotationPoint(0.5F, 8.0F, -2.5F);
+			this.tube16.setRotationPoint(-2.5F, 8.0F, -2.5F);
+			this.tube17.setRotationPoint(0.5F, 9.0F, -3.5F);
+			this.tube18.setRotationPoint(-2.5F, 9.0F, -3.5F);
 		}
 		else
 		{
@@ -337,39 +336,40 @@ public class ModelSpaceWolf extends ModelBase
 			this.wolfLeg4.rotateAngleX = MathHelper.cos(par2 * 0.6662F) * 1.4F * par3;
 
 			this.tank1.rotateAngleX = 0F;
-			this.tank1.setRotationPoint(-1F, 8F, 0F);
+			this.tank1.setRotationPoint(0.5F, 10F, 3F);
 			this.tank2.rotateAngleX = 0F;
-			this.tank2.setRotationPoint(-4F, 8F, 0F);
+			this.tank2.setRotationPoint(-2.5F, 10F, 4F);
 
 			this.tube1.rotateAngleX = 0F;
-			this.tube1.setRotationPoint(0F, 7F, 0.5F);
+			this.tube1.setRotationPoint(0.5F, 7F, 1F);
 			this.tube2.rotateAngleX = 0F;
-			this.tube2.setRotationPoint(0F, 6F, 0F);
+			this.tube2.setRotationPoint(0.5F, 6F, 0F);
 			this.tube3.rotateAngleX = 0F;
-			this.tube3.setRotationPoint(0F, 5.5F, -1F);
+			this.tube3.setRotationPoint(0.5F, 5F, -1F);
 			this.tube4.rotateAngleX = 0F;
-			this.tube4.setRotationPoint(0F, 5.5F, -2F);
-			this.tube5.setRotationPoint(0F, 5.5F, -3F);
-			this.tube6.setRotationPoint(0F, 6F, -4F);
+			this.tube4.setRotationPoint(0.5F, 5F, -2F);
+			this.tube5.setRotationPoint(0.5F, 5F, -3F);
+			this.tube6.setRotationPoint(0.5F, 6F, -4F);
 			this.tube7.rotateAngleX = 0F;
-			this.tube7.setRotationPoint(-3F, 7F, 0.5F);
+			this.tube7.setRotationPoint(-2.5F, 7F, 1F);
 			this.tube8.rotateAngleX = 0F;
-			this.tube8.setRotationPoint(-3F, 6F, 0F);
+			this.tube8.setRotationPoint(-2.5F, 6F, 0F);
 			this.tube9.rotateAngleX = 0F;
-			this.tube9.setRotationPoint(-3F, 5.5F, -1F);
+			this.tube9.setRotationPoint(-2.5F, 5F, -1F);
 			this.tube10.rotateAngleX = 0F;
-			this.tube10.setRotationPoint(-3F, 5.5F, -2F);
-			this.tube11.setRotationPoint(-3F, 5.5F, -3F);
-			this.tube12.setRotationPoint(-3F, 6F, -4F);
-			this.tube13.setRotationPoint(0F, 7F, -5F);
-			this.tube14.setRotationPoint(-3F, 7F, -5F);
-			this.tube15.setRotationPoint(-3F, 7F, -5F);
-			this.tube16.setRotationPoint(-3F, 7F, -5F);
-			this.tube17.setRotationPoint(-3F, 7F, -5F);
-			this.tube18.setRotationPoint(-3F, 7F, -5F);
+			this.tube10.setRotationPoint(-2.5F, 5F, -2F);
+			this.tube11.setRotationPoint(-2.5F, 5F, -3F);
+			this.tube12.setRotationPoint(-2.5F, 6F, -4F);
+			this.tube13.setRotationPoint(0.5F, 7F, -5F);
+			this.tube14.setRotationPoint(-2.5F, 7F, -5F);
+			this.tube15.setRotationPoint(-2.5F, 7F, -5F);
+			this.tube16.setRotationPoint(-2.5F, 7F, -5F);
+			this.tube17.setRotationPoint(-2.5F, 7F, -5F);
+			this.tube18.setRotationPoint(-2.5F, 7F, -5F);
 		}
 
 		this.wolfHeadMain.rotateAngleZ = entitywolf.getInterestedAngle(par4) + entitywolf.getShakeAngle(par4, 0.0F);
+		this.oxygenMask.rotateAngleZ = entitywolf.getInterestedAngle(par4) + entitywolf.getShakeAngle(par4, 0.0F);
 		this.wolfMane.rotateAngleZ = entitywolf.getShakeAngle(par4, -0.08F);
 		this.wolfBody.rotateAngleZ = entitywolf.getShakeAngle(par4, -0.16F);
 		this.wolfTail.rotateAngleZ = entitywolf.getShakeAngle(par4, -0.2F);
@@ -399,9 +399,10 @@ public class ModelSpaceWolf extends ModelBase
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
 	{
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		this.wolfHeadMain.rotateAngleX = par5 / (180F / (float)Math.PI);
 		this.wolfHeadMain.rotateAngleY = par4 / (180F / (float)Math.PI);
+		this.oxygenMask.rotateAngleX = this.wolfHeadMain.rotateAngleX;
+		this.oxygenMask.rotateAngleY = this.wolfHeadMain.rotateAngleY;
 		this.wolfTail.rotateAngleX = par3;
 	}
 }

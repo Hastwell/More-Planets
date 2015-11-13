@@ -52,30 +52,6 @@ public class RenderJellySlime extends RenderLiving
 		GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
 	}
 
-	protected ResourceLocation getEntityTexture(EntityJellySlime par1Entity)
-	{
-		switch (par1Entity.getJellySlimeType())
-		{
-		case 0:
-		default:
-			return this.grapeSlimeTextures;
-		case 1:
-			return this.raspberrySlimeTextures;
-		case 2:
-			return this.strawberrySlimeTextures;
-		case 3:
-			return this.berrySlimeTextures;
-		case 4:
-			return this.limeSlimeTextures;
-		case 5:
-			return this.orangeSlimeTextures;
-		case 6:
-			return this.greenSlimeTextures;
-		case 7:
-			return this.lemonSlimeTextures;
-		}
-	}
-
 	@Override
 	public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
 	{
@@ -97,7 +73,26 @@ public class RenderJellySlime extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.getEntityTexture((EntityJellySlime)entity);
+		switch (((EntityJellySlime)entity).getJellySlimeType())
+		{
+		case 0:
+		default:
+			return this.grapeSlimeTextures;
+		case 1:
+			return this.raspberrySlimeTextures;
+		case 2:
+			return this.strawberrySlimeTextures;
+		case 3:
+			return this.berrySlimeTextures;
+		case 4:
+			return this.limeSlimeTextures;
+		case 5:
+			return this.orangeSlimeTextures;
+		case 6:
+			return this.greenSlimeTextures;
+		case 7:
+			return this.lemonSlimeTextures;
+		}
 	}
 
 	@Override

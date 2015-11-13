@@ -193,26 +193,12 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		if (meta == 0)
-		{
-			return this.getDefaultState().withProperty(IMMUNE, false);
-		}
-		else
-		{
-			return this.getDefaultState().withProperty(IMMUNE, true);
-		}
+		return this.getDefaultState().withProperty(IMMUNE, Boolean.valueOf((meta & 1) == 1));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		if (state == this.getDefaultState().withProperty(IMMUNE, false))
-		{
-			return 0;
-		}
-		else
-		{
-			return 1;
-		}
+		return ((Boolean)state.getValue(IMMUNE)).booleanValue() ? 1 : 0;
 	}
 }

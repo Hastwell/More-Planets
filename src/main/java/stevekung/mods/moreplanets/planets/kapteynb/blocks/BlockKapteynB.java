@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Random;
 
 import micdoodle8.mods.galacticraft.api.block.IPlantableBlock;
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
@@ -35,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
-public class BlockKapteynB extends BlockPlanetTileMP implements /*IDetectableResource,*/ IPlantableBlock, ITerraformableBlock
+public class BlockKapteynB extends BlockPlanetTileMP implements IPlantableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -149,17 +148,11 @@ public class BlockKapteynB extends BlockPlanetTileMP implements /*IDetectableRes
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		int meta = this.getMetaFromState(state);
-
-		if (meta >= 4 && meta <= 10)
-		{
-			return true;
-		}
-		return false;
-	}*/
+		return this.getMetaFromState(state) >= 4 && this.getMetaFromState(state) <= 10;
+	}
 
 	@Override
 	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)

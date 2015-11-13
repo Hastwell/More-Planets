@@ -28,11 +28,6 @@ public class RenderStrawberryChicken extends RenderLiving
 		super(render, new ModelChicken(), 0.3F);
 	}
 
-	protected ResourceLocation func_180568_a(EntityStrawberryChicken entity)
-	{
-		return this.chickenTextures;
-	}
-
 	protected float func_180569_a(EntityStrawberryChicken entity, float par2)
 	{
 		float f1 = entity.field_70888_h + (entity.field_70886_e - entity.field_70888_h) * par2;
@@ -49,6 +44,6 @@ public class RenderStrawberryChicken extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_180568_a((EntityStrawberryChicken)entity);
+		return this.chickenTextures;
 	}
 }

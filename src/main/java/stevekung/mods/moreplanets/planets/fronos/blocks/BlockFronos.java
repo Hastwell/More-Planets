@@ -31,7 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockFronos extends BlockPlanetTileMP /*implements IDetectableResource*/
+public class BlockFronos extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -163,15 +163,17 @@ public class BlockFronos extends BlockPlanetTileMP /*implements IDetectableResou
 		return super.quantityDropped(state, fortune, rand);
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
-		if (this.getMetaFromState(state) >= 2 && this.getMetaFromState(state) <= 10)
-		{
-			return true;
-		}
+		return this.getMetaFromState(state) >= 2 && this.getMetaFromState(state) <= 10;
+	}
+
+	@Override
+	public boolean isTerraformable(World world, BlockPos pos)
+	{
 		return false;
-	}*/
+	}
 
 	@Override
 	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)

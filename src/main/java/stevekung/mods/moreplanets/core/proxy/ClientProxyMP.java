@@ -30,6 +30,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 import org.lwjgl.opengl.GL11;
 
+import stevekung.mods.moreplanets.asteroids.darkasteroids.client.EntityAlienSplashFX;
 import stevekung.mods.moreplanets.client.particles.EntityLiquidDripFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCBreakingFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCExplodeFX;
@@ -152,6 +153,10 @@ public class ClientProxyMP extends CommonProxyMP
 		else if (type == ParticleTypesMP.MC_EXPLOSION_LARGE)
 		{
 			entityfx = new EntityMCLargeExplodeFX(Minecraft.getMinecraft().getTextureManager(), mc.theWorld, x, y, z, motionX, motionY, motionZ);
+		}
+		else if (type == ParticleTypesMP.ALIEN_SPLASH)
+		{
+			entityfx = new EntityAlienSplashFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
 		}
 		mc.effectRenderer.addEffect(entityfx);
 	}
@@ -540,6 +545,7 @@ public class ClientProxyMP extends CommonProxyMP
 		MC_LARGE_SMOKE,
 		MC_EXPLOSION_NORMAL,
 		MC_EXPLOSION_LARGE,
-		MC_EXPLOSION_HUGE
+		MC_EXPLOSION_HUGE,
+		ALIEN_SPLASH
 	}
 }

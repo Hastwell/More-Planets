@@ -28,26 +28,16 @@ public class RenderMarshmallow extends RenderLiving
 		super(render, new ModelMarshmallow(), 0.35F);
 	}
 
-	protected ResourceLocation marshmallowTexture(EntityMarshmallow entity)
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity)
 	{
 		return this.marshmallowTextures;
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.marshmallowTexture((EntityMarshmallow)entity);
-	}
-
-	@Override
 	public void preRenderCallback(EntityLivingBase living, float par2)
 	{
-		this.preRenderCallback((EntityMarshmallow)living, par2);
-	}
-
-	public void preRenderCallback(EntityMarshmallow living, float par2)
-	{
-		if (living.isSitting())
+		if (((EntityMarshmallow)living).isSitting())
 		{
 			GlStateManager.scale(0.8F, 0.8F, 0.8F);
 		}

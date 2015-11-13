@@ -14,7 +14,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelBerry;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityBerry;
 
 @SideOnly(Side.CLIENT)
 public class RenderBerry extends RenderLiving
@@ -26,14 +25,9 @@ public class RenderBerry extends RenderLiving
 		super(render, new ModelBerry(), 0.5F);
 	}
 
-	protected ResourceLocation berryTexture(EntityBerry entity)
-	{
-		return this.berryTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.berryTexture((EntityBerry)entity);
+		return this.berryTextures;
 	}
 }

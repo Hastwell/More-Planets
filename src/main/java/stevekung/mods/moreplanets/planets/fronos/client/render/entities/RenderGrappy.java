@@ -15,7 +15,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelGrappy2;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.layers.LayerGrappyWool;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 
 @SideOnly(Side.CLIENT)
 public class RenderGrappy extends RenderLiving
@@ -28,14 +27,9 @@ public class RenderGrappy extends RenderLiving
 		this.addLayer(new LayerGrappyWool(this));
 	}
 
-	protected ResourceLocation func_110883_a(EntityGrappy entity)
-	{
-		return this.grappyTextures;
-	}
-
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.func_110883_a((EntityGrappy)entity);
+		return this.grappyTextures;
 	}
 }

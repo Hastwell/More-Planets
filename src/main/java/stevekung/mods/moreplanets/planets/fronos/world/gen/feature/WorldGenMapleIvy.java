@@ -14,7 +14,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockMapleIvy;
+import stevekung.mods.moreplanets.common.blocks.BlockVineMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenMapleIvy extends WorldGenerator
@@ -35,7 +35,7 @@ public class WorldGenMapleIvy extends WorldGenerator
 
 					if (FronosBlocks.maple_ivy.canPlaceBlockOnSide(world, pos, enumfacing))
 					{
-						IBlockState iblockstate = FronosBlocks.maple_ivy.getDefaultState().withProperty(BlockMapleIvy.NORTH, Boolean.valueOf(enumfacing == EnumFacing.NORTH)).withProperty(BlockMapleIvy.EAST, Boolean.valueOf(enumfacing == EnumFacing.EAST)).withProperty(BlockMapleIvy.SOUTH, Boolean.valueOf(enumfacing == EnumFacing.SOUTH)).withProperty(BlockMapleIvy.WEST, Boolean.valueOf(enumfacing == EnumFacing.WEST));
+						IBlockState iblockstate = FronosBlocks.maple_ivy.getDefaultState().withProperty(BlockVineMP.NORTH, Boolean.valueOf(enumfacing == EnumFacing.NORTH)).withProperty(BlockVineMP.EAST, Boolean.valueOf(enumfacing == EnumFacing.EAST)).withProperty(BlockVineMP.SOUTH, Boolean.valueOf(enumfacing == EnumFacing.SOUTH)).withProperty(BlockVineMP.WEST, Boolean.valueOf(enumfacing == EnumFacing.WEST));
 						world.setBlockState(pos, iblockstate, 2);
 						break;
 					}

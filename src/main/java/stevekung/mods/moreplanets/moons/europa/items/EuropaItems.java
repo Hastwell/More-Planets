@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
+import stevekung.mods.moreplanets.common.items.ItemBucketMP;
 import stevekung.mods.moreplanets.common.items.ItemDoorMP;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
@@ -30,7 +31,7 @@ public class EuropaItems
 		// Init
 		EuropaItems.europa_prismarine = new ItemEuropaPrismarine("europa_prismarine_item");
 		EuropaItems.europa_apple = new ItemEuropaApple("europa_apple");
-		EuropaItems.europa_water_bucket = new ItemEuropaWaterBucket("europa_water_bucket");
+		EuropaItems.europa_water_bucket = new ItemBucketMP("europa_water_bucket", EuropaBlocks.europa_water, null);
 		EuropaItems.europa_door = new ItemDoorMP("europa_door", DoorType.EUROPA);
 		EuropaItems.europa_food = new ItemEuropaFood("europa_food");
 		EuropaItems.europa_gunpowder = new ItemMorePlanets("europa_gunpowder");

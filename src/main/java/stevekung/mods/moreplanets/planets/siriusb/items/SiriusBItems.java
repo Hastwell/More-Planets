@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.moreplanets.common.items.ItemBucketMP;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.stevecore.CommonRegisterHelper;
@@ -30,7 +31,7 @@ public class SiriusBItems
 		SiriusBItems.sirius_b_item = new ItemSiriusB("sirius_b_item");
 		SiriusBItems.sirius_b_dungeon_key = new ItemSiriusBDungeonKey("sirius_b_dungeon_key");
 		SiriusBItems.sirius_fire_charge = new ItemSiriusFireCharge("sirius_fire_charge");
-		SiriusBItems.sirius_lava_bucket = new ItemSiriusLavaBucket("sirius_lava_bucket");
+		SiriusBItems.sirius_lava_bucket = new ItemBucketMP("sirius_lava_bucket", SiriusBBlocks.sirius_lava, null);
 		SiriusBItems.sirius_glowstone_dust = new ItemMorePlanets("sirius_glowstone_dust");
 		SiriusBItems.sirius_magma_cream = new ItemMorePlanets("sirius_magma_cream");
 

@@ -115,7 +115,6 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
 		{
 			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0D);
 		}
-
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2.0D);
 	}
