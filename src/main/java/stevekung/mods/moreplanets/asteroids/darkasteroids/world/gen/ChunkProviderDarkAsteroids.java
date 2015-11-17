@@ -37,11 +37,14 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLakes;
-import net.minecraft.world.gen.feature.WorldGenTallGrass;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenLiquidLakes;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
+import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
+import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 
 public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 {
@@ -50,19 +53,19 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 	byte ASTEROID_STONE_META_1 = 1;
 	byte ASTEROID_STONE_META_2 = 2;
 
-	Block DIRT = Blocks.dirt;
+	Block DIRT = DarkAsteroidsBlocks.alien_dirt;
 	byte DIRT_META = 0;
-	Block GRASS = Blocks.grass;
+	Block GRASS = DarkAsteroidsBlocks.alien_grass;
 	byte GRASS_META = 0;
-	Block LIGHT = Blocks.glowstone;
+	Block LIGHT = DarkAsteroidsBlocks.alien_glowstone;
 	byte LIGHT_META = 0;
-	Block TALL_GRASS = Blocks.tallgrass;
-	byte TALL_GRASS_META = 1;
+	//Block TALL_GRASS = Blocks.tallgrass;
+	//byte TALL_GRASS_META = 1;
 	Block FLOWER = Blocks.red_flower;
 
-	Block LAVA = Blocks.lava;
+	Block LAVA = IoBlocks.io_black_lava;
 	byte LAVA_META = 0;
-	Block WATER = Blocks.water;
+	Block WATER = MercuryBlocks.dirty_water;
 	byte WATER_META = 0;
 
 	private Random rand;
@@ -81,18 +84,18 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 	private static int CHUNK_SIZE_Y = 256;
 	private static int CHUNK_SIZE_Z = 16;
 
-	private static int MAX_ASTEROID_RADIUS = 20;
-	private static int MIN_ASTEROID_RADIUS = 5;
-	private static int MAX_ASTEROID_SKEW = 8;
+	private static int MAX_ASTEROID_RADIUS = 25;
+	private static int MIN_ASTEROID_RADIUS = 10;
+	private static int MAX_ASTEROID_SKEW = 12;
 
-	private static int MIN_ASTEROID_Y = 48;
-	private static int MAX_ASTEROID_Y = ChunkProviderDarkAsteroids.CHUNK_SIZE_Y - 48;
+	private static int MIN_ASTEROID_Y = 32;
+	private static int MAX_ASTEROID_Y = ChunkProviderDarkAsteroids.CHUNK_SIZE_Y - 32;
 
-	private static int ASTEROID_CHANCE = 800; //About 1 / n chance per XZ pair
-	private static int ASTEROID_SHELL_CHANCE = 2; //1 / n chance per asteroid
+	private static int ASTEROID_CHANCE = 600; //About 1 / n chance per XZ pair
+	private static int ASTEROID_SHELL_CHANCE = 1; //1 / n chance per asteroid
 
-	private static int MIN_BLOCKS_PER_CHUNK = 50;
-	private static int MAX_BLOCKS_PER_CHUNK = 200;
+	private static int MIN_BLOCKS_PER_CHUNK = 100;
+	private static int MAX_BLOCKS_PER_CHUNK = 250;
 
 	private static int ALUMINUM_CHANCE = 250;
 	private static int ILMENITE_CHANCE = 400;
@@ -101,13 +104,13 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 
 	private static int NOISE_OFFSET_SIZE = 256;
 
-	private static float MIN_HOLLOW_SIZE = .6F;
-	private static float MAX_HOLLOW_SIZE = .8F;
-	private static int HOLLOW_CHANCE = 10; //1 / n chance per asteroid
-	private static int MIN_RADIUS_FOR_HOLLOW = 15;
+	private static float MIN_HOLLOW_SIZE = .8F;
+	private static float MAX_HOLLOW_SIZE = .10F;
+	private static int HOLLOW_CHANCE = 4; //1 / n chance per asteroid
+	private static int MIN_RADIUS_FOR_HOLLOW = 20;
 
 	//Per chunk per asteroid
-	private static int TREE_CHANCE = 2;
+	private static int TREE_CHANCE = 1;
 	private static int TALL_GRASS_CHANCE = 2;
 	private static int FLOWER_CHANCE = 2;
 	private static int WATER_CHANCE = 2;
@@ -118,6 +121,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 	private static HashSet<BlockVec3> chunksDone = new HashSet<BlockVec3>();
 	private int largeAsteroidsLastChunkX;
 	private int largeAsteroidsLastChunkZ;
+	public BiomeDecoratorDarkAsteroids biomedecoratorplanet = new BiomeDecoratorDarkAsteroids();
 
 	public ChunkProviderDarkAsteroids(World world, long seed, boolean genFeature)
 	{
@@ -576,6 +580,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
 		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
+		this.decoratePlanet(this.worldObj, this.rand, chunkX * 16, chunkZ * 16);
 
 		//50:50 chance to include small blocks each chunk
 		if (this.rand.nextBoolean())
@@ -668,14 +673,14 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 				{
 					int i = this.rand.nextInt(16) + x + 8;
 					int k = this.rand.nextInt(16) + z + 8;
-					new WorldGenTrees(false).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
+					new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
 				}
-				if (this.rand.nextInt(ChunkProviderDarkAsteroids.TALL_GRASS_CHANCE) == 0)
+				/*if (this.rand.nextInt(ChunkProviderDarkAsteroids.TALL_GRASS_CHANCE) == 0)
 				{
 					int i = this.rand.nextInt(16) + x + 8;
 					int k = this.rand.nextInt(16) + z + 8;
 					new WorldGenTallGrass(this.TALL_GRASS, this.TALL_GRASS_META).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
-				}
+				}*/
 				if (this.rand.nextInt(ChunkProviderDarkAsteroids.FLOWER_CHANCE) == 0)
 				{
 					int i = this.rand.nextInt(16) + x + 8;
@@ -686,7 +691,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 				{
 					int i = this.rand.nextInt(16) + x + 8;
 					int k = this.rand.nextInt(16) + z + 8;
-					new WorldGenLakes(this.LAVA).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
+					new WorldGenLiquidLakes(this.LAVA).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
 				}
 				if (this.rand.nextInt(ChunkProviderDarkAsteroids.WATER_CHANCE) == 0)
 				{
@@ -713,7 +718,6 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 				}
 			}
 		}
-
 	}
 
 	public void generateSkylightMap(Chunk chunk, int cx, int cz)
@@ -889,6 +893,11 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 		return "DarkAsteroidsLevelSource";
 	}
 
+	public void decoratePlanet(World world, Random rand, int chunkX, int chunkZ)
+	{
+		this.biomedecoratorplanet.decorate(world, rand, chunkX, chunkZ);
+	}
+
 	@Override
 	public List getPossibleCreatures(EnumCreatureType type, int x, int y, int z)
 	{
@@ -900,6 +909,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 			monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+			monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
 			return monsters;
 		}
 		else

@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.util.CompatibilityUtilMP;
 import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
@@ -153,6 +154,8 @@ public class MPEntities
 
 		registerEntity(EntityEuropaSquid.class, "EuropaSquid", 37, -12425324, -6163201);
 		registerEntity(EntityEuropaCrab.class, "EuropaCrab", 39, -11574413, -12167066);
+
+		registerEntity(EntityEvolvedWitch.class, "EvolvedWitch", 40, 3407872, 5349438);
 
 		//TEMPLATE HOTFIX
 		registerEntity(EntityFronosCreeperBossTemp.class, "FronosBossTemp", 38, 0, 0);

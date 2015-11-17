@@ -22,7 +22,7 @@ public class MorePlanetsChannelHandler extends FMLIndexedMessageToMessageCodec<I
 
 	private MorePlanetsChannelHandler()
 	{
-		this.addDiscriminator(0, PacketUpdateItem.class);
+		this.addDiscriminator(0, PacketUpdateJetpack.class);
 	}
 
 	public static MorePlanetsChannelHandler init()

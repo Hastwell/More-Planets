@@ -62,88 +62,71 @@ public class ModelEvolvedEnderman extends ModelBiped
 
 		this.oxygenMask = new ModelRenderer(this, 0, 44);
 		this.oxygenMask.addBox(-5F, -9F, -5F, 10, 10, 10);
-		this.oxygenMask.setRotationPoint(0F, -9F, 0F);
-		this.oxygenMask.mirror = false;
+		this.oxygenMask.setRotationPoint(0F, -14F, 0F);
 
 		this.tank1 = new ModelRenderer(this, 52, 54);
 		this.tank1.addBox(0F, 0F, 0F, 3, 7, 3);
 		this.tank1.setRotationPoint(0F, -11F, 2F);
-		this.tank1.mirror = false;
 
 		this.tank2 = new ModelRenderer(this, 52, 54);
 		this.tank2.addBox(0F, 0F, 0F, 3, 7, 3);
 		this.tank2.setRotationPoint(-3F, -11F, 2F);
-		this.tank2.mirror = false;
 
 		this.tube1 = new ModelRenderer(this, 44, 62);
 		this.tube1.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube1.setRotationPoint(-2F, -10.5F, 5F);
-		this.tube1.mirror = false;
 
 		this.tube2 = new ModelRenderer(this, 44, 62);
 		this.tube2.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube2.setRotationPoint(-2F, -11F, 6F);
-		this.tube2.mirror = false;
 
 		this.tube3 = new ModelRenderer(this, 44, 62);
 		this.tube3.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube3.setRotationPoint(-2F, -12F, 7F);
-		this.tube3.mirror = false;
 
 		this.tube4 = new ModelRenderer(this, 44, 62);
 		this.tube4.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube4.setRotationPoint(-2F, -13F, 7F);
-		this.tube4.mirror = false;
 
 		this.tube5 = new ModelRenderer(this, 44, 62);
 		this.tube5.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube5.setRotationPoint(-2F, -14F, 7F);
-		this.tube5.mirror = false;
 
 		this.tube6 = new ModelRenderer(this, 44, 62);
 		this.tube6.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube6.setRotationPoint(-2F, -15F, 6F);
-		this.tube6.mirror = false;
 
 		this.tube7 = new ModelRenderer(this, 44, 62);
 		this.tube7.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube7.setRotationPoint(-2F, -16F, 5F);
-		this.tube7.mirror = false;
 
 		this.tube8 = new ModelRenderer(this, 44, 62);
 		this.tube8.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube8.setRotationPoint(1F, -10.5F, 5F);
-		this.tube8.mirror = false;
 
 		this.tube9 = new ModelRenderer(this, 44, 62);
 		this.tube9.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube9.setRotationPoint(1F, -11F, 6F);
-		this.tube9.mirror = false;
 
 		this.tube10 = new ModelRenderer(this, 44, 62);
 		this.tube10.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube10.setRotationPoint(1F, -12F, 7F);
-		this.tube10.mirror = false;
 
 		this.tube11 = new ModelRenderer(this, 44, 62);
 		this.tube11.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube11.setRotationPoint(1F, -13F, 7F);
-		this.tube11.mirror = false;
 
 		this.tube12 = new ModelRenderer(this, 44, 62);
 		this.tube12.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube12.setRotationPoint(1F, -14F, 7F);
-		this.tube12.mirror = false;
 
 		this.tube13 = new ModelRenderer(this, 44, 62);
 		this.tube13.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube13.setRotationPoint(1F, -15F, 6F);
-		this.tube13.mirror = false;
 
 		this.tube14 = new ModelRenderer(this, 44, 62);
 		this.tube14.addBox(0F, 0F, 0F, 1, 1, 1);
 		this.tube14.setRotationPoint(1F, -16F, 5F);
-		this.tube14.mirror = false;
 	}
 
 	@Override

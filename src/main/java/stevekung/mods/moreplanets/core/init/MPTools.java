@@ -12,6 +12,7 @@ import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
 import stevekung.mods.moreplanets.planets.fronos.items.tools.FronosToolsItems;
 import stevekung.mods.moreplanets.planets.kapteynb.items.tools.KapteynBToolsItems;
 import stevekung.mods.moreplanets.planets.nibiru.items.tools.NibiruToolsItems;
+import stevekung.mods.moreplanets.planets.pluto.items.tools.PlutoToolsItems;
 import stevekung.mods.moreplanets.planets.polongnius.items.tools.PolongniusToolsItems;
 import stevekung.mods.moreplanets.planets.siriusb.items.tools.SiriusBToolsItems;
 
@@ -26,5 +27,6 @@ public class MPTools
 		FronosToolsItems.init();
 		KapteynBToolsItems.init();
 		SiriusBToolsItems.init();
+		PlutoToolsItems.init();
 	}
 }

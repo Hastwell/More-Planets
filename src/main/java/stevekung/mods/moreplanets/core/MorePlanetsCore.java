@@ -29,6 +29,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
@@ -266,8 +267,23 @@ public class MorePlanetsCore
 		CraftingRecipesIo.loadRecipes();
 		CraftingRecipesEuropa.loadRecipes();
 
-		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
-		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
+		int siliconCount = OreDictionary.getOres(ConfigManagerCore.otherModsSilicon).size();
+
+		for (int i = 0; i <= siliconCount; i++)
+		{
+			ItemStack silicon;
+
+			if (i == 0)
+			{
+				silicon = new ItemStack(GCItems.basicItem, 1, 2);
+			}
+			else
+			{
+				silicon = OreDictionary.getOres("itemSilicon").get(i - 1);
+			}
+			CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
+			CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
+		}
 
 		CompressorRecipesMP.registerCompressorRecipes();
 		DispenserRegistryMP.init();

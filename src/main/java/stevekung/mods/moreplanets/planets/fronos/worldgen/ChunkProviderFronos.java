@@ -45,6 +45,7 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
@@ -431,6 +432,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 				monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
 				monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
 				monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
+				monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
 			}
 			else
 			{

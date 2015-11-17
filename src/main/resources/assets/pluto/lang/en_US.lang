@@ -31,6 +31,11 @@ item.space_potato.baked_space_potato.name=Baked Space Potato
 item.gravity_boots.name=Gravity Boots
 
 # TOOLS
+item.xeonium_pickaxe.name=Xeonium Pickaxe
+item.xeonium_axe.name=Xeonium Axe
+item.xeonium_hoe.name=Xeonium Hoe
+item.xeonium_shovel.name=Xeonium Shovel
+item.xeonium_sword.name=Xeonium Sword
 
 # ARMORS
 

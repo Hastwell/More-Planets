@@ -1,15 +1,14 @@
 package stevekung.mods.moreplanets.core.todo;
 
-import static stevekung.mods.moreplanets.planets.venus.items.ItemJetpack.tick;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import micdoodle8.mods.galacticraft.core.network.IPacket;
 import net.minecraft.entity.player.EntityPlayer;
-import stevekung.mods.moreplanets.core.util.MPLog;
+import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.planets.venus.items.ItemJetpack;
 import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
 
-public class PacketUpdateItem implements IPacket
+public class PacketUpdateJetpack implements IPacket
 {
 	@Override
 	public void encodeInto(ChannelHandlerContext context, ByteBuf buffer) {}
@@ -22,21 +21,17 @@ public class PacketUpdateItem implements IPacket
 	{
 		if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
 		{
-			//if (!flag && player.inventory.hasItem(Items.coal))
+			boolean flag = player.capabilities.isCreativeMode;
+			ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
+			ItemStack itemStack = player.inventory.armorItemInSlot(2);
+
+			if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
 			{
-				if (((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).getJetpackKeyDown()) {
-					tick++;
-				}
-				if (ItemJetpack.tick >= 999)
+				if (jetpack.getJetpackKeyDown())
 				{
-					player.inventory.armorItemInSlot(2).getTagCompound().setInteger("JetpackTick", tick);
+					jetpack.setElectricity(itemStack, jetpack.getElectricityStored(itemStack) - 1.0F);
 				}
-				MPLog.info("" + tick);
 			}
-			/*else if (flag)
-			{
-				return;
-			}*/
 		}
 	}
 
@@ -45,19 +40,17 @@ public class PacketUpdateItem implements IPacket
 	{
 		if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
 		{
-			//if (!flag && player.inventory.hasItem(Items.coal))
+			boolean flag = player.capabilities.isCreativeMode;
+			ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
+			ItemStack itemStack = player.inventory.armorItemInSlot(2);
+
+			if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
 			{
-				if (((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).getJetpackKeyDown()) {
-					if (ItemJetpack.tick >= 999)
-					{
-						MPLog.info("Test server");
-					}
+				if (jetpack.getJetpackKeyDown())
+				{
+					jetpack.setElectricity(itemStack, jetpack.getElectricityStored(itemStack) - 1.0F);
 				}
 			}
-			/*else if (flag)
-			{
-				return;
-			}*/
 		}
 	}
 }

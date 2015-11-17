@@ -36,6 +36,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
@@ -401,6 +402,7 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
 			monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
+			monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
 			return monsters;
 		}
 		return null;

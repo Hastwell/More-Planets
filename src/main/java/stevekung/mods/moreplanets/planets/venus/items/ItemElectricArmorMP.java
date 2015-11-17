@@ -10,7 +10,6 @@ import micdoodle8.mods.galacticraft.core.energy.EnergyConfigHandler;
 import micdoodle8.mods.galacticraft.core.energy.EnergyDisplayHelper;
 import micdoodle8.mods.galacticraft.core.energy.item.ElectricItemManagerIC2;
 import micdoodle8.mods.galacticraft.core.energy.item.ElectricItemManagerIC2_1710;
-import micdoodle8.mods.galacticraft.core.energy.item.ItemElectricBase;
 import micdoodle8.mods.galacticraft.core.items.ItemBatteryInfinite;
 import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import micdoodle8.mods.miccore.Annotations.AltForVersion;
@@ -27,6 +26,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagDouble;
 import net.minecraft.nbt.NBTTagFloat;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
@@ -71,20 +71,20 @@ public abstract class ItemElectricArmorMP extends ItemArmor implements IItemElec
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean advanced)
 	{
-		String color = "";
+		EnumChatFormatting color = null;
 		float joules = this.getElectricityStored(itemStack);
 
 		if (joules <= this.getMaxElectricityStored(itemStack) / 3)
 		{
-			color = "\u00a74";
+			color = EnumChatFormatting.DARK_RED;
 		}
 		else if (joules > this.getMaxElectricityStored(itemStack) * 2 / 3)
 		{
-			color = "\u00a72";
+			color = EnumChatFormatting.DARK_GREEN;
 		}
 		else
 		{
-			color = "\u00a76";
+			color = EnumChatFormatting.GOLD;
 		}
 		list.add(color + EnergyDisplayHelper.getEnergyDisplayS(joules) + "/" + EnergyDisplayHelper.getEnergyDisplayS(this.getMaxElectricityStored(itemStack)));
 	}
@@ -215,47 +215,6 @@ public abstract class ItemElectricArmorMP extends ItemArmor implements IItemElec
 	{
 		par3List.add(ElectricItemHelper.getUncharged(new ItemStack(this)));
 		par3List.add(ElectricItemHelper.getWithCharge(new ItemStack(this), this.getMaxElectricityStored(new ItemStack(this))));
-	}
-
-	public static boolean isElectricItem(Item item)
-	{
-		if (item instanceof ItemElectricBase)
-		{
-			return true;
-		}
-
-		if (EnergyConfigHandler.isIndustrialCraft2Loaded())
-		{
-			if (item instanceof ic2.api.item.ISpecialElectricItem)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public static boolean isElectricItemEmpty(ItemStack itemstack)
-	{
-		if (itemstack == null)
-		{
-			return false;
-		}
-
-		Item item = itemstack.getItem();
-
-		if (item instanceof ItemElectricBase)
-		{
-			return ((ItemElectricBase) item).getElectricityStored(itemstack) <= 0;
-		}
-
-		if (EnergyConfigHandler.isIndustrialCraft2Loaded())
-		{
-			if (item instanceof ic2.api.item.ISpecialElectricItem)
-			{
-				return !((ic2.api.item.ISpecialElectricItem) item).canProvideEnergy(itemstack);
-			}
-		}
-		return false;
 	}
 
 	@RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")

@@ -15,6 +15,7 @@ import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketMP;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketNoFlagMP;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
@@ -160,6 +161,7 @@ public class EntityRendererMP
 
 	private static void registerEntityRenderers()
 	{
+		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new RenderEvolvedWitch());
 		RenderingRegistry.registerEntityRenderingHandler(EntityDustSludgeling.class, new RenderDustSludgeling());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpaceWolf.class, new RenderSpaceWolf(new ModelSpaceWolf(), new ModelSpaceWolf()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedEnderman.class, new RenderEvolvedEnderman());

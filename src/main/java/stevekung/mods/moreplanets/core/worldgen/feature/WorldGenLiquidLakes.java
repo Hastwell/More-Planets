@@ -16,6 +16,8 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
+import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.dimension.WorldProviderFronos;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
@@ -171,6 +173,10 @@ public class WorldGenLiquidLakes extends WorldGenerator
 								else if (world.provider instanceof WorldProviderVenus)
 								{
 									world.setBlock(x + i1, y + j1, z + j2, VenusBlocks.venus_block, 2, 2);
+								}
+								else if (world.provider instanceof WorldProviderDarkAsteroids)
+								{
+									world.setBlock(x + i1, y + j1, z + j2, IoBlocks.io_block, 5, 2);
 								}
 								else
 								{

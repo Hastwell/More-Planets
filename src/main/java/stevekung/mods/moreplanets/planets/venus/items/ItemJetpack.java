@@ -11,25 +11,23 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP;
+import stevekung.mods.moreplanets.core.todo.PacketUpdateJetpack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemJetpack extends ItemElectricArmorMP
 {
-	public static int tick;
 	private boolean keyDown;
 	private boolean keySneak;
 
-	public ItemJetpack(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+	public ItemJetpack(String name, ArmorMaterial material, int render, int type)
 	{
-		super(par2EnumArmorMaterial, par3, par4);
+		super(material, render, type);
 		this.setUnlocalizedName(name);
 	}
 
@@ -68,67 +66,20 @@ public class ItemJetpack extends ItemElectricArmorMP
 	@Override
 	public void onUpdate(ItemStack itemStack, World world, Entity entity, int slot, boolean selected)
 	{
-		if (!itemStack.hasTagCompound())
+		if (this.getJetpackKeyDown() == true)
 		{
-			itemStack.setTagCompound(new NBTTagCompound());
+			MorePlanetsCore.packetPipeline.sendToServer(new PacketUpdateJetpack());
 		}
-		itemStack.getTagCompound().setInteger("JetpackTick", ItemJetpack.tick);
-	}
-
-	@Override
-	public void onCreated(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!itemStack.hasTagCompound())
+		if (this.getJetpackKeySneak() == true)
 		{
-			itemStack.setTagCompound(new NBTTagCompound());
+			MorePlanetsCore.packetPipeline.sendToServer(new PacketUpdateJetpack());
 		}
-		itemStack.getTagCompound().setInteger("JetpackTick", ItemJetpack.tick);
 	}
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		boolean flag = player.capabilities.isCreativeMode;
-
-		if (itemStack.getItem() == this)
-		{
-			if (!flag && player.inventory.hasItem(Items.coal))
-			{
-				if (this.getJetpackKeyDown() == true)
-				{
-					ItemJetpack.tick++;
-
-					if (ItemJetpack.tick >= 1000)
-					{
-						if (!world.isRemote && !flag)
-						{
-							player.inventory.consumeInventoryItem(Items.coal);
-						}
-						if (ItemJetpack.tick >= 1000)
-						{
-							ItemJetpack.tick = 0;
-						}
-					}
-				}
-				if (this.getJetpackKeySneak() == true)
-				{
-					ItemJetpack.tick++;
-
-					if (ItemJetpack.tick >= 1000)
-					{
-						if (!world.isRemote && !flag)
-						{
-							player.inventory.consumeInventoryItem(Items.coal);
-						}
-						if (ItemJetpack.tick >= 1000)
-						{
-							ItemJetpack.tick = 0;
-						}
-					}
-				}
-			}
-			MorePlanetsCore.proxy.resetPlayerFloatingTick(player);
-		}
+		MorePlanetsCore.proxy.resetPlayerFloatingTick(player);
 	}
 
 	@Override
@@ -170,7 +121,7 @@ public class ItemJetpack extends ItemElectricArmorMP
 	}
 
 	@Override
-	public float getMaxElectricityStored(ItemStack theItem)
+	public float getMaxElectricityStored(ItemStack itemStack)
 	{
 		return 100000.0F;
 	}

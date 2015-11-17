@@ -61,11 +61,13 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector3f;
 
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
@@ -189,72 +191,64 @@ public class MorePlanetEvents
 		WorldClient world = mc.theWorld;
 		EntityClientPlayerMP player = mc.thePlayer;
 
-		if (Side.CLIENT != null)
+		if (player != null && world != null)
 		{
-			if (player != null && world != null)
+			if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
 			{
-				if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
+				ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
+				ItemStack itemStack = player.inventory.armorItemInSlot(2);
+				boolean flag = player.capabilities.isCreativeMode;
+
+				if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
 				{
-					boolean flag = player.capabilities.isCreativeMode;
-
-					if (!flag && player.inventory.hasItem(Items.coal))
+					if (mc.gameSettings.keyBindJump.getIsKeyPressed())
 					{
-						if (mc.gameSettings.keyBindJump.getIsKeyPressed())
-						{
-							((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeyDown(true);
-							player.motionY = 0.5D;
-							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
-						}
-						else if (!mc.gameSettings.keyBindJump.getIsKeyPressed())
-						{
-							((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeyDown(false);
-						}
+						jetpack.setJetpackKeyDown(true);
+						player.motionY = 0.5D;
+						world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
+					}
+					else if (!mc.gameSettings.keyBindJump.getIsKeyPressed())
+					{
+						jetpack.setJetpackKeyDown(false);
+					}
 
-						if (!player.onGround)
+					if (!player.onGround)
+					{
+						if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
 						{
-							if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
-							{
-								player.motionY *= 0.85D;
-								world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
-								((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeySneak(true);
-							}
-							else if (!mc.gameSettings.keyBindSneak.getIsKeyPressed())
-							{
-								((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeySneak(false);
-							}
+							player.motionY *= 0.85D;
+							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
+							jetpack.setJetpackKeySneak(true);
 						}
-						else
+						else if (!mc.gameSettings.keyBindSneak.getIsKeyPressed())
 						{
-							((ItemJetpack)player.inventory.armorItemInSlot(2).getItem()).setJetpackKeySneak(false);
+							jetpack.setJetpackKeySneak(false);
 						}
 					}
-					if (flag)
+					else
 					{
-						if (mc.gameSettings.keyBindJump.getIsKeyPressed())
+						jetpack.setJetpackKeySneak(false);
+					}
+				}
+				if (flag)
+				{
+					if (mc.gameSettings.keyBindJump.getIsKeyPressed())
+					{
+						player.motionY = 0.5D;
+						world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
+					}
+					if (!player.onGround)
+					{
+						if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
 						{
-							player.motionY = 0.5D;
-							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
-						}
-						if (!player.onGround)
-						{
-							if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
-							{
-								player.motionY *= 0.85D;
-								world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
-							}
+							player.motionY *= 0.85D;
+							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
 						}
 					}
 				}
 			}
 		}
 	}
-
-	/*@SideOnly(Side.SERVER)
-	private void useJetpack()
-	{
-		MorePlanetsCore.packetPipeline.sendToServer(new PacketUpdateItem());
-		MPLog.info("Send packet");
-	}*/
 
 	@SubscribeEvent
 	public void onLivingFall(LivingFallEvent event)
@@ -379,6 +373,7 @@ public class MorePlanetEvents
 		this.glowSapling(event, world, NibiruBlocks.nibiru_sapling);
 		this.glowSapling(event, world, KoentusBlocks.crystal_sapling);
 		this.glowSapling(event, world, FronosBlocks.fronos_sapling);
+		this.glowSapling(event, world, DarkAsteroidsBlocks.alien_sapling);
 
 		this.glowTallGrass(event, rand, x, z, FronosBlocks.fronos_grass, FronosBlocks.fronos_tall_grass, 3, 0, true);
 		this.glowTallGrass(event, rand, x, z, FronosBlocks.pink_grass, FronosBlocks.fronos_tall_grass, 3, 3, true);
@@ -807,7 +802,7 @@ public class MorePlanetEvents
 		{
 			if (!(living instanceof EntityPlayer))
 			{
-				if (living.ticksExisted % 100 == 0 && (!(living instanceof IEntityLivingPlanet) || !(world.provider.dimensionId == ((IEntityLivingPlanet)living).canLivingInDimension().dimID)) && !(living.getClass() == EntityEvolvedZombie.class || living.getClass() == EntityEvolvedSpider.class || living.getClass() == EntityEvolvedSkeleton.class || living.getClass() == EntityEvolvedCreeper.class || living.getClass() == EntityEvolvedEnderman.class))
+				if (living.ticksExisted % 100 == 0 && (!(living instanceof IEntityLivingPlanet) || !(world.provider.dimensionId == ((IEntityLivingPlanet)living).canLivingInDimension().dimID)) && !(living.getClass() == EntityEvolvedZombie.class || living.getClass() == EntityEvolvedSpider.class || living.getClass() == EntityEvolvedSkeleton.class || living.getClass() == EntityEvolvedCreeper.class || living.getClass() == EntityEvolvedEnderman.class || living.getClass() == EntityEvolvedWitch.class))
 				{
 					living.addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 80));
 				}

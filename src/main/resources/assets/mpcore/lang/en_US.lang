@@ -49,6 +49,15 @@ tile.dark_asteroid_block.emerald_ore.name=Emerald Ore
 tile.dark_asteroid_block.lapis_ore.name=Lapis Lazuli Ore
 tile.dark_asteroid_quicksand.name=Dark Asteroid Quicksand
 tile.alphere_ore.name=Alphere Ore
+tile.alien_grass.name=Alien Grass
+tile.alien_dirt.dirt.name=Alien Dirt
+tile.alien_dirt.coarse.name=Alien Coarse Dirt
+tile.alien_log.name=Alien Wood
+tile.alien_planks.name=Alien Wood Planks
+tile.alien_glowstone.name=Alien Glowstone
+tile.alien_leaves.alien.name=Alien Leaves
+tile.alien_sapling.name=Alien Sapling
+entity.MorePlanet.EvolvedWitch.name=Evolved Witch
 
 item.feces.name=Feces
 item.decompose.name=Decompose
@@ -64,6 +73,9 @@ itemGroup.MorePlanetsArmor=More Planets Armor
 # PLANET
 star.sirius=Sirius
 solarsystem.sirius=Sirius Solar System
+solarsystem.dark=Dark Solar System
+planet.darkAsteroids=Dark Asteroids
+star.dark=Dark Star
 
 mp.failed.name=Update check failed!
 mp.success.name=More Planets remote version found:

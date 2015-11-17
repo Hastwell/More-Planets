@@ -96,6 +96,24 @@ public class ItemTier2ThermalPadding extends ItemMorePlanet implements IItemTher
 		if (player.worldObj.isRemote)
 		{
 			list.add(StatCollector.translateToLocal("item.tier2.desc"));
+			int count = 0;
+
+			switch (itemStack.getItemDamage())
+			{
+			case 0:
+				count = 16;
+				break;
+			case 1:
+				count = 20;
+				break;
+			case 2:
+				count = 18;
+				break;
+			case 3:
+				count = 12;
+				break;
+			}
+			list.add("Thermal Armor Upgrade Required : " + count);
 			list.add("Ability : Immune to Infected Gas");
 		}
 	}
