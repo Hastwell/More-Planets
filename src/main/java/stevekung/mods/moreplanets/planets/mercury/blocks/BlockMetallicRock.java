@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.mercury.blocks;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -18,7 +19,7 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
 
-public class BlockMetallicRock extends BlockBaseMP
+public class BlockMetallicRock extends BlockBaseMP implements IDetectableResource
 {
 	public BlockMetallicRock(String name)
 	{
@@ -43,14 +44,19 @@ public class BlockMetallicRock extends BlockBaseMP
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
-		super.dropBlockAsItemWithChance(world, pos, state, par6, par7);
+		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 
-		if (this.getItemDropped(state, world.rand, par7) != Item.getItemFromBlock(this))
+		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
 		{
-			int var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
-			this.dropXpOnBlockBreak(world, pos, var8);
+			this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
 		}
+	}
+
+	@Override
+	public boolean isValueable(IBlockState state)
+	{
+		return true;
 	}
 }

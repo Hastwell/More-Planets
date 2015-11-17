@@ -24,6 +24,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.init.MPItems;
@@ -209,6 +210,7 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.tinted_glass, 8, 0), new Object[] {"III", "IDI", "III", 'I', new ItemStack(Blocks.glass), 'D', new ItemStack(MarsItems.marsItemBasic, 1, 5)});
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.polished_space_decoration, 4, 0), new Object[] { "TT", "TT", 'T', new ItemStack(GCBlocks.basicBlock, 1, 4) });
 		GameRegistry.addRecipe(new ItemStack(MPBlocks.polished_space_decoration, 8, 1), new Object[] { "TTT", "TAT", "TTT", 'T', new ItemStack(MPBlocks.polished_space_decoration, 1, 0), 'A', new ItemStack(GCItems.basicItem, 1, 8) });
+		GameRegistry.addRecipe(new ItemStack(DionaBlocks.green_redstone_torch), new Object[] { "G", "T", 'G', new ItemStack(Items.dye, 1, EnumDyeColor.LIME.getDyeDamage()), 'T', Blocks.redstone_torch });
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruBlocks.nibiru_planks, 4, 0), new ItemStack(NibiruBlocks.nibiru_log, 1, 0) );
 		GameRegistry.addShapelessRecipe(new ItemStack(NibiruBlocks.nibiru_planks, 4, 1), new ItemStack(NibiruBlocks.nibiru_log, 1, 1) );
 		GameRegistry.addShapelessRecipe(new ItemStack(KoentusBlocks.crystal_planks, 4), new ItemStack(KoentusBlocks.crystal_log) );
@@ -244,33 +246,29 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(DionaItems.diona_item, 2, 6), new Object[] { "F", "F", 'F', new ItemStack(DionaItems.diona_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 3), new Object[] { "DMD", "DCD", "TAT", 'M', new ItemStack(Blocks.diamond_block), 'D', new ItemStack(AsteroidsItems.basicItem, 1, 6), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'T', new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 'A', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 2), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 2), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 4), new Object[] { " T ", " D ", "D D", 'T', new ItemStack(DionaItems.diona_item, 1, 12), 'D', new ItemStack(DionaItems.tier_4_rocket_module, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 0), new Object[] { " T ", " D ", "D D", 'T', DionaBlocks.green_redstone_torch, 'D', new ItemStack(DionaItems.tier_4_rocket_module, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.laser_ammo, 8, 0), new Object[] { " R", "I ", 'I', new ItemStack(Items.iron_ingot), 'R', new ItemStack(Items.redstone) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.laser_ammo, 8, 1), new Object[] { " P", "I ", 'I', new ItemStack(Items.iron_ingot), 'P', new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.laser_ammo, 8, 2), new Object[] { " E", "I ", 'I', new ItemStack(Items.iron_ingot), 'E', new ItemStack(KoentusItems.koentus_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.laser_ammo, 12, 3), new Object[] { " U", "I ", 'I', new ItemStack(Items.iron_ingot), 'U', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.laser_gun), new Object[] { "C  ", " DT", "  D", 'C', new ItemStack(AsteroidsItems.basicItem, 1, 8), 'D', new ItemStack(MarsItems.marsItemBasic, 1, 5), 'T', new ItemStack(AsteroidsItems.basicItem, 1, 6) });
 		GameRegistry.addRecipe(new ItemStack(DionaItems.diona_item, 1, 7), new Object[] { "G", "T", 'T', new ItemStack(Blocks.redstone_torch), 'G', new ItemStack(Items.dye, 1, 10) });
-		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 5), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 5), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 6), new Object[] { "DMD", "DCD", "TAT", 'M', new ItemStack(DionaBlocks.diona_block, 1, 10), 'D', new ItemStack(DionaItems.diona_item, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent) });
+		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 4), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(DionaItems.tier_4_rocket_module, 1, 5), new Object[] { "DMD", "DCD", "TAT", 'M', new ItemStack(DionaBlocks.diona_block, 1, 10), 'D', new ItemStack(DionaItems.diona_item, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'T', new ItemStack(DionaItems.diona_item, 1, 4), 'A', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusItems.polongnius_item, 2, 8), new Object[] { "M", "M", 'M', new ItemStack(PolongniusItems.polongnius_item, 1, 4) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusItems.polongnius_item, 2, 9), new Object[] { "P", "P", 'P', new ItemStack(PolongniusItems.polongnius_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 2, 2), new Object[] { "GGG", "WWW", "AAA", 'G', new ItemStack(Blocks.glass), 'W', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 1), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 3), new Object[] { "SSS", "AAA", "SSS", 'S', new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 2), 'A', new ItemStack(GCBlocks.aluminumWire, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 1), new Object[] { "DQD", "DCD", "POP", 'Q', new ItemStack(PolongniusBlocks.polongnius_block, 1, 11), 'P', new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'D', new ItemStack(PolongniusItems.polongnius_item, 1, 7), 'O', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.nibiru_item, 2, 4), new Object[] { "M", "M", 'M', new ItemStack(NibiruItems.nibiru_item, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.nibiru_item, 2, 5), new Object[] { "P", "P", 'P', new ItemStack(NibiruItems.nibiru_item, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.space_fruits, 1, 2), new Object[] { "O", "B", 'O', new ItemStack(NibiruItems.space_fruits, 1, 1), 'B', new ItemStack(Items.potionitem, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 1), new Object[] { "PDP", "PCP", "NON", 'D', new ItemStack(NibiruBlocks.nibiru_block, 1, 10), 'P', new ItemStack(NibiruItems.nibiru_item, 1, 2), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'N', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'O', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.ancient_dark_door, 3), new Object[] { "AA", "AA", "AA", 'A', new ItemStack(NibiruBlocks.nibiru_planks, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.orange_door, 3), new Object[] { "OO", "OO", "OO", 'O', new ItemStack(NibiruBlocks.nibiru_planks, 1, 1) });
-		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 4), new Object[] { " Y ", " X ", "X X", 'X', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'Y', new ItemStack(DionaItems.diona_item, 1, 12) });
+		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 4), new Object[] { " Y ", " X ", "X X", 'X', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'Y', DionaBlocks.green_redstone_torch });
 		GameRegistry.addRecipe(new ItemStack(NibiruItems.tier_7_rocket_module, 1, 3), new Object[] { " Y ", "XYX", "X X", 'X', new ItemStack(NibiruItems.tier_7_rocket_module, 1, 2), 'Y', new ItemStack(PolongniusItems.tier_6_rocket_module, 1, 2) });
 		GameRegistry.addRecipe(new ItemStack(KoentusItems.crystal_door, 3), new Object[] { "CC ", "CC ", "CC ", 'C', new ItemStack(KoentusBlocks.crystal_planks) });
 		GameRegistry.addRecipe(new ItemStack(FronosItems.bearry_egg), new Object[] { "S", "E", 'S', new ItemStack(FronosItems.fronos_food, 1, 0), 'E', new ItemStack(Items.egg) });
@@ -297,7 +295,6 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(FronosItems.fruits_juice, 1, 2), new Object[] { "K", "W", 'K', new ItemStack(FronosItems.fronos_fruits, 1, 0), 'W', new ItemStack(Items.potionitem, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosItems.fruits_juice, 1, 3), new Object[] { "L", "W", 'L', new ItemStack(FronosItems.fronos_fruits, 1, 1), 'W', new ItemStack(Items.potionitem, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosItems.tier_8_rocket_module, 1, 0), new Object[] { " SB", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(FronosItems.tier_8_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(FronosItems.tier_8_rocket_module, 1, 0), new Object[] { "BS ", "TCT", "TAT", 'B', new ItemStack(Blocks.stone_button), 'S', new ItemStack(Items.flint_and_steel), 'T', new ItemStack(FronosItems.tier_8_rocket_module, 1, 2), 'A', new ItemStack(GCItems.oxygenVent), 'C', new ItemStack(GCItems.canister, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosItems.tier_8_rocket_module, 1, 1), new Object[] { "PDP", "PCP", "NON", 'D', new ItemStack(FronosBlocks.ore_block, 1, 0), 'P', new ItemStack(FronosItems.fronos_item, 1, 4), 'C', new ItemStack(GCItems.fuelCanister, 1, 1), 'N', new ItemStack(FronosItems.tier_8_rocket_module, 1, 2), 'O', new ItemStack(GCItems.oxygenVent) });
 		GameRegistry.addRecipe(new ItemStack(FronosItems.fronos_food, 1, 14), new Object[] { "R", "B", 'R', new ItemStack(FronosBlocks.cloud_block, 1, 1), 'B', new ItemStack(Items.bowl) });
 		GameRegistry.addRecipe(new ItemStack(KapteynBItems.uranium_battery, 1, 99), new Object[] { " I ", "IUI", "IGI", 'I', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 2), 'U', new ItemStack(Items.redstone), 'G', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 1) });
@@ -534,8 +531,21 @@ public class CraftingManagerMP
 		CompressorRecipes.addShapelessRecipe(new ItemStack(MercuryItems.mercury_item, quick, 4), new ItemStack(MercuryItems.mercury_item, 1, 2), new ItemStack(MercuryItems.mercury_item, 1, 2));
 		CompressorRecipes.addShapelessRecipe(new ItemStack(MercuryItems.mercury_item, quick, 5), new ItemStack(MercuryItems.mercury_item, 1, 3), new ItemStack(MercuryItems.mercury_item, 1, 3));
 
-		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, quick, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
-		CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(GCItems.basicItem, 1, 2), new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
+		for (int i = 0; i <= OreDictionary.getOres(ConfigManagerCore.otherModsSilicon).size(); i++)
+		{
+			ItemStack silicon;
+
+			if (i == 0)
+			{
+				silicon = new ItemStack(GCItems.basicItem, 1, 2);
+			}
+			else
+			{
+				silicon = OreDictionary.getOres("itemSilicon").get(i - 1);
+			}
+			CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, quick, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
+			CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
+		}
 
 		BrewingRecipeRegistry.addRecipe(new ItemStack(Items.potionitem, 1, 16), new ItemStack(SiriusBItems.sirius_magma_cream), new ItemStack(Items.potionitem, 1, 8195));
 	}
@@ -909,11 +919,11 @@ public class CraftingManagerMP
 		input.put(9, new ItemStack(DionaItems.diona_item, 1, 4));
 		input.put(10, new ItemStack(DionaItems.diona_item, 1, 4));
 		input.put(11, new ItemStack(DionaItems.diona_item, 1, 4));
-		input.put(12, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
+		input.put(12, new ItemStack(DionaItems.tier_4_rocket_module, 1, 5));
 		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
 		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-		input.put(15, new ItemStack(DionaItems.tier_4_rocket_module, 1, 5));
-		input.put(16, new ItemStack(DionaItems.tier_4_rocket_module, 1, 6));
+		input.put(15, new ItemStack(DionaItems.tier_4_rocket_module, 1, 4));
+		input.put(16, new ItemStack(DionaItems.tier_4_rocket_module, 1, 5));
 		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
 		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
 		input.put(19, null);

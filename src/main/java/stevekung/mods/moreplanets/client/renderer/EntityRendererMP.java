@@ -15,7 +15,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
+import stevekung.mods.moreplanets.client.renderer.entities.RenderEvolvedWitch;
 import stevekung.mods.moreplanets.client.renderer.entities.RenderRocketMP;
+import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaCrab;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaGuardian;
 import stevekung.mods.moreplanets.moons.europa.client.render.entities.RenderEuropaSquid;
@@ -199,6 +201,8 @@ public class EntityRendererMP
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaGuardian.class, new RenderEuropaGuardian(render));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab(render));
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new RenderEvolvedWitch(render));
 	}
 
 	private static void registerNonEntityRenderers()

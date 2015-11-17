@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
-import stevekung.mods.moreplanets.planets.fronos.world.gen.tree.WorldGenCoconutTree;
+import stevekung.mods.moreplanets.planets.fronos.worldgen.tree.WorldGenCoconutTree;
 
 public class BlockFronosSapling extends BlockSaplingMP
 {
@@ -93,7 +93,7 @@ public class BlockFronosSapling extends BlockSaplingMP
 			switch (type)
 			{
 			case coconut_sapling:
-				obj = new WorldGenCoconutTree(35, 10, 1.3D);
+				obj = new WorldGenCoconutTree(30, 10, 1.3D);
 				break;
 			case red_maple_sapling:
 				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, this, FronosBlocks.maple_ivy);

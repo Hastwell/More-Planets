@@ -25,8 +25,7 @@ public class RoomSpawnerMP extends DungeonRoom
 	int sizeY;
 	int sizeZ;
 	Random rand;
-
-	private ArrayList<BlockPos> spawners = new ArrayList<BlockPos>();
+	ArrayList<BlockPos> spawners = new ArrayList<BlockPos>();
 
 	public RoomSpawnerMP(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
 	{
@@ -110,17 +109,18 @@ public class RoomSpawnerMP extends DungeonRoom
 		switch (rand.nextInt(6))
 		{
 		case 0:
-			return "EvolvedSpider";
-		case 1:
+		default:
 			return "EvolvedZombie";
+		case 1:
+			return "EvolvedSpider";
 		case 2:
 			return "EvolvedCreeper";
 		case 3:
 			return "EvolvedSkeleton";
 		case 4:
 			return "MorePlanets.EvolvedEnderman";
-		default:
-			return "EvolvedZombie";
+		case 5:
+			return "MorePlanets.EvolvedWitch";
 		}
 	}
 }

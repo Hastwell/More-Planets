@@ -11,9 +11,9 @@ import net.minecraft.block.Block.SoundType;
 
 public class SoundTypeSmallSlime extends SoundType
 {
-	public SoundTypeSmallSlime(String name, float volume, float frequency)
+	public SoundTypeSmallSlime()
 	{
-		super(name, volume, frequency);
+		super("slime", 1.0F, 1.0F);
 	}
 
 	@Override

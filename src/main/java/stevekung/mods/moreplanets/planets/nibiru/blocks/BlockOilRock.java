@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
 import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
 import net.minecraft.block.material.Material;
@@ -35,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 
-public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/ ITerraformableBlock
+public class BlockOilRock extends BlockBaseMP implements IDetectableResource, ITerraformableBlock
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -89,11 +90,11 @@ public class BlockOilRock extends BlockBaseMP implements /*IDetectableResource*/
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
 		return true;
-	}*/
+	}
 
 	@Override
 	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te)

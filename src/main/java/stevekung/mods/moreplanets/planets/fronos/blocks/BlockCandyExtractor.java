@@ -30,9 +30,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockContainerMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCandyExtractor;
 
 public class BlockCandyExtractor extends BlockContainerMP
@@ -175,19 +175,19 @@ public class BlockCandyExtractor extends BlockContainerMP
 			{
 			case 1:
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - d3, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.BLUE_FLAME, d0 - d3, d1, d2 + d4);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLUE_FLAME, d0 - d3, d1, d2 + d4);
 				break;
 			case 2:
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d3, d1, d2 + d4, 0.0D, 0.0D, 0.0D, new int[0]);
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.BLUE_FLAME, d0 + d3, d1, d2 + d4);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLUE_FLAME, d0 + d3, d1, d2 + d4);
 				break;
 			case 3:
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - d3, 0.0D, 0.0D, 0.0D, new int[0]);
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.BLUE_FLAME, d0 + d4, d1, d2 - d3);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLUE_FLAME, d0 + d4, d1, d2 - d3);
 				break;
 			case 4:
 				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + d3, 0.0D, 0.0D, 0.0D, new int[0]);
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.BLUE_FLAME, d0 + d4, d1, d2 + d3);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLUE_FLAME, d0 + d4, d1, d2 + d3);
 			}
 		}
 	}

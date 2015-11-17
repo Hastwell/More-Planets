@@ -17,8 +17,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public class BlockIchoriusTorch extends BlockTorch
 {
@@ -51,11 +51,11 @@ public class BlockIchoriusTorch extends BlockTorch
 		if (enumfacing.getAxis().isHorizontal())
 		{
 			EnumFacing enumfacing1 = enumfacing.getOpposite();
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ICHORIUS_SMOKE, d0 + d4 * enumfacing1.getFrontOffsetX(), d1 + d3, d2 + d4 * enumfacing1.getFrontOffsetZ());
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ICHORIUS_SMOKE, d0 + d4 * enumfacing1.getFrontOffsetX(), d1 + d3, d2 + d4 * enumfacing1.getFrontOffsetZ());
 		}
 		else
 		{
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ICHORIUS_SMOKE, d0, d1, d2);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ICHORIUS_SMOKE, d0, d1, d2);
 		}
 	}
 }

@@ -22,8 +22,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BlockFluidCaramel extends BlockFluidFinite
@@ -56,7 +56,7 @@ public class BlockFluidCaramel extends BlockFluidFinite
 			double d5 = pos.getX() + rand.nextFloat();
 			double d6 = pos.getY() - 1.05D;
 			double d7 = pos.getZ() + rand.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.CARAMEL_DRIP, d5, d6, d7);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CARAMEL_DRIP, d5, d6, d7);
 		}
 	}
 

@@ -27,10 +27,10 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public class BlockDandelion extends BlockBushMP
 {
@@ -98,13 +98,13 @@ public class BlockDandelion extends BlockBushMP
 		{
 			if (rand.nextInt(20) == 0)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ORANGE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ORANGE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 			}
 			else if (rand.nextInt(2) == 0)
 			{
 				if (world.isRaining())
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ORANGE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ORANGE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 				}
 			}
 		}
@@ -112,13 +112,13 @@ public class BlockDandelion extends BlockBushMP
 		{
 			if (rand.nextInt(20) == 0)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.PINK_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.PINK_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 			}
 			else if (rand.nextInt(2) == 0)
 			{
 				if (world.isRaining())
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.PINK_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.PINK_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 				}
 			}
 		}
@@ -126,13 +126,13 @@ public class BlockDandelion extends BlockBushMP
 		{
 			if (rand.nextInt(20) == 0)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.PURPLE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.PURPLE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 			}
 			else if (rand.nextInt(2) == 0)
 			{
 				if (world.isRaining())
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.PURPLE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.PURPLE_DANDELION, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 				}
 			}
 		}

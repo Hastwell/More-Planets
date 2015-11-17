@@ -28,8 +28,8 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 
@@ -178,11 +178,11 @@ public class UraniumExplosion extends Explosion
 
 		if (this.explosionSize >= 2.0F && this.isSmoking)
 		{
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.MC_EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ);
 		}
 		else
 		{
-			MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
 		}
 
 		Iterator iterator;

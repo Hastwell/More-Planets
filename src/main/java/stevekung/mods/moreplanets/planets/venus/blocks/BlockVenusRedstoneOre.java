@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.venus.blocks;
 
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public class BlockVenusRedstoneOre extends BlockBaseMP
+public class BlockVenusRedstoneOre extends BlockBaseMP implements IDetectableResource
 {
 	private boolean isOn;
 
@@ -196,5 +197,11 @@ public class BlockVenusRedstoneOre extends BlockBaseMP
 	protected ItemStack createStackedBlock(IBlockState state)
 	{
 		return new ItemStack(VenusBlocks.venus_redstone_ore);
+	}
+
+	@Override
+	public boolean isValueable(IBlockState state)
+	{
+		return true;
 	}
 }

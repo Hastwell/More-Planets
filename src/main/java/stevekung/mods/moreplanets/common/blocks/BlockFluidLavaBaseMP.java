@@ -20,8 +20,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 {
@@ -105,7 +105,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
 
 		for (int i = 0; i < 8; ++i)
 		{
-			MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_LARGE_SMOKE, pos.getX() + Math.random(), pos.getY() + 1.2D, pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_LARGE_SMOKE, pos.getX() + Math.random(), pos.getY() + 1.2D, pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
 		}
 	}
 

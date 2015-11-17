@@ -291,24 +291,20 @@ public class ChunkProviderDeimos extends ChunkProviderGenerate
 		return 1.0 - (n * (n * n * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0;
 	}
 
-	public void decoratePlanet(World world, Random rand, int x, int z)
-	{
-		this.biomeDecorator.decorate(world, rand, x, z);
-	}
-
 	@Override
 	public void populate(IChunkProvider chunk, int x, int z)
 	{
 		BlockFalling.fallInstantly = true;
 		int var4 = x * 16;
 		int var5 = z * 16;
-		this.worldObj.getBiomeGenForCoords(new BlockPos(var4 + 16, 0, var5 + 16));
+		BlockPos blockpos = new BlockPos(var4, 0, var5);
+		BiomeGenBaseDeimos biomegenbase = (BiomeGenBaseDeimos) this.worldObj.getBiomeGenForCoords(blockpos.add(16, 0, 16));
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
 		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(x, z));
 		this.rand.setSeed(x * var7 + z * var9 ^ this.worldObj.getSeed());
-		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+		biomegenbase.decorate(this.worldObj, rand, new BlockPos(var4, 0, var5));
 		BlockFalling.fallInstantly = false;
 	}
 

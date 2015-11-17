@@ -35,11 +35,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.util.DamageSourceMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.feature.WorldGenBigSkyMushroom;
 
 public class BlockFronosFlower extends BlockBushMP implements IGrowable
@@ -244,7 +244,7 @@ public class BlockFronosFlower extends BlockBushMP implements IGrowable
 		{
 			if (rand.nextInt(1) == 0)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.PURPLE_SPIKE, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.PURPLE_SPIKE, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 			}
 		}
 		else if (type == BlockType.jungle_iris)
@@ -256,7 +256,7 @@ public class BlockFronosFlower extends BlockBushMP implements IGrowable
 					double d0 = rand.nextGaussian() * 0.02D;
 					double d1 = rand.nextGaussian() * 0.02D;
 					double d2 = rand.nextGaussian() * 0.02D;
-					MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.JUNGLE_IRIS, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat() * 1.0D, pos.getZ() + rand.nextFloat(), d0, d1, d2);
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.JUNGLE_IRIS, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat() * 1.0D, pos.getZ() + rand.nextFloat(), d0, d1, d2);
 				}
 			}
 		}

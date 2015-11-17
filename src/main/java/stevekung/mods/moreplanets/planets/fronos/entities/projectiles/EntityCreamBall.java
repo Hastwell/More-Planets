@@ -15,8 +15,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public class EntityCreamBall extends EntityThrowable
 {
@@ -74,27 +74,27 @@ public class EntityCreamBall extends EntityThrowable
 
 		for (int i = 0; i < 8; ++i)
 		{
-			ParticleTypesMP particle = null;
+			EnumParticleTypesMP particle = null;
 
 			switch (this.getCreamBallType())
 			{
 			case 0:
-				particle = ParticleTypesMP.VANILLA_CREAM_BALL;
+				particle = EnumParticleTypesMP.VANILLA_CREAM_BALL;
 				break;
 			case 1:
-				particle = ParticleTypesMP.CHOCOLATE_CREAM_BALL;
+				particle = EnumParticleTypesMP.CHOCOLATE_CREAM_BALL;
 				break;
 			case 2:
-				particle = ParticleTypesMP.STRAWBERRY_CREAM_BALL;
+				particle = EnumParticleTypesMP.STRAWBERRY_CREAM_BALL;
 				break;
 			case 3:
-				particle = ParticleTypesMP.ORANGE_CREAM_BALL;
+				particle = EnumParticleTypesMP.ORANGE_CREAM_BALL;
 				break;
 			case 4:
-				particle = ParticleTypesMP.TEA_CREAM_BALL;
+				particle = EnumParticleTypesMP.TEA_CREAM_BALL;
 				break;
 			case 5:
-				particle = ParticleTypesMP.LEMON_CREAM_BALL;
+				particle = EnumParticleTypesMP.LEMON_CREAM_BALL;
 				break;
 			}
 			MorePlanetsCore.proxy.spawnParticle(particle, this.posX, this.posY, this.posZ);

@@ -78,6 +78,7 @@ import org.lwjgl.util.vector.Vector3f;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
@@ -89,7 +90,6 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.core.init.MPPotions;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
@@ -1053,7 +1053,7 @@ public class MorePlanetsEvents
 							}
 							living.playSound("mob.slime.big", f, 0.4F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 						}
-						MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.ALIEN_SPLASH, living.posX + (world.rand.nextFloat() - 0.5D) * living.width, living.getEntityBoundingBox().minY + 0.1D, living.posZ + (world.rand.nextFloat() - 0.5D) * living.width, -living.motionX, 0.6D, -living.motionZ);
+						MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ALIEN_SPLASH, living.posX + (world.rand.nextFloat() - 0.5D) * living.width, living.getEntityBoundingBox().minY + 0.1D, living.posZ + (world.rand.nextFloat() - 0.5D) * living.width, -living.motionX, 0.6D, -living.motionZ);
 					}
 				}
 			}

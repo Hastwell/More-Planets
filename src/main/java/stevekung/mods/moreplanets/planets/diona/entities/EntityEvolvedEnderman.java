@@ -44,9 +44,9 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
@@ -107,7 +107,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
 		{
 			for (int i = 0; i < 2; ++i)
 			{
-				MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.BLUE_PORTAL, this.posX + (this.rand.nextDouble() - 0.5D) * this.width, this.posY + this.rand.nextDouble() * this.height - 0.25D, this.posZ + (this.rand.nextDouble() - 0.5D) * this.width, (this.rand.nextDouble() - 0.5D) * 2.0D, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2.0D);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLUE_PORTAL, this.posX + (this.rand.nextDouble() - 0.5D) * this.width, this.posY + this.rand.nextDouble() * this.height - 0.25D, this.posZ + (this.rand.nextDouble() - 0.5D) * this.width, (this.rand.nextDouble() - 0.5D) * 2.0D, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2.0D);
 			}
 		}
 		this.isJumping = false;
@@ -202,7 +202,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
 				double d6 = d3 + (this.posX - d3) * d9 + (this.rand.nextDouble() - 0.5D) * this.width * 2.0D;
 				double d7 = d4 + (this.posY - d4) * d9 + this.rand.nextDouble() * this.height;
 				double d8 = d5 + (this.posZ - d5) * d9 + (this.rand.nextDouble() - 0.5D) * this.width * 2.0D;
-				MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.BLUE_PORTAL, d6, d7, d8, f, f1, f2);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLUE_PORTAL, d6, d7, d8, f, f1, f2);
 			}
 			this.worldObj.playSoundEffect(d3, d4, d5, "mob.endermen.portal", 1.0F, 1.0F);
 			this.playSound("mob.endermen.portal", 1.0F, 1.0F);

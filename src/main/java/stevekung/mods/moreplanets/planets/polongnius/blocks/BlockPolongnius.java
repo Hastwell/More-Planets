@@ -29,9 +29,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class BlockPolongnius extends BlockPlanetTileMP
@@ -222,7 +222,7 @@ public class BlockPolongnius extends BlockPlanetTileMP
 			{
 				if (world.rand.nextInt(10) == 0)
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.CHEESE_SLIME, pos.getX() + world.rand.nextFloat(), pos.getY() + 1.2F, pos.getZ() + world.rand.nextFloat());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CHEESE_SLIME, pos.getX() + world.rand.nextFloat(), pos.getY() + 1.2F, pos.getZ() + world.rand.nextFloat());
 				}
 			}
 		}

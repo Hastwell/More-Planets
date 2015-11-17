@@ -30,11 +30,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntityBreathable, IEntityLivingPlanet
@@ -168,7 +168,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
 				float f1 = this.rand.nextFloat() * 0.5F + 0.5F;
 				float f2 = MathHelper.sin(f) * i * 0.5F * f1;
 				float f3 = MathHelper.cos(f) * i * 0.5F * f1;
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.SIRIUS_FLAME, this.posX + f2, this.getEntityBoundingBox().minY, this.posZ + f3);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.SIRIUS_FLAME, this.posX + f2, this.getEntityBoundingBox().minY, this.posZ + f3);
 			}
 
 			if (this.makesSoundOnLand())

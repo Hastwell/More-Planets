@@ -4,8 +4,8 @@ import net.minecraft.client.particle.EntityFX;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 @SideOnly(Side.CLIENT)
 public class EntityMCHugeExplodeFX extends EntityFX
@@ -26,7 +26,7 @@ public class EntityMCHugeExplodeFX extends EntityFX
 			double d0 = this.posX + (this.rand.nextDouble() - this.rand.nextDouble()) * 4.0D;
 			double d1 = this.posY + (this.rand.nextDouble() - this.rand.nextDouble()) * 4.0D;
 			double d2 = this.posZ + (this.rand.nextDouble() - this.rand.nextDouble()) * 4.0D;
-			MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_EXPLOSION_LARGE, d0, d1, d2, (float)this.timeSinceStart / (float)this.maximumTime, 0.0D, 0.0D);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_LARGE, d0, d1, d2, (float)this.timeSinceStart / (float)this.maximumTime, 0.0D, 0.0D);
 		}
 
 		++this.timeSinceStart;

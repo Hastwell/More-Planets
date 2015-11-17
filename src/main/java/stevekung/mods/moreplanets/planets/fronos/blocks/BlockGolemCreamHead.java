@@ -23,9 +23,9 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamGolem;
 
 public class BlockGolemCreamHead extends BlockBaseMP
@@ -96,7 +96,7 @@ public class BlockGolemCreamHead extends BlockBaseMP
 
 				for (int i = 0; i < 120; ++i)
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.VANILLA_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.VANILLA_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
 				}
 			}
 		}
@@ -119,7 +119,7 @@ public class BlockGolemCreamHead extends BlockBaseMP
 
 				for (int i = 0; i < 120; ++i)
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.CHOCOLATE_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CHOCOLATE_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
 				}
 			}
 		}
@@ -142,7 +142,7 @@ public class BlockGolemCreamHead extends BlockBaseMP
 
 				for (int i = 0; i < 120; ++i)
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.STRAWBERRY_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.STRAWBERRY_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
 				}
 			}
 		}
@@ -165,7 +165,7 @@ public class BlockGolemCreamHead extends BlockBaseMP
 
 				for (int i = 0; i < 120; ++i)
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ORANGE_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ORANGE_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
 				}
 			}
 		}
@@ -188,7 +188,7 @@ public class BlockGolemCreamHead extends BlockBaseMP
 
 				for (int i = 0; i < 120; ++i)
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.TEA_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.TEA_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
 				}
 			}
 		}
@@ -211,7 +211,7 @@ public class BlockGolemCreamHead extends BlockBaseMP
 
 				for (int i = 0; i < 120; ++i)
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.LEMON_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.LEMON_CREAM_BALL, pos.getX() + world.rand.nextDouble(), pos.getY() + world.rand.nextDouble() - 1.5D, pos.getZ() + world.rand.nextDouble());
 				}
 			}
 		}

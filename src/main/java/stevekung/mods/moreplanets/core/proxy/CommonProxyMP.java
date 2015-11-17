@@ -7,20 +7,20 @@
 
 package stevekung.mods.moreplanets.core.proxy;
 
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public class CommonProxyMP
 {
 	public void registerRenderer() {}
 
-	public void spawnParticle(ParticleTypesMP type, double x, double y, double z) {}
+	public void spawnParticle(EnumParticleTypesMP type, double x, double y, double z) {}
 
-	public void spawnMotionParticle(ParticleTypesMP type, double x, double y, double z, double motionX, double motionY, double motionZ) {}
+	public void spawnParticle(EnumParticleTypesMP type, double x, double y, double z, double motionX, double motionY, double motionZ) {}
 
 	public EntityPlayer getPlayerFromNetHandler(INetHandler handler)
 	{

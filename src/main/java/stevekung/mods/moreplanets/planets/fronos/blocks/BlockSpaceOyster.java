@@ -27,9 +27,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockOysterMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockSpaceOyster extends BlockOysterMP
@@ -81,7 +81,7 @@ public class BlockSpaceOyster extends BlockOysterMP
 		{
 			if (rand.nextInt(1) == 0)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.GOLDEN_DUST, pos.getX() + rand.nextFloat(), pos.getY() + 0.15F, pos.getZ() + rand.nextFloat());
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.GOLDEN_DUST, pos.getX() + rand.nextFloat(), pos.getY() + 0.15F, pos.getZ() + rand.nextFloat());
 			}
 		}
 	}

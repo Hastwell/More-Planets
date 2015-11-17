@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry.EntityRegistration;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
+import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
@@ -143,6 +144,7 @@ public class MPEntities
 		registerEntity(EntityEuropaCrab.class, "EuropaCrab", 39, -11574413, -12167066);
 
 		registerEntity(EntityJellySlimePet.class, "JellySlimePet", 40, -2005303, -2208060);
+		registerEntity(EntityEvolvedWitch.class, "EvolvedWitch", 41, 3407872, 5349438);
 	}
 
 	private static void registerNonMobEntities()

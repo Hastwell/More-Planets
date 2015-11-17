@@ -17,9 +17,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class ItemBlockDandelion extends ItemBlockBaseMP
@@ -78,15 +78,15 @@ public class ItemBlockDandelion extends ItemBlockBaseMP
 		{
 			if (meta == 3)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.ORANGE_DANDELION, player.posX + vec.xCoord + pos, player.posY + vec.yCoord + player.getEyeHeight() + pos, player.posZ + vec.zCoord + pos);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ORANGE_DANDELION, player.posX + vec.xCoord + pos, player.posY + vec.yCoord + player.getEyeHeight() + pos, player.posZ + vec.zCoord + pos);
 			}
 			else if (meta == 4)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.PINK_DANDELION, player.posX + vec.xCoord + pos, player.posY + vec.yCoord + player.getEyeHeight() + pos, player.posZ + vec.zCoord + pos);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.PINK_DANDELION, player.posX + vec.xCoord + pos, player.posY + vec.yCoord + player.getEyeHeight() + pos, player.posZ + vec.zCoord + pos);
 			}
 			else if (meta == 5)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.PURPLE_DANDELION, player.posX + vec.xCoord + pos, player.posY + vec.yCoord + player.getEyeHeight() + pos, player.posZ + vec.zCoord + pos);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.PURPLE_DANDELION, player.posX + vec.xCoord + pos, player.posY + vec.yCoord + player.getEyeHeight() + pos, player.posZ + vec.zCoord + pos);
 			}
 		}
 

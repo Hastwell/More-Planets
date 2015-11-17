@@ -27,9 +27,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class BlockKoentus extends BlockPlanetTileMP
@@ -186,7 +186,7 @@ public class BlockKoentus extends BlockPlanetTileMP
 			{
 				if (!World.doesBlockHaveSolidTopSurface(world, pos.down()))
 				{
-					MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.KOENTUS_SLUDGE_DRIP, pos.getX() + rand.nextDouble(), pos.getY(), pos.getZ() + rand.nextDouble());
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.KOENTUS_SLUDGE_DRIP, pos.getX() + rand.nextDouble(), pos.getY(), pos.getZ() + rand.nextDouble());
 
 					if (rand.nextInt(100) == 0)
 					{

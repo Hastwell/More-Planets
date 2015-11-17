@@ -19,9 +19,9 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockFluidBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
 public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
@@ -39,12 +39,11 @@ public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		super.randomDisplayTick(world, pos, state, rand);
 		int meta = (Integer)state.getValue(LEVEL);
 
 		if (rand.nextInt(1) == 0)
 		{
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.CHEESE_OF_MILK_BUBBLE, pos.getX() + rand.nextFloat(), pos.getY() + 1.0F, pos.getZ() + rand.nextFloat());
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CHEESE_OF_MILK_BUBBLE, pos.getX() + rand.nextFloat(), pos.getY() + 1.0F, pos.getZ() + rand.nextFloat());
 		}
 		if (rand.nextInt(64) == 0)
 		{
@@ -58,7 +57,7 @@ public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
 			double d5 = pos.getX() + rand.nextFloat();
 			double d6 = pos.getY() - 1.05D;
 			double d7 = pos.getZ() + rand.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.CHEESE_OF_MILK_DRIP, d5, d6, d7);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CHEESE_OF_MILK_DRIP, d5, d6, d7);
 		}
 	}
 

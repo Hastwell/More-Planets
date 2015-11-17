@@ -197,6 +197,8 @@ public class MPBlocks
 		highlightBlockList.add(DarkAsteroidBlocks.dark_asteroid_rock);
 		highlightBlockList.add(KoentusBlocks.crystal_cocoa);
 		highlightBlockList.add(DarkAsteroidBlocks.alien_farmland);
+		highlightBlockList.add(DionaBlocks.green_redstone_torch_off);
+		highlightBlockList.add(PolongniusBlocks.fallen_polongnius_meteor);
 
 		hideBlockList.add(MPBlocks.dungeon_spawner);
 		hideBlockList.add(MPBlocks.double_stone_slab_1);
@@ -255,6 +257,8 @@ public class MPBlocks
 		hideBlockList.add(EuropaBlocks.double_europa_sandstone_slab);
 		hideBlockList.add(EuropaBlocks.double_europa_prismarine_slab);
 		hideBlockList.add(DarkAsteroidBlocks.dark_air);
+		hideBlockList.add(DionaBlocks.green_redstone_torch_off);
+		hideBlockList.add(DarkAsteroidBlocks.alien_farmland);
 
 		MPLog.debug("Register Blocks");
 	}

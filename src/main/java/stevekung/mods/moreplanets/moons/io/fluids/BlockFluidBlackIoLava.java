@@ -17,9 +17,9 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockFluidLavaBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.io.blocks.BlockIo;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 
@@ -55,9 +55,8 @@ public class BlockFluidBlackIoLava extends BlockFluidLavaBaseMP
 			double d5 = pos.getX() + rand.nextFloat();
 			double d6 = pos.getY() - 1.05D;
 			double d7 = pos.getZ() + rand.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.BLACK_LAVA_DRIP, d5, d6, d7);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLACK_LAVA_DRIP, d5, d6, d7);
 		}
-		super.randomDisplayTick(world, pos, state, rand);
 	}
 
 	@Override

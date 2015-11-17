@@ -224,6 +224,7 @@ public class ModelSpaceWolf extends ModelBase
 		else
 		{
 			this.wolfHeadMain.renderWithRotation(par7);
+			this.oxygenMask.renderWithRotation(par7);
 			this.wolfBody.render(par7);
 			this.wolfLeg1.render(par7);
 			this.wolfLeg2.render(par7);
@@ -231,7 +232,6 @@ public class ModelSpaceWolf extends ModelBase
 			this.wolfLeg4.render(par7);
 			this.wolfTail.renderWithRotation(par7);
 			this.wolfMane.render(par7);
-			this.oxygenMask.renderWithRotation(par7);
 			this.tank1.render(par7);
 			this.tank2.render(par7);
 			this.tube1.render(par7);

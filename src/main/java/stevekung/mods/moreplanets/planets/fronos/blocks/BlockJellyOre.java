@@ -10,12 +10,14 @@ package stevekung.mods.moreplanets.planets.fronos.blocks;
 import java.util.List;
 import java.util.Random;
 
+import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -28,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockJellyOre extends BlockBaseMP /*implements IDetectableResource*/
+public class BlockJellyOre extends BlockBaseMP implements IDetectableResource
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
@@ -41,7 +43,7 @@ public class BlockJellyOre extends BlockBaseMP /*implements IDetectableResource*
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
 	}
@@ -69,39 +71,38 @@ public class BlockJellyOre extends BlockBaseMP /*implements IDetectableResource*
 	}
 
 	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random random)
+	public int quantityDropped(IBlockState state, int fortune, Random rand)
 	{
-		if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(state, random, fortune))
+		if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(state, rand, fortune))
 		{
-			int j = random.nextInt(fortune + 2) - 1;
+			int j = rand.nextInt(fortune + 2) - 1;
 
 			if (j < 0)
 			{
 				j = 0;
 			}
-			return this.quantityDropped(random) * (j + 1);
+			return this.quantityDropped(rand) * (j + 1);
 		}
 		else
 		{
-			return this.quantityDropped(random);
+			return this.quantityDropped(rand);
 		}
 	}
 
-	/*@Override
+	@Override
 	public boolean isValueable(IBlockState state)
 	{
 		return true;
-	}*/
+	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
-		super.dropBlockAsItemWithChance(world, pos, state, par6, par7);
+		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 
-		if (this.getItemDropped(state, world.rand, par7) != Item.getItemFromBlock(this))
+		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
 		{
-			int var8 = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
-			this.dropXpOnBlockBreak(world, pos, var8);
+			this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
 		}
 	}
 

@@ -22,9 +22,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class BlockFallenKoentusMeteor extends BlockBaseMP
@@ -84,7 +84,7 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 				d3 = (rand.nextFloat() - 0.5D) * 0.5D;
 				d4 = (rand.nextFloat() - 0.5D) * 0.5D;
 				d5 = (rand.nextFloat() - 0.5D) * 0.5D;
-				MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.KOENTUS_METEOR_SMOKE, d0, d1, d2, d3, d4, d5);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.KOENTUS_METEOR_SMOKE, d0, d1, d2, d3, d4, d5);
 			}
 		}
 	}

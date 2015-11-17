@@ -73,6 +73,7 @@ tile.stone_wall.diona_cobblestone.name=Diona Cobblestone Wall
 tile.stone_wall.quontonium_brick.name=Quontonium Brick Wall
 tile.stone_wall.chiseled_quontonium.name=Chiseled Quontonium Wall
 tile.dungeon_brick_wall.diona_dungeon_brick.name=Diona Dungeon Brick Wall
+tile.green_redstone_torch.name=Green Redstone Torch
 
 #########Polongnius Block#########
 tile.polongnius_block.cheese_gas.name=Cheese Gas
@@ -689,7 +690,6 @@ item.diona_item.compressed_quontonium.name=Compressed Quontonium
 item.diona_item.compressed_fronisium.name=Compressed Fronisium
 item.diona_item.quontonium_stick.name=Quontonium Stick
 item.diona_item.fronisium_stick.name=Fronisium Stick
-item.diona_item.green_redstone_torch.name=Green Redstone Torch
 item.tier_4_rocket_module.tier_4_heavy_duty_plate.name=Heavy Duty Plate
 item.diona_dungeon_key.name=Tier 4 Diona Dungeon Key
 item.tier_4_rocket_module.tier_4_nose_cone.name=Tier 4 Nose Cone
@@ -1037,6 +1037,13 @@ item.sulfur_pickaxe.name=Sulfur Pickaxe
 item.sulfur_axe.name=Sulfur Axe
 item.sulfur_hoe.name=Sulfur Hoe
 
+#########Dark Asteroids Tools#########
+item.xeonium_sword.name=Xeonium Sword
+item.xeonium_shovel.name=Xeonium Shovel
+item.xeonium_pickaxe.name=Xeonium Pickaxe
+item.xeonium_axe.name=Xeonium Axe
+item.xeonium_hoe.name=Xeonium Hoe
+
 # ARMORS
 #########Diona Armor#########
 item.quontonium_helmet.name=Quontonium Helmet
@@ -1186,6 +1193,7 @@ entity.MorePlanets.EuropaSquid.name=Europa Squid
 entity.MorePlanets.EuropaGuardian.name=Europa Guardian
 entity.MorePlanets.EuropaCrab.name=Europa Crab
 entity.MorePlanets.JellySlimePet.name=Jelly Slime Pet
+entity.MorePlanets.EvolvedWitch.name=Evolved Witch
 
 # DESCRIPTION
 desc.tier4.name=Tier 4
@@ -1221,12 +1229,9 @@ message.warning.infected.gas=Invalid Tiered Thermal Armor!
 container.diona.treasurechest.name=Diona Treasure Chest
 container.polongnius.treasurechest.name=Polongnius Treasure Chest
 container.nibiru.treasurechest.name=Nibiru Treasure Chest
-container.koentus.treasurechest.name=Koentus Treasure Chest
 container.fronos.treasurechest.name=Fronos Treasure Chest
 container.kapteynb.treasurechest.name=Kapteyn B Treasure Chest
 container.siriusb.treasurechest.name=Sirius B Treasure Chest
-container.mercury.treasurechest.name=Mercury Treasure Chest
-container.venus.treasurechest.name=Venus Treasure Chest
 container.pluto.treasurechest.name=Pluto Treasure Chest
 container.diona.ancientchest.name=Diona Ancient Chest
 container.polongnius.ancientchest.name=Polongnius Ancient Chest

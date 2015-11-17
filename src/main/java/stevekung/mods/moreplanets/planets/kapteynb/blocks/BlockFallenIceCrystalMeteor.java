@@ -113,24 +113,22 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
 	{
 		if (!world.isRemote)
 		{
-			this.tryToFall(world, pos);
+			this.tryToFall(world, pos, state);
 		}
 	}
 
-	private void tryToFall(World world, BlockPos pos)
+	private void tryToFall(World world, BlockPos pos, IBlockState state)
 	{
 		if (this.canFallBelow(world, pos.down()) && pos.getY() >= 0)
 		{
 			world.setBlockState(pos, Blocks.air.getDefaultState(), 3);
 			BlockPos blockpos1;
 
-			for (blockpos1 = pos.down(); this.canFallBelow(world, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.down())
-			{
-			}
+			for (blockpos1 = pos.down(); this.canFallBelow(world, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.down()) {}
 
 			if (blockpos1.getY() >= 0)
 			{
-				world.setBlockState(blockpos1.up(), this.getDefaultState(), 3);
+				world.setBlockState(blockpos1.up(), state, 3);
 			}
 		}
 	}

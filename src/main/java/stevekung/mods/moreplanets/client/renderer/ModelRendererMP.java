@@ -44,6 +44,7 @@ import stevekung.mods.moreplanets.planets.nibiru.items.armor.NibiruArmorItems;
 import stevekung.mods.moreplanets.planets.nibiru.items.tools.NibiruToolsItems;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
+import stevekung.mods.moreplanets.planets.pluto.items.tools.PlutoToolsItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.items.armor.PolongniusArmorItems;
@@ -144,6 +145,7 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(DionaBlocks.creeper_minion_egg, "creeper_minion_egg", "moreplanets");
 		ClientRegisterHelper.registerModelRender(DionaBlocks.diona_ancient_chest, "diona_ancient_chest", "moreplanets");
 		ClientRegisterHelper.registerModelRender(DionaBlocks.diona_treasure_chest, "diona_treasure_chest", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DionaBlocks.green_redstone_torch, "green_redstone_torch", "moreplanets");
 
 		ClientRegisterHelper.registerModelRender(PolongniusBlocks.polongnius_block, 0, "cheese_gas", "moreplanets");
 		ClientRegisterHelper.registerModelRender(PolongniusBlocks.polongnius_block, 1, "solid_cheese_gas", "moreplanets");
@@ -874,8 +876,7 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(KapteynBItems.frozen_water_bucket, "frozen_water_bucket", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KapteynBItems.namerium_crystal, "namerium_crystal", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KapteynBItems.tier_8_rocket_schematic, "tier_8_rocket_schematic", "moreplanets");
-		ClientRegisterHelper.registerModelRender(KapteynBItems.uranium_battery, 0, "uranium_battery", "moreplanets");
-		ClientRegisterHelper.registerModelRender(KapteynBItems.uranium_battery, 100, "uranium_battery", "moreplanets");
+		ClientRegisterHelper.registerModelRender(KapteynBItems.uranium_battery, "uranium_battery", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KapteynBItems.kapteyn_b_dungeon_key, "kapteyn_b_dungeon_key", "moreplanets");
 
 		ClientRegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 0, "small_diamond_pieces", "moreplanets");
@@ -909,8 +910,7 @@ public class ModelRendererMP
 
 		ClientRegisterHelper.registerModelRender(VenusItems.venus_item, "lead_ingot", "moreplanets");
 		ClientRegisterHelper.registerModelRender(VenusItems.jetpack, "jetpack", "moreplanets");
-		ClientRegisterHelper.registerModelRender(VenusItems.sulfur_battery, 0, "sulfur_battery", "moreplanets");
-		ClientRegisterHelper.registerModelRender(VenusItems.sulfur_battery, 100, "sulfur_battery", "moreplanets");
+		ClientRegisterHelper.registerModelRender(VenusItems.sulfur_battery, "sulfur_battery", "moreplanets");
 
 		ClientRegisterHelper.registerModelRender(PlutoItems.pluto_item, 0, "xeonium_gem", "moreplanets");
 		ClientRegisterHelper.registerModelRender(PlutoItems.space_potato, 0, "space_potato", "moreplanets");
@@ -1022,6 +1022,12 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(SiriusBToolsItems.sulfur_pickaxe, "sulfur_pickaxe", "moreplanets");
 		ClientRegisterHelper.registerModelRender(SiriusBToolsItems.sulfur_axe, "sulfur_axe", "moreplanets");
 		ClientRegisterHelper.registerModelRender(SiriusBToolsItems.sulfur_hoe, "sulfur_hoe", "moreplanets");
+
+		ClientRegisterHelper.registerModelRender(PlutoToolsItems.xeonium_sword, "xeonium_sword", "moreplanets");
+		ClientRegisterHelper.registerModelRender(PlutoToolsItems.xeonium_shovel, "xeonium_shovel", "moreplanets");
+		ClientRegisterHelper.registerModelRender(PlutoToolsItems.xeonium_pickaxe, "xeonium_pickaxe", "moreplanets");
+		ClientRegisterHelper.registerModelRender(PlutoToolsItems.xeonium_axe, "xeonium_axe", "moreplanets");
+		ClientRegisterHelper.registerModelRender(PlutoToolsItems.xeonium_hoe, "xeonium_hoe", "moreplanets");
 
 		//Armor
 		ClientRegisterHelper.registerModelRender(DionaArmorItems.quontonium_helmet, "quontonium_helmet", "moreplanets");

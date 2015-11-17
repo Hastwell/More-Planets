@@ -13,10 +13,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
+import stevekung.mods.moreplanets.moons.io.blocks.BlockIo;
+import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronos;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.dimension.WorldProviderFronos;
@@ -39,9 +40,7 @@ public class WorldGenLiquidLakes extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos)
 	{
-		for (pos = pos.add(-8, 0, -8); pos.getY() > 5 && world.isAirBlock(pos); pos = pos.down())
-		{
-		}
+		for (pos = pos.add(-8, 0, -8); pos.getY() > 5 && world.isAirBlock(pos); pos = pos.down()) {}
 
 		if (pos.getY() <= 4)
 		{
@@ -126,34 +125,6 @@ public class WorldGenLiquidLakes extends WorldGenerator
 					}
 				}
 			}
-
-			for (j = 0; j < 16; ++j)
-			{
-				for (k1 = 0; k1 < 16; ++k1)
-				{
-					for (k = 4; k < 8; ++k)
-					{
-						if (aboolean[(j * 16 + k1) * 8 + k])
-						{
-							BlockPos blockpos1 = pos.add(j, k - 1, k1);
-
-							if (world.getBlockState(blockpos1).getBlock() == Blocks.dirt && world.getLightFor(EnumSkyBlock.SKY, pos.add(j, k, k1)) > 0)
-							{
-								BiomeGenBase biomegenbase = world.getBiomeGenForCoords(blockpos1);
-
-								if (biomegenbase.topBlock.getBlock() == Blocks.mycelium)
-								{
-									world.setBlockState(blockpos1, Blocks.mycelium.getDefaultState(), 2);
-								}
-								else
-								{
-									world.setBlockState(blockpos1, Blocks.grass.getDefaultState(), 2);
-								}
-							}
-						}
-					}
-				}
-			}
 			if (this.block.getMaterial() == Material.lava)
 			{
 				for (j = 0; j < 16; ++j)
@@ -177,6 +148,10 @@ public class WorldGenLiquidLakes extends WorldGenerator
 								else if (world.provider instanceof WorldProviderVenus)
 								{
 									world.setBlockState(pos.add(j, k, k1), VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_rock), 2);
+								}
+								else if (world.provider instanceof WorldProviderDarkAsteroids)
+								{
+									world.setBlockState(pos.add(j, k, k1), IoBlocks.io_block.getDefaultState().withProperty(BlockIo.VARIANT, BlockIo.BlockType.ash_stone), 2);
 								}
 								else
 								{

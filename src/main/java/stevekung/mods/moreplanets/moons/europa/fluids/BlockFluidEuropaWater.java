@@ -20,10 +20,10 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockFluidBaseMP;
 import stevekung.mods.moreplanets.common.util.WorldUtilMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 
 public class BlockFluidEuropaWater extends BlockFluidBaseMP
@@ -73,7 +73,7 @@ public class BlockFluidEuropaWater extends BlockFluidBaseMP
 			double d5 = pos.getX() + rand.nextFloat();
 			double d6 = pos.getY() - 1.05D;
 			double d7 = pos.getZ() + rand.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.FROZEN_WATER_DRIP, d5, d6, d7);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.FROZEN_WATER_DRIP, d5, d6, d7);
 		}
 	}
 }

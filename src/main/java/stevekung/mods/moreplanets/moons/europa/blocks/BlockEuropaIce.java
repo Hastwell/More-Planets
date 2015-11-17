@@ -98,7 +98,7 @@ public class BlockEuropaIce extends BlockIceMP
 
 			if (material.blocksMovement() || material.isLiquid())
 			{
-				world.setBlockState(pos, Blocks.flowing_water.getDefaultState());
+				world.setBlockState(pos, EuropaBlocks.europa_water.getDefaultState());
 			}
 		}
 	}

@@ -1,0 +1,10 @@
+
+{
+    "variants": {
+        "facing=up": { "model": "moreplanets:green_redstone_torch_off" },
+        "facing=east": { "model": "moreplanets:green_redstone_torch_off_wall" },
+        "facing=south": { "model": "moreplanets:green_redstone_torch_off_wall", "y": 90 },
+        "facing=west": { "model": "moreplanets:green_redstone_torch_off_wall", "y": 180 },
+        "facing=north": { "model": "moreplanets:green_redstone_torch_off_wall", "y": 270 }
+    }
+}

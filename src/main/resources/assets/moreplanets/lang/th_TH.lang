@@ -573,8 +573,6 @@ tile.pluto_block.frozen_iron_ore.name=แร่เหล็กแช่แข็
 tile.pluto_block.iron_ore.name=แร่เหล็ก
 tile.pluto_block.xeonium_ore.name=แร่ ซีออนเนียม
 tile.pluto_block.dungeon_brick.name=อิฐดันเจี้ย ดาวพลูโต
-tile.pluto_block.surface_rock_brown.name=พื้นผิวหินสีน้ำตาล ดาวพลูโต
-tile.pluto_block.surface_rock_light_brown.name=พื้นผิวหินสีน้ำตาลอ่อน ดาวพลูโต
 tile.xeonium_glowstone.name=หินเรืองแสง ซีออนเนียม
 tile.frozen_methane_block.name=บล็อกก๊าซมีเทนแช่แข็ง
 tile.frozen_nitrogen_block.name=บล็อกไนโตรเจนแช่แข็ง
@@ -598,28 +596,6 @@ tile.europa_ice_slush.name=โคลนน้ำแข็ง ดาวยูโ�
 tile.europa_salt.name=เกลือยูโรป้า
 tile.europa_underwater_geyser.default.name=น้ำพุร้อนใต้น้ำยูโรปา
 tile.europa_underwater_geyser.smoke.name=ควันน้ำพุร้อนใต้น้ำยูโรปา
-tile.europa_water_bomb.name=ระเบิดน้ำจากดาวยูโลป้า
-
-#########Dark Asteroids Block#########
- tile.dark_asteroid_rock.rock.name=หินดาวเคราะน้อยดำ
- tile.dark_asteroid_rock.aluminum_ore.name=แร่อลูมิเนียม
- tile.dark_asteroid_rock.ilmenite_ore.name=แร่อิวมีไนท์
- tile.dark_asteroid_rock.iron_ore.name=แร่เหล็ก
- tile.dark_asteroid_rock.meteoric_iron_ore.name=แร่เหล็กจากดาว
- tile.dark_asteroid_rock.silicon_ore.name=แร่ซิลิคอน
- tile.dark_asteroid_rock.diamond_ore.name=แร่เพชร
- tile.dark_asteroid_rock.emerald_ore.name=แร่มรกต
- tile.dark_asteroid_rock.lapis_ore.name=แร่ลาพิส ลาซูไล
- tile.dark_asteroid_quicksand.name=ทรายดูด จาก ดาวเคราะน้อยดำ
- tile.alphere_ore.name=แร่ แอลเฟีย
- tile.alien_grass.name=หญ้าเอเลี่ยน
- tile.alien_dirt.dirt.name=ดินเอเลี่ยน
- tile.alien_dirt.coarse.name=ดินหยาบเอเลี่ยน
- tile.alien_log.name=ท้อนไม้ เอเลี่ยน
- tile.alien_planks.name=ไม้แปลรูป เอเลี่ยน
- tile.alien_glowstone.name=หินเรืองแสง เอเลี่ยน
- tile.alien_leaves.name=ใบไม้ เอเลี่ยน
- tile.alien_sapling.name=ต้นอ่อนเอเลี่ยน
 
 # ITEMS
 #########Main Item#########
@@ -763,10 +739,10 @@ item.cream_golem.strawberry_cream_golem.name=โกเลมครีมสต�
 item.cream_golem.orange_cream_golem.name=โกเลมครีมส้ม
 item.cream_golem.tea_cream_golem.name=โกเลมครีมชา
 item.fronos_item.fronos_rock_item.name=หิน ดาวฟาวโน
-item.coconut_milk_bucket.name=ถังกะทิ
-item.mineral_water_bucket.name=ถังน้ำแร่
-item.ovaltine_bucket.name=ถังโอวันติล
-item.tea_bucket.name=ถังน้ำชา
+item.fronos_bucket.coconut_milk_bucket.name=ถังกะทิ
+item.fronos_bucket.mineral_water_bucket.name=ถังน้ำแร่
+item.fronos_bucket.ovantine_bucket.name=ถังโอวันติล
+item.fronos_bucket.tea_bucket.name=ถังน้ำชา
 item.cup.empty_cup.name=ถ้วยที่ว่างเปล่า
 item.cup.mineral_water_cup.name=ถ้วยน้ำแร่
 item.cup.ovantine_cup.name=ถ้วยโอวันติน
@@ -813,7 +789,7 @@ item.fruits_juice.berry_juice.name=น้ำผลไม้เบอร์รี
 item.fronos_food.berry_salad.name=สลัดผลไม้
 item.fronos_food.sky_mushroom_stew.name=สตูว์เห็ดฟ้า
 item.fronos_food.rainbow_cloud_ice_cream.name=ไอศครีมเมฆสีรุ้ง
-item.caramel_bucket.name=ถังคาราเมล
+item.fronos_bucket.caramel_bucket.name=ถังคาราเมล
 item.candy_food.caramel.name=คาราเมล
 item.fruits_juice.kiwi_juice.name=น้ำผลไม้กีวี
 item.fruits_juice.lemon_juice.name=น้ำมะนาว
@@ -870,7 +846,7 @@ item.liquid_red_sulfur_bucket.name=ถังกำมะถันสีแดง
 item.liquid_yellow_sulfur_bucket.name=ถังกำมะถันสีเหลือง
 item.liquid_orange_sulfur_bucket.name=ถังกำมะถันสีส้ม
 item.liquid_brown_sulfur_bucket.name=ถังกำมะถันสีน้ำตาล
-item.io_black_lava_bucket.name=ถัง ลาวาดำ ดาวไอโอ
+item.io_black_lava_bucket.name=ถัง ลาวาดำ
 
 #########Venus Item#########
 item.venus_item.lead_ingot.name=แถ่ง ตะกั่ว
@@ -889,8 +865,7 @@ item.pluto_heart_crystal_item.name=คริสตัลหัวใจ จา�
 #########Europa Item#########
 item.europa_prismarine_item.europa_prismarine_shard.name=โล้ เพรอส์เซอร์มารีน คริสตัล
 item.europa_prismarine_item.europa_prismarine_crystals.name=เพรอส์เซอร์มารีน คริสตัล
-item.europa_water_bucket.name=ถังน้ำดาวยูโลป้า
-item.europa_apple.name=แอปเปิ้ล จาก ดาวยูโลป้า
+item.europa_water_bucket.name=ถังน้ำ ดาวยูโลป้า
 
 # TOOLS
 #########Diona Tools#########
@@ -1226,7 +1201,7 @@ solarsystem.kapteyn=ระบบสุริยะเคปทีน
 solarsystem.sirius=ระบบสุริยะซิริอุส
 
 # POTION
-potion.emp=อีเอ็มพี
+potion.emp=EMP
 potion.infected.gas=แก๊สพิษ
 potion.chemical=สารเคมี
 potion.icy_poison=น้ำแข็งพิษ

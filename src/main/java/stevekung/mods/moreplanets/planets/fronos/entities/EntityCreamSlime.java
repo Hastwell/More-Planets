@@ -24,9 +24,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityCreamSlime extends EntityLiving implements IMob
@@ -131,27 +131,27 @@ public class EntityCreamSlime extends EntityLiving implements IMob
 				float f3 = MathHelper.cos(f) * i * 0.5F * f1;
 				double d0 = this.posX + f2;
 				double d1 = this.posZ + f3;
-				ParticleTypesMP type = null;
+				EnumParticleTypesMP type = null;
 
 				switch (this.getCreamSlimeType())
 				{
 				case 0:
-					type = ParticleTypesMP.VANILLA_CREAM_BALL;
+					type = EnumParticleTypesMP.VANILLA_CREAM_BALL;
 					break;
 				case 1:
-					type = ParticleTypesMP.CHOCOLATE_CREAM_BALL;
+					type = EnumParticleTypesMP.CHOCOLATE_CREAM_BALL;
 					break;
 				case 2:
-					type = ParticleTypesMP.STRAWBERRY_CREAM_BALL;
+					type = EnumParticleTypesMP.STRAWBERRY_CREAM_BALL;
 					break;
 				case 3:
-					type = ParticleTypesMP.ORANGE_CREAM_BALL;
+					type = EnumParticleTypesMP.ORANGE_CREAM_BALL;
 					break;
 				case 4:
-					type = ParticleTypesMP.TEA_CREAM_BALL;
+					type = EnumParticleTypesMP.TEA_CREAM_BALL;
 					break;
 				case 5:
-					type = ParticleTypesMP.LEMON_CREAM_BALL;
+					type = EnumParticleTypesMP.LEMON_CREAM_BALL;
 					break;
 				}
 				MorePlanetsCore.proxy.spawnParticle(type, d0, this.getEntityBoundingBox().minY, d1);

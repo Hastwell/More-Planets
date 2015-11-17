@@ -7,17 +7,19 @@
 
 package stevekung.mods.moreplanets.moons.deimos.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
+import java.util.Random;
+
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeDecorator;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 
-public class BiomeDecoratorDeimos extends BiomeDecoratorSpace
+public class BiomeDecoratorDeimos extends BiomeDecorator
 {
-	private World world;
-
 	private WorldGenerator dirtGen;
 	private WorldGenerator deshGen;
 	private WorldGenerator ironGen;
@@ -37,7 +39,17 @@ public class BiomeDecoratorDeimos extends BiomeDecoratorSpace
 	}
 
 	@Override
-	protected void decorate()
+	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
+	{
+		this.currentWorld = world;
+		this.randomGenerator = rand;
+		this.field_180294_c = pos;
+		this.generateOres();
+		this.currentWorld = null;
+		this.randomGenerator = null;
+	}
+
+	protected void generateOres()
 	{
 		this.generateOre(16, this.ironGen, 0, 64);
 		this.generateOre(16, this.chondriteGen, 0, 128);
@@ -47,15 +59,32 @@ public class BiomeDecoratorDeimos extends BiomeDecoratorSpace
 		this.generateOre(32, this.dirtGen, 0, 255);
 	}
 
-	@Override
-	protected void setCurrentWorld(World world)
+	protected void generateOre(int amount, WorldGenerator worldGen, int minY, int maxY)
 	{
-		this.world = world;
-	}
+		int i;
 
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
+		if (maxY < minY)
+		{
+			i = minY;
+			minY = maxY;
+			maxY = i;
+		}
+		else if (maxY == minY)
+		{
+			if (minY < 255)
+			{
+				++maxY;
+			}
+			else
+			{
+				--minY;
+			}
+		}
+
+		for (i = 0; i < amount; ++i)
+		{
+			BlockPos blockpos = this.field_180294_c.add(this.randomGenerator.nextInt(16), this.randomGenerator.nextInt(maxY - minY) + minY, this.randomGenerator.nextInt(16));
+			worldGen.generate(this.currentWorld, this.randomGenerator, blockpos);
+		}
 	}
 }

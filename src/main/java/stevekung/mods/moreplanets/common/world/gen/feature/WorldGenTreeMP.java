@@ -209,22 +209,6 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 								}
 							}
 						}
-
-						/*if (rand.nextInt(5) == 0 && i > 5)
-						{
-							for (l = 0; l < 2; ++l)
-							{
-								for (i1 = 0; i1 < 4; ++i1)
-								{
-									if (rand.nextInt(4 - l) == 0)
-									{
-										j1 = rand.nextInt(3);
-										EnumFacing enumfacing = EnumFacing.getHorizontal(i1).getOpposite();
-										this.func_175905_a(world, pos.add(enumfacing.getFrontOffsetX(), i - 5 + l, enumfacing.getFrontOffsetZ()), Blocks.cocoa, j1 << 2 | EnumFacing.getHorizontal(i1).getHorizontalIndex());
-									}
-								}
-							}
-						}*/
 					}
 					return true;
 				}
@@ -240,14 +224,14 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 		}
 	}
 
-	private void func_175923_a(World world, BlockPos pos, int par3)
+	private void func_175923_a(World world, BlockPos pos, int meta)
 	{
-		this.func_175905_a(world, pos, this.vine, par3);
+		this.func_175905_a(world, pos, this.vine, meta);
 		int j = 4;
 
 		for (pos = pos.down(); world.getBlockState(pos).getBlock().isAir(world, pos) && j > 0; --j)
 		{
-			this.func_175905_a(world, pos, this.vine, par3);
+			this.func_175905_a(world, pos, this.vine, meta);
 			pos = pos.down();
 		}
 	}

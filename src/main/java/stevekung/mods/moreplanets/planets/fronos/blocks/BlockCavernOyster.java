@@ -26,9 +26,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockOysterMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockCavernOyster extends BlockOysterMP
@@ -85,7 +85,7 @@ public class BlockCavernOyster extends BlockOysterMP
 				d4 = (rand.nextFloat() - 0.5D) * 0.5D;
 				d5 = (rand.nextFloat() - 0.5D) * 0.5D;
 				d6 = (rand.nextFloat() - 0.5D) * 0.5D;
-				MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.CAVERN_OYSTER, d1, d2, d3, d4, d5, d6);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CAVERN_OYSTER, d1, d2, d3, d4, d5, d6);
 			}
 		}
 	}

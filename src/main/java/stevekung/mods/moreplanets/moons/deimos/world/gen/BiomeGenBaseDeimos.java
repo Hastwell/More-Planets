@@ -7,10 +7,14 @@
 
 package stevekung.mods.moreplanets.moons.deimos.world.gen;
 
+import java.util.Random;
+
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
@@ -19,14 +23,26 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 public class BiomeGenBaseDeimos extends BiomeGenBaseMP
 {
 	public static BiomeGenBase deimos = new BiomeGenBaseDeimos().setBiomeName("Deimos");
+	public BiomeDecoratorDeimos deimosDecorator;
 
 	public BiomeGenBaseDeimos()
 	{
 		super(ConfigManagerMP.idDeimosBiome);
+		this.deimosDecorator = this.createDecorator();
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+	}
+
+	public void decorate(World world, Random rand, BlockPos pos)
+	{
+		this.deimosDecorator.decorate(world, rand, this, pos);
+	}
+
+	private BiomeDecoratorDeimos createDecorator()
+	{
+		return new BiomeDecoratorDeimos();
 	}
 }

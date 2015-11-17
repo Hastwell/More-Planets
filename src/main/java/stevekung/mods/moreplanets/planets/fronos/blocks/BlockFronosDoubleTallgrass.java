@@ -31,9 +31,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockFronosDoubleTallgrass extends BlockBushMP implements IShearable
@@ -346,8 +346,8 @@ public class BlockFronosDoubleTallgrass extends BlockBushMP implements IShearabl
 		{
 			if (rand.nextInt(1) == 0)
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.GOLDEN_SMOKE, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.GOLDEN_SMOKE, pos.getX() + rand.nextFloat(), pos.getY() + 1.0D + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.GOLDEN_SMOKE, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat());
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.GOLDEN_SMOKE, pos.getX() + rand.nextFloat(), pos.getY() + 1.0D + rand.nextFloat(), pos.getZ() + rand.nextFloat());
 			}
 		}
 	}

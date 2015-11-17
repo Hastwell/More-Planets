@@ -19,9 +19,9 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockFluidBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BlockFluidTea extends BlockFluidBaseMP
@@ -41,14 +41,14 @@ public class BlockFluidTea extends BlockFluidBaseMP
 	{
 		if (rand.nextInt(1) == 0)
 		{
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.TEA, pos.getX() + rand.nextFloat(), pos.getY() + 1, pos.getZ() + rand.nextFloat());
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.TEA, pos.getX() + rand.nextFloat(), pos.getY() + 1, pos.getZ() + rand.nextFloat());
 		}
 		if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, pos.down()) && !world.getBlockState(pos.down(2)).getBlock().getMaterial().blocksMovement())
 		{
 			double d5 = pos.getX() + rand.nextFloat();
 			double d6 = pos.getY() - 1.05D;
 			double d7 = pos.getZ() + rand.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.TEA_DRIP, d5, d6, d7);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.TEA_DRIP, d5, d6, d7);
 		}
 	}
 

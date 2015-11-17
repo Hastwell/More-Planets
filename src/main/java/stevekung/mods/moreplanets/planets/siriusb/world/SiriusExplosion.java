@@ -29,8 +29,8 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
 import com.google.common.collect.Lists;
@@ -176,11 +176,11 @@ public class SiriusExplosion extends Explosion
 
 		if (this.explosionSize >= 2.0F && this.isSmoking)
 		{
-			MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.MC_EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ);
 		}
 		else
 		{
-			MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
+			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
 		}
 
 		Iterator iterator;
@@ -212,8 +212,8 @@ public class SiriusExplosion extends Explosion
 					d3 *= d7;
 					d4 *= d7;
 					d5 *= d7;
-					MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_EXPLOSION_NORMAL, (d0 + this.explosionX * 1.0D) / 2.0D, (d1 + this.explosionY * 1.0D) / 2.0D, (d2 + this.explosionZ * 1.0D) / 2.0D, d3, d4, d5);
-					MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.MC_NORMAL_SMOKE, d0, d1, d2, d3, d4, d5);
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_NORMAL, (d0 + this.explosionX * 1.0D) / 2.0D, (d1 + this.explosionY * 1.0D) / 2.0D, (d2 + this.explosionZ * 1.0D) / 2.0D, d3, d4, d5);
+					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_NORMAL_SMOKE, d0, d1, d2, d3, d4, d5);
 				}
 
 				if (block.getMaterial() != Material.air)

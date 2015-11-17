@@ -218,6 +218,14 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(DarkAsteroidBlocks.alien_dirt);
 		}
+		if (block == DionaBlocks.green_redstone_torch_off)
+		{
+			return new ItemStack(DionaBlocks.green_redstone_torch);
+		}
+		if (block == PolongniusBlocks.fallen_polongnius_meteor)
+		{
+			return new ItemStack(PolongniusBlocks.fallen_polongnius_meteor);
+		}
 		return null;
 	}
 }

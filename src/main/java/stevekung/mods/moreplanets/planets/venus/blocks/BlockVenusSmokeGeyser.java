@@ -17,9 +17,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public class BlockVenusSmokeGeyser extends BlockBaseMP
 {
@@ -39,7 +39,7 @@ public class BlockVenusSmokeGeyser extends BlockBaseMP
 		{
 			if (!World.doesBlockHaveSolidTopSurface(world, pos.up()))
 			{
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.VENUS_SMOKE, pos.getX() + 0.5F, pos.getY() + 0.5F + rand.nextFloat(), pos.getZ() + 0.5F);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.VENUS_SMOKE, pos.getX() + 0.5F, pos.getY() + 0.5F + rand.nextFloat(), pos.getZ() + 0.5F);
 			}
 		}
 	}

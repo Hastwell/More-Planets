@@ -21,6 +21,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
@@ -60,6 +61,24 @@ public class ItemTier2ThermalPadding extends ItemBaseMP implements IItemThermal
 		if (player.worldObj.isRemote)
 		{
 			list.add(StatCollector.translateToLocal("item.tier2.desc"));
+			int count = 0;
+
+			switch (itemStack.getItemDamage())
+			{
+			case 0:
+				count = 16;
+				break;
+			case 1:
+				count = 20;
+				break;
+			case 2:
+				count = 18;
+				break;
+			case 3:
+				count = 12;
+				break;
+			}
+			list.add("Thermal Armor Upgrade Required : " + count);
 			list.add("Ability : Immune to Infected Gas");
 		}
 	}
@@ -120,11 +139,29 @@ public class ItemTier2ThermalPadding extends ItemBaseMP implements IItemThermal
 		}
 		return false;
 	}
+	
+	int color = -13280331;
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack itemStack, int layer)
 	{
-		return layer == 0 ? super.getColorFromItemStack(itemStack, layer) : 0;//TODO
+		/*int blue = -13280331;
+		int red = -47116531;
+		
+		//color--;
+		
+		if (color != -47116531)
+		{
+			this.color++;
+			
+			if (color >= -13280331)
+			{
+				this.color = -47116531;
+				color--;
+			}
+		}
+		//MPLog.info("%s", color);*/
+		return layer == 0 ? super.getColorFromItemStack(itemStack, layer) : color;//TODO
 	}
 }

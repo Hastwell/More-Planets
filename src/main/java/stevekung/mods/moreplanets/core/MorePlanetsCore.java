@@ -85,7 +85,7 @@ public class MorePlanetsCore
 	public static CreativeTabs mpToolsTab;
 	public static CreativeTabs mpArmorTab;
 
-	public static SoundType soundTypeSmallSlime = new SoundTypeSmallSlime("slime", 1.0F, 1.0F);
+	public static SoundType soundTypeSmallSlime = new SoundTypeSmallSlime();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)

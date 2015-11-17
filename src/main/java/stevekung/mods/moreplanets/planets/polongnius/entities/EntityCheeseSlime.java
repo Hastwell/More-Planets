@@ -29,9 +29,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class EntityCheeseSlime extends EntityLiving implements IMob, IEntityBreathable
@@ -133,7 +133,7 @@ public class EntityCheeseSlime extends EntityLiving implements IMob, IEntityBrea
 				float f3 = MathHelper.cos(f) * i * 0.5F * f1;
 				double d0 = this.posX + f2;
 				double d1 = this.posZ + f3;
-				MorePlanetsCore.proxy.spawnParticle(ParticleTypesMP.CHEESE_SLIME, d0, this.getEntityBoundingBox().minY, d1);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CHEESE_SLIME, d0, this.getEntityBoundingBox().minY, d1);
 			}
 
 			if (this.makesSoundOnLand())

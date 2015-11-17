@@ -26,6 +26,8 @@ public class DionaBlocks
 	public static Block quontonium_brick_stairs;
 	public static Block diona_dungeon_brick_stairs;
 	public static Block diona_ancient_chest;
+	public static Block green_redstone_torch;
+	public static Block green_redstone_torch_off;
 
 	public static void init()
 	{
@@ -39,6 +41,8 @@ public class DionaBlocks
 		DionaBlocks.quontonium_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "quontonium_brick_stairs", 3.25F);
 		DionaBlocks.diona_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "diona_dungeon_brick_stairs", 4.0F);
 		DionaBlocks.diona_ancient_chest = new BlockDionaAncientChest("diona_ancient_chest");
+		DionaBlocks.green_redstone_torch = new BlockGreenRedstoneTorch("green_redstone_torch", true).setLightLevel(0.5F);
+		DionaBlocks.green_redstone_torch_off = new BlockGreenRedstoneTorch("green_redstone_torch_off", false);
 
 		// Register
 		CommonRegisterHelper.registerBlock(DionaBlocks.diona_block, ItemBlockDiona.class);
@@ -50,6 +54,8 @@ public class DionaBlocks
 		CommonRegisterHelper.registerBlock(DionaBlocks.creeper_minion_egg);
 		CommonRegisterHelper.registerBlock(DionaBlocks.diona_treasure_chest);
 		CommonRegisterHelper.registerBlock(DionaBlocks.diona_ancient_chest);
+		CommonRegisterHelper.registerBlock(DionaBlocks.green_redstone_torch);
+		CommonRegisterHelper.registerBlock(DionaBlocks.green_redstone_torch_off);
 
 		// Set harvest level
 		DionaBlocks.diona_block.setHarvestLevel("pickaxe", 0);

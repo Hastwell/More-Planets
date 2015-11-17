@@ -22,10 +22,10 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockGrassMP;
 import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 
 public class BlockInfectedGrass extends BlockGrassMP
 {
@@ -85,7 +85,7 @@ public class BlockInfectedGrass extends BlockGrassMP
 		{
 			if (!World.doesBlockHaveSolidTopSurface(world, pos.up()))
 			{
-				MorePlanetsCore.proxy.spawnMotionParticle(ParticleTypesMP.INFECTED_SPORE, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.INFECTED_SPORE, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}

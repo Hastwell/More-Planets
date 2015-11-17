@@ -10,8 +10,6 @@ package stevekung.mods.moreplanets.planets.nibiru.blocks;
 import java.util.List;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -38,7 +36,7 @@ import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
-public class BlockNibiru extends BlockPlanetTileMP implements IDetectableResource, ITerraformableBlock
+public class BlockNibiru extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 

@@ -25,9 +25,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.core.proxy.ClientProxyMP.ParticleTypesMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityJellySlime extends EntityLiving implements IMob
@@ -133,33 +133,33 @@ public class EntityJellySlime extends EntityLiving implements IMob
 				float f3 = MathHelper.cos(f) * i * 0.5F * f1;
 				double d0 = this.posX + f2;
 				double d1 = this.posZ + f3;
-				ParticleTypesMP type = null;
+				EnumParticleTypesMP type = null;
 
 				switch (this.getJellySlimeType())
 				{
 				case 0:
-					type = ParticleTypesMP.GRAPE_JELLY;
+					type = EnumParticleTypesMP.GRAPE_JELLY;
 					break;
 				case 1:
-					type = ParticleTypesMP.RASPBERRY_JELLY;
+					type = EnumParticleTypesMP.RASPBERRY_JELLY;
 					break;
 				case 2:
-					type = ParticleTypesMP.STRAWBERRY_JELLY;
+					type = EnumParticleTypesMP.STRAWBERRY_JELLY;
 					break;
 				case 3:
-					type = ParticleTypesMP.BERRY_JELLY;
+					type = EnumParticleTypesMP.BERRY_JELLY;
 					break;
 				case 4:
-					type = ParticleTypesMP.LIME_JELLY;
+					type = EnumParticleTypesMP.LIME_JELLY;
 					break;
 				case 5:
-					type = ParticleTypesMP.ORANGE_JELLY;
+					type = EnumParticleTypesMP.ORANGE_JELLY;
 					break;
 				case 6:
-					type = ParticleTypesMP.GREEN_JELLY;
+					type = EnumParticleTypesMP.GREEN_JELLY;
 					break;
 				case 7:
-					type = ParticleTypesMP.LEMON_JELLY;
+					type = EnumParticleTypesMP.LEMON_JELLY;
 					break;
 				}
 				MorePlanetsCore.proxy.spawnParticle(type, d0, this.getEntityBoundingBox().minY, d1);

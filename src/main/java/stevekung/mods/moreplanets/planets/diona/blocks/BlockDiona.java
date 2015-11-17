@@ -10,8 +10,6 @@ package stevekung.mods.moreplanets.planets.diona.blocks;
 import java.util.List;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.block.IDetectableResource;
-import micdoodle8.mods.galacticraft.api.block.ITerraformableBlock;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -34,7 +32,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
-public class BlockDiona extends BlockPlanetTileMP implements IDetectableResource, ITerraformableBlock
+public class BlockDiona extends BlockPlanetTileMP
 {
 	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
