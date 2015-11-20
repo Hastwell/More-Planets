@@ -69,10 +69,11 @@ public class PlutoBlocks
 		CommonRegisterHelper.registerBlock(PlutoBlocks.space_potato_block);
 
 		// Set harvest level
-		PlutoBlocks.pluto_block.setHarvestLevel("pickaxe", 1);
-		PlutoBlocks.frozen_methane_block.setHarvestLevel("pickaxe", 1);
-		PlutoBlocks.frozen_nitrogen_block.setHarvestLevel("pickaxe", 1);
-		PlutoBlocks.pluto_ancient_chest.setHarvestLevel("axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.pluto_block, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.frozen_methane_block, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.frozen_nitrogen_block, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.pluto_heart_crystal, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.pluto_ancient_chest, "axe", 0);
 
 		// Register ore dictionary
 		OreDictionary.registerOre("oreMeteor", new ItemStack(PlutoBlocks.pluto_block, 1, 4));

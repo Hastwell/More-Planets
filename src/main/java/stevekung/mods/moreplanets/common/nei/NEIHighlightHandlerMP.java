@@ -18,6 +18,7 @@ import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlo
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
@@ -78,13 +79,9 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(NibiruBlocks.nibiru_block, 1, meta);
 		}
-		if (block == NibiruBlocks.ancient_dark_leaves)
+		if (block == NibiruBlocks.nibiru_leaves)
 		{
-			return new ItemStack(NibiruBlocks.ancient_dark_leaves, 1, meta & 3);
-		}
-		if (block == NibiruBlocks.orange_leaves)
-		{
-			return new ItemStack(NibiruBlocks.orange_leaves, 1, meta & 3);
+			return new ItemStack(NibiruBlocks.nibiru_leaves, 1, meta & 3);
 		}
 		if (block == KoentusBlocks.koentus_block)
 		{
@@ -186,11 +183,11 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		{
 			return new ItemStack(KoentusBlocks.crystal_dirt);
 		}
-		if (block == NibiruBlocks.ancient_dark_door)
+		if (block == NibiruBlocks.ancient_dark_door_block)
 		{
 			return new ItemStack(NibiruItems.ancient_dark_door);
 		}
-		if (block == NibiruBlocks.orange_door)
+		if (block == NibiruBlocks.orange_door_block)
 		{
 			return new ItemStack(NibiruItems.orange_door);
 		}
@@ -225,6 +222,14 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
 		if (block == PolongniusBlocks.fallen_polongnius_meteor)
 		{
 			return new ItemStack(PolongniusBlocks.fallen_polongnius_meteor);
+		}
+		if (block == FronosBlocks.sky_mushroom_block)
+		{
+			return new ItemStack(FronosBlocks.fronos_flower, 1, 4);
+		}
+		if (block == EuropaBlocks.europa_door_block)
+		{
+			return new ItemStack(EuropaItems.europa_door);
 		}
 		return null;
 	}

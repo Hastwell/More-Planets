@@ -96,6 +96,21 @@ public class CommonRegisterHelper
 		NetworkRegistry.INSTANCE.registerGuiHandler(mod, handler);
 	}
 
+	public static void setBlockHarvestLevel(Block block, String tool, int level)
+	{
+		block.setHarvestLevel(tool, level);
+	}
+
+	public static void setBlockHarvestLevel(Block block, String tool, int level, int meta)
+	{
+		block.setHarvestLevel(tool, level, block.getStateFromMeta(meta));
+	}
+
+	public static void setToolHarvestLevel(Item item, String tool, int level)
+	{
+		item.setHarvestLevel(tool, level);
+	}
+
 	public static void registerForgeEvent(Object event)
 	{
 		FMLCommonHandler.instance().bus().register(event);

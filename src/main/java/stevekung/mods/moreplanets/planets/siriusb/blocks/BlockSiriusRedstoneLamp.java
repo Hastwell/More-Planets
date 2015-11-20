@@ -29,6 +29,7 @@ public class BlockSiriusRedstoneLamp extends BlockBaseMP
 	{
 		super(Material.redstoneLight);
 		this.on = on;
+		this.setHardness(0.3F);
 		this.setUnlocalizedName(name);
 		this.setStepSound(soundTypeGlass);
 

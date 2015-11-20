@@ -37,7 +37,7 @@ public class MercuryBlocks
 		MercuryBlocks.mercury_block = new BlockMercury("mercury_block");
 		MercuryBlocks.mercury_ice = new BlockMercuryIce("mercury_ice");
 		MercuryBlocks.metallic_rock = new BlockMetallicRock("metallic_rock");
-		MercuryBlocks.mercury_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "mercury_cobblestone_stairs", 2.5F);
+		MercuryBlocks.mercury_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "mercury_cobblestone_stairs", 2.0F);
 		MercuryBlocks.mercury_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "mercury_dungeon_brick_stairs", 4.0F);
 		MercuryBlocks.mercury_ancient_chest = new BlockMercuryAncientChest("mercury_ancient_chest");
 
@@ -55,11 +55,11 @@ public class MercuryBlocks
 		CommonRegisterHelper.registerBlock(MercuryBlocks.dirty_water);
 
 		// Set harvest level
-		MercuryBlocks.mercury_block.setHarvestLevel("pickaxe", 0);
-		MercuryBlocks.metallic_rock.setHarvestLevel("pickaxe", 2);
-		MercuryBlocks.mercury_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
-		MercuryBlocks.mercury_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
-		MercuryBlocks.mercury_ancient_chest.setHarvestLevel("axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_block, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_cobblestone_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_dungeon_brick_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.metallic_rock, "pickaxe", 2);
+		CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_ancient_chest, "axe", 0);
 
 		// Register ore dictionary
 		OreDictionary.registerOre("oreTin", new ItemStack(MercuryBlocks.mercury_block, 1, 4));
@@ -69,7 +69,6 @@ public class MercuryBlocks
 		OreDictionary.registerOre("oreIron", new ItemStack(MercuryBlocks.mercury_block, 1, 7));
 		OreDictionary.registerOre("oreMetalMeteor", new ItemStack(MercuryBlocks.mercury_block, 1, 8));
 		OreDictionary.registerOre("oreMetallic", new ItemStack(MercuryBlocks.metallic_rock, 1, 0));
-
 		OreDictionary.registerOre("blockMetalMeteor", new ItemStack(MercuryBlocks.mercury_block, 1, 10));
 	}
 }

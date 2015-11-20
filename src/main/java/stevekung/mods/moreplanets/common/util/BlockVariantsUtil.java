@@ -44,8 +44,6 @@ public class BlockVariantsUtil
 		ClientRegisterHelper.registerVariantsName(NibiruBlocks.nibiru_planks, new String[] { "moreplanets:ancient_dark_wood_planks", "moreplanets:orange_wood_planks" });
 		ClientRegisterHelper.registerVariantsName(NibiruBlocks.nibiru_fence, new String[] { "moreplanets:ancient_dark_fence", "moreplanets:orange_fence" });
 		ClientRegisterHelper.registerVariantsName(NibiruBlocks.nibiru_log, new String[] { "moreplanets:ancient_dark_wood_log", "moreplanets:orange_wood_log" });
-		ClientRegisterHelper.registerVariantsName(NibiruBlocks.ancient_dark_leaves, new String[] { "moreplanets:ancient_dark_leaves1", "moreplanets:ancient_dark_leaves2", "moreplanets:ancient_dark_leaves3", "moreplanets:ancient_dark_leaves4" });
-		ClientRegisterHelper.registerVariantsName(NibiruBlocks.orange_leaves, new String[] { "moreplanets:orange_leaves1", "moreplanets:orange_leaves2", "moreplanets:orange_leaves3", "moreplanets:orange_leaves4" });
 		ClientRegisterHelper.registerVariantsName(NibiruBlocks.nibiru_sapling, new String[] { "moreplanets:ancient_dark_sapling", "moreplanets:orange_sapling" });
 		ClientRegisterHelper.registerVariantsName(NibiruBlocks.infected_orange_rose_bush, new String[] { "moreplanets:orange_rose_bush_bottom", "moreplanets:orange_rose_bush_top" });
 		ClientRegisterHelper.registerVariantsName(KoentusBlocks.koentus_block, new String[] { "moreplanets:koentus_surface_rock", "moreplanets:koentus_sub_surface_rock", "moreplanets:koentus_rock", "moreplanets:koentus_cobblestone", "moreplanets:koentus_tin_ore", "moreplanets:koentus_copper_ore", "moreplanets:white_crystal_ore", "moreplanets:emp_crystal_ore", "moreplanets:becterial_fossil_ore", "moreplanets:white_crystal_block", "moreplanets:emp_crystal_block", "moreplanets:solid_koentus_meteoric_iron", "moreplanets:koentus_ancient_stone", "moreplanets:koentus_ancient_stone_brick", "moreplanets:koentus_dungeon_brick" });
@@ -107,6 +105,7 @@ public class BlockVariantsUtil
 		ClientRegisterHelper.registerVariantsName(DarkAsteroidBlocks.dark_asteroid_rock, new String[] { "moreplanets:dark_asteroid_rock_1", "moreplanets:dark_asteroid_rock_2", "moreplanets:dark_asteroid_rock_3", "moreplanets:dark_asteroid_aluminum_ore", "moreplanets:dark_asteroid_ilmenite_ore", "moreplanets:dark_asteroid_iron_ore", "moreplanets:dark_asteroid_meteoric_iron_ore", "moreplanets:dark_asteroid_silicon_ore", "moreplanets:dark_asteroid_diamond_ore", "moreplanets:dark_asteroid_emerald_ore", "moreplanets:dark_asteroid_lapis_ore" });
 		ClientRegisterHelper.registerVariantsName(DarkAsteroidBlocks.alien_dirt, new String[] { "moreplanets:alien_dirt", "moreplanets:alien_coarse_dirt" });
 		ClientRegisterHelper.registerVariantsName(DarkAsteroidBlocks.alien_log, new String[] { "moreplanets:alien_wood_log" });
+		ClientRegisterHelper.registerVariantsName(NibiruBlocks.nibiru_leaves, new String[] { "moreplanets:ancient_dark_leaves", "moreplanets:orange_leaves" });
 
 		ClientRegisterHelper.registerVariantNameWithDyeColor(MPBlocks.tinted_glass, "moreplanets");
 		ClientRegisterHelper.registerVariantNameWithDyeColor(MPBlocks.tinted_glass_pane, "moreplanets");

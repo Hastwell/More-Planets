@@ -25,6 +25,8 @@ public class BlockDoubleDungeonBrickSlab1 extends BlockDungeonBrickSlab1
 	public BlockDoubleDungeonBrickSlab1(String name, Material material)
 	{
 		super(material);
+		this.setHardness(4.0F);
+		this.setResistance(40.0F);
 		this.setUnlocalizedName(name);
 	}
 

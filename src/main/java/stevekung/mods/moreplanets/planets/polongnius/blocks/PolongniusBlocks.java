@@ -48,7 +48,7 @@ public class PolongniusBlocks
 		PolongniusBlocks.cheese_of_milk_cake = new BlockCheeseOfMilkCake("cheese_of_milk_cake");
 		PolongniusBlocks.flonium_torch = new BlockFloniumTorch("flonium_torch");
 		PolongniusBlocks.ultra_violet_solar_panel = new BlockUltraVioletSolarPanel("ultra_violet_solar_panel");
-		PolongniusBlocks.polongnius_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "polongnius_cobblestone_stairs", 3.0F);
+		PolongniusBlocks.polongnius_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "polongnius_cobblestone_stairs", 2.0F);
 		PolongniusBlocks.polongnius_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "polongnius_dungeon_brick_stairs", 4.0F);
 		PolongniusBlocks.polongnius_ancient_chest = new BlockPolongniusAncientChest("polongnius_ancient_chest");
 		PolongniusBlocks.cheese_slime_block = new BlockCheeseSlime("cheese_slime_block");
@@ -77,27 +77,18 @@ public class PolongniusBlocks
 		CommonRegisterHelper.registerBlock(PolongniusBlocks.ultra_violet_solar_fake);
 
 		// Set harvest level
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("shovel", 0, 0);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("shovel", 0, 1);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 2);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 3);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 4);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 5);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 6);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 7);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 8);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 9);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 10);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 11);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 12);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 13);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 14);
-		((BlockPolongnius)PolongniusBlocks.polongnius_block).setHarvestLevel("pickaxe", 0, 15);
-		PolongniusBlocks.polongnius_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
-		PolongniusBlocks.polongnius_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
-		PolongniusBlocks.fallen_polongnius_meteor.setHarvestLevel("pickaxe", 2);
-		PolongniusBlocks.ultra_violet_solar_panel.setHarvestLevel("pickaxe", 0);
-		PolongniusBlocks.polongnius_ancient_chest.setHarvestLevel("axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_block, "shovel", 0, 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_block, "shovel", 0, 1);
+		CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_cobblestone_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_dungeon_brick_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.fallen_polongnius_meteor, "pickaxe", 2);
+		CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.ultra_violet_solar_panel, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_ancient_chest, "axe", 0);
+
+		for (int i = 2; i < 15; i++)
+		{
+			CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_block, "pickaxe", 0, i);
+		}
 
 		// Register ore dictionary
 		OreDictionary.registerOre("oreCopper", new ItemStack(PolongniusBlocks.polongnius_block, 1, 4));
@@ -106,7 +97,6 @@ public class PolongniusBlocks
 		OreDictionary.registerOre("orePalladium", new ItemStack(PolongniusBlocks.polongnius_block, 1, 7));
 		OreDictionary.registerOre("oreFlonium", new ItemStack(PolongniusBlocks.polongnius_block, 1, 8));
 		OreDictionary.registerOre("orePurpleCrystal", new ItemStack(PolongniusBlocks.polongnius_block, 1, 8));
-
 		OreDictionary.registerOre("blockPolongniusMeteor", new ItemStack(PolongniusBlocks.polongnius_block, 1, 10));
 		OreDictionary.registerOre("blockPurpleCrystal", new ItemStack(PolongniusBlocks.polongnius_block, 1, 11));
 		OreDictionary.registerOre("blockPalladium", new ItemStack(PolongniusBlocks.polongnius_block, 1, 12));

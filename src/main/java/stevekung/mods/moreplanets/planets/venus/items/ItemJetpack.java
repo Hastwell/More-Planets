@@ -92,7 +92,7 @@ public class ItemJetpack extends ItemElectricArmorMP
 
 		if (itemStack.getItem() == this)
 		{
-			if (flag || player.inventory.hasItem(Items.coal))
+			//if (flag || player.inventory.hasItem(Items.coal))
 			{
 				if (this.getJetpackKeyDown() == true)
 				{

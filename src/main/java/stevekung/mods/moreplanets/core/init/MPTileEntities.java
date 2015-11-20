@@ -13,7 +13,7 @@ import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityEledosEgg
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusDungeonSpawner;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
-import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaDungeonSpawner;
+import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDungeonSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCandyExtractor;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAncientChest;
@@ -53,7 +53,7 @@ public class MPTileEntities
 
 		// Diona
 		GameRegistry.registerTileEntity(TileEntityDionaTreasureChest.class, "DionaTreasureChest");
-		GameRegistry.registerTileEntity(TileEntityDionaDungeonSpawner.class, "DionaDungeonSpawner");
+		GameRegistry.registerTileEntity(TileEntityDungeonSpawnerMP.class, "DionaDungeonSpawner");
 		GameRegistry.registerTileEntity(TileEntityDionaAncientChest.class, "DionaAncientChest");
 
 		// Polongnius

@@ -34,13 +34,6 @@ public class EntityProjectileFronisiumTNT extends EntityFireball
 		this.setSize(1.0F, 1.0F);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public EntityProjectileFronisiumTNT(World world, double x, double y, double z, double moX, double moY, double moZ)
-	{
-		super(world, x, y, z, moX, moY, moZ);
-		this.setSize(0.3125F, 0.3125F);
-	}
-
 	@Override
 	public boolean isBurning()
 	{

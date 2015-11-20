@@ -7,16 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.diona.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
-import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 
-public class BiomeDecoratorDiona extends BiomeDecoratorSpace
+public class BiomeDecoratorDiona extends BiomeDecoratorMP
 {
-	private World world;
-
 	private WorldGenerator dirtGen;
 	private WorldGenerator quontoniumGen;
 	private WorldGenerator fronisiumGen;
@@ -27,7 +24,6 @@ public class BiomeDecoratorDiona extends BiomeDecoratorSpace
 
 	public BiomeDecoratorDiona()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 32, 1, true, DionaBlocks.diona_block, 2);
 		this.quontoniumGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 8, 4, true, DionaBlocks.diona_block, 2);
 		this.fronisiumGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 8, 5, true, DionaBlocks.diona_block, 2);
@@ -38,7 +34,7 @@ public class BiomeDecoratorDiona extends BiomeDecoratorSpace
 	}
 
 	@Override
-	protected void decorate()
+	protected void generateOres()
 	{
 		this.generateOre(10, this.fronisiumGen, 0, 48);
 		this.generateOre(12, this.aluminumGen, 0, 48);
@@ -47,17 +43,5 @@ public class BiomeDecoratorDiona extends BiomeDecoratorSpace
 		this.generateOre(24, this.quontoniumGen, 0, 64);
 		this.generateOre(12, this.siliconGen, 0, 24);
 		this.generateOre(32, this.dirtGen, 0, 255);
-	}
-
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
-
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
 	}
 }

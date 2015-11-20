@@ -30,6 +30,7 @@ public class DarkAsteroidBlocks
 	public static Block alien_leaves;
 	public static Block alien_sapling;
 	public static Block alien_glowstone;
+	public static Block alien_vine;
 	public static Block dark_air;
 
 	public static void init()
@@ -46,6 +47,7 @@ public class DarkAsteroidBlocks
 		DarkAsteroidBlocks.alien_leaves = new BlockAlienLeaves("alien_leaves");
 		DarkAsteroidBlocks.alien_sapling = new BlockAlienSapling("alien_sapling");
 		DarkAsteroidBlocks.alien_glowstone = new BlockAlienGlowstone("alien_glowstone");
+		DarkAsteroidBlocks.alien_vine = new BlockAlienVine("alien_vine");
 		DarkAsteroidBlocks.dark_air = new BlockDarkAir("dark_air");
 
 		// Register
@@ -59,23 +61,25 @@ public class DarkAsteroidBlocks
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_glowstone);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_leaves, ItemBlockSingleLeaves.class);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_sapling);
+		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_vine);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_farmland);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.dark_air);
 
 		// Set harvest level
-		DarkAsteroidBlocks.dark_asteroid_rock.setHarvestLevel("pickaxe", 0);
-		DarkAsteroidBlocks.alphere_ore.setHarvestLevel("pickaxe", 0);
-		DarkAsteroidBlocks.dark_asteroid_quicksand.setHarvestLevel("shovel", 0);
-		DarkAsteroidBlocks.alien_grass.setHarvestLevel("shovel", 0);
-		DarkAsteroidBlocks.alien_dirt.setHarvestLevel("shovel", 0);
-		DarkAsteroidBlocks.alien_farmland.setHarvestLevel("shovel", 0);
-		DarkAsteroidBlocks.alien_log.setHarvestLevel("axe", 0);
-		DarkAsteroidBlocks.alien_planks.setHarvestLevel("axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.dark_asteroid_rock, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alphere_ore, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.dark_asteroid_quicksand, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alien_grass, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alien_dirt, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alien_farmland, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alien_log, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alien_planks, "axe", 0);
 
 		// Set fire burn
 		CommonRegisterHelper.setFireBurn(DarkAsteroidBlocks.alien_sapling, 60, 100);
 		CommonRegisterHelper.setFireBurn(DarkAsteroidBlocks.alien_log, 5, 5);
 		CommonRegisterHelper.setFireBurn(DarkAsteroidBlocks.alien_planks, 5, 20);
+		CommonRegisterHelper.setFireBurn(DarkAsteroidBlocks.alien_vine, 15, 100);
 		//CommonRegisterHelper.setFireBurn(EuropaBlocks.europa_fence, 5, 20);
 		//CommonRegisterHelper.setFireBurn(EuropaBlocks.europa_fence_gate, 5, 20);
 		//CommonRegisterHelper.setFireBurn(EuropaBlocks.europa_wood_stairs, 5, 20);
@@ -91,5 +95,10 @@ public class DarkAsteroidBlocks
 		OreDictionary.registerOre("oreDiamond", new ItemStack(DarkAsteroidBlocks.dark_asteroid_rock, 1, 8));
 		OreDictionary.registerOre("oreEmerald", new ItemStack(DarkAsteroidBlocks.dark_asteroid_rock, 1, 9));
 		OreDictionary.registerOre("oreLapis", new ItemStack(DarkAsteroidBlocks.dark_asteroid_rock, 1, 10));
+		OreDictionary.registerOre("plankWood", new ItemStack(DarkAsteroidBlocks.alien_planks, 1, OreDictionary.WILDCARD_VALUE));
+		//OreDictionary.registerOre("stairWood", new ItemStack(DarkAsteroidBlocks.europa_wood_stairs));
+		OreDictionary.registerOre("treeSapling", new ItemStack(DarkAsteroidBlocks.alien_sapling, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(DarkAsteroidBlocks.alien_leaves, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("logWood", new ItemStack(DarkAsteroidBlocks.alien_log, 1, OreDictionary.WILDCARD_VALUE));
 	}
 }

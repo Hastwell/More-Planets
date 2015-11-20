@@ -220,7 +220,7 @@ public class MorePlanetsEvents
 				{
 					boolean flag = player.capabilities.isCreativeMode;
 
-					if (!flag && player.inventory.hasItem(Items.coal))
+					//if (!flag && player.inventory.hasItem(Items.coal))
 					{
 						if (mc.gameSettings.keyBindJump.isKeyDown())
 						{

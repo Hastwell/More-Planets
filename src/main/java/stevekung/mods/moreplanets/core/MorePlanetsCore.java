@@ -36,6 +36,7 @@ import stevekung.mods.moreplanets.common.network.meteor.MeteorClientMessage;
 import stevekung.mods.moreplanets.common.network.meteor.MeteorServerHandler;
 import stevekung.mods.moreplanets.common.network.meteor.MeteorServerMessage;
 import stevekung.mods.moreplanets.common.recipe.CraftingManagerMP;
+import stevekung.mods.moreplanets.common.util.EntitySpawnerUtil;
 import stevekung.mods.moreplanets.common.util.FurnaceFuelMP;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.common.util.MorePlanetsRegistry;
@@ -112,6 +113,7 @@ public class MorePlanetsCore
 		MPEntities.init();
 		TreeCapitatorIntegrationMP.init();
 		AchievementsMP.init();
+		EntitySpawnerUtil.init();
 		CommonRegisterHelper.registerGUIHandler(this, new GuiEventHandler());
 
 		MorePlanetsCore.mpBlocksTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));

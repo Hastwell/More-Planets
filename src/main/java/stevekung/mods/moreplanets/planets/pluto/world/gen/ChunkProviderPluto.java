@@ -32,7 +32,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
@@ -74,7 +74,7 @@ public class ChunkProviderPluto extends ChunkProviderGenerate
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBasePluto.pluto };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(PlutoBlocks.pluto_block, new int[] {0, 1, 2});
+	private MapGenCavesMP caveGenerator = new MapGenCavesMP(PlutoBlocks.pluto_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 300;
 	private static int MID_HEIGHT = 64;

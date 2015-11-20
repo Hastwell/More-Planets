@@ -46,7 +46,7 @@ public abstract class BlockLogMP extends BlockBaseMP
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state)
 	{
-		if (world.getBlockState(pos).getBlock().getMaterial() == Material.wood)
+		if (this.getBlockState().getBlock().getMaterial() == Material.wood)
 		{
 			byte b0 = 4;
 			int i = b0 + 1;
@@ -72,13 +72,13 @@ public abstract class BlockLogMP extends BlockBaseMP
 	@Override
 	public boolean canSustainLeaves(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(pos).getBlock().getMaterial() == Material.wood ? true : false;
+		return this.getBlockState().getBlock().getMaterial() == Material.wood ? true : false;
 	}
 
 	@Override
 	public boolean isWood(IBlockAccess world, BlockPos pos)
 	{
-		return world.getBlockState(pos).getBlock().getMaterial() == Material.wood ? true : false;
+		return this.getBlockState().getBlock().getMaterial() == Material.wood ? true : false;
 	}
 
 	public static enum EnumAxis implements IStringSerializable

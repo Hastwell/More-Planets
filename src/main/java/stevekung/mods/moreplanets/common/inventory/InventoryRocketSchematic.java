@@ -14,13 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 
-public class InventorySchematicRocket implements IInventory
+public class InventoryRocketSchematic implements IInventory
 {
 	private ItemStack[] stackList;
 	private int inventoryWidth;
 	private Container container;
 
-	public InventorySchematicRocket(Container container)
+	public InventoryRocketSchematic(Container container)
 	{
 		this.stackList = new ItemStack[22];
 		this.container = container;

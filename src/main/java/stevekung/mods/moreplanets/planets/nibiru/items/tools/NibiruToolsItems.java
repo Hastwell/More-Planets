@@ -62,11 +62,11 @@ public class NibiruToolsItems
 		CommonRegisterHelper.registerItem(NibiruToolsItems.norium_hoe);
 
 		// Set harvest level
-		NibiruToolsItems.red_gem_pickaxe.setHarvestLevel("pickaxe", 4);
-		NibiruToolsItems.red_gem_axe.setHarvestLevel("axe", 4);
-		NibiruToolsItems.red_gem_shovel.setHarvestLevel("shovel", 4);
-		NibiruToolsItems.norium_pickaxe.setHarvestLevel("pickaxe", 4);
-		NibiruToolsItems.norium_axe.setHarvestLevel("axe", 4);
-		NibiruToolsItems.norium_shovel.setHarvestLevel("shovel", 4);
+		CommonRegisterHelper.setToolHarvestLevel(NibiruToolsItems.red_gem_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(NibiruToolsItems.red_gem_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(NibiruToolsItems.red_gem_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(NibiruToolsItems.norium_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(NibiruToolsItems.norium_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(NibiruToolsItems.norium_shovel, "shovel", 3);
 	}
 }

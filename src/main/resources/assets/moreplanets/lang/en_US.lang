@@ -135,12 +135,12 @@ tile.ancient_dark_wood_stairs.name=Ancient Dark Wood Stairs
 tile.nibiru_dungeon_brick_stairs.name=Nibiru Dungeon Brick Stairs
 tile.nibiru_planks.ancient_dark.name=Ancient Dark Wood Planks
 tile.nibiru_sapling.ancient_dark.name=Ancient Dark Sapling
-tile.ancient_dark_leaves.name=Ancient Dark Leaves
+tile.nibiru_leaves.ancient_dark_leaves.name=Ancient Dark Leaves
 tile.nibiru_log.ancient_dark_wood.name=Ancient Dark Wood
 tile.nibiru_log.orange_wood.name=Orange Wood
 tile.ichorius_torch.name=Ichorius Torch
 tile.nibiru_sapling.orange.name=Orange Sapling
-tile.orange_leaves.name=Orange Leaves
+tile.nibiru_leaves.orange_leaves.name=Orange Leaves
 tile.nibiru_planks.orange.name=Orange Wood Planks
 tile.orange_wood_stairs.name=Orange Wood Stairs
 tile.infected_grass.name=Infected Grass
@@ -676,6 +676,7 @@ tile.alien_planks.name=Alien Wood Planks
 tile.alien_glowstone.name=Alien Glowstone
 tile.alien_leaves.name=Alien Leaves
 tile.alien_sapling.name=Alien Sapling
+tile.alien_vine.name=Alien Vines
 
 # ITEMS
 #########Main Item#########
@@ -914,7 +915,6 @@ item.brown_liquid_sulfur_bucket.name=Brown Liquid Sulfur Bucket
 item.venus_item.lead_ingot.name=Lead Ingot
 item.sulfur_battery.name=Sulfur Battery
 item.jetpack.name=Jetpack
-item.venus_dungeon_key.name=Tier 3 Venus Dungeon Key
 
 #########Pluto Item#########
 item.pluto_item.xeonium_gem.name=Xeonium Gem

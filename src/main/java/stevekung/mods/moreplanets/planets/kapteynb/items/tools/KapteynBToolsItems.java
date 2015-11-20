@@ -72,14 +72,14 @@ public class KapteynBToolsItems
 		CommonRegisterHelper.registerItem(KapteynBToolsItems.ice_crystal_hoe);
 
 		// Set harvest level
-		KapteynBToolsItems.frozen_iron_pickaxe.setHarvestLevel("pickaxe", 4);
-		KapteynBToolsItems.frozen_iron_axe.setHarvestLevel("axe", 4);
-		KapteynBToolsItems.frozen_iron_shovel.setHarvestLevel("shovel", 4);
-		KapteynBToolsItems.uranium_pickaxe.setHarvestLevel("pickaxe", 4);
-		KapteynBToolsItems.uranium_axe.setHarvestLevel("axe", 4);
-		KapteynBToolsItems.uranium_shovel.setHarvestLevel("shovel", 4);
-		KapteynBToolsItems.ice_crystal_pickaxe.setHarvestLevel("pickaxe", 4);
-		KapteynBToolsItems.ice_crystal_axe.setHarvestLevel("axe", 4);
-		KapteynBToolsItems.ice_crystal_shovel.setHarvestLevel("shovel", 4);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.frozen_iron_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.frozen_iron_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.frozen_iron_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.uranium_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.uranium_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.uranium_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.ice_crystal_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.ice_crystal_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KapteynBToolsItems.ice_crystal_shovel, "shovel", 3);
 	}
 }

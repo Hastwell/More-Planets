@@ -18,13 +18,13 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.inventory.InventorySchematicRocket;
+import stevekung.mods.moreplanets.common.inventory.InventoryRocketSchematic;
 import stevekung.mods.moreplanets.planets.kapteynb.inventory.slot.SlotSchematicTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.recipe.Tier8RocketRecipes;
 
 public class ContainerSchematicTier8Rocket extends Container
 {
-	public InventorySchematicRocket craftMatrix = new InventorySchematicRocket(this);
+	public InventoryRocketSchematic craftMatrix = new InventoryRocketSchematic(this);
 	public IInventory craftResult = new InventoryCraftResult();
 	private World worldObj;
 

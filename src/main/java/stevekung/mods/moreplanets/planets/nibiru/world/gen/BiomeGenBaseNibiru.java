@@ -17,11 +17,11 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.tree.WorldGenNibiruFruitTree;
 
 public class BiomeGenBaseNibiru extends BiomeGenBaseMP
 {
@@ -44,11 +44,11 @@ public class BiomeGenBaseNibiru extends BiomeGenBaseMP
 	{
 		if (rand.nextInt(1) == 0)
 		{
-			return new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 0, true);
+			return new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, NibiruBlocks.nibiru_sapling, null);
 		}
 		else if (rand.nextInt(2) == 0)
 		{
-			return new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 1, true);
+			return new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, NibiruBlocks.nibiru_sapling, null);
 		}
 		return null;
 	}

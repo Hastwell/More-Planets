@@ -46,8 +46,8 @@ public class SiriusBToolsItems
 		CommonRegisterHelper.registerItem(SiriusBToolsItems.sulfur_hoe);
 
 		// Set harvest level
-		SiriusBToolsItems.sulfur_pickaxe.setHarvestLevel("pickaxe", 3);
-		SiriusBToolsItems.sulfur_axe.setHarvestLevel("axe", 3);
-		SiriusBToolsItems.sulfur_shovel.setHarvestLevel("shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(SiriusBToolsItems.sulfur_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(SiriusBToolsItems.sulfur_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(SiriusBToolsItems.sulfur_shovel, "shovel", 3);
 	}
 }

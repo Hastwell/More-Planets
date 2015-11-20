@@ -14,13 +14,13 @@ import java.util.List;
 import micdoodle8.mods.galacticraft.api.recipe.INasaWorkbenchRecipe;
 import micdoodle8.mods.galacticraft.core.recipe.NasaWorkbenchRecipe;
 import net.minecraft.item.ItemStack;
-import stevekung.mods.moreplanets.common.inventory.InventorySchematicRocket;
+import stevekung.mods.moreplanets.common.inventory.InventoryRocketSchematic;
 
 public class Tier7RocketRecipes
 {
 	private static List<INasaWorkbenchRecipe> tier7RocketRecipes = new ArrayList<INasaWorkbenchRecipe>();
 
-	public static ItemStack findMatchingTier7RocketRecipe(InventorySchematicRocket inventoryRocketBench)
+	public static ItemStack findMatchingTier7RocketRecipe(InventoryRocketSchematic inventoryRocketBench)
 	{
 		for (INasaWorkbenchRecipe recipe : getTier7RocketRecipes())
 		{

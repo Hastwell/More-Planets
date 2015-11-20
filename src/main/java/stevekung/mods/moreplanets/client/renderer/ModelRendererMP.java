@@ -211,14 +211,8 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(NibiruBlocks.infected_cavernous_vine, "infected_cavernous_vine", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruBlocks.nibiru_log, 0, "ancient_dark_wood_log", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruBlocks.nibiru_log, 1, "orange_wood_log", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.ancient_dark_leaves, 0, "ancient_dark_leaves1", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.ancient_dark_leaves, 1, "ancient_dark_leaves2", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.ancient_dark_leaves, 2, "ancient_dark_leaves3", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.ancient_dark_leaves, 3, "ancient_dark_leaves4", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.orange_leaves, 0, "orange_leaves1", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.orange_leaves, 1, "orange_leaves2", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.orange_leaves, 2, "orange_leaves3", "moreplanets");
-		ClientRegisterHelper.registerModelRender(NibiruBlocks.orange_leaves, 3, "orange_leaves4", "moreplanets");
+		ClientRegisterHelper.registerModelRender(NibiruBlocks.nibiru_leaves, 0, "ancient_dark_leaves", "moreplanets");
+		ClientRegisterHelper.registerModelRender(NibiruBlocks.nibiru_leaves, 1, "orange_leaves", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruBlocks.nibiru_sapling, 0, "ancient_dark_sapling", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruBlocks.nibiru_sapling, 1, "orange_sapling", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruBlocks.power_crystal_generator, "power_crystal_generator", "moreplanets");
@@ -668,6 +662,7 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_leaves, "alien_leaves", "moreplanets");
 		ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_sapling, "alien_sapling", "moreplanets");
 		ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_glowstone, "alien_glowstone", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_vine, "alien_vine", "moreplanets");
 
 		// Items
 		ClientRegisterHelper.registerModelRender(MPItems.feces, "feces", "moreplanets");

@@ -34,7 +34,7 @@ public class BlockFronosLeaves extends BlockLeavesMP
 	public BlockFronosLeaves(String name)
 	{
 		super();
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.red_maple_leaves));
+		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.red_maple_leaves).withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
 		this.setUnlocalizedName(name);
 	}
 

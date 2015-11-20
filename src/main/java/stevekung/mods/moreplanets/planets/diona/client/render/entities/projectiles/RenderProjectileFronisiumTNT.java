@@ -27,22 +27,17 @@ public class RenderProjectileFronisiumTNT extends Render
 		this.shadowSize = 0.5F;
 	}
 
-	public void renderProjectileTNT(double par2, double par4, double par6, float par8, float par9)
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float par8, float par9)
 	{
 		BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
 		this.bindTexture(TextureMap.locationBlocksTexture);
 		GlStateManager.enableCull();
 		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) par2, (float) par4, (float) par6);
+		GlStateManager.translate((float) x - 0.5D, (float) y, (float) z + 0.5D);
 		blockrendererdispatcher.renderBlockBrightness(DionaBlocks.fronisium_tnt.getDefaultState(), 1.0F);
 		GlStateManager.popMatrix();
 		GlStateManager.disableCull();
-	}
-
-	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderProjectileTNT(par2, par4, par6, par8, par9);
 	}
 
 	@Override

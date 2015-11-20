@@ -7,13 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.diona.client.render.entities.layers;
 
-import net.minecraft.client.model.ModelCreeper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.planets.diona.client.model.ModelDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.client.render.entities.RenderDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 
@@ -22,7 +22,7 @@ public class LayerDionaCreeperMinionCharge implements LayerRenderer
 {
 	private ResourceLocation LIGHTNING_TEXTURE = new ResourceLocation("moreplanets:textures/entity/creeper_shield.png");
 	private RenderDionaCreeperMinion creeperRenderer;
-	private ModelCreeper creeperModel = new ModelCreeper(2.0F);
+	private ModelDionaCreeperMinion creeperModel = new ModelDionaCreeperMinion(2.0F);
 
 	public LayerDionaCreeperMinionCharge(RenderDionaCreeperMinion render)
 	{

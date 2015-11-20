@@ -18,13 +18,13 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.inventory.InventorySchematicRocket;
+import stevekung.mods.moreplanets.common.inventory.InventoryRocketSchematic;
 import stevekung.mods.moreplanets.planets.diona.inventory.slot.SlotSchematicTier4Rocket;
 import stevekung.mods.moreplanets.planets.diona.recipe.Tier4RocketRecipes;
 
 public class ContainerSchematicTier4Rocket extends Container
 {
-	public InventorySchematicRocket craftMatrix = new InventorySchematicRocket(this);
+	public InventoryRocketSchematic craftMatrix = new InventoryRocketSchematic(this);
 	public IInventory craftResult = new InventoryCraftResult();
 	private final World worldObj;
 

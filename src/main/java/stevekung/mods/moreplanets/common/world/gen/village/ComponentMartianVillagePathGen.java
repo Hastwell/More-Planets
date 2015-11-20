@@ -148,10 +148,7 @@ public class ComponentMartianVillagePathGen extends ComponentMartianVillageRoadP
 					{
 						world.setBlockState(blockpos, PhobosBlocks.phobos_block.getDefaultState(), 3);
 					}
-					else
-					{
-						world.setBlockState(blockpos, DeimosBlocks.deimos_block.getDefaultState(), 3);
-					}
+					world.setBlockState(blockpos, DeimosBlocks.deimos_block.getDefaultState(), 3);
 				}
 			}
 		}

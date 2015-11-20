@@ -74,7 +74,7 @@ public class MapGenKoentusVillage extends MapGenStructure
 	@Override
 	protected StructureStart getStructureStart(int x, int z)
 	{
-		MPLog.debug("Generating Koentus Village at x : " + x * 16 + " z : " + z * 16);
+		MPLog.debug("Generating Koentus Village at x : %s, z : %s", x * 16, z * 16);
 		return new StructureKoentusVillageStart(this.worldObj, this.rand, x, z, this.terrainType);
 	}
 

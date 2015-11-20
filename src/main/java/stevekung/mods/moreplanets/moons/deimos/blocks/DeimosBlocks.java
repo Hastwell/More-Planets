@@ -26,7 +26,7 @@ public class DeimosBlocks
 		CommonRegisterHelper.registerBlock(DeimosBlocks.deimos_block, ItemBlockDeimos.class);
 
 		// Set harvest level
-		DeimosBlocks.deimos_block.setHarvestLevel("pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(DeimosBlocks.deimos_block, "pickaxe", 0);
 
 		// Register ore dictionary
 		OreDictionary.registerOre("oreTin", new ItemStack(DeimosBlocks.deimos_block, 1, 4));

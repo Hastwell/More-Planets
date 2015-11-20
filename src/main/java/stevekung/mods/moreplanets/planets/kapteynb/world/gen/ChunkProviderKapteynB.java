@@ -37,7 +37,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
@@ -82,7 +82,7 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseKapteynB.kapteynB };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(KapteynBBlocks.kapteyn_b_block, new int[] {0, 1, 2});
+	private MapGenCavesMP caveGenerator = new MapGenCavesMP(KapteynBBlocks.kapteyn_b_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 2000;
 

@@ -23,6 +23,8 @@ public class BlockDoubleEuropaPrismarineSlab extends BlockEuropaPrismarineSlab
 	public BlockDoubleEuropaPrismarineSlab(String name, Material material)
 	{
 		super(material);
+		this.setHardness(1.5F);
+		this.setResistance(10.0F);
 		this.setUnlocalizedName(name);
 	}
 

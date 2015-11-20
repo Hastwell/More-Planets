@@ -30,9 +30,4 @@ public class BlockBaseMP extends Block
 	{
 		return MorePlanetsCore.mpBlocksTab;
 	}
-
-	public void setHarvestLevel(String toolClass, int level, int meta)
-	{
-		this.setHarvestLevel(toolClass, level, this.getStateFromMeta(meta));
-	}
 }

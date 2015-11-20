@@ -36,8 +36,7 @@ public class TreeCapitatorIntegrationMP
 		NBTTagCompound tree = new NBTTagCompound();
 
 		String nibiruLog = blockName(NibiruBlocks.nibiru_log);
-		String ancientDarkLeaves = blockName(NibiruBlocks.ancient_dark_leaves);
-		String orangeLeaves = blockName(NibiruBlocks.orange_leaves);
+		String nibiruLeaves = blockName(NibiruBlocks.nibiru_leaves);
 
 		String koentusLog = blockName(KoentusBlocks.crystal_log);
 		String koentusLeaves = blockName(KoentusBlocks.crystal_leaves);
@@ -72,14 +71,14 @@ public class TreeCapitatorIntegrationMP
 		// Ancient Dark Tree
 		tree.setString("treeName", "ancientDark");
 		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", nibiruLog, nibiruLog, nibiruLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves));
+		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves));
 		tree.setBoolean("requireLeafDecayCheck", false);
 		treeList.appendTag(tree);
 
 		// Orange Tree
 		tree.setString("treeName", "orange");
 		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", nibiruLog, nibiruLog, nibiruLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves));
+		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves));
 		tree.setBoolean("requireLeafDecayCheck", false);
 		treeList.appendTag(tree);
 

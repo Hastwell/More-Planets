@@ -40,8 +40,8 @@ public class PlutoToolsItems
 		CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_sword);
 
 		// Set harvest level
-		PlutoToolsItems.xeonium_pickaxe.setHarvestLevel("pickaxe", 4);
-		PlutoToolsItems.xeonium_axe.setHarvestLevel("axe", 4);
-		PlutoToolsItems.xeonium_shovel.setHarvestLevel("shovel", 4);
+		CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_shovel, "shovel", 3);
 	}
 }

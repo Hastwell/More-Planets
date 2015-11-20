@@ -14,8 +14,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenLiquidLakes;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
@@ -32,7 +30,6 @@ public class BiomeDecoratorSiriusB extends BiomeDecoratorMP
 
 	public BiomeDecoratorSiriusB()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 32, 1, true, SiriusBBlocks.sirius_b_block, 2);
 		this.cobblestoneGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 4, 3, true, SiriusBBlocks.sirius_b_block, 2);
 		this.sulfurGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 8, 4, true, SiriusBBlocks.sirius_b_block, 2);
@@ -45,8 +42,6 @@ public class BiomeDecoratorSiriusB extends BiomeDecoratorMP
 	@Override
 	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
 	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.currentWorld, this.randomGenerator, this.field_180294_c));
-
 		this.generateOre(32, this.dirtGen, 0, 255);
 		this.generateOre(10, this.cobblestoneGen, 0, 128);
 		this.generateOre(12, this.sulfurGen, 0, 48);
@@ -68,6 +63,5 @@ public class BiomeDecoratorSiriusB extends BiomeDecoratorMP
 				new WorldGenLiquidLakes(SiriusBBlocks.sirius_lava).generate(this.currentWorld, this.randomGenerator, new BlockPos(x, y, z));
 			}
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.currentWorld, this.randomGenerator, this.field_180294_c));
 	}
 }

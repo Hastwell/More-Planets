@@ -14,10 +14,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType;
-import net.minecraftforge.event.terraingen.TerrainGen;
 import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenLiquidLakes;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
@@ -37,7 +33,6 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorMP
 
 	public BiomeDecoratorKapteynB()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.nameriumGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 4, 4, true, KapteynBBlocks.kapteyn_b_block, 2);
 		this.frozenIronGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 8, 5, true, KapteynBBlocks.kapteyn_b_block, 2);
 		this.uraniumGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 8, 6, true, KapteynBBlocks.kapteyn_b_block, 2);
@@ -53,8 +48,6 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorMP
 	@Override
 	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
 	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.currentWorld, this.randomGenerator, this.field_180294_c));
-
 		this.generateOre(16, this.copperGen, 0, 64);
 		this.generateOre(16, this.tinGen, 0, 64);
 		this.generateOre(12, this.redstoneGen, 0, 16);
@@ -66,7 +59,7 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorMP
 		this.generateOre(24, this.dirtyIceGen, 0, 255);
 		this.generateOre(24, this.rockyGen, 0, 128);
 
-		for (int i = 0; this.getGen(EventType.LAKE_WATER) && i < 1; ++i)
+		for (int i = 0; i < 1; ++i)
 		{
 			if (this.randomGenerator.nextInt(10) == 0)
 			{
@@ -76,11 +69,5 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorMP
 				new WorldGenLiquidLakes(KapteynBBlocks.frozen_water).generate(this.currentWorld, this.randomGenerator, new BlockPos(x, y, z));
 			}
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.currentWorld, this.randomGenerator, this.field_180294_c));
-	}
-
-	private boolean getGen(EventType event)
-	{
-		return TerrainGen.decorate(this.currentWorld, this.randomGenerator, this.field_180294_c, event);
 	}
 }

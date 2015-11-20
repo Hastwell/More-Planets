@@ -26,7 +26,7 @@ public class PhobosBlocks
 		CommonRegisterHelper.registerBlock(PhobosBlocks.phobos_block, ItemBlockPhobos.class);
 
 		// Set harvest level
-		PhobosBlocks.phobos_block.setHarvestLevel("pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(PhobosBlocks.phobos_block, "pickaxe", 0);
 
 		// Register ore dictionary
 		OreDictionary.registerOre("oreTin", new ItemStack(PhobosBlocks.phobos_block, 1, 4));

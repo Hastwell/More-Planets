@@ -7,7 +7,9 @@
 
 package stevekung.mods.moreplanets.common.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import micdoodle8.mods.galacticraft.api.GalacticraftRegistry;
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
@@ -21,6 +23,11 @@ import micdoodle8.mods.galacticraft.api.recipe.ISchematicPage;
 import micdoodle8.mods.galacticraft.api.recipe.SchematicRegistry;
 import micdoodle8.mods.galacticraft.api.recipe.SpaceStationRecipe;
 import micdoodle8.mods.galacticraft.api.world.SpaceStationType;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.WorldProvider;
@@ -29,6 +36,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public class MorePlanetsRegistry
 {
@@ -112,5 +121,17 @@ public class MorePlanetsRegistry
 	{
 		MorePlanetsRegistry.simpleNetworkWrapper.registerMessage(messageHandler, requestMessageType, discriminator, side);
 		MPLog.debug("Register Message Handler : %s, %s", messageHandler.getSimpleName(), requestMessageType.getSimpleName());
+	}
+
+	public static List<Class<? extends EntityLiving>> getDisableEntity()
+	{
+		List<Class<? extends EntityLiving>> list = new ArrayList<Class<? extends EntityLiving>>();
+		list.add(EntityEvolvedSkeleton.class);
+		list.add(EntityEvolvedCreeper.class);
+		list.add(EntityEvolvedZombie.class);
+		list.add(EntityEvolvedSpider.class);
+		list.add(EntityEvolvedEnderman.class);
+		list.add(EntityEvolvedWitch.class);
+		return list;
 	}
 }

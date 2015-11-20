@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.common.blocks;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -16,13 +17,11 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -78,63 +77,34 @@ public class BlockStoneSlab1MP extends BlockSlab
 		return MorePlanetsCore.mpBlocksTab;
 	}
 
-	/*@Override
+	@Override
 	public float getBlockHardness(World world, BlockPos pos)
 	{
-		int meta = world.getBlockMetadata(x, y, z);
+		Block block = world.getBlockState(pos).getBlock();
+
+		if (!(block instanceof BlockStoneSlab1MP))
+		{
+			return 0.0F;
+		}
+
+		int meta = this.getMetaFromState(world.getBlockState(pos));
 		float hardness = this.blockHardness;
 
-		if (this.category == SlabType.WOOD1)
+		switch (meta & 7)
 		{
-			switch (meta & 7)
-			{
-			case 0:
-			case 6:
-			case 7:
-				hardness = 2.5F;
-				break;
-			case 1:
-			case 2:
-			case 5:
-				hardness = 3.25F;
-				break;
-			case 3:
-				hardness = 3.0F;
-				break;
-			case 4:
-				hardness = 4.25F;
-				break;
-			default:
-				hardness = 2.0F;
-				break;
-			}
-		}
-		else if (this.category == SlabType.WOOD2)
-		{
-			switch (meta & 7)
-			{
-			case 0:
-				hardness = 1.75F;
-				break;
-			case 1:
-			case 2:
-				hardness = 2.25F;
-				break;
-			case 3:
-				hardness = 3.25F;
-				break;
-			case 4:
-				hardness = 4.5F;
-				break;
-			}
+		case 1:
+		case 2:
+			hardness = 2.5F;
+			break;
+		case 6:
+		case 7:
+			hardness = 1.5F;
+			break;
+		default:
+			hardness = 2.0F;
+			break;
 		}
 		return hardness;
-	}*/
-
-	@Override
-	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
-	{
-		return super.getBlockHardness(world, pos);
 	}
 
 	@Override

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=ancient_dark_leaves": { "model": "moreplanets:ancient_dark_leaves" },
+		"variant=orange_leaves": { "model": "moreplanets:orange_leaves" }
+    }
+}

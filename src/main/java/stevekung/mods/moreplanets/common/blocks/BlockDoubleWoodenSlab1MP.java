@@ -25,7 +25,8 @@ public class BlockDoubleWoodenSlab1MP extends BlockWoodenSlab1MP
 	public BlockDoubleWoodenSlab1MP(String name, Material material)
 	{
 		super(material);
-		this.setStepSound(soundTypeWood);
+		this.setHardness(2.0F);
+		this.setResistance(5.0F);
 		this.setUnlocalizedName(name);
 	}
 

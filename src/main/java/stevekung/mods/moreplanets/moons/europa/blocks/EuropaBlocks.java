@@ -143,28 +143,27 @@ public class EuropaBlocks
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_door_block);
 
 		// Set harvest level
-		EuropaBlocks.europa_snow_block.setHarvestLevel("shovel", 0);
-		EuropaBlocks.europa_snow_layer.setHarvestLevel("shovel", 0);
-		EuropaBlocks.europa_prismarine.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.europa_ice_slush.setHarvestLevel("shovel", 0);
-		EuropaBlocks.europa_salt.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.europa_underwater_geyser.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.europa_sandstone.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.half_europa_sandstone_slab.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.double_europa_sandstone_slab.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.europa_sandstone_stairs.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.europa_wood_stairs.setHarvestLevel("axe", 0);
-		EuropaBlocks.europa_log.setHarvestLevel("axe", 0);
-		EuropaBlocks.europa_planks.setHarvestLevel("axe", 0);
-		EuropaBlocks.europa_fence.setHarvestLevel("axe", 0);
-		EuropaBlocks.europa_fence_gate.setHarvestLevel("axe", 0);
-		EuropaBlocks.europa_door_block.setHarvestLevel("axe", 0);
-		EuropaBlocks.europa_sand.setHarvestLevel("shovel", 0);
-		EuropaBlocks.europa_prismarine_stairs.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.europa_prismarine_brick_stairs.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.dark_europa_prismarine_stairs.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.half_europa_prismarine_slab.setHarvestLevel("pickaxe", 0);
-		EuropaBlocks.double_europa_prismarine_slab.setHarvestLevel("pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_snow_block, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_snow_layer, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_ice_slush, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_sand, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_prismarine, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_salt, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_underwater_geyser, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.half_europa_sandstone_slab, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.double_europa_sandstone_slab, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_sandstone_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_prismarine_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_prismarine_brick_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.dark_europa_prismarine_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.half_europa_prismarine_slab, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.double_europa_prismarine_slab, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_wood_stairs, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_log, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_planks, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_fence, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_fence_gate, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(EuropaBlocks.europa_door_block, "axe", 0);
 
 		// Set fire burn
 		CommonRegisterHelper.setFireBurn(EuropaBlocks.europa_sapling, 60, 100);

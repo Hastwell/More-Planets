@@ -62,11 +62,11 @@ public class DionaToolsItems
 		CommonRegisterHelper.registerItem(DionaToolsItems.fronisium_hoe);
 
 		// Set harvest level
-		DionaToolsItems.quontonium_shovel.setHarvestLevel("shovel", 4);
-		DionaToolsItems.quontonium_pickaxe.setHarvestLevel("pickaxe", 4);
-		DionaToolsItems.quontonium_axe.setHarvestLevel("axe", 4);
-		DionaToolsItems.fronisium_shovel.setHarvestLevel("shovel", 4);
-		DionaToolsItems.fronisium_pickaxe.setHarvestLevel("pickaxe", 4);
-		DionaToolsItems.fronisium_axe.setHarvestLevel("axe", 4);
+		CommonRegisterHelper.setToolHarvestLevel(DionaToolsItems.quontonium_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(DionaToolsItems.quontonium_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(DionaToolsItems.quontonium_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(DionaToolsItems.fronisium_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(DionaToolsItems.fronisium_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(DionaToolsItems.fronisium_axe, "axe", 3);
 	}
 }

@@ -266,7 +266,13 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 				chance = 40;
 			}
 		}
+
 		this.captureDrops(true);
+
+		if (world instanceof World)
+		{
+			this.dropFruit((World)world, pos, state, chance);
+		}
 		ret.addAll(this.captureDrops(false));
 		return ret;
 	}
@@ -293,4 +299,6 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 			world.setBlockState(pos, state.withProperty(CHECK_DECAY, true), 4);
 		}
 	}
+
+	protected void dropFruit(World world, BlockPos pos, IBlockState state, int chance) {}
 }

@@ -32,7 +32,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.moons.io.blocks.BlockIo;
@@ -60,7 +60,7 @@ public class ChunkProviderIo extends ChunkProviderGenerate
 
 	public BiomeDecoratorIo biomedecoratorplanet = new BiomeDecoratorIo();
 	private World worldObj;
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(IoBlocks.io_block, new int[] {0, 1, 2});
+	private MapGenCavesMP caveGenerator = new MapGenCavesMP(IoBlocks.io_block, new int[] {0, 1, 2});
 	private MapGenDungeon dungeonGenerator = new MapGenDungeon(IoBlocks.io_block, 9, 8, 16, 4);
 	{
 		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));

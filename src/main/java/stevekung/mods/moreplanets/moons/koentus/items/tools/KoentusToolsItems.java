@@ -62,11 +62,11 @@ public class KoentusToolsItems
 		CommonRegisterHelper.registerItem(KoentusToolsItems.koentus_meteoric_iron_hoe);
 
 		// Set harvest level
-		KoentusToolsItems.white_crystal_pickaxe.setHarvestLevel("pickaxe", 4);
-		KoentusToolsItems.white_crystal_axe.setHarvestLevel("axe", 4);
-		KoentusToolsItems.white_crystal_shovel.setHarvestLevel("shovel", 4);
-		KoentusToolsItems.koentus_meteoric_iron_pickaxe.setHarvestLevel("pickaxe", 4);
-		KoentusToolsItems.koentus_meteoric_iron_axe.setHarvestLevel("axe", 4);
-		KoentusToolsItems.koentus_meteoric_iron_shovel.setHarvestLevel("shovel", 4);
+		CommonRegisterHelper.setToolHarvestLevel(KoentusToolsItems.white_crystal_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KoentusToolsItems.white_crystal_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KoentusToolsItems.white_crystal_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KoentusToolsItems.koentus_meteoric_iron_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KoentusToolsItems.koentus_meteoric_iron_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(KoentusToolsItems.koentus_meteoric_iron_shovel, "shovel", 3);
 	}
 }

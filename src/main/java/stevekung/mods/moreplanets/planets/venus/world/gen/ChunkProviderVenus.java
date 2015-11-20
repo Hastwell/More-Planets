@@ -36,7 +36,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
@@ -67,7 +67,7 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
 
 	private World worldObj;
 	public BiomeDecoratorVenus biomedecoratorplanet = new BiomeDecoratorVenus();
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(VenusBlocks.venus_block, new int[] {0, 1, 2});
+	private MapGenCavesMP caveGenerator = new MapGenCavesMP(VenusBlocks.venus_block, new int[] {0, 1, 2});
 	private MapGenVenusRavine ravineGenerator = new MapGenVenusRavine();
 	private MapGenVenusVillage villageGenerator = new MapGenVenusVillage();
 	private MapGenVenusianBlazePit blazePit = new MapGenVenusianBlazePit();

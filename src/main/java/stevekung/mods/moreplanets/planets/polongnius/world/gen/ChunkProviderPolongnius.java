@@ -32,7 +32,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
-import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
@@ -94,7 +94,7 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
 	}
 
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBasePolongnius.polongnius };
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(PolongniusBlocks.polongnius_block, new int[] {0, 1, 2});
+	private MapGenCavesMP caveGenerator = new MapGenCavesMP(PolongniusBlocks.polongnius_block, new int[] {0, 1, 2});
 
 	private static int CRATER_PROB = 600;
 

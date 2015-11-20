@@ -50,7 +50,7 @@ public class KapteynBBlocks
 		KapteynBBlocks.kapteyn_b_redstone_ore_active = new BlockKapteynBRedstoneOre("kapteyn_b_redstone_ore_active", true);
 		KapteynBBlocks.kapteyn_b_ice = new BlockKapteynBIce("kapteyn_b_ice");
 		KapteynBBlocks.kapteyn_b_treasure_chest = new BlockKapteynBTreasureChest("kapteyn_b_treasure_chest");
-		KapteynBBlocks.kapteyn_b_cracked_ice_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "kapteyn_b_cracked_ice_stairs", "glass", null, 3.25F);
+		KapteynBBlocks.kapteyn_b_cracked_ice_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "kapteyn_b_cracked_ice_stairs", "glass", null, 1.5F);
 		KapteynBBlocks.kapteyn_b_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "kapteyn_b_dungeon_brick_stairs", 4.0F);
 		KapteynBBlocks.rocky_solid_water = new BlockRockySolidWater("rocky_solid_water");
 		KapteynBBlocks.kapteyn_b_ancient_chest = new BlockKapteynBAncientChest("kapteyn_b_ancient_chest");
@@ -82,26 +82,21 @@ public class KapteynBBlocks
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.frozen_water);
 
 		// Set harvest level
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("shovel", 0, 0);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("shovel", 0, 1);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 2);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 3);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 4);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 5);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 6);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 7);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 8);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 9);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 10);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 11);
-		((BlockKapteynB)KapteynBBlocks.kapteyn_b_block).setHarvestLevel("pickaxe", 0, 12);
-		KapteynBBlocks.frozen_water_geyser.setHarvestLevel("pickaxe", 0);
-		KapteynBBlocks.kapteyn_b_redstone_ore.setHarvestLevel("pickaxe", 2);
-		KapteynBBlocks.kapteyn_b_redstone_ore_active.setHarvestLevel("pickaxe", 2);
-		KapteynBBlocks.kapteyn_b_cracked_ice_stairs.setHarvestLevel("pickaxe", 0);
-		KapteynBBlocks.kapteyn_b_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
-		KapteynBBlocks.rocky_solid_water.setHarvestLevel("shovel", 0);
-		KapteynBBlocks.kapteyn_b_ancient_chest.setHarvestLevel("axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_block, "shovel", 0, 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_block, "shovel", 0, 1);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.rocky_solid_water, "shovel", 0);
+
+		for (int i = 2; i < 12; i++)
+		{
+			CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_block, "pickaxe", 0, i);
+		}
+
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.frozen_water_geyser, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_redstone_ore, "pickaxe", 2);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_redstone_ore_active, "pickaxe", 2);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_cracked_ice_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_dungeon_brick_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_ancient_chest, "pickaxe", 0);
 
 		// Register ore dictionary
 		OreDictionary.registerOre("oreNamerium", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 4));
@@ -110,7 +105,6 @@ public class KapteynBBlocks
 		OreDictionary.registerOre("oreTin", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 7));
 		OreDictionary.registerOre("oreCopper", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 8));
 		OreDictionary.registerOre("oreRedstone", new ItemStack(KapteynBBlocks.kapteyn_b_redstone_ore));
-
 		OreDictionary.registerOre("blockNamerium", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 9));
 		OreDictionary.registerOre("blockFrozenIron", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 10));
 		OreDictionary.registerOre("blockUranium", new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 11));

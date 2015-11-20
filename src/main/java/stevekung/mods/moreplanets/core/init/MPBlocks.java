@@ -137,19 +137,18 @@ public class MPBlocks
 		DarkAsteroidBlocks.init();
 
 		// Set harvest level
-		MPBlocks.half_stone_slab_1.setHarvestLevel("pickaxe", 0);
-		MPBlocks.double_stone_slab_1.setHarvestLevel("pickaxe", 0);
-		MPBlocks.half_stone_slab_2.setHarvestLevel("pickaxe", 0);
-		MPBlocks.double_stone_slab_2.setHarvestLevel("pickaxe", 0);
-		MPBlocks.half_wooden_slab_1.setHarvestLevel("axe", 0);
-		MPBlocks.half_wooden_slab_1.setHarvestLevel("axe", 0);
-		MPBlocks.double_wooden_slab_1.setHarvestLevel("axe", 0);
-		MPBlocks.double_wooden_slab_1.setHarvestLevel("axe", 0);
-		MPBlocks.half_dungeon_brick_slab_1.setHarvestLevel("pickaxe", 0);
-		MPBlocks.double_dungeon_brick_slab_1.setHarvestLevel("pickaxe", 0);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 0);
-		MPBlocks.dungeon_brick_wall.setHarvestLevel("pickaxe", 0);
-		MPBlocks.chondrite_rock.setHarvestLevel("pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_stone_slab_1, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_stone_slab_2, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_stone_slab_1, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_stone_slab_2, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_wooden_slab_1, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_wooden_slab_1, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_dungeon_brick_slab_1, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_dungeon_brick_slab_1, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.stone_wall, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.dungeon_brick_wall, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.chondrite_rock, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.polished_space_decoration, "pickaxe", 0);
 
 		// Set fire burn
 		CommonRegisterHelper.setFireBurn(MPBlocks.half_wooden_slab_1, 5, 20);
@@ -163,11 +162,10 @@ public class MPBlocks
 		highlightBlockList.add(PolongniusBlocks.polongnius_block);
 		highlightBlockList.add(PolongniusBlocks.ultra_violet_solar_fake);
 		highlightBlockList.add(NibiruBlocks.nibiru_block);
-		highlightBlockList.add(NibiruBlocks.ancient_dark_leaves);
-		highlightBlockList.add(NibiruBlocks.orange_leaves);
+		highlightBlockList.add(NibiruBlocks.nibiru_leaves);
 		highlightBlockList.add(NibiruBlocks.infected_farmland);
-		highlightBlockList.add(NibiruBlocks.ancient_dark_door);
-		highlightBlockList.add(NibiruBlocks.orange_door);
+		highlightBlockList.add(NibiruBlocks.ancient_dark_door_block);
+		highlightBlockList.add(NibiruBlocks.orange_door_block);
 		highlightBlockList.add(KoentusBlocks.koentus_block);
 		highlightBlockList.add(KoentusBlocks.koentus_ice);
 		highlightBlockList.add(KoentusBlocks.crystal_farmland);
@@ -199,6 +197,8 @@ public class MPBlocks
 		highlightBlockList.add(DarkAsteroidBlocks.alien_farmland);
 		highlightBlockList.add(DionaBlocks.green_redstone_torch_off);
 		highlightBlockList.add(PolongniusBlocks.fallen_polongnius_meteor);
+		highlightBlockList.add(FronosBlocks.sky_mushroom_block);
+		highlightBlockList.add(EuropaBlocks.europa_door_block);
 
 		hideBlockList.add(MPBlocks.dungeon_spawner);
 		hideBlockList.add(MPBlocks.double_stone_slab_1);
@@ -211,8 +211,8 @@ public class MPBlocks
 		hideBlockList.add(KoentusBlocks.crystal_cocoa);
 		hideBlockList.add(PolongniusBlocks.ultra_violet_solar_fake);
 		hideBlockList.add(PolongniusBlocks.cheese_of_milk);
-		hideBlockList.add(NibiruBlocks.ancient_dark_door);
-		hideBlockList.add(NibiruBlocks.orange_door);
+		hideBlockList.add(NibiruBlocks.ancient_dark_door_block);
+		hideBlockList.add(NibiruBlocks.orange_door_block);
 		hideBlockList.add(NibiruBlocks.infected_farmland);
 		hideBlockList.add(FronosBlocks.fronos_farmland);
 		hideBlockList.add(FronosBlocks.candy_extractor_active);

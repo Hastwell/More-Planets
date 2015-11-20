@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.common.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,6 +27,36 @@ public class BlockDoubleStoneSlab1MP extends BlockStoneSlab1MP
 	{
 		super(material);
 		this.setUnlocalizedName(name);
+	}
+
+	@Override
+	public float getBlockHardness(World world, BlockPos pos)
+	{
+		Block block = world.getBlockState(pos).getBlock();
+
+		if (!(block instanceof BlockDoubleStoneSlab1MP))
+		{
+			return 0.0F;
+		}
+
+		int meta = this.getMetaFromState(world.getBlockState(pos));
+		float hardness = this.blockHardness;
+
+		switch (meta & 7)
+		{
+		case 1:
+		case 2:
+			hardness = 2.5F;
+			break;
+		case 6:
+		case 7:
+			hardness = 1.5F;
+			break;
+		default:
+			hardness = 2.0F;
+			break;
+		}
+		return hardness;
 	}
 
 	@Override

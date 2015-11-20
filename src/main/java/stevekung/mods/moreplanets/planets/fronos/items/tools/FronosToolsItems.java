@@ -99,17 +99,17 @@ public class FronosToolsItems
 		CommonRegisterHelper.registerItem(FronosToolsItems.fronos_rock_hoe);
 
 		// Set harvest level
-		FronosToolsItems.candy_pickaxe.setHarvestLevel("pickaxe", 1);
-		FronosToolsItems.candy_axe.setHarvestLevel("axe", 1);
-		FronosToolsItems.candy_shovel.setHarvestLevel("shovel", 1);
-		FronosToolsItems.black_diamond_pickaxe.setHarvestLevel("pickaxe", 4);
-		FronosToolsItems.black_diamond_axe.setHarvestLevel("axe", 4);
-		FronosToolsItems.black_diamond_shovel.setHarvestLevel("shovel", 4);
-		FronosToolsItems.iridium_pickaxe.setHarvestLevel("pickaxe", 4);
-		FronosToolsItems.iridium_axe.setHarvestLevel("axe", 4);
-		FronosToolsItems.iridium_shovel.setHarvestLevel("shovel", 4);
-		FronosToolsItems.fronos_rock_pickaxe.setHarvestLevel("pickaxe", 1);
-		FronosToolsItems.fronos_rock_axe.setHarvestLevel("axe", 1);
-		FronosToolsItems.fronos_rock_shovel.setHarvestLevel("shovel", 1);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.black_diamond_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.black_diamond_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.black_diamond_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.iridium_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.iridium_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.iridium_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.fronos_rock_pickaxe, "pickaxe", 1);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.fronos_rock_axe, "axe", 1);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.fronos_rock_shovel, "shovel", 1);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.candy_pickaxe, "pickaxe", 1);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.candy_axe, "axe", 1);
+		CommonRegisterHelper.setToolHarvestLevel(FronosToolsItems.candy_shovel, "shovel", 1);
 	}
 }

@@ -75,7 +75,7 @@ public class IoBlocks
 		CommonRegisterHelper.registerBlock(IoBlocks.brown_liquid_sulfur);
 
 		// Set harvest level
-		IoBlocks.io_block.setHarvestLevel("pickaxe", 0);
-		IoBlocks.io_magma_rock.setHarvestLevel("pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(IoBlocks.io_block, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(IoBlocks.io_magma_rock, "pickaxe", 0);
 	}
 }

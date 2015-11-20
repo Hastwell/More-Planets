@@ -38,7 +38,7 @@ public class BlockDungeonBrickSlab1 extends BlockSlab
 		this.setUnlocalizedName(name);
 		this.useNeighborBrightness = true;
 		this.setHardness(4.0F);
-		this.setResistance(6.0F);
+		this.setResistance(20.0F);
 	}
 
 	public BlockDungeonBrickSlab1(Material material)

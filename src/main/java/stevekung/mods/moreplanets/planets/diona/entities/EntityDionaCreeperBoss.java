@@ -73,7 +73,7 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 	public EntityDionaCreeperBoss(World world)
 	{
 		super(world);
-		this.setSize(1.5F, 8.5F);
+		this.setSize(2.5F, 8.1F);
 		this.isImmuneToFire = true;
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 25, 20.0F));
@@ -133,7 +133,7 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 	@Override
 	public void onKillCommand()
 	{
-		this.setDead();
+		this.setHealth(0.0F);
 	}
 
 	@Override
@@ -175,7 +175,7 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 	{
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(300.0F * ConfigManagerCore.dungeonBossHealthMod);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.05F);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.0D);
 	}
 
 	@SuppressWarnings("unchecked")

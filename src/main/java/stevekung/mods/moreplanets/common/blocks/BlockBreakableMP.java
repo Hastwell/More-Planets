@@ -55,9 +55,4 @@ public class BlockBreakableMP extends BlockBreakable
 		}
 		return true && block == this ? false : super.shouldSideBeRendered(world, pos, facing);
 	}
-
-	public void setHarvestLevel(String toolClass, int level, int meta)
-	{
-		this.setHarvestLevel(toolClass, level, this.getStateFromMeta(meta));
-	}
 }

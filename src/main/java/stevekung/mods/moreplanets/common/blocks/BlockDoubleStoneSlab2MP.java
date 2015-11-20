@@ -29,6 +29,29 @@ public class BlockDoubleStoneSlab2MP extends BlockStoneSlab2MP
 	}
 
 	@Override
+	public float getBlockHardness(World world, BlockPos pos)
+	{
+		int meta = this.getMetaFromState(world.getBlockState(pos));
+		float hardness = this.blockHardness;
+
+		switch (meta & 7)
+		{
+		case 1:
+		case 2:
+		case 3:
+			hardness = 1.5F;
+			break;
+		case 4:
+			hardness = 2.5F;
+			break;
+		default:
+			hardness = 2.0F;
+			break;
+		}
+		return hardness;
+	}
+
+	@Override
 	public boolean isDouble()
 	{
 		return true;

@@ -7,18 +7,13 @@
 
 package stevekung.mods.moreplanets.moons.deimos.world.gen;
 
-import java.util.Random;
-
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 
-public class BiomeDecoratorDeimos extends BiomeDecorator
+public class BiomeDecoratorDeimos extends BiomeDecoratorMP
 {
 	private WorldGenerator dirtGen;
 	private WorldGenerator deshGen;
@@ -29,7 +24,6 @@ public class BiomeDecoratorDeimos extends BiomeDecorator
 
 	public BiomeDecoratorDeimos()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 32, 1, true, DeimosBlocks.deimos_block, 2);
 		this.deshGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 7, true, DeimosBlocks.deimos_block, 2);
 		this.ironGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 6, true, DeimosBlocks.deimos_block, 2);
@@ -39,52 +33,13 @@ public class BiomeDecoratorDeimos extends BiomeDecorator
 	}
 
 	@Override
-	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
-	{
-		this.currentWorld = world;
-		this.randomGenerator = rand;
-		this.field_180294_c = pos;
-		this.generateOres();
-		this.currentWorld = null;
-		this.randomGenerator = null;
-	}
-
 	protected void generateOres()
 	{
-		this.generateOre(16, this.ironGen, 0, 64);
-		this.generateOre(16, this.chondriteGen, 0, 128);
-		this.generateOre(16, this.tinGen, 0, 64);
-		this.generateOre(16, this.copperGen, 0, 64);
-		this.generateOre(16, this.deshGen, 20, 48);
-		this.generateOre(32, this.dirtGen, 0, 255);
-	}
-
-	protected void generateOre(int amount, WorldGenerator worldGen, int minY, int maxY)
-	{
-		int i;
-
-		if (maxY < minY)
-		{
-			i = minY;
-			minY = maxY;
-			maxY = i;
-		}
-		else if (maxY == minY)
-		{
-			if (minY < 255)
-			{
-				++maxY;
-			}
-			else
-			{
-				--minY;
-			}
-		}
-
-		for (i = 0; i < amount; ++i)
-		{
-			BlockPos blockpos = this.field_180294_c.add(this.randomGenerator.nextInt(16), this.randomGenerator.nextInt(maxY - minY) + minY, this.randomGenerator.nextInt(16));
-			worldGen.generate(this.currentWorld, this.randomGenerator, blockpos);
-		}
+		this.generateOre(20, this.ironGen, 0, 64);
+		this.generateOre(14, this.chondriteGen, 0, 128);
+		this.generateOre(20, this.tinGen, 0, 64);
+		this.generateOre(20, this.copperGen, 0, 64);
+		this.generateOre(16, this.deshGen, 16, 48);
+		this.generateOre(10, this.dirtGen, 0, 256);
 	}
 }

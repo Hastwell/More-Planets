@@ -35,10 +35,9 @@ public class StateMapperUtil
 		ClientRegisterHelper.registerStateMapper(DionaBlocks.fronisium_tnt, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFronisiumTNT.EXPLODE}).build());
 		ClientRegisterHelper.registerStateMapper(NibiruBlocks.ancient_dark_fence_gate, EnumStateMapper.FENCE_GATE);
 		ClientRegisterHelper.registerStateMapper(NibiruBlocks.orange_fence_gate, EnumStateMapper.FENCE_GATE);
-		ClientRegisterHelper.registerStateMapper(NibiruBlocks.ancient_dark_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
-		ClientRegisterHelper.registerStateMapper(NibiruBlocks.orange_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
-		ClientRegisterHelper.registerStateMapper(NibiruBlocks.ancient_dark_door, EnumStateMapper.DOOR);
-		ClientRegisterHelper.registerStateMapper(NibiruBlocks.orange_door, EnumStateMapper.DOOR);
+		ClientRegisterHelper.registerStateMapper(NibiruBlocks.nibiru_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
+		ClientRegisterHelper.registerStateMapper(NibiruBlocks.ancient_dark_door_block, EnumStateMapper.DOOR);
+		ClientRegisterHelper.registerStateMapper(NibiruBlocks.orange_door_block, EnumStateMapper.DOOR);
 		ClientRegisterHelper.registerStateMapper(KoentusBlocks.crystal_fence_gate, EnumStateMapper.FENCE_GATE);
 		ClientRegisterHelper.registerStateMapper(KoentusBlocks.crystal_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
 		ClientRegisterHelper.registerStateMapper(KoentusBlocks.crystal_door_block, EnumStateMapper.DOOR);

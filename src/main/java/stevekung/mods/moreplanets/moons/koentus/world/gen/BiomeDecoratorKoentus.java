@@ -14,8 +14,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.feature.WorldGenKoentusRockSpires;
@@ -36,7 +34,6 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorMP
 
 	public BiomeDecoratorKoentus()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 32, 1, true, KoentusBlocks.koentus_block, 2);
 		this.tinGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 8, 4, true, KoentusBlocks.koentus_block, 2);
 		this.copperGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 8, 5, true, KoentusBlocks.koentus_block, 2);
@@ -53,8 +50,6 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorMP
 	@Override
 	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
 	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.currentWorld, this.randomGenerator, this.field_180294_c));
-
 		int i;
 		int x;
 		int y;
@@ -76,6 +71,5 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorMP
 			z = this.randomGenerator.nextInt(16) + 8;
 			this.rockSpiresGen.generate(this.currentWorld, this.randomGenerator, new BlockPos(x, y, z));
 		}
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.currentWorld, this.randomGenerator, this.field_180294_c));
 	}
 }

@@ -30,7 +30,6 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.diona.blocks.BlockDiona;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
-import stevekung.mods.moreplanets.planets.diona.dimension.WorldProviderDiona;
 
 public class EntityDustSludgeling extends EntityMob implements IEntityBreathable
 {
@@ -118,20 +117,17 @@ public class EntityDustSludgeling extends EntityMob implements IEntityBreathable
 	{
 		Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
 
-		if (this.worldObj.provider instanceof WorldProviderDiona)
+		for (int i = 0; i < 5; i++)
 		{
-			for (int i = 0; i < 1; i++)
+			if (this.worldObj.rand.nextInt(8) == 0)
 			{
-				if (this.worldObj.rand.nextInt(8) == 0)
+				if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))
 				{
-					if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))
-					{
-						this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.getPosition().getX() + this.worldObj.rand.nextFloat(), this.getPosition().getY() + 0.1F, this.getPosition().getZ() + this.worldObj.rand.nextFloat(), 0.0D, 0.0D, 0.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))});
-					}
-					else if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))
-					{
-						this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.getPosition().getX() + this.worldObj.rand.nextFloat(), this.getPosition().getY() + 0.1F, this.getPosition().getZ() + this.worldObj.rand.nextFloat(), 0.0D, 0.0D, 0.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))});
-					}
+					this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.getPosition().getX() + this.worldObj.rand.nextFloat(), this.getPosition().getY() + 0.5F, this.getPosition().getZ() + this.worldObj.rand.nextFloat(), 0.0D, 0.0D, 0.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))});
+				}
+				else if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))
+				{
+					this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.getPosition().getX() + this.worldObj.rand.nextFloat(), this.getPosition().getY() + 0.5F, this.getPosition().getZ() + this.worldObj.rand.nextFloat(), 0.0D, 0.0D, 0.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))});
 				}
 			}
 		}

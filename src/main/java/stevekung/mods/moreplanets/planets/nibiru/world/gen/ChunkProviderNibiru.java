@@ -37,9 +37,10 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import stevekung.mods.moreplanets.common.world.gen.MapGenCaveMP;
+import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
@@ -49,7 +50,6 @@ import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomBossNibir
 import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomChestsNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomSpawnerNibiru;
 import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomTreasureNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.tree.WorldGenNibiruFruitTree;
 
 public class ChunkProviderNibiru extends ChunkProviderGenerate
 {
@@ -70,7 +70,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 
 	private World worldObj;
 	public BiomeDecoratorNibiru biomedecoratorplanet = new BiomeDecoratorNibiru();
-	private MapGenCaveMP caveGenerator = new MapGenCaveMP(NibiruBlocks.nibiru_block, new int[] {0, 1, 2});
+	private MapGenCavesMP caveGenerator = new MapGenCavesMP(NibiruBlocks.nibiru_block, new int[] {0, 1, 2});
 	private MapGenCavernNibiru cavernGenerator = new MapGenCavernNibiru();
 	private MapGenNibiruRavine ravineGenerator = new MapGenNibiruRavine();
 	private MapGenDungeon dungeonGenerator = new MapGenDungeon(NibiruBlocks.nibiru_block, 12, 8, 24, 4);
@@ -436,7 +436,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 			x = var4 + this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(256);
 			z = var5 + this.rand.nextInt(16) + 8;
-			new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 0, true).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
+			new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
 
 		}
 		for (int i = 0; tree && i < 100; ++i)
@@ -444,7 +444,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
 			x = var4 + this.rand.nextInt(16) + 8;
 			y = this.rand.nextInt(256);
 			z = var5 + this.rand.nextInt(16) + 8;
-			new WorldGenNibiruFruitTree(4, NibiruBlocks.nibiru_log, NibiruBlocks.orange_leaves, 1, true).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
+			new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, new BlockPos(x, y, z));
 		}
 		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.worldObj, this.rand, new BlockPos(chunkX * 16, 0, chunkZ * 16)));
 		BlockFalling.fallInstantly = false;

@@ -45,11 +45,11 @@ public class ItemDoorMP extends ItemMorePlanets
 
 			if (this.doorType == DoorType.ANCIENT_DARK)
 			{
-				block = NibiruBlocks.ancient_dark_door;
+				block = NibiruBlocks.ancient_dark_door_block;
 			}
 			else if (this.doorType == DoorType.ORANGE)
 			{
-				block = NibiruBlocks.orange_door;
+				block = NibiruBlocks.orange_door_block;
 			}
 			else if (this.doorType == DoorType.COCONUT)
 			{

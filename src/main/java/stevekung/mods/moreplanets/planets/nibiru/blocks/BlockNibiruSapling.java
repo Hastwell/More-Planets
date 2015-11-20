@@ -27,7 +27,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.tree.WorldGenNibiruFruitTree;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 
 public class BlockNibiruSapling extends BlockSaplingMP
 {
@@ -84,11 +84,11 @@ public class BlockNibiruSapling extends BlockSaplingMP
 		{
 			if (type == BlockType.ancient_dark_sapling)
 			{
-				obj = new WorldGenNibiruFruitTree(6, NibiruBlocks.nibiru_log, NibiruBlocks.ancient_dark_leaves, 0, false);
+				obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, this, null);
 			}
 			else if (type == BlockType.orange_sapling)
 			{
-				obj = new WorldGenNibiruFruitTree(6, NibiruBlocks.nibiru_log, NibiruBlocks.orange_leaves, 1, false);
+				obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, this, null);
 			}
 		}
 		if (obj != null)

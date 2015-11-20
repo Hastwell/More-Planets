@@ -30,9 +30,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.common.util.MorePlanetsRegistry;
 import stevekung.mods.moreplanets.moons.io.tileentities.TileEntityIoDungeonSpawner;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusDungeonSpawner;
-import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaDungeonSpawner;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperBoss;
+import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDungeonSpawnerMP;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosDungeonSpawner;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBDungeonSpawner;
 import stevekung.mods.moreplanets.planets.mercury.tileentities.TileEntityMercuryDungeonSpawner;
@@ -127,7 +129,7 @@ public class BlockDungeonSpawner extends BlockBaseMP implements ITileEntityProvi
 		switch (meta)
 		{
 		case 0:
-			return new TileEntityDionaDungeonSpawner();
+			return new TileEntityDungeonSpawnerMP(EntityDionaCreeperBoss.class, MorePlanetsRegistry.getDisableEntity());
 		case 1:
 			return new TileEntityPolongniusDungeonSpawner();
 		case 2:

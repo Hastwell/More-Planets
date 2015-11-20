@@ -7,17 +7,14 @@
 
 package stevekung.mods.moreplanets.moons.phobos.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
-import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 
-public class BiomeDecoratorPhobos extends BiomeDecoratorSpace
+public class BiomeDecoratorPhobos extends BiomeDecoratorMP
 {
-	private World world;
-
 	private WorldGenerator dirtGen;
 	private WorldGenerator deshGen;
 	private WorldGenerator ironGen;
@@ -27,7 +24,6 @@ public class BiomeDecoratorPhobos extends BiomeDecoratorSpace
 
 	public BiomeDecoratorPhobos()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 32, 1, true, DeimosBlocks.deimos_block, 2);
 		this.deshGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 7, true, DeimosBlocks.deimos_block, 2);
 		this.ironGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 6, true, DeimosBlocks.deimos_block, 2);
@@ -37,7 +33,7 @@ public class BiomeDecoratorPhobos extends BiomeDecoratorSpace
 	}
 
 	@Override
-	protected void decorate()
+	protected void generateOres()
 	{
 		this.generateOre(16, this.ironGen, 0, 64);
 		this.generateOre(16, this.chondriteGen, 0, 128);
@@ -45,17 +41,5 @@ public class BiomeDecoratorPhobos extends BiomeDecoratorSpace
 		this.generateOre(16, this.copperGen, 0, 64);
 		this.generateOre(16, this.deshGen, 20, 48);
 		this.generateOre(32, this.dirtGen, 0, 255);
-	}
-
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
-
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
 	}
 }

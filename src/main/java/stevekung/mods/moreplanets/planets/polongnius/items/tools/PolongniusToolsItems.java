@@ -78,14 +78,14 @@ public class PolongniusToolsItems
 		CommonRegisterHelper.registerItem(PolongniusToolsItems.purple_crystal_hoe);
 
 		// Set harvest level
-		PolongniusToolsItems.polongnius_meteoric_iron_pickaxe.setHarvestLevel("pickaxe", 4);
-		PolongniusToolsItems.polongnius_meteoric_iron_axe.setHarvestLevel("axe", 4);
-		PolongniusToolsItems.polongnius_meteoric_iron_shovel.setHarvestLevel("shovel", 4);
-		PolongniusToolsItems.palladium_pickaxe.setHarvestLevel("pickaxe", 4);
-		PolongniusToolsItems.palladium_axe.setHarvestLevel("axe", 4);
-		PolongniusToolsItems.palladium_shovel.setHarvestLevel("shovel", 4);
-		PolongniusToolsItems.purple_crystal_pickaxe.setHarvestLevel("pickaxe", 4);
-		PolongniusToolsItems.purple_crystal_axe.setHarvestLevel("axe", 4);
-		PolongniusToolsItems.purple_crystal_shovel.setHarvestLevel("shovel", 4);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.polongnius_meteoric_iron_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.polongnius_meteoric_iron_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.polongnius_meteoric_iron_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.palladium_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.palladium_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.palladium_shovel, "shovel", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.purple_crystal_pickaxe, "pickaxe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.purple_crystal_axe, "axe", 3);
+		CommonRegisterHelper.setToolHarvestLevel(PolongniusToolsItems.purple_crystal_shovel, "shovel", 3);
 	}
 }

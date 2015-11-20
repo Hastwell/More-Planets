@@ -29,7 +29,7 @@ public class BlockCandyCane1 extends BlockLogMP
 	public BlockCandyCane1(String name)
 	{
 		super(Material.cloth);
-		this.setHardness(1.0F);
+		this.setHardness(0.55F);
 		this.setResistance(3.0F);
 		this.setStepSound(soundTypeCloth);
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.pink_candy_cane).withProperty(AXIS, EnumAxis.Y));

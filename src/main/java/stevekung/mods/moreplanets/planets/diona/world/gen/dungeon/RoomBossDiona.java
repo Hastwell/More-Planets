@@ -20,9 +20,11 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.chunk.ChunkPrimer;
 import stevekung.mods.moreplanets.common.blocks.BlockDungeonSpawner;
+import stevekung.mods.moreplanets.common.util.MorePlanetsRegistry;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
-import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaDungeonSpawner;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperBoss;
+import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDungeonSpawnerMP;
 
 public class RoomBossDiona extends DungeonRoom
 {
@@ -104,9 +106,9 @@ public class RoomBossDiona extends DungeonRoom
 		this.worldObj.setBlockState(this.spawnerCoords, MPBlocks.dungeon_spawner.getDefaultState().withProperty(BlockDungeonSpawner.PLANET, BlockDungeonSpawner.DungeonType.diona), 3);
 		TileEntity tile = this.worldObj.getTileEntity(this.spawnerCoords);
 
-		if (tile == null || !(tile instanceof TileEntityDionaDungeonSpawner))
+		if (tile == null || !(tile instanceof TileEntityDungeonSpawnerMP))
 		{
-			TileEntityDungeonSpawner spawner = new TileEntityDionaDungeonSpawner();
+			TileEntityDungeonSpawner spawner = new TileEntityDungeonSpawnerMP(EntityDionaCreeperBoss.class, MorePlanetsRegistry.getDisableEntity());
 			spawner.setRoom(new Vector3(this.posX, this.posY, this.posZ), new Vector3(this.sizeX, this.sizeY, this.sizeZ));
 			this.worldObj.setTileEntity(this.spawnerCoords, spawner);
 		}

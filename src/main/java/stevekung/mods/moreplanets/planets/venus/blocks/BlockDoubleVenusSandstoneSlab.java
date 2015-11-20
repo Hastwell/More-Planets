@@ -23,6 +23,7 @@ public class BlockDoubleVenusSandstoneSlab extends BlockVenusSandstoneSlab
 	public BlockDoubleVenusSandstoneSlab(String name, Material material)
 	{
 		super(material);
+		this.setHardness(0.8F);
 		this.setUnlocalizedName(name);
 	}
 

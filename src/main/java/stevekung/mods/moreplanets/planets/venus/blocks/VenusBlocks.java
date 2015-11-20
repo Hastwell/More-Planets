@@ -67,17 +67,18 @@ public class VenusBlocks
 		CommonRegisterHelper.registerBlock(VenusBlocks.venus_ancient_chest);
 
 		// Set harvest level
-		VenusBlocks.venus_sandstone.setHarvestLevel("pickaxe", 0);
-		VenusBlocks.half_venus_sandstone_slab.setHarvestLevel("pickaxe", 0);
-		VenusBlocks.double_venus_sandstone_slab.setHarvestLevel("pickaxe", 0);
-		VenusBlocks.venus_sandstone_stairs.setHarvestLevel("pickaxe", 0);
-		VenusBlocks.venus_block.setHarvestLevel("pickaxe", 0);
-		VenusBlocks.venus_magma_rock.setHarvestLevel("pickaxe", 0);
-		VenusBlocks.venus_smoke_geyser.setHarvestLevel("pickaxe", 0);
-		VenusBlocks.venus_redstone_ore.setHarvestLevel("pickaxe", 2);
-		VenusBlocks.venus_redstone_ore_active.setHarvestLevel("pickaxe", 2);
-		VenusBlocks.venus_sand.setHarvestLevel("shovel", 0);
-		VenusBlocks.venus_ancient_chest.setHarvestLevel("axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_sandstone, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.half_venus_sandstone_slab, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.double_venus_sandstone_slab, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_sandstone_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_block, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_magma_rock, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_smoke_geyser, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_redstone_ore, "pickaxe", 2);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_redstone_ore_active, "pickaxe", 2);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_sand, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_ancient_chest, "axe", 0);
+
 
 		// Register ore dictionary
 		OreDictionary.registerOre("oreSulfur", new ItemStack(VenusBlocks.venus_block, 1, 4));

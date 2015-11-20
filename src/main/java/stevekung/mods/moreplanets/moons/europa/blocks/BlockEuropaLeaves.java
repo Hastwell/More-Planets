@@ -24,7 +24,7 @@ public class BlockEuropaLeaves extends BlockLeavesMP
 	public BlockEuropaLeaves(String name)
 	{
 		super();
-		this.setDefaultState(this.getDefaultState().withProperty(CHECK_DECAY, false).withProperty(DECAYABLE, false));
+		this.setDefaultState(this.getDefaultState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
 		this.setUnlocalizedName(name);
 	}
 

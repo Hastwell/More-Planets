@@ -1,5 +1,5 @@
 {
-    "parent": "moreplanets:block/orange_leaves2",
+    "parent": "moreplanets:block/ancient_dark_leaves",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

@@ -32,7 +32,6 @@ public class BlockWallMP extends BlockWallBaseMP
 	public BlockWallMP(String name)
 	{
 		super(Material.rock);
-		this.setResistance(6.0F);
 		this.setDefaultState(this.getDefaultState().withProperty(UP, Boolean.valueOf(false)).withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)).withProperty(VARIANT, BlockType.diona_cobblestone_wall));
 		this.setUnlocalizedName(name);
 	}
@@ -56,36 +55,22 @@ public class BlockWallMP extends BlockWallBaseMP
 
 		if (!(block instanceof BlockWallMP))
 		{
-			return 0;
+			return 0.0F;
 		}
 
 		switch (this.getMetaFromState(world.getBlockState(pos)))
 		{
-		case 0:
-		case 6:
-		case 7:
-			return 2.5F;
 		case 1:
 		case 2:
-		case 5:
-		case 11:
-			this.blockHardness = 3.25F;
+		case 12:
+			this.blockHardness = 2.5F;
 			break;
-		case 3:
-			this.blockHardness = 3.0F;
-			break;
-		case 4:
-			this.blockHardness = 4.25F;
-			break;
-		case 8:
-			this.blockHardness = 1.75F;
-			break;
+		case 6:
+		case 7:
 		case 9:
 		case 10:
-			this.blockHardness = 2.25F;
-			break;
-		case 12:
-			this.blockHardness = 4.5F;
+		case 11:
+			this.blockHardness = 1.5F;
 			break;
 		default:
 			this.blockHardness = 2.0F;

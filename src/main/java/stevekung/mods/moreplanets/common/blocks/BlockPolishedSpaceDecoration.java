@@ -29,7 +29,7 @@ public class BlockPolishedSpaceDecoration extends BlockBaseMP
 	{
 		super(Material.rock);
 		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.polished_tin_decoration_block));
-		this.setHardness(1.0F);
+		this.setHardness(1.5F);
 		this.setUnlocalizedName(name);
 	}
 

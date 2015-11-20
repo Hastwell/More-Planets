@@ -58,13 +58,13 @@ public class KoentusBlocks
 		// Init
 		KoentusBlocks.koentus_block = new BlockKoentus("koentus_block");
 		KoentusBlocks.koentus_ice = new BlockKoentusIce("koentus_ice");
-		KoentusBlocks.koentus_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_cobblestone_stairs", 3.25F);
+		KoentusBlocks.koentus_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_cobblestone_stairs", 2.0F);
 		KoentusBlocks.koentus_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_dungeon_brick_stairs", 4.0F);
 		KoentusBlocks.fallen_koentus_meteor = new BlockFallenKoentusMeteor("fallen_koentus_meteor");
 		KoentusBlocks.eledos_egg = new BlockEledosEgg("eledos_egg");
 		KoentusBlocks.white_crystal_torch = new BlockWhiteCrystalTorch("white_crystal_torch");
-		KoentusBlocks.koentus_ancient_stone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_ancient_stone_stairs", 2.5F);
-		KoentusBlocks.koentus_ancient_stone_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_ancient_stone_brick_stairs", 2.5F);
+		KoentusBlocks.koentus_ancient_stone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_ancient_stone_stairs", 1.5F);
+		KoentusBlocks.koentus_ancient_stone_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_ancient_stone_brick_stairs", 1.5F);
 		KoentusBlocks.koentus_ancient_chest = new BlockKoentusAncientChest("koentus_ancient_chest");
 		KoentusBlocks.glowing_ice_stone = new BlockGlowingIceStone("glowing_ice_stone");
 		KoentusBlocks.crystal_segment = new BlockCrystalSegment("crystal_segment");
@@ -106,23 +106,22 @@ public class KoentusBlocks
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_cocoa);
 
 		// Set harvest level
-		KoentusBlocks.koentus_block.setHarvestLevel("pickaxe", 0);
-		KoentusBlocks.fallen_koentus_meteor.setHarvestLevel("pickaxe", 2);
-		KoentusBlocks.eledos_egg.setHarvestLevel("pickaxe", 0);
-		KoentusBlocks.crystal_segment.setHarvestLevel("pickaxe", 0);
-		KoentusBlocks.koentus_ancient_chest.setHarvestLevel("axe", 0);
-		KoentusBlocks.crystal_log.setHarvestLevel("axe", 0);
-		KoentusBlocks.crystal_fence.setHarvestLevel("axe", 0);
-		KoentusBlocks.crystal_fence_gate.setHarvestLevel("axe", 0);
-		KoentusBlocks.crystal_planks.setHarvestLevel("axe", 0);
-		KoentusBlocks.crystal_wood_stairs.setHarvestLevel("axe", 0);
-		KoentusBlocks.crystal_door_block.setHarvestLevel("axe", 0);
-		KoentusBlocks.crystal_dirt.setHarvestLevel("shovel", 0);
-		KoentusBlocks.crystal_farmland.setHarvestLevel("shovel", 0);
-		KoentusBlocks.koentus_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
-		KoentusBlocks.koentus_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
-		KoentusBlocks.koentus_ancient_stone_stairs.setHarvestLevel("pickaxe", 0);
-		KoentusBlocks.koentus_ancient_stone_brick_stairs.setHarvestLevel("pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_block, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.eledos_egg, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_segment, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_cobblestone_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_dungeon_brick_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_ancient_stone_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_ancient_stone_brick_stairs, "pickaxe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.fallen_koentus_meteor, "pickaxe", 2);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_ancient_chest, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_log, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_fence, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_fence_gate, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_wood_stairs, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_door_block, "axe", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_dirt, "shovel", 0);
+		CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_farmland, "shovel", 0);
 
 		// Set fire burn
 		CommonRegisterHelper.setFireBurn(KoentusBlocks.crystal_planks, 5, 20);
@@ -139,13 +138,11 @@ public class KoentusBlocks
 		OreDictionary.registerOre("oreWhiteCrystal", new ItemStack(KoentusBlocks.koentus_block, 1, 6));
 		OreDictionary.registerOre("oreEMP", new ItemStack(KoentusBlocks.koentus_block, 1, 7));
 		OreDictionary.registerOre("oreBecterialFossil", new ItemStack(KoentusBlocks.koentus_block, 1, 8));
-
 		OreDictionary.registerOre("plankWood", new ItemStack(KoentusBlocks.crystal_planks, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("stairWood", new ItemStack(KoentusBlocks.crystal_wood_stairs));
 		OreDictionary.registerOre("treeSapling", new ItemStack(KoentusBlocks.crystal_sapling, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves", new ItemStack(KoentusBlocks.crystal_leaves, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("logWood", new ItemStack(KoentusBlocks.crystal_log, 1, OreDictionary.WILDCARD_VALUE));
-
 		OreDictionary.registerOre("blockWhiteCrystal", new ItemStack(KoentusBlocks.koentus_block, 1, 9));
 		OreDictionary.registerOre("blockEMP", new ItemStack(KoentusBlocks.koentus_block, 1, 10));
 	}
