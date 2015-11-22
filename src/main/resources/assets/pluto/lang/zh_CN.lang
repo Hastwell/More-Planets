@@ -16,6 +16,8 @@ tile.frozen_nitrogen_block.name=氮方块
 tile.pluto_ancient_chest.name=冥王星箱子
 tile.pluto_treasure_chest.name=5阶宝箱
 tile.xeonium_torch.name=西欧火把
+tile.pluto_block.surface_rock_brown.name=冥王星棕色地表岩石
+tile.pluto_block.surface_rock_light_brown.name=冥王星淡棕色地表岩石
 
 # SLABS
 
@@ -29,6 +31,11 @@ item.space_potato.baked_space_potato.name=烤太空马铃薯
 item.gravity_boots.name=重力靴子
 
 # TOOLS
+item.xeonium_pickaxe.name=西欧镐
+item.xeonium_axe.name=西欧斧
+item.xeonium_hoe.name=西欧锄
+item.xeonium_shovel.name=西欧锹
+item.xeonium_sword.name=西欧剑
 
 # ARMORS
 
