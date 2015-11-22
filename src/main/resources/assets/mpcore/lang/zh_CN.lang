@@ -3,6 +3,66 @@
 tile.chondrite_block.rock.name=陨石
 tile.chondrite_block.polished.name=平滑陨石
 tile.chondrite_block.stone_brick.name=陨石石砖
+tile.tinted_glass_pane.white.name=强化玻璃板
+tile.tinted_glass_pane.orange.name=强化橙色染色玻璃板
+tile.tinted_glass_pane.magenta.name=强化品红色染色玻璃板
+tile.tinted_glass_pane.light_blue.name=强化淡蓝色染色玻璃板
+tile.tinted_glass_pane.yellow.name=强化黄色染色玻璃板
+tile.tinted_glass_pane.lime.name=强化黄绿色染色玻璃板
+tile.tinted_glass_pane.pink.name=强化粉色染色玻璃板
+tile.tinted_glass_pane.gray.name=强化灰色染色玻璃板
+tile.tinted_glass_pane.silver.name=强化淡灰色染色玻璃板
+tile.tinted_glass_pane.cyan.name=强化青色染色玻璃板
+tile.tinted_glass_pane.purple.name=强化紫色染色玻璃板
+tile.tinted_glass_pane.blue.name=强化蓝色染色玻璃板
+tile.tinted_glass_pane.brown.name=强化棕色染色玻璃板
+tile.tinted_glass_pane.green.name=强化绿色染色玻璃板
+tile.tinted_glass_pane.red.name=强化红色染色玻璃板
+tile.tinted_glass_pane.black.name=强化黑色染色玻璃板
+tile.tinted_glass.white.name=强化玻璃
+tile.tinted_glass.orange.name=强化橙色染色玻璃
+tile.tinted_glass.magenta.name=强化品红色染色玻璃
+tile.tinted_glass.light_blue.name=强化淡蓝色染色玻璃
+tile.tinted_glass.yellow.name=强化黄色染色玻璃
+tile.tinted_glass.lime.name=强化黄绿色染色玻璃
+tile.tinted_glass.pink.name=强化粉色染色玻璃
+tile.tinted_glass.gray.name=强化灰色染色玻璃
+tile.tinted_glass.silver.name=强化淡灰色染色玻璃
+tile.tinted_glass.cyan.name=强化青色染色玻璃
+tile.tinted_glass.purple.name=强化紫色染色玻璃
+tile.tinted_glass.blue.name=强化蓝色染色玻璃
+tile.tinted_glass.brown.name=强化棕色染色玻璃
+tile.tinted_glass.green.name=强化绿色染色玻璃
+tile.tinted_glass.red.name=强化红色染色玻璃
+tile.tinted_glass.black.name=强化黑色染色玻璃
+tile.space_decoration_block.tin.name=平滑装饰锡块
+tile.space_decoration_block.aluminum.name=平滑装饰铝块
+
+tile.dark_asteroid_block.rock.name=黑暗小行星岩
+tile.dark_asteroid_block.aluminum_ore.name=铝矿石
+tile.dark_asteroid_block.ilmenite_ore.name=钛铁矿石
+tile.dark_asteroid_block.iron_ore.name=铁矿石
+tile.dark_asteroid_block.meteoric_iron_ore.name=陨铁矿石
+tile.dark_asteroid_block.silicon_ore.name=硅矿石
+tile.dark_asteroid_block.diamond_ore.name=钻石矿石
+tile.dark_asteroid_block.emerald_ore.name=绿宝石矿石
+tile.dark_asteroid_block.lapis_ore.name=青金石矿石
+tile.dark_asteroid_quicksand.name=黑暗小行星流沙
+tile.alphere_ore.name=Alphere Ore
+tile.alien_grass.name=Alien Grass
+tile.alien_dirt.dirt.name=Alien Dirt
+tile.alien_dirt.coarse.name=Alien Coarse Dirt
+tile.alien_log.name=Alien Wood
+tile.alien_planks.name=Alien Wood Planks
+tile.alien_glowstone.name=Alien Glowstone
+tile.alien_leaves.alien.name=Alien Leaves
+tile.alien_sapling.name=Alien Sapling
+entity.MorePlanet.EvolvedWitch.name=女巫(进化体)
+
+item.feces.name=屎(翔)
+item.decompose.name=分解
+item.desh_thermal_cloth.name=戴斯热力布匹
+item.alphere.name=Alphere
 
 # GUI
 itemGroup.MorePlanetsBlocks=更多行星(方块)
@@ -13,6 +73,9 @@ itemGroup.MorePlanetsArmor=更多行星(装备)
 # PLANET
 star.sirius=天狼星
 solarsystem.sirius=天狼星系
+solarsystem.dark=黑暗星系
+planet.darkAsteroids=黑暗小行星
+star.dark=黑暗恒星
 
 mp.failed.name=检查升级失败！
 mp.success.name=更多行星发现更新版本！
