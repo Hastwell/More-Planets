@@ -37,6 +37,7 @@ item.mercury_item.compressed_metallic.name=致密金属板
 item.mercury_item.compressed_metal_meteoric_iron.name=致密金属陨铁板
 item.mercury_item.gravity_core.name=重力核心
 item.mercury_item.gravity_controller.name=重力芯片
+item.dirty_water_bucket.name=脏水桶
 
 # TOOLS
 
