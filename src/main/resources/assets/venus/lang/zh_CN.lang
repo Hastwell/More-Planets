@@ -24,6 +24,11 @@ tile.sulfur_torch.name=硫火把
 tile.venusian_blaze_egg.name=金星烈焰人蛋
 tile.venus_ancient_chest.name=金星箱子
 tile.venus_treasure_chest.name=3阶宝箱
+tile.venus_sandstone.venusSandstone.name=金星沙石
+tile.venus_sandstone.venusSandstoneChiseled.name=錾制金星沙石
+tile.venus_sandstone.venusSandstoneSmooth.name=平滑金星沙石
+tile.half_venus_sandstone_slab.venus.name=金星沙石台阶
+tile.venus_sandstone_stairs.name=金星沙石楼梯
 
 # ITEMS
 item.venus_item.lead_ingot.name=铅锭
