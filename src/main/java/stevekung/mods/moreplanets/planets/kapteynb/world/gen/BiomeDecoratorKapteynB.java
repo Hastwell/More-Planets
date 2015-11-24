@@ -7,12 +7,8 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.world.gen;
 
-import java.util.Random;
-
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
 import net.minecraft.util.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenLiquidLakes;
@@ -46,7 +42,7 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorMP
 	}
 
 	@Override
-	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
+	protected void generateOres()
 	{
 		this.generateOre(16, this.copperGen, 0, 64);
 		this.generateOre(16, this.tinGen, 0, 64);

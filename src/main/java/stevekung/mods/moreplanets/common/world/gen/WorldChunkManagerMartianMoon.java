@@ -5,16 +5,17 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.phobos.world.gen;
+package stevekung.mods.moreplanets.common.world.gen;
 
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMartianMoon;
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldChunkManagerSpace;
 import net.minecraft.world.biome.BiomeGenBase;
 
-public class WorldChunkManagerPhobos extends WorldChunkManagerSpace
+public class WorldChunkManagerMartianMoon extends WorldChunkManagerSpace
 {
 	@Override
 	public BiomeGenBase getBiome()
 	{
-		return BiomeGenBasePhobos.phobos;
+		return BiomeGenBaseMartianMoon.martianMoon;
 	}
 }

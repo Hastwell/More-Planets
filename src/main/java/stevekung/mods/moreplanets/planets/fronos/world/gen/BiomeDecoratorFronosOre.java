@@ -7,16 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.fronos.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
-import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
-public class BiomeDecoratorFronosOre extends BiomeDecoratorSpace
+public class BiomeDecoratorFronosOre extends BiomeDecoratorMP
 {
-	private World world;
-
 	private WorldGenerator berryJellyGen;
 	private WorldGenerator strawberryJellyGen;
 	private WorldGenerator raspberryJellyGen;
@@ -44,7 +41,6 @@ public class BiomeDecoratorFronosOre extends BiomeDecoratorSpace
 
 	public BiomeDecoratorFronosOre()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.berryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 0, true, FronosBlocks.fronos_block, 0);
 		this.strawberryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 1, true, FronosBlocks.fronos_block, 0);
 		this.raspberryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 2, true, FronosBlocks.fronos_block, 0);
@@ -73,7 +69,7 @@ public class BiomeDecoratorFronosOre extends BiomeDecoratorSpace
 	}
 
 	@Override
-	protected void decorate()
+	protected void generateOres()
 	{
 		this.generateOre(16, this.tinGen, 0, 64);
 		this.generateOre(16, this.copperGen, 0, 64);
@@ -99,17 +95,5 @@ public class BiomeDecoratorFronosOre extends BiomeDecoratorSpace
 		this.generateOre(32, this.cakeGen3, 0, 255);
 		this.generateOre(32, this.cakeBreadGen1, 0, 255);
 		this.generateOre(32, this.cakeBreadGen2, 0, 255);
-	}
-
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
-
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
 	}
 }

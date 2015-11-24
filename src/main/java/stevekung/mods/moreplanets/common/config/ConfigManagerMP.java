@@ -50,8 +50,7 @@ public class ConfigManagerMP
 	public static int idMercuryBiome;
 	public static int idVenusBiome;
 	public static int idPlutoBiome;
-	public static int idDeimosBiome;
-	public static int idPhobosBiome;
+	public static int idMartianMoonBiome;
 	public static int idIoBiome;
 	public static int idMPSpaceStationBiome;
 	public static int idDarkAsteroidsBiome;
@@ -86,6 +85,7 @@ public class ConfigManagerMP
 	public static boolean enableVersionCheck;
 	public static boolean enableNewMainManu;
 	public static boolean enableDebug;
+	public static String homePlanetDimension;
 
 	public static boolean enableMercuryPlanet;
 	public static boolean enableVenusPlanet;
@@ -138,6 +138,7 @@ public class ConfigManagerMP
 			ConfigManagerMP.enableVersionCheck = this.configuration.get(Configuration.CATEGORY_GENERAL, "Enable Version Check", true).getBoolean(true);
 			ConfigManagerMP.enableNewMainManu = this.configuration.get(Configuration.CATEGORY_GENERAL, "Enable New Main Manu", true).getBoolean(true);
 			ConfigManagerMP.enableDebug = this.configuration.get(Configuration.CATEGORY_GENERAL, "Enable Debug Log", false).getBoolean(false);
+			ConfigManagerMP.homePlanetDimension = this.configuration.get(Configuration.CATEGORY_GENERAL, "Home Planet Name", "planet.", "Put your home planet name to survival on that planet. For example : planet.fronos, Default is : \"planet.\"").getString();
 
 			// Biomes
 			ConfigManagerMP.idDionaBiome = this.configuration.get("Biomes", "Diona Biome", 220).getInt(220);
@@ -155,10 +156,9 @@ public class ConfigManagerMP
 			ConfigManagerMP.idMercuryBiome = this.configuration.get("Biomes", "Mercury Biome", 240).getInt(240);
 			ConfigManagerMP.idVenusBiome = this.configuration.get("Biomes", "Venus Biome", 241).getInt(241);
 			ConfigManagerMP.idPlutoBiome = this.configuration.get("Biomes", "Pluto Biome", 242).getInt(242);
-			ConfigManagerMP.idDeimosBiome = this.configuration.get("Biomes", "Deimos Biome", 210).getInt(210);
-			ConfigManagerMP.idPhobosBiome = this.configuration.get("Biomes", "Phobos Biome", 211).getInt(211);
-			ConfigManagerMP.idIoBiome = this.configuration.get("Biomes", "Io Biome", 212).getInt(212);
-			ConfigManagerMP.idDarkAsteroidsBiome = this.configuration.get("Biomes", "Dark Asteroids Biome", 213).getInt(213);
+			ConfigManagerMP.idMartianMoonBiome = this.configuration.get("Biomes", "Martian Moon Biome", 210).getInt(210);
+			ConfigManagerMP.idIoBiome = this.configuration.get("Biomes", "Io Biome", 211).getInt(211);
+			ConfigManagerMP.idDarkAsteroidsBiome = this.configuration.get("Biomes", "Dark Asteroids Biome", 212).getInt(212);
 			ConfigManagerMP.idMPSpaceStationBiome = this.configuration.get("Biomes", "More Planets Space Station Biome", 130).getInt(130);
 
 			// Schematics

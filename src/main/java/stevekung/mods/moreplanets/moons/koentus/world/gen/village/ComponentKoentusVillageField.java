@@ -63,7 +63,7 @@ public class ComponentKoentusVillageField extends ComponentKoentusVillage
 			{
 				return true;
 			}
-			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 7 - 1, 0);
+			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
 		}
 
 		this.func_175804_a(world, box, 0, 1, 0, 12, 4, 8, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);

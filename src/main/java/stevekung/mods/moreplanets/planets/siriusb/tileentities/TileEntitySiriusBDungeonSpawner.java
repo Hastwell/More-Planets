@@ -17,6 +17,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import micdoodle8.mods.galacticraft.core.tile.TileEntityDungeonSpawner;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntityEvolvedSiriusBlazeBoss;
 
@@ -36,6 +37,7 @@ public class TileEntitySiriusBDungeonSpawner extends TileEntityDungeonSpawner
 		list.add(EntityEvolvedSpider.class);
 		list.add(EntityEvolvedCreeper.class);
 		list.add(EntityEvolvedEnderman.class);
+		list.add(EntityEvolvedWitch.class);
 		return list;
 	}
 

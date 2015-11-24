@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.pluto.items.tools;
+package stevekung.mods.moreplanets.common.items.tools;
 
 import java.util.List;
 
@@ -19,15 +19,13 @@ import micdoodle8.mods.miccore.Annotations.AltForVersion;
 import micdoodle8.mods.miccore.Annotations.RuntimeInterface;
 import micdoodle8.mods.miccore.Annotations.VersionSpecific;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -35,9 +33,7 @@ import net.minecraft.nbt.NBTTagDouble;
 import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.common.versioning.DefaultArtifactVersion;
 import net.minecraftforge.fml.common.versioning.VersionParser;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
@@ -45,13 +41,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+
+public abstract class ItemElectricAxeMP extends ItemAxe implements IItemElectric
 {
 	//private static Object itemManagerIC2;
 	public float transferMax;
 	private DefaultArtifactVersion mcVersion = null;
 
-	public ItemElectricHoeMP(ToolMaterial material)
+	public ItemElectricAxeMP(ToolMaterial material)
 	{
 		super(material);
 		this.setMaxDamage(100);
@@ -79,6 +78,26 @@ public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 	}
 
 	@Override
+	public float getStrVsBlock(ItemStack itemStack, Block block)
+	{
+		if (this.getElectricityStored(itemStack) == 0.0F)
+		{
+			return 0.0F;
+		}
+		return super.getStrVsBlock(itemStack, block);
+	}
+
+	@Override
+	public float getDigSpeed(ItemStack itemStack, IBlockState state)
+	{
+		if (this.getElectricityStored(itemStack) == 0.0F)
+		{
+			return 0.5F;
+		}
+		return super.getDigSpeed(itemStack, state);
+	}
+
+	@Override
 	public boolean hitEntity(ItemStack itemStack, EntityLivingBase living, EntityLivingBase holder)
 	{
 		if (this.getElectricityStored(itemStack) != 0.0F)
@@ -90,65 +109,26 @@ public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ)
+	public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, BlockPos pos, EntityLivingBase playerIn)
 	{
-		if (this.getElectricityStored(itemStack) != 0.0F)
+		if (block.getBlockHardness(world, pos) != 0.0D)
 		{
-			if (!player.canPlayerEdit(pos.offset(facing), facing, itemStack))
+			if (this.getElectricityStored(itemStack) != 0.0F)
 			{
-				return false;
-			}
-			else
-			{
-				int hook = ForgeEventFactory.onHoeUse(itemStack, player, world, pos);
-
-				if (hook != 0)
-				{
-					return hook > 0;
-				}
-
-				IBlockState iblockstate = world.getBlockState(pos);
-				Block block = iblockstate.getBlock();
-
-				if (facing != EnumFacing.DOWN && world.isAirBlock(pos.up()))
-				{
-					if (block == Blocks.grass)
-					{
-						return this.useHoe(itemStack, player, world, pos, Blocks.farmland.getDefaultState());
-					}
-
-					if (block == Blocks.dirt)
-					{
-						switch (SwitchDirtType.TYPE_LOOKUP[((BlockDirt.DirtType)iblockstate.getValue(BlockDirt.VARIANT)).ordinal()])
-						{
-						case 1:
-							return this.useHoe(itemStack, player, world, pos, Blocks.farmland.getDefaultState());
-						case 2:
-							return this.useHoe(itemStack, player, world, pos, Blocks.dirt.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT));
-						}
-					}
-				}
-				return false;
+				this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.0F);
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@Override
-	protected boolean useHoe(ItemStack itemStack, EntityPlayer player, World world, BlockPos target, IBlockState newState)
+	public Multimap getAttributeModifiers(ItemStack itemStack)
 	{
-		world.playSoundEffect(target.getX() + 0.5F, target.getY() + 0.5F, target.getZ() + 0.5F, newState.getBlock().stepSound.getStepSound(), (newState.getBlock().stepSound.getVolume() + 1.0F) / 2.0F, newState.getBlock().stepSound.getFrequency() * 0.8F);
-
-		if (world.isRemote)
+		if (this.getElectricityStored(itemStack) != 0.0F)
 		{
-			return true;
+			return super.getAttributeModifiers(itemStack);
 		}
-		else
-		{
-			world.setBlockState(target, newState);
-			this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.0F);
-			return true;
-		}
+		return HashMultimap.create();
 	}
 
 	@Override
@@ -281,7 +261,6 @@ public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 		return ClientProxyCore.galacticraftItem;
 	}
 
-
 	@Override
 	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
 	{
@@ -374,29 +353,5 @@ public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 	public int getTransferLimitB(ItemStack itemStack)
 	{
 		return (int) (this.transferMax * EnergyConfigHandler.TO_IC2_RATIO);
-	}
-
-	static class SwitchDirtType
-	{
-		static int[] TYPE_LOOKUP = new int[BlockDirt.DirtType.values().length];
-
-		static
-		{
-			try
-			{
-				TYPE_LOOKUP[BlockDirt.DirtType.DIRT.ordinal()] = 1;
-			}
-			catch (NoSuchFieldError var2)
-			{
-			}
-
-			try
-			{
-				TYPE_LOOKUP[BlockDirt.DirtType.COARSE_DIRT.ordinal()] = 2;
-			}
-			catch (NoSuchFieldError var1)
-			{
-			}
-		}
 	}
 }

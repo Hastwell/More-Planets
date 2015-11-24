@@ -137,7 +137,7 @@ public class BlockUltraVioletSolarPanel extends BlockTileGC implements IPartialS
 	@Override
 	public boolean onMachineActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entityPlayer, EnumFacing side, float hitX, float hitY, float hitZ)
 	{
-		entityPlayer.openGui(MorePlanetsCore.instance, -1, world, pos.getX(), pos.getY(), pos.getZ());
+		entityPlayer.openGui(MorePlanetsCore.INSTANCE, -1, world, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 

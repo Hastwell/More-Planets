@@ -5,12 +5,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.pluto.items.tools;
+package stevekung.mods.moreplanets.common.items.tools;
 
 import java.util.List;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 
 import micdoodle8.mods.galacticraft.api.item.ElectricItemHelper;
 import micdoodle8.mods.galacticraft.api.item.IItemElectric;
@@ -28,7 +25,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -44,13 +41,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public abstract class ItemElectricShovelMP extends ItemSpade implements IItemElectric
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+
+public abstract class ItemElectricPickaxeMP extends ItemPickaxe implements IItemElectric
 {
 	//private static Object itemManagerIC2;
 	public float transferMax;
 	private DefaultArtifactVersion mcVersion = null;
 
-	public ItemElectricShovelMP(ToolMaterial material)
+	public ItemElectricPickaxeMP(ToolMaterial material)
 	{
 		super(material);
 		this.setMaxDamage(100);

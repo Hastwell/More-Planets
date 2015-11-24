@@ -31,8 +31,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.util.DamageSourceMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
@@ -57,7 +55,7 @@ public class EntityPoisonArrow extends EntityArrow
 		this.setSize(0.5F, 0.5F);
 	}
 
-	public EntityPoisonArrow(World world, EntityLivingBase shooter, float p_i1756_3_)
+	public EntityPoisonArrow(World world, EntityLivingBase shooter, float velocity)
 	{
 		super(world);
 		this.renderDistanceWeight = 10.0D;
@@ -77,56 +75,12 @@ public class EntityPoisonArrow extends EntityArrow
 		this.motionX = -MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI);
 		this.motionZ = MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI);
 		this.motionY = -MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI);
-		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, p_i1756_3_ * 1.5F, 1.0F);
-	}
-
-	@Override
-	public void setThrowableHeading(double x, double y, double z, float velocity, float inaccuracy)
-	{
-		float f2 = MathHelper.sqrt_double(x * x + y * y + z * z);
-		x /= f2;
-		y /= f2;
-		z /= f2;
-		x += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * inaccuracy;
-		y += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * inaccuracy;
-		z += this.rand.nextGaussian() * (this.rand.nextBoolean() ? -1 : 1) * 0.007499999832361937D * inaccuracy;
-		x *= velocity;
-		y *= velocity;
-		z *= velocity;
-		this.motionX = x;
-		this.motionY = y;
-		this.motionZ = z;
-		float f3 = MathHelper.sqrt_double(x * x + z * z);
-		this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(x, z) * 180.0D / Math.PI);
-		this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(y, f3) * 180.0D / Math.PI);
-		this.ticksInGround = 0;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void setVelocity(double x, double y, double z)
-	{
-		this.motionX = x;
-		this.motionY = y;
-		this.motionZ = z;
-
-		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
-		{
-			float f = MathHelper.sqrt_double(x * x + z * z);
-			this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(x, z) * 180.0D / Math.PI);
-			this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(y, f) * 180.0D / Math.PI);
-			this.prevRotationPitch = this.rotationPitch;
-			this.prevRotationYaw = this.rotationYaw;
-			this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
-			this.ticksInGround = 0;
-		}
+		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, velocity * 1.5F, 1.0F);
 	}
 
 	@Override
 	public void onUpdate()
 	{
-		super.onUpdate();
-
 		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
 		{
 			float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
@@ -409,13 +363,13 @@ public class EntityPoisonArrow extends EntityArrow
 	}
 
 	@Override
-	public void onCollideWithPlayer(EntityPlayer entityIn)
+	public void onCollideWithPlayer(EntityPlayer player)
 	{
 		if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0)
 		{
-			boolean flag = this.canBePickedUp == 1 || this.canBePickedUp == 2 && entityIn.capabilities.isCreativeMode;
+			boolean flag = this.canBePickedUp == 1 || this.canBePickedUp == 2 && player.capabilities.isCreativeMode;
 
-			if (this.canBePickedUp == 1 && !entityIn.inventory.addItemStackToInventory(new ItemStack(FronosItems.poison_arrow, 1)))
+			if (this.canBePickedUp == 1 && !player.inventory.addItemStackToInventory(new ItemStack(FronosItems.poison_arrow, 1)))
 			{
 				flag = false;
 			}
@@ -423,7 +377,7 @@ public class EntityPoisonArrow extends EntityArrow
 			if (flag)
 			{
 				this.playSound("random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-				entityIn.onItemPickup(this, 1);
+				player.onItemPickup(this, 1);
 				this.setDead();
 			}
 		}

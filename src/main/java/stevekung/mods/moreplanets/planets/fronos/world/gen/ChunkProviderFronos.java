@@ -60,6 +60,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
+import stevekung.mods.moreplanets.planets.fronos.world.gen.biome.BiomeGenBaseFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.dungeon.RoomBossFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.dungeon.RoomChestsFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.dungeon.RoomSpawnerFronos;
@@ -74,7 +75,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 	public NoiseGeneratorOctaves mobSpawnerNoise;
 	private World worldObj;
 	private double[] stoneNoise;
-	private MapGenCaveFronos caveGenerator;
+	private MapGenCavesFronos caveGenerator;
 	private MapGenCavernFronos cavernGenerator;
 	public BiomeDecoratorFronosOre biomedecoratorplanet = new BiomeDecoratorFronosOre();
 	private MapGenFronosVillage villageGenerator = new MapGenFronosVillage();
@@ -119,7 +120,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 	{
 		super(world, seed, genFeature, "");
 		this.stoneNoise = new double[256];
-		this.caveGenerator = new MapGenCaveFronos();
+		this.caveGenerator = new MapGenCavesFronos();
 		this.cavernGenerator = new MapGenCavernFronos();
 		this.worldObj = world;
 		this.rand = new Random(seed);
@@ -152,7 +153,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 		this.generateTerrain(x, z, primer);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
 		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, x, z, primer);
+		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.cavernGenerator.generate(this, this.worldObj, x, z, primer);
 		this.ravineGenerator.func_175792_a(this, this.worldObj, x, z, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 30, z * 16, x, z, primer);
@@ -379,13 +380,9 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
 		this.rand.setSeed(x * i1 + z * j1 ^ this.worldObj.getSeed());
 		biomegenbase.decorate(this.worldObj, this.rand, new BlockPos(k, 0, l));
+		this.biomedecoratorplanet.decorate(this.worldObj, this.rand, BiomeGenBaseFronos.coconutForest,  new BlockPos(k, 0, l));
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
 		BlockFalling.fallInstantly = false;
-	}
-
-	public void decoratePlanet(World world, Random rand, int x, int z)
-	{
-		this.biomedecoratorplanet.decorate(world, rand, x, z);
 	}
 
 	@Override

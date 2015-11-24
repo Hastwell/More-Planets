@@ -10,9 +10,8 @@ package stevekung.mods.moreplanets.core.init;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import stevekung.mods.moreplanets.common.util.MPLog;
-import stevekung.mods.moreplanets.moons.deimos.world.gen.BiomeGenBaseDeimos;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMartianMoon;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.BiomeGenBaseKoentus;
-import stevekung.mods.moreplanets.moons.phobos.world.gen.BiomeGenBasePhobos;
 import stevekung.mods.moreplanets.planets.diona.world.gen.BiomeGenBaseDiona;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.biome.BiomeGenBaseFronos;
 import stevekung.mods.moreplanets.planets.kapteynb.world.gen.BiomeGenBaseKapteynB;
@@ -42,8 +41,7 @@ public class MPBiomes
 		BiomeDictionary.registerBiomeType(BiomeGenBaseMercury.mercury, Type.HOT, Type.DRY, Type.DEAD);
 		BiomeDictionary.registerBiomeType(BiomeGenBaseVenus.venus, Type.HOT, Type.DRY, Type.DEAD, Type.DENSE, Type.HILLS, Type.SANDY);
 		BiomeDictionary.registerBiomeType(BiomeGenBasePluto.pluto, Type.COLD, Type.DRY, Type.DEAD, Type.SPOOKY);
-		BiomeDictionary.registerBiomeType(BiomeGenBasePhobos.phobos, Type.COLD, Type.DRY, Type.DEAD);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseDeimos.deimos, Type.COLD, Type.DRY, Type.DEAD);
+		BiomeDictionary.registerBiomeType(BiomeGenBaseMartianMoon.martianMoon, Type.COLD, Type.DRY, Type.DEAD);
 		MPLog.debug("Register Biome Types");
 	}
 }

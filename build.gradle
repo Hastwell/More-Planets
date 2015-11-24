@@ -25,7 +25,7 @@ group= "stevekung.mods.moreplanets" // http://maven.apache.org/guides/mini/guide
 archivesBaseName = "More-Planets"
 
 minecraft {
-    version = "1.8-11.14.3.1543"
+    version = "1.8-11.14.4.1572"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

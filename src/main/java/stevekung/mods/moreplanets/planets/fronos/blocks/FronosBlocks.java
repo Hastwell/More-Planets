@@ -492,6 +492,7 @@ public class FronosBlocks
 		OreDictionary.registerOre("oreBlackDiamond", new ItemStack(FronosBlocks.fronos_block, 1, 9));
 		OreDictionary.registerOre("oreIridium", new ItemStack(FronosBlocks.fronos_block, 1, 10));
 		OreDictionary.registerOre("oreJelly", FronosBlocks.jelly_ore);
+		OreDictionary.registerOre("cobblestone", new ItemStack(FronosBlocks.fronos_block, 1, 1));
 		OreDictionary.registerOre("sand", FronosBlocks.fronos_sand);
 		OreDictionary.registerOre("plankWood", new ItemStack(FronosBlocks.fronos_planks, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("stairWood", new ItemStack(FronosBlocks.coconut_wood_stairs));

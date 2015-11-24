@@ -12,19 +12,19 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureStart;
 
-public abstract class MapGenSiriusBlazePitStructure extends MapGenBaseMeta
+public abstract class MapGenSiriusBlazePitStructure extends MapGenBase
 {
 	protected Map<Long, StructureStart> structureMap = new HashMap<Long, StructureStart>();
 
 	@Override
-	protected void recursiveGenerate(World world, int x, int z, int orX, int orZ, ChunkPrimer chunk)
+	protected void func_180701_a(World world, int x, int z, int orX, int orZ, ChunkPrimer chunk)
 	{
 		if (this.canSpawnStructureAtCoords(x, z))
 		{

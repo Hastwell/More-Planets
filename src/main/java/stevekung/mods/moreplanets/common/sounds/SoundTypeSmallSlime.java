@@ -5,16 +5,26 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.deimos.world.gen;
+package stevekung.mods.moreplanets.common.sounds;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldChunkManagerSpace;
-import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.block.Block.SoundType;
 
-public class WorldChunkManagerDeimos extends WorldChunkManagerSpace
+public class SoundTypeSmallSlime extends SoundType
 {
-	@Override
-	public BiomeGenBase getBiome()
+	public SoundTypeSmallSlime()
 	{
-		return BiomeGenBaseDeimos.deimos;
+		super("slime", 1.0F, 1.0F);
+	}
+
+	@Override
+	public String getBreakSound()
+	{
+		return "mob.slime.small";
+	}
+
+	@Override
+	public String getStepSound()
+	{
+		return "mob.slime.small";
 	}
 }

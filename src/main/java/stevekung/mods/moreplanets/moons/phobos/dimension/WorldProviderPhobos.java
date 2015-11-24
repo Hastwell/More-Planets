@@ -15,9 +15,9 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
+import stevekung.mods.moreplanets.common.world.gen.WorldChunkManagerMartianMoon;
 import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.moons.phobos.world.gen.ChunkProviderPhobos;
-import stevekung.mods.moreplanets.moons.phobos.world.gen.WorldChunkManagerPhobos;
 
 public class WorldProviderPhobos extends WorldProviderMP
 {
@@ -48,7 +48,7 @@ public class WorldProviderPhobos extends WorldProviderMP
 	@Override
 	public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
 	{
-		return WorldChunkManagerPhobos.class;
+		return WorldChunkManagerMartianMoon.class;
 	}
 
 	@Override

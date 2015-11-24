@@ -41,6 +41,7 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.stats.AchievementList;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -52,6 +53,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -83,6 +85,7 @@ import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
+import stevekung.mods.moreplanets.common.player.MPPlayerStats;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.common.world.ILightningStorm;
 import stevekung.mods.moreplanets.common.world.IMeteorType;
@@ -139,6 +142,15 @@ public class MorePlanetsEvents
 		if (event.gui instanceof GuiMainMenu && ConfigManagerMP.enableNewMainManu == true)
 		{
 			GuiMainMenu.titlePanoramaPaths = MorePlanetsEvents.titlePanoramaPaths;
+		}
+	}
+
+	@SubscribeEvent
+	public void onEntityConstructing(EntityConstructing event)
+	{
+		if (event.entity instanceof EntityPlayerMP && MPPlayerStats.get((EntityPlayerMP) event.entity) == null)
+		{
+			((EntityPlayerMP)event.entity).registerExtendedProperties(MPPlayerStats.MP_PLAYER_PROPERTY, new MPPlayerStats());
 		}
 	}
 
@@ -343,10 +355,17 @@ public class MorePlanetsEvents
 	{
 		ItemStack itemStack = event.item.getEntityItem();
 		Item item = itemStack.getItem();
+		Block block = Block.getBlockFromItem(item);
 		int meta = itemStack.getItemDamage();
 
 		if (event.entityPlayer.inventory.addItemStackToInventory(itemStack))
 		{
+			event.setResult(Result.ALLOW);
+
+			if (block == KoentusBlocks.crystal_log || block == NibiruBlocks.nibiru_log || block == FronosBlocks.fronos_log || block == EuropaBlocks.europa_log || block == DarkAsteroidBlocks.alien_log)
+			{
+				event.entityPlayer.triggerAchievement(AchievementList.mineWood);
+			}
 			if (item == DionaItems.tier_4_rocket_schematic)
 			{
 				event.entityPlayer.triggerAchievement(AchievementsMP.getTier4Schematic);

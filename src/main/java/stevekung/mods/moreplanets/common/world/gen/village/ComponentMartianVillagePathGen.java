@@ -17,8 +17,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
-import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
-import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
+import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
 import stevekung.mods.moreplanets.moons.phobos.dimension.WorldProviderPhobos;
 
 public class ComponentMartianVillagePathGen extends ComponentMartianVillageRoadPiece
@@ -146,9 +146,12 @@ public class ComponentMartianVillagePathGen extends ComponentMartianVillageRoadP
 
 					if (world.provider instanceof WorldProviderPhobos)
 					{
-						world.setBlockState(blockpos, PhobosBlocks.phobos_block.getDefaultState(), 3);
+						world.setBlockState(blockpos, MPBlocks.chondrite_rock.getDefaultState(), 2);
 					}
-					world.setBlockState(blockpos, DeimosBlocks.deimos_block.getDefaultState(), 3);
+					else if (world.provider instanceof WorldProviderDeimos)
+					{
+						world.setBlockState(blockpos, MPBlocks.chondrite_rock.getDefaultState(), 2);
+					}
 				}
 			}
 		}

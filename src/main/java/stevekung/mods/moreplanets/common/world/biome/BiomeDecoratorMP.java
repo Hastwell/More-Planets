@@ -15,7 +15,7 @@ import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class BiomeDecoratorMP extends BiomeDecorator
+public abstract class BiomeDecoratorMP extends BiomeDecorator
 {
 	@Override
 	public void decorate(World world, Random rand, BiomeGenBase biome, BlockPos pos)
@@ -29,7 +29,7 @@ public class BiomeDecoratorMP extends BiomeDecorator
 	}
 
 	@Override
-	protected void generateOres() {}
+	protected abstract void generateOres();
 
 	protected void generateOre(int amount, WorldGenerator worldGen, int minY, int maxY)
 	{

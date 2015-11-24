@@ -7,14 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.pluto.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
 import net.minecraft.init.Blocks;
-import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 
-public class BiomeDecoratorPluto extends BiomeDecoratorSpace
+public class BiomeDecoratorPluto extends BiomeDecoratorMP
 {
 	private WorldGenerator dirtGen;
 	private WorldGenerator ironGen;
@@ -23,11 +22,9 @@ public class BiomeDecoratorPluto extends BiomeDecoratorSpace
 	private WorldGenerator xeoniumGen;
 	private WorldGenerator nitrogenGen;
 	private WorldGenerator methaneGen;
-	private World world;
 
 	public BiomeDecoratorPluto()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(PlutoBlocks.pluto_block, 32, 1, true, PlutoBlocks.pluto_block, 2);
 		this.frozenIronGen = new WorldGenMinableMeta(PlutoBlocks.pluto_block, 8, 5, true, PlutoBlocks.pluto_block, 2);
 		this.xeoniumGen = new WorldGenMinableMeta(PlutoBlocks.pluto_block, 4, 7, true, PlutoBlocks.pluto_block, 2);
@@ -38,7 +35,7 @@ public class BiomeDecoratorPluto extends BiomeDecoratorSpace
 	}
 
 	@Override
-	protected void decorate()
+	protected void generateOres()
 	{
 		this.generateOre(16, this.xeoniumGen, 0, 32);
 		this.generateOre(16, this.frozenIronGen, 48, 64);
@@ -47,17 +44,5 @@ public class BiomeDecoratorPluto extends BiomeDecoratorSpace
 		this.generateOre(12, this.meteorGen, 0, 64);
 		this.generateOre(1, this.nitrogenGen, 60, 64);
 		this.generateOre(1, this.methaneGen, 60, 64);
-	}
-
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
-
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
 	}
 }

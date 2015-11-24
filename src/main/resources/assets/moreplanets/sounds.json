@@ -1,41 +1,72 @@
 {
-	"mob.fronos.say": {
-	"category": "neutral",
-	"sounds": ["mob/fronos/say"]
+	"mob.fronos.say":
+	{
+		"category": "neutral",
+		"sounds": ["mob/fronos/say"]
 	},
-	"mob.fronos.step": {
-	"category": "neutral",
-	"sounds": ["mob/fronos/step"]
+	"mob.fronos.step":
+	{
+		"category": "neutral",
+		"sounds": ["mob/fronos/step"]
 	},
-	"mob.fronos.hurt": {
-	"category": "neutral",
-	"sounds": ["mob/fronos/hurt1", "mob/fronos/hurt2"]
+	"mob.fronos.hurt":
+	{
+		"category": "neutral",
+		"sounds": ["mob/fronos/hurt1", "mob/fronos/hurt2"]
 	},
-	"mob.fronos.death": {
-	"category": "neutral",
-	"sounds": ["mob/fronos/death"]
+	"mob.fronos.death":
+	{
+		"category": "neutral",
+		"sounds": ["mob/fronos/death"]
 	},
-	"mob.cheese_boss.hit": {
-	"category": "neutral",
-	"sounds": ["mob/cheese_cube_boss/hit"]
+	"mob.cheese_boss.hit":
+	{
+		"category": "hostile",
+		"sounds": ["mob/cheese_cube_boss/hit"]
+	},
+	"mob.crab":
+	{
+		"category": "neutral",
+		"sounds": ["mob/crab/crab1", "mob/crab/crab2"]
 	},
 	"player.laser":
 	{
-	"category": "player",
-	"sounds": ["player/laser"]
+		"category": "player",
+		"sounds": ["player/laser"]
 	},
 	"player.unlocktreasurechest":
 	{
-	"category": "player",
-	"sounds": ["player/unlockTreasureChest"]
+		"category": "player",
+		"sounds": ["player/unlockTreasureChest"]
 	},
 	"player.meteor":
 	{
-	"category": "player",
-	"sounds": ["player/meteor"]
+		"category": "player",
+		"sounds": ["player/meteor"]
 	},
-	"mob.crab": {
-    "category": "neutral",
-    "sounds": ["mob/crab/crab1", "mob/crab/crab2"]
-  }
+	"mob.witch.idle":
+	{
+		"category": "hostile",
+		"sounds": ["mob/witch/ambient1", "mob/witch/ambient2", "mob/witch/ambient3", "mob/witch/ambient4", "mob/witch/ambient5"]
+	},
+	"mob.witch.hurt":
+	{
+		"category": "hostile",
+		"sounds": ["mob/witch/hurt1", "mob/witch/hurt2", "mob/witch/hurt3"]
+	},
+	"mob.witch.death":
+	{
+		"category": "hostile",
+		"sounds": ["mob/witch/death1", "mob/witch/death2", "mob/witch/death3"]
+	},
+	"mob.witch.drink":
+	{
+		"category": "hostile",
+		"sounds": ["mob/witch/drink1", "mob/witch/drink2", "mob/witch/drink3", "mob/witch/drink4"]
+	},
+	"mob.witch.throw":
+	{
+		"category": "hostile",
+		"sounds": ["mob/witch/throw1", "mob/witch/throw2", "mob/witch/throw3"]
+	}
 }

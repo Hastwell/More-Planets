@@ -55,4 +55,26 @@ public class ItemTier4RocketModule extends ItemBaseMP
 	{
 		return new String[] { "tier_4_nose_cone", "tier_4_heavy_duty_plate", "tier_4_rocket_engine", "tier_4_booster", "tier_5_rocket_engine", "tier_5_booster" };
 	}
+
+	public static enum Tier4ItemType
+	{
+		NOSE_CONE(0),
+		T4_PLATE(1),
+		T4_ENGINE(2),
+		T4_BOOSTER(3),
+		T5_ENGINE(4),
+		T5_BOOSTER(5);
+
+		private int meta;
+
+		private Tier4ItemType(int meta)
+		{
+			this.meta = meta;
+		}
+
+		public ItemStack getItemStack()
+		{
+			return new ItemStack(DionaItems.tier_4_rocket_module, 1, this.meta);
+		}
+	}
 }

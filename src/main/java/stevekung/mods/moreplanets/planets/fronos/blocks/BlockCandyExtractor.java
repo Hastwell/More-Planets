@@ -126,7 +126,7 @@ public class BlockCandyExtractor extends BlockContainerMP
 
 			if (tileentity instanceof TileEntityCandyExtractor)
 			{
-				player.openGui(MorePlanetsCore.instance, -1, world, pos.getX(), pos.getY(), pos.getZ());
+				player.openGui(MorePlanetsCore.INSTANCE, -1, world, pos.getX(), pos.getY(), pos.getZ());
 			}
 			return true;
 		}

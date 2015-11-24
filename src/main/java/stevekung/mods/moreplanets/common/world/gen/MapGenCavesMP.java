@@ -16,6 +16,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.MapGenBase;
+import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
+import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 
 public class MapGenCavesMP extends MapGenBase
 {
@@ -186,7 +188,14 @@ public class MapGenCavesMP extends MapGenBase
 											{
 												if (j3 < 10)
 												{
-													chunk.setBlockState(k2, j3, j4, Blocks.lava.getDefaultState());
+													if (this.worldObj.provider instanceof WorldProviderSiriusB)
+													{
+														chunk.setBlockState(k2, j3, j4, SiriusBBlocks.sirius_lava.getDefaultState());
+													}
+													else
+													{
+														chunk.setBlockState(k2, j3, j4, Blocks.lava.getDefaultState());
+													}
 												}
 												else
 												{

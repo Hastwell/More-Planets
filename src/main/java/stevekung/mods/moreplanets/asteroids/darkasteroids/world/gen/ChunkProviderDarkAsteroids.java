@@ -901,10 +901,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 			monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
 			return monsters;
 		}
-		else
-		{
-			return null;
-		}
+		return null;
 	}
 
 	/**

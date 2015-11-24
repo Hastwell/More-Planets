@@ -7,16 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
-import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
-public class BiomeDecoratorPolongnius extends BiomeDecoratorSpace
+public class BiomeDecoratorPolongnius extends BiomeDecoratorMP
 {
-	private World world;
-
 	private WorldGenerator dirtGen;
 	private WorldGenerator copperGen;
 	private WorldGenerator tinGen;
@@ -28,7 +25,6 @@ public class BiomeDecoratorPolongnius extends BiomeDecoratorSpace
 
 	public BiomeDecoratorPolongnius()
 	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(PolongniusBlocks.polongnius_block, 32, 1, true, PolongniusBlocks.polongnius_block, 2);
 		this.copperGen = new WorldGenMinableMeta(PolongniusBlocks.polongnius_block, 8, 4, true, PolongniusBlocks.polongnius_block, 2);
 		this.tinGen = new WorldGenMinableMeta(PolongniusBlocks.polongnius_block, 8, 5, true, PolongniusBlocks.polongnius_block, 2);
@@ -40,7 +36,7 @@ public class BiomeDecoratorPolongnius extends BiomeDecoratorSpace
 	}
 
 	@Override
-	public void decorate()
+	public void generateOres()
 	{
 		this.generateOre(16, this.tinGen, 0, 64);
 		this.generateOre(16, this.copperGen, 0, 64);
@@ -50,17 +46,5 @@ public class BiomeDecoratorPolongnius extends BiomeDecoratorSpace
 		this.generateOre(12, this.palladiumGen, 0, 48);
 		this.generateOre(12, this.floniumGen, 0, 48);
 		this.generateOre(10, this.cheeseOfMilkGen, 0, 24);
-	}
-
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
-
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
 	}
 }

@@ -8,15 +8,22 @@
 package stevekung.mods.moreplanets.client.renderer;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteorChunk;
+import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityTier4Rocket;
+import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
@@ -35,6 +42,8 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoAncientChest;
 import stevekung.mods.moreplanets.planets.pluto.tileentities.TileEntityPlutoTreasureChest;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
+import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteorChunk;
+import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusAncientChest;
 import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolongniusTreasureChest;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
@@ -49,7 +58,10 @@ public class TileEntityItemStackRendererMP extends TileEntityItemStackRenderer
 	@Override
 	public void renderByItem(ItemStack itemStack)
 	{
+		Minecraft mc = Minecraft.getMinecraft();
+		World world = mc.theWorld;
 		Block block = Block.getBlockFromItem(itemStack.getItem());
+		Item item = itemStack.getItem();
 
 		if (block == DionaBlocks.diona_ancient_chest)
 		{
@@ -125,6 +137,33 @@ public class TileEntityItemStackRendererMP extends TileEntityItemStackRenderer
 		else if (block == KapteynBBlocks.icy_poison_crystal)
 		{
 			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileEntityIcyPoisonCrystal(), 0.0D, 0.0D, 0.0D, 0.0F);
+		}
+		else if (item == DionaItems.tier_4_rocket)
+		{
+			/*GlStateManager.pushMatrix();
+			GlStateManager.translate(0.5F, 0.5F, 0.5F);
+			GlStateManager.rotate(0.0F, 0.0F, 0.0F, 0.0F);
+			GlStateManager.scale(1.0F, 1.0F, 1.0F);
+			mc.getRenderManager().renderEntityWithPosYaw(new EntityTier4Rocket(world), 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+			GlStateManager.popMatrix();*/
+		}
+		else if (item == PolongniusItems.polongnius_meteor_chunk)
+		{
+			GlStateManager.pushMatrix();
+			GlStateManager.translate(0.5F, 0.5F, 0.5F);
+			GlStateManager.rotate(180.0F, 0.0F, 0.0F, 0.0F);
+			GlStateManager.scale(1.0F, 1.0F, 1.0F);
+			mc.getRenderManager().renderEntityWithPosYaw(new EntityPolongniusMeteorChunk(world), 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+			GlStateManager.popMatrix();
+		}
+		else if (item == KoentusItems.koentus_meteor_chunk)
+		{
+			GlStateManager.pushMatrix();
+			GlStateManager.translate(0.5F, 0.5F, 0.5F);
+			GlStateManager.rotate(180.0F, 0.0F, 0.0F, 0.0F);
+			GlStateManager.scale(1.0F, 1.0F, 1.0F);
+			mc.getRenderManager().renderEntityWithPosYaw(new EntityKoentusMeteorChunk(world), 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+			GlStateManager.popMatrix();
 		}
 		else
 		{

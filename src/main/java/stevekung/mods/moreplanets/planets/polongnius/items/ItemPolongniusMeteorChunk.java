@@ -36,6 +36,11 @@ public class ItemPolongniusMeteorChunk extends ItemMorePlanets
 		if (!world.isRemote)
 		{
 			EntityPolongniusMeteorChunk meteor = new EntityPolongniusMeteorChunk(world, player, 1.0F);
+
+			if (player.capabilities.isCreativeMode)
+			{
+				meteor.canBePickedUp = 2;
+			}
 			world.spawnEntityInWorld(meteor);
 		}
 		return itemStack;

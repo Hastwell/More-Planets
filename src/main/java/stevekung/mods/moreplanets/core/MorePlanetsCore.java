@@ -22,8 +22,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
+import stevekung.mods.moreplanets.common.command.CommandHomePlanet;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.eventhandler.GuiEventHandler;
 import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
@@ -36,6 +38,7 @@ import stevekung.mods.moreplanets.common.network.meteor.MeteorClientMessage;
 import stevekung.mods.moreplanets.common.network.meteor.MeteorServerHandler;
 import stevekung.mods.moreplanets.common.network.meteor.MeteorServerMessage;
 import stevekung.mods.moreplanets.common.recipe.CraftingManagerMP;
+import stevekung.mods.moreplanets.common.sounds.SoundTypeSmallSlime;
 import stevekung.mods.moreplanets.common.util.EntitySpawnerUtil;
 import stevekung.mods.moreplanets.common.util.FurnaceFuelMP;
 import stevekung.mods.moreplanets.common.util.MPLog;
@@ -79,7 +82,7 @@ public class MorePlanetsCore
 	public static CommonProxyMP proxy;
 
 	@Instance(MorePlanetsCore.MOD_ID)
-	public static MorePlanetsCore instance;
+	public static MorePlanetsCore INSTANCE;
 
 	public static CreativeTabs mpBlocksTab;
 	public static CreativeTabs mpItemsTab;
@@ -146,12 +149,18 @@ public class MorePlanetsCore
 		MorePlanetsRegistry.registerMessageHandler(MeteorServerHandler.class, MeteorServerMessage.class, 0, Side.SERVER);
 		MorePlanetsRegistry.registerMessageHandler(MeteorClientHandler.class, MeteorClientMessage.class, 1, Side.CLIENT);
 
-		MorePlanetsRegistry.registerSpaceStation(MPPlanets.marsSpaceStation, MarsModule.planetMars, CraftingManagerMP.getMarsSpaceStationRecipe());
-		MorePlanetsRegistry.registerSpaceStation(MPPlanets.jupiterSpaceStation, MPPlanets.jupiter, CraftingManagerMP.getJupiterSpaceStationRecipe());
+		if (ConfigManagerMP.enableMarsSpaceStation) { MorePlanetsRegistry.registerSpaceStation(MPPlanets.marsSpaceStation, MarsModule.planetMars, CraftingManagerMP.getMarsSpaceStationRecipe()); }
+		if (ConfigManagerMP.enableJupiterSpaceStation) { MorePlanetsRegistry.registerSpaceStation(MPPlanets.jupiterSpaceStation, MPPlanets.jupiter, CraftingManagerMP.getJupiterSpaceStationRecipe()); }
 	}
 
 	@EventHandler
-	public void serverInit(FMLServerStartedEvent event)
+	public void serverStarting(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommandHomePlanet());
+	}
+
+	@EventHandler
+	public void serverStarted(FMLServerStartedEvent event)
 	{
 		new Thread(ThreadVersionCheckMP.INSTANCE).start();
 	}

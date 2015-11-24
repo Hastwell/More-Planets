@@ -7,12 +7,12 @@
 
 package stevekung.mods.moreplanets.core.proxy;
 
-import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 
 public class CommonProxyMP
 {

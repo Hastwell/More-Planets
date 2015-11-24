@@ -39,6 +39,7 @@ import stevekung.mods.moreplanets.moons.koentus.items.tools.KoentusToolsItems;
 import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
+import stevekung.mods.moreplanets.planets.diona.items.ItemTier4RocketModule.Tier4ItemType;
 import stevekung.mods.moreplanets.planets.diona.items.armor.DionaArmorItems;
 import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
 import stevekung.mods.moreplanets.planets.diona.recipe.Tier4RocketRecipes;
@@ -194,7 +195,7 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_sandstone, 1, 1), new Object[] { "S", "S", 'S', new ItemStack(VenusBlocks.half_venus_sandstone_slab) });
 		GameRegistry.addRecipe(new ItemStack(VenusBlocks.venus_sandstone, 4, 2), new Object[] { "SS", "SS", 'S', new ItemStack(VenusBlocks.venus_sandstone, 4, 0) });
 		GameRegistry.addRecipe(new ItemStack(VenusBlocks.half_venus_sandstone_slab, 6), new Object[] { "SSS", 'S', VenusBlocks.venus_sandstone });
-		GameRegistry.addRecipe(new ItemStack(PlutoBlocks.xeonium_torch, 4), new Object[] { "X", "S", 'X', new ItemStack(PlutoItems.pluto_item, 1, 0), 'S', new ItemStack(Items.stick) });
+		GameRegistry.addRecipe(new ItemStack(PlutoBlocks.xeonium_torch, 4), new Object[] { "X", "S", 'X', new ItemStack(PlutoItems.xeonium_dust), 'S', new ItemStack(Items.stick) });
 		GameRegistry.addRecipe(new ItemStack(PlutoBlocks.xeonium_glowstone), new Object[] { "DD", "DD", 'D', new ItemStack(PlutoItems.xeonium_dust) });
 		GameRegistry.addRecipe(new ItemStack(EuropaBlocks.europa_fence, 3), new Object[] { "CSC", "CSC", 'S', new ItemStack(Items.stick), 'C', new ItemStack(EuropaBlocks.europa_planks) });
 		GameRegistry.addRecipe(new ItemStack(EuropaBlocks.europa_fence_gate), new Object[] { "SAS", "SAS", 'A', new ItemStack(EuropaBlocks.europa_planks), 'S', new ItemStack(Items.stick) });
@@ -839,22 +840,24 @@ public class CraftingManagerMP
 	private static void registerTier4RocketRecipe()
 	{
 		HashMap<Integer, ItemStack> input = new HashMap<Integer, ItemStack>();
-		input.put(1, new ItemStack(DionaItems.tier_4_rocket_module, 1, 0));
-		input.put(2, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(3, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(4, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(5, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(6, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(7, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(8, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(9, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(10, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(11, new ItemStack(DionaItems.tier_4_rocket_module, 1, 1));
-		input.put(12, new ItemStack(DionaItems.tier_4_rocket_module, 1, 3));
+		ItemStack t4Plate = Tier4ItemType.T4_PLATE.getItemStack();
+
+		input.put(1, Tier4ItemType.NOSE_CONE.getItemStack());
+		input.put(2, t4Plate);
+		input.put(3, t4Plate);
+		input.put(4, t4Plate);
+		input.put(5, t4Plate);
+		input.put(6, t4Plate);
+		input.put(7, t4Plate);
+		input.put(8, t4Plate);
+		input.put(9, t4Plate);
+		input.put(10, t4Plate);
+		input.put(11, t4Plate);
+		input.put(12, Tier4ItemType.T4_BOOSTER.getItemStack());
 		input.put(13, new ItemStack(AsteroidsItems.basicItem, 1, 2));
 		input.put(14, new ItemStack(AsteroidsItems.basicItem, 1, 2));
-		input.put(15, new ItemStack(DionaItems.tier_4_rocket_module, 1, 2));
-		input.put(16, new ItemStack(DionaItems.tier_4_rocket_module, 1, 3));
+		input.put(15, Tier4ItemType.T4_ENGINE.getItemStack());
+		input.put(16, Tier4ItemType.T4_BOOSTER.getItemStack());
 		input.put(17, new ItemStack(AsteroidsItems.basicItem, 1, 2));
 		input.put(18, new ItemStack(AsteroidsItems.basicItem, 1, 2));
 		input.put(19, null);

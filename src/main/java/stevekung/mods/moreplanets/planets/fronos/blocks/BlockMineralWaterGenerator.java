@@ -69,7 +69,7 @@ public class BlockMineralWaterGenerator extends BlockTileGC
 	{
 		if (!world.isRemote)
 		{
-			player.openGui(MorePlanetsCore.instance, -1, world, pos.getX(), pos.getY(), pos.getZ());
+			player.openGui(MorePlanetsCore.INSTANCE, -1, world, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		}
 		return true;

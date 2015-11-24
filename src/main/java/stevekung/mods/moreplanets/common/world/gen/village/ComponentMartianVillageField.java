@@ -62,7 +62,7 @@ public class ComponentMartianVillageField extends ComponentMartianVillage
 			{
 				return true;
 			}
-			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 7 - 1, 0);
+			this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
 		}
 
 		this.func_175804_a(world, box, 0, 1, 0, 12, 4, 8, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
@@ -77,31 +77,25 @@ public class ComponentMartianVillageField extends ComponentMartianVillage
 		this.func_175804_a(world, box, 1, 0, 8, 11, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
 		this.func_175804_a(world, box, 3, 0, 1, 3, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
 		this.func_175804_a(world, box, 9, 0, 1, 9, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
-		int var4;
+		int i;
 
-		for (var4 = 1; var4 <= 7; ++var4)
+		for (i = 1; i <= 7; ++i)
 		{
-			for (int i = 1; i < 12; i++)
+			for (int o = 1; o < 12; o++)
 			{
-				if (i % 3 == 0)
+				if (rand.nextInt(3) == 0)
 				{
-				}
-				else
-				{
-					if (rand.nextInt(3) == 0)
-					{
-						this.func_175808_b(world, Blocks.sapling.getStateFromMeta(rand.nextInt(4)), i, 1, var4, box);
-					}
+					this.func_175808_b(world, Blocks.sapling.getStateFromMeta(rand.nextInt(4)), o, 1, i, box);
 				}
 			}
 		}
 
-		for (var4 = 0; var4 < 9; ++var4)
+		for (i = 0; i < 9; ++i)
 		{
-			for (int var5 = 0; var5 < 13; ++var5)
+			for (int j = 0; j < 13; ++j)
 			{
-				this.clearCurrentPositionBlocksUpwards(world, var5, 4, var4, box);
-				this.func_175811_a(world, Blocks.dirt.getDefaultState(), var5, -1, var4, box);
+				this.clearCurrentPositionBlocksUpwards(world, j, 4, i, box);
+				this.func_175811_a(world, Blocks.dirt.getDefaultState(), j, -1, i, box);
 			}
 		}
 		return true;

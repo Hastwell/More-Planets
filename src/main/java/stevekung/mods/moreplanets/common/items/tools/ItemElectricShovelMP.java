@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.pluto.items.tools;
+package stevekung.mods.moreplanets.common.items.tools;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -44,13 +44,13 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
-public abstract class ItemElectricAxeMP extends ItemAxe implements IItemElectric
+public abstract class ItemElectricShovelMP extends ItemSpade implements IItemElectric
 {
 	//private static Object itemManagerIC2;
 	public float transferMax;
 	private DefaultArtifactVersion mcVersion = null;
 
-	public ItemElectricAxeMP(ToolMaterial material)
+	public ItemElectricShovelMP(ToolMaterial material)
 	{
 		super(material);
 		this.setMaxDamage(100);
@@ -109,7 +109,7 @@ public abstract class ItemElectricAxeMP extends ItemAxe implements IItemElectric
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, BlockPos pos, EntityLivingBase playerIn)
+	public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, BlockPos pos, EntityLivingBase player)
 	{
 		if (block.getBlockHardness(world, pos) != 0.0D)
 		{

@@ -179,12 +179,15 @@ public abstract class ChunkProviderBaseMP extends ChunkProviderGenerate
 				{
 					for (int z = 0; z < this.CHUNK_SIZE_Z; z++)
 					{
-						if (Math.abs(this.randFromPoint(cx * 16 + x, (cz * 16 + z) * 1000)) < this.noiseGen4.getNoise(x * this.CHUNK_SIZE_X + x, cz * this.CHUNK_SIZE_Z + z) / this.getCraterChance())
+						if (this.getCraterChance() > 0)
 						{
-							Random random = new Random(cx * 16 + x + (cz * 16 + z) * 5000);
-							EnumCraterSize cSize = EnumCraterSize.sizeArray[random.nextInt(EnumCraterSize.sizeArray.length)];
-							int size = random.nextInt(cSize.MAX_SIZE - cSize.MIN_SIZE) + cSize.MIN_SIZE;
-							this.makeCrater(cx * 16 + x, cz * 16 + z, chunkX * 16, chunkZ * 16, size, chunk);
+							if (Math.abs(this.randFromPoint(cx * 16 + x, (cz * 16 + z) * 1000)) < this.noiseGen4.getNoise(x * this.CHUNK_SIZE_X + x, cz * this.CHUNK_SIZE_Z + z) / this.getCraterChance())
+							{
+								Random random = new Random(cx * 16 + x + (cz * 16 + z) * 5000);
+								EnumCraterSize cSize = EnumCraterSize.sizeArray[random.nextInt(EnumCraterSize.sizeArray.length)];
+								int size = random.nextInt(cSize.MAX_SIZE - cSize.MIN_SIZE) + cSize.MIN_SIZE;
+								this.makeCrater(cx * 16 + x, cz * 16 + z, chunkX * 16, chunkZ * 16, size, chunk);
+							}
 						}
 					}
 				}

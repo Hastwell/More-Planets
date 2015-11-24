@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.moons.deimos.world.gen;
+package stevekung.mods.moreplanets.common.world.biome;
 
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
@@ -13,16 +13,15 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.world.biome.BiomeGenBase;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
-public class BiomeGenBaseDeimos extends BiomeGenBaseMP
+public class BiomeGenBaseMartianMoon extends BiomeGenBaseMP
 {
-	public static BiomeGenBase deimos = new BiomeGenBaseDeimos().setBiomeName("Deimos");
+	public static BiomeGenBase martianMoon = new BiomeGenBaseMartianMoon().setBiomeName("Martian Moon");
 
-	public BiomeGenBaseDeimos()
+	public BiomeGenBaseMartianMoon()
 	{
-		super(ConfigManagerMP.idDeimosBiome);
+		super(ConfigManagerMP.idMartianMoonBiome);
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));

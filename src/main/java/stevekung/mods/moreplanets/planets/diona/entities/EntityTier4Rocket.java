@@ -75,7 +75,6 @@ public class EntityTier4Rocket extends EntityTieredRocket
 		return -0.6F;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void onUpdate()
 	{

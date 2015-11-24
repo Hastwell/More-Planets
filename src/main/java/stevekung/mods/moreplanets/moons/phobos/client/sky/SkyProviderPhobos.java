@@ -248,6 +248,8 @@ public class SkyProviderPhobos extends IRenderHandler
 		GL11.glPopMatrix();
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glDepthMask(true);
+        GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+        GL11.glDisable(GL11.GL_FOG);
 	}
 
 	private void renderStars()

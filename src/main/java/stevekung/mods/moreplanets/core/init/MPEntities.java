@@ -149,47 +149,47 @@ public class MPEntities
 
 	private static void registerNonMobEntities()
 	{
-		CommonRegisterHelper.registerNonMobEntity(EntityTier4Rocket.class, "Tier4Rocket", MorePlanetsCore.instance, false);
-		CommonRegisterHelper.registerNonMobEntity(EntityProjectileFronisiumTNT.class, "ProjectileFronisiumTNT", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityFronisiumTNT.class, "FronisiumTNT", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityLaserMP.class, "ProjectileLaser", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier4Rocket.class, "Tier4Rocket", MorePlanetsCore.INSTANCE, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityProjectileFronisiumTNT.class, "ProjectileFronisiumTNT", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityFronisiumTNT.class, "FronisiumTNT", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityLaserMP.class, "ProjectileLaser", MorePlanetsCore.INSTANCE, true);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityTier5Rocket.class, "Tier5Rocket", MorePlanetsCore.instance, false);
-		CommonRegisterHelper.registerNonMobEntity(EntityCheeseSpore.class, "CheeseSpore", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityPolongniusMeteorChunk.class, "PolongniusMeteorChunk", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityPolongniusMeteor.class, "PolongniusMeteor", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier5Rocket.class, "Tier5Rocket", MorePlanetsCore.INSTANCE, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityCheeseSpore.class, "CheeseSpore", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityPolongniusMeteorChunk.class, "PolongniusMeteorChunk", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityPolongniusMeteor.class, "PolongniusMeteor", MorePlanetsCore.INSTANCE, true);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityTier6Rocket.class, "Tier6Rocket", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier6Rocket.class, "Tier6Rocket", MorePlanetsCore.INSTANCE, false);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteorChunk.class, "KoentusMeteorChunk", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteor.class, "KoentusMeteor", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteorChunk.class, "KoentusMeteorChunk", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityKoentusMeteor.class, "KoentusMeteor", MorePlanetsCore.INSTANCE, true);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityCreamBall.class, "CreamBall", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityPoisonArrow.class, "PoisonArrow", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityTier7Rocket.class, "Tier7Rocket", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityCreamBall.class, "CreamBall", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityPoisonArrow.class, "PoisonArrow", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier7Rocket.class, "Tier7Rocket", MorePlanetsCore.INSTANCE, false);
 
-		CommonRegisterHelper.registerNonMobEntity(EntitySmallSiriusFireball.class, "SmallSiriusFireball", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityLargeSiriusFireball.class, "LargeSiriusFireball", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntitySmallSiriusFireball.class, "SmallSiriusFireball", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityLargeSiriusFireball.class, "LargeSiriusFireball", MorePlanetsCore.INSTANCE, true);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityUraniumBomb.class, "UraniumBomb", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityIceCrystalMeteor.class, "IceCrystalMeteor", MorePlanetsCore.instance, true);
-		CommonRegisterHelper.registerNonMobEntity(EntityTier8Rocket.class, "Tier8Rocket", MorePlanetsCore.instance, false);
+		CommonRegisterHelper.registerNonMobEntity(EntityUraniumBomb.class, "UraniumBomb", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityIceCrystalMeteor.class, "IceCrystalMeteor", MorePlanetsCore.INSTANCE, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityTier8Rocket.class, "Tier8Rocket", MorePlanetsCore.INSTANCE, false);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityEuropaWaterBomb.class, "EuropaWaterBomb", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityEuropaWaterBomb.class, "EuropaWaterBomb", MorePlanetsCore.INSTANCE, true);
 
-		CommonRegisterHelper.registerNonMobEntity(EntityDarkAsteroid.class, "DarkAsteroid", MorePlanetsCore.instance, true);
+		CommonRegisterHelper.registerNonMobEntity(EntityDarkAsteroid.class, "DarkAsteroid", MorePlanetsCore.INSTANCE, true);
 	}
 
 	private static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour)
 	{
 		id = id + 1000;
-		EntityRegistry.registerModEntity(entity, name, id, MorePlanetsCore.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(entity, name, id, MorePlanetsCore.INSTANCE, 80, 3, true);
 		entityEggs.put(Integer.valueOf(id), new EntityEggInfo(id, backgroundEggColour, foregroundEggColour));
 	}
 
 	public static String getStringFromID(int id)
 	{
-		EntityRegistration regis = EntityRegistry.instance().lookupModSpawn(FMLCommonHandler.instance().findContainerFor(MorePlanetsCore.instance), id);
+		EntityRegistration regis = EntityRegistry.instance().lookupModSpawn(FMLCommonHandler.instance().findContainerFor(MorePlanetsCore.INSTANCE), id);
 
 		if (regis != null)
 		{
@@ -204,7 +204,7 @@ public class MPEntities
 
 		try
 		{
-			EntityRegistration regis = EntityRegistry.instance().lookupModSpawn(FMLCommonHandler.instance().findContainerFor(MorePlanetsCore.instance), id);
+			EntityRegistration regis = EntityRegistry.instance().lookupModSpawn(FMLCommonHandler.instance().findContainerFor(MorePlanetsCore.INSTANCE), id);
 			Class<?> clazz = regis.getEntityClass();
 
 			if (clazz != null)

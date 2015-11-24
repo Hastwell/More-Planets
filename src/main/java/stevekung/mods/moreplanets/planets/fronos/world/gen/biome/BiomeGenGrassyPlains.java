@@ -35,5 +35,8 @@ public class BiomeGenGrassyPlains extends BiomeGenBaseFronos
 		this.getBiomeDecorator().poppyPerChunk = 12;
 		this.getBiomeDecorator().waterlilyPerChunk = 3;
 		this.getBiomeDecorator().jungleIrisPerChunk = 12;
+		this.getBiomeDecorator().redMapleTreePerChunk = -999;
+		this.getBiomeDecorator().yellowMapleTreePerChunk = -999;
+		this.getBiomeDecorator().purpleMapleTreePerChunk = -999;
 	}
 }

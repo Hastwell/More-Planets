@@ -16,6 +16,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMartianMoon;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.village.MapGenMartianVillage;
@@ -24,7 +25,7 @@ import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
 public class ChunkProviderPhobos extends ChunkProviderBaseMP
 {
 	private BiomeDecoratorPhobos biomeDecorator = new BiomeDecoratorPhobos();
-	private BiomeGenBase[] biomesForGeneration = { BiomeGenBasePhobos.phobos };
+	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMartianMoon.martianMoon };
 	private MapGenCavesMP caveGenerator = new MapGenCavesMP(PhobosBlocks.phobos_block, this.getBlockMetadata());
 	private MapGenMartianVillage villageGenerator = new MapGenMartianVillage();
 
@@ -61,7 +62,7 @@ public class ChunkProviderPhobos extends ChunkProviderBaseMP
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
 		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
 		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
-		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBasePhobos.phobos, pos);
+		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMartianMoon.martianMoon, pos);
 		BlockFalling.fallInstantly = false;
 	}
 

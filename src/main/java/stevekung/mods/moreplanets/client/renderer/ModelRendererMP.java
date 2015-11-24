@@ -708,6 +708,14 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(DionaItems.laser_ammo, 3, "uranium_laser_ammo", "moreplanets");
 		ClientRegisterHelper.registerModelRender(DionaItems.laser_ammo, 4, "icy_poison_laser_ammo", "moreplanets");
 		ClientRegisterHelper.registerModelRender(DionaItems.diona_dungeon_key, "diona_dungeon_key", "moreplanets");
+		ClientRegisterHelper.registerModelRender(DionaItems.tier_4_rocket, new ItemMeshDefinition()
+		{
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack itemStack)
+			{
+				return new ModelResourceLocation("moreplanets:tier_4_rocket", "inventory");
+			}
+		});
 
 		ClientRegisterHelper.registerModelRender(PolongniusItems.polongnius_item, 0, "flonium", "moreplanets");
 		ClientRegisterHelper.registerModelRender(PolongniusItems.polongnius_item, 1, "purple_crystal", "moreplanets");
@@ -736,6 +744,7 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(PolongniusItems.cheese_slimeball, "cheese_slimeball", "moreplanets");
 		ClientRegisterHelper.registerModelRender(PolongniusItems.cheese_of_milk_bucket, "cheese_of_milk_bucket", "moreplanets");
 		ClientRegisterHelper.registerModelRender(PolongniusItems.polongnius_dungeon_key, "polongnius_dungeon_key", "moreplanets");
+		ClientRegisterHelper.registerModelRender(PolongniusItems.polongnius_meteor_chunk, "polongnius_meteor_chunk", "moreplanets");
 
 		ClientRegisterHelper.registerModelRender(NibiruItems.nibiru_item, 0, "red_gem", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruItems.nibiru_item, 1, "norium_ingot", "moreplanets");
@@ -767,6 +776,7 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(KoentusItems.koentus_item, 6, "compressed_koentus_meteoric_iron", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KoentusItems.crystal_door, "crystal_door", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KoentusItems.crystal_cocoa, "crystal_cocoa", "moreplanets");
+		ClientRegisterHelper.registerModelRender(KoentusItems.koentus_meteor_chunk, "koentus_meteor_chunk", "moreplanets");
 
 		ClientRegisterHelper.registerModelRender(FronosItems.fronos_food, 0, "strawberry", "moreplanets");
 		ClientRegisterHelper.registerModelRender(FronosItems.fronos_food, 1, "berry", "moreplanets");

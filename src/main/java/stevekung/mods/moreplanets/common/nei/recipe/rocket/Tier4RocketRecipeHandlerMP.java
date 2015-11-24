@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.common.nei.recipe.RocketRecipeHandler;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
+import stevekung.mods.moreplanets.planets.diona.items.ItemTier4RocketModule.Tier4ItemType;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 
@@ -94,21 +95,22 @@ public class Tier4RocketRecipeHandlerMP extends RocketRecipeHandler
 	{
 		int changeY = 15;
 		ArrayList<PositionedStack> input1 = new ArrayList<PositionedStack>();
+		ItemStack t4Plate = Tier4ItemType.T4_PLATE.getItemStack();
 
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 0), 45, -8 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 36, -6 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 36, -6 + 18 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 36, -6 + 36 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 36, -6 + 54 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 36, -6 + 72 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 54, -6 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 54, -6 + 18 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 54, -6 + 36 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 54, -6 + 54 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 1), 54, -6 + 72 + 16 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 2), 45, 100 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 3), 18, 64 + changeY));
-		input1.add(new PositionedStack(new ItemStack(DionaItems.tier_4_rocket_module, 1, 3), 72, 64 + changeY));
+		input1.add(new PositionedStack(Tier4ItemType.NOSE_CONE.getItemStack(), 45, -8 + changeY));
+		input1.add(new PositionedStack(t4Plate, 36, -6 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 36, -6 + 18 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 36, -6 + 36 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 36, -6 + 54 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 36, -6 + 72 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 54, -6 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 54, -6 + 18 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 54, -6 + 36 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 54, -6 + 54 + 16 + changeY));
+		input1.add(new PositionedStack(t4Plate, 54, -6 + 72 + 16 + changeY));
+		input1.add(new PositionedStack(Tier4ItemType.T4_ENGINE.getItemStack(), 45, 100 + changeY));
+		input1.add(new PositionedStack(Tier4ItemType.T4_BOOSTER.getItemStack(), 18, 64 + changeY));
+		input1.add(new PositionedStack(Tier4ItemType.T4_BOOSTER.getItemStack(), 72, 64 + changeY));
 		input1.add(new PositionedStack(new ItemStack(AsteroidsItems.basicItem, 1, 2), 18, 82 + changeY));
 		input1.add(new PositionedStack(new ItemStack(AsteroidsItems.basicItem, 1, 2), 18, 100 + changeY));
 		input1.add(new PositionedStack(new ItemStack(AsteroidsItems.basicItem, 1, 2), 72, 82 + changeY));

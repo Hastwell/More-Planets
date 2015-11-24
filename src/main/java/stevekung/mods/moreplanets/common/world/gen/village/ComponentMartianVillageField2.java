@@ -131,7 +131,6 @@ public class ComponentMartianVillageField2 extends ComponentMartianVillage
 				this.func_175811_a(world, Blocks.dirt.getDefaultState(), j, -1, i, box);
 			}
 		}
-
 		return true;
 	}
 }

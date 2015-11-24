@@ -37,9 +37,9 @@ public class BiomeGenMapleForest extends BiomeGenBaseFronos
 		this.getBiomeDecorator().littleSunFlowerPerChunk = 2;
 		this.getBiomeDecorator().dandelionPerChunk = 12;
 		this.getBiomeDecorator().poppyPerChunk = 12;
-		this.getBiomeDecorator().redMapleTreePerChunk = 1500;
-		this.getBiomeDecorator().yellowMapleTreePerChunk = 1500;
-		this.getBiomeDecorator().purpleMapleTreePerChunk = 64;
+		this.getBiomeDecorator().redMapleTreePerChunk = 10;
+		this.getBiomeDecorator().yellowMapleTreePerChunk = 4;
+		this.getBiomeDecorator().purpleMapleTreePerChunk = 2;
 		this.getBiomeDecorator().mapleIvyPerChunk = 8;
 		this.getBiomeDecorator().bluePoisonMushroomPerChunk = 4;
 		this.getBiomeDecorator().purpleSpikeFlowerPerChunk = 4;
@@ -48,14 +48,9 @@ public class BiomeGenMapleForest extends BiomeGenBaseFronos
 	@Override
 	public WorldGenAbstractTree genBigTreeChance(Random rand)
 	{
-		if (rand.nextInt(2) == 0)
-		{
-			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, FronosBlocks.fronos_sapling, null);
-		}
-		else if (rand.nextInt(4) == 0)
-		{
-			return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, FronosBlocks.fronos_sapling, FronosBlocks.maple_ivy);
-		}
-		return new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling, null);
+		WorldGenTreeMP red = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, FronosBlocks.fronos_sapling, FronosBlocks.maple_ivy);
+		WorldGenTreeMP yellow = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, FronosBlocks.fronos_sapling, null);
+		WorldGenTreeMP purple = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, FronosBlocks.fronos_sapling, null);
+		return rand.nextInt(10) == 0 ? purple : rand.nextInt(6) == 0 ? yellow : rand.nextInt(4) == 0 ? red : null;
 	}
 }

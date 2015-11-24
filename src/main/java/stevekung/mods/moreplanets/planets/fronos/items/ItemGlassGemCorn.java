@@ -65,6 +65,7 @@ public class ItemGlassGemCorn extends ItemFoodMP2 implements IPlantable
 		else if (world.getBlockState(pos).getBlock().canSustainPlant(world, pos, EnumFacing.UP, this) && world.isAirBlock(pos.up()))
 		{
 			world.setBlockState(pos.up(), FronosBlocks.glass_gem_corn.getDefaultState());
+			world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, FronosBlocks.glass_gem_corn.stepSound.getPlaceSound(), (FronosBlocks.glass_gem_corn.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.glass_gem_corn.stepSound.getFrequency() * 0.8F);
 			--itemStack.stackSize;
 			return true;
 		}

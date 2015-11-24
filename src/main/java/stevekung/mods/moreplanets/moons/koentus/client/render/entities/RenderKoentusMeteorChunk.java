@@ -33,12 +33,12 @@ public class RenderKoentusMeteorChunk extends Render
 		return this.texture;
 	}
 
-	public void renderMeteorChunk(EntityKoentusMeteorChunk entity, double par2, double par4, double par6, float par8, float par9)
+	public void renderMeteorChunk(EntityKoentusMeteorChunk entity, double x, double y, double z)
 	{
 		GlStateManager.pushMatrix();
 		float var24 = entity.rotationPitch;
 		float var24b = entity.rotationYaw;
-		GlStateManager.translate((float) par2, (float) par4, (float) par6);
+		GlStateManager.translate((float) x, (float) y, (float) z);
 		GlStateManager.scale(0.3F, 0.3F, 0.3F);
 		GlStateManager.rotate(var24b, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(var24, 0.0F, 0.0F, 1.0F);
@@ -48,8 +48,8 @@ public class RenderKoentusMeteorChunk extends Render
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRender(Entity entity, double x, double y, double z, float par8, float par9)
 	{
-		this.renderMeteorChunk((EntityKoentusMeteorChunk) par1Entity, par2, par4, par6, par8, par9);
+		this.renderMeteorChunk((EntityKoentusMeteorChunk)entity, x, y, z);
 	}
 }
