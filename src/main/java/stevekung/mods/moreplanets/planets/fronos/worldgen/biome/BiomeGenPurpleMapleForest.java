@@ -40,7 +40,9 @@ public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
 		this.getBiomeDecorator().littleSunFlowerPerChunk = 1;
 		this.getBiomeDecorator().dandelionPerChunk = 2;
 		this.getBiomeDecorator().poppyPerChunk = 2;
-		this.getBiomeDecorator().purpleMapleTreePerChunk = 1500;
+		this.getBiomeDecorator().purpleMapleTreePerChunk = 10;
+		this.getBiomeDecorator().redMapleTreePerChunk = -999;
+		this.getBiomeDecorator().yellowMapleTreePerChunk = -999;
 		this.getBiomeDecorator().mapleIvyPerChunk = 12;
 		this.getBiomeDecorator().bluePoisonMushroomPerChunk = 8;
 		this.getBiomeDecorator().purpleSpikeFlowerPerChunk = 8;
@@ -49,6 +51,6 @@ public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
 	@Override
 	public WorldGenAbstractTree func_150567_a(Random rand)
 	{
-		return new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false);
+		return rand.nextInt(5) == 0 ? new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false) : null;
 	}
 }

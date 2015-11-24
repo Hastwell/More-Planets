@@ -371,26 +371,57 @@ public class BiomeDecoratorFronos extends BiomeDecorator
 				new WorldGenCoconutTree(35, 10, 1.3D).generate(this.currentWorld, this.randomGenerator, x, y, z);
 			}
 		}
-		for (i = 0; this.getGen(EventType.TREE) && i < this.redMapleTreePerChunk; ++i)
+
+		int chance;
+		chance = this.redMapleTreePerChunk;
+
+		if (this.randomGenerator.nextInt(10) == 0)
 		{
-			x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			y = this.randomGenerator.nextInt(256);
-			z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, 5, 4, false).generate(this.currentWorld, this.randomGenerator, x, y, z);
+			++chance;
 		}
-		for (i = 0; this.getGen(EventType.TREE) && i < this.yellowMapleTreePerChunk; ++i)
+
+		for (i = 0; this.getGen(EventType.TREE) && i < chance; ++i)
 		{
 			x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			y = this.randomGenerator.nextInt(256);
 			z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, 5, 4, false).generate(this.currentWorld, this.randomGenerator, x, y, z);
+
+			WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, 5, 4, false);
+			tree.setScale(1.0D, 1.0D, 1.0D);
+			tree.generate(this.currentWorld, this.randomGenerator, x, this.currentWorld.getHeightValue(x, z), z);
 		}
-		for (i = 0; this.getGen(EventType.TREE) && i < this.purpleMapleTreePerChunk; ++i)
+
+		chance = this.yellowMapleTreePerChunk;
+
+		if (this.randomGenerator.nextInt(10) == 0)
+		{
+			++chance;
+		}
+
+		for (i = 0; this.getGen(EventType.TREE) && i < chance; ++i)
 		{
 			x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			y = this.randomGenerator.nextInt(256);
 			z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false).generate(this.currentWorld, this.randomGenerator, x, y, z);
+
+			WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, 5, 4, false);
+			tree.setScale(1.0D, 1.0D, 1.0D);
+			tree.generate(this.currentWorld, this.randomGenerator, x, this.currentWorld.getHeightValue(x, z), z);
+		}
+
+		chance = this.purpleMapleTreePerChunk;
+
+		if (this.randomGenerator.nextInt(10) == 0)
+		{
+			++chance;
+		}
+
+		for (i = 0; this.getGen(EventType.TREE) && i < chance; ++i)
+		{
+			x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+			z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+
+			WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false);
+			tree.setScale(1.0D, 1.0D, 1.0D);
+			tree.generate(this.currentWorld, this.randomGenerator, x, this.currentWorld.getHeightValue(x, z), z);
 		}
 
 		// Coral

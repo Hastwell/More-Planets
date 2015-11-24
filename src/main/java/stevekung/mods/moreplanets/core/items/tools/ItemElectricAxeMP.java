@@ -1,4 +1,4 @@
-package stevekung.mods.moreplanets.planets.pluto.items.tools;
+package stevekung.mods.moreplanets.core.items.tools;
 
 import ic2.api.item.IElectricItemManager;
 
@@ -21,7 +21,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -40,13 +40,13 @@ import cpw.mods.fml.relauncher.FMLInjectionData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public abstract class ItemElectricShovelMP extends ItemSpade implements IItemElectric
+public abstract class ItemElectricAxeMP extends ItemAxe implements IItemElectric
 {
 	private static Object itemManagerIC2;
 	public float transferMax;
 	private DefaultArtifactVersion mcVersion = null;
 
-	public ItemElectricShovelMP(ToolMaterial material)
+	public ItemElectricAxeMP(ToolMaterial material)
 	{
 		super(material);
 		this.setMaxDamage(100);
@@ -67,7 +67,6 @@ public abstract class ItemElectricShovelMP extends ItemSpade implements IItemEle
 			}
 		}
 	}
-
 
 	protected void setMaxTransfer()
 	{

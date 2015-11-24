@@ -41,7 +41,7 @@ public class RenderPlayerMP extends RenderPlayerGC
 		RenderPlayerMP.thermalPaddingTexture1 = new ResourceLocation("galacticraftasteroids", "textures/misc/thermalPadding_1.png");
 	}
 
-	public static void renderModelS(RendererLivingEntity inst, EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4, float par5, float par6, float par7)
+	public static void renderModelS(RendererLivingEntity inst, EntityLivingBase living, float par2, float par3, float par4, float par5, float par6, float par7)
 	{
 		if (inst instanceof RenderPlayer)
 		{
@@ -54,7 +54,7 @@ public class RenderPlayerMP extends RenderPlayerGC
 
 			if (RenderPlayerMP.thermalPaddingTexture0 != null && !isSmartRenderLoaded)
 			{
-				PlayerGearData gearData = ClientProxyCore.playerItemData.get(par1EntityLivingBase.getCommandSenderName());
+				PlayerGearData gearData = ClientProxyCore.playerItemData.get(living.getCommandSenderName());
 
 				if (gearData != null)
 				{
@@ -73,7 +73,7 @@ public class RenderPlayerMP extends RenderPlayerGC
 
 						int padding = gearData.getThermalPadding(i);
 
-						if (padding >= 0 && !par1EntityLivingBase.isInvisible())
+						if (padding >= 0 && !living.isInvisible())
 						{
 							GL11.glColor4f(1, 1, 1, 1);
 							Minecraft.getMinecraft().renderEngine.bindTexture(RenderPlayerMP.thermalPaddingTexture1);
@@ -96,8 +96,8 @@ public class RenderPlayerMP extends RenderPlayerGC
 								modelBiped.aimedBow = ((ModelBiped) thisInst.mainModel).aimedBow;
 							}
 
-							modelBiped.setLivingAnimations(par1EntityLivingBase, par2, par3, 0.0F);
-							modelBiped.render(par1EntityLivingBase, par2, par3, par4, par5, par6, par7);
+							modelBiped.setLivingAnimations(living, par2, par3, 0.0F);
+							modelBiped.render(living, par2, par3, par4, par5, par6, par7);
 
 							// Start alpha render
 							GL11.glDisable(GL11.GL_LIGHTING);
@@ -106,16 +106,16 @@ public class RenderPlayerMP extends RenderPlayerGC
 							GL11.glEnable(GL11.GL_BLEND);
 							GL11.glAlphaFunc(GL11.GL_GREATER, 0.0F);
 							GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-							float time = par1EntityLivingBase.ticksExisted / 10.0F;
+							float time = living.ticksExisted / 10.0F;
 							float sTime = (float) Math.sin(time) * 0.5F + 0.5F;
 
 							float r = 0.2F * sTime;
 							float g = 1.0F * sTime;
 							float b = 0.2F * sTime;
 
-							if (par1EntityLivingBase.worldObj.provider instanceof IGalacticraftWorldProvider)
+							if (living.worldObj.provider instanceof IGalacticraftWorldProvider)
 							{
-								float modifier = ((IGalacticraftWorldProvider) par1EntityLivingBase.worldObj.provider).getThermalLevelModifier();
+								float modifier = ((IGalacticraftWorldProvider) living.worldObj.provider).getThermalLevelModifier();
 
 								if (modifier > 0)
 								{
@@ -130,7 +130,7 @@ public class RenderPlayerMP extends RenderPlayerGC
 							}
 
 							GL11.glColor4f(r, g, b, 0.4F * sTime);
-							modelBiped.render(par1EntityLivingBase, par2, par3, par4, par5, par6, par7);
+							modelBiped.render(living, par2, par3, par4, par5, par6, par7);
 							GL11.glDisable(GL11.GL_BLEND);
 							GL11.glEnable(GL11.GL_ALPHA_TEST);
 							GL11.glColor4f(1, 1, 1, 1);

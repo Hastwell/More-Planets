@@ -13,7 +13,9 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+
+import org.lwjgl.input.Keyboard;
+
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockMorePlanet;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,9 +33,15 @@ public class ItemBlockEuropaSapling extends ItemBlockMorePlanet
 	{
 		if (player.worldObj.isRemote)
 		{
-			list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.europasapling1.name"));
-			list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.europasapling2.name"));
-			list.add(EnumChatFormatting.RED + StatCollector.translateToLocal("desc.europasapling3.name"));
+			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+			{
+				list.add(EnumChatFormatting.GRAY + "Can be placed under an Europa Ice and Packed Europa Ice");
+				list.add(EnumChatFormatting.RED + "Note : When planted under an Europa Ice it need to grow manually");
+			}
+			else
+			{
+				list.add("Press LSHIFT for info");
+			}
 		}
 	}
 }

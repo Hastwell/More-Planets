@@ -1,4 +1,4 @@
-package stevekung.mods.moreplanets.planets.pluto.items.tools;
+package stevekung.mods.moreplanets.core.items.tools;
 
 import ic2.api.item.IElectricItemManager;
 

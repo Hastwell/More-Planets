@@ -16,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.proxy.ClientProxyMP;
-import stevekung.mods.moreplanets.core.todo.PacketUpdateJetpack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -61,19 +60,6 @@ public class ItemJetpack extends ItemElectricArmorMP
 			}
 		}
 		return armorModel;
-	}
-
-	@Override
-	public void onUpdate(ItemStack itemStack, World world, Entity entity, int slot, boolean selected)
-	{
-		if (this.getJetpackKeyDown() == true)
-		{
-			MorePlanetsCore.packetPipeline.sendToServer(new PacketUpdateJetpack());
-		}
-		if (this.getJetpackKeySneak() == true)
-		{
-			MorePlanetsCore.packetPipeline.sendToServer(new PacketUpdateJetpack());
-		}
 	}
 
 	@Override

@@ -10,26 +10,45 @@ import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
 
 public class PacketUpdateJetpack implements IPacket
 {
-	@Override
-	public void encodeInto(ChannelHandlerContext context, ByteBuf buffer) {}
+	private float power;
+
+	public PacketUpdateJetpack() {}
+
+	public PacketUpdateJetpack(float power)
+	{
+		this.power = power;
+	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext context, ByteBuf buffer) {}
+	public void encodeInto(ChannelHandlerContext context, ByteBuf buffer)
+	{
+		buffer.writeFloat(this.power);
+	}
+
+	@Override
+	public void decodeInto(ChannelHandlerContext context, ByteBuf buffer)
+	{
+		this.power = buffer.readFloat();
+	}
 
 	@Override
 	public void handleClientSide(EntityPlayer player)
 	{
-		if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
+		if (player != null)
 		{
-			boolean flag = player.capabilities.isCreativeMode;
-			ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
-			ItemStack itemStack = player.inventory.armorItemInSlot(2);
-
-			if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
+			if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
 			{
-				if (jetpack.getJetpackKeyDown())
+				float electric = this.power;
+				boolean flag = player.capabilities.isCreativeMode;
+				ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
+				ItemStack itemStack = player.inventory.armorItemInSlot(2);
+
+				if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
 				{
-					jetpack.setElectricity(itemStack, jetpack.getElectricityStored(itemStack) - 1.0F);
+					if (jetpack.getJetpackKeyDown() || jetpack.getJetpackKeySneak())
+					{
+						jetpack.setElectricity(itemStack, jetpack.getElectricityStored(itemStack) - electric);
+					}
 				}
 			}
 		}
@@ -38,17 +57,21 @@ public class PacketUpdateJetpack implements IPacket
 	@Override
 	public void handleServerSide(EntityPlayer player)
 	{
-		if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
+		if (player != null)
 		{
-			boolean flag = player.capabilities.isCreativeMode;
-			ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
-			ItemStack itemStack = player.inventory.armorItemInSlot(2);
-
-			if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
+			if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
 			{
-				if (jetpack.getJetpackKeyDown())
+				float electric = this.power;
+				boolean flag = player.capabilities.isCreativeMode;
+				ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
+				ItemStack itemStack = player.inventory.armorItemInSlot(2);
+
+				if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
 				{
-					jetpack.setElectricity(itemStack, jetpack.getElectricityStored(itemStack) - 1.0F);
+					if (jetpack.getJetpackKeyDown() || jetpack.getJetpackKeySneak())
+					{
+						jetpack.setElectricity(itemStack, jetpack.getElectricityStored(itemStack) - electric);
+					}
 				}
 			}
 		}

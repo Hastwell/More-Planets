@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.items.tools.KoentusToolsItems;
@@ -20,6 +21,7 @@ import stevekung.mods.moreplanets.planets.fronos.items.tools.FronosToolsItems;
 import stevekung.mods.moreplanets.planets.kapteynb.items.tools.KapteynBToolsItems;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.items.tools.NibiruToolsItems;
+import stevekung.mods.moreplanets.planets.pluto.items.tools.PlutoToolsItems;
 import stevekung.mods.moreplanets.planets.polongnius.items.tools.PolongniusToolsItems;
 import stevekung.mods.moreplanets.planets.siriusb.items.tools.SiriusBToolsItems;
 import cpw.mods.fml.common.event.FMLInterModComms;
@@ -47,6 +49,9 @@ public class TreeCapitatorIntegrationMP
 		String europaLog = blockName(EuropaBlocks.europa_log);
 		String europaLeaves = blockName(EuropaBlocks.europa_leaves);
 
+		String alienLog = blockName(DarkAsteroidsBlocks.alien_log);
+		String alienLeaves = blockName(DarkAsteroidsBlocks.alien_leaves);
+
 		String quontoniumAxe = itemName(DionaToolsItems.quontonium_axe);
 		String fronisiumAxe = itemName(DionaToolsItems.fronisium_axe);
 		String polongniusMeteorAxe = itemName(PolongniusToolsItems.polongnius_meteoric_iron_axe);
@@ -62,10 +67,11 @@ public class TreeCapitatorIntegrationMP
 		String frozenIronAxe = itemName(KapteynBToolsItems.frozen_iron_axe);
 		String uraniumAxe = itemName(KapteynBToolsItems.uranium_axe);
 		String sulfurAxe = itemName(SiriusBToolsItems.sulfur_axe);
+		String xeoniumAxe = itemName(PlutoToolsItems.xeonium_axe);
 
 		tpModCfg.setString("modID", "MorePlanet");
 		tpModCfg.setString("axeIDList", quontoniumAxe + "; " + fronisiumAxe + "; " + polongniusMeteorAxe + "; " + palladiumAxe + "; " + purpleCrystalAxe + "; " + redGemAxe + "; " + noriumAxe + "; " + koentusMeteorAxe + "; " + whiteCrystalAxe + "; " + blackDiamondAxe + "; " +
-				iridiumAxe + "; " + candyAxe + "; " + frozenIronAxe + "; " + uraniumAxe + "; " + sulfurAxe);
+				iridiumAxe + "; " + candyAxe + "; " + frozenIronAxe + "; " + uraniumAxe + "; " + sulfurAxe + "; " + xeoniumAxe);
 
 		//Ancient Dark Tree
 		tree.setString("treeName", "ancientdark");
@@ -123,8 +129,14 @@ public class TreeCapitatorIntegrationMP
 		tree.setBoolean("requireLeafDecayCheck", false);
 		treeList.appendTag(tree);
 
+		//Alien Tree
+		tree.setString("treeName", "alien");
+		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", alienLog, alienLog, alienLog));
+		tree.setString("leaves", String.format("%s, 0; %s, 8", alienLeaves, alienLeaves));
+		tree.setBoolean("requireLeafDecayCheck", false);
+		treeList.appendTag(tree);
+
 		FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", tpModCfg);
-		FMLInterModComms.sendMessage("Treecapitator", "ThirdPartyModConfig", tpModCfg);
 	}
 
 	private static String blockName(Block block)

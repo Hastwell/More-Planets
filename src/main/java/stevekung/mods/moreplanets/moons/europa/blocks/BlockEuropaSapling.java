@@ -32,11 +32,25 @@ public class BlockEuropaSapling extends BlockBush implements IGrowable
 	public BlockEuropaSapling(String name)
 	{
 		super(Material.water);
-		float f = 0.4F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+		this.setBlockBounds(0.099999994F, 0.0F, 0.099999994F, 0.9F, 0.8F, 0.9F);
 		this.setHardness(0.0F);
 		this.setStepSound(soundTypeGrass);
 		this.setBlockName(name);
+	}
+
+	@Override
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+
+		if (meta == 0)
+		{
+			this.setBlockBounds(0.099999994F, 0.0F, 0.099999994F, 0.9F, 0.8F, 0.9F);
+		}
+		else if (meta == 1)
+		{
+			this.setBlockBounds(0.099999994F, 0.2F, 0.099999994F, 0.9F, 1.0F, 0.9F);
+		}
 	}
 
 	@Override

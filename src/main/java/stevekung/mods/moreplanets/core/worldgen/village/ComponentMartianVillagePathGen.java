@@ -16,7 +16,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
+import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
 import stevekung.mods.moreplanets.moons.phobos.blocks.PhobosBlocks;
 import stevekung.mods.moreplanets.moons.phobos.dimension.WorldProviderPhobos;
 
@@ -131,28 +133,30 @@ public class ComponentMartianVillagePathGen extends ComponentMartianVillageRoadP
 				return var8;
 			}
 		}
-
 		return null;
 	}
 
 	@Override
 	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
-		for (int var5 = this.boundingBox.minX; var5 <= this.boundingBox.maxX; ++var5)
+		for (int x = this.boundingBox.minX; x <= this.boundingBox.maxX; ++x)
 		{
-			for (int var6 = this.boundingBox.minZ; var6 <= this.boundingBox.maxZ; ++var6)
+			for (int z = this.boundingBox.minZ; z <= this.boundingBox.maxZ; ++z)
 			{
-				if (box.isVecInside(var5, 64, var6) && (world.getBlock(var5, world.getTopSolidOrLiquidBlock(var5, var6) - 1, var6) == DeimosBlocks.deimos_block && world.getBlockMetadata(var5, world.getTopSolidOrLiquidBlock(var5, var6) - 1, var6) == 0 || world.getBlock(var5, world.getTopSolidOrLiquidBlock(var5, var6) - 1, var6) == PhobosBlocks.phobos_block && world.getBlockMetadata(var5, world.getTopSolidOrLiquidBlock(var5, var6) - 1, var6) == 0 || Blocks.air == world.getBlock(var5, world.getTopSolidOrLiquidBlock(var5, var6) - 1, var6)))
-				{
-					int var7 = world.getTopSolidOrLiquidBlock(var5, var6) - 1;
+				int y = world.getTopSolidOrLiquidBlock(x, z) - 1;
 
-					if (world.provider instanceof WorldProviderPhobos)
+				if (world.provider instanceof WorldProviderDeimos)
+				{
+					if (box.isVecInside(x, 64, z) && (world.getBlock(x, world.getTopSolidOrLiquidBlock(x, z) - 1, z) == DeimosBlocks.deimos_block && world.getBlockMetadata(x, world.getTopSolidOrLiquidBlock(x, z) - 1, z) == 0 || Blocks.air == world.getBlock(x, world.getTopSolidOrLiquidBlock(x, z) - 1, z)))
 					{
-						world.setBlock(var5, var7, var6, PhobosBlocks.phobos_block, 0, 3);
+						world.setBlock(x, y, z, MPBlocks.chondrite_block, 0, 3);
 					}
-					else
+				}
+				else if (world.provider instanceof WorldProviderPhobos)
+				{
+					if (box.isVecInside(x, 64, z) && (world.getBlock(x, world.getTopSolidOrLiquidBlock(x, z) - 1, z) == PhobosBlocks.phobos_block && world.getBlockMetadata(x, world.getTopSolidOrLiquidBlock(x, z) - 1, z) == 0 || Blocks.air == world.getBlock(x, world.getTopSolidOrLiquidBlock(x, z) - 1, z)))
 					{
-						world.setBlock(var5, var7, var6, DeimosBlocks.deimos_block, 0, 3);
+						world.setBlock(x, y, z, MPBlocks.chondrite_block, 0, 3);
 					}
 				}
 			}

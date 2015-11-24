@@ -47,7 +47,8 @@ public class ItemGravityBoots extends ItemArmorMP
 		{
 			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 			{
-				list.add(EnumChatFormatting.RED + "Currently prevent fall damage, WIP for increase/decrease gravity factor");
+				list.add(EnumChatFormatting.GRAY + "Currently prevent fall damage");
+				list.add(EnumChatFormatting.RED + "WIP for increase/decrease gravity factor");
 			}
 			else
 			{

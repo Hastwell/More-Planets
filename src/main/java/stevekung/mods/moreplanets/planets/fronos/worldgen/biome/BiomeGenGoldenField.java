@@ -42,5 +42,8 @@ public class BiomeGenGoldenField extends BiomeGenBaseFronos
 		this.getBiomeDecorator().pinkButterCupPerChunk = 12;
 		this.getBiomeDecorator().oysterPerChunk = 500;
 		this.getBiomeDecorator().oysterClosePerChunk = 500;
+		this.getBiomeDecorator().redMapleTreePerChunk = -999;
+		this.getBiomeDecorator().yellowMapleTreePerChunk = 8;
+		this.getBiomeDecorator().purpleMapleTreePerChunk = -999;
 	}
 }

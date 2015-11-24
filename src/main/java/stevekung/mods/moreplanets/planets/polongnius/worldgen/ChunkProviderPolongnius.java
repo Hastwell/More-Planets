@@ -165,39 +165,41 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void replaceBlocksForBiome(int par1, int par2, Block[] arrayOfIDs, byte[] arrayOfMeta, BiomeGenBase[] par4ArrayOfBiomeGenBase)
+	public void replaceBlocksForBiome(int chunkX, int chunkZ, Block[] blockArray, byte[] metaArray, BiomeGenBase[] biome)
 	{
 		int var5 = 20;
-		for (int var8 = 0; var8 < 16; ++var8)
+
+		for (int x = 0; x < 16; ++x)
 		{
-			for (int var9 = 0; var9 < 16; ++var9)
+			for (int z = 0; z < 16; ++z)
 			{
-				int var12 = (int) (this.noiseGen4.getNoise(var8 + par1 * 16, var9 * par2 * 16) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int var12 = (int) (this.noiseGen4.getNoise(x + chunkX * 16, z * chunkZ * 16) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
 				Block var14 = this.topBlockID;
 				byte var14m = this.topBlockMeta;
 				Block var15 = this.fillBlockID;
 				byte var15m = this.fillBlockMeta;
 
-				for (int var16 = 127; var16 >= 0; --var16)
+				for (int y = 255; y >= 0; --y)
 				{
-					int index = this.getIndex(var8, var16, var9);
-					arrayOfMeta[index] = 0;
+					int index = this.getIndex(x, y, z);
+					metaArray[index] = 0;
 
-					if (var16 <= 0 + this.rand.nextInt(5))
+					if (y <= 0 + this.rand.nextInt(5))
 					{
-						arrayOfIDs[index] = Blocks.bedrock;
+						blockArray[index] = Blocks.bedrock;
 					}
 					else
 					{
-						Block var18 = arrayOfIDs[index];
-						if (Blocks.air == var18)
+						Block block = blockArray[index];
+
+						if (Blocks.air == block)
 						{
 							var13 = -1;
 						}
-						else if (var18 == this.lowerBlockID)
+						else if (block == this.lowerBlockID)
 						{
-							arrayOfMeta[index] = this.lowerBlockMeta;
+							metaArray[index] = this.lowerBlockMeta;
 
 							if (var13 == -1)
 							{
@@ -208,7 +210,7 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
 									var15 = this.lowerBlockID;
 									var15m = this.lowerBlockMeta;
 								}
-								else if (var16 >= var5 - -16 && var16 <= var5 + 1)
+								else if (y >= var5 - -16 && y <= var5 + 1)
 								{
 									var14 = this.topBlockID;
 									var14m = this.topBlockMeta;
@@ -218,22 +220,22 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
 
 								var13 = var12;
 
-								if (var16 >= var5 - 1)
+								if (y >= var5 - 1)
 								{
-									arrayOfIDs[index] = var14;
-									arrayOfMeta[index] = var14m;
+									blockArray[index] = var14;
+									metaArray[index] = var14m;
 								}
-								else if (var16 < var5 - 1 && var16 >= var5 - 2)
+								else if (y < var5 - 1 && y >= var5 - 2)
 								{
-									arrayOfIDs[index] = var15;
-									arrayOfMeta[index] = var15m;
+									blockArray[index] = var15;
+									metaArray[index] = var15m;
 								}
 							}
 							else if (var13 > 0)
 							{
 								--var13;
-								arrayOfIDs[index] = var15;
-								arrayOfMeta[index] = var15m;
+								blockArray[index] = var15;
+								metaArray[index] = var15m;
 							}
 						}
 					}

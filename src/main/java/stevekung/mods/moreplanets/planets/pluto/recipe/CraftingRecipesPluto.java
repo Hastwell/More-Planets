@@ -30,7 +30,7 @@ public class CraftingRecipesPluto
 	private static void addBlockRecipes()
 	{
 		// Blocks
-		GameRegistry.addRecipe(new ItemStack(PlutoBlocks.xeonium_torch, 4), new Object[] { "X", "S", 'X', new ItemStack(PlutoItems.pluto_item, 1, 0), 'S', new ItemStack(Items.stick) });
+		GameRegistry.addRecipe(new ItemStack(PlutoBlocks.xeonium_torch, 4), new Object[] { "X", "S", 'X', new ItemStack(PlutoItems.xeonium_dust), 'S', new ItemStack(Items.stick) });
 		GameRegistry.addRecipe(new ItemStack(PlutoBlocks.xeonium_glowstone), new Object[] { "DD", "DD", 'D', new ItemStack(PlutoItems.xeonium_dust) });
 
 		// Nibiru Cobblestone Stairs

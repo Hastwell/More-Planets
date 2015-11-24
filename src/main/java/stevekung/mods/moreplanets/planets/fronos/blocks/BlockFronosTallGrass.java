@@ -155,6 +155,12 @@ public class BlockFronosTallGrass extends BlockFlowerMP
 	}
 
 	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand)
+	{
+		this.isValidPosition(world, x, y, z, world.getBlockMetadata(x, y, z));
+	}
+
+	@Override
 	public boolean isValidPosition(World world, int x, int y, int z, int meta)
 	{
 		Block block = world.getBlock(x, y - 1, z);

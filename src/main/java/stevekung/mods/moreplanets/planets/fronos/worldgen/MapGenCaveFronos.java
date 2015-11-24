@@ -19,8 +19,6 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.IFronosGrass;
 
 public class MapGenCaveFronos extends MapGenBaseMeta
 {
-	public static int BREAK_THROUGH_CHANCE = 25; // 1 in n chance
-
 	protected void generateLargeCaveNode(long par1, int par3, int par4, Block[] blockIdArray, byte[] metaArray, double par6, double par8, double par10)
 	{
 		this.generateCaveNode(par1, par3, par4, blockIdArray, metaArray, par6, par8, par10, 1.0F + this.rand.nextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
@@ -178,9 +176,18 @@ public class MapGenCaveFronos extends MapGenBaseMeta
 										{
 											if (blockIdArray[coords] == FronosBlocks.fronos_dirt && metaArray[coords] == 0 || blockIdArray[coords] == FronosBlocks.fronos_block && metaArray[coords] == 0)
 											{
-												blockIdArray[coords] = Blocks.air;
+												if (localY < 10)
+												{
+													blockIdArray[coords] = Blocks.lava;
+													metaArray[coords] = 0;
+												}
+												else
+												{
+													blockIdArray[coords] = Blocks.air;
+													metaArray[coords] = 0;
+												}
 											}
-											else if (blockIdArray[coords] instanceof IFronosGrass && metaArray[coords] == 0 && random.nextInt(MapGenCaveFronos.BREAK_THROUGH_CHANCE) == 0)
+											else if (blockIdArray[coords] instanceof IFronosGrass && metaArray[coords] == 0)
 											{
 												blockIdArray[coords] = Blocks.air;
 											}

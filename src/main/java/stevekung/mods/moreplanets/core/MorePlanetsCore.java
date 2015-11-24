@@ -31,6 +31,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.core.achievement.AchievementsMP;
+import stevekung.mods.moreplanets.core.command.CommandHomePlanet;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.event.MorePlanetEvents;
 import stevekung.mods.moreplanets.core.handler.GuiHandlerMP;
@@ -93,6 +94,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -288,24 +290,35 @@ public class MorePlanetsCore
 		CompressorRecipesMP.registerCompressorRecipes();
 		DispenserRegistryMP.init();
 
-		HashMap<Object, Integer> inputMap = new HashMap<Object, Integer>();
-		inputMap.put("ingotTin", 80);
-		inputMap.put(RecipeManagerGC.aluminumIngots, 48);
-		inputMap.put("waferAdvanced", 10);
-		inputMap.put("ingotIron", 32);
-		inputMap.put("ingotDesh", 16);
-		GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionJupiter, new SpaceStationRecipe(inputMap)));
-
-		HashMap<Object, Integer> inputMap2 = new HashMap<Object, Integer>();
-		inputMap2.put("ingotTin", 64);
-		inputMap2.put(RecipeManagerGC.aluminumIngots, 24);
-		inputMap2.put("waferAdvanced", 3);
-		inputMap2.put("ingotIron", 48);
-		GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMars.dimensionIDMars, new SpaceStationRecipe(inputMap2)));
+		if (ConfigManagerMP.enableJupiterSpaceStation)
+		{
+			HashMap<Object, Integer> inputMap = new HashMap<Object, Integer>();
+			inputMap.put("ingotTin", 80);
+			inputMap.put(RecipeManagerGC.aluminumIngots, 48);
+			inputMap.put("waferAdvanced", 10);
+			inputMap.put("ingotIron", 32);
+			inputMap.put("ingotDesh", 16);
+			GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionJupiter, new SpaceStationRecipe(inputMap)));
+		}
+		if (ConfigManagerMP.enableMarsSpaceStation)
+		{
+			HashMap<Object, Integer> inputMap2 = new HashMap<Object, Integer>();
+			inputMap2.put("ingotTin", 64);
+			inputMap2.put(RecipeManagerGC.aluminumIngots, 24);
+			inputMap2.put("waferAdvanced", 3);
+			inputMap2.put("ingotIron", 48);
+			GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMars.dimensionIDMars, new SpaceStationRecipe(inputMap2)));
+		}
 	}
 
 	@EventHandler
-	public void serverInit(FMLServerStartedEvent event)
+	public void serverStarting(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommandHomePlanet());
+	}
+
+	@EventHandler
+	public void serverStarted(FMLServerStartedEvent event)
 	{
 		ThreadVersionCheckMP.startCheck();
 	}

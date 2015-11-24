@@ -21,7 +21,9 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerHandler.ThermalArmorEvent;
 import micdoodle8.mods.galacticraft.core.util.OxygenUtil;
+import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
@@ -40,6 +42,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.stats.AchievementList;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
@@ -47,6 +50,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.FOVUpdateEvent;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -71,6 +75,8 @@ import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.core.player.MPPlayerStats;
+import stevekung.mods.moreplanets.core.todo.PacketUpdateJetpack;
 import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.core.world.ILightningStorm;
 import stevekung.mods.moreplanets.core.world.IMeteorType;
@@ -116,11 +122,21 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class MorePlanetEvents
 {
+	@SubscribeEvent
+	public void onEntityConstructing(EntityConstructing event)
+	{
+		if (event.entity instanceof EntityPlayerMP && MPPlayerStats.get((EntityPlayerMP) event.entity) == null)
+		{
+			((EntityPlayerMP)event.entity).registerExtendedProperties(MPPlayerStats.MP_PLAYER_PROPERTY, new MPPlayerStats());
+		}
+	}
+
 	@SubscribeEvent
 	public void onZombieSummonAid(SummonAidEvent event)
 	{
@@ -134,6 +150,32 @@ public class MorePlanetEvents
 			}
 			event.setResult(Result.DENY);
 		}
+	}
+
+	@SubscribeEvent
+	public void onThermalArmorEvent(ThermalArmorEvent event)
+	{
+		if (event.armorStack == null)
+		{
+			event.setArmorAddResult(ThermalArmorEvent.ArmorAddResult.REMOVE);
+			return;
+		}
+		if (event.armorStack.getItem() == AsteroidsItems.thermalPadding && event.armorStack.getItemDamage() == event.armorIndex)
+		{
+			event.setArmorAddResult(ThermalArmorEvent.ArmorAddResult.ADD);
+			return;
+		}
+		if (event.armorStack.getItem() == MPItems.tier_2_thermal_padding && event.armorStack.getItemDamage() == event.armorIndex)
+		{
+			event.setArmorAddResult(ThermalArmorEvent.ArmorAddResult.ADD);
+			return;
+		}
+		if (event.armorStack.getItem() == MPItems.tier_3_thermal_padding && event.armorStack.getItemDamage() == event.armorIndex)
+		{
+			event.setArmorAddResult(ThermalArmorEvent.ArmorAddResult.ADD);
+			return;
+		}
+		event.setArmorAddResult(ThermalArmorEvent.ArmorAddResult.NOTHING);
 	}
 
 	@SubscribeEvent
@@ -191,58 +233,72 @@ public class MorePlanetEvents
 		WorldClient world = mc.theWorld;
 		EntityClientPlayerMP player = mc.thePlayer;
 
-		if (player != null && world != null)
+		if (event.phase == Phase.START)
 		{
-			if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
+			if (player != null && world != null)
 			{
-				ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
-				ItemStack itemStack = player.inventory.armorItemInSlot(2);
-				boolean flag = player.capabilities.isCreativeMode;
-
-				if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
+				if (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == VenusItems.jetpack)
 				{
-					if (mc.gameSettings.keyBindJump.getIsKeyPressed())
-					{
-						jetpack.setJetpackKeyDown(true);
-						player.motionY = 0.5D;
-						world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
-					}
-					else if (!mc.gameSettings.keyBindJump.getIsKeyPressed())
-					{
-						jetpack.setJetpackKeyDown(false);
-					}
+					ItemJetpack jetpack = (ItemJetpack) player.inventory.armorItemInSlot(2).getItem();
+					ItemStack itemStack = player.inventory.armorItemInSlot(2);
+					boolean flag = player.capabilities.isCreativeMode;
 
-					if (!player.onGround)
+					if (!flag && jetpack.getElectricityStored(itemStack) != 0.0F)
 					{
-						if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
+						boolean pressed = false;
+						float power = 0.0F;
+
+						if (mc.gameSettings.keyBindJump.getIsKeyPressed())
 						{
-							player.motionY *= 0.85D;
-							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
-							jetpack.setJetpackKeySneak(true);
+							jetpack.setJetpackKeyDown(true);
+							player.motionY = 0.5D;
+							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
+							power = 1000.0F;
+							pressed = true;
 						}
-						else if (!mc.gameSettings.keyBindSneak.getIsKeyPressed())
+						else if (!mc.gameSettings.keyBindJump.getIsKeyPressed())
+						{
+							jetpack.setJetpackKeyDown(false);
+						}
+
+						if (!player.onGround)
+						{
+							if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
+							{
+								player.motionY *= 0.85D;
+								world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
+								jetpack.setJetpackKeySneak(true);
+								pressed = true;
+								power = 500.0F;
+							}
+							else if (!mc.gameSettings.keyBindSneak.getIsKeyPressed())
+							{
+								jetpack.setJetpackKeySneak(false);
+							}
+						}
+						else
 						{
 							jetpack.setJetpackKeySneak(false);
 						}
-					}
-					else
-					{
-						jetpack.setJetpackKeySneak(false);
-					}
-				}
-				if (flag)
-				{
-					if (mc.gameSettings.keyBindJump.getIsKeyPressed())
-					{
-						player.motionY = 0.5D;
-						world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
-					}
-					if (!player.onGround)
-					{
-						if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
+						if (pressed)
 						{
-							player.motionY *= 0.85D;
-							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
+							MorePlanetsCore.packetPipeline.sendToServer(new PacketUpdateJetpack(power));
+						}
+					}
+					if (flag)
+					{
+						if (mc.gameSettings.keyBindJump.getIsKeyPressed())
+						{
+							player.motionY = 0.5D;
+							world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -1.0D, 0);
+						}
+						if (!player.onGround)
+						{
+							if (mc.gameSettings.keyBindSneak.getIsKeyPressed())
+							{
+								player.motionY *= 0.85D;
+								world.spawnParticle("largesmoke", player.posX, player.posY - 1, player.posZ, 0, -2.0D, 0);
+							}
 						}
 					}
 				}
@@ -322,10 +378,17 @@ public class MorePlanetEvents
 	{
 		ItemStack itemStack = event.item.getEntityItem();
 		Item item = itemStack.getItem();
+		Block block = Block.getBlockFromItem(item);
 		int meta = itemStack.getItemDamage();
 
 		if (event.entityPlayer.inventory.addItemStackToInventory(itemStack))
 		{
+			event.setResult(Result.ALLOW);
+
+			if (block == KoentusBlocks.crystal_log || block == NibiruBlocks.nibiru_log || block == FronosBlocks.fronos_log || block == EuropaBlocks.europa_log || block == DarkAsteroidsBlocks.alien_log)
+			{
+				event.entityPlayer.triggerAchievement(AchievementList.mineWood);
+			}
 			if (item == DionaItems.tier4_rocket_schematic && meta == 1)
 			{
 				event.entityPlayer.triggerAchievement(AchievementsMP.getTier4Schematic);

@@ -73,19 +73,19 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
 	@Override
 	protected String getLivingSound()
 	{
-		return "mob.witch.idle";
+		return "mpcore:mob.witch.idle";
 	}
 
 	@Override
 	protected String getHurtSound()
 	{
-		return "mob.witch.hurt";
+		return "mpcore:mob.witch.hurt";
 	}
 
 	@Override
 	protected String getDeathSound()
 	{
-		return "mob.witch.death";
+		return "mpcore:mob.witch.death";
 	}
 
 	public void setAggressive(boolean p_82197_1_)
@@ -170,6 +170,7 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
 
 				if (short1 > -1)
 				{
+					this.playSound("mpcore:mob.witch.drink", this.getSoundVolume(), this.getSoundPitch());
 					this.setCurrentItemOrArmor(0, new ItemStack(Items.potionitem, 1, short1));
 					this.witchAttackTimer = this.getHeldItem().getMaxItemUseDuration();
 					this.setAggressive(true);
@@ -266,9 +267,16 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
 			{
 				entitypotion.setPotionDamage(32696);
 			}
+			this.playSound("mpcore:mob.witch.throw", this.getSoundVolume(), this.getSoundPitch());
 			entitypotion.setThrowableHeading(d0, d1 + f1 * 0.2F, d2, 0.75F, 8.0F);
 			this.worldObj.spawnEntityInWorld(entitypotion);
 		}
+	}
+
+	@Override
+	protected float getSoundVolume()
+	{
+		return 0.6F;
 	}
 
 	@Override

@@ -501,7 +501,7 @@ public class FronosBlocks
 		OreDictionary.registerOre("oreBlackDiamond", new ItemStack(FronosBlocks.fronos_block, 1, 9));
 		OreDictionary.registerOre("oreIridium", new ItemStack(FronosBlocks.fronos_block, 1, 10));
 		OreDictionary.registerOre("oreJelly", FronosBlocks.jelly_ore);
-
+		OreDictionary.registerOre("cobblestone", new ItemStack(FronosBlocks.fronos_block, 1, 1));
 		OreDictionary.registerOre("blockIridium", new ItemStack(FronosBlocks.ore_block, 1, 0));
 		OreDictionary.registerOre("blockBlackDiamond", new ItemStack(FronosBlocks.ore_block, 1, 1));
 	}

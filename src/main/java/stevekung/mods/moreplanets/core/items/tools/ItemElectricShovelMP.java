@@ -1,4 +1,4 @@
-package stevekung.mods.moreplanets.planets.pluto.items.tools;
+package stevekung.mods.moreplanets.core.items.tools;
 
 import ic2.api.item.IElectricItemManager;
 
@@ -19,10 +19,9 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -30,27 +29,24 @@ import net.minecraft.nbt.NBTTagDouble;
 import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.UseHoeEvent;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
-import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
 import cpw.mods.fml.common.versioning.VersionParser;
 import cpw.mods.fml.relauncher.FMLInjectionData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
+public abstract class ItemElectricShovelMP extends ItemSpade implements IItemElectric
 {
 	private static Object itemManagerIC2;
 	public float transferMax;
 	private DefaultArtifactVersion mcVersion = null;
 
-	public ItemElectricHoeMP(ToolMaterial material)
+	public ItemElectricShovelMP(ToolMaterial material)
 	{
 		super(material);
 		this.setMaxDamage(100);
@@ -72,9 +68,30 @@ public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 		}
 	}
 
+
 	protected void setMaxTransfer()
 	{
 		this.transferMax = 200;
+	}
+
+	@Override
+	public float func_150893_a(ItemStack itemStack, Block block)
+	{
+		if (this.getElectricityStored(itemStack) == 0.0F)
+		{
+			return 0.0F;
+		}
+		return super.func_150893_a(itemStack, block);
+	}
+
+	@Override
+	public float getDigSpeed(ItemStack itemStack, Block block, int meta)
+	{
+		if (this.getElectricityStored(itemStack) == 0.0F)
+		{
+			return 0.5F;
+		}
+		return super.getDigSpeed(itemStack, block, meta);
 	}
 
 	@Override
@@ -89,53 +106,16 @@ public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int facing, float hitX, float hitY, float hitZ)
+	public boolean onBlockDestroyed(ItemStack itemStack, World world, Block block, int x, int y, int z, EntityLivingBase living)
 	{
-		if (this.getElectricityStored(itemStack) != 0.0F)
+		if (block.getBlockHardness(world, x, y, z) != 0.0D)
 		{
-			if (!player.canPlayerEdit(x, y, z, facing, itemStack))
+			if (this.getElectricityStored(itemStack) != 0.0F)
 			{
-				return false;
-			}
-			else
-			{
-				UseHoeEvent event = new UseHoeEvent(player, itemStack, world, x, y, z);
-
-				if (MinecraftForge.EVENT_BUS.post(event))
-				{
-					return false;
-				}
-				if (event.getResult() == Result.ALLOW)
-				{
-					this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.5F);
-					return true;
-				}
-
-				Block block = world.getBlock(x, y, z);
-
-				if (facing != 0 && world.getBlock(x, y + 1, z).isAir(world, x, y + 1, z) && (block == Blocks.grass || block == Blocks.dirt))
-				{
-					Block block1 = Blocks.farmland;
-					world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, block1.stepSound.getStepResourcePath(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
-
-					if (world.isRemote)
-					{
-						return true;
-					}
-					else
-					{
-						world.setBlock(x, y, z, block1);
-						this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.5F);
-						return true;
-					}
-				}
-				else
-				{
-					return false;
-				}
+				this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.0F);
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@Override
@@ -277,7 +257,6 @@ public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 	{
 		return ClientProxyCore.galacticraftItem;
 	}
-
 
 	@Override
 	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)

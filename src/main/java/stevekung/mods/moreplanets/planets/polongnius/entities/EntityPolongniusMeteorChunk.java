@@ -270,7 +270,7 @@ public class EntityPolongniusMeteorChunk extends Entity implements IProjectile
 
 			float f2;
 			float f3;
-			double damage = ConfigManagerCore.hardMode ? 3.2D : 1.6D;
+			double damage = ConfigManagerCore.hardMode ? 5.5D : 3.25D;
 
 			if (movingobjectposition != null)
 			{
