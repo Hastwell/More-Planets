@@ -361,7 +361,7 @@ public class ItemCup extends ItemFoodMP
 				if (FronosBlocks.cup.canPlaceBlockAt(world, x, y, z))
 				{
 					--itemStack.stackSize;
-					world.playSoundEffect(x, y, z, "dig.stone", 1.0F, 0.8F);
+					world.playSoundEffect(x, y, z, FronosBlocks.cup.stepSound.func_150496_b(), (FronosBlocks.cup.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.cup.stepSound.getPitch() * 0.8F);
 					world.setBlock(x, y, z, FronosBlocks.cup, change, 3);
 					return true;
 				}
@@ -371,7 +371,7 @@ public class ItemCup extends ItemFoodMP
 				if (FronosBlocks.mineral_water_cup.canPlaceBlockAt(world, x, y, z))
 				{
 					--itemStack.stackSize;
-					world.playSoundEffect(x, y, z, "dig.stone", 1.0F, 0.8F);
+					world.playSoundEffect(x, y, z, FronosBlocks.cup.stepSound.func_150496_b(), (FronosBlocks.cup.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.cup.stepSound.getPitch() * 0.8F);
 					world.setBlock(x, y, z, FronosBlocks.mineral_water_cup, change, 3);
 					return true;
 				}
@@ -381,7 +381,7 @@ public class ItemCup extends ItemFoodMP
 				if (FronosBlocks.ovantine_cup.canPlaceBlockAt(world, x, y, z))
 				{
 					--itemStack.stackSize;
-					world.playSoundEffect(x, y, z, "dig.stone", 1.0F, 0.8F);
+					world.playSoundEffect(x, y, z, FronosBlocks.cup.stepSound.func_150496_b(), (FronosBlocks.cup.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.cup.stepSound.getPitch() * 0.8F);
 					world.setBlock(x, y, z, FronosBlocks.ovantine_cup, change, 3);
 					return true;
 				}
@@ -391,7 +391,7 @@ public class ItemCup extends ItemFoodMP
 				if (FronosBlocks.coconut_milk_cup.canPlaceBlockAt(world, x, y, z))
 				{
 					--itemStack.stackSize;
-					world.playSoundEffect(x, y, z, "dig.stone", 1.0F, 0.8F);
+					world.playSoundEffect(x, y, z, FronosBlocks.cup.stepSound.func_150496_b(), (FronosBlocks.cup.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.cup.stepSound.getPitch() * 0.8F);
 					world.setBlock(x, y, z, FronosBlocks.coconut_milk_cup, change, 3);
 					return true;
 				}
@@ -401,7 +401,7 @@ public class ItemCup extends ItemFoodMP
 				if (FronosBlocks.cheese_of_milk_cup.canPlaceBlockAt(world, x, y, z))
 				{
 					--itemStack.stackSize;
-					world.playSoundEffect(x, y, z, "dig.stone", 1.0F, 0.8F);
+					world.playSoundEffect(x, y, z, FronosBlocks.cup.stepSound.func_150496_b(), (FronosBlocks.cup.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.cup.stepSound.getPitch() * 0.8F);
 					world.setBlock(x, y, z, FronosBlocks.cheese_of_milk_cup, change, 3);
 					return true;
 				}
@@ -411,7 +411,7 @@ public class ItemCup extends ItemFoodMP
 				if (FronosBlocks.tea_cup.canPlaceBlockAt(world, x, y, z))
 				{
 					--itemStack.stackSize;
-					world.playSoundEffect(x, y, z, "dig.stone", 1.0F, 0.8F);
+					world.playSoundEffect(x, y, z, FronosBlocks.cup.stepSound.func_150496_b(), (FronosBlocks.cup.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.cup.stepSound.getPitch() * 0.8F);
 					world.setBlock(x, y, z, FronosBlocks.tea_cup, change, 3);
 					return true;
 				}
@@ -421,7 +421,7 @@ public class ItemCup extends ItemFoodMP
 				if (FronosBlocks.caramel_cup.canPlaceBlockAt(world, x, y, z))
 				{
 					--itemStack.stackSize;
-					world.playSoundEffect(x, y, z, "dig.stone", 1.0F, 0.8F);
+					world.playSoundEffect(x, y, z, FronosBlocks.cup.stepSound.func_150496_b(), (FronosBlocks.cup.stepSound.getVolume() + 1.0F) / 2.0F, FronosBlocks.cup.stepSound.getPitch() * 0.8F);
 					world.setBlock(x, y, z, FronosBlocks.caramel_cup, change, 3);
 					return true;
 				}

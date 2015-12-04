@@ -73,23 +73,23 @@ public class PolongniusBlocks
 		PolongniusBlocks.polongnius_ancient_chest.setHarvestLevel("axe", 0);
 		PolongniusBlocks.polongnius_block.setHarvestLevel("shovel", 0, 0);
 		PolongniusBlocks.polongnius_block.setHarvestLevel("shovel", 0, 1);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 2);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 3);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 4);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 5);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 6);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 7);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 8);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 9);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 10);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 11);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 12);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 13);
-		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 1, 14);
-		PolongniusBlocks.polongnius_cobblestone_stairs.setHarvestLevel("pickaxe", 1);
-		PolongniusBlocks.polongnius_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
-		PolongniusBlocks.fallen_polongnius_meteor.setHarvestLevel("pickaxe", 1);
-		PolongniusBlocks.ultra_violet_solar_panel.setHarvestLevel("pickaxe", 1);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 2);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 3);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 4);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 5);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 6);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 7);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 8);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 9);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 10);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 11);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 12);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 13);
+		PolongniusBlocks.polongnius_block.setHarvestLevel("pickaxe", 0, 14);
+		PolongniusBlocks.polongnius_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+		PolongniusBlocks.polongnius_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
+		PolongniusBlocks.fallen_polongnius_meteor.setHarvestLevel("pickaxe", 3);
+		PolongniusBlocks.ultra_violet_solar_panel.setHarvestLevel("pickaxe", 0);
 	}
 
 	private static void registerBlocks()

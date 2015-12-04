@@ -73,7 +73,7 @@ public class BlockSpaceOysterClose extends BlockBaseMP implements ITileEntityPro
 				{
 					world.setBlock(x, y, z, FronosBlocks.space_oyster_open, world.getBlockMetadata(x, y, z), 3);
 				}
-				if (world.getBlock(x, y - 1, z) == Blocks.sand || world.getBlock(x, y - 1, z) == FronosBlocks.fronos_sand && world.getBlockMetadata(x, y - 1, z) == 1)
+				if (world.getBlock(x, y - 1, z) == Blocks.sand || world.getBlock(x, y - 1, z) == FronosBlocks.golden_grass || world.getBlock(x, y - 1, z) == FronosBlocks.fronos_sand && world.getBlockMetadata(x, y - 1, z) == 1)
 				{
 					world.setBlock(x, y, z, FronosBlocks.space_oyster_open, world.getBlockMetadata(x, y, z), 3);
 				}

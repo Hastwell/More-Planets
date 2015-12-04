@@ -118,7 +118,7 @@ public class BlockKoentusIce extends BlockIceMP
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity() && world.getBlockMetadata(x, y, z) != 1)
+		if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity() && world.getBlockMetadata(x, y, z) == 0 && !WorldUtilMP.isKoentusWorld(world))
 		{
 			if (world.provider.isHellWorld)
 			{

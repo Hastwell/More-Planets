@@ -53,12 +53,12 @@ public class DionaBlocks
 
 	private static void setHarvestLevels()
 	{
-		DionaBlocks.diona_block.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.fronisium_block.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.diona_cobblestone_stairs.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.chiseled_quontonium_stairs.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.quontonium_brick_stairs.setHarvestLevel("pickaxe", 1);
-		DionaBlocks.diona_dungeon_brick_stairs.setHarvestLevel("pickaxe", 1);
+		DionaBlocks.diona_block.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.fronisium_block.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.diona_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.chiseled_quontonium_stairs.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.quontonium_brick_stairs.setHarvestLevel("pickaxe", 0);
+		DionaBlocks.diona_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
 		DionaBlocks.diona_ancient_chest.setHarvestLevel("axe", 0);
 	}
 

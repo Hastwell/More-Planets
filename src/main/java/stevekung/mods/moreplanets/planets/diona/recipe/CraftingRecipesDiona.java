@@ -17,14 +17,19 @@ import net.minecraft.block.BlockColored;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.diona.items.armor.DionaArmorItems;
 import stevekung.mods.moreplanets.planets.diona.items.tools.DionaToolsItems;
+import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
+import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -166,6 +171,11 @@ public class CraftingRecipesDiona
 		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 7), new ItemStack(GCItems.basicItem, 1, 3), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 8), new ItemStack(GCItems.basicItem, 1, 2), 0.6F);
 		GameRegistry.addSmelting(new ItemStack(DionaBlocks.diona_block, 1, 9), new ItemStack(GCItems.basicItem, 1, 5), 0.8F);
+		GameRegistry.addSmelting(NibiruBlocks.nibiru_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(KoentusBlocks.crystal_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(FronosBlocks.fronos_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(EuropaBlocks.europa_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(DarkAsteroidsBlocks.alien_log, new ItemStack(Items.coal, 1, 1), 0.15F);
 	}
 
 	private static void addTier4RocketRecipes()

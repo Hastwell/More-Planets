@@ -118,65 +118,20 @@ public class MPBlocks
 
 	private static void setHarvestLevels()
 	{
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 0);
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 1);
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 2);
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 3);
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 4);
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 5);
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 6);
-		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 1, 7);
-
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 0);
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 1);
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 2);
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 3);
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 4);
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 5);
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 6);
-		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 1, 7);
-
-		MPBlocks.stone_slab_full2.setHarvestLevel("pickaxe", 1, 0);
-		MPBlocks.stone_slab_full2.setHarvestLevel("pickaxe", 1, 1);
-		MPBlocks.stone_slab_full2.setHarvestLevel("pickaxe", 1, 2);
-		MPBlocks.stone_slab_full2.setHarvestLevel("pickaxe", 1, 3);
-		MPBlocks.stone_slab_full2.setHarvestLevel("pickaxe", 1, 4);
-		MPBlocks.stone_slab_full2.setHarvestLevel("pickaxe", 1, 5);
-
-		MPBlocks.stone_slab_half2.setHarvestLevel("pickaxe", 1, 0);
-		MPBlocks.stone_slab_half2.setHarvestLevel("pickaxe", 1, 1);
-		MPBlocks.stone_slab_half2.setHarvestLevel("pickaxe", 1, 2);
-		MPBlocks.stone_slab_half2.setHarvestLevel("pickaxe", 1, 3);
-		MPBlocks.stone_slab_half2.setHarvestLevel("pickaxe", 1, 4);
-		MPBlocks.stone_slab_half2.setHarvestLevel("pickaxe", 1, 5);
-
+		MPBlocks.stone_slab_full.setHarvestLevel("pickaxe", 0);
+		MPBlocks.stone_slab_half.setHarvestLevel("pickaxe", 0);
+		MPBlocks.stone_slab_full2.setHarvestLevel("pickaxe", 0);
+		MPBlocks.stone_slab_half2.setHarvestLevel("pickaxe", 0);
 		MPBlocks.wooden_slab_full.setHarvestLevel("axe", 0);
 		MPBlocks.wooden_slab_full.setHarvestLevel("axe", 0);
-
 		MPBlocks.wooden_slab_half.setHarvestLevel("axe", 0);
 		MPBlocks.wooden_slab_half.setHarvestLevel("axe", 0);
-
-		MPBlocks.chondrite_block.setHarvestLevel("pickaxe", 1);
-		MPBlocks.dungeon_brick_slab_half.setHarvestLevel("pickaxe", 1);
-		MPBlocks.dungeon_brick_slab_full.setHarvestLevel("pickaxe", 1);
-		MPBlocks.space_decoration_block.setHarvestLevel("pickaxe", 1);
-
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 0);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 1);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 2);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 3);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 4);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 5);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 6);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 7);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 8);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 9);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 10);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 11);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 12);
-		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 1, 13);
-
-		MPBlocks.dungeon_brick_wall.setHarvestLevel("pickaxe", 1);
+		MPBlocks.chondrite_block.setHarvestLevel("pickaxe", 0);
+		MPBlocks.dungeon_brick_slab_half.setHarvestLevel("pickaxe", 0);
+		MPBlocks.dungeon_brick_slab_full.setHarvestLevel("pickaxe", 0);
+		MPBlocks.space_decoration_block.setHarvestLevel("pickaxe", 0);
+		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 0);
+		MPBlocks.dungeon_brick_wall.setHarvestLevel("pickaxe", 0);
 	}
 
 	private static void setFireBurn()

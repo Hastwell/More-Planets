@@ -89,7 +89,7 @@ public class KoentusBlocks
 
 	private static void setHarvestLevels()
 	{
-		KoentusBlocks.koentus_block.setHarvestLevel("pickaxe", 1);
+		KoentusBlocks.koentus_block.setHarvestLevel("pickaxe", 0);
 		KoentusBlocks.fallen_koentus_meteor.setHarvestLevel("pickaxe", 1);
 		KoentusBlocks.eledos_egg.setHarvestLevel("pickaxe", 1);
 		KoentusBlocks.crystal_segment.setHarvestLevel("pickaxe", 1);

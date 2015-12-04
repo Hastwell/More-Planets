@@ -13,6 +13,9 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+
+import org.lwjgl.input.Keyboard;
+
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockMorePlanet;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,8 +33,15 @@ public class ItemBlockKoentusMeteor extends ItemBlockMorePlanet
 	{
 		if (player.worldObj.isRemote)
 		{
-			list.add("Can be found in the Diona");
-			list.add(EnumChatFormatting.DARK_RED + "Not in the Koentus!");
+			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+			{
+				list.add("Can be found in the Diona");
+				list.add(EnumChatFormatting.DARK_RED + "Not in the Koentus!");
+			}
+			else
+			{
+				list.add("Press LSHIFT for info");
+			}
 		}
 	}
 }

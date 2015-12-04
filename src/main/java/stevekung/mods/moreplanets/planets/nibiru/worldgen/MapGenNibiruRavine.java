@@ -238,16 +238,13 @@ public class MapGenNibiruRavine extends MapGenBase
 
 		if (block == NibiruBlocks.nibiru_block || block == NibiruBlocks.infected_grass || block == NibiruBlocks.infected_dirt || block == filler || block == top)
 		{
-			if (y < 10)
+			if (y < 20)
 			{
-				if (this.worldObj.rand.nextInt(5) == 0)
-				{
-					data[index] = GCBlocks.crudeOil;
-				}
-				else
-				{
-					data[index] = Blocks.flowing_lava;
-				}
+				data[index] = GCBlocks.crudeOil;
+			}
+			else if (y < 10)
+			{
+				data[index] = Blocks.flowing_lava;
 			}
 			else
 			{

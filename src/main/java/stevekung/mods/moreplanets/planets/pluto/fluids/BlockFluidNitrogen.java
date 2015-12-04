@@ -52,7 +52,7 @@ public class BlockFluidNitrogen extends BlockFluidBaseMP
 	{
 		if (entity instanceof EntityLivingBase)
 		{
-			if (WorldUtilMP.isPlutoWorld(world, x, y, z))
+			if (WorldUtilMP.isPlutoWorld(world))
 			{
 				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60, 2));
 			}

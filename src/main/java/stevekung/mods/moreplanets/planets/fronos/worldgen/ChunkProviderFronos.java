@@ -419,22 +419,14 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 	}
 
 	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List getPossibleCreatures(EnumCreatureType type, int x, int y, int z)
 	{
 		if (type == EnumCreatureType.monster)
 		{
 			List monsters = new ArrayList();
 
-			if (!ConfigManagerMP.allowMobCreatureSpawningOnFronos)
-			{
-				monsters.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
-				monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
-				monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
-				monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-				monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-				monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
-			}
-			else
+			if (ConfigManagerMP.allowMobCreatureSpawningOnFronos)
 			{
 				monsters.add(new SpawnListEntry(EntityZombie.class, 100, 4, 4));
 				monsters.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
@@ -443,8 +435,17 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 				monsters.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 4));
 				monsters.add(new SpawnListEntry(EntityWitch.class, 5, 1, 1));
 			}
-			monsters.add(new SpawnListEntry(EntityCreamSlime.class, 100, 4, 4));
-			monsters.add(new SpawnListEntry(EntityJellySlime.class, 100, 4, 4));
+			else
+			{
+				monsters.add(new SpawnListEntry(EntityEvolvedZombie.class, 5, 4, 4));
+				monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 5, 4, 4));
+				monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 5, 4, 4));
+				monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 5, 4, 4));
+				monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 5, 1, 4));
+				monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 2, 4));
+			}
+			monsters.add(new SpawnListEntry(EntityCreamSlime.class, 50, 4, 4));
+			monsters.add(new SpawnListEntry(EntityJellySlime.class, 50, 4, 4));
 			return monsters;
 		}
 		else if (type == EnumCreatureType.creature)
@@ -462,16 +463,12 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 			creatures.add(new SpawnListEntry(EntityStrawberryChicken.class, 10, 4, 4));
 			creatures.add(new SpawnListEntry(EntityStarfish.class, 8, 4, 4));
 
-			if (ConfigManagerMP.allowMobCreatureSpawningOnFronos == true)
+			if (ConfigManagerMP.allowMobCreatureSpawningOnFronos)
 			{
 				creatures.add(new SpawnListEntry(EntitySheep.class, 12, 4, 4));
 				creatures.add(new SpawnListEntry(EntityPig.class, 10, 4, 4));
 				creatures.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
 				creatures.add(new SpawnListEntry(EntityCow.class, 8, 4, 4));
-			}
-			else
-			{
-				return null;
 			}
 			return creatures;
 		}

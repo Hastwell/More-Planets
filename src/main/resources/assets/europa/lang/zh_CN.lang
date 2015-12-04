@@ -36,6 +36,9 @@ item.europa_food.cooked_europa_eel_meat.name=Cooked Europa Eel Meat
 item.europa_gunpowder.name=木卫二火药
 
 # DESCRIPTION
+desc.europasapling1.name=Can be placed on an Europa Ice Slush
+desc.europasapling2.name=And can be placed under of Europa Ice or Packed Europa Ice
+desc.europasapling3.name=Note : You need to grow it manually
 
 # SCHEMATIC
 

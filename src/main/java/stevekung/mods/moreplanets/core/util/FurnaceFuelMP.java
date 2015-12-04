@@ -16,9 +16,13 @@ import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.tuple.Pair;
 
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
+import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import cpw.mods.fml.common.IFuelHandler;
 
 public class FurnaceFuelMP implements IFuelHandler
@@ -37,6 +41,12 @@ public class FurnaceFuelMP implements IFuelHandler
 		addFuel(KoentusBlocks.crystal_sapling, 100);
 		addFuel(FronosBlocks.fronos_sapling, 100);
 		addFuel(EuropaBlocks.europa_sapling, 100);
+		addFuel(NibiruItems.ancient_dark_door, 0, 150);
+		addFuel(NibiruItems.orange_door, 0, 150);
+		addFuel(KoentusItems.crystal_door, 0, 150);
+		addFuel(FronosItems.coconut_door, 0, 150);
+		addFuel(FronosItems.maple_door, 0, 150);
+		addFuel(EuropaItems.europa_door, 0, 150);
 	}
 
 	private static void addFuel(Item item, int metadata, int value)

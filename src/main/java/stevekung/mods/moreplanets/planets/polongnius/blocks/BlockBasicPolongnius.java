@@ -56,7 +56,7 @@ public class BlockBasicPolongnius extends BlockBasicMP implements IDetectableRes
 	{
 		if (world.getBlockMetadata(x, y, z) == 0)
 		{
-			float f = 0.25F;
+			float f = 0.13F;
 			return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
 		}
 		if (world.getBlockMetadata(x, y, z) == 13)

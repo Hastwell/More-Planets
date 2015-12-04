@@ -19,6 +19,7 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
+import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
 import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
 import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -30,9 +31,14 @@ public class WorldUtilMP
 		return world.provider instanceof WorldProviderMercury && world.isDaytime() && world.canBlockSeeTheSky(x, y, z);
 	}
 
-	public static boolean isPlutoWorld(World world, int x, int y, int z)
+	public static boolean isPlutoWorld(World world)
 	{
 		return world.provider instanceof WorldProviderPluto;
+	}
+
+	public static boolean isKoentusWorld(World world)
+	{
+		return world.provider instanceof WorldProviderKoentus;
 	}
 
 	public static Entity setHomePlanetDimension(Entity entity, int dimID, WorldServer world)
@@ -125,10 +131,6 @@ public class WorldUtilMP
 			}
 		}
 
-		if (chunkcoordinates != null)
-		{
-			entity.setLocationAndAngles(chunkcoordinates.posX, chunkcoordinates.posY, chunkcoordinates.posZ, entity.rotationYaw, entity.rotationPitch);
-		}
 		if (entity instanceof EntityPlayerMP)
 		{
 			FMLCommonHandler.instance().firePlayerChangedDimensionEvent((EntityPlayerMP) entity, oldDimID, dimID);

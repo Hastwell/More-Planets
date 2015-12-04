@@ -32,9 +32,9 @@ public class BiomeDecoratorSiriusB extends BiomeDecoratorSpace
 		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 32, 1, true, SiriusBBlocks.sirius_b_block, 2);
 		this.cobblestoneGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 4, 3, true, SiriusBBlocks.sirius_b_block, 2);
-		this.sulfurGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 8, 4, true, SiriusBBlocks.sirius_b_block, 2);
-		this.diamondGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 8, 5, true, SiriusBBlocks.sirius_b_block, 2);
-		this.glowstoneGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 4, 6, true, SiriusBBlocks.sirius_b_block, 2);
+		this.sulfurGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 7, 4, true, SiriusBBlocks.sirius_b_block, 2);
+		this.diamondGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 7, 5, true, SiriusBBlocks.sirius_b_block, 2);
+		this.glowstoneGen = new WorldGenMinableMeta(SiriusBBlocks.sirius_b_block, 7, 6, true, SiriusBBlocks.sirius_b_block, 2);
 
 		this.lavaLakePerChunk = 8;
 	}
@@ -56,11 +56,11 @@ public class BiomeDecoratorSiriusB extends BiomeDecoratorSpace
 	{
 		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.chunkX, this.chunkZ));
 
-		this.generateOre(32, this.dirtGen, 0, 255);
-		this.generateOre(10, this.cobblestoneGen, 0, 128);
-		this.generateOre(12, this.sulfurGen, 0, 48);
-		this.generateOre(16, this.diamondGen, 0, 16);
-		this.generateOre(16, this.glowstoneGen, 0, 255);
+		this.generateOre(20, this.dirtGen, 0, 256);
+		this.generateOre(20, this.cobblestoneGen, 0, 128);
+		this.generateOre(18, this.sulfurGen, 0, 48);
+		this.generateOre(12, this.diamondGen, 0, 32);
+		this.generateOre(12, this.glowstoneGen, 0, 256);
 
 		int i;
 		int x;

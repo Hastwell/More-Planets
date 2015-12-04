@@ -152,5 +152,6 @@ public class ItemDoorMP extends ItemMorePlanet
 		world.setBlock(x, y + 1, z, block, 0x8 | (i2 != 0 ? 1 : 0), 2);
 		world.notifyBlocksOfNeighborChange(x, y, z, block);
 		world.notifyBlocksOfNeighborChange(x, y + 1, z, block);
+		world.playSoundEffect(x, y, z, block.stepSound.func_150496_b(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
 	}
 }

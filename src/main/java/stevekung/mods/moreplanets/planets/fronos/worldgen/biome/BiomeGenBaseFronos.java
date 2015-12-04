@@ -80,16 +80,7 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 		this.theBiomeDecorator.flowersPerChunk = -999;
 		this.theBiomeDecorator.grassPerChunk = -999;
 
-		if (!ConfigManagerMP.allowMobCreatureSpawningOnFronos)
-		{
-			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
-			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
-			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
-			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
-		}
-		else
+		if (ConfigManagerMP.allowMobCreatureSpawningOnFronos)
 		{
 			this.spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 100, 4, 4));
 			this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
@@ -97,14 +88,22 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 			this.spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
 			this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 4));
 			this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 5, 1, 1));
-
 			this.spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 12, 4, 4));
 			this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 10, 4, 4));
 			this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
 			this.spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 8, 4, 4));
 		}
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityCreamSlime.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityJellySlime.class, 100, 4, 4));
+		else
+		{
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 5, 4, 4));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 5, 4, 4));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 5, 4, 4));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 5, 4, 4));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 5, 1, 4));
+			this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 2, 4));
+		}
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityCreamSlime.class, 50, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityJellySlime.class, 50, 4, 4));
 		this.spawnableWaterCreatureList.add(new SpawnListEntry(EntitySquid.class, 10, 4, 4));
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityBearry.class, 8, 4, 4));
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityBerry.class, 8, 4, 4));

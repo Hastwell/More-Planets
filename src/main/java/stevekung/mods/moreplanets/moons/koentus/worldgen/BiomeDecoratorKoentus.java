@@ -36,8 +36,8 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorSpace
 	{
 		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
 		this.dirtGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 32, 1, true, KoentusBlocks.koentus_block, 2);
-		this.tinGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 8, 4, true, KoentusBlocks.koentus_block, 2);
-		this.copperGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 8, 5, true, KoentusBlocks.koentus_block, 2);
+		this.tinGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 7, 4, true, KoentusBlocks.koentus_block, 2);
+		this.copperGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 7, 5, true, KoentusBlocks.koentus_block, 2);
 		this.whiteCrystalGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 4, 6, true, KoentusBlocks.koentus_block, 2);
 		this.empGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 4, 7, true, KoentusBlocks.koentus_block, 2);
 		this.fossilGen = new WorldGenMinableMeta(KoentusBlocks.koentus_block, 1, 8, true, KoentusBlocks.koentus_block, 2);
@@ -59,14 +59,14 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorSpace
 		int y;
 		int z;
 
-		this.generateOre(16, this.tinGen, 0, 64);
-		this.generateOre(16, this.copperGen, 0, 64);
-		this.generateOre(32, this.dirtGen, 0, 255);
-		this.generateOre(10, this.whiteCrystalGen, 0, 32);
-		this.generateOre(10, this.empGen, 0, 32);
-		this.generateOre(12, this.fossilGen, 24, 48);
-		this.generateOre(24, this.iceGen, 0, 255);
-		this.generateOre(24, this.glowIceGen, 0, 255);
+		this.generateOre(22, this.tinGen, 0, 64);
+		this.generateOre(24, this.copperGen, 0, 64);
+		this.generateOre(20, this.dirtGen, 0, 256);
+		this.generateOre(8, this.whiteCrystalGen, 0, 48);
+		this.generateOre(12, this.empGen, 0, 48);
+		this.generateOre(8, this.fossilGen, 24, 48);
+		this.generateOre(15, this.iceGen, 0, 128);
+		this.generateOre(15, this.glowIceGen, 0, 128);
 
 		for (i = 0; i < this.rockSpiresPerChunk; ++i)
 		{

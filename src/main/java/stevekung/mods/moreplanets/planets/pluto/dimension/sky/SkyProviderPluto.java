@@ -31,7 +31,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 public class SkyProviderPluto extends IRenderHandler
 {
 	private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/planets/sun.png");
-	private ResourceLocation venusTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/venus.png");
+	private ResourceLocation charonTexture = new ResourceLocation("pluto:textures/gui/celestialbodies/charon.png");
 
 	public int starGLCallList = GLAllocation.generateDisplayLists(3);
 	public int glSkyList;
@@ -248,15 +248,16 @@ public class SkyProviderPluto extends IRenderHandler
 		tessellator1.draw();
 
 		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glPopMatrix();
+		GL11.glPushMatrix();
 
-		// Venus
-		f10 = 1.55F;
+		// Charon
+		f10 = 5.25F;
 		GL11.glScalef(0.6F, 0.6F, 0.6F);
-		GL11.glRotatef(200F, 1.0F, 0.0F, 0.0F);
-		GL11.glRotatef(-600F, 50.0F, 10.0F, 10.0F);
+		GL11.glRotatef(130.0F, 8.0F, 0.4F, 1.0F);
+		GL11.glRotatef(10F, 1.0F, 0.0F, 5.0F);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1F);
-		GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
-		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.venusTexture);
+		mc.renderEngine.bindTexture(this.charonTexture);
 		tessellator1.startDrawingQuads();
 		tessellator1.addVertexWithUV(-f10, -100.0D, f10, 0, 1);
 		tessellator1.addVertexWithUV(f10, -100.0D, f10, 1, 1);

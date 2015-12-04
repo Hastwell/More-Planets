@@ -38,19 +38,16 @@ public class TreeCapitatorIntegrationMP
 		String nibiruLog = blockName(NibiruBlocks.nibiru_log);
 		String ancientDarkLeaves = blockName(NibiruBlocks.ancient_dark_leaves);
 		String orangeLeaves = blockName(NibiruBlocks.orange_leaves);
-
 		String koentusLog = blockName(KoentusBlocks.crystal_log);
 		String koentusLeaves = blockName(KoentusBlocks.crystal_leaves);
-
 		String fronosLog = blockName(FronosBlocks.fronos_log);
 		String fronosColorizedLeaves = blockName(FronosBlocks.fronos_colorized_leaves);
 		String fronosLeaves = blockName(FronosBlocks.fronos_leaves);
-
 		String europaLog = blockName(EuropaBlocks.europa_log);
 		String europaLeaves = blockName(EuropaBlocks.europa_leaves);
-
 		String alienLog = blockName(DarkAsteroidsBlocks.alien_log);
 		String alienLeaves = blockName(DarkAsteroidsBlocks.alien_leaves);
+		String skyMushroomHuge = blockName(FronosBlocks.huge_sky_mushroom);
 
 		String quontoniumAxe = itemName(DionaToolsItems.quontonium_axe);
 		String fronisiumAxe = itemName(DionaToolsItems.fronisium_axe);
@@ -74,6 +71,7 @@ public class TreeCapitatorIntegrationMP
 				iridiumAxe + "; " + candyAxe + "; " + frozenIronAxe + "; " + uraniumAxe + "; " + sulfurAxe + "; " + xeoniumAxe);
 
 		//Ancient Dark Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "ancientdark");
 		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", nibiruLog, nibiruLog, nibiruLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves, ancientDarkLeaves));
@@ -81,6 +79,7 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Orange Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "orange");
 		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", nibiruLog, nibiruLog, nibiruLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves, orangeLeaves));
@@ -88,6 +87,7 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Coconut Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "coconut");
 		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", fronosLog, fronosLog, fronosLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 8", fronosColorizedLeaves, fronosColorizedLeaves));
@@ -95,6 +95,7 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Red Maple Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "redmaple");
 		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 8", fronosLeaves, fronosLeaves));
@@ -102,6 +103,7 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Yellow Maple Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "yellowmaple");
 		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
 		tree.setString("leaves", String.format("%s, 1; %s, 9", fronosLeaves, fronosLeaves));
@@ -109,6 +111,7 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Purple Maple Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "purplemaple");
 		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
 		tree.setString("leaves", String.format("%s, 2; %s, 10", fronosLeaves, fronosLeaves));
@@ -116,6 +119,7 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Crystal Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "crystal");
 		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", koentusLog, koentusLog, koentusLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 8", koentusLeaves, koentusLeaves));
@@ -123,6 +127,7 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Europa Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "europa");
 		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", europaLog, europaLog, europaLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 8", europaLeaves, europaLeaves));
@@ -130,13 +135,25 @@ public class TreeCapitatorIntegrationMP
 		treeList.appendTag(tree);
 
 		//Alien Tree
+		tree = new NBTTagCompound();
 		tree.setString("treeName", "alien");
 		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", alienLog, alienLog, alienLog));
 		tree.setString("leaves", String.format("%s, 0; %s, 8", alienLeaves, alienLeaves));
 		tree.setBoolean("requireLeafDecayCheck", false);
 		treeList.appendTag(tree);
 
-		FMLInterModComms.sendMessage("TreeCapitator", "ThirdPartyModConfig", tpModCfg);
+		// Sky Mushroom Huge
+		tree = new NBTTagCompound();
+		tree.setString("treeName", "skyMushroom");
+		tree.setString("logs", String.format("%s, 10; %s, 15", skyMushroomHuge, skyMushroomHuge));
+		tree.setString("leaves", String.format("%s, 1; %s, 2; %s, 3; %s, 4; %s, 5; %s, 6; %s, 7; %s, 8; %s, 9; %s, 14", skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge));
+		tree.setBoolean("requireLeafDecayCheck", false);
+		tree.setInteger("maxHorLeafBreakDist", 6);
+		treeList.appendTag(tree);
+
+		tpModCfg.setTag("trees", treeList);
+
+		FMLInterModComms.sendMessage("Treecapitator", "ThirdPartyModConfig", tpModCfg);
 	}
 
 	private static String blockName(Block block)

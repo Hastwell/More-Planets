@@ -95,6 +95,7 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.items.ItemCandyBow;
+import stevekung.mods.moreplanets.planets.fronos.items.tools.FronosToolsItems;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
@@ -422,6 +423,10 @@ public class MorePlanetEvents
 		if (item == DionaItems.laser_gun)
 		{
 			event.player.triggerAchievement(AchievementsMP.laserGun);
+		}
+		if (item == FronosToolsItems.fronos_rock_pickaxe)
+		{
+			event.player.triggerAchievement(AchievementList.buildBetterPickaxe);
 		}
 	}
 
