@@ -151,7 +151,7 @@ public class ItemTier4Rocket extends ItemMorePlanets implements IHoldableItem
 		}
 		if (type.getPreFueled())
 		{
-			list.add(EnumChatFormatting.RED + "\u00a7o" + GCCoreUtil.translate("gui.creativeOnly.desc"));
+			list.add(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + GCCoreUtil.translate("gui.creativeOnly.desc"));
 		}
 		if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
 		{

@@ -12,8 +12,8 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.world.biome.BiomeGenBase;
+import stevekung.mods.moreplanets.client.handler.IPlanetFog;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.common.eventhandler.IPlanetFog;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
@@ -34,7 +34,7 @@ public class BiomeGenBaseVenus extends BiomeGenBaseMP implements IPlanetFog
 	@Override
 	public float getFogDensity(int x, int y, int z)
 	{
-		return 0.2F;
+		return 0.65F;
 	}
 
 	@Override

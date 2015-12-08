@@ -17,27 +17,16 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
-import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 
 public class WorldUtilMP
 {
-	public static boolean isMercuryWorld(World world, BlockPos pos)
+	public static boolean isSpaceWorld(World world, WorldProvider provider)
 	{
-		return world.provider instanceof WorldProviderMercury && world.isDaytime() && world.canBlockSeeSky(pos);
-	}
-
-	public static boolean isPlutoWorld(World world)
-	{
-		return world.provider instanceof WorldProviderPluto;
-	}
-
-	public static boolean isEuropaWorld(World world)
-	{
-		return false;//world.provider instanceof WorldProviderEuropa; TODO
+		return world.provider.getClass() == provider.getClass();
 	}
 
 	public static Entity setHomePlanetDimension(Entity entity, int dimID, WorldServer world)

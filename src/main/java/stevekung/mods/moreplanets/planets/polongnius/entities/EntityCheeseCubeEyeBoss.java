@@ -56,7 +56,6 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 {
 	private TileEntityDungeonSpawner spawner;
 	private Entity targetedEntity;
-	protected long ticks = 0;
 	public int deathTicks = 0;
 	public int attackCounter;
 	public int prevAttackCounter;
@@ -99,7 +98,18 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	@Override
 	public void onKillCommand()
 	{
-		this.setDead();
+		if (this.spawner != null)
+		{
+			this.spawner.isBossDefeated = true;
+			this.spawner.boss = null;
+			this.spawner.spawned = false;
+			this.setHealth(0.0F);
+		}
+		else
+		{
+			this.setHealth(0.0F);
+			return;
+		}
 	}
 
 	@Override
@@ -153,7 +163,6 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 			}
 		}
 
-		this.moveEntity(0.0D, 0.10000000149011612D, 0.0D);
 		this.renderYawOffset = this.rotationYaw += 20.0F;
 
 		if (this.deathTicks == 200 && !this.worldObj.isRemote)
@@ -229,16 +238,9 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 	@Override
 	public void onLivingUpdate()
 	{
-		if (this.ticks >= Long.MAX_VALUE)
-		{
-			this.ticks = 1;
-		}
-
-		this.ticks++;
-
 		EntityPlayer player = this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 256.0);
 
-		if (player != null && !player.equals(this.targetedEntity))
+		if (player != null && !player.equals(this.targetedEntity) && !player.capabilities.isCreativeMode)
 		{
 			if (this.getDistanceSqToEntity(player) < 400.0D)
 			{

@@ -14,6 +14,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import stevekung.mods.moreplanets.common.blocks.BlockLogMP;
+import stevekung.mods.stevecore.BlockStateHelper;
+import stevekung.mods.stevecore.BlockStateHelper.EnumAxis;
+import stevekung.mods.stevecore.BlockStateHelper.SwitchEnumAxis;
 
 public class BlockAlienLog extends BlockLogMP
 {
@@ -22,7 +25,7 @@ public class BlockAlienLog extends BlockLogMP
 	public BlockAlienLog(String name)
 	{
 		super();
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.alien_wood).withProperty(AXIS, EnumAxis.Y));
+		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.alien_wood).withProperty(BlockStateHelper.AXIS, BlockStateHelper.EnumAxis.Y));
 		this.setUnlocalizedName(name);
 	}
 
@@ -34,16 +37,16 @@ public class BlockAlienLog extends BlockLogMP
 		switch (meta & 12)
 		{
 		case 0:
-			state = state.withProperty(AXIS, EnumAxis.Y);
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.Y);
 			break;
 		case 4:
-			state = state.withProperty(AXIS, EnumAxis.X);
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.X);
 			break;
 		case 8:
-			state = state.withProperty(AXIS, EnumAxis.Z);
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.Z);
 			break;
 		default:
-			state = state.withProperty(AXIS, EnumAxis.NONE);
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.NONE);
 		}
 		return state;
 	}
@@ -54,7 +57,7 @@ public class BlockAlienLog extends BlockLogMP
 		byte b = 0;
 		int i = b | ((BlockType)state.getValue(VARIANT)).getMetadata();
 
-		switch (SwitchEnumAxis.AXIS_LOOKUP[((EnumAxis)state.getValue(AXIS)).ordinal()])
+		switch (SwitchEnumAxis.AXIS_LOOKUP[((EnumAxis)state.getValue(BlockStateHelper.AXIS)).ordinal()])
 		{
 		case 1:
 			i |= 4;
@@ -71,7 +74,7 @@ public class BlockAlienLog extends BlockLogMP
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { VARIANT, AXIS });
+		return new BlockState(this, new IProperty[] { VARIANT, BlockStateHelper.AXIS });
 	}
 
 	@Override

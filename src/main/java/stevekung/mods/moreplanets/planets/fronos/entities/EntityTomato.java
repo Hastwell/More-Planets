@@ -156,9 +156,9 @@ public class EntityTomato extends EntityAnimal
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
+	protected void dropFewItems(boolean drop, int fortune)
 	{
-		int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
+		int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + fortune);
 
 		for (int k = 0; k < j; ++k)
 		{

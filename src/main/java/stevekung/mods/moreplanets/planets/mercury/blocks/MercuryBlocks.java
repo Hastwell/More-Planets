@@ -15,8 +15,9 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.planets.mercury.fluids.BlockFluidDirtyWater;
-import stevekung.mods.moreplanets.planets.mercury.itemblocks.ItemBlockMercury;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class MercuryBlocks
@@ -46,7 +47,7 @@ public class MercuryBlocks
 		MercuryBlocks.dirty_water = new BlockFluidDirtyWater("dirty_water_fluid");
 
 		// Register
-		CommonRegisterHelper.registerBlock(MercuryBlocks.mercury_block, ItemBlockMercury.class);
+		CommonRegisterHelper.registerBlock(MercuryBlocks.mercury_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "aluminum_ore", "iron_ore", "metal_meteoric_iron_ore", "silicate_rock", "solid_metal_meteoric_iron", "dungeon_brick"));
 		CommonRegisterHelper.registerBlock(MercuryBlocks.metallic_rock);
 		CommonRegisterHelper.registerBlock(MercuryBlocks.mercury_ice);
 		CommonRegisterHelper.registerBlock(MercuryBlocks.mercury_cobblestone_stairs);

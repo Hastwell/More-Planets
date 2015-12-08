@@ -13,7 +13,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,17 +24,22 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.BlockPos.MutableBlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
+import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public abstract class BlockFarmlandMP extends BlockBaseMP
 {
-	public static PropertyInteger MOISTURE = PropertyInteger.create("moisture", 0, 1);
-
 	public BlockFarmlandMP()
 	{
 		super(Material.ground);
-		this.setDefaultState(this.getDefaultState().withProperty(MOISTURE, Integer.valueOf(0)));
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(0)));
 		this.setTickRandomly(true);
 		this.setHardness(2.0F);
 		this.setStepSound(soundTypeGravel);
@@ -64,13 +68,13 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		int i = ((Integer)state.getValue(MOISTURE)).intValue();
+		int i = ((Integer)state.getValue(BlockStateHelper.MOISTURE)).intValue();
 
 		if (!this.hasWater(world, pos) && !world.canLightningStrike(pos.up()))
 		{
 			if (i == 1)
 			{
-				world.setBlockState(pos, state.withProperty(MOISTURE, Integer.valueOf(0)), 2);
+				world.setBlockState(pos, state.withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(0)), 2);
 			}
 			else if (!this.hasCrops(world, pos))
 			{
@@ -79,7 +83,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
 		}
 		else if (i == 0)
 		{
-			world.setBlockState(pos, state.withProperty(MOISTURE, Integer.valueOf(1)), 2);
+			world.setBlockState(pos, state.withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(1)), 2);
 		}
 	}
 
@@ -143,7 +147,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(MOISTURE, Integer.valueOf(meta & 1));
+		return this.getDefaultState().withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(meta & 1));
 	}
 
 	@Override
@@ -155,19 +159,35 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((Integer)state.getValue(MOISTURE)).intValue();
+		return ((Integer)state.getValue(BlockStateHelper.MOISTURE)).intValue();
 	}
 
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] {MOISTURE});
+		return new BlockState(this, new IProperty[] {BlockStateHelper.MOISTURE});
 	}
 
 	@Override
 	public CreativeTabs getCreativeTabToDisplayOn()
 	{
 		return null;
+	}
+
+	@Override
+	public boolean isFertile(World world, BlockPos pos)
+	{
+		if (this == KoentusBlocks.crystal_farmland || this == NibiruBlocks.infected_farmland || this == FronosBlocks.fronos_farmland || this == DarkAsteroidBlocks.alien_farmland)
+		{
+			return (Integer)world.getBlockState(pos).getValue(BlockStateHelper.MOISTURE) == 1;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
+	{
+		return side != EnumFacing.DOWN && side != EnumFacing.UP;
 	}
 
 	protected abstract Block getDirtBlock();

@@ -10,7 +10,8 @@ package stevekung.mods.moreplanets.moons.phobos.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import stevekung.mods.moreplanets.moons.phobos.itemblocks.ItemBlockPhobos;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PhobosBlocks
@@ -23,7 +24,7 @@ public class PhobosBlocks
 		PhobosBlocks.phobos_block = new BlockPhobos("phobos_block");
 
 		// Register
-		CommonRegisterHelper.registerBlock(PhobosBlocks.phobos_block, ItemBlockPhobos.class);
+		CommonRegisterHelper.registerBlock(PhobosBlocks.phobos_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "iron_ore", "desh_ore"));
 
 		// Set harvest level
 		CommonRegisterHelper.setBlockHarvestLevel(PhobosBlocks.phobos_block, "pickaxe", 0);

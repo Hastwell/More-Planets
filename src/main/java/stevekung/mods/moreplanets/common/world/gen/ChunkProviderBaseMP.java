@@ -28,6 +28,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.ChunkProviderGenerate;
+import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public abstract class ChunkProviderBaseMP extends ChunkProviderGenerate
@@ -100,22 +101,22 @@ public abstract class ChunkProviderBaseMP extends ChunkProviderGenerate
 	{
 		int var5 = 20;
 
-		for (int var8 = 0; var8 < 16; ++var8)
+		for (int x = 0; x < 16; ++x)
 		{
-			for (int var9 = 0; var9 < 16; ++var9)
+			for (int z = 0; z < 16; ++z)
 			{
-				int var12 = (int) (this.noiseGen4.getNoise(var8 + chunkX * 16, var9 * chunkZ * 16) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int noise = (int) (this.noiseGen4.getNoise(x + chunkX * 16, z * chunkZ * 16) / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
 				Block topBlock = this.getBaseBlock();
 				int topBlockMeta = this.getBlockMetadata()[0];
 				Block fillBlock = this.getBaseBlock();
 				int fillBlockMeta = this.getBlockMetadata()[1];
 
-				for (int var16 = 127; var16 >= 0; --var16)
+				for (int y = 255; y >= 0; --y)
 				{
-					int index = this.getIndex(var8, var16, var9);
+					int index = this.getIndex(x, y, z);
 
-					if (var16 <= 0 + this.rand.nextInt(5))
+					if (y <= 0 + this.rand.nextInt(5))
 					{
 						chunk.setBlockState(index, Blocks.bedrock.getDefaultState());
 					}
@@ -131,14 +132,14 @@ public abstract class ChunkProviderBaseMP extends ChunkProviderGenerate
 						{
 							if (var13 == -1)
 							{
-								if (var12 <= 0)
+								if (noise <= 0)
 								{
 									topBlock = Blocks.air;
 									topBlockMeta = 0;
 									fillBlock = this.getBaseBlock();
 									fillBlockMeta = this.getBlockMetadata()[1];
 								}
-								else if (var16 >= var5 - -16 && var16 <= var5 + 1)
+								else if (y >= var5 - -16 && y <= var5 + 1)
 								{
 									topBlock = this.getBaseBlock();
 									topBlockMeta = this.getBlockMetadata()[0];
@@ -146,13 +147,13 @@ public abstract class ChunkProviderBaseMP extends ChunkProviderGenerate
 									topBlockMeta = this.getBlockMetadata()[1];
 								}
 
-								var13 = var12;
+								var13 = noise;
 
-								if (var16 >= var5 - 1)
+								if (y >= var5 - 1)
 								{
 									chunk.setBlockState(index, topBlock.getStateFromMeta(topBlockMeta));
 								}
-								else if (var16 < var5 - 1 && var16 >= var5 - 2)
+								else if (y < var5 - 1 && y >= var5 - 2)
 								{
 									chunk.setBlockState(index, fillBlock.getStateFromMeta(fillBlockMeta));
 								}
@@ -290,6 +291,7 @@ public abstract class ChunkProviderBaseMP extends ChunkProviderGenerate
 			monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
 			monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+			monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 10, 1, 4));
 			return monsters;
 		}
 		return null;

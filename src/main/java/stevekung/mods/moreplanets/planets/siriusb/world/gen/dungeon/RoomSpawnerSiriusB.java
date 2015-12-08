@@ -110,13 +110,12 @@ public class RoomSpawnerSiriusB extends DungeonRoom
 		switch (rand.nextInt(4))
 		{
 		case 0:
+		default:
 			return "MorePlanets.SiriusCreeper";
 		case 1:
 			return "MorePlanets.SiriusBlaze";
 		case 2:
 			return "MorePlanets.SiriusMagmaCube";
-		default:
-			return "MorePlanets.SiriusCreeper";
 		}
 	}
 }

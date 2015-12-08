@@ -10,7 +10,8 @@ package stevekung.mods.moreplanets.moons.deimos.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import stevekung.mods.moreplanets.moons.deimos.itemblocks.ItemBlockDeimos;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DeimosBlocks
@@ -23,7 +24,7 @@ public class DeimosBlocks
 		DeimosBlocks.deimos_block = new BlockDeimos("deimos_block");
 
 		// Register
-		CommonRegisterHelper.registerBlock(DeimosBlocks.deimos_block, ItemBlockDeimos.class);
+		CommonRegisterHelper.registerBlock(DeimosBlocks.deimos_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "iron_ore", "desh_ore"));
 
 		// Set harvest level
 		CommonRegisterHelper.setBlockHarvestLevel(DeimosBlocks.deimos_block, "pickaxe", 0);

@@ -135,7 +135,7 @@ public class ItemTier5Rocket extends ItemMorePlanets implements IHoldableItem
 	{
 		for (int i = 0; i < EnumRocketType.values().length; i++)
 		{
-			list.add(new ItemStack(item, 1, i));
+			list.add(new ItemStack(this, 1, i));
 		}
 	}
 
@@ -151,7 +151,7 @@ public class ItemTier5Rocket extends ItemMorePlanets implements IHoldableItem
 		}
 		if (type.getPreFueled())
 		{
-			list.add(EnumChatFormatting.RED + "\u00a7o" + GCCoreUtil.translate("gui.creativeOnly.desc"));
+			list.add(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + GCCoreUtil.translate("gui.creativeOnly.desc"));
 		}
 		if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
 		{

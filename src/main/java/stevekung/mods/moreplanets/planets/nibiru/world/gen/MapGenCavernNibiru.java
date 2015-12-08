@@ -9,42 +9,40 @@ package stevekung.mods.moreplanets.planets.nibiru.world.gen;
 
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.MapGenBaseMeta;
 import micdoodle8.mods.galacticraft.core.blocks.GCBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.MapGenBase;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
-public class MapGenCavernNibiru extends MapGenBaseMeta
+public class MapGenCavernNibiru extends MapGenBase
 {
-	private int range = 12;
+	protected int range = 12;
 
 	@Override
-	public void generate(IChunkProvider chunkProvider, World world, int x, int z, ChunkPrimer chunk)
+	public void func_175792_a(IChunkProvider provider, World world, int chunkX, int chunkZ, ChunkPrimer chunk)
 	{
 		int var6 = this.range;
-		this.worldObj = world;
-		this.rand.setSeed(world.getSeed());
 		long var7 = this.rand.nextLong();
 		long var9 = this.rand.nextLong();
 
-		for (int var11 = x - var6; var11 <= x + var6; ++var11)
+		for (int x = chunkX - var6; x <= chunkX + var6; ++x)
 		{
-			for (int var12 = z - var6; var12 <= z + var6; ++var12)
+			for (int z = chunkZ - var6; z <= chunkZ + var6; ++z)
 			{
-				long var13 = var11 * var7;
-				long var15 = var12 * var9;
+				long var13 = x * var7;
+				long var15 = z * var9;
 				this.rand.setSeed(var13 ^ var15 ^ world.getSeed());
-				this.recursiveGenerate(world, var11, var12, x, z, chunk);
+				this.func_180701_a(world, x, z, chunkX, chunkZ, chunk);
 			}
 		}
 	}
 
 	@Override
-	protected void recursiveGenerate(World world, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk)
+	protected void func_180701_a(World world, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk)
 	{
 		if (this.rand.nextInt(100) == 0)
 		{
@@ -199,7 +197,7 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 										{
 											int coords = (var42 * 16 + var45) * 256 + var50;
 
-											if (chunk.getBlockState(coords) == NibiruBlocks.nibiru_block.getDefaultState() || chunk.getBlockState(coords) == GCBlocks.crudeOil.getDefaultState() || chunk.getBlockState(coords) == NibiruBlocks.infected_cavernous_vine.getDefaultState())
+											if (chunk.getBlockState(coords).getBlock() == NibiruBlocks.nibiru_block)
 											{
 												chunk.setBlockState(coords, Blocks.air.getDefaultState());
 											}
@@ -232,22 +230,28 @@ public class MapGenCavernNibiru extends MapGenBaseMeta
 											int coordsAbove = (var42 * 16 + var45) * 256 + var50 + 1;
 											int coordsBelow = (var42 * 16 + var45) * 256 + var50 - 1;
 
-											if (Blocks.air == chunk.getBlockState(coords).getBlock())
+											if (Blocks.air.getDefaultState() == chunk.getBlockState(coords))
 											{
-												if (chunk.getBlockState(coordsAbove).getBlock() == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
+												if (chunk.getBlockState(coordsAbove).getBlock() == NibiruBlocks.nibiru_block)
 												{
-													int modifier = 0;
-
-													while (Blocks.air == chunk.getBlockState(coordsBelow).getBlock())
+													if (this.rand.nextInt(2000) == 0)
 													{
-														chunk.setBlockState(coords, NibiruBlocks.infected_cavernous_vine.getDefaultState());
-														modifier--;
-														coordsBelow = (var42 * 16 + var45) * 256 + var50 - 1 + modifier;
+														int modifier = 0;
+
+														while (Blocks.air.getDefaultState() == chunk.getBlockState(coordsBelow))
+														{
+															chunk.setBlockState(coordsBelow, NibiruBlocks.infected_cavernous_vine.getDefaultState());
+															modifier--;
+															coordsBelow = (var42 * 16 + var45) * 256 + var50 - 1 + modifier;
+														}
 													}
 												}
-												else if (chunk.getBlockState(coordsBelow).getBlock() == NibiruBlocks.nibiru_block && this.rand.nextInt(200) == 0)
+												else if (chunk.getBlockState(coordsBelow).getBlock() == NibiruBlocks.nibiru_block)
 												{
-													chunk.setBlockState(coords, GCBlocks.crudeOil.getDefaultState());
+													if (this.rand.nextInt(1500) == 0)
+													{
+														chunk.setBlockState(coords, GCBlocks.crudeOil.getDefaultState());
+													}
 												}
 											}
 										}

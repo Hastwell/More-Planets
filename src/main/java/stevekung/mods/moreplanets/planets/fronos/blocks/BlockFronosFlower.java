@@ -279,7 +279,7 @@ public class BlockFronosFlower extends BlockBushMP implements IGrowable
 	}
 
 	@Override
-	protected boolean canPlaceBlockOn(Block ground)
+	public boolean canPlaceBlockOn(Block ground)
 	{
 		return ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt || ground == FronosBlocks.fronos_sand || ground == FronosBlocks.fronos_block || ground == FronosBlocks.mossy_fronos_cobblestone || ground == FronosBlocks.jelly_ore;
 	}

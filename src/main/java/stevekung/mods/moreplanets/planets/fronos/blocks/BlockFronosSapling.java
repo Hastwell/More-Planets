@@ -53,7 +53,7 @@ public class BlockFronosSapling extends BlockSaplingMP
 	}
 
 	@Override
-	protected boolean canPlaceBlockOn(Block ground)
+	public boolean canPlaceBlockOn(Block ground)
 	{
 		return ground == Blocks.grass || ground == Blocks.dirt || ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
 	}

@@ -52,7 +52,7 @@ public class ItemGravityBoots extends ItemArmorMP
 			}
 			else
 			{
-				list.add("Press LSHIFT for info");
+				list.add("Press LSHIFT for more info");
 			}
 		}
 	}

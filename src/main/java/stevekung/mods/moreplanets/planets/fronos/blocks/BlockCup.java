@@ -12,7 +12,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,18 +24,17 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockCup extends BlockBaseMP
 {
-	public static PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-
 	public BlockCup(String name)
 	{
 		super(Material.plants);
 		this.setHardness(0.6F);
 		this.setTickRandomly(true);
 		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH));
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 0.5F, 0.7F);
 	}
 
@@ -104,7 +102,7 @@ public class BlockCup extends BlockBaseMP
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
 	{
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+		return this.getDefaultState().withProperty(BlockStateHelper.FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
 	@Override
@@ -146,18 +144,18 @@ public class BlockCup extends BlockBaseMP
 		{
 			enumfacing = EnumFacing.NORTH;
 		}
-		return this.getDefaultState().withProperty(FACING, enumfacing);
+		return this.getDefaultState().withProperty(BlockStateHelper.FACING, enumfacing);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
+		return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
 	}
 
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] {FACING});
+		return new BlockState(this, new IProperty[] {BlockStateHelper.FACING});
 	}
 }

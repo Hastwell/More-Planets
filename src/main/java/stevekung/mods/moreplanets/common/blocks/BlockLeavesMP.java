@@ -13,7 +13,6 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -26,11 +25,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 {
-	public static PropertyBool DECAYABLE = PropertyBool.create("decayable");
-	public static PropertyBool CHECK_DECAY = PropertyBool.create("check_decay");
 	protected int[] surroundings;
 
 	public BlockLeavesMP()
@@ -77,7 +75,7 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 	{
 		if (!world.isRemote)
 		{
-			if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue() && ((Boolean)state.getValue(DECAYABLE)).booleanValue())
+			if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue() && ((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
 			{
 				byte b0 = 4;
 				int i = b0 + 1;
@@ -173,7 +171,7 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 
 				if (k1 >= 0)
 				{
-					world.setBlockState(pos, state.withProperty(CHECK_DECAY, Boolean.valueOf(false)), 4);
+					world.setBlockState(pos, state.withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf(false)), 4);
 				}
 				else
 				{
@@ -294,9 +292,9 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
 	{
 		IBlockState state = world.getBlockState(pos);
 
-		if (!(Boolean)state.getValue(CHECK_DECAY))
+		if (!(Boolean)state.getValue(BlockStateHelper.CHECK_DECAY))
 		{
-			world.setBlockState(pos, state.withProperty(CHECK_DECAY, true), 4);
+			world.setBlockState(pos, state.withProperty(BlockStateHelper.CHECK_DECAY, true), 4);
 		}
 	}
 

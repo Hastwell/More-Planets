@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidBlackIoLava;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidBrownLiquidSulfur;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidIoLava;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidOrangeLiquidSulfur;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidRedLiquidSulfur;
 import stevekung.mods.moreplanets.moons.io.fluids.BlockFluidYellowLiquidSulfur;
-import stevekung.mods.moreplanets.moons.io.itemblocks.ItemBlockIo;
-import stevekung.mods.moreplanets.moons.io.itemblocks.ItemBlockIoMagmaRock;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class IoBlocks
@@ -65,8 +65,8 @@ public class IoBlocks
 		IoBlocks.brown_liquid_sulfur = new BlockFluidBrownLiquidSulfur("brown_liquid_sulfur");
 
 		// Register
-		CommonRegisterHelper.registerBlock(IoBlocks.io_block, ItemBlockIo.class);
-		CommonRegisterHelper.registerBlock(IoBlocks.io_magma_rock, ItemBlockIoMagmaRock.class);
+		CommonRegisterHelper.registerBlock(IoBlocks.io_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "sulfur_ore", "ash_stone", "ash_cobblestone", "silicate_rock", "dungeon_brick"));
+		CommonRegisterHelper.registerBlock(IoBlocks.io_magma_rock, ItemBlockMultiVariant.class, new VariantsName("magma_rock", "sulfur_rock"));
 		CommonRegisterHelper.registerBlock(IoBlocks.io_lava);
 		CommonRegisterHelper.registerBlock(IoBlocks.black_io_lava);
 		CommonRegisterHelper.registerBlock(IoBlocks.red_liquid_sulfur);

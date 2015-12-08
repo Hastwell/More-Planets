@@ -23,31 +23,31 @@ public class WorldGenCandyCane1 extends WorldGenerator
 	{
 		if (world.isAirBlock(pos.up()) && world.getBlockState(pos.down()) == FronosBlocks.frosted_cake.getDefaultState().withProperty(BlockFrostedCake.VARIANT, BlockFrostedCake.BlockType.frosted_white_cake_block))
 		{
+			world.setBlockState(pos, FronosBlocks.candy_cane1.getDefaultState(), 2);
 			world.setBlockState(pos.up(), FronosBlocks.candy_cane1.getDefaultState(), 2);
-			world.setBlockState(pos.up(2), FronosBlocks.candy_cane1.getDefaultState(), 2);
+			world.setBlockState(pos.up(2), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.orange_candy_cane), 2);
 			world.setBlockState(pos.up(3), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.orange_candy_cane), 2);
-			world.setBlockState(pos.up(4), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.orange_candy_cane), 2);
+			world.setBlockState(pos.up(4), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.green_candy_cane), 2);
 			world.setBlockState(pos.up(5), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.green_candy_cane), 2);
-			world.setBlockState(pos.up(6), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.green_candy_cane), 2);
+			world.setBlockState(pos.up(6), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.yellow_candy_cane), 2);
 			world.setBlockState(pos.up(7), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.yellow_candy_cane), 2);
-			world.setBlockState(pos.up(8), FronosBlocks.candy_cane1.getDefaultState().withProperty(BlockCandyCane1.VARIANT, BlockCandyCane1.BlockType.yellow_candy_cane), 2);
-			world.setBlockState(pos.up(9), FronosBlocks.cream_block.getStateFromMeta(rand.nextInt(4)), 2);
+			world.setBlockState(pos.up(8), FronosBlocks.cream_block.getStateFromMeta(rand.nextInt(4)), 2);
 
 			if (rand.nextInt(1) == 0)
 			{
-				world.setBlockState(pos.up(10), FronosBlocks.ovaltine_block.getDefaultState(), 2);
+				world.setBlockState(pos.up(9), FronosBlocks.ovaltine_block.getDefaultState(), 2);
 			}
 			if (rand.nextInt(2) == 0)
 			{
-				world.setBlockState(pos.up(10), FronosBlocks.chocolate_block.getDefaultState(), 2);
+				world.setBlockState(pos.up(9), FronosBlocks.chocolate_block.getDefaultState(), 2);
 			}
 			if (rand.nextInt(3) == 0)
 			{
-				world.setBlockState(pos.up(10), FronosBlocks.cookie_block.getDefaultState(), 2);
+				world.setBlockState(pos.up(9), FronosBlocks.cookie_block.getDefaultState(), 2);
 			}
 			if (rand.nextInt(4) == 0)
 			{
-				world.setBlockState(pos.up(10), FronosBlocks.jelly_block.getStateFromMeta(rand.nextInt(6)), 2);
+				world.setBlockState(pos.up(9), FronosBlocks.jelly_block.getStateFromMeta(rand.nextInt(6)), 2);
 			}
 		}
 		return true;

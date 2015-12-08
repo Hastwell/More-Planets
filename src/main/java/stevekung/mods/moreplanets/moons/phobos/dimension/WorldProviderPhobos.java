@@ -66,7 +66,7 @@ public class WorldProviderPhobos extends WorldProviderMP
 		{
 			var3 = 1.0F;
 		}
-		return var3 * var3 * 0.5F;
+		return var3 * var3 * 0.5F + 0.3F;
 	}
 
 	@Override

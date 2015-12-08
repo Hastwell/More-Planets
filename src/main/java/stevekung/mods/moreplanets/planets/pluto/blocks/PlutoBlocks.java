@@ -13,9 +13,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidMethane;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidNitrogen;
-import stevekung.mods.moreplanets.planets.pluto.itemblocks.ItemBlockPluto;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PlutoBlocks
@@ -56,7 +57,7 @@ public class PlutoBlocks
 		PlutoBlocks.liquid_nitrogen = new BlockFluidNitrogen("liquid_nitrogen_fluid");
 
 		// Register
-		CommonRegisterHelper.registerBlock(PlutoBlocks.pluto_block, ItemBlockPluto.class);
+		CommonRegisterHelper.registerBlock(PlutoBlocks.pluto_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "meteoric_iron_ore", "frozen_iron_ore", "iron_ore", "xeonium_ore", "dungeon_brick", "surface_rock_brown", "surface_rock_light_brown"));
 		CommonRegisterHelper.registerBlock(PlutoBlocks.xeonium_glowstone);
 		CommonRegisterHelper.registerBlock(PlutoBlocks.frozen_methane_block);
 		CommonRegisterHelper.registerBlock(PlutoBlocks.frozen_nitrogen_block);

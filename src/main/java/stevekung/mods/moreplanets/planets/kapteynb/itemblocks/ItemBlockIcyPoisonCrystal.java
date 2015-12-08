@@ -25,15 +25,13 @@ public class ItemBlockIcyPoisonCrystal extends ItemBlockMorePlanets
 	}
 
 	@Override
-	public boolean placeBlockAt(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, IBlockState state)
+	public boolean placeBlockAt(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, IBlockState state)
 	{
-		boolean placed = super.placeBlockAt(itemStack, player, world, pos, side, hitX, hitY, hitZ, state);
-
-		if (placed && state.getBlock().getMetaFromState(state) <= 6)
+		if (super.placeBlockAt(itemStack, player, world, pos, facing, hitX, hitY, hitZ, state))
 		{
-			TileEntityIcyPoisonCrystal ts = (TileEntityIcyPoisonCrystal)world.getTileEntity(pos);
-			ts.facing = (short)side.getIndex();
+			TileEntityIcyPoisonCrystal tile = (TileEntityIcyPoisonCrystal)world.getTileEntity(pos);
+			tile.facing = facing.getIndex();
 		}
-		return placed;
+		return super.placeBlockAt(itemStack, player, world, pos, facing, hitX, hitY, hitZ, state);
 	}
 }

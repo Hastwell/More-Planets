@@ -7,9 +7,9 @@
 
 package stevekung.mods.moreplanets.common.world.gen;
 
-import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMartianMoon;
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldChunkManagerSpace;
 import net.minecraft.world.biome.BiomeGenBase;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMartianMoon;
 
 public class WorldChunkManagerMartianMoon extends WorldChunkManagerSpace
 {

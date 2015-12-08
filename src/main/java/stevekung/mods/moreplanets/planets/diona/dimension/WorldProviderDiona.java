@@ -65,9 +65,9 @@ public class WorldProviderDiona extends WorldProviderMP implements IMeteorType
 		}
 		if (f2 > 1.0F)
 		{
-			f2 = 1.0F;
+			f2 = 0.75F;
 		}
-		return f2 * f2 * 0.8F;
+		return f2 * f2 * 0.5F + 0.3F;
 	}
 
 	@Override

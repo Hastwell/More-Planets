@@ -26,22 +26,22 @@ public class BiomeDecoratorDiona extends BiomeDecoratorMP
 	{
 		this.dirtGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 32, 1, true, DionaBlocks.diona_block, 2);
 		this.quontoniumGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 8, 4, true, DionaBlocks.diona_block, 2);
-		this.fronisiumGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 8, 5, true, DionaBlocks.diona_block, 2);
-		this.tinGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 8, 6, true, DionaBlocks.diona_block, 2);
-		this.copperGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 8, 7, true, DionaBlocks.diona_block, 2);
-		this.siliconGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 4, 8, true, DionaBlocks.diona_block, 2);
-		this.aluminumGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 8, 9, true, DionaBlocks.diona_block, 2);
+		this.fronisiumGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 4, 5, true, DionaBlocks.diona_block, 2);
+		this.tinGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 7, 6, true, DionaBlocks.diona_block, 2);
+		this.copperGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 7, 7, true, DionaBlocks.diona_block, 2);
+		this.siliconGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 7, 8, true, DionaBlocks.diona_block, 2);
+		this.aluminumGen = new WorldGenMinableMeta(DionaBlocks.diona_block, 7, 9, true, DionaBlocks.diona_block, 2);
 	}
 
 	@Override
 	protected void generateOres()
 	{
-		this.generateOre(10, this.fronisiumGen, 0, 48);
-		this.generateOre(12, this.aluminumGen, 0, 48);
-		this.generateOre(16, this.tinGen, 0, 64);
-		this.generateOre(16, this.copperGen, 0, 64);
-		this.generateOre(24, this.quontoniumGen, 0, 64);
-		this.generateOre(12, this.siliconGen, 0, 24);
-		this.generateOre(32, this.dirtGen, 0, 255);
+		this.generateOre(12, this.fronisiumGen, 0, 36);
+		this.generateOre(16, this.quontoniumGen, 0, 64);
+		this.generateOre(18, this.aluminumGen, 0, 45);
+		this.generateOre(22, this.tinGen, 0, 60);
+		this.generateOre(24, this.copperGen, 0, 75);
+		this.generateOre(3, this.siliconGen, 0, 25);
+		this.generateOre(20, this.dirtGen, 0, 256);
 	}
 }

@@ -54,7 +54,7 @@ public class BlockInfectedOrangeRoseBush extends BlockBushMP implements IGrowabl
 	}
 
 	@Override
-	protected boolean canPlaceBlockOn(Block ground)
+	public boolean canPlaceBlockOn(Block ground)
 	{
 		return ground == NibiruBlocks.infected_grass || ground == NibiruBlocks.infected_dirt;
 	}

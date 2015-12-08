@@ -60,8 +60,8 @@ public class ChunkProviderDeimos extends ChunkProviderBaseMP
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
 		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
+		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
 		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMartianMoon.martianMoon, pos);
 		BlockFalling.fallInstantly = false;
 	}

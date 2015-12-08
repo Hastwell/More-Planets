@@ -16,13 +16,13 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenSplashBlock extends WorldGenerator
 {
-	private IBlockState block;
+	private IBlockState blockState;
 	private IBlockState blockToGen;
 
 	public WorldGenSplashBlock(IBlockState block, IBlockState blockToGen)
 	{
 		super();
-		this.block = block;
+		this.blockState = block;
 		this.blockToGen = blockToGen;
 	}
 
@@ -38,7 +38,7 @@ public class WorldGenSplashBlock extends WorldGenerator
 
 			if (world.getBlockState(pos1.down()) == this.blockToGen)
 			{
-				world.setBlockState(pos1.down(), this.block, 2);
+				world.setBlockState(pos1.down(), this.blockState, 2);
 			}
 		}
 		return true;

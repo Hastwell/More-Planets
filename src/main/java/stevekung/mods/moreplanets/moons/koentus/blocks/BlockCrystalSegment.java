@@ -9,38 +9,38 @@ package stevekung.mods.moreplanets.moons.koentus.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBreakableMP;
+import stevekung.mods.stevecore.BlockStateHelper;
+import stevekung.mods.stevecore.BlockStateHelper.EnumAxis;
+import stevekung.mods.stevecore.BlockStateHelper.SwitchEnumAxis;
 
 public class BlockCrystalSegment extends BlockBreakableMP
 {
-	public static PropertyEnum AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class);
-
 	public BlockCrystalSegment(String name)
 	{
-		super(Material.rock);
+		super(Material.glass);
 		this.setHardness(3.0F);
 		this.setResistance(5.0F);
-		this.setDefaultState(this.getDefaultState().withProperty(AXIS, EnumFacing.Axis.Y));
+		this.setStepSound(soundTypeGlass);
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.AXIS, EnumAxis.Y));
 		this.setUnlocalizedName(name);
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, int metadata, EntityLivingBase entity)
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int metadata, EntityLivingBase entity)
 	{
-		return super.onBlockPlaced(world, pos, side, hitX, hitY, hitZ, metadata, entity).withProperty(AXIS, side.getAxis());
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, metadata, entity).withProperty(BlockStateHelper.AXIS, BlockStateHelper.EnumAxis.fromFacingAxis(facing.getAxis()));
 	}
 
 	@Override
@@ -71,15 +71,15 @@ public class BlockCrystalSegment extends BlockBreakableMP
 		float min = (1.0F - width) / 2F;
 		float max = 1.0F - min;
 
-		switch ((Axis) state.getValue(AXIS))
+		switch (SwitchEnumAxis.AXIS_LOOKUP[((EnumAxis)state.getValue(BlockStateHelper.AXIS)).ordinal()])
 		{
-		case X:
+		case 1:
 			this.setBlockBounds(0F, min, min, 1.0F, max, max);
 			break;
-		case Y:
+		case 0:
 			this.setBlockBounds(min, 0F, min, max, 1.0F, max);
 			break;
-		case Z:
+		case 2:
 			this.setBlockBounds(min, min, 0F, max, max, 1.0F);
 			break;
 		}
@@ -100,20 +100,49 @@ public class BlockCrystalSegment extends BlockBreakableMP
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { AXIS });
+		return new BlockState(this, new IProperty[] { BlockStateHelper.AXIS });
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		int axis = meta % 3;
-		return this.getDefaultState().withProperty(AXIS, Axis.values()[axis]);
+		IBlockState state = this.getDefaultState();
+
+		switch (meta & 12)
+		{
+		case 0:
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.Y);
+			break;
+		case 4:
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.X);
+			break;
+		case 8:
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.Z);
+			break;
+		default:
+			state = state.withProperty(BlockStateHelper.AXIS, EnumAxis.NONE);
+		}
+		return state;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((Axis)state.getValue(AXIS)).ordinal();
+		byte b = 0;
+		int i = b;
+
+		switch (SwitchEnumAxis.AXIS_LOOKUP[((EnumAxis)state.getValue(BlockStateHelper.AXIS)).ordinal()])
+		{
+		case 1:
+			i |= 4;
+			break;
+		case 2:
+			i |= 8;
+			break;
+		case 3:
+			i |= 12;
+		}
+		return i;
 	}
 
 	@Override

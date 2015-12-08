@@ -81,6 +81,10 @@ public class WorldProviderPluto extends WorldProviderMP
 		{
 			f2 = 0.6F;
 		}
+		if (f2 < 0.4F)
+		{
+			f2 = 0.8F;
+		}
 		if (f2 > 1.0F)
 		{
 			f2 = 0.95F;

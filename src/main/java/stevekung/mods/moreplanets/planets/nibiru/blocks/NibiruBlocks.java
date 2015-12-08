@@ -16,15 +16,11 @@ import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
-import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDirtMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruFence;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruLeaves;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruLog;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruPlanks;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruSapling;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockOilRock;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class NibiruBlocks
@@ -91,27 +87,27 @@ public class NibiruBlocks
 		NibiruBlocks.orange_door_block = new BlockDoorMP("orange_door_block", DoorType.ORANGE);
 
 		// Register
-		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_block, ItemBlockNibiru.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "ichorius_ore", "norium_ore", "diamond_ore", "coal_ore", "red_gem_ore", "ichorius_block", "norium_block", "red_gem_block", "dungeon_brick"));
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_grass);
-		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_dirt, ItemBlockDirtMP.class);
-		CommonRegisterHelper.registerBlock(NibiruBlocks.oil_rock, ItemBlockOilRock.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_dirt, ItemBlockMultiVariant.class, new VariantsName("dirt", "coarse"));
+		CommonRegisterHelper.registerBlock(NibiruBlocks.oil_rock, ItemBlockMultiVariant.class, new VariantsName("oil_rock", "oil_ore"));
 		CommonRegisterHelper.registerBlock(NibiruBlocks.helium_block);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_worm_egg_rock);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_log, ItemBlockNibiruLog.class);
-		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockNibiruPlanks.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockMultiVariant.class, new VariantsName("ancient_dark", "orange"));
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_leaves, ItemBlockNibiruLeaves.class);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_wood_stairs);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_wood_stairs);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_cobblestone_stairs);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_dungeon_brick_stairs);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.power_crystal_generator, ItemBlockDesc.class);
-		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_fence, ItemBlockNibiruFence.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_fence, ItemBlockMultiVariant.class, new VariantsName("ancient_dark", "orange"));
 		CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_fence_gate);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.orange_fence_gate);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_treasure_chest);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_ancient_chest);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_zombie_egg);
-		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_sapling, ItemBlockNibiruSapling.class);
+		CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_sapling, ItemBlockMultiVariant.class, new VariantsName("ancient_dark", "orange"));
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_vine);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_orange_rose_bush);
 		CommonRegisterHelper.registerBlock(NibiruBlocks.infected_cavernous_vine);

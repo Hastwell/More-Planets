@@ -159,4 +159,10 @@ public class ItemFeces extends ItemMorePlanets
 		}
 		return false;
 	}
+
+	@Override
+	public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged)
+	{
+		return slotChanged;
+	}
 }

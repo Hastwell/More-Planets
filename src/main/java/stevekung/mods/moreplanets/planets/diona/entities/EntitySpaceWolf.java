@@ -54,6 +54,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.ai.EntityAISpaceWolfBeg;
 
 import com.google.common.base.Predicate;
@@ -99,6 +100,12 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
 		}));
 		this.targetTasks.addTask(5, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, false));
 		this.setTamed(false);
+	}
+
+	@Override
+	public boolean getCanSpawnHere()
+	{
+		return this.worldObj.getBlockState(this.getPosition().down()).getBlock() == DionaBlocks.diona_block.getDefaultState();
 	}
 
 	@Override

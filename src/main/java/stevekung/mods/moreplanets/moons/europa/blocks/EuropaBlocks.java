@@ -7,10 +7,13 @@
 
 package stevekung.mods.moreplanets.moons.europa.blocks;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -19,20 +22,19 @@ import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceMP;
+import stevekung.mods.moreplanets.common.blocks.BlockSnowLayerMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockInformation;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockSingleLeaves;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockSnowLayerMP;
+import stevekung.mods.moreplanets.common.util.ItemDescription;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.moons.europa.fluids.BlockFluidEuropaWater;
-import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaGeyser;
-import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaIce;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaLog;
-import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaPrismarine;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaPrismarineSlab;
-import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSandstone;
 import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSandstoneSlab;
-import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSapling;
-import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSnowLayer;
-import stevekung.mods.moreplanets.moons.europa.itemblocks.ItemBlockEuropaSponge;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class EuropaBlocks
@@ -77,7 +79,7 @@ public class EuropaBlocks
 		EuropaBlocks.europa_ice = new BlockEuropaIce("europa_ice");
 		EuropaBlocks.packed_europa_ice = new BlockPackedEuropaIce("packed_europa_ice");
 		EuropaBlocks.europa_snow_block = new BlockEuropaSnowBlock("europa_snow_block");
-		EuropaBlocks.europa_snow_layer = new BlockEuropaSnowLayer("europa_snow_layer");
+		EuropaBlocks.europa_snow_layer = new BlockSnowLayerMP("europa_snow_layer", null, 0);
 		EuropaBlocks.europa_prismarine = new BlockEuropaPrismarine("europa_prismarine");
 		EuropaBlocks.europa_sea_lantern = new BlockEuropaSeaLantern("europa_sea_lantern");
 		EuropaBlocks.europa_ice_slush = new BlockEuropaIceSlush("europa_ice_slush");
@@ -110,21 +112,21 @@ public class EuropaBlocks
 		EuropaBlocks.europa_water = new BlockFluidEuropaWater("europa_water_fluid");
 
 		// Register
-		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_ice, ItemBlockEuropaIce.class);
+		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_ice, ItemBlockMultiVariant.class, new VariantsName("ice", "dirty", "dense"));
 		CommonRegisterHelper.registerBlock(EuropaBlocks.packed_europa_ice);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_snow_block);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_ice_slush);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_salt);
-		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_underwater_geyser, ItemBlockEuropaGeyser.class);
-		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_prismarine, ItemBlockEuropaPrismarine.class);
+		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_underwater_geyser, ItemBlockMultiVariant.class, new VariantsName("default", "smoke"));
+		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_prismarine, ItemBlockMultiVariant.class, new VariantsName("prismarine", "prismarine_bricks", "dark_prismarine"));
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sea_lantern);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_water_bomb);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_log, ItemBlockEuropaLog.class);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_planks);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_leaves, ItemBlockSingleLeaves.class);
-		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sponge, ItemBlockEuropaSponge.class);
+		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sponge, ItemBlockMultiVariant.class, new VariantsName("default", "wet"));
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sand);
-		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sandstone, ItemBlockEuropaSandstone.class);
+		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sandstone, ItemBlockMultiVariant.class, new VariantsName("europa_sandstone", "chiseled_europa_sandstone", "smooth_europa_sandstone"));
 		CommonRegisterHelper.registerBlock(EuropaBlocks.half_europa_sandstone_slab, ItemBlockEuropaSandstoneSlab.class, EuropaBlocks.half_europa_sandstone_slab, EuropaBlocks.double_europa_sandstone_slab);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.half_europa_prismarine_slab, ItemBlockEuropaPrismarineSlab.class, EuropaBlocks.half_europa_prismarine_slab, EuropaBlocks.double_europa_prismarine_slab);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.double_europa_sandstone_slab, ItemBlockEuropaSandstoneSlab.class, EuropaBlocks.half_europa_sandstone_slab, EuropaBlocks.double_europa_sandstone_slab);
@@ -136,8 +138,23 @@ public class EuropaBlocks
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_wood_stairs);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_fence);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_fence_gate);
-		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockEuropaSnowLayer.class);
-		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sapling, ItemBlockEuropaSapling.class);
+		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_snow_layer, ItemBlockSnowLayerMP.class, EuropaBlocks.europa_snow_layer);
+		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_sapling, ItemBlockInformation.class, new VariantsName(new ItemDescription()
+		{
+			@Override
+			public void addDescription(ItemStack itemStack, List list, boolean useLShift)
+			{
+				if (useLShift)
+				{
+					list.add(EnumChatFormatting.GRAY + "Can be placed under an Europa Ice and Packed Europa Ice");
+					list.add(EnumChatFormatting.RED + "Note : When planted under an Europa Ice it need to grow manually");
+				}
+				else
+				{
+					list.add("Press LSHIFT for more info");
+				}
+			}
+		}));
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_kelp);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_water);
 		CommonRegisterHelper.registerBlock(EuropaBlocks.europa_door_block);

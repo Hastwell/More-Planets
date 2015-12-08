@@ -12,7 +12,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
-import stevekung.mods.moreplanets.planets.diona.itemblocks.ItemBlockDiona;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DionaBlocks
@@ -45,7 +46,7 @@ public class DionaBlocks
 		DionaBlocks.green_redstone_torch_off = new BlockGreenRedstoneTorch("green_redstone_torch_off", false);
 
 		// Register
-		CommonRegisterHelper.registerBlock(DionaBlocks.diona_block, ItemBlockDiona.class);
+		CommonRegisterHelper.registerBlock(DionaBlocks.diona_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface", "rock", "cobblestone", "quontonium_ore", "fronisium_ore", "tin_ore", "copper_ore", "silicon_ore", "aluminum_ore", "quontonium_block", "fronisium_block", "smooth_quontonium", "quontonium_brick", "chiseled_quontonium", "dungeon_brick"));
 		CommonRegisterHelper.registerBlock(DionaBlocks.diona_cobblestone_stairs);
 		CommonRegisterHelper.registerBlock(DionaBlocks.quontonium_brick_stairs);
 		CommonRegisterHelper.registerBlock(DionaBlocks.chiseled_quontonium_stairs);

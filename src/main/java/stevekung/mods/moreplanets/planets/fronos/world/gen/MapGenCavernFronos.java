@@ -16,9 +16,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
-import stevekung.mods.moreplanets.common.blocks.BlockOysterMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCavernOyster;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class MapGenCavernFronos extends MapGenBaseMeta
 {
@@ -199,7 +199,7 @@ public class MapGenCavernFronos extends MapGenBaseMeta
 										{
 											int coords = (var42 * 16 + var45) * 256 + var50;
 
-											if (chunk.getBlockState(coords).getBlock() == FronosBlocks.fronos_block || chunk.getBlockState(coords) == FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, true) || chunk.getBlockState(coords) == FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false))
+											if (chunk.getBlockState(coords).getBlock() == FronosBlocks.fronos_block)
 											{
 												chunk.setBlockState(coords, Blocks.air.getDefaultState());
 											}
@@ -233,13 +233,19 @@ public class MapGenCavernFronos extends MapGenBaseMeta
 
 											if (Blocks.air.getDefaultState() == chunk.getBlockState(coords))
 											{
-												if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
+												if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block)
 												{
-													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, true).withProperty(BlockOysterMP.FACING, EnumFacing.Plane.HORIZONTAL.random(this.rand)));
+													if (this.rand.nextInt(1500) == 0)
+													{
+														chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false).withProperty(BlockStateHelper.FACING, EnumFacing.Plane.HORIZONTAL.random(this.rand)));
+													}
 												}
-												else if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block && this.rand.nextInt(200) == 0)
+												else if (chunk.getBlockState(coordsBelow).getBlock() == FronosBlocks.fronos_block)
 												{
-													chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, false).withProperty(BlockOysterMP.FACING, EnumFacing.Plane.HORIZONTAL.random(this.rand)));
+													if (this.rand.nextInt(2500) == 0)
+													{
+														chunk.setBlockState(coords, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockCavernOyster.OPEN, true).withProperty(BlockStateHelper.FACING, EnumFacing.Plane.HORIZONTAL.random(this.rand)));
+													}
 												}
 											}
 										}

@@ -90,11 +90,11 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float par6, int par7)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
-		super.dropBlockAsItemWithChance(world, pos, state, par6, par7);
+		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 
-		if (this.getItemDropped(state, world.rand, par7) != Item.getItemFromBlock(this))
+		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
 		{
 			int xp = MathHelper.getRandomIntegerInRange(world.rand, 3, 5);
 			this.dropXpOnBlockBreak(world, pos, xp);
@@ -118,29 +118,27 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 	{
 		if (!world.isRemote)
 		{
-			this.tryToFall(world, pos);
+			this.tryToFall(world, pos, state);
 		}
 	}
 
-	private void tryToFall(World world, BlockPos pos)
+	private void tryToFall(World world, BlockPos pos, IBlockState state)
 	{
-		if (canFallBelow(world, pos.down()) && pos.getY() >= 0)
+		if (this.canFallBelow(world, pos.down()) && pos.getY() >= 0)
 		{
 			world.setBlockState(pos, Blocks.air.getDefaultState(), 3);
 			BlockPos blockpos1;
 
-			for (blockpos1 = pos.down(); canFallBelow(world, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.down())
-			{
-			}
+			for (blockpos1 = pos.down(); this.canFallBelow(world, blockpos1) && blockpos1.getY() > 0; blockpos1 = blockpos1.down()) {}
 
 			if (blockpos1.getY() >= 0)
 			{
-				world.setBlockState(blockpos1.up(), this.getDefaultState(), 3);
+				world.setBlockState(blockpos1.up(), state, 3);
 			}
 		}
 	}
 
-	public static boolean canFallBelow(World world, BlockPos pos)
+	private boolean canFallBelow(World world, BlockPos pos)
 	{
 		Block block = world.getBlockState(pos).getBlock();
 
@@ -154,13 +152,12 @@ public class BlockFallenKoentusMeteor extends BlockBaseMP
 		}
 		else
 		{
-			Material material = block.getMaterial();
-			return material == Material.water ? true : material == Material.lava;
+			return block.getMaterial() == Material.water ? true : block.getMaterial() == Material.lava;
 		}
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this, 1, 0);
 	}

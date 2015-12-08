@@ -198,7 +198,7 @@ public class BlockDandelion extends BlockBushMP
 	}
 
 	@Override
-	protected boolean canPlaceBlockOn(Block ground)
+	public boolean canPlaceBlockOn(Block ground)
 	{
 		return ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
 	}

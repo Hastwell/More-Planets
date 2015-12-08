@@ -13,7 +13,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,17 +27,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockSpaceShell extends BlockBaseMP
 {
-	public static PropertyEnum COLOR = PropertyEnum.create("color", EnumDyeColor.class);
-
 	public BlockSpaceShell(String name)
 	{
 		super(Material.plants);
 		this.setUnlocalizedName(name);
 		this.setHardness(0.1F);
-		this.setDefaultState(this.getDefaultState().withProperty(COLOR, EnumDyeColor.WHITE));
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.COLOR, EnumDyeColor.WHITE));
 		this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 0.2F, 0.75F);
 	}
 
@@ -51,31 +49,31 @@ public class BlockSpaceShell extends BlockBaseMP
 	@Override
 	public int damageDropped(IBlockState state)
 	{
-		return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
+		return ((EnumDyeColor)state.getValue(BlockStateHelper.COLOR)).getMetadata();
 	}
 
 	@Override
 	public MapColor getMapColor(IBlockState state)
 	{
-		return ((EnumDyeColor)state.getValue(COLOR)).getMapColor();
+		return ((EnumDyeColor)state.getValue(BlockStateHelper.COLOR)).getMapColor();
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
+		return this.getDefaultState().withProperty(BlockStateHelper.COLOR, EnumDyeColor.byMetadata(meta));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
+		return ((EnumDyeColor)state.getValue(BlockStateHelper.COLOR)).getMetadata();
 	}
 
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] {COLOR});
+		return new BlockState(this, new IProperty[] {BlockStateHelper.COLOR});
 	}
 
 	@Override

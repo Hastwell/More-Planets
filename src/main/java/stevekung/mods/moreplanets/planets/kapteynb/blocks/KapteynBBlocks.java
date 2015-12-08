@@ -15,11 +15,10 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.planets.kapteynb.fluids.BlockFluidFrozenWater;
 import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockIcyPoisonCrystal;
-import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockKapteynB;
-import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockKapteynBIce;
-import stevekung.mods.moreplanets.planets.kapteynb.itemblocks.ItemBlockUraniumWaste;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class KapteynBBlocks
@@ -65,19 +64,19 @@ public class KapteynBBlocks
 		KapteynBBlocks.frozen_water = new BlockFluidFrozenWater("frozen_water_fluid");
 
 		// Register
-		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_block, ItemBlockKapteynB.class);
+		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_block, ItemBlockMultiVariant.class, new VariantsName("surface_ice", "sub_surface_ice", "hardened", "cracked", "namerium_ore", "frozen_iron_ore", "uranium_ore", "tin_ore", "copper_ore", "namerium_block", "frozen_iron_block", "uranium_block", "dungeon_brick"));
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_redstone_ore);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_redstone_ore_active);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.rocky_solid_water);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.frozen_water_geyser);
-		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_ice, ItemBlockKapteynBIce.class);
+		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_ice, ItemBlockMultiVariant.class, new VariantsName(true, "default", "dirty"));
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.uranium_bomb);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_treasure_chest);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_ancient_chest);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_cracked_ice_stairs);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_dungeon_brick_stairs);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.fallen_ice_crystal_meteor);
-		CommonRegisterHelper.registerBlock(KapteynBBlocks.uranium_waste, ItemBlockUraniumWaste.class);
+		CommonRegisterHelper.registerBlock(KapteynBBlocks.uranium_waste, ItemBlockMultiVariant.class, new VariantsName("active", "inactive"));
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.icy_poison_crystal, ItemBlockIcyPoisonCrystal.class);
 		CommonRegisterHelper.registerBlock(KapteynBBlocks.frozen_water);
 

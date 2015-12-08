@@ -7,14 +7,20 @@
 
 package stevekung.mods.moreplanets.common.util;
 
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
+import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.entity.EntityLiving.SpawnPlacementType;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
-import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
 
 public class EntitySpawnerUtil
 {
 	public static void init()
 	{
-		EntitySpawnPlacementRegistry.setPlacementType(EntitySpaceWolf.class, SpawnPlacementType.ON_GROUND);
+		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedCreeper.class, SpawnPlacementType.ON_GROUND);
+		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedSkeleton.class, SpawnPlacementType.ON_GROUND);
+		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedZombie.class, SpawnPlacementType.ON_GROUND);
+		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedSpider.class, SpawnPlacementType.ON_GROUND);
 	}
 }

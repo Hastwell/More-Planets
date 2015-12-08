@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.common.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -38,5 +39,11 @@ public class BlockBushMP extends BlockBush
 	public EnumWorldBlockLayer getBlockLayer()
 	{
 		return EnumWorldBlockLayer.CUTOUT;
+	}
+
+	@Override
+	public boolean canPlaceBlockOn(Block ground)
+	{
+		return super.canPlaceBlockOn(ground);
 	}
 }

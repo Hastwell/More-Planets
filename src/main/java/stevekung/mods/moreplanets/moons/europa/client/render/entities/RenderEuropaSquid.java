@@ -23,6 +23,7 @@ import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
 public class RenderEuropaSquid extends RenderLiving
 {
 	private ResourceLocation squidTextures = new ResourceLocation("moreplanets:textures/entity/europa_squid.png");
+	private ResourceLocation squidTextures1 = new ResourceLocation("moreplanets:textures/entity/europa_squid_chemical.png");
 
 	public RenderEuropaSquid(RenderManager render)
 	{
@@ -61,6 +62,15 @@ public class RenderEuropaSquid extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return this.squidTextures;
+		EntityEuropaSquid squid = (EntityEuropaSquid) entity;
+
+		switch (squid.getSquidType())
+		{
+		case 0:
+		default:
+			return this.squidTextures;
+		case 1:
+			return this.squidTextures1;
+		}
 	}
 }

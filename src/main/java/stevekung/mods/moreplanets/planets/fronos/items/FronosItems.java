@@ -113,6 +113,7 @@ public class FronosItems
 
 		// Register ore dictionary
 		OreDictionary.registerOre("blackDiamond", new ItemStack(FronosItems.fronos_item, 1, 2));
+		OreDictionary.registerOre("gemDiamond", new ItemStack(FronosItems.fronos_item, 1, 2));
 		OreDictionary.registerOre("ingotIridium", new ItemStack(FronosItems.fronos_item, 1, 3));
 		OreDictionary.registerOre("compressedBlackDiamond", new ItemStack(FronosItems.fronos_item, 1, 4));
 		OreDictionary.registerOre("compressedIridium", new ItemStack(FronosItems.fronos_item, 1, 5));

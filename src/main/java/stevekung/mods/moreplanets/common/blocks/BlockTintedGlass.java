@@ -15,7 +15,6 @@ import net.minecraft.block.BlockBeacon;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,15 +28,14 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockTintedGlass extends BlockBreakableMP implements IPartialSealableBlock
 {
-	public static PropertyEnum COLOR = PropertyEnum.create("color", EnumDyeColor.class);
-
 	public BlockTintedGlass(String name)
 	{
 		super(Material.glass);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.WHITE));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStateHelper.COLOR, EnumDyeColor.WHITE));
 		this.setHardness(0.5F);
 		this.setResistance(20.0F);
 		this.setStepSound(soundTypeGlass);
@@ -47,7 +45,7 @@ public class BlockTintedGlass extends BlockBreakableMP implements IPartialSealab
 	@Override
 	public int damageDropped(IBlockState state)
 	{
-		return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
+		return ((EnumDyeColor)state.getValue(BlockStateHelper.COLOR)).getMetadata();
 	}
 
 	@Override
@@ -67,7 +65,7 @@ public class BlockTintedGlass extends BlockBreakableMP implements IPartialSealab
 	@Override
 	public MapColor getMapColor(IBlockState state)
 	{
-		return ((EnumDyeColor)state.getValue(COLOR)).getMapColor();
+		return ((EnumDyeColor)state.getValue(BlockStateHelper.COLOR)).getMapColor();
 	}
 
 	@Override
@@ -116,19 +114,19 @@ public class BlockTintedGlass extends BlockBreakableMP implements IPartialSealab
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
+		return this.getDefaultState().withProperty(BlockStateHelper.COLOR, EnumDyeColor.byMetadata(meta));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
+		return ((EnumDyeColor)state.getValue(BlockStateHelper.COLOR)).getMetadata();
 	}
 
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] {COLOR});
+		return new BlockState(this, new IProperty[] {BlockStateHelper.COLOR});
 	}
 
 	@Override

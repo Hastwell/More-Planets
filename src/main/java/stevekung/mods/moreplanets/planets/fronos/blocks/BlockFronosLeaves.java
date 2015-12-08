@@ -26,6 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockLeavesMP;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockFronosLeaves extends BlockLeavesMP
 {
@@ -34,7 +35,7 @@ public class BlockFronosLeaves extends BlockLeavesMP
 	public BlockFronosLeaves(String name)
 	{
 		super();
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.red_maple_leaves).withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
+		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.red_maple_leaves).withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
 		this.setUnlocalizedName(name);
 	}
 
@@ -74,13 +75,13 @@ public class BlockFronosLeaves extends BlockLeavesMP
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { VARIANT, DECAYABLE, CHECK_DECAY });
+		return new BlockState(this, new IProperty[] { VARIANT, BlockStateHelper.DECAYABLE, BlockStateHelper.CHECK_DECAY });
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(VARIANT, this.getWoodType(meta)).withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+		return this.getDefaultState().withProperty(VARIANT, this.getWoodType(meta)).withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
 	}
 
 	public BlockType getWoodType(int meta)
@@ -94,11 +95,11 @@ public class BlockFronosLeaves extends BlockLeavesMP
 		byte b0 = 0;
 		int i = b0 | ((BlockType)state.getValue(VARIANT)).ordinal();
 
-		if (!((Boolean)state.getValue(DECAYABLE)).booleanValue())
+		if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
 		{
 			i |= 4;
 		}
-		if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue())
+		if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
 		{
 			i |= 8;
 		}

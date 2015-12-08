@@ -47,8 +47,8 @@ public class ComponentMartianVillageField extends ComponentMartianVillage
 	@SuppressWarnings("rawtypes")
 	public static ComponentMartianVillageField func_74900_a(ComponentMartianVillageStartPiece component, List list, Random par2Random, int x, int y, int z, EnumFacing facing, int type)
 	{
-		StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 13, 4, 9, facing);
-		return StructureComponent.findIntersecting(list, var8) == null ? new ComponentMartianVillageField(component, type, var8, facing) : null;
+		StructureBoundingBox box = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 13, 4, 9, facing);
+		return ComponentMartianVillage.canVillageGoDeeper(box) && StructureComponent.findIntersecting(list, box) == null ? new ComponentMartianVillageField(component, type, box, facing) : null;
 	}
 
 	@Override

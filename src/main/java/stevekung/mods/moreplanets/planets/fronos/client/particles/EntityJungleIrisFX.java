@@ -47,11 +47,12 @@ public class EntityJungleIrisFX extends EntityFX
 	{
 		Tessellator tessellator = Tessellator.getInstance();
 		super.func_180434_a(worldRender, entity, par2, par3, par4, par5, par6, par7);
-
 		tessellator.draw();
-		GlStateManager.pushMatrix();
-		GlStateManager.depthMask(false);
+
+		GlStateManager.depthMask(true);
 		GlStateManager.enableBlend();
+		GlStateManager.enableDepth();
+		GlStateManager.blendFunc(770, 771);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(this.texture));
 		float sizeFactor = 0.1F * this.particleScale;
 		float var13 = (float)(this.prevPosX + (this.posX - this.prevPosX) * par2 - EntityFX.interpPosX);
@@ -65,9 +66,7 @@ public class EntityJungleIrisFX extends EntityFX
 		worldRender.addVertexWithUV(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor, 1.0D, 0.0D);
 		worldRender.addVertexWithUV(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor, 0.0D, 0.0D);
 		tessellator.draw();
-		GlStateManager.disableBlend();
-		GlStateManager.depthMask(true);
-		GlStateManager.popMatrix();
+		GlStateManager.enableDepth();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.particles);
 		worldRender.startDrawingQuads();
 	}

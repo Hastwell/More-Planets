@@ -35,7 +35,7 @@ public abstract class BiomeDecoratorMP extends BiomeDecorator
 	{
 		for (int i = 0; i < amount; ++i)
 		{
-			BlockPos blockpos = this.field_180294_c.add(this.randomGenerator.nextInt(16), this.randomGenerator.nextInt(maxY) + this.randomGenerator.nextInt(maxY) + minY - maxY, this.randomGenerator.nextInt(16));
+			BlockPos blockpos = this.field_180294_c.add(this.randomGenerator.nextInt(16), this.randomGenerator.nextInt(maxY - minY) + minY, this.randomGenerator.nextInt(16));
 			worldGen.generate(this.currentWorld, this.randomGenerator, blockpos);
 		}
 	}

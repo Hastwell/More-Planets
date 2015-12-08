@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -25,17 +24,16 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockUraniumBomb extends BlockBaseMP
 {
-	public static PropertyBool EXPLODE = PropertyBool.create("explode");
-
 	public BlockUraniumBomb(String name)
 	{
 		super(Material.tnt);
 		this.setStepSound(Block.soundTypeMetal);
 		this.setHardness(0.3F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(EXPLODE, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(BlockStateHelper.EXPLODE, false));
 		this.setUnlocalizedName(name);
 	}
 
@@ -46,7 +44,7 @@ public class BlockUraniumBomb extends BlockBaseMP
 
 		if (world.isBlockPowered(pos))
 		{
-			this.onBlockDestroyedByPlayer(world, pos, state.withProperty(EXPLODE, true));
+			this.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true));
 			world.setBlockToAir(pos);
 		}
 	}
@@ -56,7 +54,7 @@ public class BlockUraniumBomb extends BlockBaseMP
 	{
 		if (world.isBlockPowered(pos))
 		{
-			this.onBlockDestroyedByPlayer(world, pos, state.withProperty(EXPLODE, true));
+			this.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true));
 			world.setBlockToAir(pos);
 		}
 	}
@@ -82,7 +80,7 @@ public class BlockUraniumBomb extends BlockBaseMP
 	{
 		if (!world.isRemote)
 		{
-			if (((Boolean)state.getValue(EXPLODE)).booleanValue())
+			if (((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue())
 			{
 				EntityUraniumBomb entitytntprimed = new EntityUraniumBomb(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, igniter);
 				world.spawnEntityInWorld(entitytntprimed);
@@ -100,7 +98,7 @@ public class BlockUraniumBomb extends BlockBaseMP
 
 			if (item == Items.flint_and_steel || item == Items.fire_charge)
 			{
-				this.explode(world, pos, state.withProperty(EXPLODE, true), player);
+				this.explode(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true), player);
 				world.setBlockToAir(pos);
 
 				if (item == Items.flint_and_steel)
@@ -126,7 +124,7 @@ public class BlockUraniumBomb extends BlockBaseMP
 
 			if (entityarrow.isBurning())
 			{
-				this.explode(world, pos, world.getBlockState(pos).withProperty(EXPLODE, true), entityarrow.shootingEntity instanceof EntityLivingBase ? (EntityLivingBase)entityarrow.shootingEntity : null);
+				this.explode(world, pos, world.getBlockState(pos).withProperty(BlockStateHelper.EXPLODE, true), entityarrow.shootingEntity instanceof EntityLivingBase ? (EntityLivingBase)entityarrow.shootingEntity : null);
 				world.setBlockToAir(pos);
 			}
 		}
@@ -141,18 +139,18 @@ public class BlockUraniumBomb extends BlockBaseMP
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(EXPLODE, Boolean.valueOf((meta & 1) > 0));
+		return this.getDefaultState().withProperty(BlockStateHelper.EXPLODE, Boolean.valueOf((meta & 1) > 0));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((Boolean)state.getValue(EXPLODE)).booleanValue() ? 1 : 0;
+		return ((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue() ? 1 : 0;
 	}
 
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] {EXPLODE});
+		return new BlockState(this, new IProperty[] {BlockStateHelper.EXPLODE});
 	}
 }

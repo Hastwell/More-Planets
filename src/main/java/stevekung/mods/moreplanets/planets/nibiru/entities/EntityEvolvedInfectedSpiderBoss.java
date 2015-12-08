@@ -26,6 +26,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -65,15 +66,11 @@ import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruTr
 
 public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntityBreathable, IBossDisplayData, IBoss, IEntityLivingPlanet
 {
-	protected long ticks = 0;
 	private TileEntityDungeonSpawner spawner;
-
 	public Entity targetEntity;
 	public int deathTicks = 0;
-
 	public int entitiesWithin;
 	public int entitiesWithinLast;
-
 	private Vector3 roomCoords;
 	private Vector3 roomSize;
 
@@ -84,12 +81,14 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.field_175455_a);
 		this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
+		this.tasks.addTask(4, new AISpiderAttack(EntityPlayer.class));
+		this.tasks.addTask(4, new AISpiderAttack(EntityIronGolem.class));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, false, true));
+		this.targetTasks.addTask(2, new AISpiderTarget(EntityPlayer.class));
+		this.targetTasks.addTask(3, new AISpiderTarget(EntityIronGolem.class));
 	}
 
 	public EntityEvolvedInfectedSpiderBoss(World world, Vector3 vec)
@@ -217,7 +216,6 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 			}
 		}
 
-		this.moveEntity(0.0D, 0.10000000149011612D, 0.0D);
 		this.renderYawOffset = this.rotationYaw += 20.0F;
 
 		if (this.deathTicks == 200 && !this.worldObj.isRemote)
@@ -293,13 +291,6 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 	@Override
 	public void onLivingUpdate()
 	{
-		if (this.ticks >= Long.MAX_VALUE)
-		{
-			this.ticks = 1;
-		}
-
-		this.ticks++;
-
 		if (!this.worldObj.isRemote && this.getHealth() <= 150.0F * ConfigManagerCore.dungeonBossHealthMod / 2)
 		{
 			this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
@@ -307,17 +298,12 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 
 		EntityPlayer player = this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 20.0);
 
-		if (player != null && !player.equals(this.targetEntity))
+		if (player != null && !player.capabilities.isCreativeMode)
 		{
 			if (this.getDistanceSqToEntity(player) < 400.0D)
 			{
 				this.getNavigator().getPathToEntityLiving(player);
-				this.targetEntity = player;
 			}
-		}
-		else
-		{
-			this.targetEntity = null;
 		}
 
 		if (this.roomCoords != null && this.roomSize != null)
@@ -529,5 +515,39 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
 	public EnumDimensionType canLivingInDimension()
 	{
 		return EnumDimensionType.NIBIRU;
+	}
+
+	class AISpiderAttack extends EntityAIAttackOnCollide
+	{
+		public AISpiderAttack(Class clazz)
+		{
+			super(EntityEvolvedInfectedSpiderBoss.this, clazz, 1.0D, true);
+		}
+
+		@Override
+		public boolean continueExecuting()
+		{
+			return super.continueExecuting();
+		}
+
+		@Override
+		protected double func_179512_a(EntityLivingBase living)
+		{
+			return 4.0F + living.width;
+		}
+	}
+
+	class AISpiderTarget extends EntityAINearestAttackableTarget
+	{
+		public AISpiderTarget(Class clazz)
+		{
+			super(EntityEvolvedInfectedSpiderBoss.this, clazz, true);
+		}
+
+		@Override
+		public boolean shouldExecute()
+		{
+			return super.shouldExecute();
+		}
 	}
 }

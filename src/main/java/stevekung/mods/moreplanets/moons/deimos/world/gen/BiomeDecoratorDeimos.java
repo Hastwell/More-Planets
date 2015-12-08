@@ -25,10 +25,10 @@ public class BiomeDecoratorDeimos extends BiomeDecoratorMP
 	public BiomeDecoratorDeimos()
 	{
 		this.dirtGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 32, 1, true, DeimosBlocks.deimos_block, 2);
-		this.deshGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 7, true, DeimosBlocks.deimos_block, 2);
-		this.ironGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 6, true, DeimosBlocks.deimos_block, 2);
-		this.tinGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 4, true, DeimosBlocks.deimos_block, 2);
-		this.copperGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 8, 5, true, DeimosBlocks.deimos_block, 2);
+		this.deshGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 6, 7, true, DeimosBlocks.deimos_block, 2);
+		this.ironGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 7, 6, true, DeimosBlocks.deimos_block, 2);
+		this.tinGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 7, 4, true, DeimosBlocks.deimos_block, 2);
+		this.copperGen = new WorldGenMinableMeta(DeimosBlocks.deimos_block, 7, 5, true, DeimosBlocks.deimos_block, 2);
 		this.chondriteGen = new WorldGenMinableMeta(MPBlocks.chondrite_rock, 32, 0, true, DeimosBlocks.deimos_block, 2);
 	}
 
@@ -36,10 +36,10 @@ public class BiomeDecoratorDeimos extends BiomeDecoratorMP
 	protected void generateOres()
 	{
 		this.generateOre(20, this.ironGen, 0, 64);
-		this.generateOre(14, this.chondriteGen, 0, 128);
-		this.generateOre(20, this.tinGen, 0, 64);
-		this.generateOre(20, this.copperGen, 0, 64);
-		this.generateOre(16, this.deshGen, 16, 48);
-		this.generateOre(10, this.dirtGen, 0, 256);
+		this.generateOre(16, this.chondriteGen, 0, 256);
+		this.generateOre(22, this.tinGen, 0, 60);
+		this.generateOre(24, this.copperGen, 0, 75);
+		this.generateOre(16, this.deshGen, 20, 64);
+		this.generateOre(20, this.dirtGen, 0, 256);
 	}
 }

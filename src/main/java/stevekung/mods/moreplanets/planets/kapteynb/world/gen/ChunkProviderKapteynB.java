@@ -33,7 +33,7 @@ public class ChunkProviderKapteynB extends ChunkProviderBaseMP
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseKapteynB.kapteynB };
 	private MapGenCavesMP caveGenerator = new MapGenCavesMP(KapteynBBlocks.kapteyn_b_block, this.getBlockMetadata());
 
-	private MapGenDungeon dungeonGenerator = new MapGenDungeon(KapteynBBlocks.kapteyn_b_block, 14, 8, 24, 4);
+	private MapGenDungeon dungeonGenerator = new MapGenDungeon(KapteynBBlocks.kapteyn_b_block, 12, 8, 24, 4);
 	{
 		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
 		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));

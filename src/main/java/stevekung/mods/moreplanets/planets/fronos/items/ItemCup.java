@@ -22,13 +22,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.blocks.BlockOysterMP;
 import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCavernOyster;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCup;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockSpaceOyster;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class ItemCup extends ItemFoodMP
 {
@@ -245,7 +244,7 @@ public class ItemCup extends ItemFoodMP
 				{
 					if (world.rand.nextInt(3) == 0)
 					{
-						world.setBlockState(pos, FronosBlocks.space_oyster.getDefaultState().withProperty(BlockOysterMP.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockOysterMP.FACING)).getIndex())).withProperty(BlockSpaceOyster.OPEN, true), 3);
+						world.setBlockState(pos, FronosBlocks.space_oyster.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(BlockSpaceOyster.OPEN, true), 3);
 					}
 					--itemStack.stackSize;
 					player.dropPlayerItemWithRandomChoice(new ItemStack(this, 1, 0), false);
@@ -269,7 +268,7 @@ public class ItemCup extends ItemFoodMP
 				{
 					if (world.rand.nextInt(5) == 0)
 					{
-						world.setBlockState(pos, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockOysterMP.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockOysterMP.FACING)).getIndex())).withProperty(BlockCavernOyster.OPEN, true), 3);
+						world.setBlockState(pos, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(BlockCavernOyster.OPEN, true), 3);
 					}
 					--itemStack.stackSize;
 					player.dropPlayerItemWithRandomChoice(new ItemStack(this, 1, 0), false);
@@ -334,7 +333,7 @@ public class ItemCup extends ItemFoodMP
 			}
 			if (world.canBlockBePlaced(cup, pos, false, side, (Entity)null, itemStack))
 			{
-				world.setBlockState(pos, cup.getDefaultState().withProperty(BlockCup.FACING, enumfacing), 3);
+				world.setBlockState(pos, cup.getDefaultState().withProperty(BlockStateHelper.FACING, enumfacing), 3);
 				world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, cup.stepSound.getPlaceSound(), (cup.stepSound.getVolume() + 1.0F) / 2.0F, cup.stepSound.getFrequency() * 0.8F);
 				--itemStack.stackSize;
 				return true;

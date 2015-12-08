@@ -147,7 +147,7 @@ public class BlockFronosDoubleTallgrass extends BlockBushMP implements IShearabl
 	}
 
 	@Override
-	protected boolean canPlaceBlockOn(Block ground)
+	public boolean canPlaceBlockOn(Block ground)
 	{
 		return ground == FronosBlocks.fronos_grass || ground == FronosBlocks.pink_grass || ground == FronosBlocks.purple_grass || ground == FronosBlocks.plains_grass || ground == FronosBlocks.golden_grass || ground == FronosBlocks.fronos_dirt;
 	}

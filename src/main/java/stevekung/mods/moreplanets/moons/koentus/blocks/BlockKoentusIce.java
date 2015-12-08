@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -34,6 +35,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockIceMP;
 import stevekung.mods.moreplanets.common.util.WorldUtilMP;
+import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
+import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
 
 public class BlockKoentusIce extends BlockIceMP
 {
@@ -75,7 +78,7 @@ public class BlockKoentusIce extends BlockIceMP
 
 			for (ItemStack is : items)
 			{
-				spawnAsEntity(world, pos, is);
+				Block.spawnAsEntity(world, pos, is);
 			}
 		}
 		else
@@ -85,7 +88,7 @@ public class BlockKoentusIce extends BlockIceMP
 				world.setBlockToAir(pos);
 				return;
 			}
-			else if (WorldUtilMP.isMercuryWorld(world, pos))
+			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
 			{
 				world.setBlockToAir(pos);
 				return;
@@ -107,7 +110,7 @@ public class BlockKoentusIce extends BlockIceMP
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11 - this.getLightOpacity() && this.getMetaFromState(state) != 1)
+		if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11 - this.getLightOpacity() && this.getMetaFromState(state) == 0 && !WorldUtilMP.isSpaceWorld(world, new WorldProviderKoentus()))
 		{
 			if (world.provider.doesWaterVaporize())
 			{
@@ -117,7 +120,7 @@ public class BlockKoentusIce extends BlockIceMP
 			this.dropBlockAsItem(world, pos, state, 0);
 			world.setBlockState(pos, Blocks.water.getDefaultState());
 		}
-		if (WorldUtilMP.isMercuryWorld(world, pos))
+		if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
 		{
 			world.setBlockToAir(pos);
 			return;
@@ -127,11 +130,7 @@ public class BlockKoentusIce extends BlockIceMP
 	@Override
 	public int getLightValue(IBlockAccess world, BlockPos pos)
 	{
-		if (world.getBlockState(pos) == world.getBlockState(pos).withProperty(VARIANT, BlockType.glowing_koentus_ice))
-		{
-			return 15;
-		}
-		return 0;
+		return this.getMetaFromState(world.getBlockState(pos)) == 1 ? 15 : 0;
 	}
 
 	@Override

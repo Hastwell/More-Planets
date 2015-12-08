@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.planets.siriusb.world.gen;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
@@ -30,7 +29,6 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusBlaze;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusCreeper;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusMagmaCube;
-import stevekung.mods.moreplanets.planets.siriusb.world.gen.blazepit.MapGenSiriusBlazePit;
 import stevekung.mods.moreplanets.planets.siriusb.world.gen.dungeon.RoomBossSiriusB;
 import stevekung.mods.moreplanets.planets.siriusb.world.gen.dungeon.RoomChestsSiriusB;
 import stevekung.mods.moreplanets.planets.siriusb.world.gen.dungeon.RoomSpawnerSiriusB;
@@ -39,7 +37,6 @@ import stevekung.mods.moreplanets.planets.siriusb.world.gen.dungeon.RoomTreasure
 public class ChunkProviderSiriusB extends ChunkProviderBaseMP
 {
 	public BiomeDecoratorSiriusB biomeDecorator = new BiomeDecoratorSiriusB();
-	private MapGenSiriusBlazePit blazePit = new MapGenSiriusBlazePit();
 	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseSiriusB.siriusB };
 	private MapGenCavesMP caveGenerator = new MapGenCavesMP(SiriusBBlocks.sirius_b_block, this.getBlockMetadata());
 
@@ -74,9 +71,8 @@ public class ChunkProviderSiriusB extends ChunkProviderBaseMP
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
 		this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
-		this.blazePit.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
 		this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-		Chunk chunk = new Chunk(this.worldObj, chunkX, chunkZ);
+		Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
 		chunk.generateSkylightMap();
 		return chunk;
 	}
@@ -94,7 +90,6 @@ public class ChunkProviderSiriusB extends ChunkProviderBaseMP
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
 		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
 		this.dungeonGenerator.handleTileEntities(this.rand);
-		this.blazePit.generateStructuresInChunk(this.worldObj, new Random(), chunkX, chunkZ);
 		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseSiriusB.siriusB, pos);
 
 		//Spot Gen
@@ -102,10 +97,10 @@ public class ChunkProviderSiriusB extends ChunkProviderBaseMP
 		{
 			if (this.rand.nextInt(5) == 0)
 			{
-				int x2 = x + this.rand.nextInt(16) + 8;
-				int y2 = this.rand.nextInt(128 - 32) + 32;
-				int z2 = z + this.rand.nextInt(16) + 8;
-				new WorldGenSplashBlock(SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_spot), SiriusBBlocks.sirius_b_block.getDefaultState()).generate(this.worldObj, this.rand, pos.add(x2, y2, z2));
+				int x1 = x + this.rand.nextInt(16) + 8;
+				int y1 = this.rand.nextInt(128 - 32) + 32;
+				int z1 = z + this.rand.nextInt(16) + 8;
+				new WorldGenSplashBlock(SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_spot), SiriusBBlocks.sirius_b_block.getDefaultState()).generate(this.worldObj, this.rand, pos.add(x1, y1, z1));
 			}
 		}
 		BlockFalling.fallInstantly = false;

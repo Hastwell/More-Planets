@@ -32,7 +32,7 @@ public class WorldProviderPolongnius extends WorldProviderMP implements IMeteorT
 	@Override
 	public Vector3 getSkyColor()
 	{
-		float f = 0.6F - this.getStarBrightness(1.0F);
+		float f = 0.8F - this.getStarBrightness(1.0F);
 		return new Vector3(255 / 255F * f, 223 / 255F * f, 128 / 255F * f);
 	}
 

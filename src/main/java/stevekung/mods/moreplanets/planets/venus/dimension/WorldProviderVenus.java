@@ -71,7 +71,7 @@ public class WorldProviderVenus extends WorldProviderMP implements ILightningSto
 		{
 			f2 = 0.7F;
 		}
-		return f2 * f2 * 0.75F;
+		return f2 * f2 * 0.5F + 0.3F;
 	}
 
 	@Override

@@ -12,7 +12,6 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,17 +24,16 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public abstract class BlockCakeMP extends BlockBaseMP
 {
-	public static PropertyInteger BITES = PropertyInteger.create("bites", 0, 6);
-
 	public BlockCakeMP()
 	{
 		super(Material.cake);
 		this.setTickRandomly(true);
 		this.setHardness(0.5F);
-		this.setDefaultState(this.getDefaultState().withProperty(BITES, 0));
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.BITES, 0));
 		this.setStepSound(soundTypeCloth);
 	}
 
@@ -43,7 +41,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
 	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
 	{
 		float f1 = 0.0625F;
-		float f2 = (1 + ((Integer)world.getBlockState(pos).getValue(BITES)).intValue() * 2) / 16.0F;
+		float f2 = (1 + ((Integer)world.getBlockState(pos).getValue(BlockStateHelper.BITES)).intValue() * 2) / 16.0F;
 		float f3 = 0.5F;
 		this.setBlockBounds(f2, 0.0F, f1, 1.0F - f1, f3, 1.0F - f1);
 	}
@@ -60,7 +58,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
 	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
 	{
 		float f1 = 0.0625F;
-		float f2 = (1 + ((Integer)state.getValue(BITES)).intValue() * 2) / 16.0F;
+		float f2 = (1 + ((Integer)state.getValue(BlockStateHelper.BITES)).intValue() * 2) / 16.0F;
 		float f3 = 0.5F;
 		return new AxisAlignedBB(pos.getX() + f2, pos.getY(), pos.getZ() + f1, pos.getX() + 1 - f1, pos.getY() + f3, pos.getZ() + 1 - f1);
 	}
@@ -104,11 +102,11 @@ public abstract class BlockCakeMP extends BlockBaseMP
 		}
 
 		player.getFoodStats().addStats(this.getFoodAmount(), this.getSaturationAmount());
-		int i = ((Integer)state.getValue(BITES)).intValue();
+		int i = ((Integer)state.getValue(BlockStateHelper.BITES)).intValue();
 
 		if (i < 6)
 		{
-			world.setBlockState(pos, state.withProperty(BITES, i + 1), 3);
+			world.setBlockState(pos, state.withProperty(BlockStateHelper.BITES, i + 1), 3);
 		}
 		else
 		{
@@ -167,25 +165,25 @@ public abstract class BlockCakeMP extends BlockBaseMP
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(BITES, meta);
+		return this.getDefaultState().withProperty(BlockStateHelper.BITES, meta);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((Integer)state.getValue(BITES)).intValue();
+		return ((Integer)state.getValue(BlockStateHelper.BITES)).intValue();
 	}
 
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { BITES });
+		return new BlockState(this, new IProperty[] { BlockStateHelper.BITES });
 	}
 
 	@Override
 	public int getComparatorInputOverride(World world, BlockPos pos)
 	{
-		return (7 - ((Integer)world.getBlockState(pos).getValue(BITES)).intValue()) * 2;
+		return (7 - ((Integer)world.getBlockState(pos).getValue(BlockStateHelper.BITES)).intValue()) * 2;
 	}
 
 	@Override

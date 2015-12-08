@@ -25,14 +25,14 @@ public class WorldProviderKapteynB extends WorldProviderMP implements IMeteorTyp
 	@Override
 	public Vector3 getFogColor()
 	{
-		float f = 1.1F - this.getStarBrightness(1.0F);
+		float f = 0.85F - this.getStarBrightness(1.0F);
 		return new Vector3(135F / 255F * f, 145F / 255F * f, 170F / 255F * f);
 	}
 
 	@Override
 	public Vector3 getSkyColor()
 	{
-		float f = 1.1F - this.getStarBrightness(1.0F);
+		float f = 0.95F - this.getStarBrightness(1.0F);
 		return new Vector3(172 / 255F * f, 193 / 255F * f, 210 / 255F * f);
 	}
 
@@ -77,7 +77,7 @@ public class WorldProviderKapteynB extends WorldProviderMP implements IMeteorTyp
 	public float getSunBrightness(float bright)
 	{
 		float f1 = this.worldObj.getCelestialAngle(1.0F);
-		float f2 = -0.55F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
+		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
 
 		if (f2 < 0.0F)
 		{
@@ -85,9 +85,9 @@ public class WorldProviderKapteynB extends WorldProviderMP implements IMeteorTyp
 		}
 		if (f2 > 1.0F)
 		{
-			f2 = 1.05F;
+			f2 = 1.0F;
 		}
-		f2 = 1.0F - f2;
+		f2 = 0.95F - f2;
 		return f2 * 1.0F;
 	}
 

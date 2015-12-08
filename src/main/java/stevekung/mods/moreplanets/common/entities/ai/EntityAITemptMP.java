@@ -24,8 +24,7 @@ public class EntityAITemptMP extends EntityAIBase
 	private double field_75279_g;
 	private EntityPlayer temptingPlayer;
 	private int delayTemptCounter;
-	private boolean isRunning;
-	private ItemStack temptItem;
+	private ItemStack itemStack;
 	private boolean scaredByPlayerMovement;
 	private boolean field_75286_m;
 
@@ -33,7 +32,7 @@ public class EntityAITemptMP extends EntityAIBase
 	{
 		this.temptedEntity = entity;
 		this.speed = speed;
-		this.temptItem = itemStack;
+		this.itemStack = itemStack;
 		this.scaredByPlayerMovement = scared;
 		this.setMutexBits(3);
 
@@ -61,8 +60,8 @@ public class EntityAITemptMP extends EntityAIBase
 			}
 			else
 			{
-				ItemStack itemstack = this.temptingPlayer.getCurrentEquippedItem();
-				return itemstack == null ? false : itemstack == this.temptItem;
+				ItemStack itemStack = this.temptingPlayer.getCurrentEquippedItem();
+				return itemStack == null ? false : itemStack.getItem() == this.itemStack.getItem() && itemStack.getItemDamage() == this.itemStack.getItemDamage();
 			}
 		}
 	}
@@ -101,7 +100,6 @@ public class EntityAITemptMP extends EntityAIBase
 		this.targetX = this.temptingPlayer.posX;
 		this.targetY = this.temptingPlayer.posY;
 		this.targetZ = this.temptingPlayer.posZ;
-		this.isRunning = true;
 		this.field_75286_m = ((PathNavigateGround)this.temptedEntity.getNavigator()).func_179689_e();
 		((PathNavigateGround)this.temptedEntity.getNavigator()).func_179690_a(false);
 	}
@@ -112,7 +110,6 @@ public class EntityAITemptMP extends EntityAIBase
 		this.temptingPlayer = null;
 		this.temptedEntity.getNavigator().clearPathEntity();
 		this.delayTemptCounter = 100;
-		this.isRunning = false;
 		((PathNavigateGround)this.temptedEntity.getNavigator()).func_179690_a(this.field_75286_m);
 	}
 
@@ -129,10 +126,5 @@ public class EntityAITemptMP extends EntityAIBase
 		{
 			this.temptedEntity.getNavigator().tryMoveToEntityLiving(this.temptingPlayer, this.speed);
 		}
-	}
-
-	public boolean isRunning()
-	{
-		return this.isRunning;
 	}
 }

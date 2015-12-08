@@ -60,7 +60,7 @@ public class BlockPolongnius extends BlockPlanetTileMP
 	{
 		if (state == state.withProperty(VARIANT, BlockType.cheese_gas))
 		{
-			float f = 0.25F;
+			float f = 0.13F;
 			return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
 		}
 		if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))

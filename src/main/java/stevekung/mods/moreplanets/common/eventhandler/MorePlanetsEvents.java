@@ -110,6 +110,7 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.items.ItemCandyBow;
+import stevekung.mods.moreplanets.planets.fronos.items.tools.FronosToolsItems;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
@@ -213,6 +214,10 @@ public class MorePlanetsEvents
 		if (event.celestialBody == MPPlanets.darkAsteroids)
 		{
 			this.renderRing(event, event.celestialBody, 0.1F, 0.1F, 0.1F, 1.0F, 0.5F);
+		}
+		else if (event.celestialBody == MPPlanets.siriusB)
+		{
+			event.setCanceled(true);
 		}
 	}
 
@@ -335,6 +340,7 @@ public class MorePlanetsEvents
 	}
 
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void onRenderPlanet(CelestialBodyRenderEvent.Post event)
 	{
 		Minecraft mc = Minecraft.getMinecraft();
@@ -399,6 +405,10 @@ public class MorePlanetsEvents
 		if (item == DionaItems.laser_gun)
 		{
 			event.player.triggerAchievement(AchievementsMP.laserGun);
+		}
+		if (item == FronosToolsItems.fronos_rock_pickaxe)
+		{
+			event.player.triggerAchievement(AchievementList.buildBetterPickaxe);
 		}
 	}
 
@@ -952,7 +962,7 @@ public class MorePlanetsEvents
 		}
 	}
 
-	//Credit to AmunRa mod :) (Why Galacticraft can do this without map pos? -.-)
+	// Credit to AmunRa mod :) (Why Galacticraft can do this without map pos? -.-)
 	private void renderRing(CelestialRingRenderEvent.Pre event, CelestialBody celestial, float r, float g, float b, float outerAlpha, float innerAlpha)
 	{
 		Vector3f mapPos = event.parentOffset;

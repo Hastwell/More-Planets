@@ -31,6 +31,7 @@ import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockOysterMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockSpaceOyster extends BlockOysterMP
 {
@@ -39,7 +40,7 @@ public class BlockSpaceOyster extends BlockOysterMP
 	public BlockSpaceOyster(String name)
 	{
 		super();
-		this.setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, false));
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH).withProperty(OPEN, false));
 		this.setUnlocalizedName(name);
 	}
 
@@ -52,8 +53,6 @@ public class BlockSpaceOyster extends BlockOysterMP
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
 	{
-		super.updateTick(world, pos, state, rand);
-
 		if (!world.isRemote)
 		{
 			if (state == state.withProperty(OPEN, false))
@@ -62,11 +61,11 @@ public class BlockSpaceOyster extends BlockOysterMP
 				{
 					if (world.rand.nextInt(10) == 0)
 					{
-						world.setBlockState(pos, this.getDefaultState().withProperty(FACING, EnumFacing.getFront(((EnumFacing)state.getValue(FACING)).getIndex())).withProperty(OPEN, true), 3);
+						world.setBlockState(pos, this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(OPEN, true), 3);
 					}
-					if (world.getBlockState(pos.down()) == Blocks.sand || world.getBlockState(pos.down()) == FronosBlocks.fronos_sand.getDefaultState().withProperty(BlockFronosSand.VARIANT, BlockFronosSand.BlockType.white_sand))
+					if (world.getBlockState(pos.down()) == Blocks.sand || world.getBlockState(pos.down()) == FronosBlocks.golden_grass || world.getBlockState(pos.down()) == FronosBlocks.fronos_sand.getDefaultState().withProperty(BlockFronosSand.VARIANT, BlockFronosSand.BlockType.white_sand))
 					{
-						world.setBlockState(pos, this.getDefaultState().withProperty(FACING, EnumFacing.getFront(((EnumFacing)state.getValue(FACING)).getIndex())).withProperty(OPEN, true), 3);
+						world.setBlockState(pos, this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(OPEN, true), 3);
 					}
 				}
 			}
@@ -91,7 +90,7 @@ public class BlockSpaceOyster extends BlockOysterMP
 	{
 		if (state == state.withProperty(OPEN, true))
 		{
-			world.setBlockState(pos, this.getDefaultState().withProperty(FACING, EnumFacing.getFront(((EnumFacing)state.getValue(FACING)).getIndex())).withProperty(OPEN, false), 3);
+			world.setBlockState(pos, this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(OPEN, false), 3);
 			EntityItem entityitem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(FronosItems.pearl, 1, 0));
 
 			if (!world.isRemote && world.rand.nextInt(20) == 0)
@@ -127,7 +126,7 @@ public class BlockSpaceOyster extends BlockOysterMP
 	}
 
 	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(this, 1, 0);
 	}
@@ -135,14 +134,14 @@ public class BlockSpaceOyster extends BlockOysterMP
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
 	{
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+		return this.getDefaultState().withProperty(BlockStateHelper.FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
 		byte b0 = 0;
-		int i = b0 | ((EnumFacing)state.getValue(FACING)).getOpposite().getIndex();
+		int i = b0 | ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getOpposite().getIndex();
 
 		if (!((Boolean)state.getValue(OPEN)).booleanValue())
 		{
@@ -154,12 +153,12 @@ public class BlockSpaceOyster extends BlockOysterMP
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { FACING, OPEN });
+		return new BlockState(this, new IProperty[] { BlockStateHelper.FACING, OPEN });
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta)).withProperty(OPEN, (meta & 8) != 8);
+		return this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getHorizontal(meta)).withProperty(OPEN, (meta & 8) != 8);
 	}
 }

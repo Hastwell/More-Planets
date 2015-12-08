@@ -117,27 +117,22 @@ public class MapGenCavesMP extends MapGenBase
 					{
 						k3 = 0;
 					}
-
 					if (l1 > 16)
 					{
 						l1 = 16;
 					}
-
 					if (l3 < 1)
 					{
 						l3 = 1;
 					}
-
 					if (i2 > 248)
 					{
 						i2 = 248;
 					}
-
 					if (i4 < 0)
 					{
 						i4 = 0;
 					}
-
 					if (j2 > 16)
 					{
 						j2 = 16;
@@ -184,7 +179,7 @@ public class MapGenCavesMP extends MapGenBase
 										{
 											IBlockState state = chunk.getBlockState(k2, j3, j4);
 
-											if (state.getBlock() == this.block && (this.block.getMetaFromState(state) == this.meta[1] || this.block.getMetaFromState(state) == this.meta[2]))
+											if (state.getBlock() == this.block && this.block.getMetaFromState(state) == this.meta[1] || state.getBlock() == this.block && this.block.getMetaFromState(state) == this.meta[2])
 											{
 												if (j3 < 10)
 												{

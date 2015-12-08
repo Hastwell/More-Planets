@@ -30,18 +30,18 @@ public abstract class ComponentFronosVillage extends StructureComponent
 	static
 	{
 		MapGenStructureIO.registerStructure(StructureFronosVillageStart.class, "FronosVillage");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageHouse.class, "FronosHouse");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageField.class, "FronosField1");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageField2.class, "FronosField2");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageField3.class, "FronosField3");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageTorch.class, "FronosTorch");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageHall.class, "FronosHall");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageHouse4.class, "FronosHouse4");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageHut.class, "FronosHut");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageRoadPiece.class, "FronosRoadPiece");
-		MapGenStructureIO.registerStructure(ComponentFronosVillagePathGen.class, "FronosPath");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageHouse3.class, "FronosHouse3");
-		MapGenStructureIO.registerStructure(ComponentFronosVillageStartPiece.class, "FronosWell");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageHouse.class, "FronosHouse");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageField.class, "FronosField1");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageField2.class, "FronosField2");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageField3.class, "FronosField3");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageTorch.class, "FronosTorch");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageHall.class, "FronosHall");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageHouse4.class, "FronosHouse4");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageHut.class, "FronosHut");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageRoadPiece.class, "FronosRoadPiece");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillagePathGen.class, "FronosPath");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageHouse3.class, "FronosHouse3");
+		MapGenStructureIO.registerStructureComponent(ComponentFronosVillageStartPiece.class, "FronosWell");
 	}
 
 	protected ComponentFronosVillage(ComponentFronosVillageStartPiece component, int type)

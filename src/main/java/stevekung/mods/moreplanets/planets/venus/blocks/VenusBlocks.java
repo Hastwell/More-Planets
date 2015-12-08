@@ -13,8 +13,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
-import stevekung.mods.moreplanets.planets.venus.itemblocks.ItemBlockVenus;
-import stevekung.mods.moreplanets.planets.venus.itemblocks.ItemBlockVenusSandstone;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.planets.venus.itemblocks.ItemBlockVenusSandstoneSlab;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -52,13 +52,13 @@ public class VenusBlocks
 		VenusBlocks.venus_sandstone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "venus_sandstone_stairs", 0.8F);
 
 		// Register
-		CommonRegisterHelper.registerBlock(VenusBlocks.venus_block, ItemBlockVenus.class);
+		CommonRegisterHelper.registerBlock(VenusBlocks.venus_block, ItemBlockMultiVariant.class, new VariantsName("surface", "sub_surface", "rock", "cobblestone", "sulfur_ore", "lead_ore", "tin_ore", "copper_ore", "coal_ore", "iron_ore", "gold_ore", "lead_block", "stone_brick", "cracked_stone_brick", "dungeon_brick"));
 		CommonRegisterHelper.registerBlock(VenusBlocks.venus_redstone_ore);
 		CommonRegisterHelper.registerBlock(VenusBlocks.venus_redstone_ore_active);
 		CommonRegisterHelper.registerBlock(VenusBlocks.venus_smoke_geyser);
 		CommonRegisterHelper.registerBlock(VenusBlocks.venus_magma_rock);
 		CommonRegisterHelper.registerBlock(VenusBlocks.venus_sand);
-		CommonRegisterHelper.registerBlock(VenusBlocks.venus_sandstone, ItemBlockVenusSandstone.class);
+		CommonRegisterHelper.registerBlock(VenusBlocks.venus_sandstone, ItemBlockMultiVariant.class, new VariantsName("venus_sandstone", "chiseled_venus_sandstone", "smooth_venus_sandstone"));
 		CommonRegisterHelper.registerBlock(VenusBlocks.half_venus_sandstone_slab, ItemBlockVenusSandstoneSlab.class, VenusBlocks.half_venus_sandstone_slab, VenusBlocks.double_venus_sandstone_slab);
 		CommonRegisterHelper.registerBlock(VenusBlocks.double_venus_sandstone_slab, ItemBlockVenusSandstoneSlab.class, VenusBlocks.half_venus_sandstone_slab, VenusBlocks.double_venus_sandstone_slab);
 		CommonRegisterHelper.registerBlock(VenusBlocks.venus_sandstone_stairs);

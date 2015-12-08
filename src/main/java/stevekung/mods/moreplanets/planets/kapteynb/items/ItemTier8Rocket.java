@@ -128,17 +128,17 @@ public class ItemTier8Rocket extends ItemMorePlanets implements IHoldableItem
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
 	{
 		for (int i = 0; i < EnumRocketType.values().length; i++)
 		{
-			par3List.add(new ItemStack(par1, 1, i));
+			list.add(new ItemStack(this, 1, i));
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
 	{
 		EnumRocketType type = EnumRocketType.values()[itemStack.getItemDamage()];
 
@@ -148,7 +148,7 @@ public class ItemTier8Rocket extends ItemMorePlanets implements IHoldableItem
 		}
 		if (type.getPreFueled())
 		{
-			list.add(EnumChatFormatting.RED + "\u00a7o" + GCCoreUtil.translate("gui.creativeOnly.desc"));
+			list.add(EnumChatFormatting.RED + "" + EnumChatFormatting.ITALIC + GCCoreUtil.translate("gui.creativeOnly.desc"));
 		}
 		if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
 		{

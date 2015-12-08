@@ -7,10 +7,13 @@
 
 package stevekung.mods.moreplanets.moons.koentus.blocks;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.blocks.BlockDoorMP;
@@ -19,12 +22,12 @@ import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockColoredMP;
-import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDirtMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockInformation;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockSingleLeaves;
+import stevekung.mods.moreplanets.common.util.ItemDescription;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockCrystalLog;
-import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockKoentus;
-import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockKoentusIce;
-import stevekung.mods.moreplanets.moons.koentus.itemblocks.ItemBlockKoentusMeteor;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class KoentusBlocks
@@ -81,12 +84,12 @@ public class KoentusBlocks
 		KoentusBlocks.crystal_cocoa = new BlockCrystalCocoa("crystal_cocoa_block");
 
 		// Register
-		CommonRegisterHelper.registerBlock(KoentusBlocks.koentus_block, ItemBlockKoentus.class);
-		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_dirt, ItemBlockDirtMP.class);
+		CommonRegisterHelper.registerBlock(KoentusBlocks.koentus_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "white_crystal_ore", "emp_crystal_ore", "bacterial_fossil_ore", "white_crystal_block", "emp_crystal_block", "solid_meteoric_iron", "ancient_stone", "ancient_stone_brick", "dungeon_brick"));
+		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_dirt, ItemBlockMultiVariant.class, new VariantsName("dirt", "coarse"));
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_log, ItemBlockCrystalLog.class);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_planks);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_leaves, ItemBlockSingleLeaves.class);
-		CommonRegisterHelper.registerBlock(KoentusBlocks.koentus_ice, ItemBlockKoentusIce.class);
+		CommonRegisterHelper.registerBlock(KoentusBlocks.koentus_ice, ItemBlockMultiVariant.class, new VariantsName(true, "default", "glowing"));
 		CommonRegisterHelper.registerBlock(KoentusBlocks.glowing_ice_stone, ItemBlockColoredMP.class);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_wood_stairs);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.koentus_cobblestone_stairs);
@@ -98,7 +101,22 @@ public class KoentusBlocks
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_fence_gate);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_farmland);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.eledos_egg);
-		CommonRegisterHelper.registerBlock(KoentusBlocks.fallen_koentus_meteor, ItemBlockKoentusMeteor.class);
+		CommonRegisterHelper.registerBlock(KoentusBlocks.fallen_koentus_meteor, ItemBlockInformation.class, new VariantsName(new ItemDescription()
+		{
+			@Override
+			public void addDescription(ItemStack itemStack, List list, boolean useLShift)
+			{
+				if (useLShift)
+				{
+					list.add("Can be found in the Diona");
+					list.add(EnumChatFormatting.DARK_RED + "Not in the Koentus!");
+				}
+				else
+				{
+					list.add("Press LSHIFT for more info");
+				}
+			}
+		}));
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_segment);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.white_crystal_torch);
 		CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_sapling);

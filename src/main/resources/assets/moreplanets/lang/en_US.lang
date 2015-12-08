@@ -452,6 +452,7 @@ tile.fronos_double_tallgrass.pink.name=Double Pink Tallgrass
 tile.fronos_double_tallgrass.purple.name=Double Purple Tallgrass
 tile.fronos_double_tallgrass.plains.name=Double Plains Tallgrass
 tile.fronos_double_tallgrass.golden.name=Double Golden Tallgrass
+tile.sky_mushroom_block.name=Sky Mushroom
 
 #########Kapteyn B Block#########
 tile.kapteyn_b_block.surface_ice.name=Kapteyn B Surface Ice
@@ -1194,6 +1195,7 @@ entity.MorePlanets.EuropaGuardian.name=Europa Guardian
 entity.MorePlanets.EuropaCrab.name=Europa Crab
 entity.MorePlanets.JellySlimePet.name=Jelly Slime Pet
 entity.MorePlanets.EvolvedWitch.name=Evolved Witch
+entity.MorePlanets.MilkCow.name=Milk Cow
 
 # DESCRIPTION
 desc.tier4.name=Tier 4
@@ -1209,9 +1211,6 @@ desc.decompose.name=Decompose
 tile.cheese_of_milk_cake.desc=Cheese of Milk Blocks are created from cheese of milk of the Polongnius, place-able and editble.
 tile.ultra_violet_solar_panel.desc=Ultra Violet Solar Panel will collect energy from the sun or ultra violet light from stars, storing it for further use. Automatically adjusts panel angle for optimal energy collection.
 tile.power_crystal_generator.desc=Power Crystal Generator will collect energy from power crystal gem for energy collection.
-desc.europasapling1.name=Can be placed on an Europa Ice Slush
-desc.europasapling2.name=And can be placed under of Europa Ice or Packed Europa Ice
-desc.europasapling3.name=Note : You need to grow it manually
 
 # SCHEMATIC
 schematic.tier4.rocket.name=Tier 4 Rocket

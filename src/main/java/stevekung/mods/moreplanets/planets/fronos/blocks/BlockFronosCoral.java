@@ -56,6 +56,21 @@ public class BlockFronosCoral extends BlockBushMP
 	}
 
 	@Override
+	public boolean canPlaceBlockAt(World world, BlockPos pos)
+	{
+		Block block = world.getBlockState(pos.down()).getBlock();
+		Block water = world.getBlockState(pos.up()).getBlock();
+		boolean isWater = water == Blocks.water || water == Blocks.flowing_water;
+		return isWater && (block == Blocks.dirt || block == Blocks.sand || block == Blocks.sponge || block == Blocks.stone || block == Blocks.clay || block == Blocks.gravel || block == Blocks.grass || block == FronosBlocks.fronos_dirt || block == FronosBlocks.fronos_sand || block == FronosBlocks.fronos_block);
+	}
+
+	@Override
+	public boolean canPlaceBlockOn(Block ground)
+	{
+		return ground == Blocks.dirt || ground == Blocks.sand || ground == Blocks.sponge || ground == Blocks.stone || ground == Blocks.clay || ground == Blocks.gravel || ground == Blocks.grass || ground == FronosBlocks.fronos_dirt || ground == FronosBlocks.fronos_sand || ground == FronosBlocks.fronos_block;
+	}
+
+	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
 	{
 		Block block = world.getBlockState(pos.down()).getBlock();

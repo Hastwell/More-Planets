@@ -32,6 +32,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockIceMP;
 import stevekung.mods.moreplanets.common.util.WorldUtilMP;
+import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
 
 public class BlockKapteynBIce extends BlockIceMP
 {
@@ -83,7 +84,7 @@ public class BlockKapteynBIce extends BlockIceMP
 				world.setBlockToAir(pos);
 				return;
 			}
-			else if (WorldUtilMP.isMercuryWorld(world, pos))
+			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
 			{
 				world.setBlockToAir(pos);
 				return;
@@ -115,7 +116,7 @@ public class BlockKapteynBIce extends BlockIceMP
 			this.dropBlockAsItem(world, pos, state, 0);
 			world.setBlockState(pos, KapteynBBlocks.frozen_water.getDefaultState());
 		}
-		if (WorldUtilMP.isMercuryWorld(world, pos))
+		if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
 		{
 			world.setBlockToAir(pos);
 			return;

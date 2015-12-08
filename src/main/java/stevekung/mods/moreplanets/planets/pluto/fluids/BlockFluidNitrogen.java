@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockFluidBaseMP;
 import stevekung.mods.moreplanets.common.util.WorldUtilMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
+import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 
 public class BlockFluidNitrogen extends BlockFluidBaseMP
 {
@@ -55,7 +56,7 @@ public class BlockFluidNitrogen extends BlockFluidBaseMP
 	{
 		if (entity instanceof EntityLivingBase)
 		{
-			if (WorldUtilMP.isPlutoWorld(world))
+			if (WorldUtilMP.isSpaceWorld(world, new WorldProviderPluto()))
 			{
 				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
 			}

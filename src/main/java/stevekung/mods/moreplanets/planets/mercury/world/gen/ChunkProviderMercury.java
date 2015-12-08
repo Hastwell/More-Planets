@@ -20,6 +20,7 @@ import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomTreasureEmptyMP;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomBossMercury;
 import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomChestsMercury;
@@ -43,6 +44,7 @@ public class ChunkProviderMercury extends ChunkProviderBaseMP
 		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
 		this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
 		this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
+		this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
 		this.dungeonGenerator.bossRooms.add(new RoomBossMercury(null, 0, 0, 0, null));
 	}
 
@@ -62,9 +64,9 @@ public class ChunkProviderMercury extends ChunkProviderBaseMP
 		this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
 		this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
 		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
-		Chunk var4 = new Chunk(this.worldObj, primer, chunkX, chunkZ);
-		var4.generateSkylightMap();
-		return var4;
+		Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
+		chunk.generateSkylightMap();
+		return chunk;
 	}
 
 	@Override

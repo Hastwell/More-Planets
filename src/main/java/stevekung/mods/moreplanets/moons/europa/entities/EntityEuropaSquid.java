@@ -7,23 +7,35 @@
 
 package stevekung.mods.moreplanets.moons.europa.entities;
 
+import java.util.Iterator;
+import java.util.List;
+
 import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.passive.EntityWaterMob;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.EnumDimensionType;
 import stevekung.mods.moreplanets.core.init.MPItems;
+import stevekung.mods.moreplanets.core.init.MPPotions;
+
+import com.google.common.base.Predicate;
 
 public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathable, IEntityLivingPlanet
 {
@@ -48,7 +60,8 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 		this.setSize(0.95F, 0.95F);
 		this.rand.setSeed(1 + this.getEntityId());
 		this.rotationVelocity = 1.0F / (this.rand.nextFloat() + 1.0F) * 0.2F;
-		this.tasks.addTask(0, new EntityEuropaSquid.AIMoveRandom());
+		this.tasks.addTask(0, new AIMoveRandom());
+		this.setSquidType(0);
 	}
 
 	@Override
@@ -213,6 +226,43 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 	}
 
 	@Override
+	protected void updateAITasks()
+	{
+		super.updateAITasks();
+
+		if (this.getSquidType() == 1)
+		{
+			if (this.ticksExisted % 128 == 0)
+			{
+				Potion potion = MPPotions.chemical;
+				List list = this.worldObj.getPlayers(EntityPlayerMP.class, new Predicate()
+				{
+					public boolean func_179913_a(EntityPlayerMP player)
+					{
+						return EntityEuropaSquid.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.func_180239_c();
+					}
+					@Override
+					public boolean apply(Object player)
+					{
+						return this.func_179913_a((EntityPlayerMP)player);
+					}
+				});
+				Iterator iterator = list.iterator();
+
+				while (iterator.hasNext())
+				{
+					EntityPlayerMP entityplayermp = (EntityPlayerMP)iterator.next();
+
+					if (!entityplayermp.isPotionActive(potion))
+					{
+						entityplayermp.addPotionEffect(new PotionEffect(potion.id, 64, 0));
+					}
+				}
+			}
+		}
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void handleHealthUpdate(byte health)
 	{
@@ -236,6 +286,63 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 	public boolean func_175567_n()
 	{
 		return this.randomMotionVecX != 0.0F || this.randomMotionVecY != 0.0F || this.randomMotionVecZ != 0.0F;
+	}
+
+	@Override
+	public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+	{
+		if (this.worldObj.rand.nextInt(100) == 0)
+		{
+			EntityEuropaSquid squid = new EntityEuropaSquid(this.worldObj);
+			squid.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
+			squid.func_180482_a(diff, (IEntityLivingData)null);
+			squid.setSquidType(1);
+			this.worldObj.spawnEntityInWorld(squid);
+		}
+		return data;
+	}
+
+	@Override
+	public void entityInit()
+	{
+		super.entityInit();
+		this.dataWatcher.addObject(18, Byte.valueOf((byte)0));
+	}
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound nbt)
+	{
+		super.writeEntityToNBT(nbt);
+		nbt.setInteger("SquidType", this.getSquidType());
+	}
+
+	@Override
+	public void readEntityFromNBT(NBTTagCompound nbt)
+	{
+		super.readEntityFromNBT(nbt);
+		this.setSquidType(nbt.getInteger("SquidType"));
+	}
+
+	public int getSquidType()
+	{
+		return this.dataWatcher.getWatchableObjectByte(18);
+	}
+
+	public void setSquidType(int type)
+	{
+		this.dataWatcher.updateObject(18, Byte.valueOf((byte)type));
+	}
+
+	@Override
+	public boolean canBreath()
+	{
+		return true;
+	}
+
+	@Override
+	public EnumDimensionType canLivingInDimension()
+	{
+		return EnumDimensionType.NULL;
 	}
 
 	class AIMoveRandom extends EntityAIBase
@@ -266,17 +373,5 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 				this.squid.func_175568_b(f1, f2, f3);
 			}
 		}
-	}
-
-	@Override
-	public boolean canBreath()
-	{
-		return true;
-	}
-
-	@Override
-	public EnumDimensionType canLivingInDimension()
-	{
-		return EnumDimensionType.NULL;
 	}
 }

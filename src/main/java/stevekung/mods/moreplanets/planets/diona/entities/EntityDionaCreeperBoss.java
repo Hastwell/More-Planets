@@ -57,16 +57,11 @@ import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTrea
 public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMob, IEntityBreathable, IBossDisplayData, IBoss
 {
 	public int healRemaining = 1;
-
-	protected long ticks = 0;
 	protected TileEntityDungeonSpawner spawner;
-
 	protected Entity targetEntity;
 	protected int deathTicks = 0;
-
 	protected int entitiesWithin;
 	protected int entitiesWithinLast;
-
 	protected Vector3 roomCoords;
 	protected Vector3 roomSize;
 
@@ -133,7 +128,18 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 	@Override
 	public void onKillCommand()
 	{
-		this.setHealth(0.0F);
+		if (this.spawner != null)
+		{
+			this.spawner.isBossDefeated = true;
+			this.spawner.boss = null;
+			this.spawner.spawned = false;
+			this.setHealth(0.0F);
+		}
+		else
+		{
+			this.setHealth(0.0F);
+			return;
+		}
 	}
 
 	@Override
@@ -222,7 +228,6 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 			}
 		}
 
-		this.moveEntity(0.0D, 0.10000000149011612D, 0.0D);
 		this.renderYawOffset = this.rotationYaw += 20.0F;
 
 		if (this.deathTicks == 200 && !this.worldObj.isRemote)
@@ -282,13 +287,6 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 	@Override
 	public void onLivingUpdate()
 	{
-		if (this.ticks >= Long.MAX_VALUE)
-		{
-			this.ticks = 1;
-		}
-
-		this.ticks++;
-
 		if (this.getHealth() <= 0)
 		{
 			this.healRemaining = 0;
@@ -300,7 +298,7 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 
 		EntityPlayer player = this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 20.0);
 
-		if (player != null && !player.equals(this.targetEntity))
+		if (player != null && !player.equals(this.targetEntity) && !player.capabilities.isCreativeMode)
 		{
 			if (this.getDistanceSqToEntity(player) < 400.0D)
 			{

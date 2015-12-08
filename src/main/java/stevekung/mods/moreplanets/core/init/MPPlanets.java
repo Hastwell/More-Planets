@@ -23,10 +23,9 @@ import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProvide
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.dimension.TeleportTypeMP;
 import stevekung.mods.moreplanets.common.dimension.TeleportTypeOrbitMP;
-import stevekung.mods.moreplanets.common.spacestation.jupiter.WorldProviderJupiterOrbit;
-import stevekung.mods.moreplanets.common.spacestation.mars.WorldProviderMarsOrbit;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.common.util.MorePlanetsRegistry;
+import stevekung.mods.moreplanets.common.world.WorldProviderNull;
 import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
 import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
 import stevekung.mods.moreplanets.moons.phobos.dimension.WorldProviderPhobos;
@@ -39,6 +38,8 @@ import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import stevekung.mods.moreplanets.planets.polongnius.dimension.WorldProviderPolongnius;
 import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 import stevekung.mods.moreplanets.planets.venus.dimension.WorldProviderVenus;
+import stevekung.mods.moreplanets.spacestation.jupiter.WorldProviderJupiterOrbit;
+import stevekung.mods.moreplanets.spacestation.mars.WorldProviderMarsOrbit;
 
 public class MPPlanets
 {
@@ -105,7 +106,7 @@ public class MPPlanets
 		MPPlanets.kapteynB.setDimensionInfo(ConfigManagerMP.idDimensionKapteynB, WorldProviderKapteynB.class);
 		MPPlanets.kapteynB.atmosphereComponent(IAtmosphericGas.NITROGEN).atmosphereComponent(IAtmosphericGas.WATER).atmosphereComponent(IAtmosphericGas.HELIUM).atmosphereComponent(IAtmosphericGas.HYDROGEN);
 
-		MPPlanets.siriusB = MorePlanetsRegistry.createPlanet("siriusB", MPPlanets.siriusSolarSystem, 100.0F, 0.1F, 46.5F, 0.125F, 8, new ResourceLocation("moreplanets:textures/gui/celestialbodies/sirius_b.png"));
+		MPPlanets.siriusB = MorePlanetsRegistry.createPlanet("siriusB", MPPlanets.siriusSolarSystem, 0.0F, 0.225F, Float.MAX_VALUE, 0.125F, 8, new ResourceLocation("moreplanets:textures/gui/celestialbodies/sirius_b.png"));
 		MPPlanets.siriusB.setDimensionInfo(ConfigManagerMP.idDimensionSiriusB, WorldProviderSiriusB.class);
 		MPPlanets.siriusB.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.HELIUM);
 
@@ -124,7 +125,9 @@ public class MPPlanets
 		if (ConfigManagerMP.enableJupiterPlanet)
 		{
 			MPPlanets.jupiter = MorePlanetsRegistry.createPlanet("jupiter", GalacticraftCore.solarSystemSol, 2.3F, 1.5F, 11.861993428258488499452354874042F, 0.5319F, -1, new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/jupiter.png"));
-			MPPlanets.jupiter.setDimensionInfo(ConfigManagerMP.idDimensionJupiter, WorldProviderPluto.class);
+			WorldProviderNull.setName("Jupiter");
+			MPPlanets.jupiter.setDimensionInfo(ConfigManagerMP.idDimensionJupiter, WorldProviderNull.class);
+			MPPlanets.jupiter.canCreateSS(true);
 			MPPlanets.jupiter.setBodyIcon(new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/jupiter.png"));
 		}
 		if (ConfigManagerMP.enablePlutoPlanet)

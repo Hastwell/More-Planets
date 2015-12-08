@@ -41,22 +41,22 @@ public class BiomeDecoratorFronosOre extends BiomeDecoratorMP
 
 	public BiomeDecoratorFronosOre()
 	{
-		this.berryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 0, true, FronosBlocks.fronos_block, 0);
-		this.strawberryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 1, true, FronosBlocks.fronos_block, 0);
-		this.raspberryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 2, true, FronosBlocks.fronos_block, 0);
-		this.grapeJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 4, true, FronosBlocks.fronos_block, 0);
-		this.limeJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 3, true, FronosBlocks.fronos_block, 0);
-		this.orangeJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 5, true, FronosBlocks.fronos_block, 0);
-		this.greenJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 6, true, FronosBlocks.fronos_block, 0);
-		this.lemonJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 8, 7, true, FronosBlocks.fronos_block, 0);
+		this.berryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 0, true, FronosBlocks.fronos_block, 0);
+		this.strawberryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 1, true, FronosBlocks.fronos_block, 0);
+		this.raspberryJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 2, true, FronosBlocks.fronos_block, 0);
+		this.grapeJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 4, true, FronosBlocks.fronos_block, 0);
+		this.limeJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 3, true, FronosBlocks.fronos_block, 0);
+		this.orangeJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 5, true, FronosBlocks.fronos_block, 0);
+		this.greenJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 6, true, FronosBlocks.fronos_block, 0);
+		this.lemonJellyGen = new WorldGenMinableMeta(FronosBlocks.jelly_ore, 4, 7, true, FronosBlocks.fronos_block, 0);
 		this.fronosDirtGen = new WorldGenMinableMeta(FronosBlocks.fronos_dirt, 32, 0, true, FronosBlocks.fronos_block, 0);
 
 		this.ironGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 8, 2, true, FronosBlocks.fronos_block, 0);
 		this.coalGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 16, 3, true, FronosBlocks.fronos_block, 0);
-		this.aluminumGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 8, 4, true, FronosBlocks.fronos_block, 0);
-		this.tinGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 8, 5, true, FronosBlocks.fronos_block, 0);
-		this.copperGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 8, 6, true, FronosBlocks.fronos_block, 0);
-		this.lapisGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 8, 7, true, FronosBlocks.fronos_block, 0);
+		this.aluminumGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 7, 4, true, FronosBlocks.fronos_block, 0);
+		this.tinGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 7, 5, true, FronosBlocks.fronos_block, 0);
+		this.copperGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 7, 6, true, FronosBlocks.fronos_block, 0);
+		this.lapisGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 6, 7, true, FronosBlocks.fronos_block, 0);
 		this.mineralGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 4, 8, true, FronosBlocks.fronos_block, 0);
 		this.blackDiamondGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 8, 9, true, FronosBlocks.fronos_block, 0);
 		this.iridiumGen = new WorldGenMinableMeta(FronosBlocks.fronos_block, 8, 10, true, FronosBlocks.fronos_block, 0);
@@ -71,29 +71,29 @@ public class BiomeDecoratorFronosOre extends BiomeDecoratorMP
 	@Override
 	protected void generateOres()
 	{
-		this.generateOre(16, this.tinGen, 0, 64);
-		this.generateOre(16, this.copperGen, 0, 64);
-		this.generateOre(12, this.aluminumGen, 0, 48);
-		this.generateOre(16, this.berryJellyGen, 0, 255);
-		this.generateOre(16, this.strawberryJellyGen, 0, 255);
-		this.generateOre(16, this.raspberryJellyGen, 0, 255);
-		this.generateOre(16, this.grapeJellyGen, 0, 255);
-		this.generateOre(16, this.limeJellyGen, 0, 255);
-		this.generateOre(16, this.orangeJellyGen, 0, 255);
-		this.generateOre(16, this.greenJellyGen, 0, 255);
-		this.generateOre(16, this.lemonJellyGen, 0, 255);
-		this.generateOre(32, this.fronosDirtGen, 0, 255);
-		this.generateOre(16, this.ironGen, 0, 64);
-		this.generateOre(16, this.coalGen, 0, 255);
-		this.generateOre(3, this.lapisGen, 0, 24);
-		this.generateOre(6, this.mineralGen, 0, 32);
-		this.generateOre(8, this.blackDiamondGen, 0, 16);
-		this.generateOre(10, this.iridiumGen, 0, 24);
+		this.generateOre(22, this.tinGen, 0, 60);
+		this.generateOre(24, this.copperGen, 0, 75);
+		this.generateOre(18, this.aluminumGen, 0, 45);
+		this.generateOre(8, this.berryJellyGen, 0, 256);
+		this.generateOre(8, this.strawberryJellyGen, 0, 256);
+		this.generateOre(8, this.raspberryJellyGen, 0, 256);
+		this.generateOre(8, this.grapeJellyGen, 0, 256);
+		this.generateOre(8, this.limeJellyGen, 0, 256);
+		this.generateOre(8, this.orangeJellyGen, 0, 256);
+		this.generateOre(8, this.greenJellyGen, 0, 256);
+		this.generateOre(8, this.lemonJellyGen, 0, 256);
+		this.generateOre(20, this.fronosDirtGen, 0, 256);
+		this.generateOre(20, this.ironGen, 0, 64);
+		this.generateOre(20, this.coalGen, 0, 128);
+		this.generateOre(1, this.lapisGen, 0, 16);
+		this.generateOre(8, this.mineralGen, 16, 32);
+		this.generateOre(1, this.blackDiamondGen, 0, 16);
+		this.generateOre(12, this.iridiumGen, 0, 32);
 
-		this.generateOre(32, this.cakeGen1, 0, 255);
-		this.generateOre(32, this.cakeGen2, 0, 255);
-		this.generateOre(32, this.cakeGen3, 0, 255);
-		this.generateOre(32, this.cakeBreadGen1, 0, 255);
-		this.generateOre(32, this.cakeBreadGen2, 0, 255);
+		this.generateOre(20, this.cakeGen1, 0, 256);
+		this.generateOre(20, this.cakeGen2, 0, 256);
+		this.generateOre(20, this.cakeGen3, 0, 256);
+		this.generateOre(20, this.cakeBreadGen1, 0, 256);
+		this.generateOre(20, this.cakeBreadGen2, 0, 256);
 	}
 }

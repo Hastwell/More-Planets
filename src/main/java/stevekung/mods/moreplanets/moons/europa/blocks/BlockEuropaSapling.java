@@ -131,7 +131,7 @@ public class BlockEuropaSapling extends BlockBush implements IGrowable
 	{
 		if (side == EnumFacing.DOWN)
 		{
-			return world.getBlockState(pos.up()).getBlock() == EuropaBlocks.europa_ice && world.getBlockState(pos.down()).getBlock() == EuropaBlocks.europa_water;
+			return (world.getBlockState(pos.up()).getBlock() == EuropaBlocks.europa_ice || world.getBlockState(pos.up()).getBlock() == EuropaBlocks.packed_europa_ice) && world.getBlockState(pos.down()).getBlock() == EuropaBlocks.europa_water;
 		}
 		return this.canBlockStay(world, pos, world.getBlockState(pos));
 	}
@@ -145,7 +145,7 @@ public class BlockEuropaSapling extends BlockBush implements IGrowable
 		}
 		else if (this.getMetaFromState(state) == 1)
 		{
-			if (world.getBlockState(pos.up()).getBlock() == EuropaBlocks.europa_ice && world.getBlockState(pos.down()).getBlock() == EuropaBlocks.europa_water)
+			if ((world.getBlockState(pos.up()).getBlock() == EuropaBlocks.europa_ice || world.getBlockState(pos.up()).getBlock() == EuropaBlocks.packed_europa_ice) && world.getBlockState(pos.down()).getBlock() == EuropaBlocks.europa_water)
 			{
 				return true;
 			}
@@ -162,7 +162,7 @@ public class BlockEuropaSapling extends BlockBush implements IGrowable
 		}
 		else if (this.getMetaFromState(world.getBlockState(pos)) == 1)
 		{
-			if (world.getBlockState(pos.up()) == EuropaBlocks.europa_ice && world.getBlockState(pos.down()).getBlock() == EuropaBlocks.europa_water)
+			if ((world.getBlockState(pos.up()).getBlock() == EuropaBlocks.europa_ice || world.getBlockState(pos.up()).getBlock() == EuropaBlocks.packed_europa_ice) && world.getBlockState(pos.down()).getBlock() == EuropaBlocks.europa_water)
 			{
 				return true;
 			}

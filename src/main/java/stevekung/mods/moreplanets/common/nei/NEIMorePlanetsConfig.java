@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.common.nei;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.nei.recipe.other.CandyExtractorFuelRecipeHandler;
 import stevekung.mods.moreplanets.common.nei.recipe.other.CandyExtractorRecipeHandler;
@@ -70,17 +71,17 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 		for (Block block : MPBlocks.hideBlockList)
 		{
 			API.hideItem(new ItemStack(block, 1, OreDictionary.WILDCARD_VALUE));
-			MPLog.debug("Register NEI Hide Block %s [%s]", block.getClass().getSimpleName(), block.getUnlocalizedName().substring(5));
+			MPLog.debug("Register NEI Hide Block : %s", GameData.getBlockRegistry().getNameForObject(block).toString());
 		}
 		for (Item item : MPItems.hideItemList)
 		{
 			API.hideItem(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE));
-			MPLog.debug("Register NEI Hide Item %s [%s]", item.getClass().getSimpleName(), item.getUnlocalizedName().substring(5));
+			MPLog.debug("Register NEI Hide Item : %s", GameData.getItemRegistry().getNameForObject(item).toString());
 		}
 		for (Block block : MPBlocks.highlightBlockList)
 		{
 			API.registerHighlightIdentifier(block, new NEIHighlightHandlerMP());
-			MPLog.debug("Register NEI Highlight %s [%s]", block.getClass().getSimpleName(), block.getUnlocalizedName().substring(5));
+			MPLog.debug("Register NEI Highlight : %s", GameData.getBlockRegistry().getNameForObject(block).toString());
 		}
 	}
 
@@ -88,6 +89,6 @@ public class NEIMorePlanetsConfig implements IConfigureNEI
 	{
 		GuiUsageRecipe.registerUsageHandler(handler);
 		GuiCraftingRecipe.registerRecipeHandler(handler);
-		MPLog.debug("Register NEI Recipe %s", handler.getClass());
+		MPLog.debug("Register NEI Recipe : %s", handler.getClass().getSimpleName());
 	}
 }

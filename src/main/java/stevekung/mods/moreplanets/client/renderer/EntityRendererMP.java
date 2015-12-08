@@ -64,6 +64,7 @@ import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderKi
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderMelon;
+import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderMilkCow;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderPoisonArrow;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderStarfish;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderStrawberryChicken;
@@ -83,6 +84,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityMilkCow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTier7Rocket;
@@ -203,6 +205,7 @@ public class EntityRendererMP
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab(render));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new RenderEvolvedWitch(render));
+		RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow(render));
 	}
 
 	private static void registerNonEntityRenderers()

@@ -459,6 +459,7 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(FronosBlocks.fronos_double_tallgrass, 2, "purple_double_tallgrass", "moreplanets");
 		ClientRegisterHelper.registerModelRender(FronosBlocks.fronos_double_tallgrass, 3, "plains_double_tallgrass", "moreplanets");
 		ClientRegisterHelper.registerModelRender(FronosBlocks.fronos_double_tallgrass, 4, "golden_double_tallgrass", "moreplanets");
+		ClientRegisterHelper.registerModelRender(FronosBlocks.sky_mushroom_block, "sky_mushroom_block", "moreplanets");
 		ClientRegisterHelper.registerModelRenderWithDyeColor(FronosBlocks.space_shell, "moreplanets");
 
 		ClientRegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_block, 0, "kapteyn_b_surface_ice", "moreplanets");
@@ -745,6 +746,14 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(PolongniusItems.cheese_of_milk_bucket, "cheese_of_milk_bucket", "moreplanets");
 		ClientRegisterHelper.registerModelRender(PolongniusItems.polongnius_dungeon_key, "polongnius_dungeon_key", "moreplanets");
 		ClientRegisterHelper.registerModelRender(PolongniusItems.polongnius_meteor_chunk, "polongnius_meteor_chunk", "moreplanets");
+		ClientRegisterHelper.registerModelRender(PolongniusItems.tier_5_rocket, new ItemMeshDefinition()
+		{
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack itemStack)
+			{
+				return new ModelResourceLocation("moreplanets:tier_5_rocket", "inventory");
+			}
+		});
 
 		ClientRegisterHelper.registerModelRender(NibiruItems.nibiru_item, 0, "red_gem", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruItems.nibiru_item, 1, "norium_ingot", "moreplanets");
@@ -766,6 +775,14 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(NibiruItems.ancient_dark_door, "ancient_dark_door", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruItems.orange_door, "orange_door", "moreplanets");
 		ClientRegisterHelper.registerModelRender(NibiruItems.nibiru_dungeon_key, "nibiru_dungeon_key", "moreplanets");
+		ClientRegisterHelper.registerModelRender(NibiruItems.tier_6_rocket, new ItemMeshDefinition()
+		{
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack itemStack)
+			{
+				return new ModelResourceLocation("moreplanets:tier_6_rocket", "inventory");
+			}
+		});
 
 		ClientRegisterHelper.registerModelRender(KoentusItems.koentus_item, 0, "white_crystal", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KoentusItems.koentus_item, 1, "emp_shard", "moreplanets");
@@ -871,6 +888,14 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(FronosItems.cup, 5, "tea_cup", "moreplanets");
 		ClientRegisterHelper.registerModelRender(FronosItems.cup, 6, "caramel_cup", "moreplanets");
 		ClientRegisterHelper.registerModelRender(FronosItems.fronos_dungeon_key, "fronos_dungeon_key", "moreplanets");
+		ClientRegisterHelper.registerModelRender(FronosItems.tier_7_rocket, new ItemMeshDefinition()
+		{
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack itemStack)
+			{
+				return new ModelResourceLocation("moreplanets:tier_7_rocket", "inventory");
+			}
+		});
 
 		ClientRegisterHelper.registerModelRender(KapteynBItems.kapteyn_b_item, 0, "frozen_iron_ingot", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KapteynBItems.kapteyn_b_item, 1, "uranium_gem", "moreplanets");
@@ -883,6 +908,14 @@ public class ModelRendererMP
 		ClientRegisterHelper.registerModelRender(KapteynBItems.tier_8_rocket_schematic, "tier_8_rocket_schematic", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KapteynBItems.uranium_battery, "uranium_battery", "moreplanets");
 		ClientRegisterHelper.registerModelRender(KapteynBItems.kapteyn_b_dungeon_key, "kapteyn_b_dungeon_key", "moreplanets");
+		ClientRegisterHelper.registerModelRender(KapteynBItems.tier_8_rocket, new ItemMeshDefinition()
+		{
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack itemStack)
+			{
+				return new ModelResourceLocation("moreplanets:tier_8_rocket", "inventory");
+			}
+		});
 
 		ClientRegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 0, "small_diamond_pieces", "moreplanets");
 		ClientRegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 1, "large_diamond_pieces", "moreplanets");

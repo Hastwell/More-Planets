@@ -17,8 +17,9 @@ import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.planets.siriusb.fluids.BlockFluidSiriusLava;
-import stevekung.mods.moreplanets.planets.siriusb.itemblocks.ItemBlockSiriusB;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class SiriusBBlocks
@@ -58,7 +59,7 @@ public class SiriusBBlocks
 		SiriusBBlocks.sirius_lava = new BlockFluidSiriusLava("sirius_lava");
 
 		// Register
-		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_b_block, ItemBlockSiriusB.class);
+		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_b_block, ItemBlockMultiVariant.class, new VariantsName("surface_carbon", "sub_surface_carbon", "carbon_stone", "carbon_cobblestone", "sulfur_ore", "diamond_ore", "glowstone_ore", "black_spot", "sulfur_block", "dungeon_brick"));
 		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_obsidian);
 		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_glowstone);
 		CommonRegisterHelper.registerBlock(SiriusBBlocks.sirius_redstone_lamp_off);

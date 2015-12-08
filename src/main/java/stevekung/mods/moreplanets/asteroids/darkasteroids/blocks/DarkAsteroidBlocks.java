@@ -13,8 +13,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.itemblocks.ItemBlockDarkAsteroids;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
-import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDirtMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockSingleLeaves;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DarkAsteroidBlocks
@@ -55,7 +56,7 @@ public class DarkAsteroidBlocks
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alphere_ore);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.dark_asteroid_quicksand);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_grass);
-		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_dirt, ItemBlockDirtMP.class);
+		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_dirt, ItemBlockMultiVariant.class, new VariantsName("dirt", "coarse"));
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_log);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_planks);
 		CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.alien_glowstone);

@@ -26,8 +26,8 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.planets.diona.blocks.BlockFronisiumTNT;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockSiriusFire extends BlockFire
 {
@@ -176,7 +176,7 @@ public class BlockSiriusFire extends BlockFire
 			}
 			else if (state.getBlock() == DionaBlocks.fronisium_tnt)
 			{
-				DionaBlocks.fronisium_tnt.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockFronisiumTNT.EXPLODE, Boolean.valueOf(true)));
+				DionaBlocks.fronisium_tnt.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockStateHelper.EXPLODE, Boolean.valueOf(true)));
 			}
 		}
 	}

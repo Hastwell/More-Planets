@@ -9,12 +9,14 @@ package stevekung.mods.moreplanets.planets.fronos.world.gen.feature;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronos;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class WorldGenCavernOyster extends WorldGenerator
 {
@@ -28,15 +30,15 @@ public class WorldGenCavernOyster extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos)
 	{
-		IBlockState state = world.getBlockState(pos);
+		Block block = world.getBlockState(pos).getBlock();
 
-		if (!(state == FronosBlocks.fronos_block.getDefaultState().withProperty(BlockFronos.VARIANT, BlockFronos.BlockType.fronos_rock)))
+		if (!(block == FronosBlocks.fronos_block || block == FronosBlocks.jelly_ore))
 		{
 			return false;
 		}
 		else
 		{
-			world.setBlockState(pos.up(), this.block, 2);
+			world.setBlockState(pos, this.block.withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)world.getBlockState(pos).getValue(BlockStateHelper.FACING)).getIndex())), 2);
 			return true;
 		}
 	}

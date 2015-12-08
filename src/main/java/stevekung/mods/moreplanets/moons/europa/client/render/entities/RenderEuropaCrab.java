@@ -35,14 +35,17 @@ public class RenderEuropaCrab extends RenderLiving
 	{
 		EntityEuropaCrab crab = (EntityEuropaCrab)entity;
 
-		if (crab.getCrabType() == 1)
+		switch (crab.getCrabType())
 		{
+		case 0:
+		default:
+			return this.textures1;
+		case 1:
 			return this.textures2;
-		}
-		else if (crab.getCrabType() == 2)
-		{
+		case 2:
+			return this.textures3;
+		case 3:
 			return this.textures3;
 		}
-		return this.textures1;
 	}
 }

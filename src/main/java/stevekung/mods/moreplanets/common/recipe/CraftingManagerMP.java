@@ -25,6 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.init.MPItems;
@@ -143,14 +144,22 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.lemon_cream_layer, 6), new Object[] { "LLL", 'L', new ItemStack(FronosBlocks.cream_block, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.ovaltine_block), new Object[] { "OO", "OO", 'O', new ItemStack(FronosItems.candy_food, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.chocolate_block), new Object[] { "CC", "CC", 'C', new ItemStack(FronosItems.candy_food, 1, 1) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.pink_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 0) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.orange_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 1) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.green_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 2) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.yellow_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 3) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.light_blue_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.blue_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 5) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.red_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 6) });
-		GameRegistry.addRecipe(new ItemStack(FronosBlocks.purple_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal), 'S', new ItemStack(FronosItems.candy_cane, 1, 7) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.pink_candy_torch, 4), new Object[] { "C", "S", 'C', Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.orange_candy_torch, 4), new Object[] { "C", "S", 'C',Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.green_candy_torch, 4), new Object[] { "C", "S", 'C', Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.yellow_candy_torch, 4), new Object[] { "C", "S", 'C', Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 3) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.light_blue_candy_torch, 4), new Object[] { "C", "S", 'C', Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.blue_candy_torch, 4), new Object[] { "C", "S", 'C', Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 5) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.red_candy_torch, 4), new Object[] { "C", "S", 'C', Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 6) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.purple_candy_torch, 4), new Object[] { "C", "S", 'C', Items.coal, 'S', new ItemStack(FronosItems.candy_cane, 1, 7) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.pink_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.orange_candy_torch, 4), new Object[] { "C", "S", 'C',new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.green_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.yellow_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 3) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.light_blue_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.blue_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 5) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.red_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 6) });
+		GameRegistry.addRecipe(new ItemStack(FronosBlocks.purple_candy_torch, 4), new Object[] { "C", "S", 'C', new ItemStack(Items.coal, 1, 1), 'S', new ItemStack(FronosItems.candy_cane, 1, 7) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.jelly_block, 1, 0), new Object[] { "CC", "CC", 'C', new ItemStack(FronosItems.jelly, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.jelly_block, 1, 1), new Object[] { "CC", "CC", 'C', new ItemStack(FronosItems.jelly, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(FronosBlocks.jelly_block, 1, 2), new Object[] { "CC", "CC", 'C', new ItemStack(FronosItems.jelly, 1, 2) });
@@ -228,6 +237,7 @@ public class CraftingManagerMP
 		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 0), new Object[] { "SSS", 'S', "fronosSandstone" });
 		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 1), new Object[] { "SSS", 'S', "whiteSandstone" });
 		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 6, 2), new Object[] { "SSS", 'S', "cheeseSandstone" });
+		RecipeUtil.addRecipe(new ItemStack(FronosBlocks.candy_extractor_idle), new Object[] { "CCC", "CFC", "MDM", 'C', new ItemStack(FronosBlocks.fronos_block, 1, 1), 'F', Blocks.furnace, 'D', "candyCane", 'M', new ItemStack(FronosItems.fronos_item) });
 
 		for (int i = 0; i < 16; ++i)
 		{
@@ -317,6 +327,7 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 2), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
 		GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 3), new Object[] { "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
 		GameRegistry.addRecipe(new ItemStack(MPItems.desh_thermal_cloth), new Object[] { "WXW", "XRX", "WXW", 'X', new ItemStack(MarsItems.marsItemBasic, 1, 5), 'R', Items.redstone, 'W', Blocks.wool });
+		GameRegistry.addRecipe(new ItemStack(FronosItems.fronos_food, 1, 13), new Object[] { "SSS", " B ", 'S', new ItemStack(FronosBlocks.fronos_flower, 1, 4), 'B', new ItemStack(Items.bowl) });
 		GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 0), new ItemStack(DionaBlocks.diona_block, 1, 10) );
 		GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 1), new ItemStack(DionaBlocks.diona_block, 1, 11) );
 		GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_meteor_chunk, 3), new ItemStack(PolongniusItems.polongnius_item, 1, 2) );
@@ -351,7 +362,6 @@ public class CraftingManagerMP
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.candy_food, 9, 2), new ItemStack(FronosBlocks.caramel_block));
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.fronos_item, 9, 2), new ItemStack(FronosBlocks.ore_block, 1, 1) );
 		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.fronos_item, 9, 3), new ItemStack(FronosBlocks.ore_block, 1, 0) );
-		GameRegistry.addShapelessRecipe(new ItemStack(FronosItems.fronos_food, 1, 13), new ItemStack(FronosBlocks.fronos_flower, 1, 4), new ItemStack(Items.bowl), new ItemStack(Blocks.brown_mushroom) );
 		GameRegistry.addShapelessRecipe(new ItemStack(KapteynBItems.namerium_crystal, 9), new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 9) );
 		GameRegistry.addShapelessRecipe(new ItemStack(KapteynBItems.kapteyn_b_item, 9, 0), new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 10) );
 		GameRegistry.addShapelessRecipe(new ItemStack(KapteynBItems.kapteyn_b_item, 9, 1), new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 11) );
@@ -478,6 +488,11 @@ public class CraftingManagerMP
 		GameRegistry.addSmelting(new ItemStack(DeimosBlocks.deimos_block, 1, 6), new ItemStack(Items.iron_ingot), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(DeimosBlocks.deimos_block, 1, 7), new ItemStack(MarsItems.marsItemBasic, 1, 2), 0.8F);
 		GameRegistry.addSmelting(new ItemStack(IoBlocks.io_block, 1, 4), new ItemStack(SiriusBItems.sirius_b_item, 1, 3), 0.7F);
+		GameRegistry.addSmelting(NibiruBlocks.nibiru_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(KoentusBlocks.crystal_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(FronosBlocks.fronos_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(EuropaBlocks.europa_log, new ItemStack(Items.coal, 1, 1), 0.15F);
+		GameRegistry.addSmelting(DarkAsteroidBlocks.alien_log, new ItemStack(Items.coal, 1, 1), 0.15F);
 
 		CandyExtractorRecipes.instance().addExtractingRecipe(new ItemStack(FronosBlocks.candy_cane1, 1, 0), new ItemStack(FronosItems.candy_cane, 4, 0), 0.4F);
 		CandyExtractorRecipes.instance().addExtractingRecipe(new ItemStack(FronosBlocks.candy_cane1, 1, 1), new ItemStack(FronosItems.candy_cane, 4, 1), 0.4F);
@@ -704,10 +719,10 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.white_crystal_boots), new Object[] { "X X", "X X", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathable_koentus_meteoric_iron_helmet), new Object[] { "XXX", "XOX", 'X', new ItemStack(KoentusItems.koentus_item, 1, 6), 'O', new ItemStack(GCItems.oxMask) });
 		GameRegistry.addRecipe(new ItemStack(KoentusArmorItems.breathable_white_crystal_helmet), new Object[] { "XXX", "XOX", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'O', new ItemStack(GCItems.oxMask) });
-		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_helmet), new Object[] { "XXX", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_chestplate), new Object[] { "X X", "XXX", "XXX", 'X', new ItemStack(FronosItems.fronos_item, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_leggings), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_boots), new Object[] { "X X", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_helmet), new Object[] { "XXX", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_chestplate), new Object[] { "X X", "XXX", "XXX", 'X', new ItemStack(FronosItems.fronos_item, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_leggings), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.black_diamond_boots), new Object[] { "X X", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 2) });
 		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.iridium_helmet), new Object[] { "XXX", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.iridium_chestplate), new Object[] { "X X", "XXX", "XXX", 'X', new ItemStack(FronosItems.fronos_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(FronosArmorItems.iridium_leggings), new Object[] { "XXX", "X X", "X X", 'X', new ItemStack(FronosItems.fronos_item, 1, 5) });
@@ -776,11 +791,11 @@ public class CraftingManagerMP
 		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_sword), new Object[] { "X", "X", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 5) });
 		GameRegistry.addRecipe(new ItemStack(KoentusToolsItems.white_crystal_shovel), new Object[] { "X", "Y", "Y", 'X', new ItemStack(KoentusItems.koentus_item, 1, 5), 'Y', new ItemStack(DionaItems.diona_item, 1, 5) });
-		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 4), 'Y', new ItemStack(Items.stick) });
-		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_axe), new Object[] { "XX", "XY", " Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 4), 'Y', new ItemStack(Items.stick) });
-		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', new ItemStack(FronosItems.fronos_item, 1, 4), 'Y', new ItemStack(Items.stick) });
-		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_sword), new Object[] { "X", "X", "Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 4), 'Y', new ItemStack(Items.stick) });
-		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_shovel), new Object[] { "X", "Y", "Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 4), 'Y', new ItemStack(Items.stick) });
+		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 2), 'Y', new ItemStack(Items.stick) });
+		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_axe), new Object[] { "XX", "XY", " Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 2), 'Y', new ItemStack(Items.stick) });
+		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', new ItemStack(FronosItems.fronos_item, 1, 2), 'Y', new ItemStack(Items.stick) });
+		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_sword), new Object[] { "X", "X", "Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 2), 'Y', new ItemStack(Items.stick) });
+		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.black_diamond_shovel), new Object[] { "X", "Y", "Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 2), 'Y', new ItemStack(Items.stick) });
 		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.iridium_hoe), new Object[] { "XX", " Y", " Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 5), 'Y', new ItemStack(Items.stick) });
 		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.iridium_axe), new Object[] { "XX", "XY", " Y", 'X', new ItemStack(FronosItems.fronos_item, 1, 5), 'Y', new ItemStack(Items.stick) });
 		GameRegistry.addRecipe(new ItemStack(FronosToolsItems.iridium_pickaxe), new Object[] { "XXX", " Y ", " Y ", 'X', new ItemStack(FronosItems.fronos_item, 1, 5), 'Y', new ItemStack(Items.stick) });

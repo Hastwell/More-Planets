@@ -22,7 +22,6 @@ import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteorChun
 import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityTier4Rocket;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaAncientChest;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;

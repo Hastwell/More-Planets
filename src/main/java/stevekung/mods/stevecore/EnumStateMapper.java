@@ -26,6 +26,8 @@ public enum EnumStateMapper
 	FLUID_LEVEL(new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build()),
 	LIQUID_LEVEL(new Builder().addPropertiesToIgnore(new IProperty[] {BlockLiquid.LEVEL}).build()),
 	FIRE(new Builder().addPropertiesToIgnore(new IProperty[] {BlockFire.AGE}).build()),
+	TNT(new Builder().addPropertiesToIgnore(new IProperty[] {BlockStateHelper.EXPLODE}).build()),
+	LEAVES(new Builder().addPropertiesToIgnore(new IProperty[] {BlockStateHelper.CHECK_DECAY, BlockStateHelper.DECAYABLE}).build()),
 
 	;StateMap builder;
 

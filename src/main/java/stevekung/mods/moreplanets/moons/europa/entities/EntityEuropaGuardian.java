@@ -51,9 +51,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.EnumDimensionType;
+import stevekung.mods.moreplanets.common.util.WorldUtilMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.moreplanets.moons.europa.dimension.WorldProviderEuropa;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 
 import com.google.common.base.Predicate;
@@ -546,8 +548,11 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
 	@Override
 	public boolean getCanSpawnHere()
 	{
-		//TODO Europa World Provider
-		return (this.rand.nextInt(20) == 0 || !this.worldObj.canBlockSeeSky(new BlockPos(this))) && super.getCanSpawnHere();
+		if (WorldUtilMP.isSpaceWorld(this.worldObj, new WorldProviderEuropa()))
+		{
+			return (this.rand.nextInt(20) == 0 || !this.worldObj.canBlockSeeSky(new BlockPos(this))) && super.getCanSpawnHere();
+		}
+		return false;
 	}
 
 	@Override
@@ -575,13 +580,13 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
 	}
 
 	@Override
-	public void moveEntityWithHeading(float p_70612_1_, float p_70612_2_)
+	public void moveEntityWithHeading(float strafe, float forward)
 	{
 		if (this.isServerWorld())
 		{
 			if (this.isInWater())
 			{
-				this.moveFlying(p_70612_1_, p_70612_2_, 0.1F);
+				this.moveFlying(strafe, forward, 0.1F);
 				this.moveEntity(this.motionX, this.motionY, this.motionZ);
 				this.motionX *= 0.8999999761581421D;
 				this.motionY *= 0.8999999761581421D;
@@ -594,12 +599,12 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
 			}
 			else
 			{
-				super.moveEntityWithHeading(p_70612_1_, p_70612_2_);
+				super.moveEntityWithHeading(strafe, forward);
 			}
 		}
 		else
 		{
-			super.moveEntityWithHeading(p_70612_1_, p_70612_2_);
+			super.moveEntityWithHeading(strafe, forward);
 		}
 	}
 

@@ -18,13 +18,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import stevekung.mods.moreplanets.common.blocks.BlockLeavesMP;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockCrystalLeaves extends BlockLeavesMP
 {
 	public BlockCrystalLeaves(String name)
 	{
 		super();
-		this.setDefaultState(this.getDefaultState().withProperty(CHECK_DECAY, true).withProperty(DECAYABLE, true));
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
 		this.setUnlocalizedName(name);
 	}
 
@@ -43,13 +44,13 @@ public class BlockCrystalLeaves extends BlockLeavesMP
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { DECAYABLE, CHECK_DECAY });
+		return new BlockState(this, new IProperty[] { BlockStateHelper.DECAYABLE, BlockStateHelper.CHECK_DECAY });
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta)
 	{
-		return this.getDefaultState().withProperty(DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+		return this.getDefaultState().withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
 	}
 
 	@Override
@@ -66,11 +67,11 @@ public class BlockCrystalLeaves extends BlockLeavesMP
 		byte b0 = 0;
 		int i = b0 | 1;
 
-		if (!((Boolean)state.getValue(DECAYABLE)).booleanValue())
+		if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
 		{
 			i |= 4;
 		}
-		if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue())
+		if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
 		{
 			i |= 8;
 		}

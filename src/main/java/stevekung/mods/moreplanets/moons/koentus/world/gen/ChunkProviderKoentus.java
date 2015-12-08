@@ -11,7 +11,6 @@ import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.util.BlockPos;
-import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -21,6 +20,7 @@ import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomTreasureEmptyMP;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.dungeon.RoomBossKoentus;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.dungeon.RoomChestsKoentus;
@@ -46,6 +46,7 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
 		this.dungeonGenerator.otherRooms.add(new RoomChestsKoentus(null, 0, 0, 0, null));
 		this.dungeonGenerator.otherRooms.add(new RoomChestsKoentus(null, 0, 0, 0, null));
 		this.dungeonGenerator.bossRooms.add(new RoomBossKoentus(null, 0, 0, 0, null));
+		this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
 	}
 
 	public ChunkProviderKoentus(World world, long seed, boolean genFeature)
@@ -83,7 +84,6 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
 		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
 		this.dungeonGenerator.handleTileEntities(this.rand);
 		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseKoentus.koentus, pos);
-		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
 		BlockFalling.fallInstantly = false;
 	}
 

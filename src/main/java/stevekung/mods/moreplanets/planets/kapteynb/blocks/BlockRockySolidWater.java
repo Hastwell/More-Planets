@@ -23,6 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.common.util.WorldUtilMP;
+import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
 
 public class BlockRockySolidWater extends BlockBaseMP
 {
@@ -63,7 +64,7 @@ public class BlockRockySolidWater extends BlockBaseMP
 				world.setBlockToAir(pos);
 				return;
 			}
-			else if (WorldUtilMP.isMercuryWorld(world, pos))
+			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
 			{
 				world.setBlockToAir(pos);
 				return;

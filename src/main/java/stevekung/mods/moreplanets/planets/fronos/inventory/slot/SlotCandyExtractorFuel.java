@@ -24,10 +24,4 @@ public class SlotCandyExtractorFuel extends Slot
 	{
 		return TileEntityCandyExtractor.isItemFuel(itemStack);
 	}
-
-	@Override
-	public int getItemStackLimit(ItemStack itemStack)
-	{
-		return super.getItemStackLimit(itemStack);
-	}
 }

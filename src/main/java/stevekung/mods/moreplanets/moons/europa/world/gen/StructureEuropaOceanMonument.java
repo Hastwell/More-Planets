@@ -23,9 +23,11 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.gen.structure.MapGenStructure;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureStart;
+import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaGuardian;
 
 import com.google.common.collect.Lists;
@@ -71,23 +73,22 @@ public class StructureEuropaOceanMonument extends MapGenStructure
 	}
 
 	@Override
-	protected boolean canSpawnStructureAtCoords(int x, int z)
+	protected boolean canSpawnStructureAtCoords(int chunkX, int chunkZ)
 	{
-		int k = x;
-		int l = z;
+		int k = chunkX;
+		int l = chunkZ;
 
-		if (x < 0)
+		if (chunkX < 0)
 		{
-			x -= this.field_175800_f - 1;
+			chunkX -= this.field_175800_f - 1;
+		}
+		if (chunkZ < 0)
+		{
+			chunkZ -= this.field_175800_f - 1;
 		}
 
-		if (z < 0)
-		{
-			z -= this.field_175800_f - 1;
-		}
-
-		int i1 = x / this.field_175800_f;
-		int j1 = z / this.field_175800_f;
+		int i1 = chunkX / this.field_175800_f;
+		int j1 = chunkZ / this.field_175800_f;
 		Random random = this.worldObj.setRandomSeed(i1, j1, 10387313);
 		i1 *= this.field_175800_f;
 		j1 *= this.field_175800_f;
@@ -112,9 +113,10 @@ public class StructureEuropaOceanMonument extends MapGenStructure
 	}
 
 	@Override
-	protected StructureStart getStructureStart(int p_75049_1_, int p_75049_2_)
+	protected StructureStart getStructureStart(int chunkX, int chunkZ)
 	{
-		return new StructureEuropaOceanMonument.StartMonument(this.worldObj, this.rand, p_75049_1_, p_75049_2_);
+		MPLog.debug("Generating Europa Ocean Monument at x : %s, z : %s", chunkX * 16, chunkZ * 16);
+		return new StructureEuropaOceanMonument.StartMonument(this.worldObj, this.rand, chunkX, chunkZ);
 	}
 
 	public List func_175799_b()
@@ -124,7 +126,7 @@ public class StructureEuropaOceanMonument extends MapGenStructure
 
 	static
 	{
-		field_175803_h.add(new BiomeGenBase.SpawnListEntry(EntityEuropaGuardian.class, 1, 2, 4));
+		field_175803_h.add(new SpawnListEntry(EntityEuropaGuardian.class, 1, 2, 4));
 	}
 
 	public static class StartMonument extends StructureStart
@@ -134,50 +136,50 @@ public class StructureEuropaOceanMonument extends MapGenStructure
 
 		public StartMonument() {}
 
-		public StartMonument(World world, Random p_i45607_2_, int p_i45607_3_, int p_i45607_4_)
+		public StartMonument(World world, Random rand, int chunkX, int chunkZ)
 		{
-			super(p_i45607_3_, p_i45607_4_);
-			this.func_175789_b(world, p_i45607_2_, p_i45607_3_, p_i45607_4_);
+			super(chunkX, chunkZ);
+			this.func_175789_b(world, rand, chunkX, chunkZ);
 		}
 
-		private void func_175789_b(World world, Random p_175789_2_, int p_175789_3_, int p_175789_4_)
+		private void func_175789_b(World world, Random rand, int chunkX, int chunkZ)
 		{
-			p_175789_2_.setSeed(world.getSeed());
-			long k = p_175789_2_.nextLong();
-			long l = p_175789_2_.nextLong();
-			long i1 = p_175789_3_ * k;
-			long j1 = p_175789_4_ * l;
-			p_175789_2_.setSeed(i1 ^ j1 ^ world.getSeed());
-			int k1 = p_175789_3_ * 16 + 8 - 29;
-			int l1 = p_175789_4_ * 16 + 8 - 29;
-			EnumFacing enumfacing = EnumFacing.Plane.HORIZONTAL.random(p_175789_2_);
-			this.components.add(new StructureEuropaOceanMonumentPieces.MonumentBuilding(p_175789_2_, k1, l1, enumfacing));
+			rand.setSeed(world.getSeed());
+			long k = rand.nextLong();
+			long l = rand.nextLong();
+			long i1 = chunkX * k;
+			long j1 = chunkZ * l;
+			rand.setSeed(i1 ^ j1 ^ world.getSeed());
+			int k1 = chunkX * 16 + 8 - 29;
+			int l1 = chunkZ * 16 + 8 - 29;
+			EnumFacing enumfacing = EnumFacing.Plane.HORIZONTAL.random(rand);
+			this.components.add(new StructureEuropaOceanMonumentPieces.MonumentBuilding(rand, k1, l1, enumfacing));
 			this.updateBoundingBox();
 			this.field_175790_d = true;
 		}
 
 		@Override
-		public void generateStructure(World world, Random p_75068_2_, StructureBoundingBox p_75068_3_)
+		public void generateStructure(World world, Random rand, StructureBoundingBox box)
 		{
 			if (!this.field_175790_d)
 			{
 				this.components.clear();
-				this.func_175789_b(world, p_75068_2_, this.func_143019_e(), this.func_143018_f());
+				this.func_175789_b(world, rand, this.func_143019_e(), this.func_143018_f());
 			}
-			super.generateStructure(world, p_75068_2_, p_75068_3_);
+			super.generateStructure(world, rand, box);
 		}
 
 		@Override
-		public boolean func_175788_a(ChunkCoordIntPair p_175788_1_)
+		public boolean func_175788_a(ChunkCoordIntPair chunk)
 		{
-			return this.field_175791_c.contains(p_175788_1_) ? false : super.func_175788_a(p_175788_1_);
+			return this.field_175791_c.contains(chunk) ? false : super.func_175788_a(chunk);
 		}
 
 		@Override
-		public void func_175787_b(ChunkCoordIntPair p_175787_1_)
+		public void func_175787_b(ChunkCoordIntPair chunk)
 		{
-			super.func_175787_b(p_175787_1_);
-			this.field_175791_c.add(p_175787_1_);
+			super.func_175787_b(chunk);
+			this.field_175791_c.add(chunk);
 		}
 
 		@Override

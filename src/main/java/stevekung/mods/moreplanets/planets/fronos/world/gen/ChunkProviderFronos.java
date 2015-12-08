@@ -33,6 +33,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.SpawnerAnimals;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -77,7 +78,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 	private double[] stoneNoise;
 	private MapGenCavesFronos caveGenerator;
 	private MapGenCavernFronos cavernGenerator;
-	public BiomeDecoratorFronosOre biomedecoratorplanet = new BiomeDecoratorFronosOre();
+	public BiomeDecoratorFronosOre biomeDecorator = new BiomeDecoratorFronosOre();
 	private MapGenFronosVillage villageGenerator = new MapGenFronosVillage();
 	private MapGenFronosRavine ravineGenerator = new MapGenFronosRavine();
 	private BiomeGenBase[] biomesForGeneration;
@@ -146,19 +147,19 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 	}
 
 	@Override
-	public Chunk provideChunk(int x, int z)
+	public Chunk provideChunk(int chunkX, int chunkZ)
 	{
 		ChunkPrimer primer = new ChunkPrimer();
-		this.rand.setSeed(x * 341873128712L + z * 132897987541L);
-		this.generateTerrain(x, z, primer);
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
-		this.func_180517_a(x, z, primer, this.biomesForGeneration);
-		this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
-		this.cavernGenerator.generate(this, this.worldObj, x, z, primer);
-		this.ravineGenerator.func_175792_a(this, this.worldObj, x, z, primer);
-		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 30, z * 16, x, z, primer);
+		this.rand.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
+		this.generateTerrain(chunkX, chunkZ, primer);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
+		this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
+		this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+		this.cavernGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
+		this.ravineGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 30, chunkZ * 16, chunkX, chunkZ, primer);
 
-		Chunk chunk = new Chunk(this.worldObj, primer, x, z);
+		Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
 		byte[] chunkBiomes = chunk.getBiomeArray();
 
 		for (int i = 0; i < chunkBiomes.length; i++)
@@ -368,20 +369,21 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void populate(IChunkProvider chunk, int x, int z)
+	public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
 	{
 		BlockFalling.fallInstantly = true;
-		int k = x * 16;
-		int l = z * 16;
-		BlockPos blockpos = new BlockPos(k, 0, l);
-		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(blockpos.add(16, 0, 16));
+		int x = chunkX * 16;
+		int z = chunkZ * 16;
+		BlockPos pos = new BlockPos(x, 0, z);
+		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(pos.add(16, 0, 16));
 		this.rand.setSeed(this.worldObj.getSeed());
 		long i1 = this.rand.nextLong() / 2L * 2L + 1L;
 		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed(x * i1 + z * j1 ^ this.worldObj.getSeed());
-		biomegenbase.decorate(this.worldObj, this.rand, new BlockPos(k, 0, l));
-		this.biomedecoratorplanet.decorate(this.worldObj, this.rand, BiomeGenBaseFronos.coconutForest,  new BlockPos(k, 0, l));
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
+		this.rand.setSeed(chunkX * i1 + chunkZ * j1 ^ this.worldObj.getSeed());
+		biomegenbase.decorate(this.worldObj, this.rand, new BlockPos(x, 0, z));
+		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseFronos.coconutForest, pos);
+		this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, x + 8, z + 8, 16, 16, this.rand);
 		BlockFalling.fallInstantly = false;
 	}
 
@@ -403,7 +405,6 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 		return "FronosLevelSource";
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List func_177458_a(EnumCreatureType type, BlockPos pos)
 	{
@@ -476,9 +477,9 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 	}
 
 	@Override
-	public void recreateStructures(Chunk chunk, int x, int z)
+	public void recreateStructures(Chunk chunk, int chunkX, int chunkZ)
 	{
-		this.villageGenerator.func_175792_a(this, this.worldObj, x, z, (ChunkPrimer) null);
+		this.villageGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, (ChunkPrimer) null);
 	}
 
 	@Override

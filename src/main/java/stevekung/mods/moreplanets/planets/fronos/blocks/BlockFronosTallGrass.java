@@ -23,7 +23,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -114,7 +113,7 @@ public class BlockFronosTallGrass extends BlockBushMP
 	}
 
 	@Override
-	protected boolean canPlaceBlockOn(Block ground)
+	public boolean canPlaceBlockOn(Block ground)
 	{
 		return ground == FronosBlocks.fronos_grass || ground == FronosBlocks.pink_grass || ground == FronosBlocks.purple_grass || ground == FronosBlocks.plains_grass || ground == FronosBlocks.golden_grass || ground == FronosBlocks.fronos_dirt;
 	}
@@ -195,18 +194,6 @@ public class BlockFronosTallGrass extends BlockBushMP
 	public int getMetaFromState(IBlockState state)
 	{
 		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.getPlantType("Fronos");
-	}
-
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return FronosBlocks.fronos_tall_grass.getDefaultState();
 	}
 
 	public static enum BlockType implements IStringSerializable

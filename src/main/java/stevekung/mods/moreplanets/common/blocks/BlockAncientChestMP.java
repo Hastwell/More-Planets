@@ -12,7 +12,6 @@ import java.util.Iterator;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,15 +24,14 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public abstract class BlockAncientChestMP extends BlockContainerMP
 {
-	public static PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-
 	protected BlockAncientChestMP()
 	{
 		super(Material.wood);
-		this.setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH));
+		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH));
 		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 		this.setResistance(5.0F);
 		this.setHardness(2.0F);
@@ -105,14 +103,14 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
 	{
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
+		return this.getDefaultState().withProperty(BlockStateHelper.FACING, placer.getHorizontalFacing());
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
 	{
 		EnumFacing enumfacing = EnumFacing.getHorizontal(MathHelper.floor_double(placer.rotationYaw * 4.0F / 360.0F + 0.5D) & 3).getOpposite();
-		state = state.withProperty(FACING, enumfacing);
+		state = state.withProperty(BlockStateHelper.FACING, enumfacing);
 		BlockPos blockpos1 = pos.north();
 		BlockPos blockpos2 = pos.south();
 		BlockPos blockpos3 = pos.west();
@@ -164,7 +162,7 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 			IBlockState iblockstate2 = world.getBlockState(pos.south());
 			IBlockState iblockstate3 = world.getBlockState(pos.west());
 			IBlockState iblockstate4 = world.getBlockState(pos.east());
-			EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+			EnumFacing enumfacing = (EnumFacing)state.getValue(BlockStateHelper.FACING);
 			Block block = iblockstate1.getBlock();
 			Block block1 = iblockstate2.getBlock();
 			Block block2 = iblockstate3.getBlock();
@@ -185,11 +183,11 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 
 					if (block2 == this)
 					{
-						enumfacing2 = (EnumFacing)iblockstate3.getValue(FACING);
+						enumfacing2 = (EnumFacing)iblockstate3.getValue(BlockStateHelper.FACING);
 					}
 					else
 					{
-						enumfacing2 = (EnumFacing)iblockstate4.getValue(FACING);
+						enumfacing2 = (EnumFacing)iblockstate4.getValue(BlockStateHelper.FACING);
 					}
 
 					if (enumfacing2 == EnumFacing.NORTH)
@@ -220,11 +218,11 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 
 				if (block == this)
 				{
-					enumfacing1 = (EnumFacing)iblockstate1.getValue(FACING);
+					enumfacing1 = (EnumFacing)iblockstate1.getValue(BlockStateHelper.FACING);
 				}
 				else
 				{
-					enumfacing1 = (EnumFacing)iblockstate2.getValue(FACING);
+					enumfacing1 = (EnumFacing)iblockstate2.getValue(BlockStateHelper.FACING);
 				}
 
 				if (enumfacing1 == EnumFacing.WEST)
@@ -245,7 +243,7 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 					enumfacing = EnumFacing.WEST;
 				}
 			}
-			state = state.withProperty(FACING, enumfacing);
+			state = state.withProperty(BlockStateHelper.FACING, enumfacing);
 			world.setBlockState(pos, state, 3);
 			return state;
 		}
@@ -279,11 +277,11 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 
 		if (enumfacing != null)
 		{
-			return state.withProperty(FACING, enumfacing.getOpposite());
+			return state.withProperty(BlockStateHelper.FACING, enumfacing.getOpposite());
 		}
 		else
 		{
-			EnumFacing enumfacing2 = (EnumFacing)state.getValue(FACING);
+			EnumFacing enumfacing2 = (EnumFacing)state.getValue(BlockStateHelper.FACING);
 
 			if (world.getBlockState(pos.offset(enumfacing2)).getBlock().isFullBlock())
 			{
@@ -299,7 +297,7 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 			{
 				enumfacing2 = enumfacing2.getOpposite();
 			}
-			return state.withProperty(FACING, enumfacing2);
+			return state.withProperty(BlockStateHelper.FACING, enumfacing2);
 		}
 	}
 
@@ -418,19 +416,19 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 		{
 			enumfacing = EnumFacing.NORTH;
 		}
-		return this.getDefaultState().withProperty(FACING, enumfacing);
+		return this.getDefaultState().withProperty(BlockStateHelper.FACING, enumfacing);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
+		return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
 	}
 
 	@Override
 	protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] {FACING});
+		return new BlockState(this, new IProperty[] {BlockStateHelper.FACING});
 	}
 
 	protected abstract TileEntity getChestTile();

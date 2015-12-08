@@ -59,7 +59,7 @@ public class BlockCandyFlower extends BlockBushMP
 	}
 
 	@Override
-	protected boolean canPlaceBlockOn(Block ground)
+	public boolean canPlaceBlockOn(Block ground)
 	{
 		return ground == FronosBlocks.frosted_cake;
 	}

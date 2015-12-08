@@ -7,18 +7,12 @@
 
 package stevekung.mods.moreplanets.common.util;
 
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.client.renderer.block.statemap.StateMap.Builder;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
-import stevekung.mods.moreplanets.common.blocks.BlockLeavesMP;
-import stevekung.mods.moreplanets.moons.europa.blocks.BlockEuropaWaterBomb;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
-import stevekung.mods.moreplanets.planets.diona.blocks.BlockFronisiumTNT;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
-import stevekung.mods.moreplanets.planets.kapteynb.blocks.BlockUraniumBomb;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
@@ -32,23 +26,23 @@ public class StateMapperUtil
 {
 	public static void registerStateMapper()
 	{
-		ClientRegisterHelper.registerStateMapper(DionaBlocks.fronisium_tnt, new Builder().addPropertiesToIgnore(new IProperty[] {BlockFronisiumTNT.EXPLODE}).build());
+		ClientRegisterHelper.registerStateMapper(DionaBlocks.fronisium_tnt, EnumStateMapper.TNT);
 		ClientRegisterHelper.registerStateMapper(NibiruBlocks.ancient_dark_fence_gate, EnumStateMapper.FENCE_GATE);
 		ClientRegisterHelper.registerStateMapper(NibiruBlocks.orange_fence_gate, EnumStateMapper.FENCE_GATE);
-		ClientRegisterHelper.registerStateMapper(NibiruBlocks.nibiru_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
+		ClientRegisterHelper.registerStateMapper(NibiruBlocks.nibiru_leaves, EnumStateMapper.LEAVES);
 		ClientRegisterHelper.registerStateMapper(NibiruBlocks.ancient_dark_door_block, EnumStateMapper.DOOR);
 		ClientRegisterHelper.registerStateMapper(NibiruBlocks.orange_door_block, EnumStateMapper.DOOR);
 		ClientRegisterHelper.registerStateMapper(KoentusBlocks.crystal_fence_gate, EnumStateMapper.FENCE_GATE);
-		ClientRegisterHelper.registerStateMapper(KoentusBlocks.crystal_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
+		ClientRegisterHelper.registerStateMapper(KoentusBlocks.crystal_leaves, EnumStateMapper.LEAVES);
 		ClientRegisterHelper.registerStateMapper(KoentusBlocks.crystal_door_block, EnumStateMapper.DOOR);
-		ClientRegisterHelper.registerStateMapper(FronosBlocks.fronos_colorized_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
-		ClientRegisterHelper.registerStateMapper(FronosBlocks.fronos_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
+		ClientRegisterHelper.registerStateMapper(FronosBlocks.fronos_colorized_leaves, EnumStateMapper.LEAVES);
+		ClientRegisterHelper.registerStateMapper(FronosBlocks.fronos_leaves, EnumStateMapper.LEAVES);
 		ClientRegisterHelper.registerStateMapper(FronosBlocks.coconut_fence_gate, EnumStateMapper.FENCE_GATE);
 		ClientRegisterHelper.registerStateMapper(FronosBlocks.maple_fence_gate, EnumStateMapper.FENCE_GATE);
 		ClientRegisterHelper.registerStateMapper(FronosBlocks.fronos_coral, EnumStateMapper.LIQUID_LEVEL);
 		ClientRegisterHelper.registerStateMapper(FronosBlocks.coconut_door_block, EnumStateMapper.DOOR);
 		ClientRegisterHelper.registerStateMapper(FronosBlocks.maple_door_block, EnumStateMapper.DOOR);
-		ClientRegisterHelper.registerStateMapper(KapteynBBlocks.uranium_bomb, new Builder().addPropertiesToIgnore(new IProperty[] {BlockUraniumBomb.EXPLODE}).build());
+		ClientRegisterHelper.registerStateMapper(KapteynBBlocks.uranium_bomb, EnumStateMapper.TNT);
 		ClientRegisterHelper.registerStateMapper(SiriusBBlocks.sirius_fire, EnumStateMapper.FIRE);
 		ClientRegisterHelper.registerStateMapper(FronosBlocks.coconut_milk, EnumStateMapper.FLUID_LEVEL);
 		ClientRegisterHelper.registerStateMapper(FronosBlocks.mineral_water, EnumStateMapper.FLUID_LEVEL);
@@ -68,11 +62,11 @@ public class StateMapperUtil
 		ClientRegisterHelper.registerStateMapper(PlutoBlocks.liquid_methane, EnumStateMapper.FLUID_LEVEL);
 		ClientRegisterHelper.registerStateMapper(PlutoBlocks.liquid_nitrogen, EnumStateMapper.FLUID_LEVEL);
 		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_water, EnumStateMapper.FLUID_LEVEL);
-		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
+		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_leaves, EnumStateMapper.LEAVES);
 		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_sapling, EnumStateMapper.LIQUID_LEVEL);
 		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_door_block, EnumStateMapper.DOOR);
 		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_fence_gate, EnumStateMapper.FENCE_GATE);
-		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_water_bomb, new Builder().addPropertiesToIgnore(new IProperty[] {BlockEuropaWaterBomb.EXPLODE}).build());
-		ClientRegisterHelper.registerStateMapper(DarkAsteroidBlocks.alien_leaves, new Builder().addPropertiesToIgnore(new IProperty[] {BlockLeavesMP.CHECK_DECAY, BlockLeavesMP.DECAYABLE}).build());
+		ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_water_bomb, EnumStateMapper.TNT);
+		ClientRegisterHelper.registerStateMapper(DarkAsteroidBlocks.alien_leaves, EnumStateMapper.LEAVES);
 	}
 }

@@ -11,7 +11,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -144,12 +143,7 @@ public class ClientRegisterHelper
 
 	public static void registerStateMapper(Block block, EnumStateMapper mapper)
 	{
-		ClientRegisterHelper.registerStateMapper(block, mapper.builder);
-	}
-
-	public static void registerStateMapper(Block block, IStateMapper mapper)
-	{
-		Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(block, mapper);
+		Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().registerBlockWithStateMapper(block, mapper.builder);
 	}
 
 	public static TextureAtlasSprite registerBlockTexture(String texture)

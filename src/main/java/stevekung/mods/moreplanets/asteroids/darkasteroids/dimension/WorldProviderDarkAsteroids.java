@@ -90,7 +90,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
 	@SideOnly(Side.CLIENT)
 	public float getStarBrightness(float par1)
 	{
-		return 1.0F;
+		return 0.7F;
 	}
 
 	@Override

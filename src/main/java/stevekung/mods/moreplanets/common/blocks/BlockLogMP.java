@@ -10,20 +10,17 @@ package stevekung.mods.moreplanets.common.blocks;
 import java.util.Iterator;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumFacing.Axis;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public abstract class BlockLogMP extends BlockBaseMP
 {
-	public static PropertyEnum AXIS = PropertyEnum.create("axis", EnumAxis.class);
-
 	public BlockLogMP()
 	{
 		super(Material.wood);
@@ -40,7 +37,7 @@ public abstract class BlockLogMP extends BlockBaseMP
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
 	{
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(AXIS, EnumAxis.fromFacingAxis(facing.getAxis()));
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(BlockStateHelper.AXIS, BlockStateHelper.EnumAxis.fromFacingAxis(facing.getAxis()));
 	}
 
 	@Override
@@ -60,7 +57,7 @@ public abstract class BlockLogMP extends BlockBaseMP
 					BlockPos blockpos1 = (BlockPos)iterator.next();
 					IBlockState iblockstate1 = world.getBlockState(blockpos1);
 
-					if (iblockstate1.getBlock().isLeaves(world, blockpos1))
+					if (iblockstate1.getBlock().isLeaves(world, blockpos1) || iblockstate1.getBlock() == EuropaBlocks.europa_leaves)
 					{
 						iblockstate1.getBlock().beginLeavesDecay(world, blockpos1);
 					}
@@ -79,110 +76,5 @@ public abstract class BlockLogMP extends BlockBaseMP
 	public boolean isWood(IBlockAccess world, BlockPos pos)
 	{
 		return this.getBlockState().getBlock().getMaterial() == Material.wood ? true : false;
-	}
-
-	public static enum EnumAxis implements IStringSerializable
-	{
-		X("x"),
-		Y("y"),
-		Z("z"),
-		NONE("none");
-		private String name;
-
-		private EnumAxis(String name)
-		{
-			this.name = name;
-		}
-
-		@Override
-		public String toString()
-		{
-			return this.name;
-		}
-
-		public static EnumAxis fromFacingAxis(Axis axis)
-		{
-			switch (SwitchAxis.AXIS_LOOKUP[axis.ordinal()])
-			{
-			case 1:
-				return X;
-			case 2:
-				return Y;
-			case 3:
-				return Z;
-			default:
-				return NONE;
-			}
-		}
-
-		@Override
-		public String getName()
-		{
-			return this.name;
-		}
-	}
-
-	static class SwitchAxis
-	{
-		static int[] AXIS_LOOKUP = new int[Axis.values().length];
-
-		static
-		{
-			try
-			{
-				AXIS_LOOKUP[Axis.X.ordinal()] = 1;
-			}
-			catch (NoSuchFieldError var3)
-			{
-			}
-
-			try
-			{
-				AXIS_LOOKUP[Axis.Y.ordinal()] = 2;
-			}
-			catch (NoSuchFieldError var2)
-			{
-			}
-
-			try
-			{
-				AXIS_LOOKUP[Axis.Z.ordinal()] = 3;
-			}
-			catch (NoSuchFieldError var1)
-			{
-			}
-		}
-	}
-
-	protected static class SwitchEnumAxis
-	{
-		public static int[] AXIS_LOOKUP = new int[EnumAxis.values().length];
-
-		static
-		{
-			try
-			{
-				AXIS_LOOKUP[EnumAxis.X.ordinal()] = 1;
-			}
-			catch (NoSuchFieldError var3)
-			{
-			}
-
-			try
-			{
-				AXIS_LOOKUP[EnumAxis.Z.ordinal()] = 2;
-			}
-			catch (NoSuchFieldError var2)
-			{
-			}
-
-			try
-			{
-				AXIS_LOOKUP[EnumAxis.NONE.ordinal()] = 3;
-			}
-			catch (NoSuchFieldError var1)
-			{
-			}
-		}
 	}
 }

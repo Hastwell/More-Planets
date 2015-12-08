@@ -29,31 +29,31 @@ public class BiomeDecoratorKapteynB extends BiomeDecoratorMP
 
 	public BiomeDecoratorKapteynB()
 	{
-		this.nameriumGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 4, 4, true, KapteynBBlocks.kapteyn_b_block, 2);
-		this.frozenIronGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 8, 5, true, KapteynBBlocks.kapteyn_b_block, 2);
-		this.uraniumGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 8, 6, true, KapteynBBlocks.kapteyn_b_block, 2);
-		this.tinGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 8, 7, true, KapteynBBlocks.kapteyn_b_block, 2);
-		this.copperGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 8, 8, true, KapteynBBlocks.kapteyn_b_block, 2);
-		this.redstoneGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 8, 9, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.nameriumGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 6, 4, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.frozenIronGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 7, 5, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.uraniumGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 7, 6, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.tinGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 7, 7, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.copperGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 7, 8, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.redstoneGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 7, 9, true, KapteynBBlocks.kapteyn_b_block, 2);
 		this.dirtGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_block, 32, 1, true, KapteynBBlocks.kapteyn_b_block, 2);
 		this.rockyGen = new WorldGenMinableMeta(KapteynBBlocks.rocky_solid_water, 8, 0, true, KapteynBBlocks.kapteyn_b_block, 2);
-		this.iceGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_ice, 12, 0, true, KapteynBBlocks.kapteyn_b_block, 2);
-		this.dirtyIceGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_ice, 12, 1, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.iceGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_ice, 8, 0, true, KapteynBBlocks.kapteyn_b_block, 2);
+		this.dirtyIceGen = new WorldGenMinableMeta(KapteynBBlocks.kapteyn_b_ice, 8, 1, true, KapteynBBlocks.kapteyn_b_block, 2);
 	}
 
 	@Override
 	protected void generateOres()
 	{
-		this.generateOre(16, this.copperGen, 0, 64);
-		this.generateOre(16, this.tinGen, 0, 64);
-		this.generateOre(12, this.redstoneGen, 0, 16);
-		this.generateOre(32, this.dirtGen, 0, 255);
-		this.generateOre(12, this.nameriumGen, 0, 32);
-		this.generateOre(16, this.frozenIronGen, 24, 32);
-		this.generateOre(10, this.uraniumGen, 0, 64);
-		this.generateOre(24, this.iceGen, 0, 255);
-		this.generateOre(24, this.dirtyIceGen, 0, 255);
-		this.generateOre(24, this.rockyGen, 0, 128);
+		this.generateOre(24, this.copperGen, 0, 75);
+		this.generateOre(22, this.tinGen, 0, 60);
+		this.generateOre(8, this.redstoneGen, 0, 16);
+		this.generateOre(20, this.dirtGen, 0, 256);
+		this.generateOre(8, this.nameriumGen, 16, 32);
+		this.generateOre(15, this.frozenIronGen, 12, 32);
+		this.generateOre(12, this.uraniumGen, 0, 64);
+		this.generateOre(15, this.iceGen, 0, 256);
+		this.generateOre(10, this.dirtyIceGen, 0, 256);
+		this.generateOre(12, this.rockyGen, 0, 128);
 
 		for (int i = 0; i < 1; ++i)
 		{

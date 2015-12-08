@@ -20,6 +20,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockOvaltineCup extends BlockFilledCup
 {
@@ -40,7 +41,7 @@ public class BlockOvaltineCup extends BlockFilledCup
 		{
 			player.getFoodStats().addStats(6, 0.6F);
 			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 2400, 2));
-			world.setBlockState(pos, FronosBlocks.cup.getDefaultState().withProperty(FACING, EnumFacing.getFront(this.getMetaFromState(state))), 3);
+			world.setBlockState(pos, FronosBlocks.cup.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(this.getMetaFromState(state))), 3);
 			world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "random.drink", 0.5F, world.rand.nextFloat() * 0.1F + 1.2F);
 			return true;
 		}

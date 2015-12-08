@@ -13,9 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.IFuelHandler;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
+import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
+import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
+import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class FurnaceFuelMP implements IFuelHandler
 {
@@ -27,6 +31,10 @@ public class FurnaceFuelMP implements IFuelHandler
 		if (item == this.getBlock(NibiruBlocks.nibiru_sapling) || item == this.getBlock(KoentusBlocks.crystal_sapling) || item == this.getBlock(FronosBlocks.fronos_sapling) || item == this.getBlock(EuropaBlocks.europa_sapling) || item == this.getBlock(DarkAsteroidBlocks.alien_sapling))
 		{
 			return 100;
+		}
+		if (item == NibiruItems.ancient_dark_door || item == NibiruItems.orange_door || item == KoentusItems.crystal_door || item == FronosItems.coconut_door || item == FronosItems.maple_door || item == EuropaItems.europa_door)
+		{
+			return 150;
 		}
 		return 0;
 	}

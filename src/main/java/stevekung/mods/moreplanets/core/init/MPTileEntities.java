@@ -44,6 +44,7 @@ import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusB
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBDungeonSpawner;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBTreasureChest;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
+import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusDungeonSpawner;
 
 public class MPTileEntities
 {
@@ -100,6 +101,7 @@ public class MPTileEntities
 
 		// Venus
 		GameRegistry.registerTileEntity(TileEntityVenusAncientChest.class, "VenusAncientChest");
+		GameRegistry.registerTileEntity(TileEntityVenusDungeonSpawner.class, "VenusDungeonSpawner");
 
 		// Pluto
 		GameRegistry.registerTileEntity(TileEntityPlutoAncientChest.class, "PlutoAncientChest");

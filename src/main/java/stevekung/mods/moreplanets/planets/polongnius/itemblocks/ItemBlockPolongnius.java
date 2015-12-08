@@ -29,12 +29,9 @@ public class ItemBlockPolongnius extends ItemBlockBaseMP
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
 	{
-		if (player.worldObj.isRemote)
+		if (itemStack.getItemDamage() == 14)
 		{
-			if (itemStack.getItemDamage() == 14)
-			{
-				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.slime.name"));
-			}
+			list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.slime.name"));
 		}
 	}
 
