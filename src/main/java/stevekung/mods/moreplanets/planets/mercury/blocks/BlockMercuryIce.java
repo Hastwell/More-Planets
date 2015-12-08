@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import stevekung.mods.moreplanets.core.blocks.BlockIceMP;
 import stevekung.mods.moreplanets.core.util.WorldUtilMP;
+import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
 
 public class BlockMercuryIce extends BlockIceMP
 {
@@ -71,7 +72,7 @@ public class BlockMercuryIce extends BlockIceMP
 				world.setBlockToAir(x, y, z);
 				return;
 			}
-			else if (WorldUtilMP.isMercuryWorld(world, x, y, z))
+			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
 			{
 				world.setBlockToAir(x, y, z);
 				return;
@@ -103,7 +104,7 @@ public class BlockMercuryIce extends BlockIceMP
 			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 			world.setBlock(x, y, z, MercuryBlocks.dirty_water);
 		}
-		if (WorldUtilMP.isMercuryWorld(world, x, y, z))
+		if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
 		{
 			world.setBlockToAir(x, y, z);
 			return;

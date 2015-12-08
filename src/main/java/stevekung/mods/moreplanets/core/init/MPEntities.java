@@ -50,6 +50,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityMilkCow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTier7Rocket;
@@ -156,6 +157,7 @@ public class MPEntities
 		registerEntity(EntityEuropaCrab.class, "EuropaCrab", 39, -11574413, -12167066);
 
 		registerEntity(EntityEvolvedWitch.class, "EvolvedWitch", 40, 3407872, 5349438);
+		registerEntity(EntityMilkCow.class, "MilkCow", 41, -13487566, -657931);
 
 		//TEMPLATE HOTFIX
 		registerEntity(EntityFronosCreeperBossTemp.class, "FronosBossTemp", 38, 0, 0);

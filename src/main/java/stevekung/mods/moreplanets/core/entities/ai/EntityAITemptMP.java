@@ -59,8 +59,8 @@ public class EntityAITemptMP extends EntityAIBase
 			}
 			else
 			{
-				ItemStack var1 = this.temptingPlayer.getCurrentEquippedItem();
-				return var1 == null ? false : var1.getItem() == this.itemStack.getItem();
+				ItemStack itemStack = this.temptingPlayer.getCurrentEquippedItem();
+				return itemStack == null ? false : itemStack.getItem() == this.itemStack.getItem() && itemStack.getItemDamage() == this.itemStack.getItemDamage();
 			}
 		}
 	}

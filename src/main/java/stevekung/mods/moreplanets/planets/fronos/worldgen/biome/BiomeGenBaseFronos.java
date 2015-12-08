@@ -45,6 +45,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityMilkCow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
@@ -116,6 +117,7 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityStrawberryChicken.class, 10, 4, 4));
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityGrappy.class, 12, 4, 4));
 		this.spawnableCreatureList.add(new SpawnListEntry(EntityCreamCat.class, 2, 2, 2));
+		this.spawnableCreatureList.add(new SpawnListEntry(EntityMilkCow.class, 8, 4, 4));
 	}
 
 	@Override

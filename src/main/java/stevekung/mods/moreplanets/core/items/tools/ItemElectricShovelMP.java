@@ -89,7 +89,7 @@ public abstract class ItemElectricShovelMP extends ItemSpade implements IItemEle
 	{
 		if (this.getElectricityStored(itemStack) == 0.0F)
 		{
-			return 0.5F;
+			return 0.1F;
 		}
 		return super.getDigSpeed(itemStack, block, meta);
 	}

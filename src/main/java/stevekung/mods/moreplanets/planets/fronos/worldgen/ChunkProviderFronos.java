@@ -59,6 +59,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityMilkCow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
@@ -462,6 +463,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 			creatures.add(new SpawnListEntry(EntityCreamCat.class, 2, 2, 2));
 			creatures.add(new SpawnListEntry(EntityStrawberryChicken.class, 10, 4, 4));
 			creatures.add(new SpawnListEntry(EntityStarfish.class, 8, 4, 4));
+			creatures.add(new SpawnListEntry(EntityMilkCow.class, 8, 4, 4));
 
 			if (ConfigManagerMP.allowMobCreatureSpawningOnFronos)
 			{

@@ -19,6 +19,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -172,6 +173,13 @@ public abstract class BlockCreamLayer extends BlockBaseMP
 	public ItemStack getPickBlock(MovingObjectPosition pos, World world, int x, int y, int z)
 	{
 		return new ItemStack(this, 1, 0);
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+		return (meta & 7) == 7;
 	}
 
 	public abstract String getCreamTexture();

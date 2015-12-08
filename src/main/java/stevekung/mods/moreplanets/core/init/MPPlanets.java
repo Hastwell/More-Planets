@@ -83,7 +83,7 @@ public class MPPlanets
 		MorePlanetsCore.kapteynB.setDimensionInfo(ConfigManagerMP.idDimensionKapteynB, WorldProviderKapteynB.class);
 		MorePlanetsCore.kapteynB.atmosphereComponent(IAtmosphericGas.NITROGEN).atmosphereComponent(IAtmosphericGas.WATER).atmosphereComponent(IAtmosphericGas.HELIUM).atmosphereComponent(IAtmosphericGas.HYDROGEN);
 
-		MorePlanetsCore.siriusB = MPPlanets.createPlanet("siriusB", MorePlanetsCore.siriusSolarSystem, 100.0F, 0.1F, 46.5F, 0.125F, 8, new ResourceLocation("siriusb:textures/gui/celestialbodies/sirius_b.png"));
+		MorePlanetsCore.siriusB = MPPlanets.createPlanet("siriusB", MorePlanetsCore.siriusSolarSystem, 0.0F, 0.225F, Float.MAX_VALUE, 0.125F, 8, new ResourceLocation("siriusb:textures/gui/celestialbodies/sirius_b.png"));
 		MorePlanetsCore.siriusB.setDimensionInfo(ConfigManagerMP.idDimensionSiriusB, WorldProviderSiriusB.class);
 		MorePlanetsCore.siriusB.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.HELIUM);
 
@@ -101,8 +101,10 @@ public class MPPlanets
 		}
 		if (ConfigManagerMP.enableJupiterPlanet)
 		{
-			MorePlanetsCore.jupiter = MPPlanets.createPlanet("jupiter", GalacticraftCore.solarSystemSol, 2.3F, 1.5F, 11.861993428258488499452354874042F, 0.5319F, -1, new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/jupiter.png"));
+			MorePlanetsCore.jupiter = MPPlanets.createPlanet("jupiter", GalacticraftCore.solarSystemSol, 2.3F, 1.5F, 11.861993428258488499452354874042F, 0.5319F, 0, new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/jupiter.png"));
+			WorldProviderNull.setName("Jupiter");
 			MorePlanetsCore.jupiter.setDimensionInfo(ConfigManagerMP.idDimensionJupiter, WorldProviderNull.class);
+			MorePlanetsCore.jupiter.canCreateSS(true);
 			MorePlanetsCore.jupiter.setBodyIcon(new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/jupiter.png"));
 		}
 		if (ConfigManagerMP.enablePlutoPlanet)

@@ -375,6 +375,7 @@ entity.MorePlanet.CreamGolem.name=Cream Golem
 entity.MorePlanet.JellySlime.name=Jelly Slime
 entity.MorePlanet.StrawberryChicken.name=Strawberry Chicken
 entity.MorePlanet.FronosVillager.name=Fronos Villager
+entity.MorePlanet.MilkCow.name=Milk Cow
 
 # GUI
 schematics.container.rocket.tier7=Tier 7 Rocket

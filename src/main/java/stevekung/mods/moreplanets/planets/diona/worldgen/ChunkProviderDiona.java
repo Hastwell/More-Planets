@@ -33,9 +33,11 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaMinionCreeper;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
@@ -345,6 +347,16 @@ public class ChunkProviderDiona extends ChunkProviderGenerate
 		this.rand.setSeed(par2 * var7 + par3 * var9 ^ this.worldObj.getSeed());
 		this.dungeonGenerator.handleTileEntities(this.rand);
 		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+
+		// Dungeon Spawner
+		for (int i = 0; i < 12; ++i)
+		{
+			int x = var4 + this.rand.nextInt(16) + 8;
+			int y = this.rand.nextInt(256);
+			int z = var5 + this.rand.nextInt(16) + 8;
+			new WorldGenSpaceDungeons(new Block[] { DionaBlocks.diona_ancient_chest, DionaBlocks.diona_block, MPBlocks.space_mossy_cobblestone }, 0).generate(this.worldObj, this.rand, x, y, z);
+		}
+
 		BlockFalling.fallInstantly = false;
 	}
 

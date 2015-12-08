@@ -224,6 +224,10 @@ public class MorePlanetEvents
 		{
 			this.renderRing(event, event.celestialBody, 0.1F, 0.1F, 0.1F, 1.0F, 0.5F);
 		}
+		else if (event.celestialBody == MorePlanetsCore.siriusB)
+		{
+			event.setCanceled(true);
+		}
 	}
 
 	@SubscribeEvent
@@ -866,7 +870,7 @@ public class MorePlanetEvents
 
 	private void doInfectedGasForEntity(World world, EntityLivingBase living)
 	{
-		if (world.provider instanceof WorldProviderNibiru)
+		if (world.provider instanceof WorldProviderNibiru && living.posY <= 1000)
 		{
 			if (!(living instanceof EntityPlayer))
 			{

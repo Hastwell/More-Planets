@@ -22,11 +22,13 @@ import stevekung.mods.moreplanets.core.blocks.BlockTintedGlass;
 import stevekung.mods.moreplanets.core.blocks.BlockTintedGlassPane;
 import stevekung.mods.moreplanets.core.blocks.BlockWallMP;
 import stevekung.mods.moreplanets.core.blocks.base.BlockChondrite;
+import stevekung.mods.moreplanets.core.blocks.base.BlockSpaceMossyCobblestone;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockChondrite;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickSlab;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickWall;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSlabMP;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSpaceDecoration;
+import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSpaceMossyCobblestone;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockTintedGlassPane;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockWallMP;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
@@ -59,6 +61,7 @@ public class MPBlocks
 	public static Block tinted_glass;
 	public static Block tinted_glass_pane;
 	public static Block space_decoration_block;
+	public static Block space_mossy_cobblestone;
 
 	public static Block stone_wall;
 	public static Block dungeon_brick_wall;
@@ -102,6 +105,7 @@ public class MPBlocks
 		MPBlocks.tinted_glass = new BlockTintedGlass("tinted_glass");
 		MPBlocks.tinted_glass_pane = new BlockTintedGlassPane("tinted_glass_pane");
 		MPBlocks.space_decoration_block = new BlockPolishedSpaceDecoration("space_decoration_block");
+		MPBlocks.space_mossy_cobblestone = new BlockSpaceMossyCobblestone("space_mossy_cobblestone");
 	}
 
 	private static void initSlabBlocks()
@@ -132,6 +136,7 @@ public class MPBlocks
 		MPBlocks.space_decoration_block.setHarvestLevel("pickaxe", 0);
 		MPBlocks.stone_wall.setHarvestLevel("pickaxe", 0);
 		MPBlocks.dungeon_brick_wall.setHarvestLevel("pickaxe", 0);
+		MPBlocks.space_mossy_cobblestone.setHarvestLevel("pickaxe", 0);
 	}
 
 	private static void setFireBurn()
@@ -144,6 +149,7 @@ public class MPBlocks
 	{
 		RegisterHelper.registerBlock(MPBlocks.chondrite_block, ItemBlockChondrite.class);
 		RegisterHelper.registerBlock(MPBlocks.space_decoration_block, ItemBlockSpaceDecoration.class);
+		RegisterHelper.registerBlock(MPBlocks.space_mossy_cobblestone, ItemBlockSpaceMossyCobblestone.class);
 		RegisterHelper.registerBlock(MPBlocks.tinted_glass, ItemBlockTintedGlassPane.class);
 		RegisterHelper.registerBlock(MPBlocks.tinted_glass_pane, ItemBlockTintedGlassPane.class);
 		RegisterHelper.registerBlock(MPBlocks.stone_wall, ItemBlockWallMP.class);

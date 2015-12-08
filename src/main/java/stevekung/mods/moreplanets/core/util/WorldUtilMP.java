@@ -17,28 +17,16 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
-import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
-import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
-import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import cpw.mods.fml.common.FMLCommonHandler;
 
 public class WorldUtilMP
 {
-	public static boolean isMercuryWorld(World world, int x, int y, int z)
+	public static boolean isSpaceWorld(World world, WorldProvider provider)
 	{
-		return world.provider instanceof WorldProviderMercury && world.isDaytime() && world.canBlockSeeTheSky(x, y, z);
-	}
-
-	public static boolean isPlutoWorld(World world)
-	{
-		return world.provider instanceof WorldProviderPluto;
-	}
-
-	public static boolean isKoentusWorld(World world)
-	{
-		return world.provider instanceof WorldProviderKoentus;
+		return world.provider.getClass() == provider.getClass();
 	}
 
 	public static Entity setHomePlanetDimension(Entity entity, int dimID, WorldServer world)

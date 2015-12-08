@@ -7,6 +7,9 @@
 
 package stevekung.mods.moreplanets.moons.koentus.blocks;
 
+import static net.minecraftforge.common.util.ForgeDirection.DOWN;
+import static net.minecraftforge.common.util.ForgeDirection.UP;
+
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -167,6 +170,18 @@ public class BlockCrystalFarmland extends Block
 	public ItemStack getPickBlock(MovingObjectPosition moving, World world, int x, int y, int z)
 	{
 		return new ItemStack(KoentusBlocks.crystal_dirt, 1, 0);
+	}
+
+	@Override
+	public boolean isFertile(World world, int x, int y, int z)
+	{
+		return world.getBlockMetadata(x, y, z) > 0;
+	}
+
+	@Override
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+	{
+		return side != DOWN && side != UP;
 	}
 
 	@SideOnly(Side.CLIENT)

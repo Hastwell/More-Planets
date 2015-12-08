@@ -27,6 +27,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 import stevekung.mods.moreplanets.core.blocks.BlockIceMP;
 import stevekung.mods.moreplanets.core.util.WorldUtilMP;
+import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
+import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -96,7 +98,7 @@ public class BlockKoentusIce extends BlockIceMP
 				world.setBlockToAir(x, y, z);
 				return;
 			}
-			else if (WorldUtilMP.isMercuryWorld(world, x, y, z))
+			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
 			{
 				world.setBlockToAir(x, y, z);
 				return;
@@ -118,7 +120,7 @@ public class BlockKoentusIce extends BlockIceMP
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity() && world.getBlockMetadata(x, y, z) == 0 && !WorldUtilMP.isKoentusWorld(world))
+		if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity() && world.getBlockMetadata(x, y, z) == 0 && !WorldUtilMP.isSpaceWorld(world, new WorldProviderKoentus()))
 		{
 			if (world.provider.isHellWorld)
 			{
@@ -128,7 +130,7 @@ public class BlockKoentusIce extends BlockIceMP
 			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 			world.setBlock(x, y, z, Blocks.water);
 		}
-		if (WorldUtilMP.isMercuryWorld(world, x, y, z))
+		if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
 		{
 			world.setBlockToAir(x, y, z);
 			return;

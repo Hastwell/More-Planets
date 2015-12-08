@@ -17,6 +17,7 @@ public class ItemBlockFronosLog extends ItemBlockMorePlanet
 	public ItemBlockFronosLog(Block block)
 	{
 		super(block);
+		this.setHasSubtypes(true);
 	}
 
 	@Override

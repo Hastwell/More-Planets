@@ -66,6 +66,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityMilkCow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTier7Rocket;
@@ -94,6 +95,7 @@ import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderKiwi;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderLemonDuck;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderMelon;
+import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderMilkCow;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderPoisonArrow;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderStarfish;
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderStrawberryChicken;
@@ -210,6 +212,8 @@ public class EntityRendererMP
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid());
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb());
 		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab());
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow());
 
 		//TEMPLATE HOTFIX
 		RenderingRegistry.registerEntityRenderingHandler(EntityFronosCreeperBossTemp.class, new RenderFronosCreeperBossTemp());

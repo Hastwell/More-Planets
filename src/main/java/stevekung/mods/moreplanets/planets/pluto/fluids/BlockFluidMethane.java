@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.blocks.BlockFluidBaseMP;
 import stevekung.mods.moreplanets.core.util.WorldUtilMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
+import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -52,7 +53,7 @@ public class BlockFluidMethane extends BlockFluidBaseMP
 	{
 		if (entity instanceof EntityLivingBase)
 		{
-			if (WorldUtilMP.isPlutoWorld(world))
+			if (WorldUtilMP.isSpaceWorld(world, new WorldProviderPluto()))
 			{
 				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60, 2));
 			}
