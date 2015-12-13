@@ -375,6 +375,7 @@ entity.MorePlanet.CreamGolem.name=奶油傀儡
 entity.MorePlanet.JellySlime.name=果冻史莱姆
 entity.MorePlanet.StrawberryChicken.name=草莓鸡
 entity.MorePlanet.FronosVillager.name=糖果星村民
+entity.MorePlanet.MilkCow.name=奶牛
 
 # GUI
 schematics.container.rocket.tier7=7阶火箭
