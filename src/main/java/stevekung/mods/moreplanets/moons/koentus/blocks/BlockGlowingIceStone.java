@@ -27,87 +27,87 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGlowingIceStone extends BlockBreakable
 {
-	private IIcon[] iconArray;
+    private IIcon[] iconArray;
 
-	public BlockGlowingIceStone(String name)
-	{
-		super("", Material.ice, false);
-		this.setBlockName(name);
-		this.slipperiness = 1.0F;
-		this.setStepSound(Block.soundTypeGlass);
-		this.setHardness(0.5F);
-		this.setLightLevel(1.0F);
-	}
+    public BlockGlowingIceStone(String name)
+    {
+        super("", Material.ice, false);
+        this.setBlockName(name);
+        this.slipperiness = 1.0F;
+        this.setStepSound(Block.soundTypeGlass);
+        this.setHardness(0.5F);
+        this.setLightLevel(1.0F);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-	{
-		return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, 1 - par5);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+        return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, 1 - par5);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.iconArray = new IIcon[16];
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.iconArray = new IIcon[16];
 
-		for (int i = 0; i < this.iconArray.length; ++i)
-		{
-			this.iconArray[i] = par1IconRegister.registerIcon("koentus:glowing_ice_" + ItemDye.field_150921_b[BlockGlowingIceStone.getDyeFromBlock(i)]);
-		}
-	}
+        for (int i = 0; i < this.iconArray.length; ++i)
+        {
+            this.iconArray[i] = par1IconRegister.registerIcon("koentus:glowing_ice_" + ItemDye.field_150921_b[BlockGlowingIceStone.getDyeFromBlock(i)]);
+        }
+    }
 
-	@Override
-	public boolean canSilkHarvest()
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest()
+    {
+        return true;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
-		return this.iconArray[par2 % this.iconArray.length];
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int par1, int par2)
+    {
+        return this.iconArray[par2 % this.iconArray.length];
+    }
 
-	@Override
-	public int damageDropped(int par1)
-	{
-		return par1;
-	}
+    @Override
+    public int damageDropped(int par1)
+    {
+        return par1;
+    }
 
-	public static int getDyeFromBlock(int par0)
-	{
-		return ~par0 & 15;
-	}
+    public static int getDyeFromBlock(int par0)
+    {
+        return ~par0 & 15;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		for (int j = 0; j < 16; ++j)
-		{
-			par3List.add(new ItemStack(par1, 1, j));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        for (int j = 0; j < 16; ++j)
+        {
+            par3List.add(new ItemStack(par1, 1, j));
+        }
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		return Item.getItemFromBlock(Blocks.air);
-	}
+    @Override
+    public Item getItemDropped(int par1, Random par2Random, int par3)
+    {
+        return Item.getItemFromBlock(Blocks.air);
+    }
 }

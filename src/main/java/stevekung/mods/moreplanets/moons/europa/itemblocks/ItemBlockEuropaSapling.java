@@ -22,26 +22,26 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockEuropaSapling extends ItemBlockMorePlanet
 {
-	public ItemBlockEuropaSapling(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockEuropaSapling(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		if (player.worldObj.isRemote)
-		{
-			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
-			{
-				list.add(EnumChatFormatting.GRAY + "Can be placed under an Europa Ice and Packed Europa Ice");
-				list.add(EnumChatFormatting.RED + "Note : When planted under an Europa Ice it need to grow manually");
-			}
-			else
-			{
-				list.add("Press LSHIFT for info");
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        if (player.worldObj.isRemote)
+        {
+            if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+            {
+                list.add(EnumChatFormatting.GRAY + "Can be placed under an Europa Ice and Packed Europa Ice");
+                list.add(EnumChatFormatting.RED + "Note : When planted under an Europa Ice it need to grow manually");
+            }
+            else
+            {
+                list.add("Press LSHIFT for info");
+            }
+        }
+    }
 }

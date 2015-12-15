@@ -69,7 +69,8 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 	{
 		super(id);
 		this.enableRain = true;
-		this.enableSnow = true;
+		this.rainfall = 0.5F;
+		this.temperature = 0.5F;
 		this.topBlock = FronosBlocks.fronos_grass;
 		this.fillerBlock = FronosBlocks.fronos_dirt;
 		this.getBiomeDecorator().strawberryCloudPerChunk = 8;
@@ -138,9 +139,18 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
 	}
 
 	@Override
-	public boolean canSpawnLightningBolt()
+	public BiomeGenBase setTemperatureRainfall(float temperature, float rainfall)
 	{
-		return this.func_150559_j() ? false : this.enableRain;
+		if (temperature > 0.1F && temperature < 0.2F)
+		{
+			throw new IllegalArgumentException("Please avoid temperatures in the range 0.1 - 0.2 because of snow");
+		}
+		else
+		{
+			this.temperature = temperature;
+			this.rainfall = rainfall;
+			return this;
+		}
 	}
 
 	public void genFronosBiomeTerrain(World world, Random rand, Block[] block, byte[] meta, int x, int z, double stoneNoise)

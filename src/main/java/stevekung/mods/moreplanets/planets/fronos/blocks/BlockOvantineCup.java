@@ -22,50 +22,50 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityOvantine
 
 public class BlockOvantineCup extends BlockFilledCup
 {
-	public BlockOvantineCup(String name)
-	{
-		super();
-		this.setBlockName(name);
-	}
+    public BlockOvantineCup(String name)
+    {
+        super();
+        this.setBlockName(name);
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
-	{
-		if (player.isPotionActive(Potion.regeneration.id))
-		{
-			return false;
-		}
-		else
-		{
-			player.getFoodStats().addStats(6, 0.6F);
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 2400, 2));
-			world.setBlock(x, y, z, FronosBlocks.cup, world.getBlockMetadata(x, y, z), 3);
-			world.playSoundEffect(x, y, z, "random.drink", 0.5F, world.rand.nextFloat() * 0.1F + 1.2F);
-			return true;
-		}
-	}
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    {
+        if (player.isPotionActive(Potion.regeneration.id))
+        {
+            return false;
+        }
+        else
+        {
+            player.getFoodStats().addStats(6, 0.6F);
+            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 2400, 2));
+            world.setBlock(x, y, z, FronosBlocks.cup, world.getBlockMetadata(x, y, z), 3);
+            world.playSoundEffect(x, y, z, "random.drink", 0.5F, world.rand.nextFloat() * 0.1F + 1.2F);
+            return true;
+        }
+    }
 
-	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		return FronosItems.cup;
-	}
+    @Override
+    public Item getItemDropped(int par1, Random par2Random, int par3)
+    {
+        return FronosItems.cup;
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return 2;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return 2;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		return new TileEntityOvantineCup();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new TileEntityOvantineCup();
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
-	{
-		return new ItemStack(FronosItems.cup, 1, 2);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
+    {
+        return new ItemStack(FronosItems.cup, 1, 2);
+    }
 }

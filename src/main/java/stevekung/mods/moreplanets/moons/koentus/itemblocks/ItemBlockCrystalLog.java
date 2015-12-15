@@ -14,22 +14,22 @@ import stevekung.mods.moreplanets.moons.koentus.blocks.BlockCrystalLog;
 
 public class ItemBlockCrystalLog extends ItemBlockMorePlanet
 {
-	public ItemBlockCrystalLog(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockCrystalLog(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		BlockCrystalLog block = (BlockCrystalLog)this.field_150939_a;
-		return super.getUnlocalizedName() + "." + block.getWoodType(itemStack.getItemDamage()) + "Wood";
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        BlockCrystalLog block = (BlockCrystalLog)this.field_150939_a;
+        return super.getUnlocalizedName() + "." + block.getWoodType(itemStack.getItemDamage()) + "Wood";
+    }
 }

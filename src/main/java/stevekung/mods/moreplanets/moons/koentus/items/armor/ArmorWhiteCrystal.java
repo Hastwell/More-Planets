@@ -15,41 +15,41 @@ import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class ArmorWhiteCrystal extends ItemArmorMP
 {
-	public ArmorWhiteCrystal(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorWhiteCrystal(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KoentusArmorItems.white_crystal_helmet || stack.getItem() == KoentusArmorItems.white_crystal_chestplate || stack.getItem() == KoentusArmorItems.white_crystal_boots)
-		{
-			return "koentus:textures/model/armor/white_crystal_1.png";
-		}
-		if (stack.getItem() == KoentusArmorItems.white_crystal_leggings)
-		{
-			return "koentus:textures/model/armor/white_crystal_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KoentusArmorItems.white_crystal_helmet || stack.getItem() == KoentusArmorItems.white_crystal_chestplate || stack.getItem() == KoentusArmorItems.white_crystal_boots)
+        {
+            return "koentus:textures/model/armor/white_crystal_1.png";
+        }
+        if (stack.getItem() == KoentusArmorItems.white_crystal_leggings)
+        {
+            return "koentus:textures/model/armor/white_crystal_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "koentus";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "koentus";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return KoentusItems.koentus_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return KoentusItems.koentus_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 }

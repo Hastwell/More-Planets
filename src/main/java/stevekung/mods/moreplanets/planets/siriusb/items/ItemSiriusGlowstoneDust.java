@@ -11,10 +11,10 @@ import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
 
 public class ItemSiriusGlowstoneDust extends ItemMorePlanet
 {
-	public ItemSiriusGlowstoneDust(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setTextureName("siriusb:sirius_glowstone_dust");
-	}
+    public ItemSiriusGlowstoneDust(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setTextureName("siriusb:sirius_glowstone_dust");
+    }
 }

@@ -11,10 +11,10 @@ import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
 
 public class ItemCheeseSlimeball extends ItemMorePlanet
 {
-	public ItemCheeseSlimeball(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setTextureName("polongnius:cheese_slimeball");
-	}
+    public ItemCheeseSlimeball(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setTextureName("polongnius:cheese_slimeball");
+    }
 }

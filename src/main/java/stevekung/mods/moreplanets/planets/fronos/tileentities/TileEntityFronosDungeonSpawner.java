@@ -22,26 +22,26 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosCreeperBos
 
 public class TileEntityFronosDungeonSpawner extends TileEntityDungeonSpawner
 {
-	public TileEntityFronosDungeonSpawner()
-	{
-		super(EntityFronosCreeperBossTemp.class);//TEMPLATE HOTFIX
-	}
+    public TileEntityFronosDungeonSpawner()
+    {
+        super(EntityFronosCreeperBossTemp.class);//TEMPLATE HOTFIX
+    }
 
-	@Override
-	public List<Class<? extends EntityLiving>> getDisabledCreatures()
-	{
-		final List<Class<? extends EntityLiving>> list = new ArrayList<Class<? extends EntityLiving>>();
-		list.add(EntityEvolvedSkeleton.class);
-		list.add(EntityEvolvedZombie.class);
-		list.add(EntityEvolvedSpider.class);
-		list.add(EntityEvolvedCreeper.class);
-		list.add(EntityEvolvedEnderman.class);
-		return list;
-	}
+    @Override
+    public List<Class<? extends EntityLiving>> getDisabledCreatures()
+    {
+        final List<Class<? extends EntityLiving>> list = new ArrayList<Class<? extends EntityLiving>>();
+        list.add(EntityEvolvedSkeleton.class);
+        list.add(EntityEvolvedZombie.class);
+        list.add(EntityEvolvedSpider.class);
+        list.add(EntityEvolvedCreeper.class);
+        list.add(EntityEvolvedEnderman.class);
+        return list;
+    }
 
-	@Override
-	public void playSpawnSound(Entity entity)
-	{
-		this.worldObj.playSoundAtEntity(entity, "galacticraftcore:ambience.scaryscape", 9.0F, 1.4F);
-	}
+    @Override
+    public void playSpawnSound(Entity entity)
+    {
+        this.worldObj.playSoundAtEntity(entity, "galacticraftcore:ambience.scaryscape", 9.0F, 1.4F);
+    }
 }

@@ -20,25 +20,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemFrozenWaterBucket extends ItemBucket
 {
-	public ItemFrozenWaterBucket(String name)
-	{
-		super(KapteynBBlocks.frozen_water);
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setContainerItem(Items.bucket);
-		this.setTextureName("kapteynb:frozen_water_bucket");
-	}
+    public ItemFrozenWaterBucket(String name)
+    {
+        super(KapteynBBlocks.frozen_water);
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setContainerItem(Items.bucket);
+        this.setTextureName("kapteynb:frozen_water_bucket");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 }

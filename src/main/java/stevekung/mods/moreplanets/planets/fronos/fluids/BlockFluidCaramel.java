@@ -26,74 +26,74 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFluidCaramel extends BlockFluidFinite
 {
-	public IIcon caramelStillIcon;
-	public IIcon caramelFlowingIcon;
+    public IIcon caramelStillIcon;
+    public IIcon caramelFlowingIcon;
 
-	public BlockFluidCaramel(String name)
-	{
-		super(FronosBlocks.caramel_fluid, Material.water);
-		this.setQuantaPerBlock(4);
-		this.setRenderPass(1);
-		this.setLightOpacity(1);
-		this.setBlockName(name);
-	}
+    public BlockFluidCaramel(String name)
+    {
+        super(FronosBlocks.caramel_fluid, Material.water);
+        this.setQuantaPerBlock(4);
+        this.setRenderPass(1);
+        this.setLightOpacity(1);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		if (entity instanceof EntityLivingBase)
-		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 240, 2));
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        if (entity instanceof EntityLivingBase)
+        {
+            ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 240, 2));
+        }
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		this.caramelStillIcon = iconRegister.registerIcon("fronos:caramel_still");
-		this.caramelFlowingIcon = iconRegister.registerIcon("fronos:caramel_flowing");
-		FronosBlocks.caramel_fluid.setFlowingIcon(this.caramelStillIcon);
-		FronosBlocks.caramel_fluid.setStillIcon(this.caramelFlowingIcon);
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+        this.caramelStillIcon = iconRegister.registerIcon("fronos:caramel_still");
+        this.caramelFlowingIcon = iconRegister.registerIcon("fronos:caramel_flowing");
+        FronosBlocks.caramel_fluid.setFlowingIcon(this.caramelStillIcon);
+        FronosBlocks.caramel_fluid.setStillIcon(this.caramelFlowingIcon);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
-	{
-		super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
+    {
+        super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
 
-		if (par5Random.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4) && !par1World.getBlock(par2, par3 - 2, par4).getMaterial().blocksMovement())
-		{
-			double d5 = par2 + par5Random.nextFloat();
-			double d6 = par3 - 1.05D;
-			double d7 = par4 + par5Random.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle("caramelDrip", d5, d6, d7);
-		}
-	}
+        if (par5Random.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4) && !par1World.getBlock(par2, par3 - 2, par4).getMaterial().blocksMovement())
+        {
+            double d5 = par2 + par5Random.nextFloat();
+            double d6 = par3 - 1.05D;
+            double d7 = par4 + par5Random.nextFloat();
+            MorePlanetsCore.proxy.spawnParticle("caramelDrip", d5, d6, d7);
+        }
+    }
 
-	@Override
-	public boolean canDisplace(IBlockAccess world, int x, int y, int z)
-	{
-		if (world.getBlock(x, y, z).getMaterial().isLiquid())
-		{
-			return false;
-		}
-		return super.canDisplace(world, x, y, z);
-	}
+    @Override
+    public boolean canDisplace(IBlockAccess world, int x, int y, int z)
+    {
+        if (world.getBlock(x, y, z).getMaterial().isLiquid())
+        {
+            return false;
+        }
+        return super.canDisplace(world, x, y, z);
+    }
 
-	@Override
-	public boolean displaceIfPossible(World world, int x, int y, int z)
-	{
-		if (world.getBlock(x, y, z).getMaterial().isLiquid())
-		{
-			return false;
-		}
-		return super.displaceIfPossible(world, x, y, z);
-	}
+    @Override
+    public boolean displaceIfPossible(World world, int x, int y, int z)
+    {
+        if (world.getBlock(x, y, z).getMaterial().isLiquid())
+        {
+            return false;
+        }
+        return super.displaceIfPossible(world, x, y, z);
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return side != 0 && side != 1 ? this.caramelFlowingIcon : this.caramelStillIcon;
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        return side != 0 && side != 1 ? this.caramelFlowingIcon : this.caramelStillIcon;
+    }
 }

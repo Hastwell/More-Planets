@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockFrostedCake extends ItemBlockBaseMP
 {
-	public ItemBlockFrostedCake(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFrostedCake(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "cake_bread", "white_cake_bread", "chocolate_cake_bread", "frosted_white_cake", "frosted_pink_cake", "frosted_white_cream_cake", "frosted_chocolate_cake", };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "cake_bread", "white_cake_bread", "chocolate_cake_bread", "frosted_white_cake", "frosted_pink_cake", "frosted_white_cream_cake", "frosted_chocolate_cake", };
+    }
 }

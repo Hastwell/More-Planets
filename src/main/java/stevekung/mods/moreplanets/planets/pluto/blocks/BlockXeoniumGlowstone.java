@@ -18,37 +18,37 @@ import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
 public class BlockXeoniumGlowstone extends BlockBaseMP
 {
-	public BlockXeoniumGlowstone(String name)
-	{
-		super(Material.glass);
-		this.setBlockName(name);
-		this.setHardness(0.3F);
-		this.setStepSound(soundTypeGlass);
-		this.setBlockTextureName("pluto:xeonium_glowstone");
-		this.setLightLevel(1.0F);
-	}
+    public BlockXeoniumGlowstone(String name)
+    {
+        super(Material.glass);
+        this.setBlockName(name);
+        this.setHardness(0.3F);
+        this.setStepSound(soundTypeGlass);
+        this.setBlockTextureName("pluto:xeonium_glowstone");
+        this.setLightLevel(1.0F);
+    }
 
-	@Override
-	public int quantityDroppedWithBonus(int fortune, Random rand)
-	{
-		return MathHelper.clamp_int(this.quantityDropped(rand) + rand.nextInt(fortune + 1), 1, 4);
-	}
+    @Override
+    public int quantityDroppedWithBonus(int fortune, Random rand)
+    {
+        return MathHelper.clamp_int(this.quantityDropped(rand) + rand.nextInt(fortune + 1), 1, 4);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 2 + rand.nextInt(3);
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 2 + rand.nextInt(3);
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		return PlutoItems.xeonium_dust;
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        return PlutoItems.xeonium_dust;
+    }
 
-	@Override
-	public MapColor getMapColor(int meta)
-	{
-		return MapColor.cyanColor;
-	}
+    @Override
+    public MapColor getMapColor(int meta)
+    {
+        return MapColor.cyanColor;
+    }
 }

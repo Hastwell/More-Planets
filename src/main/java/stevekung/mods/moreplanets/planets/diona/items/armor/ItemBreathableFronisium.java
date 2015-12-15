@@ -15,49 +15,49 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class ItemBreathableFronisium extends ItemBreathableArmor
 {
-	public ItemBreathableFronisium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ItemBreathableFronisium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == DionaArmorItems.breathable_fronisium_helmet)
-		{
-			return "diona:textures/model/armor/breathable_fronisium_1.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == DionaArmorItems.breathable_fronisium_helmet)
+        {
+            return "diona:textures/model/armor/breathable_fronisium_1.png";
+        }
+        return null;
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return DionaItems.diona_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return DionaItems.diona_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 3;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 3;
+    }
 
-	@Override
-	public EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    public EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	public Item getBreathableArmor()
-	{
-		return DionaArmorItems.breathable_fronisium_helmet;
-	}
+    @Override
+    public Item getBreathableArmor()
+    {
+        return DionaArmorItems.breathable_fronisium_helmet;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "diona:breathable_fronisium_helmet";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "diona:breathable_fronisium_helmet";
+    }
 }

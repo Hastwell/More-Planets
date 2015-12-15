@@ -12,11 +12,11 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockMossyFronosCobblestone extends BlockBaseMP
 {
-	public BlockMossyFronosCobblestone(String name)
-	{
-		super(Material.rock);
-		this.setHardness(2.0F);
-		this.setBlockName(name);
-		this.setBlockTextureName("fronos:mossy_fronos_cobblestone");
-	}
+    public BlockMossyFronosCobblestone(String name)
+    {
+        super(Material.rock);
+        this.setHardness(2.0F);
+        this.setBlockName(name);
+        this.setBlockTextureName("fronos:mossy_fronos_cobblestone");
+    }
 }

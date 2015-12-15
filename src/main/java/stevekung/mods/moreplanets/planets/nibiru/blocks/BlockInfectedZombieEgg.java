@@ -27,104 +27,104 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockInfectedZombieEgg extends BlockDragonEgg
 {
-	public BlockInfectedZombieEgg(String name)
-	{
-		super();
-		this.setResistance(0.0F);
-		this.setHardness(-1.0F);
-		this.setBlockName(name);
-	}
+    public BlockInfectedZombieEgg(String name)
+    {
+        super();
+        this.setResistance(0.0F);
+        this.setHardness(-1.0F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		this.blockIcon = iconRegister.registerIcon("nibiru:infected_zombie_egg");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+        this.blockIcon = iconRegister.registerIcon("nibiru:infected_zombie_egg");
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random par2Random, int par3)
-	{
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random par2Random, int par3)
+    {
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
-	{
-		return false;
-	}
+    @Override
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    {
+        return false;
+    }
 
-	@Override
-	public void onBlockClicked(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer)
-	{
-	}
+    @Override
+    public void onBlockClicked(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer)
+    {
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World par1World, int par2, int par3, int par4)
-	{
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World par1World, int par2, int par3, int par4)
+    {
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public boolean canHarvestBlock(EntityPlayer player, int metadata)
-	{
-		final ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public boolean canHarvestBlock(EntityPlayer player, int metadata)
+    {
+        final ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack == null)
-		{
-			return player.canHarvestBlock(this);
-		}
-		return stack.getItem() == MarsItems.deshPickSlime;
-	}
+        if (stack == null)
+        {
+            return player.canHarvestBlock(this);
+        }
+        return stack.getItem() == MarsItems.deshPickSlime;
+    }
 
-	@Override
-	public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, int x, int y, int z)
-	{
-		final ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, int x, int y, int z)
+    {
+        final ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack != null && stack.getItem() == MarsItems.deshPickSlime)
-		{
-			return 0.1F;
-		}
-		return ForgeHooks.blockStrength(this, player, world, x, y, z);
-	}
+        if (stack != null && stack.getItem() == MarsItems.deshPickSlime)
+        {
+            return 0.1F;
+        }
+        return ForgeHooks.blockStrength(this, player, world, x, y, z);
+    }
 
-	@Override
-	public void onBlockExploded(World world, int x, int y, int z, Explosion explosion)
-	{
-		if (!world.isRemote)
-		{
-			final EntityInfectedZombie zombie = new EntityInfectedZombie(world);
-			zombie.setPosition(x + 0.5, y + 1, z + 0.5);
-			world.spawnEntityInWorld(zombie);
-		}
-		world.setBlockToAir(x, y, z);
-		this.onBlockDestroyedByExplosion(world, x, y, z, explosion);
-	}
+    @Override
+    public void onBlockExploded(World world, int x, int y, int z, Explosion explosion)
+    {
+        if (!world.isRemote)
+        {
+            final EntityInfectedZombie zombie = new EntityInfectedZombie(world);
+            zombie.setPosition(x + 0.5, y + 1, z + 0.5);
+            world.spawnEntityInWorld(zombie);
+        }
+        world.setBlockToAir(x, y, z);
+        this.onBlockDestroyedByExplosion(world, x, y, z, explosion);
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
-	{
-		super.harvestBlock(world, player, x, y, z, fortune);
-		MorePlanetEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+    {
+        super.harvestBlock(world, player, x, y, z, fortune);
+        MorePlanetEvents.addInfectedGas(player);
+    }
 }

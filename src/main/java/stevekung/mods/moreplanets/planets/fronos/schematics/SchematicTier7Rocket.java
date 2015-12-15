@@ -21,47 +21,47 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class SchematicTier7Rocket implements ISchematicPage
 {
-	@Override
-	public int getPageID()
-	{
-		return ConfigManagerMP.idSchematicTier7Rocket;
-	}
+    @Override
+    public int getPageID()
+    {
+        return ConfigManagerMP.idTier7RocketSchematic;
+    }
 
-	@Override
-	public int getGuiID()
-	{
-		return ConfigManagerMP.idGuiSchematicTier7Rocket;
-	}
+    @Override
+    public int getGuiID()
+    {
+        return ConfigManagerMP.idTier7RocketSchematicGui;
+    }
 
-	@Override
-	public ItemStack getRequiredItem()
-	{
-		return new ItemStack(FronosItems.tier7_rocket_schematic, 1, 0);
-	}
+    @Override
+    public ItemStack getRequiredItem()
+    {
+        return new ItemStack(FronosItems.tier7_rocket_schematic, 1, 0);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public GuiScreen getResultScreen(EntityPlayer player, int x, int y, int z)
-	{
-		return new GuiSchematicTier7Rocket(player.inventory, x, y, z);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiScreen getResultScreen(EntityPlayer player, int x, int y, int z)
+    {
+        return new GuiSchematicTier7Rocket(player.inventory, x, y, z);
+    }
 
-	@Override
-	public Container getResultContainer(EntityPlayer player, int x, int y, int z)
-	{
-		return new ContainerSchematicTier7Rocket(player.inventory, x, y, z);
-	}
+    @Override
+    public Container getResultContainer(EntityPlayer player, int x, int y, int z)
+    {
+        return new ContainerSchematicTier7Rocket(player.inventory, x, y, z);
+    }
 
-	@Override
-	public int compareTo(ISchematicPage o)
-	{
-		if (this.getPageID() > o.getPageID())
-		{
-			return 1;
-		}
-		else
-		{
-			return -1;
-		}
-	}
+    @Override
+    public int compareTo(ISchematicPage o)
+    {
+        if (this.getPageID() > o.getPageID())
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

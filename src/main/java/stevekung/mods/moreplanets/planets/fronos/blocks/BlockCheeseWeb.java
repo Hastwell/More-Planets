@@ -27,90 +27,90 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockCheeseWeb extends BlockBaseMP
 {
-	public BlockCheeseWeb(String name)
-	{
-		super(Material.web);
-		this.setBlockName(name);
-		this.setLightOpacity(1);
-		this.setHardness(4.0F);
-		this.setBlockTextureName("fronos:cheese_web");
-	}
+    public BlockCheeseWeb(String name)
+    {
+        super(Material.web);
+        this.setBlockName(name);
+        this.setLightOpacity(1);
+        this.setHardness(4.0F);
+        this.setBlockTextureName("fronos:cheese_web");
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		entity.setInWeb();
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        entity.setInWeb();
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+    {
+        return null;
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return 1;
-	}
+    @Override
+    public int getRenderType()
+    {
+        return 1;
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return 9;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return 9;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		return FronosItems.fronos_item;
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        return FronosItems.fronos_item;
+    }
 
-	@Override
-	public boolean canHarvestBlock(EntityPlayer player, int metadata)
-	{
-		ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public boolean canHarvestBlock(EntityPlayer player, int metadata)
+    {
+        ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack == null)
-		{
-			return player.canHarvestBlock(this);
-		}
-		return stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword);
-	}
+        if (stack == null)
+        {
+            return player.canHarvestBlock(this);
+        }
+        return stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword);
+    }
 
-	@Override
-	public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, int x, int y, int z)
-	{
-		ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, int x, int y, int z)
+    {
+        ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword))
-		{
-			return 0.1F;
-		}
-		return ForgeHooks.blockStrength(this, player, world, x, y, z);
-	}
+        if (stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword))
+        {
+            return 0.1F;
+        }
+        return ForgeHooks.blockStrength(this, player, world, x, y, z);
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition mov, World world, int x, int y, int z)
-	{
-		return new ItemStack(this, 1, 0);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition mov, World world, int x, int y, int z)
+    {
+        return new ItemStack(this, 1, 0);
+    }
 }

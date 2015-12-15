@@ -22,26 +22,26 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public class TileEntityKoentusDungeonSpawner extends TileEntityDungeonSpawner
 {
-	public TileEntityKoentusDungeonSpawner()
-	{
-		super(EntityDionaCreeperBoss.class);
-	}
+    public TileEntityKoentusDungeonSpawner()
+    {
+        super(EntityDionaCreeperBoss.class);
+    }
 
-	@Override
-	public List<Class<? extends EntityLiving>> getDisabledCreatures()
-	{
-		List<Class<? extends EntityLiving>> list = new ArrayList<Class<? extends EntityLiving>>();
-		list.add(EntityEvolvedSkeleton.class);
-		list.add(EntityEvolvedZombie.class);
-		list.add(EntityEvolvedSpider.class);
-		list.add(EntityEvolvedCreeper.class);
-		list.add(EntityEvolvedEnderman.class);
-		return list;
-	}
+    @Override
+    public List<Class<? extends EntityLiving>> getDisabledCreatures()
+    {
+        List<Class<? extends EntityLiving>> list = new ArrayList<Class<? extends EntityLiving>>();
+        list.add(EntityEvolvedSkeleton.class);
+        list.add(EntityEvolvedZombie.class);
+        list.add(EntityEvolvedSpider.class);
+        list.add(EntityEvolvedCreeper.class);
+        list.add(EntityEvolvedEnderman.class);
+        return list;
+    }
 
-	@Override
-	public void playSpawnSound(Entity entity)
-	{
-		this.worldObj.playSoundAtEntity(entity, "galacticraftcore:ambience.scaryscape", 9.0F, 1.4F);
-	}
+    @Override
+    public void playSpawnSound(Entity entity)
+    {
+        this.worldObj.playSoundAtEntity(entity, "galacticraftcore:ambience.scaryscape", 9.0F, 1.4F);
+    }
 }

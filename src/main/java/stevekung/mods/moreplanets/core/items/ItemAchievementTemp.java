@@ -17,37 +17,37 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemAchievementTemp extends ItemBaseMP
 {
-	public ItemAchievementTemp(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemAchievementTemp(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "diona_ach" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "diona_ach" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "mpcore";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "mpcore";
+    }
 }

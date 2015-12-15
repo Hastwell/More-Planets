@@ -15,49 +15,49 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class ItemBreathableIridium extends ItemBreathableArmor
 {
-	public ItemBreathableIridium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ItemBreathableIridium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == FronosArmorItems.breathable_iridium_helmet)
-		{
-			return "fronos:textures/model/armor/breathable_iridium_1.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == FronosArmorItems.breathable_iridium_helmet)
+        {
+            return "fronos:textures/model/armor/breathable_iridium_1.png";
+        }
+        return null;
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return FronosItems.fronos_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return FronosItems.fronos_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 
-	@Override
-	public EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    public EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	public Item getBreathableArmor()
-	{
-		return FronosArmorItems.breathable_iridium_helmet;
-	}
+    @Override
+    public Item getBreathableArmor()
+    {
+        return FronosArmorItems.breathable_iridium_helmet;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "fronos:breathable_iridium_helmet";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "fronos:breathable_iridium_helmet";
+    }
 }

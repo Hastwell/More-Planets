@@ -17,23 +17,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderInfectedZombie extends RenderBiped
 {
-	private static ResourceLocation zombieTextures = new ResourceLocation("nibiru:textures/model/infected_zombie.png");
+    private static ResourceLocation zombieTextures = new ResourceLocation("nibiru:textures/model/infected_zombie.png");
 
-	public RenderInfectedZombie()
-	{
-		super(new ModelZombie(), 0.5F, 1.0F);
-	}
+    public RenderInfectedZombie()
+    {
+        super(new ModelZombie(), 0.5F, 1.0F);
+    }
 
-	@Override
-	protected void func_82421_b()
-	{
-		this.field_82423_g = new ModelZombie(1.0F, true);
-		this.field_82425_h = new ModelZombie(0.5F, true);
-	}
+    @Override
+    protected void func_82421_b()
+    {
+        this.field_82423_g = new ModelZombie(1.0F, true);
+        this.field_82425_h = new ModelZombie(0.5F, true);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return zombieTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return zombieTextures;
+    }
 }

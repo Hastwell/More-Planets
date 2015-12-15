@@ -15,49 +15,49 @@ import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 public class ArmorBreathableSulfur extends ItemBreathableArmor
 {
-	public ArmorBreathableSulfur(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorBreathableSulfur(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == SiriusBArmorItems.breathable_sulfur_helmet)
-		{
-			return "siriusb:textures/model/armor/breathable_sulfur.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == SiriusBArmorItems.breathable_sulfur_helmet)
+        {
+            return "siriusb:textures/model/armor/breathable_sulfur.png";
+        }
+        return null;
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return SiriusBItems.sirius_b_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return SiriusBItems.sirius_b_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 4;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 4;
+    }
 
-	@Override
-	public EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    public EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	public Item getBreathableArmor()
-	{
-		return SiriusBArmorItems.breathable_sulfur_helmet;
-	}
+    @Override
+    public Item getBreathableArmor()
+    {
+        return SiriusBArmorItems.breathable_sulfur_helmet;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "siriusb:breathable_sulfur_helmet";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "siriusb:breathable_sulfur_helmet";
+    }
 }

@@ -12,27 +12,27 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockChocolateCreamLayer extends BlockCreamLayer
 {
-	public BlockChocolateCreamLayer(String name)
-	{
-		super();
-		this.setBlockName(name);
-	}
+    public BlockChocolateCreamLayer(String name)
+    {
+        super();
+        this.setBlockName(name);
+    }
 
-	@Override
-	public String getCreamTexture()
-	{
-		return "fronos:chocolate_cream";
-	}
+    @Override
+    public String getCreamTexture()
+    {
+        return "fronos:chocolate_cream";
+    }
 
-	@Override
-	public Item getCreamBallDropped()
-	{
-		return FronosItems.cream_ball;
-	}
+    @Override
+    public Item getCreamBallDropped()
+    {
+        return FronosItems.cream_ball;
+    }
 
-	@Override
-	public int getCreamBallMetaDropped()
-	{
-		return 1;
-	}
+    @Override
+    public int getCreamBallMetaDropped()
+    {
+        return 1;
+    }
 }

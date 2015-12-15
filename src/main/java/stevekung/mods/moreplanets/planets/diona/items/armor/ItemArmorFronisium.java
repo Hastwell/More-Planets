@@ -15,41 +15,41 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class ItemArmorFronisium extends ItemArmorMP
 {
-	public ItemArmorFronisium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ItemArmorFronisium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == DionaArmorItems.fronisium_helmet || stack.getItem() == DionaArmorItems.fronisium_chestplate || stack.getItem() == DionaArmorItems.fronisium_boots)
-		{
-			return "diona:textures/model/armor/fronisium_1.png";
-		}
-		if (stack.getItem() == DionaArmorItems.fronisium_leggings)
-		{
-			return "diona:textures/model/armor/fronisium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == DionaArmorItems.fronisium_helmet || stack.getItem() == DionaArmorItems.fronisium_chestplate || stack.getItem() == DionaArmorItems.fronisium_boots)
+        {
+            return "diona:textures/model/armor/fronisium_1.png";
+        }
+        if (stack.getItem() == DionaArmorItems.fronisium_leggings)
+        {
+            return "diona:textures/model/armor/fronisium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "diona";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "diona";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return DionaItems.diona_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return DionaItems.diona_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 3;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 3;
+    }
 }

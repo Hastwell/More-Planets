@@ -20,46 +20,46 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ItemArmorMP extends ItemArmor
 {
-	public ItemArmorMP(ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-	}
+    public ItemArmorMP(ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpArmorTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpArmorTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		this.itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().replace("item.", this.getTextureLocation() + ":"));
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        this.itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().replace("item.", this.getTextureLocation() + ":"));
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (this.getRepairItems() == null && this.getRepairItemsMetadata() == -1)
-		{
-			return false;
-		}
-		if (itemStack2.getItem() == this.getRepairItems() && itemStack2.getItemDamage() == this.getRepairItemsMetadata())
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (this.getRepairItems() == null && this.getRepairItemsMetadata() == -1)
+        {
+            return false;
+        }
+        if (itemStack2.getItem() == this.getRepairItems() && itemStack2.getItemDamage() == this.getRepairItemsMetadata())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	public abstract String getTextureLocation();
-	public abstract Item getRepairItems();
-	public abstract int getRepairItemsMetadata();
+    public abstract String getTextureLocation();
+    public abstract Item getRepairItems();
+    public abstract int getRepairItemsMetadata();
 }

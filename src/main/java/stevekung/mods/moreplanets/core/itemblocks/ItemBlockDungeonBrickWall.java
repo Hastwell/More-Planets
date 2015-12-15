@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 
 public class ItemBlockDungeonBrickWall extends ItemBlockBaseMP
 {
-	public ItemBlockDungeonBrickWall(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockDungeonBrickWall(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "dionaBrick", "polongniusBrick", "nibiruBrick", "koentusBrick", "fronosBrick", "kapteynBrick", "siriusBrick", "mercury"};
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "dionaBrick", "polongniusBrick", "nibiruBrick", "koentusBrick", "fronosBrick", "kapteynBrick", "siriusBrick", "mercury"};
+    }
 }

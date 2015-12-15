@@ -15,28 +15,28 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockFronosFlower extends ItemBlockBaseMP
 {
-	public ItemBlockFronosFlower(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosFlower(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean isFull3D()
+    {
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return this.field_150939_a.getIcon(0, meta);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.field_150939_a.getIcon(0, meta);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "pink_butter_cup", "orange_butterfly_flower", "yellow_milk_cap", "little_sun_flower", "sky_mushroom", "purple_spike_flower", "jungle_iris", "blue_poison_mushroom", "white_moss" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "pink_butter_cup", "orange_butterfly_flower", "yellow_milk_cap", "little_sun_flower", "sky_mushroom", "purple_spike_flower", "jungle_iris", "blue_poison_mushroom", "white_moss" };
+    }
 }

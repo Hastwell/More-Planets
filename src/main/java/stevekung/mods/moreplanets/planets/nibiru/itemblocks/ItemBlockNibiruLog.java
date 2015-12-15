@@ -14,22 +14,22 @@ import stevekung.mods.moreplanets.planets.nibiru.blocks.BlockNibiruLog;
 
 public class ItemBlockNibiruLog extends ItemBlockMorePlanet
 {
-	public ItemBlockNibiruLog(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockNibiruLog(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		BlockNibiruLog block = (BlockNibiruLog)this.field_150939_a;
-		return super.getUnlocalizedName() + "." + block.getWoodType(itemStack.getItemDamage()) + "_wood";
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        BlockNibiruLog block = (BlockNibiruLog)this.field_150939_a;
+        return super.getUnlocalizedName() + "." + block.getWoodType(itemStack.getItemDamage()) + "_wood";
+    }
 }

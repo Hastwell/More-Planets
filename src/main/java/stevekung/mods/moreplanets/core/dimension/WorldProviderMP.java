@@ -14,51 +14,51 @@ import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
 
 public abstract class WorldProviderMP extends WorldProviderSpace implements ISolarLevel, IUltraVioletLevel
 {
-	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
+    @Override
+    public boolean canRainOrSnow()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
+    @Override
+    public boolean hasSunset()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
-	}
+    @Override
+    public boolean shouldForceRespawn()
+    {
+        return !ConfigManagerCore.forceOverworldRespawn;
+    }
 
-	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
+    @Override
+    public double getHorizon()
+    {
+        return 44.0D;
+    }
 
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
+    @Override
+    public int getAverageGroundLevel()
+    {
+        return 44;
+    }
 
-	@Override
-	public boolean canCoordinateBeSpawn(int chunkX, int chunkZ)
-	{
-		return true;
-	}
+    @Override
+    public boolean canCoordinateBeSpawn(int chunkX, int chunkZ)
+    {
+        return true;
+    }
 
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
-	}
+    @Override
+    public double getFuelUsageMultiplier()
+    {
+        return 0.9D;
+    }
 
-	@Override
-	public boolean hasBreathableAtmosphere()
-	{
-		return false;
-	}
+    @Override
+    public boolean hasBreathableAtmosphere()
+    {
+        return false;
+    }
 }

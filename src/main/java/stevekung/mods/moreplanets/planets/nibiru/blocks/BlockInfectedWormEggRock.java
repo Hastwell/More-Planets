@@ -19,43 +19,43 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 
 public class BlockInfectedWormEggRock extends BlockBaseMP
 {
-	public BlockInfectedWormEggRock(String name)
-	{
-		super(Material.rock);
-		this.setResistance(5.0F);
-		this.setHardness(4.0F);
-		this.setBlockName(name);
-		this.setBlockTextureName("nibiru:infected_worm_egg_rock");
-	}
+    public BlockInfectedWormEggRock(String name)
+    {
+        super(Material.rock);
+        this.setResistance(5.0F);
+        this.setHardness(4.0F);
+        this.setBlockName(name);
+        this.setBlockTextureName("nibiru:infected_worm_egg_rock");
+    }
 
-	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(int par1, Random par2Random, int par3)
+    {
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public int quantityDropped(Random par1Random)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random par1Random)
+    {
+        return 0;
+    }
 
-	@Override
-	public void onBlockDestroyedByPlayer(World par1World, int par2, int par3, int par4, int par5)
-	{
-		if (!par1World.isRemote)
-		{
-			EntityInfectedWorm infectedWorm = new EntityInfectedWorm(par1World);
-			infectedWorm.setLocationAndAngles(par2 + 0.5D, par3, par4 + 0.5D, 0.0F, 0.0F);
-			par1World.spawnEntityInWorld(infectedWorm);
-			infectedWorm.spawnExplosionParticle();
-		}
-	}
+    @Override
+    public void onBlockDestroyedByPlayer(World par1World, int par2, int par3, int par4, int par5)
+    {
+        if (!par1World.isRemote)
+        {
+            EntityInfectedWorm infectedWorm = new EntityInfectedWorm(par1World);
+            infectedWorm.setLocationAndAngles(par2 + 0.5D, par3, par4 + 0.5D, 0.0F, 0.0F);
+            par1World.spawnEntityInWorld(infectedWorm);
+            infectedWorm.spawnExplosionParticle();
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
-	{
-		super.harvestBlock(world, player, x, y, z, fortune);
-		MorePlanetEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+    {
+        super.harvestBlock(world, player, x, y, z, fortune);
+        MorePlanetEvents.addInfectedGas(player);
+    }
 }

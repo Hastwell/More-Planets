@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 
 public class TileEntityVenusAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return VenusBlocks.venus_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return VenusBlocks.venus_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "venus";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "venus";
+    }
 }

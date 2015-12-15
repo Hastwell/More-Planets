@@ -9,12 +9,12 @@ package stevekung.mods.moreplanets.core.worldgen.village;
 
 public abstract class ComponentMartianVillageRoadPiece extends ComponentMartianVillage
 {
-	public ComponentMartianVillageRoadPiece()
-	{
-	}
+    public ComponentMartianVillageRoadPiece()
+    {
+    }
 
-	protected ComponentMartianVillageRoadPiece(ComponentMartianVillageStartPiece par1ComponentVillageStartPiece, int par2)
-	{
-		super(par1ComponentVillageStartPiece, par2);
-	}
+    protected ComponentMartianVillageRoadPiece(ComponentMartianVillageStartPiece par1ComponentVillageStartPiece, int par2)
+    {
+        super(par1ComponentVillageStartPiece, par2);
+    }
 }

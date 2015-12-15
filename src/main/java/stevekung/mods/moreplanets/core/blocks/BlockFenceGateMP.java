@@ -18,34 +18,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFenceGateMP extends BlockFenceGate
 {
-	private String texture;
+    private String texture;
 
-	public BlockFenceGateMP(String name, String texture)
-	{
-		super();
-		this.texture = texture;
-		this.setBlockName(name);
-		this.setStepSound(Block.soundTypeWood);
-		this.setHardness(2.0F);
-	}
+    public BlockFenceGateMP(String name, String texture)
+    {
+        super();
+        this.texture = texture;
+        this.setBlockName(name);
+        this.setStepSound(Block.soundTypeWood);
+        this.setHardness(2.0F);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.blockIcon = par1IconRegister.registerIcon(this.texture);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.blockIcon = par1IconRegister.registerIcon(this.texture);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.blockIcon;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.blockIcon;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

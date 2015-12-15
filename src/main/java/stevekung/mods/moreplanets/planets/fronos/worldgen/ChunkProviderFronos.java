@@ -47,6 +47,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityBearry;
@@ -393,6 +394,15 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
 		this.decoratePlanet(this.worldObj, this.rand, var4, var5);
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomeGen, var4 + 8, var5 + 8, 16, 16, this.rand);
 		this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, x, z);
+
+		for (int i = 0; i < 8; ++i)
+		{
+			int x1 = var4 + this.rand.nextInt(16) + 8;
+			int y1 = this.rand.nextInt(256);
+			int z1 = var5 + this.rand.nextInt(16) + 8;
+			new WorldGenSpaceDungeons(new Block[] { FronosBlocks.fronos_ancient_chest, FronosBlocks.fronos_block, FronosBlocks.mossy_fronos_cobblestone }, 1, 0).generate(this.worldObj, this.rand, x1, y1, z1);
+		}
+
 		BlockFalling.fallInstantly = false;
 	}
 

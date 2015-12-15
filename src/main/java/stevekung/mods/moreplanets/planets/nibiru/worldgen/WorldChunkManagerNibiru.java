@@ -12,9 +12,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class WorldChunkManagerNibiru extends WorldChunkManagerSpace
 {
-	@Override
-	public BiomeGenBase getBiome()
-	{
-		return BiomeGenBaseNibiru.nibiru;
-	}
+    @Override
+    public BiomeGenBase getBiome()
+    {
+        return BiomeGenBaseNibiru.nibiru;
+    }
 }

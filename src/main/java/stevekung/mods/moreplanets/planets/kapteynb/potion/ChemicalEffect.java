@@ -16,36 +16,36 @@ import stevekung.mods.moreplanets.core.util.DamageSourceMP;
 
 public class ChemicalEffect extends Potion
 {
-	public ChemicalEffect(int id, boolean isBad, int color)
-	{
-		super(id, isBad, color);
-		this.setIconIndex(1, 0);
-	}
+    public ChemicalEffect(int id, boolean isBad, int color)
+    {
+        super(id, isBad, color);
+        this.setIconIndex(1, 0);
+    }
 
-	@Override
-	public int getStatusIconIndex()
-	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("mpcore:textures/potions/MPPotionFX.png"));
-		return 1;
-	}
+    @Override
+    public int getStatusIconIndex()
+    {
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("mpcore:textures/potions/MPPotionFX.png"));
+        return 1;
+    }
 
-	@Override
-	public boolean isReady(int duration, int amplifier)
-	{
-		if (this.id == MPPotions.chemical.id)
-		{
-			int k = 15 >> amplifier;
-			return k > 0 ? duration % k == 0 : true;
-		}
-		return false;
-	}
+    @Override
+    public boolean isReady(int duration, int amplifier)
+    {
+        if (this.id == MPPotions.chemical.id)
+        {
+            int k = 15 >> amplifier;
+            return k > 0 ? duration % k == 0 : true;
+        }
+        return false;
+    }
 
-	@Override
-	public void performEffect(EntityLivingBase living, int food)
-	{
-		if (this.id == MPPotions.chemical.id)
-		{
-			living.attackEntityFrom(DamageSourceMP.chemical, 0.75F);
-		}
-	}
+    @Override
+    public void performEffect(EntityLivingBase living, int food)
+    {
+        if (this.id == MPPotions.chemical.id)
+        {
+            living.attackEntityFrom(DamageSourceMP.chemical, 0.75F);
+        }
+    }
 }

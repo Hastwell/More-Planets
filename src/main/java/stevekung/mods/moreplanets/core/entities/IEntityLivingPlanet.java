@@ -11,5 +11,5 @@ import stevekung.mods.moreplanets.core.util.EnumDimensionType;
 
 public interface IEntityLivingPlanet
 {
-	EnumDimensionType canLivingInDimension();
+    EnumDimensionType canLivingInDimension();
 }

@@ -11,15 +11,15 @@ import net.minecraft.world.gen.structure.StructureStart;
 
 public class MapGenVenusianBlazePit extends MapGenVenusianBlazePitStructure
 {
-	@Override
-	protected boolean canSpawnStructureAtCoords(int par1, int par2)
-	{
-		return this.rand.nextInt(100) == 0;
-	}
+    @Override
+    protected boolean canSpawnStructureAtCoords(int par1, int par2)
+    {
+        return this.rand.nextInt(100) == 0;
+    }
 
-	@Override
-	protected StructureStart getStructureStart(int par1, int par2)
-	{
-		return new StructureVenusianBlazePitStart(this.worldObj, this.rand, par1, par2);
-	}
+    @Override
+    protected StructureStart getStructureStart(int par1, int par2)
+    {
+        return new StructureVenusianBlazePitStart(this.worldObj, this.rand, par1, par2);
+    }
 }

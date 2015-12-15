@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockNibiruFruitsLeaves extends ItemBlockBaseMP
 {
-	public ItemBlockNibiruFruitsLeaves(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockNibiruFruitsLeaves(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "state1", "state2", "state3", "state4" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "state1", "state2", "state3", "state4" };
+    }
 }

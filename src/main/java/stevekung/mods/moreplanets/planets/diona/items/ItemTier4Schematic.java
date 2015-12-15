@@ -23,69 +23,69 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier4Schematic extends ItemBaseMP implements ISchematicItem
 {
-	public ItemTier4Schematic(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemTier4Schematic(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		if (ConfigManagerMP.enableRocketWithThaiFlag)
-		{
-			for (int i = 0; i < this.getItemVariantsName().length; i++)
-			{
-				list.add(new ItemStack(item, 1, i));
-			}
-		}
-		else
-		{
-			for (int i = 0; i < this.getItemVariantsName().length; i++)
-			{
-				if (i != 0)
-				{
-					list.add(new ItemStack(item, 1, i));
-				}
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        if (ConfigManagerMP.enableRocketWithThaiFlag)
+        {
+            for (int i = 0; i < this.getItemVariantsName().length; i++)
+            {
+                list.add(new ItemStack(item, 1, i));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < this.getItemVariantsName().length; i++)
+            {
+                if (i != 0)
+                {
+                    list.add(new ItemStack(item, 1, i));
+                }
+            }
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
-	{
-		if (player.worldObj.isRemote)
-		{
-			if (itemStack.getItemDamage() == 0)
-			{
-				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier4.rocket.name"));
-			}
-			else if (itemStack.getItemDamage() == 1)
-			{
-				if (ConfigManagerMP.enableRocketWithThaiFlag)
-				{
-					list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier4.rocket.noflag.name"));
-				}
-				else
-				{
-					list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier4.rocket.name"));
-				}
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+    {
+        if (player.worldObj.isRemote)
+        {
+            if (itemStack.getItemDamage() == 0)
+            {
+                list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier4.rocket.name"));
+            }
+            else if (itemStack.getItemDamage() == 1)
+            {
+                if (ConfigManagerMP.enableRocketWithThaiFlag)
+                {
+                    list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier4.rocket.noflag.name"));
+                }
+                else
+                {
+                    list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier4.rocket.name"));
+                }
+            }
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "tier4_rocket_schematic", "tier4_rocket_schematic_no_flag" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "tier4_rocket_schematic", "tier4_rocket_schematic_no_flag" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "diona";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "diona";
+    }
 }

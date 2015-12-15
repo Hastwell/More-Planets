@@ -12,9 +12,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class WorldChunkManagerPolongnius extends WorldChunkManagerSpace
 {
-	@Override
-	public BiomeGenBase getBiome()
-	{
-		return BiomeGenBasePolongnius.polongnius;
-	}
+    @Override
+    public BiomeGenBase getBiome()
+    {
+        return BiomeGenBasePolongnius.polongnius;
+    }
 }

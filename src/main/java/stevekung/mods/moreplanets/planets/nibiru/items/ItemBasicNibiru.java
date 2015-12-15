@@ -18,31 +18,31 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBasicNibiru extends ItemBaseMP
 {
-	public ItemBasicNibiru(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemBasicNibiru(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "red_gem", "norium_ingot", "compressed_red_gem", "compressed_norium", "red_gem_stick", "norium_stick" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "red_gem", "norium_ingot", "compressed_red_gem", "compressed_norium", "red_gem_stick", "norium_stick" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "nibiru";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "nibiru";
+    }
 }

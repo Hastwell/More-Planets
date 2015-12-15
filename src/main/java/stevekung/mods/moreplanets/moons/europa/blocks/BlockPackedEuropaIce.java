@@ -14,20 +14,20 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockPackedEuropaIce extends BlockBaseMP
 {
-	public BlockPackedEuropaIce(String name)
-	{
-		super(Material.packedIce);
-		this.slipperiness = 0.98F;
-		this.setHardness(0.5F);
-		this.setResistance(0.1F);
-		this.setStepSound(soundTypeGlass);
-		this.setBlockName(name);
-		this.setBlockTextureName("europa:packed_europa_ice");
-	}
+    public BlockPackedEuropaIce(String name)
+    {
+        super(Material.packedIce);
+        this.slipperiness = 0.98F;
+        this.setHardness(0.5F);
+        this.setResistance(0.1F);
+        this.setStepSound(soundTypeGlass);
+        this.setBlockName(name);
+        this.setBlockTextureName("europa:packed_europa_ice");
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 }

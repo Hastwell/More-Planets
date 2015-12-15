@@ -14,19 +14,19 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockSiriusObsidian extends Block
 {
-	public BlockSiriusObsidian(String name)
-	{
-		super(Material.rock);
-		this.setBlockName(name);
-		this.setHardness(70.0F);
-		this.setResistance(5000.0F);
-		this.setLightLevel(1.0F);
-		this.setBlockTextureName("siriusb:sirius_obsidian");
-	}
+    public BlockSiriusObsidian(String name)
+    {
+        super(Material.rock);
+        this.setBlockName(name);
+        this.setHardness(70.0F);
+        this.setResistance(5000.0F);
+        this.setLightLevel(1.0F);
+        this.setBlockTextureName("siriusb:sirius_obsidian");
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

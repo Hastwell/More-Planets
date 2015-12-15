@@ -14,16 +14,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPoisonArrow extends ItemMorePlanet
 {
-	public ItemPoisonArrow(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemPoisonArrow(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		this.itemIcon = iconRegister.registerIcon("fronos:poison_arrow");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        this.itemIcon = iconRegister.registerIcon("fronos:poison_arrow");
+    }
 }

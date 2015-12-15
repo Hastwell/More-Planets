@@ -22,156 +22,156 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderVenus extends WorldProviderMP implements ILightningStorm
 {
-	private double solarMultiplier = -1D;
+    private double solarMultiplier = -1D;
 
-	@Override
-	public Vector3 getFogColor()
-	{
-		return new Vector3(177 / 855.0F * 0.45F, 83 / 855.0F * 0.45F, 13 / 855.0F * 0.45F);
-	}
+    @Override
+    public Vector3 getFogColor()
+    {
+        return new Vector3(177 / 855.0F * 0.45F, 83 / 855.0F * 0.45F, 13 / 855.0F * 0.45F);
+    }
 
-	@Override
-	public Vector3 getSkyColor()
-	{
-		return new Vector3(177 / 455.0F * 0.45F, 83 / 455.0F * 0.45F, 13 / 455.0F * 0.45F);
-	}
+    @Override
+    public Vector3 getSkyColor()
+    {
+        return new Vector3(177 / 455.0F * 0.45F, 83 / 455.0F * 0.45F, 13 / 455.0F * 0.45F);
+    }
 
-	@Override
-	public long getDayLength()
-	{
-		return 5832000L;
-	}
+    @Override
+    public long getDayLength()
+    {
+        return 5832000L;
+    }
 
-	@Override
-	public Class<? extends IChunkProvider> getChunkProviderClass()
-	{
-		return ChunkProviderVenus.class;
-	}
+    @Override
+    public Class<? extends IChunkProvider> getChunkProviderClass()
+    {
+        return ChunkProviderVenus.class;
+    }
 
-	@Override
-	public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
-	{
-		return WorldChunkManagerVenus.class;
-	}
+    @Override
+    public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
+    {
+        return WorldChunkManagerVenus.class;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float par1)
-	{
-		float f1 = this.worldObj.getCelestialAngle(par1);
-		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getStarBrightness(float par1)
+    {
+        float f1 = this.worldObj.getCelestialAngle(par1);
+        float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
 
-		if (f2 < 0.0F)
-		{
-			f2 = 0.0F;
-		}
-		if (f2 > 1.0F)
-		{
-			f2 = 0.7F;
-		}
-		return f2 * f2 * 0.75F;
-	}
+        if (f2 < 0.0F)
+        {
+            f2 = 0.0F;
+        }
+        if (f2 > 1.0F)
+        {
+            f2 = 0.7F;
+        }
+        return f2 * f2 * 0.75F;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getSunBrightness(float par1)
-	{
-		float f1 = this.worldObj.getCelestialAngle(1.0F);
-		float f2 = 1.25F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getSunBrightness(float par1)
+    {
+        float f1 = this.worldObj.getCelestialAngle(1.0F);
+        float f2 = 1.25F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
 
-		if (f2 < 0.0F)
-		{
-			f2 = 0.0F;
-		}
-		if (f2 > 1.0F)
-		{
-			f2 = 1.0F;
-		}
-		f2 = 1.2F - f2;
-		return f2 * 1.0F;
-	}
+        if (f2 < 0.0F)
+        {
+            f2 = 0.0F;
+        }
+        if (f2 > 1.0F)
+        {
+            f2 = 1.0F;
+        }
+        f2 = 1.2F - f2;
+        return f2 * 1.0F;
+    }
 
-	@Override
-	public double getSolarEnergyMultiplier()
-	{
-		if (this.solarMultiplier < 0D)
-		{
-			double s = this.getSolarSize();
-			this.solarMultiplier = s * s * s;
-		}
-		return this.solarMultiplier;
-	}
+    @Override
+    public double getSolarEnergyMultiplier()
+    {
+        if (this.solarMultiplier < 0D)
+        {
+            double s = this.getSolarSize();
+            this.solarMultiplier = s * s * s;
+        }
+        return this.solarMultiplier;
+    }
 
-	@Override
-	public float getGravity()
-	{
-		return 0.058F;
-	}
+    @Override
+    public float getGravity()
+    {
+        return 0.058F;
+    }
 
-	@Override
-	public double getMeteorFrequency()
-	{
-		return 100.0D;
-	}
+    @Override
+    public double getMeteorFrequency()
+    {
+        return 100.0D;
+    }
 
-	@Override
-	public boolean canSpaceshipTierPass(int tier)
-	{
-		return tier >= 3;
-	}
+    @Override
+    public boolean canSpaceshipTierPass(int tier)
+    {
+        return tier >= 3;
+    }
 
-	@Override
-	public float getFallDamageModifier()
-	{
-		return 0.38F;
-	}
+    @Override
+    public float getFallDamageModifier()
+    {
+        return 0.38F;
+    }
 
-	@Override
-	public float getSoundVolReductionAmount()
-	{
-		return 5.0F;
-	}
+    @Override
+    public float getSoundVolReductionAmount()
+    {
+        return 5.0F;
+    }
 
-	@Override
-	public CelestialBody getCelestialBody()
-	{
-		return MorePlanetsCore.venus;
-	}
+    @Override
+    public CelestialBody getCelestialBody()
+    {
+        return MorePlanetsCore.venus;
+    }
 
-	@Override
-	public boolean hasBreathableAtmosphere()
-	{
-		return false;
-	}
+    @Override
+    public boolean hasBreathableAtmosphere()
+    {
+        return false;
+    }
 
-	@Override
-	public float getThermalLevelModifier()
-	{
-		return -1.0F;
-	}
+    @Override
+    public float getThermalLevelModifier()
+    {
+        return -1.0F;
+    }
 
-	@Override
-	public float getWindLevel()
-	{
-		return 0.3F;
-	}
+    @Override
+    public float getWindLevel()
+    {
+        return 0.3F;
+    }
 
-	@Override
-	public double getUltraVioletEnergyMultiplie()
-	{
-		return 30.0D;
-	}
+    @Override
+    public double getUltraVioletEnergyMultiplie()
+    {
+        return 30.0D;
+    }
 
-	@Override
-	public double getLightningStormFrequency()
-	{
-		return 1.5D;
-	}
+    @Override
+    public double getLightningStormFrequency()
+    {
+        return 1.5D;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getCloudHeight()
-	{
-		return this.terrainType.getCloudHeight();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getCloudHeight()
+    {
+        return this.terrainType.getCloudHeight();
+    }
 }

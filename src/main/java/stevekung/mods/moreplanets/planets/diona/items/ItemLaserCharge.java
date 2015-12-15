@@ -18,37 +18,37 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemLaserCharge extends ItemBaseMP
 {
-	public ItemLaserCharge(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemLaserCharge(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; ++i)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; ++i)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "normal_charge", "hyper_charge", "emp_charge", "uranium_charge", "icy_poison_charge" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "normal_charge", "hyper_charge", "emp_charge", "uranium_charge", "icy_poison_charge" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "diona";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "diona";
+    }
 
-	@Override
-	public boolean reverseName()
-	{
-		return true;
-	}
+    @Override
+    public boolean reverseName()
+    {
+        return true;
+    }
 }

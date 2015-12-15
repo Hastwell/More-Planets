@@ -14,34 +14,34 @@ import cpw.mods.fml.common.Loader;
 
 public class CompatibilityUtilMP
 {
-	public static boolean is4SpaceVenusLoaded()
-	{
-		return Loader.isModLoaded("SpaceCore") && Loader.isModLoaded("SpaceVenus");
-	}
+    public static boolean is4SpaceVenusLoaded()
+    {
+        return Loader.isModLoaded("SpaceCore") && Loader.isModLoaded("SpaceVenus");
+    }
 
-	public static void registerMicroBlocks(Block block, int meta, String unlocalized)
-	{
-		try
-		{
-			Class clazz = Class.forName("codechicken.microblock.MicroMaterialRegistry");
+    public static void registerMicroBlocks(Block block, int meta, String unlocalized)
+    {
+        try
+        {
+            Class clazz = Class.forName("codechicken.microblock.MicroMaterialRegistry");
 
-			if (clazz != null)
-			{
-				Method registerMethod = null;
-				Method[] method = clazz.getMethods();
+            if (clazz != null)
+            {
+                Method registerMethod = null;
+                Method[] method = clazz.getMethods();
 
-				for (Method m : method)
-				{
-					if (m.getName().equals("registerMaterial"))
-					{
-						registerMethod = m;
-						break;
-					}
-				}
-				Class clazzbm = Class.forName("codechicken.microblock.BlockMicroMaterial");
-				registerMethod.invoke(null, clazzbm.getConstructor(Block.class, int.class).newInstance(block, meta), unlocalized);
-			}
-		}
-		catch (Exception e) {}
-	}
+                for (Method m : method)
+                {
+                    if (m.getName().equals("registerMaterial"))
+                    {
+                        registerMethod = m;
+                        break;
+                    }
+                }
+                Class clazzbm = Class.forName("codechicken.microblock.BlockMicroMaterial");
+                registerMethod.invoke(null, clazzbm.getConstructor(Block.class, int.class).newInstance(block, meta), unlocalized);
+            }
+        }
+        catch (Exception e) {}
+    }
 }

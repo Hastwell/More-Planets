@@ -20,80 +20,80 @@ import cpw.mods.fml.relauncher.Side;
 
 public class TileEntityUltraVioletFake extends TileEntityAdvanced implements IPacketReceiver
 {
-	@NetworkedField(targetSide = Side.CLIENT)
-	public BlockVec3 mainBlockPosition;
+    @NetworkedField(targetSide = Side.CLIENT)
+    public BlockVec3 mainBlockPosition;
 
-	public void setMainBlock(BlockVec3 mainBlock)
-	{
-		this.mainBlockPosition = mainBlock;
+    public void setMainBlock(BlockVec3 mainBlock)
+    {
+        this.mainBlockPosition = mainBlock;
 
-		if (!this.worldObj.isRemote)
-		{
-			this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
-		}
-	}
+        if (!this.worldObj.isRemote)
+        {
+            this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+        }
+    }
 
-	public void onBlockRemoval()
-	{
-		if (this.mainBlockPosition != null)
-		{
-			final TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition.x, this.mainBlockPosition.y, this.mainBlockPosition.z);
+    public void onBlockRemoval()
+    {
+        if (this.mainBlockPosition != null)
+        {
+            final TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition.x, this.mainBlockPosition.y, this.mainBlockPosition.z);
 
-			if (tileEntity instanceof IMultiBlock)
-			{
-				final IMultiBlock mainBlock = (IMultiBlock) tileEntity;
-				mainBlock.onDestroy(this);
-			}
-		}
-	}
+            if (tileEntity instanceof IMultiBlock)
+            {
+                final IMultiBlock mainBlock = (IMultiBlock) tileEntity;
+                mainBlock.onDestroy(this);
+            }
+        }
+    }
 
-	public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer par5EntityPlayer)
-	{
-		if (this.mainBlockPosition != null)
-		{
-			final TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition.x, this.mainBlockPosition.y, this.mainBlockPosition.z);
+    public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer par5EntityPlayer)
+    {
+        if (this.mainBlockPosition != null)
+        {
+            final TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition.x, this.mainBlockPosition.y, this.mainBlockPosition.z);
 
-			if (tileEntity instanceof IMultiBlock)
-			{
-				return ((IMultiBlock) tileEntity).onActivated(par5EntityPlayer);
-			}
-		}
-		return false;
-	}
+            if (tileEntity instanceof IMultiBlock)
+            {
+                return ((IMultiBlock) tileEntity).onActivated(par5EntityPlayer);
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		this.mainBlockPosition = new BlockVec3(nbt.getCompoundTag("mainBlockPosition"));
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        this.mainBlockPosition = new BlockVec3(nbt.getCompoundTag("mainBlockPosition"));
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
 
-		if (this.mainBlockPosition != null)
-		{
-			nbt.setTag("mainBlockPosition", this.mainBlockPosition.writeToNBT(new NBTTagCompound()));
-		}
-	}
+        if (this.mainBlockPosition != null)
+        {
+            nbt.setTag("mainBlockPosition", this.mainBlockPosition.writeToNBT(new NBTTagCompound()));
+        }
+    }
 
-	@Override
-	public double getPacketRange()
-	{
-		return 30.0D;
-	}
+    @Override
+    public double getPacketRange()
+    {
+        return 30.0D;
+    }
 
-	@Override
-	public int getPacketCooldown()
-	{
-		return 50;
-	}
+    @Override
+    public int getPacketCooldown()
+    {
+        return 50;
+    }
 
-	@Override
-	public boolean isNetworkedTile()
-	{
-		return this.mainBlockPosition != null;
-	}
+    @Override
+    public boolean isNetworkedTile()
+    {
+        return this.mainBlockPosition != null;
+    }
 }

@@ -12,20 +12,20 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockCream extends ItemBlockBaseMP
 {
-	public ItemBlockCream(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockCream(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "vanilla", "chocolate", "strawberry", "orange", "tea", "lemon" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "vanilla", "chocolate", "strawberry", "orange", "tea", "lemon" };
+    }
 
-	@Override
-	public boolean reverseName()
-	{
-		return true;
-	}
+    @Override
+    public boolean reverseName()
+    {
+        return true;
+    }
 }

@@ -22,54 +22,54 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCheeseGlass extends BlockBreakable implements IPartialSealableBlock
 {
-	public BlockCheeseGlass(String name)
-	{
-		super("fronos:cheese_glass", Material.glass, false);
-		this.setBlockName(name);
-		this.setStepSound(Block.soundTypeGlass);
-		this.setHardness(0.3F);
-	}
+    public BlockCheeseGlass(String name)
+    {
+        super("fronos:cheese_glass", Material.glass, false);
+        this.setBlockName(name);
+        this.setStepSound(Block.soundTypeGlass);
+        this.setHardness(0.3F);
+    }
 
-	@Override
-	public int quantityDropped(Random par1Random)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random par1Random)
+    {
+        return 0;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	protected boolean canSilkHarvest()
-	{
-		return true;
-	}
+    @Override
+    protected boolean canSilkHarvest()
+    {
+        return true;
+    }
 
-	@Override
-	public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
-	{
-		return true;
-	}
+    @Override
+    public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
+    {
+        return true;
+    }
 }

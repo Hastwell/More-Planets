@@ -22,38 +22,38 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderVenusianVillager extends RenderLiving
 {
-	private ResourceLocation villagerTexture = new ResourceLocation("venus:textures/model/venusian_villager.png");
+    private ResourceLocation villagerTexture = new ResourceLocation("venus:textures/model/venusian_villager.png");
 
-	public RenderVenusianVillager()
-	{
-		super(new ModelAlienVillager(0.0F), 0.5F);
-	}
+    public RenderVenusianVillager()
+    {
+        super(new ModelAlienVillager(0.0F), 0.5F);
+    }
 
-	protected void preRenderVillager(EntityVenusianVillager par1EntityVillager, float par2)
-	{
-		float f1 = 0.9375F;
+    protected void preRenderVillager(EntityVenusianVillager par1EntityVillager, float par2)
+    {
+        float f1 = 0.9375F;
 
-		if (par1EntityVillager.getGrowingAge() < 0)
-		{
-			f1 = (float) (f1 * 0.5D);
-			this.shadowSize = 0.25F;
-		}
-		else
-		{
-			this.shadowSize = 0.5F;
-		}
-		GL11.glScalef(f1, f1, f1);
-	}
+        if (par1EntityVillager.getGrowingAge() < 0)
+        {
+            f1 = (float) (f1 * 0.5D);
+            this.shadowSize = 0.25F;
+        }
+        else
+        {
+            this.shadowSize = 0.5F;
+        }
+        GL11.glScalef(f1, f1, f1);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
-	{
-		this.preRenderVillager((EntityVenusianVillager) par1EntityLivingBase, par2);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
+    {
+        this.preRenderVillager((EntityVenusianVillager) par1EntityLivingBase, par2);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.villagerTexture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.villagerTexture;
+    }
 }

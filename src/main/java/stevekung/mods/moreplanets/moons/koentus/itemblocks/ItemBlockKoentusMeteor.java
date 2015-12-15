@@ -22,26 +22,26 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockKoentusMeteor extends ItemBlockMorePlanet
 {
-	public ItemBlockKoentusMeteor(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockKoentusMeteor(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		if (player.worldObj.isRemote)
-		{
-			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
-			{
-				list.add("Can be found in the Diona");
-				list.add(EnumChatFormatting.DARK_RED + "Not in the Koentus!");
-			}
-			else
-			{
-				list.add("Press LSHIFT for info");
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        if (player.worldObj.isRemote)
+        {
+            if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+            {
+                list.add("Can be found in the Diona");
+                list.add(EnumChatFormatting.DARK_RED + "Not in the Koentus!");
+            }
+            else
+            {
+                list.add("Press LSHIFT for more info");
+            }
+        }
+    }
 }

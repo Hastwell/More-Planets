@@ -25,60 +25,60 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemIceCrystalShovel extends ItemSpade
 {
-	public ItemIceCrystalShovel(String name, ToolMaterial par2EnumToolMaterial)
-	{
-		super(par2EnumToolMaterial);
-		this.setUnlocalizedName(name);
-	}
+    public ItemIceCrystalShovel(String name, ToolMaterial par2EnumToolMaterial)
+    {
+        super(par2EnumToolMaterial);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpToolsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpToolsTab;
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
-	{
-		entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 20));
-		entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
-		entity.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 80));
-		stack.damageItem(1, entity2);
-		return true;
-	}
+    @Override
+    public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
+    {
+        entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 20));
+        entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+        entity.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 80));
+        stack.damageItem(1, entity2);
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack itemStack, int pass)
-	{
-		if (!itemStack.isItemEnchanted())
-		{
-			itemStack.addEnchantment(Enchantment.efficiency, 4);
-			itemStack.addEnchantment(Enchantment.silkTouch, 1);
-			itemStack.addEnchantment(Enchantment.unbreaking, 3);
-		}
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack itemStack, int pass)
+    {
+        if (!itemStack.isItemEnchanted())
+        {
+            itemStack.addEnchantment(Enchantment.efficiency, 4);
+            itemStack.addEnchantment(Enchantment.silkTouch, 1);
+            itemStack.addEnchantment(Enchantment.unbreaking, 3);
+        }
+        return true;
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public void registerIcons(IIconRegister par1IconRegister)
-	{
-		this.itemIcon = par1IconRegister.registerIcon(this.getUnlocalizedName().replace("item.", "kapteynb:"));
-	}
+    @Override
+    public void registerIcons(IIconRegister par1IconRegister)
+    {
+        this.itemIcon = par1IconRegister.registerIcon(this.getUnlocalizedName().replace("item.", "kapteynb:"));
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
-	{
-		if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 5)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 5)
+        {
+            return true;
+        }
+        return false;
+    }
 }

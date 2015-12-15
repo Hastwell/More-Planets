@@ -13,26 +13,26 @@ import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class TileEntityKapteynBTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityKapteynBTreasureChest()
-	{
-		super(8);
-	}
+    public TileEntityKapteynBTreasureChest()
+    {
+        super(8);
+    }
 
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 8;
-	}
+    @Override
+    public int getTreasureChestTier()
+    {
+        return 8;
+    }
 
-	@Override
-	public String getTreasureChestName()
-	{
-		return "kapteynb";
-	}
+    @Override
+    public String getTreasureChestName()
+    {
+        return "kapteynb";
+    }
 
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return KapteynBBlocks.kapteyn_b_treasure_chest;
-	}
+    @Override
+    public Block getTreasureChestBlock()
+    {
+        return KapteynBBlocks.kapteyn_b_treasure_chest;
+    }
 }

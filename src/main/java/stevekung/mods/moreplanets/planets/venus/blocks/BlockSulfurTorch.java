@@ -13,19 +13,19 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockSulfurTorch extends BlockTorch
 {
-	public BlockSulfurTorch(String name)
-	{
-		super();
-		this.setTickRandomly(true);
-		this.setLightLevel(0.8F);
-		this.setStepSound(soundTypeWood);
-		this.setBlockTextureName("venus:sulfur_torch");
-		this.setBlockName(name);
-	}
+    public BlockSulfurTorch(String name)
+    {
+        super();
+        this.setTickRandomly(true);
+        this.setLightLevel(0.8F);
+        this.setStepSound(soundTypeWood);
+        this.setBlockTextureName("venus:sulfur_torch");
+        this.setBlockName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

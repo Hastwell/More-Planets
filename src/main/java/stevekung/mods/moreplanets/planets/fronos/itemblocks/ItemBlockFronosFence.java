@@ -15,21 +15,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockFronosFence extends ItemBlockBaseMP
 {
-	public ItemBlockFronosFence(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosFence(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return this.field_150939_a.getIcon(0, meta);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.field_150939_a.getIcon(0, meta);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "coconut", "maple" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "coconut", "maple" };
+    }
 }

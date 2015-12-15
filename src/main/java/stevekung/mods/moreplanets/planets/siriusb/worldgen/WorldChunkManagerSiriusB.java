@@ -12,9 +12,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class WorldChunkManagerSiriusB extends WorldChunkManagerSpace
 {
-	@Override
-	public BiomeGenBase getBiome()
-	{
-		return BiomeGenBaseSiriusB.siriusB;
-	}
+    @Override
+    public BiomeGenBase getBiome()
+    {
+        return BiomeGenBaseSiriusB.siriusB;
+    }
 }

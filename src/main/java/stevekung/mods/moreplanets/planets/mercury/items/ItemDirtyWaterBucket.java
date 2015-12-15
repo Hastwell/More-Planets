@@ -20,25 +20,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemDirtyWaterBucket extends ItemBucket
 {
-	public ItemDirtyWaterBucket(String name)
-	{
-		super(MercuryBlocks.dirty_water);
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setContainerItem(Items.bucket);
-		this.setTextureName("mercury:dirty_water_bucket");
-	}
+    public ItemDirtyWaterBucket(String name)
+    {
+        super(MercuryBlocks.dirty_water);
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setContainerItem(Items.bucket);
+        this.setTextureName("mercury:dirty_water_bucket");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 }

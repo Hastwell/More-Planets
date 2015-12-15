@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class TileEntityKapteynBAncientChestTemp extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return KapteynBBlocks.chest_temp;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return KapteynBBlocks.chest_temp;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "kapteynb";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "kapteynb";
+    }
 }

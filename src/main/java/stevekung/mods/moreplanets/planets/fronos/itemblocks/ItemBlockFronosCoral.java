@@ -15,21 +15,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockFronosCoral extends ItemBlockBaseMP
 {
-	public ItemBlockFronosCoral(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosCoral(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return this.field_150939_a.getIcon(0, meta);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.field_150939_a.getIcon(0, meta);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "0", "0", "0", "0", "0", "glowing_pink_coral", "colunus_coral" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "0", "0", "0", "0", "0", "glowing_pink_coral", "colunus_coral" };
+    }
 }

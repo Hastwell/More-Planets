@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 
 public class ItemBlockDirtMP extends ItemBlockBaseMP
 {
-	public ItemBlockDirtMP(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockDirtMP(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "dirt", "coarse" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "dirt", "coarse" };
+    }
 }

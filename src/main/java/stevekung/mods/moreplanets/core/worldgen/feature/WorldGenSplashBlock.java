@@ -15,34 +15,34 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenSplashBlock extends WorldGenerator
 {
-	private Block block;
-	private int meta;
-	private Block blockToGen;
-	private int metaToGen;
+    private Block block;
+    private int meta;
+    private Block blockToGen;
+    private int metaToGen;
 
-	public WorldGenSplashBlock(Block block, int meta, Block blockToGen, int metaToGen)
-	{
-		super();
-		this.block = block;
-		this.meta = meta;
-		this.blockToGen = blockToGen;
-		this.metaToGen = metaToGen;
-	}
+    public WorldGenSplashBlock(Block block, int meta, Block blockToGen, int metaToGen)
+    {
+        super();
+        this.block = block;
+        this.meta = meta;
+        this.blockToGen = blockToGen;
+        this.metaToGen = metaToGen;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, int x, int y, int z)
-	{
-		for (int i = 0; i < 64; i++)
-		{
-			int x1 = x + rand.nextInt(8) - rand.nextInt(8);
-			int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-			int z1 = z + rand.nextInt(8) - rand.nextInt(8);
+    @Override
+    public boolean generate(World world, Random rand, int x, int y, int z)
+    {
+        for (int i = 0; i < 64; i++)
+        {
+            int x1 = x + rand.nextInt(8) - rand.nextInt(8);
+            int y1 = y + rand.nextInt(4) - rand.nextInt(4);
+            int z1 = z + rand.nextInt(8) - rand.nextInt(8);
 
-			if (world.getBlock(x1, y1 - 1, z1) == this.blockToGen && world.getBlockMetadata(x1, y1 - 1, z1) == this.metaToGen)
-			{
-				world.setBlock(x1, y1 - 1, z1, this.block, this.meta, 2);
-			}
-		}
-		return true;
-	}
+            if (world.getBlock(x1, y1 - 1, z1) == this.blockToGen && world.getBlockMetadata(x1, y1 - 1, z1) == this.metaToGen)
+            {
+                world.setBlock(x1, y1 - 1, z1, this.block, this.meta, 2);
+            }
+        }
+        return true;
+    }
 }

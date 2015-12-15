@@ -17,16 +17,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderMilkCow extends RenderCow
 {
-	private ResourceLocation textures = new ResourceLocation("fronos:textures/model/milk_cow.png");
+    private ResourceLocation textures = new ResourceLocation("fronos:textures/model/milk_cow.png");
 
-	public RenderMilkCow()
-	{
-		super(new ModelCow(), 0.7F);
-	}
+    public RenderMilkCow()
+    {
+        super(new ModelCow(), 0.7F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.textures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.textures;
+    }
 }

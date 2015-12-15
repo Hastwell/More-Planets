@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockEuropaIce extends ItemBlockBaseMP
 {
-	public ItemBlockEuropaIce(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockEuropaIce(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "ice", "dirty", "dense" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "ice", "dirty", "dense" };
+    }
 }

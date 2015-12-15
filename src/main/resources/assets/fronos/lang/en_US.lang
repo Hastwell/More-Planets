@@ -213,6 +213,10 @@ tile.fronos_sandstone.cheeseSandstoneSmooth.name=Smooth Cheese Sandstone
 tile.fronos_sandstone_stairs.name=Fronos Sandstone Stairs
 tile.white_sandstone_stairs.name=White Sandstone Stairs
 tile.cheese_sandstone_stairs.name=Cheese Sandstone Stairs
+tile.fronos_block1.gold.name=Gold Ore
+tile.fronos_block1.diamond.name=Diamond Ore
+tile.fronos_block1.emerald.name=Emerald Ore
+tile.fronos_block1.silicon.name=Silicon Ore
 
 # SLABS
 tile.mp_stone_half_slab2.fronos.name=Fronos Cobblestone Slab

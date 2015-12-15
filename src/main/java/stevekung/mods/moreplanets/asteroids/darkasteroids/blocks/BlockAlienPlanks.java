@@ -20,59 +20,59 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockAlienPlanks extends Block
 {
-	private static final String[] woodTypes = new String[] {
-		"alien_wood_planks"
-	};
-	private IIcon[] textures;
+    private static final String[] woodTypes = new String[] {
+        "alien_wood_planks"
+    };
+    private IIcon[] textures;
 
-	public BlockAlienPlanks(String name)
-	{
-		super(Material.wood);
-		this.setHardness(2.0F);
-		this.setStepSound(Block.soundTypeWood);
-		this.setBlockName(name);
-	}
+    public BlockAlienPlanks(String name)
+    {
+        super(Material.wood);
+        this.setHardness(2.0F);
+        this.setStepSound(Block.soundTypeWood);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		this.textures = new IIcon[BlockAlienPlanks.woodTypes.length];
+    @Override
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+        this.textures = new IIcon[BlockAlienPlanks.woodTypes.length];
 
-		for (int i = 0; i < BlockAlienPlanks.woodTypes.length; ++i)
-		{
-			this.textures[i] = iconRegister.registerIcon("mpcore:darkasteroids/" + BlockAlienPlanks.woodTypes[i]);
-		}
-	}
+        for (int i = 0; i < BlockAlienPlanks.woodTypes.length; ++i)
+        {
+            this.textures[i] = iconRegister.registerIcon("mpcore:darkasteroids/" + BlockAlienPlanks.woodTypes[i]);
+        }
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		if (meta < 0 || meta >= this.textures.length)
-		{
-			meta = 0;
-		}
-		return this.textures[meta];
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        if (meta < 0 || meta >= this.textures.length)
+        {
+            meta = 0;
+        }
+        return this.textures[meta];
+    }
 
-	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < BlockAlienPlanks.woodTypes.length; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < BlockAlienPlanks.woodTypes.length; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
+    }
 }

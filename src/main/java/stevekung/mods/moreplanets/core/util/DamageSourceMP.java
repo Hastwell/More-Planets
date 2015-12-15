@@ -15,24 +15,24 @@ import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityPois
 
 public class DamageSourceMP extends DamageSource
 {
-	public static DamageSourceMP chemical = (DamageSourceMP) new DamageSourceMP("chemical").setDamageBypassesArmor();
-	public static DamageSourceMP infectionVine = (DamageSourceMP) new DamageSourceMP("infectionVine").setDamageBypassesArmor().setDifficultyScaled();
-	public static DamageSourceMP purpleSpike = (DamageSourceMP)new DamageSourceMP("purpleSpike").setDamageBypassesArmor();
-	public static DamageSourceMP infectedGas = (DamageSourceMP)new DamageSourceMP("infectedGas").setDamageBypassesArmor().setDifficultyScaled();
-	public static DamageSourceMP icy_poison = (DamageSourceMP)new DamageSourceMP("icy_poison").setDamageBypassesArmor().setDifficultyScaled();
+    public static DamageSourceMP chemical = (DamageSourceMP) new DamageSourceMP("chemical").setDamageBypassesArmor();
+    public static DamageSourceMP infectionVine = (DamageSourceMP) new DamageSourceMP("infectionVine").setDamageBypassesArmor().setDifficultyScaled();
+    public static DamageSourceMP purpleSpike = (DamageSourceMP)new DamageSourceMP("purpleSpike").setDamageBypassesArmor();
+    public static DamageSourceMP infectedGas = (DamageSourceMP)new DamageSourceMP("infectedGas").setDamageBypassesArmor().setDifficultyScaled();
+    public static DamageSourceMP icy_poison = (DamageSourceMP)new DamageSourceMP("icy_poison").setDamageBypassesArmor().setDifficultyScaled();
 
-	public DamageSourceMP(String damageType)
-	{
-		super(damageType);
-	}
+    public DamageSourceMP(String damageType)
+    {
+        super(damageType);
+    }
 
-	public static DamageSource causeLaserDamage(EntityLaserMP laser, Entity par1Entity)
-	{
-		return new EntityDamageSourceIndirect("laser", laser, par1Entity).setProjectile();
-	}
+    public static DamageSource causeLaserDamage(EntityLaserMP laser, Entity par1Entity)
+    {
+        return new EntityDamageSourceIndirect("laser", laser, par1Entity).setProjectile();
+    }
 
-	public static DamageSource causePoisonArrowDamage(EntityPoisonArrow par0EntityArrow, Entity par1Entity)
-	{
-		return new EntityDamageSourceIndirect("poisonArrow", par0EntityArrow, par1Entity).setProjectile();
-	}
+    public static DamageSource causePoisonArrowDamage(EntityPoisonArrow par0EntityArrow, Entity par1Entity)
+    {
+        return new EntityDamageSourceIndirect("poisonArrow", par0EntityArrow, par1Entity).setProjectile();
+    }
 }

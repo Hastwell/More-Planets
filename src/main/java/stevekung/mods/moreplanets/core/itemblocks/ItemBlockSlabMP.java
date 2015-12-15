@@ -18,28 +18,28 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockSlabMP extends ItemSlab
 {
-	public ItemBlockSlabMP(Block block, BlockSlabMP singleSlab, BlockSlabMP doubleSlab)
-	{
-		super(block, singleSlab, doubleSlab, block == doubleSlab);
-	}
+    public ItemBlockSlabMP(Block block, BlockSlabMP singleSlab, BlockSlabMP doubleSlab)
+    {
+        super(block, singleSlab, doubleSlab, block == doubleSlab);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta & 7;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta & 7;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		BlockSlabMP slab = (BlockSlabMP)Block.getBlockFromItem(itemStack.getItem());
-		return super.getUnlocalizedName() + "." + new StringBuilder().append(slab.func_150002_b(itemStack.getItemDamage())).toString();
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        BlockSlabMP slab = (BlockSlabMP)Block.getBlockFromItem(itemStack.getItem());
+        return super.getUnlocalizedName() + "." + new StringBuilder().append(slab.func_150002_b(itemStack.getItemDamage())).toString();
+    }
 }

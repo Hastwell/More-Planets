@@ -23,111 +23,111 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSiriusRedstoneLamp extends Block
 {
-	private boolean isLight;
-	private IIcon[] lampIcon;
+    private boolean isLight;
+    private IIcon[] lampIcon;
 
-	public BlockSiriusRedstoneLamp(String name, boolean light)
-	{
-		super(Material.redstoneLight);
-		this.isLight = light;
-		this.setBlockName(name);
-		this.setStepSound(soundTypeGlass);
+    public BlockSiriusRedstoneLamp(String name, boolean light)
+    {
+        super(Material.redstoneLight);
+        this.isLight = light;
+        this.setBlockName(name);
+        this.setStepSound(soundTypeGlass);
 
-		if (light)
-		{
-			this.setLightLevel(1.0F);
-		}
-	}
+        if (light)
+        {
+            this.setLightLevel(1.0F);
+        }
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.lampIcon = new IIcon[2];
-		this.lampIcon[0] = par1IconRegister.registerIcon("siriusb:sirius_redstone_lamp_off");
-		this.lampIcon[1] = par1IconRegister.registerIcon("siriusb:sirius_redstone_lamp_on");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.lampIcon = new IIcon[2];
+        this.lampIcon[0] = par1IconRegister.registerIcon("siriusb:sirius_redstone_lamp_off");
+        this.lampIcon[1] = par1IconRegister.registerIcon("siriusb:sirius_redstone_lamp_on");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		if (this.isLight)
-		{
-			return this.lampIcon[1];
-		}
-		return this.lampIcon[0];
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        if (this.isLight)
+        {
+            return this.lampIcon[1];
+        }
+        return this.lampIcon[0];
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		if (this.isLight)
-		{
-			return null;
-		}
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        if (this.isLight)
+        {
+            return null;
+        }
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public void onBlockAdded(World world, int x, int y, int z)
-	{
-		if (!world.isRemote)
-		{
-			if (this.isLight && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
-				world.scheduleBlockUpdate(x, y, z, this, 4);
-			}
-			else if (!this.isLight && world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
-				world.setBlock(x, y, z, SiriusBBlocks.sirius_redstone_lamp_on, 0, 2);
-			}
-		}
-	}
+    @Override
+    public void onBlockAdded(World world, int x, int y, int z)
+    {
+        if (!world.isRemote)
+        {
+            if (this.isLight && !world.isBlockIndirectlyGettingPowered(x, y, z))
+            {
+                world.scheduleBlockUpdate(x, y, z, this, 4);
+            }
+            else if (!this.isLight && world.isBlockIndirectlyGettingPowered(x, y, z))
+            {
+                world.setBlock(x, y, z, SiriusBBlocks.sirius_redstone_lamp_on, 0, 2);
+            }
+        }
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
-	{
-		if (!world.isRemote)
-		{
-			if (this.isLight && !world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
-				world.scheduleBlockUpdate(x, y, z, this, 4);
-			}
-			else if (!this.isLight && world.isBlockIndirectlyGettingPowered(x, y, z))
-			{
-				world.setBlock(x, y, z, SiriusBBlocks.sirius_redstone_lamp_on, 0, 2);
-			}
-		}
-	}
+    @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+    {
+        if (!world.isRemote)
+        {
+            if (this.isLight && !world.isBlockIndirectlyGettingPowered(x, y, z))
+            {
+                world.scheduleBlockUpdate(x, y, z, this, 4);
+            }
+            else if (!this.isLight && world.isBlockIndirectlyGettingPowered(x, y, z))
+            {
+                world.setBlock(x, y, z, SiriusBBlocks.sirius_redstone_lamp_on, 0, 2);
+            }
+        }
+    }
 
-	@Override
-	public void updateTick(World world, int x, int y, int z, Random rand)
-	{
-		if (!world.isRemote && this.isLight && !world.isBlockIndirectlyGettingPowered(x, y, z))
-		{
-			world.setBlock(x, y, z, SiriusBBlocks.sirius_redstone_lamp_off, 0, 2);
-		}
-	}
+    @Override
+    public void updateTick(World world, int x, int y, int z, Random rand)
+    {
+        if (!world.isRemote && this.isLight && !world.isBlockIndirectlyGettingPowered(x, y, z))
+        {
+            world.setBlock(x, y, z, SiriusBBlocks.sirius_redstone_lamp_off, 0, 2);
+        }
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		if (this.isLight)
-		{
-			return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
-		}
-		return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        if (this.isLight)
+        {
+            return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
+        }
+        return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z)
-	{
-		return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World world, int x, int y, int z)
+    {
+        return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
+    }
 
-	@Override
-	protected ItemStack createStackedBlock(int meta)
-	{
-		return new ItemStack(SiriusBBlocks.sirius_redstone_lamp_off);
-	}
+    @Override
+    protected ItemStack createStackedBlock(int meta)
+    {
+        return new ItemStack(SiriusBBlocks.sirius_redstone_lamp_off);
+    }
 }

@@ -17,40 +17,40 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 public class CommonProxyMP
 {
-	public void postInit(FMLPostInitializationEvent event)
-	{
-	}
+    public void postInit(FMLPostInitializationEvent event)
+    {
+    }
 
-	public void spawnParticle(String string, double x, double y, double z)
-	{
-	}
+    public void spawnParticle(String string, double x, double y, double z)
+    {
+    }
 
-	public void spawnMotionParticle(String string, double x, double y, double z, double motionX, double motionY, double motionZ)
-	{
-	}
+    public void spawnMotionParticle(String string, double x, double y, double z, double motionX, double motionY, double motionZ)
+    {
+    }
 
-	public int getBlockRender(Block block)
-	{
-		return -1;
-	}
+    public int getBlockRender(Block block)
+    {
+        return -1;
+    }
 
-	public EntityPlayer getPlayerFromNetHandler(INetHandler handler)
-	{
-		if (handler instanceof NetHandlerPlayServer)
-		{
-			return ((NetHandlerPlayServer) handler).playerEntity;
-		}
-		else
-		{
-			return null;
-		}
-	}
+    public EntityPlayer getPlayerFromNetHandler(INetHandler handler)
+    {
+        if (handler instanceof NetHandlerPlayServer)
+        {
+            return ((NetHandlerPlayServer) handler).playerEntity;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
-	public void resetPlayerFloatingTick(EntityPlayer player)
-	{
-		if (player instanceof EntityPlayerMP)
-		{
-			ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, ((EntityPlayerMP)player).playerNetServerHandler, Integer.valueOf(0), new String[] { "field_147365_f", "floatingTickCount" });
-		}
-	}
+    public void resetPlayerFloatingTick(EntityPlayer player)
+    {
+        if (player instanceof EntityPlayerMP)
+        {
+            ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, ((EntityPlayerMP)player).playerNetServerHandler, Integer.valueOf(0), new String[] { "field_147365_f", "floatingTickCount" });
+        }
+    }
 }

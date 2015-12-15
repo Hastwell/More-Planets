@@ -62,82 +62,82 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MPTileEntities
 {
-	public static void init()
-	{
-		MPTileEntities.registerTileEntities();
-	}
+    public static void init()
+    {
+        MPTileEntities.registerTileEntities();
+    }
 
-	private static void registerTileEntities()
-	{
-		// Diona
-		GameRegistry.registerTileEntity(TileEntityDionaTreasureChest.class, "DionaTreasureChest");
-		GameRegistry.registerTileEntity(TileEntityDionaDungeonSpawner.class, "DionaDungeonSpawner");
-		GameRegistry.registerTileEntity(TileEntityDionaAncientChest.class, "DionaAncientChest");
+    private static void registerTileEntities()
+    {
+        // Diona
+        GameRegistry.registerTileEntity(TileEntityDionaTreasureChest.class, "DionaTreasureChest");
+        GameRegistry.registerTileEntity(TileEntityDionaDungeonSpawner.class, "DionaDungeonSpawner");
+        GameRegistry.registerTileEntity(TileEntityDionaAncientChest.class, "DionaAncientChest");
 
-		// Polongnius
-		GameRegistry.registerTileEntity(TileEntityPolongniusTreasureChest.class, "PolongniusTreasureChest");
-		GameRegistry.registerTileEntity(TileEntityUltraVioletSolarPanel.class, "UltraVioletSolarPanel");
-		GameRegistry.registerTileEntity(TileEntityPolongniusAncientChest.class, "PolongniusAncientChest");
-		GameRegistry.registerTileEntity(TileEntityPolongniusDungeonSpawner.class, "PolongniusDungeonSpawner");
-		GameRegistry.registerTileEntity(TileEntityUltraVioletFake.class, "UltraVioletSolarFake");
+        // Polongnius
+        GameRegistry.registerTileEntity(TileEntityPolongniusTreasureChest.class, "PolongniusTreasureChest");
+        GameRegistry.registerTileEntity(TileEntityUltraVioletSolarPanel.class, "UltraVioletSolarPanel");
+        GameRegistry.registerTileEntity(TileEntityPolongniusAncientChest.class, "PolongniusAncientChest");
+        GameRegistry.registerTileEntity(TileEntityPolongniusDungeonSpawner.class, "PolongniusDungeonSpawner");
+        GameRegistry.registerTileEntity(TileEntityUltraVioletFake.class, "UltraVioletSolarFake");
 
-		// Nibiru
-		GameRegistry.registerTileEntity(TileEntityNibiruTreasureChest.class, "NibiruTreasureChest");
-		GameRegistry.registerTileEntity(TileEntityNibiruAncientChest.class, "NibiruAncientChest");
-		GameRegistry.registerTileEntity(TileEntityPowerCrystalGenerator.class, "PowerCrystalGenerator");
-		GameRegistry.registerTileEntity(TileEntityNibiruDungeonSpawner.class, "NibiruDungeonSpawner");
+        // Nibiru
+        GameRegistry.registerTileEntity(TileEntityNibiruTreasureChest.class, "NibiruTreasureChest");
+        GameRegistry.registerTileEntity(TileEntityNibiruAncientChest.class, "NibiruAncientChest");
+        GameRegistry.registerTileEntity(TileEntityPowerCrystalGenerator.class, "PowerCrystalGenerator");
+        GameRegistry.registerTileEntity(TileEntityNibiruDungeonSpawner.class, "NibiruDungeonSpawner");
 
-		// Koentus
-		GameRegistry.registerTileEntity(TileEntityKoentusTreasureChest.class, "KoentusTreasureChest");
-		GameRegistry.registerTileEntity(TileEntityEledosEgg.class, "EledosEgg");
-		GameRegistry.registerTileEntity(TileEntityKoentusAncientChest.class, "KoentusAncientChest");
-		GameRegistry.registerTileEntity(TileEntityKoentusDungeonSpawner.class, "KoentusDungeonSpawner");
+        // Koentus
+        GameRegistry.registerTileEntity(TileEntityKoentusTreasureChest.class, "KoentusTreasureChest");
+        GameRegistry.registerTileEntity(TileEntityEledosEgg.class, "EledosEgg");
+        GameRegistry.registerTileEntity(TileEntityKoentusAncientChest.class, "KoentusAncientChest");
+        GameRegistry.registerTileEntity(TileEntityKoentusDungeonSpawner.class, "KoentusDungeonSpawner");
 
-		// Fronos
-		GameRegistry.registerTileEntity(TileEntitySpaceOysterOpen.class, "SpaceOysterOpen");
-		GameRegistry.registerTileEntity(TileEntitySpaceOysterClose.class, "SpaceOysterClose");
-		GameRegistry.registerTileEntity(TileEntityCavernOysterOpen.class, "CavernOysterOpen");
-		GameRegistry.registerTileEntity(TileEntityCavernOysterClose.class, "CavernOysterClose");
-		GameRegistry.registerTileEntity(TileEntityFronosTreasureChest.class, "FronosTreasureChest");
-		GameRegistry.registerTileEntity(TileEntityCandyExtractor.class, "CandyExtractor");
-		GameRegistry.registerTileEntity(TileEntityFronosAncientChest.class, "FronosAncientChest");
-		GameRegistry.registerTileEntity(TileEntityFronosDungeonSpawner.class, "FronosDungeonSpawner");
-		GameRegistry.registerTileEntity(TileEntityMineralWaterGenerator.class, "MineralWaterGenerator");
-		GameRegistry.registerTileEntity(TileEntityCup.class, "Cup");
-		GameRegistry.registerTileEntity(TileEntityMineralWaterCup.class, "MineralWaterCup");
-		GameRegistry.registerTileEntity(TileEntityOvantineCup.class, "OvantineCup");
-		GameRegistry.registerTileEntity(TileEntityCoconutMilkCup.class, "CoconutMilkCup");
-		GameRegistry.registerTileEntity(TileEntityCheeseOfMilkCup.class, "CheeseOfMilkCup");
-		GameRegistry.registerTileEntity(TileEntityTeaCup.class, "TeaCup");
-		GameRegistry.registerTileEntity(TileEntityCaramelCup.class, "CaramelCup");
+        // Fronos
+        GameRegistry.registerTileEntity(TileEntitySpaceOysterOpen.class, "SpaceOysterOpen");
+        GameRegistry.registerTileEntity(TileEntitySpaceOysterClose.class, "SpaceOysterClose");
+        GameRegistry.registerTileEntity(TileEntityCavernOysterOpen.class, "CavernOysterOpen");
+        GameRegistry.registerTileEntity(TileEntityCavernOysterClose.class, "CavernOysterClose");
+        GameRegistry.registerTileEntity(TileEntityFronosTreasureChest.class, "FronosTreasureChest");
+        GameRegistry.registerTileEntity(TileEntityCandyExtractor.class, "CandyExtractor");
+        GameRegistry.registerTileEntity(TileEntityFronosAncientChest.class, "FronosAncientChest");
+        GameRegistry.registerTileEntity(TileEntityFronosDungeonSpawner.class, "FronosDungeonSpawner");
+        GameRegistry.registerTileEntity(TileEntityMineralWaterGenerator.class, "MineralWaterGenerator");
+        GameRegistry.registerTileEntity(TileEntityCup.class, "Cup");
+        GameRegistry.registerTileEntity(TileEntityMineralWaterCup.class, "MineralWaterCup");
+        GameRegistry.registerTileEntity(TileEntityOvantineCup.class, "OvantineCup");
+        GameRegistry.registerTileEntity(TileEntityCoconutMilkCup.class, "CoconutMilkCup");
+        GameRegistry.registerTileEntity(TileEntityCheeseOfMilkCup.class, "CheeseOfMilkCup");
+        GameRegistry.registerTileEntity(TileEntityTeaCup.class, "TeaCup");
+        GameRegistry.registerTileEntity(TileEntityCaramelCup.class, "CaramelCup");
 
-		// Kapteyn B
-		GameRegistry.registerTileEntity(TileEntityKapteynBTreasureChest.class, "KapteynBTreasureChest");
-		GameRegistry.registerTileEntity(TileEntityKapteynBAncientChest.class, "KapteynBAncientChest");
-		GameRegistry.registerTileEntity(TileEntityKapteynBAncientChestTemp.class, "KapteynBAncientChestTemp");
-		GameRegistry.registerTileEntity(TileEntityKapteynBDungeonSpawner.class, "KapteynBDungeonSpawner");
-		GameRegistry.registerTileEntity(TileEntityUraniumWaste.class, "UraniumWaste");
-		GameRegistry.registerTileEntity(TileEntityIcyPoisonCrystal.class, "IcyPoisonCrystal");
-		GameRegistry.registerTileEntity(TileEntityFrozenWaterGeyser.class, "FrozenWaterGeyser");
+        // Kapteyn B
+        GameRegistry.registerTileEntity(TileEntityKapteynBTreasureChest.class, "KapteynBTreasureChest");
+        GameRegistry.registerTileEntity(TileEntityKapteynBAncientChest.class, "KapteynBAncientChest");
+        GameRegistry.registerTileEntity(TileEntityKapteynBAncientChestTemp.class, "KapteynBAncientChestTemp");
+        GameRegistry.registerTileEntity(TileEntityKapteynBDungeonSpawner.class, "KapteynBDungeonSpawner");
+        GameRegistry.registerTileEntity(TileEntityUraniumWaste.class, "UraniumWaste");
+        GameRegistry.registerTileEntity(TileEntityIcyPoisonCrystal.class, "IcyPoisonCrystal");
+        GameRegistry.registerTileEntity(TileEntityFrozenWaterGeyser.class, "FrozenWaterGeyser");
 
-		// Sirius B
-		GameRegistry.registerTileEntity(TileEntitySiriusBTreasureChest.class, "SiriusBTreasureChest");
-		GameRegistry.registerTileEntity(TileEntitySiriusBAncientChest.class, "SiriusBAncientChest");
-		GameRegistry.registerTileEntity(TileEntitySiriusBDungeonSpawner.class, "SiriusBDungeonSpawner");
+        // Sirius B
+        GameRegistry.registerTileEntity(TileEntitySiriusBTreasureChest.class, "SiriusBTreasureChest");
+        GameRegistry.registerTileEntity(TileEntitySiriusBAncientChest.class, "SiriusBAncientChest");
+        GameRegistry.registerTileEntity(TileEntitySiriusBDungeonSpawner.class, "SiriusBDungeonSpawner");
 
-		// Mercury
-		GameRegistry.registerTileEntity(TileEntityMercuryDungeonSpawner.class, "MercuryDungeonSpawner");
-		GameRegistry.registerTileEntity(TileEntityMercuryAncientChest.class, "MercuryAncientChest");
-		GameRegistry.registerTileEntity(TileEntityMercuryTreasureChest.class, "MercuryTreasureChest");
+        // Mercury
+        GameRegistry.registerTileEntity(TileEntityMercuryDungeonSpawner.class, "MercuryDungeonSpawner");
+        GameRegistry.registerTileEntity(TileEntityMercuryAncientChest.class, "MercuryAncientChest");
+        GameRegistry.registerTileEntity(TileEntityMercuryTreasureChest.class, "MercuryTreasureChest");
 
-		// Venus
-		GameRegistry.registerTileEntity(TileEntityVenusDungeonSpawner.class, "VenusDungeonSpawner");
-		GameRegistry.registerTileEntity(TileEntityVenusAncientChest.class, "VenusAncientChest");
-		GameRegistry.registerTileEntity(TileEntityVenusTreasureChest.class, "VenusTreasureChest");
+        // Venus
+        GameRegistry.registerTileEntity(TileEntityVenusDungeonSpawner.class, "VenusDungeonSpawner");
+        GameRegistry.registerTileEntity(TileEntityVenusAncientChest.class, "VenusAncientChest");
+        GameRegistry.registerTileEntity(TileEntityVenusTreasureChest.class, "VenusTreasureChest");
 
-		// Pluto
-		GameRegistry.registerTileEntity(TileEntityPlutoDungeonSpawner.class, "PlutoDungeonSpawner");
-		GameRegistry.registerTileEntity(TileEntityPlutoAncientChest.class, "PlutoAncientChest");
-		GameRegistry.registerTileEntity(TileEntityPlutoTreasureChest.class, "PlutoTreasureChest");
-	}
+        // Pluto
+        GameRegistry.registerTileEntity(TileEntityPlutoDungeonSpawner.class, "PlutoDungeonSpawner");
+        GameRegistry.registerTileEntity(TileEntityPlutoAncientChest.class, "PlutoAncientChest");
+        GameRegistry.registerTileEntity(TileEntityPlutoTreasureChest.class, "PlutoTreasureChest");
+    }
 }

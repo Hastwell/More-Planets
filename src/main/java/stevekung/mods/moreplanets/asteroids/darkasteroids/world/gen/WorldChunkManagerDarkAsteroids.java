@@ -12,9 +12,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class WorldChunkManagerDarkAsteroids extends WorldChunkManagerSpace
 {
-	@Override
-	public BiomeGenBase getBiome()
-	{
-		return BiomeGenBaseDarkAsteroids.darkAsteroids;
-	}
+    @Override
+    public BiomeGenBase getBiome()
+    {
+        return BiomeGenBaseDarkAsteroids.darkAsteroids;
+    }
 }

@@ -13,19 +13,19 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockFronisium extends BlockBaseMP
 {
-	public BlockFronisium(String name)
-	{
-		super(Material.iron);
-		this.setResistance(6.0F);
-		this.setHardness(3.5F);
-		this.setBlockName(name);
-		this.setStepSound(soundTypeMetal);
-		this.setBlockTextureName("diona:fronisium_block");
-	}
+    public BlockFronisium(String name)
+    {
+        super(Material.iron);
+        this.setResistance(6.0F);
+        this.setHardness(3.5F);
+        this.setBlockName(name);
+        this.setStepSound(soundTypeMetal);
+        this.setBlockTextureName("diona:fronisium_block");
+    }
 
-	@Override
-	public boolean isBeaconBase(IBlockAccess world, int x, int y, int z, int beaconX, int beaconY, int beaconZ)
-	{
-		return true;
-	}
+    @Override
+    public boolean isBeaconBase(IBlockAccess world, int x, int y, int z, int beaconX, int beaconY, int beaconZ)
+    {
+        return true;
+    }
 }

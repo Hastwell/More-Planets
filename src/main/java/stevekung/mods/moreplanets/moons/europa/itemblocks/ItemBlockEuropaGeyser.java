@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockEuropaGeyser extends ItemBlockBaseMP
 {
-	public ItemBlockEuropaGeyser(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockEuropaGeyser(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "default", "smoke" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "default", "smoke" };
+    }
 }

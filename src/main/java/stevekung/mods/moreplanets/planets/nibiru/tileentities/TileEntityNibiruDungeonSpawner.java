@@ -24,28 +24,28 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 
 public class TileEntityNibiruDungeonSpawner extends TileEntityDungeonSpawner
 {
-	public TileEntityNibiruDungeonSpawner()
-	{
-		super(EntityEvolvedInfectedSpiderBoss.class);
-	}
+    public TileEntityNibiruDungeonSpawner()
+    {
+        super(EntityEvolvedInfectedSpiderBoss.class);
+    }
 
-	@Override
-	public List<Class<? extends EntityLiving>> getDisabledCreatures()
-	{
-		List<Class<? extends EntityLiving>> list = new ArrayList<Class<? extends EntityLiving>>();
-		list.add(EntityEvolvedSkeleton.class);
-		list.add(EntityEvolvedZombie.class);
-		list.add(EntityEvolvedSpider.class);
-		list.add(EntityEvolvedCreeper.class);
-		list.add(EntityEvolvedEnderman.class);
-		list.add(EntityInfectedZombie.class);
-		list.add(EntityGiantWorm.class);
-		return list;
-	}
+    @Override
+    public List<Class<? extends EntityLiving>> getDisabledCreatures()
+    {
+        List<Class<? extends EntityLiving>> list = new ArrayList<Class<? extends EntityLiving>>();
+        list.add(EntityEvolvedSkeleton.class);
+        list.add(EntityEvolvedZombie.class);
+        list.add(EntityEvolvedSpider.class);
+        list.add(EntityEvolvedCreeper.class);
+        list.add(EntityEvolvedEnderman.class);
+        list.add(EntityInfectedZombie.class);
+        list.add(EntityGiantWorm.class);
+        return list;
+    }
 
-	@Override
-	public void playSpawnSound(Entity entity)
-	{
-		this.worldObj.playSoundAtEntity(entity, "galacticraftcore:ambience.scaryscape", 9.0F, 1.4F);
-	}
+    @Override
+    public void playSpawnSound(Entity entity)
+    {
+        this.worldObj.playSoundAtEntity(entity, "galacticraftcore:ambience.scaryscape", 9.0F, 1.4F);
+    }
 }

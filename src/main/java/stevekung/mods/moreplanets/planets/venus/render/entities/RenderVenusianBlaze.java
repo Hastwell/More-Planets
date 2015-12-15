@@ -17,53 +17,53 @@ import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 
 public class RenderVenusianBlaze extends RenderLiving
 {
-	private ResourceLocation blazeTextures = new ResourceLocation("venus:textures/model/venusian_blaze.png");
-	private int field_77068_a;
+    private ResourceLocation blazeTextures = new ResourceLocation("venus:textures/model/venusian_blaze.png");
+    private int field_77068_a;
 
-	public RenderVenusianBlaze()
-	{
-		super(new ModelBlaze(), 0.5F);
-		this.field_77068_a = ((ModelBlaze)this.mainModel).func_78104_a();
-	}
+    public RenderVenusianBlaze()
+    {
+        super(new ModelBlaze(), 0.5F);
+        this.field_77068_a = ((ModelBlaze)this.mainModel).func_78104_a();
+    }
 
-	public void renderBlaze(EntityVenusianBlaze par1EntityBlaze, double par2, double par4, double par6, float par8, float par9)
-	{
-		int i = ((ModelBlaze)this.mainModel).func_78104_a();
+    public void renderBlaze(EntityVenusianBlaze par1EntityBlaze, double par2, double par4, double par6, float par8, float par9)
+    {
+        int i = ((ModelBlaze)this.mainModel).func_78104_a();
 
-		if (i != this.field_77068_a)
-		{
-			this.field_77068_a = i;
-			this.mainModel = new ModelBlaze();
-		}
-		super.doRender(par1EntityBlaze, par2, par4, par6, par8, par9);
-	}
+        if (i != this.field_77068_a)
+        {
+            this.field_77068_a = i;
+            this.mainModel = new ModelBlaze();
+        }
+        super.doRender(par1EntityBlaze, par2, par4, par6, par8, par9);
+    }
 
-	protected ResourceLocation getBlazeTextures(EntityVenusianBlaze par1EntityBlaze)
-	{
-		return this.blazeTextures;
-	}
+    protected ResourceLocation getBlazeTextures(EntityVenusianBlaze par1EntityBlaze)
+    {
+        return this.blazeTextures;
+    }
 
-	@Override
-	public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderBlaze((EntityVenusianBlaze)par1EntityLiving, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderBlaze((EntityVenusianBlaze)par1EntityLiving, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	public void doRender(EntityLivingBase par1EntityLivingBase, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderBlaze((EntityVenusianBlaze)par1EntityLivingBase, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLivingBase par1EntityLivingBase, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderBlaze((EntityVenusianBlaze)par1EntityLivingBase, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.getBlazeTextures((EntityVenusianBlaze)par1Entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.getBlazeTextures((EntityVenusianBlaze)par1Entity);
+    }
 
-	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderBlaze((EntityVenusianBlaze)par1Entity, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderBlaze((EntityVenusianBlaze)par1Entity, par2, par4, par6, par8, par9);
+    }
 }

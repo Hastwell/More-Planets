@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 
 public class ItemBlockChondrite extends ItemBlockBaseMP
 {
-	public ItemBlockChondrite(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockChondrite(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "rock", "polished", "stone_brick" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "rock", "polished", "stone_brick" };
+    }
 }

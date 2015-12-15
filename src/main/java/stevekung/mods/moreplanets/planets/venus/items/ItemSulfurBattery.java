@@ -19,35 +19,35 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSulfurBattery extends ItemElectricBase implements IItemElectric
 {
-	public ItemSulfurBattery(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setTextureName("venus:sulfur_battery");
-	}
+    public ItemSulfurBattery(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setTextureName("venus:sulfur_battery");
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public float getMaxElectricityStored(ItemStack itemStack)
-	{
-		return 64000;
-	}
+    @Override
+    public float getMaxElectricityStored(ItemStack itemStack)
+    {
+        return 64000;
+    }
 
-	@Override
-	public int getTierGC(ItemStack itemStack)
-	{
-		return 4;
-	}
+    @Override
+    public int getTierGC(ItemStack itemStack)
+    {
+        return 4;
+    }
 }

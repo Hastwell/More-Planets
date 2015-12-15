@@ -15,41 +15,41 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class ArmorNorium extends ItemArmorMP
 {
-	public ArmorNorium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorNorium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == NibiruArmorItems.norium_helmet || stack.getItem() == NibiruArmorItems.norium_chestplate || stack.getItem() == NibiruArmorItems.norium_boots)
-		{
-			return "nibiru:textures/model/armor/norium_1.png";
-		}
-		if (stack.getItem() == NibiruArmorItems.norium_leggings)
-		{
-			return "nibiru:textures/model/armor/norium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == NibiruArmorItems.norium_helmet || stack.getItem() == NibiruArmorItems.norium_chestplate || stack.getItem() == NibiruArmorItems.norium_boots)
+        {
+            return "nibiru:textures/model/armor/norium_1.png";
+        }
+        if (stack.getItem() == NibiruArmorItems.norium_leggings)
+        {
+            return "nibiru:textures/model/armor/norium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "nibiru";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "nibiru";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return NibiruItems.nibiru_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return NibiruItems.nibiru_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 3;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 3;
+    }
 }

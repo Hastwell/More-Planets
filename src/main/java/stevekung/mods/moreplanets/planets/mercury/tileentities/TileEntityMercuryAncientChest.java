@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 
 public class TileEntityMercuryAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return MercuryBlocks.mercury_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return MercuryBlocks.mercury_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "mercury";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "mercury";
+    }
 }

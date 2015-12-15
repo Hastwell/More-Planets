@@ -15,34 +15,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockPoppy extends ItemBlockBaseMP
 {
-	public ItemBlockPoppy(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockPoppy(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean isFull3D()
+    {
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return this.field_150939_a.getIcon(0, meta);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.field_150939_a.getIcon(0, meta);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "white", "orange", "purple" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "white", "orange", "purple" };
+    }
 
-	@Override
-	public boolean reverseName()
-	{
-		return true;
-	}
+    @Override
+    public boolean reverseName()
+    {
+        return true;
+    }
 }

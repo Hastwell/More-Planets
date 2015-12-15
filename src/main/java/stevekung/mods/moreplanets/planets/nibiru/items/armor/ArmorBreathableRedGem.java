@@ -15,49 +15,49 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class ArmorBreathableRedGem extends ItemBreathableArmor
 {
-	public ArmorBreathableRedGem(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorBreathableRedGem(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == NibiruArmorItems.breathable_red_gem_helmet)
-		{
-			return "nibiru:textures/model/armor/breathable_red_gem_1.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == NibiruArmorItems.breathable_red_gem_helmet)
+        {
+            return "nibiru:textures/model/armor/breathable_red_gem_1.png";
+        }
+        return null;
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return NibiruItems.nibiru_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return NibiruItems.nibiru_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 2;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 2;
+    }
 
-	@Override
-	public EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    public EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	public Item getBreathableArmor()
-	{
-		return NibiruArmorItems.breathable_red_gem_helmet;
-	}
+    @Override
+    public Item getBreathableArmor()
+    {
+        return NibiruArmorItems.breathable_red_gem_helmet;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "nibiru:breathable_red_gem_helmet";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "nibiru:breathable_red_gem_helmet";
+    }
 }

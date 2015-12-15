@@ -21,57 +21,57 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderStrawberryChicken extends RenderLiving
 {
-	private static final ResourceLocation chickenTextures = new ResourceLocation("fronos:textures/model/strawberry_chicken.png");
+    private static final ResourceLocation chickenTextures = new ResourceLocation("fronos:textures/model/strawberry_chicken.png");
 
-	public RenderStrawberryChicken()
-	{
-		super(new ModelChicken(), 0.3F);
-	}
+    public RenderStrawberryChicken()
+    {
+        super(new ModelChicken(), 0.3F);
+    }
 
-	public void renderChicken(EntityStrawberryChicken par1EntityChicken, double par2, double par4, double par6, float par8, float par9)
-	{
-		super.doRender(par1EntityChicken, par2, par4, par6, par8, par9);
-	}
+    public void renderChicken(EntityStrawberryChicken par1EntityChicken, double par2, double par4, double par6, float par8, float par9)
+    {
+        super.doRender(par1EntityChicken, par2, par4, par6, par8, par9);
+    }
 
-	protected ResourceLocation getChickenTextures(EntityStrawberryChicken par1EntityChicken)
-	{
-		return RenderStrawberryChicken.chickenTextures;
-	}
+    protected ResourceLocation getChickenTextures(EntityStrawberryChicken par1EntityChicken)
+    {
+        return RenderStrawberryChicken.chickenTextures;
+    }
 
-	protected float getWingRotation(EntityStrawberryChicken par1EntityChicken, float par2)
-	{
-		final float f1 = par1EntityChicken.field_70888_h + (par1EntityChicken.field_70886_e - par1EntityChicken.field_70888_h) * par2;
-		final float f2 = par1EntityChicken.field_70884_g + (par1EntityChicken.destPos - par1EntityChicken.field_70884_g) * par2;
-		return (MathHelper.sin(f1) + 1.0F) * f2;
-	}
+    protected float getWingRotation(EntityStrawberryChicken par1EntityChicken, float par2)
+    {
+        final float f1 = par1EntityChicken.field_70888_h + (par1EntityChicken.field_70886_e - par1EntityChicken.field_70888_h) * par2;
+        final float f2 = par1EntityChicken.field_70884_g + (par1EntityChicken.destPos - par1EntityChicken.field_70884_g) * par2;
+        return (MathHelper.sin(f1) + 1.0F) * f2;
+    }
 
-	@Override
-	public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderChicken((EntityStrawberryChicken)par1EntityLiving, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderChicken((EntityStrawberryChicken)par1EntityLiving, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected float handleRotationFloat(EntityLivingBase par1EntityLivingBase, float par2)
-	{
-		return this.getWingRotation((EntityStrawberryChicken)par1EntityLivingBase, par2);
-	}
+    @Override
+    protected float handleRotationFloat(EntityLivingBase par1EntityLivingBase, float par2)
+    {
+        return this.getWingRotation((EntityStrawberryChicken)par1EntityLivingBase, par2);
+    }
 
-	@Override
-	public void doRender(EntityLivingBase par1EntityLivingBase, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderChicken((EntityStrawberryChicken)par1EntityLivingBase, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLivingBase par1EntityLivingBase, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderChicken((EntityStrawberryChicken)par1EntityLivingBase, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.getChickenTextures((EntityStrawberryChicken)par1Entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.getChickenTextures((EntityStrawberryChicken)par1Entity);
+    }
 
-	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderChicken((EntityStrawberryChicken)par1Entity, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderChicken((EntityStrawberryChicken)par1Entity, par2, par4, par6, par8, par9);
+    }
 }

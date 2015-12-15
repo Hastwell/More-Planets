@@ -21,69 +21,69 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemFruits extends ItemFoodMP
 {
-	private static final int[] foodHunger = new int[] {
-		1,
-		4
-	};
-	private static final float[] foodSaturation = new float[] {
-		0.4F,
-		0.3F
-	};
+    private static final int[] foodHunger = new int[] {
+        1,
+        4
+    };
+    private static final float[] foodSaturation = new float[] {
+        0.4F,
+        0.3F
+    };
 
-	public ItemFruits(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setHasSubtypes(true);
-	}
+    public ItemFruits(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public EnumAction getItemUseAction(ItemStack itemStack)
-	{
-		return EnumAction.eat;
-	}
+    @Override
+    public EnumAction getItemUseAction(ItemStack itemStack)
+    {
+        return EnumAction.eat;
+    }
 
-	@Override
-	public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		--itemStack.stackSize;
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
-		player.getFoodStats().func_151686_a(this, itemStack);
-		return itemStack;
-	}
+    @Override
+    public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        --itemStack.stackSize;
+        world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+        this.onFoodEaten(itemStack, world, player);
+        player.getFoodStats().func_151686_a(this, itemStack);
+        return itemStack;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			par3List.add(new ItemStack(par1, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            par3List.add(new ItemStack(par1, 1, i));
+        }
+    }
 
-	@Override
-	public int getFoodAmount(ItemStack itemStack)
-	{
-		return foodHunger[itemStack.getItemDamage()];
-	}
+    @Override
+    public int getFoodAmount(ItemStack itemStack)
+    {
+        return foodHunger[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public float getFoodSaturation(ItemStack itemStack)
-	{
-		return foodSaturation[itemStack.getItemDamage()];
-	}
+    @Override
+    public float getFoodSaturation(ItemStack itemStack)
+    {
+        return foodSaturation[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "kiwi", "lemon" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "kiwi", "lemon" };
+    }
 
-	@Override
-	public String getResourceLocation()
-	{
-		return "fronos";
-	}
+    @Override
+    public String getResourceLocation()
+    {
+        return "fronos";
+    }
 }

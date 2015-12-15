@@ -32,147 +32,147 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier8Rocket extends ItemMorePlanet implements IHoldableItem
 {
-	public ItemTier8Rocket(String name)
-	{
-		super();
-		this.setHasSubtypes(true);
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setTextureName("mpcore:blank");
-	}
+    public ItemTier8Rocket(String name)
+    {
+        super();
+        this.setHasSubtypes(true);
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setTextureName("mpcore:blank");
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
-	{
-		boolean padFound = false;
-		TileEntity tile = null;
+    @Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+    {
+        boolean padFound = false;
+        TileEntity tile = null;
 
-		if (world.isRemote)
-		{
-			return false;
-		}
-		else
-		{
-			float centerX = -1;
-			float centerY = -1;
-			float centerZ = -1;
+        if (world.isRemote)
+        {
+            return false;
+        }
+        else
+        {
+            float centerX = -1;
+            float centerY = -1;
+            float centerZ = -1;
 
-			for (int i = -1; i < 2; i++)
-			{
-				for (int j = -1; j < 2; j++)
-				{
-					Block id = world.getBlock(par4 + i, par5, par6 + j);
-					int meta = world.getBlockMetadata(par4 + i, par5, par6 + j);
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    Block id = world.getBlock(par4 + i, par5, par6 + j);
+                    int meta = world.getBlockMetadata(par4 + i, par5, par6 + j);
 
-					if (id == GCBlocks.landingPadFull && meta == 0)
-					{
-						padFound = true;
-						tile = world.getTileEntity(par4 + i, par5, par6 + j);
+                    if (id == GCBlocks.landingPadFull && meta == 0)
+                    {
+                        padFound = true;
+                        tile = world.getTileEntity(par4 + i, par5, par6 + j);
 
-						centerX = par4 + i + 0.5F;
-						centerY = par5 + 0.4F;
-						centerZ = par6 + j + 0.5F;
-						break;
-					}
-				}
-				if (padFound)
-				{
-					break;
-				}
-			}
+                        centerX = par4 + i + 0.5F;
+                        centerY = par5 + 0.4F;
+                        centerZ = par6 + j + 0.5F;
+                        break;
+                    }
+                }
+                if (padFound)
+                {
+                    break;
+                }
+            }
 
-			if (padFound)
-			{
-				EntityTier8Rocket rocket = new EntityTier8Rocket(world, centerX, centerY, centerZ, EnumRocketType.values()[itemStack.getItemDamage()]);
+            if (padFound)
+            {
+                EntityTier8Rocket rocket = new EntityTier8Rocket(world, centerX, centerY, centerZ, EnumRocketType.values()[itemStack.getItemDamage()]);
 
-				if (tile instanceof TileEntityLandingPad)
-				{
-					if (((TileEntityLandingPad)tile).getDockedEntity() != null)
-					{
-						return false;
-					}
-				}
-				else
-				{
-					return false;
-				}
+                if (tile instanceof TileEntityLandingPad)
+                {
+                    if (((TileEntityLandingPad)tile).getDockedEntity() != null)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
 
-				rocket.rotationYaw += 45;
-				rocket.setPosition(rocket.posX, rocket.posY + rocket.getOnPadYOffset(), rocket.posZ);
-				world.spawnEntityInWorld(rocket);
+                rocket.rotationYaw += 45;
+                rocket.setPosition(rocket.posX, rocket.posY + rocket.getOnPadYOffset(), rocket.posZ);
+                world.spawnEntityInWorld(rocket);
 
-				if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
-				{
-					rocket.fuelTank.fill(new FluidStack(GalacticraftCore.fluidFuel, itemStack.getTagCompound().getInteger("RocketFuel")), true);
-				}
-				if (!player.capabilities.isCreativeMode)
-				{
-					itemStack.stackSize--;
+                if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
+                {
+                    rocket.fuelTank.fill(new FluidStack(GalacticraftCore.fluidFuel, itemStack.getTagCompound().getInteger("RocketFuel")), true);
+                }
+                if (!player.capabilities.isCreativeMode)
+                {
+                    itemStack.stackSize--;
 
-					if (itemStack.stackSize <= 0)
-					{
-						itemStack = null;
-					}
-				}
-				if (rocket.getType().getPreFueled())
-				{
-					rocket.fuelTank.fill(new FluidStack(GalacticraftCore.fluidFuel, rocket.getMaxFuel()), true);
-				}
-			}
-			else
-			{
-				return false;
-			}
-		}
-		return true;
-	}
+                    if (itemStack.stackSize <= 0)
+                    {
+                        itemStack = null;
+                    }
+                }
+                if (rocket.getType().getPreFueled())
+                {
+                    rocket.fuelTank.fill(new FluidStack(GalacticraftCore.fluidFuel, rocket.getMaxFuel()), true);
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		for (int i = 0; i < EnumRocketType.values().length; i++)
-		{
-			par3List.add(new ItemStack(par1, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        for (int i = 0; i < EnumRocketType.values().length; i++)
+        {
+            par3List.add(new ItemStack(par1, 1, i));
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
-	{
-		EnumRocketType type = EnumRocketType.values()[itemStack.getItemDamage()];
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+    {
+        EnumRocketType type = EnumRocketType.values()[itemStack.getItemDamage()];
 
-		if (!type.getTooltip().isEmpty())
-		{
-			list.add(type.getTooltip());
-		}
-		if (type.getPreFueled())
-		{
-			list.add(EnumChatFormatting.RED + "\u00a7o" + GCCoreUtil.translate("gui.creativeOnly.desc"));
-		}
-		if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
-		{
-			EntityTier8Rocket rocket = new EntityTier8Rocket(FMLClientHandler.instance().getWorldClient(), 0, 0, 0, EnumRocketType.values()[itemStack.getItemDamage()]);
-			list.add(GCCoreUtil.translate("gui.message.fuel.name") + ": " + itemStack.getTagCompound().getInteger("RocketFuel") + " / " + rocket.fuelTank.getCapacity());
-		}
-	}
+        if (!type.getTooltip().isEmpty())
+        {
+            list.add(type.getTooltip());
+        }
+        if (type.getPreFueled())
+        {
+            list.add(EnumChatFormatting.RED + "\u00a7o" + GCCoreUtil.translate("gui.creativeOnly.desc"));
+        }
+        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("RocketFuel"))
+        {
+            EntityTier8Rocket rocket = new EntityTier8Rocket(FMLClientHandler.instance().getWorldClient(), 0, 0, 0, EnumRocketType.values()[itemStack.getItemDamage()]);
+            list.add(GCCoreUtil.translate("gui.message.fuel.name") + ": " + itemStack.getTagCompound().getInteger("RocketFuel") + " / " + rocket.fuelTank.getCapacity());
+        }
+    }
 
-	@Override
-	public boolean shouldHoldLeftHandUp(EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldHoldLeftHandUp(EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean shouldHoldRightHandUp(EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldHoldRightHandUp(EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean shouldCrouch(EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldCrouch(EntityPlayer player)
+    {
+        return true;
+    }
 }

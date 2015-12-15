@@ -18,31 +18,31 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBasicVenus extends ItemBaseMP
 {
-	public ItemBasicVenus(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemBasicVenus(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "lead_ingot" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "lead_ingot" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "venus";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "venus";
+    }
 }

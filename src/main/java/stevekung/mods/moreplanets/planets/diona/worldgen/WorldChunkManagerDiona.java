@@ -12,9 +12,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class WorldChunkManagerDiona extends WorldChunkManagerSpace
 {
-	@Override
-	public BiomeGenBase getBiome()
-	{
-		return BiomeGenBaseDiona.diona;
-	}
+    @Override
+    public BiomeGenBase getBiome()
+    {
+        return BiomeGenBaseDiona.diona;
+    }
 }

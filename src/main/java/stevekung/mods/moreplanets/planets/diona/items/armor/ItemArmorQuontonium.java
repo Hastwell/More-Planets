@@ -15,41 +15,41 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class ItemArmorQuontonium extends ItemArmorMP
 {
-	public ItemArmorQuontonium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ItemArmorQuontonium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
-	{
-		if (stack.getItem() == DionaArmorItems.quontonium_helmet || stack.getItem() == DionaArmorItems.quontonium_chestplate || stack.getItem() == DionaArmorItems.quontonium_boots)
-		{
-			return "diona:textures/model/armor/quontonium_1.png";
-		}
-		else if (stack.getItem() == DionaArmorItems.quontonium_leggings)
-		{
-			return "diona:textures/model/armor/quontonium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
+    {
+        if (stack.getItem() == DionaArmorItems.quontonium_helmet || stack.getItem() == DionaArmorItems.quontonium_chestplate || stack.getItem() == DionaArmorItems.quontonium_boots)
+        {
+            return "diona:textures/model/armor/quontonium_1.png";
+        }
+        else if (stack.getItem() == DionaArmorItems.quontonium_leggings)
+        {
+            return "diona:textures/model/armor/quontonium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "diona";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "diona";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return DionaItems.diona_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return DionaItems.diona_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 2;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 2;
+    }
 }

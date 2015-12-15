@@ -10,38 +10,38 @@ import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBl
 
 public class BiomeDecoratorDarkAsteroids extends BiomeDecoratorSpace
 {
-	private World world;
-	private WorldGenerator sandGen;
-	private WorldGenerator sandGen1;
-	private WorldGenerator sandGen2;
+    private World world;
+    private WorldGenerator sandGen;
+    private WorldGenerator sandGen1;
+    private WorldGenerator sandGen2;
 
-	public BiomeDecoratorDarkAsteroids()
-	{
-		// Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
-		this.sandGen = new WorldGenMinableMeta(DarkAsteroidsBlocks.dark_asteroid_quicksand, 8, 0, true, DarkAsteroidsBlocks.dark_asteroid_block, 0);
-		this.sandGen1 = new WorldGenMinableMeta(DarkAsteroidsBlocks.dark_asteroid_quicksand, 8, 0, true, DarkAsteroidsBlocks.dark_asteroid_block, 1);
-		this.sandGen2 = new WorldGenMinableMeta(DarkAsteroidsBlocks.dark_asteroid_quicksand, 8, 0, true, DarkAsteroidsBlocks.dark_asteroid_block, 2);
-	}
+    public BiomeDecoratorDarkAsteroids()
+    {
+        // Block,NumberOfBlock,Meta,IsMeta,FillBlock,FillMeta
+        this.sandGen = new WorldGenMinableMeta(DarkAsteroidsBlocks.dark_asteroid_quicksand, 8, 0, true, DarkAsteroidsBlocks.dark_asteroid_block, 0);
+        this.sandGen1 = new WorldGenMinableMeta(DarkAsteroidsBlocks.dark_asteroid_quicksand, 8, 0, true, DarkAsteroidsBlocks.dark_asteroid_block, 1);
+        this.sandGen2 = new WorldGenMinableMeta(DarkAsteroidsBlocks.dark_asteroid_quicksand, 8, 0, true, DarkAsteroidsBlocks.dark_asteroid_block, 2);
+    }
 
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
+    @Override
+    protected void setCurrentWorld(World world)
+    {
+        this.world = world;
+    }
 
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
-	}
+    @Override
+    protected World getCurrentWorld()
+    {
+        return this.world;
+    }
 
-	@Override
-	protected void decorate()
-	{
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.chunkX, this.chunkZ));
-		this.generateOre(16, this.sandGen, 0, 255);
-		this.generateOre(16, this.sandGen1, 0, 255);
-		this.generateOre(16, this.sandGen2, 0, 255);
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.chunkX, this.chunkZ));
-	}
+    @Override
+    protected void decorate()
+    {
+        MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(this.world, this.rand, this.chunkX, this.chunkZ));
+        this.generateOre(16, this.sandGen, 0, 255);
+        this.generateOre(16, this.sandGen1, 0, 255);
+        this.generateOre(16, this.sandGen2, 0, 255);
+        MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(this.world, this.rand, this.chunkX, this.chunkZ));
+    }
 }

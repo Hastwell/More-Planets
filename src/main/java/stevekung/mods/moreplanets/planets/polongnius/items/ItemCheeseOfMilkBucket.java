@@ -20,24 +20,24 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCheeseOfMilkBucket extends ItemBucket
 {
-	public ItemCheeseOfMilkBucket(String name)
-	{
-		super(PolongniusBlocks.cheese_of_milk);
-		this.setUnlocalizedName(name);
-		this.setContainerItem(Items.bucket);
-		this.setTextureName("polongnius:cheese_of_milk_bucket");
-	}
+    public ItemCheeseOfMilkBucket(String name)
+    {
+        super(PolongniusBlocks.cheese_of_milk);
+        this.setUnlocalizedName(name);
+        this.setContainerItem(Items.bucket);
+        this.setTextureName("polongnius:cheese_of_milk_bucket");
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

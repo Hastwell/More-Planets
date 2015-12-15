@@ -15,26 +15,26 @@ import stevekung.mods.moreplanets.core.items.tools.ItemElectricHoeMP;
 
 public class ItemXeoniumHoe extends ItemElectricHoeMP
 {
-	public ItemXeoniumHoe(String name, ToolMaterial material)
-	{
-		super(material);
-		this.setTextureName("pluto:xeonium_hoe");
-		this.setUnlocalizedName(name);
-	}
+    public ItemXeoniumHoe(String name, ToolMaterial material)
+    {
+        super(material);
+        this.setTextureName("pluto:xeonium_hoe");
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack itemStack, EntityLivingBase living, EntityLivingBase holder)
-	{
-		if (this.getElectricityStored(itemStack) != 0.0F)
-		{
-			living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
-		}
-		return super.hitEntity(itemStack, living, holder);
-	}
+    @Override
+    public boolean hitEntity(ItemStack itemStack, EntityLivingBase living, EntityLivingBase holder)
+    {
+        if (this.getElectricityStored(itemStack) != 0.0F)
+        {
+            living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
+        }
+        return super.hitEntity(itemStack, living, holder);
+    }
 
-	@Override
-	public float getMaxElectricityStored(ItemStack itemStack)
-	{
-		return 20000.0F;
-	}
+    @Override
+    public float getMaxElectricityStored(ItemStack itemStack)
+    {
+        return 20000.0F;
+    }
 }

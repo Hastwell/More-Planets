@@ -20,78 +20,78 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ItemBaseMP extends Item
 {
-	private IIcon[] icons = new IIcon[this.getItemVariantsName().length];
+    private IIcon[] icons = new IIcon[this.getItemVariantsName().length];
 
-	public ItemBaseMP()
-	{
-		super();
-		this.setHasSubtypes(true);
-	}
+    public ItemBaseMP()
+    {
+        super();
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	public IIcon getIconFromDamage(int meta)
-	{
-		if (this.icons.length > meta)
-		{
-			return this.icons[meta];
-		}
-		return super.getIconFromDamage(meta);
-	}
+    @Override
+    public IIcon getIconFromDamage(int meta)
+    {
+        if (this.icons.length > meta)
+        {
+            return this.icons[meta];
+        }
+        return super.getIconFromDamage(meta);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		if (this.icons.length > itemStack.getItemDamage())
-		{
-			if (this.reverseName())
-			{
-				return "item." + this.getItemVariantsName()[itemStack.getItemDamage()] + "." + super.getUnlocalizedName(itemStack).replace("item.", "");
-			}
-			return super.getUnlocalizedName(itemStack) + "." + this.getItemVariantsName()[itemStack.getItemDamage()];
-		}
-		return "unnamed";
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        if (this.icons.length > itemStack.getItemDamage())
+        {
+            if (this.reverseName())
+            {
+                return "item." + this.getItemVariantsName()[itemStack.getItemDamage()] + "." + super.getUnlocalizedName(itemStack).replace("item.", "");
+            }
+            return super.getUnlocalizedName(itemStack) + "." + this.getItemVariantsName()[itemStack.getItemDamage()];
+        }
+        return "unnamed";
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		int i = 0;
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        int i = 0;
 
-		for (String name : this.getItemVariantsName())
-		{
-			if (this.getTexturesFolder() == null)
-			{
-				return;
-			}
-			this.icons[i++] = iconRegister.registerIcon(this.getTexturesFolder() + ":" + name);
-		}
-	}
+        for (String name : this.getItemVariantsName())
+        {
+            if (this.getTexturesFolder() == null)
+            {
+                return;
+            }
+            this.icons[i++] = iconRegister.registerIcon(this.getTexturesFolder() + ":" + name);
+        }
+    }
 
-	public abstract String[] getItemVariantsName();
-	public abstract String getTexturesFolder();
+    public abstract String[] getItemVariantsName();
+    public abstract String getTexturesFolder();
 
-	public boolean reverseName()
-	{
-		return false;
-	}
+    public boolean reverseName()
+    {
+        return false;
+    }
 }

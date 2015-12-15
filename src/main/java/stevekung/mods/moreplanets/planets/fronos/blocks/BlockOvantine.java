@@ -21,44 +21,44 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockOvantine extends BlockFalling
 {
-	public BlockOvantine(String name)
-	{
-		super();
-		this.setStepSound(Block.soundTypeSand);
-		this.setHardness(0.55F);
-		this.setBlockName(name);
-		this.setBlockTextureName("fronos:ovantine_block");
-	}
+    public BlockOvantine(String name)
+    {
+        super();
+        this.setStepSound(Block.soundTypeSand);
+        this.setHardness(0.55F);
+        this.setBlockName(name);
+        this.setBlockTextureName("fronos:ovantine_block");
+    }
 
-	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		return FronosItems.fronos_food2;
-	}
+    @Override
+    public Item getItemDropped(int par1, Random par2Random, int par3)
+    {
+        return FronosItems.fronos_food2;
+    }
 
-	@Override
-	public int quantityDropped(Random par1Random)
-	{
-		return 4;
-	}
+    @Override
+    public int quantityDropped(Random par1Random)
+    {
+        return 4;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		float yOffset = 0.125F;
-		return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - yOffset, z + 1);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+    {
+        float yOffset = 0.125F;
+        return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - yOffset, z + 1);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		entity.motionX *= 0.4D;
-		entity.motionZ *= 0.4D;
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        entity.motionX *= 0.4D;
+        entity.motionZ *= 0.4D;
+    }
 }

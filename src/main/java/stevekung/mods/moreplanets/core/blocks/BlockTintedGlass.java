@@ -20,90 +20,90 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTintedGlass extends BlockBreakable implements IPartialSealableBlock
 {
-	private static IIcon[] field_149998_a = new IIcon[16];
+    private static IIcon[] field_149998_a = new IIcon[16];
 
-	public BlockTintedGlass(String name)
-	{
-		super("", Material.glass, false);
-		this.setStepSound(soundTypeGlass);
-		this.setHardness(0.5F);
-		this.setResistance(20.0F);
-		this.setBlockName(name);
-	}
+    public BlockTintedGlass(String name)
+    {
+        super("", Material.glass, false);
+        this.setStepSound(soundTypeGlass);
+        this.setHardness(0.5F);
+        this.setResistance(20.0F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-	{
-		return field_149998_a[p_149691_2_ % field_149998_a.length];
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    {
+        return field_149998_a[p_149691_2_ % field_149998_a.length];
+    }
 
-	@Override
-	public int damageDropped(int p_149692_1_)
-	{
-		return p_149692_1_;
-	}
+    @Override
+    public int damageDropped(int p_149692_1_)
+    {
+        return p_149692_1_;
+    }
 
-	@Override
-	public int quantityDropped(Random p_149745_1_)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random p_149745_1_)
+    {
+        return 0;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public static int func_149997_b(int p_149997_0_)
-	{
-		return ~p_149997_0_ & 15;
-	}
+    @SideOnly(Side.CLIENT)
+    public static int func_149997_b(int p_149997_0_)
+    {
+        return ~p_149997_0_ & 15;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
-	{
-		for (int i = 0; i < field_149998_a.length; ++i)
-		{
-			p_149666_3_.add(new ItemStack(p_149666_1_, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+    {
+        for (int i = 0; i < field_149998_a.length; ++i)
+        {
+            p_149666_3_.add(new ItemStack(p_149666_1_, 1, i));
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister p_149651_1_)
-	{
-		for (int i = 0; i < field_149998_a.length; ++i)
-		{
-			field_149998_a[i] = p_149651_1_.registerIcon("mpcore:tinted_glass_pane_" + ItemDye.field_150921_b[func_149997_b(i)]);
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister p_149651_1_)
+    {
+        for (int i = 0; i < field_149998_a.length; ++i)
+        {
+            field_149998_a[i] = p_149651_1_.registerIcon("mpcore:tinted_glass_pane_" + ItemDye.field_150921_b[func_149997_b(i)]);
+        }
+    }
 
-	@Override
-	protected boolean canSilkHarvest()
-	{
-		return true;
-	}
+    @Override
+    protected boolean canSilkHarvest()
+    {
+        return true;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
-	{
-		return true;
-	}
+    @Override
+    public boolean isSealed(World world, int x, int y, int z, ForgeDirection direction)
+    {
+        return true;
+    }
 }

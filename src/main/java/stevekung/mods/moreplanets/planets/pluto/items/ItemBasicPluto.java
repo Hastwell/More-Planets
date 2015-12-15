@@ -19,43 +19,43 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBasicPluto extends ItemBaseMP implements IPowerCrystal
 {
-	public ItemBasicPluto(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemBasicPluto(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "xeonium_gem" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "xeonium_gem" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "pluto";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "pluto";
+    }
 
-	@Override
-	public boolean isPowerCrystal(int meta)
-	{
-		return true;
-	}
+    @Override
+    public boolean isPowerCrystal(int meta)
+    {
+        return true;
+    }
 
-	@Override
-	public int getPowerCrystalBurnTime(int meta)
-	{
-		return 3600;
-	}
+    @Override
+    public int getPowerCrystalBurnTime(int meta)
+    {
+        return 3600;
+    }
 }

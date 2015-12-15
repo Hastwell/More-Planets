@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockDeimos extends ItemBlockBaseMP
 {
-	public ItemBlockDeimos(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockDeimos(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "iron_ore", "desh_ore" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "iron_ore", "desh_ore" };
+    }
 }

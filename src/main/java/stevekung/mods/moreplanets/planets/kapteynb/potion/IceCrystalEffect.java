@@ -17,41 +17,41 @@ import stevekung.mods.moreplanets.core.util.DamageSourceMP;
 
 public class IceCrystalEffect extends Potion
 {
-	public IceCrystalEffect(int id, boolean isBad, int color)
-	{
-		super(id, isBad, color);
-		this.setIconIndex(1, 0);
-	}
+    public IceCrystalEffect(int id, boolean isBad, int color)
+    {
+        super(id, isBad, color);
+        this.setIconIndex(1, 0);
+    }
 
-	@Override
-	public int getStatusIconIndex()
-	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("mpcore:textures/potions/MPPotionFX.png"));
-		return 3;
-	}
+    @Override
+    public int getStatusIconIndex()
+    {
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("mpcore:textures/potions/MPPotionFX.png"));
+        return 3;
+    }
 
-	@Override
-	public boolean isReady(int duration, int amplifier)
-	{
-		if (this.id == MPPotions.icy_poison.id)
-		{
-			int k = 20 >> amplifier;
-			return k > 0 ? duration % k == 0 : true;
-		}
-		return false;
-	}
+    @Override
+    public boolean isReady(int duration, int amplifier)
+    {
+        if (this.id == MPPotions.icy_poison.id)
+        {
+            int k = 20 >> amplifier;
+            return k > 0 ? duration % k == 0 : true;
+        }
+        return false;
+    }
 
-	@Override
-	public void performEffect(EntityLivingBase living, int food)
-	{
-		if (this.id == MPPotions.icy_poison.id)
-		{
-			living.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F);
+    @Override
+    public void performEffect(EntityLivingBase living, int food)
+    {
+        if (this.id == MPPotions.icy_poison.id)
+        {
+            living.attackEntityFrom(DamageSourceMP.icy_poison, 1.0F);
 
-			if (living instanceof EntityPlayer)
-			{
-				((EntityPlayer)living).addExhaustion(0.075F * (food + 1));
-			}
-		}
-	}
+            if (living instanceof EntityPlayer)
+            {
+                ((EntityPlayer)living).addExhaustion(0.075F * (food + 1));
+            }
+        }
+    }
 }

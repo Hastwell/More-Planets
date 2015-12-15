@@ -15,23 +15,23 @@ import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
 @Deprecated //Removed in 1.8
 public class ItemVenusDungeonKey extends ItemMorePlanet implements IKeyItem
 {
-	public ItemVenusDungeonKey(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setTextureName("mpcore:blank");
-	}
+    public ItemVenusDungeonKey(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setTextureName("mpcore:blank");
+    }
 
-	@Override
-	public int getTier(ItemStack keyStack)
-	{
-		return 3;
-	}
+    @Override
+    public int getTier(ItemStack keyStack)
+    {
+        return 3;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return null;
+    }
 }

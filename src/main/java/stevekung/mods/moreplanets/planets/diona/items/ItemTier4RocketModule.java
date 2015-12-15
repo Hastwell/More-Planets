@@ -22,64 +22,64 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier4RocketModule extends ItemBaseMP
 {
-	public ItemTier4RocketModule(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemTier4RocketModule(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
-	{
-		if (par2EntityPlayer.worldObj.isRemote)
-		{
-			if (par1ItemStack.getItemDamage() == 1)
-			{
-				par3List.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.tier4.name"));
-			}
-			else if (par1ItemStack.getItemDamage() == 4)
-			{
-				if (ConfigManagerMP.enableThaiFlagAndCanvas)
-				{
-					par3List.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.rocket.noflag.name"));
-				}
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+    {
+        if (par2EntityPlayer.worldObj.isRemote)
+        {
+            if (par1ItemStack.getItemDamage() == 1)
+            {
+                par3List.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.tier4.name"));
+            }
+            else if (par1ItemStack.getItemDamage() == 4)
+            {
+                if (ConfigManagerMP.enableThaiFlagAndCanvas)
+                {
+                    par3List.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.rocket.noflag.name"));
+                }
+            }
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		if (ConfigManagerMP.enableRocketWithThaiFlag)
-		{
-			for (int i = 0; i < this.getItemVariantsName().length; i++)
-			{
-				par3List.add(new ItemStack(par1, 1, i));
-			}
-		}
-		else
-		{
-			for (int i = 0; i < this.getItemVariantsName().length; i++)
-			{
-				if (i != 0)
-				{
-					par3List.add(new ItemStack(par1, 1, i));
-				}
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        if (ConfigManagerMP.enableRocketWithThaiFlag)
+        {
+            for (int i = 0; i < this.getItemVariantsName().length; i++)
+            {
+                par3List.add(new ItemStack(par1, 1, i));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < this.getItemVariantsName().length; i++)
+            {
+                if (i != 0)
+                {
+                    par3List.add(new ItemStack(par1, 1, i));
+                }
+            }
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "tier4_nose_cone", "tier4_heavy_duty_plate", "tier4_rocket_engine", "tier4_booster", "tier4_nose_cone_no_flag", "tier5_rocket_engine", "tier5_booster" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "tier4_nose_cone", "tier4_heavy_duty_plate", "tier4_rocket_engine", "tier4_booster", "tier4_nose_cone_no_flag", "tier5_rocket_engine", "tier5_booster" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "diona";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "diona";
+    }
 }

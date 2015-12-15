@@ -21,47 +21,47 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class SchematicTier4RocketNoFlag implements ISchematicPage
 {
-	@Override
-	public int getPageID()
-	{
-		return ConfigManagerMP.idSchematicTier4RocketNoFlag;
-	}
+    @Override
+    public int getPageID()
+    {
+        return ConfigManagerMP.idSchematicTier4RocketNoFlag;
+    }
 
-	@Override
-	public int getGuiID()
-	{
-		return ConfigManagerMP.idGuiSchematicTier4RocketNoFlag;
-	}
+    @Override
+    public int getGuiID()
+    {
+        return ConfigManagerMP.idGuiSchematicTier4RocketNoFlag;
+    }
 
-	@Override
-	public ItemStack getRequiredItem()
-	{
-		return new ItemStack(DionaItems.tier4_rocket_schematic, 1, 1);
-	}
+    @Override
+    public ItemStack getRequiredItem()
+    {
+        return new ItemStack(DionaItems.tier4_rocket_schematic, 1, 1);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public GuiScreen getResultScreen(EntityPlayer player, int x, int y, int z)
-	{
-		return new GuiSchematicTier4RocketNoFlag(player.inventory, x, y, z);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiScreen getResultScreen(EntityPlayer player, int x, int y, int z)
+    {
+        return new GuiSchematicTier4RocketNoFlag(player.inventory, x, y, z);
+    }
 
-	@Override
-	public Container getResultContainer(EntityPlayer player, int x, int y, int z)
-	{
-		return new ContainerSchematicTier4RocketNoFlag(player.inventory, x, y, z);
-	}
+    @Override
+    public Container getResultContainer(EntityPlayer player, int x, int y, int z)
+    {
+        return new ContainerSchematicTier4RocketNoFlag(player.inventory, x, y, z);
+    }
 
-	@Override
-	public int compareTo(ISchematicPage o)
-	{
-		if (this.getPageID() > o.getPageID())
-		{
-			return 1;
-		}
-		else
-		{
-			return -1;
-		}
-	}
+    @Override
+    public int compareTo(ISchematicPage o)
+    {
+        if (this.getPageID() > o.getPageID())
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

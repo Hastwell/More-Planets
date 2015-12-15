@@ -25,81 +25,81 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFrozenWaterGeyser extends BlockBaseMP implements ITileEntityProvider
 {
-	private IIcon[] geyserBlockIcon;
+    private IIcon[] geyserBlockIcon;
 
-	public BlockFrozenWaterGeyser(String name)
-	{
-		super(Material.rock);
-		this.setHardness(2.0F);
-		this.setResistance(5.0F);
-		this.setBlockName(name);
-	}
+    public BlockFrozenWaterGeyser(String name)
+    {
+        super(Material.rock);
+        this.setHardness(2.0F);
+        this.setResistance(5.0F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.geyserBlockIcon = new IIcon[14];
-		this.geyserBlockIcon[0] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_frozen_water_geyser");
-		this.geyserBlockIcon[1] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_surface_ice");
-		this.geyserBlockIcon[2] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_surface_ice");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.geyserBlockIcon = new IIcon[14];
+        this.geyserBlockIcon[0] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_frozen_water_geyser");
+        this.geyserBlockIcon[1] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_surface_ice");
+        this.geyserBlockIcon[2] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_surface_ice");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		switch (side)
-		{
-		case 0:
-			return this.geyserBlockIcon[2]; //BOTTOM
-		case 1:
-			return this.geyserBlockIcon[0]; //TOP
-		case 2:
-			return this.geyserBlockIcon[1]; //Z-
-		case 3:
-			return this.geyserBlockIcon[1]; //Z+
-		case 4:
-			return this.geyserBlockIcon[1]; //X-
-		case 5:
-			return this.geyserBlockIcon[1]; //X+
-		default:
-			return this.geyserBlockIcon[0];
-		}
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        switch (side)
+        {
+        case 0:
+            return this.geyserBlockIcon[2]; //BOTTOM
+        case 1:
+            return this.geyserBlockIcon[0]; //TOP
+        case 2:
+            return this.geyserBlockIcon[1]; //Z-
+        case 3:
+            return this.geyserBlockIcon[1]; //Z+
+        case 4:
+            return this.geyserBlockIcon[1]; //X-
+        case 5:
+            return this.geyserBlockIcon[1]; //X+
+        default:
+            return this.geyserBlockIcon[0];
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
-	{
-		for (int i = 0; i < 5; i++)
-		{
-			if (!World.doesBlockHaveSolidTopSurface(world, x, y + 1, z))
-			{
-				MorePlanetsCore.proxy.spawnMotionParticle("waterGeyser", x + 0.5F, y + 0.5F + rand.nextFloat(), z + 0.5F, 0.0D, 0.0D + rand.nextFloat(), 0.0D);
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, int x, int y, int z, Random rand)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (!World.doesBlockHaveSolidTopSurface(world, x, y + 1, z))
+            {
+                MorePlanetsCore.proxy.spawnMotionParticle("waterGeyser", x + 0.5F, y + 0.5F + rand.nextFloat(), z + 0.5F, 0.0D, 0.0D + rand.nextFloat(), 0.0D);
+            }
+        }
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(KapteynBBlocks.kapteyn_b_block);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(KapteynBBlocks.kapteyn_b_block);
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return 0;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return 0;
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, EntityPlayer player, int x, int y, int z, int metadata)
+    {
+        return true;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		return new TileEntityFrozenWaterGeyser();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new TileEntityFrozenWaterGeyser();
+    }
 }

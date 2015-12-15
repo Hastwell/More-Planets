@@ -15,43 +15,43 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class ArmorPalladium extends ItemArmorMP
 {
-	int tick;
+    int tick;
 
-	public ArmorPalladium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorPalladium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == PolongniusArmorItems.palladium_helmet || stack.getItem() == PolongniusArmorItems.palladium_chestplate || stack.getItem() == PolongniusArmorItems.palladium_boots)
-		{
-			return "polongnius:textures/model/armor/palladium_1.png";
-		}
-		if (stack.getItem() == PolongniusArmorItems.palladium_leggings)
-		{
-			return "polongnius:textures/model/armor/palladium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == PolongniusArmorItems.palladium_helmet || stack.getItem() == PolongniusArmorItems.palladium_chestplate || stack.getItem() == PolongniusArmorItems.palladium_boots)
+        {
+            return "polongnius:textures/model/armor/palladium_1.png";
+        }
+        if (stack.getItem() == PolongniusArmorItems.palladium_leggings)
+        {
+            return "polongnius:textures/model/armor/palladium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "polongnius";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "polongnius";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return PolongniusItems.polongnius_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return PolongniusItems.polongnius_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 7;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 7;
+    }
 }

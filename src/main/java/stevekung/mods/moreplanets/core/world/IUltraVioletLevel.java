@@ -9,5 +9,5 @@ package stevekung.mods.moreplanets.core.world;
 
 public interface IUltraVioletLevel
 {
-	public double getUltraVioletEnergyMultiplie();
+    public double getUltraVioletEnergyMultiplie();
 }

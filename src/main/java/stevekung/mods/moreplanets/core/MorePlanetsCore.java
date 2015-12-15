@@ -99,227 +99,227 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = "required-after:GalacticraftCore; required-after:GalacticraftMars; required-after:Micdoodlecore; required-after:MorePlanetsASM; after:Forge@[10.13.2.1291,);")
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = "required-after:GalacticraftCore; required-after:GalacticraftMars; required-after:Micdoodlecore; required-after:MorePlanetsASM; after:Forge@[10.13.2.1291,);", guiFactory = "stevekung.mods.moreplanets.core.ConfigGuiFactoryMP")
 public class MorePlanetsCore
 {
-	public static final String NAME = "More Planets";
-	public static final String MOD_ID = "MorePlanet";
-	public static final String VERSION = MorePlanetsCore.major_version + "." + MorePlanetsCore.minor_version + "." + MorePlanetsCore.build_version;
+    public static final String NAME = "More Planets";
+    public static final String MOD_ID = "MorePlanet";
+    public static final String VERSION = MorePlanetsCore.major_version + "." + MorePlanetsCore.minor_version + "." + MorePlanetsCore.build_version;
 
-	public static final int major_version = 1;
-	public static final int minor_version = 3;
-	public static final int build_version = 0;
+    public static final int major_version = 1;
+    public static final int minor_version = 3;
+    public static final int build_version = 0;
 
-	@SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
-	public static CommonProxyMP proxy;
+    @SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
+    public static CommonProxyMP proxy;
 
-	@Instance(MorePlanetsCore.MOD_ID)
-	public static MorePlanetsCore instance;
+    @Instance(MorePlanetsCore.MOD_ID)
+    public static MorePlanetsCore instance;
 
-	public static CreativeTabs mpBlocksTab;
-	public static CreativeTabs mpItemsTab;
-	public static CreativeTabs mpToolsTab;
-	public static CreativeTabs mpArmorTab;
+    public static CreativeTabs mpBlocksTab;
+    public static CreativeTabs mpItemsTab;
+    public static CreativeTabs mpToolsTab;
+    public static CreativeTabs mpArmorTab;
 
-	public static MorePlanetsChannelHandler packetPipeline;
+    public static MorePlanetsChannelHandler packetPipeline;
 
-	public static Planet siriusB;
-	public static Planet diona;
-	public static Planet polongnius;
-	public static Planet nibiru;
-	public static Planet fronos;
-	public static Planet kapteynB;
-	public static Planet darkAsteroids;
+    public static Planet siriusB;
+    public static Planet diona;
+    public static Planet polongnius;
+    public static Planet nibiru;
+    public static Planet fronos;
+    public static Planet kapteynB;
+    public static Planet darkAsteroids;
 
-	public static Planet mercury;
-	public static Planet venus;
-	public static Planet pluto;
-	public static Planet jupiter;
+    public static Planet mercury;
+    public static Planet venus;
+    public static Planet pluto;
+    public static Planet jupiter;
 
-	public static Moon koentus;
-	public static Moon phobos;
-	public static Moon deimos;
-	public static Moon io;
+    public static Moon koentus;
+    public static Moon phobos;
+    public static Moon deimos;
+    public static Moon io;
 
-	public static Star sirius;
-	public static Star kapteyn;
-	public static Star darkStar;
+    public static Star sirius;
+    public static Star kapteyn;
+    public static Star darkStar;
 
-	public static SolarSystem siriusSolarSystem;
-	public static SolarSystem kapteynBSolarSystem;
-	public static SolarSystem darkSolarSystem;
+    public static SolarSystem siriusSolarSystem;
+    public static SolarSystem kapteynBSolarSystem;
+    public static SolarSystem darkSolarSystem;
 
-	public static Satellite marsSpaceStation;
-	public static Satellite jupiterSpaceStation;
-	public static Satellite kapteynBSpaceStation;
+    public static Satellite marsSpaceStation;
+    public static Satellite jupiterSpaceStation;
+    public static Satellite kapteynBSpaceStation;
 
-	public static SoundType soundTypeSlime = new SoundType("slime", 1.0F, 1.0F)
-	{
-		@Override
-		public String getBreakSound()
-		{
-			return "mob.slime.big";
-		}
+    public static SoundType soundTypeSlime = new SoundType("slime", 1.0F, 1.0F)
+    {
+        @Override
+        public String getBreakSound()
+        {
+            return "mob.slime.big";
+        }
 
-		@Override
-		public String getStepResourcePath()
-		{
-			return "mob.slime.small";
-		}
-	};
-	public static SoundType soundTypeSmallSlime = new SoundType("slime", 1.0F, 1.0F)
-	{
-		@Override
-		public String getBreakSound()
-		{
-			return "mob.slime.small";
-		}
+        @Override
+        public String getStepResourcePath()
+        {
+            return "mob.slime.small";
+        }
+    };
+    public static SoundType soundTypeSmallSlime = new SoundType("slime", 1.0F, 1.0F)
+    {
+        @Override
+        public String getBreakSound()
+        {
+            return "mob.slime.small";
+        }
 
-		@Override
-		public String getStepResourcePath()
-		{
-			return "mob.slime.small";
-		}
-	};
+        @Override
+        public String getStepResourcePath()
+        {
+            return "mob.slime.small";
+        }
+    };
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		new ConfigManagerMP(new File(event.getModConfigurationDirectory(), "MorePlanet's/core.cfg"));
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        ConfigManagerMP.init(new File(event.getModConfigurationDirectory(), "MorePlanets.cfg"));
 
-		MPPotions.init();
-		MPBlocks.init();
-		MPItems.init();
-		MPArmor.init();
-		MPTools.init();
-		MPBiomes.init();
+        MPPotions.init();
+        MPBlocks.init();
+        MPItems.init();
+        MPArmor.init();
+        MPTools.init();
+        MPBiomes.init();
 
-		FMLCommonHandler.instance().bus().register(new SkyProviderHandlerMP());
-		FMLCommonHandler.instance().bus().register(new MorePlanetEvents());
+        FMLCommonHandler.instance().bus().register(new SkyProviderHandlerMP());
+        FMLCommonHandler.instance().bus().register(new MorePlanetEvents());
 
-		MinecraftForge.EVENT_BUS.register(new MorePlanetEvents());
-		MinecraftForge.EVENT_BUS.register(new PlanetFogHandler());
+        MinecraftForge.EVENT_BUS.register(new MorePlanetEvents());
+        MinecraftForge.EVENT_BUS.register(new PlanetFogHandler());
 
-		if (FMLCommonHandler.instance().getSide() == Side.CLIENT)
-		{
-			MinecraftForge.EVENT_BUS.register(new MainMenuEventHandlerMP());
-		}
-	}
+        if (FMLCommonHandler.instance().getSide() == Side.CLIENT)
+        {
+            MinecraftForge.EVENT_BUS.register(new MainMenuEventHandlerMP());
+        }
+    }
 
-	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-		MPPlanets.init();
-		MPEntities.init();
-		TreeCapitatorIntegrationMP.init();
-		MicroBlockIntegrationMP.init();
-		AchievementsMP.init();
-		MorePlanetsCore.packetPipeline = MorePlanetsChannelHandler.init();
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        MPPlanets.init();
+        MPEntities.init();
+        TreeCapitatorIntegrationMP.init();
+        MicroBlockIntegrationMP.init();
+        AchievementsMP.init();
+        MorePlanetsCore.packetPipeline = MorePlanetsChannelHandler.init();
 
-		MorePlanetsCore.mpBlocksTab = new CreativeTabsHelper("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));
-		MorePlanetsCore.mpItemsTab = new CreativeTabsHelper("MorePlanetsItems", new ItemStack(DionaItems.laser_gun));
-		MorePlanetsCore.mpToolsTab = new CreativeTabsHelper("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
-		MorePlanetsCore.mpArmorTab = new CreativeTabsHelper("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
+        MorePlanetsCore.mpBlocksTab = new CreativeTabsHelper("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));
+        MorePlanetsCore.mpItemsTab = new CreativeTabsHelper("MorePlanetsItems", new ItemStack(DionaItems.laser_gun));
+        MorePlanetsCore.mpToolsTab = new CreativeTabsHelper("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
+        MorePlanetsCore.mpArmorTab = new CreativeTabsHelper("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
 
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier4Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier4RocketNoFlag());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier5Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier5RocketNoFlag());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier6Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier6RocketNoFlag());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier7Rocket());
-		SchematicRegistry.registerSchematicRecipe(new SchematicTier8Rocket());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier4Rocket());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier4RocketNoFlag());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier5Rocket());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier5RocketNoFlag());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier6Rocket());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier6RocketNoFlag());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier7Rocket());
+        SchematicRegistry.registerSchematicRecipe(new SchematicTier8Rocket());
 
-		if (ConfigManagerMP.enableRocketWithThaiFlag)
-		{
-			GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier4_rocket_schematic, 1, 0));
-			GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier5_rocket_schematic, 1, 0));
-			GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier6_rocket_schematic, 1, 0));
-		}
+        if (ConfigManagerMP.enableRocketWithThaiFlag)
+        {
+            GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier4_rocket_schematic, 1, 0));
+            GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier5_rocket_schematic, 1, 0));
+            GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier6_rocket_schematic, 1, 0));
+        }
 
-		GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier4_rocket_schematic, 1, 1));
-		GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier5_rocket_schematic, 1, 1));
-		GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier6_rocket_schematic, 1, 1));
-		GalacticraftRegistry.addDungeonLoot(5, new ItemStack(FronosItems.tier7_rocket_schematic, 1, 0));
-		GalacticraftRegistry.addDungeonLoot(6, new ItemStack(KapteynBItems.tier8_rocket_schematic, 1, 0));//TODO Adding Fronos boss
-	}
+        GalacticraftRegistry.addDungeonLoot(1, new ItemStack(DionaItems.tier4_rocket_schematic, 1, 1));
+        GalacticraftRegistry.addDungeonLoot(3, new ItemStack(PolongniusItems.tier5_rocket_schematic, 1, 1));
+        GalacticraftRegistry.addDungeonLoot(4, new ItemStack(NibiruItems.tier6_rocket_schematic, 1, 1));
+        GalacticraftRegistry.addDungeonLoot(5, new ItemStack(FronosItems.tier7_rocket_schematic, 1, 0));
+        GalacticraftRegistry.addDungeonLoot(6, new ItemStack(KapteynBItems.tier8_rocket_schematic, 1, 0));//TODO Adding Fronos boss
+    }
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
-		MorePlanetsCore.proxy.postInit(event);
-		GameRegistry.registerFuelHandler(new FurnaceFuelMP());
-		FurnaceFuelMP.setFuelValues();
-		MPTileEntities.init();
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+        MorePlanetsCore.proxy.postInit(event);
+        GameRegistry.registerFuelHandler(new FurnaceFuelMP());
+        FurnaceFuelMP.setFuelValues();
+        MPTileEntities.init();
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandlerMP());
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandlerMP());
 
-		CraftingRecipesDiona.loadRecipes();
-		CraftingRecipesPolongnius.loadRecipes();
-		CraftingRecipesNibiru.loadRecipes();
-		CraftingRecipesKoentus.loadRecipes();
-		CraftingRecipesFronos.loadRecipes();
-		CraftingRecipesKapteynB.loadRecipes();
-		CraftingRecipesSiriusB.loadRecipes();
-		CraftingRecipesMercury.loadRecipes();
-		CraftingRecipesVenus.loadRecipes();
-		CraftingRecipesPluto.loadRecipes();
-		CraftingRecipesPhobos.loadRecipes();
-		CraftingRecipesDeimos.loadRecipes();
-		CraftingRecipesIo.loadRecipes();
-		CraftingRecipesEuropa.loadRecipes();
+        CraftingRecipesDiona.loadRecipes();
+        CraftingRecipesPolongnius.loadRecipes();
+        CraftingRecipesNibiru.loadRecipes();
+        CraftingRecipesKoentus.loadRecipes();
+        CraftingRecipesFronos.loadRecipes();
+        CraftingRecipesKapteynB.loadRecipes();
+        CraftingRecipesSiriusB.loadRecipes();
+        CraftingRecipesMercury.loadRecipes();
+        CraftingRecipesVenus.loadRecipes();
+        CraftingRecipesPluto.loadRecipes();
+        CraftingRecipesPhobos.loadRecipes();
+        CraftingRecipesDeimos.loadRecipes();
+        CraftingRecipesIo.loadRecipes();
+        CraftingRecipesEuropa.loadRecipes();
 
-		int siliconCount = OreDictionary.getOres(ConfigManagerCore.otherModsSilicon).size();
+        int siliconCount = OreDictionary.getOres(ConfigManagerCore.otherModsSilicon).size();
 
-		for (int i = 0; i <= siliconCount; i++)
-		{
-			ItemStack silicon;
+        for (int i = 0; i <= siliconCount; i++)
+        {
+            ItemStack silicon;
 
-			if (i == 0)
-			{
-				silicon = new ItemStack(GCItems.basicItem, 1, 2);
-			}
-			else
-			{
-				silicon = OreDictionary.getOres("itemSilicon").get(i - 1);
-			}
-			CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
-			CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
-		}
+            if (i == 0)
+            {
+                silicon = new ItemStack(GCItems.basicItem, 1, 2);
+            }
+            else
+            {
+                silicon = OreDictionary.getOres("itemSilicon").get(i - 1);
+            }
+            CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
+            CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
+        }
 
-		CompressorRecipesMP.registerCompressorRecipes();
-		DispenserRegistryMP.init();
+        CompressorRecipesMP.registerCompressorRecipes();
+        DispenserRegistryMP.init();
 
-		if (ConfigManagerMP.enableJupiterSpaceStation)
-		{
-			HashMap<Object, Integer> inputMap = new HashMap<Object, Integer>();
-			inputMap.put("ingotTin", 80);
-			inputMap.put(RecipeManagerGC.aluminumIngots, 48);
-			inputMap.put("waferAdvanced", 10);
-			inputMap.put("ingotIron", 32);
-			inputMap.put("ingotDesh", 16);
-			GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionJupiter, new SpaceStationRecipe(inputMap)));
-		}
-		if (ConfigManagerMP.enableMarsSpaceStation)
-		{
-			HashMap<Object, Integer> inputMap2 = new HashMap<Object, Integer>();
-			inputMap2.put("ingotTin", 64);
-			inputMap2.put(RecipeManagerGC.aluminumIngots, 24);
-			inputMap2.put("waferAdvanced", 3);
-			inputMap2.put("ingotIron", 48);
-			GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMars.dimensionIDMars, new SpaceStationRecipe(inputMap2)));
-		}
-	}
+        if (ConfigManagerMP.enableJupiterSpaceStation)
+        {
+            HashMap<Object, Integer> inputMap = new HashMap<Object, Integer>();
+            inputMap.put("ingotTin", 80);
+            inputMap.put(RecipeManagerGC.aluminumIngots, 48);
+            inputMap.put("waferAdvanced", 10);
+            inputMap.put("ingotIron", 32);
+            inputMap.put("ingotDesh", 16);
+            GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionJupiter, new SpaceStationRecipe(inputMap)));
+        }
+        if (ConfigManagerMP.enableMarsSpaceStation)
+        {
+            HashMap<Object, Integer> inputMap2 = new HashMap<Object, Integer>();
+            inputMap2.put("ingotTin", 64);
+            inputMap2.put(RecipeManagerGC.aluminumIngots, 24);
+            inputMap2.put("waferAdvanced", 3);
+            inputMap2.put("ingotIron", 48);
+            GalacticraftRegistry.registerSpaceStation(new SpaceStationType(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMars.dimensionIDMars, new SpaceStationRecipe(inputMap2)));
+        }
+    }
 
-	@EventHandler
-	public void serverStarting(FMLServerStartingEvent event)
-	{
-		event.registerServerCommand(new CommandHomePlanet());
-	}
+    @EventHandler
+    public void serverStarting(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new CommandHomePlanet());
+    }
 
-	@EventHandler
-	public void serverStarted(FMLServerStartedEvent event)
-	{
-		ThreadVersionCheckMP.startCheck();
-	}
+    @EventHandler
+    public void serverStarted(FMLServerStartedEvent event)
+    {
+        ThreadVersionCheckMP.startCheck();
+    }
 }

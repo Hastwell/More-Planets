@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 
 public class TileEntityKoentusAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return KoentusBlocks.koentus_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return KoentusBlocks.koentus_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "koentus";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "koentus";
+    }
 }

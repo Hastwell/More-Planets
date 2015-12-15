@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockMagmaRock extends ItemBlockBaseMP
 {
-	public ItemBlockMagmaRock(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockMagmaRock(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "magma_rock", "sulfur_rock" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "magma_rock", "sulfur_rock" };
+    }
 }

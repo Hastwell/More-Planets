@@ -16,35 +16,35 @@ import stevekung.mods.stevecore.RegisterHelper;
 
 public class MercuryItems
 {
-	public static Item mercury_item;
-	public static Item dirty_water_bucket;
+    public static Item mercury_item;
+    public static Item dirty_water_bucket;
 
-	public static void init()
-	{
-		MercuryItems.initItems();
-		MercuryItems.registerItems();
-		MercuryItems.registerFluidContainer();
-	}
+    public static void init()
+    {
+        MercuryItems.initItems();
+        MercuryItems.registerItems();
+        MercuryItems.registerFluidContainer();
+    }
 
-	private static void initItems()
-	{
-		MercuryItems.mercury_item = new ItemBasicMercury("mercury_item");
-		MercuryItems.dirty_water_bucket = new ItemDirtyWaterBucket("dirty_water_bucket");
-	}
+    private static void initItems()
+    {
+        MercuryItems.mercury_item = new ItemBasicMercury("mercury_item");
+        MercuryItems.dirty_water_bucket = new ItemDirtyWaterBucket("dirty_water_bucket");
+    }
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(MercuryItems.mercury_item);
-		RegisterHelper.registerItem(MercuryItems.dirty_water_bucket);
+    private static void registerItems()
+    {
+        RegisterHelper.registerItem(MercuryItems.mercury_item);
+        RegisterHelper.registerItem(MercuryItems.dirty_water_bucket);
 
-		OreDictionary.registerOre("ingotMetallic", new ItemStack(MercuryItems.mercury_item, 1, 2));
-		OreDictionary.registerOre("ingotMetalMeteoricIron", new ItemStack(MercuryItems.mercury_item, 1, 3));
-		OreDictionary.registerOre("compressedMetallic", new ItemStack(MercuryItems.mercury_item, 1, 4));
-		OreDictionary.registerOre("compressedMetalMeteoricIron", new ItemStack(MercuryItems.mercury_item, 1, 5));
-	}
+        OreDictionary.registerOre("ingotMetallic", new ItemStack(MercuryItems.mercury_item, 1, 2));
+        OreDictionary.registerOre("ingotMetalMeteoricIron", new ItemStack(MercuryItems.mercury_item, 1, 3));
+        OreDictionary.registerOre("compressedMetallic", new ItemStack(MercuryItems.mercury_item, 1, 4));
+        OreDictionary.registerOre("compressedMetalMeteoricIron", new ItemStack(MercuryItems.mercury_item, 1, 5));
+    }
 
-	private static void registerFluidContainer()
-	{
-		RegisterHelper.registerFluidContainer(MercuryBlocks.dirty_water_fluid, new ItemStack(MercuryItems.dirty_water_bucket), new ItemStack(Items.bucket));
-	}
+    private static void registerFluidContainer()
+    {
+        RegisterHelper.registerFluidContainer(MercuryBlocks.dirty_water_fluid, new ItemStack(MercuryItems.dirty_water_bucket), new ItemStack(Items.bucket));
+    }
 }

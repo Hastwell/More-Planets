@@ -18,31 +18,31 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBasicKoentus extends ItemBaseMP
 {
-	public ItemBasicKoentus(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemBasicKoentus(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "white_crystal", "emp_shard", "becterial_fossil", "raw_koentus_meteoric_iron", "koentus_meteoric_iron_ingot", "compressed_white_crystal", "compressed_koentus_meteoric_iron" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "white_crystal", "emp_shard", "becterial_fossil", "raw_koentus_meteoric_iron", "koentus_meteoric_iron_ingot", "compressed_white_crystal", "compressed_koentus_meteoric_iron" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "koentus";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "koentus";
+    }
 }

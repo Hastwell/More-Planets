@@ -13,17 +13,17 @@ import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
 
 public class ItemDionaDungeonKey extends ItemMorePlanet implements IKeyItem
 {
-	public ItemDionaDungeonKey(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setTextureName("mpcore:blank");
-	}
+    public ItemDionaDungeonKey(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setTextureName("mpcore:blank");
+    }
 
-	@Override
-	public int getTier(ItemStack keyStack)
-	{
-		return 4;
-	}
+    @Override
+    public int getTier(ItemStack keyStack)
+    {
+        return 4;
+    }
 }

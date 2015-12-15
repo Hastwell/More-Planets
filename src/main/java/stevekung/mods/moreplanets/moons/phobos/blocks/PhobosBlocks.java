@@ -15,32 +15,32 @@ import stevekung.mods.stevecore.RegisterHelper;
 
 public class PhobosBlocks
 {
-	public static Block phobos_block;
+    public static Block phobos_block;
 
-	public static void init()
-	{
-		initBlocks();
-		setHarvestLevels();
-		registerBlocks();
-	}
+    public static void init()
+    {
+        initBlocks();
+        setHarvestLevels();
+        registerBlocks();
+    }
 
-	private static void initBlocks()
-	{
-		PhobosBlocks.phobos_block = new BlockBasicPhobos("phobos_block");
-	}
+    private static void initBlocks()
+    {
+        PhobosBlocks.phobos_block = new BlockBasicPhobos("phobos_block");
+    }
 
-	private static void setHarvestLevels()
-	{
-		PhobosBlocks.phobos_block.setHarvestLevel("pickaxe", 1);
-	}
+    private static void setHarvestLevels()
+    {
+        PhobosBlocks.phobos_block.setHarvestLevel("pickaxe", 1);
+    }
 
-	private static void registerBlocks()
-	{
-		RegisterHelper.registerBlock(PhobosBlocks.phobos_block, ItemBlockPhobos.class);
+    private static void registerBlocks()
+    {
+        RegisterHelper.registerBlock(PhobosBlocks.phobos_block, ItemBlockPhobos.class);
 
-		OreDictionary.registerOre("oreTin", new ItemStack(PhobosBlocks.phobos_block, 1, 4));
-		OreDictionary.registerOre("oreCopper", new ItemStack(PhobosBlocks.phobos_block, 1, 5));
-		OreDictionary.registerOre("oreIron", new ItemStack(PhobosBlocks.phobos_block, 1, 6));
-		OreDictionary.registerOre("oreDesh", new ItemStack(PhobosBlocks.phobos_block, 1, 7));
-	}
+        OreDictionary.registerOre("oreTin", new ItemStack(PhobosBlocks.phobos_block, 1, 4));
+        OreDictionary.registerOre("oreCopper", new ItemStack(PhobosBlocks.phobos_block, 1, 5));
+        OreDictionary.registerOre("oreIron", new ItemStack(PhobosBlocks.phobos_block, 1, 6));
+        OreDictionary.registerOre("oreDesh", new ItemStack(PhobosBlocks.phobos_block, 1, 7));
+    }
 }

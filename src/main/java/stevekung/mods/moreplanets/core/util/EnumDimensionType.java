@@ -11,15 +11,15 @@ import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 
 public enum EnumDimensionType
 {
-	@Deprecated // Using for template only
-	NULL(0),
-	NIBIRU(ConfigManagerMP.idDimensionNibiru),
-	SIRIUS_B(ConfigManagerMP.idDimensionSiriusB),
+    @Deprecated // Using for template only
+    NULL(0),
+    NIBIRU(ConfigManagerMP.idDimensionNibiru),
+    SIRIUS_B(ConfigManagerMP.idDimensionSiriusB),
 
-	;public int dimID;
+    ;public int dimID;
 
-	private EnumDimensionType(int dimID)
-	{
-		this.dimID = dimID;
-	}
+    private EnumDimensionType(int dimID)
+    {
+        this.dimID = dimID;
+    }
 }

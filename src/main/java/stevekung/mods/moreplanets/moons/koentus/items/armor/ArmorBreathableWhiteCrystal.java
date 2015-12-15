@@ -15,49 +15,49 @@ import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class ArmorBreathableWhiteCrystal extends ItemBreathableArmor
 {
-	public ArmorBreathableWhiteCrystal(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorBreathableWhiteCrystal(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KoentusArmorItems.breathableWhiteCrystalHelmet)
-		{
-			return "koentus:textures/model/armor/breathable_white_crystal_1.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KoentusArmorItems.breathableWhiteCrystalHelmet)
+        {
+            return "koentus:textures/model/armor/breathable_white_crystal_1.png";
+        }
+        return null;
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return KoentusItems.koentus_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return KoentusItems.koentus_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 
-	@Override
-	public EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    public EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	public Item getBreathableArmor()
-	{
-		return KoentusArmorItems.breathableWhiteCrystalHelmet;
-	}
+    @Override
+    public Item getBreathableArmor()
+    {
+        return KoentusArmorItems.breathableWhiteCrystalHelmet;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "koentus:breathable_white_crystal_helmet";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "koentus:breathable_white_crystal_helmet";
+    }
 }

@@ -18,28 +18,28 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMorePlanet extends Item
 {
-	public ItemMorePlanet()
-	{
-		super();
-	}
+    public ItemMorePlanet()
+    {
+        super();
+    }
 
-	public ItemMorePlanet(String name, String texture)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setTextureName(texture + ":" + name);
-	}
+    public ItemMorePlanet(String name, String texture)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setTextureName(texture + ":" + name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

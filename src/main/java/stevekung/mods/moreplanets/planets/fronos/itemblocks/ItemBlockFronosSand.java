@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockFronosSand extends ItemBlockBaseMP
 {
-	public ItemBlockFronosSand(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosSand(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "fronosSand", "whiteSand", "cheeseSand" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "fronosSand", "whiteSand", "cheeseSand" };
+    }
 }

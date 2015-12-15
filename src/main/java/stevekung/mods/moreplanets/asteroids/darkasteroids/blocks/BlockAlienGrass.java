@@ -18,72 +18,72 @@ import stevekung.mods.moreplanets.core.blocks.BlockGrassMP;
 
 public class BlockAlienGrass extends BlockGrassMP
 {
-	private IIcon[] blockIcon;
+    private IIcon[] blockIcon;
 
-	public BlockAlienGrass(String name)
-	{
-		super();
-		this.setBlockName(name);
-	}
+    public BlockAlienGrass(String name)
+    {
+        super();
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.blockIcon = new IIcon[8];
-		this.blockIcon[0] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_dirt");
-		this.blockIcon[1] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_top");
-		this.blockIcon[2] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
-		this.blockIcon[3] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
-		this.blockIcon[4] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
-		this.blockIcon[5] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.blockIcon = new IIcon[8];
+        this.blockIcon[0] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_dirt");
+        this.blockIcon[1] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_top");
+        this.blockIcon[2] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
+        this.blockIcon[3] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
+        this.blockIcon[4] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
+        this.blockIcon[5] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_grass_side");
+    }
 
-	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
-		if (par1 < 0 || par1 >= this.blockIcon.length)
-		{
-			par1 = 1;
-		}
-		return this.blockIcon[par1];
-	}
+    @Override
+    public IIcon getIcon(int par1, int par2)
+    {
+        if (par1 < 0 || par1 >= this.blockIcon.length)
+        {
+            par1 = 1;
+        }
+        return this.blockIcon[par1];
+    }
 
-	@Override
-	public void updateTick(World world, int x, int y, int z, Random rand)
-	{
-		if (!world.isRemote)
-		{
-			if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
-			{
-				world.setBlock(x, y, z, DarkAsteroidsBlocks.alien_dirt);
-			}
-			else if (world.getBlockLightValue(x, y + 1, z) >= 9)
-			{
-				for (int var6 = 0; var6 < 4; ++var6)
-				{
-					int var7 = x + rand.nextInt(3) - 1;
-					int var8 = y + rand.nextInt(5) - 3;
-					int var9 = z + rand.nextInt(3) - 1;
-					Block block = world.getBlock(var7, var8 + 1, var9);
+    @Override
+    public void updateTick(World world, int x, int y, int z, Random rand)
+    {
+        if (!world.isRemote)
+        {
+            if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
+            {
+                world.setBlock(x, y, z, DarkAsteroidsBlocks.alien_dirt);
+            }
+            else if (world.getBlockLightValue(x, y + 1, z) >= 9)
+            {
+                for (int var6 = 0; var6 < 4; ++var6)
+                {
+                    int var7 = x + rand.nextInt(3) - 1;
+                    int var8 = y + rand.nextInt(5) - 3;
+                    int var9 = z + rand.nextInt(3) - 1;
+                    Block block = world.getBlock(var7, var8 + 1, var9);
 
-					if (world.getBlock(var7, var8, var9) == DarkAsteroidsBlocks.alien_dirt && world.getBlockMetadata(var7, var8, var9) == 0 && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && block.getLightOpacity() <= 2)
-					{
-						world.setBlock(var7, var8, var9, DarkAsteroidsBlocks.alien_grass);
-					}
-				}
-			}
-		}
-	}
+                    if (world.getBlock(var7, var8, var9) == DarkAsteroidsBlocks.alien_dirt && world.getBlockMetadata(var7, var8, var9) == 0 && world.getBlockLightValue(var7, var8 + 1, var9) >= 4 && block.getLightOpacity() <= 2)
+                    {
+                        world.setBlock(var7, var8, var9, DarkAsteroidsBlocks.alien_grass);
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(DarkAsteroidsBlocks.alien_dirt);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(DarkAsteroidsBlocks.alien_dirt);
+    }
 
-	@Override
-	public Block getFarmlandBlock()
-	{
-		return DarkAsteroidsBlocks.alien_farmland;
-	}
+    @Override
+    public Block getFarmlandBlock()
+    {
+        return DarkAsteroidsBlocks.alien_farmland;
+    }
 }

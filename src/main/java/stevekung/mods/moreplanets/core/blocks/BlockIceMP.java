@@ -19,45 +19,45 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockIceMP extends BlockBreakable
 {
-	public BlockIceMP(Material material)
-	{
-		super("", material, false);
-		this.slipperiness = 0.98F;
-		this.setHardness(0.5F);
-		this.setResistance(0.1F);
-		this.setTickRandomly(true);
-		this.setStepSound(soundTypeGlass);
-	}
+    public BlockIceMP(Material material)
+    {
+        super("", material, false);
+        this.slipperiness = 0.98F;
+        this.setHardness(0.5F);
+        this.setResistance(0.1F);
+        this.setTickRandomly(true);
+        this.setStepSound(soundTypeGlass);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
-	{
-		return super.shouldSideBeRendered(world, x, y, z, 1 - side);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+    {
+        return super.shouldSideBeRendered(world, x, y, z, 1 - side);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 
-	@Override
-	public int getMobilityFlag()
-	{
-		return 0;
-	}
+    @Override
+    public int getMobilityFlag()
+    {
+        return 0;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

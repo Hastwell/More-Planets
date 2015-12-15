@@ -27,60 +27,60 @@ import cpw.mods.fml.common.IFuelHandler;
 
 public class FurnaceFuelMP implements IFuelHandler
 {
-	private static HashMap<Pair<Item, Integer>, Integer> fuelList = new HashMap<Pair<Item, Integer>, Integer>();
+    private static HashMap<Pair<Item, Integer>, Integer> fuelList = new HashMap<Pair<Item, Integer>, Integer>();
 
-	@Override
-	public int getBurnTime(ItemStack fuel)
-	{
-		return getFuelValue(fuel);
-	}
+    @Override
+    public int getBurnTime(ItemStack fuel)
+    {
+        return getFuelValue(fuel);
+    }
 
-	public static void setFuelValues()
-	{
-		addFuel(NibiruBlocks.nibiru_sapling, 100);
-		addFuel(KoentusBlocks.crystal_sapling, 100);
-		addFuel(FronosBlocks.fronos_sapling, 100);
-		addFuel(EuropaBlocks.europa_sapling, 100);
-		addFuel(NibiruItems.ancient_dark_door, 0, 150);
-		addFuel(NibiruItems.orange_door, 0, 150);
-		addFuel(KoentusItems.crystal_door, 0, 150);
-		addFuel(FronosItems.coconut_door, 0, 150);
-		addFuel(FronosItems.maple_door, 0, 150);
-		addFuel(EuropaItems.europa_door, 0, 150);
-	}
+    public static void setFuelValues()
+    {
+        addFuel(NibiruBlocks.nibiru_sapling, 100);
+        addFuel(KoentusBlocks.crystal_sapling, 100);
+        addFuel(FronosBlocks.fronos_sapling, 100);
+        addFuel(EuropaBlocks.europa_sapling, 100);
+        addFuel(NibiruItems.ancient_dark_door, 0, 150);
+        addFuel(NibiruItems.orange_door, 0, 150);
+        addFuel(KoentusItems.crystal_door, 0, 150);
+        addFuel(FronosItems.coconut_door, 0, 150);
+        addFuel(FronosItems.maple_door, 0, 150);
+        addFuel(EuropaItems.europa_door, 0, 150);
+    }
 
-	private static void addFuel(Item item, int metadata, int value)
-	{
-		fuelList.put(Pair.of(item, metadata), value);
-	}
+    private static void addFuel(Item item, int metadata, int value)
+    {
+        fuelList.put(Pair.of(item, metadata), value);
+    }
 
-	private static void addFuel(Block block, int value)
-	{
-		addFuel(Item.getItemFromBlock(block), 0, value);
-	}
+    private static void addFuel(Block block, int value)
+    {
+        addFuel(Item.getItemFromBlock(block), 0, value);
+    }
 
-	private static int getFuelValue(ItemStack stack)
-	{
-		if (stack == null || stack.getItem() == null)
-		{
-			return 0;
-		}
+    private static int getFuelValue(ItemStack stack)
+    {
+        if (stack == null || stack.getItem() == null)
+        {
+            return 0;
+        }
 
-		Pair<Item, Integer> pair = Pair.of(stack.getItem(), stack.getItemDamage());
+        Pair<Item, Integer> pair = Pair.of(stack.getItem(), stack.getItemDamage());
 
-		if (fuelList.containsKey(pair))
-		{
-			return fuelList.get(pair);
-		}
-		else
-		{
-			pair = Pair.of(stack.getItem(), 0);
+        if (fuelList.containsKey(pair))
+        {
+            return fuelList.get(pair);
+        }
+        else
+        {
+            pair = Pair.of(stack.getItem(), 0);
 
-			if (fuelList.containsKey(pair))
-			{
-				return fuelList.get(pair);
-			}
-		}
-		return 0;
-	}
+            if (fuelList.containsKey(pair))
+            {
+                return fuelList.get(pair);
+            }
+        }
+        return 0;
+    }
 }

@@ -15,34 +15,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockCandyFlower extends ItemBlockBaseMP
 {
-	public ItemBlockCandyFlower(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockCandyFlower(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D()
-	{
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean isFull3D()
+    {
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return this.field_150939_a.getIcon(0, meta);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.field_150939_a.getIcon(0, meta);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "pink", "orange", "green", "yellow", "light_blue", "blue", "red", "purple" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "pink", "orange", "green", "yellow", "light_blue", "blue", "red", "purple" };
+    }
 
-	@Override
-	public boolean reverseName()
-	{
-		return true;
-	}
+    @Override
+    public boolean reverseName()
+    {
+        return true;
+    }
 }

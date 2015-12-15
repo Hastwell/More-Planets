@@ -20,25 +20,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemEuropaWaterBucket extends ItemBucket
 {
-	public ItemEuropaWaterBucket(String name)
-	{
-		super(EuropaBlocks.europa_water);
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setContainerItem(Items.bucket);
-		this.setTextureName("europa:europa_water_bucket");
-	}
+    public ItemEuropaWaterBucket(String name)
+    {
+        super(EuropaBlocks.europa_water);
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setContainerItem(Items.bucket);
+        this.setTextureName("europa:europa_water_bucket");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 }

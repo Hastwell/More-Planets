@@ -20,21 +20,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier8Schematic extends ItemMorePlanet implements ISchematicItem
 {
-	public ItemTier8Schematic(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setTextureName("kapteynb:tier8_schematic_rocket");
-	}
+    public ItemTier8Schematic(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setTextureName("kapteynb:tier8_schematic_rocket");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
-	{
-		if (player.worldObj.isRemote)
-		{
-			list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier8.rocket.name"));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+    {
+        if (player.worldObj.isRemote)
+        {
+            list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier8.rocket.name"));
+        }
+    }
 }

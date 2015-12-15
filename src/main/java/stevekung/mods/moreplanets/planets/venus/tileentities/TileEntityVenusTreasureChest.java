@@ -13,26 +13,26 @@ import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 
 public class TileEntityVenusTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityVenusTreasureChest()
-	{
-		super(3);
-	}
+    public TileEntityVenusTreasureChest()
+    {
+        super(3);
+    }
 
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 3;
-	}
+    @Override
+    public int getTreasureChestTier()
+    {
+        return 3;
+    }
 
-	@Override
-	public String getTreasureChestName()
-	{
-		return "venus";
-	}
+    @Override
+    public String getTreasureChestName()
+    {
+        return "venus";
+    }
 
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return VenusBlocks.venus_treasure_chest;
-	}
+    @Override
+    public Block getTreasureChestBlock()
+    {
+        return VenusBlocks.venus_treasure_chest;
+    }
 }

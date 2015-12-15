@@ -11,26 +11,26 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeGenBaseMP extends BiomeGenBase
 {
-	public BiomeGenBaseMP(int id)
-	{
-		super(id);
-		this.spawnableMonsterList.clear();
-		this.spawnableWaterCreatureList.clear();
-		this.spawnableCreatureList.clear();
-		this.spawnableCaveCreatureList.clear();
-		this.rainfall = 0F;
-		this.setColor(-16744448);
-	}
+    public BiomeGenBaseMP(int id)
+    {
+        super(id);
+        this.spawnableMonsterList.clear();
+        this.spawnableWaterCreatureList.clear();
+        this.spawnableCreatureList.clear();
+        this.spawnableCaveCreatureList.clear();
+        this.rainfall = 0F;
+        this.setColor(-16744448);
+    }
 
-	@Override
-	public BiomeGenBase setColor(int color)
-	{
-		return this.func_150557_a(-16744448, false);
-	}
+    @Override
+    public BiomeGenBase setColor(int color)
+    {
+        return this.func_150557_a(-16744448, false);
+    }
 
-	@Override
-	public float getSpawningChance()
-	{
-		return 0.1F;
-	}
+    @Override
+    public float getSpawningChance()
+    {
+        return 0.1F;
+    }
 }

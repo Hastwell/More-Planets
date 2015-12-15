@@ -31,118 +31,118 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockInfectedDirt extends BlockBaseMP implements ITerraformableBlock
 {
-	private IIcon[] nibiruDirtIcon;
+    private IIcon[] nibiruDirtIcon;
 
-	public BlockInfectedDirt(String name)
-	{
-		super(Material.ground);
-		this.setStepSound(Block.soundTypeGravel);
-		this.setHardness(0.55F);
-		this.setBlockName(name);
-	}
+    public BlockInfectedDirt(String name)
+    {
+        super(Material.ground);
+        this.setStepSound(Block.soundTypeGravel);
+        this.setHardness(0.55F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.nibiruDirtIcon = new IIcon[2];
-		this.nibiruDirtIcon[0] = par1IconRegister.registerIcon("nibiru:infected_dirt");
-		this.nibiruDirtIcon[1] = par1IconRegister.registerIcon("nibiru:coarse_infected_dirt");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.nibiruDirtIcon = new IIcon[2];
+        this.nibiruDirtIcon[0] = par1IconRegister.registerIcon("nibiru:infected_dirt");
+        this.nibiruDirtIcon[1] = par1IconRegister.registerIcon("nibiru:coarse_infected_dirt");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.nibiruDirtIcon[meta];
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.nibiruDirtIcon[meta];
+    }
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection side, IPlantable plant)
-	{
-		return plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains || super.canSustainPlant(world, x, y, z, side, plant);
-	}
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection side, IPlantable plant)
+    {
+        return plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains || super.canSustainPlant(world, x, y, z, side, plant);
+    }
 
-	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		return Item.getItemFromBlock(NibiruBlocks.infected_dirt);
-	}
+    @Override
+    public Item getItemDropped(int par1, Random par2Random, int par3)
+    {
+        return Item.getItemFromBlock(NibiruBlocks.infected_dirt);
+    }
 
-	@Override
-	public boolean isTerraformable(World world, int x, int y, int z)
-	{
-		return !world.getBlock(x, y + 1, z).isOpaqueCube();
-	}
+    @Override
+    public boolean isTerraformable(World world, int x, int y, int z)
+    {
+        return !world.getBlock(x, y + 1, z).isOpaqueCube();
+    }
 
-	@Override
-	public int getDamageValue(World world, int x, int y, int z)
-	{
-		return world.getBlockMetadata(x, y, z);
-	}
+    @Override
+    public int getDamageValue(World world, int x, int y, int z)
+    {
+        return world.getBlockMetadata(x, y, z);
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitVecX, float hitVecY, float hitVecZ)
-	{
-		if (player.getCurrentEquippedItem() != null)
-		{
-			if (player.getCurrentEquippedItem().getDisplayName().toLowerCase().contains("hoe"))
-			{
-				if (world.getBlockMetadata(x, y, z) == 0)
-				{
-					Block farmland = NibiruBlocks.infected_farmland;
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitVecX, float hitVecY, float hitVecZ)
+    {
+        if (player.getCurrentEquippedItem() != null)
+        {
+            if (player.getCurrentEquippedItem().getDisplayName().toLowerCase().contains("hoe"))
+            {
+                if (world.getBlockMetadata(x, y, z) == 0)
+                {
+                    Block farmland = NibiruBlocks.infected_farmland;
 
-					world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, farmland.stepSound.getStepResourcePath(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getPitch() * 0.8F);
+                    world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, farmland.stepSound.getStepResourcePath(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getPitch() * 0.8F);
 
-					if (!world.isRemote)
-					{
-						world.setBlock(x, y, z, farmland, 0, 2);
-					}
-					player.getCurrentEquippedItem().damageItem(1, player);
-				}
-				else if (world.getBlockMetadata(x, y, z) == 1)
-				{
-					Block farmland = this;
+                    if (!world.isRemote)
+                    {
+                        world.setBlock(x, y, z, farmland, 0, 2);
+                    }
+                    player.getCurrentEquippedItem().damageItem(1, player);
+                }
+                else if (world.getBlockMetadata(x, y, z) == 1)
+                {
+                    Block farmland = this;
 
-					world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, farmland.stepSound.getStepResourcePath(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getPitch() * 0.8F);
+                    world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, farmland.stepSound.getStepResourcePath(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getPitch() * 0.8F);
 
-					if (!world.isRemote)
-					{
-						world.setBlock(x, y, z, farmland, 0, 2);
-					}
-					player.getCurrentEquippedItem().damageItem(1, player);
-				}
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		else
-		{
-			return false;
-		}
-	}
+                    if (!world.isRemote)
+                    {
+                        world.setBlock(x, y, z, farmland, 0, 2);
+                    }
+                    player.getCurrentEquippedItem().damageItem(1, player);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
-	{
-		super.harvestBlock(world, player, x, y, z, fortune);
-		MorePlanetEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+    {
+        super.harvestBlock(world, player, x, y, z, fortune);
+        MorePlanetEvents.addInfectedGas(player);
+    }
 }

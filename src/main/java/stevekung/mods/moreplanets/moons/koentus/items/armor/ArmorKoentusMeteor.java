@@ -20,46 +20,46 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorKoentusMeteor extends ItemArmor
 {
-	public ArmorKoentusMeteor(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorKoentusMeteor(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_helmet || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_chestplate || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_boots)
-		{
-			return "koentus:textures/model/armor/koentus_meteoric_iron_1.png";
-		}
-		if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_leggings)
-		{
-			return "koentus:textures/model/armor/koentus_meteoric_iron_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_helmet || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_chestplate || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_boots)
+        {
+            return "koentus:textures/model/armor/koentus_meteoric_iron_1.png";
+        }
+        if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_leggings)
+        {
+            return "koentus:textures/model/armor/koentus_meteoric_iron_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpArmorTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpArmorTab;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (itemStack2.getItem() == KoentusItems.koentus_item && itemStack2.getItemDamage() == 6)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (itemStack2.getItem() == KoentusItems.koentus_item && itemStack2.getItemDamage() == 6)
+        {
+            return true;
+        }
+        return false;
+    }
 }

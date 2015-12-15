@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
 public class TileEntitySiriusBAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return SiriusBBlocks.sirius_b_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return SiriusBBlocks.sirius_b_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "siriusb";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "siriusb";
+    }
 }

@@ -12,9 +12,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class WorldChunkManagerKapteynB extends WorldChunkManagerSpace
 {
-	@Override
-	public BiomeGenBase getBiome()
-	{
-		return BiomeGenBaseKapteynB.kapteynB;
-	}
+    @Override
+    public BiomeGenBase getBiome()
+    {
+        return BiomeGenBaseKapteynB.kapteynB;
+    }
 }

@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
 public class TileEntityPolongniusAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return PolongniusBlocks.polongnius_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return PolongniusBlocks.polongnius_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "polongnius";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "polongnius";
+    }
 }

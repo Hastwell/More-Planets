@@ -20,44 +20,44 @@ import stevekung.mods.stevecore.RegisterHelper;
 
 public class SiriusBToolsItems
 {
-	public static Item sulfur_pickaxe;
-	public static Item sulfur_axe;
-	public static Item sulfur_hoe;
-	public static Item sulfur_shovel;
-	public static Item sulfur_sword;
+    public static Item sulfur_pickaxe;
+    public static Item sulfur_axe;
+    public static Item sulfur_hoe;
+    public static Item sulfur_shovel;
+    public static Item sulfur_sword;
 
-	// Name,HarvestLevel,MaxUse,Efficiency,Damage,Enchantability
-	public static ToolMaterial sulfur = EnumHelper.addToolMaterial("sulfur", 3, 1364, 9.75F, 4.0F, 8);
+    // Name,HarvestLevel,MaxUse,Efficiency,Damage,Enchantability
+    public static ToolMaterial sulfur = EnumHelper.addToolMaterial("sulfur", 3, 1364, 9.75F, 4.0F, 8);
 
-	public static void init()
-	{
-		SiriusBToolsItems.initItems();
-		SiriusBToolsItems.registerItems();
-		SiriusBToolsItems.registerHarvestLevels();
-	}
+    public static void init()
+    {
+        SiriusBToolsItems.initItems();
+        SiriusBToolsItems.registerItems();
+        SiriusBToolsItems.registerHarvestLevels();
+    }
 
-	private static void initItems()
-	{
-		SiriusBToolsItems.sulfur_pickaxe = new ItemPickaxeMP("sulfur_pickaxe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_pickaxe");
-		SiriusBToolsItems.sulfur_axe = new ItemAxeMP("sulfur_axe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_axe");
-		SiriusBToolsItems.sulfur_hoe = new ItemHoeMP("sulfur_hoe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_hoe");
-		SiriusBToolsItems.sulfur_shovel = new ItemShovelMP("sulfur_shovel", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_shovel");
-		SiriusBToolsItems.sulfur_sword = new ItemSwordMP("sulfur_sword", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_sword");
-	}
+    private static void initItems()
+    {
+        SiriusBToolsItems.sulfur_pickaxe = new ItemPickaxeMP("sulfur_pickaxe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_pickaxe");
+        SiriusBToolsItems.sulfur_axe = new ItemAxeMP("sulfur_axe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_axe");
+        SiriusBToolsItems.sulfur_hoe = new ItemHoeMP("sulfur_hoe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_hoe");
+        SiriusBToolsItems.sulfur_shovel = new ItemShovelMP("sulfur_shovel", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_shovel");
+        SiriusBToolsItems.sulfur_sword = new ItemSwordMP("sulfur_sword", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_sword");
+    }
 
-	private static void registerHarvestLevels()
-	{
-		SiriusBToolsItems.sulfur_pickaxe.setHarvestLevel("pickaxe", 3);
-		SiriusBToolsItems.sulfur_axe.setHarvestLevel("axe", 3);
-		SiriusBToolsItems.sulfur_shovel.setHarvestLevel("shovel", 3);
-	}
+    private static void registerHarvestLevels()
+    {
+        SiriusBToolsItems.sulfur_pickaxe.setHarvestLevel("pickaxe", 3);
+        SiriusBToolsItems.sulfur_axe.setHarvestLevel("axe", 3);
+        SiriusBToolsItems.sulfur_shovel.setHarvestLevel("shovel", 3);
+    }
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_sword);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_shovel);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_pickaxe);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_axe);
-		RegisterHelper.registerItem(SiriusBToolsItems.sulfur_hoe);
-	}
+    private static void registerItems()
+    {
+        RegisterHelper.registerItem(SiriusBToolsItems.sulfur_sword);
+        RegisterHelper.registerItem(SiriusBToolsItems.sulfur_shovel);
+        RegisterHelper.registerItem(SiriusBToolsItems.sulfur_pickaxe);
+        RegisterHelper.registerItem(SiriusBToolsItems.sulfur_axe);
+        RegisterHelper.registerItem(SiriusBToolsItems.sulfur_hoe);
+    }
 }

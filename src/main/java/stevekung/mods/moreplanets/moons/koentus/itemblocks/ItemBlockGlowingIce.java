@@ -15,21 +15,21 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockMorePlanet;
 
 public class ItemBlockGlowingIce extends ItemBlockMorePlanet
 {
-	public ItemBlockGlowingIce(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockGlowingIce(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		return this.field_150939_a.getUnlocalizedName() + "." + ItemDye.field_150921_b[BlockColored.func_150032_b(itemStack.getItemDamage())];
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        return this.field_150939_a.getUnlocalizedName() + "." + ItemDye.field_150921_b[BlockColored.func_150032_b(itemStack.getItemDamage())];
+    }
 }

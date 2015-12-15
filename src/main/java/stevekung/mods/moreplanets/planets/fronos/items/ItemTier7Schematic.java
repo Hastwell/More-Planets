@@ -21,27 +21,27 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier7Schematic extends ItemMorePlanet implements ISchematicItem
 {
-	public ItemTier7Schematic(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemTier7Schematic(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		this.itemIcon = iconRegister.registerIcon("fronos:tier7_schematic_rocket");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        this.itemIcon = iconRegister.registerIcon("fronos:tier7_schematic_rocket");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
-	{
-		if (player.worldObj.isRemote)
-		{
-			list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier7.rocket.name"));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+    {
+        if (player.worldObj.isRemote)
+        {
+            list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("schematic.tier7.rocket.name"));
+        }
+    }
 }

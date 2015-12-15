@@ -18,38 +18,38 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class EntityOrangeCreamBall extends EntityThrowable
 {
-	public EntityOrangeCreamBall(World par1World)
-	{
-		super(par1World);
-	}
+    public EntityOrangeCreamBall(World par1World)
+    {
+        super(par1World);
+    }
 
-	public EntityOrangeCreamBall(World par1World, EntityLivingBase par2EntityLivingBase)
-	{
-		super(par1World, par2EntityLivingBase);
-	}
+    public EntityOrangeCreamBall(World par1World, EntityLivingBase par2EntityLivingBase)
+    {
+        super(par1World, par2EntityLivingBase);
+    }
 
-	@Override
-	protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
-	{
-		if (par1MovingObjectPosition.entityHit != null)
-		{
-			par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0);
+    @Override
+    protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
+    {
+        if (par1MovingObjectPosition.entityHit != null)
+        {
+            par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0);
 
-			if (par1MovingObjectPosition.entityHit instanceof EntityLivingBase)
-			{
-				((EntityLivingBase)par1MovingObjectPosition.entityHit).addPotionEffect(new PotionEffect(Potion.invisibility.id, 120, 0));
-				((EntityLivingBase)par1MovingObjectPosition.entityHit).addPotionEffect(new PotionEffect(Potion.regeneration.id, 250, 2));
-			}
-		}
+            if (par1MovingObjectPosition.entityHit instanceof EntityLivingBase)
+            {
+                ((EntityLivingBase)par1MovingObjectPosition.entityHit).addPotionEffect(new PotionEffect(Potion.invisibility.id, 120, 0));
+                ((EntityLivingBase)par1MovingObjectPosition.entityHit).addPotionEffect(new PotionEffect(Potion.regeneration.id, 250, 2));
+            }
+        }
 
-		for (int i = 0; i < 8; ++i)
-		{
-			MorePlanetsCore.proxy.spawnParticle("orangeBall", this.posX, this.posY, this.posZ);
-		}
+        for (int i = 0; i < 8; ++i)
+        {
+            MorePlanetsCore.proxy.spawnParticle("orangeBall", this.posX, this.posY, this.posZ);
+        }
 
-		if (!this.worldObj.isRemote)
-		{
-			this.setDead();
-		}
-	}
+        if (!this.worldObj.isRemote)
+        {
+            this.setDead();
+        }
+    }
 }

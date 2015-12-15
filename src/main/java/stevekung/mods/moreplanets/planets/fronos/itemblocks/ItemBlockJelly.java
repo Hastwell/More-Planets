@@ -15,27 +15,27 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockJelly extends ItemBlockBaseMP
 {
-	public ItemBlockJelly(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockJelly(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public boolean reverseName()
-	{
-		return true;
-	}
+    @Override
+    public boolean reverseName()
+    {
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return this.field_150939_a.getIcon(0, meta);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.field_150939_a.getIcon(0, meta);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "grape", "raspberry", "strawberry", "berry", "lime", "orange", "green", "lemon" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "grape", "raspberry", "strawberry", "berry", "lime", "orange", "green", "lemon" };
+    }
 }

@@ -17,15 +17,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockMorePlanet extends ItemBlock
 {
-	public ItemBlockMorePlanet(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockMorePlanet(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

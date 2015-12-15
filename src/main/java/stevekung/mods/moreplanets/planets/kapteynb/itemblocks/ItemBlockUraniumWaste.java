@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockUraniumWaste extends ItemBlockBaseMP
 {
-	public ItemBlockUraniumWaste(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockUraniumWaste(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "active", "inactive" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "active", "inactive" };
+    }
 }

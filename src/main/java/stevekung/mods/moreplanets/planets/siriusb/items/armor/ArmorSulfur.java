@@ -21,54 +21,54 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorSulfur extends ItemArmorMP
 {
-	public ArmorSulfur(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorSulfur(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == SiriusBArmorItems.sulfur_helmet || stack.getItem() == SiriusBArmorItems.sulfur_chestplate || stack.getItem() == SiriusBArmorItems.sulfur_boots)
-		{
-			return "siriusb:textures/model/armor/sulfur_1.png";
-		}
-		if (stack.getItem() == SiriusBArmorItems.sulfur_leggings)
-		{
-			return "siriusb:textures/model/armor/sulfur_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == SiriusBArmorItems.sulfur_helmet || stack.getItem() == SiriusBArmorItems.sulfur_chestplate || stack.getItem() == SiriusBArmorItems.sulfur_boots)
+        {
+            return "siriusb:textures/model/armor/sulfur_1.png";
+        }
+        if (stack.getItem() == SiriusBArmorItems.sulfur_leggings)
+        {
+            return "siriusb:textures/model/armor/sulfur_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpArmorTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpArmorTab;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "siriusb";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "siriusb";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return SiriusBItems.sirius_b_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return SiriusBItems.sirius_b_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 4;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 4;
+    }
 }

@@ -17,57 +17,57 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
 public class ItemSiriusFireCharge extends ItemMorePlanet
 {
-	public ItemSiriusFireCharge(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setTextureName("siriusb:sirius_fire_charge");
-	}
+    public ItemSiriusFireCharge(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setTextureName("siriusb:sirius_fire_charge");
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float p_onItemUse_8_, float p_onItemUse_9_, float p_onItemUse_10_)
-	{
-		if (world.isRemote)
-		{
-			return true;
-		}
-		if (side == 0)
-		{
-			y--;
-		}
-		if (side == 1)
-		{
-			y++;
-		}
-		if (side == 2)
-		{
-			z--;
-		}
-		if (side == 3)
-		{
-			z++;
-		}
-		if (side == 4)
-		{
-			x--;
-		}
-		if (side == 5)
-		{
-			x++;
-		}
-		if (!player.canPlayerEdit(x, y, z, side, itemStack))
-		{
-			return false;
-		}
-		if (world.getBlock(x, y, z).getMaterial() == Material.air)
-		{
-			world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "fire.ignite", 1.0F, Item.itemRand.nextFloat() * 0.4F + 0.8F);
-			world.setBlock(x, y, z, SiriusBBlocks.sirius_fire);
-		}
-		if (!player.capabilities.isCreativeMode)
-		{
-			itemStack.stackSize -= 1;
-		}
-		return true;
-	}
+    @Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float p_onItemUse_8_, float p_onItemUse_9_, float p_onItemUse_10_)
+    {
+        if (world.isRemote)
+        {
+            return true;
+        }
+        if (side == 0)
+        {
+            y--;
+        }
+        if (side == 1)
+        {
+            y++;
+        }
+        if (side == 2)
+        {
+            z--;
+        }
+        if (side == 3)
+        {
+            z++;
+        }
+        if (side == 4)
+        {
+            x--;
+        }
+        if (side == 5)
+        {
+            x++;
+        }
+        if (!player.canPlayerEdit(x, y, z, side, itemStack))
+        {
+            return false;
+        }
+        if (world.getBlock(x, y, z).getMaterial() == Material.air)
+        {
+            world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "fire.ignite", 1.0F, Item.itemRand.nextFloat() * 0.4F + 0.8F);
+            world.setBlock(x, y, z, SiriusBBlocks.sirius_fire);
+        }
+        if (!player.capabilities.isCreativeMode)
+        {
+            itemStack.stackSize -= 1;
+        }
+        return true;
+    }
 }

@@ -22,36 +22,36 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderSiriusMagmaCube extends RenderLiving
 {
-	private static final ResourceLocation magmaCubeTextures = new ResourceLocation("siriusb:textures/model/sirius_magma_cube.png");
+    private static final ResourceLocation magmaCubeTextures = new ResourceLocation("siriusb:textures/model/sirius_magma_cube.png");
 
-	public RenderSiriusMagmaCube()
-	{
-		super(new ModelSiriusMagmaCube(), 0.25F);
-	}
+    public RenderSiriusMagmaCube()
+    {
+        super(new ModelSiriusMagmaCube(), 0.25F);
+    }
 
-	protected ResourceLocation getMagmaCubeTextures(EntitySiriusMagmaCube par1EntityMagmaCube)
-	{
-		return RenderSiriusMagmaCube.magmaCubeTextures;
-	}
+    protected ResourceLocation getMagmaCubeTextures(EntitySiriusMagmaCube par1EntityMagmaCube)
+    {
+        return RenderSiriusMagmaCube.magmaCubeTextures;
+    }
 
-	protected void scaleMagmaCube(EntitySiriusMagmaCube par1EntityMagmaCube, float par2)
-	{
-		final int i = par1EntityMagmaCube.getSlimeSize();
-		final float f1 = (par1EntityMagmaCube.prevSquishFactor + (par1EntityMagmaCube.squishFactor - par1EntityMagmaCube.prevSquishFactor) * par2) / (i * 0.5F + 1.0F);
-		final float f2 = 1.0F / (f1 + 1.0F);
-		final float f3 = i;
-		GL11.glScalef(f2 * f3, 1.0F / f2 * f3, f2 * f3);
-	}
+    protected void scaleMagmaCube(EntitySiriusMagmaCube par1EntityMagmaCube, float par2)
+    {
+        final int i = par1EntityMagmaCube.getSlimeSize();
+        final float f1 = (par1EntityMagmaCube.prevSquishFactor + (par1EntityMagmaCube.squishFactor - par1EntityMagmaCube.prevSquishFactor) * par2) / (i * 0.5F + 1.0F);
+        final float f2 = 1.0F / (f1 + 1.0F);
+        final float f3 = i;
+        GL11.glScalef(f2 * f3, 1.0F / f2 * f3, f2 * f3);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
-	{
-		this.scaleMagmaCube((EntitySiriusMagmaCube)par1EntityLivingBase, par2);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
+    {
+        this.scaleMagmaCube((EntitySiriusMagmaCube)par1EntityLivingBase, par2);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.getMagmaCubeTextures((EntitySiriusMagmaCube)par1Entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.getMagmaCubeTextures((EntitySiriusMagmaCube)par1Entity);
+    }
 }

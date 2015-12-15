@@ -20,86 +20,86 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFluidLiquidOrangeSulfur extends BlockFluidLavaBaseMP
 {
-	public BlockFluidLiquidOrangeSulfur(String name)
-	{
-		super(IoBlocks.liquid_orange_sulfur_fluid);
-		this.setBlockName(name);
-	}
+    public BlockFluidLiquidOrangeSulfur(String name)
+    {
+        super(IoBlocks.liquid_orange_sulfur_fluid);
+        this.setBlockName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
-	{
-		if (this.blockMaterial == Material.lava && world.getBlock(x, y + 1, z).getMaterial() == Material.air && !world.getBlock(x, y + 1, z).isOpaqueCube())
-		{
-			if (rand.nextInt(100) == 0)
-			{
-				double d5 = x + rand.nextFloat();
-				double d6 = y + this.maxY;
-				double d7 = z + rand.nextFloat();
-				world.spawnParticle("lava", d5, d6, d7, 0.0D, 0.0D, 0.0D);
-				world.playSound(d5, d6, d7, "liquid.lavapop", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
-			}
-			if (rand.nextInt(200) == 0)
-			{
-				world.playSound(x, y, z, "liquid.lava", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
-			}
-		}
-		if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && !world.getBlock(x, y - 2, z).getMaterial().blocksMovement())
-		{
-			double d5 = x + rand.nextFloat();
-			double d6 = y - 1.05D;
-			double d7 = z + rand.nextFloat();
-			world.spawnParticle("dripLava", d5, d6, d7, 0.0D, 0.0D, 0.0D);
-		}
-		super.randomDisplayTick(world, x, y, z, rand);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, int x, int y, int z, Random rand)
+    {
+        if (this.blockMaterial == Material.lava && world.getBlock(x, y + 1, z).getMaterial() == Material.air && !world.getBlock(x, y + 1, z).isOpaqueCube())
+        {
+            if (rand.nextInt(100) == 0)
+            {
+                double d5 = x + rand.nextFloat();
+                double d6 = y + this.maxY;
+                double d7 = z + rand.nextFloat();
+                world.spawnParticle("lava", d5, d6, d7, 0.0D, 0.0D, 0.0D);
+                world.playSound(d5, d6, d7, "liquid.lavapop", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
+            }
+            if (rand.nextInt(200) == 0)
+            {
+                world.playSound(x, y, z, "liquid.lava", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
+            }
+        }
+        if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && !world.getBlock(x, y - 2, z).getMaterial().blocksMovement())
+        {
+            double d5 = x + rand.nextFloat();
+            double d6 = y - 1.05D;
+            double d7 = z + rand.nextFloat();
+            world.spawnParticle("dripLava", d5, d6, d7, 0.0D, 0.0D, 0.0D);
+        }
+        super.randomDisplayTick(world, x, y, z, rand);
+    }
 
-	@Override
-	public String getStillTextures()
-	{
-		return "io:liquid_orange_sulfur_still";
-	}
+    @Override
+    public String getStillTextures()
+    {
+        return "io:liquid_orange_sulfur_still";
+    }
 
-	@Override
-	public String getFlowingTextures()
-	{
-		return "io:liquid_orange_sulfur_flowing";
-	}
+    @Override
+    public String getFlowingTextures()
+    {
+        return "io:liquid_orange_sulfur_flowing";
+    }
 
-	@Override
-	protected Block getBlockFromWaterTo()
-	{
-		return IoBlocks.io_block;
-	}
+    @Override
+    protected Block getBlockFromWaterTo()
+    {
+        return IoBlocks.io_block;
+    }
 
-	@Override
-	protected int getBlockMetaFromWaterTo()
-	{
-		return 2;
-	}
+    @Override
+    protected int getBlockMetaFromWaterTo()
+    {
+        return 2;
+    }
 
-	@Override
-	protected Block getObsidianBlock()
-	{
-		return Blocks.obsidian;
-	}
+    @Override
+    protected Block getObsidianBlock()
+    {
+        return Blocks.obsidian;
+    }
 
-	@Override
-	protected Block getCobblestoneBlock()
-	{
-		return IoBlocks.io_block;
-	}
+    @Override
+    protected Block getCobblestoneBlock()
+    {
+        return IoBlocks.io_block;
+    }
 
-	@Override
-	protected int getCobblestoneBlockMeta()
-	{
-		return 3;
-	}
+    @Override
+    protected int getCobblestoneBlockMeta()
+    {
+        return 3;
+    }
 
-	@Override
-	protected Block getFireBlock()
-	{
-		return Blocks.fire;
-	}
+    @Override
+    protected Block getFireBlock()
+    {
+        return Blocks.fire;
+    }
 }

@@ -16,13 +16,13 @@ import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 
 public class WorldGenSurfaceLava extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, int x, int y, int z)
-	{
-		if (world.getBlock(x, y - 1, z) == VenusBlocks.venus_block && world.getBlockMetadata(x, y - 1, z) == 0 && world.getBlock(x, y + 1, z) == Blocks.air)
-		{
-			world.setBlock(x, y, z, Blocks.flowing_lava, 0, 2);
-		}
-		return true;
-	}
+    @Override
+    public boolean generate(World world, Random rand, int x, int y, int z)
+    {
+        if (world.getBlock(x, y - 1, z) == VenusBlocks.venus_block && world.getBlockMetadata(x, y - 1, z) == 0 && world.getBlock(x, y + 1, z) == Blocks.air)
+        {
+            world.setBlock(x, y, z, Blocks.flowing_lava, 0, 2);
+        }
+        return true;
+    }
 }

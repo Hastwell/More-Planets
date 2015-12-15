@@ -19,20 +19,20 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public class BiomeGenBaseVenus extends BiomeGenBaseMP /*implements IPlanetFog*/
 {
-	public static BiomeGenBase venus = new BiomeGenBaseVenus().setBiomeName("Venus");
+    public static BiomeGenBase venus = new BiomeGenBaseVenus().setBiomeName("Venus");
 
-	public BiomeGenBaseVenus()
-	{
-		super(ConfigManagerMP.idVenusBiome);
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 8, 1, 2));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
-	}
+    public BiomeGenBaseVenus()
+    {
+        super(ConfigManagerMP.idVenusBiome);
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 8, 1, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+    }
 
-	/*@Override
+    /*@Override
 	public float getFogDensity(int x, int y, int z)
 	{
 		return 0.2F;

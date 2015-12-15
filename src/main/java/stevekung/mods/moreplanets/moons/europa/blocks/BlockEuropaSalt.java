@@ -12,11 +12,11 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockEuropaSalt extends BlockBaseMP
 {
-	public BlockEuropaSalt(String name)
-	{
-		super(Material.rock);
-		this.setHardness(1.5F);
-		this.setBlockName(name);
-		this.setBlockTextureName("europa:europa_salt");
-	}
+    public BlockEuropaSalt(String name)
+    {
+        super(Material.rock);
+        this.setHardness(1.5F);
+        this.setBlockName(name);
+        this.setBlockTextureName("europa:europa_salt");
+    }
 }

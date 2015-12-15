@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockFronosSandstone extends ItemBlockBaseMP
 {
-	public ItemBlockFronosSandstone(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosSandstone(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "fronosSandstone", "fronosSandstoneChiseled", "fronosSandstoneSmooth", "whiteSandstone", "whiteSandstoneChiseled", "whiteSandstoneSmooth", "cheeseSandstone", "cheeseSandstoneChiseled", "cheeseSandstoneSmooth" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "fronosSandstone", "fronosSandstoneChiseled", "fronosSandstoneSmooth", "whiteSandstone", "whiteSandstoneChiseled", "whiteSandstoneSmooth", "cheeseSandstone", "cheeseSandstoneChiseled", "cheeseSandstoneSmooth" };
+    }
 }

@@ -9,5 +9,5 @@ package stevekung.mods.moreplanets.core.world;
 
 public interface ILightningStorm
 {
-	public double getLightningStormFrequency();
+    public double getLightningStormFrequency();
 }

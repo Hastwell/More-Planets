@@ -14,22 +14,22 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockCandyTorch extends BlockTorch
 {
-	private String torchTexture;
+    private String torchTexture;
 
-	public BlockCandyTorch(String name, String texture)
-	{
-		super();
-		this.torchTexture = texture;
-		this.setTickRandomly(true);
-		this.setLightLevel(1.0F);
-		this.setStepSound(Block.soundTypeCloth);
-		this.setBlockTextureName(this.torchTexture);
-		this.setBlockName(name);
-	}
+    public BlockCandyTorch(String name, String texture)
+    {
+        super();
+        this.torchTexture = texture;
+        this.setTickRandomly(true);
+        this.setLightLevel(1.0F);
+        this.setStepSound(Block.soundTypeCloth);
+        this.setBlockTextureName(this.torchTexture);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

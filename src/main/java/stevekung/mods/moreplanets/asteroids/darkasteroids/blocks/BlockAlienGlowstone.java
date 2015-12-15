@@ -17,37 +17,37 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockAlienGlowstone extends BlockBaseMP
 {
-	public BlockAlienGlowstone(String name)
-	{
-		super(Material.glass);
-		this.setBlockName(name);
-		this.setHardness(0.3F);
-		this.setStepSound(soundTypeGlass);
-		this.setBlockTextureName("mpcore:darkasteroids/alien_glowstone");
-		this.setLightLevel(1.0F);
-	}
+    public BlockAlienGlowstone(String name)
+    {
+        super(Material.glass);
+        this.setBlockName(name);
+        this.setHardness(0.3F);
+        this.setStepSound(soundTypeGlass);
+        this.setBlockTextureName("mpcore:darkasteroids/alien_glowstone");
+        this.setLightLevel(1.0F);
+    }
 
-	@Override
-	public int quantityDroppedWithBonus(int fortune, Random rand)
-	{
-		return MathHelper.clamp_int(this.quantityDropped(rand) + rand.nextInt(fortune + 1), 1, 4);
-	}
+    @Override
+    public int quantityDroppedWithBonus(int fortune, Random rand)
+    {
+        return MathHelper.clamp_int(this.quantityDropped(rand) + rand.nextInt(fortune + 1), 1, 4);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 2 + rand.nextInt(3);
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 2 + rand.nextInt(3);
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		return null;
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        return null;
+    }
 
-	@Override
-	public MapColor getMapColor(int meta)
-	{
-		return MapColor.cyanColor;
-	}
+    @Override
+    public MapColor getMapColor(int meta)
+    {
+        return MapColor.cyanColor;
+    }
 }

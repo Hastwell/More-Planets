@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockFronosWoodenPlanks extends ItemBlockBaseMP
 {
-	public ItemBlockFronosWoodenPlanks(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosWoodenPlanks(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "coconut", "maple" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "coconut", "maple" };
+    }
 }

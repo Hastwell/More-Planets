@@ -18,41 +18,41 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCreamGolem extends RenderLiving
 {
-	private static final ResourceLocation vanillaTextures = new ResourceLocation("fronos:textures/model/cream_golem/vanilla.png");
-	private static final ResourceLocation chocolateTextures = new ResourceLocation("fronos:textures/model/cream_golem/chocolate.png");
-	private static final ResourceLocation strawberryTextures = new ResourceLocation("fronos:textures/model/cream_golem/strawberry.png");
-	private static final ResourceLocation orangeTextures = new ResourceLocation("fronos:textures/model/cream_golem/orange.png");
-	private static final ResourceLocation teaTextures = new ResourceLocation("fronos:textures/model/cream_golem/tea.png");
-	private static final ResourceLocation lemonTextures = new ResourceLocation("fronos:textures/model/cream_golem/lemon.png");
+    private static final ResourceLocation vanillaTextures = new ResourceLocation("fronos:textures/model/cream_golem/vanilla.png");
+    private static final ResourceLocation chocolateTextures = new ResourceLocation("fronos:textures/model/cream_golem/chocolate.png");
+    private static final ResourceLocation strawberryTextures = new ResourceLocation("fronos:textures/model/cream_golem/strawberry.png");
+    private static final ResourceLocation orangeTextures = new ResourceLocation("fronos:textures/model/cream_golem/orange.png");
+    private static final ResourceLocation teaTextures = new ResourceLocation("fronos:textures/model/cream_golem/tea.png");
+    private static final ResourceLocation lemonTextures = new ResourceLocation("fronos:textures/model/cream_golem/lemon.png");
 
-	public RenderCreamGolem()
-	{
-		super(new ModelSnowMan(), 0.5F);
-	}
+    public RenderCreamGolem()
+    {
+        super(new ModelSnowMan(), 0.5F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.func_110874_a((EntityCreamGolem)par1Entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.func_110874_a((EntityCreamGolem)par1Entity);
+    }
 
-	protected ResourceLocation func_110874_a(EntityCreamGolem par1Entity)
-	{
-		switch (par1Entity.getCreamGolemType())
-		{
-		case 0:
-		default:
-			return RenderCreamGolem.vanillaTextures;
-		case 1:
-			return RenderCreamGolem.chocolateTextures;
-		case 2:
-			return RenderCreamGolem.strawberryTextures;
-		case 3:
-			return RenderCreamGolem.orangeTextures;
-		case 4:
-			return RenderCreamGolem.teaTextures;
-		case 5:
-			return RenderCreamGolem.lemonTextures;
-		}
-	}
+    protected ResourceLocation func_110874_a(EntityCreamGolem par1Entity)
+    {
+        switch (par1Entity.getCreamGolemType())
+        {
+        case 0:
+        default:
+            return RenderCreamGolem.vanillaTextures;
+        case 1:
+            return RenderCreamGolem.chocolateTextures;
+        case 2:
+            return RenderCreamGolem.strawberryTextures;
+        case 3:
+            return RenderCreamGolem.orangeTextures;
+        case 4:
+            return RenderCreamGolem.teaTextures;
+        case 5:
+            return RenderCreamGolem.lemonTextures;
+        }
+    }
 }

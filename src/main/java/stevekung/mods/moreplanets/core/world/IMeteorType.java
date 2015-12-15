@@ -9,6 +9,6 @@ package stevekung.mods.moreplanets.core.world;
 
 public interface IMeteorType
 {
-	int getMeteorEventType();
-	double getMeteorSpawnFrequency();
+    int getMeteorEventType();
+    double getMeteorSpawnFrequency();
 }

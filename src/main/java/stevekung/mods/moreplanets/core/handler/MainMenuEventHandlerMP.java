@@ -20,33 +20,33 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class MainMenuEventHandlerMP
 {
-	static ResourceLocation[] bopTitlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("mpcore:textures/gui/title/background/panorama_0.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_1.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_2.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_3.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_4.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_5.png")};
-	static String[] titlePanoramaPaths = new String[] { "titlePanoramaPaths", "field_73978_o" };
+    static ResourceLocation[] bopTitlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("mpcore:textures/gui/title/background/panorama_0.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_1.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_2.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_3.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_4.png"), new ResourceLocation("mpcore:textures/gui/title/background/panorama_5.png")};
+    static String[] titlePanoramaPaths = new String[] { "titlePanoramaPaths", "field_73978_o" };
 
-	@SubscribeEvent
-	public void openMainMenu(GuiOpenEvent event)
-	{
-		if (event.gui instanceof GuiMainMenu && ConfigManagerMP.enableNewMainManu == true)
-		{
-			GuiMainMenu mainMenu = (GuiMainMenu)event.gui;
-			this.setPrivateFinalValue(GuiMainMenu.class, mainMenu, bopTitlePanoramaPaths, titlePanoramaPaths);
-		}
-	}
+    @SubscribeEvent
+    public void openMainMenu(GuiOpenEvent event)
+    {
+        if (event.gui instanceof GuiMainMenu && ConfigManagerMP.enableNewMainManu == true)
+        {
+            GuiMainMenu mainMenu = (GuiMainMenu)event.gui;
+            this.setPrivateFinalValue(GuiMainMenu.class, mainMenu, bopTitlePanoramaPaths, titlePanoramaPaths);
+        }
+    }
 
-	private <T, E> void setPrivateFinalValue(Class <? super T > classToAccess, T instance, E value, String... fieldNames)
-	{
-		Field field = ReflectionHelper.findField(classToAccess, ObfuscationReflectionHelper.remapFieldNames(classToAccess.getName(), fieldNames));
+    private <T, E> void setPrivateFinalValue(Class <? super T > classToAccess, T instance, E value, String... fieldNames)
+    {
+        Field field = ReflectionHelper.findField(classToAccess, ObfuscationReflectionHelper.remapFieldNames(classToAccess.getName(), fieldNames));
 
-		try
-		{
-			Field modifiersField = Field.class.getDeclaredField("modifiers");
-			modifiersField.setAccessible(true);
-			modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-			field.set(instance, value);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+        try
+        {
+            Field modifiersField = Field.class.getDeclaredField("modifiers");
+            modifiersField.setAccessible(true);
+            modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+            field.set(instance, value);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

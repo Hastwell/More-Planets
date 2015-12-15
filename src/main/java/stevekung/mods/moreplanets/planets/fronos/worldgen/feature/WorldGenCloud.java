@@ -16,41 +16,41 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenCloud extends WorldGenerator
 {
-	private Block block;
-	private int meta;
+    private Block block;
+    private int meta;
 
-	public WorldGenCloud(Block block, int meta)
-	{
-		this.block = block;
-		this.meta = meta;
-	}
+    public WorldGenCloud(Block block, int meta)
+    {
+        this.block = block;
+        this.meta = meta;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, int par3, int par4, int par5)
-	{
-		Block block = world.getBlock(par3, par4, par5);
+    @Override
+    public boolean generate(World world, Random rand, int par3, int par4, int par5)
+    {
+        Block block = world.getBlock(par3, par4, par5);
 
-		if (!(block instanceof BlockAir))
-		{
-			return false;
-		}
-		else
-		{
-			if (rand.nextInt(4) == 0)
-			{
-				world.setBlock(par3, par4, par5, this.block, this.meta, 2);
-			}
-			else if (rand.nextInt(6) == 0)
-			{
-				world.setBlock(par3, par4, par5, this.block, this.meta, 2);
-				world.setBlock(par3 - 1, par4, par5, this.block, this.meta, 2);
-				world.setBlock(par3 + 1, par4, par5, this.block, this.meta, 2);
-				world.setBlock(par3, par4, par5 - 1, this.block, this.meta, 2);
-				world.setBlock(par3, par4, par5 + 1, this.block, this.meta, 2);
-				world.setBlock(par3, par4 - 1, par5, this.block, this.meta, 2);
-				world.setBlock(par3, par4 + 1, par5, this.block, this.meta, 2);
-			}
-		}
-		return true;
-	}
+        if (!(block instanceof BlockAir))
+        {
+            return false;
+        }
+        else
+        {
+            if (rand.nextInt(4) == 0)
+            {
+                world.setBlock(par3, par4, par5, this.block, this.meta, 2);
+            }
+            else if (rand.nextInt(6) == 0)
+            {
+                world.setBlock(par3, par4, par5, this.block, this.meta, 2);
+                world.setBlock(par3 - 1, par4, par5, this.block, this.meta, 2);
+                world.setBlock(par3 + 1, par4, par5, this.block, this.meta, 2);
+                world.setBlock(par3, par4, par5 - 1, this.block, this.meta, 2);
+                world.setBlock(par3, par4, par5 + 1, this.block, this.meta, 2);
+                world.setBlock(par3, par4 - 1, par5, this.block, this.meta, 2);
+                world.setBlock(par3, par4 + 1, par5, this.block, this.meta, 2);
+            }
+        }
+        return true;
+    }
 }

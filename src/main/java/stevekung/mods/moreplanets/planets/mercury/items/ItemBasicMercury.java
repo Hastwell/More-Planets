@@ -18,31 +18,31 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBasicMercury extends ItemBaseMP
 {
-	public ItemBasicMercury(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemBasicMercury(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "metallic_shard", "raw_metal_meteoric_iron", "metallic_ingot", "metal_meteoric_iron_ingot", "compressed_metallic", "compressed_metal_meteoric_iron", "gravity_core", "gravity_controller" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "metallic_shard", "raw_metal_meteoric_iron", "metallic_ingot", "metal_meteoric_iron_ingot", "compressed_metallic", "compressed_metal_meteoric_iron", "gravity_core", "gravity_controller" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "mercury";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "mercury";
+    }
 }

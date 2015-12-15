@@ -12,9 +12,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class WorldChunkManagerPhobos extends WorldChunkManagerSpace
 {
-	@Override
-	public BiomeGenBase getBiome()
-	{
-		return BiomeGenBasePhobos.phobos;
-	}
+    @Override
+    public BiomeGenBase getBiome()
+    {
+        return BiomeGenBasePhobos.phobos;
+    }
 }

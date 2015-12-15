@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockSiriusB extends ItemBlockBaseMP
 {
-	public ItemBlockSiriusB(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockSiriusB(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "surface_carbon", "sub_surface_carbon", "carbon_stone", "carbon_cobblestone", "sulfur_ore", "diamond_ore", "glowstone_ore", "black_spot", "sulfur_block", "dungeon_brick" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "surface_carbon", "sub_surface_carbon", "carbon_stone", "carbon_cobblestone", "sulfur_ore", "diamond_ore", "glowstone_ore", "black_spot", "sulfur_block", "dungeon_brick" };
+    }
 }

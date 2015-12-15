@@ -9,6 +9,6 @@ package stevekung.mods.moreplanets.core.handler;
 
 public interface IPlanetFog
 {
-	public float getFogDensity(int x, int y, int z);
-	public int getFogColor(int x, int y, int z);
+    public float getFogDensity(int x, int y, int z);
+    public int getFogColor(int x, int y, int z);
 }

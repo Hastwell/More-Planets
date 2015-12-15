@@ -15,20 +15,20 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenCandyFlower extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, int par3, int par4, int par5)
-	{
-		for (int i = 0; i < 64; ++i)
-		{
-			int i1 = par3 + rand.nextInt(8) - rand.nextInt(8);
-			int j1 = par4 + rand.nextInt(4) - rand.nextInt(4);
-			int k1 = par5 + rand.nextInt(8) - rand.nextInt(8);
+    @Override
+    public boolean generate(World world, Random rand, int par3, int par4, int par5)
+    {
+        for (int i = 0; i < 64; ++i)
+        {
+            int i1 = par3 + rand.nextInt(8) - rand.nextInt(8);
+            int j1 = par4 + rand.nextInt(4) - rand.nextInt(4);
+            int k1 = par5 + rand.nextInt(8) - rand.nextInt(8);
 
-			if (world.isAirBlock(i1, j1, k1) && (!world.provider.hasNoSky || j1 < 127) && (world.getFullBlockLightValue(i1, j1, k1) >= 8 || world.canBlockSeeTheSky(i1, j1, k1)) && FronosBlocks.candy_flower.canPlaceBlockOnSide(world, i1, j1, k1, 1))
-			{
-				world.setBlock(i1, j1, k1, FronosBlocks.candy_flower, rand.nextInt(7), 2);
-			}
-		}
-		return true;
-	}
+            if (world.isAirBlock(i1, j1, k1) && (!world.provider.hasNoSky || j1 < 127) && (world.getFullBlockLightValue(i1, j1, k1) >= 8 || world.canBlockSeeTheSky(i1, j1, k1)) && FronosBlocks.candy_flower.canPlaceBlockOnSide(world, i1, j1, k1, 1))
+            {
+                world.setBlock(i1, j1, k1, FronosBlocks.candy_flower, rand.nextInt(7), 2);
+            }
+        }
+        return true;
+    }
 }

@@ -16,21 +16,21 @@ import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoi
 
 public class ItemBlockIcyPoisonCrystal extends ItemBlockMorePlanet
 {
-	public ItemBlockIcyPoisonCrystal(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockIcyPoisonCrystal(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public boolean placeBlockAt(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata)
-	{
-		boolean placed = super.placeBlockAt(itemStack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
+    @Override
+    public boolean placeBlockAt(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata)
+    {
+        boolean placed = super.placeBlockAt(itemStack, player, world, x, y, z, side, hitX, hitY, hitZ, metadata);
 
-		if (placed && metadata <= 6)
-		{
-			TileEntityIcyPoisonCrystal ts = (TileEntityIcyPoisonCrystal)world.getTileEntity(x, y, z);
-			ts.orientation = (short)side;
-		}
-		return placed;
-	}
+        if (placed && metadata <= 6)
+        {
+            TileEntityIcyPoisonCrystal ts = (TileEntityIcyPoisonCrystal)world.getTileEntity(x, y, z);
+            ts.orientation = (short)side;
+        }
+        return placed;
+    }
 }

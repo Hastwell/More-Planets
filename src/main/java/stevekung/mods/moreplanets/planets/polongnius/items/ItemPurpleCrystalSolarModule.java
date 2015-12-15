@@ -18,31 +18,31 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPurpleCrystalSolarModule extends ItemBaseMP
 {
-	public ItemPurpleCrystalSolarModule(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemPurpleCrystalSolarModule(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			par3List.add(new ItemStack(par1, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            par3List.add(new ItemStack(par1, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "purple_crystal_wafer", "purple_crystal_solar_wafer", "purple_crystal_solar_single", "purple_crystal_solar_panel", };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "purple_crystal_wafer", "purple_crystal_solar_wafer", "purple_crystal_solar_single", "purple_crystal_solar_panel", };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "polongnius";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "polongnius";
+    }
 }

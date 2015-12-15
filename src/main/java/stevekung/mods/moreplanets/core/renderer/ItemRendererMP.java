@@ -39,28 +39,28 @@ import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
 
 public class ItemRendererMP
 {
-	private static IModelCustom rocketModel = AdvancedModelLoader.loadModel(new ResourceLocation("galacticraftasteroids:models/tier3rocket.obj"));
+    private static IModelCustom rocketModel = AdvancedModelLoader.loadModel(new ResourceLocation("galacticraftasteroids:models/tier3rocket.obj"));
 
-	public static void registerItemRenderers()
-	{
-		MinecraftForgeClient.registerItemRenderer(MPItems.flag, new ItemRendererFlagMP());
-		MinecraftForgeClient.registerItemRenderer(DionaItems.diona_dungeon_key, new ItemRendererKey(new ResourceLocation("diona:textures/model/diona_treasure_chest.png")));
-		MinecraftForgeClient.registerItemRenderer(PolongniusItems.polongnius_dungeon_key, new ItemRendererKey(new ResourceLocation("polongnius:textures/model/polongnius_treasure_chest.png")));
-		MinecraftForgeClient.registerItemRenderer(NibiruItems.nibiru_dungeon_key, new ItemRendererKey(new ResourceLocation("nibiru:textures/model/nibiru_treasure_chest.png")));
-		MinecraftForgeClient.registerItemRenderer(DionaItems.tier4_rocket, new ItemRendererTier4Rocket(new ModelRocketNoFlagMP()));
-		MinecraftForgeClient.registerItemRenderer(FronosItems.fronos_dungeon_key, new ItemRendererKey(new ResourceLocation("fronos:textures/model/fronos_treasure_chest.png")));
-		MinecraftForgeClient.registerItemRenderer(PolongniusItems.tier5_rocket, new ItemRendererTier5Rocket(new ModelRocketNoFlagMP()));
-		MinecraftForgeClient.registerItemRenderer(KapteynBItems.kapteyn_b_dungeon_key, new ItemRendererKey(new ResourceLocation("kapteynb:textures/model/kapteyn_b_treasure_chest.png")));
-		MinecraftForgeClient.registerItemRenderer(NibiruItems.tier6_rocket, new ItemRendererTier6Rocket(new ModelRocketNoFlagMP()));
-		MinecraftForgeClient.registerItemRenderer(FronosItems.cup, new ItemRendererCup(new ModelEmptyCup(), new ModelFilledCup()));
-		MinecraftForgeClient.registerItemRenderer(KoentusItems.koentus_meteor_chunk, new ItemRendererKoentusMeteorChunk());
-		MinecraftForgeClient.registerItemRenderer(PolongniusItems.polongnius_meteor_chunk, new ItemRendererPolongniusMeteorChunk());
-		MinecraftForgeClient.registerItemRenderer(SiriusBItems.sirius_b_dungeon_key, new ItemRendererKey(new ResourceLocation("siriusb:textures/model/sirius_b_treasure_chest.png")));
-		MinecraftForgeClient.registerItemRenderer(FronosItems.tier7_rocket, new ItemRendererTier7Rocket(ItemRendererMP.rocketModel));
-		MinecraftForgeClient.registerItemRenderer(KapteynBItems.tier8_rocket, new ItemRendererTier8Rocket(ItemRendererMP.rocketModel));
-		MinecraftForgeClient.registerItemRenderer(FronosItems.candy_bow, new ItemRendererCandyBow());
-		MinecraftForgeClient.registerItemRenderer(VenusItems.venus_dungeon_key, new ItemRendererKey(new ResourceLocation("venus:textures/model/venus_treasure_chest.png")));
-		MinecraftForgeClient.registerItemRenderer(MPItems.tier_2_thermal_padding, new ItemRendererTier2ThermalArmor());
-		MinecraftForgeClient.registerItemRenderer(MPItems.tier_3_thermal_padding, new ItemRendererTier3ThermalArmor());
-	}
+    public static void registerItemRenderers()
+    {
+        MinecraftForgeClient.registerItemRenderer(MPItems.flag, new ItemRendererFlagMP());
+        MinecraftForgeClient.registerItemRenderer(DionaItems.diona_dungeon_key, new ItemRendererKey(new ResourceLocation("diona:textures/model/diona_treasure_chest.png")));
+        MinecraftForgeClient.registerItemRenderer(PolongniusItems.polongnius_dungeon_key, new ItemRendererKey(new ResourceLocation("polongnius:textures/model/polongnius_treasure_chest.png")));
+        MinecraftForgeClient.registerItemRenderer(NibiruItems.nibiru_dungeon_key, new ItemRendererKey(new ResourceLocation("nibiru:textures/model/nibiru_treasure_chest.png")));
+        MinecraftForgeClient.registerItemRenderer(DionaItems.tier4_rocket, new ItemRendererTier4Rocket(new ModelRocketNoFlagMP()));
+        MinecraftForgeClient.registerItemRenderer(FronosItems.fronos_dungeon_key, new ItemRendererKey(new ResourceLocation("fronos:textures/model/fronos_treasure_chest.png")));
+        MinecraftForgeClient.registerItemRenderer(PolongniusItems.tier5_rocket, new ItemRendererTier5Rocket(new ModelRocketNoFlagMP()));
+        MinecraftForgeClient.registerItemRenderer(KapteynBItems.kapteyn_b_dungeon_key, new ItemRendererKey(new ResourceLocation("kapteynb:textures/model/kapteyn_b_treasure_chest.png")));
+        MinecraftForgeClient.registerItemRenderer(NibiruItems.tier6_rocket, new ItemRendererTier6Rocket(new ModelRocketNoFlagMP()));
+        MinecraftForgeClient.registerItemRenderer(FronosItems.cup, new ItemRendererCup(new ModelEmptyCup(), new ModelFilledCup()));
+        MinecraftForgeClient.registerItemRenderer(KoentusItems.koentus_meteor_chunk, new ItemRendererKoentusMeteorChunk());
+        MinecraftForgeClient.registerItemRenderer(PolongniusItems.polongnius_meteor_chunk, new ItemRendererPolongniusMeteorChunk());
+        MinecraftForgeClient.registerItemRenderer(SiriusBItems.sirius_b_dungeon_key, new ItemRendererKey(new ResourceLocation("siriusb:textures/model/sirius_b_treasure_chest.png")));
+        MinecraftForgeClient.registerItemRenderer(FronosItems.tier7_rocket, new ItemRendererTier7Rocket(ItemRendererMP.rocketModel));
+        MinecraftForgeClient.registerItemRenderer(KapteynBItems.tier8_rocket, new ItemRendererTier8Rocket(ItemRendererMP.rocketModel));
+        MinecraftForgeClient.registerItemRenderer(FronosItems.candy_bow, new ItemRendererCandyBow());
+        MinecraftForgeClient.registerItemRenderer(VenusItems.venus_dungeon_key, new ItemRendererKey(new ResourceLocation("venus:textures/model/venus_treasure_chest.png")));
+        MinecraftForgeClient.registerItemRenderer(MPItems.tier_2_thermal_padding, new ItemRendererTier2ThermalArmor());
+        MinecraftForgeClient.registerItemRenderer(MPItems.tier_3_thermal_padding, new ItemRendererTier3ThermalArmor());
+    }
 }

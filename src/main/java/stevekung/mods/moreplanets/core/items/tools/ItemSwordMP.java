@@ -20,47 +20,47 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSwordMP extends ItemSword
 {
-	public Item repairItems;
-	public int repairItemsMeta;
-	public String texture;
-	public boolean isMeteoric;
+    public Item repairItems;
+    public int repairItemsMeta;
+    public String texture;
+    public boolean isMeteoric;
 
-	public ItemSwordMP(String name, ToolMaterial material, Item item, int meta, String texture)
-	{
-		super(material);
-		this.repairItems = item;
-		this.repairItemsMeta = meta;
-		this.texture = texture;
-		this.setUnlocalizedName(name);
-	}
+    public ItemSwordMP(String name, ToolMaterial material, Item item, int meta, String texture)
+    {
+        super(material);
+        this.repairItems = item;
+        this.repairItemsMeta = meta;
+        this.texture = texture;
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpToolsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpToolsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		this.itemIcon = iconRegister.registerIcon(this.texture);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister)
+    {
+        this.itemIcon = iconRegister.registerIcon(this.texture);
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (itemStack2.getItem() == this.repairItems && itemStack2.getItemDamage() == this.repairItemsMeta)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (itemStack2.getItem() == this.repairItems && itemStack2.getItemDamage() == this.repairItemsMeta)
+        {
+            return true;
+        }
+        return false;
+    }
 }

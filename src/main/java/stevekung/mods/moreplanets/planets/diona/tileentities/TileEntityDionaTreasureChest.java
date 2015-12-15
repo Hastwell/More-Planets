@@ -13,26 +13,26 @@ import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 
 public class TileEntityDionaTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityDionaTreasureChest()
-	{
-		super(4);
-	}
+    public TileEntityDionaTreasureChest()
+    {
+        super(4);
+    }
 
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 4;
-	}
+    @Override
+    public int getTreasureChestTier()
+    {
+        return 4;
+    }
 
-	@Override
-	public String getTreasureChestName()
-	{
-		return "diona";
-	}
+    @Override
+    public String getTreasureChestName()
+    {
+        return "diona";
+    }
 
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return DionaBlocks.diona_treasure_chest;
-	}
+    @Override
+    public Block getTreasureChestBlock()
+    {
+        return DionaBlocks.diona_treasure_chest;
+    }
 }

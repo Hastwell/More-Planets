@@ -34,177 +34,177 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNibiruFarmland extends BlockBaseMP
 {
-	private IIcon wet;
-	private IIcon dry;
+    private IIcon wet;
+    private IIcon dry;
 
-	public BlockNibiruFarmland(String name)
-	{
-		super(Material.ground);
-		this.setTickRandomly(true);
-		this.setStepSound(Block.soundTypeGravel);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
-		this.setHardness(0.55F);
-		this.setBlockName(name);
-	}
+    public BlockNibiruFarmland(String name)
+    {
+        super(Material.ground);
+        this.setTickRandomly(true);
+        this.setStepSound(Block.soundTypeGravel);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
+        this.setHardness(0.55F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int par2, int par3, int par4)
-	{
-		float f = 0.0F;
-		return AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + 1, par3 + 1 - f, par4 + 1);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int par2, int par3, int par4)
+    {
+        float f = 0.0F;
+        return AxisAlignedBB.getBoundingBox(par2, par3, par4, par2 + 1, par3 + 1 - f, par4 + 1);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant)
+    {
+        return true;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
-		return par1 == 1 ? par2 > 0 ? this.wet : this.dry : NibiruBlocks.infected_dirt.getBlockTextureFromSide(par1);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int par1, int par2)
+    {
+        return par1 == 1 ? par2 > 0 ? this.wet : this.dry : NibiruBlocks.infected_dirt.getBlockTextureFromSide(par1);
+    }
 
-	@Override
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
-	{
-		if (!this.isWaterNearby(par1World, par2, par3, par4) && !par1World.canLightningStrikeAt(par2, par3 + 1, par4))
-		{
-			int meta = par1World.getBlockMetadata(par2, par3, par4);
+    @Override
+    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+    {
+        if (!this.isWaterNearby(par1World, par2, par3, par4) && !par1World.canLightningStrikeAt(par2, par3 + 1, par4))
+        {
+            int meta = par1World.getBlockMetadata(par2, par3, par4);
 
-			if (meta > 0)
-			{
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, meta - 1, 2);
-			}
-			else if (!this.isCropsNearby(par1World, par2, par3, par4))
-			{
-				par1World.setBlock(par2, par3, par4, NibiruBlocks.infected_dirt);
-			}
-		}
-		else
-		{
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 7, 2);
-		}
-	}
+            if (meta > 0)
+            {
+                par1World.setBlockMetadataWithNotify(par2, par3, par4, meta - 1, 2);
+            }
+            else if (!this.isCropsNearby(par1World, par2, par3, par4))
+            {
+                par1World.setBlock(par2, par3, par4, NibiruBlocks.infected_dirt);
+            }
+        }
+        else
+        {
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 7, 2);
+        }
+    }
 
-	@Override
-	public void onFallenUpon(World par1World, int par2, int par3, int par4, Entity par5Entity, float par6)
-	{
-		if (!par1World.isRemote && par1World.rand.nextFloat() < par6 - 0.5F)
-		{
-			if (!(par5Entity instanceof EntityPlayer) && !par1World.getGameRules().getGameRuleBooleanValue("mobGriefing"))
-			{
-				return;
-			}
-			par1World.setBlock(par2, par3, par4, NibiruBlocks.infected_dirt);
-		}
-	}
+    @Override
+    public void onFallenUpon(World par1World, int par2, int par3, int par4, Entity par5Entity, float par6)
+    {
+        if (!par1World.isRemote && par1World.rand.nextFloat() < par6 - 0.5F)
+        {
+            if (!(par5Entity instanceof EntityPlayer) && !par1World.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+            {
+                return;
+            }
+            par1World.setBlock(par2, par3, par4, NibiruBlocks.infected_dirt);
+        }
+    }
 
-	private boolean isCropsNearby(World par1World, int par2, int par3, int par4)
-	{
-		byte b0 = 0;
+    private boolean isCropsNearby(World par1World, int par2, int par3, int par4)
+    {
+        byte b0 = 0;
 
-		for (int l = par2 - b0; l <= par2 + b0; ++l)
-		{
-			for (int i1 = par4 - b0; i1 <= par4 + b0; ++i1)
-			{
-				Block plant = par1World.getBlock(l, par3 + 1, i1);
+        for (int l = par2 - b0; l <= par2 + b0; ++l)
+        {
+            for (int i1 = par4 - b0; i1 <= par4 + b0; ++i1)
+            {
+                Block plant = par1World.getBlock(l, par3 + 1, i1);
 
-				if (plant instanceof IPlantable && this.canSustainPlant(par1World, par2, par3, par4, ForgeDirection.UP, (IPlantable)plant))
-				{
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+                if (plant instanceof IPlantable && this.canSustainPlant(par1World, par2, par3, par4, ForgeDirection.UP, (IPlantable)plant))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	private boolean isWaterNearby(World par1World, int par2, int par3, int par4)
-	{
-		for (int l = par2 - 4; l <= par2 + 4; ++l)
-		{
-			for (int i1 = par3; i1 <= par3 + 1; ++i1)
-			{
-				for (int j1 = par4 - 4; j1 <= par4 + 4; ++j1)
-				{
-					if (par1World.getBlock(l, i1, j1).getMaterial() == Material.water)
-					{
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
+    private boolean isWaterNearby(World par1World, int par2, int par3, int par4)
+    {
+        for (int l = par2 - 4; l <= par2 + 4; ++l)
+        {
+            for (int i1 = par3; i1 <= par3 + 1; ++i1)
+            {
+                for (int j1 = par4 - 4; j1 <= par4 + 4; ++j1)
+                {
+                    if (par1World.getBlock(l, i1, j1).getMaterial() == Material.water)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5)
-	{
-		super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
-		Block block = par1World.getBlock(par2, par3 + 1, par4);
+    @Override
+    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5)
+    {
+        super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
+        Block block = par1World.getBlock(par2, par3 + 1, par4);
 
-		if (block.getMaterial().isSolid())
-		{
-			par1World.setBlock(par2, par3, par4, NibiruBlocks.infected_dirt);
-		}
-	}
+        if (block.getMaterial().isSolid())
+        {
+            par1World.setBlock(par2, par3, par4, NibiruBlocks.infected_dirt);
+        }
+    }
 
-	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		return Item.getItemFromBlock(NibiruBlocks.infected_dirt);
-	}
+    @Override
+    public Item getItemDropped(int par1, Random par2Random, int par3)
+    {
+        return Item.getItemFromBlock(NibiruBlocks.infected_dirt);
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, int x, int y, int z)
-	{
-		return new ItemStack(NibiruBlocks.infected_dirt, 1, 0);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, int x, int y, int z)
+    {
+        return new ItemStack(NibiruBlocks.infected_dirt, 1, 0);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.wet = par1IconRegister.registerIcon("nibiru:infected_farmland_wet");
-		this.dry = par1IconRegister.registerIcon("nibiru:infected_farmland_dry");
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.wet = par1IconRegister.registerIcon("nibiru:infected_farmland_wet");
+        this.dry = par1IconRegister.registerIcon("nibiru:infected_farmland_dry");
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
-	{
-		super.harvestBlock(world, player, x, y, z, fortune);
-		MorePlanetEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int fortune)
+    {
+        super.harvestBlock(world, player, x, y, z, fortune);
+        MorePlanetEvents.addInfectedGas(player);
+    }
 
-	@Override
-	public boolean isFertile(World world, int x, int y, int z)
-	{
-		return world.getBlockMetadata(x, y, z) > 0;
-	}
+    @Override
+    public boolean isFertile(World world, int x, int y, int z)
+    {
+        return world.getBlockMetadata(x, y, z) > 0;
+    }
 
-	@Override
-	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
-	{
-		return side != DOWN && side != UP;
-	}
+    @Override
+    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side)
+    {
+        return side != DOWN && side != UP;
+    }
 }

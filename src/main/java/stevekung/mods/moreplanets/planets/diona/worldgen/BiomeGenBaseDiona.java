@@ -21,18 +21,18 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
 
 public class BiomeGenBaseDiona extends BiomeGenBaseMP
 {
-	public static BiomeGenBase diona = new BiomeGenBaseDiona().setBiomeName("Diona");
+    public static BiomeGenBase diona = new BiomeGenBaseDiona().setBiomeName("Diona");
 
-	public BiomeGenBaseDiona()
-	{
-		super(ConfigManagerMP.idDionaBiome);
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityDionaMinionCreeper.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
-		this.spawnableCreatureList.add(new SpawnListEntry(EntitySpaceWolf.class, 8, 4, 4));
-	}
+    public BiomeGenBaseDiona()
+    {
+        super(ConfigManagerMP.idDionaBiome);
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityDionaMinionCreeper.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntitySpaceWolf.class, 8, 4, 4));
+    }
 }

@@ -26,73 +26,73 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCreamBall extends ItemBaseMP
 {
-	public ItemCreamBall(String name)
-	{
-		super();
-		this.setMaxStackSize(16);
-		this.setUnlocalizedName(name);
-	}
+    public ItemCreamBall(String name)
+    {
+        super();
+        this.setMaxStackSize(16);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!player.capabilities.isCreativeMode)
-		{
-			--itemStack.stackSize;
-		}
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!player.capabilities.isCreativeMode)
+        {
+            --itemStack.stackSize;
+        }
 
-		int meta = itemStack.getItemDamage();
-		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (Item.itemRand.nextFloat() * 0.4F + 0.8F));
+        int meta = itemStack.getItemDamage();
+        world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (Item.itemRand.nextFloat() * 0.4F + 0.8F));
 
-		if (!world.isRemote)
-		{
-			if (meta == 0)
-			{
-				world.spawnEntityInWorld(new EntityVanillaCreamBall(world, player));
-			}
-			else if (meta == 1)
-			{
-				world.spawnEntityInWorld(new EntityChocolateCreamBall(world, player));
-			}
-			else if (meta == 2)
-			{
-				world.spawnEntityInWorld(new EntityStrawberryCreamBall(world, player));
-			}
-			else if (meta == 3)
-			{
-				world.spawnEntityInWorld(new EntityOrangeCreamBall(world, player));
-			}
-			else if (meta == 4)
-			{
-				world.spawnEntityInWorld(new EntityTeaCreamBall(world, player));
-			}
-			else if (meta == 5)
-			{
-				world.spawnEntityInWorld(new EntityLemonCreamBall(world, player));
-			}
-		}
-		return itemStack;
-	}
+        if (!world.isRemote)
+        {
+            if (meta == 0)
+            {
+                world.spawnEntityInWorld(new EntityVanillaCreamBall(world, player));
+            }
+            else if (meta == 1)
+            {
+                world.spawnEntityInWorld(new EntityChocolateCreamBall(world, player));
+            }
+            else if (meta == 2)
+            {
+                world.spawnEntityInWorld(new EntityStrawberryCreamBall(world, player));
+            }
+            else if (meta == 3)
+            {
+                world.spawnEntityInWorld(new EntityOrangeCreamBall(world, player));
+            }
+            else if (meta == 4)
+            {
+                world.spawnEntityInWorld(new EntityTeaCreamBall(world, player));
+            }
+            else if (meta == 5)
+            {
+                world.spawnEntityInWorld(new EntityLemonCreamBall(world, player));
+            }
+        }
+        return itemStack;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			par3List.add(new ItemStack(par1, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            par3List.add(new ItemStack(par1, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "vanilla_cream_ball", "chocolate_cream_ball", "strawberry_cream_ball", "orange_cream_ball", "tea_cream_ball", "lemon_cream_ball" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "vanilla_cream_ball", "chocolate_cream_ball", "strawberry_cream_ball", "orange_cream_ball", "tea_cream_ball", "lemon_cream_ball" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "fronos";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "fronos";
+    }
 }

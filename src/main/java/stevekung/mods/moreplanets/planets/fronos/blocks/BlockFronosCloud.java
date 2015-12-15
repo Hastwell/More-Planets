@@ -29,108 +29,108 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFronosCloud extends BlockBreakable
 {
-	private IIcon[] cloudIcon;
+    private IIcon[] cloudIcon;
 
-	public BlockFronosCloud(String name)
-	{
-		super("", Material.cloth, false);
-		this.setStepSound(Block.soundTypeCloth);
-		this.setHardness(0.55F);
-		this.setBlockName(name);
-	}
+    public BlockFronosCloud(String name)
+    {
+        super("", Material.cloth, false);
+        this.setStepSound(Block.soundTypeCloth);
+        this.setHardness(0.55F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.cloudIcon = new IIcon[2];
-		this.cloudIcon[0] = par1IconRegister.registerIcon("fronos:strawberry_cloud");
-		this.cloudIcon[1] = par1IconRegister.registerIcon("fronos:rainbow_cloud");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.cloudIcon = new IIcon[2];
+        this.cloudIcon[0] = par1IconRegister.registerIcon("fronos:strawberry_cloud");
+        this.cloudIcon[1] = par1IconRegister.registerIcon("fronos:rainbow_cloud");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.cloudIcon[meta];
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.cloudIcon[meta];
+    }
 
-	@Override
-	public int getDamageValue(World world, int x, int y, int z)
-	{
-		return world.getBlockMetadata(x, y, z);
-	}
+    @Override
+    public int getDamageValue(World world, int x, int y, int z)
+    {
+        return world.getBlockMetadata(x, y, z);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random par2Random, int par3)
-	{
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random par2Random, int par3)
+    {
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		float f = 0.999F;
-		return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+    {
+        float f = 0.999F;
+        return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		if (entity instanceof EntityPlayer)
-		{
-			if (entity.motionY < 0)
-			{
-				entity.motionY *= 0.0005D;
-				entity.fallDistance = 0.0F;
-				return;
-			}
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        if (entity instanceof EntityPlayer)
+        {
+            if (entity.motionY < 0)
+            {
+                entity.motionY *= 0.0005D;
+                entity.fallDistance = 0.0F;
+                return;
+            }
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
-	{
-		return super.shouldSideBeRendered(world, x, y, z, 1 - side);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+    {
+        return super.shouldSideBeRendered(world, x, y, z, 1 - side);
+    }
 }

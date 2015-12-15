@@ -12,20 +12,20 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityEledosEgg extends TileEntity
 {
-	public int timeToHatch = -1;
+    public int timeToHatch = -1;
 
-	@Override
-	public void updateEntity()
-	{
-		super.updateEntity();
+    @Override
+    public void updateEntity()
+    {
+        super.updateEntity();
 
-		if (!this.worldObj.isRemote)
-		{
-			if (this.timeToHatch > 0)
-			{
-				this.timeToHatch--;
-			}
-			/*else if (this.timeToHatch == 0)
+        if (!this.worldObj.isRemote)
+        {
+            if (this.timeToHatch > 0)
+            {
+                this.timeToHatch--;
+            }
+            /*else if (this.timeToHatch == 0)
 			{
 				this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord);
 
@@ -41,20 +41,20 @@ public class TileEntityEledosEgg extends TileEntity
 				eledos.setAttackTarget((EntityLivingBase) null);
 				this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
 			}*/
-		}
-	}
+        }
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		this.timeToHatch = nbt.getInteger("TimeToHatch");
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        this.timeToHatch = nbt.getInteger("TimeToHatch");
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
-		nbt.setInteger("TimeToHatch", this.timeToHatch);
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
+        nbt.setInteger("TimeToHatch", this.timeToHatch);
+    }
 }

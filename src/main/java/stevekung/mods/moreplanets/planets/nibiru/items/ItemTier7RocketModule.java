@@ -21,44 +21,44 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier7RocketModule extends ItemBaseMP
 {
-	public ItemTier7RocketModule(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemTier7RocketModule(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
-	{
-		if (player.worldObj.isRemote)
-		{
-			if (itemStack.getItemDamage() == 2)
-			{
-				list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.tier7.name"));
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4)
+    {
+        if (player.worldObj.isRemote)
+        {
+            if (itemStack.getItemDamage() == 2)
+            {
+                list.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.tier7.name"));
+            }
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "tier7_rocket_engine", "tier7_booster", "tier7_heavy_duty_plate", "tier7_rocket_fin", "tier7_nose_cone" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "tier7_rocket_engine", "tier7_booster", "tier7_heavy_duty_plate", "tier7_rocket_fin", "tier7_nose_cone" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "nibiru";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "nibiru";
+    }
 }

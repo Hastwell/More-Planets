@@ -20,50 +20,50 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderBearry extends RenderLiving
 {
-	private static final ResourceLocation bearryTextures = new ResourceLocation("fronos:textures/model/bearry.png");
+    private static final ResourceLocation bearryTextures = new ResourceLocation("fronos:textures/model/bearry.png");
 
-	public RenderBearry()
-	{
-		super(new ModelBearry(), 0.5F);
-	}
+    public RenderBearry()
+    {
+        super(new ModelBearry(), 0.5F);
+    }
 
-	protected ResourceLocation bearryTexture(EntityBearry par1EntityBearry)
-	{
-		return RenderBearry.bearryTextures;
-	}
+    protected ResourceLocation bearryTexture(EntityBearry par1EntityBearry)
+    {
+        return RenderBearry.bearryTextures;
+    }
 
-	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderBearry((EntityBearry)par1Entity, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderBearry((EntityBearry)par1Entity, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.renderBearry((EntityBearry)par1EntityLiving, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.renderBearry((EntityBearry)par1EntityLiving, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.bearryTexture((EntityBearry)par1Entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.bearryTexture((EntityBearry)par1Entity);
+    }
 
-	public void renderBearry(EntityBearry par1EntityBearry, double par2, double par4, double par6, float par8, float par9)
-	{
-		super.doRender(par1EntityBearry, par2, par4, par6, par8, par9);
-	}
+    public void renderBearry(EntityBearry par1EntityBearry, double par2, double par4, double par6, float par8, float par9)
+    {
+        super.doRender(par1EntityBearry, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected float getDeathMaxRotation(EntityLivingBase par1EntityLiving)
-	{
-		return 90.0F;
-	}
+    @Override
+    protected float getDeathMaxRotation(EntityLivingBase par1EntityLiving)
+    {
+        return 90.0F;
+    }
 
-	@Override
-	protected int shouldRenderPass(EntityLivingBase par1EntityLiving, int par2, float par3)
-	{
-		return -1;
-	}
+    @Override
+    protected int shouldRenderPass(EntityLivingBase par1EntityLiving, int par2, float par3)
+    {
+        return -1;
+    }
 }

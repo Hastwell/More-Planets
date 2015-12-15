@@ -30,49 +30,49 @@ import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityEledosEgg
 
 public class BlockEledosEgg extends Block implements ITileEntityProvider
 {
-	private IIcon koentusEggCrack;
+    private IIcon koentusEggCrack;
 
-	public BlockEledosEgg(String name)
-	{
-		super(Material.rock);
-		this.setHardness(0.75F);
-		this.setBlockName(name);
-		this.setBlockBounds(0.125F, 0.0F, 0.1F, 0.875F, 0.70F, 0.9F);
-	}
+    public BlockEledosEgg(String name)
+    {
+        super(Material.rock);
+        this.setHardness(0.75F);
+        this.setBlockName(name);
+        this.setBlockBounds(0.125F, 0.0F, 0.1F, 0.875F, 0.70F, 0.9F);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		this.blockIcon = iconRegister.registerIcon("koentus:eledos_egg");
-		this.koentusEggCrack = iconRegister.registerIcon("koentus:eledos_egg_crack");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+        this.blockIcon = iconRegister.registerIcon("koentus:eledos_egg");
+        this.koentusEggCrack = iconRegister.registerIcon("koentus:eledos_egg_crack");
+    }
 
-	@Override
-	public boolean canBlockStay(World par1World, int par2, int par3, int par4)
-	{
-		final Block block = par1World.getBlock(par2, par3 - 1, par4);
+    @Override
+    public boolean canBlockStay(World par1World, int par2, int par3, int par4)
+    {
+        final Block block = par1World.getBlock(par2, par3 - 1, par4);
 
-		if (block != Blocks.air)
-		{
-			return block.isSideSolid(par1World, par2, par3, par4, ForgeDirection.UP);
-		}
-		return false;
-	}
+        if (block != Blocks.air)
+        {
+            return block.isSideSolid(par1World, par2, par3, par4, ForgeDirection.UP);
+        }
+        return false;
+    }
 
-	@Override
-	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z)
-	{
-		final ItemStack currentStack = player.getCurrentEquippedItem();
+    @Override
+    public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z)
+    {
+        final ItemStack currentStack = player.getCurrentEquippedItem();
 
-		if (currentStack != null && currentStack.getItem() instanceof ItemPickaxe)
-		{
-			return world.setBlockToAir(x, y, z);
-		}
-		else if (player.capabilities.isCreativeMode)
-		{
-			return world.setBlockToAir(x, y, z);
-		}
-		/*else if (l < 1)
+        if (currentStack != null && currentStack.getItem() instanceof ItemPickaxe)
+        {
+            return world.setBlockToAir(x, y, z);
+        }
+        else if (player.capabilities.isCreativeMode)
+        {
+            return world.setBlockToAir(x, y, z);
+        }
+        /*else if (l < 1)
 		{
 			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
 
@@ -84,92 +84,92 @@ public class BlockEledosEgg extends Block implements ITileEntityProvider
 			}
 			return false;
 		}*///TODO
-		else
-		{
-			return false;
-		}
-	}
+        else
+        {
+            return false;
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer par2EntityPlayer, int x, int y, int z, int par6)
-	{
-		final ItemStack currentStack = par2EntityPlayer.getCurrentEquippedItem();
+    @Override
+    public void harvestBlock(World world, EntityPlayer par2EntityPlayer, int x, int y, int z, int par6)
+    {
+        final ItemStack currentStack = par2EntityPlayer.getCurrentEquippedItem();
 
-		if (currentStack != null && currentStack.getItem() instanceof ItemPickaxe)
-		{
-			par2EntityPlayer.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(this)], 1);
-			par2EntityPlayer.addExhaustion(0.025F);
-			this.dropBlockAsItem(world, x, y, z, 0, 0);
-		}
-	}
+        if (currentStack != null && currentStack.getItem() instanceof ItemPickaxe)
+        {
+            par2EntityPlayer.addStat(StatList.mineBlockStatArray[Block.getIdFromBlock(this)], 1);
+            par2EntityPlayer.addExhaustion(0.025F);
+            this.dropBlockAsItem(world, x, y, z, 0, 0);
+        }
+    }
 
-	@Override
-	public IIcon getIcon(int side, int metadata)
-	{
-		if (metadata == 1)
-		{
-			return this.koentusEggCrack;
-		}
-		return this.blockIcon;
-	}
+    @Override
+    public IIcon getIcon(int side, int metadata)
+    {
+        if (metadata == 1)
+        {
+            return this.koentusEggCrack;
+        }
+        return this.blockIcon;
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return MorePlanetsCore.proxy.getBlockRender(this);
-	}
+    @Override
+    public int getRenderType()
+    {
+        return MorePlanetsCore.proxy.getBlockRender(this);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random random, int par3)
-	{
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random random, int par3)
+    {
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return 0;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return 0;
+    }
 
-	@Override
-	public int quantityDropped(int meta, int fortune, Random random)
-	{
-		return 1;
-	}
+    @Override
+    public int quantityDropped(int meta, int fortune, Random random)
+    {
+        return 1;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		return new TileEntityEledosEgg();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new TileEntityEledosEgg();
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
-	{
-		final int metadata = world.getBlockMetadata(x, y, z);
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
+    {
+        final int metadata = world.getBlockMetadata(x, y, z);
 
-		if (metadata == 1)
-		{
-			return new ItemStack(Item.getItemFromBlock(this), 1, 0);
-		}
-		return super.getPickBlock(target, world, x, y, z);
-	}
+        if (metadata == 1)
+        {
+            return new ItemStack(Item.getItemFromBlock(this), 1, 0);
+        }
+        return super.getPickBlock(target, world, x, y, z);
+    }
 }

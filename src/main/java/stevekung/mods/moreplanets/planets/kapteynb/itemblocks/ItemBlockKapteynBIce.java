@@ -12,20 +12,20 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockKapteynBIce extends ItemBlockBaseMP
 {
-	public ItemBlockKapteynBIce(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockKapteynBIce(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "default", "dirty" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "default", "dirty" };
+    }
 
-	@Override
-	public boolean reverseName()
-	{
-		return true;
-	}
+    @Override
+    public boolean reverseName()
+    {
+        return true;
+    }
 }

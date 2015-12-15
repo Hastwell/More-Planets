@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class TileEntityFronosAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return FronosBlocks.fronos_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return FronosBlocks.fronos_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "fronos";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "fronos";
+    }
 }

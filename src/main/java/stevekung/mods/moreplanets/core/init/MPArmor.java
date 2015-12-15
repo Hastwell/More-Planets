@@ -17,14 +17,14 @@ import stevekung.mods.moreplanets.planets.siriusb.items.armor.SiriusBArmorItems;
 
 public class MPArmor
 {
-	public static void init()
-	{
-		DionaArmorItems.init();
-		PolongniusArmorItems.init();
-		NibiruArmorItems.init();
-		KoentusArmorItems.init();
-		FronosArmorItems.init();
-		KapteynBArmorItems.init();
-		SiriusBArmorItems.init();
-	}
+    public static void init()
+    {
+        DionaArmorItems.init();
+        PolongniusArmorItems.init();
+        NibiruArmorItems.init();
+        KoentusArmorItems.init();
+        FronosArmorItems.init();
+        KapteynBArmorItems.init();
+        SiriusBArmorItems.init();
+    }
 }

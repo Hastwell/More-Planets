@@ -15,21 +15,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockFronosSapling extends ItemBlockBaseMP
 {
-	public ItemBlockFronosSapling(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosSapling(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int meta)
-	{
-		return this.field_150939_a.getIcon(0, meta);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.field_150939_a.getIcon(0, meta);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "coconut", "red_maple", "yellow_maple", "purple_maple" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "coconut", "red_maple", "yellow_maple", "purple_maple" };
+    }
 }

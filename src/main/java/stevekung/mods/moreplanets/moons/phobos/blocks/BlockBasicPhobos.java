@@ -27,131 +27,131 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBasicPhobos extends BlockBasicMP implements IDetectableResource, ITerraformableBlock
 {
-	private IIcon[] phobosBlockIcon;
+    private IIcon[] phobosBlockIcon;
 
-	public BlockBasicPhobos(String name)
-	{
-		super(Material.rock);
-		this.setBlockName(name);
-	}
+    public BlockBasicPhobos(String name)
+    {
+        super(Material.rock);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.phobosBlockIcon = new IIcon[9];
-		this.phobosBlockIcon[0] = par1IconRegister.registerIcon("phobos:phobos_surface_rock");
-		this.phobosBlockIcon[1] = par1IconRegister.registerIcon("phobos:phobos_sub_surface_rock");
-		this.phobosBlockIcon[2] = par1IconRegister.registerIcon("phobos:phobos_rock");
-		this.phobosBlockIcon[3] = par1IconRegister.registerIcon("phobos:phobos_cobblestone");
-		this.phobosBlockIcon[4] = par1IconRegister.registerIcon("phobos:phobos_tin_ore");
-		this.phobosBlockIcon[5] = par1IconRegister.registerIcon("phobos:phobos_copper_ore");
-		this.phobosBlockIcon[6] = par1IconRegister.registerIcon("phobos:phobos_iron_ore");
-		this.phobosBlockIcon[7] = par1IconRegister.registerIcon("phobos:phobos_desh_ore");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.phobosBlockIcon = new IIcon[9];
+        this.phobosBlockIcon[0] = par1IconRegister.registerIcon("phobos:phobos_surface_rock");
+        this.phobosBlockIcon[1] = par1IconRegister.registerIcon("phobos:phobos_sub_surface_rock");
+        this.phobosBlockIcon[2] = par1IconRegister.registerIcon("phobos:phobos_rock");
+        this.phobosBlockIcon[3] = par1IconRegister.registerIcon("phobos:phobos_cobblestone");
+        this.phobosBlockIcon[4] = par1IconRegister.registerIcon("phobos:phobos_tin_ore");
+        this.phobosBlockIcon[5] = par1IconRegister.registerIcon("phobos:phobos_copper_ore");
+        this.phobosBlockIcon[6] = par1IconRegister.registerIcon("phobos:phobos_iron_ore");
+        this.phobosBlockIcon[7] = par1IconRegister.registerIcon("phobos:phobos_desh_ore");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.phobosBlockIcon[meta];
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.phobosBlockIcon[meta];
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 8; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 8; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public float getBlockHardness(World world, int par2, int par3, int par4)
-	{
-		int meta = world.getBlockMetadata(par2, par3, par4);
+    @Override
+    public float getBlockHardness(World world, int par2, int par3, int par4)
+    {
+        int meta = world.getBlockMetadata(par2, par3, par4);
 
-		if (meta == 2)
-		{
-			return 1.75F;
-		}
-		if (meta == 3)
-		{
-			return 1.5F;
-		}
-		if (meta == 0 || meta == 1)
-		{
-			return 2.5F;
-		}
-		if (meta >= 4)
-		{
-			return 3.0F;
-		}
-		return 1.0F;
-	}
+        if (meta == 2)
+        {
+            return 1.75F;
+        }
+        if (meta == 3)
+        {
+            return 1.5F;
+        }
+        if (meta == 0 || meta == 1)
+        {
+            return 2.5F;
+        }
+        if (meta >= 4)
+        {
+            return 3.0F;
+        }
+        return 1.0F;
+    }
 
-	@Override
-	public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
-	{
-		int meta = world.getBlockMetadata(x, y, z);
+    @Override
+    public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
+    {
+        int meta = world.getBlockMetadata(x, y, z);
 
-		if (meta <= 1)
-		{
-			return 2.0F;
-		}
-		if (meta >= 2)
-		{
-			return 6.0F;
-		}
-		return this.blockResistance / 5.0F;
-	}
+        if (meta <= 1)
+        {
+            return 2.0F;
+        }
+        if (meta >= 2)
+        {
+            return 6.0F;
+        }
+        return this.blockResistance / 5.0F;
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		if (meta == 2)
-		{
-			return 3;
-		}
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        if (meta == 2)
+        {
+            return 3;
+        }
+        return meta;
+    }
 
-	@Override
-	public boolean isValueable(int meta)
-	{
-		if (meta >= 4 && meta <= 7)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean isValueable(int meta)
+    {
+        if (meta >= 4 && meta <= 7)
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, int x, int y, int z)
-	{
-		int meta = world.getBlockMetadata(x, y, z);
+    @Override
+    public boolean isTerraformable(World world, int x, int y, int z)
+    {
+        int meta = world.getBlockMetadata(x, y, z);
 
-		if ((meta == 0 || meta == 1) && !world.getBlock(x, y + 1, z).isOpaqueCube())
-		{
-			return true;
-		}
-		return false;
-	}
+        if ((meta == 0 || meta == 1) && !world.getBlock(x, y + 1, z).isOpaqueCube())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public int getDungeonSpawnerMetadata()
-	{
-		return -1;
-	}
+    @Override
+    public int getDungeonSpawnerMetadata()
+    {
+        return -1;
+    }
 
-	@Override
-	public TileEntity getDungeonSpawner()
-	{
-		return null;
-	}
+    @Override
+    public TileEntity getDungeonSpawner()
+    {
+        return null;
+    }
 }

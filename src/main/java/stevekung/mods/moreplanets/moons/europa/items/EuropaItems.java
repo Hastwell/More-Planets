@@ -18,39 +18,39 @@ import stevekung.mods.stevecore.RegisterHelper;
 
 public class EuropaItems
 {
-	public static Item europa_water_bucket;
-	public static Item europa_apple;
-	public static Item europa_door;
-	public static Item europa_food;
-	public static Item europa_gunpowder;
+    public static Item europa_water_bucket;
+    public static Item europa_apple;
+    public static Item europa_door;
+    public static Item europa_food;
+    public static Item europa_gunpowder;
 
-	public static void init()
-	{
-		EuropaItems.initItems();
-		EuropaItems.registerItems();
-		EuropaItems.registerFluidContainer();
-	}
+    public static void init()
+    {
+        EuropaItems.initItems();
+        EuropaItems.registerItems();
+        EuropaItems.registerFluidContainer();
+    }
 
-	private static void initItems()
-	{
-		EuropaItems.europa_water_bucket = new ItemEuropaWaterBucket("europa_water_bucket");
-		EuropaItems.europa_apple = new ItemEuropaApple("europa_apple");
-		EuropaItems.europa_door = new ItemDoorMP("europa_door", DoorType.EUROPA);
-		EuropaItems.europa_food = new ItemEuropaFood("europa_food");
-		EuropaItems.europa_gunpowder = new ItemMorePlanet("europa_gunpowder", "europa");
-	}
+    private static void initItems()
+    {
+        EuropaItems.europa_water_bucket = new ItemEuropaWaterBucket("europa_water_bucket");
+        EuropaItems.europa_apple = new ItemEuropaApple("europa_apple");
+        EuropaItems.europa_door = new ItemDoorMP("europa_door", DoorType.EUROPA);
+        EuropaItems.europa_food = new ItemEuropaFood("europa_food");
+        EuropaItems.europa_gunpowder = new ItemMorePlanet("europa_gunpowder", "europa");
+    }
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(EuropaItems.europa_water_bucket);
-		RegisterHelper.registerItem(EuropaItems.europa_apple);
-		RegisterHelper.registerItem(EuropaItems.europa_door);
-		RegisterHelper.registerItem(EuropaItems.europa_food);
-		RegisterHelper.registerItem(EuropaItems.europa_gunpowder);
-	}
+    private static void registerItems()
+    {
+        RegisterHelper.registerItem(EuropaItems.europa_water_bucket);
+        RegisterHelper.registerItem(EuropaItems.europa_apple);
+        RegisterHelper.registerItem(EuropaItems.europa_door);
+        RegisterHelper.registerItem(EuropaItems.europa_food);
+        RegisterHelper.registerItem(EuropaItems.europa_gunpowder);
+    }
 
-	private static void registerFluidContainer()
-	{
-		RegisterHelper.registerFluidContainer(EuropaBlocks.europa_water_fluid, new ItemStack(EuropaItems.europa_water_bucket), new ItemStack(Items.bucket));
-	}
+    private static void registerFluidContainer()
+    {
+        RegisterHelper.registerFluidContainer(EuropaBlocks.europa_water_fluid, new ItemStack(EuropaItems.europa_water_bucket), new ItemStack(Items.bucket));
+    }
 }

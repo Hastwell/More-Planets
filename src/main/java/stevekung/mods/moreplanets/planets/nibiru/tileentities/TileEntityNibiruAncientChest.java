@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
 public class TileEntityNibiruAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return NibiruBlocks.nibiru_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return NibiruBlocks.nibiru_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "nibiru";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "nibiru";
+    }
 }

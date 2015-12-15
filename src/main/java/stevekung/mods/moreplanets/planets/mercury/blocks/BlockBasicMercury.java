@@ -29,148 +29,148 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBasicMercury extends BlockBasicMP implements IDetectableResource, ITerraformableBlock
 {
-	private IIcon[] mercuryBlockIcon;
+    private IIcon[] mercuryBlockIcon;
 
-	public BlockBasicMercury(String name)
-	{
-		super(Material.rock);
-		this.setBlockName(name);
-	}
+    public BlockBasicMercury(String name)
+    {
+        super(Material.rock);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.mercuryBlockIcon = new IIcon[13];
-		this.mercuryBlockIcon[0] = par1IconRegister.registerIcon("mercury:mercury_surface_rock");
-		this.mercuryBlockIcon[1] = par1IconRegister.registerIcon("mercury:mercury_sub_surface_rock");
-		this.mercuryBlockIcon[2] = par1IconRegister.registerIcon("mercury:mercury_rock");
-		this.mercuryBlockIcon[3] = par1IconRegister.registerIcon("mercury:mercury_cobblestone");
-		this.mercuryBlockIcon[4] = par1IconRegister.registerIcon("mercury:mercury_tin_ore");
-		this.mercuryBlockIcon[5] = par1IconRegister.registerIcon("mercury:mercury_copper_ore");
-		this.mercuryBlockIcon[6] = par1IconRegister.registerIcon("mercury:mercury_aluminum_ore");
-		this.mercuryBlockIcon[7] = par1IconRegister.registerIcon("mercury:mercury_iron_ore");
-		this.mercuryBlockIcon[8] = par1IconRegister.registerIcon("mercury:metal_meteoric_iron_ore");
-		this.mercuryBlockIcon[9] = par1IconRegister.registerIcon("mercury:mercury_silicate_rock");
-		this.mercuryBlockIcon[10] = par1IconRegister.registerIcon("mercury:solid_metal_meteoric_iron");
-		this.mercuryBlockIcon[11] = par1IconRegister.registerIcon("mercury:mercury_dungeon_brick");
-		this.mercuryBlockIcon[12] = par1IconRegister.registerIcon("galacticraftcore:blank");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.mercuryBlockIcon = new IIcon[13];
+        this.mercuryBlockIcon[0] = par1IconRegister.registerIcon("mercury:mercury_surface_rock");
+        this.mercuryBlockIcon[1] = par1IconRegister.registerIcon("mercury:mercury_sub_surface_rock");
+        this.mercuryBlockIcon[2] = par1IconRegister.registerIcon("mercury:mercury_rock");
+        this.mercuryBlockIcon[3] = par1IconRegister.registerIcon("mercury:mercury_cobblestone");
+        this.mercuryBlockIcon[4] = par1IconRegister.registerIcon("mercury:mercury_tin_ore");
+        this.mercuryBlockIcon[5] = par1IconRegister.registerIcon("mercury:mercury_copper_ore");
+        this.mercuryBlockIcon[6] = par1IconRegister.registerIcon("mercury:mercury_aluminum_ore");
+        this.mercuryBlockIcon[7] = par1IconRegister.registerIcon("mercury:mercury_iron_ore");
+        this.mercuryBlockIcon[8] = par1IconRegister.registerIcon("mercury:metal_meteoric_iron_ore");
+        this.mercuryBlockIcon[9] = par1IconRegister.registerIcon("mercury:mercury_silicate_rock");
+        this.mercuryBlockIcon[10] = par1IconRegister.registerIcon("mercury:solid_metal_meteoric_iron");
+        this.mercuryBlockIcon[11] = par1IconRegister.registerIcon("mercury:mercury_dungeon_brick");
+        this.mercuryBlockIcon[12] = par1IconRegister.registerIcon("galacticraftcore:blank");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.mercuryBlockIcon[meta];
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.mercuryBlockIcon[meta];
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 12; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 12; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public float getBlockHardness(World world, int par2, int par3, int par4)
-	{
-		int meta = world.getBlockMetadata(par2, par3, par4);
+    @Override
+    public float getBlockHardness(World world, int par2, int par3, int par4)
+    {
+        int meta = world.getBlockMetadata(par2, par3, par4);
 
-		if (meta == 2)
-		{
-			return 2.75F;
-		}
-		if (meta == 3)
-		{
-			return 2.5F;
-		}
-		if (meta == 0 || meta == 1 || meta >= 4 && meta <= 9)
-		{
-			return 3.0F;
-		}
-		if (meta >= 10 && meta <= 13)
-		{
-			return 3.25F;
-		}
-		if (meta == 14)
-		{
-			return 4.0F;
-		}
-		if (meta == 15)
-		{
-			return -1.0F;
-		}
-		return 1.0F;
-	}
+        if (meta == 2)
+        {
+            return 2.75F;
+        }
+        if (meta == 3)
+        {
+            return 2.5F;
+        }
+        if (meta == 0 || meta == 1 || meta >= 4 && meta <= 9)
+        {
+            return 3.0F;
+        }
+        if (meta >= 10 && meta <= 13)
+        {
+            return 3.25F;
+        }
+        if (meta == 14)
+        {
+            return 4.0F;
+        }
+        if (meta == 15)
+        {
+            return -1.0F;
+        }
+        return 1.0F;
+    }
 
-	@Override
-	public boolean isBeaconBase(IBlockAccess world, int x, int y, int z, int beaconX, int beaconY, int beaconZ)
-	{
-		return world.getBlockMetadata(x, y, z) == 10;
-	}
+    @Override
+    public boolean isBeaconBase(IBlockAccess world, int x, int y, int z, int beaconX, int beaconY, int beaconZ)
+    {
+        return world.getBlockMetadata(x, y, z) == 10;
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune)
-	{
-		if (meta == 8)
-		{
-			return MercuryItems.mercury_item;
-		}
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random rand, int fortune)
+    {
+        if (meta == 8)
+        {
+            return MercuryItems.mercury_item;
+        }
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		if (meta == 2)
-		{
-			return 3;
-		}
-		if (meta == 8)
-		{
-			return 1;
-		}
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        if (meta == 2)
+        {
+            return 3;
+        }
+        if (meta == 8)
+        {
+            return 1;
+        }
+        return meta;
+    }
 
-	@Override
-	public boolean isValueable(int meta)
-	{
-		if (meta >= 4 && meta <= 7)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean isValueable(int meta)
+    {
+        if (meta >= 4 && meta <= 7)
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, int x, int y, int z)
-	{
-		int meta = world.getBlockMetadata(x, y, z);
+    @Override
+    public boolean isTerraformable(World world, int x, int y, int z)
+    {
+        int meta = world.getBlockMetadata(x, y, z);
 
-		if ((meta == 0 || meta == 1) && !world.getBlock(x, y + 1, z).isOpaqueCube())
-		{
-			return true;
-		}
-		return false;
-	}
+        if ((meta == 0 || meta == 1) && !world.getBlock(x, y + 1, z).isOpaqueCube())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public int getDungeonSpawnerMetadata()
-	{
-		return 12;
-	}
+    @Override
+    public int getDungeonSpawnerMetadata()
+    {
+        return 12;
+    }
 
-	@Override
-	public boolean hasTileEntity(int meta)
-	{
-		return meta == 12;
-	}
+    @Override
+    public boolean hasTileEntity(int meta)
+    {
+        return meta == 12;
+    }
 
-	@Override
-	public TileEntity getDungeonSpawner()
-	{
-		return new TileEntityMercuryDungeonSpawner();
-	}
+    @Override
+    public TileEntity getDungeonSpawner()
+    {
+        return new TileEntityMercuryDungeonSpawner();
+    }
 }

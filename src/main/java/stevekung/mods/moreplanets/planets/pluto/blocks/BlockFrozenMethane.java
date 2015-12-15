@@ -21,64 +21,64 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFrozenMethane extends BlockBreakable
 {
-	public BlockFrozenMethane(String name)
-	{
-		super("pluto:frozen_methane_block", Material.ice, false);
-		this.slipperiness = 1.1F;
-		this.setBlockName(name);
-		this.setHardness(4.0F);
-		this.setResistance(8.0F);
-		this.setStepSound(soundTypeGlass);
-	}
+    public BlockFrozenMethane(String name)
+    {
+        super("pluto:frozen_methane_block", Material.ice, false);
+        this.slipperiness = 1.1F;
+        this.setBlockName(name);
+        this.setHardness(4.0F);
+        this.setResistance(8.0F);
+        this.setStepSound(soundTypeGlass);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
-	{
-		return super.shouldSideBeRendered(world, x, y, z, 1 - side);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+    {
+        return super.shouldSideBeRendered(world, x, y, z, 1 - side);
+    }
 
-	@Override
-	public int getMobilityFlag()
-	{
-		return 0;
-	}
+    @Override
+    public int getMobilityFlag()
+    {
+        return 0;
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta)
-	{
-		ItemStack itemStack = player.getCurrentEquippedItem();
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta)
+    {
+        ItemStack itemStack = player.getCurrentEquippedItem();
+        player.addExhaustion(0.025F);
 
-		if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
-		{
-			if (world.rand.nextInt(10) == 0)
-			{
-				world.setBlock(x, y, z, PlutoBlocks.liquid_methane);
-			}
-		}
-		if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
-		{
-			this.dropBlockAsItem(world, x, y, z, meta, 0);
-		}
-	}
+        if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
+        {
+            if (world.rand.nextInt(10) == 0)
+            {
+                world.setBlock(x, y, z, PlutoBlocks.liquid_methane);
+            }
+        }
+        if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
+        {
+            this.dropBlockAsItem(world, x, y, z, meta, 0);
+        }
+    }
 }

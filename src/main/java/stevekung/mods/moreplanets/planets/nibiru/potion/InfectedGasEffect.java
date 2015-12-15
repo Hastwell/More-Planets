@@ -16,36 +16,36 @@ import stevekung.mods.moreplanets.core.util.DamageSourceMP;
 
 public class InfectedGasEffect extends Potion
 {
-	public InfectedGasEffect(int id, boolean isBad, int color)
-	{
-		super(id, isBad, color);
-		this.setIconIndex(1, 0);
-	}
+    public InfectedGasEffect(int id, boolean isBad, int color)
+    {
+        super(id, isBad, color);
+        this.setIconIndex(1, 0);
+    }
 
-	@Override
-	public int getStatusIconIndex()
-	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("mpcore:textures/potions/MPPotionFX.png"));
-		return 0;
-	}
+    @Override
+    public int getStatusIconIndex()
+    {
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("mpcore:textures/potions/MPPotionFX.png"));
+        return 0;
+    }
 
-	@Override
-	public boolean isReady(int duration, int amplifier)
-	{
-		if (this.id == MPPotions.infected_gas.id)
-		{
-			int k = 20 >> amplifier;
-			return k > 0 ? duration % k == 0 : true;
-		}
-		return false;
-	}
+    @Override
+    public boolean isReady(int duration, int amplifier)
+    {
+        if (this.id == MPPotions.infected_gas.id)
+        {
+            int k = 20 >> amplifier;
+            return k > 0 ? duration % k == 0 : true;
+        }
+        return false;
+    }
 
-	@Override
-	public void performEffect(EntityLivingBase living, int food)
-	{
-		if (this.id == MPPotions.infected_gas.id)
-		{
-			living.attackEntityFrom(DamageSourceMP.infectedGas, 1.0F);
-		}
-	}
+    @Override
+    public void performEffect(EntityLivingBase living, int food)
+    {
+        if (this.id == MPPotions.infected_gas.id)
+        {
+            living.attackEntityFrom(DamageSourceMP.infectedGas, 1.0F);
+        }
+    }
 }

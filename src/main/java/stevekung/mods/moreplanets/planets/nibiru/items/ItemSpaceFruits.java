@@ -24,106 +24,106 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSpaceFruits extends ItemFoodMP
 {
-	private static final int[] foodHunger = new int[] {
-		4,
-		4,
-		5
-	};
-	private static final float[] foodSaturation = new float[] {
-		0.2F,
-		0.4F,
-		0.6F
-	};
+    private static final int[] foodHunger = new int[] {
+        4,
+        4,
+        5
+    };
+    private static final float[] foodSaturation = new float[] {
+        0.2F,
+        0.4F,
+        0.6F
+    };
 
-	public ItemSpaceFruits(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setHasSubtypes(true);
-	}
+    public ItemSpaceFruits(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	protected void onFoodEaten(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!world.isRemote)
-		{
-			if (itemStack.getItemDamage() == 2)
-			{
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 4000, 1));
-				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2500, 1));
-			}
-		}
-	}
+    @Override
+    protected void onFoodEaten(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!world.isRemote)
+        {
+            if (itemStack.getItemDamage() == 2)
+            {
+                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 4000, 1));
+                player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2500, 1));
+            }
+        }
+    }
 
-	@Override
-	public EnumAction getItemUseAction(ItemStack itemStack)
-	{
-		if (itemStack.getItem() == this && itemStack.getItemDamage() == 2)
-		{
-			return EnumAction.drink;
-		}
-		return EnumAction.eat;
-	}
+    @Override
+    public EnumAction getItemUseAction(ItemStack itemStack)
+    {
+        if (itemStack.getItem() == this && itemStack.getItemDamage() == 2)
+        {
+            return EnumAction.drink;
+        }
+        return EnumAction.eat;
+    }
 
-	@Override
-	public int getItemStackLimit(ItemStack itemStack)
-	{
-		if (itemStack.getItem() == this && itemStack.getItemDamage() == 2)
-		{
-			return 1;
-		}
-		return 64;
-	}
+    @Override
+    public int getItemStackLimit(ItemStack itemStack)
+    {
+        if (itemStack.getItem() == this && itemStack.getItemDamage() == 2)
+        {
+            return 1;
+        }
+        return 64;
+    }
 
-	@Override
-	public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		--itemStack.stackSize;
-		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(itemStack, world, player);
-		player.getFoodStats().func_151686_a(this, itemStack);
+    @Override
+    public ItemStack onEaten(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        --itemStack.stackSize;
+        world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+        this.onFoodEaten(itemStack, world, player);
+        player.getFoodStats().func_151686_a(this, itemStack);
 
-		if (itemStack.getItemDamage() == 2)
-		{
-			if (!player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle)))
-			{
-				player.entityDropItem(new ItemStack(Items.glass_bottle, 1, 0), 0.0F);
-			}
-		}
-		return itemStack;
-	}
+        if (itemStack.getItemDamage() == 2)
+        {
+            if (!player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle)))
+            {
+                player.entityDropItem(new ItemStack(Items.glass_bottle, 1, 0), 0.0F);
+            }
+        }
+        return itemStack;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	public int getFoodAmount(ItemStack itemStack)
-	{
-		return foodHunger[itemStack.getItemDamage()];
-	}
+    @Override
+    public int getFoodAmount(ItemStack itemStack)
+    {
+        return foodHunger[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public float getFoodSaturation(ItemStack itemStack)
-	{
-		return foodSaturation[itemStack.getItemDamage()];
-	}
+    @Override
+    public float getFoodSaturation(ItemStack itemStack)
+    {
+        return foodSaturation[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "space_apple", "space_orange", "orange_juice" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "space_apple", "space_orange", "orange_juice" };
+    }
 
-	@Override
-	public String getResourceLocation()
-	{
-		return "nibiru";
-	}
+    @Override
+    public String getResourceLocation()
+    {
+        return "nibiru";
+    }
 }

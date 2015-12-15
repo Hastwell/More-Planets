@@ -15,28 +15,28 @@ import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKaptey
 
 public class BlockKapteynBAncientChestTemp extends BlockAncientChestMP implements ITileEntityProvider
 {
-	public BlockKapteynBAncientChestTemp(String name)
-	{
-		super();
-		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
-		this.setBlockName(name);
-	}
+    public BlockKapteynBAncientChestTemp(String name)
+    {
+        super();
+        this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public String chestTexture()
-	{
-		return null;
-	}
+    @Override
+    public String chestTexture()
+    {
+        return null;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public TileEntity getChestTile()
-	{
-		return new TileEntityKapteynBAncientChestTemp();
-	}
+    @Override
+    public TileEntity getChestTile()
+    {
+        return new TileEntityKapteynBAncientChestTemp();
+    }
 }

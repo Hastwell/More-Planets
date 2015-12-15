@@ -162,7 +162,6 @@ public class BlockColorizedLeaves extends BlockLeavesBase implements IShearable
 		}
 
 		int meta = world.getBlockMetadata(x, y, z);
-		boolean isAir = world.getBlock(x, y - 1, z) instanceof BlockAir;
 
 		if ((meta & 8) != 0 && (meta & 4) == 0)
 		{
@@ -260,14 +259,36 @@ public class BlockColorizedLeaves extends BlockLeavesBase implements IShearable
 				this.removeLeaves(world, x, y, z);
 			}
 		}
-		if (meta == 0)
+
+		if (random.nextInt(100) == 0)
 		{
-			if (world.rand.nextInt(1500) == 0)
+			byte b0 = 8;
+			int l = 6;
+			int i1;
+			int j1;
+			int k1;
+
+			for (i1 = x - b0; i1 <= x + b0; ++i1)
 			{
-				if (isAir)
+				for (j1 = z - b0; j1 <= z + b0; ++j1)
 				{
-					world.setBlock(x, y - 1, z, FronosBlocks.coconut, 0, 3);
+					for (k1 = y - 1; k1 <= y + 1; ++k1)
+					{
+						if (world.getBlock(i1, k1, j1) == FronosBlocks.coconut)
+						{
+							--l;
+
+							if (l <= 0)
+							{
+								return;
+							}
+						}
+					}
 				}
+			}
+			if (world.getBlock(x, y - 1, z) instanceof BlockAir)
+			{
+				world.setBlock(x, y - 1, z, FronosBlocks.coconut);
 			}
 		}
 	}

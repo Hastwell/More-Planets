@@ -13,26 +13,26 @@ import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
 public class TileEntityPolongniusTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityPolongniusTreasureChest()
-	{
-		super(5);
-	}
+    public TileEntityPolongniusTreasureChest()
+    {
+        super(5);
+    }
 
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 5;
-	}
+    @Override
+    public int getTreasureChestTier()
+    {
+        return 5;
+    }
 
-	@Override
-	public String getTreasureChestName()
-	{
-		return "polongnius";
-	}
+    @Override
+    public String getTreasureChestName()
+    {
+        return "polongnius";
+    }
 
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return PolongniusBlocks.polongnius_treasure_chest;
-	}
+    @Override
+    public Block getTreasureChestBlock()
+    {
+        return PolongniusBlocks.polongnius_treasure_chest;
+    }
 }

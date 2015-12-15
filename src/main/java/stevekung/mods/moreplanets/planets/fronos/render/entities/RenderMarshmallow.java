@@ -23,64 +23,64 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderMarshmallow extends RenderLiving
 {
-	private static ResourceLocation marshmallowTextures = new ResourceLocation("fronos:textures/model/marshmallow.png");
+    private static ResourceLocation marshmallowTextures = new ResourceLocation("fronos:textures/model/marshmallow.png");
 
-	public RenderMarshmallow()
-	{
-		super(new ModelMarshmallow(), 0.35F);
-	}
+    public RenderMarshmallow()
+    {
+        super(new ModelMarshmallow(), 0.35F);
+    }
 
-	protected ResourceLocation marshmallowTexture(EntityMarshmallow marshmallow)
-	{
-		return RenderMarshmallow.marshmallowTextures;
-	}
+    protected ResourceLocation marshmallowTexture(EntityMarshmallow marshmallow)
+    {
+        return RenderMarshmallow.marshmallowTextures;
+    }
 
-	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.rendermarshmallow((EntityMarshmallow)par1Entity, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.rendermarshmallow((EntityMarshmallow)par1Entity, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-	{
-		this.rendermarshmallow((EntityMarshmallow)par1EntityLiving, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    {
+        this.rendermarshmallow((EntityMarshmallow)par1EntityLiving, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.marshmallowTexture((EntityMarshmallow)par1Entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.marshmallowTexture((EntityMarshmallow)par1Entity);
+    }
 
-	@Override
-	public void preRenderCallback(EntityLivingBase living, float par2)
-	{
-		this.preRenderCallback((EntityMarshmallow)living, par2);
-	}
+    @Override
+    public void preRenderCallback(EntityLivingBase living, float par2)
+    {
+        this.preRenderCallback((EntityMarshmallow)living, par2);
+    }
 
-	public void preRenderCallback(EntityMarshmallow living, float par2)
-	{
-		if (living.isSitting())
-		{
-			GL11.glScaled(0.8F, 0.8F, 0.8F);
-		}
-	}
+    public void preRenderCallback(EntityMarshmallow living, float par2)
+    {
+        if (living.isSitting())
+        {
+            GL11.glScaled(0.8F, 0.8F, 0.8F);
+        }
+    }
 
-	public void rendermarshmallow(EntityMarshmallow marshmallow, double par2, double par4, double par6, float par8, float par9)
-	{
-		super.doRender(marshmallow, par2, par4, par6, par8, par9);
-	}
+    public void rendermarshmallow(EntityMarshmallow marshmallow, double par2, double par4, double par6, float par8, float par9)
+    {
+        super.doRender(marshmallow, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected float getDeathMaxRotation(EntityLivingBase par1EntityLiving)
-	{
-		return 90.0F;
-	}
+    @Override
+    protected float getDeathMaxRotation(EntityLivingBase par1EntityLiving)
+    {
+        return 90.0F;
+    }
 
-	@Override
-	protected int shouldRenderPass(EntityLivingBase par1EntityLiving, int par2, float par3)
-	{
-		return -1;
-	}
+    @Override
+    protected int shouldRenderPass(EntityLivingBase par1EntityLiving, int par2, float par3)
+    {
+        return -1;
+    }
 }

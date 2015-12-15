@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 
 public class ItemBlockSpaceDecoration extends ItemBlockBaseMP
 {
-	public ItemBlockSpaceDecoration(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockSpaceDecoration(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "tin", "aluminum" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "tin", "aluminum" };
+    }
 }

@@ -20,63 +20,63 @@ import stevekung.mods.stevecore.RegisterHelper;
 
 public class DionaToolsItems
 {
-	public static Item quontonium_sword;
-	public static Item quontonium_shovel;
-	public static Item quontonium_pickaxe;
-	public static Item quontonium_axe;
-	public static Item quontonium_hoe;
-	public static Item fronisium_sword;
-	public static Item fronisium_shovel;
-	public static Item fronisium_pickaxe;
-	public static Item fronisium_axe;
-	public static Item fronisium_hoe;
+    public static Item quontonium_sword;
+    public static Item quontonium_shovel;
+    public static Item quontonium_pickaxe;
+    public static Item quontonium_axe;
+    public static Item quontonium_hoe;
+    public static Item fronisium_sword;
+    public static Item fronisium_shovel;
+    public static Item fronisium_pickaxe;
+    public static Item fronisium_axe;
+    public static Item fronisium_hoe;
 
-	/**Name,HarvestLevel,MaxUse,Efficiency,Damage,Enchantability**/
-	public static ToolMaterial quontonium = EnumHelper.addToolMaterial("quontonium", 4, 1648, 9.5F, 3.5F, 8);
-	public static ToolMaterial fronisium = EnumHelper.addToolMaterial("fronisium", 4, 1680, 9.5F, 3.75F, 8);
+    /**Name,HarvestLevel,MaxUse,Efficiency,Damage,Enchantability**/
+    public static ToolMaterial quontonium = EnumHelper.addToolMaterial("quontonium", 4, 1648, 9.5F, 3.5F, 8);
+    public static ToolMaterial fronisium = EnumHelper.addToolMaterial("fronisium", 4, 1680, 9.5F, 3.75F, 8);
 
-	public static void init()
-	{
-		DionaToolsItems.initItems();
-		DionaToolsItems.registerItems();
-		DionaToolsItems.registerHarvestLevels();
-	}
+    public static void init()
+    {
+        DionaToolsItems.initItems();
+        DionaToolsItems.registerItems();
+        DionaToolsItems.registerHarvestLevels();
+    }
 
-	private static void initItems()
-	{
-		DionaToolsItems.quontonium_sword = new ItemSwordMP("quontonium_sword", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_sword");
-		DionaToolsItems.quontonium_shovel = new ItemShovelMP("quontonium_spade", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_shovel");
-		DionaToolsItems.quontonium_pickaxe = new ItemPickaxeMP("quontonium_pickaxe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_pickaxe");
-		DionaToolsItems.quontonium_axe = new ItemAxeMP("quontonium_axe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_axe");
-		DionaToolsItems.quontonium_hoe = new ItemHoeMP("quontonium_hoe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_hoe");
-		DionaToolsItems.fronisium_sword = new ItemSwordMP("fronisium_sword", fronisium, DionaItems.diona_item, 3, "diona:fronisium_sword");
-		DionaToolsItems.fronisium_shovel = new ItemShovelMP("fronisium_spade", fronisium, DionaItems.diona_item, 3, "diona:fronisium_shovel");
-		DionaToolsItems.fronisium_pickaxe = new ItemPickaxeMP("fronisium_pickaxe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_pickaxe");
-		DionaToolsItems.fronisium_axe = new ItemAxeMP("fronisium_axe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_axe");
-		DionaToolsItems.fronisium_hoe = new ItemHoeMP("fronisium_hoe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_hoe");
-	}
+    private static void initItems()
+    {
+        DionaToolsItems.quontonium_sword = new ItemSwordMP("quontonium_sword", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_sword");
+        DionaToolsItems.quontonium_shovel = new ItemShovelMP("quontonium_spade", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_shovel");
+        DionaToolsItems.quontonium_pickaxe = new ItemPickaxeMP("quontonium_pickaxe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_pickaxe");
+        DionaToolsItems.quontonium_axe = new ItemAxeMP("quontonium_axe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_axe");
+        DionaToolsItems.quontonium_hoe = new ItemHoeMP("quontonium_hoe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_hoe");
+        DionaToolsItems.fronisium_sword = new ItemSwordMP("fronisium_sword", fronisium, DionaItems.diona_item, 3, "diona:fronisium_sword");
+        DionaToolsItems.fronisium_shovel = new ItemShovelMP("fronisium_spade", fronisium, DionaItems.diona_item, 3, "diona:fronisium_shovel");
+        DionaToolsItems.fronisium_pickaxe = new ItemPickaxeMP("fronisium_pickaxe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_pickaxe");
+        DionaToolsItems.fronisium_axe = new ItemAxeMP("fronisium_axe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_axe");
+        DionaToolsItems.fronisium_hoe = new ItemHoeMP("fronisium_hoe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_hoe");
+    }
 
-	private static void registerHarvestLevels()
-	{
-		DionaToolsItems.quontonium_shovel.setHarvestLevel("shovel", 4);
-		DionaToolsItems.quontonium_pickaxe.setHarvestLevel("pickaxe", 4);
-		DionaToolsItems.quontonium_axe.setHarvestLevel("axe", 4);
-		DionaToolsItems.fronisium_shovel.setHarvestLevel("shovel", 4);
-		DionaToolsItems.fronisium_pickaxe.setHarvestLevel("pickaxe", 4);
-		DionaToolsItems.fronisium_axe.setHarvestLevel("axe", 4);
-	}
+    private static void registerHarvestLevels()
+    {
+        DionaToolsItems.quontonium_shovel.setHarvestLevel("shovel", 4);
+        DionaToolsItems.quontonium_pickaxe.setHarvestLevel("pickaxe", 4);
+        DionaToolsItems.quontonium_axe.setHarvestLevel("axe", 4);
+        DionaToolsItems.fronisium_shovel.setHarvestLevel("shovel", 4);
+        DionaToolsItems.fronisium_pickaxe.setHarvestLevel("pickaxe", 4);
+        DionaToolsItems.fronisium_axe.setHarvestLevel("axe", 4);
+    }
 
-	private static void registerItems()
-	{
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_sword);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_shovel);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_pickaxe);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_axe);
-		RegisterHelper.registerItem(DionaToolsItems.quontonium_hoe);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_sword);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_shovel);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_pickaxe);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_axe);
-		RegisterHelper.registerItem(DionaToolsItems.fronisium_hoe);
-	}
+    private static void registerItems()
+    {
+        RegisterHelper.registerItem(DionaToolsItems.quontonium_sword);
+        RegisterHelper.registerItem(DionaToolsItems.quontonium_shovel);
+        RegisterHelper.registerItem(DionaToolsItems.quontonium_pickaxe);
+        RegisterHelper.registerItem(DionaToolsItems.quontonium_axe);
+        RegisterHelper.registerItem(DionaToolsItems.quontonium_hoe);
+        RegisterHelper.registerItem(DionaToolsItems.fronisium_sword);
+        RegisterHelper.registerItem(DionaToolsItems.fronisium_shovel);
+        RegisterHelper.registerItem(DionaToolsItems.fronisium_pickaxe);
+        RegisterHelper.registerItem(DionaToolsItems.fronisium_axe);
+        RegisterHelper.registerItem(DionaToolsItems.fronisium_hoe);
+    }
 }

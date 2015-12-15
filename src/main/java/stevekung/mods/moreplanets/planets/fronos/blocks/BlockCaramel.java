@@ -16,31 +16,31 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockCaramel extends BlockBaseMP
 {
-	public BlockCaramel(String name)
-	{
-		super(Material.cloth);
-		this.setBlockName(name);
-		this.setBlockTextureName("fronos:caramel_block");
-		this.setHardness(0.25F);
-	}
+    public BlockCaramel(String name)
+    {
+        super(Material.cloth);
+        this.setBlockName(name);
+        this.setBlockTextureName("fronos:caramel_block");
+        this.setHardness(0.25F);
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
-	{
-		float f = 0.125F;
-		return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+    {
+        float f = 0.125F;
+        return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
-	{
-		par5Entity.motionX *= 0.5D;
-		par5Entity.motionZ *= 0.5D;
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    {
+        par5Entity.motionX *= 0.5D;
+        par5Entity.motionZ *= 0.5D;
+    }
 
-	@Override
-	public boolean canHarvestBlock(EntityPlayer player, int meta)
-	{
-		return true;
-	}
+    @Override
+    public boolean canHarvestBlock(EntityPlayer player, int meta)
+    {
+        return true;
+    }
 }

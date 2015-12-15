@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockOreFronos extends ItemBlockBaseMP
 {
-	public ItemBlockOreFronos(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockOreFronos(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "iridium_block", "black_diamond_block" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "iridium_block", "black_diamond_block" };
+    }
 }

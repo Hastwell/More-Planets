@@ -15,49 +15,49 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class ItemBreathableQuontonium extends ItemBreathableArmor
 {
-	public ItemBreathableQuontonium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ItemBreathableQuontonium(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
-	{
-		if (stack.getItem() == DionaArmorItems.breathable_quontonium_helmet)
-		{
-			return "diona:textures/model/armor/breathable_quontonium_1.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
+    {
+        if (stack.getItem() == DionaArmorItems.breathable_quontonium_helmet)
+        {
+            return "diona:textures/model/armor/breathable_quontonium_1.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "diona:breathable_quontonium_helmet";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "diona:breathable_quontonium_helmet";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return DionaItems.diona_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return DionaItems.diona_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 2;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 2;
+    }
 
-	@Override
-	public EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    public EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	public Item getBreathableArmor()
-	{
-		return DionaArmorItems.breathable_quontonium_helmet;
-	}
+    @Override
+    public Item getBreathableArmor()
+    {
+        return DionaArmorItems.breathable_quontonium_helmet;
+    }
 }

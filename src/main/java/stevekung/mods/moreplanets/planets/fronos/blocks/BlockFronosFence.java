@@ -26,105 +26,105 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFronosFence extends BlockFence
 {
-	private IIcon[] fenceIcon;
+    private IIcon[] fenceIcon;
 
-	public BlockFronosFence(String name)
-	{
-		super(name, Material.wood);
-		this.setHardness(2.0F);
-		this.setStepSound(Block.soundTypeWood);
-		this.setBlockName(name);
-	}
+    public BlockFronosFence(String name)
+    {
+        super(name, Material.wood);
+        this.setHardness(2.0F);
+        this.setStepSound(Block.soundTypeWood);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public boolean canPlaceTorchOnTop(World world, int x, int y, int z)
-	{
-		return true;
-	}
+    @Override
+    public boolean canPlaceTorchOnTop(World world, int x, int y, int z)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean getBlocksMovement(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
-	{
-		return false;
-	}
+    @Override
+    public boolean getBlocksMovement(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    {
+        return false;
+    }
 
-	@Override
-	public boolean canConnectFenceTo(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
-	{
-		Block block = par1IBlockAccess.getBlock(par2, par3, par4);
+    @Override
+    public boolean canConnectFenceTo(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    {
+        Block block = par1IBlockAccess.getBlock(par2, par3, par4);
 
-		if (block != this && !(block instanceof BlockFenceGate) && !(block instanceof BlockFence))
-		{
-			return block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false;
-		}
-		return true;
-	}
+        if (block != this && !(block instanceof BlockFenceGate) && !(block instanceof BlockFence))
+        {
+            return block != null && block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd : false;
+        }
+        return true;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-	{
-		return true;
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+        return true;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.fenceIcon[meta];
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.fenceIcon[meta];
+    }
 
-	@Override
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return MorePlanetsCore.proxy.getBlockRender(this);
-	}
+    @Override
+    public int getRenderType()
+    {
+        return MorePlanetsCore.proxy.getBlockRender(this);
+    }
 
-	@Override
-	public int getDamageValue(World world, int x, int y, int z)
-	{
-		return world.getBlockMetadata(x, y, z);
-	}
+    @Override
+    public int getDamageValue(World world, int x, int y, int z)
+    {
+        return world.getBlockMetadata(x, y, z);
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.fenceIcon = new IIcon[2];
-		this.fenceIcon[0] = par1IconRegister.registerIcon("fronos:coconut_wood_planks");
-		this.fenceIcon[1] = par1IconRegister.registerIcon("fronos:maple_wood_planks");
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.fenceIcon = new IIcon[2];
+        this.fenceIcon[0] = par1IconRegister.registerIcon("fronos:coconut_wood_planks");
+        this.fenceIcon[1] = par1IconRegister.registerIcon("fronos:maple_wood_planks");
+    }
 }

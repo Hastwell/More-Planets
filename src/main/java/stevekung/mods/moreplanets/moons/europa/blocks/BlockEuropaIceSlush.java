@@ -14,18 +14,18 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockEuropaIceSlush extends BlockFalling
 {
-	public BlockEuropaIceSlush(String name)
-	{
-		super(Material.ground);
-		this.setHardness(0.5F);
-		this.setStepSound(soundTypeGravel);
-		this.setBlockName(name);
-		this.setBlockTextureName("europa:europa_ice_slush");
-	}
+    public BlockEuropaIceSlush(String name)
+    {
+        super(Material.ground);
+        this.setHardness(0.5F);
+        this.setStepSound(soundTypeGravel);
+        this.setBlockName(name);
+        this.setBlockTextureName("europa:europa_ice_slush");
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

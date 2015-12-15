@@ -25,64 +25,64 @@ import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
 public abstract class BlockGrassMP extends BlockBaseMP implements ITerraformableBlock
 {
-	public BlockGrassMP()
-	{
-		super(Material.grass);
-		this.setTickRandomly(true);
-		this.setStepSound(Block.soundTypeGrass);
-		this.setHardness(0.6F);
-	}
+    public BlockGrassMP()
+    {
+        super(Material.grass);
+        this.setTickRandomly(true);
+        this.setStepSound(Block.soundTypeGrass);
+        this.setHardness(0.6F);
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitVecX, float hitVecY, float hitVecZ)
-	{
-		if (player.getCurrentEquippedItem() != null)
-		{
-			if (player.getCurrentEquippedItem().getDisplayName().toLowerCase().contains("hoe"))
-			{
-				Block farmland = this.getFarmlandBlock();
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitVecX, float hitVecY, float hitVecZ)
+    {
+        if (player.getCurrentEquippedItem() != null)
+        {
+            if (player.getCurrentEquippedItem().getDisplayName().toLowerCase().contains("hoe"))
+            {
+                Block farmland = this.getFarmlandBlock();
 
-				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, farmland.stepSound.getStepResourcePath(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getPitch() * 0.8F);
+                world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, farmland.stepSound.getStepResourcePath(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getPitch() * 0.8F);
 
-				if (!world.isRemote)
-				{
-					world.setBlock(x, y, z, farmland, 0, 2);
-				}
-				player.getCurrentEquippedItem().damageItem(1, player);
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		else
-		{
-			return false;
-		}
-	}
+                if (!world.isRemote)
+                {
+                    world.setBlock(x, y, z, farmland, 0, 2);
+                }
+                player.getCurrentEquippedItem().damageItem(1, player);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection side, IPlantable plant)
-	{
-		Block block = plant.getPlant(world, x, y, z);
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection side, IPlantable plant)
+    {
+        Block block = plant.getPlant(world, x, y, z);
 
-		if (this instanceof IFronosGrass)
-		{
-			return block == FronosBlocks.candy_flower || block == FronosBlocks.dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_tall_grass || block == FronosBlocks.poppy || block == Blocks.deadbush || block == Blocks.reeds || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
-		}
-		if (this instanceof BlockInfectedGrass)
-		{
-			return block == NibiruBlocks.nibiru_sapling || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
-		}
-		return true && super.canSustainPlant(world, x, y, z, side, plant) || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
-	}
+        if (this instanceof IFronosGrass)
+        {
+            return block == FronosBlocks.candy_flower || block == FronosBlocks.dandelion || block == FronosBlocks.fronos_flower || block == FronosBlocks.fronos_sapling || block == FronosBlocks.fronos_tall_grass || block == FronosBlocks.poppy || block == Blocks.deadbush || block == Blocks.reeds || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
+        }
+        if (this instanceof BlockInfectedGrass)
+        {
+            return block == NibiruBlocks.nibiru_sapling || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
+        }
+        return true && super.canSustainPlant(world, x, y, z, side, plant) || plant.getPlantType(world, x, y ,z) == EnumPlantType.Plains;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, int x, int y, int z)
-	{
-		return !world.getBlock(x, y + 1, z).isOpaqueCube();
-	}
+    @Override
+    public boolean isTerraformable(World world, int x, int y, int z)
+    {
+        return !world.getBlock(x, y + 1, z).isOpaqueCube();
+    }
 
-	public abstract Block getFarmlandBlock();
+    public abstract Block getFarmlandBlock();
 }

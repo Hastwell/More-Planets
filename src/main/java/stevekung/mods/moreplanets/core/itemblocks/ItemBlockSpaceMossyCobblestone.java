@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 
 public class ItemBlockSpaceMossyCobblestone extends ItemBlockBaseMP
 {
-	public ItemBlockSpaceMossyCobblestone(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockSpaceMossyCobblestone(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "diona", "polongnius", "nibiru", "koentus", "kapteynb", "siriusb" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "diona", "polongnius", "nibiru", "koentus", "kapteynb", "siriusb", "venus", "mercury", "pluto", "martian" };
+    }
 }

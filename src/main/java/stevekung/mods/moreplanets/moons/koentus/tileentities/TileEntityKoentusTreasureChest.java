@@ -13,26 +13,26 @@ import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 
 public class TileEntityKoentusTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityKoentusTreasureChest()
-	{
-		super(4);
-	}
+    public TileEntityKoentusTreasureChest()
+    {
+        super(4);
+    }
 
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 4;
-	}
+    @Override
+    public int getTreasureChestTier()
+    {
+        return 4;
+    }
 
-	@Override
-	public String getTreasureChestName()
-	{
-		return "koentus";
-	}
+    @Override
+    public String getTreasureChestName()
+    {
+        return "koentus";
+    }
 
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return KoentusBlocks.koentus_treasure_chest;
-	}
+    @Override
+    public Block getTreasureChestBlock()
+    {
+        return KoentusBlocks.koentus_treasure_chest;
+    }
 }

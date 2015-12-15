@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 
 public class TileEntityPlutoAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return PlutoBlocks.pluto_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return PlutoBlocks.pluto_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "pluto";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "pluto";
+    }
 }

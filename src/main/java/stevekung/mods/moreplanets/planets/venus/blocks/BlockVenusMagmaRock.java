@@ -18,43 +18,43 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockVenusMagmaRock extends BlockBaseMP
 {
-	public BlockVenusMagmaRock(String name)
-	{
-		super(Material.rock);
-		this.setBlockName(name);
-		this.setHardness(2.5F);
-		this.setLightLevel(0.5F);
-		this.setBlockTextureName("venus:venus_magma_rock");
-	}
+    public BlockVenusMagmaRock(String name)
+    {
+        super(Material.rock);
+        this.setBlockName(name);
+        this.setHardness(2.5F);
+        this.setLightLevel(0.5F);
+        this.setBlockTextureName("venus:venus_magma_rock");
+    }
 
-	@Override
-	public boolean isFireSource(World world, int x, int y, int z, ForgeDirection side)
-	{
-		if (side == ForgeDirection.UP)
-		{
-			return true;
-		}
-		return super.isFireSource(world, x, y, z, side);
-	}
+    @Override
+    public boolean isFireSource(World world, int x, int y, int z, ForgeDirection side)
+    {
+        if (side == ForgeDirection.UP)
+        {
+            return true;
+        }
+        return super.isFireSource(world, x, y, z, side);
+    }
 
-	@Override
-	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
-	{
-		if (rand.nextInt(1) == 0)
-		{
-			world.spawnParticle("smoke", x + rand.nextFloat(), y + 1.1F, z + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
-		}
-	}
+    @Override
+    public void randomDisplayTick(World world, int x, int y, int z, Random rand)
+    {
+        if (rand.nextInt(1) == 0)
+        {
+            world.spawnParticle("smoke", x + rand.nextFloat(), y + 1.1F, z + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta)
-	{
-		player.addExhaustion(0.025F);
-		this.dropBlockAsItem(world, x, y, z, meta, 0);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta)
+    {
+        player.addExhaustion(0.025F);
+        this.dropBlockAsItem(world, x, y, z, meta, 0);
 
-		if (world.rand.nextInt(20) == 0)
-		{
-			world.setBlock(x, y, z, Blocks.flowing_lava);
-		}
-	}
+        if (world.rand.nextInt(20) == 0)
+        {
+            world.setBlock(x, y, z, Blocks.flowing_lava);
+        }
+    }
 }

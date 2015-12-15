@@ -13,26 +13,26 @@ import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 
 public class TileEntityMercuryTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityMercuryTreasureChest()
-	{
-		super(4);
-	}
+    public TileEntityMercuryTreasureChest()
+    {
+        super(4);
+    }
 
-	@Override
-	public int getTreasureChestTier()
-	{
-		return 4;
-	}
+    @Override
+    public int getTreasureChestTier()
+    {
+        return 4;
+    }
 
-	@Override
-	public String getTreasureChestName()
-	{
-		return "mercury";
-	}
+    @Override
+    public String getTreasureChestName()
+    {
+        return "mercury";
+    }
 
-	@Override
-	public Block getTreasureChestBlock()
-	{
-		return MercuryBlocks.mercury_treasure_chest;
-	}
+    @Override
+    public Block getTreasureChestBlock()
+    {
+        return MercuryBlocks.mercury_treasure_chest;
+    }
 }

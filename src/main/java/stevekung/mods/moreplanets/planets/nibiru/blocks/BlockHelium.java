@@ -23,74 +23,74 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockHelium extends BlockBreakable
 {
-	public BlockHelium(String name)
-	{
-		super("nibiru:helium_block", Material.cloth, false);
-		this.setStepSound(Block.soundTypeCloth);
-		this.blockHardness = 0.25F;
-		this.setResistance(0.5F);
-		this.setBlockName(name);
-	}
+    public BlockHelium(String name)
+    {
+        super("nibiru:helium_block", Material.cloth, false);
+        this.setStepSound(Block.soundTypeCloth);
+        this.blockHardness = 0.25F;
+        this.setResistance(0.5F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		if (entity instanceof EntityPlayer)
-		{
-			entity.motionY = 0.16F;
-			entity.fallDistance = 0.0F;
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        if (entity instanceof EntityPlayer)
+        {
+            entity.motionY = 0.16F;
+            entity.fallDistance = 0.0F;
 
-			if (((EntityPlayer)entity).capabilities.isFlying)
-			{
-				return;
-			}
-		}
-		if (entity instanceof EntityItem)
-		{
-			entity.motionY = 0.32F;
-			entity.fallDistance = 0.0F;
-		}
-		else
-		{
-			entity.motionY = 0.12F;
-			entity.fallDistance = 0.0F;
-		}
-	}
+            if (((EntityPlayer)entity).capabilities.isFlying)
+            {
+                return;
+            }
+        }
+        if (entity instanceof EntityItem)
+        {
+            entity.motionY = 0.32F;
+            entity.fallDistance = 0.0F;
+        }
+        else
+        {
+            entity.motionY = 0.12F;
+            entity.fallDistance = 0.0F;
+        }
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int var2, int var3, int var4)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int var2, int var3, int var4)
+    {
+        return null;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
+    @Override
+    public int getRenderBlockPass()
+    {
+        return 1;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
-	{
-		return super.shouldSideBeRendered(world, x, y, z, 1 - side);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
+    {
+        return super.shouldSideBeRendered(world, x, y, z, 1 - side);
+    }
 }

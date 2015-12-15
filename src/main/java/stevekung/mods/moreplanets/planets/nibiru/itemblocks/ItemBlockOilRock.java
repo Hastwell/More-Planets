@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockOilRock extends ItemBlockBaseMP
 {
-	public ItemBlockOilRock(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockOilRock(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "oil_rock", "oil_ore" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "oil_rock", "oil_ore" };
+    }
 }

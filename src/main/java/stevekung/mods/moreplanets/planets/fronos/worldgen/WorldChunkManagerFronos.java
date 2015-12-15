@@ -238,6 +238,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldChunkManagerSpace;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
@@ -262,6 +264,9 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 		this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.coconutForest);
 		this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.goldenField);
 		this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.purpleMapleForest);
+		this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.candyLand);
+		this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.grassyPlains);
+		this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.mapleForest);
 	}
 
 	public WorldChunkManagerFronos(long seed)
@@ -303,32 +308,32 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 	}
 
 	@Override
-	public float[] getRainfall(float[] par1, int x, int z, int width, int depth)
+	public float[] getRainfall(float[] listToReuse, int x, int z, int width, int depth)
 	{
 		IntCache.resetIntCache();
+
+		if (listToReuse == null || listToReuse.length < width * depth)
+		{
+			listToReuse = new float[width * depth];
+		}
+
 		int[] aint = this.zoomedBiomes.getInts(x, z, width, depth);
 
-		if (par1 == null || par1.length < width * depth)
-		{
-			par1 = new float[width * depth];
-		}
 		for (int i1 = 0; i1 < width * depth; ++i1)
 		{
-			float f = BiomeGenBase.getBiome(aint[i1]).getIntRainfall() / 65536.0F;
-
-			if (f > 1.0F)
+			try
 			{
-				f = 1.0F;
-			}
-			par1[i1] = f;
-		}
-		return par1;
-	}
+				float f = (float)BiomeGenBase.getBiome(aint[i1]).getIntRainfall() / 65536.0F;
 
-	@Override
-	public float getTemperatureAtHeight(float par1, int par2)
-	{
-		return par1;
+				if (f > 1.0F)
+				{
+					f = 1.0F;
+				}
+				listToReuse[i1] = f;
+			}
+			catch (Exception e) {}
+		}
+		return listToReuse;
 	}
 
 	@Override

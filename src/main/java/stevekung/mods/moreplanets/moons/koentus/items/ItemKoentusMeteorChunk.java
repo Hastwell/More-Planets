@@ -16,29 +16,29 @@ import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusMeteorChun
 
 public class ItemKoentusMeteorChunk extends ItemMorePlanet
 {
-	public ItemKoentusMeteorChunk(String name)
-	{
-		super();
-		this.setMaxStackSize(16);
-		this.setUnlocalizedName(name);
-		this.setTextureName("mpcore:blank");
-	}
+    public ItemKoentusMeteorChunk(String name)
+    {
+        super();
+        this.setMaxStackSize(16);
+        this.setUnlocalizedName(name);
+        this.setTextureName("mpcore:blank");
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!player.capabilities.isCreativeMode)
-		{
-			--itemStack.stackSize;
-		}
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!player.capabilities.isCreativeMode)
+        {
+            --itemStack.stackSize;
+        }
 
-		world.playSoundAtEntity(player, "random.bow", 1.0F, 0.0001F / (Item.itemRand.nextFloat() * 0.1F));
+        world.playSoundAtEntity(player, "random.bow", 1.0F, 0.0001F / (Item.itemRand.nextFloat() * 0.1F));
 
-		if (!world.isRemote)
-		{
-			EntityKoentusMeteorChunk meteor = new EntityKoentusMeteorChunk(world, player, 1.0F);
-			world.spawnEntityInWorld(meteor);
-		}
-		return itemStack;
-	}
+        if (!world.isRemote)
+        {
+            EntityKoentusMeteorChunk meteor = new EntityKoentusMeteorChunk(world, player, 1.0F);
+            world.spawnEntityInWorld(meteor);
+        }
+        return itemStack;
+    }
 }

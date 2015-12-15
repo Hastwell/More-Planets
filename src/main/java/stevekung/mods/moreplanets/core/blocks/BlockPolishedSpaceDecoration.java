@@ -21,42 +21,42 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPolishedSpaceDecoration extends BlockBaseMP
 {
-	private IIcon[] spaceBlockIcon;
+    private IIcon[] spaceBlockIcon;
 
-	public BlockPolishedSpaceDecoration(String name)
-	{
-		super(Material.rock);
-		this.setHardness(1.0F);
-		this.setBlockName(name);
-	}
+    public BlockPolishedSpaceDecoration(String name)
+    {
+        super(Material.rock);
+        this.setHardness(1.0F);
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.spaceBlockIcon = new IIcon[16];
-		this.spaceBlockIcon[0] = par1IconRegister.registerIcon("mpcore:polished_tin_decoration_block");
-		this.spaceBlockIcon[1] = par1IconRegister.registerIcon("mpcore:polished_aluminum_decoration_block");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.spaceBlockIcon = new IIcon[16];
+        this.spaceBlockIcon[0] = par1IconRegister.registerIcon("mpcore:polished_tin_decoration_block");
+        this.spaceBlockIcon[1] = par1IconRegister.registerIcon("mpcore:polished_aluminum_decoration_block");
+    }
 
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.spaceBlockIcon[meta];
-	}
+    @Override
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.spaceBlockIcon[meta];
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
+    }
 }

@@ -32,118 +32,118 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockEuropaIce extends BlockIceMP
 {
-	private IIcon[] europaIceIcons;
+    private IIcon[] europaIceIcons;
 
-	public BlockEuropaIce(String name)
-	{
-		super(Material.ice);
-		this.setBlockName(name);
-	}
+    public BlockEuropaIce(String name)
+    {
+        super(Material.ice);
+        this.setBlockName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		return this.europaIceIcons[meta];
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta)
+    {
+        return this.europaIceIcons[meta];
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 3; ++i)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta)
-	{
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta)
+    {
+        player.addExhaustion(0.025F);
 
-		if (this.canSilkHarvest(world, player, x, y, z, meta) && EnchantmentHelper.getSilkTouchModifier(player))
-		{
-			ArrayList<ItemStack> items = new ArrayList();
-			ItemStack itemstack = this.createStackedBlock(meta);
+        if (this.canSilkHarvest(world, player, x, y, z, meta) && EnchantmentHelper.getSilkTouchModifier(player))
+        {
+            ArrayList<ItemStack> items = new ArrayList();
+            ItemStack itemstack = this.createStackedBlock(meta);
 
-			if (itemstack != null)
-			{
-				items.add(itemstack);
-			}
+            if (itemstack != null)
+            {
+                items.add(itemstack);
+            }
 
-			ForgeEventFactory.fireBlockHarvesting(items, world, this, x, y, z, meta, 0, 1.0F, true, player);
+            ForgeEventFactory.fireBlockHarvesting(items, world, this, x, y, z, meta, 0, 1.0F, true, player);
 
-			for (ItemStack is : items)
-			{
-				this.dropBlockAsItem(world, x, y, z, is);
-			}
-		}
-		else
-		{
-			if (world.provider.isHellWorld)
-			{
-				world.setBlockToAir(x, y, z);
-				return;
-			}
-			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
-			{
-				world.setBlockToAir(x, y, z);
-				return;
-			}
+            for (ItemStack is : items)
+            {
+                this.dropBlockAsItem(world, x, y, z, is);
+            }
+        }
+        else
+        {
+            if (world.provider.isHellWorld)
+            {
+                world.setBlockToAir(x, y, z);
+                return;
+            }
+            else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
+            {
+                world.setBlockToAir(x, y, z);
+                return;
+            }
 
-			int i1 = EnchantmentHelper.getFortuneModifier(player);
-			this.harvesters.set(player);
-			this.dropBlockAsItem(world, x, y, z, meta, i1);
-			this.harvesters.set(null);
-			Material material = world.getBlock(x, y - 1, z).getMaterial();
+            int i1 = EnchantmentHelper.getFortuneModifier(player);
+            this.harvesters.set(player);
+            this.dropBlockAsItem(world, x, y, z, meta, i1);
+            this.harvesters.set(null);
+            Material material = world.getBlock(x, y - 1, z).getMaterial();
 
-			if (material.blocksMovement() || material.isLiquid())
-			{
-				world.setBlock(x, y, z, Blocks.flowing_water);
-			}
-		}
-	}
+            if (material.blocksMovement() || material.isLiquid())
+            {
+                world.setBlock(x, y, z, Blocks.flowing_water);
+            }
+        }
+    }
 
-	@Override
-	public void updateTick(World world, int x, int y, int z, Random rand)
-	{
-		if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity() && world.getBlockMetadata(x, y, z) != 1)
-		{
-			if (world.provider.isHellWorld)
-			{
-				world.setBlockToAir(x, y, z);
-				return;
-			}
-			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-			world.setBlock(x, y, z, Blocks.water);
-		}
-		if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
-		{
-			world.setBlockToAir(x, y, z);
-			return;
-		}
-	}
+    @Override
+    public void updateTick(World world, int x, int y, int z, Random rand)
+    {
+        if (world.getSavedLightValue(EnumSkyBlock.Block, x, y, z) > 11 - this.getLightOpacity() && world.getBlockMetadata(x, y, z) != 1)
+        {
+            if (world.provider.isHellWorld)
+            {
+                world.setBlockToAir(x, y, z);
+                return;
+            }
+            this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+            world.setBlock(x, y, z, Blocks.water);
+        }
+        if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeTheSky(x, y, z))
+        {
+            world.setBlockToAir(x, y, z);
+            return;
+        }
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
-	{
-		return new ItemStack(this, 1, world.getBlockMetadata(x, y, z));
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
+    {
+        return new ItemStack(this, 1, world.getBlockMetadata(x, y, z));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.europaIceIcons = new IIcon[3];
-		this.europaIceIcons[0] = par1IconRegister.registerIcon("europa:europa_ice");
-		this.europaIceIcons[1] = par1IconRegister.registerIcon("europa:dirty_europa_ice");
-		this.europaIceIcons[2] = par1IconRegister.registerIcon("europa:dense_europa_ice");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.europaIceIcons = new IIcon[3];
+        this.europaIceIcons[0] = par1IconRegister.registerIcon("europa:europa_ice");
+        this.europaIceIcons[1] = par1IconRegister.registerIcon("europa:dirty_europa_ice");
+        this.europaIceIcons[2] = par1IconRegister.registerIcon("europa:dense_europa_ice");
+    }
 }

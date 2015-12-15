@@ -14,17 +14,17 @@ import net.minecraft.world.gen.structure.StructureStart;
 
 public class StructureSiriusBlazePitStart extends StructureStart
 {
-	public StructureSiriusBlazePitStart(World world, Random random, int x, int z)
-	{
-		final int var5 = (x << 4) + 8;
-		final int var6 = (z << 4) + 8;
-		final ComponentSiriusBlazePitRoom room = new ComponentSiriusBlazePitRoom(0, world, random, var5, 90, var6, 40, 7, 0);
+    public StructureSiriusBlazePitStart(World world, Random random, int x, int z)
+    {
+        final int var5 = (x << 4) + 8;
+        final int var6 = (z << 4) + 8;
+        final ComponentSiriusBlazePitRoom room = new ComponentSiriusBlazePitRoom(0, world, random, var5, 90, var6, 40, 7, 0);
 
-		if (room != null)
-		{
-			this.components.add(room);
-			room.buildComponent(room, this.components, random);
-		}
-		this.updateBoundingBox();
-	}
+        if (room != null)
+        {
+            this.components.add(room);
+            room.buildComponent(room, this.components, random);
+        }
+        this.updateBoundingBox();
+    }
 }

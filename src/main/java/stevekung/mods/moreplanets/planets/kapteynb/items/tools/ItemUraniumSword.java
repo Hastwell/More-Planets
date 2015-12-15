@@ -31,72 +31,72 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemUraniumSword extends ItemSword
 {
-	public ItemUraniumSword(String name, ToolMaterial par2EnumToolMaterial)
-	{
-		super(par2EnumToolMaterial);
-		this.setUnlocalizedName(name);
-	}
+    public ItemUraniumSword(String name, ToolMaterial par2EnumToolMaterial)
+    {
+        super(par2EnumToolMaterial);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpToolsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpToolsTab;
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
-	{
-		entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
-		stack.damageItem(1, entity2);
-		return true;
-	}
+    @Override
+    public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
+    {
+        entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
+        stack.damageItem(1, entity2);
+        return true;
+    }
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public void registerIcons(IIconRegister par1IconRegister)
-	{
-		this.itemIcon = par1IconRegister.registerIcon(this.getUnlocalizedName().replace("item.", "kapteynb:"));
-	}
+    @Override
+    public void registerIcons(IIconRegister par1IconRegister)
+    {
+        this.itemIcon = par1IconRegister.registerIcon(this.getUnlocalizedName().replace("item.", "kapteynb:"));
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
-	{
-		if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 1)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 1)
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		if (player.worldObj.isRemote)
-		{
-			list.add(EnumChatFormatting.GRAY + "Ice Crystal Tool Upgrade Required : 12");
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        if (player.worldObj.isRemote)
+        {
+            list.add(EnumChatFormatting.GRAY + "Ice Crystal Tool Upgrade Required : 12");
+        }
+    }
 
-	@Override
-	public boolean onEntityItemUpdate(EntityItem item)
-	{
-		World world = item.worldObj;
-		List<EntityItem> item1 = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(item.posX, item.posY, item.posZ, item.posX + 1, item.posY + 1, item.posZ + 1));
+    @Override
+    public boolean onEntityItemUpdate(EntityItem item)
+    {
+        World world = item.worldObj;
+        List<EntityItem> item1 = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(item.posX, item.posY, item.posZ, item.posX + 1, item.posY + 1, item.posZ + 1));
 
-		if (item.worldObj.getBlock((int)Math.floor(item.posX), (int)Math.floor(item.posY), (int)Math.floor(item.posZ)) == KapteynBBlocks.frozen_water)
-		{
-			if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 12)
-			{
-				item.setEntityItemStack(new ItemStack(KapteynBToolsItems.ice_crystal_sword));
-				item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 12, 5));
-			}
-		}
-		return false;
-	}
+        if (item.worldObj.getBlock((int)Math.floor(item.posX), (int)Math.floor(item.posY), (int)Math.floor(item.posZ)) == KapteynBBlocks.frozen_water)
+        {
+            if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 12)
+            {
+                item.setEntityItemStack(new ItemStack(KapteynBToolsItems.ice_crystal_sword));
+                item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 12, 5));
+            }
+        }
+        return false;
+    }
 }

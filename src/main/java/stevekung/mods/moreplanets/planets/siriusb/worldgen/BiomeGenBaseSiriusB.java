@@ -16,13 +16,13 @@ import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusMagmaCube
 
 public class BiomeGenBaseSiriusB extends BiomeGenBaseMP
 {
-	public static BiomeGenBase siriusB = new BiomeGenBaseSiriusB().setBiomeName("Sirius B");
+    public static BiomeGenBase siriusB = new BiomeGenBaseSiriusB().setBiomeName("Sirius B");
 
-	public BiomeGenBaseSiriusB()
-	{
-		super(ConfigManagerMP.idBiomeSiriusB);
-		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySiriusBlaze.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySiriusCreeper.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySiriusMagmaCube.class, 100, 4, 4));
-	}
+    public BiomeGenBaseSiriusB()
+    {
+        super(ConfigManagerMP.idSiriusBBiome);
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySiriusBlaze.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySiriusCreeper.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySiriusMagmaCube.class, 100, 4, 4));
+    }
 }

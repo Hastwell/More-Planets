@@ -17,57 +17,57 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityIcyPoisonCrystal extends TileEntity
 {
-	public short orientation;
+    public short orientation;
 
-	public TileEntityIcyPoisonCrystal()
-	{
-		this.orientation = 1;
-	}
+    public TileEntityIcyPoisonCrystal()
+    {
+        this.orientation = 1;
+    }
 
-	@Override
-	public void updateEntity()
-	{
-		if (!this.worldObj.isRemote)
-		{
-			if (OxygenUtil.inOxygenBubble(this.worldObj, this.xCoord, this.yCoord, this.zCoord) || OxygenUtil.isInOxygenBlock(this.worldObj, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord, this.yCoord, this.zCoord)))
-			{
-				this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 2.0F, true);
-			}
-			if (this.worldObj.provider.dimensionId == 0 || !OxygenUtil.noAtmosphericCombustion(this.worldObj.provider))
-			{
-				if (this.worldObj.rand.nextInt(100) == 0)
-				{
-					this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 2.0F, true);
-				}
-			}
-		}
-	}
+    @Override
+    public void updateEntity()
+    {
+        if (!this.worldObj.isRemote)
+        {
+            if (OxygenUtil.inOxygenBubble(this.worldObj, this.xCoord, this.yCoord, this.zCoord) || OxygenUtil.isInOxygenBlock(this.worldObj, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord, this.yCoord, this.zCoord)))
+            {
+                this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 2.0F, true);
+            }
+            if (this.worldObj.provider.dimensionId == 0 || !OxygenUtil.noAtmosphericCombustion(this.worldObj.provider))
+            {
+                if (this.worldObj.rand.nextInt(100) == 0)
+                {
+                    this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 2.0F, true);
+                }
+            }
+        }
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		this.orientation = nbt.getShort("Orientation");
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        this.orientation = nbt.getShort("Orientation");
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
-		nbt.setShort("Orientation", this.orientation);
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
+        nbt.setShort("Orientation", this.orientation);
+    }
 
-	@Override
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, -999, nbt);
-	}
+    @Override
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, -999, nbt);
+    }
 
-	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-	{
-		this.readFromNBT(pkt.func_148857_g());
-	}
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+    {
+        this.readFromNBT(pkt.func_148857_g());
+    }
 }

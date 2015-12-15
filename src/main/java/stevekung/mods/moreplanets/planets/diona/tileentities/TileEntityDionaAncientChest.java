@@ -13,15 +13,15 @@ import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 
 public class TileEntityDionaAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return DionaBlocks.diona_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return DionaBlocks.diona_ancient_chest;
+    }
 
-	@Override
-	public String getGuiName()
-	{
-		return "diona";
-	}
+    @Override
+    public String getGuiName()
+    {
+        return "diona";
+    }
 }

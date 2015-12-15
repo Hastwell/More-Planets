@@ -15,41 +15,41 @@ import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class ArmorFrozenIron extends ItemArmorMP
 {
-	public ArmorFrozenIron(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorFrozenIron(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KapteynBArmorItems.frozen_iron_helmet || stack.getItem() == KapteynBArmorItems.frozen_iron_chestplate || stack.getItem() == KapteynBArmorItems.frozen_iron_boots)
-		{
-			return "kapteynb:textures/model/armor/frozen_iron_1.png";
-		}
-		if (stack.getItem() == KapteynBArmorItems.frozen_iron_leggings)
-		{
-			return "kapteynb:textures/model/armor/frozen_iron_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KapteynBArmorItems.frozen_iron_helmet || stack.getItem() == KapteynBArmorItems.frozen_iron_chestplate || stack.getItem() == KapteynBArmorItems.frozen_iron_boots)
+        {
+            return "kapteynb:textures/model/armor/frozen_iron_1.png";
+        }
+        if (stack.getItem() == KapteynBArmorItems.frozen_iron_leggings)
+        {
+            return "kapteynb:textures/model/armor/frozen_iron_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "kapteynb";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "kapteynb";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return KapteynBItems.kapteyn_b_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return KapteynBItems.kapteyn_b_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 2;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 2;
+    }
 }

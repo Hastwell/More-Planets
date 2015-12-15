@@ -17,36 +17,36 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class RoomTreasureMercury extends DungeonRoom
 {
-	int sizeX;
-	int sizeZ;
+    int sizeX;
+    int sizeZ;
 
-	public RoomTreasureMercury(MapGenDungeon dungeon, int posX, int posY, int posZ, ForgeDirection entranceDir)
-	{
-		super(dungeon, posX, posY, posZ, entranceDir);
+    public RoomTreasureMercury(MapGenDungeon dungeon, int posX, int posY, int posZ, ForgeDirection entranceDir)
+    {
+        super(dungeon, posX, posY, posZ, entranceDir);
 
-		if (this.worldObj != null)
-		{
-			Random rand = new Random(this.worldObj.getSeed() * posX * posY * 57 * posZ);
-			this.sizeX = rand.nextInt(6) + 7;
-			this.sizeZ = rand.nextInt(6) + 7;
-		}
-	}
+        if (this.worldObj != null)
+        {
+            Random rand = new Random(this.worldObj.getSeed() * posX * posY * 57 * posZ);
+            this.sizeX = rand.nextInt(6) + 7;
+            this.sizeZ = rand.nextInt(6) + 7;
+        }
+    }
 
-	@Override
-	public void generate(Block[] chunk, byte[] meta, int cx, int cz) {}
+    @Override
+    public void generate(Block[] chunk, byte[] meta, int cx, int cz) {}
 
-	@Override
-	public DungeonBoundingBox getBoundingBox()
-	{
-		return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
-	}
+    @Override
+    public DungeonBoundingBox getBoundingBox()
+    {
+        return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
+    }
 
-	@Override
-	protected void handleTileEntities(Random rand) {}
+    @Override
+    protected void handleTileEntities(Random rand) {}
 
-	@Override
-	protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, ForgeDirection dir)
-	{
-		return new RoomTreasureMercury(dungeon, x, y, z, dir);
-	}
+    @Override
+    protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, ForgeDirection dir)
+    {
+        return new RoomTreasureMercury(dungeon, x, y, z, dir);
+    }
 }

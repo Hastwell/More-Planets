@@ -15,49 +15,49 @@ import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class ArmorBreathableKoentusMeteor extends ItemBreathableArmor
 {
-	public ArmorBreathableKoentusMeteor(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorBreathableKoentusMeteor(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KoentusArmorItems.breathableKoentusMeteorHelmet)
-		{
-			return "koentus:textures/model/armor/breathable_koentus_meteoric_iron_1.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KoentusArmorItems.breathableKoentusMeteorHelmet)
+        {
+            return "koentus:textures/model/armor/breathable_koentus_meteoric_iron_1.png";
+        }
+        return null;
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return KoentusItems.koentus_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return KoentusItems.koentus_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 6;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 6;
+    }
 
-	@Override
-	public EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    public EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	public Item getBreathableArmor()
-	{
-		return KoentusArmorItems.breathableKoentusMeteorHelmet;
-	}
+    @Override
+    public Item getBreathableArmor()
+    {
+        return KoentusArmorItems.breathableKoentusMeteorHelmet;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "koentus:breathable_koentus_meteoric_iron_helmet";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "koentus:breathable_koentus_meteoric_iron_helmet";
+    }
 }

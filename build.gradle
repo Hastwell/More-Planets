@@ -18,11 +18,11 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.3.0-Pre-7"
-group= "stevekung.mods.moreplanets" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "stevekung.mods" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "More-Planets"
 
 minecraft {
-    version = "1.7.10-10.13.4.1566-1.7.10"
+    version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "eclipse"
 }
 

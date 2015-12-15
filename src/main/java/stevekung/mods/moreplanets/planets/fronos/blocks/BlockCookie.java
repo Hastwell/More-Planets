@@ -17,24 +17,24 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockCookie extends BlockBaseMP
 {
-	public BlockCookie(String name)
-	{
-		super(Material.clay);
-		this.setHardness(1.0F);
-		this.setStepSound(Block.soundTypeGravel);
-		this.setBlockName(name);
-		this.setBlockTextureName("fronos:cookie_block");
-	}
+    public BlockCookie(String name)
+    {
+        super(Material.clay);
+        this.setHardness(1.0F);
+        this.setStepSound(Block.soundTypeGravel);
+        this.setBlockName(name);
+        this.setBlockTextureName("fronos:cookie_block");
+    }
 
-	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		return Items.cookie;
-	}
+    @Override
+    public Item getItemDropped(int par1, Random par2Random, int par3)
+    {
+        return Items.cookie;
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return rand.nextInt(4) + 1;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return rand.nextInt(4) + 1;
+    }
 }

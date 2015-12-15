@@ -13,12 +13,12 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 
 public class BlockChocolate extends BlockBaseMP
 {
-	public BlockChocolate(String name)
-	{
-		super(Material.clay);
-		this.setStepSound(Block.soundTypeSnow);
-		this.setHardness(0.55F);
-		this.setBlockName(name);
-		this.setBlockTextureName("fronos:chocolate_block");
-	}
+    public BlockChocolate(String name)
+    {
+        super(Material.clay);
+        this.setStepSound(Block.soundTypeSnow);
+        this.setHardness(0.55F);
+        this.setBlockName(name);
+        this.setBlockTextureName("fronos:chocolate_block");
+    }
 }

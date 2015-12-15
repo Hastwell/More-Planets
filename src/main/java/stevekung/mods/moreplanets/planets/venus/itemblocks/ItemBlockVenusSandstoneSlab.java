@@ -11,28 +11,28 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockVenusSandstoneSlab extends ItemSlab
 {
-	public ItemBlockVenusSandstoneSlab(Block block, BlockVenusSandstoneSlab singleSlab, BlockVenusSandstoneSlab doubleSlab)
-	{
-		super(block, singleSlab, doubleSlab, block == doubleSlab);
-	}
+    public ItemBlockVenusSandstoneSlab(Block block, BlockVenusSandstoneSlab singleSlab, BlockVenusSandstoneSlab doubleSlab)
+    {
+        super(block, singleSlab, doubleSlab, block == doubleSlab);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta & 7;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta & 7;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		BlockVenusSandstoneSlab slab = (BlockVenusSandstoneSlab)Block.getBlockFromItem(itemStack.getItem());
-		return super.getUnlocalizedName() + "." + new StringBuilder().append(slab.func_150002_b(itemStack.getItemDamage())).toString();
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        BlockVenusSandstoneSlab slab = (BlockVenusSandstoneSlab)Block.getBlockFromItem(itemStack.getItem());
+        return super.getUnlocalizedName() + "." + new StringBuilder().append(slab.func_150002_b(itemStack.getItemDamage())).toString();
+    }
 }

@@ -13,18 +13,18 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockVenusSand extends BlockFalling
 {
-	public BlockVenusSand(String name)
-	{
-		super();
-		this.setStepSound(soundTypeSand);
-		this.setHardness(0.55F);
-		this.setBlockName(name);
-		this.setBlockTextureName("venus:venus_sand");
-	}
+    public BlockVenusSand(String name)
+    {
+        super();
+        this.setStepSound(soundTypeSand);
+        this.setHardness(0.55F);
+        this.setBlockName(name);
+        this.setBlockTextureName("venus:venus_sand");
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

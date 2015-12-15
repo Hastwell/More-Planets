@@ -14,22 +14,22 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosLog;
 
 public class ItemBlockFronosLog extends ItemBlockMorePlanet
 {
-	public ItemBlockFronosLog(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockFronosLog(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		BlockFronosLog block = (BlockFronosLog)this.field_150939_a;
-		return super.getUnlocalizedName() + "." + block.getWoodType(itemStack.getItemDamage()) + "_wood";
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        BlockFronosLog block = (BlockFronosLog)this.field_150939_a;
+        return super.getUnlocalizedName() + "." + block.getWoodType(itemStack.getItemDamage()) + "_wood";
+    }
 }

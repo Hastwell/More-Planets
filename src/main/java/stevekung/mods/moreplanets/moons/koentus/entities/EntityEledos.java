@@ -26,230 +26,230 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class EntityEledos extends EntityAnimal
 {
-	private EntityAIControlledByPlayer aiControlledByPlayer;
+    private EntityAIControlledByPlayer aiControlledByPlayer;
 
-	public EntityEledos(World world)
-	{
-		super(world);
-		this.setSize(0.9F, 0.9F);
-		this.getNavigator().setAvoidsWater(true);
-		this.tasks.addTask(0, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 0.3F));
-	}
+    public EntityEledos(World world)
+    {
+        super(world);
+        this.setSize(0.9F, 0.9F);
+        this.getNavigator().setAvoidsWater(true);
+        this.tasks.addTask(0, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, 0.3F));
+    }
 
-	@Override
-	public boolean isAIEnabled()
-	{
-		return true;
-	}
+    @Override
+    public boolean isAIEnabled()
+    {
+        return true;
+    }
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
-	}
+    @Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+    }
 
-	@Override
-	protected void updateAITasks()
-	{
-		super.updateAITasks();
-	}
+    @Override
+    protected void updateAITasks()
+    {
+        super.updateAITasks();
+    }
 
-	/*@Override
+    /*@Override
 	public boolean canBeSteered()
 	{
 		return true;
 	}*/
 
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-	}
+    @Override
+    protected void entityInit()
+    {
+        super.entityInit();
+    }
 
-	@Override
-	public void writeEntityToNBT(NBTTagCompound nbt)
-	{
-		super.writeEntityToNBT(nbt);
-	}
+    @Override
+    public void writeEntityToNBT(NBTTagCompound nbt)
+    {
+        super.writeEntityToNBT(nbt);
+    }
 
-	@Override
-	public void readEntityFromNBT(NBTTagCompound nbt)
-	{
-		super.readEntityFromNBT(nbt);
-	}
+    @Override
+    public void readEntityFromNBT(NBTTagCompound nbt)
+    {
+        super.readEntityFromNBT(nbt);
+    }
 
-	@Override
-	protected String getLivingSound()
-	{
-		return null;
-	}
+    @Override
+    protected String getLivingSound()
+    {
+        return null;
+    }
 
-	@Override
-	protected String getHurtSound()
-	{
-		return null;
-	}
+    @Override
+    protected String getHurtSound()
+    {
+        return null;
+    }
 
-	@Override
-	protected String getDeathSound()
-	{
-		return null;
-	}
+    @Override
+    protected String getDeathSound()
+    {
+        return null;
+    }
 
-	@Override
-	protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
-	{
-		this.playSound(null, 0.15F, 1.0F);
-	}
+    @Override
+    protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
+    {
+        this.playSound(null, 0.15F, 1.0F);
+    }
 
-	@Override
-	protected Item getDropItem()
-	{
-		if (this.isBurning())
-		{
-			return Items.cooked_porkchop;
-		}
-		return Items.porkchop;
-	}
+    @Override
+    protected Item getDropItem()
+    {
+        if (this.isBurning())
+        {
+            return Items.cooked_porkchop;
+        }
+        return Items.porkchop;
+    }
 
-	@Override
-	protected void dropFewItems(boolean p_dropFewItems_1_, int p_dropFewItems_2_)
-	{
-		int i = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + p_dropFewItems_2_);
+    @Override
+    protected void dropFewItems(boolean p_dropFewItems_1_, int p_dropFewItems_2_)
+    {
+        int i = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + p_dropFewItems_2_);
 
-		for (int j = 0; j < i; j++)
-		{
-			if (this.isBurning())
-			{
-				this.dropItem(Items.cooked_porkchop, 1);
-			}
-			else
-			{
-				this.dropItem(Items.porkchop, 1);
-			}
-		}
-	}
+        for (int j = 0; j < i; j++)
+        {
+            if (this.isBurning())
+            {
+                this.dropItem(Items.cooked_porkchop, 1);
+            }
+            else
+            {
+                this.dropItem(Items.porkchop, 1);
+            }
+        }
+    }
 
-	@Override
-	public boolean interact(EntityPlayer player)
-	{
-		ItemStack itemstack = player.inventory.getCurrentItem();
-		String owner = this.getEntityData().getString("Owner");
+    @Override
+    public boolean interact(EntityPlayer player)
+    {
+        ItemStack itemstack = player.inventory.getCurrentItem();
+        String owner = this.getEntityData().getString("Owner");
 
-		if (itemstack != null)
-		{
-			if (!this.worldObj.isRemote && owner == "" && itemstack == new ItemStack(DionaItems.diona_dungeon_key))
-			{
-				if (!owner.equalsIgnoreCase("") && !player.getGameProfile().getName().equalsIgnoreCase(owner))
-				{
-					this.sendMsg(player, owner);
-					return false;
-				}
+        if (itemstack != null)
+        {
+            if (!this.worldObj.isRemote && owner == "" && itemstack == new ItemStack(DionaItems.diona_dungeon_key))
+            {
+                if (!owner.equalsIgnoreCase("") && !player.getGameProfile().getName().equalsIgnoreCase(owner))
+                {
+                    this.sendMsg(player, owner);
+                    return false;
+                }
 
-				this.useItem(player, itemstack);
-				this.func_146082_f(player);
-				owner = player.getGameProfile().getName();
-				this.getEntityData().setString("Owner", owner);
-				//par1.inventory.addItemStackToInventory(new ItemStack(MainGGbike.key.itemID, 1, 0));
+                this.useItem(player, itemstack);
+                this.func_146082_f(player);
+                owner = player.getGameProfile().getName();
+                this.getEntityData().setString("Owner", owner);
+                //par1.inventory.addItemStackToInventory(new ItemStack(MainGGbike.key.itemID, 1, 0));
 
-			}
-			else if (player.getGameProfile().getName().equalsIgnoreCase(owner) && itemstack == new ItemStack(DionaItems.diona_dungeon_key))
-			{
-				this.useItem(player, itemstack);
-				player.inventory.addItemStackToInventory(new ItemStack(GCItems.buggy, 1, 0));
-				this.setDead();
-			}
-		}
-		else
-		{
-			if (!this.worldObj.isRemote)
-			{
-				if (player.getGameProfile().getName().equalsIgnoreCase(owner))
-				{
-					player.mountEntity(this);
-				}
-				else
-				{
-					this.sendMsg(player, owner);
-				}
-			}
-		}
-		return true;
-	}
+            }
+            else if (player.getGameProfile().getName().equalsIgnoreCase(owner) && itemstack == new ItemStack(DionaItems.diona_dungeon_key))
+            {
+                this.useItem(player, itemstack);
+                player.inventory.addItemStackToInventory(new ItemStack(GCItems.buggy, 1, 0));
+                this.setDead();
+            }
+        }
+        else
+        {
+            if (!this.worldObj.isRemote)
+            {
+                if (player.getGameProfile().getName().equalsIgnoreCase(owner))
+                {
+                    player.mountEntity(this);
+                }
+                else
+                {
+                    this.sendMsg(player, owner);
+                }
+            }
+        }
+        return true;
+    }
 
-	private void sendMsg(EntityPlayer par1, String owner)
-	{
-		if (owner.equalsIgnoreCase(""))
-		{
-			par1.addChatMessage(new ChatComponentText("You No Owner"));
-		}
-		else
-		{
-			par1.addChatMessage(new ChatComponentText("Animal Owner Is " + owner));
-		}
-	}
+    private void sendMsg(EntityPlayer par1, String owner)
+    {
+        if (owner.equalsIgnoreCase(""))
+        {
+            par1.addChatMessage(new ChatComponentText("You No Owner"));
+        }
+        else
+        {
+            par1.addChatMessage(new ChatComponentText("Animal Owner Is " + owner));
+        }
+    }
 
-	private void useItem(EntityPlayer par1, ItemStack itemstack)
-	{
-		if (!par1.capabilities.isCreativeMode)
-		{
-			--itemstack.stackSize;
+    private void useItem(EntityPlayer par1, ItemStack itemstack)
+    {
+        if (!par1.capabilities.isCreativeMode)
+        {
+            --itemstack.stackSize;
 
-			if (itemstack.stackSize <= 0)
-			{
-				par1.inventory.setInventorySlotContents(par1.inventory.currentItem, (ItemStack)null);
-			}
-		}
-	}
+            if (itemstack.stackSize <= 0)
+            {
+                par1.inventory.setInventorySlotContents(par1.inventory.currentItem, (ItemStack)null);
+            }
+        }
+    }
 
-	@Override
-	public void moveEntityWithHeading(float par1, float par2)
-	{
-		if (this.riddenByEntity != null)
-		{
-			this.prevRotationYaw = this.rotationYaw = this.riddenByEntity.rotationYaw;
-			this.rotationPitch = this.riddenByEntity.rotationPitch * 0.5F;
-			this.setRotation(this.rotationYaw, this.rotationPitch);
-			this.rotationYawHead = this.renderYawOffset = this.rotationYaw;
-			par1 = ((EntityLivingBase)this.riddenByEntity).moveStrafing * 0.5F;
-			par2 = ((EntityLivingBase)this.riddenByEntity).moveForward;
-			this.stepHeight = 1.0F;
-			this.jumpMovementFactor = this.getAIMoveSpeed() * 0.1F;
+    @Override
+    public void moveEntityWithHeading(float par1, float par2)
+    {
+        if (this.riddenByEntity != null)
+        {
+            this.prevRotationYaw = this.rotationYaw = this.riddenByEntity.rotationYaw;
+            this.rotationPitch = this.riddenByEntity.rotationPitch * 0.5F;
+            this.setRotation(this.rotationYaw, this.rotationPitch);
+            this.rotationYawHead = this.renderYawOffset = this.rotationYaw;
+            par1 = ((EntityLivingBase)this.riddenByEntity).moveStrafing * 0.5F;
+            par2 = ((EntityLivingBase)this.riddenByEntity).moveForward;
+            this.stepHeight = 1.0F;
+            this.jumpMovementFactor = this.getAIMoveSpeed() * 0.1F;
 
-			this.playSound("bike:bike.bikebike", par2, par2);
+            this.playSound("bike:bike.bikebike", par2, par2);
 
-			if (!this.worldObj.isRemote)
-			{
-				this.setAIMoveSpeed((float)this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue());
-				super.moveEntityWithHeading(par1, par2);
-			}
+            if (!this.worldObj.isRemote)
+            {
+                this.setAIMoveSpeed((float)this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue());
+                super.moveEntityWithHeading(par1, par2);
+            }
 
-			this.prevLimbSwingAmount = this.limbSwingAmount;
-			double d0 = this.posX - this.prevPosX;
-			double d1 = this.posZ - this.prevPosZ;
-			float f4 = MathHelper.sqrt_double(d0 * d0 + d1 * d1) * 4.0F;
+            this.prevLimbSwingAmount = this.limbSwingAmount;
+            double d0 = this.posX - this.prevPosX;
+            double d1 = this.posZ - this.prevPosZ;
+            float f4 = MathHelper.sqrt_double(d0 * d0 + d1 * d1) * 4.0F;
 
-			if (f4 > 1.0F)
-			{
-				f4 = 1.0F;
-			}
+            if (f4 > 1.0F)
+            {
+                f4 = 1.0F;
+            }
 
-			this.limbSwingAmount += (f4 - this.limbSwingAmount) * 0.4F;
-			this.limbSwing += this.limbSwingAmount;
-		}
-		else
-		{
-			this.stepHeight = 0.5F;
-			this.jumpMovementFactor = 0.02F;
-			super.moveEntityWithHeading(par1, par2);
-		}
-	}
+            this.limbSwingAmount += (f4 - this.limbSwingAmount) * 0.4F;
+            this.limbSwing += this.limbSwingAmount;
+        }
+        else
+        {
+            this.stepHeight = 0.5F;
+            this.jumpMovementFactor = 0.02F;
+            super.moveEntityWithHeading(par1, par2);
+        }
+    }
 
-	@Override
-	public EntityEledos createChild(EntityAgeable entity)
-	{
-		return new EntityEledos(this.worldObj);
-	}
+    @Override
+    public EntityEledos createChild(EntityAgeable entity)
+    {
+        return new EntityEledos(this.worldObj);
+    }
 }

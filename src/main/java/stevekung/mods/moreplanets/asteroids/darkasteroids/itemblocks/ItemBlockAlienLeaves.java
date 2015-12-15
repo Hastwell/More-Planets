@@ -14,22 +14,22 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockMorePlanet;
 
 public class ItemBlockAlienLeaves extends ItemBlockMorePlanet
 {
-	public ItemBlockAlienLeaves(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockAlienLeaves(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta | 4;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta | 4;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		BlockAlienLeaves block = (BlockAlienLeaves)this.field_150939_a;
-		return super.getUnlocalizedName() + "." + block.getLeafType(itemStack.getItemDamage());
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        BlockAlienLeaves block = (BlockAlienLeaves)this.field_150939_a;
+        return super.getUnlocalizedName() + "." + block.getLeafType(itemStack.getItemDamage());
+    }
 }

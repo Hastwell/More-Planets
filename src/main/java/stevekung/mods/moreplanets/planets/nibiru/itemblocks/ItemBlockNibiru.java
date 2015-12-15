@@ -12,14 +12,14 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockNibiru extends ItemBlockBaseMP
 {
-	public ItemBlockNibiru(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockNibiru(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "ichorius_ore", "norium_ore", "diamond_ore", "coal_ore", "red_gem_ore", "ichorius_block", "norium_block", "red_gem_block", "dungeon_brick" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "surface_rock", "sub_surface_rock", "rock", "cobblestone", "ichorius_ore", "norium_ore", "diamond_ore", "coal_ore", "red_gem_ore", "ichorius_block", "norium_block", "red_gem_block", "dungeon_brick" };
+    }
 }

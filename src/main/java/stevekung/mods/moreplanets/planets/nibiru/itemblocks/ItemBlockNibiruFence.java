@@ -15,21 +15,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockNibiruFence extends ItemBlockBaseMP
 {
-	public ItemBlockNibiruFence(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockNibiruFence(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIconFromDamage(int metadata)
-	{
-		return this.field_150939_a.getIcon(0, metadata);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int metadata)
+    {
+        return this.field_150939_a.getIcon(0, metadata);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "ancient_dark", "orange" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "ancient_dark", "orange" };
+    }
 }

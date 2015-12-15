@@ -79,43 +79,43 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class TileEntityRendererMP
 {
-	public static void registerTileEntityRenderers()
-	{
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaTreasureChest.class, new TileEntityDionaTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusTreasureChest.class, new TileEntityPolongniusTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruTreasureChest.class, new TileEntityNibiruTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusTreasureChest.class, new TileEntityKoentusTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosTreasureChest.class, new TileEntityFronosTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBTreasureChest.class, new TileEntityKapteynBTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBTreasureChest.class, new TileEntitySiriusBTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryTreasureChest.class, new TileEntityMercuryTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusTreasureChest.class, new TileEntityVenusTreasureChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoTreasureChest.class, new TileEntityPlutoTreasureChestRenderer());
+    public static void registerTileEntityRenderers()
+    {
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaTreasureChest.class, new TileEntityDionaTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusTreasureChest.class, new TileEntityPolongniusTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruTreasureChest.class, new TileEntityNibiruTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusTreasureChest.class, new TileEntityKoentusTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosTreasureChest.class, new TileEntityFronosTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBTreasureChest.class, new TileEntityKapteynBTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBTreasureChest.class, new TileEntitySiriusBTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryTreasureChest.class, new TileEntityMercuryTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusTreasureChest.class, new TileEntityVenusTreasureChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoTreasureChest.class, new TileEntityPlutoTreasureChestRenderer());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaAncientChest.class, new TileEntityDionaAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusAncientChest.class, new TileEntityPolongniusAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruAncientChest.class, new TileEntityNibiruAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusAncientChest.class, new TileEntityKoentusAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosAncientChest.class, new TileEntityFronosAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBAncientChest.class, new TileEntityKapteynBAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBAncientChestTemp.class, new TileEntityKapteynBAncientChestTempRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBAncientChest.class, new TileEntitySiriusBAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryAncientChest.class, new TileEntityMercuryAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusAncientChest.class, new TileEntityVenusAncientChestRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoAncientChest.class, new TileEntityPlutoAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaAncientChest.class, new TileEntityDionaAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusAncientChest.class, new TileEntityPolongniusAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruAncientChest.class, new TileEntityNibiruAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusAncientChest.class, new TileEntityKoentusAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosAncientChest.class, new TileEntityFronosAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBAncientChest.class, new TileEntityKapteynBAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBAncientChestTemp.class, new TileEntityKapteynBAncientChestTempRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBAncientChest.class, new TileEntitySiriusBAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryAncientChest.class, new TileEntityMercuryAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusAncientChest.class, new TileEntityVenusAncientChestRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoAncientChest.class, new TileEntityPlutoAncientChestRenderer());
 
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityUltraVioletSolarPanel.class, new TileEntityUltraVioletSolarPanelRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpaceOysterOpen.class, new TileEntitySpaceOysterOpenRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpaceOysterClose.class, new TileEntitySpaceOysterCloseRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCavernOysterOpen.class, new TileEntityCavernOysterOpenRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCavernOysterClose.class, new TileEntityCavernOysterCloseRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCup.class, new TileEntityCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMineralWaterCup.class, new TileEntityMineralWaterCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOvantineCup.class, new TileEntityOvantineCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoconutMilkCup.class, new TileEntityCoconutMilkCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCheeseOfMilkCup.class, new TileEntityCheeseOfMilkCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTeaCup.class, new TileEntityTeaCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaramelCup.class, new TileEntityCaramelCupRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcyPoisonCrystal.class, new TileEntityIcyPoisonCrystalRenderer());
-	}
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityUltraVioletSolarPanel.class, new TileEntityUltraVioletSolarPanelRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpaceOysterOpen.class, new TileEntitySpaceOysterOpenRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpaceOysterClose.class, new TileEntitySpaceOysterCloseRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCavernOysterOpen.class, new TileEntityCavernOysterOpenRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCavernOysterClose.class, new TileEntityCavernOysterCloseRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCup.class, new TileEntityCupRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMineralWaterCup.class, new TileEntityMineralWaterCupRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOvantineCup.class, new TileEntityOvantineCupRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCoconutMilkCup.class, new TileEntityCoconutMilkCupRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCheeseOfMilkCup.class, new TileEntityCheeseOfMilkCupRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTeaCup.class, new TileEntityTeaCupRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaramelCup.class, new TileEntityCaramelCupRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcyPoisonCrystal.class, new TileEntityIcyPoisonCrystalRenderer());
+    }
 }

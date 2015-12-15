@@ -69,6 +69,7 @@ itemGroup.MorePlanetsBlocks=More Planets Blocks
 itemGroup.MorePlanetsItems=More Planets Items
 itemGroup.MorePlanetsTools=More Planets Tools
 itemGroup.MorePlanetsArmor=More Planets Armor
+gui.config.mp=More Planets Configuration
 
 # PLANET
 star.sirius=Sirius

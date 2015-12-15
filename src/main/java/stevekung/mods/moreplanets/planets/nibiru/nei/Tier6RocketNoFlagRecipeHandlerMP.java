@@ -19,69 +19,69 @@ import codechicken.nei.PositionedStack;
 
 public class Tier6RocketNoFlagRecipeHandlerMP extends RocketRecipeHandlerMP
 {
-	public String getRecipeId()
-	{
-		return "galacticraft.tier6.rocket.noflag";
-	}
+    public String getRecipeId()
+    {
+        return "galacticraft.tier6.rocket.noflag";
+    }
 
-	@Override
-	public int recipiesPerPage()
-	{
-		return 1;
-	}
+    @Override
+    public int recipiesPerPage()
+    {
+        return 1;
+    }
 
-	public Set<Entry<ArrayList<PositionedStack>, PositionedStack>> getRecipes()
-	{
-		return NEINibiruConfig.getRocketBenchNoFlagRecipes();
-	}
+    public Set<Entry<ArrayList<PositionedStack>, PositionedStack>> getRecipes()
+    {
+        return NEINibiruConfig.getRocketBenchNoFlagRecipes();
+    }
 
-	@Override
-	public void loadCraftingRecipes(String outputId, Object... results)
-	{
-		if (outputId.equals(this.getRecipeId()))
-		{
-			for (Map.Entry<ArrayList<PositionedStack>, PositionedStack> irecipe : this.getRecipes())
-			{
-				this.arecipes.add(new CachedRocketRecipeMP(irecipe));
-			}
-		}
-		else
-		{
-			super.loadCraftingRecipes(outputId, results);
-		}
-	}
+    @Override
+    public void loadCraftingRecipes(String outputId, Object... results)
+    {
+        if (outputId.equals(this.getRecipeId()))
+        {
+            for (Map.Entry<ArrayList<PositionedStack>, PositionedStack> irecipe : this.getRecipes())
+            {
+                this.arecipes.add(new CachedRocketRecipeMP(irecipe));
+            }
+        }
+        else
+        {
+            super.loadCraftingRecipes(outputId, results);
+        }
+    }
 
-	@Override
-	public void loadCraftingRecipes(ItemStack result)
-	{
-		for (Map.Entry<ArrayList<PositionedStack>, PositionedStack> irecipe : this.getRecipes())
-		{
-			if (NEIServerUtils.areStacksSameTypeCrafting(irecipe.getValue().item, result))
-			{
-				this.arecipes.add(new CachedRocketRecipeMP(irecipe));
-			}
-		}
-	}
+    @Override
+    public void loadCraftingRecipes(ItemStack result)
+    {
+        for (Map.Entry<ArrayList<PositionedStack>, PositionedStack> irecipe : this.getRecipes())
+        {
+            if (NEIServerUtils.areStacksSameTypeCrafting(irecipe.getValue().item, result))
+            {
+                this.arecipes.add(new CachedRocketRecipeMP(irecipe));
+            }
+        }
+    }
 
-	@Override
-	public void loadUsageRecipes(ItemStack ingredient)
-	{
-		for (Map.Entry<ArrayList<PositionedStack>, PositionedStack> irecipe : this.getRecipes())
-		{
-			for (PositionedStack pstack : irecipe.getKey())
-			{
-				if (NEIServerUtils.areStacksSameTypeCrafting(ingredient, pstack.item))
-				{
-					this.arecipes.add(new CachedRocketRecipeMP(irecipe));
-					break;
-				}
-			}
-		}
-	}
+    @Override
+    public void loadUsageRecipes(ItemStack ingredient)
+    {
+        for (Map.Entry<ArrayList<PositionedStack>, PositionedStack> irecipe : this.getRecipes())
+        {
+            for (PositionedStack pstack : irecipe.getKey())
+            {
+                if (NEIServerUtils.areStacksSameTypeCrafting(ingredient, pstack.item))
+                {
+                    this.arecipes.add(new CachedRocketRecipeMP(irecipe));
+                    break;
+                }
+            }
+        }
+    }
 
-	@Override
-	public String getRocketGuiTexture()
-	{
-		return "nibiru:textures/gui/schematic_tier6_rocket.png";
-	}
+    @Override
+    public String getRocketGuiTexture()
+    {
+        return "nibiru:textures/gui/schematic_tier6_rocket.png";
+    }
 }

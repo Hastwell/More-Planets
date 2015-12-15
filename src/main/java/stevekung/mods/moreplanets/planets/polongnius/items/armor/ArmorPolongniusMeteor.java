@@ -20,46 +20,46 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArmorPolongniusMeteor extends ItemArmor
 {
-	public ArmorPolongniusMeteor(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorPolongniusMeteor(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_helmet || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_chestplate || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_boots)
-		{
-			return "polongnius:textures/model/armor/polongnius_meteoric_iron_1.png";
-		}
-		if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_leggings)
-		{
-			return "polongnius:textures/model/armor/polongnius_meteoric_iron_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_helmet || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_chestplate || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_boots)
+        {
+            return "polongnius:textures/model/armor/polongnius_meteoric_iron_1.png";
+        }
+        if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_leggings)
+        {
+            return "polongnius:textures/model/armor/polongnius_meteoric_iron_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpArmorTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpArmorTab;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (itemStack2.getItem() == PolongniusItems.polongnius_item && itemStack2.getItemDamage() == 6)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (itemStack2.getItem() == PolongniusItems.polongnius_item && itemStack2.getItemDamage() == 6)
+        {
+            return true;
+        }
+        return false;
+    }
 }

@@ -15,41 +15,41 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class ArmorRedGem extends ItemArmorMP
 {
-	public ArmorRedGem(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
-	{
-		super(par2EnumArmorMaterial, par3, par4);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorRedGem(String name, ArmorMaterial par2EnumArmorMaterial, int par3, int par4)
+    {
+        super(par2EnumArmorMaterial, par3, par4);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == NibiruArmorItems.red_gem_helmet || stack.getItem() == NibiruArmorItems.red_gem_chestplate || stack.getItem() == NibiruArmorItems.red_gem_boots)
-		{
-			return "nibiru:textures/model/armor/red_gem_1.png";
-		}
-		if (stack.getItem() == NibiruArmorItems.red_gem_leggings)
-		{
-			return "nibiru:textures/model/armor/red_gem_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == NibiruArmorItems.red_gem_helmet || stack.getItem() == NibiruArmorItems.red_gem_chestplate || stack.getItem() == NibiruArmorItems.red_gem_boots)
+        {
+            return "nibiru:textures/model/armor/red_gem_1.png";
+        }
+        if (stack.getItem() == NibiruArmorItems.red_gem_leggings)
+        {
+            return "nibiru:textures/model/armor/red_gem_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	public String getTextureLocation()
-	{
-		return "nibiru";
-	}
+    @Override
+    public String getTextureLocation()
+    {
+        return "nibiru";
+    }
 
-	@Override
-	public Item getRepairItems()
-	{
-		return NibiruItems.nibiru_item;
-	}
+    @Override
+    public Item getRepairItems()
+    {
+        return NibiruItems.nibiru_item;
+    }
 
-	@Override
-	public int getRepairItemsMetadata()
-	{
-		return 2;
-	}
+    @Override
+    public int getRepairItemsMetadata()
+    {
+        return 2;
+    }
 }

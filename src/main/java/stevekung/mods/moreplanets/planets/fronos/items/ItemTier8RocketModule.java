@@ -21,44 +21,44 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier8RocketModule extends ItemBaseMP
 {
-	public ItemTier8RocketModule(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemTier8RocketModule(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
-	{
-		if (par2EntityPlayer.worldObj.isRemote)
-		{
-			if (par1ItemStack.getItemDamage() == 2)
-			{
-				par3List.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.tier8.name"));
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+    {
+        if (par2EntityPlayer.worldObj.isRemote)
+        {
+            if (par1ItemStack.getItemDamage() == 2)
+            {
+                par3List.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("desc.tier8.name"));
+            }
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			par3List.add(new ItemStack(par1, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            par3List.add(new ItemStack(par1, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "tier8_rocket_engine", "tier8_booster", "tier8_heavy_duty_plate" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "tier8_rocket_engine", "tier8_booster", "tier8_heavy_duty_plate" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "fronos";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "fronos";
+    }
 }

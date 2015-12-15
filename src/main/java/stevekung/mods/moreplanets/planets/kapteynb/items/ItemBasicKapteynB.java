@@ -19,43 +19,43 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBasicKapteynB extends ItemBaseMP implements IPowerCrystal
 {
-	public ItemBasicKapteynB(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemBasicKapteynB(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
-	{
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			par3List.add(new ItemStack(par1, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    {
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            par3List.add(new ItemStack(par1, 1, i));
+        }
+    }
 
-	@Override
-	public String[] getItemVariantsName()
-	{
-		return new String[] { "frozen_iron_ingot", "uranium_gem", "compressed_frozen_iron", "uranium_stick", "frozen_iron_stick", "ice_crystal_shard" };
-	}
+    @Override
+    public String[] getItemVariantsName()
+    {
+        return new String[] { "frozen_iron_ingot", "uranium_gem", "compressed_frozen_iron", "uranium_stick", "frozen_iron_stick", "ice_crystal_shard" };
+    }
 
-	@Override
-	public String getTexturesFolder()
-	{
-		return "kapteynb";
-	}
+    @Override
+    public String getTexturesFolder()
+    {
+        return "kapteynb";
+    }
 
-	@Override
-	public boolean isPowerCrystal(int meta)
-	{
-		return meta == 1 || meta == 5;
-	}
+    @Override
+    public boolean isPowerCrystal(int meta)
+    {
+        return meta == 1 || meta == 5;
+    }
 
-	@Override
-	public int getPowerCrystalBurnTime(int meta)
-	{
-		return meta == 1 ? 16000 : meta == 5 ? 6400 : 0;
-	}
+    @Override
+    public int getPowerCrystalBurnTime(int meta)
+    {
+        return meta == 1 ? 16000 : meta == 5 ? 6400 : 0;
+    }
 }

@@ -17,45 +17,45 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ItemBlockBaseMP extends ItemBlock
 {
-	public ItemBlockBaseMP(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockBaseMP(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemstack)
-	{
-		int meta = itemstack.getItemDamage();
+    @Override
+    public String getUnlocalizedName(ItemStack itemstack)
+    {
+        int meta = itemstack.getItemDamage();
 
-		if (meta < 0 || meta >= this.getBlockVariantsName().length)
-		{
-			meta = 0;
-		}
-		if (this.reverseName())
-		{
-			return "tile." + this.getBlockVariantsName()[meta] + "_" + super.getUnlocalizedName().replace("tile.", "");
-		}
-		return super.getUnlocalizedName() + "." + this.getBlockVariantsName()[meta];
-	}
+        if (meta < 0 || meta >= this.getBlockVariantsName().length)
+        {
+            meta = 0;
+        }
+        if (this.reverseName())
+        {
+            return "tile." + this.getBlockVariantsName()[meta] + "_" + super.getUnlocalizedName().replace("tile.", "");
+        }
+        return super.getUnlocalizedName() + "." + this.getBlockVariantsName()[meta];
+    }
 
-	public abstract String[] getBlockVariantsName();
+    public abstract String[] getBlockVariantsName();
 
-	protected boolean reverseName()
-	{
-		return false;
-	}
+    protected boolean reverseName()
+    {
+        return false;
+    }
 }

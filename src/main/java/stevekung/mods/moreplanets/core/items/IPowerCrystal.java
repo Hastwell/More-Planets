@@ -9,6 +9,6 @@ package stevekung.mods.moreplanets.core.items;
 
 public interface IPowerCrystal
 {
-	public boolean isPowerCrystal(int meta);
-	public int getPowerCrystalBurnTime(int meta);
+    public boolean isPowerCrystal(int meta);
+    public int getPowerCrystalBurnTime(int meta);
 }

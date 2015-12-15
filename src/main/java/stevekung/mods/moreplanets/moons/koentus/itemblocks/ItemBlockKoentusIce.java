@@ -12,20 +12,20 @@ import stevekung.mods.moreplanets.core.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockKoentusIce extends ItemBlockBaseMP
 {
-	public ItemBlockKoentusIce(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockKoentusIce(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "default", "glowing" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "default", "glowing" };
+    }
 
-	@Override
-	public boolean reverseName()
-	{
-		return true;
-	}
+    @Override
+    public boolean reverseName()
+    {
+        return true;
+    }
 }

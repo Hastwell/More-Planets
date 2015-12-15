@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 
 public class ItemBlockWallMP extends ItemBlockBaseMP
 {
-	public ItemBlockWallMP(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockWallMP(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "diona", "quonBrick", "quonChiseled", "polongnius", "nibiru", "koentus", "koentusStone", "koentusBrick", "fronos", "fronosBrick", "fronosCrackBrick", "kapteyn", "sirius", "mercury"};
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "diona", "quonBrick", "quonChiseled", "polongnius", "nibiru", "koentus", "koentusStone", "koentusBrick", "fronos", "fronosBrick", "fronosCrackBrick", "kapteyn", "sirius", "mercury"};
+    }
 }

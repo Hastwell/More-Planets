@@ -13,39 +13,39 @@ import stevekung.mods.moreplanets.core.blocks.BlockCakeMP;
 
 public class BlockChocolateCakeBread extends BlockCakeMP
 {
-	private IIcon[] cakeBlockIcons;
+    private IIcon[] cakeBlockIcons;
 
-	public BlockChocolateCakeBread(String name)
-	{
-		super();
-		this.setBlockName(name);
-	}
+    public BlockChocolateCakeBread(String name)
+    {
+        super();
+        this.setBlockName(name);
+    }
 
-	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
-		this.cakeBlockIcons = new IIcon[4];
-		this.cakeBlockIcons[0] = par1IconRegister.registerIcon("fronos:chocolate_cake_bottom");
-		this.cakeBlockIcons[1] = par1IconRegister.registerIcon("fronos:chocolate_cake_bottom");
-		this.cakeBlockIcons[2] = par1IconRegister.registerIcon("fronos:chocolate_cake_de_block_side");
-		this.cakeBlockIcons[3] = par1IconRegister.registerIcon("fronos:chocolate_cake_de_block_side");
-	}
+    @Override
+    public void registerBlockIcons(IIconRegister par1IconRegister)
+    {
+        this.cakeBlockIcons = new IIcon[4];
+        this.cakeBlockIcons[0] = par1IconRegister.registerIcon("fronos:chocolate_cake_bottom");
+        this.cakeBlockIcons[1] = par1IconRegister.registerIcon("fronos:chocolate_cake_bottom");
+        this.cakeBlockIcons[2] = par1IconRegister.registerIcon("fronos:chocolate_cake_de_block_side");
+        this.cakeBlockIcons[3] = par1IconRegister.registerIcon("fronos:chocolate_cake_de_block_side");
+    }
 
-	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
-		return par1 == 1 ? this.cakeBlockIcons[0] : par1 == 0 ? this.cakeBlockIcons[1] : par2 > 0 && par1 == 4 ? this.cakeBlockIcons[2] : this.cakeBlockIcons[3];
-	}
+    @Override
+    public IIcon getIcon(int par1, int par2)
+    {
+        return par1 == 1 ? this.cakeBlockIcons[0] : par1 == 0 ? this.cakeBlockIcons[1] : par2 > 0 && par1 == 4 ? this.cakeBlockIcons[2] : this.cakeBlockIcons[3];
+    }
 
-	@Override
-	public int getFoodAmount()
-	{
-		return 2;
-	}
+    @Override
+    public int getFoodAmount()
+    {
+        return 2;
+    }
 
-	@Override
-	public float getSaturationAmount()
-	{
-		return 0.3F;
-	}
+    @Override
+    public float getSaturationAmount()
+    {
+        return 0.3F;
+    }
 }

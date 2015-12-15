@@ -20,42 +20,42 @@ import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 @Deprecated
 public class BlockRendererIcyPoisonCrystal implements ISimpleBlockRenderingHandler
 {
-	int renderID;
+    int renderID;
 
-	public BlockRendererIcyPoisonCrystal(int var1)
-	{
-		this.renderID = var1;
-	}
+    public BlockRendererIcyPoisonCrystal(int var1)
+    {
+        this.renderID = var1;
+    }
 
-	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
-	{
-		if (metadata <= 6)
-		{
-			GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
-			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-			TileEntityIcyPoisonCrystal tc = new TileEntityIcyPoisonCrystal();
-			tc.blockMetadata = metadata;
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(tc, 0.0D, 0.0D, 0.0D, 0.0F);
-			GL11.glEnable(32826);
-		}
-	}
+    @Override
+    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
+    {
+        if (metadata <= 6)
+        {
+            GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
+            GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+            TileEntityIcyPoisonCrystal tc = new TileEntityIcyPoisonCrystal();
+            tc.blockMetadata = metadata;
+            TileEntityRendererDispatcher.instance.renderTileEntityAt(tc, 0.0D, 0.0D, 0.0D, 0.0F);
+            GL11.glEnable(32826);
+        }
+    }
 
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
-	{
-		return false;
-	}
+    @Override
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
+    {
+        return false;
+    }
 
-	@Override
-	public boolean shouldRender3DInInventory(int modelId)
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldRender3DInInventory(int modelId)
+    {
+        return true;
+    }
 
-	@Override
-	public int getRenderId()
-	{
-		return this.renderID;
-	}
+    @Override
+    public int getRenderId()
+    {
+        return this.renderID;
+    }
 }

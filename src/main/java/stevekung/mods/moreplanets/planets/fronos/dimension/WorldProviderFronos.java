@@ -22,185 +22,185 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderFronos extends WorldProviderMP
 {
-	@Override
-	public Vector3 getFogColor()
-	{
-		float f = 1.1F - this.getStarBrightness(1.0F);
-		return new Vector3(2F / 255F * f, 128F / 255F * f, 253F / 255F * f);
-	}
+    @Override
+    public Vector3 getFogColor()
+    {
+        float f = 1.1F - this.getStarBrightness(1.0F);
+        return new Vector3(2F / 255F * f, 128F / 255F * f, 253F / 255F * f);
+    }
 
-	@Override
-	public Vector3 getSkyColor()
-	{
-		if (this.worldObj.isRaining())
-		{
-			float f = 1.15F - this.getStarBrightness(1.0F);
-			return new Vector3(0 / 255F * f, 100 / 255F * f, 190 / 255F * f);
-		}
-		float f = 1.15F - this.getStarBrightness(1.0F);
-		return new Vector3(120 / 255F * f, 191 / 255F * f, 255 / 255F * f);
-	}
+    @Override
+    public Vector3 getSkyColor()
+    {
+        if (this.worldObj.isRaining())
+        {
+            float f = 1.15F - this.getStarBrightness(1.0F);
+            return new Vector3(0 / 255F * f, 100 / 255F * f, 190 / 255F * f);
+        }
+        float f = 1.15F - this.getStarBrightness(1.0F);
+        return new Vector3(120 / 255F * f, 191 / 255F * f, 255 / 255F * f);
+    }
 
-	@Override
-	public boolean canRainOrSnow()
-	{
-		return true;
-	}
+    @Override
+    public boolean canRainOrSnow()
+    {
+        return true;
+    }
 
-	@Override
-	public boolean canBlockFreeze(int x, int y, int z, boolean byWater)
-	{
-		return false;
-	}
+    @Override
+    public boolean canBlockFreeze(int x, int y, int z, boolean byWater)
+    {
+        return false;
+    }
 
-	@Override
-	public void updateWeather()
-	{
-		super.updateWeather();
-		this.worldObj.getWorldInfo().setRaining(true);
-		this.worldObj.getWorldInfo().setThundering(true);
-	}
+    @Override
+    public void updateWeather()
+    {
+        super.updateWeather();
+        this.worldObj.getWorldInfo().setRaining(true);
+        this.worldObj.getWorldInfo().setThundering(true);
+    }
 
-	@Override
-	public boolean canDoLightning(Chunk chunk)
-	{
-		return true;
-	}
+    @Override
+    public boolean canDoLightning(Chunk chunk)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean canDoRainSnowIce(Chunk chunk)
-	{
-		return true;
-	}
+    @Override
+    public boolean canDoRainSnowIce(Chunk chunk)
+    {
+        return true;
+    }
 
-	@Override
-	public long getDayLength()
-	{
-		return 180000L;
-	}
+    @Override
+    public long getDayLength()
+    {
+        return 180000L;
+    }
 
-	@Override
-	public Class<? extends IChunkProvider> getChunkProviderClass()
-	{
-		return ChunkProviderFronos.class;
-	}
+    @Override
+    public Class<? extends IChunkProvider> getChunkProviderClass()
+    {
+        return ChunkProviderFronos.class;
+    }
 
-	@Override
-	public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
-	{
-		return WorldChunkManagerFronos.class;
-	}
+    @Override
+    public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
+    {
+        return WorldChunkManagerFronos.class;
+    }
 
-	@Override
-	public float getCloudHeight()
-	{
-		return 128.0F;
-	}
+    @Override
+    public float getCloudHeight()
+    {
+        return 128.0F;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float par1)
-	{
-		float f1 = this.worldObj.getCelestialAngle(par1);
-		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getStarBrightness(float par1)
+    {
+        float f1 = this.worldObj.getCelestialAngle(par1);
+        float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
 
-		if (f2 < 0.0F)
-		{
-			f2 = 0.0F;
-		}
-		if (f2 > 1.0F)
-		{
-			f2 = 1.0F;
-		}
-		return f2 * f2 * 0.8F;
-	}
+        if (f2 < 0.0F)
+        {
+            f2 = 0.0F;
+        }
+        if (f2 > 1.0F)
+        {
+            f2 = 1.0F;
+        }
+        return f2 * f2 * 0.8F;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getSunBrightness(float par1)
-	{
-		float f1 = this.worldObj.getCelestialAngle(1.0F);
-		float f2 = 0.9F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getSunBrightness(float par1)
+    {
+        float f1 = this.worldObj.getCelestialAngle(1.0F);
+        float f2 = 0.9F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
 
-		if (f2 < 0.0F)
-		{
-			f2 = 0.0F;
-		}
-		if (f2 > 1.0F)
-		{
-			f2 = 1.0F;
-		}
-		f2 = 1.0F - f2;
-		return f2 * 1.0F;
-	}
+        if (f2 < 0.0F)
+        {
+            f2 = 0.0F;
+        }
+        if (f2 > 1.0F)
+        {
+            f2 = 1.0F;
+        }
+        f2 = 1.0F - f2;
+        return f2 * 1.0F;
+    }
 
-	@Override
-	public double getSolarEnergyMultiplier()
-	{
-		return 5.0D;
-	}
+    @Override
+    public double getSolarEnergyMultiplier()
+    {
+        return 5.0D;
+    }
 
-	@Override
-	public float getGravity()
-	{
-		return 0.0025F;
-	}
+    @Override
+    public float getGravity()
+    {
+        return 0.0025F;
+    }
 
-	@Override
-	public double getMeteorFrequency()
-	{
-		return 0.0D;
-	}
+    @Override
+    public double getMeteorFrequency()
+    {
+        return 0.0D;
+    }
 
-	@Override
-	public boolean canSpaceshipTierPass(int tier)
-	{
-		return tier >= 7;
-	}
+    @Override
+    public boolean canSpaceshipTierPass(int tier)
+    {
+        return tier >= 7;
+    }
 
-	@Override
-	public float getFallDamageModifier()
-	{
-		return 1.0F;
-	}
+    @Override
+    public float getFallDamageModifier()
+    {
+        return 1.0F;
+    }
 
-	@Override
-	public float getSoundVolReductionAmount()
-	{
-		return 1.0F;
-	}
+    @Override
+    public float getSoundVolReductionAmount()
+    {
+        return 1.0F;
+    }
 
-	@Override
-	public CelestialBody getCelestialBody()
-	{
-		return MorePlanetsCore.fronos;
-	}
+    @Override
+    public CelestialBody getCelestialBody()
+    {
+        return MorePlanetsCore.fronos;
+    }
 
-	@Override
-	public boolean hasBreathableAtmosphere()
-	{
-		return true;
-	}
+    @Override
+    public boolean hasBreathableAtmosphere()
+    {
+        return true;
+    }
 
-	@Override
-	public float getThermalLevelModifier()
-	{
-		if (this.isDaytime())
-		{
-			return 0.0F;
-		}
-		return -0.25F;
-	}
+    @Override
+    public float getThermalLevelModifier()
+    {
+        if (this.isDaytime())
+        {
+            return 0.0F;
+        }
+        return -0.25F;
+    }
 
-	@Override
-	public float getWindLevel()
-	{
-		return 1.0F;
-	}
+    @Override
+    public float getWindLevel()
+    {
+        return 1.0F;
+    }
 
-	@Override
-	public double getUltraVioletEnergyMultiplie()
-	{
-		return 2.4D;
-	}
+    @Override
+    public double getUltraVioletEnergyMultiplie()
+    {
+        return 2.4D;
+    }
 }

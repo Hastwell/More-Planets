@@ -14,21 +14,21 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.BlockColorizedLeaves;
 
 public class ItemBlockFronosColorizedLeaves extends ItemBlockMorePlanet
 {
-	public ItemBlockFronosColorizedLeaves(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosColorizedLeaves(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta | 4;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta | 4;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		BlockColorizedLeaves block = (BlockColorizedLeaves)this.field_150939_a;
-		return super.getUnlocalizedName() + "." + block.getLeafType(itemStack.getItemDamage());
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        BlockColorizedLeaves block = (BlockColorizedLeaves)this.field_150939_a;
+        return super.getUnlocalizedName() + "." + block.getLeafType(itemStack.getItemDamage());
+    }
 }

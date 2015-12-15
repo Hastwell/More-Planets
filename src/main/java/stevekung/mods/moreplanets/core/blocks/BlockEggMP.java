@@ -24,76 +24,76 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockEggMP extends BlockDragonEgg
 {
-	public BlockEggMP()
-	{
-		super();
-		this.setResistance(0.0F);
-		this.setHardness(-1.0F);
-	}
+    public BlockEggMP()
+    {
+        super();
+        this.setResistance(0.0F);
+        this.setHardness(-1.0F);
+    }
 
-	@Override
-	public Item getItemDropped(int meta, Random par2Random, int par3)
-	{
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(int meta, Random par2Random, int par3)
+    {
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
-	{
-		return false;
-	}
+    @Override
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    {
+        return false;
+    }
 
-	@Override
-	public void onBlockClicked(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer)
-	{
-	}
+    @Override
+    public void onBlockClicked(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer)
+    {
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public ItemStack getPickBlock(MovingObjectPosition mov, World world, int par2, int par3, int par4)
-	{
-		return new ItemStack(this, 1, 0);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public ItemStack getPickBlock(MovingObjectPosition mov, World world, int par2, int par3, int par4)
+    {
+        return new ItemStack(this, 1, 0);
+    }
 
-	@Override
-	public boolean canHarvestBlock(EntityPlayer player, int metadata)
-	{
-		ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public boolean canHarvestBlock(EntityPlayer player, int metadata)
+    {
+        ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack == null)
-		{
-			return player.canHarvestBlock(this);
-		}
-		return stack.getItem() == MarsItems.deshPickSlime;
-	}
+        if (stack == null)
+        {
+            return player.canHarvestBlock(this);
+        }
+        return stack.getItem() == MarsItems.deshPickSlime;
+    }
 
-	@Override
-	public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, int x, int y, int z)
-	{
-		ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, int x, int y, int z)
+    {
+        ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack != null && stack.getItem() == MarsItems.deshPickSlime)
-		{
-			return 0.1F;
-		}
-		return ForgeHooks.blockStrength(this, player, world, x, y, z);
-	}
+        if (stack != null && stack.getItem() == MarsItems.deshPickSlime)
+        {
+            return 0.1F;
+        }
+        return ForgeHooks.blockStrength(this, player, world, x, y, z);
+    }
 }
