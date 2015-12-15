@@ -12,25 +12,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMorePlanets;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosColorizedLeaves;
 
 public class ItemBlockFronosColorizedLeaves extends ItemBlockMorePlanets
 {
-	public ItemBlockFronosColorizedLeaves(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosColorizedLeaves(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta | 4;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta | 4;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack itemStack, int renderPass)
-	{
-		return BlockFronosColorizedLeaves.getLeavesColor();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack(ItemStack itemStack, int renderPass)
+    {
+        return -16733696;
+    }
 }

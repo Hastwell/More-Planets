@@ -33,143 +33,142 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlime;
 
 public class BlockJellySlimeEgg extends BlockEggMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockJellySlimeEgg(String name)
-	{
-		super();
-		this.setStepSound(MorePlanetsCore.soundTypeSmallSlime);
-		this.setHardness(0.0F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_slime_egg));
-		this.setUnlocalizedName(name);
-	}
+    public BlockJellySlimeEgg(String name)
+    {
+        super();
+        this.setStepSound(MorePlanetsCore.soundTypeSmallSlime);
+        this.setHardness(0.0F);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_slime_egg));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 8; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 8; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
-	{
-		if (entity.isSneaking())
-		{
-			super.onFallenUpon(world, pos, entity, fallDistance);
-		}
-		else
-		{
-			entity.fall(fallDistance, 0.0F);
-		}
-	}
+    @Override
+    public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
+    {
+        if (entity.isSneaking())
+        {
+            super.onFallenUpon(world, pos, entity, fallDistance);
+        }
+        else
+        {
+            entity.fall(fallDistance, 0.0F);
+        }
+    }
 
-	@Override
-	public void onLanded(World world, Entity entity)
-	{
-		if (entity.isSneaking())
-		{
-			super.onLanded(world, entity);
-		}
-		else if (entity.motionY < 0.0D)
-		{
-			entity.motionY = -entity.motionY;
-		}
-	}
+    @Override
+    public void onLanded(World world, Entity entity)
+    {
+        if (entity.isSneaking())
+        {
+            super.onLanded(world, entity);
+        }
+        else if (entity.motionY < 0.0D)
+        {
+            entity.motionY = -entity.motionY;
+        }
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
-		{
-			double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
-			entity.motionX *= d;
-			entity.motionZ *= d;
-		}
-		super.onEntityCollidedWithBlock(world, pos, entity);
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+    {
+        if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
+        {
+            double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
+            entity.motionX *= d;
+            entity.motionZ *= d;
+        }
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
-	{
-		if (!world.isRemote)
-		{
-			EntityJellySlime slime = new EntityJellySlime(world);
-			slime.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
-			slime.setJellySlimeType(this.getMetaFromState(world.getBlockState(pos)));
-			world.spawnEntityInWorld(slime);
-		}
-		world.setBlockToAir(pos);
-		world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "mob.slime.big", 1.0F, 1.0F);
-		this.onBlockDestroyedByExplosion(world, pos, explosion);
-	}
+    @Override
+    public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
+    {
+        if (!world.isRemote)
+        {
+            EntityJellySlime slime = new EntityJellySlime(world);
+            slime.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+            slime.setJellySlimeType(this.getMetaFromState(world.getBlockState(pos)));
+            world.spawnEntityInWorld(slime);
+        }
+        world.setBlockToAir(pos);
+        world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "mob.slime.big", 1.0F, 1.0F);
+        this.onBlockDestroyedByExplosion(world, pos, explosion);
+    }
 
-	@Override
-	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		grape_jelly_slime_egg,
-		raspberry_jelly_slime_egg,
-		strawberry_jelly_slime_egg,
-		berry_jelly_slime_egg,
-		lime_jelly_slime_egg,
-		orange_jelly_slime_egg,
-		green_jelly_slime_egg,
-		lemon_jelly_slime_egg;
+    public static enum BlockType implements IStringSerializable
+    {
+        grape_jelly_slime_egg,
+        raspberry_jelly_slime_egg,
+        strawberry_jelly_slime_egg,
+        berry_jelly_slime_egg,
+        lime_jelly_slime_egg,
+        orange_jelly_slime_egg,
+        green_jelly_slime_egg,
+        lemon_jelly_slime_egg;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

@@ -9,10 +9,10 @@ package stevekung.mods.moreplanets.planets.fronos.world.gen.village;
 
 public abstract class ComponentFronosVillageRoadPiece extends ComponentFronosVillage
 {
-	public ComponentFronosVillageRoadPiece() {}
+    public ComponentFronosVillageRoadPiece() {}
 
-	protected ComponentFronosVillageRoadPiece(ComponentFronosVillageStartPiece component, int type)
-	{
-		super(component, type);
-	}
+    protected ComponentFronosVillageRoadPiece(ComponentFronosVillageStartPiece component, int type)
+    {
+        super(component, type);
+    }
 }

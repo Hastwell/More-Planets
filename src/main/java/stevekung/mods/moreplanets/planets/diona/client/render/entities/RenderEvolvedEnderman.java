@@ -26,58 +26,58 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 @SideOnly(Side.CLIENT)
 public class RenderEvolvedEnderman extends RenderLiving
 {
-	private ResourceLocation endermanTextures = new ResourceLocation("moreplanets:textures/entity/evolved_enderman/evolved_enderman.png");
-	private ModelEvolvedEnderman endermanModel;
-	private Random rnd = new Random();
+    private ResourceLocation endermanTextures = new ResourceLocation("moreplanets:textures/entity/evolved_enderman/evolved_enderman.png");
+    private ModelEvolvedEnderman endermanModel;
+    private Random rnd = new Random();
 
-	public RenderEvolvedEnderman(RenderManager render)
-	{
-		super(render, new ModelEvolvedEnderman(), 0.5F);
-		this.endermanModel = (ModelEvolvedEnderman)super.mainModel;
-		this.addLayer(new LayerEvolvedEndermanEyes(this));
-		this.addLayer(new LayerEvolvedEndermanHeldBlock(this));
-	}
+    public RenderEvolvedEnderman(RenderManager render)
+    {
+        super(render, new ModelEvolvedEnderman(), 0.5F);
+        this.endermanModel = (ModelEvolvedEnderman)super.mainModel;
+        this.addLayer(new LayerEvolvedEndermanEyes(this));
+        this.addLayer(new LayerEvolvedEndermanHeldBlock(this));
+    }
 
-	public void doRender(EntityEvolvedEnderman entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		this.endermanModel.isCarrying = entity.func_175489_ck().getBlock().getMaterial() != Material.air;
-		this.endermanModel.isAttacking = entity.isScreaming();
+    public void doRender(EntityEvolvedEnderman entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        this.endermanModel.isCarrying = entity.func_175489_ck().getBlock().getMaterial() != Material.air;
+        this.endermanModel.isAttacking = entity.isScreaming();
 
-		if (entity.isScreaming())
-		{
-			double d3 = 0.02D;
-			x += this.rnd.nextGaussian() * d3;
-			z += this.rnd.nextGaussian() * d3;
-		}
-		super.doRender(entity, x, y, z, par5, partialTicks);
-	}
+        if (entity.isScreaming())
+        {
+            double d3 = 0.02D;
+            x += this.rnd.nextGaussian() * d3;
+            z += this.rnd.nextGaussian() * d3;
+        }
+        super.doRender(entity, x, y, z, par5, partialTicks);
+    }
 
-	protected ResourceLocation func_180573_a(EntityEvolvedEnderman entity)
-	{
-		return this.endermanTextures;
-	}
+    protected ResourceLocation func_180573_a(EntityEvolvedEnderman entity)
+    {
+        return this.endermanTextures;
+    }
 
-	@Override
-	public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
-	}
+    @Override
+    public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
+    }
 
-	@Override
-	public void doRender(EntityLivingBase entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
-	}
+    @Override
+    public void doRender(EntityLivingBase entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.func_180573_a((EntityEvolvedEnderman)entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.func_180573_a((EntityEvolvedEnderman)entity);
+    }
 
-	@Override
-	public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
-	}
+    @Override
+    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
+    }
 }

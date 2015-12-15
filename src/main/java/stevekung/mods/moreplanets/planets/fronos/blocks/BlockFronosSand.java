@@ -24,73 +24,73 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockFronosSand extends BlockFalling
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockFronosSand(String name)
-	{
-		super();
-		this.setStepSound(soundTypeSand);
-		this.setHardness(0.5F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_sand));
-		this.setUnlocalizedName(name);
-	}
+    public BlockFronosSand(String name)
+    {
+        super();
+        this.setStepSound(soundTypeSand);
+        this.setHardness(0.5F);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_sand));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 3; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		fronos_sand,
-		white_sand,
-		cheese_sand;
+    public static enum BlockType implements IStringSerializable
+    {
+        fronos_sand,
+        white_sand,
+        cheese_sand;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

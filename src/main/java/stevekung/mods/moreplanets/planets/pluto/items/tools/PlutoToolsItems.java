@@ -14,34 +14,34 @@ import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PlutoToolsItems
 {
-	public static Item xeonium_pickaxe;
-	public static Item xeonium_axe;
-	public static Item xeonium_hoe;
-	public static Item xeonium_shovel;
-	public static Item xeonium_sword;
+    public static Item xeonium_pickaxe;
+    public static Item xeonium_axe;
+    public static Item xeonium_hoe;
+    public static Item xeonium_shovel;
+    public static Item xeonium_sword;
 
-	// Name,HarvestLevel,MaxUse,Efficiency,Damage,Enchantability
-	public static ToolMaterial xeonium = EnumHelper.addToolMaterial("xeonium", 4, 0, 11.0F, 5.0F, 8);
+    // Name,HarvestLevel,MaxUse,Efficiency,Damage,Enchantability
+    public static ToolMaterial xeonium = EnumHelper.addToolMaterial("xeonium", 4, 0, 11.0F, 5.0F, 8);
 
-	public static void init()
-	{
-		// Init
-		PlutoToolsItems.xeonium_pickaxe = new ItemXeoniumPickaxe("xeonium_pickaxe", PlutoToolsItems.xeonium);
-		PlutoToolsItems.xeonium_axe = new ItemXeoniumAxe("xeonium_axe", PlutoToolsItems.xeonium);
-		PlutoToolsItems.xeonium_hoe = new ItemXeoniumHoe("xeonium_hoe", PlutoToolsItems.xeonium);
-		PlutoToolsItems.xeonium_shovel = new ItemXeoniumShovel("xeonium_shovel", PlutoToolsItems.xeonium);
-		PlutoToolsItems.xeonium_sword = new ItemXeoniumSword("xeonium_sword", PlutoToolsItems.xeonium);
+    public static void init()
+    {
+        // Init
+        PlutoToolsItems.xeonium_pickaxe = new ItemXeoniumPickaxe("xeonium_pickaxe", PlutoToolsItems.xeonium);
+        PlutoToolsItems.xeonium_axe = new ItemXeoniumAxe("xeonium_axe", PlutoToolsItems.xeonium);
+        PlutoToolsItems.xeonium_hoe = new ItemXeoniumHoe("xeonium_hoe", PlutoToolsItems.xeonium);
+        PlutoToolsItems.xeonium_shovel = new ItemXeoniumShovel("xeonium_shovel", PlutoToolsItems.xeonium);
+        PlutoToolsItems.xeonium_sword = new ItemXeoniumSword("xeonium_sword", PlutoToolsItems.xeonium);
 
-		// Register
-		CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_pickaxe);
-		CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_axe);
-		CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_hoe);
-		CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_shovel);
-		CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_sword);
+        // Register
+        CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_pickaxe);
+        CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_axe);
+        CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_hoe);
+        CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_shovel);
+        CommonRegisterHelper.registerItem(PlutoToolsItems.xeonium_sword);
 
-		// Set harvest level
-		CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_pickaxe, "pickaxe", 3);
-		CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_axe, "axe", 3);
-		CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_shovel, "shovel", 3);
-	}
+        // Set harvest level
+        CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_pickaxe, "pickaxe", 3);
+        CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_axe, "axe", 3);
+        CommonRegisterHelper.setToolHarvestLevel(PlutoToolsItems.xeonium_shovel, "shovel", 3);
+    }
 }

@@ -23,24 +23,24 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class FurnaceFuelMP implements IFuelHandler
 {
-	@Override
-	public int getBurnTime(ItemStack itemStack)
-	{
-		Item item = itemStack.getItem();
+    @Override
+    public int getBurnTime(ItemStack itemStack)
+    {
+        Item item = itemStack.getItem();
 
-		if (item == this.getBlock(NibiruBlocks.nibiru_sapling) || item == this.getBlock(KoentusBlocks.crystal_sapling) || item == this.getBlock(FronosBlocks.fronos_sapling) || item == this.getBlock(EuropaBlocks.europa_sapling) || item == this.getBlock(DarkAsteroidBlocks.alien_sapling))
-		{
-			return 100;
-		}
-		if (item == NibiruItems.ancient_dark_door || item == NibiruItems.orange_door || item == KoentusItems.crystal_door || item == FronosItems.coconut_door || item == FronosItems.maple_door || item == EuropaItems.europa_door)
-		{
-			return 150;
-		}
-		return 0;
-	}
+        if (item == this.getBlock(NibiruBlocks.nibiru_sapling) || item == this.getBlock(KoentusBlocks.crystal_sapling) || item == this.getBlock(FronosBlocks.fronos_sapling) || item == this.getBlock(EuropaBlocks.europa_sapling) || item == this.getBlock(DarkAsteroidBlocks.alien_sapling))
+        {
+            return 100;
+        }
+        if (item == NibiruItems.ancient_dark_door || item == NibiruItems.orange_door || item == KoentusItems.crystal_door || item == FronosItems.coconut_door || item == FronosItems.maple_door || item == EuropaItems.europa_door)
+        {
+            return 150;
+        }
+        return 0;
+    }
 
-	private Item getBlock(Block block)
-	{
-		return Item.getItemFromBlock(block);
-	}
+    private Item getBlock(Block block)
+    {
+        return Item.getItemFromBlock(block);
+    }
 }

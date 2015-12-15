@@ -20,63 +20,63 @@ import stevekung.mods.moreplanets.common.blocks.BlockBreakableMP;
 
 public class BlockHelium extends BlockBreakableMP
 {
-	public BlockHelium(String name)
-	{
-		super(Material.cloth);
-		this.setStepSound(soundTypeCloth);
-		this.setHardness(0.25F);
-		this.setResistance(0.5F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockHelium(String name)
+    {
+        super(Material.cloth);
+        this.setStepSound(soundTypeCloth);
+        this.setHardness(0.25F);
+        this.setResistance(0.5F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (entity instanceof EntityPlayer)
-		{
-			if (((EntityPlayer)entity).capabilities.isFlying)
-			{
-				return;
-			}
-			entity.motionY = 0.14F;
-			entity.fallDistance = 0.0F;
-			return;
-		}
-		else if (entity instanceof EntityItem)
-		{
-			entity.motionY = 0.32F;
-			entity.fallDistance = 0.0F;
-			return;
-		}
-		else
-		{
-			entity.motionY = 0.12F;
-			entity.fallDistance = 0.0F;
-			return;
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (entity instanceof EntityPlayer)
+        {
+            if (((EntityPlayer)entity).capabilities.isFlying)
+            {
+                return;
+            }
+            entity.motionY = 0.14F;
+            entity.fallDistance = 0.0F;
+            return;
+        }
+        else if (entity instanceof EntityItem)
+        {
+            entity.motionY = 0.32F;
+            entity.fallDistance = 0.0F;
+            return;
+        }
+        else
+        {
+            entity.motionY = 0.12F;
+            entity.fallDistance = 0.0F;
+            return;
+        }
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        return null;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 }

@@ -9,10 +9,10 @@ package stevekung.mods.moreplanets.common.world.gen.village;
 
 public abstract class ComponentMartianVillageRoadPiece extends ComponentMartianVillage
 {
-	public ComponentMartianVillageRoadPiece() {}
+    public ComponentMartianVillageRoadPiece() {}
 
-	protected ComponentMartianVillageRoadPiece(ComponentMartianVillageStartPiece component, int type)
-	{
-		super(component, type);
-	}
+    protected ComponentMartianVillageRoadPiece(ComponentMartianVillageStartPiece component, int type)
+    {
+        super(component, type);
+    }
 }

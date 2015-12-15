@@ -16,16 +16,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMorePlanetsNull extends Item
 {
-	public ItemMorePlanetsNull(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemMorePlanetsNull(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

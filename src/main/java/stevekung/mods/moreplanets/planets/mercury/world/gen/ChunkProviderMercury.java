@@ -27,80 +27,80 @@ import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomChestsMe
 
 public class ChunkProviderMercury extends ChunkProviderBaseMP
 {
-	private BiomeDecoratorMercury biomeDecorator = new BiomeDecoratorMercury();
-	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMercury.mercury };
-	private MapGenCavesMP caveGenerator = new MapGenCavesMP(MercuryBlocks.mercury_block, this.getBlockMetadata());
+    private BiomeDecoratorMercury biomeDecorator = new BiomeDecoratorMercury();
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMercury.basePlanetBiome };
+    private MapGenCavesMP caveGenerator = new MapGenCavesMP(MercuryBlocks.mercury_block, this.getBlockMetadata());
 
-	private MapGenDungeon dungeonGenerator = new MapGenDungeon(MercuryBlocks.mercury_block, 11, 8, 16, 4);
-	{
-		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
-		this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.bossRooms.add(new RoomBossMercury(null, 0, 0, 0, null));
-	}
+    private MapGenDungeon dungeonGenerator = new MapGenDungeon(MercuryBlocks.mercury_block, 11, 8, 16, 4);
+    {
+        this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
+        this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.bossRooms.add(new RoomBossMercury(null, 0, 0, 0, null));
+    }
 
-	public ChunkProviderMercury(World world, long seed, boolean genFeature)
-	{
-		super(world, seed, genFeature);
-	}
+    public ChunkProviderMercury(World world, long seed, boolean genFeature)
+    {
+        super(world, seed, genFeature);
+    }
 
-	@Override
-	public Chunk provideChunk(int chunkX, int chunkZ)
-	{
-		ChunkPrimer primer = new ChunkPrimer();
-		this.rand.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
-		this.generateTerrain(chunkX, chunkZ, primer);
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
-		this.createCraters(chunkX, chunkZ, primer);
-		this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-		this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
-		Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
-		chunk.generateSkylightMap();
-		return chunk;
-	}
+    @Override
+    public Chunk provideChunk(int chunkX, int chunkZ)
+    {
+        ChunkPrimer primer = new ChunkPrimer();
+        this.rand.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
+        this.generateTerrain(chunkX, chunkZ, primer);
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
+        this.createCraters(chunkX, chunkZ, primer);
+        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
+        Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
+        chunk.generateSkylightMap();
+        return chunk;
+    }
 
-	@Override
-	public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
-	{
-		BlockFalling.fallInstantly = true;
-		int x = chunkX * 16;
-		int z = chunkZ * 16;
-		BlockPos pos = new BlockPos(x, 0, z);
-		this.worldObj.getBiomeGenForCoords(pos.add(16, 0, 16));
-		this.rand.setSeed(this.worldObj.getSeed());
-		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
-		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
-		this.dungeonGenerator.handleTileEntities(this.rand);
-		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMercury.mercury, pos);
-		BlockFalling.fallInstantly = false;
-	}
+    @Override
+    public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
+    {
+        BlockFalling.fallInstantly = true;
+        int x = chunkX * 16;
+        int z = chunkZ * 16;
+        BlockPos pos = new BlockPos(x, 0, z);
+        this.worldObj.getBiomeGenForCoords(pos.add(16, 0, 16));
+        this.rand.setSeed(this.worldObj.getSeed());
+        long var7 = this.rand.nextLong() / 2L * 2L + 1L;
+        long var9 = this.rand.nextLong() / 2L * 2L + 1L;
+        this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
+        this.dungeonGenerator.handleTileEntities(this.rand);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMercury.basePlanetBiome, pos);
+        BlockFalling.fallInstantly = false;
+    }
 
-	@Override
-	protected String getName()
-	{
-		return "Mercury";
-	}
+    @Override
+    protected String getName()
+    {
+        return "Mercury";
+    }
 
-	@Override
-	protected Block getBaseBlock()
-	{
-		return MercuryBlocks.mercury_block;
-	}
+    @Override
+    protected Block getBaseBlock()
+    {
+        return MercuryBlocks.mercury_block;
+    }
 
-	@Override
-	protected int[] getBlockMetadata()
-	{
-		return new int[] { 0, 1, 2 };
-	}
+    @Override
+    protected int[] getBlockMetadata()
+    {
+        return new int[] { 0, 1, 2 };
+    }
 }

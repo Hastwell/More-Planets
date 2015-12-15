@@ -15,43 +15,43 @@ import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class ArmorBreathableWhiteCrystal extends ItemBreathableArmor
 {
-	public ArmorBreathableWhiteCrystal(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorBreathableWhiteCrystal(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KoentusArmorItems.breathable_white_crystal_helmet)
-		{
-			return "moreplanets:textures/model/armor/breathable_white_crystal.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KoentusArmorItems.breathable_white_crystal_helmet)
+        {
+            return "moreplanets:textures/model/armor/breathable_white_crystal.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return KoentusItems.koentus_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return KoentusItems.koentus_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 
-	@Override
-	protected EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    protected EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	protected Item getBreathableArmor()
-	{
-		return KoentusArmorItems.breathable_white_crystal_helmet;
-	}
+    @Override
+    protected Item getBreathableArmor()
+    {
+        return KoentusArmorItems.breathable_white_crystal_helmet;
+    }
 }

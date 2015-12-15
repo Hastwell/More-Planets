@@ -21,34 +21,40 @@ import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 
 public class BlockFluidDirtyWater extends BlockFluidBaseMP
 {
-	public BlockFluidDirtyWater(String name)
-	{
-		super(MercuryBlocks.dirty_water_fluid);
-		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
-		this.setLightOpacity(5);
-		this.setUnlocalizedName(name);
-	}
+    public BlockFluidDirtyWater(String name)
+    {
+        super(MercuryBlocks.dirty_water_fluid);
+        this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+        this.setLightOpacity(5);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		super.randomDisplayTick(world, pos, state, rand);
-		int meta = (Integer)state.getValue(LEVEL);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        super.randomDisplayTick(world, pos, state, rand);
+        int meta = (Integer)state.getValue(LEVEL);
 
-		if (rand.nextInt(64) == 0)
-		{
-			if (meta > 0 && meta < 8)
-			{
-				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, "liquid.water", rand.nextFloat() * 0.25F + 0.75F, rand.nextFloat() * 1.0F + 0.5F, false);
-			}
-		}
-		if (rand.nextInt(10) == 0)
-		{
-			if (meta <= 0 || meta >= 8)
-			{
-				world.spawnParticle(EnumParticleTypes.SUSPENDED, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
-			}
-		}
-	}
+        if (rand.nextInt(64) == 0)
+        {
+            if (meta > 0 && meta < 8)
+            {
+                world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, "liquid.water", rand.nextFloat() * 0.25F + 0.75F, rand.nextFloat() * 1.0F + 0.5F, false);
+            }
+        }
+        if (rand.nextInt(10) == 0)
+        {
+            if (meta <= 0 || meta >= 8)
+            {
+                world.spawnParticle(EnumParticleTypes.SUSPENDED, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+            }
+        }
+    }
+
+    @Override
+    protected boolean isInfinite()
+    {
+        return true;
+    }
 }

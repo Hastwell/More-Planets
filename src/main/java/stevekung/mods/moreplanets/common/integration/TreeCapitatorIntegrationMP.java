@@ -31,140 +31,140 @@ import stevekung.mods.moreplanets.planets.siriusb.items.tools.SiriusBToolsItems;
 
 public class TreeCapitatorIntegrationMP
 {
-	public static void init()
-	{
-		NBTTagCompound tpModCfg = new NBTTagCompound();
-		NBTTagList treeList = new NBTTagList();
-		NBTTagCompound tree = new NBTTagCompound();
+    public static void init()
+    {
+        NBTTagCompound tpModCfg = new NBTTagCompound();
+        NBTTagList treeList = new NBTTagList();
+        NBTTagCompound tree = new NBTTagCompound();
 
-		String nibiruLog = blockName(NibiruBlocks.nibiru_log);
-		String nibiruLeaves = blockName(NibiruBlocks.nibiru_leaves);
-		String koentusLog = blockName(KoentusBlocks.crystal_log);
-		String koentusLeaves = blockName(KoentusBlocks.crystal_leaves);
-		String fronosLog = blockName(FronosBlocks.fronos_log);
-		String fronosColorizedLeaves = blockName(FronosBlocks.fronos_colorized_leaves);
-		String fronosLeaves = blockName(FronosBlocks.fronos_leaves);
-		String europaLog = blockName(EuropaBlocks.europa_log);
-		String europaLeaves = blockName(EuropaBlocks.europa_leaves);
-		String alienLog = blockName(DarkAsteroidBlocks.alien_log);
-		String alienLeaves = blockName(DarkAsteroidBlocks.alien_leaves);
-		String skyMushroomHuge = blockName(FronosBlocks.sky_mushroom_block);
+        String nibiruLog = blockName(NibiruBlocks.nibiru_log);
+        String nibiruLeaves = blockName(NibiruBlocks.nibiru_leaves);
+        String koentusLog = blockName(KoentusBlocks.crystal_log);
+        String koentusLeaves = blockName(KoentusBlocks.crystal_leaves);
+        String fronosLog = blockName(FronosBlocks.fronos_log);
+        String fronosColorizedLeaves = blockName(FronosBlocks.fronos_colorized_leaves);
+        String fronosLeaves = blockName(FronosBlocks.fronos_leaves);
+        String europaLog = blockName(EuropaBlocks.europa_log);
+        String europaLeaves = blockName(EuropaBlocks.europa_leaves);
+        String alienLog = blockName(DarkAsteroidBlocks.alien_log);
+        String alienLeaves = blockName(DarkAsteroidBlocks.alien_leaves);
+        String skyMushroomHuge = blockName(FronosBlocks.sky_mushroom_block);
 
-		String quontoniumAxe = itemName(DionaToolsItems.quontonium_axe);
-		String fronisiumAxe = itemName(DionaToolsItems.fronisium_axe);
-		String polongniusMeteorAxe = itemName(PolongniusToolsItems.polongnius_meteoric_iron_axe);
-		String palladiumAxe = itemName(PolongniusToolsItems.palladium_axe);
-		String purpleCrystalAxe = itemName(PolongniusToolsItems.purple_crystal_axe);
-		String redGemAxe = itemName(NibiruToolsItems.red_gem_axe);
-		String noriumAxe = itemName(NibiruToolsItems.norium_axe);
-		String koentusMeteorAxe = itemName(KoentusToolsItems.koentus_meteoric_iron_axe);
-		String whiteCrystalAxe = itemName(KoentusToolsItems.white_crystal_axe);
-		String blackDiamondAxe = itemName(FronosToolsItems.black_diamond_axe);
-		String iridiumAxe = itemName(FronosToolsItems.iridium_axe);
-		String candyAxe = itemName(FronosToolsItems.candy_axe);
-		String frozenIronAxe = itemName(KapteynBToolsItems.frozen_iron_axe);
-		String uraniumAxe = itemName(KapteynBToolsItems.uranium_axe);
-		String sulfurAxe = itemName(SiriusBToolsItems.sulfur_axe);
-		String xeoniumAxe = itemName(PlutoToolsItems.xeonium_axe);
+        String quontoniumAxe = itemName(DionaToolsItems.quontonium_axe);
+        String fronisiumAxe = itemName(DionaToolsItems.fronisium_axe);
+        String polongniusMeteorAxe = itemName(PolongniusToolsItems.polongnius_meteoric_iron_axe);
+        String palladiumAxe = itemName(PolongniusToolsItems.palladium_axe);
+        String purpleCrystalAxe = itemName(PolongniusToolsItems.purple_crystal_axe);
+        String redGemAxe = itemName(NibiruToolsItems.red_gem_axe);
+        String noriumAxe = itemName(NibiruToolsItems.norium_axe);
+        String koentusMeteorAxe = itemName(KoentusToolsItems.koentus_meteoric_iron_axe);
+        String whiteCrystalAxe = itemName(KoentusToolsItems.white_crystal_axe);
+        String blackDiamondAxe = itemName(FronosToolsItems.black_diamond_axe);
+        String iridiumAxe = itemName(FronosToolsItems.iridium_axe);
+        String candyAxe = itemName(FronosToolsItems.candy_axe);
+        String frozenIronAxe = itemName(KapteynBToolsItems.frozen_iron_axe);
+        String uraniumAxe = itemName(KapteynBToolsItems.uranium_axe);
+        String sulfurAxe = itemName(SiriusBToolsItems.sulfur_axe);
+        String xeoniumAxe = itemName(PlutoToolsItems.xeonium_axe);
 
-		tpModCfg.setString("modID", MorePlanetsCore.MOD_ID);
-		tpModCfg.setString("axeIDList", quontoniumAxe + "; " + fronisiumAxe + "; " + polongniusMeteorAxe + "; " + palladiumAxe + "; " + purpleCrystalAxe + "; " + redGemAxe + "; " + noriumAxe + "; " + koentusMeteorAxe + "; " + whiteCrystalAxe + "; "
-				+ blackDiamondAxe + "; " + iridiumAxe + "; " + candyAxe + "; " + frozenIronAxe + "; " + uraniumAxe + "; " + sulfurAxe + "; " + xeoniumAxe);
+        tpModCfg.setString("modID", MorePlanetsCore.MOD_ID);
+        tpModCfg.setString("axeIDList", quontoniumAxe + "; " + fronisiumAxe + "; " + polongniusMeteorAxe + "; " + palladiumAxe + "; " + purpleCrystalAxe + "; " + redGemAxe + "; " + noriumAxe + "; " + koentusMeteorAxe + "; " + whiteCrystalAxe + "; "
+                + blackDiamondAxe + "; " + iridiumAxe + "; " + candyAxe + "; " + frozenIronAxe + "; " + uraniumAxe + "; " + sulfurAxe + "; " + xeoniumAxe);
 
-		// Ancient Dark Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "ancientDark");
-		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", nibiruLog, nibiruLog, nibiruLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Ancient Dark Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "ancientDark");
+        tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", nibiruLog, nibiruLog, nibiruLog));
+        tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Orange Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "orange");
-		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", nibiruLog, nibiruLog, nibiruLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Orange Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "orange");
+        tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", nibiruLog, nibiruLog, nibiruLog));
+        tree.setString("leaves", String.format("%s, 0; %s, 1; %s, 2; %s, 3; %s, 8; %s, 9; %s, 10; %s, 11", nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves, nibiruLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Coconut Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "coconut");
-		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", fronosLog, fronosLog, fronosLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 8", fronosColorizedLeaves, fronosColorizedLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Coconut Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "coconut");
+        tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", fronosLog, fronosLog, fronosLog));
+        tree.setString("leaves", String.format("%s, 0; %s, 8", fronosColorizedLeaves, fronosColorizedLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Red Maple Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "redMaple");
-		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 8", fronosLeaves, fronosLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Red Maple Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "redMaple");
+        tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
+        tree.setString("leaves", String.format("%s, 0; %s, 8", fronosLeaves, fronosLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Yellow Maple Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "yellowMaple");
-		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
-		tree.setString("leaves", String.format("%s, 1; %s, 9", fronosLeaves, fronosLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Yellow Maple Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "yellowMaple");
+        tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
+        tree.setString("leaves", String.format("%s, 1; %s, 9", fronosLeaves, fronosLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Purple Maple Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "purpleMaple");
-		tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
-		tree.setString("leaves", String.format("%s, 2; %s, 10", fronosLeaves, fronosLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Purple Maple Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "purpleMaple");
+        tree.setString("logs", String.format("%s, 1; %s, 5; %s, 9", fronosLog, fronosLog, fronosLog));
+        tree.setString("leaves", String.format("%s, 2; %s, 10", fronosLeaves, fronosLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Crystal Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "crystal");
-		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", koentusLog, koentusLog, koentusLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 8", koentusLeaves, koentusLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Crystal Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "crystal");
+        tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", koentusLog, koentusLog, koentusLog));
+        tree.setString("leaves", String.format("%s, 0; %s, 8", koentusLeaves, koentusLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Europa Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "europa");
-		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", europaLog, europaLog, europaLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 8", europaLeaves, europaLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Europa Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "europa");
+        tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", europaLog, europaLog, europaLog));
+        tree.setString("leaves", String.format("%s, 0; %s, 8", europaLeaves, europaLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Alien Tree
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "alien");
-		tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", alienLog, alienLog, alienLog));
-		tree.setString("leaves", String.format("%s, 0; %s, 8", alienLeaves, alienLeaves));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		treeList.appendTag(tree);
+        // Alien Tree
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "alien");
+        tree.setString("logs", String.format("%s, 0; %s, 4; %s, 8", alienLog, alienLog, alienLog));
+        tree.setString("leaves", String.format("%s, 0; %s, 8", alienLeaves, alienLeaves));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        treeList.appendTag(tree);
 
-		// Sky Mushroom Huge
-		tree = new NBTTagCompound();
-		tree.setString("treeName", "skyMushroom");
-		tree.setString("logs", String.format("%s, 10; %s, 15", skyMushroomHuge, skyMushroomHuge));
-		tree.setString("leaves", String.format("%s, 1; %s, 2; %s, 3; %s, 4; %s, 5; %s, 6; %s, 7; %s, 8; %s, 9; %s, 14", skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge));
-		tree.setBoolean("requireLeafDecayCheck", false);
-		tree.setInteger("maxHorLeafBreakDist", 6);
-		treeList.appendTag(tree);
+        // Sky Mushroom Huge
+        tree = new NBTTagCompound();
+        tree.setString("treeName", "skyMushroom");
+        tree.setString("logs", String.format("%s, 10; %s, 15", skyMushroomHuge, skyMushroomHuge));
+        tree.setString("leaves", String.format("%s, 1; %s, 2; %s, 3; %s, 4; %s, 5; %s, 6; %s, 7; %s, 8; %s, 9; %s, 14", skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge, skyMushroomHuge));
+        tree.setBoolean("requireLeafDecayCheck", false);
+        tree.setInteger("maxHorLeafBreakDist", 6);
+        treeList.appendTag(tree);
 
-		tpModCfg.setTag("trees", treeList);
+        tpModCfg.setTag("trees", treeList);
 
-		FMLInterModComms.sendMessage("Treecapitator", "ThirdPartyModConfig", tpModCfg);
-		MPLog.info("Enable Tree Capitator Integration");
-	}
+        FMLInterModComms.sendMessage("Treecapitator", "ThirdPartyModConfig", tpModCfg);
+        MPLog.info("Enable Tree Capitator Integration");
+    }
 
-	private static String blockName(Block block)
-	{
-		return GameData.getBlockRegistry().getNameForObject(block).toString();
-	}
+    private static String blockName(Block block)
+    {
+        return GameData.getBlockRegistry().getNameForObject(block).toString();
+    }
 
-	private static String itemName(Item item)
-	{
-		return GameData.getItemRegistry().getNameForObject(item).toString();
-	}
+    private static String itemName(Item item)
+    {
+        return GameData.getItemRegistry().getNameForObject(item).toString();
+    }
 }

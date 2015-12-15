@@ -28,129 +28,127 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockFronisiumTNT extends BlockBaseMP
 {
-	public BlockFronisiumTNT(String name)
-	{
-		super(Material.tnt);
-		this.setStepSound(soundTypeMetal);
-		this.setHardness(0.3F);
-		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.EXPLODE, false));
-		this.setUnlocalizedName(name);
-	}
+    public BlockFronisiumTNT(String name)
+    {
+        super(Material.tnt);
+        this.setStepSound(soundTypeMetal);
+        this.setHardness(0.3F);
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.EXPLODE, false));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
-	{
-		super.onBlockAdded(world, pos, state);
+    @Override
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state)
+    {
+        if (world.isBlockPowered(pos))
+        {
+            this.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true));
+            world.setBlockToAir(pos);
+        }
+    }
 
-		if (world.isBlockPowered(pos))
-		{
-			this.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true));
-			world.setBlockToAir(pos);
-		}
-	}
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock)
+    {
+        if (world.isBlockPowered(pos))
+        {
+            this.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true));
+            world.setBlockToAir(pos);
+        }
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock)
-	{
-		if (world.isBlockPowered(pos))
-		{
-			this.onBlockDestroyedByPlayer(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true));
-			world.setBlockToAir(pos);
-		}
-	}
+    @Override
+    public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion explosion)
+    {
+        if (!world.isRemote)
+        {
+            EntityFronisiumTNT entitytntprimed = new EntityFronisiumTNT(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, explosion.getExplosivePlacedBy());
+            entitytntprimed.fuse = world.rand.nextInt(entitytntprimed.fuse / 4) + entitytntprimed.fuse / 8;
+            world.spawnEntityInWorld(entitytntprimed);
+        }
+    }
 
-	@Override
-	public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion explosion)
-	{
-		if (!world.isRemote)
-		{
-			EntityFronisiumTNT entitytntprimed = new EntityFronisiumTNT(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, explosion.getExplosivePlacedBy());
-			entitytntprimed.fuse = world.rand.nextInt(entitytntprimed.fuse / 4) + entitytntprimed.fuse / 8;
-			world.spawnEntityInWorld(entitytntprimed);
-		}
-	}
+    @Override
+    public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state)
+    {
+        this.explode(world, pos, state, (EntityLivingBase)null);
+    }
 
-	@Override
-	public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state)
-	{
-		this.explode(world, pos, state, (EntityLivingBase)null);
-	}
+    public void explode(World world, BlockPos pos, IBlockState state, EntityLivingBase igniter)
+    {
+        if (!world.isRemote)
+        {
+            if (((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue())
+            {
+                EntityFronisiumTNT entitytntprimed = new EntityFronisiumTNT(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, igniter);
+                world.spawnEntityInWorld(entitytntprimed);
+                world.playSoundAtEntity(entitytntprimed, "game.tnt.primed", 1.0F, 1.0F);
+            }
+        }
+    }
 
-	public void explode(World world, BlockPos pos, IBlockState state, EntityLivingBase igniter)
-	{
-		if (!world.isRemote)
-		{
-			if (((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue())
-			{
-				EntityFronisiumTNT entitytntprimed = new EntityFronisiumTNT(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, igniter);
-				world.spawnEntityInWorld(entitytntprimed);
-				world.playSoundAtEntity(entitytntprimed, "game.tnt.primed", 1.0F, 1.0F);
-			}
-		}
-	}
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if (player.getCurrentEquippedItem() != null)
+        {
+            Item item = player.getCurrentEquippedItem().getItem();
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
-		if (player.getCurrentEquippedItem() != null)
-		{
-			Item item = player.getCurrentEquippedItem().getItem();
+            if (item == Items.flint_and_steel || item == Items.fire_charge)
+            {
+                this.explode(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true), player);
+                world.setBlockToAir(pos);
 
-			if (item == Items.flint_and_steel || item == Items.fire_charge)
-			{
-				this.explode(world, pos, state.withProperty(BlockStateHelper.EXPLODE, true), player);
-				world.setBlockToAir(pos);
+                if (item == Items.flint_and_steel)
+                {
+                    player.getCurrentEquippedItem().damageItem(1, player);
+                }
+                else if (!player.capabilities.isCreativeMode)
+                {
+                    --player.getCurrentEquippedItem().stackSize;
+                }
+                return true;
+            }
+        }
+        return super.onBlockActivated(world, pos, state, player, side, hitX, hitY, hitZ);
+    }
 
-				if (item == Items.flint_and_steel)
-				{
-					player.getCurrentEquippedItem().damageItem(1, player);
-				}
-				else if (!player.capabilities.isCreativeMode)
-				{
-					--player.getCurrentEquippedItem().stackSize;
-				}
-				return true;
-			}
-		}
-		return super.onBlockActivated(world, pos, state, player, side, hitX, hitY, hitZ);
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (!world.isRemote && entity instanceof EntityArrow)
+        {
+            EntityArrow entityarrow = (EntityArrow)entity;
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (!world.isRemote && entity instanceof EntityArrow)
-		{
-			EntityArrow entityarrow = (EntityArrow)entity;
+            if (entityarrow.isBurning())
+            {
+                this.explode(world, pos, world.getBlockState(pos).withProperty(BlockStateHelper.EXPLODE, true), entityarrow.shootingEntity instanceof EntityLivingBase ? (EntityLivingBase)entityarrow.shootingEntity : null);
+                world.setBlockToAir(pos);
+            }
+        }
+    }
 
-			if (entityarrow.isBurning())
-			{
-				this.explode(world, pos, world.getBlockState(pos).withProperty(BlockStateHelper.EXPLODE, true), entityarrow.shootingEntity instanceof EntityLivingBase ? (EntityLivingBase)entityarrow.shootingEntity : null);
-				world.setBlockToAir(pos);
-			}
-		}
-	}
+    @Override
+    public boolean canDropFromExplosion(Explosion explosion)
+    {
+        return false;
+    }
 
-	@Override
-	public boolean canDropFromExplosion(Explosion explosion)
-	{
-		return false;
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(BlockStateHelper.EXPLODE, Boolean.valueOf((meta & 1) > 0));
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(BlockStateHelper.EXPLODE, Boolean.valueOf((meta & 1) > 0));
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue() ? 1 : 0;
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue() ? 1 : 0;
-	}
-
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] {BlockStateHelper.EXPLODE});
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {BlockStateHelper.EXPLODE});
+    }
 }

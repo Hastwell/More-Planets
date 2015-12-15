@@ -16,33 +16,33 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMe
 
 public class ItemPolongniusMeteorChunk extends ItemMorePlanets
 {
-	public ItemPolongniusMeteorChunk(String name)
-	{
-		super();
-		this.setMaxStackSize(16);
-		this.setUnlocalizedName(name);
-	}
+    public ItemPolongniusMeteorChunk(String name)
+    {
+        super();
+        this.setMaxStackSize(16);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!player.capabilities.isCreativeMode)
-		{
-			--itemStack.stackSize;
-		}
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!player.capabilities.isCreativeMode)
+        {
+            --itemStack.stackSize;
+        }
 
-		world.playSoundAtEntity(player, "random.bow", 1.0F, 0.0001F / (Item.itemRand.nextFloat() * 0.1F));
+        world.playSoundAtEntity(player, "random.bow", 1.0F, 0.0001F / (Item.itemRand.nextFloat() * 0.1F));
 
-		if (!world.isRemote)
-		{
-			EntityPolongniusMeteorChunk meteor = new EntityPolongniusMeteorChunk(world, player, 1.0F);
+        if (!world.isRemote)
+        {
+            EntityPolongniusMeteorChunk meteor = new EntityPolongniusMeteorChunk(world, player, 1.0F);
 
-			if (player.capabilities.isCreativeMode)
-			{
-				meteor.canBePickedUp = 2;
-			}
-			world.spawnEntityInWorld(meteor);
-		}
-		return itemStack;
-	}
+            if (player.capabilities.isCreativeMode)
+            {
+                meteor.canBePickedUp = 2;
+            }
+            world.spawnEntityInWorld(meteor);
+        }
+        return itemStack;
+    }
 }

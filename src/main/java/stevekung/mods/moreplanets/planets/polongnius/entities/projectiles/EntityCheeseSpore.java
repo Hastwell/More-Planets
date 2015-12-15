@@ -18,62 +18,62 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
 
 public class EntityCheeseSpore extends EntityFireball
 {
-	public EntityCheeseSpore(World world)
-	{
-		super(world);
-		this.setSize(1.0F, 1.0F);
-	}
+    public EntityCheeseSpore(World world)
+    {
+        super(world);
+        this.setSize(1.0F, 1.0F);
+    }
 
-	public EntityCheeseSpore(World world, EntityLivingBase living, double x, double y, double z)
-	{
-		super(world, living, x, y, z);
-		this.setSize(1.0F, 1.0F);
-	}
+    public EntityCheeseSpore(World world, EntityLivingBase living, double x, double y, double z)
+    {
+        super(world, living, x, y, z);
+        this.setSize(1.0F, 1.0F);
+    }
 
-	@Override
-	public boolean isBurning()
-	{
-		return false;
-	}
+    @Override
+    public boolean isBurning()
+    {
+        return false;
+    }
 
-	@Override
-	protected void onImpact(MovingObjectPosition moving)
-	{
-		if (!this.worldObj.isRemote)
-		{
-			if (moving.entityHit != null && !(moving.entityHit instanceof EntityCreeper))
-			{
-				moving.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 10.0F);
-			}
-			this.worldObj.newExplosion((Entity)null, this.posX, this.posY, this.posZ, 1.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
-			this.setDead();
-		}
-		if (this.rand.nextInt(4) == 0)
-		{
-			if (!this.worldObj.isRemote)
-			{
-				byte j = 1;
+    @Override
+    protected void onImpact(MovingObjectPosition moving)
+    {
+        if (!this.worldObj.isRemote)
+        {
+            if (moving.entityHit != null && !(moving.entityHit instanceof EntityCreeper))
+            {
+                moving.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 10.0F);
+            }
+            this.worldObj.newExplosion((Entity)null, this.posX, this.posY, this.posZ, 1.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
+            this.setDead();
+        }
+        if (this.rand.nextInt(4) == 0)
+        {
+            if (!this.worldObj.isRemote)
+            {
+                byte j = 1;
 
-				if (this.rand.nextInt(16) == 0)
-				{
-					j = 4;
-				}
+                if (this.rand.nextInt(16) == 0)
+                {
+                    j = 4;
+                }
 
-				for (int i = 0; i < j; ++i)
-				{
-					EntityCheeseSlime slime = new EntityCheeseSlime(this.worldObj);
-					slime.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-					slime.setSlimeSize(this.worldObj.rand.nextInt(4));
-					slime.setAbsorptionAmount(6.0F);
-					this.worldObj.spawnEntityInWorld(slime);
-				}
-			}
-		}
-	}
+                for (int i = 0; i < j; ++i)
+                {
+                    EntityCheeseSlime slime = new EntityCheeseSlime(this.worldObj);
+                    slime.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
+                    slime.setSlimeSize(this.worldObj.rand.nextInt(4));
+                    slime.setAbsorptionAmount(6.0F);
+                    this.worldObj.spawnEntityInWorld(slime);
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean canBeCollidedWith()
-	{
-		return true;
-	}
+    @Override
+    public boolean canBeCollidedWith()
+    {
+        return true;
+    }
 }

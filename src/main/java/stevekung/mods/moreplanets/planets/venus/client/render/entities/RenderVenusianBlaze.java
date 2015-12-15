@@ -19,21 +19,21 @@ import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 @SideOnly(Side.CLIENT)
 public class RenderVenusianBlaze extends RenderLiving
 {
-	private ResourceLocation blazeTextures = new ResourceLocation("moreplanets:textures/entity/venusian_blaze.png");
+    private ResourceLocation blazeTextures = new ResourceLocation("moreplanets:textures/entity/venusian_blaze.png");
 
-	public RenderVenusianBlaze(RenderManager render)
-	{
-		super(render, new ModelBlaze(), 0.5F);
-	}
+    public RenderVenusianBlaze(RenderManager render)
+    {
+        super(render, new ModelBlaze(), 0.5F);
+    }
 
-	protected ResourceLocation getBlazeTextures(EntityVenusianBlaze par1EntityBlaze)
-	{
-		return this.blazeTextures;
-	}
+    protected ResourceLocation getBlazeTextures(EntityVenusianBlaze par1EntityBlaze)
+    {
+        return this.blazeTextures;
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.getBlazeTextures((EntityVenusianBlaze)par1Entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.getBlazeTextures((EntityVenusianBlaze)par1Entity);
+    }
 }

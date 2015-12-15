@@ -9,44 +9,44 @@ package stevekung.mods.moreplanets.common.util;
 
 public class VariantsName
 {
-	private String[] name;
-	private ItemDescription desc;
-	private boolean reverse;
+    private String[] name;
+    private ItemDescription desc;
+    private boolean reverse;
 
-	public VariantsName(String... name)
-	{
-		this.name = name;
-	}
+    public VariantsName(String... name)
+    {
+        this.name = name;
+    }
 
-	public VariantsName(boolean reverseName, String... name)
-	{
-		this.name = name;
-		this.reverse = reverseName;
-	}
+    public VariantsName(boolean reverseName, String... name)
+    {
+        this.name = name;
+        this.reverse = reverseName;
+    }
 
-	public VariantsName(ItemDescription desc, String... name)
-	{
-		this.name = name;
-		this.desc = desc;
-	}
+    public VariantsName(ItemDescription desc, String... name)
+    {
+        this.name = name;
+        this.desc = desc;
+    }
 
-	public VariantsName(ItemDescription desc)
-	{
-		this.desc = desc;
-	}
+    public VariantsName(ItemDescription desc)
+    {
+        this.desc = desc;
+    }
 
-	public String[] getStringList()
-	{
-		return this.name;
-	}
+    public String[] getStringList()
+    {
+        return this.name;
+    }
 
-	public ItemDescription getItemDescription()
-	{
-		return this.desc;
-	}
+    public ItemDescription getItemDescription()
+    {
+        return this.desc;
+    }
 
-	public boolean isReverseName()
-	{
-		return this.reverse;
-	}
+    public boolean isReverseName()
+    {
+        return this.reverse;
+    }
 }

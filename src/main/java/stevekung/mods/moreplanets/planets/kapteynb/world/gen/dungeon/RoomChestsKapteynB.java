@@ -24,85 +24,85 @@ import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKaptey
 
 public class RoomChestsKapteynB extends DungeonRoom
 {
-	int sizeX;
-	int sizeY;
-	int sizeZ;
+    int sizeX;
+    int sizeY;
+    int sizeZ;
 
-	private ArrayList<BlockPos> chests = new ArrayList<BlockPos>();
+    private ArrayList<BlockPos> chests = new ArrayList<BlockPos>();
 
-	public RoomChestsKapteynB(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
-	{
-		super(dungeon, x, y, z, facing);
+    public RoomChestsKapteynB(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
+    {
+        super(dungeon, x, y, z, facing);
 
-		if (this.worldObj != null)
-		{
-			Random rand = new Random(this.worldObj.getSeed() * x * y * 57 * z);
-			this.sizeX = rand.nextInt(5) + 6;
-			this.sizeY = rand.nextInt(2) + 4;
-			this.sizeZ = rand.nextInt(5) + 6;
-		}
-	}
+        if (this.worldObj != null)
+        {
+            Random rand = new Random(this.worldObj.getSeed() * x * y * 57 * z);
+            this.sizeX = rand.nextInt(5) + 6;
+            this.sizeY = rand.nextInt(2) + 4;
+            this.sizeZ = rand.nextInt(5) + 6;
+        }
+    }
 
-	@Override
-	public void generate(ChunkPrimer chunk, int cx, int cz)
-	{
-		for (int i = this.posX - 1; i <= this.posX + this.sizeX; i++)
-		{
-			for (int j = this.posY - 1; j <= this.posY + this.sizeY; j++)
-			{
-				for (int k = this.posZ - 1; k <= this.posZ + this.sizeZ; k++)
-				{
-					if (i == this.posX - 1 || i == this.posX + this.sizeX || j == this.posY - 1 || j == this.posY + this.sizeY || k == this.posZ - 1 || k == this.posZ + this.sizeZ)
-					{
-						this.placeBlock(chunk, i, j, k, cx, cz, this.dungeonInstance.DUNGEON_WALL_ID, this.dungeonInstance.DUNGEON_WALL_META);
-					}
-					else
-					{
-						this.placeBlock(chunk, i, j, k, cx, cz, Blocks.air, 0);
-					}
-				}
-			}
-		}
+    @Override
+    public void generate(ChunkPrimer chunk, int cx, int cz)
+    {
+        for (int i = this.posX - 1; i <= this.posX + this.sizeX; i++)
+        {
+            for (int j = this.posY - 1; j <= this.posY + this.sizeY; j++)
+            {
+                for (int k = this.posZ - 1; k <= this.posZ + this.sizeZ; k++)
+                {
+                    if (i == this.posX - 1 || i == this.posX + this.sizeX || j == this.posY - 1 || j == this.posY + this.sizeY || k == this.posZ - 1 || k == this.posZ + this.sizeZ)
+                    {
+                        this.placeBlock(chunk, i, j, k, cx, cz, this.dungeonInstance.DUNGEON_WALL_ID, this.dungeonInstance.DUNGEON_WALL_META);
+                    }
+                    else
+                    {
+                        this.placeBlock(chunk, i, j, k, cx, cz, Blocks.air, 0);
+                    }
+                }
+            }
+        }
 
-		int hx = (this.posX + this.posX + this.sizeX) / 2;
-		int hz = (this.posZ + this.posZ + this.sizeZ) / 2;
+        int hx = (this.posX + this.posX + this.sizeX) / 2;
+        int hz = (this.posZ + this.posZ + this.sizeZ) / 2;
 
-		if (this.placeBlock(chunk, hx, this.posY, hz, cx, cz, KapteynBBlocks.kapteyn_b_ancient_chest, 0))
-		{
-			this.chests.add(new BlockPos(hx, this.posY, hz));
-		}
-	}
+        if (this.placeBlock(chunk, hx, this.posY, hz, cx, cz, KapteynBBlocks.kapteyn_b_ancient_chest, 0))
+        {
+            this.chests.add(new BlockPos(hx, this.posY, hz));
+        }
+    }
 
-	@Override
-	public DungeonBoundingBox getBoundingBox()
-	{
-		return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
-	}
+    @Override
+    public DungeonBoundingBox getBoundingBox()
+    {
+        return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
+    }
 
-	@Override
-	protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
-	{
-		return new RoomChestsKapteynB(dungeon, x, y, z, facing);
-	}
+    @Override
+    protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
+    {
+        return new RoomChestsKapteynB(dungeon, x, y, z, facing);
+    }
 
-	@Override
-	protected void handleTileEntities(Random rand)
-	{
-		if (!this.chests.isEmpty())
-		{
-			this.worldObj.setBlockState(this.chests.get(0), KapteynBBlocks.kapteyn_b_ancient_chest.getDefaultState(), 2);
-			TileEntityKapteynBAncientChest chest = (TileEntityKapteynBAncientChest) this.worldObj.getTileEntity(this.chests.get(0));
+    @Override
+    protected void handleTileEntities(Random rand)
+    {
+        if (!this.chests.isEmpty())
+        {
+            this.worldObj.setBlockState(this.chests.get(0), KapteynBBlocks.kapteyn_b_ancient_chest.getDefaultState(), 2);
+            TileEntityKapteynBAncientChest chest = (TileEntityKapteynBAncientChest) this.worldObj.getTileEntity(this.chests.get(0));
 
-			if (chest != null)
-			{
-				for (int i = 0; i < chest.getSizeInventory(); i++)
-				{
-					chest.setInventorySlotContents(i, null);
-				}
-				ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
-				WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), chest, info.getCount(rand));
-			}
-			this.chests.clear();
-		}
-	}
+            if (chest != null)
+            {
+                for (int i = 0; i < chest.getSizeInventory(); i++)
+                {
+                    chest.setInventorySlotContents(i, null);
+                }
+                ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
+                WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), chest, info.getCount(rand));
+            }
+            this.chests.clear();
+        }
+    }
 }

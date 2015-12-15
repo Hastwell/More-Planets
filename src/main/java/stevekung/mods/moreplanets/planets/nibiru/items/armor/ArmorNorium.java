@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class ArmorNorium extends ItemArmorMP
 {
-	public ArmorNorium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorNorium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == NibiruArmorItems.norium_helmet || stack.getItem() == NibiruArmorItems.norium_chestplate || stack.getItem() == NibiruArmorItems.norium_boots)
-		{
-			return "moreplanets:textures/model/armor/norium_1.png";
-		}
-		if (stack.getItem() == NibiruArmorItems.norium_leggings)
-		{
-			return "moreplanets:textures/model/armor/norium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == NibiruArmorItems.norium_helmet || stack.getItem() == NibiruArmorItems.norium_chestplate || stack.getItem() == NibiruArmorItems.norium_boots)
+        {
+            return "moreplanets:textures/model/armor/norium_1.png";
+        }
+        if (stack.getItem() == NibiruArmorItems.norium_leggings)
+        {
+            return "moreplanets:textures/model/armor/norium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return NibiruItems.nibiru_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return NibiruItems.nibiru_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 3;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 3;
+    }
 }

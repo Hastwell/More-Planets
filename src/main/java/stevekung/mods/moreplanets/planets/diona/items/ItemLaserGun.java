@@ -21,126 +21,126 @@ import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityLaser
 
 public class ItemLaserGun extends ItemElectricBase
 {
-	public ItemLaserGun(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemLaserGun(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		boolean flag = player.capabilities.isCreativeMode;
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        boolean flag = player.capabilities.isCreativeMode;
 
-		if (this.getElectricityStored(itemStack) == 0.0F)
-		{
-			flag = false;
-		}
-		if (this.getElectricityStored(itemStack) >= 250.0F && (flag || player.inventory.hasItem(DionaItems.laser_ammo)))
-		{
-			EntityLaserMP laser = new EntityLaserMP(world, player, 1.0F);
-			world.playSoundAtEntity(player, "moreplanets:player.laser", 1.0F, 2.0F / (1.0F * 0.4F + 1.2F) + 1.0F * 0.5F);
-			int slot = -1;
+        if (this.getElectricityStored(itemStack) == 0.0F)
+        {
+            flag = false;
+        }
+        if (this.getElectricityStored(itemStack) >= 250.0F && (flag || player.inventory.hasItem(DionaItems.laser_ammo)))
+        {
+            EntityLaserMP laser = new EntityLaserMP(world, player, 1.0F);
+            world.playSoundAtEntity(player, "moreplanets:player.laser", 1.0F, 2.0F / (1.0F * 0.4F + 1.2F) + 1.0F * 0.5F);
+            int slot = -1;
 
-			if (!flag)
-			{
-				this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 250.0F);
-			}
+            if (!flag)
+            {
+                this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 250.0F);
+            }
 
-			if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 0)))
-			{
-				laser.setLaserType(0);
+            if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 0)))
+            {
+                laser.setLaserType(0);
 
-				for (int k = 0; k < player.inventory.mainInventory.length; ++k)
-				{
-					if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 0)
-					{
-						slot = k;
-						break;
-					}
-				}
-			}
-			else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 1)))
-			{
-				laser.setLaserType(1);
+                for (int k = 0; k < player.inventory.mainInventory.length; ++k)
+                {
+                    if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 0)
+                    {
+                        slot = k;
+                        break;
+                    }
+                }
+            }
+            else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 1)))
+            {
+                laser.setLaserType(1);
 
-				for (int k = 0; k < player.inventory.mainInventory.length; ++k)
-				{
-					if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 1)
-					{
-						slot = k;
-						break;
-					}
-				}
-			}
-			else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 2)))
-			{
-				laser.setLaserType(2);
+                for (int k = 0; k < player.inventory.mainInventory.length; ++k)
+                {
+                    if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 1)
+                    {
+                        slot = k;
+                        break;
+                    }
+                }
+            }
+            else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 2)))
+            {
+                laser.setLaserType(2);
 
-				for (int k = 0; k < player.inventory.mainInventory.length; ++k)
-				{
-					if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 2)
-					{
-						slot = k;
-						break;
-					}
-				}
-			}
-			else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 3)))
-			{
-				laser.setLaserType(3);
+                for (int k = 0; k < player.inventory.mainInventory.length; ++k)
+                {
+                    if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 2)
+                    {
+                        slot = k;
+                        break;
+                    }
+                }
+            }
+            else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 3)))
+            {
+                laser.setLaserType(3);
 
-				for (int k = 0; k < player.inventory.mainInventory.length; ++k)
-				{
-					if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 3)
-					{
-						slot = k;
-						break;
-					}
-				}
-			}
-			else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 4)))
-			{
-				laser.setLaserType(4);
+                for (int k = 0; k < player.inventory.mainInventory.length; ++k)
+                {
+                    if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 3)
+                    {
+                        slot = k;
+                        break;
+                    }
+                }
+            }
+            else if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 4)))
+            {
+                laser.setLaserType(4);
 
-				for (int k = 0; k < player.inventory.mainInventory.length; ++k)
-				{
-					if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 4)
-					{
-						slot = k;
-						break;
-					}
-				}
-			}
-			if (!world.isRemote)
-			{
-				world.spawnEntityInWorld(laser);
-			}
-			if (!flag && slot >= 0)
-			{
-				player.inventory.decrStackSize(slot, 1);
-			}
-		}
-		return itemStack;
-	}
+                for (int k = 0; k < player.inventory.mainInventory.length; ++k)
+                {
+                    if (player.inventory.mainInventory[k] != null && player.inventory.mainInventory[k].getItem() == DionaItems.laser_ammo && player.inventory.mainInventory[k].getItemDamage() == 4)
+                    {
+                        slot = k;
+                        break;
+                    }
+                }
+            }
+            if (!world.isRemote)
+            {
+                world.spawnEntityInWorld(laser);
+            }
+            if (!flag && slot >= 0)
+            {
+                player.inventory.decrStackSize(slot, 1);
+            }
+        }
+        return itemStack;
+    }
 
-	@Override
-	public float getMaxElectricityStored(ItemStack itemStack)
-	{
-		return 100000.0F;
-	}
+    @Override
+    public float getMaxElectricityStored(ItemStack itemStack)
+    {
+        return 100000.0F;
+    }
 }

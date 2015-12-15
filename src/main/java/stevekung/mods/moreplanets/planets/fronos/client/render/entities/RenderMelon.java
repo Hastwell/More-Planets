@@ -18,16 +18,16 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelMelon;
 @SideOnly(Side.CLIENT)
 public class RenderMelon extends RenderLiving
 {
-	private ResourceLocation melonTextures = new ResourceLocation("moreplanets:textures/entity/melon.png");
+    private ResourceLocation melonTextures = new ResourceLocation("moreplanets:textures/entity/melon.png");
 
-	public RenderMelon(RenderManager render)
-	{
-		super(render, new ModelMelon(), 1.0F);
-	}
+    public RenderMelon(RenderManager render)
+    {
+        super(render, new ModelMelon(), 1.0F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.melonTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.melonTextures;
+    }
 }

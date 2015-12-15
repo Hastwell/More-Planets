@@ -15,64 +15,64 @@ import net.minecraft.world.World;
 
 public abstract class BlockOysterMP extends BlockBaseMP
 {
-	public BlockOysterMP()
-	{
-		super(Material.plants);
-		this.setHardness(0.6F);
-		this.setBlockBounds(0.225F, 0.0F, 0.225F, 0.775F, 0.275F, 0.775F);
-		this.setTickRandomly(true);
-	}
+    public BlockOysterMP()
+    {
+        super(Material.plants);
+        this.setHardness(0.6F);
+        this.setBlockBounds(0.225F, 0.0F, 0.225F, 0.775F, 0.275F, 0.775F);
+        this.setTickRandomly(true);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
-	{
-		this.checkForDrop(world, pos, state);
-	}
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
+    {
+        this.checkForDrop(world, pos, state);
+    }
 
-	private boolean checkForDrop(World world, BlockPos pos, IBlockState state)
-	{
-		if (!this.canBlockStay(world, pos))
-		{
-			this.dropBlockAsItem(world, pos, state, 0);
-			world.setBlockToAir(pos);
-			return false;
-		}
-		else
-		{
-			return true;
-		}
-	}
+    private boolean checkForDrop(World world, BlockPos pos, IBlockState state)
+    {
+        if (!this.canBlockStay(world, pos))
+        {
+            this.dropBlockAsItem(world, pos, state, 0);
+            world.setBlockToAir(pos);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
-	private boolean canBlockStay(World world, BlockPos pos)
-	{
-		return !world.isAirBlock(pos.down());
-	}
+    private boolean canBlockStay(World world, BlockPos pos)
+    {
+        return !world.isAirBlock(pos.down());
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+    @Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
 
-		if (block == null)
-		{
-			return false;
-		}
-		if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
-		{
-			return false;
-		}
-		return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
-	}
+        if (block == null)
+        {
+            return false;
+        }
+        if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
+        {
+            return false;
+        }
+        return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
+    }
 }

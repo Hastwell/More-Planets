@@ -18,73 +18,73 @@ import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class ArmorIceCrystal extends ItemArmorMP
 {
-	public ArmorIceCrystal(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorIceCrystal(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KapteynBArmorItems.ice_crystal_helmet || stack.getItem() == KapteynBArmorItems.ice_crystal_chestplate || stack.getItem() == KapteynBArmorItems.ice_crystal_boots)
-		{
-			return "kapteynb:textures/model/armor/ice_crystal_1.png";
-		}
-		if (stack.getItem() == KapteynBArmorItems.ice_crystal_leggings)
-		{
-			return "kapteynb:textures/model/armor/ice_crystal_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KapteynBArmorItems.ice_crystal_helmet || stack.getItem() == KapteynBArmorItems.ice_crystal_chestplate || stack.getItem() == KapteynBArmorItems.ice_crystal_boots)
+        {
+            return "kapteynb:textures/model/armor/ice_crystal_1.png";
+        }
+        if (stack.getItem() == KapteynBArmorItems.ice_crystal_leggings)
+        {
+            return "kapteynb:textures/model/armor/ice_crystal_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack itemStack)
-	{
-		if (!itemStack.isItemEnchanted())
-		{
-			if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_helmet)
-			{
-				itemStack.addEnchantment(Enchantment.protection, 3);
-				itemStack.addEnchantment(Enchantment.aquaAffinity, 1);
-				itemStack.addEnchantment(Enchantment.respiration, 2);
-				itemStack.addEnchantment(Enchantment.unbreaking, 3);
-			}
-			if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_chestplate)
-			{
-				itemStack.addEnchantment(Enchantment.protection, 4);
-				itemStack.addEnchantment(Enchantment.blastProtection, 2);
-				itemStack.addEnchantment(Enchantment.thorns, 2);
-				itemStack.addEnchantment(Enchantment.unbreaking, 3);
-			}
-			if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_leggings)
-			{
-				itemStack.addEnchantment(Enchantment.protection, 3);
-				itemStack.addEnchantment(Enchantment.fireProtection, 2);
-				itemStack.addEnchantment(Enchantment.projectileProtection, 2);
-				itemStack.addEnchantment(Enchantment.unbreaking, 3);
-			}
-			if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_boots)
-			{
-				itemStack.addEnchantment(Enchantment.protection, 4);
-				itemStack.addEnchantment(Enchantment.fireProtection, 2);
-				itemStack.addEnchantment(Enchantment.featherFalling, 4);
-				itemStack.addEnchantment(Enchantment.unbreaking, 3);
-			}
-		}
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack itemStack)
+    {
+        if (!itemStack.isItemEnchanted())
+        {
+            if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_helmet)
+            {
+                itemStack.addEnchantment(Enchantment.protection, 3);
+                itemStack.addEnchantment(Enchantment.aquaAffinity, 1);
+                itemStack.addEnchantment(Enchantment.respiration, 2);
+                itemStack.addEnchantment(Enchantment.unbreaking, 3);
+            }
+            if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_chestplate)
+            {
+                itemStack.addEnchantment(Enchantment.protection, 4);
+                itemStack.addEnchantment(Enchantment.blastProtection, 2);
+                itemStack.addEnchantment(Enchantment.thorns, 2);
+                itemStack.addEnchantment(Enchantment.unbreaking, 3);
+            }
+            if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_leggings)
+            {
+                itemStack.addEnchantment(Enchantment.protection, 3);
+                itemStack.addEnchantment(Enchantment.fireProtection, 2);
+                itemStack.addEnchantment(Enchantment.projectileProtection, 2);
+                itemStack.addEnchantment(Enchantment.unbreaking, 3);
+            }
+            if (itemStack.getItem() == KapteynBArmorItems.ice_crystal_boots)
+            {
+                itemStack.addEnchantment(Enchantment.protection, 4);
+                itemStack.addEnchantment(Enchantment.fireProtection, 2);
+                itemStack.addEnchantment(Enchantment.featherFalling, 4);
+                itemStack.addEnchantment(Enchantment.unbreaking, 3);
+            }
+        }
+        return true;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return KapteynBItems.kapteyn_b_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return KapteynBItems.kapteyn_b_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 }

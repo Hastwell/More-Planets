@@ -22,40 +22,40 @@ import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class ItemFrozenIronPickaxe extends ItemPickaxe
 {
-	public ItemFrozenIronPickaxe(String name, ToolMaterial material)
-	{
-		super(material);
-		this.setUnlocalizedName(name);
-	}
+    public ItemFrozenIronPickaxe(String name, ToolMaterial material)
+    {
+        super(material);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpToolsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpToolsTab;
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack itemStack, EntityLivingBase entity, EntityLivingBase entity2)
-	{
-		entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
-		itemStack.damageItem(1, entity2);
-		return true;
-	}
+    @Override
+    public boolean hitEntity(ItemStack itemStack, EntityLivingBase entity, EntityLivingBase entity2)
+    {
+        entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+        itemStack.damageItem(1, entity2);
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (itemStack2.getItem() == KapteynBItems.kapteyn_b_item && itemStack2.getItemDamage() == 2)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (itemStack2.getItem() == KapteynBItems.kapteyn_b_item && itemStack2.getItemDamage() == 2)
+        {
+            return true;
+        }
+        return false;
+    }
 }

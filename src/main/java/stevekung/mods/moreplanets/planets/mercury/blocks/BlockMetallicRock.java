@@ -21,42 +21,42 @@ import stevekung.mods.moreplanets.planets.mercury.items.MercuryItems;
 
 public class BlockMetallicRock extends BlockBaseMP implements IDetectableResource
 {
-	public BlockMetallicRock(String name)
-	{
-		super(Material.rock);
-		this.setUnlocalizedName(name);
-		this.setHardness(3.0F);
-		this.setResistance(8.0F);
-	}
+    public BlockMetallicRock(String name)
+    {
+        super(Material.rock);
+        this.setUnlocalizedName(name);
+        this.setHardness(3.0F);
+        this.setResistance(8.0F);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		if (fortune > 3)
-		{
-			fortune = 3;
-		}
-		if (rand.nextInt(10 - fortune * 3) == 0)
-		{
-			return MercuryItems.mercury_item;
-		}
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        if (fortune > 3)
+        {
+            fortune = 3;
+        }
+        if (rand.nextInt(10 - fortune * 3) == 0)
+        {
+            return MercuryItems.mercury_item;
+        }
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
-	{
-		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
+    @Override
+    public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
+    {
+        super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 
-		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
-		{
-			this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
-		}
-	}
+        if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
+        {
+            this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
+        }
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		return true;
-	}
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        return true;
+    }
 }

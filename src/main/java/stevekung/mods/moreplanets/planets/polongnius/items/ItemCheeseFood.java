@@ -12,49 +12,49 @@ import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemCheeseFood extends ItemFoodMP
 {
-	private int[] foodHunger = new int[] {
-			3,
-			3,
-			8
-	};
-	private float[] foodSaturation = new float[] {
-			0.35F,
-			0.2F,
-			0.8F
-	};
+    private int[] foodHunger = new int[] {
+            3,
+            3,
+            8
+    };
+    private float[] foodSaturation = new float[] {
+            0.35F,
+            0.2F,
+            0.8F
+    };
 
-	public ItemCheeseFood(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setHasSubtypes(true);
-	}
+    public ItemCheeseFood(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMaxItemUseDuration(ItemStack itemStack)
-	{
-		if (itemStack.getItemDamage() == 0)
-		{
-			return 8;
-		}
-		return 32;
-	}
+    @Override
+    public int getMaxItemUseDuration(ItemStack itemStack)
+    {
+        if (itemStack.getItemDamage() == 0)
+        {
+            return 8;
+        }
+        return 32;
+    }
 
-	@Override
-	public int getHealAmount(ItemStack itemStack)
-	{
-		return this.foodHunger[itemStack.getItemDamage()];
-	}
+    @Override
+    public int getHealAmount(ItemStack itemStack)
+    {
+        return this.foodHunger[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public float getSaturationModifier(ItemStack itemStack)
-	{
-		return this.foodSaturation[itemStack.getItemDamage()];
-	}
+    @Override
+    public float getSaturationModifier(ItemStack itemStack)
+    {
+        return this.foodSaturation[itemStack.getItemDamage()];
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "cheese_of_milk_curd", "raw_cheese_beef", "cooked_cheese_beef", };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "cheese_of_milk_curd", "raw_cheese_beef", "cooked_cheese_beef", };
+    }
 }

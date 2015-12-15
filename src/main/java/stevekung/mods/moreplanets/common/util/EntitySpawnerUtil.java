@@ -16,11 +16,11 @@ import net.minecraft.entity.EntitySpawnPlacementRegistry;
 
 public class EntitySpawnerUtil
 {
-	public static void init()
-	{
-		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedCreeper.class, SpawnPlacementType.ON_GROUND);
-		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedSkeleton.class, SpawnPlacementType.ON_GROUND);
-		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedZombie.class, SpawnPlacementType.ON_GROUND);
-		EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedSpider.class, SpawnPlacementType.ON_GROUND);
-	}
+    public static void init()
+    {
+        EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedCreeper.class, SpawnPlacementType.ON_GROUND);
+        EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedSkeleton.class, SpawnPlacementType.ON_GROUND);
+        EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedZombie.class, SpawnPlacementType.ON_GROUND);
+        EntitySpawnPlacementRegistry.setPlacementType(EntityEvolvedSpider.class, SpawnPlacementType.ON_GROUND);
+    }
 }

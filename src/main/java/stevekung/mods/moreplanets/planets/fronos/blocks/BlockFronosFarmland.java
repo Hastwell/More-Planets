@@ -13,25 +13,27 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.IPlantable;
 import stevekung.mods.moreplanets.common.blocks.BlockFarmlandMP;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockFronosFarmland extends BlockFarmlandMP
 {
-	public BlockFronosFarmland(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockFronosFarmland(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(0)));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public Block getDirtBlock()
-	{
-		return FronosBlocks.fronos_dirt;
-	}
+    @Override
+    public Block getDirtBlock()
+    {
+        return FronosBlocks.fronos_dirt;
+    }
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
-	{
-		Block block = plant.getPlant(world, pos).getBlock();
-		return block == FronosBlocks.strawberry_bush || block == FronosBlocks.golden_crops || block == FronosBlocks.glass_gem_corn;
-	}
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
+    {
+        Block block = plant.getPlant(world, pos).getBlock();
+        return block == FronosBlocks.strawberry_bush || block == FronosBlocks.golden_crops || block == FronosBlocks.glass_gem_corn;
+    }
 }

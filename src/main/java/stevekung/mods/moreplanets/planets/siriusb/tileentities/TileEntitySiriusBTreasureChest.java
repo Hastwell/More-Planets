@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
 public class TileEntitySiriusBTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntitySiriusBTreasureChest()
-	{
-		super(8, "siriusb", SiriusBBlocks.sirius_b_treasure_chest);
-	}
+    public TileEntitySiriusBTreasureChest()
+    {
+        super(8, "siriusb", SiriusBBlocks.sirius_b_treasure_chest);
+    }
 }

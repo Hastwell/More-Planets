@@ -22,47 +22,47 @@ import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class SchematicTier8Rocket implements ISchematicPage
 {
-	@Override
-	public int getPageID()
-	{
-		return ConfigManagerMP.idSchematicTier8Rocket;
-	}
+    @Override
+    public int getPageID()
+    {
+        return ConfigManagerMP.idTier8RocketSchematic;
+    }
 
-	@Override
-	public int getGuiID()
-	{
-		return ConfigManagerMP.idGuiSchematicTier8Rocket;
-	}
+    @Override
+    public int getGuiID()
+    {
+        return ConfigManagerMP.idTier8RocketSchematicGui;
+    }
 
-	@Override
-	public ItemStack getRequiredItem()
-	{
-		return new ItemStack(KapteynBItems.tier_8_rocket_schematic, 1, 0);
-	}
+    @Override
+    public ItemStack getRequiredItem()
+    {
+        return new ItemStack(KapteynBItems.tier_8_rocket_schematic, 1, 0);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public GuiScreen getResultScreen(EntityPlayer player, BlockPos pos)
-	{
-		return new GuiSchematicTier8Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiScreen getResultScreen(EntityPlayer player, BlockPos pos)
+    {
+        return new GuiSchematicTier8Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
+    }
 
-	@Override
-	public Container getResultContainer(EntityPlayer player, BlockPos pos)
-	{
-		return new ContainerSchematicTier8Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
-	}
+    @Override
+    public Container getResultContainer(EntityPlayer player, BlockPos pos)
+    {
+        return new ContainerSchematicTier8Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
+    }
 
-	@Override
-	public int compareTo(ISchematicPage page)
-	{
-		if (this.getPageID() > page.getPageID())
-		{
-			return 1;
-		}
-		else
-		{
-			return -1;
-		}
-	}
+    @Override
+    public int compareTo(ISchematicPage page)
+    {
+        if (this.getPageID() > page.getPageID())
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

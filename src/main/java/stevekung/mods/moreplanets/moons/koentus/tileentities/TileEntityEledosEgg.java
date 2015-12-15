@@ -13,20 +13,20 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityEledosEgg extends TileEntity implements IUpdatePlayerListBox
 {
-	public int timeToHatch = -1;
+    public int timeToHatch = -1;
 
-	@Override
-	public void update()
-	{
-		super.validate();
+    @Override
+    public void update()
+    {
+        super.validate();
 
-		if (!this.worldObj.isRemote)
-		{
-			if (this.timeToHatch > 0)
-			{
-				this.timeToHatch--;
-			}
-			/*else if (this.timeToHatch == 0) TODO
+        if (!this.worldObj.isRemote)
+        {
+            if (this.timeToHatch > 0)
+            {
+                this.timeToHatch--;
+            }
+            /*else if (this.timeToHatch == 0) TODO
 			{
 				EntityEledos eledos = new EntityEledos(this.worldObj);
 				eledos.setPosition(this.pos.getX() + 0.5, this.pos.getY() + 1.0, this.pos.getZ() + 0.5);
@@ -39,20 +39,20 @@ public class TileEntityEledosEgg extends TileEntity implements IUpdatePlayerList
 				eledos.setAttackTarget((EntityLivingBase) null);
 				this.worldObj.setBlockToAir(this.pos);
 			}*/
-		}
-	}
+        }
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		this.timeToHatch = nbt.getInteger("TimeToHatch");
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        this.timeToHatch = nbt.getInteger("TimeToHatch");
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
-		nbt.setInteger("TimeToHatch", this.timeToHatch);
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
+        nbt.setInteger("TimeToHatch", this.timeToHatch);
+    }
 }

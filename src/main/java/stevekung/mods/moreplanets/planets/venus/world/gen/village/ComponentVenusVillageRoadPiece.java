@@ -9,10 +9,10 @@ package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 public abstract class ComponentVenusVillageRoadPiece extends ComponentVenusVillage
 {
-	public ComponentVenusVillageRoadPiece() {}
+    public ComponentVenusVillageRoadPiece() {}
 
-	protected ComponentVenusVillageRoadPiece(ComponentVenusVillageStartPiece component, int type)
-	{
-		super(component, type);
-	}
+    protected ComponentVenusVillageRoadPiece(ComponentVenusVillageStartPiece component, int type)
+    {
+        super(component, type);
+    }
 }

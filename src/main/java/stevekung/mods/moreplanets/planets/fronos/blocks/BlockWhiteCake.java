@@ -11,21 +11,21 @@ import stevekung.mods.moreplanets.common.blocks.BlockCakeMP;
 
 public class BlockWhiteCake extends BlockCakeMP
 {
-	public BlockWhiteCake(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockWhiteCake(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int getFoodAmount()
-	{
-		return 3;
-	}
+    @Override
+    public int getFoodAmount()
+    {
+        return 3;
+    }
 
-	@Override
-	public float getSaturationAmount()
-	{
-		return 0.5F;
-	}
+    @Override
+    public float getSaturationAmount()
+    {
+        return 0.5F;
+    }
 }

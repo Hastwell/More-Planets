@@ -19,38 +19,38 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class ItemArmorMP extends ItemArmor
 {
-	public ItemArmorMP(ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-	}
+    public ItemArmorMP(ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpArmorTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpArmorTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (this.getRepairItems() == null && this.getRepairItemsMetadata() == -1)
-		{
-			return false;
-		}
-		if (itemStack2.getItem() == this.getRepairItems() && itemStack2.getItemDamage() == this.getRepairItemsMetadata())
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (this.getRepairItems() == null && this.getRepairItemsMetadata() == -1)
+        {
+            return false;
+        }
+        if (itemStack2.getItem() == this.getRepairItems() && itemStack2.getItemDamage() == this.getRepairItemsMetadata())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	protected abstract Item getRepairItems();
-	protected abstract int getRepairItemsMetadata();
+    protected abstract Item getRepairItems();
+    protected abstract int getRepairItemsMetadata();
 }

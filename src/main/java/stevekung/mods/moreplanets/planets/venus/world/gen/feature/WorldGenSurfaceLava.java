@@ -18,13 +18,13 @@ import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 
 public class WorldGenSurfaceLava extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		if (world.getBlockState(pos.down()) == VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_surface_rock) && world.getBlockState(pos.up()) == Blocks.air.getDefaultState())
-		{
-			world.setBlockState(pos, Blocks.flowing_lava.getDefaultState(), 2);
-		}
-		return true;
-	}
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        if (world.getBlockState(pos.down()) == VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_surface_rock) && world.getBlockState(pos.up()) == Blocks.air.getDefaultState())
+        {
+            world.setBlockState(pos, Blocks.flowing_lava.getDefaultState(), 2);
+        }
+        return true;
+    }
 }

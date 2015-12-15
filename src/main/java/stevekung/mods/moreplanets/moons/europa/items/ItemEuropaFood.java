@@ -12,37 +12,37 @@ import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemEuropaFood extends ItemFoodMP
 {
-	private int[] foodHunger = new int[] {
-			3,
-			8,
-	};
-	private float[] foodSaturation = new float[] {
-			0.15F,
-			0.75F,
-	};
+    private int[] foodHunger = new int[] {
+            3,
+            8,
+    };
+    private float[] foodSaturation = new float[] {
+            0.15F,
+            0.75F,
+    };
 
-	public ItemEuropaFood(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setHasSubtypes(true);
-	}
+    public ItemEuropaFood(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getHealAmount(ItemStack itemStack)
-	{
-		return this.foodHunger[itemStack.getItemDamage()];
-	}
+    @Override
+    public int getHealAmount(ItemStack itemStack)
+    {
+        return this.foodHunger[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public float getSaturationModifier(ItemStack itemStack)
-	{
-		return this.foodSaturation[itemStack.getItemDamage()];
-	}
+    @Override
+    public float getSaturationModifier(ItemStack itemStack)
+    {
+        return this.foodSaturation[itemStack.getItemDamage()];
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "raw_europa_eel_meat", "cooked_europa_eel_meat" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "raw_europa_eel_meat", "cooked_europa_eel_meat" };
+    }
 }

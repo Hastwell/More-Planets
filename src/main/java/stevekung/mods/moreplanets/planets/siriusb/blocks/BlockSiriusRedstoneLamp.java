@@ -23,92 +23,92 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockSiriusRedstoneLamp extends BlockBaseMP
 {
-	private boolean on;
+    private boolean on;
 
-	public BlockSiriusRedstoneLamp(String name, boolean on)
-	{
-		super(Material.redstoneLight);
-		this.on = on;
-		this.setHardness(0.3F);
-		this.setUnlocalizedName(name);
-		this.setStepSound(soundTypeGlass);
+    public BlockSiriusRedstoneLamp(String name, boolean on)
+    {
+        super(Material.redstoneLight);
+        this.on = on;
+        this.setHardness(0.3F);
+        this.setUnlocalizedName(name);
+        this.setStepSound(soundTypeGlass);
 
-		if (on)
-		{
-			this.setLightLevel(1.0F);
-		}
-	}
+        if (on)
+        {
+            this.setLightLevel(1.0F);
+        }
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		if (this.on)
-		{
-			return null;
-		}
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        if (this.on)
+        {
+            return null;
+        }
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
-	{
-		if (!world.isRemote)
-		{
-			if (this.on && !world.isBlockPowered(pos))
-			{
-				world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_off.getDefaultState(), 2);
-			}
-			else if (!this.on && world.isBlockPowered(pos))
-			{
-				world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_on.getDefaultState(), 2);
-			}
-		}
-	}
+    @Override
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state)
+    {
+        if (!world.isRemote)
+        {
+            if (this.on && !world.isBlockPowered(pos))
+            {
+                world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_off.getDefaultState(), 2);
+            }
+            else if (!this.on && world.isBlockPowered(pos))
+            {
+                world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_on.getDefaultState(), 2);
+            }
+        }
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
-	{
-		if (!world.isRemote)
-		{
-			if (this.on && !world.isBlockPowered(pos))
-			{
-				world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_off.getDefaultState(), 2);
-			}
-			else if (!this.on && world.isBlockPowered(pos))
-			{
-				world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_on.getDefaultState(), 2);
-			}
-		}
-	}
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
+    {
+        if (!world.isRemote)
+        {
+            if (this.on && !world.isBlockPowered(pos))
+            {
+                world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_off.getDefaultState(), 2);
+            }
+            else if (!this.on && world.isBlockPowered(pos))
+            {
+                world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_on.getDefaultState(), 2);
+            }
+        }
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (!world.isRemote && this.on && !world.isBlockPowered(pos))
-		{
-			world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_off.getDefaultState(), 2);
-		}
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (!world.isRemote && this.on && !world.isBlockPowered(pos))
+        {
+            world.setBlockState(pos, SiriusBBlocks.sirius_redstone_lamp_off.getDefaultState(), 2);
+        }
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		if (this.on)
-		{
-			return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
-		}
-		return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        if (this.on)
+        {
+            return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
+        }
+        return Item.getItemFromBlock(SiriusBBlocks.sirius_redstone_lamp_off);
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(SiriusBBlocks.sirius_redstone_lamp_off);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        return new ItemStack(SiriusBBlocks.sirius_redstone_lamp_off);
+    }
 
-	@Override
-	protected ItemStack createStackedBlock(IBlockState state)
-	{
-		return new ItemStack(SiriusBBlocks.sirius_redstone_lamp_off);
-	}
+    @Override
+    protected ItemStack createStackedBlock(IBlockState state)
+    {
+        return new ItemStack(SiriusBBlocks.sirius_redstone_lamp_off);
+    }
 }

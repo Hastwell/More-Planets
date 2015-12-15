@@ -26,40 +26,45 @@ import stevekung.mods.moreplanets.planets.pluto.dimension.WorldProviderPluto;
 
 public class BlockFluidNitrogen extends BlockFluidBaseMP
 {
-	public BlockFluidNitrogen(String name)
-	{
-		super(PlutoBlocks.liquid_nitrogen_fluid);
-		this.setQuantaPerBlock(8);
-		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
-		this.setTickRandomly(true);
-		this.setUnlocalizedName(name);
-	}
+    public BlockFluidNitrogen(String name)
+    {
+        super(PlutoBlocks.liquid_nitrogen_fluid);
+        this.setQuantaPerBlock(8);
+        this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+        this.setTickRandomly(true);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		super.randomDisplayTick(world, pos, state, rand);
-		int meta = (Integer)state.getValue(LEVEL);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        int meta = (Integer)state.getValue(LEVEL);
 
-		if (rand.nextInt(64) == 0)
-		{
-			if (meta > 0 && meta < 8)
-			{
-				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, "liquid.water", rand.nextFloat() * 0.25F + 0.75F, rand.nextFloat() * 1.0F + 0.5F, false);
-			}
-		}
-	}
+        if (rand.nextInt(64) == 0)
+        {
+            if (meta > 0 && meta < 8)
+            {
+                world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, "liquid.water", rand.nextFloat() * 0.25F + 0.75F, rand.nextFloat() * 1.0F + 0.5F, false);
+            }
+        }
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (entity instanceof EntityLivingBase)
-		{
-			if (WorldUtilMP.isSpaceWorld(world, new WorldProviderPluto()))
-			{
-				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
-			}
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+    {
+        if (entity instanceof EntityLivingBase)
+        {
+            if (WorldUtilMP.isSpaceWorld(world, new WorldProviderPluto()))
+            {
+                ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+            }
+        }
+    }
+
+    @Override
+    protected boolean isInfinite()
+    {
+        return false;
+    }
 }

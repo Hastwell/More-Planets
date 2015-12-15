@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "variant=fronos_gold_ore": { "model": "moreplanets:fronos_gold_ore" },
+        "variant=fronos_diamond_ore": { "model": "moreplanets:fronos_diamond_ore" },
+        "variant=fronos_emerald_ore": { "model": "moreplanets:fronos_emerald_ore" },
+        "variant=fronos_silicon_ore": { "model": "moreplanets:fronos_silicon_ore" }
+    }
+}

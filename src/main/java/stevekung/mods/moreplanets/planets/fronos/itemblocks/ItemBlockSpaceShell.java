@@ -14,21 +14,21 @@ import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMorePlanets;
 
 public class ItemBlockSpaceShell extends ItemBlockMorePlanets
 {
-	public ItemBlockSpaceShell(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockSpaceShell(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		return super.getUnlocalizedName() + "." + EnumDyeColor.byMetadata(itemStack.getMetadata()).getName();
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        return super.getUnlocalizedName() + "." + EnumDyeColor.byMetadata(itemStack.getMetadata()).getName();
+    }
 }

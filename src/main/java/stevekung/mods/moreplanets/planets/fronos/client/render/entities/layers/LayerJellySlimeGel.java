@@ -20,38 +20,38 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlime;
 @SideOnly(Side.CLIENT)
 public class LayerJellySlimeGel implements LayerRenderer
 {
-	private RenderJellySlime slimeRenderer;
-	private ModelBase slimeModel = new ModelSlime(0);
+    private RenderJellySlime slimeRenderer;
+    private ModelBase slimeModel = new ModelSlime(0);
 
-	public LayerJellySlimeGel(RenderJellySlime render)
-	{
-		this.slimeRenderer = render;
-	}
+    public LayerJellySlimeGel(RenderJellySlime render)
+    {
+        this.slimeRenderer = render;
+    }
 
-	public void doRenderLayer(EntityJellySlime entity, float par2, float par3, float par5, float par6, float par7, float par8)
-	{
-		if (!entity.isInvisible())
-		{
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			GlStateManager.enableNormalize();
-			GlStateManager.enableBlend();
-			GlStateManager.blendFunc(770, 771);
-			this.slimeModel.setModelAttributes(this.slimeRenderer.getMainModel());
-			this.slimeModel.render(entity, par2, par3, par5, par6, par7, par8);
-			GlStateManager.disableBlend();
-			GlStateManager.disableNormalize();
-		}
-	}
+    public void doRenderLayer(EntityJellySlime entity, float par2, float par3, float par5, float par6, float par7, float par8)
+    {
+        if (!entity.isInvisible())
+        {
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            GlStateManager.enableNormalize();
+            GlStateManager.enableBlend();
+            GlStateManager.blendFunc(770, 771);
+            this.slimeModel.setModelAttributes(this.slimeRenderer.getMainModel());
+            this.slimeModel.render(entity, par2, par3, par5, par6, par7, par8);
+            GlStateManager.disableBlend();
+            GlStateManager.disableNormalize();
+        }
+    }
 
-	@Override
-	public boolean shouldCombineTextures()
-	{
-		return true;
-	}
+    @Override
+    public boolean shouldCombineTextures()
+    {
+        return true;
+    }
 
-	@Override
-	public void doRenderLayer(EntityLivingBase entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
-	{
-		this.doRenderLayer((EntityJellySlime)entity, par2, par3, par5, par6, par7, par8);
-	}
+    @Override
+    public void doRenderLayer(EntityLivingBase entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
+    {
+        this.doRenderLayer((EntityJellySlime)entity, par2, par3, par5, par6, par7, par8);
+    }
 }

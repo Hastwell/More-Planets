@@ -7,14 +7,14 @@
 
 package stevekung.mods.moreplanets.client.renderer;
 
-import micdoodle8.mods.galacticraft.core.client.objload.AdvancedModelLoader;
-import micdoodle8.mods.galacticraft.core.client.objload.IModelCustom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
+import stevekung.mods.moreplanets.client.objmodel.AdvancedModelLoader;
+import stevekung.mods.moreplanets.client.objmodel.IModelCustom;
 import stevekung.mods.moreplanets.client.renderer.entities.RenderEvolvedWitch;
 import stevekung.mods.moreplanets.client.renderer.entities.RenderRocketMP;
 import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
@@ -142,104 +142,104 @@ import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianVillager;
 
 public class EntityRendererMP
 {
-	private static IModelCustom tier3RocketModel = AdvancedModelLoader.loadModel(new ResourceLocation("galacticraftasteroids:models/tier3rocket.obj"));
+    private static IModelCustom tier3RocketModel = AdvancedModelLoader.loadModel(new ResourceLocation("galacticraftasteroids:models/tier3rocket.obj"));
 
-	public static void init()
-	{
-		EntityRendererMP.registerEntityRenderers();
-		EntityRendererMP.registerNonEntityRenderers();
-	}
+    public static void init()
+    {
+        EntityRendererMP.registerEntityRenderers();
+        EntityRendererMP.registerNonEntityRenderers();
+    }
 
-	private static void registerEntityRenderers()
-	{
-		RenderManager render = Minecraft.getMinecraft().getRenderManager();
+    private static void registerEntityRenderers()
+    {
+        RenderManager render = Minecraft.getMinecraft().getRenderManager();
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityDustSludgeling.class, new RenderDustSludgeling(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySpaceWolf.class, new RenderSpaceWolf(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedEnderman.class, new RenderEvolvedEnderman(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperBoss.class, new RenderDionaCreeperBoss(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperMinion.class, new RenderDionaCreeperMinion(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityDustSludgeling.class, new RenderDustSludgeling(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySpaceWolf.class, new RenderSpaceWolf(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedEnderman.class, new RenderEvolvedEnderman(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperBoss.class, new RenderDionaCreeperBoss(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperMinion.class, new RenderDionaCreeperMinion(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCow.class, new RenderCheeseCow(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSlime.class, new RenderCheeseSlime(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCubeEyeBoss.class, new RenderCheeseCubeBoss(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCow.class, new RenderCheeseCow(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSlime.class, new RenderCheeseSlime(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCubeEyeBoss.class, new RenderCheeseCubeBoss(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedWorm.class, new RenderInfectedWorm(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGiantWorm.class, new RenderGiantWorm(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, new RenderInfectedZombie(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedInfectedSpiderBoss.class, new RenderInfectedEvolvedSpiderBoss(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityInfectedWorm.class, new RenderInfectedWorm(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityGiantWorm.class, new RenderGiantWorm(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, new RenderInfectedZombie(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedInfectedSpiderBoss.class, new RenderInfectedEvolvedSpiderBoss(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityKoentusianVillager.class, new RenderKoentusianVillager(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityKoentusSludgeling.class, new RenderKoentusSludgeling(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusianVillager.class, new RenderKoentusianVillager(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusSludgeling.class, new RenderKoentusSludgeling(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityBearry.class, new RenderBearry(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBerry.class, new RenderBerry(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityMarshmallow.class, new RenderMarshmallow(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityKiwi.class, new RenderKiwi(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityJellySlime.class, new RenderJellySlime(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityJellySlimePet.class, new RenderJellySlimePet(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCreamSlime.class, new RenderCreamSlime(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLemonDuck.class, new RenderLemonDuck(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityStarfish.class, new RenderStarfish(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityMelon.class, new RenderMelon(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTomato.class, new RenderTomato(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGrappy.class, new RenderGrappy(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCreamCat.class, new RenderCreamCat(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCreamGolem.class, new RenderCreamGolem(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityStrawberryChicken.class, new RenderStrawberryChicken(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFronosVillager.class, new RenderFronosVillager(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityBearry.class, new RenderBearry(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityBerry.class, new RenderBerry(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityMarshmallow.class, new RenderMarshmallow(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityKiwi.class, new RenderKiwi(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityJellySlime.class, new RenderJellySlime(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityJellySlimePet.class, new RenderJellySlimePet(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamSlime.class, new RenderCreamSlime(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityLemonDuck.class, new RenderLemonDuck(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityStarfish.class, new RenderStarfish(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityMelon.class, new RenderMelon(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTomato.class, new RenderTomato(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityGrappy.class, new RenderGrappy(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamCat.class, new RenderCreamCat(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamGolem.class, new RenderCreamGolem(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityStrawberryChicken.class, new RenderStrawberryChicken(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityFronosVillager.class, new RenderFronosVillager(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityFrozenSludgeling.class, new RenderFrozenSludgeling(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityFrozenSludgeling.class, new RenderFrozenSludgeling(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntitySiriusCreeper.class, new RenderSiriusCreeper(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySiriusBlaze.class, new RenderSiriusBlaze(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntitySiriusMagmaCube.class, new RenderSiriusMagmaCube(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedSiriusBlazeBoss.class, new RenderEvolvedSiriusBlazeBoss(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusCreeper.class, new RenderSiriusCreeper(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusBlaze.class, new RenderSiriusBlaze(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusMagmaCube.class, new RenderSiriusMagmaCube(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedSiriusBlazeBoss.class, new RenderEvolvedSiriusBlazeBoss(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityVenusianBlaze.class, new RenderVenusianBlaze(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityVenusianSlime.class, new RenderVenusianSlime(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityVenusianVillager.class, new RenderVenusianVillager(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianBlaze.class, new RenderVenusianBlaze(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianSlime.class, new RenderVenusianSlime(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianVillager.class, new RenderVenusianVillager(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaGuardian.class, new RenderEuropaGuardian(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaGuardian.class, new RenderEuropaGuardian(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new RenderEvolvedWitch(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow(render));
-	}
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new RenderEvolvedWitch(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow(render));
+    }
 
-	private static void registerNonEntityRenderers()
-	{
-		RenderManager render = Minecraft.getMinecraft().getRenderManager();
+    private static void registerNonEntityRenderers()
+    {
+        RenderManager render = Minecraft.getMinecraft().getRenderManager();
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityTier4Rocket.class, new RenderRocketMP(render, "tier_4_rocket"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityProjectileFronisiumTNT.class, new RenderProjectileFronisiumTNT(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFronisiumTNT.class, new RenderFronisiumTNT(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLaserMP.class, new RenderLaserMP(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier4Rocket.class, new RenderRocketMP(render, "tier_4_rocket"));
+        RenderingRegistry.registerEntityRenderingHandler(EntityProjectileFronisiumTNT.class, new RenderProjectileFronisiumTNT(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityFronisiumTNT.class, new RenderFronisiumTNT(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityLaserMP.class, new RenderLaserMP(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityTier5Rocket.class, new RenderRocketMP(render, "tier_5_rocket"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSpore.class, new RenderCheeseSpore(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteorChunk.class, new RenderPolongniusMeteorChunk(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteor.class, new RenderPolongniusMeteor(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier5Rocket.class, new RenderRocketMP(render, "tier_5_rocket"));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSpore.class, new RenderCheeseSpore(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteorChunk.class, new RenderPolongniusMeteorChunk(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteor.class, new RenderPolongniusMeteor(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityTier6Rocket.class, new RenderRocketMP(render, "tier_6_rocket"));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier6Rocket.class, new RenderRocketMP(render, "tier_6_rocket"));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteorChunk.class, new RenderKoentusMeteorChunk(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteor.class, new RenderKoentusMeteor(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteorChunk.class, new RenderKoentusMeteorChunk(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteor.class, new RenderKoentusMeteor(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityCreamBall.class, new RenderCreamBall(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityPoisonArrow.class, new RenderPoisonArrow(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTier7Rocket.class, new RenderTier7Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_7_rocket"));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamBall.class, new RenderCreamBall(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPoisonArrow.class, new RenderPoisonArrow(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier7Rocket.class, new RenderTier7Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_7_rocket"));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityUraniumBomb.class, new RenderUraniumBomb(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTier8Rocket.class, new RenderTier8Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_8_rocket"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteor.class, new RenderIceCrystalMeteor(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityUraniumBomb.class, new RenderUraniumBomb(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier8Rocket.class, new RenderTier8Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_8_rocket"));
+        RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteor.class, new RenderIceCrystalMeteor(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntitySmallSiriusFireball.class, new RenderSmallSiriusFireball(render));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLargeSiriusFireball.class, new RenderLargeSiriusFireball(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySmallSiriusFireball.class, new RenderSmallSiriusFireball(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityLargeSiriusFireball.class, new RenderLargeSiriusFireball(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb(render));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new RenderDarkAsteroid(render));
-	}
+        RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new RenderDarkAsteroid(render));
+    }
 }

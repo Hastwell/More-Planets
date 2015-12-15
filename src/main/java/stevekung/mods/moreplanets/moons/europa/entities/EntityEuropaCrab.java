@@ -46,245 +46,245 @@ import com.google.common.base.Predicate;
 
 public class EntityEuropaCrab extends EntityAnimal implements IEntityBreathable, IEntityLivingPlanet
 {
-	public EntityEuropaCrab(World world)
-	{
-		super(world);
-		this.setSize(0.8F, 0.3F);
-		this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
-		this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
-		this.tasks.addTask(4, new EntityAITempt(this, 1.1D, Items.carrot, false));
-		this.tasks.addTask(5, new EntityAIFollowParent(this, 1.1D));
-		this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		this.tasks.addTask(8, new EntityAILookIdle(this));
-		this.setCrabType(this.rand.nextInt(3));
-	}
+    public EntityEuropaCrab(World world)
+    {
+        super(world);
+        this.setSize(0.8F, 0.3F);
+        this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
+        this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(4, new EntityAITempt(this, 1.1D, Items.carrot, false));
+        this.tasks.addTask(5, new EntityAIFollowParent(this, 1.1D));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.setCrabType(this.rand.nextInt(3));
+    }
 
-	@Override
-	public void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(18, Byte.valueOf((byte)0));
-	}
+    @Override
+    public void entityInit()
+    {
+        super.entityInit();
+        this.dataWatcher.addObject(18, Byte.valueOf((byte)0));
+    }
 
-	@Override
-	public boolean canBreatheUnderwater()
-	{
-		return true;
-	}
+    @Override
+    public boolean canBreatheUnderwater()
+    {
+        return true;
+    }
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(12.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.2D);
-	}
+    @Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(12.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.2D);
+    }
 
-	@Override
-	protected String getLivingSound()
-	{
-		return null;
-	}
+    @Override
+    protected String getLivingSound()
+    {
+        return null;
+    }
 
-	@Override
-	protected String getHurtSound()
-	{
-		return "moreplanets:mob.crab";
-	}
+    @Override
+    protected String getHurtSound()
+    {
+        return "moreplanets:mob.crab";
+    }
 
-	@Override
-	protected String getDeathSound()
-	{
-		return "moreplanets:mob.crab";
-	}
+    @Override
+    protected String getDeathSound()
+    {
+        return "moreplanets:mob.crab";
+    }
 
-	@Override
-	protected void playStepSound(BlockPos pos, Block block)
-	{
-		this.playSound("mob.chicken.step", 0.15F, 1.0F);
-	}
+    @Override
+    protected void playStepSound(BlockPos pos, Block block)
+    {
+        this.playSound("mob.chicken.step", 0.15F, 1.0F);
+    }
 
-	@Override
-	protected void dropFewItems(boolean drop, int fortune)
-	{
-		int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + fortune);
+    @Override
+    protected void dropFewItems(boolean drop, int fortune)
+    {
+        int j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + fortune);
 
-		for (int k = 0; k < j; ++k)
-		{
-			if (this.isBurning())
-			{
-				this.dropItem(Items.cooked_porkchop, 1);
-			}
-			else
-			{
-				this.dropItem(Items.porkchop, 1);
-			}
-		}
-	}
+        for (int k = 0; k < j; ++k)
+        {
+            if (this.isBurning())
+            {
+                this.dropItem(Items.cooked_porkchop, 1);
+            }
+            else
+            {
+                this.dropItem(Items.porkchop, 1);
+            }
+        }
+    }
 
-	@Override
-	public boolean interact(EntityPlayer player)
-	{
-		ItemStack itemStack = player.inventory.getCurrentItem();
+    @Override
+    public boolean interact(EntityPlayer player)
+    {
+        ItemStack itemStack = player.inventory.getCurrentItem();
 
-		if (itemStack != null && itemStack.getItem() == MPItems.spawn_egg_mp && itemStack.getItemDamage() == 1039)
-		{
-			if (!this.worldObj.isRemote)
-			{
-				EntityAgeable entityageable = this.createChild(this);
+        if (itemStack != null && itemStack.getItem() == MPItems.spawn_egg_mp && itemStack.getItemDamage() == 1039)
+        {
+            if (!this.worldObj.isRemote)
+            {
+                EntityAgeable entityageable = this.createChild(this);
 
-				if (entityageable != null)
-				{
-					entityageable.setGrowingAge(-24000);
-					entityageable.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
-					this.worldObj.spawnEntityInWorld(entityageable);
+                if (entityageable != null)
+                {
+                    entityageable.setGrowingAge(-24000);
+                    entityageable.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
+                    this.worldObj.spawnEntityInWorld(entityageable);
 
-					if (itemStack.hasDisplayName())
-					{
-						entityageable.setCustomNameTag(itemStack.getDisplayName());
-					}
-					if (!player.capabilities.isCreativeMode)
-					{
-						--itemStack.stackSize;
+                    if (itemStack.hasDisplayName())
+                    {
+                        entityageable.setCustomNameTag(itemStack.getDisplayName());
+                    }
+                    if (!player.capabilities.isCreativeMode)
+                    {
+                        --itemStack.stackSize;
 
-						if (itemStack.stackSize <= 0)
-						{
-							player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
-						}
-					}
-				}
-			}
-			return true;
-		}
-		if (itemStack == null && player.isSneaking())//TODO
-		{
-			if (this.getCrabType() == 2)
-			{
-				if (!this.worldObj.isRemote)
-				{
-					EntityItem item = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.diamond));
-					this.worldObj.spawnEntityInWorld(item);
-				}
-				this.setDead();
-			}
-			return true;
-		}
-		return super.interact(player);
-	}
+                        if (itemStack.stackSize <= 0)
+                        {
+                            player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        if (itemStack == null && player.isSneaking())//TODO
+        {
+            if (this.getCrabType() == 2)
+            {
+                if (!this.worldObj.isRemote)
+                {
+                    EntityItem item = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.diamond));
+                    this.worldObj.spawnEntityInWorld(item);
+                }
+                this.setDead();
+            }
+            return true;
+        }
+        return super.interact(player);
+    }
 
-	@Override
-	public ItemStack getPickedResult(MovingObjectPosition target)
-	{
-		return new ItemStack(MPItems.spawn_egg_mp, 1, 1039);
-	}
+    @Override
+    public ItemStack getPickedResult(MovingObjectPosition target)
+    {
+        return new ItemStack(MPItems.spawn_egg_mp, 1, 1039);
+    }
 
-	@Override
-	public EntityEuropaCrab createChild(EntityAgeable entity)
-	{
-		return new EntityEuropaCrab(this.worldObj);
-	}
+    @Override
+    public EntityEuropaCrab createChild(EntityAgeable entity)
+    {
+        return new EntityEuropaCrab(this.worldObj);
+    }
 
-	@Override
-	public boolean isBreedingItem(ItemStack itemStack)
-	{
-		return itemStack != null && itemStack.getItem() == Items.carrot;
-	}
+    @Override
+    public boolean isBreedingItem(ItemStack itemStack)
+    {
+        return itemStack != null && itemStack.getItem() == Items.carrot;
+    }
 
-	@Override
-	public boolean getCanSpawnHere()
-	{
-		if (WorldUtilMP.isSpaceWorld(this.worldObj, new WorldProviderEuropa()))
-		{
-			return this.posY > 45.0D && this.posY < 63.0D && this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox());
-		}
-		return false;
-	}
+    @Override
+    public boolean getCanSpawnHere()
+    {
+        if (WorldUtilMP.isSpaceWorld(this.worldObj, new WorldProviderEuropa()))
+        {
+            return this.posY > 45.0D && this.posY < 63.0D && this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox());
+        }
+        return false;
+    }
 
-	@Override
-	public boolean canBreath()
-	{
-		return true;
-	}
+    @Override
+    public boolean canBreath()
+    {
+        return true;
+    }
 
-	@Override
-	public void writeEntityToNBT(NBTTagCompound nbt)
-	{
-		super.writeEntityToNBT(nbt);
-		nbt.setInteger("CrabType", this.getCrabType());
-	}
+    @Override
+    public void writeEntityToNBT(NBTTagCompound nbt)
+    {
+        super.writeEntityToNBT(nbt);
+        nbt.setInteger("CrabType", this.getCrabType());
+    }
 
-	@Override
-	public void readEntityFromNBT(NBTTagCompound nbt)
-	{
-		super.readEntityFromNBT(nbt);
-		this.setCrabType(nbt.getInteger("CrabType"));
-	}
+    @Override
+    public void readEntityFromNBT(NBTTagCompound nbt)
+    {
+        super.readEntityFromNBT(nbt);
+        this.setCrabType(nbt.getInteger("CrabType"));
+    }
 
-	public int getCrabType()
-	{
-		return this.dataWatcher.getWatchableObjectByte(18);
-	}
+    public int getCrabType()
+    {
+        return this.dataWatcher.getWatchableObjectByte(18);
+    }
 
-	public void setCrabType(int type)
-	{
-		this.dataWatcher.updateObject(18, Byte.valueOf((byte)type));
-	}
+    public void setCrabType(int type)
+    {
+        this.dataWatcher.updateObject(18, Byte.valueOf((byte)type));
+    }
 
-	@Override
-	public EnumDimensionType canLivingInDimension()
-	{
-		return EnumDimensionType.NULL;
-	}
+    @Override
+    public EnumDimensionType canLivingInDimension()
+    {
+        return EnumDimensionType.NULL;
+    }
 
-	@Override
-	protected void updateAITasks()
-	{
-		super.updateAITasks();
+    @Override
+    protected void updateAITasks()
+    {
+        super.updateAITasks();
 
-		if (this.getCrabType() == 3)
-		{
-			if (this.ticksExisted % 128 == 0)
-			{
-				Potion potion = MPPotions.chemical;
-				List list = this.worldObj.getPlayers(EntityPlayerMP.class, new Predicate()
-				{
-					public boolean func_179913_a(EntityPlayerMP player)
-					{
-						return EntityEuropaCrab.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.func_180239_c();
-					}
-					@Override
-					public boolean apply(Object player)
-					{
-						return this.func_179913_a((EntityPlayerMP)player);
-					}
-				});
-				Iterator iterator = list.iterator();
+        if (this.getCrabType() == 3)
+        {
+            if (this.ticksExisted % 128 == 0)
+            {
+                Potion potion = MPPotions.chemical;
+                List list = this.worldObj.getPlayers(EntityPlayerMP.class, new Predicate()
+                {
+                    public boolean func_179913_a(EntityPlayerMP player)
+                    {
+                        return EntityEuropaCrab.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.func_180239_c();
+                    }
+                    @Override
+                    public boolean apply(Object player)
+                    {
+                        return this.func_179913_a((EntityPlayerMP)player);
+                    }
+                });
+                Iterator iterator = list.iterator();
 
-				while (iterator.hasNext())
-				{
-					EntityPlayerMP entityplayermp = (EntityPlayerMP)iterator.next();
+                while (iterator.hasNext())
+                {
+                    EntityPlayerMP entityplayermp = (EntityPlayerMP)iterator.next();
 
-					if (!entityplayermp.isPotionActive(potion))
-					{
-						entityplayermp.addPotionEffect(new PotionEffect(potion.id, 64, 0));
-					}
-				}
-			}
-		}
-	}
+                    if (!entityplayermp.isPotionActive(potion))
+                    {
+                        entityplayermp.addPotionEffect(new PotionEffect(potion.id, 64, 0));
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
-	{
-		if (this.worldObj.rand.nextInt(100) == 0)
-		{
-			EntityEuropaCrab crab = new EntityEuropaCrab(this.worldObj);
-			crab.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-			crab.func_180482_a(diff, (IEntityLivingData)null);
-			crab.setCrabType(3);
-			this.worldObj.spawnEntityInWorld(crab);
-		}
-		return data;
-	}
+    @Override
+    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    {
+        if (this.worldObj.rand.nextInt(100) == 0)
+        {
+            EntityEuropaCrab crab = new EntityEuropaCrab(this.worldObj);
+            crab.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
+            crab.func_180482_a(diff, (IEntityLivingData)null);
+            crab.setCrabType(3);
+            this.worldObj.spawnEntityInWorld(crab);
+        }
+        return data;
+    }
 }

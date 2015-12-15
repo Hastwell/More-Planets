@@ -18,63 +18,63 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntityIcyPoisonCrystal extends TileEntity implements IUpdatePlayerListBox
 {
-	public int facing;
+    public int facing;
 
-	public TileEntityIcyPoisonCrystal()
-	{
-		this.facing = 1;
-	}
+    public TileEntityIcyPoisonCrystal()
+    {
+        this.facing = 1;
+    }
 
-	@Override
-	public void update()
-	{
-		if (!this.worldObj.isRemote)
-		{
-			if (OxygenUtil.inOxygenBubble(this.worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ()) || OxygenUtil.isInOxygenBlock(this.worldObj, AxisAlignedBB.fromBounds(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.pos.getX(), this.pos.getY(), this.pos.getZ())))
-			{
-				this.worldObj.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.0F, true);
-			}
-			if (this.worldObj.provider.getDimensionId() == 0 || !OxygenUtil.noAtmosphericCombustion(this.worldObj.provider))
-			{
-				if (this.worldObj.rand.nextInt(100) == 0)
-				{
-					this.worldObj.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.0F, true);
-				}
-			}
-		}
-	}
+    @Override
+    public void update()
+    {
+        if (!this.worldObj.isRemote)
+        {
+            if (OxygenUtil.inOxygenBubble(this.worldObj, this.pos.getX(), this.pos.getY(), this.pos.getZ()) || OxygenUtil.isInOxygenBlock(this.worldObj, AxisAlignedBB.fromBounds(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.pos.getX(), this.pos.getY(), this.pos.getZ())))
+            {
+                this.worldObj.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.0F, true);
+            }
+            if (this.worldObj.provider.getDimensionId() == 0 || !OxygenUtil.noAtmosphericCombustion(this.worldObj.provider))
+            {
+                if (this.worldObj.rand.nextInt(100) == 0)
+                {
+                    this.worldObj.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.0F, true);
+                }
+            }
+        }
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		this.facing = nbt.getInteger("Facing");
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        this.facing = nbt.getInteger("Facing");
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
-		nbt.setInteger("Facing", this.facing);
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
+        nbt.setInteger("Facing", this.facing);
+    }
 
-	@Override
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound nbt = new NBTTagCompound();
-		this.writeToNBT(nbt);
-		return new S35PacketUpdateTileEntity(this.pos, -999, nbt);
-	}
+    @Override
+    public Packet getDescriptionPacket()
+    {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return new S35PacketUpdateTileEntity(this.pos, -999, nbt);
+    }
 
-	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-	{
-		this.readFromNBT(pkt.getNbtCompound());
-	}
+    @Override
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+    {
+        this.readFromNBT(pkt.getNbtCompound());
+    }
 
-	@Override
-	public boolean canRenderBreaking()
-	{
-		return true;
-	}
+    @Override
+    public boolean canRenderBreaking()
+    {
+        return true;
+    }
 }

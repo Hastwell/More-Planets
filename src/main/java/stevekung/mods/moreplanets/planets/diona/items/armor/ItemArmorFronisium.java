@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class ItemArmorFronisium extends ItemArmorMP
 {
-	public ItemArmorFronisium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ItemArmorFronisium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == DionaArmorItems.fronisium_helmet || stack.getItem() == DionaArmorItems.fronisium_chestplate || stack.getItem() == DionaArmorItems.fronisium_boots)
-		{
-			return "moreplanets:textures/model/armor/fronisium_1.png";
-		}
-		else if (stack.getItem() == DionaArmorItems.fronisium_leggings)
-		{
-			return "moreplanets:textures/model/armor/fronisium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == DionaArmorItems.fronisium_helmet || stack.getItem() == DionaArmorItems.fronisium_chestplate || stack.getItem() == DionaArmorItems.fronisium_boots)
+        {
+            return "moreplanets:textures/model/armor/fronisium_1.png";
+        }
+        else if (stack.getItem() == DionaArmorItems.fronisium_leggings)
+        {
+            return "moreplanets:textures/model/armor/fronisium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return DionaItems.diona_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return DionaItems.diona_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 3;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 3;
+    }
 }

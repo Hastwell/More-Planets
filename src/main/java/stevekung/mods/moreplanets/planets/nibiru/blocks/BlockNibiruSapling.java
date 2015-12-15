@@ -31,122 +31,122 @@ import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 
 public class BlockNibiruSapling extends BlockSaplingMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockNibiruSapling(String name)
-	{
-		super();
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.ancient_dark_sapling));
-		this.setUnlocalizedName(name);
-	}
+    public BlockNibiruSapling(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.ancient_dark_sapling));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
-		return block == Blocks.grass || block == Blocks.dirt || block == NibiruBlocks.infected_grass || block == NibiruBlocks.infected_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
+        return block == Blocks.grass || block == Blocks.dirt || block == NibiruBlocks.infected_grass || block == NibiruBlocks.infected_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		super.updateTick(world, pos, state, rand);
-		this.canBlockStay(world, pos, state);
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        super.updateTick(world, pos, state, rand);
+        this.canBlockStay(world, pos, state);
 
-		if (!world.isRemote)
-		{
-			super.updateTick(world, pos, state, rand);
+        if (!world.isRemote)
+        {
+            super.updateTick(world, pos, state, rand);
 
-			if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0)
-			{
-				this.grow(world, rand, pos, state);
-			}
-		}
-	}
+            if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0)
+            {
+                this.grow(world, rand, pos, state);
+            }
+        }
+    }
 
-	@Override
-	public void grow(World world, Random rand, BlockPos pos, IBlockState state)
-	{
-		BlockType type = (BlockType)state.getValue(VARIANT);
-		Object obj = null;
+    @Override
+    public void grow(World world, Random rand, BlockPos pos, IBlockState state)
+    {
+        BlockType type = (BlockType)state.getValue(VARIANT);
+        Object obj = null;
 
-		if (obj == null)
-		{
-			if (type == BlockType.ancient_dark_sapling)
-			{
-				obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, this, null);
-			}
-			else if (type == BlockType.orange_sapling)
-			{
-				obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, this, null);
-			}
-		}
-		if (obj != null)
-		{
-			world.setBlockToAir(pos);
+        if (obj == null)
+        {
+            if (type == BlockType.ancient_dark_sapling)
+            {
+                obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, this, null);
+            }
+            else if (type == BlockType.orange_sapling)
+            {
+                obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, this, null);
+            }
+        }
+        if (obj != null)
+        {
+            world.setBlockToAir(pos);
 
-			if (!((WorldGenerator)obj).generate(world, rand, pos))
-			{
-				world.setBlockState(pos, state, 2);
-			}
-		}
-	}
+            if (!((WorldGenerator)obj).generate(world, rand, pos))
+            {
+                world.setBlockState(pos, state, 2);
+            }
+        }
+    }
 
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos)
-	{
-		return false;
-	}
+    @Override
+    public boolean isReplaceable(World world, BlockPos pos)
+    {
+        return false;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		ancient_dark_sapling,
-		orange_sapling;
+    public static enum BlockType implements IStringSerializable
+    {
+        ancient_dark_sapling,
+        orange_sapling;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

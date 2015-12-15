@@ -19,17 +19,17 @@ import stevekung.mods.moreplanets.planets.fronos.client.render.entities.layers.L
 @SideOnly(Side.CLIENT)
 public class RenderGrappy extends RenderLiving
 {
-	private ResourceLocation grappyTextures = new ResourceLocation("moreplanets:textures/entity/grappy/grappy_sheared.png");
+    private ResourceLocation grappyTextures = new ResourceLocation("moreplanets:textures/entity/grappy/grappy_sheared.png");
 
-	public RenderGrappy(RenderManager render)
-	{
-		super(render, new ModelGrappy2(), 0.6F);
-		this.addLayer(new LayerGrappyWool(this));
-	}
+    public RenderGrappy(RenderManager render)
+    {
+        super(render, new ModelGrappy2(), 0.6F);
+        this.addLayer(new LayerGrappyWool(this));
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.grappyTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.grappyTextures;
+    }
 }

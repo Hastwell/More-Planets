@@ -18,16 +18,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderKoentusSludgeling extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/koentus_sludgeling.png");
+    private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/koentus_sludgeling.png");
 
-	public RenderKoentusSludgeling(RenderManager render)
-	{
-		super(render, new ModelSludgeling(), 0.2F);
-	}
+    public RenderKoentusSludgeling(RenderManager render)
+    {
+        super(render, new ModelSludgeling(), 0.2F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.texture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.texture;
+    }
 }

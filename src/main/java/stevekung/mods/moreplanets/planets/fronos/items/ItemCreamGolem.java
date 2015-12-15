@@ -24,83 +24,83 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamGolem;
 
 public class ItemCreamGolem extends ItemBaseMP
 {
-	public ItemCreamGolem(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemCreamGolem(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xoffset, float yoffset, float zoffset)
-	{
-		int meta = itemStack.getItemDamage();
-		IBlockState state = world.getBlockState(pos);
+    @Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float xoffset, float yoffset, float zoffset)
+    {
+        int meta = itemStack.getItemDamage();
+        IBlockState state = world.getBlockState(pos);
 
-		if (world.isRemote)
-		{
-			return true;
-		}
-		if (player.capabilities.isCreativeMode)
-		{
-			if (state.getBlock() == Blocks.mob_spawner)
-			{
-				TileEntity localTileEntity = world.getTileEntity(pos);
+        if (world.isRemote)
+        {
+            return true;
+        }
+        if (player.capabilities.isCreativeMode)
+        {
+            if (state.getBlock() == Blocks.mob_spawner)
+            {
+                TileEntity localTileEntity = world.getTileEntity(pos);
 
-				if (localTileEntity instanceof TileEntityMobSpawner)
-				{
-					MobSpawnerBaseLogic mobSpawner = ((TileEntityMobSpawner)localTileEntity).getSpawnerBaseLogic();
-					mobSpawner.setEntityName("MorePlanets.CreamGolem");
-					localTileEntity.markDirty();
-					world.markBlockForUpdate(pos);
+                if (localTileEntity instanceof TileEntityMobSpawner)
+                {
+                    MobSpawnerBaseLogic mobSpawner = ((TileEntityMobSpawner)localTileEntity).getSpawnerBaseLogic();
+                    mobSpawner.setEntityName("MorePlanets.CreamGolem");
+                    localTileEntity.markDirty();
+                    world.markBlockForUpdate(pos);
 
-					if (!player.capabilities.isCreativeMode)
-					{
-						itemStack.stackSize -= 1;
-					}
-					return true;
-				}
-			}
-		}
-		if (!player.canPlayerEdit(pos.offset(side), side, itemStack))
-		{
-			return false;
-		}
-		else
-		{
-			pos = pos.offset(side);
-			double d = 0.0D;
-			EntityCreamGolem cream = new EntityCreamGolem(world);
+                    if (!player.capabilities.isCreativeMode)
+                    {
+                        itemStack.stackSize -= 1;
+                    }
+                    return true;
+                }
+            }
+        }
+        if (!player.canPlayerEdit(pos.offset(side), side, itemStack))
+        {
+            return false;
+        }
+        else
+        {
+            pos = pos.offset(side);
+            double d = 0.0D;
+            EntityCreamGolem cream = new EntityCreamGolem(world);
 
-			if (side == EnumFacing.UP && state instanceof BlockFence)
-			{
-				d = 0.5D;
-			}
+            if (side == EnumFacing.UP && state instanceof BlockFence)
+            {
+                d = 0.5D;
+            }
 
-			if (this.spawnCreamGolem(world, meta, pos.getX() + 0.5D, pos.getY() + d, pos.getZ() + 0.5D) && !player.capabilities.isCreativeMode)
-			{
-				--itemStack.stackSize;
-			}
-			if (itemStack.hasDisplayName())
-			{
-				((EntityLiving)cream).setCustomNameTag(itemStack.getDisplayName());
-			}
-			return true;
-		}
-	}
+            if (this.spawnCreamGolem(world, meta, pos.getX() + 0.5D, pos.getY() + d, pos.getZ() + 0.5D) && !player.capabilities.isCreativeMode)
+            {
+                --itemStack.stackSize;
+            }
+            if (itemStack.hasDisplayName())
+            {
+                ((EntityLiving)cream).setCustomNameTag(itemStack.getDisplayName());
+            }
+            return true;
+        }
+    }
 
-	private boolean spawnCreamGolem(World world, int type, double x, double y, double z)
-	{
-		EntityCreamGolem cream = new EntityCreamGolem(world);
-		cream.setLocationAndAngles(x, y, z, world.rand.nextFloat() * 360.0F, 0.0F);
-		cream.setCreamGolemType(type);
-		world.spawnEntityInWorld(cream);
-		cream.playLivingSound();
-		return true;
-	}
+    private boolean spawnCreamGolem(World world, int type, double x, double y, double z)
+    {
+        EntityCreamGolem cream = new EntityCreamGolem(world);
+        cream.setLocationAndAngles(x, y, z, world.rand.nextFloat() * 360.0F, 0.0F);
+        cream.setCreamGolemType(type);
+        world.spawnEntityInWorld(cream);
+        cream.playLivingSound();
+        return true;
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "vanilla_cream_golem", "chocolate_cream_golem", "strawberry_cream_golem", "orange_cream_golem", "tea_cream_golem", "lemon_cream_golem" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "vanilla_cream_golem", "chocolate_cream_golem", "strawberry_cream_golem", "orange_cream_golem", "tea_cream_golem", "lemon_cream_golem" };
+    }
 }

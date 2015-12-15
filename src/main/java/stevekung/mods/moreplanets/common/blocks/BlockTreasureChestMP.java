@@ -22,89 +22,89 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public abstract class BlockTreasureChestMP extends BlockContainerMP
 {
-	public BlockTreasureChestMP()
-	{
-		super(Material.rock);
-		this.setResistance(10000000.0F);
-		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH));
-		this.setHardness(-1.0F);
-		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
-	}
+    public BlockTreasureChestMP()
+    {
+        super(Material.rock);
+        this.setResistance(10000000.0F);
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH));
+        this.setHardness(-1.0F);
+        this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return 2;
-	}
+    @Override
+    public int getRenderType()
+    {
+        return 2;
+    }
 
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state)
-	{
-		TileEntity tileentity = world.getTileEntity(pos);
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state)
+    {
+        TileEntity tileentity = world.getTileEntity(pos);
 
-		if (tileentity instanceof IInventory)
-		{
-			InventoryHelper.dropInventoryItems(world, pos, (IInventory)tileentity);
-			world.updateComparatorOutputLevel(pos, this);
-		}
-		super.breakBlock(world, pos, state);
-	}
+        if (tileentity instanceof IInventory)
+        {
+            InventoryHelper.dropInventoryItems(world, pos, (IInventory)tileentity);
+            world.updateComparatorOutputLevel(pos, this);
+        }
+        super.breakBlock(world, pos, state);
+    }
 
-	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-	{
-		return this.getDefaultState().withProperty(BlockStateHelper.FACING, placer.getHorizontalFacing().getOpposite());
-	}
+    @Override
+    public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
+    {
+        return this.getDefaultState().withProperty(BlockStateHelper.FACING, placer.getHorizontalFacing().getOpposite());
+    }
 
-	public boolean cannotOpenChest(World world, BlockPos pos)
-	{
-		return this.isBelowSolidBlock(world, pos);
-	}
+    public boolean cannotOpenChest(World world, BlockPos pos)
+    {
+        return this.isBelowSolidBlock(world, pos);
+    }
 
-	private boolean isBelowSolidBlock(World world, BlockPos pos)
-	{
-		return world.isSideSolid(pos.up(), EnumFacing.DOWN, false);
-	}
+    private boolean isBelowSolidBlock(World world, BlockPos pos)
+    {
+        return world.isSideSolid(pos.up(), EnumFacing.DOWN, false);
+    }
 
-	@Override
-	public boolean hasComparatorInputOverride()
-	{
-		return true;
-	}
+    @Override
+    public boolean hasComparatorInputOverride()
+    {
+        return true;
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        EnumFacing enumfacing = EnumFacing.getFront(meta);
 
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y)
-		{
-			enumfacing = EnumFacing.NORTH;
-		}
-		return this.getDefaultState().withProperty(BlockStateHelper.FACING, enumfacing);
-	}
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+        {
+            enumfacing = EnumFacing.NORTH;
+        }
+        return this.getDefaultState().withProperty(BlockStateHelper.FACING, enumfacing);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] {BlockStateHelper.FACING});
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {BlockStateHelper.FACING});
+    }
 }

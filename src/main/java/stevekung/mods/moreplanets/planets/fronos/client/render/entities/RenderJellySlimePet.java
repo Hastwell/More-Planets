@@ -22,57 +22,57 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlimePet;
 @SideOnly(Side.CLIENT)
 public class RenderJellySlimePet extends RenderLiving
 {
-	private ResourceLocation strawberrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/strawberry.png");
-	private ResourceLocation berrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/berry.png");
-	private ResourceLocation raspberrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/raspberry.png");
-	private ResourceLocation orangeSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/orange.png");
-	private ResourceLocation grapeSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/grape.png");
-	private ResourceLocation limeSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/lime.png");
-	private ResourceLocation greenSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/green.png");
-	private ResourceLocation lemonSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/lemon.png");
+    private ResourceLocation strawberrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/strawberry.png");
+    private ResourceLocation berrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/berry.png");
+    private ResourceLocation raspberrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/raspberry.png");
+    private ResourceLocation orangeSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/orange.png");
+    private ResourceLocation grapeSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/grape.png");
+    private ResourceLocation limeSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/lime.png");
+    private ResourceLocation greenSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/green.png");
+    private ResourceLocation lemonSlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/lemon.png");
 
-	public RenderJellySlimePet(RenderManager render)
-	{
-		super(render, new ModelSlime(16), 0.25F);
-		this.addLayer(new LayerJellySlimePetGel(this));
-	}
+    public RenderJellySlimePet(RenderManager render)
+    {
+        super(render, new ModelSlime(16), 0.25F);
+        this.addLayer(new LayerJellySlimePetGel(this));
+    }
 
-	protected void preRenderCallback(EntityJellySlimePet entity, float par2)
-	{
-		float f1 = 1;
-		float f2 = (entity.prevSquishFactor + (entity.squishFactor - entity.prevSquishFactor) * par2) / (f1 * 0.5F + 1.0F);
-		float f3 = 1.0F / (f2 + 1.0F);
-		GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
-	}
+    protected void preRenderCallback(EntityJellySlimePet entity, float par2)
+    {
+        float f1 = 1;
+        float f2 = (entity.prevSquishFactor + (entity.squishFactor - entity.prevSquishFactor) * par2) / (f1 * 0.5F + 1.0F);
+        float f3 = 1.0F / (f2 + 1.0F);
+        GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		this.preRenderCallback((EntityJellySlimePet)entity, par2);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    {
+        this.preRenderCallback((EntityJellySlimePet)entity, par2);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		switch (((EntityJellySlimePet)entity).getJellySlimeType())
-		{
-		case 0:
-		default:
-			return this.grapeSlimeTextures;
-		case 1:
-			return this.raspberrySlimeTextures;
-		case 2:
-			return this.strawberrySlimeTextures;
-		case 3:
-			return this.berrySlimeTextures;
-		case 4:
-			return this.limeSlimeTextures;
-		case 5:
-			return this.orangeSlimeTextures;
-		case 6:
-			return this.greenSlimeTextures;
-		case 7:
-			return this.lemonSlimeTextures;
-		}
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        switch (((EntityJellySlimePet)entity).getJellySlimeType())
+        {
+        case 0:
+        default:
+            return this.grapeSlimeTextures;
+        case 1:
+            return this.raspberrySlimeTextures;
+        case 2:
+            return this.strawberrySlimeTextures;
+        case 3:
+            return this.berrySlimeTextures;
+        case 4:
+            return this.limeSlimeTextures;
+        case 5:
+            return this.orangeSlimeTextures;
+        case 6:
+            return this.greenSlimeTextures;
+        case 7:
+            return this.lemonSlimeTextures;
+        }
+    }
 }

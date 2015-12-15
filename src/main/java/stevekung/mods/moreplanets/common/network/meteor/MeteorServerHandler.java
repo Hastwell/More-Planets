@@ -27,76 +27,76 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMe
 
 public class MeteorServerHandler implements IMessageHandler<MeteorServerMessage, IMessage>
 {
-	@Override
-	public IMessage onMessage(final MeteorServerMessage message, MessageContext ctx)
-	{
-		final EntityPlayerMP sendingPlayer = ctx.getServerHandler().playerEntity;
+    @Override
+    public IMessage onMessage(final MeteorServerMessage message, MessageContext ctx)
+    {
+        final EntityPlayerMP sendingPlayer = ctx.getServerHandler().playerEntity;
 
-		if (ctx.side != Side.SERVER)
-		{
-			MPLog.error("MeteorMessageToServer received on wrong side:" + ctx.side);
-			return null;
-		}
-		if (!message.isMessageValid())
-		{
-			MPLog.error("MeteorMessageToServer was invalid" + message.toString());
-			return null;
-		}
-		if (sendingPlayer == null)
-		{
-			MPLog.error("EntityPlayerMP was null when MeteorMessageToServer was received");
-			return null;
-		}
+        if (ctx.side != Side.SERVER)
+        {
+            MPLog.error("MeteorMessageToServer received on wrong side:" + ctx.side);
+            return null;
+        }
+        if (!message.isMessageValid())
+        {
+            MPLog.error("MeteorMessageToServer was invalid" + message.toString());
+            return null;
+        }
+        if (sendingPlayer == null)
+        {
+            MPLog.error("EntityPlayerMP was null when MeteorMessageToServer was received");
+            return null;
+        }
 
-		WorldServer playerWorldServer = sendingPlayer.getServerForPlayer();
-		playerWorldServer.addScheduledTask(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				MeteorServerHandler.this.processMessage(message, sendingPlayer);
-			}
-		});
-		return null;
-	}
+        WorldServer playerWorldServer = sendingPlayer.getServerForPlayer();
+        playerWorldServer.addScheduledTask(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                MeteorServerHandler.this.processMessage(message, sendingPlayer);
+            }
+        });
+        return null;
+    }
 
-	void processMessage(MeteorServerMessage message, EntityPlayerMP sendingPlayer)
-	{
-		MeteorClientMessage msg = new MeteorClientMessage(message.getTargetCoordinates());
-		MorePlanetsRegistry.simpleNetworkWrapper.sendToDimension(msg, sendingPlayer.dimension);
-		Random rand = new Random();
-		int numberOfProjectiles = 2 + rand.nextInt(20 - 2 + 1);
+    void processMessage(MeteorServerMessage message, EntityPlayerMP sendingPlayer)
+    {
+        MeteorClientMessage msg = new MeteorClientMessage(message.getTargetCoordinates());
+        MorePlanetsRegistry.simpleNetworkWrapper.sendToDimension(msg, sendingPlayer.dimension);
+        Random rand = new Random();
+        int numberOfProjectiles = 2 + rand.nextInt(20 - 2 + 1);
 
-		for (int i = 0; i < numberOfProjectiles; ++i)
-		{
-			World world = sendingPlayer.worldObj;
-			double xOffset = (rand.nextDouble() * 2 - 1) * 4.0D;
-			double zOffset = (rand.nextDouble() * 2 - 1) * 4.0D;
-			double yOffset = 80.0D + (rand.nextDouble() * 2 - 1) * 20.0D;
-			Vec3 releasePoint = message.getTargetCoordinates().addVector(xOffset, yOffset, zOffset);
-			Entity entity;
+        for (int i = 0; i < numberOfProjectiles; ++i)
+        {
+            World world = sendingPlayer.worldObj;
+            double xOffset = (rand.nextDouble() * 2 - 1) * 4.0D;
+            double zOffset = (rand.nextDouble() * 2 - 1) * 4.0D;
+            double yOffset = 80.0D + (rand.nextDouble() * 2 - 1) * 20.0D;
+            Vec3 releasePoint = message.getTargetCoordinates().addVector(xOffset, yOffset, zOffset);
+            Entity entity;
 
-			switch (message.getProjectile())
-			{
-			case METEOR:
-				entity = new EntityMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
-				break;
-			case KOENTUS_METEOR:
-				entity = new EntityKoentusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
-				break;
-			case POLONGNIUS_METEOR:
-				entity = new EntityPolongniusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
-				break;
-			case ICE_CRYSTAL_METEOR:
-				entity = new EntityIceCrystalMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
-				break;
-			default:
-				MPLog.error("Invalid projectile type in " + String.valueOf(message.getProjectile()));
-				return;
-			}
-			world.spawnEntityInWorld(entity);
-			world.playSoundEffect(releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, "moreplanets:player.meteor", 5000.0F, 1.0F + rand.nextFloat() * 0.2F);
-		}
-		return;
-	}
+            switch (message.getProjectile())
+            {
+            case METEOR:
+                entity = new EntityMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
+                break;
+            case KOENTUS_METEOR:
+                entity = new EntityKoentusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
+                break;
+            case POLONGNIUS_METEOR:
+                entity = new EntityPolongniusMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
+                break;
+            case ICE_CRYSTAL_METEOR:
+                entity = new EntityIceCrystalMeteor(world, releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, 0.0D, -0.5D, 0.0D, 5 + rand.nextInt(5));
+                break;
+            default:
+                MPLog.error("Invalid projectile type in " + String.valueOf(message.getProjectile()));
+                return;
+            }
+            world.spawnEntityInWorld(entity);
+            world.playSoundEffect(releasePoint.xCoord, releasePoint.yCoord, releasePoint.zCoord, "moreplanets:player.meteor", 5000.0F, 1.0F + rand.nextFloat() * 0.2F);
+        }
+        return;
+    }
 }

@@ -18,16 +18,16 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelBearry;
 @SideOnly(Side.CLIENT)
 public class RenderBearry extends RenderLiving
 {
-	private ResourceLocation bearryTextures = new ResourceLocation("moreplanets:textures/entity/bearry.png");
+    private ResourceLocation bearryTextures = new ResourceLocation("moreplanets:textures/entity/bearry.png");
 
-	public RenderBearry(RenderManager render)
-	{
-		super(render, new ModelBearry(), 0.5F);
-	}
+    public RenderBearry(RenderManager render)
+    {
+        super(render, new ModelBearry(), 0.5F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.bearryTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.bearryTextures;
+    }
 }

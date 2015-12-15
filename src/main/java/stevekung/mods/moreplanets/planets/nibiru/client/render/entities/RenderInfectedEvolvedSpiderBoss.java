@@ -24,36 +24,36 @@ import stevekung.mods.moreplanets.planets.nibiru.client.render.entities.layers.L
 @SideOnly(Side.CLIENT)
 public class RenderInfectedEvolvedSpiderBoss extends RenderLiving
 {
-	private ResourceLocation spiderTextures = new ResourceLocation("moreplanets:textures/entity/infected_spider_boss.png");
+    private ResourceLocation spiderTextures = new ResourceLocation("moreplanets:textures/entity/infected_spider_boss.png");
 
-	public RenderInfectedEvolvedSpiderBoss(RenderManager render)
-	{
-		super(render, new ModelSpider(), 1.0F);
-		this.addLayer(new LayerInfectedEvolvedSpiderBossEyes(this));
-	}
+    public RenderInfectedEvolvedSpiderBoss(RenderManager render)
+    {
+        super(render, new ModelSpider(), 1.0F);
+        this.addLayer(new LayerInfectedEvolvedSpiderBossEyes(this));
+    }
 
-	@Override
-	public void doRender(EntityLiving entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		BossStatus.setBossStatus((IBossDisplayData) entity, false);
-		super.doRender(entity, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLiving entity, double par2, double par4, double par6, float par8, float par9)
+    {
+        BossStatus.setBossStatus((IBossDisplayData) entity, false);
+        super.doRender(entity, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		GlStateManager.scale(2.0F, 2.0F, 2.0F);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    {
+        GlStateManager.scale(2.0F, 2.0F, 2.0F);
+    }
 
-	@Override
-	protected float getDeathMaxRotation(EntityLivingBase entity)
-	{
-		return 180.0F;
-	}
+    @Override
+    protected float getDeathMaxRotation(EntityLivingBase entity)
+    {
+        return 180.0F;
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.spiderTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.spiderTextures;
+    }
 }

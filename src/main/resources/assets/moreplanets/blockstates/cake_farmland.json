@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "variant=cake_farmland_dry": { "model": "moreplanets:cake_farmland_dry" },
+        "variant=white_cake_farmland_dry": { "model": "moreplanets:white_cake_farmland_dry" },
+        "variant=chocolate_cake_farmland_dry": { "model": "moreplanets:chocolate_cake_farmland_dry" },
+		"variant=cake_farmland_wet": { "model": "moreplanets:cake_farmland_wet" },
+        "variant=white_cake_farmland_wet": { "model": "moreplanets:white_cake_farmland_wet" },
+        "variant=chocolate_cake_farmland_wet": { "model": "moreplanets:chocolate_cake_farmland_wet" }
+    }
+}

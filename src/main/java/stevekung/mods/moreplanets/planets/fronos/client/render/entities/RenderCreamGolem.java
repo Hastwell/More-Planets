@@ -19,36 +19,36 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamGolem;
 @SideOnly(Side.CLIENT)
 public class RenderCreamGolem extends RenderLiving
 {
-	private ResourceLocation vanillaTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/vanilla.png");
-	private ResourceLocation chocolateTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/chocolate.png");
-	private ResourceLocation strawberryTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/strawberry.png");
-	private ResourceLocation orangeTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/orange.png");
-	private ResourceLocation teaTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/tea.png");
-	private ResourceLocation lemonTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/lemon.png");
+    private ResourceLocation vanillaTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/vanilla.png");
+    private ResourceLocation chocolateTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/chocolate.png");
+    private ResourceLocation strawberryTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/strawberry.png");
+    private ResourceLocation orangeTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/orange.png");
+    private ResourceLocation teaTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/tea.png");
+    private ResourceLocation lemonTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/lemon.png");
 
-	public RenderCreamGolem(RenderManager render)
-	{
-		super(render, new ModelSnowMan(), 0.5F);
-	}
+    public RenderCreamGolem(RenderManager render)
+    {
+        super(render, new ModelSnowMan(), 0.5F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		switch (((EntityCreamGolem)entity).getCreamGolemType())
-		{
-		case 0:
-		default:
-			return this.vanillaTextures;
-		case 1:
-			return this.chocolateTextures;
-		case 2:
-			return this.strawberryTextures;
-		case 3:
-			return this.orangeTextures;
-		case 4:
-			return this.teaTextures;
-		case 5:
-			return this.lemonTextures;
-		}
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        switch (((EntityCreamGolem)entity).getCreamGolemType())
+        {
+        case 0:
+        default:
+            return this.vanillaTextures;
+        case 1:
+            return this.chocolateTextures;
+        case 2:
+            return this.strawberryTextures;
+        case 3:
+            return this.orangeTextures;
+        case 4:
+            return this.teaTextures;
+        case 5:
+            return this.lemonTextures;
+        }
+    }
 }

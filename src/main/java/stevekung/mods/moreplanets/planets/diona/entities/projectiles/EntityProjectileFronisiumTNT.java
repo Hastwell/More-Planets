@@ -22,101 +22,101 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinio
 
 public class EntityProjectileFronisiumTNT extends EntityFireball
 {
-	public EntityProjectileFronisiumTNT(World world)
-	{
-		super(world);
-		this.setSize(1.0F, 1.0F);
-	}
+    public EntityProjectileFronisiumTNT(World world)
+    {
+        super(world);
+        this.setSize(1.0F, 1.0F);
+    }
 
-	public EntityProjectileFronisiumTNT(World world, EntityLivingBase living, double x, double y, double z)
-	{
-		super(world, living, x, y, z);
-		this.setSize(1.0F, 1.0F);
-	}
+    public EntityProjectileFronisiumTNT(World world, EntityLivingBase living, double x, double y, double z)
+    {
+        super(world, living, x, y, z);
+        this.setSize(1.0F, 1.0F);
+    }
 
-	@Override
-	public boolean isBurning()
-	{
-		return false;
-	}
+    @Override
+    public boolean isBurning()
+    {
+        return false;
+    }
 
-	@Override
-	protected void onImpact(MovingObjectPosition moving)
-	{
-		if (!this.worldObj.isRemote)
-		{
-			if (moving.entityHit != null && !(moving.entityHit instanceof EntityCreeper))
-			{
-				moving.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 6.0F);
-			}
-			this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, 1.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
-			this.setDead();
-		}
-		if (this.rand.nextInt(8) == 0)
-		{
-			if (!this.worldObj.isRemote)
-			{
-				byte b0 = 1;
+    @Override
+    protected void onImpact(MovingObjectPosition moving)
+    {
+        if (!this.worldObj.isRemote)
+        {
+            if (moving.entityHit != null && !(moving.entityHit instanceof EntityCreeper))
+            {
+                moving.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 6.0F);
+            }
+            this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, 1.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
+            this.setDead();
+        }
+        if (this.rand.nextInt(8) == 0)
+        {
+            if (!this.worldObj.isRemote)
+            {
+                byte b0 = 1;
 
-				if (this.rand.nextInt(16) == 0)
-				{
-					b0 = 4;
-				}
+                if (this.rand.nextInt(16) == 0)
+                {
+                    b0 = 4;
+                }
 
-				for (int i = 0; i < b0; ++i)
-				{
-					EntityDionaCreeperMinion creeper = new EntityDionaCreeperMinion(this.worldObj);
-					creeper.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-					creeper.setAbsorptionAmount(16.0F);
+                for (int i = 0; i < b0; ++i)
+                {
+                    EntityDionaCreeperMinion creeper = new EntityDionaCreeperMinion(this.worldObj);
+                    creeper.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
+                    creeper.setAbsorptionAmount(16.0F);
 
-					if (this.rand.nextInt(4) == 0)
-					{
-						creeper.getDataWatcher().updateObject(17, Byte.valueOf((byte) 1));
-					}
-					this.worldObj.spawnEntityInWorld(creeper);
-				}
-			}
-		}
-	}
+                    if (this.rand.nextInt(4) == 0)
+                    {
+                        creeper.getDataWatcher().updateObject(17, Byte.valueOf((byte) 1));
+                    }
+                    this.worldObj.spawnEntityInWorld(creeper);
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean canBeCollidedWith()
-	{
-		return true;
-	}
+    @Override
+    public boolean canBeCollidedWith()
+    {
+        return true;
+    }
 
-	@Override
-	public float getBrightness(float light)
-	{
-		BlockPos blockpos = new BlockPos(this.posX, 0.0D, this.posZ);
+    @Override
+    public float getBrightness(float light)
+    {
+        BlockPos blockpos = new BlockPos(this.posX, 0.0D, this.posZ);
 
-		if (this.worldObj.isBlockLoaded(blockpos))
-		{
-			double d0 = (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * 0.66D;
-			int i = MathHelper.floor_double(this.posY + d0);
-			return this.worldObj.getLightBrightness(blockpos.up(i));
-		}
-		else
-		{
-			return 0.0F;
-		}
-	}
+        if (this.worldObj.isBlockLoaded(blockpos))
+        {
+            double d0 = (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * 0.66D;
+            int i = MathHelper.floor_double(this.posY + d0);
+            return this.worldObj.getLightBrightness(blockpos.up(i));
+        }
+        else
+        {
+            return 0.0F;
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender(float light)
-	{
-		BlockPos blockpos = new BlockPos(this.posX, 0.0D, this.posZ);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getBrightnessForRender(float light)
+    {
+        BlockPos blockpos = new BlockPos(this.posX, 0.0D, this.posZ);
 
-		if (this.worldObj.isBlockLoaded(blockpos))
-		{
-			double d0 = (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * 0.66D;
-			int i = MathHelper.floor_double(this.posY + d0);
-			return this.worldObj.getCombinedLight(blockpos.up(i), 0);
-		}
-		else
-		{
-			return 0;
-		}
-	}
+        if (this.worldObj.isBlockLoaded(blockpos))
+        {
+            double d0 = (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * 0.66D;
+            int i = MathHelper.floor_double(this.posY + d0);
+            return this.worldObj.getCombinedLight(blockpos.up(i), 0);
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

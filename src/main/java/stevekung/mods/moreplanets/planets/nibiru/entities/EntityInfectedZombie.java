@@ -25,73 +25,73 @@ import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class EntityInfectedZombie extends EntityZombie implements IEntityBreathable, IEntityLivingPlanet
 {
-	public EntityInfectedZombie(World world)
-	{
-		super(world);
-	}
+    public EntityInfectedZombie(World world)
+    {
+        super(world);
+    }
 
-	@Override
-	public boolean canBreath()
-	{
-		return true;
-	}
+    @Override
+    public boolean canBreath()
+    {
+        return true;
+    }
 
-	@Override
-	public void setDead()
-	{
-		if (!this.worldObj.isRemote && !this.isChild())
-		{
-			if (this.rand.nextInt(4) == 0)
-			{
-				EntityGiantWorm worm = new EntityGiantWorm(this.worldObj);
-				worm.setLocationAndAngles(this.posX, this.posY + this.rand.nextInt(2), this.posZ, 360.0F, 0.0F);
-				this.worldObj.spawnEntityInWorld(worm);
-			}
-			else
-			{
-				EntityInfectedWorm worm = new EntityInfectedWorm(this.worldObj);
-				worm.setLocationAndAngles(this.posX, this.posY + this.rand.nextInt(2), this.posZ, 360.0F, 0.0F);
-				this.worldObj.spawnEntityInWorld(worm);
-			}
-		}
-		super.setDead();
-	}
+    @Override
+    public void setDead()
+    {
+        if (!this.worldObj.isRemote && !this.isChild())
+        {
+            if (this.rand.nextInt(4) == 0)
+            {
+                EntityGiantWorm worm = new EntityGiantWorm(this.worldObj);
+                worm.setLocationAndAngles(this.posX, this.posY + this.rand.nextInt(2), this.posZ, 360.0F, 0.0F);
+                this.worldObj.spawnEntityInWorld(worm);
+            }
+            else
+            {
+                EntityInfectedWorm worm = new EntityInfectedWorm(this.worldObj);
+                worm.setLocationAndAngles(this.posX, this.posY + this.rand.nextInt(2), this.posZ, 360.0F, 0.0F);
+                this.worldObj.spawnEntityInWorld(worm);
+            }
+        }
+        super.setDead();
+    }
 
-	@Override
-	public boolean attackEntityAsMob(Entity entity)
-	{
-		if (super.attackEntityAsMob(entity))
-		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 20, 0));
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+    @Override
+    public boolean attackEntityAsMob(Entity entity)
+    {
+        if (super.attackEntityAsMob(entity))
+        {
+            ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.infected_gas.id, 20, 0));
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(ConfigManagerCore.hardMode ? 5.0D : 3.0D);
-	}
+    @Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(ConfigManagerCore.hardMode ? 5.0D : 3.0D);
+    }
 
-	@Override
-	public ItemStack getPickedResult(MovingObjectPosition target)
-	{
-		return new ItemStack(MPItems.spawn_egg_mp, 1, 1010);
-	}
+    @Override
+    public ItemStack getPickedResult(MovingObjectPosition target)
+    {
+        return new ItemStack(MPItems.spawn_egg_mp, 1, 1010);
+    }
 
-	public IAttribute getReinforcementsAttribute()
-	{
-		return EntityZombie.reinforcementChance;
-	}
+    public IAttribute getReinforcementsAttribute()
+    {
+        return EntityZombie.reinforcementChance;
+    }
 
-	@Override
-	public EnumDimensionType canLivingInDimension()
-	{
-		return EnumDimensionType.NIBIRU;
-	}
+    @Override
+    public EnumDimensionType canLivingInDimension()
+    {
+        return EnumDimensionType.NIBIRU;
+    }
 }

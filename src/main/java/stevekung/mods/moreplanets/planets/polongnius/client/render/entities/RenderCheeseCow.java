@@ -19,21 +19,21 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
 @SideOnly(Side.CLIENT)
 public class RenderCheeseCow extends RenderLiving
 {
-	private ResourceLocation cowTextures = new ResourceLocation("moreplanets:textures/entity/cheese_cow.png");
+    private ResourceLocation cowTextures = new ResourceLocation("moreplanets:textures/entity/cheese_cow.png");
 
-	public RenderCheeseCow(RenderManager render)
-	{
-		super(render, new ModelCow(), 0.6F);
-	}
+    public RenderCheeseCow(RenderManager render)
+    {
+        super(render, new ModelCow(), 0.6F);
+    }
 
-	protected ResourceLocation getEntityTexture(EntityCheeseCow entity)
-	{
-		return this.cowTextures;
-	}
+    protected ResourceLocation getEntityTexture(EntityCheeseCow entity)
+    {
+        return this.cowTextures;
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.getEntityTexture((EntityCheeseCow)entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.getEntityTexture((EntityCheeseCow)entity);
+    }
 }

@@ -9,18 +9,20 @@ package stevekung.mods.moreplanets.moons.koentus.blocks;
 
 import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.blocks.BlockFarmlandMP;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockCrystalFarmland extends BlockFarmlandMP
 {
-	public BlockCrystalFarmland(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockCrystalFarmland(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(0)));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public Block getDirtBlock()
-	{
-		return KoentusBlocks.crystal_dirt;
-	}
+    @Override
+    public Block getDirtBlock()
+    {
+        return KoentusBlocks.crystal_dirt;
+    }
 }

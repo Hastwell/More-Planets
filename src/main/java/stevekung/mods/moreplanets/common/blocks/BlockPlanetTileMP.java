@@ -23,42 +23,42 @@ import net.minecraft.world.World;
 
 public abstract class BlockPlanetTileMP extends BlockBaseMP implements IDetectableResource, ITerraformableBlock
 {
-	public BlockPlanetTileMP(Material material)
-	{
-		super(material);
-		this.setResistance(3.0F);
-	}
+    public BlockPlanetTileMP(Material material)
+    {
+        super(material);
+        this.setResistance(3.0F);
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
-	{
-		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+    }
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random rand)
-	{
-		if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(state, rand, fortune))
-		{
-			int j = rand.nextInt(fortune + 2) - 1;
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random rand)
+    {
+        if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(state, rand, fortune))
+        {
+            int j = rand.nextInt(fortune + 2) - 1;
 
-			if (j < 0)
-			{
-				j = 0;
-			}
-			return this.quantityDropped(rand) * (j + 1);
-		}
-		return this.quantityDropped(rand);
-	}
+            if (j < 0)
+            {
+                j = 0;
+            }
+            return this.quantityDropped(rand) * (j + 1);
+        }
+        return this.quantityDropped(rand);
+    }
 
-	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
-	{
-		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
+    @Override
+    public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
+    {
+        super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 
-		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
-		{
-			this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
-		}
-	}
+        if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
+        {
+            this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
+        }
+    }
 }

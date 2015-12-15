@@ -15,22 +15,21 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinio
 
 public class BlockCreeperMinionEgg extends BlockEggMP
 {
-	public BlockCreeperMinionEgg(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockCreeperMinionEgg(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
-	{
-		if (!world.isRemote)
-		{
-			EntityDionaCreeperMinion minionCreeper = new EntityDionaCreeperMinion(world);
-			minionCreeper.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
-			world.spawnEntityInWorld(minionCreeper);
-		}
-		world.setBlockToAir(pos);
-		this.onBlockDestroyedByExplosion(world, pos, explosion);
-	}
+    @Override
+    public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
+    {
+        if (!world.isRemote)
+        {
+            EntityDionaCreeperMinion minionCreeper = new EntityDionaCreeperMinion(world);
+            minionCreeper.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+            world.spawnEntityInWorld(minionCreeper);
+        }
+        world.setBlockToAir(pos);
+    }
 }

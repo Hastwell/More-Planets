@@ -32,119 +32,120 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockJellyOre extends BlockBaseMP implements IDetectableResource
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockJellyOre(String name)
-	{
-		super(Material.rock);
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_ore));
-		this.setHardness(3.0F);
-	}
+    public BlockJellyOre(String name)
+    {
+        super(Material.rock);
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_ore));
+        this.setHardness(3.0F);
+        this.setResistance(5.0F);
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
-	{
-		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 8; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 8; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return FronosItems.jelly;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return FronosItems.jelly;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random rand)
-	{
-		if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(state, rand, fortune))
-		{
-			int j = rand.nextInt(fortune + 2) - 1;
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random rand)
+    {
+        if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(state, rand, fortune))
+        {
+            int j = rand.nextInt(fortune + 2) - 1;
 
-			if (j < 0)
-			{
-				j = 0;
-			}
-			return this.quantityDropped(rand) * (j + 1);
-		}
-		else
-		{
-			return this.quantityDropped(rand);
-		}
-	}
+            if (j < 0)
+            {
+                j = 0;
+            }
+            return this.quantityDropped(rand) * (j + 1);
+        }
+        else
+        {
+            return this.quantityDropped(rand);
+        }
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		return true;
-	}
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        return true;
+    }
 
-	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
-	{
-		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
+    @Override
+    public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
+    {
+        super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
 
-		if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
-		{
-			this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
-		}
-	}
+        if (this.getItemDropped(state, world.rand, fortune) != Item.getItemFromBlock(this))
+        {
+            this.dropXpOnBlockBreak(world, pos, MathHelper.getRandomIntegerInRange(world.rand, 3, 5));
+        }
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		grape_jelly_ore,
-		raspberry_jelly_ore,
-		strawberry_jelly_ore,
-		berry_jelly_ore,
-		lime_jelly_ore,
-		orange_jelly_ore,
-		green_jelly_ore,
-		lemon_jelly_ore;
+    public static enum BlockType implements IStringSerializable
+    {
+        grape_jelly_ore,
+        raspberry_jelly_ore,
+        strawberry_jelly_ore,
+        berry_jelly_ore,
+        lime_jelly_ore,
+        orange_jelly_ore,
+        green_jelly_ore,
+        lemon_jelly_ore;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

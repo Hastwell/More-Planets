@@ -23,36 +23,36 @@ import com.google.common.eventbus.EventBus;
 
 public class MorePlanetsModContainer extends DummyModContainer
 {
-	public MorePlanetsModContainer()
-	{
-		super(new ModMetadata());
-		ModMetadata meta = this.getMetadata();
-		meta.modId = "MorePlanetsASM";
-		meta.name = "More Planets Core";
-		meta.url = "http://minecraftforum.net/forums/thread/2358057";
-		meta.description = "";
-		meta.authorList = Arrays.asList("SteveKunG");
-		meta.credits = "Credit ASM to micdoodle8";
-	}
+    public MorePlanetsModContainer()
+    {
+        super(new ModMetadata());
+        ModMetadata meta = this.getMetadata();
+        meta.modId = "MorePlanetsASM";
+        meta.name = "More Planets Core";
+        meta.url = "http://minecraftforum.net/forums/thread/2358057";
+        meta.description = "";
+        meta.authorList = Arrays.asList("SteveKunG");
+        meta.credits = "Credit ASM to micdoodle8";
+    }
 
-	@Override
-	public boolean registerBus(EventBus bus, LoadController controller)
-	{
-		bus.register(this);
-		return true;
-	}
+    @Override
+    public boolean registerBus(EventBus bus, LoadController controller)
+    {
+        bus.register(this);
+        return true;
+    }
 
-	@Override
-	public List<ArtifactVersion> getDependencies()
-	{
-		LinkedList<ArtifactVersion> deps = new LinkedList<ArtifactVersion>();
-		deps.add(VersionParser.parseVersionReference("required-after:Forge@[10.13.2.1291,)"));
-		return deps;
-	}
+    @Override
+    public List<ArtifactVersion> getDependencies()
+    {
+        LinkedList<ArtifactVersion> deps = new LinkedList<ArtifactVersion>();
+        deps.add(VersionParser.parseVersionReference("required-after:Forge@[11.14.4.1577,)"));
+        return deps;
+    }
 
-	@Override
-	public VersionRange acceptableMinecraftVersionRange()
-	{
-		return VersionParser.parseRange("[1.8]");
-	}
+    @Override
+    public VersionRange acceptableMinecraftVersionRange()
+    {
+        return VersionParser.parseRange("[1.8]");
+    }
 }

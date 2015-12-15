@@ -28,134 +28,134 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockCup extends BlockBaseMP
 {
-	public BlockCup(String name)
-	{
-		super(Material.plants);
-		this.setHardness(0.6F);
-		this.setTickRandomly(true);
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH));
-		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 0.5F, 0.7F);
-	}
+    public BlockCup(String name)
+    {
+        super(Material.plants);
+        this.setHardness(0.6F);
+        this.setTickRandomly(true);
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH));
+        this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 0.5F, 0.7F);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block par5)
-	{
-		this.checkForDrop(world, pos, state);
-	}
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block par5)
+    {
+        this.checkForDrop(world, pos, state);
+    }
 
-	private boolean checkForDrop(World world, BlockPos pos, IBlockState state)
-	{
-		if (!this.canBlockStay(world, pos))
-		{
-			this.dropBlockAsItem(world, pos, state, 0);
-			world.setBlockToAir(pos);
-			return false;
-		}
-		else
-		{
-			return true;
-		}
-	}
+    private boolean checkForDrop(World world, BlockPos pos, IBlockState state)
+    {
+        if (!this.canBlockStay(world, pos))
+        {
+            this.dropBlockAsItem(world, pos, state, 0);
+            world.setBlockToAir(pos);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
-	private boolean canBlockStay(World world, BlockPos pos)
-	{
-		return world.getBlockState(pos.down()).getBlock().getMaterial() == Material.glass || !world.isAirBlock(pos.down());
-	}
+    private boolean canBlockStay(World world, BlockPos pos)
+    {
+        return world.getBlockState(pos.down()).getBlock().getMaterial() == Material.glass || !world.isAirBlock(pos.down());
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+    @Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
 
-		if (block == null)
-		{
-			return false;
-		}
-		if (world.getBlockState(pos).getBlock().getMaterial() == Material.water || world.getBlockState(pos).getBlock().getMaterial() == Material.lava)
-		{
-			return false;
-		}
-		if (world.getBlockState(pos.down()).getBlock().getMaterial() == Material.glass)
-		{
-			return true;
-		}
-		if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
-		{
-			return false;
-		}
-		return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
-	}
+        if (block == null)
+        {
+            return false;
+        }
+        if (world.getBlockState(pos).getBlock().getMaterial() == Material.water || world.getBlockState(pos).getBlock().getMaterial() == Material.lava)
+        {
+            return false;
+        }
+        if (world.getBlockState(pos.down()).getBlock().getMaterial() == Material.glass)
+        {
+            return true;
+        }
+        if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
+        {
+            return false;
+        }
+        return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
+    }
 
-	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-	{
-		return this.getDefaultState().withProperty(BlockStateHelper.FACING, placer.getHorizontalFacing().getOpposite());
-	}
+    @Override
+    public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
+    {
+        return this.getDefaultState().withProperty(BlockStateHelper.FACING, placer.getHorizontalFacing().getOpposite());
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return FronosItems.cup;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return FronosItems.cup;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 0;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 0;
+    }
 
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos)
-	{
-		return false;
-	}
+    @Override
+    public boolean isReplaceable(World world, BlockPos pos)
+    {
+        return false;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
-	{
-		return new ItemStack(FronosItems.cup, 1, 0);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
+    {
+        return new ItemStack(FronosItems.cup, 1, 0);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        EnumFacing enumfacing = EnumFacing.getFront(meta);
 
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y)
-		{
-			enumfacing = EnumFacing.NORTH;
-		}
-		return this.getDefaultState().withProperty(BlockStateHelper.FACING, enumfacing);
-	}
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+        {
+            enumfacing = EnumFacing.NORTH;
+        }
+        return this.getDefaultState().withProperty(BlockStateHelper.FACING, enumfacing);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] {BlockStateHelper.FACING});
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {BlockStateHelper.FACING});
+    }
 }

@@ -17,15 +17,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockMorePlanets extends ItemBlock
 {
-	public ItemBlockMorePlanets(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockMorePlanets(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

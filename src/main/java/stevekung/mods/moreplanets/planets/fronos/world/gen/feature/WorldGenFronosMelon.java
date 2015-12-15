@@ -17,18 +17,18 @@ import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 
 public class WorldGenFronosMelon extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		for (int i = 0; i < 64; ++i)
-		{
-			BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        for (int i = 0; i < 64; ++i)
+        {
+            BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (Blocks.melon_block.canPlaceBlockAt(world, blockpos1) && world.getBlockState(blockpos1.down()).getBlock() instanceof IFronosGrass)
-			{
-				world.setBlockState(blockpos1, Blocks.melon_block.getDefaultState(), 2);
-			}
-		}
-		return true;
-	}
+            if (Blocks.melon_block.canPlaceBlockAt(world, blockpos1) && world.getBlockState(blockpos1.down()).getBlock() instanceof IFronosGrass)
+            {
+                world.setBlockState(blockpos1, Blocks.melon_block.getDefaultState(), 2);
+            }
+        }
+        return true;
+    }
 }

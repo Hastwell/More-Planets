@@ -27,77 +27,77 @@ import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury
 
 public class BlockMercuryIce extends BlockIceMP
 {
-	public BlockMercuryIce(String name)
-	{
-		super(Material.ice);
-		this.setUnlocalizedName(name);
-	}
+    public BlockMercuryIce(String name)
+    {
+        super(Material.ice);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        player.addExhaustion(0.025F);
 
-		if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
-		{
-			List<ItemStack> items = new ArrayList<ItemStack>();
-			ItemStack itemstack = this.createStackedBlock(state);
+        if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
+        {
+            List<ItemStack> items = new ArrayList<ItemStack>();
+            ItemStack itemstack = this.createStackedBlock(state);
 
-			if (itemstack != null)
-			{
-				items.add(itemstack);
-			}
+            if (itemstack != null)
+            {
+                items.add(itemstack);
+            }
 
-			ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
+            ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
 
-			for (ItemStack is : items)
-			{
-				spawnAsEntity(world, pos, is);
-			}
-		}
-		else
-		{
-			if (world.provider.doesWaterVaporize())
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
-			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
+            for (ItemStack is : items)
+            {
+                spawnAsEntity(world, pos, is);
+            }
+        }
+        else
+        {
+            if (world.provider.doesWaterVaporize())
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
+            else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
 
-			int i = EnchantmentHelper.getFortuneModifier(player);
-			this.harvesters.set(player);
-			this.dropBlockAsItem(world, pos, state, i);
-			this.harvesters.set(null);
-			Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
+            int i = EnchantmentHelper.getFortuneModifier(player);
+            this.harvesters.set(player);
+            this.dropBlockAsItem(world, pos, state, i);
+            this.harvesters.set(null);
+            Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
 
-			if (material.blocksMovement() || material.isLiquid())
-			{
-				world.setBlockState(pos, MercuryBlocks.dirty_water.getDefaultState());
-			}
-		}
-	}
+            if (material.blocksMovement() || material.isLiquid())
+            {
+                world.setBlockState(pos, MercuryBlocks.dirty_water.getDefaultState());
+            }
+        }
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11 - this.getLightOpacity())
-		{
-			if (world.provider.doesWaterVaporize())
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
-			this.dropBlockAsItem(world, pos, state, 0);
-			world.setBlockState(pos, MercuryBlocks.dirty_water.getDefaultState());
-		}
-		if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
-		{
-			world.setBlockToAir(pos);
-			return;
-		}
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11 - this.getLightOpacity())
+        {
+            if (world.provider.doesWaterVaporize())
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
+            this.dropBlockAsItem(world, pos, state, 0);
+            world.setBlockState(pos, MercuryBlocks.dirty_water.getDefaultState());
+        }
+        if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
+        {
+            world.setBlockToAir(pos);
+            return;
+        }
+    }
 }

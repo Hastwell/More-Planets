@@ -34,204 +34,204 @@ import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
 public class BlockDiona extends BlockPlanetTileMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockDiona(String name)
-	{
-		super(Material.rock);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.diona_surface_rock));
-		this.setUnlocalizedName(name);
-	}
+    public BlockDiona(String name)
+    {
+        super(Material.rock);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.diona_surface_rock));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 16; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 16; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		IBlockState state = world.getBlockState(pos);
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+    {
+        IBlockState state = world.getBlockState(pos);
 
-		if (entity instanceof EntityLivingBase)
-		{
-			EntityLivingBase living = (EntityLivingBase) entity;
+        if (entity instanceof EntityLivingBase)
+        {
+            EntityLivingBase living = (EntityLivingBase) entity;
 
-			if (living.motionX > 0 || living.motionX < 0 || living.motionZ > 0 || living.motionZ < 0)
-			{
-				if (state == state.withProperty(VARIANT, BlockType.diona_dungeon_brick))
-				{
-					world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, living.posX + (world.rand.nextFloat() - 0.5D) * living.width, living.getEntityBoundingBox().minY + 0.1D, living.posZ + (world.rand.nextFloat() - 0.5D) * living.width, -living.motionX, 0.6D, -living.motionZ, new int[] {Block.getStateId(state.withProperty(VARIANT, BlockType.diona_dungeon_brick))});
-				}
-			}
-		}
-	}
+            if (living.motionX > 0 || living.motionX < 0 || living.motionZ > 0 || living.motionZ < 0)
+            {
+                if (state == state.withProperty(VARIANT, BlockType.diona_dungeon_brick))
+                {
+                    world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, living.posX + (world.rand.nextFloat() - 0.5D) * living.width, living.getEntityBoundingBox().minY + 0.1D, living.posZ + (world.rand.nextFloat() - 0.5D) * living.width, -living.motionX, 0.6D, -living.motionZ, new int[] {Block.getStateId(state.withProperty(VARIANT, BlockType.diona_dungeon_brick))});
+                }
+            }
+        }
+    }
 
-	@Override
-	public float getBlockHardness(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
+    @Override
+    public float getBlockHardness(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos).getBlock();
 
-		if (!(block instanceof BlockDiona))
-		{
-			return 0;
-		}
+        if (!(block instanceof BlockDiona))
+        {
+            return 0;
+        }
 
-		switch (this.getMetaFromState(world.getBlockState(pos)))
-		{
-		case 0:
-		case 1:
-			return 1.25F;
-		case 2:
-			return 1.5F;
-		case 10:
-		case 11:
-		case 15:
-			return 4.0F;
-		case 12:
-		case 13:
-		case 14:
-			return 2.5F;
-		default:
-			return 2.0F;
-		}
-	}
+        switch (this.getMetaFromState(world.getBlockState(pos)))
+        {
+        case 0:
+        case 1:
+            return 1.25F;
+        case 2:
+            return 1.5F;
+        case 10:
+        case 11:
+        case 15:
+            return 4.0F;
+        case 12:
+        case 13:
+        case 14:
+            return 2.5F;
+        default:
+            return 2.0F;
+        }
+    }
 
-	@Override
-	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
-	{
-		int meta = this.getMetaFromState(world.getBlockState(pos));
+    @Override
+    public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
+    {
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta <= 1 || meta >= 12 && meta <= 14)
-		{
-			return 6.0F;
-		}
-		if (meta >= 2 && meta <= 9)
-		{
-			return 5.0F;
-		}
-		if (meta == 10 || meta == 11)
-		{
-			return 8.0F;
-		}
-		if (meta == 15)
-		{
-			return 40.0F;
-		}
-		return super.getExplosionResistance(world, pos, entity, explosion);
-	}
+        if (meta <= 1 || meta >= 12 && meta <= 14)
+        {
+            return 6.0F;
+        }
+        if (meta >= 2 && meta <= 9)
+        {
+            return 5.0F;
+        }
+        if (meta == 10 || meta == 11)
+        {
+            return 8.0F;
+        }
+        if (meta == 15)
+        {
+            return 40.0F;
+        }
+        return super.getExplosionResistance(world, pos, entity, explosion);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		int meta = this.getMetaFromState(state);
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        int meta = this.getMetaFromState(state);
 
-		if (meta == 8)
-		{
-			return GCItems.basicItem;
-		}
-		return Item.getItemFromBlock(this);
-	}
+        if (meta == 8)
+        {
+            return GCItems.basicItem;
+        }
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
-	{
-		IBlockState state = world.getBlockState(pos);
-		return state == state.withProperty(VARIANT, BlockType.quontonium_block) || state == state.withProperty(VARIANT, BlockType.fronisium_block);
-	}
+    @Override
+    public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
+    {
+        IBlockState state = world.getBlockState(pos);
+        return state == state.withProperty(VARIANT, BlockType.quontonium_block) || state == state.withProperty(VARIANT, BlockType.fronisium_block);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		int meta = this.getMetaFromState(state);
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
 
-		if (meta == 2)
-		{
-			return 3;
-		}
-		if (meta == 8)
-		{
-			return 2;
-		}
-		return meta;
-	}
+        if (meta == 2)
+        {
+            return 3;
+        }
+        if (meta == 8)
+        {
+            return 2;
+        }
+        return meta;
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		int meta = this.getMetaFromState(state);
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
 
-		if (meta >= 4 && meta <= 9)
-		{
-			return true;
-		}
-		return false;
-	}
+        if (meta >= 4 && meta <= 9)
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		int meta = this.getMetaFromState(world.getBlockState(pos));
+    @Override
+    public boolean isTerraformable(World world, BlockPos pos)
+    {
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
-		{
-			return true;
-		}
-		return false;
-	}
+        if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		diona_surface_rock,
-		diona_sub_surface_rock,
-		diona_rock,
-		diona_cobblestone,
-		quontonium_ore,
-		fronisium_ore,
-		diona_tin_ore,
-		diona_copper_ore,
-		diona_silicon_ore,
-		diona_aluminum_ore,
-		quontonium_block,
-		fronisium_block,
-		smooth_quontonium,
-		quontonium_brick,
-		chiseled_quontonium,
-		diona_dungeon_brick;
+    public static enum BlockType implements IStringSerializable
+    {
+        diona_surface_rock,
+        diona_sub_surface_rock,
+        diona_rock,
+        diona_cobblestone,
+        quontonium_ore,
+        fronisium_ore,
+        diona_tin_ore,
+        diona_copper_ore,
+        diona_silicon_ore,
+        diona_aluminum_ore,
+        quontonium_block,
+        fronisium_block,
+        smooth_quontonium,
+        quontonium_brick,
+        chiseled_quontonium,
+        diona_dungeon_brick;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

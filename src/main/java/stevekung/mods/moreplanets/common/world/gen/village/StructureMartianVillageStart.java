@@ -17,57 +17,57 @@ import net.minecraft.world.gen.structure.StructureStart;
 
 public class StructureMartianVillageStart extends StructureStart
 {
-	public StructureMartianVillageStart() {}
+    public StructureMartianVillageStart() {}
 
-	@SuppressWarnings("unchecked")
-	public StructureMartianVillageStart(World world, Random rand, int x, int z, int type)
-	{
-		super(x, z);
+    @SuppressWarnings("unchecked")
+    public StructureMartianVillageStart(World world, Random rand, int x, int z, int type)
+    {
+        super(x, z);
 
-		ArrayList<StructureMartianVillagePieceWeight> var6 = StructureMartianVillagePieces.getStructureVillageWeightedPieceList(rand, type);
-		ComponentMartianVillageStartPiece var7 = new ComponentMartianVillageStartPiece(world.getWorldChunkManager(), rand, (x << 4) + 2, (z << 4) + 2, var6, type);
-		this.components.add(var7);
-		var7.buildComponent(var7, this.components, rand);
-		ArrayList<Object> var8 = var7.field_74930_j;
-		ArrayList<Object> var9 = var7.field_74932_i;
-		int var10;
+        ArrayList<StructureMartianVillagePieceWeight> var6 = StructureMartianVillagePieces.getStructureVillageWeightedPieceList(rand, type);
+        ComponentMartianVillageStartPiece var7 = new ComponentMartianVillageStartPiece(world.getWorldChunkManager(), rand, (x << 4) + 2, (z << 4) + 2, var6, type);
+        this.components.add(var7);
+        var7.buildComponent(var7, this.components, rand);
+        ArrayList<Object> var8 = var7.field_74930_j;
+        ArrayList<Object> var9 = var7.field_74932_i;
+        int var10;
 
-		while (!var8.isEmpty() || !var9.isEmpty())
-		{
-			StructureComponent var11;
+        while (!var8.isEmpty() || !var9.isEmpty())
+        {
+            StructureComponent var11;
 
-			if (var8.isEmpty())
-			{
-				var10 = rand.nextInt(var9.size());
-				var11 = (StructureComponent) var9.remove(var10);
-				var11.buildComponent(var7, this.components, rand);
-			}
-			else
-			{
-				var10 = rand.nextInt(var8.size());
-				var11 = (StructureComponent) var8.remove(var10);
-				var11.buildComponent(var7, this.components, rand);
-			}
-		}
+            if (var8.isEmpty())
+            {
+                var10 = rand.nextInt(var9.size());
+                var11 = (StructureComponent) var9.remove(var10);
+                var11.buildComponent(var7, this.components, rand);
+            }
+            else
+            {
+                var10 = rand.nextInt(var8.size());
+                var11 = (StructureComponent) var8.remove(var10);
+                var11.buildComponent(var7, this.components, rand);
+            }
+        }
 
-		this.updateBoundingBox();
-		var10 = 0;
-		Iterator<StructureComponent> var13 = this.components.iterator();
+        this.updateBoundingBox();
+        var10 = 0;
+        Iterator<StructureComponent> var13 = this.components.iterator();
 
-		while (var13.hasNext())
-		{
-			StructureComponent var12 = var13.next();
+        while (var13.hasNext())
+        {
+            StructureComponent var12 = var13.next();
 
-			if (!(var12 instanceof ComponentMartianVillageRoadPiece))
-			{
-				++var10;
-			}
-		}
-	}
+            if (!(var12 instanceof ComponentMartianVillageRoadPiece))
+            {
+                ++var10;
+            }
+        }
+    }
 
-	@Override
-	public boolean isSizeableStructure()
-	{
-		return true;
-	}
+    @Override
+    public boolean isSizeableStructure()
+    {
+        return true;
+    }
 }

@@ -9,5 +9,5 @@ package stevekung.mods.moreplanets.common.entities;
 
 public interface IImmuneMapleIvy
 {
-	public boolean canLivingInIvy();
+    public boolean canLivingInIvy();
 }

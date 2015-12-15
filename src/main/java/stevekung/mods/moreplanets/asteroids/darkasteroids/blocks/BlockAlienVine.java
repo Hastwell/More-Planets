@@ -20,25 +20,25 @@ import stevekung.mods.moreplanets.common.blocks.BlockVineMP;
 
 public class BlockAlienVine extends BlockVineMP
 {
-	public BlockAlienVine(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockAlienVine(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (!world.isRemote && entity instanceof EntityLivingBase)
-		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.blindness.id, 80));
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (!world.isRemote && entity instanceof EntityLivingBase)
+        {
+            ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.blindness.id, 80));
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		super.harvestBlock(world, player, pos, state, tile);
-		player.addPotionEffect(new PotionEffect(Potion.blindness.id, 80));
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        super.harvestBlock(world, player, pos, state, tile);
+        player.addPotionEffect(new PotionEffect(Potion.blindness.id, 80));
+    }
 }

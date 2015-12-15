@@ -18,64 +18,64 @@ import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 
 public class WorldGenKoentusRockSpires extends WorldGenerator
 {
-	private IBlockState state;
+    private IBlockState state;
 
-	public WorldGenKoentusRockSpires(IBlockState state)
-	{
-		super(false);
-		this.state = state;
-	}
+    public WorldGenKoentusRockSpires(IBlockState state)
+    {
+        super(false);
+        this.state = state;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		while (true)
-		{
-			if (pos.getY() > 3)
-			{
-				label47:
-				{
-				if (!world.isAirBlock(pos.down()))
-				{
-					IBlockState state = world.getBlockState(pos.down());
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        while (true)
+        {
+            if (pos.getY() > 3)
+            {
+                label47:
+                {
+                if (!world.isAirBlock(pos.down()))
+                {
+                    IBlockState state = world.getBlockState(pos.down());
 
-					if (state == KoentusBlocks.koentus_block.getDefaultState())
-					{
-						break label47;
-					}
-				}
-				pos = pos.down();
-				continue;
-				}
-			}
+                    if (state == KoentusBlocks.koentus_block.getDefaultState())
+                    {
+                        break label47;
+                    }
+                }
+                pos = pos.down();
+                continue;
+                }
+            }
 
-			if (pos.getY() <= 3)
-			{
-				return false;
-			}
+            if (pos.getY() <= 3)
+            {
+                return false;
+            }
 
-			int i1 = 0;
+            int i1 = 0;
 
-			for (int i = 0; i1 >= 0 && i < 3; ++i)
-			{
-				int j = i1 + rand.nextInt(2);
-				int k = i1 + rand.nextInt(2);
-				int l = i1 + rand.nextInt(2);
-				float f = (j + k + l) * 0.333F + 0.5F;
-				Iterator iterator = BlockPos.getAllInBox(pos.add(-j, -k, -l), pos.add(j, k, l)).iterator();
+            for (int i = 0; i1 >= 0 && i < 3; ++i)
+            {
+                int j = i1 + rand.nextInt(2);
+                int k = i1 + rand.nextInt(2);
+                int l = i1 + rand.nextInt(2);
+                float f = (j + k + l) * 0.333F + 0.5F;
+                Iterator iterator = BlockPos.getAllInBox(pos.add(-j, -k, -l), pos.add(j, k, l)).iterator();
 
-				while (iterator.hasNext())
-				{
-					BlockPos blockpos1 = (BlockPos)iterator.next();
+                while (iterator.hasNext())
+                {
+                    BlockPos blockpos1 = (BlockPos)iterator.next();
 
-					if (blockpos1.distanceSq(pos) <= f * f)
-					{
-						world.setBlockState(blockpos1, this.state, 4);
-					}
-				}
-				pos = pos.add(-(i1 + 1) + rand.nextInt(2 + i1 * 2), 0 - rand.nextInt(2), -(i1 + 1) + rand.nextInt(2 + i1 * 2));
-			}
-			return true;
-		}
-	}
+                    if (blockpos1.distanceSq(pos) <= f * f)
+                    {
+                        world.setBlockState(blockpos1, this.state, 4);
+                    }
+                }
+                pos = pos.add(-(i1 + 1) + rand.nextInt(2 + i1 * 2), 0 - rand.nextInt(2), -(i1 + 1) + rand.nextInt(2 + i1 * 2));
+            }
+            return true;
+        }
+    }
 }

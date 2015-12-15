@@ -27,49 +27,55 @@ import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class BlockFluidFrozenWater extends BlockFluidBaseMP
 {
-	public BlockFluidFrozenWater(String name)
-	{
-		super(KapteynBBlocks.frozen_water_fluid);
-		this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
-		this.setLightOpacity(3);
-		this.setUnlocalizedName(name);
-	}
+    public BlockFluidFrozenWater(String name)
+    {
+        super(KapteynBBlocks.frozen_water_fluid);
+        this.setRenderLayer(EnumWorldBlockLayer.TRANSLUCENT);
+        this.setLightOpacity(3);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (entity instanceof EntityLivingBase)
-		{
-			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 50, 1));
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (entity instanceof EntityLivingBase)
+        {
+            ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 50, 1));
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		int meta = (Integer)state.getValue(LEVEL);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        int meta = (Integer)state.getValue(LEVEL);
 
-		if (rand.nextInt(64) == 0)
-		{
-			if (meta > 0 && meta < 8)
-			{
-				world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, "liquid.water", rand.nextFloat() * 0.25F + 0.75F, rand.nextFloat() * 1.0F + 0.5F, false);
-			}
-		}
-		if (rand.nextInt(10) == 0)
-		{
-			if (meta <= 0 || meta >= 8)
-			{
-				world.spawnParticle(EnumParticleTypes.SUSPENDED, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
-			}
-		}
-		if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, pos.down()) && !world.getBlockState(pos.down(2)).getBlock().getMaterial().blocksMovement())
-		{
-			double d5 = pos.getX() + rand.nextFloat();
-			double d6 = pos.getY() - 1.05D;
-			double d7 = pos.getZ() + rand.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.FROZEN_WATER_DRIP, d5, d6, d7);
-		}
-	}
+        if (rand.nextInt(64) == 0)
+        {
+            if (meta > 0 && meta < 8)
+            {
+                world.playSound(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, "liquid.water", rand.nextFloat() * 0.25F + 0.75F, rand.nextFloat() * 1.0F + 0.5F, false);
+            }
+        }
+        if (rand.nextInt(10) == 0)
+        {
+            if (meta <= 0 || meta >= 8)
+            {
+                world.spawnParticle(EnumParticleTypes.SUSPENDED, pos.getX() + rand.nextFloat(), pos.getY() + rand.nextFloat(), pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+            }
+        }
+        if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, pos.down()) && !world.getBlockState(pos.down(2)).getBlock().getMaterial().blocksMovement())
+        {
+            double d5 = pos.getX() + rand.nextFloat();
+            double d6 = pos.getY() - 1.05D;
+            double d7 = pos.getZ() + rand.nextFloat();
+            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.FROZEN_WATER_DRIP, d5, d6, d7);
+        }
+    }
+
+    @Override
+    protected boolean isInfinite()
+    {
+        return true;
+    }
 }

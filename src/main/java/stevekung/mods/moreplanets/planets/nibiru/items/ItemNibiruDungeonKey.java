@@ -13,16 +13,16 @@ import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
 public class ItemNibiruDungeonKey extends ItemMorePlanets implements IKeyItem
 {
-	public ItemNibiruDungeonKey(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemNibiruDungeonKey(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int getTier(ItemStack itemStack)
-	{
-		return 6;
-	}
+    @Override
+    public int getTier(ItemStack itemStack)
+    {
+        return 6;
+    }
 }

@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class ArmorPurpleCrystal extends ItemArmorMP
 {
-	public ArmorPurpleCrystal(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorPurpleCrystal(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == PolongniusArmorItems.purple_crystal_helmet || stack.getItem() == PolongniusArmorItems.purple_crystal_chestplate || stack.getItem() == PolongniusArmorItems.purple_crystal_boots)
-		{
-			return "moreplanets:textures/model/armor/purple_crystal_1.png";
-		}
-		if (stack.getItem() == PolongniusArmorItems.purple_crystal_leggings)
-		{
-			return "moreplanets:textures/model/armor/purple_crystal_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == PolongniusArmorItems.purple_crystal_helmet || stack.getItem() == PolongniusArmorItems.purple_crystal_chestplate || stack.getItem() == PolongniusArmorItems.purple_crystal_boots)
+        {
+            return "moreplanets:textures/model/armor/purple_crystal_1.png";
+        }
+        if (stack.getItem() == PolongniusArmorItems.purple_crystal_leggings)
+        {
+            return "moreplanets:textures/model/armor/purple_crystal_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return PolongniusItems.polongnius_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return PolongniusItems.polongnius_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 1;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 1;
+    }
 }

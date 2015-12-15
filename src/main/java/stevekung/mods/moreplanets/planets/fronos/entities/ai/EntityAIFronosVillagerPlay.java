@@ -18,110 +18,110 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosVillager;
 
 public class EntityAIFronosVillagerPlay extends EntityAIBase
 {
-	private EntityFronosVillager villagerObj;
-	private EntityLivingBase targetVillager;
-	private double speed;
-	private int playTime;
+    private EntityFronosVillager villagerObj;
+    private EntityLivingBase targetVillager;
+    private double speed;
+    private int playTime;
 
-	public EntityAIFronosVillagerPlay(EntityFronosVillager p_i1646_1_, double speedIn)
-	{
-		this.villagerObj = p_i1646_1_;
-		this.speed = speedIn;
-		this.setMutexBits(1);
-	}
+    public EntityAIFronosVillagerPlay(EntityFronosVillager p_i1646_1_, double speedIn)
+    {
+        this.villagerObj = p_i1646_1_;
+        this.speed = speedIn;
+        this.setMutexBits(1);
+    }
 
-	@Override
-	public boolean shouldExecute()
-	{
-		if (this.villagerObj.getGrowingAge() >= 0)
-		{
-			return false;
-		}
-		else if (this.villagerObj.getRNG().nextInt(400) != 0)
-		{
-			return false;
-		}
-		else
-		{
-			List list = this.villagerObj.worldObj.getEntitiesWithinAABB(EntityFronosVillager.class, this.villagerObj.getEntityBoundingBox().expand(6.0D, 3.0D, 6.0D));
-			double d0 = Double.MAX_VALUE;
-			Iterator iterator = list.iterator();
+    @Override
+    public boolean shouldExecute()
+    {
+        if (this.villagerObj.getGrowingAge() >= 0)
+        {
+            return false;
+        }
+        else if (this.villagerObj.getRNG().nextInt(400) != 0)
+        {
+            return false;
+        }
+        else
+        {
+            List list = this.villagerObj.worldObj.getEntitiesWithinAABB(EntityFronosVillager.class, this.villagerObj.getEntityBoundingBox().expand(6.0D, 3.0D, 6.0D));
+            double d0 = Double.MAX_VALUE;
+            Iterator iterator = list.iterator();
 
-			while (iterator.hasNext())
-			{
-				EntityFronosVillager EntityFronosVillager = (EntityFronosVillager)iterator.next();
+            while (iterator.hasNext())
+            {
+                EntityFronosVillager EntityFronosVillager = (EntityFronosVillager)iterator.next();
 
-				if (EntityFronosVillager != this.villagerObj && !EntityFronosVillager.isPlaying() && EntityFronosVillager.getGrowingAge() < 0)
-				{
-					double d1 = EntityFronosVillager.getDistanceSqToEntity(this.villagerObj);
+                if (EntityFronosVillager != this.villagerObj && !EntityFronosVillager.isPlaying() && EntityFronosVillager.getGrowingAge() < 0)
+                {
+                    double d1 = EntityFronosVillager.getDistanceSqToEntity(this.villagerObj);
 
-					if (d1 <= d0)
-					{
-						d0 = d1;
-						this.targetVillager = EntityFronosVillager;
-					}
-				}
-			}
+                    if (d1 <= d0)
+                    {
+                        d0 = d1;
+                        this.targetVillager = EntityFronosVillager;
+                    }
+                }
+            }
 
-			if (this.targetVillager == null)
-			{
-				Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.villagerObj, 16, 3);
+            if (this.targetVillager == null)
+            {
+                Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.villagerObj, 16, 3);
 
-				if (vec3 == null)
-				{
-					return false;
-				}
-			}
-			return true;
-		}
-	}
+                if (vec3 == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
-	@Override
-	public boolean continueExecuting()
-	{
-		return this.playTime > 0;
-	}
+    @Override
+    public boolean continueExecuting()
+    {
+        return this.playTime > 0;
+    }
 
-	@Override
-	public void startExecuting()
-	{
-		if (this.targetVillager != null)
-		{
-			this.villagerObj.setPlaying(true);
-		}
+    @Override
+    public void startExecuting()
+    {
+        if (this.targetVillager != null)
+        {
+            this.villagerObj.setPlaying(true);
+        }
 
-		this.playTime = 1000;
-	}
+        this.playTime = 1000;
+    }
 
-	@Override
-	public void resetTask()
-	{
-		this.villagerObj.setPlaying(false);
-		this.targetVillager = null;
-	}
+    @Override
+    public void resetTask()
+    {
+        this.villagerObj.setPlaying(false);
+        this.targetVillager = null;
+    }
 
-	@Override
-	public void updateTask()
-	{
-		--this.playTime;
+    @Override
+    public void updateTask()
+    {
+        --this.playTime;
 
-		if (this.targetVillager != null)
-		{
-			if (this.villagerObj.getDistanceSqToEntity(this.targetVillager) > 4.0D)
-			{
-				this.villagerObj.getNavigator().tryMoveToEntityLiving(this.targetVillager, this.speed);
-			}
-		}
-		else if (this.villagerObj.getNavigator().noPath())
-		{
-			Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.villagerObj, 16, 3);
+        if (this.targetVillager != null)
+        {
+            if (this.villagerObj.getDistanceSqToEntity(this.targetVillager) > 4.0D)
+            {
+                this.villagerObj.getNavigator().tryMoveToEntityLiving(this.targetVillager, this.speed);
+            }
+        }
+        else if (this.villagerObj.getNavigator().noPath())
+        {
+            Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.villagerObj, 16, 3);
 
-			if (vec3 == null)
-			{
-				return;
-			}
+            if (vec3 == null)
+            {
+                return;
+            }
 
-			this.villagerObj.getNavigator().tryMoveToXYZ(vec3.xCoord, vec3.yCoord, vec3.zCoord, this.speed);
-		}
-	}
+            this.villagerObj.getNavigator().tryMoveToXYZ(vec3.xCoord, vec3.yCoord, vec3.zCoord, this.speed);
+        }
+    }
 }

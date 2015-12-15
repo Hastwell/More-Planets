@@ -14,31 +14,31 @@ import net.minecraft.util.EnumWorldBlockLayer;
 
 public class BlockIceMP extends BlockBreakableMP
 {
-	public BlockIceMP(Material material)
-	{
-		super(material);
-		this.slipperiness = 0.98F;
-		this.setHardness(0.5F);
-		this.setResistance(0.1F);
-		this.setTickRandomly(true);
-		this.setStepSound(soundTypeGlass);
-	}
+    public BlockIceMP(Material material)
+    {
+        super(material);
+        this.slipperiness = 0.98F;
+        this.setHardness(0.5F);
+        this.setResistance(0.1F);
+        this.setTickRandomly(true);
+        this.setStepSound(soundTypeGlass);
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 
-	@Override
-	public int getMobilityFlag()
-	{
-		return 0;
-	}
+    @Override
+    public int getMobilityFlag()
+    {
+        return 0;
+    }
 }

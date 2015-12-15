@@ -20,63 +20,63 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class ItemBaseMP extends Item
 {
-	public ItemBaseMP()
-	{
-		super();
-		this.setHasSubtypes(true);
-	}
+    public ItemBaseMP()
+    {
+        super();
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		if (this.getItemVariantsName() == null)
-		{
-			return;
-		}
-		for (int i = 0; i < this.getItemVariantsName().length; i++)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        if (this.getItemVariantsName() == null)
+        {
+            return;
+        }
+        for (int i = 0; i < this.getItemVariantsName().length; i++)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		if (this.reverseName())
-		{
-			return "item." + this.getItemVariantsName()[itemStack.getItemDamage()] + "." + super.getUnlocalizedName(itemStack).replace("item.", "");
-		}
-		if (this.getItemVariantsName() == null)
-		{
-			return super.getUnlocalizedName(itemStack);
-		}
-		return super.getUnlocalizedName(itemStack) + "." + this.getItemVariantsName()[itemStack.getItemDamage()];
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        if (this.reverseName())
+        {
+            return "item." + this.getItemVariantsName()[itemStack.getItemDamage()] + "." + super.getUnlocalizedName(itemStack).replace("item.", "");
+        }
+        if (this.getItemVariantsName() == null)
+        {
+            return super.getUnlocalizedName(itemStack);
+        }
+        return super.getUnlocalizedName(itemStack) + "." + this.getItemVariantsName()[itemStack.getItemDamage()];
+    }
 
-	protected abstract String[] getItemVariantsName();
+    protected abstract String[] getItemVariantsName();
 
-	protected boolean reverseName()
-	{
-		return false;
-	}
+    protected boolean reverseName()
+    {
+        return false;
+    }
 }

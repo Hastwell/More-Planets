@@ -20,29 +20,29 @@ import stevekung.mods.moreplanets.planets.polongnius.client.model.ModelCheeseCub
 
 public class RenderCheeseCubeBoss extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/cheese_cube_boss.png");
+    private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/cheese_cube_boss.png");
 
-	public RenderCheeseCubeBoss(RenderManager render)
-	{
-		super(render, new ModelCheeseCubeEye(), 1.0F);
-	}
+    public RenderCheeseCubeBoss(RenderManager render)
+    {
+        super(render, new ModelCheeseCubeEye(), 1.0F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.texture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.texture;
+    }
 
-	@Override
-	public void doRender(EntityLiving living, double par2, double par4, double par6, float par8, float par9)
-	{
-		BossStatus.setBossStatus((IBossDisplayData)living, false);
-		super.doRender(living, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLiving living, double par2, double par4, double par6, float par8, float par9)
+    {
+        BossStatus.setBossStatus((IBossDisplayData)living, false);
+        super.doRender(living, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase living, float par2)
-	{
-		GlStateManager.scale(1.5F, 1.5F, 1.5F);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase living, float par2)
+    {
+        GlStateManager.scale(1.5F, 1.5F, 1.5F);
+    }
 }

@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -30,146 +32,155 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockFronosLeaves extends BlockLeavesMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockFronosLeaves(String name)
-	{
-		super();
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.red_maple_leaves).withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
-		this.setUnlocalizedName(name);
-	}
+    public BlockFronosLeaves(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.red_maple_leaves).withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 3; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < BlockType.values().length; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(FronosBlocks.fronos_sapling);
-	}
+    @Override
+    protected void dropFruit(World world, BlockPos pos, IBlockState state, int chance)
+    {
+        if (world.rand.nextInt(chance) == 0)
+        {
+            Block.spawnAsEntity(world, pos, new ItemStack(Items.apple));
+        }
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.red_maple_leaves))
-		{
-			return 1;
-		}
-		else if (state == state.withProperty(VARIANT, BlockType.purple_maple_leaves))
-		{
-			return 3;
-		}
-		else
-		{
-			return 2;
-		}
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(FronosBlocks.fronos_sapling);
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT, BlockStateHelper.DECAYABLE, BlockStateHelper.CHECK_DECAY });
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.red_maple_leaves))
+        {
+            return 1;
+        }
+        else if (state == state.withProperty(VARIANT, BlockType.purple_maple_leaves))
+        {
+            return 3;
+        }
+        else
+        {
+            return 2;
+        }
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, this.getWoodType(meta)).withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT, BlockStateHelper.DECAYABLE, BlockStateHelper.CHECK_DECAY });
+    }
 
-	public BlockType getWoodType(int meta)
-	{
-		return BlockType.byMetadata((meta & 3) % 4);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, this.getWoodType(meta)).withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		byte b0 = 0;
-		int i = b0 | ((BlockType)state.getValue(VARIANT)).ordinal();
+    public BlockType getWoodType(int meta)
+    {
+        return BlockType.byMetadata((meta & 3) % 4);
+    }
 
-		if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
-		{
-			i |= 4;
-		}
-		if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
-		{
-			i |= 8;
-		}
-		return i;
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        byte b0 = 0;
+        int i = b0 | ((BlockType)state.getValue(VARIANT)).ordinal();
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)) & 3);
-	}
+        if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
+        {
+            i |= 4;
+        }
+        if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
+        {
+            i |= 8;
+        }
+        return i;
+    }
 
-	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
-	{
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(this, 1, ((BlockType)world.getBlockState(pos).getValue(VARIANT)).getMetadata()));
-		return ret;
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)) & 3);
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		red_maple_leaves(0),
-		yellow_maple_leaves(1),
-		purple_maple_leaves(2);
+    @Override
+    public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
+    {
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ret.add(new ItemStack(this, 1, ((BlockType)world.getBlockState(pos).getValue(VARIANT)).getMetadata()));
+        return ret;
+    }
 
-		private int meta;
-		private static BlockType[] META_LOOKUP = new BlockType[values().length];
+    public static enum BlockType implements IStringSerializable
+    {
+        red_maple_leaves(0),
+        yellow_maple_leaves(1),
+        purple_maple_leaves(2);
 
-		private BlockType(int meta)
-		{
-			this.meta = meta;
-		}
+        private int meta;
+        private static BlockType[] META_LOOKUP = new BlockType[values().length];
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        private BlockType(int meta)
+        {
+            this.meta = meta;
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		public int getMetadata()
-		{
-			return this.meta;
-		}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
 
-		public static BlockType byMetadata(int meta)
-		{
-			if (meta < 0 || meta >= META_LOOKUP.length)
-			{
-				meta = 0;
-			}
-			return META_LOOKUP[meta];
-		}
+        public int getMetadata()
+        {
+            return this.meta;
+        }
 
-		static
-		{
-			BlockType[] var0 = values();
-			int var1 = var0.length;
+        public static BlockType byMetadata(int meta)
+        {
+            if (meta < 0 || meta >= META_LOOKUP.length)
+            {
+                meta = 0;
+            }
+            return META_LOOKUP[meta];
+        }
 
-			for (int var2 = 0; var2 < var1; ++var2)
-			{
-				BlockType var3 = var0[var2];
-				META_LOOKUP[var3.getMetadata()] = var3;
-			}
-		}
-	}
+        static
+        {
+            BlockType[] var0 = values();
+            int var1 = var0.length;
+
+            for (int var2 = 0; var2 < var1; ++var2)
+            {
+                BlockType var3 = var0[var2];
+                META_LOOKUP[var3.getMetadata()] = var3;
+            }
+        }
+    }
 }

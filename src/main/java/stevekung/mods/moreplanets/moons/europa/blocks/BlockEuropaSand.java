@@ -14,17 +14,17 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockEuropaSand extends BlockFalling
 {
-	public BlockEuropaSand(String name)
-	{
-		super(Material.sand);
-		this.setStepSound(soundTypeSand);
-		this.setHardness(0.55F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockEuropaSand(String name)
+    {
+        super(Material.sand);
+        this.setStepSound(soundTypeSand);
+        this.setHardness(0.55F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

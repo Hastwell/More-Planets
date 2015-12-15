@@ -18,16 +18,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderFrozenSludgeling extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/frozen_sludgeling.png");
+    private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/frozen_sludgeling.png");
 
-	public RenderFrozenSludgeling(RenderManager render)
-	{
-		super(render, new ModelSludgeling(), 0.2F);
-	}
+    public RenderFrozenSludgeling(RenderManager render)
+    {
+        super(render, new ModelSludgeling(), 0.2F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity par1Entity)
-	{
-		return this.texture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    {
+        return this.texture;
+    }
 }

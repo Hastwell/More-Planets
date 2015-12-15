@@ -19,21 +19,21 @@ import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusBlaze;
 @SideOnly(Side.CLIENT)
 public class RenderSiriusBlaze extends RenderLiving
 {
-	private ResourceLocation blazeTextures = new ResourceLocation("moreplanets:textures/entity/sirius_blaze.png");
+    private ResourceLocation blazeTextures = new ResourceLocation("moreplanets:textures/entity/sirius_blaze.png");
 
-	public RenderSiriusBlaze(RenderManager render)
-	{
-		super(render, new ModelBlaze(), 0.5F);
-	}
+    public RenderSiriusBlaze(RenderManager render)
+    {
+        super(render, new ModelBlaze(), 0.5F);
+    }
 
-	protected ResourceLocation getEntityTexture(EntitySiriusBlaze entity)
-	{
-		return this.blazeTextures;
-	}
+    protected ResourceLocation getEntityTexture(EntitySiriusBlaze entity)
+    {
+        return this.blazeTextures;
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.getEntityTexture((EntitySiriusBlaze)entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.getEntityTexture((EntitySiriusBlaze)entity);
+    }
 }

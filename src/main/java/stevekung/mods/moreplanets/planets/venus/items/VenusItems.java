@@ -12,29 +12,31 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.moreplanets.common.items.ItemMultiVariant;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class VenusItems
 {
-	public static Item venus_item;
-	public static Item sulfur_battery;
-	public static Item jetpack;
+    public static Item venus_item;
+    public static Item sulfur_battery;
+    public static Item jetpack;
 
-	public static ArmorMaterial jetpackArmor = EnumHelper.addArmorMaterial("jetpack", "jetpack", 0, new int[] { 0, 0, 0, 0 }, 0);
+    public static ArmorMaterial jetpackArmor = EnumHelper.addArmorMaterial("jetpack", "jetpack", 0, new int[] { 0, 0, 0, 0 }, 0);
 
-	public static void init()
-	{
-		// Init
-		VenusItems.venus_item = new ItemVenus("venus_item");
-		VenusItems.sulfur_battery = new ItemSulfurBattery("sulfur_battery");
-		VenusItems.jetpack = new ItemJetpack("jetpack", VenusItems.jetpackArmor, 7, 1);
+    public static void init()
+    {
+        // Init
+        VenusItems.venus_item = new ItemMultiVariant("venus_item", new VariantsName("lead_ingot"));
+        VenusItems.sulfur_battery = new ItemSulfurBattery("sulfur_battery");
+        VenusItems.jetpack = new ItemJetpack("jetpack", VenusItems.jetpackArmor, 7, 1);
 
-		// Register
-		CommonRegisterHelper.registerItem(VenusItems.venus_item);
-		CommonRegisterHelper.registerItem(VenusItems.sulfur_battery);
-		CommonRegisterHelper.registerItem(VenusItems.jetpack);
+        // Register
+        CommonRegisterHelper.registerItem(VenusItems.venus_item);
+        CommonRegisterHelper.registerItem(VenusItems.sulfur_battery);
+        CommonRegisterHelper.registerItem(VenusItems.jetpack);
 
-		// Register ore dictionary
-		OreDictionary.registerOre("ingotLead", new ItemStack(VenusItems.venus_item, 1, 0));
-	}
+        // Register ore dictionary
+        OreDictionary.registerOre("ingotLead", new ItemStack(VenusItems.venus_item, 1, 0));
+    }
 }

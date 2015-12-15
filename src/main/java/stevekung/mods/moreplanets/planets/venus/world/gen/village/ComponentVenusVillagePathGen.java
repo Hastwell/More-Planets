@@ -23,132 +23,132 @@ import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 
 public class ComponentVenusVillagePathGen extends ComponentVenusVillageRoadPiece
 {
-	private int averageGroundLevel;
+    private int averageGroundLevel;
 
-	public ComponentVenusVillagePathGen() {}
+    public ComponentVenusVillagePathGen() {}
 
-	public ComponentVenusVillagePathGen(ComponentVenusVillageStartPiece component, int type, StructureBoundingBox box, EnumFacing facing)
-	{
-		super(component, type);
-		this.coordBaseMode = facing;
-		this.boundingBox = box;
-		this.averageGroundLevel = Math.max(box.getXSize(), box.getZSize());
-	}
+    public ComponentVenusVillagePathGen(ComponentVenusVillageStartPiece component, int type, StructureBoundingBox box, EnumFacing facing)
+    {
+        super(component, type);
+        this.coordBaseMode = facing;
+        this.boundingBox = box;
+        this.averageGroundLevel = Math.max(box.getXSize(), box.getZSize());
+    }
 
-	@Override
-	protected void writeStructureToNBT(NBTTagCompound nbt)
-	{
-		super.writeStructureToNBT(nbt);
-		nbt.setInteger("AvgGroundLevel", this.averageGroundLevel);
-	}
+    @Override
+    protected void writeStructureToNBT(NBTTagCompound nbt)
+    {
+        super.writeStructureToNBT(nbt);
+        nbt.setInteger("AvgGroundLevel", this.averageGroundLevel);
+    }
 
-	@Override
-	protected void readStructureFromNBT(NBTTagCompound nbt)
-	{
-		super.readStructureFromNBT(nbt);
-		this.averageGroundLevel = nbt.getInteger("AvgGroundLevel");
-	}
+    @Override
+    protected void readStructureFromNBT(NBTTagCompound nbt)
+    {
+        super.readStructureFromNBT(nbt);
+        this.averageGroundLevel = nbt.getInteger("AvgGroundLevel");
+    }
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public void buildComponent(StructureComponent component, List list, Random rand)
-	{
-		boolean var4 = false;
-		int var5;
-		StructureComponent var6;
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @Override
+    public void buildComponent(StructureComponent component, List list, Random rand)
+    {
+        boolean var4 = false;
+        int var5;
+        StructureComponent var6;
 
-		for (var5 = rand.nextInt(5); var5 < this.averageGroundLevel - 8; var5 += 2 + rand.nextInt(5))
-		{
-			var6 = this.getNextComponentNN((ComponentVenusVillageStartPiece) component, list, rand, 0, var5);
+        for (var5 = rand.nextInt(5); var5 < this.averageGroundLevel - 8; var5 += 2 + rand.nextInt(5))
+        {
+            var6 = this.getNextComponentNN((ComponentVenusVillageStartPiece) component, list, rand, 0, var5);
 
-			if (var6 != null)
-			{
-				var5 += Math.max(var6.getBoundingBox().getXSize(), var6.getBoundingBox().getZSize());
-				var4 = true;
-			}
-		}
+            if (var6 != null)
+            {
+                var5 += Math.max(var6.getBoundingBox().getXSize(), var6.getBoundingBox().getZSize());
+                var4 = true;
+            }
+        }
 
-		for (var5 = rand.nextInt(5); var5 < this.averageGroundLevel - 8; var5 += 2 + rand.nextInt(5))
-		{
-			var6 = this.getNextComponentPP((ComponentVenusVillageStartPiece) component, list, rand, 0, var5);
+        for (var5 = rand.nextInt(5); var5 < this.averageGroundLevel - 8; var5 += 2 + rand.nextInt(5))
+        {
+            var6 = this.getNextComponentPP((ComponentVenusVillageStartPiece) component, list, rand, 0, var5);
 
-			if (var6 != null)
-			{
-				var5 += Math.max(var6.getBoundingBox().getXSize(), var6.getBoundingBox().getZSize());
-				var4 = true;
-			}
-		}
+            if (var6 != null)
+            {
+                var5 += Math.max(var6.getBoundingBox().getXSize(), var6.getBoundingBox().getZSize());
+                var4 = true;
+            }
+        }
 
-		if (var4 && rand.nextInt(3) > 0 && this.coordBaseMode != null)
-		{
-			switch (SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()])
-			{
-			case 0:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX - 1, this.boundingBox.minY, this.boundingBox.maxZ - 2, EnumFacing.WEST, this.getComponentType());
-				break;
-			case 1:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
-				break;
-			case 2:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX - 1, this.boundingBox.minY, this.boundingBox.minZ, EnumFacing.WEST, this.getComponentType());
-				break;
-			case 3:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX - 2, this.boundingBox.minY, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
-			}
-		}
+        if (var4 && rand.nextInt(3) > 0 && this.coordBaseMode != null)
+        {
+            switch (SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()])
+            {
+            case 0:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX - 1, this.boundingBox.minY, this.boundingBox.maxZ - 2, EnumFacing.WEST, this.getComponentType());
+                break;
+            case 1:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
+                break;
+            case 2:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX - 1, this.boundingBox.minY, this.boundingBox.minZ, EnumFacing.WEST, this.getComponentType());
+                break;
+            case 3:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX - 2, this.boundingBox.minY, this.boundingBox.minZ - 1, EnumFacing.NORTH, this.getComponentType());
+            }
+        }
 
-		if (var4 && rand.nextInt(3) > 0 && this.coordBaseMode != null)
-		{
-			switch (SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()])
-			{
-			case 0:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX + 1, this.boundingBox.minY, this.boundingBox.maxZ - 2, EnumFacing.EAST, this.getComponentType());
-				break;
-			case 1:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
-				break;
-			case 2:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX + 1, this.boundingBox.minY, this.boundingBox.minZ, EnumFacing.EAST, this.getComponentType());
-				break;
-			case 3:
-				StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX - 2, this.boundingBox.minY, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
-			}
-		}
-	}
+        if (var4 && rand.nextInt(3) > 0 && this.coordBaseMode != null)
+        {
+            switch (SwitchEnumFacing.field_176064_a[this.coordBaseMode.ordinal()])
+            {
+            case 0:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX + 1, this.boundingBox.minY, this.boundingBox.maxZ - 2, EnumFacing.EAST, this.getComponentType());
+                break;
+            case 1:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.minX, this.boundingBox.minY, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
+                break;
+            case 2:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX + 1, this.boundingBox.minY, this.boundingBox.minZ, EnumFacing.EAST, this.getComponentType());
+                break;
+            case 3:
+                StructureVenusVillagePieces.getNextStructureComponentVillagePath((ComponentVenusVillageStartPiece) component, list, rand, this.boundingBox.maxX - 2, this.boundingBox.minY, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, this.getComponentType());
+            }
+        }
+    }
 
-	@SuppressWarnings("rawtypes")
-	public static StructureBoundingBox func_74933_a(List list, Random rand, int x, int y, int z, EnumFacing facing)
-	{
-		for (int var7 = 7 * MathHelper.getRandomIntegerInRange(rand, 3, 5); var7 >= 7; var7 -= 7)
-		{
-			StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 3, var7, facing);
+    @SuppressWarnings("rawtypes")
+    public static StructureBoundingBox func_74933_a(List list, Random rand, int x, int y, int z, EnumFacing facing)
+    {
+        for (int var7 = 7 * MathHelper.getRandomIntegerInRange(rand, 3, 5); var7 >= 7; var7 -= 7)
+        {
+            StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 3, var7, facing);
 
-			if (StructureComponent.findIntersecting(list, var8) == null)
-			{
-				return var8;
-			}
-		}
-		return null;
-	}
+            if (StructureComponent.findIntersecting(list, var8) == null)
+            {
+                return var8;
+            }
+        }
+        return null;
+    }
 
-	@Override
-	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
-	{
-		IBlockState iblockstate = this.func_175847_a(VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick));
+    @Override
+    public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
+    {
+        IBlockState iblockstate = this.func_175847_a(VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick));
 
-		for (int i = this.boundingBox.minX; i <= this.boundingBox.maxX; ++i)
-		{
-			for (int j = this.boundingBox.minZ; j <= this.boundingBox.maxZ; ++j)
-			{
-				BlockPos blockpos = new BlockPos(i, 64, j);
+        for (int i = this.boundingBox.minX; i <= this.boundingBox.maxX; ++i)
+        {
+            for (int j = this.boundingBox.minZ; j <= this.boundingBox.maxZ; ++j)
+            {
+                BlockPos blockpos = new BlockPos(i, 64, j);
 
-				if (box.func_175898_b(blockpos))
-				{
-					blockpos = world.getTopSolidOrLiquidBlock(blockpos).down();
-					world.setBlockState(blockpos, iblockstate, 2);
-				}
-			}
-		}
-		return true;
-	}
+                if (box.func_175898_b(blockpos))
+                {
+                    blockpos = world.getTopSolidOrLiquidBlock(blockpos).down();
+                    world.setBlockState(blockpos, iblockstate, 2);
+                }
+            }
+        }
+        return true;
+    }
 }

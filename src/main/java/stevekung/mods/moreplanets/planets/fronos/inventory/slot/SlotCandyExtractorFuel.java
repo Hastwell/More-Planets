@@ -14,14 +14,14 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCandyExt
 
 public class SlotCandyExtractorFuel extends Slot
 {
-	public SlotCandyExtractorFuel(IInventory inventory, int slotIndex, int xPosition, int yPosition)
-	{
-		super(inventory, slotIndex, xPosition, yPosition);
-	}
+    public SlotCandyExtractorFuel(IInventory inventory, int slotIndex, int xPosition, int yPosition)
+    {
+        super(inventory, slotIndex, xPosition, yPosition);
+    }
 
-	@Override
-	public boolean isItemValid(ItemStack itemStack)
-	{
-		return TileEntityCandyExtractor.isItemFuel(itemStack);
-	}
+    @Override
+    public boolean isItemValid(ItemStack itemStack)
+    {
+        return TileEntityCandyExtractor.isItemFuel(itemStack);
+    }
 }

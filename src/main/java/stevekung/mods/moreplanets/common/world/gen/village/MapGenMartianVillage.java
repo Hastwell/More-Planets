@@ -16,62 +16,62 @@ import stevekung.mods.moreplanets.common.util.MPLog;
 
 public class MapGenMartianVillage extends MapGenStructure
 {
-	private int terrainType;
+    private int terrainType;
 
-	static
-	{
-		MapGenStructureIO.registerStructure(StructureMartianVillageStart.class, "MartianVillage");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillageField.class, "MartianField1");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillageField2.class, "MartianField2");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillageHouse.class, "MartianHouse");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillageRoadPiece.class, "MartianRoadPiece");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillagePathGen.class, "MartianPath");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillageTorch.class, "MartianTorch");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillageStartPiece.class, "MartianWell");
-		MapGenStructureIO.registerStructureComponent(ComponentMartianVillageHut.class, "MartianHut");
-	}
+    static
+    {
+        MapGenStructureIO.registerStructure(StructureMartianVillageStart.class, "MartianVillage");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillageField.class, "MartianField1");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillageField2.class, "MartianField2");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillageHouse.class, "MartianHouse");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillageRoadPiece.class, "MartianRoadPiece");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillagePathGen.class, "MartianPath");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillageTorch.class, "MartianTorch");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillageStartPiece.class, "MartianWell");
+        MapGenStructureIO.registerStructureComponent(ComponentMartianVillageHut.class, "MartianHut");
+    }
 
-	public MapGenMartianVillage()
-	{
-		this.terrainType = 0;
-	}
+    public MapGenMartianVillage()
+    {
+        this.terrainType = 0;
+    }
 
-	@Override
-	protected boolean canSpawnStructureAtCoords(int x, int z)
-	{
-		byte numChunks = 32;
-		byte offsetChunks = 8;
-		int oldi = x;
-		int oldj = z;
+    @Override
+    protected boolean canSpawnStructureAtCoords(int x, int z)
+    {
+        byte numChunks = 32;
+        byte offsetChunks = 8;
+        int oldi = x;
+        int oldj = z;
 
-		if (x < 0)
-		{
-			x -= numChunks - 1;
-		}
-		if (z < 0)
-		{
-			z -= numChunks - 1;
-		}
-		int randX = x / numChunks;
-		int randZ = z / numChunks;
-		Random var7 = this.worldObj.setRandomSeed(x, z, 10387312);
-		randX *= numChunks;
-		randZ *= numChunks;
-		randX += var7.nextInt(numChunks - offsetChunks);
-		randZ += var7.nextInt(numChunks - offsetChunks);
-		return oldi == randX && oldj == randZ;
-	}
+        if (x < 0)
+        {
+            x -= numChunks - 1;
+        }
+        if (z < 0)
+        {
+            z -= numChunks - 1;
+        }
+        int randX = x / numChunks;
+        int randZ = z / numChunks;
+        Random var7 = this.worldObj.setRandomSeed(x, z, 10387312);
+        randX *= numChunks;
+        randZ *= numChunks;
+        randX += var7.nextInt(numChunks - offsetChunks);
+        randZ += var7.nextInt(numChunks - offsetChunks);
+        return oldi == randX && oldj == randZ;
+    }
 
-	@Override
-	protected StructureStart getStructureStart(int x, int z)
-	{
-		MPLog.debug("Generating Martian Village at x : %s, z : %s", x * 16, z * 16);
-		return new StructureMartianVillageStart(this.worldObj, this.rand, x, z, this.terrainType);
-	}
+    @Override
+    protected StructureStart getStructureStart(int x, int z)
+    {
+        MPLog.debug("Generating Martian Village at x : %s, z : %s", x * 16, z * 16);
+        return new StructureMartianVillageStart(this.worldObj, this.rand, x, z, this.terrainType);
+    }
 
-	@Override
-	public String getStructureName()
-	{
-		return "MartianVillage";
-	}
+    @Override
+    public String getStructureName()
+    {
+        return "MartianVillage";
+    }
 }

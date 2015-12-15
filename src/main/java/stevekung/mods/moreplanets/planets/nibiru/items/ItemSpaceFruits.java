@@ -18,88 +18,88 @@ import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemSpaceFruits extends ItemFoodMP
 {
-	private int[] foodHunger = new int[] {
-			4,
-			4,
-			5
-	};
-	private float[] foodSaturation = new float[] {
-			0.2F,
-			0.4F,
-			0.6F
-	};
+    private int[] foodHunger = new int[] {
+            4,
+            4,
+            5
+    };
+    private float[] foodSaturation = new float[] {
+            0.2F,
+            0.4F,
+            0.6F
+    };
 
-	public ItemSpaceFruits(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setHasSubtypes(true);
-	}
+    public ItemSpaceFruits(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public EnumAction getItemUseAction(ItemStack itemStack)
-	{
-		if (itemStack.getItem() == this && itemStack.getItemDamage() == 2)
-		{
-			return EnumAction.DRINK;
-		}
-		return EnumAction.EAT;
-	}
+    @Override
+    public EnumAction getItemUseAction(ItemStack itemStack)
+    {
+        if (itemStack.getItemDamage() == 2)
+        {
+            return EnumAction.DRINK;
+        }
+        return EnumAction.EAT;
+    }
 
-	@Override
-	public int getItemStackLimit(ItemStack itemStack)
-	{
-		if (itemStack.getItem() == this && itemStack.getItemDamage() == 2)
-		{
-			return 1;
-		}
-		return 64;
-	}
+    @Override
+    public int getItemStackLimit(ItemStack itemStack)
+    {
+        if (itemStack.getItemDamage() == 2)
+        {
+            return 1;
+        }
+        return 64;
+    }
 
-	@Override
-	public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		--itemStack.stackSize;
-		player.getFoodStats().addStats(this, itemStack);
-		this.onFoodEaten(itemStack, world, player);
+    @Override
+    public ItemStack onItemUseFinish(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        --itemStack.stackSize;
+        player.getFoodStats().addStats(this, itemStack);
+        this.onFoodEaten(itemStack, world, player);
 
-		if (itemStack.getItemDamage() == 2)
-		{
-			if (!player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle)))
-			{
-				player.entityDropItem(new ItemStack(Items.glass_bottle, 1, 0), 0.0F);
-			}
-			if (!world.isRemote)
-			{
-				if (itemStack.getItemDamage() == 2)
-				{
-					player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 4000, 1));
-					player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2500, 1));
-				}
-			}
-		}
-		else
-		{
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		}
-		return itemStack;
-	}
+        if (itemStack.getItemDamage() == 2)
+        {
+            if (!player.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle)))
+            {
+                player.entityDropItem(new ItemStack(Items.glass_bottle, 1, 0), 0.0F);
+            }
+            if (!world.isRemote)
+            {
+                if (itemStack.getItemDamage() == 2)
+                {
+                    player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 4000, 1));
+                    player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2500, 1));
+                }
+            }
+        }
+        else
+        {
+            world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+        }
+        return itemStack;
+    }
 
-	@Override
-	public int getHealAmount(ItemStack itemStack)
-	{
-		return this.foodHunger[itemStack.getItemDamage()];
-	}
+    @Override
+    public int getHealAmount(ItemStack itemStack)
+    {
+        return this.foodHunger[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public float getSaturationModifier(ItemStack itemStack)
-	{
-		return this.foodSaturation[itemStack.getItemDamage()];
-	}
+    @Override
+    public float getSaturationModifier(ItemStack itemStack)
+    {
+        return this.foodSaturation[itemStack.getItemDamage()];
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "space_apple", "space_orange", "orange_juice" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "space_apple", "space_orange", "orange_juice" };
+    }
 }

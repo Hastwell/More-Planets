@@ -12,14 +12,14 @@ import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class DarkAsteroidsItems
 {
-	public static Item alphere;
+    public static Item alphere;
 
-	public static void init()
-	{
-		// Init
-		DarkAsteroidsItems.alphere = new ItemAlphere("alphere");
+    public static void init()
+    {
+        // Init
+        DarkAsteroidsItems.alphere = new ItemAlphere("alphere");
 
-		// Register
-		CommonRegisterHelper.registerItem(DarkAsteroidsItems.alphere);
-	}
+        // Register
+        CommonRegisterHelper.registerItem(DarkAsteroidsItems.alphere);
+    }
 }

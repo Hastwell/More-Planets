@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class ArmorPolongniusMeteoricIron extends ItemArmorMP
 {
-	public ArmorPolongniusMeteoricIron(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorPolongniusMeteoricIron(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_helmet || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_chestplate || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_boots)
-		{
-			return "moreplanets:textures/model/armor/polongnius_meteoric_iron_1.png";
-		}
-		if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_leggings)
-		{
-			return "moreplanets:textures/model/armor/polongnius_meteoric_iron_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_helmet || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_chestplate || stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_boots)
+        {
+            return "moreplanets:textures/model/armor/polongnius_meteoric_iron_1.png";
+        }
+        if (stack.getItem() == PolongniusArmorItems.polongnius_meteoric_iron_leggings)
+        {
+            return "moreplanets:textures/model/armor/polongnius_meteoric_iron_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return PolongniusItems.polongnius_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return PolongniusItems.polongnius_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 6;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 6;
+    }
 }

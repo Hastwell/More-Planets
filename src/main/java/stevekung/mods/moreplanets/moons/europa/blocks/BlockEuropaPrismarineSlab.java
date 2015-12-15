@@ -28,160 +28,160 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockEuropaPrismarineSlab extends BlockSlab
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockEuropaPrismarineSlab(String name, Material material)
-	{
-		super(material);
-		this.setUnlocalizedName(name);
-		this.setHardness(1.5F);
-		this.setResistance(10.0F);
-		this.useNeighborBrightness = true;
-	}
+    public BlockEuropaPrismarineSlab(String name, Material material)
+    {
+        super(material);
+        this.setUnlocalizedName(name);
+        this.setHardness(1.5F);
+        this.setResistance(10.0F);
+        this.useNeighborBrightness = true;
+    }
 
-	public BlockEuropaPrismarineSlab(Material material)
-	{
-		super(material);
-	}
+    public BlockEuropaPrismarineSlab(Material material)
+    {
+        super(material);
+    }
 
-	@Override
-	public IProperty getVariantProperty()
-	{
-		return VARIANT;
-	}
+    @Override
+    public IProperty getVariantProperty()
+    {
+        return VARIANT;
+    }
 
-	@Override
-	public Object getVariant(ItemStack itemStack)
-	{
-		return BlockType.byMetadata(itemStack.getMetadata() & 7);
-	}
+    @Override
+    public Object getVariant(ItemStack itemStack)
+    {
+        return BlockType.byMetadata(itemStack.getMetadata() & 7);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state) & 7;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state) & 7;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
+    }
 
-	@Override
-	public String getUnlocalizedName(int meta)
-	{
-		return super.getUnlocalizedName();
-	}
+    @Override
+    public String getUnlocalizedName(int meta)
+    {
+        return super.getUnlocalizedName();
+    }
 
-	@Override
-	public boolean isDouble()
-	{
-		return false;
-	}
+    @Override
+    public boolean isDouble()
+    {
+        return false;
+    }
 
-	public void setHarvestLevel(String toolClass, int level, int meta)
-	{
-		this.setHarvestLevel(toolClass, level, this.getStateFromMeta(meta));
-	}
+    public void setHarvestLevel(String toolClass, int level, int meta)
+    {
+        this.setHarvestLevel(toolClass, level, this.getStateFromMeta(meta));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 3; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		IBlockState state = this.getDefaultState().withProperty(VARIANT, BlockType.byMetadata(meta & 7));
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        IBlockState state = this.getDefaultState().withProperty(VARIANT, BlockType.byMetadata(meta & 7));
 
-		if (!this.isDouble())
-		{
-			state = state.withProperty(HALF, (meta & 8) == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
-		}
-		return state;
-	}
+        if (!this.isDouble())
+        {
+            state = state.withProperty(HALF, (meta & 8) == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
+        }
+        return state;
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		byte b0 = 0;
-		int i = b0 | ((BlockType)state.getValue(VARIANT)).getMetadata();
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        byte b0 = 0;
+        int i = b0 | ((BlockType)state.getValue(VARIANT)).getMetadata();
 
-		if (!this.isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP)
-		{
-			i |= 8;
-		}
-		return i;
-	}
+        if (!this.isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP)
+        {
+            i |= 8;
+        }
+        return i;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return this.isDouble() ? new BlockState(this, new IProperty[] {VARIANT}): new BlockState(this, new IProperty[] {HALF, VARIANT});
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return this.isDouble() ? new BlockState(this, new IProperty[] {VARIANT}): new BlockState(this, new IProperty[] {HALF, VARIANT});
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		europa_prismarine_slab(0),
-		europa_prismarine_brick_slab(1),
-		dark_europa_prismarine_slab(2);
+    public static enum BlockType implements IStringSerializable
+    {
+        europa_prismarine_slab(0),
+        europa_prismarine_brick_slab(1),
+        dark_europa_prismarine_slab(2);
 
-		private int meta;
-		private static BlockType[] META_LOOKUP = new BlockType[values().length];
+        private int meta;
+        private static BlockType[] META_LOOKUP = new BlockType[values().length];
 
-		private BlockType(int meta)
-		{
-			this.meta = meta;
-		}
+        private BlockType(int meta)
+        {
+            this.meta = meta;
+        }
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
 
-		public int getMetadata()
-		{
-			return this.meta;
-		}
+        public int getMetadata()
+        {
+            return this.meta;
+        }
 
-		public static BlockType byMetadata(int meta)
-		{
-			if (meta < 0 || meta >= META_LOOKUP.length)
-			{
-				meta = 0;
-			}
-			return META_LOOKUP[meta];
-		}
+        public static BlockType byMetadata(int meta)
+        {
+            if (meta < 0 || meta >= META_LOOKUP.length)
+            {
+                meta = 0;
+            }
+            return META_LOOKUP[meta];
+        }
 
-		static
-		{
-			BlockType[] var0 = values();
-			int var1 = var0.length;
+        static
+        {
+            BlockType[] var0 = values();
+            int var1 = var0.length;
 
-			for (int var2 = 0; var2 < var1; ++var2)
-			{
-				BlockType var3 = var0[var2];
-				META_LOOKUP[var3.getMetadata()] = var3;
-			}
-		}
-	}
+            for (int var2 = 0; var2 < var1; ++var2)
+            {
+                BlockType var3 = var0[var2];
+                META_LOOKUP[var3.getMetadata()] = var3;
+            }
+        }
+    }
 }

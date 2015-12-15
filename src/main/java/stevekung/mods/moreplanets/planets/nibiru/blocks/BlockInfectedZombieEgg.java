@@ -19,30 +19,30 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 
 public class BlockInfectedZombieEgg extends BlockEggMP
 {
-	public BlockInfectedZombieEgg(String name)
-	{
-		super();
-		this.setResistance(0.0F);
-		this.setHardness(-1.0F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockInfectedZombieEgg(String name)
+    {
+        super();
+        this.setResistance(0.0F);
+        this.setHardness(-1.0F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
-	{
-		if (!world.isRemote)
-		{
-			EntityInfectedZombie zombie = new EntityInfectedZombie(world);
-			zombie.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
-			world.spawnEntityInWorld(zombie);
-		}
-		world.setBlockToAir(pos);
-	}
+    @Override
+    public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
+    {
+        if (!world.isRemote)
+        {
+            EntityInfectedZombie zombie = new EntityInfectedZombie(world);
+            zombie.setPosition(pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5);
+            world.spawnEntityInWorld(zombie);
+        }
+        world.setBlockToAir(pos);
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		super.harvestBlock(world, player, pos, state, tile);
-		MorePlanetsEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        super.harvestBlock(world, player, pos, state, tile);
+        MorePlanetsEvents.addInfectedGas(player);
+    }
 }

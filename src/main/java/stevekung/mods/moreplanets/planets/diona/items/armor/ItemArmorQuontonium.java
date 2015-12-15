@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 
 public class ItemArmorQuontonium extends ItemArmorMP
 {
-	public ItemArmorQuontonium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ItemArmorQuontonium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
-	{
-		if (stack.getItem() == DionaArmorItems.quontonium_helmet || stack.getItem() == DionaArmorItems.quontonium_chestplate || stack.getItem() == DionaArmorItems.quontonium_boots)
-		{
-			return "moreplanets:textures/model/armor/quontonium_1.png";
-		}
-		else if (stack.getItem() == DionaArmorItems.quontonium_leggings)
-		{
-			return "moreplanets:textures/model/armor/quontonium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
+    {
+        if (stack.getItem() == DionaArmorItems.quontonium_helmet || stack.getItem() == DionaArmorItems.quontonium_chestplate || stack.getItem() == DionaArmorItems.quontonium_boots)
+        {
+            return "moreplanets:textures/model/armor/quontonium_1.png";
+        }
+        else if (stack.getItem() == DionaArmorItems.quontonium_leggings)
+        {
+            return "moreplanets:textures/model/armor/quontonium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return DionaItems.diona_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return DionaItems.diona_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 2;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 2;
+    }
 }

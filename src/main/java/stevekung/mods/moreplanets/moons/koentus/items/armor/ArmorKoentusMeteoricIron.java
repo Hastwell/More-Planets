@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class ArmorKoentusMeteoricIron extends ItemArmorMP
 {
-	public ArmorKoentusMeteoricIron(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorKoentusMeteoricIron(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_helmet || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_chestplate || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_boots)
-		{
-			return "moreplanets:textures/model/armor/koentus_meteoric_iron_1.png";
-		}
-		if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_leggings)
-		{
-			return "moreplanets:textures/model/armor/koentus_meteoric_iron_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_helmet || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_chestplate || stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_boots)
+        {
+            return "moreplanets:textures/model/armor/koentus_meteoric_iron_1.png";
+        }
+        if (stack.getItem() == KoentusArmorItems.koentus_meteoric_iron_leggings)
+        {
+            return "moreplanets:textures/model/armor/koentus_meteoric_iron_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return KoentusItems.koentus_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return KoentusItems.koentus_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 6;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 6;
+    }
 }

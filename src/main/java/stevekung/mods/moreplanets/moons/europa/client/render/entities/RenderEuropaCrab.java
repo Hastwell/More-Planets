@@ -20,32 +20,32 @@ import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
 @SideOnly(Side.CLIENT)
 public class RenderEuropaCrab extends RenderLiving
 {
-	private ResourceLocation textures1 = new ResourceLocation("moreplanets:textures/entity/europa_crab.png");
-	private ResourceLocation textures2 = new ResourceLocation("moreplanets:textures/entity/black_europa_crab.png");
-	private ResourceLocation textures3 = new ResourceLocation("moreplanets:textures/entity/europa_crab_glow.png");
+    private ResourceLocation textures1 = new ResourceLocation("moreplanets:textures/entity/europa_crab.png");
+    private ResourceLocation textures2 = new ResourceLocation("moreplanets:textures/entity/black_europa_crab.png");
+    private ResourceLocation textures3 = new ResourceLocation("moreplanets:textures/entity/europa_crab_glow.png");
 
-	public RenderEuropaCrab(RenderManager render)
-	{
-		super(render, new ModelEuropaCrab(), 0.3F);
-		this.addLayer(new LayerEuropaCrabEyes(this));
-	}
+    public RenderEuropaCrab(RenderManager render)
+    {
+        super(render, new ModelEuropaCrab(), 0.3F);
+        this.addLayer(new LayerEuropaCrabEyes(this));
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		EntityEuropaCrab crab = (EntityEuropaCrab)entity;
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        EntityEuropaCrab crab = (EntityEuropaCrab)entity;
 
-		switch (crab.getCrabType())
-		{
-		case 0:
-		default:
-			return this.textures1;
-		case 1:
-			return this.textures2;
-		case 2:
-			return this.textures3;
-		case 3:
-			return this.textures3;
-		}
-	}
+        switch (crab.getCrabType())
+        {
+        case 0:
+        default:
+            return this.textures1;
+        case 1:
+            return this.textures2;
+        case 2:
+            return this.textures3;
+        case 3:
+            return this.textures3;
+        }
+    }
 }

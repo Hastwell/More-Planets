@@ -44,256 +44,256 @@ import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityUraniu
 
 public class BlockUraniumWaste extends BlockBreakableMP implements IShearable, ITileEntityProvider
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockUraniumWaste(String name)
-	{
-		super(Material.plants);
-		this.setUnlocalizedName(name);
-		this.setStepSound(soundTypeGrass);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.uranium_waste));
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.05F, 1.0F);
-	}
+    public BlockUraniumWaste(String name)
+    {
+        super(Material.plants);
+        this.setUnlocalizedName(name);
+        this.setStepSound(soundTypeGrass);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.uranium_waste));
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.05F, 1.0F);
+    }
 
-	@Override
-	public int getLightValue(IBlockAccess world, BlockPos pos)
-	{
-		IBlockState state = world.getBlockState(pos);
+    @Override
+    public int getLightValue(IBlockAccess world, BlockPos pos)
+    {
+        IBlockState state = world.getBlockState(pos);
 
-		if (state == state.withProperty(VARIANT, BlockType.uranium_waste))
-		{
-			return 8;
-		}
-		else
-		{
-			return 0;
-		}
-	}
+        if (state == state.withProperty(VARIANT, BlockType.uranium_waste))
+        {
+            return 8;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random rand)
+    {
+        return 0;
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.CUTOUT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.CUTOUT;
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    public boolean isReplaceable(World world, BlockPos pos)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+    @Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
 
-		if (block == null)
-		{
-			return false;
-		}
-		if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
-		{
-			return false;
-		}
-		return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
-	}
+        if (block == null)
+        {
+            return false;
+        }
+        if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
+        {
+            return false;
+        }
+        return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		super.harvestBlock(world, player, pos, state, tile);
-		BlockType type = (BlockType)state.getValue(VARIANT);
-		ItemStack equippedItem = player.getCurrentEquippedItem();
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        super.harvestBlock(world, player, pos, state, tile);
+        BlockType type = (BlockType)state.getValue(VARIANT);
+        ItemStack equippedItem = player.getCurrentEquippedItem();
 
-		if (equippedItem != null)
-		{
-			if (equippedItem.getItem() != Items.shears)
-			{
-				if (type == BlockType.uranium_waste)
-				{
-					player.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 100));
-				}
-				if (type == BlockType.inactive_uranium_waste)
-				{
-					return;
-				}
-			}
-		}
-		else
-		{
-			if (type == BlockType.uranium_waste)
-			{
-				player.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 100));
-			}
-			if (type == BlockType.inactive_uranium_waste)
-			{
-				return;
-			}
-		}
-	}
+        if (equippedItem != null)
+        {
+            if (equippedItem.getItem() != Items.shears)
+            {
+                if (type == BlockType.uranium_waste)
+                {
+                    player.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 100));
+                }
+                if (type == BlockType.inactive_uranium_waste)
+                {
+                    return;
+                }
+            }
+        }
+        else
+        {
+            if (type == BlockType.uranium_waste)
+            {
+                player.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 100));
+            }
+            if (type == BlockType.inactive_uranium_waste)
+            {
+                return;
+            }
+        }
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block par5)
-	{
-		this.checkForDrop(world, pos, state);
-	}
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block par5)
+    {
+        this.checkForDrop(world, pos, state);
+    }
 
-	private boolean checkForDrop(World world, BlockPos pos, IBlockState state)
-	{
-		if (!this.canBlockStay(world, pos))
-		{
-			world.setBlockToAir(pos);
-			return false;
-		}
-		else
-		{
-			return true;
-		}
-	}
+    private boolean checkForDrop(World world, BlockPos pos, IBlockState state)
+    {
+        if (!this.canBlockStay(world, pos))
+        {
+            world.setBlockToAir(pos);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
-	private boolean canBlockStay(World world, BlockPos pos)
-	{
-		return !world.isAirBlock(pos.down());
-	}
+    private boolean canBlockStay(World world, BlockPos pos)
+    {
+        return !world.isAirBlock(pos.down());
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		TileEntity tile = world.getTileEntity(pos);
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        TileEntity tile = world.getTileEntity(pos);
 
-		if (tile instanceof TileEntityUraniumWaste)
-		{
-			TileEntityUraniumWaste waste = (TileEntityUraniumWaste)tile;
+        if (tile instanceof TileEntityUraniumWaste)
+        {
+            TileEntityUraniumWaste waste = (TileEntityUraniumWaste)tile;
 
-			if (waste.radiationLevel <= 0)
-			{
-				return;
-			}
-			if (waste.radiationLevel > 0)
-			{
-				if (entity instanceof EntityLivingBase)
-				{
-					if (entity instanceof EntityPlayer)
-					{
-						InventoryPlayer inventory = ((EntityPlayer)entity).inventory;
+            if (waste.radiationLevel <= 0)
+            {
+                return;
+            }
+            if (waste.radiationLevel > 0)
+            {
+                if (entity instanceof EntityLivingBase)
+                {
+                    if (entity instanceof EntityPlayer)
+                    {
+                        InventoryPlayer inventory = ((EntityPlayer)entity).inventory;
 
-						if (!(inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == KapteynBArmorItems.uranium_boots))
-						{
-							((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
-						}
-					}
-					else
-					{
-						((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
-					}
-				}
-			}
-		}
-	}
+                        if (!(inventory.armorInventory[0] != null && inventory.armorInventory[0].getItem() == KapteynBArmorItems.uranium_boots))
+                        {
+                            ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
+                        }
+                    }
+                    else
+                    {
+                        ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+    }
 
-	@Override
-	public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos)
-	{
-		return true;
-	}
+    @Override
+    public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos)
+    {
+        return true;
+    }
 
-	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
-	{
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos))));
-		return ret;
-	}
+    @Override
+    public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
+    {
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ret.add(new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos))));
+        return ret;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		if (meta == 0)
-		{
-			return new TileEntityUraniumWaste();
-		}
-		return null;
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        if (meta == 0)
+        {
+            return new TileEntityUraniumWaste();
+        }
+        return null;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		uranium_waste,
-		inactive_uranium_waste;
+    public static enum BlockType implements IStringSerializable
+    {
+        uranium_waste,
+        inactive_uranium_waste;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

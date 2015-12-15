@@ -47,356 +47,356 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class ItemElectricHoeMP extends ItemHoe implements IItemElectric
 {
-	//private static Object itemManagerIC2;
-	public float transferMax;
-	private DefaultArtifactVersion mcVersion = null;
+    //private static Object itemManagerIC2;
+    public float transferMax;
+    private DefaultArtifactVersion mcVersion = null;
 
-	public ItemElectricHoeMP(ToolMaterial material)
-	{
-		super(material);
-		this.setMaxDamage(100);
-		this.setNoRepair();
-		this.setMaxTransfer();
+    public ItemElectricHoeMP(ToolMaterial material)
+    {
+        super(material);
+        this.setMaxDamage(100);
+        this.setNoRepair();
+        this.setMaxTransfer();
 
-		this.mcVersion = new DefaultArtifactVersion((String) FMLInjectionData.data()[4]);
+        this.mcVersion = new DefaultArtifactVersion((String) FMLInjectionData.data()[4]);
 
-		if (EnergyConfigHandler.isIndustrialCraft2Loaded())
-		{
-			if (VersionParser.parseRange("[1.7.2]").containsVersion(this.mcVersion))
-			{
-				//itemManagerIC2 = new ElectricItemManagerIC2();
-			}
-			else
-			{
-				//itemManagerIC2 = new ElectricItemManagerIC2_1710();
-			}
-		}
-	}
+        if (EnergyConfigHandler.isIndustrialCraft2Loaded())
+        {
+            if (VersionParser.parseRange("[1.7.2]").containsVersion(this.mcVersion))
+            {
+                //itemManagerIC2 = new ElectricItemManagerIC2();
+            }
+            else
+            {
+                //itemManagerIC2 = new ElectricItemManagerIC2_1710();
+            }
+        }
+    }
 
-	protected void setMaxTransfer()
-	{
-		this.transferMax = 200;
-	}
+    protected void setMaxTransfer()
+    {
+        this.transferMax = 200;
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack itemStack, EntityLivingBase living, EntityLivingBase holder)
-	{
-		if (this.getElectricityStored(itemStack) != 0.0F)
-		{
-			this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.5F);
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean hitEntity(ItemStack itemStack, EntityLivingBase living, EntityLivingBase holder)
+    {
+        if (this.getElectricityStored(itemStack) != 0.0F)
+        {
+            this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.5F);
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ)
-	{
-		if (this.getElectricityStored(itemStack) != 0.0F)
-		{
-			if (!player.canPlayerEdit(pos.offset(facing), facing, itemStack))
-			{
-				return false;
-			}
-			else
-			{
-				int hook = ForgeEventFactory.onHoeUse(itemStack, player, world, pos);
+    @Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        if (this.getElectricityStored(itemStack) != 0.0F)
+        {
+            if (!player.canPlayerEdit(pos.offset(facing), facing, itemStack))
+            {
+                return false;
+            }
+            else
+            {
+                int hook = ForgeEventFactory.onHoeUse(itemStack, player, world, pos);
 
-				if (hook != 0)
-				{
-					return hook > 0;
-				}
+                if (hook != 0)
+                {
+                    return hook > 0;
+                }
 
-				IBlockState iblockstate = world.getBlockState(pos);
-				Block block = iblockstate.getBlock();
+                IBlockState iblockstate = world.getBlockState(pos);
+                Block block = iblockstate.getBlock();
 
-				if (facing != EnumFacing.DOWN && world.isAirBlock(pos.up()))
-				{
-					if (block == Blocks.grass)
-					{
-						return this.useHoe(itemStack, player, world, pos, Blocks.farmland.getDefaultState());
-					}
+                if (facing != EnumFacing.DOWN && world.isAirBlock(pos.up()))
+                {
+                    if (block == Blocks.grass)
+                    {
+                        return this.useHoe(itemStack, player, world, pos, Blocks.farmland.getDefaultState());
+                    }
 
-					if (block == Blocks.dirt)
-					{
-						switch (SwitchDirtType.TYPE_LOOKUP[((BlockDirt.DirtType)iblockstate.getValue(BlockDirt.VARIANT)).ordinal()])
-						{
-						case 1:
-							return this.useHoe(itemStack, player, world, pos, Blocks.farmland.getDefaultState());
-						case 2:
-							return this.useHoe(itemStack, player, world, pos, Blocks.dirt.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT));
-						}
-					}
-				}
-				return false;
-			}
-		}
-		return false;
-	}
+                    if (block == Blocks.dirt)
+                    {
+                        switch (SwitchDirtType.TYPE_LOOKUP[((BlockDirt.DirtType)iblockstate.getValue(BlockDirt.VARIANT)).ordinal()])
+                        {
+                        case 1:
+                            return this.useHoe(itemStack, player, world, pos, Blocks.farmland.getDefaultState());
+                        case 2:
+                            return this.useHoe(itemStack, player, world, pos, Blocks.dirt.getDefaultState().withProperty(BlockDirt.VARIANT, BlockDirt.DirtType.DIRT));
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+        return false;
+    }
 
-	@Override
-	protected boolean useHoe(ItemStack itemStack, EntityPlayer player, World world, BlockPos target, IBlockState newState)
-	{
-		world.playSoundEffect(target.getX() + 0.5F, target.getY() + 0.5F, target.getZ() + 0.5F, newState.getBlock().stepSound.getStepSound(), (newState.getBlock().stepSound.getVolume() + 1.0F) / 2.0F, newState.getBlock().stepSound.getFrequency() * 0.8F);
+    @Override
+    protected boolean useHoe(ItemStack itemStack, EntityPlayer player, World world, BlockPos target, IBlockState newState)
+    {
+        world.playSoundEffect(target.getX() + 0.5F, target.getY() + 0.5F, target.getZ() + 0.5F, newState.getBlock().stepSound.getStepSound(), (newState.getBlock().stepSound.getVolume() + 1.0F) / 2.0F, newState.getBlock().stepSound.getFrequency() * 0.8F);
 
-		if (world.isRemote)
-		{
-			return true;
-		}
-		else
-		{
-			world.setBlockState(target, newState);
-			this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.0F);
-			return true;
-		}
-	}
+        if (world.isRemote)
+        {
+            return true;
+        }
+        else
+        {
+            world.setBlockState(target, newState);
+            this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.0F);
+            return true;
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		EnumChatFormatting color = null;
-		float joules = this.getElectricityStored(itemStack);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        EnumChatFormatting color = null;
+        float joules = this.getElectricityStored(itemStack);
 
-		if (joules <= this.getMaxElectricityStored(itemStack) / 3)
-		{
-			color = EnumChatFormatting.DARK_RED;
-		}
-		else if (joules > this.getMaxElectricityStored(itemStack) * 2 / 3)
-		{
-			color = EnumChatFormatting.DARK_GREEN;
-		}
-		else
-		{
-			color = EnumChatFormatting.GOLD;
-		}
-		list.add(color + EnergyDisplayHelper.getEnergyDisplayS(joules) + "/" + EnergyDisplayHelper.getEnergyDisplayS(this.getMaxElectricityStored(itemStack)));
-	}
+        if (joules <= this.getMaxElectricityStored(itemStack) / 3)
+        {
+            color = EnumChatFormatting.DARK_RED;
+        }
+        else if (joules > this.getMaxElectricityStored(itemStack) * 2 / 3)
+        {
+            color = EnumChatFormatting.DARK_GREEN;
+        }
+        else
+        {
+            color = EnumChatFormatting.GOLD;
+        }
+        list.add(color + EnergyDisplayHelper.getEnergyDisplayS(joules) + "/" + EnergyDisplayHelper.getEnergyDisplayS(this.getMaxElectricityStored(itemStack)));
+    }
 
-	@Override
-	public void onCreated(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		this.setElectricity(itemStack, 0);
-	}
+    @Override
+    public void onCreated(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        this.setElectricity(itemStack, 0);
+    }
 
-	@Override
-	public float recharge(ItemStack itemStack, float energy, boolean doReceive)
-	{
-		float rejectedElectricity = Math.max(this.getElectricityStored(itemStack) + energy - this.getMaxElectricityStored(itemStack), 0);
-		float energyToReceive = energy - rejectedElectricity;
+    @Override
+    public float recharge(ItemStack itemStack, float energy, boolean doReceive)
+    {
+        float rejectedElectricity = Math.max(this.getElectricityStored(itemStack) + energy - this.getMaxElectricityStored(itemStack), 0);
+        float energyToReceive = energy - rejectedElectricity;
 
-		if (energyToReceive > this.transferMax)
-		{
-			rejectedElectricity += energyToReceive - this.transferMax;
-			energyToReceive = this.transferMax;
-		}
-		if (doReceive)
-		{
-			this.setElectricity(itemStack, this.getElectricityStored(itemStack) + energyToReceive);
-		}
-		return energyToReceive;
-	}
+        if (energyToReceive > this.transferMax)
+        {
+            rejectedElectricity += energyToReceive - this.transferMax;
+            energyToReceive = this.transferMax;
+        }
+        if (doReceive)
+        {
+            this.setElectricity(itemStack, this.getElectricityStored(itemStack) + energyToReceive);
+        }
+        return energyToReceive;
+    }
 
-	@Override
-	public float discharge(ItemStack itemStack, float energy, boolean doTransfer)
-	{
-		float energyToTransfer = Math.min(Math.min(this.getElectricityStored(itemStack), energy), this.transferMax);
+    @Override
+    public float discharge(ItemStack itemStack, float energy, boolean doTransfer)
+    {
+        float energyToTransfer = Math.min(Math.min(this.getElectricityStored(itemStack), energy), this.transferMax);
 
-		if (doTransfer)
-		{
-			this.setElectricity(itemStack, this.getElectricityStored(itemStack) - energyToTransfer);
-		}
-		return energyToTransfer;
-	}
+        if (doTransfer)
+        {
+            this.setElectricity(itemStack, this.getElectricityStored(itemStack) - energyToTransfer);
+        }
+        return energyToTransfer;
+    }
 
-	@Override
-	public int getTierGC(ItemStack itemStack)
-	{
-		return 1;
-	}
+    @Override
+    public int getTierGC(ItemStack itemStack)
+    {
+        return 1;
+    }
 
-	@Override
-	public void setElectricity(ItemStack itemStack, float joules)
-	{
-		if (itemStack.getTagCompound() == null)
-		{
-			itemStack.setTagCompound(new NBTTagCompound());
-		}
-		float electricityStored = Math.max(Math.min(joules, this.getMaxElectricityStored(itemStack)), 0);
-		itemStack.getTagCompound().setFloat("electricity", electricityStored);
-		itemStack.setItemDamage((int) (100 - electricityStored / this.getMaxElectricityStored(itemStack) * 100));
-	}
+    @Override
+    public void setElectricity(ItemStack itemStack, float joules)
+    {
+        if (itemStack.getTagCompound() == null)
+        {
+            itemStack.setTagCompound(new NBTTagCompound());
+        }
+        float electricityStored = Math.max(Math.min(joules, this.getMaxElectricityStored(itemStack)), 0);
+        itemStack.getTagCompound().setFloat("electricity", electricityStored);
+        itemStack.setItemDamage((int) (100 - electricityStored / this.getMaxElectricityStored(itemStack) * 100));
+    }
 
-	@Override
-	public float getTransfer(ItemStack itemStack)
-	{
-		return Math.min(this.transferMax, this.getMaxElectricityStored(itemStack) - this.getElectricityStored(itemStack));
-	}
+    @Override
+    public float getTransfer(ItemStack itemStack)
+    {
+        return Math.min(this.transferMax, this.getMaxElectricityStored(itemStack) - this.getElectricityStored(itemStack));
+    }
 
-	@Override
-	public float getElectricityStored(ItemStack itemStack)
-	{
-		if (itemStack.getTagCompound() == null)
-		{
-			itemStack.setTagCompound(new NBTTagCompound());
-		}
+    @Override
+    public float getElectricityStored(ItemStack itemStack)
+    {
+        if (itemStack.getTagCompound() == null)
+        {
+            itemStack.setTagCompound(new NBTTagCompound());
+        }
 
-		float energyStored = 0f;
+        float energyStored = 0f;
 
-		if (itemStack.getTagCompound().hasKey("electricity"))
-		{
-			NBTBase obj = itemStack.getTagCompound().getTag("electricity");
+        if (itemStack.getTagCompound().hasKey("electricity"))
+        {
+            NBTBase obj = itemStack.getTagCompound().getTag("electricity");
 
-			if (obj instanceof NBTTagDouble)
-			{
-				energyStored = ((NBTTagDouble) obj).getFloat();
-			}
-			else if (obj instanceof NBTTagFloat)
-			{
-				energyStored = ((NBTTagFloat) obj).getFloat();
-			}
-		}
-		itemStack.setItemDamage((int) (100 - energyStored / this.getMaxElectricityStored(itemStack) * 100));
-		return energyStored;
-	}
+            if (obj instanceof NBTTagDouble)
+            {
+                energyStored = ((NBTTagDouble) obj).getFloat();
+            }
+            else if (obj instanceof NBTTagFloat)
+            {
+                energyStored = ((NBTTagFloat) obj).getFloat();
+            }
+        }
+        itemStack.setItemDamage((int) (100 - energyStored / this.getMaxElectricityStored(itemStack) * 100));
+        return energyStored;
+    }
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Override
-	public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
-	{
-		list.add(ElectricItemHelper.getUncharged(new ItemStack(this)));
-		list.add(ElectricItemHelper.getWithCharge(new ItemStack(this), this.getMaxElectricityStored(new ItemStack(this))));
-	}
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
+    {
+        list.add(ElectricItemHelper.getUncharged(new ItemStack(this)));
+        list.add(ElectricItemHelper.getWithCharge(new ItemStack(this), this.getMaxElectricityStored(new ItemStack(this))));
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpToolsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpToolsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        return false;
+    }
 
-	@RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
-	public double getEnergy(ItemStack itemStack)
-	{
-		return this.getElectricityStored(itemStack) * EnergyConfigHandler.TO_MEKANISM_RATIO;
-	}
+    @RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
+    public double getEnergy(ItemStack itemStack)
+    {
+        return this.getElectricityStored(itemStack) * EnergyConfigHandler.TO_MEKANISM_RATIO;
+    }
 
-	@RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
-	public void setEnergy(ItemStack itemStack, double amount)
-	{
-		this.setElectricity(itemStack, (float) amount * EnergyConfigHandler.MEKANISM_RATIO);
-	}
+    @RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
+    public void setEnergy(ItemStack itemStack, double amount)
+    {
+        this.setElectricity(itemStack, (float) amount * EnergyConfigHandler.MEKANISM_RATIO);
+    }
 
-	@RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
-	public double getMaxEnergy(ItemStack itemStack)
-	{
-		return this.getMaxElectricityStored(itemStack) * EnergyConfigHandler.TO_MEKANISM_RATIO;
-	}
+    @RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
+    public double getMaxEnergy(ItemStack itemStack)
+    {
+        return this.getMaxElectricityStored(itemStack) * EnergyConfigHandler.TO_MEKANISM_RATIO;
+    }
 
-	@RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
-	public double getMaxTransfer(ItemStack itemStack)
-	{
-		return this.transferMax * EnergyConfigHandler.TO_MEKANISM_RATIO;
-	}
+    @RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
+    public double getMaxTransfer(ItemStack itemStack)
+    {
+        return this.transferMax * EnergyConfigHandler.TO_MEKANISM_RATIO;
+    }
 
-	@RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
-	public boolean canReceive(ItemStack itemStack)
-	{
-		return itemStack != null && !(itemStack.getItem() instanceof ItemBatteryInfinite);
-	}
+    @RuntimeInterface(clazz = "mekanism.api.energy.IEnergizedItem", modID = "Mekanism")
+    public boolean canReceive(ItemStack itemStack)
+    {
+        return itemStack != null && !(itemStack.getItem() instanceof ItemBatteryInfinite);
+    }
 
-	/*@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    /*@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
 	public IElectricItemManager getManager(ItemStack itemstack)
 	{
 		return (IElectricItemManager)itemManagerIC2;
 	}*/
 
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public boolean canProvideEnergy(ItemStack itemStack)
-	{
-		return true;
-	}
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public boolean canProvideEnergy(ItemStack itemStack)
+    {
+        return true;
+    }
 
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public Item getChargedItem(ItemStack itemStack)
-	{
-		return itemStack.getItem();
-	}
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public Item getChargedItem(ItemStack itemStack)
+    {
+        return itemStack.getItem();
+    }
 
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public Item getEmptyItem(ItemStack itemStack)
-	{
-		return itemStack.getItem();
-	}
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public Item getEmptyItem(ItemStack itemStack)
+    {
+        return itemStack.getItem();
+    }
 
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public int getTier(ItemStack itemStack)
-	{
-		return 1;
-	}
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public int getTier(ItemStack itemStack)
+    {
+        return 1;
+    }
 
-	@VersionSpecific(version = "[1.7.10]")
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public double getMaxCharge(ItemStack itemStack)
-	{
-		return this.getMaxElectricityStored(itemStack) / EnergyConfigHandler.IC2_RATIO;
-	}
+    @VersionSpecific(version = "[1.7.10]")
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public double getMaxCharge(ItemStack itemStack)
+    {
+        return this.getMaxElectricityStored(itemStack) / EnergyConfigHandler.IC2_RATIO;
+    }
 
-	@AltForVersion(version = "[1.7.2]")
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public int getMaxChargeB(ItemStack itemStack)
-	{
-		return (int) (this.getMaxElectricityStored(itemStack) / EnergyConfigHandler.IC2_RATIO);
-	}
+    @AltForVersion(version = "[1.7.2]")
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public int getMaxChargeB(ItemStack itemStack)
+    {
+        return (int) (this.getMaxElectricityStored(itemStack) / EnergyConfigHandler.IC2_RATIO);
+    }
 
-	@VersionSpecific(version = "[1.7.10]")
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public double getTransferLimit(ItemStack itemStack)
-	{
-		return this.transferMax * EnergyConfigHandler.TO_IC2_RATIO;
-	}
+    @VersionSpecific(version = "[1.7.10]")
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public double getTransferLimit(ItemStack itemStack)
+    {
+        return this.transferMax * EnergyConfigHandler.TO_IC2_RATIO;
+    }
 
-	@VersionSpecific(version = "[1.7.2]")
-	@RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
-	public int getTransferLimitB(ItemStack itemStack)
-	{
-		return (int) (this.transferMax * EnergyConfigHandler.TO_IC2_RATIO);
-	}
+    @VersionSpecific(version = "[1.7.2]")
+    @RuntimeInterface(clazz = "ic2.api.item.ISpecialElectricItem", modID = "IC2")
+    public int getTransferLimitB(ItemStack itemStack)
+    {
+        return (int) (this.transferMax * EnergyConfigHandler.TO_IC2_RATIO);
+    }
 
-	static class SwitchDirtType
-	{
-		static int[] TYPE_LOOKUP = new int[BlockDirt.DirtType.values().length];
+    static class SwitchDirtType
+    {
+        static int[] TYPE_LOOKUP = new int[BlockDirt.DirtType.values().length];
 
-		static
-		{
-			try
-			{
-				TYPE_LOOKUP[BlockDirt.DirtType.DIRT.ordinal()] = 1;
-			}
-			catch (NoSuchFieldError var2)
-			{
-			}
+        static
+        {
+            try
+            {
+                TYPE_LOOKUP[BlockDirt.DirtType.DIRT.ordinal()] = 1;
+            }
+            catch (NoSuchFieldError var2)
+            {
+            }
 
-			try
-			{
-				TYPE_LOOKUP[BlockDirt.DirtType.COARSE_DIRT.ordinal()] = 2;
-			}
-			catch (NoSuchFieldError var1)
-			{
-			}
-		}
-	}
+            try
+            {
+                TYPE_LOOKUP[BlockDirt.DirtType.COARSE_DIRT.ordinal()] = 2;
+            }
+            catch (NoSuchFieldError var1)
+            {
+            }
+        }
+    }
 }

@@ -9,25 +9,25 @@ package stevekung.mods.moreplanets.planets.venus.world.gen.village;
 
 public class StructureVenusVillagePieceWeight
 {
-	public Class<? extends ComponentVenusVillage> villagePieceClass;
-	public int villagePieceWeight;
-	public int villagePiecesSpawned;
-	public int villagePiecesLimit;
+    public Class<? extends ComponentVenusVillage> villagePieceClass;
+    public int villagePieceWeight;
+    public int villagePiecesSpawned;
+    public int villagePiecesLimit;
 
-	public StructureVenusVillagePieceWeight(Class<? extends ComponentVenusVillage> component, int weight, int limit)
-	{
-		this.villagePieceClass = component;
-		this.villagePieceWeight = weight;
-		this.villagePiecesLimit = (int) (limit / 1.5D);
-	}
+    public StructureVenusVillagePieceWeight(Class<? extends ComponentVenusVillage> component, int weight, int limit)
+    {
+        this.villagePieceClass = component;
+        this.villagePieceWeight = weight;
+        this.villagePiecesLimit = (int) (limit / 1.5D);
+    }
 
-	public boolean canSpawnMoreVillagePiecesOfType()
-	{
-		return this.villagePiecesLimit == 0 || this.villagePiecesSpawned < this.villagePiecesLimit;
-	}
+    public boolean canSpawnMoreVillagePiecesOfType()
+    {
+        return this.villagePiecesLimit == 0 || this.villagePiecesSpawned < this.villagePiecesLimit;
+    }
 
-	public boolean canSpawnMoreVillagePieces()
-	{
-		return this.villagePiecesLimit == 0 || this.villagePiecesSpawned < this.villagePiecesLimit;
-	}
+    public boolean canSpawnMoreVillagePieces()
+    {
+        return this.villagePiecesLimit == 0 || this.villagePiecesSpawned < this.villagePiecesLimit;
+    }
 }

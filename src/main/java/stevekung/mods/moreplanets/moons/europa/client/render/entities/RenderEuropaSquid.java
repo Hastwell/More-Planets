@@ -22,55 +22,55 @@ import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
 @SideOnly(Side.CLIENT)
 public class RenderEuropaSquid extends RenderLiving
 {
-	private ResourceLocation squidTextures = new ResourceLocation("moreplanets:textures/entity/europa_squid.png");
-	private ResourceLocation squidTextures1 = new ResourceLocation("moreplanets:textures/entity/europa_squid_chemical.png");
+    private ResourceLocation squidTextures = new ResourceLocation("moreplanets:textures/entity/europa_squid.png");
+    private ResourceLocation squidTextures1 = new ResourceLocation("moreplanets:textures/entity/europa_squid_chemical.png");
 
-	public RenderEuropaSquid(RenderManager render)
-	{
-		super(render, new ModelSquid(), 0.7F);
-		this.addLayer(new LayerEuropaSquidEyes(this));
-	}
+    public RenderEuropaSquid(RenderManager render)
+    {
+        super(render, new ModelSquid(), 0.7F);
+        this.addLayer(new LayerEuropaSquidEyes(this));
+    }
 
-	protected void rotateCorpse(EntityEuropaSquid p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
-	{
-		float f3 = p_77043_1_.prevSquidPitch + (p_77043_1_.squidPitch - p_77043_1_.prevSquidPitch) * p_77043_4_;
-		float f4 = p_77043_1_.prevSquidYaw + (p_77043_1_.squidYaw - p_77043_1_.prevSquidYaw) * p_77043_4_;
-		GlStateManager.translate(0.0F, 0.5F, 0.0F);
-		GlStateManager.rotate(180.0F - p_77043_3_, 0.0F, 1.0F, 0.0F);
-		GlStateManager.rotate(f3, 1.0F, 0.0F, 0.0F);
-		GlStateManager.rotate(f4, 0.0F, 1.0F, 0.0F);
-		GlStateManager.translate(0.0F, -1.2F, 0.0F);
-	}
+    protected void rotateCorpse(EntityEuropaSquid p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
+    {
+        float f3 = p_77043_1_.prevSquidPitch + (p_77043_1_.squidPitch - p_77043_1_.prevSquidPitch) * p_77043_4_;
+        float f4 = p_77043_1_.prevSquidYaw + (p_77043_1_.squidYaw - p_77043_1_.prevSquidYaw) * p_77043_4_;
+        GlStateManager.translate(0.0F, 0.5F, 0.0F);
+        GlStateManager.rotate(180.0F - p_77043_3_, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(f3, 1.0F, 0.0F, 0.0F);
+        GlStateManager.rotate(f4, 0.0F, 1.0F, 0.0F);
+        GlStateManager.translate(0.0F, -1.2F, 0.0F);
+    }
 
-	protected float handleRotationFloat(EntityEuropaSquid p_77044_1_, float p_77044_2_)
-	{
-		return p_77044_1_.lastTentacleAngle + (p_77044_1_.tentacleAngle - p_77044_1_.lastTentacleAngle) * p_77044_2_;
-	}
+    protected float handleRotationFloat(EntityEuropaSquid p_77044_1_, float p_77044_2_)
+    {
+        return p_77044_1_.lastTentacleAngle + (p_77044_1_.tentacleAngle - p_77044_1_.lastTentacleAngle) * p_77044_2_;
+    }
 
-	@Override
-	protected float handleRotationFloat(EntityLivingBase p_77044_1_, float p_77044_2_)
-	{
-		return this.handleRotationFloat((EntityEuropaSquid)p_77044_1_, p_77044_2_);
-	}
+    @Override
+    protected float handleRotationFloat(EntityLivingBase p_77044_1_, float p_77044_2_)
+    {
+        return this.handleRotationFloat((EntityEuropaSquid)p_77044_1_, p_77044_2_);
+    }
 
-	@Override
-	protected void rotateCorpse(EntityLivingBase p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
-	{
-		this.rotateCorpse((EntityEuropaSquid)p_77043_1_, p_77043_2_, p_77043_3_, p_77043_4_);
-	}
+    @Override
+    protected void rotateCorpse(EntityLivingBase p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
+    {
+        this.rotateCorpse((EntityEuropaSquid)p_77043_1_, p_77043_2_, p_77043_3_, p_77043_4_);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		EntityEuropaSquid squid = (EntityEuropaSquid) entity;
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        EntityEuropaSquid squid = (EntityEuropaSquid) entity;
 
-		switch (squid.getSquidType())
-		{
-		case 0:
-		default:
-			return this.squidTextures;
-		case 1:
-			return this.squidTextures1;
-		}
-	}
+        switch (squid.getSquidType())
+        {
+        case 0:
+        default:
+            return this.squidTextures;
+        case 1:
+            return this.squidTextures1;
+        }
+    }
 }

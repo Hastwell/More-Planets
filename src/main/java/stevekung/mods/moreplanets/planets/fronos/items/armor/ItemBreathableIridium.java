@@ -15,43 +15,43 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class ItemBreathableIridium extends ItemBreathableArmor
 {
-	public ItemBreathableIridium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ItemBreathableIridium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == FronosArmorItems.breathable_iridium_helmet)
-		{
-			return "moreplanets:textures/model/armor/breathable_iridium.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == FronosArmorItems.breathable_iridium_helmet)
+        {
+            return "moreplanets:textures/model/armor/breathable_iridium.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return FronosItems.fronos_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return FronosItems.fronos_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 
-	@Override
-	protected EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    protected EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	protected Item getBreathableArmor()
-	{
-		return FronosArmorItems.breathable_iridium_helmet;
-	}
+    @Override
+    protected Item getBreathableArmor()
+    {
+        return FronosArmorItems.breathable_iridium_helmet;
+    }
 }

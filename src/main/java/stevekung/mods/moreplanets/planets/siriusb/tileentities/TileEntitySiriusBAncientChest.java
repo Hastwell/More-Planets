@@ -16,83 +16,83 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
 public class TileEntitySiriusBAncientChest extends TileEntityAncientChestMP
 {
-	@Override
-	public Block getAncientChestBlock()
-	{
-		return SiriusBBlocks.sirius_b_ancient_chest;
-	}
+    @Override
+    public Block getAncientChestBlock()
+    {
+        return SiriusBBlocks.sirius_b_ancient_chest;
+    }
 
-	@Override
-	public String getChestName()
-	{
-		return "Sirius B";
-	}
+    @Override
+    public String getChestName()
+    {
+        return "Sirius B";
+    }
 
-	@Override
-	public void checkForAdjacentChests()
-	{
-		if (!this.adjacentChestChecked)
-		{
-			this.adjacentChestChecked = true;
-			this.adjacentChestXNeg = this.checkSide(EnumFacing.WEST);
-			this.adjacentChestXPos = this.checkSide(EnumFacing.EAST);
-			this.adjacentChestZNeg = this.checkSide(EnumFacing.NORTH);
-			this.adjacentChestZPos = this.checkSide(EnumFacing.SOUTH);
-		}
-	}
+    @Override
+    public void checkForAdjacentChests()
+    {
+        if (!this.adjacentChestChecked)
+        {
+            this.adjacentChestChecked = true;
+            this.adjacentChestXNeg = this.checkSide(EnumFacing.WEST);
+            this.adjacentChestXPos = this.checkSide(EnumFacing.EAST);
+            this.adjacentChestZNeg = this.checkSide(EnumFacing.NORTH);
+            this.adjacentChestZPos = this.checkSide(EnumFacing.SOUTH);
+        }
+    }
 
-	protected TileEntitySiriusBAncientChest checkSide(EnumFacing side)
-	{
-		BlockPos blockpos = this.pos.offset(side);
+    protected TileEntitySiriusBAncientChest checkSide(EnumFacing side)
+    {
+        BlockPos blockpos = this.pos.offset(side);
 
-		if (this.func_174912_b(blockpos))
-		{
-			TileEntity tileentity = this.worldObj.getTileEntity(blockpos);
+        if (this.func_174912_b(blockpos))
+        {
+            TileEntity tileentity = this.worldObj.getTileEntity(blockpos);
 
-			if (tileentity instanceof TileEntitySiriusBAncientChest)
-			{
-				TileEntitySiriusBAncientChest tileentitychest = (TileEntitySiriusBAncientChest)tileentity;
-				tileentitychest.adjacentChestCheck(this, side.getOpposite());
-				return tileentitychest;
-			}
-		}
-		return null;
-	}
+            if (tileentity instanceof TileEntitySiriusBAncientChest)
+            {
+                TileEntitySiriusBAncientChest tileentitychest = (TileEntitySiriusBAncientChest)tileentity;
+                tileentitychest.adjacentChestCheck(this, side.getOpposite());
+                return tileentitychest;
+            }
+        }
+        return null;
+    }
 
-	private void adjacentChestCheck(TileEntitySiriusBAncientChest chest, EnumFacing side)
-	{
-		if (chest.isInvalid())
-		{
-			this.adjacentChestChecked = false;
-		}
-		else if (this.adjacentChestChecked)
-		{
-			switch (SwitchEnumFacing.field_177366_a[side.ordinal()])
-			{
-			case 1:
-				if (this.adjacentChestZNeg != chest)
-				{
-					this.adjacentChestChecked = false;
-				}
-				break;
-			case 2:
-				if (this.adjacentChestZPos != chest)
-				{
-					this.adjacentChestChecked = false;
-				}
-				break;
-			case 3:
-				if (this.adjacentChestXPos != chest)
-				{
-					this.adjacentChestChecked = false;
-				}
-				break;
-			case 4:
-				if (this.adjacentChestXNeg != chest)
-				{
-					this.adjacentChestChecked = false;
-				}
-			}
-		}
-	}
+    private void adjacentChestCheck(TileEntitySiriusBAncientChest chest, EnumFacing side)
+    {
+        if (chest.isInvalid())
+        {
+            this.adjacentChestChecked = false;
+        }
+        else if (this.adjacentChestChecked)
+        {
+            switch (SwitchEnumFacing.field_177366_a[side.ordinal()])
+            {
+            case 1:
+                if (this.adjacentChestZNeg != chest)
+                {
+                    this.adjacentChestChecked = false;
+                }
+                break;
+            case 2:
+                if (this.adjacentChestZPos != chest)
+                {
+                    this.adjacentChestChecked = false;
+                }
+                break;
+            case 3:
+                if (this.adjacentChestXPos != chest)
+                {
+                    this.adjacentChestChecked = false;
+                }
+                break;
+            case 4:
+                if (this.adjacentChestXNeg != chest)
+                {
+                    this.adjacentChestChecked = false;
+                }
+            }
+        }
+    }
 }

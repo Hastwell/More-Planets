@@ -21,34 +21,34 @@ import stevekung.mods.moreplanets.common.blocks.BlockIceMP;
 
 public class BlockFrozenNitrogen extends BlockIceMP
 {
-	public BlockFrozenNitrogen(String name)
-	{
-		super(Material.ice);
-		this.slipperiness = 1.1F;
-		this.setUnlocalizedName(name);
-		this.setHardness(4.0F);
-		this.setResistance(8.0F);
-	}
+    public BlockFrozenNitrogen(String name)
+    {
+        super(Material.ice);
+        this.slipperiness = 1.1F;
+        this.setUnlocalizedName(name);
+        this.setHardness(4.0F);
+        this.setResistance(8.0F);
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		ItemStack itemStack = player.getCurrentEquippedItem();
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        ItemStack itemStack = player.getCurrentEquippedItem();
+        player.addExhaustion(0.025F);
 
-		if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
-		{
-			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
-			player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 120, 1));
+        if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
+        {
+            player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
+            player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 120, 1));
 
-			if (world.rand.nextInt(10) == 0)
-			{
-				world.setBlockState(pos, PlutoBlocks.liquid_nitrogen.getDefaultState());
-			}
-		}
-		if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
-		{
-			this.dropBlockAsItem(world, pos, state, 0);
-		}
-	}
+            if (world.rand.nextInt(10) == 0)
+            {
+                world.setBlockState(pos, PlutoBlocks.liquid_nitrogen.getDefaultState());
+            }
+        }
+        if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
+        {
+            this.dropBlockAsItem(world, pos, state, 0);
+        }
+    }
 }

@@ -18,18 +18,18 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenSpaceShell extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-		for (int i = 0; i < 64; ++i)
-		{
-			if (world.isAirBlock(pos1) && (world.getBlockState(pos1.down()) == Blocks.sand.getDefaultState() || world.getBlockState(pos1.down()) == FronosBlocks.fronos_sand.getDefaultState().withProperty(BlockFronosSand.VARIANT, BlockFronosSand.BlockType.white_sand)) && FronosBlocks.space_shell.canPlaceBlockAt(world, pos1))
-			{
-				world.setBlockState(pos1, FronosBlocks.space_shell.getStateFromMeta(rand.nextInt(16)), 2);
-			}
-		}
-		return true;
-	}
+        for (int i = 0; i < 64; ++i)
+        {
+            if (world.isAirBlock(pos1) && (world.getBlockState(pos1.down()) == Blocks.sand.getDefaultState() || world.getBlockState(pos1.down()) == FronosBlocks.fronos_sand.getDefaultState().withProperty(BlockFronosSand.VARIANT, BlockFronosSand.BlockType.white_sand)) && FronosBlocks.space_shell.canPlaceBlockAt(world, pos1))
+            {
+                world.setBlockState(pos1, FronosBlocks.space_shell.getStateFromMeta(rand.nextInt(16)), 2);
+            }
+        }
+        return true;
+    }
 }

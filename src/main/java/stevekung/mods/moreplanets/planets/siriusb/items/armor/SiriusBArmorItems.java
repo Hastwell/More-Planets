@@ -14,29 +14,29 @@ import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class SiriusBArmorItems
 {
-	public static Item sulfur_helmet;
-	public static Item sulfur_chestplate;
-	public static Item sulfur_leggings;
-	public static Item sulfur_boots;
-	public static Item breathable_sulfur_helmet;
+    public static Item sulfur_helmet;
+    public static Item sulfur_chestplate;
+    public static Item sulfur_leggings;
+    public static Item sulfur_boots;
+    public static Item breathable_sulfur_helmet;
 
-	// Name,Durability,ReductionAmounts[Helm,Chest,Leg,Boot],Enchantability
-	public static ArmorMaterial sulfur = EnumHelper.addArmorMaterial("sulfur", "sulfur", 26, new int[] { 6, 9, 8, 4 }, 16);
+    // Name,Durability,ReductionAmounts[Helm,Chest,Leg,Boot],Enchantability
+    public static ArmorMaterial sulfur = EnumHelper.addArmorMaterial("sulfur", "sulfur", 26, new int[] { 6, 9, 8, 4 }, 16);
 
-	public static void init()
-	{
-		// Init
-		SiriusBArmorItems.sulfur_helmet = new ArmorSulfur("sulfur_helmet", SiriusBArmorItems.sulfur, 7, 0);
-		SiriusBArmorItems.sulfur_chestplate = new ArmorSulfur("sulfur_chestplate", SiriusBArmorItems.sulfur, 7, 1);
-		SiriusBArmorItems.sulfur_leggings = new ArmorSulfur("sulfur_leggings", SiriusBArmorItems.sulfur, 7, 2);
-		SiriusBArmorItems.sulfur_boots = new ArmorSulfur("sulfur_boots", SiriusBArmorItems.sulfur, 7, 3);
-		SiriusBArmorItems.breathable_sulfur_helmet = new ArmorBreathableSulfur("breathable_sulfur_helmet", SiriusBArmorItems.sulfur, 7, 0);
+    public static void init()
+    {
+        // Init
+        SiriusBArmorItems.sulfur_helmet = new ArmorSulfur("sulfur_helmet", SiriusBArmorItems.sulfur, 7, 0);
+        SiriusBArmorItems.sulfur_chestplate = new ArmorSulfur("sulfur_chestplate", SiriusBArmorItems.sulfur, 7, 1);
+        SiriusBArmorItems.sulfur_leggings = new ArmorSulfur("sulfur_leggings", SiriusBArmorItems.sulfur, 7, 2);
+        SiriusBArmorItems.sulfur_boots = new ArmorSulfur("sulfur_boots", SiriusBArmorItems.sulfur, 7, 3);
+        SiriusBArmorItems.breathable_sulfur_helmet = new ArmorBreathableSulfur("breathable_sulfur_helmet", SiriusBArmorItems.sulfur, 7, 0);
 
-		// Register
-		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_helmet);
-		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_chestplate);
-		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_leggings);
-		CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_boots);
-		CommonRegisterHelper.registerItem(SiriusBArmorItems.breathable_sulfur_helmet);
-	}
+        // Register
+        CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_helmet);
+        CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_chestplate);
+        CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_leggings);
+        CommonRegisterHelper.registerItem(SiriusBArmorItems.sulfur_boots);
+        CommonRegisterHelper.registerItem(SiriusBArmorItems.breathable_sulfur_helmet);
+    }
 }

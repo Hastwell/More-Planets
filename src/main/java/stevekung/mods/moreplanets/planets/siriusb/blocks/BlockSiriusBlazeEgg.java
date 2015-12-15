@@ -15,23 +15,23 @@ import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusBlaze;
 
 public class BlockSiriusBlazeEgg extends BlockEggMP
 {
-	public BlockSiriusBlazeEgg(String name)
-	{
-		super();
-		this.setLightLevel(1.0F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockSiriusBlazeEgg(String name)
+    {
+        super();
+        this.setLightLevel(1.0F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
-	{
-		if (!world.isRemote)
-		{
-			EntitySiriusBlaze blaze = new EntitySiriusBlaze(world);
-			blaze.setPosition(pos.getX() + 0.5D, pos.getY() + 1.0D, pos.getZ() + 0.5D);
-			world.spawnEntityInWorld(blaze);
-		}
-		world.setBlockToAir(pos);
-		this.onBlockDestroyedByExplosion(world, pos, explosion);
-	}
+    @Override
+    public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
+    {
+        if (!world.isRemote)
+        {
+            EntitySiriusBlaze blaze = new EntitySiriusBlaze(world);
+            blaze.setPosition(pos.getX() + 0.5D, pos.getY() + 1.0D, pos.getZ() + 0.5D);
+            world.spawnEntityInWorld(blaze);
+        }
+        world.setBlockToAir(pos);
+        this.onBlockDestroyedByExplosion(world, pos, explosion);
+    }
 }

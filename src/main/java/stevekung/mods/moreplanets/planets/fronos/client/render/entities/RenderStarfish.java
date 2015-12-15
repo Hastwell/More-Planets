@@ -18,16 +18,16 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelStarfish;
 @SideOnly(Side.CLIENT)
 public class RenderStarfish extends RenderLiving
 {
-	private ResourceLocation starfishTextures = new ResourceLocation("moreplanets:textures/entity/space_starfish.png");
+    private ResourceLocation starfishTextures = new ResourceLocation("moreplanets:textures/entity/space_starfish.png");
 
-	public RenderStarfish(RenderManager render)
-	{
-		super(render, new ModelStarfish(), 0.3F);
-	}
+    public RenderStarfish(RenderManager render)
+    {
+        super(render, new ModelStarfish(), 0.3F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.starfishTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.starfishTextures;
+    }
 }

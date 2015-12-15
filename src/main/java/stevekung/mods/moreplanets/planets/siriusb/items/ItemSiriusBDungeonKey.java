@@ -13,16 +13,16 @@ import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
 public class ItemSiriusBDungeonKey extends ItemMorePlanets implements IKeyItem
 {
-	public ItemSiriusBDungeonKey(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemSiriusBDungeonKey(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int getTier(ItemStack itemStack)
-	{
-		return 8;
-	}
+    @Override
+    public int getTier(ItemStack itemStack)
+    {
+        return 8;
+    }
 }

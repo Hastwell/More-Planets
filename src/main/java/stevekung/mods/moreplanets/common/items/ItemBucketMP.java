@@ -14,28 +14,28 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class ItemBucketMP extends ItemBucket
 {
-	public ItemBucketMP(String name, Block fluid, Item bucket)
-	{
-		super(fluid);
-		this.setUnlocalizedName(name);
+    public ItemBucketMP(String name, Block fluid, Item bucket)
+    {
+        super(fluid);
+        this.setUnlocalizedName(name);
 
-		if (bucket == null)
-		{
-			this.setContainerItem(Items.bucket);
-		}
-		this.setContainerItem(bucket);
-	}
+        if (bucket == null)
+        {
+            this.setContainerItem(Items.bucket);
+        }
+        this.setContainerItem(bucket);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

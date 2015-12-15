@@ -19,17 +19,17 @@ import stevekung.mods.moreplanets.planets.fronos.client.render.entities.layers.L
 @SideOnly(Side.CLIENT)
 public class RenderTomato extends RenderLiving
 {
-	private ResourceLocation tomatoTextures = new ResourceLocation("moreplanets:textures/entity/tomato.png");
+    private ResourceLocation tomatoTextures = new ResourceLocation("moreplanets:textures/entity/tomato.png");
 
-	public RenderTomato(RenderManager render)
-	{
-		super(render, new ModelTomato(), 0.75F);
-		this.addLayer(new LayerTomato(this));
-	}
+    public RenderTomato(RenderManager render)
+    {
+        super(render, new ModelTomato(), 0.75F);
+        this.addLayer(new LayerTomato(this));
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.tomatoTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.tomatoTextures;
+    }
 }

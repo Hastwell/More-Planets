@@ -23,31 +23,31 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 @SideOnly(Side.CLIENT)
 public class RenderCreamBall extends Render
 {
-	public RenderCreamBall(RenderManager render)
-	{
-		super(render);
-	}
+    public RenderCreamBall(RenderManager render)
+    {
+        super(render);
+    }
 
-	@Override
-	public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		EntityCreamBall cream = (EntityCreamBall) entity;
-		GlStateManager.pushMatrix();
-		GlStateManager.translate((float)x, (float)y, (float)z);
-		GlStateManager.enableRescaleNormal();
-		GlStateManager.scale(0.5F, 0.5F, 0.5F);
-		GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
-		GlStateManager.rotate(this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
-		this.bindTexture(TextureMap.locationBlocksTexture);
-		Minecraft.getMinecraft().getRenderItem().renderItemModel(new ItemStack(FronosItems.cream_ball, 1, cream.getCreamBallType()));
-		GlStateManager.disableRescaleNormal();
-		GlStateManager.popMatrix();
-		super.doRender(entity, x, y, z, par5, partialTicks);
-	}
+    @Override
+    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        EntityCreamBall cream = (EntityCreamBall) entity;
+        GlStateManager.pushMatrix();
+        GlStateManager.translate((float)x, (float)y, (float)z);
+        GlStateManager.enableRescaleNormal();
+        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+        GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
+        this.bindTexture(TextureMap.locationBlocksTexture);
+        Minecraft.getMinecraft().getRenderItem().renderItemModel(new ItemStack(FronosItems.cream_ball, 1, cream.getCreamBallType()));
+        GlStateManager.disableRescaleNormal();
+        GlStateManager.popMatrix();
+        super.doRender(entity, x, y, z, par5, partialTicks);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return TextureMap.locationBlocksTexture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return TextureMap.locationBlocksTexture;
+    }
 }

@@ -12,20 +12,20 @@ import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockNibiruLeaves extends ItemBlockBaseMP
 {
-	public ItemBlockNibiruLeaves(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockNibiruLeaves(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta | 4;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta | 4;
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "ancient_dark_leaves", "orange_leaves" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "ancient_dark_leaves", "orange_leaves" };
+    }
 }

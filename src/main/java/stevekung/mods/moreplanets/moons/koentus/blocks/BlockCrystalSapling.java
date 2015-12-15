@@ -21,57 +21,57 @@ import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 
 public class BlockCrystalSapling extends BlockSaplingMP
 {
-	public BlockCrystalSapling(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockCrystalSapling(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
-		return block == Blocks.grass || block == Blocks.dirt || block == KoentusBlocks.crystal_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
+        return block == Blocks.grass || block == Blocks.dirt || block == KoentusBlocks.crystal_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		super.updateTick(world, pos, state, rand);
-		this.canBlockStay(world, pos, state);
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        super.updateTick(world, pos, state, rand);
+        this.canBlockStay(world, pos, state);
 
-		if (!world.isRemote)
-		{
-			if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0)
-			{
-				this.grow(world, rand, pos, state);
-			}
-		}
-	}
+        if (!world.isRemote)
+        {
+            if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0)
+            {
+                this.grow(world, rand, pos, state);
+            }
+        }
+    }
 
-	@Override
-	public void grow(World world, Random rand, BlockPos pos, IBlockState state)
-	{
-		Object obj = null;
+    @Override
+    public void grow(World world, Random rand, BlockPos pos, IBlockState state)
+    {
+        Object obj = null;
 
-		if (obj == null)
-		{
-			obj = new WorldGenTreeMP(6, KoentusBlocks.crystal_log, KoentusBlocks.crystal_leaves, 0, 0, false, this, null);
-		}
-		if (obj != null)
-		{
-			world.setBlockToAir(pos);
+        if (obj == null)
+        {
+            obj = new WorldGenTreeMP(6, KoentusBlocks.crystal_log, KoentusBlocks.crystal_leaves, 0, 0, false, this, null);
+        }
+        if (obj != null)
+        {
+            world.setBlockToAir(pos);
 
-			if (!((WorldGenerator)obj).generate(world, rand, pos))
-			{
-				world.setBlockState(pos, state, 2);
-			}
-		}
-	}
+            if (!((WorldGenerator)obj).generate(world, rand, pos))
+            {
+                world.setBlockState(pos, state, 2);
+            }
+        }
+    }
 
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos)
-	{
-		return false;
-	}
+    @Override
+    public boolean isReplaceable(World world, BlockPos pos)
+    {
+        return false;
+    }
 }

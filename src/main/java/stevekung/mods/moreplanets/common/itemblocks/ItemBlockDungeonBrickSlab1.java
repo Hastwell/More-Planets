@@ -8,19 +8,19 @@
 package stevekung.mods.moreplanets.common.itemblocks;
 
 import net.minecraft.block.Block;
-import stevekung.mods.moreplanets.common.blocks.BlockDoubleDungeonBrickSlab1;
-import stevekung.mods.moreplanets.common.blocks.BlockDungeonBrickSlab1;
+import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleDungeonBrickSlab1;
+import stevekung.mods.moreplanets.common.blocks.other.BlockDungeonBrickSlab1;
 
 public class ItemBlockDungeonBrickSlab1 extends ItemBlockSlabMP
 {
-	public ItemBlockDungeonBrickSlab1(Block block, BlockDungeonBrickSlab1 singleSlab, BlockDoubleDungeonBrickSlab1 doubleSlab)
-	{
-		super(block, singleSlab, doubleSlab);
-	}
+    public ItemBlockDungeonBrickSlab1(Block block, BlockDungeonBrickSlab1 singleSlab, BlockDoubleDungeonBrickSlab1 doubleSlab)
+    {
+        super(block, singleSlab, doubleSlab);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "diona_dungeon_brick", "polongnius_dungeon_brick", "nibiru_dungeon_brick", "koentus_dungeon_brick", "fronos_dungeon_brick", "kapteyn_b_dungeon_brick", "sirius_b_dungeon_brick", "mercury_dungeon_brick" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "diona_dungeon_brick", "polongnius_dungeon_brick", "nibiru_dungeon_brick", "koentus_dungeon_brick", "fronos_dungeon_brick", "kapteyn_b_dungeon_brick", "sirius_b_dungeon_brick", "mercury_dungeon_brick" };
+    }
 }

@@ -26,89 +26,89 @@ import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 
 public class BlockCandyFlower extends BlockBushMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockCandyFlower(String name)
-	{
-		super();
-		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 0.8F, 0.7F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.pink_candy_flower));
-		this.setUnlocalizedName(name);
-	}
+    public BlockCandyFlower(String name)
+    {
+        super();
+        this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 0.8F, 0.7F);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.pink_candy_flower));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 7; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 7; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
-	{
-		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.frosted_cake;
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+    {
+        return world.getBlockState(pos.down()).getBlock() == FronosBlocks.frosted_cake;
+    }
 
-	@Override
-	public boolean canPlaceBlockOn(Block ground)
-	{
-		return ground == FronosBlocks.frosted_cake;
-	}
+    @Override
+    public boolean canPlaceBlockOn(Block ground)
+    {
+        return ground == FronosBlocks.frosted_cake;
+    }
 
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos)
-	{
-		return false;
-	}
+    @Override
+    public boolean isReplaceable(World world, BlockPos pos)
+    {
+        return false;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		pink_candy_flower,
-		orange_candy_flower,
-		green_candy_flower,
-		yellow_candy_flower,
-		light_blue_candy_flower,
-		blue_candy_flower,
-		red_candy_flower,
-		purple_candy_flower;
+    public static enum BlockType implements IStringSerializable
+    {
+        pink_candy_flower,
+        orange_candy_flower,
+        green_candy_flower,
+        yellow_candy_flower,
+        light_blue_candy_flower,
+        blue_candy_flower,
+        red_candy_flower,
+        purple_candy_flower;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

@@ -17,32 +17,32 @@ import stevekung.mods.moreplanets.plugin.asm.MorePlanetsTransformer.Logger;
 @TransformerExclusions("stevekung.mods.moreplanets.plugin.asm")
 public class MorePlanetsPlugin implements IFMLLoadingPlugin
 {
-	@Override
-	public String[] getASMTransformerClass()
-	{
-		Logger.info("Calling tweak class " + MorePlanetsPlugin.class.getName());
-		return new String[] { MorePlanetsTransformer.class.getName() };
-	}
+    @Override
+    public String[] getASMTransformerClass()
+    {
+        Logger.info("Calling tweak class " + MorePlanetsPlugin.class.getName());
+        return new String[] { MorePlanetsTransformer.class.getName() };
+    }
 
-	@Override
-	public String getModContainerClass()
-	{
-		return "stevekung.mods.moreplanets.plugin.asm.MorePlanetsModContainer";
-	}
+    @Override
+    public String getModContainerClass()
+    {
+        return "stevekung.mods.moreplanets.plugin.asm.MorePlanetsModContainer";
+    }
 
-	@Override
-	public String getSetupClass()
-	{
-		return null;
-	}
+    @Override
+    public String getSetupClass()
+    {
+        return null;
+    }
 
-	@Override
-	public void injectData(Map<String, Object> data) {}
+    @Override
+    public void injectData(Map<String, Object> data) {}
 
-	@Override
-	public String getAccessTransformerClass()
-	{
-		Logger.info("Calling access transformer class " + MorePlanetsAccessTransformer.class.getName());
-		return MorePlanetsAccessTransformer.class.getName();
-	}
+    @Override
+    public String getAccessTransformerClass()
+    {
+        Logger.info("Calling access transformer class " + MorePlanetsAccessTransformer.class.getName());
+        return MorePlanetsAccessTransformer.class.getName();
+    }
 }

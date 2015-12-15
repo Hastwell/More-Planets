@@ -22,59 +22,59 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockAlienLeaves extends BlockLeavesMP
 {
-	public BlockAlienLeaves(String name)
-	{
-		super();
-		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
-		this.setUnlocalizedName(name);
-	}
+    public BlockAlienLeaves(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(DarkAsteroidBlocks.alien_sapling);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(DarkAsteroidBlocks.alien_sapling);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 0;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 0;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { BlockStateHelper.DECAYABLE, BlockStateHelper.CHECK_DECAY });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { BlockStateHelper.DECAYABLE, BlockStateHelper.CHECK_DECAY });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+    }
 
-	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
-	{
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(this, 1, 0));
-		return ret;
-	}
+    @Override
+    public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
+    {
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ret.add(new ItemStack(this, 1, 0));
+        return ret;
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		byte b0 = 0;
-		int i = b0 | 1;
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        byte b0 = 0;
+        int i = b0 | 1;
 
-		if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
-		{
-			i |= 4;
-		}
-		if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
-		{
-			i |= 8;
-		}
-		return i;
-	}
+        if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
+        {
+            i |= 4;
+        }
+        if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
+        {
+            i |= 8;
+        }
+        return i;
+    }
 }

@@ -12,25 +12,25 @@ import stevekung.mods.moreplanets.common.util.VariantsName;
 
 public class ItemBlockMultiVariant extends ItemBlockBaseMP
 {
-	private String[] name;
-	private boolean reverse;
+    private String[] name;
+    private boolean reverse;
 
-	public ItemBlockMultiVariant(Block block, VariantsName name)
-	{
-		super(block);
-		this.name = name.getStringList();
-		this.reverse = name.isReverseName();
-	}
+    public ItemBlockMultiVariant(Block block, VariantsName name)
+    {
+        super(block);
+        this.name = name.getStringList();
+        this.reverse = name.isReverseName();
+    }
 
-	@Override
-	protected String[] getBlockVariantsName()
-	{
-		return this.name;
-	}
+    @Override
+    protected String[] getBlockVariantsName()
+    {
+        return this.name;
+    }
 
-	@Override
-	protected boolean reverseName()
-	{
-		return this.reverse;
-	}
+    @Override
+    protected boolean reverseName()
+    {
+        return this.reverse;
+    }
 }

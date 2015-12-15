@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 
 public class TileEntityDionaTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityDionaTreasureChest()
-	{
-		super(4, "diona", DionaBlocks.diona_treasure_chest);
-	}
+    public TileEntityDionaTreasureChest()
+    {
+        super(4, "diona", DionaBlocks.diona_treasure_chest);
+    }
 }

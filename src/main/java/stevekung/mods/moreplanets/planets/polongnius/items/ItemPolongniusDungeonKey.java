@@ -13,16 +13,16 @@ import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
 public class ItemPolongniusDungeonKey extends ItemMorePlanets implements IKeyItem
 {
-	public ItemPolongniusDungeonKey(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemPolongniusDungeonKey(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int getTier(ItemStack itemStack)
-	{
-		return 5;
-	}
+    @Override
+    public int getTier(ItemStack itemStack)
+    {
+        return 5;
+    }
 }

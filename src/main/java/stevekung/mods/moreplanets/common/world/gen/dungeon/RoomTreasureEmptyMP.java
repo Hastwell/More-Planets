@@ -17,36 +17,36 @@ import net.minecraft.world.chunk.ChunkPrimer;
 
 public class RoomTreasureEmptyMP extends DungeonRoom
 {
-	int sizeX;
-	int sizeZ;
+    int sizeX;
+    int sizeZ;
 
-	public RoomTreasureEmptyMP(MapGenDungeon dungeon, int posX, int posY, int posZ, EnumFacing entranceDir)
-	{
-		super(dungeon, posX, posY, posZ, entranceDir);
+    public RoomTreasureEmptyMP(MapGenDungeon dungeon, int posX, int posY, int posZ, EnumFacing entranceDir)
+    {
+        super(dungeon, posX, posY, posZ, entranceDir);
 
-		if (this.worldObj != null)
-		{
-			Random rand = new Random(this.worldObj.getSeed() * posX * posY * 57 * posZ);
-			this.sizeX = rand.nextInt(6) + 7;
-			this.sizeZ = rand.nextInt(6) + 7;
-		}
-	}
+        if (this.worldObj != null)
+        {
+            Random rand = new Random(this.worldObj.getSeed() * posX * posY * 57 * posZ);
+            this.sizeX = rand.nextInt(6) + 7;
+            this.sizeZ = rand.nextInt(6) + 7;
+        }
+    }
 
-	@Override
-	public void generate(ChunkPrimer chunk, int cx, int cz) {}
+    @Override
+    public void generate(ChunkPrimer chunk, int cx, int cz) {}
 
-	@Override
-	public DungeonBoundingBox getBoundingBox()
-	{
-		return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
-	}
+    @Override
+    public DungeonBoundingBox getBoundingBox()
+    {
+        return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
+    }
 
-	@Override
-	protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, EnumFacing dir)
-	{
-		return new RoomTreasureEmptyMP(dungeon, x, y, z, dir);
-	}
+    @Override
+    protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, EnumFacing dir)
+    {
+        return new RoomTreasureEmptyMP(dungeon, x, y, z, dir);
+    }
 
-	@Override
-	protected void handleTileEntities(Random rand) {}
+    @Override
+    protected void handleTileEntities(Random rand) {}
 }

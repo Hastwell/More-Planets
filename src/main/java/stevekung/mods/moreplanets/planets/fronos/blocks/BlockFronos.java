@@ -33,206 +33,206 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockFronos extends BlockPlanetTileMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockFronos(String name)
-	{
-		super(Material.rock);
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_rock));
-	}
+    public BlockFronos(String name)
+    {
+        super(Material.rock);
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_rock));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 15; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 15; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public float getBlockHardness(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
+    @Override
+    public float getBlockHardness(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos).getBlock();
 
-		if (!(block instanceof BlockFronos))
-		{
-			return 0;
-		}
+        if (!(block instanceof BlockFronos))
+        {
+            return 0;
+        }
 
-		switch (this.getMetaFromState(world.getBlockState(pos)))
-		{
-		case 0:
-		case 11:
-		case 12:
-		case 13:
-			return 1.5F;
-		case 14:
-			return 4.0F;
-		default:
-			return 2.0F;
-		}
-	}
+        switch (this.getMetaFromState(world.getBlockState(pos)))
+        {
+        case 0:
+        case 11:
+        case 12:
+        case 13:
+            return 1.5F;
+        case 14:
+            return 4.0F;
+        default:
+            return 2.0F;
+        }
+    }
 
-	@Override
-	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
-	{
-		int meta = this.getMetaFromState(world.getBlockState(pos));
+    @Override
+    public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
+    {
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta <= 1 || meta >= 11 && meta <= 13)
-		{
-			return 6.0F;
-		}
-		if (meta >= 2 && meta <= 10)
-		{
-			return 5.0F;
-		}
-		if (meta == 14)
-		{
-			return 40.0F;
-		}
-		return super.getExplosionResistance(world, pos, entity, explosion);
-	}
+        if (meta <= 1 || meta >= 11 && meta <= 13)
+        {
+            return 6.0F;
+        }
+        if (meta >= 2 && meta <= 10)
+        {
+            return 5.0F;
+        }
+        if (meta == 14)
+        {
+            return 40.0F;
+        }
+        return super.getExplosionResistance(world, pos, entity, explosion);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		int meta = this.getMetaFromState(state);
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        int meta = this.getMetaFromState(state);
 
-		if (meta == 3)
-		{
-			return Items.coal;
-		}
-		if (meta == 7)
-		{
-			return Items.dye;
-		}
-		if (meta == 8 || meta == 9)
-		{
-			return FronosItems.fronos_item;
-		}
-		return Item.getItemFromBlock(this);
-	}
+        if (meta == 3)
+        {
+            return Items.coal;
+        }
+        if (meta == 7)
+        {
+            return Items.dye;
+        }
+        if (meta == 8 || meta == 9)
+        {
+            return FronosItems.fronos_item;
+        }
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		int meta = this.getMetaFromState(state);
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
 
-		if (meta == 0)
-		{
-			return 1;
-		}
-		if (meta == 3 || meta == 8)
-		{
-			return 0;
-		}
-		if (meta == 7)
-		{
-			return 4;
-		}
-		if (meta == 9)
-		{
-			return 2;
-		}
-		return meta;
-	}
+        if (meta == 0)
+        {
+            return 1;
+        }
+        if (meta == 3 || meta == 8)
+        {
+            return 0;
+        }
+        if (meta == 7)
+        {
+            return 4;
+        }
+        if (meta == 9)
+        {
+            return 2;
+        }
+        return meta;
+    }
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random rand)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.fronos_lapis_ore))
-		{
-			if (fortune > 0)
-			{
-				int j = rand.nextInt(fortune + 2) - 1;
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random rand)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.fronos_lapis_ore))
+        {
+            if (fortune > 0)
+            {
+                int j = rand.nextInt(fortune + 2) - 1;
 
-				if (j < 0)
-				{
-					j = 0;
-				}
-				return 4 + rand.nextInt(5) * (j + 1);
-			}
-			else
-			{
-				return 4 + rand.nextInt(5);
-			}
-		}
-		return super.quantityDropped(state, fortune, rand);
-	}
+                if (j < 0)
+                {
+                    j = 0;
+                }
+                return 4 + rand.nextInt(5) * (j + 1);
+            }
+            else
+            {
+                return 4 + rand.nextInt(5);
+            }
+        }
+        return super.quantityDropped(state, fortune, rand);
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		return this.getMetaFromState(state) >= 2 && this.getMetaFromState(state) <= 10;
-	}
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        return this.getMetaFromState(state) >= 2 && this.getMetaFromState(state) <= 10;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		return false;
-	}
+    @Override
+    public boolean isTerraformable(World world, BlockPos pos)
+    {
+        return false;
+    }
 
-	@Override
-	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
-	{
-		int xp = MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
+    @Override
+    public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState state, float chance, int fortune)
+    {
+        int xp = MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
 
-		if (state == state.withProperty(VARIANT, BlockType.fronos_lapis_ore))
-		{
-			this.dropXpOnBlockBreak(world, pos, xp);
-		}
-		super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
-	}
+        if (state == state.withProperty(VARIANT, BlockType.fronos_lapis_ore))
+        {
+            this.dropXpOnBlockBreak(world, pos, xp);
+        }
+        super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		fronos_rock,
-		fronos_cobblestone,
-		fronos_iron_ore,
-		fronos_coal_ore,
-		fronos_aluminum_ore,
-		fronos_tin_ore,
-		fronos_copper_ore,
-		fronos_lapis_ore,
-		mineral_crystal_ore,
-		black_diamond_ore,
-		iridium_ore,
-		fronos_stone_brick,
-		cracked_fronos_stone_brick,
-		chiseled_fronos_stone_brick,
-		fronos_dungeon_brick;
+    public static enum BlockType implements IStringSerializable
+    {
+        fronos_rock,
+        fronos_cobblestone,
+        fronos_iron_ore,
+        fronos_coal_ore,
+        fronos_aluminum_ore,
+        fronos_tin_ore,
+        fronos_copper_ore,
+        fronos_lapis_ore,
+        mineral_crystal_ore,
+        black_diamond_ore,
+        iridium_ore,
+        fronos_stone_brick,
+        cracked_fronos_stone_brick,
+        chiseled_fronos_stone_brick,
+        fronos_dungeon_brick;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

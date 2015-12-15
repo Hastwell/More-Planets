@@ -13,21 +13,21 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockColoredMP extends ItemBlockMorePlanets
 {
-	public ItemBlockColoredMP(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockColoredMP(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		return super.getUnlocalizedName() + "." + EnumDyeColor.byMetadata(itemStack.getMetadata()).getUnlocalizedName();
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        return super.getUnlocalizedName() + "." + EnumDyeColor.byMetadata(itemStack.getMetadata()).getUnlocalizedName();
+    }
 }

@@ -21,117 +21,117 @@ import codechicken.nei.recipe.GuiRecipe;
 
 public class CandyExtractorFuelRecipeHandler extends CandyExtractorRecipeHandler
 {
-	public class CachedFuelRecipe extends CachedRecipe
-	{
-		public FuelPair fuel;
+    public class CachedFuelRecipe extends CachedRecipe
+    {
+        public FuelPair fuel;
 
-		public CachedFuelRecipe(FuelPair fuel)
-		{
-			this.fuel = fuel;
-		}
+        public CachedFuelRecipe(FuelPair fuel)
+        {
+            this.fuel = fuel;
+        }
 
-		@Override
-		public PositionedStack getIngredient()
-		{
-			return CandyExtractorFuelRecipeHandler.this.mfurnace.get(CandyExtractorFuelRecipeHandler.this.cycleticks / 48 % CandyExtractorFuelRecipeHandler.this.mfurnace.size()).ingred;
-		}
+        @Override
+        public PositionedStack getIngredient()
+        {
+            return CandyExtractorFuelRecipeHandler.this.mfurnace.get(CandyExtractorFuelRecipeHandler.this.cycleticks / 48 % CandyExtractorFuelRecipeHandler.this.mfurnace.size()).ingred;
+        }
 
-		@Override
-		public PositionedStack getResult()
-		{
-			return CandyExtractorFuelRecipeHandler.this.mfurnace.get(CandyExtractorFuelRecipeHandler.this.cycleticks / 48 % CandyExtractorFuelRecipeHandler.this.mfurnace.size()).result;
-		}
+        @Override
+        public PositionedStack getResult()
+        {
+            return CandyExtractorFuelRecipeHandler.this.mfurnace.get(CandyExtractorFuelRecipeHandler.this.cycleticks / 48 % CandyExtractorFuelRecipeHandler.this.mfurnace.size()).result;
+        }
 
-		@Override
-		public PositionedStack getOtherStack()
-		{
-			return this.fuel.stack;
-		}
-	}
+        @Override
+        public PositionedStack getOtherStack()
+        {
+            return this.fuel.stack;
+        }
+    }
 
-	private ArrayList<SmeltingPair> mfurnace = new ArrayList<CandyExtractorRecipeHandler.SmeltingPair>();
+    private ArrayList<SmeltingPair> mfurnace = new ArrayList<CandyExtractorRecipeHandler.SmeltingPair>();
 
-	public CandyExtractorFuelRecipeHandler()
-	{
-		super();
-		this.loadAllSmelting();
-	}
+    public CandyExtractorFuelRecipeHandler()
+    {
+        super();
+        this.loadAllSmelting();
+    }
 
-	@Override
-	public String getRecipeName()
-	{
-		return EnumChatFormatting.DARK_BLUE + "Candy Extractor Fuel";
-	}
+    @Override
+    public String getRecipeName()
+    {
+        return EnumChatFormatting.DARK_BLUE + "Candy Extractor Fuel";
+    }
 
-	private void loadAllSmelting()
-	{
-		Map<ItemStack, ItemStack> recipes = CandyExtractorRecipes.instance().getExtractingList();
+    private void loadAllSmelting()
+    {
+        Map<ItemStack, ItemStack> recipes = CandyExtractorRecipes.instance().getExtractingList();
 
-		for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
-		{
-			this.mfurnace.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
-		}
-	}
+        for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
+        {
+            this.mfurnace.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
+        }
+    }
 
-	@Override
-	public void loadCraftingRecipes(String outputId, Object... results)
-	{
-		if (outputId.equals("fuel") && this.getClass() == CandyExtractorFuelRecipeHandler.class)
-		{
-			for (FuelPair fuel : CandyExtractorRecipeHandler.afuels)
-			{
-				this.arecipes.add(new CachedFuelRecipe(fuel));
-			}
-		}
+    @Override
+    public void loadCraftingRecipes(String outputId, Object... results)
+    {
+        if (outputId.equals("fuel") && this.getClass() == CandyExtractorFuelRecipeHandler.class)
+        {
+            for (FuelPair fuel : CandyExtractorRecipeHandler.afuels)
+            {
+                this.arecipes.add(new CachedFuelRecipe(fuel));
+            }
+        }
 
-	}
+    }
 
-	@Override
-	public void loadUsageRecipes(ItemStack ingredient)
-	{
-		for (FuelPair fuel : CandyExtractorRecipeHandler.afuels)
-		{
-			if (fuel.stack.contains(ingredient))
-			{
-				this.arecipes.add(new CachedFuelRecipe(fuel));
-			}
-		}
-	}
+    @Override
+    public void loadUsageRecipes(ItemStack ingredient)
+    {
+        for (FuelPair fuel : CandyExtractorRecipeHandler.afuels)
+        {
+            if (fuel.stack.contains(ingredient))
+            {
+                this.arecipes.add(new CachedFuelRecipe(fuel));
+            }
+        }
+    }
 
-	@Override
-	public String getOverlayIdentifier()
-	{
-		return "fuel";
-	}
+    @Override
+    public String getOverlayIdentifier()
+    {
+        return "fuel";
+    }
 
-	@Override
-	public List<String> handleItemTooltip(GuiRecipe gui, ItemStack stack, List<String> currenttip, int recipe)
-	{
-		CachedFuelRecipe crecipe = (CachedFuelRecipe) this.arecipes.get(recipe);
-		FuelPair fuel = crecipe.fuel;
-		float burnTime = fuel.burnTime / 200F;
+    @Override
+    public List<String> handleItemTooltip(GuiRecipe gui, ItemStack stack, List<String> currenttip, int recipe)
+    {
+        CachedFuelRecipe crecipe = (CachedFuelRecipe) this.arecipes.get(recipe);
+        FuelPair fuel = crecipe.fuel;
+        float burnTime = fuel.burnTime / 200F;
 
-		if (gui.isMouseOver(fuel.stack, recipe) && burnTime < 1)
-		{
-			burnTime = 1F / burnTime;
-			String s_time = Float.toString(burnTime);
+        if (gui.isMouseOver(fuel.stack, recipe) && burnTime < 1)
+        {
+            burnTime = 1F / burnTime;
+            String s_time = Float.toString(burnTime);
 
-			if (burnTime == Math.round(burnTime))
-			{
-				s_time = Integer.toString((int) burnTime);
-			}
-			currenttip.add(NEIClientUtils.translate("recipe.fuel.required", s_time));
-		}
-		else if ((gui.isMouseOver(crecipe.getResult(), recipe) || gui.isMouseOver(crecipe.getIngredient(), recipe)) && burnTime > 1)
-		{
-			String s_time = Float.toString(burnTime);
+            if (burnTime == Math.round(burnTime))
+            {
+                s_time = Integer.toString((int) burnTime);
+            }
+            currenttip.add(NEIClientUtils.translate("recipe.fuel.required", s_time));
+        }
+        else if ((gui.isMouseOver(crecipe.getResult(), recipe) || gui.isMouseOver(crecipe.getIngredient(), recipe)) && burnTime > 1)
+        {
+            String s_time = Float.toString(burnTime);
 
-			if (burnTime == Math.round(burnTime))
-			{
-				s_time = Integer.toString((int) burnTime);
-			}
-			currenttip.add(NEIClientUtils.translate("recipe.fuel." + (gui.isMouseOver(crecipe.getResult(), recipe) ? "produced" : "processed"), s_time));
-		}
-		return currenttip;
-	}
+            if (burnTime == Math.round(burnTime))
+            {
+                s_time = Integer.toString((int) burnTime);
+            }
+            currenttip.add(NEIClientUtils.translate("recipe.fuel." + (gui.isMouseOver(crecipe.getResult(), recipe) ? "produced" : "processed"), s_time));
+        }
+        return currenttip;
+    }
 }

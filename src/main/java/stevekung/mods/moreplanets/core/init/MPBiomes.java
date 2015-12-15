@@ -24,24 +24,16 @@ import stevekung.mods.moreplanets.planets.venus.world.gen.BiomeGenBaseVenus;
 
 public class MPBiomes
 {
-	public static void init()
-	{
-		BiomeDictionary.registerBiomeType(BiomeGenBaseDiona.diona, Type.COLD, Type.DRY, Type.DEAD);
-		BiomeDictionary.registerBiomeType(BiomeGenBasePolongnius.polongnius, Type.HOT, Type.DRY, Type.DEAD, Type.DENSE);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseNibiru.nibiru, Type.HOT, Type.DRY, Type.DEAD, Type.HILLS, Type.SANDY, Type.WASTELAND, Type.DENSE);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseKoentus.koentus, Type.COLD, Type.DRY, Type.DEAD, Type.SPOOKY, Type.SPARSE);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.grassyPlains, Type.LUSH, Type.PLAINS);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.goldenField, Type.LUSH, Type.PLAINS);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.coconutForest, Type.FOREST);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.mapleForest, Type.FOREST);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.purpleMapleForest, Type.FOREST);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.candyLand, Type.MAGICAL);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseKapteynB.kapteynB, Type.COLD, Type.DRY, Type.DEAD, Type.SPARSE);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseSiriusB.siriusB, Type.HOT, Type.DRY, Type.DEAD, Type.SPARSE, Type.SPOOKY);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseMercury.mercury, Type.HOT, Type.DRY, Type.DEAD);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseVenus.venus, Type.HOT, Type.DRY, Type.DEAD, Type.DENSE, Type.HILLS, Type.SANDY);
-		BiomeDictionary.registerBiomeType(BiomeGenBasePluto.pluto, Type.COLD, Type.DRY, Type.DEAD, Type.SPOOKY);
-		BiomeDictionary.registerBiomeType(BiomeGenBaseMartianMoon.martianMoon, Type.COLD, Type.DRY, Type.DEAD);
-		MPLog.debug("Register Biome Types");
-	}
+    public static void init()
+    {
+        BiomeDictionary.registerBiomeType(BiomeGenBaseDiona.basePlanetBiome, Type.COLD, Type.DRY, Type.DEAD);
+        BiomeDictionary.registerBiomeType(BiomeGenBasePolongnius.baseMoonBiome, Type.HOT, Type.DRY, Type.DEAD);
+        BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.grassyPlains, Type.LUSH, Type.PLAINS);
+        BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.goldenField, Type.LUSH, Type.PLAINS);
+        BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.coconutForest, Type.FOREST);
+        BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.mapleForest, Type.FOREST);
+        BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.purpleMapleForest, Type.FOREST);
+        BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.candyLand, Type.MAGICAL);
+        MPLog.debug("Register Biome Types");
+    }
 }

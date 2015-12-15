@@ -14,41 +14,41 @@ import stevekung.mods.moreplanets.planets.fronos.world.gen.biome.BiomeGenBaseFro
 
 public class GenLayerFronosBiomes extends GenLayer
 {
-	protected BiomeGenBase[] commonBiomes = { BiomeGenBaseFronos.coconutForest, BiomeGenBaseFronos.purpleMapleForest, BiomeGenBaseFronos.mapleForest, BiomeGenBaseFronos.grassyPlains, BiomeGenBaseFronos.candyLand };
-	protected BiomeGenBase[] rareBiomes = { BiomeGenBaseFronos.goldenField };
+    protected BiomeGenBase[] commonBiomes = { BiomeGenBaseFronos.coconutForest, BiomeGenBaseFronos.purpleMapleForest, BiomeGenBaseFronos.mapleForest, BiomeGenBaseFronos.grassyPlains, BiomeGenBaseFronos.candyLand };
+    protected BiomeGenBase[] rareBiomes = { BiomeGenBaseFronos.goldenField };
 
-	public GenLayerFronosBiomes(long seed, GenLayer genlayer)
-	{
-		super(seed);
-		this.parent = genlayer;
-	}
+    public GenLayerFronosBiomes(long seed, GenLayer genlayer)
+    {
+        super(seed);
+        this.parent = genlayer;
+    }
 
-	public GenLayerFronosBiomes(long seed)
-	{
-		super(seed);
-	}
+    public GenLayerFronosBiomes(long seed)
+    {
+        super(seed);
+    }
 
-	@Override
-	public int[] getInts(int x, int z, int width, int depth)
-	{
-		int[] dest = IntCache.getIntCache(width * depth);
+    @Override
+    public int[] getInts(int x, int z, int width, int depth)
+    {
+        int[] dest = IntCache.getIntCache(width * depth);
 
-		for (int dz = 0; dz < depth; dz++)
-		{
-			for (int dx = 0; dx < width; dx++)
-			{
-				this.initChunkSeed(dx + x, dz + z);
+        for (int dz = 0; dz < depth; dz++)
+        {
+            for (int dx = 0; dx < width; dx++)
+            {
+                this.initChunkSeed(dx + x, dz + z);
 
-				if (this.nextInt(15) == 0)
-				{
-					dest[dx + dz * width] = this.rareBiomes[this.nextInt(this.rareBiomes.length)].biomeID;
-				}
-				else
-				{
-					dest[dx + dz * width] = this.commonBiomes[this.nextInt(this.commonBiomes.length)].biomeID;
-				}
-			}
-		}
-		return dest;
-	}
+                if (this.nextInt(15) == 0)
+                {
+                    dest[dx + dz * width] = this.rareBiomes[this.nextInt(this.rareBiomes.length)].biomeID;
+                }
+                else
+                {
+                    dest[dx + dz * width] = this.commonBiomes[this.nextInt(this.commonBiomes.length)].biomeID;
+                }
+            }
+        }
+        return dest;
+    }
 }

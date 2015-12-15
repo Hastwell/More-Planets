@@ -21,38 +21,38 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockBreakableMP extends BlockBreakable
 {
-	protected BlockBreakableMP(Material material)
-	{
-		super(material, false);
-	}
+    protected BlockBreakableMP(Material material)
+    {
+        super(material, false);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, EnumFacing facing)
-	{
-		IBlockState iblockstate = world.getBlockState(pos);
-		Block block = iblockstate.getBlock();
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, BlockPos pos, EnumFacing facing)
+    {
+        IBlockState iblockstate = world.getBlockState(pos);
+        Block block = iblockstate.getBlock();
 
-		if (world.getBlockState(pos.offset(facing.getOpposite())) != iblockstate)
-		{
-			return true;
-		}
-		if (block == this)
-		{
-			return false;
-		}
-		return true && block == this ? false : super.shouldSideBeRendered(world, pos, facing);
-	}
+        if (world.getBlockState(pos.offset(facing.getOpposite())) != iblockstate)
+        {
+            return true;
+        }
+        if (block == this)
+        {
+            return false;
+        }
+        return true && block == this ? false : super.shouldSideBeRendered(world, pos, facing);
+    }
 }

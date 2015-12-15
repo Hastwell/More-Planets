@@ -9,10 +9,10 @@ package stevekung.mods.moreplanets.moons.koentus.world.gen.village;
 
 public abstract class ComponentKoentusVillageRoadPiece extends ComponentKoentusVillage
 {
-	public ComponentKoentusVillageRoadPiece() {}
+    public ComponentKoentusVillageRoadPiece() {}
 
-	protected ComponentKoentusVillageRoadPiece(ComponentKoentusVillageStartPiece component, int type)
-	{
-		super(component, type);
-	}
+    protected ComponentKoentusVillageRoadPiece(ComponentKoentusVillageStartPiece component, int type)
+    {
+        super(component, type);
+    }
 }

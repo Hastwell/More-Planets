@@ -20,46 +20,46 @@ import net.minecraft.world.World;
 
 public class BlockDoubleFronosSandstoneSlab extends BlockFronosSandstoneSlab
 {
-	public BlockDoubleFronosSandstoneSlab(String name, Material material)
-	{
-		super(material);
-		this.setHardness(0.8F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockDoubleFronosSandstoneSlab(String name, Material material)
+    {
+        super(material);
+        this.setHardness(0.8F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean isDouble()
-	{
-		return true;
-	}
+    @Override
+    public boolean isDouble()
+    {
+        return true;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(FronosBlocks.half_fronos_sandstone_slab);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(FronosBlocks.half_fronos_sandstone_slab);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 2;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 2;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state) & 7;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state) & 7;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        return new ItemStack(FronosBlocks.half_fronos_sandstone_slab, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
+    }
 }

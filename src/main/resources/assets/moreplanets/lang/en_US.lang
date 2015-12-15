@@ -378,7 +378,9 @@ tile.orange_fronos_poppy.name=Orange Poppy
 tile.purple_fronos_poppy.name=Purple Poppy
 tile.fronos_coral.glowing_pink_coral.name=Glowing Pink Coral
 tile.fronos_coral.colunus_coral.name=Colunus Coral
-tile.maple_ivy.name=Maple Ivy
+tile.red_maple_ivy.name=Red Maple Ivy
+tile.yellow_maple_ivy.name=Yellow Maple Ivy
+tile.purple_maple_ivy.name=Purple Maple Ivy
 tile.pink_candy_torch.name=Pink Candy Torch
 tile.orange_candy_torch.name=Orange Candy Torch
 tile.green_candy_torch.name=Green Candy Torch
@@ -453,6 +455,10 @@ tile.fronos_double_tallgrass.purple.name=Double Purple Tallgrass
 tile.fronos_double_tallgrass.plains.name=Double Plains Tallgrass
 tile.fronos_double_tallgrass.golden.name=Double Golden Tallgrass
 tile.sky_mushroom_block.name=Sky Mushroom
+tile.fronos_block1.gold_ore.name=Gold Ore
+tile.fronos_block1.diamond_ore.name=Diamond Ore
+tile.fronos_block1.emerald_ore.name=Emerald Ore
+tile.fronos_block1.silicon_ore.name=Silicon Ore
 
 #########Kapteyn B Block#########
 tile.kapteyn_b_block.surface_ice.name=Kapteyn B Surface Ice

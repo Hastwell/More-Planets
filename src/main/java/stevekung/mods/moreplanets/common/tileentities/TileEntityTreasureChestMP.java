@@ -38,445 +38,445 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUpdatePlayerListBox, IInventory, IKeyable, IInteractionObject
 {
-	private ItemStack[] chestContents = new ItemStack[27];
-	public float lidAngle;
-	public float prevLidAngle;
-	public int numPlayersUsing;
-	private int ticksSinceSync;
-	private int tier;
-	private String name;
-	private Block block;
+    private ItemStack[] chestContents = new ItemStack[27];
+    public float lidAngle;
+    public float prevLidAngle;
+    public int numPlayersUsing;
+    private int ticksSinceSync;
+    private int tier;
+    private String name;
+    private Block block;
 
-	@NetworkedField(targetSide = Side.CLIENT)
-	public boolean locked = true;
+    @NetworkedField(targetSide = Side.CLIENT)
+    public boolean locked = true;
 
-	public TileEntityTreasureChestMP(int tier, String name, Block block)
-	{
-		this.tier = tier;
-		this.name = name;
-		this.block = block;
-	}
+    public TileEntityTreasureChestMP(int tier, String name, Block block)
+    {
+        this.tier = tier;
+        this.name = name;
+        this.block = block;
+    }
 
-	@Override
-	public int getSizeInventory()
-	{
-		return 27;
-	}
+    @Override
+    public int getSizeInventory()
+    {
+        return 27;
+    }
 
-	@Override
-	public ItemStack getStackInSlot(int index)
-	{
-		return this.chestContents[index];
-	}
+    @Override
+    public ItemStack getStackInSlot(int index)
+    {
+        return this.chestContents[index];
+    }
 
-	@Override
-	public ItemStack decrStackSize(int index, int count)
-	{
-		if (this.chestContents[index] != null)
-		{
-			ItemStack itemstack;
+    @Override
+    public ItemStack decrStackSize(int index, int count)
+    {
+        if (this.chestContents[index] != null)
+        {
+            ItemStack itemstack;
 
-			if (this.chestContents[index].stackSize <= count)
-			{
-				itemstack = this.chestContents[index];
-				this.chestContents[index] = null;
-				this.markDirty();
-				return itemstack;
-			}
-			else
-			{
-				itemstack = this.chestContents[index].splitStack(count);
+            if (this.chestContents[index].stackSize <= count)
+            {
+                itemstack = this.chestContents[index];
+                this.chestContents[index] = null;
+                this.markDirty();
+                return itemstack;
+            }
+            else
+            {
+                itemstack = this.chestContents[index].splitStack(count);
 
-				if (this.chestContents[index].stackSize == 0)
-				{
-					this.chestContents[index] = null;
-				}
-				this.markDirty();
-				return itemstack;
-			}
-		}
-		else
-		{
-			return null;
-		}
-	}
+                if (this.chestContents[index].stackSize == 0)
+                {
+                    this.chestContents[index] = null;
+                }
+                this.markDirty();
+                return itemstack;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
 
-	@Override
-	public ItemStack getStackInSlotOnClosing(int index)
-	{
-		if (this.chestContents[index] != null)
-		{
-			ItemStack itemstack = this.chestContents[index];
-			this.chestContents[index] = null;
-			return itemstack;
-		}
-		else
-		{
-			return null;
-		}
-	}
+    @Override
+    public ItemStack getStackInSlotOnClosing(int index)
+    {
+        if (this.chestContents[index] != null)
+        {
+            ItemStack itemstack = this.chestContents[index];
+            this.chestContents[index] = null;
+            return itemstack;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
-	@Override
-	public void setInventorySlotContents(int index, ItemStack stack)
-	{
-		this.chestContents[index] = stack;
+    @Override
+    public void setInventorySlotContents(int index, ItemStack stack)
+    {
+        this.chestContents[index] = stack;
 
-		if (stack != null && stack.stackSize > this.getInventoryStackLimit())
-		{
-			stack.stackSize = this.getInventoryStackLimit();
-		}
-		this.markDirty();
-	}
+        if (stack != null && stack.stackSize > this.getInventoryStackLimit())
+        {
+            stack.stackSize = this.getInventoryStackLimit();
+        }
+        this.markDirty();
+    }
 
-	@Override
-	public String getName()
-	{
-		return StatCollector.translateToLocal("container." + this.name + ".treasurechest.name");
-	}
+    @Override
+    public String getName()
+    {
+        return StatCollector.translateToLocal("container." + this.name + ".treasurechest.name");
+    }
 
-	@Override
-	public boolean hasCustomName()
-	{
-		return false;
-	}
+    @Override
+    public boolean hasCustomName()
+    {
+        return false;
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		this.locked = nbt.getBoolean("isLocked");
-		this.tier = nbt.getInteger("tier");
-		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
-		this.chestContents = new ItemStack[this.getSizeInventory()];
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        this.locked = nbt.getBoolean("isLocked");
+        this.tier = nbt.getInteger("tier");
+        NBTTagList nbttaglist = nbt.getTagList("Items", 10);
+        this.chestContents = new ItemStack[this.getSizeInventory()];
 
-		for (int i = 0; i < nbttaglist.tagCount(); ++i)
-		{
-			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			int j = nbttagcompound1.getByte("Slot") & 255;
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+            int j = nbttagcompound1.getByte("Slot") & 255;
 
-			if (j >= 0 && j < this.chestContents.length)
-			{
-				this.chestContents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			}
-		}
-	}
+            if (j >= 0 && j < this.chestContents.length)
+            {
+                this.chestContents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+            }
+        }
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
-		nbt.setBoolean("isLocked", this.locked);
-		nbt.setInteger("tier", this.tier);
-		NBTTagList nbttaglist = new NBTTagList();
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
+        nbt.setBoolean("isLocked", this.locked);
+        nbt.setInteger("tier", this.tier);
+        NBTTagList nbttaglist = new NBTTagList();
 
-		for (int i = 0; i < this.chestContents.length; ++i)
-		{
-			if (this.chestContents[i] != null)
-			{
-				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-				nbttagcompound1.setByte("Slot", (byte)i);
-				this.chestContents[i].writeToNBT(nbttagcompound1);
-				nbttaglist.appendTag(nbttagcompound1);
-			}
-		}
-		nbt.setTag("Items", nbttaglist);
-	}
+        for (int i = 0; i < this.chestContents.length; ++i)
+        {
+            if (this.chestContents[i] != null)
+            {
+                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+                nbttagcompound1.setByte("Slot", (byte)i);
+                this.chestContents[i].writeToNBT(nbttagcompound1);
+                nbttaglist.appendTag(nbttagcompound1);
+            }
+        }
+        nbt.setTag("Items", nbttaglist);
+    }
 
-	@Override
-	public int getInventoryStackLimit()
-	{
-		return 64;
-	}
+    @Override
+    public int getInventoryStackLimit()
+    {
+        return 64;
+    }
 
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player)
-	{
-		return this.worldObj.getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
-	}
+    @Override
+    public boolean isUseableByPlayer(EntityPlayer player)
+    {
+        return this.worldObj.getTileEntity(this.pos) != this ? false : player.getDistanceSq(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
+    }
 
-	@Override
-	public void update()
-	{
-		int i = this.pos.getX();
-		int j = this.pos.getY();
-		int k = this.pos.getZ();
-		++this.ticksSinceSync;
-		float f;
+    @Override
+    public void update()
+    {
+        int i = this.pos.getX();
+        int j = this.pos.getY();
+        int k = this.pos.getZ();
+        ++this.ticksSinceSync;
+        float f;
 
-		if (!this.worldObj.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + i + j + k) % 200 == 0)
-		{
-			this.numPlayersUsing = 0;
-			f = 5.0F;
-			List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(i - f, j - f, k - f, i + 1 + f, j + 1 + f, k + 1 + f));
-			Iterator iterator = list.iterator();
+        if (!this.worldObj.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + i + j + k) % 200 == 0)
+        {
+            this.numPlayersUsing = 0;
+            f = 5.0F;
+            List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(i - f, j - f, k - f, i + 1 + f, j + 1 + f, k + 1 + f));
+            Iterator iterator = list.iterator();
 
-			while (iterator.hasNext())
-			{
-				EntityPlayer entityplayer = (EntityPlayer)iterator.next();
+            while (iterator.hasNext())
+            {
+                EntityPlayer entityplayer = (EntityPlayer)iterator.next();
 
-				if (entityplayer.openContainer instanceof ContainerChest)
-				{
-					IInventory iinventory = ((ContainerChest)entityplayer.openContainer).getLowerChestInventory();
+                if (entityplayer.openContainer instanceof ContainerChest)
+                {
+                    IInventory iinventory = ((ContainerChest)entityplayer.openContainer).getLowerChestInventory();
 
-					if (iinventory == this || iinventory instanceof InventoryLargeChest && ((InventoryLargeChest)iinventory).isPartOfLargeChest(this))
-					{
-						++this.numPlayersUsing;
-					}
-				}
-			}
-		}
+                    if (iinventory == this || iinventory instanceof InventoryLargeChest && ((InventoryLargeChest)iinventory).isPartOfLargeChest(this))
+                    {
+                        ++this.numPlayersUsing;
+                    }
+                }
+            }
+        }
 
-		this.prevLidAngle = this.lidAngle;
-		f = this.worldObj.provider instanceof IGalacticraftWorldProvider ? 0.05F : 0.1F;
-		double d2;
+        this.prevLidAngle = this.lidAngle;
+        f = this.worldObj.provider instanceof IGalacticraftWorldProvider ? 0.05F : 0.1F;
+        double d2;
 
-		if (this.numPlayersUsing > 0 && this.lidAngle == 0.0F)
-		{
-			double d1 = i + 0.5D;
-			d2 = k + 0.5D;
-			this.worldObj.playSoundEffect(d1, j + 0.5D, d2, "random.chestopen", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
-		}
+        if (this.numPlayersUsing > 0 && this.lidAngle == 0.0F)
+        {
+            double d1 = i + 0.5D;
+            d2 = k + 0.5D;
+            this.worldObj.playSoundEffect(d1, j + 0.5D, d2, "random.chestopen", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+        }
 
-		if (this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F)
-		{
-			float f1 = this.lidAngle;
+        if (this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F)
+        {
+            float f1 = this.lidAngle;
 
-			if (this.numPlayersUsing > 0)
-			{
-				this.lidAngle += f;
-			}
-			else
-			{
-				this.lidAngle -= f;
-			}
+            if (this.numPlayersUsing > 0)
+            {
+                this.lidAngle += f;
+            }
+            else
+            {
+                this.lidAngle -= f;
+            }
 
-			if (this.lidAngle > 1.0F)
-			{
-				this.lidAngle = 1.0F;
-			}
+            if (this.lidAngle > 1.0F)
+            {
+                this.lidAngle = 1.0F;
+            }
 
-			float f2 = 0.5F;
+            float f2 = 0.5F;
 
-			if (this.lidAngle < f2 && f1 >= f2)
-			{
-				d2 = i + 0.5D;
-				double d0 = k + 0.5D;
-				this.worldObj.playSoundEffect(d2, j + 0.5D, d0, "random.chestclosed", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
-			}
-			if (this.lidAngle < 0.0F)
-			{
-				this.lidAngle = 0.0F;
-			}
-		}
-	}
+            if (this.lidAngle < f2 && f1 >= f2)
+            {
+                d2 = i + 0.5D;
+                double d0 = k + 0.5D;
+                this.worldObj.playSoundEffect(d2, j + 0.5D, d0, "random.chestclosed", 0.5F, this.worldObj.provider instanceof IGalacticraftWorldProvider ? this.worldObj.rand.nextFloat() * 0.1F + 0.6F : this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+            }
+            if (this.lidAngle < 0.0F)
+            {
+                this.lidAngle = 0.0F;
+            }
+        }
+    }
 
-	@Override
-	public boolean receiveClientEvent(int id, int type)
-	{
-		if (id == 1)
-		{
-			this.numPlayersUsing = type;
-			return true;
-		}
-		else
-		{
-			return super.receiveClientEvent(id, type);
-		}
-	}
+    @Override
+    public boolean receiveClientEvent(int id, int type)
+    {
+        if (id == 1)
+        {
+            this.numPlayersUsing = type;
+            return true;
+        }
+        else
+        {
+            return super.receiveClientEvent(id, type);
+        }
+    }
 
-	@Override
-	public void openInventory(EntityPlayer player)
-	{
-		if (!player.isSpectator())
-		{
-			if (this.numPlayersUsing < 0)
-			{
-				this.numPlayersUsing = 0;
-			}
-			++this.numPlayersUsing;
-			this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
-			this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
-			this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
-		}
-	}
+    @Override
+    public void openInventory(EntityPlayer player)
+    {
+        if (!player.isSpectator())
+        {
+            if (this.numPlayersUsing < 0)
+            {
+                this.numPlayersUsing = 0;
+            }
+            ++this.numPlayersUsing;
+            this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+            this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
+            this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
+        }
+    }
 
-	@Override
-	public void closeInventory(EntityPlayer player)
-	{
-		if (!player.isSpectator() && this.getBlockType() == this.block)
-		{
-			--this.numPlayersUsing;
-			this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
-			this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
-			this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
-		}
-	}
+    @Override
+    public void closeInventory(EntityPlayer player)
+    {
+        if (!player.isSpectator() && this.getBlockType() == this.block)
+        {
+            --this.numPlayersUsing;
+            this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+            this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
+            this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
+        }
+    }
 
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack)
-	{
-		return true;
-	}
+    @Override
+    public boolean isItemValidForSlot(int index, ItemStack stack)
+    {
+        return true;
+    }
 
-	@Override
-	public void invalidate()
-	{
-		super.invalidate();
-		this.updateContainingBlockInfo();
-	}
+    @Override
+    public void invalidate()
+    {
+        super.invalidate();
+        this.updateContainingBlockInfo();
+    }
 
-	@Override
-	public boolean canRenderBreaking()
-	{
-		return true;
-	}
+    @Override
+    public boolean canRenderBreaking()
+    {
+        return true;
+    }
 
-	@Override
-	public String getGuiID()
-	{
-		return "moreplanets:treasure_chest";
-	}
+    @Override
+    public String getGuiID()
+    {
+        return "moreplanets:treasure_chest";
+    }
 
-	@Override
-	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer player)
-	{
-		return new ContainerChest(playerInventory, this, player);
-	}
+    @Override
+    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer player)
+    {
+        return new ContainerChest(playerInventory, this, player);
+    }
 
-	@Override
-	public int getField(int id)
-	{
-		return 0;
-	}
+    @Override
+    public int getField(int id)
+    {
+        return 0;
+    }
 
-	@Override
-	public void setField(int id, int value) {}
+    @Override
+    public void setField(int id, int value) {}
 
-	@Override
-	public int getFieldCount()
-	{
-		return 0;
-	}
+    @Override
+    public int getFieldCount()
+    {
+        return 0;
+    }
 
-	@Override
-	public void clear()
-	{
-		for (int i = 0; i < this.chestContents.length; ++i)
-		{
-			this.chestContents[i] = null;
-		}
-	}
+    @Override
+    public void clear()
+    {
+        for (int i = 0; i < this.chestContents.length; ++i)
+        {
+            this.chestContents[i] = null;
+        }
+    }
 
-	protected static class SwitchEnumFacing
-	{
-		public static int[] field_177366_a = new int[EnumFacing.values().length];
+    protected static class SwitchEnumFacing
+    {
+        public static int[] field_177366_a = new int[EnumFacing.values().length];
 
-		static
-		{
-			try
-			{
-				field_177366_a[EnumFacing.NORTH.ordinal()] = 1;
-			}
-			catch (NoSuchFieldError var4)
-			{
-			}
+        static
+        {
+            try
+            {
+                field_177366_a[EnumFacing.NORTH.ordinal()] = 1;
+            }
+            catch (NoSuchFieldError var4)
+            {
+            }
 
-			try
-			{
-				field_177366_a[EnumFacing.SOUTH.ordinal()] = 2;
-			}
-			catch (NoSuchFieldError var3)
-			{
-			}
+            try
+            {
+                field_177366_a[EnumFacing.SOUTH.ordinal()] = 2;
+            }
+            catch (NoSuchFieldError var3)
+            {
+            }
 
-			try
-			{
-				field_177366_a[EnumFacing.EAST.ordinal()] = 3;
-			}
-			catch (NoSuchFieldError var2)
-			{
-			}
+            try
+            {
+                field_177366_a[EnumFacing.EAST.ordinal()] = 3;
+            }
+            catch (NoSuchFieldError var2)
+            {
+            }
 
-			try
-			{
-				field_177366_a[EnumFacing.WEST.ordinal()] = 4;
-			}
-			catch (NoSuchFieldError var1)
-			{
-			}
-		}
-	}
+            try
+            {
+                field_177366_a[EnumFacing.WEST.ordinal()] = 4;
+            }
+            catch (NoSuchFieldError var1)
+            {
+            }
+        }
+    }
 
-	@Override
-	public int getTierOfKeyRequired()
-	{
-		return this.tier;
-	}
+    @Override
+    public int getTierOfKeyRequired()
+    {
+        return this.tier;
+    }
 
-	@Override
-	public boolean onValidKeyActivated(EntityPlayer player, ItemStack key, EnumFacing facing)
-	{
-		if (this.locked)
-		{
-			this.locked = false;
+    @Override
+    public boolean onValidKeyActivated(EntityPlayer player, ItemStack key, EnumFacing facing)
+    {
+        if (this.locked)
+        {
+            this.locked = false;
 
-			if (this.worldObj.isRemote)
-			{
-				player.playSound("moreplanets:player.unlocktreasurechest", 1.0F, 1.0F);
-			}
-			else
-			{
-				if (!player.capabilities.isCreativeMode && --player.inventory.getCurrentItem().stackSize == 0)
-				{
-					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
-				}
-				return true;
-			}
-		}
-		return false;
-	}
+            if (this.worldObj.isRemote)
+            {
+                player.playSound("moreplanets:player.unlocktreasurechest", 1.0F, 1.0F);
+            }
+            else
+            {
+                if (!player.capabilities.isCreativeMode && --player.inventory.getCurrentItem().stackSize == 0)
+                {
+                    player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public boolean onActivatedWithoutKey(EntityPlayer player, EnumFacing facing)
-	{
-		if (this.locked)
-		{
-			if (player.worldObj.isRemote)
-			{
-				GalacticraftCore.packetPipeline.sendToServer(new PacketSimple(EnumSimplePacket.S_ON_FAILED_CHEST_UNLOCK, new Object[] { this.getTierOfKeyRequired() }));
-			}
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean onActivatedWithoutKey(EntityPlayer player, EnumFacing facing)
+    {
+        if (this.locked)
+        {
+            if (player.worldObj.isRemote)
+            {
+                GalacticraftCore.packetPipeline.sendToServer(new PacketSimple(EnumSimplePacket.S_ON_FAILED_CHEST_UNLOCK, new Object[] { this.getTierOfKeyRequired() }));
+            }
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean canBreak()
-	{
-		return false;
-	}
+    @Override
+    public boolean canBreak()
+    {
+        return false;
+    }
 
-	@Override
-	public IChatComponent getDisplayName()
-	{
-		return new ChatComponentText(this.getName());
-	}
+    @Override
+    public IChatComponent getDisplayName()
+    {
+        return new ChatComponentText(this.getName());
+    }
 
-	@Override
-	public double getPacketRange()
-	{
-		return 20.0D;
-	}
+    @Override
+    public double getPacketRange()
+    {
+        return 20.0D;
+    }
 
-	@Override
-	public int getPacketCooldown()
-	{
-		return 3;
-	}
+    @Override
+    public int getPacketCooldown()
+    {
+        return 3;
+    }
 
-	@Override
-	public boolean isNetworkedTile()
-	{
-		return true;
-	}
+    @Override
+    public boolean isNetworkedTile()
+    {
+        return true;
+    }
 }

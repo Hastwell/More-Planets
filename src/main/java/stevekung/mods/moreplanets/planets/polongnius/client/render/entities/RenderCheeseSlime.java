@@ -23,60 +23,60 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
 @SideOnly(Side.CLIENT)
 public class RenderCheeseSlime extends RenderLiving
 {
-	private ResourceLocation slimeTextures = new ResourceLocation("moreplanets:textures/entity/cheese_slime.png");
+    private ResourceLocation slimeTextures = new ResourceLocation("moreplanets:textures/entity/cheese_slime.png");
 
-	public RenderCheeseSlime(RenderManager render)
-	{
-		super(render, new ModelSlime(16), 0.25F);
-		this.addLayer(new LayerCheeseSlimeGel(this));
-	}
+    public RenderCheeseSlime(RenderManager render)
+    {
+        super(render, new ModelSlime(16), 0.25F);
+        this.addLayer(new LayerCheeseSlimeGel(this));
+    }
 
-	public void doRender(EntityCheeseSlime living, double par2, double par3, double par4, float par5, float par6)
-	{
-		this.shadowSize = 0.25F * living.getSlimeSize();
-		super.doRender(living, par2, par3, par4, par5, par6);
-	}
+    public void doRender(EntityCheeseSlime living, double par2, double par3, double par4, float par5, float par6)
+    {
+        this.shadowSize = 0.25F * living.getSlimeSize();
+        super.doRender(living, par2, par3, par4, par5, par6);
+    }
 
-	protected void preRenderCallback(EntityCheeseSlime living, float par2)
-	{
-		float f1 = living.getSlimeSize();
-		float f2 = (living.prevSquishFactor + (living.squishFactor - living.prevSquishFactor) * par2) / (f1 * 0.5F + 1.0F);
-		float f3 = 1.0F / (f2 + 1.0F);
-		GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
-	}
+    protected void preRenderCallback(EntityCheeseSlime living, float par2)
+    {
+        float f1 = living.getSlimeSize();
+        float f2 = (living.prevSquishFactor + (living.squishFactor - living.prevSquishFactor) * par2) / (f1 * 0.5F + 1.0F);
+        float f3 = 1.0F / (f2 + 1.0F);
+        GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
+    }
 
-	protected ResourceLocation getEntityTexture(EntityCheeseSlime entity)
-	{
-		return this.slimeTextures;
-	}
+    protected ResourceLocation getEntityTexture(EntityCheeseSlime entity)
+    {
+        return this.slimeTextures;
+    }
 
-	@Override
-	public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
-	}
+    @Override
+    public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		this.preRenderCallback((EntityCheeseSlime)entity, par2);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    {
+        this.preRenderCallback((EntityCheeseSlime)entity, par2);
+    }
 
-	@Override
-	public void doRender(EntityLivingBase entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
-	}
+    @Override
+    public void doRender(EntityLivingBase entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.getEntityTexture((EntityCheeseSlime)entity);
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.getEntityTexture((EntityCheeseSlime)entity);
+    }
 
-	@Override
-	public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-	{
-		this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
-	}
+    @Override
+    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
+    {
+        this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
+    }
 }

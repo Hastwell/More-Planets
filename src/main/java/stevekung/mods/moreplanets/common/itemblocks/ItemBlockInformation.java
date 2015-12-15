@@ -21,18 +21,18 @@ import stevekung.mods.moreplanets.common.util.VariantsName;
 
 public class ItemBlockInformation extends ItemBlockMorePlanets
 {
-	private VariantsName name;
+    private VariantsName name;
 
-	public ItemBlockInformation(Block block, VariantsName name)
-	{
-		super(block);
-		this.name = name;
-	}
+    public ItemBlockInformation(Block block, VariantsName name)
+    {
+        super(block);
+        this.name = name;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		this.name.getItemDescription().addDescription(itemStack, list, Keyboard.isKeyDown(Keyboard.KEY_LSHIFT));
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        this.name.getItemDescription().addDescription(itemStack, list, Keyboard.isKeyDown(Keyboard.KEY_LSHIFT));
+    }
 }

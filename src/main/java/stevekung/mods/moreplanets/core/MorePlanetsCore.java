@@ -67,101 +67,101 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5Rocket;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.14.3.1480,);")//TODO required-after:Micdoodlecore;
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.14.4.1577,);", guiFactory = "stevekung.mods.moreplanets.common.config.ConfigGuiFactoryMP")//TODO required-after:Micdoodlecore;
 public class MorePlanetsCore
 {
-	public static final String NAME = "More Planets";
-	public static final String MOD_ID = "MorePlanets";
-	public static final String VERSION = MorePlanetsCore.major_version + "." + MorePlanetsCore.minor_version + "." + MorePlanetsCore.build_version;
+    public static final String NAME = "More Planets";
+    public static final String MOD_ID = "MorePlanets";
+    public static final String VERSION = MorePlanetsCore.major_version + "." + MorePlanetsCore.minor_version + "." + MorePlanetsCore.build_version;
 
-	public static final int major_version = 2;
-	public static final int minor_version = 0;
-	public static final int build_version = 0;
+    public static final int major_version = 2;
+    public static final int minor_version = 0;
+    public static final int build_version = 0;
 
-	@SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
-	public static CommonProxyMP proxy;
+    @SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
+    public static CommonProxyMP proxy;
 
-	@Instance(MorePlanetsCore.MOD_ID)
-	public static MorePlanetsCore INSTANCE;
+    @Instance(MorePlanetsCore.MOD_ID)
+    public static MorePlanetsCore INSTANCE;
 
-	public static CreativeTabs mpBlocksTab;
-	public static CreativeTabs mpItemsTab;
-	public static CreativeTabs mpToolsTab;
-	public static CreativeTabs mpArmorTab;
+    public static CreativeTabs mpBlocksTab;
+    public static CreativeTabs mpItemsTab;
+    public static CreativeTabs mpToolsTab;
+    public static CreativeTabs mpArmorTab;
 
-	public static SoundType soundTypeSmallSlime = new SoundTypeSmallSlime();
+    public static SoundType soundTypeSmallSlime = new SoundTypeSmallSlime();
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		new ConfigManagerMP(new File(event.getModConfigurationDirectory(), "MorePlanets.cfg"));
-		MPLog.debug("Enable Debug Logging");
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        ConfigManagerMP.init(new File(event.getModConfigurationDirectory(), "MorePlanets.cfg"));
+        MPLog.debug("Enable Debug Logging");
 
-		MPPotions.init();
-		MPBlocks.init();
-		MPItems.init();
-		MPArmors.init();
-		MPTools.init();
-		MPBiomes.init();
+        MPPotions.init();
+        MPBlocks.init();
+        MPItems.init();
+        MPArmors.init();
+        MPTools.init();
+        MPBiomes.init();
 
-		CommonRegisterHelper.registerForgeEvent(new MorePlanetsEvents());
-		CommonRegisterHelper.registerForgeEvent(new SkyProviderHandler());
-		CommonRegisterHelper.registerForgeEvent(new PlanetFogHandler());
-	}
+        CommonRegisterHelper.registerForgeEvent(new MorePlanetsEvents());
+        CommonRegisterHelper.registerForgeEvent(new SkyProviderHandler());
+        CommonRegisterHelper.registerForgeEvent(new PlanetFogHandler());
+    }
 
-	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-		MPPlanets.init();
-		MPEntities.init();
-		TreeCapitatorIntegrationMP.init();
-		AchievementsMP.init();
-		EntitySpawnerUtil.init();
-		CommonRegisterHelper.registerGUIHandler(this, new GuiEventHandler());
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        MPPlanets.init();
+        MPEntities.init();
+        TreeCapitatorIntegrationMP.init();
+        AchievementsMP.init();
+        EntitySpawnerUtil.init();
+        CommonRegisterHelper.registerGUIHandler(this, new GuiEventHandler());
 
-		MorePlanetsCore.mpBlocksTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));
-		MorePlanetsCore.mpItemsTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsItems", new ItemStack(DionaItems.laser_gun));
-		MorePlanetsCore.mpToolsTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
-		MorePlanetsCore.mpArmorTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
+        MorePlanetsCore.mpBlocksTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsBlocks", new ItemStack(MercuryBlocks.mercury_block, 1, 11));
+        MorePlanetsCore.mpItemsTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsItems", new ItemStack(DionaItems.laser_gun));
+        MorePlanetsCore.mpToolsTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsTools", new ItemStack(KapteynBToolsItems.uranium_pickaxe));
+        MorePlanetsCore.mpArmorTab = CommonRegisterHelper.createCreativeTabs("MorePlanetsArmor", new ItemStack(FronosArmorItems.iridium_helmet));
 
-		MorePlanetsRegistry.registerSchematic(new SchematicTier4Rocket());
-		MorePlanetsRegistry.registerSchematic(new SchematicTier5Rocket());
-		MorePlanetsRegistry.registerSchematic(new SchematicTier6Rocket());
-		MorePlanetsRegistry.registerSchematic(new SchematicTier7Rocket());
-		MorePlanetsRegistry.registerSchematic(new SchematicTier8Rocket());
+        MorePlanetsRegistry.registerSchematic(new SchematicTier4Rocket());
+        MorePlanetsRegistry.registerSchematic(new SchematicTier5Rocket());
+        MorePlanetsRegistry.registerSchematic(new SchematicTier6Rocket());
+        MorePlanetsRegistry.registerSchematic(new SchematicTier7Rocket());
+        MorePlanetsRegistry.registerSchematic(new SchematicTier8Rocket());
 
-		MorePlanetsRegistry.registerDungeonLoot(GalacticraftCore.moonMoon, new ItemStack(DionaItems.tier_4_rocket_schematic));
-		MorePlanetsRegistry.registerDungeonLoot(MPPlanets.diona, new ItemStack(PolongniusItems.tier_5_rocket_schematic));
-		MorePlanetsRegistry.registerDungeonLoot(MPPlanets.polongnius, new ItemStack(NibiruItems.tier_6_rocket_schematic));
-		MorePlanetsRegistry.registerDungeonLoot(MPPlanets.nibiru, new ItemStack(FronosItems.tier_7_rocket_schematic));
-	}
+        MorePlanetsRegistry.registerDungeonLoot(GalacticraftCore.moonMoon, new ItemStack(DionaItems.tier_4_rocket_schematic));
+        MorePlanetsRegistry.registerDungeonLoot(MPPlanets.diona, new ItemStack(PolongniusItems.tier_5_rocket_schematic));
+        MorePlanetsRegistry.registerDungeonLoot(MPPlanets.polongnius, new ItemStack(NibiruItems.tier_6_rocket_schematic));
+        MorePlanetsRegistry.registerDungeonLoot(MPPlanets.nibiru, new ItemStack(FronosItems.tier_7_rocket_schematic));
+    }
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
-		MPTileEntities.init();
-		MorePlanetsCore.proxy.registerRenderer();
-		CommonRegisterHelper.registerFuelHandler(new FurnaceFuelMP());
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+        MPTileEntities.init();
+        MorePlanetsCore.proxy.registerRenderer();
+        CommonRegisterHelper.registerFuelHandler(new FurnaceFuelMP());
 
-		CraftingManagerMP.init();
-		DispenserRegistryMP.init();
+        CraftingManagerMP.init();
+        DispenserRegistryMP.init();
 
-		MorePlanetsRegistry.registerMessageHandler(MeteorServerHandler.class, MeteorServerMessage.class, 0, Side.SERVER);
-		MorePlanetsRegistry.registerMessageHandler(MeteorClientHandler.class, MeteorClientMessage.class, 1, Side.CLIENT);
+        MorePlanetsRegistry.registerMessageHandler(MeteorServerHandler.class, MeteorServerMessage.class, 0, Side.SERVER);
+        MorePlanetsRegistry.registerMessageHandler(MeteorClientHandler.class, MeteorClientMessage.class, 1, Side.CLIENT);
 
-		if (ConfigManagerMP.enableMarsSpaceStation) { MorePlanetsRegistry.registerSpaceStation(MPPlanets.marsSpaceStation, MarsModule.planetMars, CraftingManagerMP.getMarsSpaceStationRecipe()); }
-		if (ConfigManagerMP.enableJupiterSpaceStation) { MorePlanetsRegistry.registerSpaceStation(MPPlanets.jupiterSpaceStation, MPPlanets.jupiter, CraftingManagerMP.getJupiterSpaceStationRecipe()); }
-	}
+        if (ConfigManagerMP.enableMarsSpaceStation) { MorePlanetsRegistry.registerSpaceStation(MPPlanets.marsSpaceStation, MarsModule.planetMars, CraftingManagerMP.getMarsSpaceStationRecipe()); }
+        if (ConfigManagerMP.enableJupiterSpaceStation) { MorePlanetsRegistry.registerSpaceStation(MPPlanets.jupiterSpaceStation, MPPlanets.jupiter, CraftingManagerMP.getJupiterSpaceStationRecipe()); }
+    }
 
-	@EventHandler
-	public void serverStarting(FMLServerStartingEvent event)
-	{
-		event.registerServerCommand(new CommandHomePlanet());
-	}
+    @EventHandler
+    public void serverStarting(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new CommandHomePlanet());
+    }
 
-	@EventHandler
-	public void serverStarted(FMLServerStartedEvent event)
-	{
-		new Thread(ThreadVersionCheckMP.INSTANCE).start();
-	}
+    @EventHandler
+    public void serverStarted(FMLServerStartedEvent event)
+    {
+        new Thread(new ThreadVersionCheckMP()).start();
+    }
 }

@@ -33,138 +33,138 @@ import stevekung.mods.moreplanets.planets.fronos.worldgen.tree.WorldGenCoconutTr
 
 public class BlockFronosSapling extends BlockSaplingMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockFronosSapling(String name)
-	{
-		super();
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.coconut_sapling));
-		this.setUnlocalizedName(name);
-	}
+    public BlockFronosSapling(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.coconut_sapling));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 4; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public boolean canPlaceBlockOn(Block ground)
-	{
-		return ground == Blocks.grass || ground == Blocks.dirt || ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
-	}
+    @Override
+    public boolean canPlaceBlockOn(Block ground)
+    {
+        return ground == Blocks.grass || ground == Blocks.dirt || ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
-		return block == Blocks.grass || block == Blocks.dirt || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
+        return block == Blocks.grass || block == Blocks.dirt || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		super.updateTick(world, pos, state, rand);
-		this.canBlockStay(world, pos, state);
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        super.updateTick(world, pos, state, rand);
+        this.canBlockStay(world, pos, state);
 
-		if (!world.isRemote)
-		{
-			super.updateTick(world, pos, state, rand);
+        if (!world.isRemote)
+        {
+            super.updateTick(world, pos, state, rand);
 
-			if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0)
-			{
-				this.grow(world, rand, pos, state);
-			}
-		}
-	}
+            if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(7) == 0)
+            {
+                this.grow(world, rand, pos, state);
+            }
+        }
+    }
 
-	@Override
-	public void grow(World world, Random rand, BlockPos pos, IBlockState state)
-	{
-		BlockType type = (BlockType)state.getValue(VARIANT);
-		Object obj = null;
+    @Override
+    public void grow(World world, Random rand, BlockPos pos, IBlockState state)
+    {
+        BlockType type = (BlockType)state.getValue(VARIANT);
+        Object obj = null;
 
-		if (obj == null)
-		{
-			switch (type)
-			{
-			case coconut_sapling:
-				obj = new WorldGenCoconutTree(30, 10, 1.3D);
-				break;
-			case red_maple_sapling:
-				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, this, FronosBlocks.maple_ivy);
-				break;
-			case yellow_maple_sapling:
-				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, this, null);
-				break;
-			case purple_maple_sapling:
-				obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, this, null);
-				break;
-			}
-		}
+        if (obj == null)
+        {
+            switch (type)
+            {
+            case coconut_sapling:
+                obj = new WorldGenCoconutTree(30, 10, 1.3D);
+                break;
+            case red_maple_sapling:
+                obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, this, FronosBlocks.red_maple_ivy);
+                break;
+            case yellow_maple_sapling:
+                obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, true, this, FronosBlocks.yellow_maple_ivy);
+                break;
+            case purple_maple_sapling:
+                obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, true, this, FronosBlocks.purple_maple_ivy);
+                break;
+            }
+        }
 
-		if (obj != null)
-		{
-			world.setBlockToAir(pos);
+        if (obj != null)
+        {
+            world.setBlockToAir(pos);
 
-			if (!((WorldGenerator)obj).generate(world, rand, pos))
-			{
-				world.setBlockState(pos, state, 2);
-			}
-		}
-	}
+            if (!((WorldGenerator)obj).generate(world, rand, pos))
+            {
+                world.setBlockState(pos, state, 2);
+            }
+        }
+    }
 
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos)
-	{
-		return false;
-	}
+    @Override
+    public boolean isReplaceable(World world, BlockPos pos)
+    {
+        return false;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		coconut_sapling,
-		red_maple_sapling,
-		yellow_maple_sapling,
-		purple_maple_sapling;
+    public static enum BlockType implements IStringSerializable
+    {
+        coconut_sapling,
+        red_maple_sapling,
+        yellow_maple_sapling,
+        purple_maple_sapling;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

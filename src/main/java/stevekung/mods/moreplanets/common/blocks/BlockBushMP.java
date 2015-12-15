@@ -16,34 +16,34 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockBushMP extends BlockBush
 {
-	public BlockBushMP()
-	{
-		super(Material.plants);
-		this.setHardness(0.0F);
-		this.setStepSound(soundTypeGrass);
-		this.setTickRandomly(true);
-	}
+    public BlockBushMP()
+    {
+        super(Material.plants);
+        this.setHardness(0.0F);
+        this.setStepSound(soundTypeGrass);
+        this.setTickRandomly(true);
+    }
 
-	public BlockBushMP(Material material)
-	{
-		super(material);
-	}
+    public BlockBushMP(Material material)
+    {
+        super(material);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.CUTOUT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.CUTOUT;
+    }
 
-	@Override
-	public boolean canPlaceBlockOn(Block ground)
-	{
-		return super.canPlaceBlockOn(ground);
-	}
+    @Override
+    public boolean canPlaceBlockOn(Block ground)
+    {
+        return super.canPlaceBlockOn(ground);
+    }
 }

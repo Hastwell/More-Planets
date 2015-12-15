@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class TileEntityKapteynBTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityKapteynBTreasureChest()
-	{
-		super(8, "kapteynb", KapteynBBlocks.kapteyn_b_treasure_chest);
-	}
+    public TileEntityKapteynBTreasureChest()
+    {
+        super(8, "kapteynb", KapteynBBlocks.kapteyn_b_treasure_chest);
+    }
 }

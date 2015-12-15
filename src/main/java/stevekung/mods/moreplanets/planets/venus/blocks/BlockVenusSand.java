@@ -17,23 +17,23 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockVenusSand extends BlockFalling implements ITerraformableBlock
 {
-	public BlockVenusSand(String name)
-	{
-		super(Material.sand);
-		this.setStepSound(soundTypeSand);
-		this.setHardness(0.55F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockVenusSand(String name)
+    {
+        super(Material.sand);
+        this.setStepSound(soundTypeSand);
+        this.setHardness(0.55F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
-	}
+    @Override
+    public boolean isTerraformable(World world, BlockPos pos)
+    {
+        return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
+    }
 }

@@ -18,15 +18,13 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public class BiomeGenBaseIo extends BiomeGenBaseMP
 {
-	public static BiomeGenBase io = new BiomeGenBaseIo().setBiomeName("Io");
-
-	public BiomeGenBaseIo()
-	{
-		super(ConfigManagerMP.idIoBiome);
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-	}
+    public BiomeGenBaseIo()
+    {
+        super(ConfigManagerMP.idBaseMoonBiome);
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
+    }
 }

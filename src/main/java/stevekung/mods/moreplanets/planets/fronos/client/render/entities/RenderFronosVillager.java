@@ -22,49 +22,49 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosVillager;
 @SideOnly(Side.CLIENT)
 public class RenderFronosVillager extends RenderLiving
 {
-	private ResourceLocation villagerTextures = new ResourceLocation("moreplanets:textures/entity/fronos_villager.png");
+    private ResourceLocation villagerTextures = new ResourceLocation("moreplanets:textures/entity/fronos_villager.png");
 
-	public RenderFronosVillager(RenderManager render)
-	{
-		super(render, new ModelVillager(0.0F), 0.5F);
-	}
+    public RenderFronosVillager(RenderManager render)
+    {
+        super(render, new ModelVillager(0.0F), 0.5F);
+    }
 
-	public ModelVillager model()
-	{
-		return (ModelVillager)super.getMainModel();
-	}
+    public ModelVillager model()
+    {
+        return (ModelVillager)super.getMainModel();
+    }
 
-	protected void preRenderCallback(EntityFronosVillager entity)
-	{
-		float f1 = 0.9375F;
+    protected void preRenderCallback(EntityFronosVillager entity)
+    {
+        float f1 = 0.9375F;
 
-		if (entity.getGrowingAge() < 0)
-		{
-			f1 = (float)(f1 * 0.5D);
-			this.shadowSize = 0.25F;
-		}
-		else
-		{
-			this.shadowSize = 0.5F;
-		}
-		GlStateManager.scale(f1, f1, f1);
-	}
+        if (entity.getGrowingAge() < 0)
+        {
+            f1 = (float)(f1 * 0.5D);
+            this.shadowSize = 0.25F;
+        }
+        else
+        {
+            this.shadowSize = 0.5F;
+        }
+        GlStateManager.scale(f1, f1, f1);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		this.preRenderCallback((EntityFronosVillager)entity);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    {
+        this.preRenderCallback((EntityFronosVillager)entity);
+    }
 
-	@Override
-	public ModelBase getMainModel()
-	{
-		return this.model();
-	}
+    @Override
+    public ModelBase getMainModel()
+    {
+        return this.model();
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.villagerTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.villagerTextures;
+    }
 }

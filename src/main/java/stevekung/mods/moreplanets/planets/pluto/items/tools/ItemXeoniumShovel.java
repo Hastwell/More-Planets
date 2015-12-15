@@ -15,25 +15,25 @@ import stevekung.mods.moreplanets.common.items.tools.ItemElectricShovelMP;
 
 public class ItemXeoniumShovel extends ItemElectricShovelMP
 {
-	public ItemXeoniumShovel(String name, ToolMaterial material)
-	{
-		super(material);
-		this.setUnlocalizedName(name);
-	}
+    public ItemXeoniumShovel(String name, ToolMaterial material)
+    {
+        super(material);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack itemStack, EntityLivingBase living, EntityLivingBase holder)
-	{
-		if (this.getElectricityStored(itemStack) != 0.0F)
-		{
-			living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
-		}
-		return super.hitEntity(itemStack, living, holder);
-	}
+    @Override
+    public boolean hitEntity(ItemStack itemStack, EntityLivingBase living, EntityLivingBase holder)
+    {
+        if (this.getElectricityStored(itemStack) != 0.0F)
+        {
+            living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
+        }
+        return super.hitEntity(itemStack, living, holder);
+    }
 
-	@Override
-	public float getMaxElectricityStored(ItemStack itemStack)
-	{
-		return 20000.0F;
-	}
+    @Override
+    public float getMaxElectricityStored(ItemStack itemStack)
+    {
+        return 20000.0F;
+    }
 }

@@ -24,54 +24,54 @@ import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
 
 public class BlockEuropaSeaLantern extends BlockBaseMP
 {
-	public BlockEuropaSeaLantern(String name)
-	{
-		super(Material.glass);
-		this.setStepSound(soundTypeGlass);
-		this.setHardness(0.3F);
-		this.setLightLevel(1.0F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockEuropaSeaLantern(String name)
+    {
+        super(Material.glass);
+        this.setStepSound(soundTypeGlass);
+        this.setHardness(0.3F);
+        this.setLightLevel(1.0F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 2 + rand.nextInt(2);
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 2 + rand.nextInt(2);
+    }
 
-	@Override
-	public int quantityDroppedWithBonus(int fortune, Random rand)
-	{
-		return MathHelper.clamp_int(this.quantityDropped(rand) + rand.nextInt(fortune + 1), 1, 5);
-	}
+    @Override
+    public int quantityDroppedWithBonus(int fortune, Random rand)
+    {
+        return MathHelper.clamp_int(this.quantityDropped(rand) + rand.nextInt(fortune + 1), 1, 5);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return EuropaItems.europa_prismarine;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return EuropaItems.europa_prismarine;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 1;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 1;
+    }
 
-	@Override
-	public MapColor getMapColor(IBlockState state)
-	{
-		return MapColor.quartzColor;
-	}
+    @Override
+    public MapColor getMapColor(IBlockState state)
+    {
+        return MapColor.quartzColor;
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
-	{
-		return new ItemStack(this, 1, 0);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, 0);
+    }
 }

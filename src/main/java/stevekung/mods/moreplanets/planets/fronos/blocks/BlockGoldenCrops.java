@@ -17,39 +17,39 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockGoldenCrops extends BlockCrops implements IPlantableMP
 {
-	public BlockGoldenCrops(String name)
-	{
-		super();
-		this.setTickRandomly(true);
-		float f = 0.5F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
-		this.setHardness(0.0F);
-		this.setStepSound(soundTypeGrass);
-		this.disableStats();
-		this.setUnlocalizedName(name);
-	}
+    public BlockGoldenCrops(String name)
+    {
+        super();
+        this.setTickRandomly(true);
+        float f = 0.5F;
+        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+        this.setHardness(0.0F);
+        this.setStepSound(soundTypeGrass);
+        this.disableStats();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
-	{
-		return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_farmland;
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+    {
+        return world.getBlockState(pos.down()).getBlock() == FronosBlocks.fronos_farmland;
+    }
 
-	@Override
-	protected Item getCrop()
-	{
-		return FronosItems.fronos_item;
-	}
+    @Override
+    protected Item getCrop()
+    {
+        return FronosItems.fronos_item;
+    }
 
-	@Override
-	protected Item getSeed()
-	{
-		return FronosItems.golden_seeds;
-	}
+    @Override
+    protected Item getSeed()
+    {
+        return FronosItems.golden_seeds;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 6;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 6;
+    }
 }

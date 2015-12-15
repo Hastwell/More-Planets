@@ -16,29 +16,29 @@ import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 
 public class CommonProxyMP
 {
-	public void registerRenderer() {}
+    public void registerRenderer() {}
 
-	public void spawnParticle(EnumParticleTypesMP type, double x, double y, double z) {}
+    public void spawnParticle(EnumParticleTypesMP type, double x, double y, double z) {}
 
-	public void spawnParticle(EnumParticleTypesMP type, double x, double y, double z, double motionX, double motionY, double motionZ) {}
+    public void spawnParticle(EnumParticleTypesMP type, double x, double y, double z, double motionX, double motionY, double motionZ) {}
 
-	public EntityPlayer getPlayerFromNetHandler(INetHandler handler)
-	{
-		if (handler instanceof NetHandlerPlayServer)
-		{
-			return ((NetHandlerPlayServer) handler).playerEntity;
-		}
-		else
-		{
-			return null;
-		}
-	}
+    public EntityPlayer getPlayerFromNetHandler(INetHandler handler)
+    {
+        if (handler instanceof NetHandlerPlayServer)
+        {
+            return ((NetHandlerPlayServer) handler).playerEntity;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
-	public void resetPlayerFloatingTick(EntityPlayer player)
-	{
-		if (player instanceof EntityPlayerMP)
-		{
-			ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, ((EntityPlayerMP)player).playerNetServerHandler, Integer.valueOf(0), new String[] { "field_147365_f", "floatingTickCount" });
-		}
-	}
+    public void resetPlayerFloatingTick(EntityPlayer player)
+    {
+        if (player instanceof EntityPlayerMP)
+        {
+            ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, ((EntityPlayerMP)player).playerNetServerHandler, Integer.valueOf(0), new String[] { "field_147365_f", "floatingTickCount" });
+        }
+    }
 }

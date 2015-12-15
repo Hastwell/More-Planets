@@ -21,29 +21,29 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicke
 @SideOnly(Side.CLIENT)
 public class RenderStrawberryChicken extends RenderLiving
 {
-	private ResourceLocation chickenTextures = new ResourceLocation("moreplanets:textures/entity/strawberry_chicken.png");
+    private ResourceLocation chickenTextures = new ResourceLocation("moreplanets:textures/entity/strawberry_chicken.png");
 
-	public RenderStrawberryChicken(RenderManager render)
-	{
-		super(render, new ModelChicken(), 0.3F);
-	}
+    public RenderStrawberryChicken(RenderManager render)
+    {
+        super(render, new ModelChicken(), 0.3F);
+    }
 
-	protected float func_180569_a(EntityStrawberryChicken entity, float par2)
-	{
-		float f1 = entity.field_70888_h + (entity.field_70886_e - entity.field_70888_h) * par2;
-		float f2 = entity.field_70884_g + (entity.destPos - entity.field_70884_g) * par2;
-		return (MathHelper.sin(f1) + 1.0F) * f2;
-	}
+    protected float func_180569_a(EntityStrawberryChicken entity, float par2)
+    {
+        float f1 = entity.field_70888_h + (entity.field_70886_e - entity.field_70888_h) * par2;
+        float f2 = entity.field_70884_g + (entity.destPos - entity.field_70884_g) * par2;
+        return (MathHelper.sin(f1) + 1.0F) * f2;
+    }
 
-	@Override
-	protected float handleRotationFloat(EntityLivingBase entity, float par2)
-	{
-		return this.func_180569_a((EntityStrawberryChicken)entity, par2);
-	}
+    @Override
+    protected float handleRotationFloat(EntityLivingBase entity, float par2)
+    {
+        return this.func_180569_a((EntityStrawberryChicken)entity, par2);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.chickenTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.chickenTextures;
+    }
 }

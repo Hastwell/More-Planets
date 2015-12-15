@@ -16,18 +16,18 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenCandyFlower extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		for (int i = 0; i < 64; ++i)
-		{
-			BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        for (int i = 0; i < 64; ++i)
+        {
+            BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && FronosBlocks.candy_flower.canBlockStay(world, pos1, world.getBlockState(pos1)))
-			{
-				world.setBlockState(pos1, FronosBlocks.candy_flower.getStateFromMeta(rand.nextInt(7)), 2);
-			}
-		}
-		return true;
-	}
+            if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && FronosBlocks.candy_flower.canBlockStay(world, pos1, world.getBlockState(pos1)))
+            {
+                world.setBlockState(pos1, FronosBlocks.candy_flower.getStateFromMeta(rand.nextInt(7)), 2);
+            }
+        }
+        return true;
+    }
 }

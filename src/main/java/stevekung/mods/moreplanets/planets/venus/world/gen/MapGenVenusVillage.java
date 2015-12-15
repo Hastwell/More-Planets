@@ -25,63 +25,63 @@ import stevekung.mods.moreplanets.planets.venus.world.gen.village.StructureVenus
 
 public class MapGenVenusVillage extends MapGenStructure
 {
-	private int terrainType;
+    private int terrainType;
 
-	static
-	{
-		MapGenStructureIO.registerStructure(StructureVenusVillageStart.class, "VenusVillage");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageField.class, "VenusField1");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageField2.class, "VenusField2");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageHouse.class, "VenusHouse");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageRoadPiece.class, "VenusRoadPiece");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillagePathGen.class, "VenusPath");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageTorch.class, "VenusTorch");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageStartPiece.class, "VenusWell");
-		MapGenStructureIO.registerStructureComponent(ComponentVenusVillageHut.class, "VenusHut");
-	}
+    static
+    {
+        MapGenStructureIO.registerStructure(StructureVenusVillageStart.class, "VenusVillage");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillageField.class, "VenusField1");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillageField2.class, "VenusField2");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillageHouse.class, "VenusHouse");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillageRoadPiece.class, "VenusRoadPiece");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillagePathGen.class, "VenusPath");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillageTorch.class, "VenusTorch");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillageStartPiece.class, "VenusWell");
+        MapGenStructureIO.registerStructureComponent(ComponentVenusVillageHut.class, "VenusHut");
+    }
 
-	public MapGenVenusVillage()
-	{
-		this.terrainType = 0;
-	}
+    public MapGenVenusVillage()
+    {
+        this.terrainType = 0;
+    }
 
-	@Override
-	protected boolean canSpawnStructureAtCoords(int i, int j)
-	{
-		byte numChunks = 32;
-		byte offsetChunks = 8;
-		int oldi = i;
-		int oldj = j;
+    @Override
+    protected boolean canSpawnStructureAtCoords(int i, int j)
+    {
+        byte numChunks = 32;
+        byte offsetChunks = 8;
+        int oldi = i;
+        int oldj = j;
 
-		if (i < 0)
-		{
-			i -= numChunks - 1;
-		}
-		if (j < 0)
-		{
-			j -= numChunks - 1;
-		}
+        if (i < 0)
+        {
+            i -= numChunks - 1;
+        }
+        if (j < 0)
+        {
+            j -= numChunks - 1;
+        }
 
-		int randX = i / numChunks;
-		int randZ = j / numChunks;
-		Random var7 = this.worldObj.setRandomSeed(i, j, 10387312);
-		randX *= numChunks;
-		randZ *= numChunks;
-		randX += var7.nextInt(numChunks - offsetChunks);
-		randZ += var7.nextInt(numChunks - offsetChunks);
-		return oldi == randX && oldj == randZ;
-	}
+        int randX = i / numChunks;
+        int randZ = j / numChunks;
+        Random var7 = this.worldObj.setRandomSeed(i, j, 10387312);
+        randX *= numChunks;
+        randZ *= numChunks;
+        randX += var7.nextInt(numChunks - offsetChunks);
+        randZ += var7.nextInt(numChunks - offsetChunks);
+        return oldi == randX && oldj == randZ;
+    }
 
-	@Override
-	protected StructureStart getStructureStart(int x, int z)
-	{
-		MPLog.debug("Generating Venus Village at x : " + x * 16 + " z : " + z * 16);
-		return new StructureVenusVillageStart(this.worldObj, this.rand, x, z, this.terrainType);
-	}
+    @Override
+    protected StructureStart getStructureStart(int x, int z)
+    {
+        MPLog.debug("Generating Venus Village at x : " + x * 16 + " z : " + z * 16);
+        return new StructureVenusVillageStart(this.worldObj, this.rand, x, z, this.terrainType);
+    }
 
-	@Override
-	public String getStructureName()
-	{
-		return "VenusVillage";
-	}
+    @Override
+    public String getStructureName()
+    {
+        return "VenusVillage";
+    }
 }

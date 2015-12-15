@@ -32,63 +32,63 @@ import codechicken.nei.recipe.TemplateRecipeHandler;
 
 public class NEIMorePlanetsConfig implements IConfigureNEI
 {
-	@Override
-	public void loadConfig()
-	{
-		NEIMorePlanetsConfig.registerRecipeHandler(new Tier4RocketRecipeHandlerMP());
-		NEIMorePlanetsConfig.registerRecipeHandler(new Tier5RocketRecipeHandlerMP());
-		NEIMorePlanetsConfig.registerRecipeHandler(new Tier6RocketRecipeHandlerMP());
-		NEIMorePlanetsConfig.registerRecipeHandler(new Tier7RocketRecipeHandlerMP());
-		NEIMorePlanetsConfig.registerRecipeHandler(new Tier8RocketRecipeHandlerMP());
-		NEIMorePlanetsConfig.registerRecipeHandler(new CircuitFabricatorRecipeHandlerMP());
-		NEIMorePlanetsConfig.registerRecipeHandler(new CandyExtractorRecipeHandler());
-		NEIMorePlanetsConfig.registerRecipeHandler(new CandyExtractorFuelRecipeHandler());
+    @Override
+    public void loadConfig()
+    {
+        NEIMorePlanetsConfig.registerRecipeHandler(new Tier4RocketRecipeHandlerMP());
+        NEIMorePlanetsConfig.registerRecipeHandler(new Tier5RocketRecipeHandlerMP());
+        NEIMorePlanetsConfig.registerRecipeHandler(new Tier6RocketRecipeHandlerMP());
+        NEIMorePlanetsConfig.registerRecipeHandler(new Tier7RocketRecipeHandlerMP());
+        NEIMorePlanetsConfig.registerRecipeHandler(new Tier8RocketRecipeHandlerMP());
+        NEIMorePlanetsConfig.registerRecipeHandler(new CircuitFabricatorRecipeHandlerMP());
+        NEIMorePlanetsConfig.registerRecipeHandler(new CandyExtractorRecipeHandler());
+        NEIMorePlanetsConfig.registerRecipeHandler(new CandyExtractorFuelRecipeHandler());
 
-		Tier4RocketRecipeHandlerMP.addRocketRecipes();
-		Tier5RocketRecipeHandlerMP.addRocketRecipes();
-		Tier6RocketRecipeHandlerMP.addRocketRecipes();
-		Tier7RocketRecipeHandlerMP.addRocketRecipes();
-		Tier8RocketRecipeHandlerMP.addRocketRecipes();
-		CircuitFabricatorRecipeHandlerMP.registerRecipes();
+        Tier4RocketRecipeHandlerMP.addRocketRecipes();
+        Tier5RocketRecipeHandlerMP.addRocketRecipes();
+        Tier6RocketRecipeHandlerMP.addRocketRecipes();
+        Tier7RocketRecipeHandlerMP.addRocketRecipes();
+        Tier8RocketRecipeHandlerMP.addRocketRecipes();
+        CircuitFabricatorRecipeHandlerMP.registerRecipes();
 
-		this.registerAPI();
-	}
+        this.registerAPI();
+    }
 
-	@Override
-	public String getName()
-	{
-		return "More Planets NEI Plugin";
-	}
+    @Override
+    public String getName()
+    {
+        return "More Planets NEI Plugin";
+    }
 
-	@Override
-	public String getVersion()
-	{
-		return MorePlanetsCore.VERSION;
-	}
+    @Override
+    public String getVersion()
+    {
+        return MorePlanetsCore.VERSION;
+    }
 
-	private void registerAPI()
-	{
-		for (Block block : MPBlocks.hideBlockList)
-		{
-			API.hideItem(new ItemStack(block, 1, OreDictionary.WILDCARD_VALUE));
-			MPLog.debug("Register NEI Hide Block : %s", GameData.getBlockRegistry().getNameForObject(block).toString());
-		}
-		for (Item item : MPItems.hideItemList)
-		{
-			API.hideItem(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE));
-			MPLog.debug("Register NEI Hide Item : %s", GameData.getItemRegistry().getNameForObject(item).toString());
-		}
-		for (Block block : MPBlocks.highlightBlockList)
-		{
-			API.registerHighlightIdentifier(block, new NEIHighlightHandlerMP());
-			MPLog.debug("Register NEI Highlight : %s", GameData.getBlockRegistry().getNameForObject(block).toString());
-		}
-	}
+    private void registerAPI()
+    {
+        for (Block block : MPBlocks.hideBlockList)
+        {
+            API.hideItem(new ItemStack(block, 1, OreDictionary.WILDCARD_VALUE));
+            MPLog.debug("Register NEI Hide Block : %s", GameData.getBlockRegistry().getNameForObject(block).toString());
+        }
+        for (Item item : MPItems.hideItemList)
+        {
+            API.hideItem(new ItemStack(item, 1, OreDictionary.WILDCARD_VALUE));
+            MPLog.debug("Register NEI Hide Item : %s", GameData.getItemRegistry().getNameForObject(item).toString());
+        }
+        for (Block block : MPBlocks.highlightBlockList)
+        {
+            API.registerHighlightIdentifier(block, new NEIHighlightHandlerMP());
+            MPLog.debug("Register NEI Highlight : %s", GameData.getBlockRegistry().getNameForObject(block).toString());
+        }
+    }
 
-	private static void registerRecipeHandler(TemplateRecipeHandler handler)
-	{
-		GuiUsageRecipe.registerUsageHandler(handler);
-		GuiCraftingRecipe.registerRecipeHandler(handler);
-		MPLog.debug("Register NEI Recipe : %s", handler.getClass().getSimpleName());
-	}
+    private static void registerRecipeHandler(TemplateRecipeHandler handler)
+    {
+        GuiUsageRecipe.registerUsageHandler(handler);
+        GuiCraftingRecipe.registerRecipeHandler(handler);
+        MPLog.debug("Register NEI Recipe : %s", handler.getClass().getSimpleName());
+    }
 }

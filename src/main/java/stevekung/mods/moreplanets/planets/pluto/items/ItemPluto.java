@@ -12,27 +12,27 @@ import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 
 public class ItemPluto extends ItemBaseMP implements IPowerCrystal
 {
-	public ItemPluto(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemPluto(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "xeonium_gem" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "xeonium_gem" };
+    }
 
-	@Override
-	public boolean isPowerCrystal(int meta)
-	{
-		return true;
-	}
+    @Override
+    public boolean isPowerCrystal(int meta)
+    {
+        return true;
+    }
 
-	@Override
-	public int getPowerCrystalBurnTime(int meta)
-	{
-		return 3600;
-	}
+    @Override
+    public int getPowerCrystalBurnTime(int meta)
+    {
+        return 3600;
+    }
 }

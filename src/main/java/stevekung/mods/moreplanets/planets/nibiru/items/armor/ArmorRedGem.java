@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class ArmorRedGem extends ItemArmorMP
 {
-	public ArmorRedGem(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorRedGem(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == NibiruArmorItems.red_gem_helmet || stack.getItem() == NibiruArmorItems.red_gem_chestplate || stack.getItem() == NibiruArmorItems.red_gem_boots)
-		{
-			return "moreplanets:textures/model/armor/red_gem_1.png";
-		}
-		if (stack.getItem() == NibiruArmorItems.red_gem_leggings)
-		{
-			return "moreplanets:textures/model/armor/red_gem_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == NibiruArmorItems.red_gem_helmet || stack.getItem() == NibiruArmorItems.red_gem_chestplate || stack.getItem() == NibiruArmorItems.red_gem_boots)
+        {
+            return "moreplanets:textures/model/armor/red_gem_1.png";
+        }
+        if (stack.getItem() == NibiruArmorItems.red_gem_leggings)
+        {
+            return "moreplanets:textures/model/armor/red_gem_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return NibiruItems.nibiru_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return NibiruItems.nibiru_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 2;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 2;
+    }
 }

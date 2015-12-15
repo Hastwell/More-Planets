@@ -21,48 +21,48 @@ import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamCat;
 @SideOnly(Side.CLIENT)
 public class RenderCreamCat extends RenderLiving
 {
-	private ResourceLocation chocolateCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/chocolate.png");
-	private ResourceLocation spaceCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/default.png");
-	private ResourceLocation vanillaCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/vanilla.png");
-	private ResourceLocation strawberryCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/strawberry.png");
-	private ResourceLocation orangeCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/orange.png");
-	private ResourceLocation teaCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/tea.png");
-	private ResourceLocation lemonCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/lemon.png");
+    private ResourceLocation chocolateCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/chocolate.png");
+    private ResourceLocation spaceCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/default.png");
+    private ResourceLocation vanillaCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/vanilla.png");
+    private ResourceLocation strawberryCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/strawberry.png");
+    private ResourceLocation orangeCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/orange.png");
+    private ResourceLocation teaCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/tea.png");
+    private ResourceLocation lemonCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/lemon.png");
 
-	public RenderCreamCat(RenderManager render)
-	{
-		super(render, new ModelCreamCat(), 0.1F);
-	}
+    public RenderCreamCat(RenderManager render)
+    {
+        super(render, new ModelCreamCat(), 0.1F);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		if (((EntityCreamCat)entity).isTamed())
-		{
-			GlStateManager.scale(0.8F, 0.8F, 0.8F);
-		}
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    {
+        if (((EntityCreamCat)entity).isTamed())
+        {
+            GlStateManager.scale(0.8F, 0.8F, 0.8F);
+        }
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		switch (((EntityCreamCat)entity).getTameSkin())
-		{
-		case 0:
-		default:
-			return this.spaceCatTextures;
-		case 1:
-			return this.vanillaCatTextures;
-		case 2:
-			return this.chocolateCatTextures;
-		case 3:
-			return this.strawberryCatTextures;
-		case 4:
-			return this.orangeCatTextures;
-		case 5:
-			return this.teaCatTextures;
-		case 6:
-			return this.lemonCatTextures;
-		}
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        switch (((EntityCreamCat)entity).getTameSkin())
+        {
+        case 0:
+        default:
+            return this.spaceCatTextures;
+        case 1:
+            return this.vanillaCatTextures;
+        case 2:
+            return this.chocolateCatTextures;
+        case 3:
+            return this.strawberryCatTextures;
+        case 4:
+            return this.orangeCatTextures;
+        case 5:
+            return this.teaCatTextures;
+        case 6:
+            return this.lemonCatTextures;
+        }
+    }
 }

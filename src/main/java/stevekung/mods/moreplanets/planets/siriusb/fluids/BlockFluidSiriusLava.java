@@ -23,61 +23,61 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 
 public class BlockFluidSiriusLava extends BlockFluidLavaBaseMP
 {
-	public BlockFluidSiriusLava(String name)
-	{
-		super(SiriusBBlocks.sirius_lava_fluid);
-		this.setUnlocalizedName(name);
-	}
+    public BlockFluidSiriusLava(String name)
+    {
+        super(SiriusBBlocks.sirius_lava_fluid);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (this.blockMaterial == Material.lava && world.getBlockState(pos.up()).getBlock().getMaterial() == Material.air && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
-		{
-			if (rand.nextInt(100) == 0)
-			{
-				double d5 = pos.getX() + rand.nextFloat();
-				double d6 = pos.getY() + this.maxY;
-				double d7 = pos.getZ() + rand.nextFloat();
-				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.SIRIUS_LAVA, d5, d6, d7);
-				world.playSound(d5, d6, d7, "liquid.lavapop", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
-			}
-			if (rand.nextInt(200) == 0)
-			{
-				world.playSound(pos.getX(), pos.getY(), pos.getZ(), "liquid.lava", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
-			}
-		}
-		if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, pos.down()) && !world.getBlockState(pos.down(2)).getBlock().getMaterial().blocksMovement())
-		{
-			double d5 = pos.getX() + rand.nextFloat();
-			double d6 = pos.getY() - 1.05D;
-			double d7 = pos.getZ() + rand.nextFloat();
-			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.SIRIUS_LAVA_DRIP, d5, d6, d7);
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (this.blockMaterial == Material.lava && world.getBlockState(pos.up()).getBlock().getMaterial() == Material.air && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
+        {
+            if (rand.nextInt(100) == 0)
+            {
+                double d5 = pos.getX() + rand.nextFloat();
+                double d6 = pos.getY() + this.maxY;
+                double d7 = pos.getZ() + rand.nextFloat();
+                MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.SIRIUS_LAVA, d5, d6, d7);
+                world.playSound(d5, d6, d7, "liquid.lavapop", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
+            }
+            if (rand.nextInt(200) == 0)
+            {
+                world.playSound(pos.getX(), pos.getY(), pos.getZ(), "liquid.lava", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
+            }
+        }
+        if (rand.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(world, pos.down()) && !world.getBlockState(pos.down(2)).getBlock().getMaterial().blocksMovement())
+        {
+            double d5 = pos.getX() + rand.nextFloat();
+            double d6 = pos.getY() - 1.05D;
+            double d7 = pos.getZ() + rand.nextFloat();
+            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.SIRIUS_LAVA_DRIP, d5, d6, d7);
+        }
+    }
 
-	@Override
-	protected IBlockState getBlockFromWaterTo()
-	{
-		return SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_carbon_stone);
-	}
+    @Override
+    protected IBlockState getBlockFromWaterTo()
+    {
+        return SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_carbon_stone);
+    }
 
-	@Override
-	protected IBlockState getObsidianBlock()
-	{
-		return SiriusBBlocks.sirius_obsidian.getDefaultState();
-	}
+    @Override
+    protected IBlockState getObsidianBlock()
+    {
+        return SiriusBBlocks.sirius_obsidian.getDefaultState();
+    }
 
-	@Override
-	protected IBlockState getCobblestoneBlock()
-	{
-		return SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_carbon_cobblestone);
-	}
+    @Override
+    protected IBlockState getCobblestoneBlock()
+    {
+        return SiriusBBlocks.sirius_b_block.getDefaultState().withProperty(BlockSiriusB.VARIANT, BlockSiriusB.BlockType.sirius_b_carbon_cobblestone);
+    }
 
-	@Override
-	protected IBlockState getFireBlock()
-	{
-		return SiriusBBlocks.sirius_fire.getDefaultState();
-	}
+    @Override
+    protected IBlockState getFireBlock()
+    {
+        return SiriusBBlocks.sirius_fire.getDefaultState();
+    }
 }

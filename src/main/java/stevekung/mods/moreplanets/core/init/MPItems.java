@@ -35,53 +35,57 @@ import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class MPItems
 {
-	public static Item meteor_shower;
-	public static Item spawn_egg_mp;
-	public static Item feces;
-	public static Item achievement_temp;
-	public static Item tier_2_thermal_padding;
-	public static Item tier_3_thermal_padding;
-	public static Item desh_thermal_cloth;
+    public static Item meteor_shower;
+    public static Item spawn_egg_mp;
+    public static Item feces;
+    public static Item achievement_temp;
+    public static Item tier_2_thermal_padding;
+    public static Item tier_3_thermal_padding;
+    public static Item desh_thermal_cloth;
+    public static Item cheese_spore;
 
-	public static ArrayList<Item> hideItemList = new ArrayList();
+    public static ArrayList<Item> hideItemList = new ArrayList();
 
-	public static void init()
-	{
-		DionaItems.init();
-		PolongniusItems.init();
-		NibiruItems.init();
-		KoentusItems.init();
-		FronosItems.init();
-		KapteynBItems.init();
-		SiriusBItems.init();
+    public static void init()
+    {
+        DionaItems.init();
+        PolongniusItems.init();
+        NibiruItems.init();
+        KoentusItems.init();
+        FronosItems.init();
+        KapteynBItems.init();
+        SiriusBItems.init();
 
-		MercuryItems.init();
-		VenusItems.init();
-		PlutoItems.init();
-		IoItems.init();
-		EuropaItems.init();
-		DarkAsteroidsItems.init();
+        MercuryItems.init();
+        VenusItems.init();
+        PlutoItems.init();
+        IoItems.init();
+        EuropaItems.init();
+        DarkAsteroidsItems.init();
 
-		// Init
-		MPItems.meteor_shower = new ItemMeteorShower("meteor_shower");
-		MPItems.spawn_egg_mp = new ItemMonsterPlacerMP("spawn_egg_mp");
-		MPItems.feces = new ItemFeces("feces");
-		MPItems.achievement_temp = new ItemMorePlanetsNull("achievement_temp");
-		MPItems.desh_thermal_cloth = new ItemMorePlanets("desh_thermal_cloth");
-		MPItems.tier_2_thermal_padding = new ItemTier2ThermalPadding("tier_2_thermal_padding");
-		MPItems.tier_3_thermal_padding = new ItemTier3ThermalPadding("tier_3_thermal_padding");
+        // Init
+        MPItems.meteor_shower = new ItemMeteorShower("meteor_shower");
+        MPItems.spawn_egg_mp = new ItemMonsterPlacerMP("spawn_egg_mp");
+        MPItems.feces = new ItemFeces("feces");
+        MPItems.achievement_temp = new ItemMorePlanetsNull("achievement_temp");
+        MPItems.desh_thermal_cloth = new ItemMorePlanets("desh_thermal_cloth");
+        MPItems.tier_2_thermal_padding = new ItemTier2ThermalPadding("tier_2_thermal_padding");
+        MPItems.tier_3_thermal_padding = new ItemTier3ThermalPadding("tier_3_thermal_padding");
+        MPItems.cheese_spore = new ItemMorePlanetsNull("cheese_spore");
 
-		// Register
-		CommonRegisterHelper.registerItem(MPItems.meteor_shower);
-		CommonRegisterHelper.registerItem(MPItems.feces);
-		CommonRegisterHelper.registerItem(MPItems.desh_thermal_cloth);
-		CommonRegisterHelper.registerItem(MPItems.spawn_egg_mp);
-		CommonRegisterHelper.registerItem(MPItems.achievement_temp);
-		CommonRegisterHelper.registerItem(MPItems.tier_2_thermal_padding);
-		CommonRegisterHelper.registerItem(MPItems.tier_3_thermal_padding);
+        // Register
+        CommonRegisterHelper.registerItem(MPItems.meteor_shower);
+        CommonRegisterHelper.registerItem(MPItems.feces);
+        CommonRegisterHelper.registerItem(MPItems.desh_thermal_cloth);
+        CommonRegisterHelper.registerItem(MPItems.spawn_egg_mp);
+        CommonRegisterHelper.registerItem(MPItems.tier_2_thermal_padding);
+        CommonRegisterHelper.registerItem(MPItems.tier_3_thermal_padding);
+        CommonRegisterHelper.registerItem(MPItems.achievement_temp);
+        CommonRegisterHelper.registerItem(MPItems.cheese_spore);
 
-		hideItemList.add(MPItems.achievement_temp);
+        hideItemList.add(MPItems.achievement_temp);
+        hideItemList.add(MPItems.cheese_spore);
 
-		MPLog.debug("Register Items");
-	}
+        MPLog.debug("Register Items");
+    }
 }

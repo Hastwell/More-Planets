@@ -27,104 +27,104 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTr
 
 public class RoomTreasureFronos extends DungeonRoom
 {
-	int sizeX;
-	int sizeY;
-	int sizeZ;
+    int sizeX;
+    int sizeY;
+    int sizeZ;
 
-	private HashSet<BlockPos> chests = new HashSet<BlockPos>();
+    private HashSet<BlockPos> chests = new HashSet<BlockPos>();
 
-	public RoomTreasureFronos(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
-	{
-		super(dungeon, x, y, z, facing);
+    public RoomTreasureFronos(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
+    {
+        super(dungeon, x, y, z, facing);
 
-		if (this.worldObj != null)
-		{
-			Random rand = new Random(this.worldObj.getSeed() * x * y * 57 * z);
-			this.sizeX = rand.nextInt(6) + 7;
-			this.sizeY = rand.nextInt(2) + 5;
-			this.sizeZ = rand.nextInt(6) + 7;
-		}
-	}
+        if (this.worldObj != null)
+        {
+            Random rand = new Random(this.worldObj.getSeed() * x * y * 57 * z);
+            this.sizeX = rand.nextInt(6) + 7;
+            this.sizeY = rand.nextInt(2) + 5;
+            this.sizeZ = rand.nextInt(6) + 7;
+        }
+    }
 
-	@Override
-	public void generate(ChunkPrimer chunk, int cx, int cz)
-	{
-		for (int i = this.posX - 1; i <= this.posX + this.sizeX; i++)
-		{
-			for (int k = this.posZ - 1; k <= this.posZ + this.sizeZ; k++)
-			{
-				for (int j = this.posY - 1; j <= this.posY + this.sizeY; j++)
-				{
-					if (i == this.posX - 1 || i == this.posX + this.sizeX || j == this.posY - 1 || j == this.posY + this.sizeY || k == this.posZ - 1 || k == this.posZ + this.sizeZ)
-					{
-						this.placeBlock(chunk, i, j, k, cx, cz, this.dungeonInstance.DUNGEON_WALL_ID, this.dungeonInstance.DUNGEON_WALL_META);
-					}
-					else
-					{
-						if ((i == this.posX || i == this.posX + this.sizeX - 1) && (k == this.posZ || k == this.posZ + this.sizeZ - 1))
-						{
-							this.placeBlock(chunk, i, j, k, cx, cz, Blocks.glowstone, 0);
-						}
-						else
-						{
-							this.placeBlock(chunk, i, j, k, cx, cz, Blocks.air, 0);
-						}
-					}
-				}
-			}
-		}
-		int hx = (this.posX + this.posX + this.sizeX) / 2;
-		int hz = (this.posZ + this.posZ + this.sizeZ) / 2;
+    @Override
+    public void generate(ChunkPrimer chunk, int cx, int cz)
+    {
+        for (int i = this.posX - 1; i <= this.posX + this.sizeX; i++)
+        {
+            for (int k = this.posZ - 1; k <= this.posZ + this.sizeZ; k++)
+            {
+                for (int j = this.posY - 1; j <= this.posY + this.sizeY; j++)
+                {
+                    if (i == this.posX - 1 || i == this.posX + this.sizeX || j == this.posY - 1 || j == this.posY + this.sizeY || k == this.posZ - 1 || k == this.posZ + this.sizeZ)
+                    {
+                        this.placeBlock(chunk, i, j, k, cx, cz, this.dungeonInstance.DUNGEON_WALL_ID, this.dungeonInstance.DUNGEON_WALL_META);
+                    }
+                    else
+                    {
+                        if ((i == this.posX || i == this.posX + this.sizeX - 1) && (k == this.posZ || k == this.posZ + this.sizeZ - 1))
+                        {
+                            this.placeBlock(chunk, i, j, k, cx, cz, Blocks.glowstone, 0);
+                        }
+                        else
+                        {
+                            this.placeBlock(chunk, i, j, k, cx, cz, Blocks.air, 0);
+                        }
+                    }
+                }
+            }
+        }
+        int hx = (this.posX + this.posX + this.sizeX) / 2;
+        int hz = (this.posZ + this.posZ + this.sizeZ) / 2;
 
-		if (this.placeBlock(chunk, hx, this.posY, hz, cx, cz, FronosBlocks.fronos_treasure_chest, 0))
-		{
-			this.chests.add(new BlockPos(hx, this.posY, hz));
-		}
-	}
+        if (this.placeBlock(chunk, hx, this.posY, hz, cx, cz, FronosBlocks.fronos_treasure_chest, 0))
+        {
+            this.chests.add(new BlockPos(hx, this.posY, hz));
+        }
+    }
 
-	@Override
-	public DungeonBoundingBox getBoundingBox()
-	{
-		return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
-	}
+    @Override
+    public DungeonBoundingBox getBoundingBox()
+    {
+        return new DungeonBoundingBox(this.posX, this.posZ, this.posX + this.sizeX, this.posZ + this.sizeZ);
+    }
 
-	@Override
-	protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
-	{
-		return new RoomTreasureFronos(dungeon, x, y, z, facing);
-	}
+    @Override
+    protected DungeonRoom makeRoom(MapGenDungeon dungeon, int x, int y, int z, EnumFacing facing)
+    {
+        return new RoomTreasureFronos(dungeon, x, y, z, facing);
+    }
 
-	public ItemStack getGuaranteedLoot(Random rand)
-	{
-		switch (rand.nextInt(6))
-		{
-		case 0:
-			return new ItemStack(FronosItems.glass_gem_corn, rand.nextInt(2) + 1, 0);
-		case 1:
-		default:
-			return new ItemStack(FronosItems.bearry_egg, 1, 0);
-		case 2:
-			return new ItemStack(FronosItems.golden_seeds, rand.nextInt(8) + 1, 0);
-		case 3:
-			return new ItemStack(FronosItems.pearl, rand.nextInt(3) + 1, 1);
-		case 4:
-			return new ItemStack(FronosBlocks.candy_extractor_idle, 1, 0);
-		}
-	}
+    public ItemStack getGuaranteedLoot(Random rand)
+    {
+        switch (rand.nextInt(6))
+        {
+        case 0:
+            return new ItemStack(FronosItems.glass_gem_corn, rand.nextInt(2) + 1, 0);
+        case 1:
+        default:
+            return new ItemStack(FronosItems.bearry_egg, 1, 0);
+        case 2:
+            return new ItemStack(FronosItems.golden_seeds, rand.nextInt(8) + 1, 0);
+        case 3:
+            return new ItemStack(FronosItems.pearl, rand.nextInt(3) + 1, 1);
+        case 4:
+            return new ItemStack(FronosBlocks.candy_extractor_idle, 1, 0);
+        }
+    }
 
-	@Override
-	protected void handleTileEntities(Random rand)
-	{
-		for (BlockPos chestCoords : this.chests)
-		{
-			TileEntity chest = this.worldObj.getTileEntity(chestCoords);
+    @Override
+    protected void handleTileEntities(Random rand)
+    {
+        for (BlockPos chestCoords : this.chests)
+        {
+            TileEntity chest = this.worldObj.getTileEntity(chestCoords);
 
-			if (chest != null && chest instanceof TileEntityFronosTreasureChest)
-			{
-				ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
-				WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), (TileEntityFronosTreasureChest) chest, info.getCount(rand));
-				((TileEntityFronosTreasureChest) chest).setInventorySlotContents(rand.nextInt(((TileEntityFronosTreasureChest) chest).getSizeInventory()), this.getGuaranteedLoot(rand));
-			}
-		}
-	}
+            if (chest != null && chest instanceof TileEntityFronosTreasureChest)
+            {
+                ChestGenHooks info = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
+                WeightedRandomChestContent.generateChestContents(rand, info.getItems(rand), (TileEntityFronosTreasureChest) chest, info.getCount(rand));
+                ((TileEntityFronosTreasureChest) chest).setInventorySlotContents(rand.nextInt(((TileEntityFronosTreasureChest) chest).getSizeInventory()), this.getGuaranteedLoot(rand));
+            }
+        }
+    }
 }

@@ -18,27 +18,27 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class ItemMorePlanets extends Item
 {
-	public ItemMorePlanets()
-	{
-		super();
-	}
+    public ItemMorePlanets()
+    {
+        super();
+    }
 
-	public ItemMorePlanets(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemMorePlanets(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

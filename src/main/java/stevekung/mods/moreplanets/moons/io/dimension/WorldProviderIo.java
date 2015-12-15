@@ -19,166 +19,166 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.world.IUltraVioletLevel;
+import stevekung.mods.moreplanets.common.world.gen.WorldChunkManagerMoonBase;
 import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.moons.io.world.gen.ChunkProviderIo;
-import stevekung.mods.moreplanets.moons.io.world.gen.WorldChunkManagerIo;
 
 public class WorldProviderIo extends WorldProviderSpace implements IGalacticraftWorldProvider, ISolarLevel, IUltraVioletLevel
 {
-	@Override
-	public Vector3 getFogColor()
-	{
-		return new Vector3(182, 108, 10);
-	}
+    @Override
+    public Vector3 getFogColor()
+    {
+        return new Vector3(182, 108, 10);
+    }
 
-	@Override
-	public Vector3 getSkyColor()
-	{
-		return new Vector3(242, 145, 13);
-	}
+    @Override
+    public Vector3 getSkyColor()
+    {
+        return new Vector3(242, 145, 13);
+    }
 
-	@Override
-	public boolean canRainOrSnow()
-	{
-		return false;
-	}
+    @Override
+    public boolean canRainOrSnow()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean hasSunset()
-	{
-		return false;
-	}
+    @Override
+    public boolean hasSunset()
+    {
+        return false;
+    }
 
-	@Override
-	public long getDayLength()
-	{
-		return (long) 2122.9653432;
-	}
+    @Override
+    public long getDayLength()
+    {
+        return (long) 2122.9653432;
+    }
 
-	@Override
-	public boolean shouldForceRespawn()
-	{
-		return !ConfigManagerCore.forceOverworldRespawn;
-	}
+    @Override
+    public boolean shouldForceRespawn()
+    {
+        return !ConfigManagerCore.forceOverworldRespawn;
+    }
 
-	@Override
-	public Class<? extends IChunkProvider> getChunkProviderClass()
-	{
-		return ChunkProviderIo.class;
-	}
+    @Override
+    public Class<? extends IChunkProvider> getChunkProviderClass()
+    {
+        return ChunkProviderIo.class;
+    }
 
-	@Override
-	public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
-	{
-		return WorldChunkManagerIo.class;
-	}
+    @Override
+    public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
+    {
+        return WorldChunkManagerMoonBase.class;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float par1)
-	{
-		float f1 = this.worldObj.getCelestialAngle(par1);
-		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getStarBrightness(float par1)
+    {
+        float f1 = this.worldObj.getCelestialAngle(par1);
+        float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
 
-		if (f2 < 0.0F)
-		{
-			f2 = 0.0F;
-		}
+        if (f2 < 0.0F)
+        {
+            f2 = 0.0F;
+        }
 
-		if (f2 > 1.0F)
-		{
-			f2 = 1.0F;
-		}
-		return f2 * f2 * 0.75F;
-	}
+        if (f2 > 1.0F)
+        {
+            f2 = 1.0F;
+        }
+        return f2 * f2 * 0.75F;
+    }
 
-	@Override
-	public double getHorizon()
-	{
-		return 44.0D;
-	}
+    @Override
+    public double getHorizon()
+    {
+        return 44.0D;
+    }
 
-	@Override
-	public int getAverageGroundLevel()
-	{
-		return 44;
-	}
+    @Override
+    public int getAverageGroundLevel()
+    {
+        return 44;
+    }
 
-	@Override
-	public float getGravity()
-	{
-		return 0.032F;
-	}
+    @Override
+    public float getGravity()
+    {
+        return 0.032F;
+    }
 
-	@Override
-	public double getMeteorFrequency()
-	{
-		return 10.0D;
-	}
+    @Override
+    public double getMeteorFrequency()
+    {
+        return 10.0D;
+    }
 
-	@Override
-	public double getFuelUsageMultiplier()
-	{
-		return 0.9D;
-	}
+    @Override
+    public double getFuelUsageMultiplier()
+    {
+        return 0.9D;
+    }
 
-	@Override
-	public boolean canSpaceshipTierPass(int tier)
-	{
-		return tier >= 4;
-	}
+    @Override
+    public boolean canSpaceshipTierPass(int tier)
+    {
+        return tier >= 4;
+    }
 
-	@Override
-	public float getFallDamageModifier()
-	{
-		return 0.26F;
-	}
+    @Override
+    public float getFallDamageModifier()
+    {
+        return 0.26F;
+    }
 
-	@Override
-	public float getSoundVolReductionAmount()
-	{
-		return 10.0F;
-	}
+    @Override
+    public float getSoundVolReductionAmount()
+    {
+        return 10.0F;
+    }
 
-	@Override
-	public CelestialBody getCelestialBody()
-	{
-		return MPPlanets.io;
-	}
+    @Override
+    public CelestialBody getCelestialBody()
+    {
+        return MPPlanets.io;
+    }
 
-	@Override
-	public boolean hasBreathableAtmosphere()
-	{
-		return false;
-	}
+    @Override
+    public boolean hasBreathableAtmosphere()
+    {
+        return false;
+    }
 
-	@Override
-	public float getThermalLevelModifier()
-	{
-		return 4.0F;
-	}
+    @Override
+    public float getThermalLevelModifier()
+    {
+        return 4.0F;
+    }
 
-	@Override
-	public float getWindLevel()
-	{
-		return 0.8F;
-	}
+    @Override
+    public float getWindLevel()
+    {
+        return 0.8F;
+    }
 
-	@Override
-	public double getUltraVioletEnergyMultiplie()
-	{
-		return 2.5D;
-	}
+    @Override
+    public double getUltraVioletEnergyMultiplie()
+    {
+        return 2.5D;
+    }
 
-	@Override
-	public double getSolarEnergyMultiplier()
-	{
-		return 1.5D;
-	}
+    @Override
+    public double getSolarEnergyMultiplier()
+    {
+        return 1.5D;
+    }
 
-	@Override
-	public String getInternalNameSuffix()
-	{
-		return "_io";
-	}
+    @Override
+    public String getInternalNameSuffix()
+    {
+        return "_io";
+    }
 }

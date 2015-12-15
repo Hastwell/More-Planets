@@ -16,60 +16,60 @@ import stevekung.mods.moreplanets.common.blocks.BlockBreakableMP;
 
 public class BlockCheeseSlime extends BlockBreakableMP
 {
-	public BlockCheeseSlime(String name)
-	{
-		super(Material.glass);
-		this.setStepSound(SLIME_SOUND);
-		this.setUnlocalizedName(name);
-	}
+    public BlockCheeseSlime(String name)
+    {
+        super(Material.glass);
+        this.setStepSound(SLIME_SOUND);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
-	{
-		if (entity.isSneaking())
-		{
-			super.onFallenUpon(world, pos, entity, fallDistance);
-		}
-		else
-		{
-			entity.fall(fallDistance, 0.0F);
-		}
-	}
+    @Override
+    public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
+    {
+        if (entity.isSneaking())
+        {
+            super.onFallenUpon(world, pos, entity, fallDistance);
+        }
+        else
+        {
+            entity.fall(fallDistance, 0.0F);
+        }
+    }
 
-	@Override
-	public void onLanded(World world, Entity entity)
-	{
-		if (entity.isSneaking())
-		{
-			super.onLanded(world, entity);
-		}
-		else if (entity.motionY < 0.0D)
-		{
-			entity.motionY = -entity.motionY;
-		}
-	}
+    @Override
+    public void onLanded(World world, Entity entity)
+    {
+        if (entity.isSneaking())
+        {
+            super.onLanded(world, entity);
+        }
+        else if (entity.motionY < 0.0D)
+        {
+            entity.motionY = -entity.motionY;
+        }
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
-		{
-			double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
-			entity.motionX *= d;
-			entity.motionZ *= d;
-		}
-		super.onEntityCollidedWithBlock(world, pos, entity);
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+    {
+        if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
+        {
+            double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
+            entity.motionX *= d;
+            entity.motionZ *= d;
+        }
+        super.onEntityCollidedWithBlock(world, pos, entity);
+    }
 }

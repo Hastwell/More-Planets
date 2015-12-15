@@ -18,16 +18,16 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelKiwi;
 @SideOnly(Side.CLIENT)
 public class RenderKiwi extends RenderLiving
 {
-	private ResourceLocation kiwiTextures = new ResourceLocation("moreplanets:textures/entity/kiwi.png");
+    private ResourceLocation kiwiTextures = new ResourceLocation("moreplanets:textures/entity/kiwi.png");
 
-	public RenderKiwi(RenderManager render)
-	{
-		super(render, new ModelKiwi(), 0.4F);
-	}
+    public RenderKiwi(RenderManager render)
+    {
+        super(render, new ModelKiwi(), 0.4F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.kiwiTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.kiwiTextures;
+    }
 }

@@ -20,26 +20,26 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public class WorldGenCavernOyster extends WorldGenerator
 {
-	private IBlockState block;
+    private IBlockState block;
 
-	public WorldGenCavernOyster(IBlockState block)
-	{
-		this.block = block;
-	}
+    public WorldGenCavernOyster(IBlockState block)
+    {
+        this.block = block;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos).getBlock();
 
-		if (!(block == FronosBlocks.fronos_block || block == FronosBlocks.jelly_ore))
-		{
-			return false;
-		}
-		else
-		{
-			world.setBlockState(pos, this.block.withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)world.getBlockState(pos).getValue(BlockStateHelper.FACING)).getIndex())), 2);
-			return true;
-		}
-	}
+        if (!(block == FronosBlocks.fronos_block || block == FronosBlocks.jelly_ore))
+        {
+            return false;
+        }
+        else
+        {
+            world.setBlockState(pos, this.block.withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)world.getBlockState(pos).getValue(BlockStateHelper.FACING)).getIndex())), 2);
+            return true;
+        }
+    }
 }

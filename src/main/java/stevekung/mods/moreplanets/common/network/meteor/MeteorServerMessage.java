@@ -14,115 +14,115 @@ import stevekung.mods.moreplanets.common.util.MPLog;
 
 public class MeteorServerMessage implements IMessage
 {
-	private Vec3 targetCoordinates;
-	private EnumMeteorType projectile;
-	private boolean messageIsValid;
+    private Vec3 targetCoordinates;
+    private EnumMeteorType projectile;
+    private boolean messageIsValid;
 
-	public MeteorServerMessage(EnumMeteorType projectile, Vec3 vec3)
-	{
-		this.projectile = projectile;
-		this.targetCoordinates = vec3;
-		this.messageIsValid = true;
-	}
+    public MeteorServerMessage(EnumMeteorType projectile, Vec3 vec3)
+    {
+        this.projectile = projectile;
+        this.targetCoordinates = vec3;
+        this.messageIsValid = true;
+    }
 
-	public Vec3 getTargetCoordinates()
-	{
-		return this.targetCoordinates;
-	}
+    public Vec3 getTargetCoordinates()
+    {
+        return this.targetCoordinates;
+    }
 
-	public EnumMeteorType getProjectile()
-	{
-		return this.projectile;
-	}
+    public EnumMeteorType getProjectile()
+    {
+        return this.projectile;
+    }
 
-	public boolean isMessageValid()
-	{
-		return this.messageIsValid;
-	}
+    public boolean isMessageValid()
+    {
+        return this.messageIsValid;
+    }
 
-	public MeteorServerMessage()
-	{
-		this.messageIsValid = false;
-	}
+    public MeteorServerMessage()
+    {
+        this.messageIsValid = false;
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buf)
-	{
-		try
-		{
-			this.projectile = EnumMeteorType.fromBytes(buf);
-			double x = buf.readDouble();
-			double y = buf.readDouble();
-			double z = buf.readDouble();
-			this.targetCoordinates = new Vec3(x, y, z);
+    @Override
+    public void fromBytes(ByteBuf buf)
+    {
+        try
+        {
+            this.projectile = EnumMeteorType.fromBytes(buf);
+            double x = buf.readDouble();
+            double y = buf.readDouble();
+            double z = buf.readDouble();
+            this.targetCoordinates = new Vec3(x, y, z);
 
-		}
-		catch (IndexOutOfBoundsException ioe)
-		{
-			MPLog.error("Exception while reading AirStrikeMessageToServer: " + ioe);
-			return;
-		}
-		this.messageIsValid = true;
-	}
+        }
+        catch (IndexOutOfBoundsException ioe)
+        {
+            MPLog.error("Exception while reading AirStrikeMessageToServer: " + ioe);
+            return;
+        }
+        this.messageIsValid = true;
+    }
 
-	@Override
-	public void toBytes(ByteBuf buf)
-	{
-		if (!this.messageIsValid)
-		{
-			return;
-		}
-		this.projectile.toBytes(buf);
-		buf.writeDouble(this.targetCoordinates.xCoord);
-		buf.writeDouble(this.targetCoordinates.yCoord);
-		buf.writeDouble(this.targetCoordinates.zCoord);
-	}
+    @Override
+    public void toBytes(ByteBuf buf)
+    {
+        if (!this.messageIsValid)
+        {
+            return;
+        }
+        this.projectile.toBytes(buf);
+        buf.writeDouble(this.targetCoordinates.xCoord);
+        buf.writeDouble(this.targetCoordinates.yCoord);
+        buf.writeDouble(this.targetCoordinates.zCoord);
+    }
 
-	public enum EnumMeteorType
-	{
-		METEOR(1, "METEOR"),
-		KOENTUS_METEOR(2, "KOENTUS_METEOR"),
-		POLONGNIUS_METEOR(3, "POLONGNIUS_METEOR"),
-		ICE_CRYSTAL_METEOR(4, "ICE_CRYSTAL_METEOR");
+    public enum EnumMeteorType
+    {
+        METEOR(1, "METEOR"),
+        KOENTUS_METEOR(2, "KOENTUS_METEOR"),
+        POLONGNIUS_METEOR(3, "POLONGNIUS_METEOR"),
+        ICE_CRYSTAL_METEOR(4, "ICE_CRYSTAL_METEOR");
 
-		private byte projectileID;
-		private String name;
+        private byte projectileID;
+        private String name;
 
-		private EnumMeteorType(int id, String name)
-		{
-			this.projectileID = (byte)id;
-			this.name = name;
-		}
+        private EnumMeteorType(int id, String name)
+        {
+            this.projectileID = (byte)id;
+            this.name = name;
+        }
 
-		public void toBytes(ByteBuf buffer)
-		{
-			buffer.writeByte(this.projectileID);
-		}
+        public void toBytes(ByteBuf buffer)
+        {
+            buffer.writeByte(this.projectileID);
+        }
 
-		public static EnumMeteorType fromBytes(ByteBuf buffer)
-		{
-			byte ID = buffer.readByte();
+        public static EnumMeteorType fromBytes(ByteBuf buffer)
+        {
+            byte ID = buffer.readByte();
 
-			for (EnumMeteorType projectile : EnumMeteorType.values())
-			{
-				if (ID == projectile.projectileID)
-				{
-					return projectile;
-				}
-			}
-			return null;
-		}
+            for (EnumMeteorType projectile : EnumMeteorType.values())
+            {
+                if (ID == projectile.projectileID)
+                {
+                    return projectile;
+                }
+            }
+            return null;
+        }
 
-		@Override
-		public String toString()
-		{
-			return this.name;
-		}
-	}
+        @Override
+        public String toString()
+        {
+            return this.name;
+        }
+    }
 
-	@Override
-	public String toString()
-	{
-		return "AirstrikeMessageToServer[projectile=" + String.valueOf(this.projectile) + ", targetCoordinates=" + String.valueOf(this.targetCoordinates) + "]";
-	}
+    @Override
+    public String toString()
+    {
+        return "AirstrikeMessageToServer[projectile=" + String.valueOf(this.projectile) + ", targetCoordinates=" + String.valueOf(this.targetCoordinates) + "]";
+    }
 }

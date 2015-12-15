@@ -12,21 +12,21 @@ import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
 public class ItemNameriumCrystal extends ItemMorePlanets implements IPowerCrystal
 {
-	public ItemNameriumCrystal(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemNameriumCrystal(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean isPowerCrystal(int meta)
-	{
-		return true;
-	}
+    @Override
+    public boolean isPowerCrystal(int meta)
+    {
+        return true;
+    }
 
-	@Override
-	public int getPowerCrystalBurnTime(int meta)
-	{
-		return 480;
-	}
+    @Override
+    public int getPowerCrystalBurnTime(int meta)
+    {
+        return 480;
+    }
 }

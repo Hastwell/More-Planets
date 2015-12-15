@@ -22,47 +22,47 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class SchematicTier7Rocket implements ISchematicPage
 {
-	@Override
-	public int getPageID()
-	{
-		return ConfigManagerMP.idSchematicTier7Rocket;
-	}
+    @Override
+    public int getPageID()
+    {
+        return ConfigManagerMP.idTier7RocketSchematic;
+    }
 
-	@Override
-	public int getGuiID()
-	{
-		return ConfigManagerMP.idGuiSchematicTier7Rocket;
-	}
+    @Override
+    public int getGuiID()
+    {
+        return ConfigManagerMP.idTier7RocketSchematicGui;
+    }
 
-	@Override
-	public ItemStack getRequiredItem()
-	{
-		return new ItemStack(FronosItems.tier_7_rocket_schematic, 1, 0);
-	}
+    @Override
+    public ItemStack getRequiredItem()
+    {
+        return new ItemStack(FronosItems.tier_7_rocket_schematic, 1, 0);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public GuiScreen getResultScreen(EntityPlayer player, BlockPos pos)
-	{
-		return new GuiSchematicTier7Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiScreen getResultScreen(EntityPlayer player, BlockPos pos)
+    {
+        return new GuiSchematicTier7Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
+    }
 
-	@Override
-	public Container getResultContainer(EntityPlayer player, BlockPos pos)
-	{
-		return new ContainerSchematicTier7Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
-	}
+    @Override
+    public Container getResultContainer(EntityPlayer player, BlockPos pos)
+    {
+        return new ContainerSchematicTier7Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
+    }
 
-	@Override
-	public int compareTo(ISchematicPage page)
-	{
-		if (this.getPageID() > page.getPageID())
-		{
-			return 1;
-		}
-		else
-		{
-			return -1;
-		}
-	}
+    @Override
+    public int compareTo(ISchematicPage page)
+    {
+        if (this.getPageID() > page.getPageID())
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

@@ -28,124 +28,124 @@ import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class ItemTier2ThermalPadding extends ItemBaseMP implements IItemThermal
 {
-	public ItemTier2ThermalPadding(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemTier2ThermalPadding(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpArmorTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpArmorTab;
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "tier_2_thermal_helmet", "tier_2_thermal_chestplate", "tier_2_thermal_leggings", "tier_2_thermal_boots" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "tier_2_thermal_helmet", "tier_2_thermal_chestplate", "tier_2_thermal_leggings", "tier_2_thermal_boots" };
+    }
 
-	@Override
-	public String getItemStackDisplayName(ItemStack itemStack)
-	{
-		return StatCollector.translateToLocal("item." + ItemThermalPadding.names[itemStack.getItemDamage()] + ".name");
-	}
+    @Override
+    public String getItemStackDisplayName(ItemStack itemStack)
+    {
+        return StatCollector.translateToLocal("item." + ItemThermalPadding.names[itemStack.getItemDamage()] + ".name");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		if (player.worldObj.isRemote)
-		{
-			list.add(StatCollector.translateToLocal("item.tier2.desc"));
-			int count = 0;
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        if (player.worldObj.isRemote)
+        {
+            list.add(StatCollector.translateToLocal("item.tier2.desc"));
+            int count = 0;
 
-			switch (itemStack.getItemDamage())
-			{
-			case 0:
-				count = 16;
-				break;
-			case 1:
-				count = 20;
-				break;
-			case 2:
-				count = 18;
-				break;
-			case 3:
-				count = 12;
-				break;
-			}
-			list.add("Thermal Armor Upgrade Required : " + count);
-			list.add("Ability : Immune to Infected Gas");
-		}
-	}
+            switch (itemStack.getItemDamage())
+            {
+            case 0:
+                count = 16;
+                break;
+            case 1:
+                count = 20;
+                break;
+            case 2:
+                count = 18;
+                break;
+            case 3:
+                count = 12;
+                break;
+            }
+            list.add("Thermal Armor Upgrade Required : " + count);
+            list.add("Ability : Immune to Infected Gas");
+        }
+    }
 
-	@Override
-	public int getThermalStrength()
-	{
-		return 3;
-	}
+    @Override
+    public int getThermalStrength()
+    {
+        return 3;
+    }
 
-	@Override
-	public boolean isValidForSlot(ItemStack itemStack, int armorSlot)
-	{
-		return itemStack.getItemDamage() == armorSlot;
-	}
+    @Override
+    public boolean isValidForSlot(ItemStack itemStack, int armorSlot)
+    {
+        return itemStack.getItemDamage() == armorSlot;
+    }
 
-	@Override
-	public boolean onEntityItemUpdate(EntityItem item)
-	{
-		World world = item.worldObj;
-		List<EntityItem> item1 = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.fromBounds(item.posX, item.posY, item.posZ, item.posX + 1, item.posY + 1, item.posZ + 1));
-		int meta = item.getEntityItem().getItemDamage();
+    @Override
+    public boolean onEntityItemUpdate(EntityItem item)
+    {
+        World world = item.worldObj;
+        List<EntityItem> item1 = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.fromBounds(item.posX, item.posY, item.posZ, item.posX + 1, item.posY + 1, item.posZ + 1));
+        int meta = item.getEntityItem().getItemDamage();
 
-		if (item.worldObj.getBlockState(new BlockPos((int)Math.floor(item.posX), (int)Math.floor(item.posY), (int)Math.floor(item.posZ))) == KapteynBBlocks.frozen_water.getDefaultState())
-		{
-			if (meta == 0)
-			{
-				if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 16)
-				{
-					item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 0));
-					item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 16, 5));
-				}
-			}
-			if (meta == 1)
-			{
-				if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 20)
-				{
-					item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 1));
-					item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 20, 5));
-				}
-			}
-			if (meta == 2)
-			{
-				if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 18)
-				{
-					item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 2));
-					item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 18, 5));
-				}
-			}
-			if (meta == 3)
-			{
-				if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 12)
-				{
-					item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 3));
-					item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 12, 5));
-				}
-			}
-		}
-		return false;
-	}
+        if (item.worldObj.getBlockState(new BlockPos((int)Math.floor(item.posX), (int)Math.floor(item.posY), (int)Math.floor(item.posZ))) == KapteynBBlocks.frozen_water.getDefaultState())
+        {
+            if (meta == 0)
+            {
+                if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 16)
+                {
+                    item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 0));
+                    item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 16, 5));
+                }
+            }
+            if (meta == 1)
+            {
+                if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 20)
+                {
+                    item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 1));
+                    item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 20, 5));
+                }
+            }
+            if (meta == 2)
+            {
+                if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 18)
+                {
+                    item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 2));
+                    item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 18, 5));
+                }
+            }
+            if (meta == 3)
+            {
+                if (item1.get(0).getEntityItem().getItem() == KapteynBItems.kapteyn_b_item && item1.get(0).getEntityItem().getItemDamage() == 5 && item1.get(0).getEntityItem().stackSize >= 12)
+                {
+                    item.setEntityItemStack(new ItemStack(MPItems.tier_3_thermal_padding, 1, 3));
+                    item1.get(0).setEntityItemStack(new ItemStack(KapteynBItems.kapteyn_b_item, item1.get(0).getEntityItem().stackSize - 12, 5));
+                }
+            }
+        }
+        return false;
+    }
 
-	int color = -13280331;
+    int color = -13280331;
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack itemStack, int layer)
-	{
-		/*int blue = -13280331;
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack(ItemStack itemStack, int layer)
+    {
+        /*int blue = -13280331;
 		int red = -47116531;
 
 		//color--;
@@ -161,6 +161,6 @@ public class ItemTier2ThermalPadding extends ItemBaseMP implements IItemThermal
 			}
 		}
 		//MPLog.info("%s", color);*/
-		return layer == 0 ? super.getColorFromItemStack(itemStack, layer) : this.color;//TODO
-	}
+        return layer == 0 ? super.getColorFromItemStack(itemStack, layer) : this.color;//TODO
+    }
 }

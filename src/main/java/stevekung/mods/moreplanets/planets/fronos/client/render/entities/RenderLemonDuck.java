@@ -18,16 +18,16 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelLemonDuck;
 @SideOnly(Side.CLIENT)
 public class RenderLemonDuck extends RenderLiving
 {
-	private ResourceLocation lemonDuckTextures = new ResourceLocation("moreplanets:textures/entity/lemon_duck.png");
+    private ResourceLocation lemonDuckTextures = new ResourceLocation("moreplanets:textures/entity/lemon_duck.png");
 
-	public RenderLemonDuck(RenderManager render)
-	{
-		super(render, new ModelLemonDuck(), 0.35F);
-	}
+    public RenderLemonDuck(RenderManager render)
+    {
+        super(render, new ModelLemonDuck(), 0.35F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.lemonDuckTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.lemonDuckTextures;
+    }
 }

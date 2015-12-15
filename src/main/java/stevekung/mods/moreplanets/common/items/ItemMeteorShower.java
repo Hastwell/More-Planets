@@ -25,54 +25,54 @@ import stevekung.mods.moreplanets.common.util.MorePlanetsRegistry;
 
 public class ItemMeteorShower extends ItemMorePlanets
 {
-	public ItemMeteorShower(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-	}
+    public ItemMeteorShower(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
-		if (!world.isRemote)
-		{
-			return true;
-		}
-		Vec3 targetLocation = new Vec3(pos.getX()+ 0.5, pos.getY() + 1.1, pos.getZ() + 0.5);
-		this.callAirstrikeOnTarget(targetLocation);
-		return true;
-	}
+    @Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if (!world.isRemote)
+        {
+            return true;
+        }
+        Vec3 targetLocation = new Vec3(pos.getX()+ 0.5, pos.getY() + 1.1, pos.getZ() + 0.5);
+        this.callAirstrikeOnTarget(targetLocation);
+        return true;
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!world.isRemote)
-		{
-			return itemStack;
-		}
-		Vec3 playerLook = player.getLookVec();
-		Vec3 playerFeetPosition = player.getPositionEyes(1.0F).subtract(0, player.getEyeHeight(), 0);
-		Vec3 targetPosition = playerFeetPosition.addVector(playerLook.xCoord * 6.0D, 0.1D, playerLook.zCoord * 6.0D);
-		this.callAirstrikeOnTarget(targetPosition);
-		return itemStack;
-	}
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!world.isRemote)
+        {
+            return itemStack;
+        }
+        Vec3 playerLook = player.getLookVec();
+        Vec3 playerFeetPosition = player.getPositionEyes(1.0F).subtract(0, player.getEyeHeight(), 0);
+        Vec3 targetPosition = playerFeetPosition.addVector(playerLook.xCoord * 6.0D, 0.1D, playerLook.zCoord * 6.0D);
+        this.callAirstrikeOnTarget(targetPosition);
+        return itemStack;
+    }
 
-	public void callAirstrikeOnTarget(Vec3 targetPosition)
-	{
-		MeteorServerMessage.EnumMeteorType [] choices = MeteorServerMessage.EnumMeteorType.values();
-		MeteorServerMessage.EnumMeteorType projectile = choices[new Random().nextInt(choices.length)];
-		MeteorServerMessage airstrikeMessageToServer = new MeteorServerMessage(projectile, targetPosition);
-		MorePlanetsRegistry.simpleNetworkWrapper.sendToServer(airstrikeMessageToServer);
-		List<Object> objList = new ArrayList<Object>();
-		objList.add(targetPosition);
-		return;
-	}
+    public void callAirstrikeOnTarget(Vec3 targetPosition)
+    {
+        MeteorServerMessage.EnumMeteorType [] choices = MeteorServerMessage.EnumMeteorType.values();
+        MeteorServerMessage.EnumMeteorType projectile = choices[new Random().nextInt(choices.length)];
+        MeteorServerMessage airstrikeMessageToServer = new MeteorServerMessage(projectile, targetPosition);
+        MorePlanetsRegistry.simpleNetworkWrapper.sendToServer(airstrikeMessageToServer);
+        List<Object> objList = new ArrayList<Object>();
+        objList.add(targetPosition);
+        return;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumAction getItemUseAction(ItemStack itemStack)
-	{
-		return EnumAction.BLOCK;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumAction getItemUseAction(ItemStack itemStack)
+    {
+        return EnumAction.BLOCK;
+    }
 }

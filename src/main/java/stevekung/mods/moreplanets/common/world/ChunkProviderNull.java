@@ -12,8 +12,8 @@ import net.minecraft.world.gen.ChunkProviderGenerate;
 
 public class ChunkProviderNull extends ChunkProviderGenerate
 {
-	public ChunkProviderNull(World world, long seed, boolean genFeature)
-	{
-		super(world, seed, genFeature, "");
-	}
+    public ChunkProviderNull(World world, long seed, boolean genFeature)
+    {
+        super(world, seed, genFeature, "");
+    }
 }

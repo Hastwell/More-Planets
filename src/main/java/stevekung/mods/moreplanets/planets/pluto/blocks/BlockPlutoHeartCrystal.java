@@ -24,79 +24,79 @@ import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
 public class BlockPlutoHeartCrystal extends BlockBaseMP implements IDetectableResource
 {
-	public BlockPlutoHeartCrystal(String name)
-	{
-		super(Material.glass);
-		this.setUnlocalizedName(name);
-		this.setHardness(0.55F);
-		this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.975F, 0.9F);
-	}
+    public BlockPlutoHeartCrystal(String name)
+    {
+        super(Material.glass);
+        this.setUnlocalizedName(name);
+        this.setHardness(0.55F);
+        this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.975F, 0.9F);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return PlutoItems.pluto_heart_crystal;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return PlutoItems.pluto_heart_crystal;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 0;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 0;
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		return true;
-	}
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+    @Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
 
-		if (block == null)
-		{
-			return false;
-		}
-		if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
-		{
-			return false;
-		}
-		return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
-	}
+        if (block == null)
+        {
+            return false;
+        }
+        if (!block.isLeaves(world, pos.down()) && !block.isOpaqueCube())
+        {
+            return false;
+        }
+        return world.getBlockState(pos.down()).getBlock().getMaterial().blocksMovement();
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
-	{
-		if (!this.canPlaceBlockAt(world, pos))
-		{
-			Block.spawnAsEntity(world, pos, new ItemStack(this, 1, 0));
-			world.setBlockToAir(pos);
-		}
-	}
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block block)
+    {
+        if (!this.canPlaceBlockAt(world, pos))
+        {
+            Block.spawnAsEntity(world, pos, new ItemStack(this, 1, 0));
+            world.setBlockToAir(pos);
+        }
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
-	{
-		return new ItemStack(this, 1, 0);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, 0);
+    }
 }

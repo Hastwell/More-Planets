@@ -39,198 +39,222 @@ import codechicken.nei.api.ItemInfo.Layout;
 
 public class NEIHighlightHandlerMP implements IHighlightHandler
 {
-	@Override
-	public List<String> handleTextData(ItemStack stack, World world, EntityPlayer player, MovingObjectPosition moving, List<String> currenttip, Layout layout)
-	{
-		return currenttip;
-	}
+    @Override
+    public List<String> handleTextData(ItemStack stack, World world, EntityPlayer player, MovingObjectPosition moving, List<String> currenttip, Layout layout)
+    {
+        return currenttip;
+    }
 
-	@Override
-	public ItemStack identifyHighlight(World world, EntityPlayer player, MovingObjectPosition moving)
-	{
-		Block block = world.getBlockState(moving.getBlockPos()).getBlock();
-		int meta = block.getMetaFromState(world.getBlockState(moving.getBlockPos()));
+    @Override
+    public ItemStack identifyHighlight(World world, EntityPlayer player, MovingObjectPosition moving)
+    {
+        Block block = world.getBlockState(moving.getBlockPos()).getBlock();
+        int meta = block.getMetaFromState(world.getBlockState(moving.getBlockPos()));
 
-		if (block == MPBlocks.double_stone_slab_1)
-		{
-			return new ItemStack(MPBlocks.half_stone_slab_1, 1, meta);
-		}
-		if (block == MPBlocks.double_stone_slab_2)
-		{
-			return new ItemStack(MPBlocks.half_stone_slab_2, 1, meta);
-		}
-		if (block == MPBlocks.double_wooden_slab_1)
-		{
-			return new ItemStack(MPBlocks.half_wooden_slab_1, 1, meta);
-		}
-		if (block == MPBlocks.double_dungeon_brick_slab_1)
-		{
-			return new ItemStack(MPBlocks.half_dungeon_brick_slab_1, 1, meta);
-		}
-		if (block == DionaBlocks.diona_block)
-		{
-			return new ItemStack(DionaBlocks.diona_block, 1, meta);
-		}
-		if (block == PolongniusBlocks.polongnius_block)
-		{
-			return new ItemStack(PolongniusBlocks.polongnius_block, 1, meta);
-		}
-		if (block == NibiruBlocks.nibiru_block)
-		{
-			return new ItemStack(NibiruBlocks.nibiru_block, 1, meta);
-		}
-		if (block == NibiruBlocks.nibiru_leaves)
-		{
-			return new ItemStack(NibiruBlocks.nibiru_leaves, 1, meta & 3);
-		}
-		if (block == KoentusBlocks.koentus_block)
-		{
-			return new ItemStack(KoentusBlocks.koentus_block, 1, meta);
-		}
-		if (block == KoentusBlocks.koentus_ice)
-		{
-			return new ItemStack(KoentusBlocks.koentus_ice, 1, meta);
-		}
-		if (block == FronosBlocks.fronos_block)
-		{
-			return new ItemStack(FronosBlocks.fronos_block, 1, meta);
-		}
-		if (block == FronosBlocks.frosted_cake)
-		{
-			return new ItemStack(FronosBlocks.frosted_cake, 1, meta);
-		}
-		if (block == FronosBlocks.fronos_leaves)
-		{
-			return new ItemStack(FronosBlocks.fronos_leaves, 1, meta & 3);
-		}
-		if (block == FronosBlocks.fronos_tall_grass)
-		{
-			return new ItemStack(FronosBlocks.fronos_tall_grass, 1, meta);
-		}
-		if (block == FronosBlocks.golden_crops)
-		{
-			return new ItemStack(FronosItems.golden_seeds);
-		}
-		if (block == KapteynBBlocks.kapteyn_b_block)
-		{
-			return new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, meta);
-		}
-		if (block == KapteynBBlocks.kapteyn_b_ice)
-		{
-			return new ItemStack(KapteynBBlocks.kapteyn_b_ice, 1, meta);
-		}
-		if (block == KapteynBBlocks.uranium_waste)
-		{
-			return new ItemStack(KapteynBBlocks.uranium_waste, 1, meta);
-		}
-		if (block == KapteynBBlocks.icy_poison_crystal)
-		{
-			return new ItemStack(KapteynBBlocks.icy_poison_crystal);
-		}
-		if (block == SiriusBBlocks.sirius_b_block)
-		{
-			return new ItemStack(SiriusBBlocks.sirius_b_block, 1, meta);
-		}
-		if (block == MercuryBlocks.mercury_block)
-		{
-			return new ItemStack(MercuryBlocks.mercury_block, 1, meta);
-		}
-		if (block == VenusBlocks.venus_block)
-		{
-			return new ItemStack(VenusBlocks.venus_block, 1, meta);
-		}
-		if (block == PlutoBlocks.pluto_block)
-		{
-			return new ItemStack(PlutoBlocks.pluto_block, 1, meta);
-		}
-		if (block == EuropaBlocks.europa_sea_lantern)
-		{
-			return new ItemStack(EuropaBlocks.europa_sea_lantern);
-		}
-		if (block == FronosBlocks.fronos_sandstone)
-		{
-			return new ItemStack(FronosBlocks.fronos_sandstone, 1, meta);
-		}
-		if (block == PolongniusBlocks.ultra_violet_solar_fake)
-		{
-			return new ItemStack(PolongniusBlocks.ultra_violet_solar_panel);
-		}
-		if (block == DeimosBlocks.deimos_block)
-		{
-			return new ItemStack(DeimosBlocks.deimos_block, 1, meta);
-		}
-		if (block == FronosBlocks.fronos_farmland)
-		{
-			return new ItemStack(FronosBlocks.fronos_dirt);
-		}
-		if (block == KapteynBBlocks.fallen_ice_crystal_meteor)
-		{
-			return new ItemStack(KapteynBBlocks.fallen_ice_crystal_meteor);
-		}
-		if (block == PhobosBlocks.phobos_block)
-		{
-			return new ItemStack(PhobosBlocks.phobos_block, 1, meta);
-		}
-		if (block == IoBlocks.io_block)
-		{
-			return new ItemStack(IoBlocks.io_block, 1, meta);
-		}
-		if (block == NibiruBlocks.infected_farmland)
-		{
-			return new ItemStack(NibiruBlocks.infected_dirt);
-		}
-		if (block == KoentusBlocks.crystal_farmland)
-		{
-			return new ItemStack(KoentusBlocks.crystal_dirt);
-		}
-		if (block == NibiruBlocks.ancient_dark_door_block)
-		{
-			return new ItemStack(NibiruItems.ancient_dark_door);
-		}
-		if (block == NibiruBlocks.orange_door_block)
-		{
-			return new ItemStack(NibiruItems.orange_door);
-		}
-		if (block == FronosBlocks.coconut_door_block)
-		{
-			return new ItemStack(FronosItems.coconut_door);
-		}
-		if (block == FronosBlocks.maple_door_block)
-		{
-			return new ItemStack(FronosItems.maple_door);
-		}
-		if (block == KoentusBlocks.crystal_door_block)
-		{
-			return new ItemStack(KoentusItems.crystal_door);
-		}
-		if (block == DarkAsteroidBlocks.dark_asteroid_rock)
-		{
-			return new ItemStack(DarkAsteroidBlocks.dark_asteroid_rock, 1, meta);
-		}
-		if (block == KoentusBlocks.crystal_cocoa)
-		{
-			return new ItemStack(KoentusItems.crystal_cocoa);
-		}
-		if (block == DarkAsteroidBlocks.alien_farmland)
-		{
-			return new ItemStack(DarkAsteroidBlocks.alien_dirt);
-		}
-		if (block == DionaBlocks.green_redstone_torch_off)
-		{
-			return new ItemStack(DionaBlocks.green_redstone_torch);
-		}
-		if (block == PolongniusBlocks.fallen_polongnius_meteor)
-		{
-			return new ItemStack(PolongniusBlocks.fallen_polongnius_meteor);
-		}
-		if (block == FronosBlocks.sky_mushroom_block)
-		{
-			return new ItemStack(FronosBlocks.fronos_flower, 1, 4);
-		}
-		if (block == EuropaBlocks.europa_door_block)
-		{
-			return new ItemStack(EuropaItems.europa_door);
-		}
-		return null;
-	}
+        if (block == MPBlocks.double_stone_slab_1)
+        {
+            return new ItemStack(MPBlocks.half_stone_slab_1, 1, meta);
+        }
+        if (block == MPBlocks.double_stone_slab_2)
+        {
+            return new ItemStack(MPBlocks.half_stone_slab_2, 1, meta);
+        }
+        if (block == MPBlocks.double_wooden_slab_1)
+        {
+            return new ItemStack(MPBlocks.half_wooden_slab_1, 1, meta);
+        }
+        if (block == MPBlocks.double_dungeon_brick_slab_1)
+        {
+            return new ItemStack(MPBlocks.half_dungeon_brick_slab_1, 1, meta);
+        }
+        if (block == DionaBlocks.diona_block)
+        {
+            return new ItemStack(DionaBlocks.diona_block, 1, meta);
+        }
+        if (block == PolongniusBlocks.polongnius_block)
+        {
+            return new ItemStack(PolongniusBlocks.polongnius_block, 1, meta);
+        }
+        if (block == NibiruBlocks.nibiru_block)
+        {
+            return new ItemStack(NibiruBlocks.nibiru_block, 1, meta);
+        }
+        if (block == NibiruBlocks.nibiru_leaves)
+        {
+            return new ItemStack(NibiruBlocks.nibiru_leaves, 1, meta & 3);
+        }
+        if (block == KoentusBlocks.koentus_block)
+        {
+            return new ItemStack(KoentusBlocks.koentus_block, 1, meta);
+        }
+        if (block == KoentusBlocks.koentus_ice)
+        {
+            return new ItemStack(KoentusBlocks.koentus_ice, 1, meta);
+        }
+        if (block == FronosBlocks.fronos_block)
+        {
+            return new ItemStack(FronosBlocks.fronos_block, 1, meta);
+        }
+        if (block == FronosBlocks.frosted_cake)
+        {
+            return new ItemStack(FronosBlocks.frosted_cake, 1, meta);
+        }
+        if (block == FronosBlocks.fronos_leaves)
+        {
+            return new ItemStack(FronosBlocks.fronos_leaves, 1, meta & 3);
+        }
+        if (block == FronosBlocks.fronos_tall_grass)
+        {
+            return new ItemStack(FronosBlocks.fronos_tall_grass, 1, meta);
+        }
+        if (block == FronosBlocks.golden_crops)
+        {
+            return new ItemStack(FronosItems.golden_seeds);
+        }
+        if (block == KapteynBBlocks.kapteyn_b_block)
+        {
+            return new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, meta);
+        }
+        if (block == KapteynBBlocks.kapteyn_b_ice)
+        {
+            return new ItemStack(KapteynBBlocks.kapteyn_b_ice, 1, meta);
+        }
+        if (block == KapteynBBlocks.uranium_waste)
+        {
+            return new ItemStack(KapteynBBlocks.uranium_waste, 1, meta);
+        }
+        if (block == KapteynBBlocks.icy_poison_crystal)
+        {
+            return new ItemStack(KapteynBBlocks.icy_poison_crystal);
+        }
+        if (block == SiriusBBlocks.sirius_b_block)
+        {
+            return new ItemStack(SiriusBBlocks.sirius_b_block, 1, meta);
+        }
+        if (block == MercuryBlocks.mercury_block)
+        {
+            return new ItemStack(MercuryBlocks.mercury_block, 1, meta);
+        }
+        if (block == VenusBlocks.venus_block)
+        {
+            return new ItemStack(VenusBlocks.venus_block, 1, meta);
+        }
+        if (block == PlutoBlocks.pluto_block)
+        {
+            return new ItemStack(PlutoBlocks.pluto_block, 1, meta);
+        }
+        if (block == EuropaBlocks.europa_sea_lantern)
+        {
+            return new ItemStack(EuropaBlocks.europa_sea_lantern);
+        }
+        if (block == FronosBlocks.fronos_sandstone)
+        {
+            return new ItemStack(FronosBlocks.fronos_sandstone, 1, meta);
+        }
+        if (block == PolongniusBlocks.ultra_violet_solar_fake)
+        {
+            return new ItemStack(PolongniusBlocks.ultra_violet_solar_panel);
+        }
+        if (block == DeimosBlocks.deimos_block)
+        {
+            return new ItemStack(DeimosBlocks.deimos_block, 1, meta);
+        }
+        if (block == FronosBlocks.fronos_farmland)
+        {
+            return new ItemStack(FronosBlocks.fronos_dirt);
+        }
+        if (block == KapteynBBlocks.fallen_ice_crystal_meteor)
+        {
+            return new ItemStack(KapteynBBlocks.fallen_ice_crystal_meteor);
+        }
+        if (block == PhobosBlocks.phobos_block)
+        {
+            return new ItemStack(PhobosBlocks.phobos_block, 1, meta);
+        }
+        if (block == IoBlocks.io_block)
+        {
+            return new ItemStack(IoBlocks.io_block, 1, meta);
+        }
+        if (block == NibiruBlocks.infected_farmland)
+        {
+            return new ItemStack(NibiruBlocks.infected_dirt);
+        }
+        if (block == KoentusBlocks.crystal_farmland)
+        {
+            return new ItemStack(KoentusBlocks.crystal_dirt);
+        }
+        if (block == NibiruBlocks.ancient_dark_door_block)
+        {
+            return new ItemStack(NibiruItems.ancient_dark_door);
+        }
+        if (block == NibiruBlocks.orange_door_block)
+        {
+            return new ItemStack(NibiruItems.orange_door);
+        }
+        if (block == FronosBlocks.coconut_door_block)
+        {
+            return new ItemStack(FronosItems.coconut_door);
+        }
+        if (block == FronosBlocks.maple_door_block)
+        {
+            return new ItemStack(FronosItems.maple_door);
+        }
+        if (block == KoentusBlocks.crystal_door_block)
+        {
+            return new ItemStack(KoentusItems.crystal_door);
+        }
+        if (block == DarkAsteroidBlocks.dark_asteroid_rock)
+        {
+            return new ItemStack(DarkAsteroidBlocks.dark_asteroid_rock, 1, meta);
+        }
+        if (block == KoentusBlocks.crystal_cocoa)
+        {
+            return new ItemStack(KoentusItems.crystal_cocoa);
+        }
+        if (block == DarkAsteroidBlocks.alien_farmland)
+        {
+            return new ItemStack(DarkAsteroidBlocks.alien_dirt);
+        }
+        if (block == DionaBlocks.green_redstone_torch_off)
+        {
+            return new ItemStack(DionaBlocks.green_redstone_torch);
+        }
+        if (block == PolongniusBlocks.fallen_polongnius_meteor)
+        {
+            return new ItemStack(PolongniusBlocks.fallen_polongnius_meteor);
+        }
+        if (block == FronosBlocks.sky_mushroom_block)
+        {
+            return new ItemStack(FronosBlocks.fronos_flower, 1, 4);
+        }
+        if (block == EuropaBlocks.europa_door_block)
+        {
+            return new ItemStack(EuropaItems.europa_door);
+        }
+        if (block == FronosBlocks.fronos_block1)
+        {
+            return new ItemStack(FronosBlocks.fronos_block1, 1, meta);
+        }
+        if (block == FronosBlocks.cake_farmland && meta <= 2)
+        {
+            return new ItemStack(FronosBlocks.frosted_cake, 1, meta);
+        }
+        if (block == FronosBlocks.cake_farmland && meta >= 3)
+        {
+            switch (meta)
+            {
+            case 3:
+                meta = 0;
+                break;
+            case 4:
+                meta = 1;
+                break;
+            case 5:
+                meta = 2;
+                break;
+            }
+            return new ItemStack(FronosBlocks.frosted_cake, 1, meta);
+        }
+        return null;
+    }
 }

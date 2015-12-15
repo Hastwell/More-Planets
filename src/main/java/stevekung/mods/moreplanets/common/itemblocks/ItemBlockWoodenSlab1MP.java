@@ -8,19 +8,19 @@
 package stevekung.mods.moreplanets.common.itemblocks;
 
 import net.minecraft.block.Block;
-import stevekung.mods.moreplanets.common.blocks.BlockDoubleWoodenSlab1MP;
-import stevekung.mods.moreplanets.common.blocks.BlockWoodenSlab1MP;
+import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleWoodenSlab1;
+import stevekung.mods.moreplanets.common.blocks.other.BlockWoodenSlab1;
 
 public class ItemBlockWoodenSlab1MP extends ItemBlockSlabMP
 {
-	public ItemBlockWoodenSlab1MP(Block block, BlockWoodenSlab1MP singleSlab, BlockDoubleWoodenSlab1MP doubleSlab)
-	{
-		super(block, singleSlab, doubleSlab);
-	}
+    public ItemBlockWoodenSlab1MP(Block block, BlockWoodenSlab1 singleSlab, BlockDoubleWoodenSlab1 doubleSlab)
+    {
+        super(block, singleSlab, doubleSlab);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "ancient_dark_wood", "orange_wood", "crystal_wood", "coconut_wood", "maple_wood", "europa_wood" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "ancient_dark_wood", "orange_wood", "crystal_wood", "coconut_wood", "maple_wood", "europa_wood" };
+    }
 }

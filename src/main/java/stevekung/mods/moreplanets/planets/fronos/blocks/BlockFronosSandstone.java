@@ -24,72 +24,72 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
 public class BlockFronosSandstone extends BlockBaseMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockFronosSandstone(String name)
-	{
-		super(Material.rock);
-		this.setHardness(0.8F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_sandstone));
-		this.setUnlocalizedName(name);
-	}
+    public BlockFronosSandstone(String name)
+    {
+        super(Material.rock);
+        this.setHardness(0.8F);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.fronos_sandstone));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 9; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 9; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		fronos_sandstone,
-		chiseled_fronos_sandstone,
-		smooth_fronos_sandstone,
-		white_sandstone,
-		chiseled_white_sandstone,
-		smooth_white_sandstone,
-		cheese_sandstone,
-		chiseled_cheese_sandstone,
-		smooth_cheese_sandstone;
+    public static enum BlockType implements IStringSerializable
+    {
+        fronos_sandstone,
+        chiseled_fronos_sandstone,
+        smooth_fronos_sandstone,
+        white_sandstone,
+        chiseled_white_sandstone,
+        smooth_white_sandstone,
+        cheese_sandstone,
+        chiseled_cheese_sandstone,
+        smooth_cheese_sandstone;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

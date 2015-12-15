@@ -17,20 +17,20 @@ import stevekung.mods.moreplanets.client.SkyProviderBaseMP;
 
 public class SkyProviderJupiterOrbit extends SkyProviderBaseMP
 {
-	private ResourceLocation jupiterTexture = new ResourceLocation("mpcore:textures/jupiter_phases.png");
-	private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/planets/sun.png");
+    private ResourceLocation jupiterTexture = new ResourceLocation("mpcore:textures/jupiter_phases.png");
+    private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/planets/sun.png");
 
-	private float spinAngle = 0;
-	public float spinDeltaPerTick = 0;
-	private float prevPartialTicks = 0;
-	private long prevTick;
+    private float spinAngle = 0;
+    public float spinDeltaPerTick = 0;
+    private float prevPartialTicks = 0;
+    private long prevTick;
 
-	public SkyProviderJupiterOrbit()
-	{
-		super();
-	}
+    public SkyProviderJupiterOrbit()
+    {
+        super();
+    }
 
-	/*@Override
+    /*@Override
 	public void render(float partialTicks, WorldClient world, Minecraft mc)
 	{
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
@@ -188,106 +188,106 @@ public class SkyProviderJupiterOrbit extends SkyProviderBaseMP
 		var2.draw();
 	}*/
 
-	@Override
-	protected void renderPlanetInSky(float partialTicks, WorldClient world, Minecraft mc)
-	{
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		float size;
+    @Override
+    protected void renderPlanetInSky(float partialTicks, WorldClient world, Minecraft mc)
+    {
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        float size;
 
-		// Start code for rendering spinning space stations
-		float deltaTick = partialTicks - this.prevPartialTicks;
-		this.prevPartialTicks = partialTicks;
-		long curTick = mc.theWorld.getTotalWorldTime();
-		int tickDiff = (int) (curTick - this.prevTick);
-		this.prevTick = curTick;
+        // Start code for rendering spinning space stations
+        float deltaTick = partialTicks - this.prevPartialTicks;
+        this.prevPartialTicks = partialTicks;
+        long curTick = mc.theWorld.getTotalWorldTime();
+        int tickDiff = (int) (curTick - this.prevTick);
+        this.prevTick = curTick;
 
-		if (tickDiff > 0 && tickDiff < 20)
-		{
-			deltaTick += tickDiff;
-		}
+        if (tickDiff > 0 && tickDiff < 20)
+        {
+            deltaTick += tickDiff;
+        }
 
-		this.spinAngle = this.spinAngle - this.spinDeltaPerTick * deltaTick;
+        this.spinAngle = this.spinAngle - this.spinDeltaPerTick * deltaTick;
 
-		while (this.spinAngle < -180F)
-		{
-			this.spinAngle += 360F;
-		}
-		GlStateManager.rotate(this.spinAngle, 0.0F, 1.0F, 0.0F);
-		// End code for rendering spinning space stations
+        while (this.spinAngle < -180F)
+        {
+            this.spinAngle += 360F;
+        }
+        GlStateManager.rotate(this.spinAngle, 0.0F, 1.0F, 0.0F);
+        // End code for rendering spinning space stations
 
-		GlStateManager.color(0.8F, 0.8F, 0.8F, 0.8F);
-		GlStateManager.callList(this.starList);
-		GlStateManager.enableTexture2D();
-		GlStateManager.pushMatrix();
-		GlStateManager.rotate(-80.0F, 1.0F, 0.0F, 0.0F);
+        GlStateManager.color(0.8F, 0.8F, 0.8F, 0.8F);
+        GlStateManager.callList(this.starList);
+        GlStateManager.enableTexture2D();
+        GlStateManager.pushMatrix();
+        GlStateManager.rotate(-80.0F, 1.0F, 0.0F, 0.0F);
 
-		// Sun
-		GlStateManager.rotate(80.0F, 1.0F, 0.0F, 0.0F);
-		GlStateManager.blendFunc(770, 771);
-		GlStateManager.disableTexture2D();
-		GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
-		size = 6.3F;
-		worldrenderer.startDrawingQuads();
-		worldrenderer.addVertex(-size, 99.9D, -size);
-		worldrenderer.addVertex(size, 99.9D, -size);
-		worldrenderer.addVertex(size, 99.9D, size);
-		worldrenderer.addVertex(-size, 99.9D, size);
-		tessellator.draw();
-		GlStateManager.enableTexture2D();
-		GlStateManager.blendFunc(770, 1);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		size = 2.0F;
-		mc.renderEngine.bindTexture(this.sunTexture);
-		worldrenderer.startDrawingQuads();
-		worldrenderer.addVertexWithUV(-size, 100.0D, -size, 0.0D, 0.0D);
-		worldrenderer.addVertexWithUV(size, 100.0D, -size, 1.0D, 0.0D);
-		worldrenderer.addVertexWithUV(size, 100.0D, size, 1.0D, 1.0D);
-		worldrenderer.addVertexWithUV(-size, 100.0D, size, 0.0D, 1.0D);
-		tessellator.draw();
+        // Sun
+        GlStateManager.rotate(80.0F, 1.0F, 0.0F, 0.0F);
+        GlStateManager.blendFunc(770, 771);
+        GlStateManager.disableTexture2D();
+        GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
+        size = 6.3F;
+        worldrenderer.startDrawingQuads();
+        worldrenderer.addVertex(-size, 99.9D, -size);
+        worldrenderer.addVertex(size, 99.9D, -size);
+        worldrenderer.addVertex(size, 99.9D, size);
+        worldrenderer.addVertex(-size, 99.9D, size);
+        tessellator.draw();
+        GlStateManager.enableTexture2D();
+        GlStateManager.blendFunc(770, 1);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        size = 2.0F;
+        mc.renderEngine.bindTexture(this.sunTexture);
+        worldrenderer.startDrawingQuads();
+        worldrenderer.addVertexWithUV(-size, 100.0D, -size, 0.0D, 0.0D);
+        worldrenderer.addVertexWithUV(size, 100.0D, -size, 1.0D, 0.0D);
+        worldrenderer.addVertexWithUV(size, 100.0D, size, 1.0D, 1.0D);
+        worldrenderer.addVertexWithUV(-size, 100.0D, size, 0.0D, 1.0D);
+        tessellator.draw();
 
-		GlStateManager.popMatrix();
-		GlStateManager.disableBlend();
+        GlStateManager.popMatrix();
+        GlStateManager.disableBlend();
 
-		// Jupiter
-		size = 80.0F;
-		GlStateManager.translate(70.0F, 0.0F, 0.0F);
-		GlStateManager.rotate(-90.0F, 0.0F, 90.0F, 1.0F);
-		GlStateManager.rotate(95F, 1.0F, 0.0F, 0.015F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
-		mc.renderEngine.bindTexture(this.jupiterTexture);
-		float alpha = 0.75F;
-		GlStateManager.color(Math.min(alpha, 1.0F), Math.min(alpha, 1.0F), Math.min(alpha, 1.0F), Math.min(alpha, 1.0F));
-		float var28 = (int)(mc.theWorld.getWorldTime() / 512L % 8L + 8L) % 8;
-		int var30 = (int) (var28 % 4);
-		int var29 = (int) (var28 / 4 % 2);
-		float var16 = (var30 + 0) / 4.0F;
-		float var17 = (var29 + 0) / 2.0F;
-		float var18 = (var30 + 1) / 4.0F;
-		float var19 = (var29 + 1) / 2.0F;
-		worldrenderer.startDrawingQuads();
-		worldrenderer.addVertexWithUV(-size, -100.0D, size, var18, var19);
-		worldrenderer.addVertexWithUV(size, -100.0D, size, var16, var19);
-		worldrenderer.addVertexWithUV(size, -100.0D, -size, var16, var17);
-		worldrenderer.addVertexWithUV(-size, -100.0D, -size, var18, var17);
-		tessellator.draw();
-	}
+        // Jupiter
+        size = 80.0F;
+        GlStateManager.translate(70.0F, 0.0F, 0.0F);
+        GlStateManager.rotate(-90.0F, 0.0F, 90.0F, 1.0F);
+        GlStateManager.rotate(95F, 1.0F, 0.0F, 0.015F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
+        mc.renderEngine.bindTexture(this.jupiterTexture);
+        float alpha = 0.75F;
+        GlStateManager.color(Math.min(alpha, 1.0F), Math.min(alpha, 1.0F), Math.min(alpha, 1.0F), Math.min(alpha, 1.0F));
+        float var28 = (int)(mc.theWorld.getWorldTime() / 512L % 8L + 8L) % 8;
+        int var30 = (int) (var28 % 4);
+        int var29 = (int) (var28 / 4 % 2);
+        float var16 = (var30 + 0) / 4.0F;
+        float var17 = (var29 + 0) / 2.0F;
+        float var18 = (var30 + 1) / 4.0F;
+        float var19 = (var29 + 1) / 2.0F;
+        worldrenderer.startDrawingQuads();
+        worldrenderer.addVertexWithUV(-size, -100.0D, size, var18, var19);
+        worldrenderer.addVertexWithUV(size, -100.0D, size, var16, var19);
+        worldrenderer.addVertexWithUV(size, -100.0D, -size, var16, var17);
+        worldrenderer.addVertexWithUV(-size, -100.0D, -size, var18, var17);
+        tessellator.draw();
+    }
 
-	@Override
-	protected double[] getMaxStarCount()
-	{
-		return new double[] { 40000, 75, 50 };
-	}
+    @Override
+    protected double[] getMaxStarCount()
+    {
+        return new double[] { 40000, 75, 50 };
+    }
 
-	@Override
-	protected float[] getStarBrightness()
-	{
-		return new float[] { 0.4F, 0.5F };
-	}
+    @Override
+    protected float[] getStarBrightness()
+    {
+        return new float[] { 0.4F, 0.5F };
+    }
 
-	@Override
-	protected boolean useDefaultStarBrightness()
-	{
-		return false;
-	}
+    @Override
+    protected boolean useDefaultStarBrightness()
+    {
+        return false;
+    }
 }

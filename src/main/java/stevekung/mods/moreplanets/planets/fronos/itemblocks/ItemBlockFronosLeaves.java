@@ -12,20 +12,20 @@ import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
 
 public class ItemBlockFronosLeaves extends ItemBlockBaseMP
 {
-	public ItemBlockFronosLeaves(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockFronosLeaves(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta | 4;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta | 4;
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "red_maple_leaves", "yellow_maple_leaves", "purple_maple_leaves" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "red_maple_leaves", "yellow_maple_leaves", "purple_maple_leaves" };
+    }
 }

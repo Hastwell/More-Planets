@@ -23,49 +23,49 @@ import stevekung.mods.moreplanets.common.items.armor.ItemArmorMP;
 
 public class ItemGravityBoots extends ItemArmorMP
 {
-	public ItemGravityBoots(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ItemGravityBoots(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == PlutoItems.gravity_boots)
-		{
-			return "pluto:textures/model/armor/gravity_boots.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == PlutoItems.gravity_boots)
+        {
+            return "pluto:textures/model/armor/gravity_boots.png";
+        }
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		if (player.worldObj.isRemote)
-		{
-			if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
-			{
-				list.add(EnumChatFormatting.GRAY + "Currently prevent fall damage");
-				list.add(EnumChatFormatting.RED + "WIP for increase/decrease gravity factor");
-			}
-			else
-			{
-				list.add("Press LSHIFT for more info");
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        if (player.worldObj.isRemote)
+        {
+            if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+            {
+                list.add(EnumChatFormatting.GRAY + "Currently prevent fall damage");
+                list.add(EnumChatFormatting.RED + "WIP for increase/decrease gravity factor");
+            }
+            else
+            {
+                list.add("Press LSHIFT for more info");
+            }
+        }
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return null;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return null;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return -1;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return -1;
+    }
 }

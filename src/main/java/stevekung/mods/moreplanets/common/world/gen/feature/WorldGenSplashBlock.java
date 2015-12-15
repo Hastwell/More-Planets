@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.common.world.gen.feature;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -16,31 +17,53 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenSplashBlock extends WorldGenerator
 {
-	private IBlockState blockState;
-	private IBlockState blockToGen;
+    private Block blockToGen;
+    private int metaToGen;
+    private Block block;
+    private int meta;
+    private IBlockState state;
+    private IBlockState stateToGen;
+    private boolean useBlockState;
 
-	public WorldGenSplashBlock(IBlockState block, IBlockState blockToGen)
-	{
-		super();
-		this.blockState = block;
-		this.blockToGen = blockToGen;
-	}
+    public WorldGenSplashBlock(Block block, int meta, Block blockToGen, int metaToGen)
+    {
+        super();
+        this.block = block;
+        this.meta = meta;
+        this.blockToGen = blockToGen;
+        this.metaToGen = metaToGen;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		for (int i = 0; i < 64; i++)
-		{
-			int x1 = pos.getX() + rand.nextInt(8) - rand.nextInt(8);
-			int y1 = pos.getY() + rand.nextInt(4) - rand.nextInt(4);
-			int z1 = pos.getZ() + rand.nextInt(8) - rand.nextInt(8);
-			BlockPos pos1 = new BlockPos(x1, y1, z1);
+    public WorldGenSplashBlock(IBlockState state, IBlockState stateToGen, boolean useBlockState)
+    {
+        super();
+        this.state = state;
+        this.stateToGen = stateToGen;
+        this.useBlockState = useBlockState;
+    }
 
-			if (world.getBlockState(pos1.down()) == this.blockToGen)
-			{
-				world.setBlockState(pos1.down(), this.blockState, 2);
-			}
-		}
-		return true;
-	}
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        for (int i = 0; i < 64; i++)
+        {
+            pos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+
+            if (this.useBlockState)
+            {
+                if (world.getBlockState(pos.down()) == this.stateToGen)
+                {
+                    world.setBlockState(pos.down(), this.state, 2);
+                }
+            }
+            else
+            {
+                if (world.getBlockState(pos.down()) == this.blockToGen.getStateFromMeta(this.metaToGen))
+                {
+                    world.setBlockState(pos.down(), this.block.getStateFromMeta(this.meta), 2);
+                }
+            }
+        }
+        return true;
+    }
 }

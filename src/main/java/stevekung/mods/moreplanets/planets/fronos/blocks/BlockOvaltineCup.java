@@ -24,44 +24,44 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockOvaltineCup extends BlockFilledCup
 {
-	public BlockOvaltineCup(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockOvaltineCup(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float par7, float par8, float par9)
-	{
-		if (player.isPotionActive(Potion.regeneration.id))
-		{
-			return false;
-		}
-		else
-		{
-			player.getFoodStats().addStats(6, 0.6F);
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 2400, 2));
-			world.setBlockState(pos, FronosBlocks.cup.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(this.getMetaFromState(state))), 3);
-			world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "random.drink", 0.5F, world.rand.nextFloat() * 0.1F + 1.2F);
-			return true;
-		}
-	}
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float par7, float par8, float par9)
+    {
+        if (player.isPotionActive(Potion.regeneration.id))
+        {
+            return false;
+        }
+        else
+        {
+            player.getFoodStats().addStats(6, 0.6F);
+            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 2400, 2));
+            world.setBlockState(pos, FronosBlocks.cup.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(this.getMetaFromState(state))), 3);
+            world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "random.drink", 0.5F, world.rand.nextFloat() * 0.1F + 1.2F);
+            return true;
+        }
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return FronosItems.cup;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return FronosItems.cup;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 2;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 2;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
-	{
-		return new ItemStack(FronosItems.cup, 1, 2);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos)
+    {
+        return new ItemStack(FronosItems.cup, 1, 2);
+    }
 }

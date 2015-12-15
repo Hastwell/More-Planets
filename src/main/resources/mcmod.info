@@ -3,14 +3,14 @@
 	"modid": "MorePlanets",
 	"name": "More Planets",
 	"description": "A custom planets exploration adventure in Minecraft!",
-	"version": "2.0.0",
-	"mcversion": "1.8",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
 	"url": "http://minecraftforum.net/forums/thread/2358057",
 	"updateUrl": "http://minecraftforum.net/forums/thread/2358057",
 	"authors": [
 	"SteveKunG"
 	],
-	"credits": "Thanks for Galacticraft and some people.",
+	"credits": "Thanks to Galacticraft and some people.",
 	"logoFile": ""
 }
 ]

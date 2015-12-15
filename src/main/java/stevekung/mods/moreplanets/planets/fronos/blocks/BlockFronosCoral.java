@@ -33,133 +33,133 @@ import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 
 public class BlockFronosCoral extends BlockBushMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockFronosCoral(String name)
-	{
-		super(Material.water);
-		this.setUnlocalizedName(name);
-		this.setStepSound(soundTypeGrass);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.glowing_pink_coral));
-		float f = 0.4F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
-	}
+    public BlockFronosCoral(String name)
+    {
+        super(Material.water);
+        this.setUnlocalizedName(name);
+        this.setStepSound(soundTypeGrass);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.glowing_pink_coral));
+        float f = 0.4F;
+        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.8F, 0.5F + f);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
-		Block water = world.getBlockState(pos.up()).getBlock();
-		boolean isWater = water == Blocks.water || water == Blocks.flowing_water;
-		return isWater && (block == Blocks.dirt || block == Blocks.sand || block == Blocks.sponge || block == Blocks.stone || block == Blocks.clay || block == Blocks.gravel || block == Blocks.grass || block == FronosBlocks.fronos_dirt || block == FronosBlocks.fronos_sand || block == FronosBlocks.fronos_block);
-	}
+    @Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
+        Block water = world.getBlockState(pos.up()).getBlock();
+        boolean isWater = water == Blocks.water || water == Blocks.flowing_water;
+        return isWater && (block == Blocks.dirt || block == Blocks.sand || block == Blocks.sponge || block == Blocks.stone || block == Blocks.clay || block == Blocks.gravel || block == Blocks.grass || block == FronosBlocks.fronos_dirt || block == FronosBlocks.fronos_sand || block == FronosBlocks.fronos_block);
+    }
 
-	@Override
-	public boolean canPlaceBlockOn(Block ground)
-	{
-		return ground == Blocks.dirt || ground == Blocks.sand || ground == Blocks.sponge || ground == Blocks.stone || ground == Blocks.clay || ground == Blocks.gravel || ground == Blocks.grass || ground == FronosBlocks.fronos_dirt || ground == FronosBlocks.fronos_sand || ground == FronosBlocks.fronos_block;
-	}
+    @Override
+    public boolean canPlaceBlockOn(Block ground)
+    {
+        return ground == Blocks.dirt || ground == Blocks.sand || ground == Blocks.sponge || ground == Blocks.stone || ground == Blocks.clay || ground == Blocks.gravel || ground == Blocks.grass || ground == FronosBlocks.fronos_dirt || ground == FronosBlocks.fronos_sand || ground == FronosBlocks.fronos_block;
+    }
 
-	@Override
-	public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
-		Block water = world.getBlockState(pos.up()).getBlock();
-		boolean isWater = water == Blocks.water || water == Blocks.flowing_water;
-		return isWater && (block == Blocks.dirt || block == Blocks.sand || block == Blocks.sponge || block == Blocks.stone || block == Blocks.clay || block == Blocks.gravel || block == Blocks.grass || block == FronosBlocks.fronos_dirt || block == FronosBlocks.fronos_sand || block == FronosBlocks.fronos_block);
-	}
+    @Override
+    public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
+        Block water = world.getBlockState(pos.up()).getBlock();
+        boolean isWater = water == Blocks.water || water == Blocks.flowing_water;
+        return isWater && (block == Blocks.dirt || block == Blocks.sand || block == Blocks.sponge || block == Blocks.stone || block == Blocks.clay || block == Blocks.gravel || block == Blocks.grass || block == FronosBlocks.fronos_dirt || block == FronosBlocks.fronos_sand || block == FronosBlocks.fronos_block);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random rand)
-	{
-		return 1;
-	}
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random rand)
+    {
+        return 1;
+    }
 
-	@Override
-	public int getLightValue(IBlockAccess world, BlockPos pos)
-	{
-		IBlockState state = world.getBlockState(pos);
+    @Override
+    public int getLightValue(IBlockAccess world, BlockPos pos)
+    {
+        IBlockState state = world.getBlockState(pos);
 
-		if (state == state.withProperty(VARIANT, BlockType.glowing_pink_coral))
-		{
-			return 10;
-		}
-		return 0;
-	}
+        if (state == state.withProperty(VARIANT, BlockType.glowing_pink_coral))
+        {
+            return 10;
+        }
+        return 0;
+    }
 
-	@Override
-	public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state)
-	{
-		world.setBlockState(pos, Blocks.flowing_water.getDefaultState());
-	}
+    @Override
+    public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state)
+    {
+        world.setBlockState(pos, Blocks.flowing_water.getDefaultState());
+    }
 
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos)
-	{
-		return false;
-	}
+    @Override
+    public boolean isReplaceable(World world, BlockPos pos)
+    {
+        return false;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT, LEVEL });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT, LEVEL });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]).withProperty(LEVEL, 15);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]).withProperty(LEVEL, 15);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Water;
-	}
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+    {
+        return EnumPlantType.Water;
+    }
 
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return FronosBlocks.fronos_coral.getDefaultState();
-	}
+    @Override
+    public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+    {
+        return FronosBlocks.fronos_coral.getDefaultState();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		glowing_pink_coral,
-		colunus_coral;
+    public static enum BlockType implements IStringSerializable
+    {
+        glowing_pink_coral,
+        colunus_coral;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

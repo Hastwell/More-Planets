@@ -18,15 +18,15 @@ import stevekung.mods.moreplanets.planets.siriusb.items.armor.SiriusBArmorItems;
 
 public class MPArmors
 {
-	public static void init()
-	{
-		DionaArmorItems.init();
-		PolongniusArmorItems.init();
-		NibiruArmorItems.init();
-		KoentusArmorItems.init();
-		FronosArmorItems.init();
-		KapteynBArmorItems.init();
-		SiriusBArmorItems.init();
-		MPLog.debug("Register Armors");
-	}
+    public static void init()
+    {
+        DionaArmorItems.init();
+        PolongniusArmorItems.init();
+        NibiruArmorItems.init();
+        KoentusArmorItems.init();
+        FronosArmorItems.init();
+        KapteynBArmorItems.init();
+        SiriusBArmorItems.init();
+        MPLog.debug("Register Armors");
+    }
 }

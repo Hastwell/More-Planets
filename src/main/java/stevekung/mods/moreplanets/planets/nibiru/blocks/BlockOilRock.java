@@ -38,148 +38,148 @@ import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
 
 public class BlockOilRock extends BlockBaseMP implements IDetectableResource, ITerraformableBlock
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockOilRock(String name)
-	{
-		super(Material.rock);
-		this.setHardness(1.5F);
-		this.setResistance(4.0F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.oil_rock));
-		this.setUnlocalizedName(name);
-	}
+    public BlockOilRock(String name)
+    {
+        super(Material.rock);
+        this.setHardness(1.5F);
+        this.setResistance(4.0F);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.oil_rock));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		float f = 0.125F;
-		return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        float f = 0.125F;
+        return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 
-	@Override
-	public int getMobilityFlag()
-	{
-		return 0;
-	}
+    @Override
+    public int getMobilityFlag()
+    {
+        return 0;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		return true;
-	}
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        return true;
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te)
-	{
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te)
+    {
+        player.addExhaustion(0.025F);
 
-		if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
-		{
-			List<ItemStack> items = new ArrayList<ItemStack>();
-			ItemStack itemstack = this.createStackedBlock(state);
+        if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
+        {
+            List<ItemStack> items = new ArrayList<ItemStack>();
+            ItemStack itemstack = this.createStackedBlock(state);
 
-			if (itemstack != null)
-			{
-				items.add(itemstack);
-			}
+            if (itemstack != null)
+            {
+                items.add(itemstack);
+            }
 
-			ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
+            ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
 
-			for (ItemStack is : items)
-			{
-				spawnAsEntity(world, pos, is);
-			}
-		}
-		else
-		{
-			int i = EnchantmentHelper.getFortuneModifier(player);
-			this.harvesters.set(player);
-			this.dropBlockAsItem(world, pos, state, i);
-			this.harvesters.set(null);
-			Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
+            for (ItemStack is : items)
+            {
+                spawnAsEntity(world, pos, is);
+            }
+        }
+        else
+        {
+            int i = EnchantmentHelper.getFortuneModifier(player);
+            this.harvesters.set(player);
+            this.dropBlockAsItem(world, pos, state, i);
+            this.harvesters.set(null);
+            Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
 
-			if (material.blocksMovement() || material.isLiquid())
-			{
-				world.setBlockState(pos, GCBlocks.crudeOil.getDefaultState());
-			}
-		}
-		MorePlanetsEvents.addInfectedGas(player);
-	}
+            if (material.blocksMovement() || material.isLiquid())
+            {
+                world.setBlockState(pos, GCBlocks.crudeOil.getDefaultState());
+            }
+        }
+        MorePlanetsEvents.addInfectedGas(player);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		entity.motionX *= 0.4D;
-		entity.motionZ *= 0.4D;
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+    {
+        entity.motionX *= 0.4D;
+        entity.motionZ *= 0.4D;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
-	}
+    @Override
+    public boolean isTerraformable(World world, BlockPos pos)
+    {
+        return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		oil_rock,
-		oil_ore;
+    public static enum BlockType implements IStringSerializable
+    {
+        oil_rock,
+        oil_ore;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

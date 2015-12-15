@@ -18,25 +18,25 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenFrostedCake extends WorldGenerator
 {
-	private IBlockState frostedCake;
+    private IBlockState frostedCake;
 
-	public WorldGenFrostedCake(IBlockState state)
-	{
-		this.frostedCake = state;
-	}
+    public WorldGenFrostedCake(IBlockState state)
+    {
+        this.frostedCake = state;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		for (int i = 0; i < 64; ++i)
-		{
-			BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        for (int i = 0; i < 64; ++i)
+        {
+            BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (world.isAirBlock(blockpos1) && world.getBlockState(blockpos1.down()) == FronosBlocks.frosted_cake.getDefaultState().withProperty(BlockFrostedCake.VARIANT, BlockFrostedCake.BlockType.frosted_white_cake_block))
-			{
-				world.setBlockState(blockpos1, this.frostedCake, 2);
-			}
-		}
-		return true;
-	}
+            if (world.isAirBlock(blockpos1) && world.getBlockState(blockpos1.down()) == FronosBlocks.frosted_cake.getDefaultState().withProperty(BlockFrostedCake.VARIANT, BlockFrostedCake.BlockType.frosted_white_cake_block))
+            {
+                world.setBlockState(blockpos1, this.frostedCake, 2);
+            }
+        }
+        return true;
+    }
 }

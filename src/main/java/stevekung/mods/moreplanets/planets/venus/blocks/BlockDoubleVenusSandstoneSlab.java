@@ -20,46 +20,46 @@ import net.minecraft.world.World;
 
 public class BlockDoubleVenusSandstoneSlab extends BlockVenusSandstoneSlab
 {
-	public BlockDoubleVenusSandstoneSlab(String name, Material material)
-	{
-		super(material);
-		this.setHardness(0.8F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockDoubleVenusSandstoneSlab(String name, Material material)
+    {
+        super(material);
+        this.setHardness(0.8F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean isDouble()
-	{
-		return true;
-	}
+    @Override
+    public boolean isDouble()
+    {
+        return true;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(VenusBlocks.half_venus_sandstone_slab);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(VenusBlocks.half_venus_sandstone_slab);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 2;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 2;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state) & 7;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state) & 7;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(VenusBlocks.half_venus_sandstone_slab, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        return new ItemStack(VenusBlocks.half_venus_sandstone_slab, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
+    }
 }

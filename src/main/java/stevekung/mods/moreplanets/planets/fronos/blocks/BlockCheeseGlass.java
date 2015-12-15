@@ -21,47 +21,47 @@ import stevekung.mods.moreplanets.common.blocks.BlockBreakableMP;
 
 public class BlockCheeseGlass extends BlockBreakableMP implements IPartialSealableBlock
 {
-	public BlockCheeseGlass(String name)
-	{
-		super(Material.glass);
-		this.setUnlocalizedName(name);
-		this.setStepSound(soundTypeGlass);
-		this.setHardness(0.3F);
-	}
+    public BlockCheeseGlass(String name)
+    {
+        super(Material.glass);
+        this.setUnlocalizedName(name);
+        this.setStepSound(soundTypeGlass);
+        this.setHardness(0.3F);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public boolean isSealed(World world, BlockPos pos, EnumFacing facing)
-	{
-		return true;
-	}
+    @Override
+    public boolean isSealed(World world, BlockPos pos, EnumFacing facing)
+    {
+        return true;
+    }
 }

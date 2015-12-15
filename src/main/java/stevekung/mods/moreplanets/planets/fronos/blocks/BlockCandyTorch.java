@@ -13,18 +13,18 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockCandyTorch extends BlockTorch
 {
-	public BlockCandyTorch(String name)
-	{
-		super();
-		this.setTickRandomly(true);
-		this.setLightLevel(1.0F);
-		this.setStepSound(soundTypeCloth);
-		this.setUnlocalizedName(name);
-	}
+    public BlockCandyTorch(String name)
+    {
+        super();
+        this.setTickRandomly(true);
+        this.setLightLevel(1.0F);
+        this.setStepSound(soundTypeCloth);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

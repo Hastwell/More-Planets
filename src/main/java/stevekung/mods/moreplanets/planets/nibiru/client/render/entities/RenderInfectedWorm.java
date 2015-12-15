@@ -18,16 +18,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderInfectedWorm extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/infected_worm.png");
+    private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/infected_worm.png");
 
-	public RenderInfectedWorm(RenderManager render)
-	{
-		super(render, new ModelSludgeling(), 0.2F);
-	}
+    public RenderInfectedWorm(RenderManager render)
+    {
+        super(render, new ModelSludgeling(), 0.2F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.texture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.texture;
+    }
 }

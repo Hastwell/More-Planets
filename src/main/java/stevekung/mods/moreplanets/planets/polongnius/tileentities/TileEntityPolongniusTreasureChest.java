@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 
 public class TileEntityPolongniusTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityPolongniusTreasureChest()
-	{
-		super(5, "polongnius", PolongniusBlocks.polongnius_treasure_chest);
-	}
+    public TileEntityPolongniusTreasureChest()
+    {
+        super(5, "polongnius", PolongniusBlocks.polongnius_treasure_chest);
+    }
 }

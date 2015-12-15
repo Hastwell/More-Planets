@@ -11,14 +11,14 @@ import net.minecraft.block.Block;
 
 public class ItemBlockSingleLeaves extends ItemBlockMorePlanets
 {
-	public ItemBlockSingleLeaves(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockSingleLeaves(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta | 4;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta | 4;
+    }
 }

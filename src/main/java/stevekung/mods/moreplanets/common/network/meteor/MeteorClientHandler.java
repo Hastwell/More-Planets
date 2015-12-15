@@ -21,43 +21,43 @@ import stevekung.mods.moreplanets.common.util.MPLog;
 
 public class MeteorClientHandler implements IMessageHandler<MeteorClientMessage, IMessage>
 {
-	@Override
-	public IMessage onMessage(final MeteorClientMessage message, MessageContext ctx)
-	{
-		if (ctx.side != Side.CLIENT)
-		{
-			MPLog.error("NetworkMessageToClient received on wrong side:" + ctx.side);
-			return null;
-		}
-		if (!message.isMessageValid())
-		{
-			MPLog.error("NetworkMessageToClient was invalid" + message.toString());
-			return null;
-		}
+    @Override
+    public IMessage onMessage(final MeteorClientMessage message, MessageContext ctx)
+    {
+        if (ctx.side != Side.CLIENT)
+        {
+            MPLog.error("NetworkMessageToClient received on wrong side:" + ctx.side);
+            return null;
+        }
+        if (!message.isMessageValid())
+        {
+            MPLog.error("NetworkMessageToClient was invalid" + message.toString());
+            return null;
+        }
 
-		Minecraft.getMinecraft().addScheduledTask(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				MeteorClientHandler.this.processMessage(Minecraft.getMinecraft().theWorld, message);
-			}
-		});
-		return null;
-	}
+        Minecraft.getMinecraft().addScheduledTask(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                MeteorClientHandler.this.processMessage(Minecraft.getMinecraft().theWorld, message);
+            }
+        });
+        return null;
+    }
 
-	void processMessage(WorldClient worldClient, MeteorClientMessage message)
-	{
-		Random rand = new Random();
+    void processMessage(WorldClient worldClient, MeteorClientMessage message)
+    {
+        Random rand = new Random();
 
-		for (int i = 0; i < 100; ++i)
-		{
-			Vec3 targetCoordinates = message.getTargetCoordinates();
-			double spawnXpos = targetCoordinates.xCoord + (2 * rand.nextDouble() - 1) * 1.5D;
-			double spawnYpos = targetCoordinates.yCoord;
-			double spawnZpos = targetCoordinates.zCoord + (2 * rand.nextDouble() - 1) * 1.5D;
-			worldClient.spawnParticle(EnumParticleTypes.SPELL_INSTANT, spawnXpos, spawnYpos, spawnZpos, 0, 0, 0);
-		}
-		return;
-	}
+        for (int i = 0; i < 100; ++i)
+        {
+            Vec3 targetCoordinates = message.getTargetCoordinates();
+            double spawnXpos = targetCoordinates.xCoord + (2 * rand.nextDouble() - 1) * 1.5D;
+            double spawnYpos = targetCoordinates.yCoord;
+            double spawnZpos = targetCoordinates.zCoord + (2 * rand.nextDouble() - 1) * 1.5D;
+            worldClient.spawnParticle(EnumParticleTypes.SPELL_INSTANT, spawnXpos, spawnYpos, spawnZpos, 0, 0, 0);
+        }
+        return;
+    }
 }

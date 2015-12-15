@@ -19,63 +19,58 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.polongnius.entities.projectiles.EntityCheeseSpore;
-import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 @SideOnly(Side.CLIENT)
 public class RenderCheeseSpore extends Render
 {
-	public RenderCheeseSpore(RenderManager render)
-	{
-		super(render);
-	}
+    public RenderCheeseSpore(RenderManager render)
+    {
+        super(render);
+    }
 
-	public void doRender(EntityCheeseSpore entity, double x, double y, double z, float p_76986_8_, float partialTicks)
-	{
-		GlStateManager.pushMatrix();
-		this.bindEntityTexture(entity);
-		GlStateManager.translate((float)x, (float)y, (float)z);
-		GlStateManager.enableRescaleNormal();
-		float f2 = 2.0F;
-		GlStateManager.scale(f2 / 1.0F, f2 / 1.0F, f2 / 1.0F);
-		TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(PolongniusItems.polongnius_item, 11);
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		float f3 = textureatlassprite.getMinU();
-		float f4 = textureatlassprite.getMaxU();
-		float f5 = textureatlassprite.getMinV();
-		float f6 = textureatlassprite.getMaxV();
-		float f7 = 1.0F;
-		float f8 = 0.5F;
-		float f9 = 0.25F;
-		GlStateManager.rotate(180.0F - this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
-		GlStateManager.rotate(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
-		worldrenderer.startDrawingQuads();
-		worldrenderer.setNormal(0.0F, 1.0F, 0.0F);
-		worldrenderer.addVertexWithUV(0.0F - f8, 0.0F - f9, 0.0D, f3, f6);
-		worldrenderer.addVertexWithUV(f7 - f8, 0.0F - f9, 0.0D, f4, f6);
-		worldrenderer.addVertexWithUV(f7 - f8, 1.0F - f9, 0.0D, f4, f5);
-		worldrenderer.addVertexWithUV(0.0F - f8, 1.0F - f9, 0.0D, f3, f5);
-		tessellator.draw();
-		GlStateManager.disableRescaleNormal();
-		GlStateManager.popMatrix();
-		super.doRender(entity, x, y, z, p_76986_8_, partialTicks);
-	}
+    public void doRender(EntityCheeseSpore entity, double x, double y, double z, float p_76986_8_, float partialTicks)
+    {
+        GlStateManager.pushMatrix();
+        this.bindEntityTexture(entity);
+        GlStateManager.translate((float)x, (float)y, (float)z);
+        GlStateManager.enableRescaleNormal();
+        float f2 = 2.0F;
+        GlStateManager.scale(f2 / 1.0F, f2 / 1.0F, f2 / 1.0F);
+        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(MPItems.cheese_spore);
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        float f3 = textureatlassprite.getMinU();
+        float f4 = textureatlassprite.getMaxU();
+        float f5 = textureatlassprite.getMinV();
+        float f6 = textureatlassprite.getMaxV();
+        float f7 = 1.0F;
+        float f8 = 0.5F;
+        float f9 = 0.25F;
+        GlStateManager.rotate(180.0F - this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
+        worldrenderer.startDrawingQuads();
+        worldrenderer.setNormal(0.0F, 1.0F, 0.0F);
+        worldrenderer.addVertexWithUV(0.0F - f8, 0.0F - f9, 0.0D, f3, f6);
+        worldrenderer.addVertexWithUV(f7 - f8, 0.0F - f9, 0.0D, f4, f6);
+        worldrenderer.addVertexWithUV(f7 - f8, 1.0F - f9, 0.0D, f4, f5);
+        worldrenderer.addVertexWithUV(0.0F - f8, 1.0F - f9, 0.0D, f3, f5);
+        tessellator.draw();
+        GlStateManager.disableRescaleNormal();
+        GlStateManager.popMatrix();
+        super.doRender(entity, x, y, z, p_76986_8_, partialTicks);
+    }
 
-	protected ResourceLocation func_180556_a(EntityCheeseSpore entity)
-	{
-		return TextureMap.locationBlocksTexture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return TextureMap.locationBlocksTexture;
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.func_180556_a((EntityCheeseSpore)entity);
-	}
-
-	@Override
-	public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks)
-	{
-		this.doRender((EntityCheeseSpore)entity, x, y, z, p_76986_8_, partialTicks);
-	}
+    @Override
+    public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks)
+    {
+        this.doRender((EntityCheeseSpore)entity, x, y, z, p_76986_8_, partialTicks);
+    }
 }

@@ -37,139 +37,139 @@ import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury
 
 public class BlockEuropaIce extends BlockIceMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockEuropaIce(String name)
-	{
-		super(Material.ice);
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.europa_ice));
-	}
+    public BlockEuropaIce(String name)
+    {
+        super(Material.ice);
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.europa_ice));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 3; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        player.addExhaustion(0.025F);
 
-		if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
-		{
-			List<ItemStack> items = new ArrayList<ItemStack>();
-			ItemStack itemstack = this.createStackedBlock(state);
+        if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
+        {
+            List<ItemStack> items = new ArrayList<ItemStack>();
+            ItemStack itemstack = this.createStackedBlock(state);
 
-			if (itemstack != null)
-			{
-				items.add(itemstack);
-			}
+            if (itemstack != null)
+            {
+                items.add(itemstack);
+            }
 
-			ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
+            ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
 
-			for (ItemStack is : items)
-			{
-				spawnAsEntity(world, pos, is);
-			}
-		}
-		else
-		{
-			if (world.provider.doesWaterVaporize())
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
-			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
+            for (ItemStack is : items)
+            {
+                spawnAsEntity(world, pos, is);
+            }
+        }
+        else
+        {
+            if (world.provider.doesWaterVaporize())
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
+            else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
 
-			int i = EnchantmentHelper.getFortuneModifier(player);
-			this.harvesters.set(player);
-			this.dropBlockAsItem(world, pos, state, i);
-			this.harvesters.set(null);
-			Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
+            int i = EnchantmentHelper.getFortuneModifier(player);
+            this.harvesters.set(player);
+            this.dropBlockAsItem(world, pos, state, i);
+            this.harvesters.set(null);
+            Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
 
-			if (material.blocksMovement() || material.isLiquid())
-			{
-				world.setBlockState(pos, EuropaBlocks.europa_water.getDefaultState());
-			}
-		}
-	}
+            if (material.blocksMovement() || material.isLiquid())
+            {
+                world.setBlockState(pos, EuropaBlocks.europa_water.getDefaultState());
+            }
+        }
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11 - this.getLightOpacity() && this.getMetaFromState(state) != 1)
-		{
-			if (world.provider.doesWaterVaporize())
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
-			this.dropBlockAsItem(world, pos, state, 0);
-			world.setBlockState(pos, Blocks.water.getDefaultState());
-		}
-		if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
-		{
-			world.setBlockToAir(pos);
-			return;
-		}
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11 - this.getLightOpacity() && this.getMetaFromState(state) != 1)
+        {
+            if (world.provider.doesWaterVaporize())
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
+            this.dropBlockAsItem(world, pos, state, 0);
+            world.setBlockState(pos, Blocks.water.getDefaultState());
+        }
+        if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
+        {
+            world.setBlockToAir(pos);
+            return;
+        }
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
-	{
-		return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		europa_ice,
-		dirty_europa_ice,
-		dense_europa_ice;
+    public static enum BlockType implements IStringSerializable
+    {
+        europa_ice,
+        dirty_europa_ice,
+        dense_europa_ice;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

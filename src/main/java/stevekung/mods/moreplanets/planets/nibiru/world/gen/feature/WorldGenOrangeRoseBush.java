@@ -17,19 +17,19 @@ import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
 public class WorldGenOrangeRoseBush extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		for (int i = 0; i < 64; ++i)
-		{
-			BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        for (int i = 0; i < 64; ++i)
+        {
+            BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (world.isAirBlock(blockpos1) && (!world.provider.getHasNoSky() || blockpos1.getY() < 254) && NibiruBlocks.infected_orange_rose_bush.canPlaceBlockAt(world, blockpos1))
-			{
-				world.setBlockState(blockpos1, NibiruBlocks.infected_orange_rose_bush.getDefaultState().withProperty(BlockInfectedOrangeRoseBush.VARIANT, BlockInfectedOrangeRoseBush.BlockType.orange_rose_bush_bottom), 2);
-				world.setBlockState(blockpos1.up(), NibiruBlocks.infected_orange_rose_bush.getDefaultState().withProperty(BlockInfectedOrangeRoseBush.VARIANT, BlockInfectedOrangeRoseBush.BlockType.orange_rose_bush_top), 2);
-			}
-		}
-		return true;
-	}
+            if (world.isAirBlock(blockpos1) && (!world.provider.getHasNoSky() || blockpos1.getY() < 254) && NibiruBlocks.infected_orange_rose_bush.canPlaceBlockAt(world, blockpos1))
+            {
+                world.setBlockState(blockpos1, NibiruBlocks.infected_orange_rose_bush.getDefaultState().withProperty(BlockInfectedOrangeRoseBush.VARIANT, BlockInfectedOrangeRoseBush.BlockType.orange_rose_bush_bottom), 2);
+                world.setBlockState(blockpos1.up(), NibiruBlocks.infected_orange_rose_bush.getDefaultState().withProperty(BlockInfectedOrangeRoseBush.VARIANT, BlockInfectedOrangeRoseBush.BlockType.orange_rose_bush_top), 2);
+            }
+        }
+        return true;
+    }
 }

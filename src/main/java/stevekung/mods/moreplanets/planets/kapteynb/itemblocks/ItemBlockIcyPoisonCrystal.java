@@ -19,19 +19,19 @@ import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoi
 
 public class ItemBlockIcyPoisonCrystal extends ItemBlockMorePlanets
 {
-	public ItemBlockIcyPoisonCrystal(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockIcyPoisonCrystal(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public boolean placeBlockAt(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, IBlockState state)
-	{
-		if (super.placeBlockAt(itemStack, player, world, pos, facing, hitX, hitY, hitZ, state))
-		{
-			TileEntityIcyPoisonCrystal tile = (TileEntityIcyPoisonCrystal)world.getTileEntity(pos);
-			tile.facing = facing.getIndex();
-		}
-		return super.placeBlockAt(itemStack, player, world, pos, facing, hitX, hitY, hitZ, state);
-	}
+    @Override
+    public boolean placeBlockAt(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, IBlockState state)
+    {
+        if (super.placeBlockAt(itemStack, player, world, pos, facing, hitX, hitY, hitZ, state))
+        {
+            TileEntityIcyPoisonCrystal tile = (TileEntityIcyPoisonCrystal)world.getTileEntity(pos);
+            tile.facing = facing.getIndex();
+        }
+        return super.placeBlockAt(itemStack, player, world, pos, facing, hitX, hitY, hitZ, state);
+    }
 }

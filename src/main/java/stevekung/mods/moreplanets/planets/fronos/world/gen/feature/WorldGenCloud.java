@@ -18,39 +18,39 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenCloud extends WorldGenerator
 {
-	private IBlockState block;
+    private IBlockState block;
 
-	public WorldGenCloud(IBlockState block)
-	{
-		this.block = block;
-	}
+    public WorldGenCloud(IBlockState block)
+    {
+        this.block = block;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos).getBlock();
 
-		if (!(block instanceof BlockAir))
-		{
-			return false;
-		}
-		else
-		{
-			if (rand.nextInt(4) == 0)
-			{
-				world.setBlockState(pos, this.block, 2);
-			}
-			else if (rand.nextInt(6) == 0)
-			{
-				world.setBlockState(pos, this.block, 2);
-				world.setBlockState(pos.west(), this.block, 2);
-				world.setBlockState(pos.east(), this.block, 2);
-				world.setBlockState(pos.north(), this.block, 2);
-				world.setBlockState(pos.south(), this.block, 2);
-				world.setBlockState(pos.down(), this.block, 2);
-				world.setBlockState(pos.up(), this.block, 2);
-			}
-		}
-		return true;
-	}
+        if (!(block instanceof BlockAir))
+        {
+            return false;
+        }
+        else
+        {
+            if (rand.nextInt(4) == 0)
+            {
+                world.setBlockState(pos, this.block, 2);
+            }
+            else if (rand.nextInt(6) == 0)
+            {
+                world.setBlockState(pos, this.block, 2);
+                world.setBlockState(pos.west(), this.block, 2);
+                world.setBlockState(pos.east(), this.block, 2);
+                world.setBlockState(pos.north(), this.block, 2);
+                world.setBlockState(pos.south(), this.block, 2);
+                world.setBlockState(pos.down(), this.block, 2);
+                world.setBlockState(pos.up(), this.block, 2);
+            }
+        }
+        return true;
+    }
 }

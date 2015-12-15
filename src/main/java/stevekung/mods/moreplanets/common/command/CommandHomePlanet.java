@@ -23,63 +23,63 @@ import stevekung.mods.moreplanets.common.util.WorldUtilMP;
 
 public class CommandHomePlanet extends CommandBase
 {
-	@Override
-	public int getRequiredPermissionLevel()
-	{
-		return 2;
-	}
+    @Override
+    public int getRequiredPermissionLevel()
+    {
+        return 2;
+    }
 
-	@Override
-	public boolean canCommandSenderUse(ICommandSender sender)
-	{
-		return MinecraftServer.getServer().isSinglePlayer() || super.canCommandSenderUse(sender);
-	}
+    @Override
+    public boolean canCommandSenderUse(ICommandSender sender)
+    {
+        return MinecraftServer.getServer().isSinglePlayer() || super.canCommandSenderUse(sender);
+    }
 
-	@Override
-	public String getCommandUsage(ICommandSender sender)
-	{
-		return "/" + this.getName();
-	}
+    @Override
+    public String getCommandUsage(ICommandSender sender)
+    {
+        return "/" + this.getName();
+    }
 
-	@Override
-	public String getName()
-	{
-		return "homeplanettp";
-	}
+    @Override
+    public String getName()
+    {
+        return "homeplanettp";
+    }
 
-	@Override
-	public void execute(ICommandSender sender, String[] length) throws CommandException
-	{
-		EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayerUsername(sender.getName(), true);
-		MPPlayerStats stats = MPPlayerStats.get(playerBase);
+    @Override
+    public void execute(ICommandSender sender, String[] length) throws CommandException
+    {
+        EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayerUsername(sender.getName(), true);
+        MPPlayerStats stats = MPPlayerStats.get(playerBase);
 
-		if (length.length < 1)
-		{
-			if (!stats.usingHomePlanetCommand)
-			{
-				MinecraftServer server = MinecraftServer.getServer();
-				WorldServer worldserver = server.worldServerForDimension(server.worldServers[0].provider.getDimensionId());
+        if (length.length < 1)
+        {
+            if (!stats.usingHomePlanetCommand)
+            {
+                MinecraftServer server = MinecraftServer.getServer();
+                WorldServer worldserver = server.worldServerForDimension(server.worldServers[0].provider.getDimensionId());
 
-				if (ConfigManagerMP.homePlanetDimension != "planet.")
-				{
-					int dimID = WorldUtil.getProviderForName(ConfigManagerMP.homePlanetDimension).getDimensionId();
-					WorldUtilMP.setHomePlanetDimension(playerBase, dimID, worldserver);
-					stats.usingHomePlanetCommand = true;
-					CommandBase.notifyOperators(sender, this, "commands.homeplanettp.success", new Object[] { playerBase.getGameProfile().getName(), StatCollector.translateToLocal(ConfigManagerMP.homePlanetDimension) });
-				}
-				else
-				{
-					throw new WrongUsageException(StatCollector.translateToLocal("commands.homeplanettp.confignull"));
-				}
-			}
-			else
-			{
-				throw new WrongUsageException(StatCollector.translateToLocalFormatted("commands.homeplanettp.alreadyuse", playerBase.getGameProfile().getName()));
-			}
-		}
-		else
-		{
-			throw new WrongUsageException(StatCollector.translateToLocalFormatted("commands.dimensiontp.tooMany", this.getCommandUsage(sender)), new Object[0]);
-		}
-	}
+                if (ConfigManagerMP.homePlanetName == null || ConfigManagerMP.homePlanetName == "planet.")
+                {
+                    throw new WrongUsageException(StatCollector.translateToLocal("commands.homeplanettp.confignull"));
+                }
+                else
+                {
+                    int dimID = WorldUtil.getProviderForName(ConfigManagerMP.homePlanetName).getDimensionId();
+                    WorldUtilMP.setHomePlanetDimension(playerBase, dimID, worldserver);
+                    stats.usingHomePlanetCommand = true;
+                    CommandBase.notifyOperators(sender, this, "commands.homeplanettp.success", new Object[] { playerBase.getGameProfile().getName(), StatCollector.translateToLocal(ConfigManagerMP.homePlanetName) });
+                }
+            }
+            else
+            {
+                throw new WrongUsageException(StatCollector.translateToLocalFormatted("commands.homeplanettp.alreadyuse", playerBase.getGameProfile().getName()));
+            }
+        }
+        else
+        {
+            throw new WrongUsageException(StatCollector.translateToLocalFormatted("commands.dimensiontp.tooMany", this.getCommandUsage(sender)), new Object[0]);
+        }
+    }
 }

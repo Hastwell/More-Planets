@@ -21,56 +21,56 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class ItemBreathableArmor extends ItemArmor implements IBreathableArmor
 {
-	public ItemBreathableArmor(ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-	}
+    public ItemBreathableArmor(ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpArmorTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpArmorTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public boolean canBreathe(ItemStack itemStack, EntityPlayer player, EnumGearType type)
-	{
-		if (itemStack.getItem() == this.getBreathableArmor())
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean canBreathe(ItemStack itemStack, EntityPlayer player, EnumGearType type)
+    {
+        if (itemStack.getItem() == this.getBreathableArmor())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (itemStack2.getItem() == this.getRepairItems() && itemStack2.getItemDamage() == this.getRepairItemsMetadata())
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (itemStack2.getItem() == this.getRepairItems() && itemStack2.getItemDamage() == this.getRepairItemsMetadata())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean handleGearType(EnumGearType type)
-	{
-		if (type == this.getGearType())
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean handleGearType(EnumGearType type)
+    {
+        if (type == this.getGearType())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	protected abstract Item getRepairItems();
-	protected abstract int getRepairItemsMetadata();
-	protected abstract EnumGearType getGearType();
-	protected abstract Item getBreathableArmor();
+    protected abstract Item getRepairItems();
+    protected abstract int getRepairItemsMetadata();
+    protected abstract EnumGearType getGearType();
+    protected abstract Item getBreathableArmor();
 }

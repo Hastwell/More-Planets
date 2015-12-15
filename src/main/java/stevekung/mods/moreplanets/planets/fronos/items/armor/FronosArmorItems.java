@@ -14,45 +14,45 @@ import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class FronosArmorItems
 {
-	public static Item black_diamond_helmet;
-	public static Item black_diamond_chestplate;
-	public static Item black_diamond_leggings;
-	public static Item black_diamond_boots;
-	public static Item iridium_helmet;
-	public static Item iridium_chestplate;
-	public static Item iridium_leggings;
-	public static Item iridium_boots;
-	public static Item breathable_black_diamond_helmet;
-	public static Item breathable_iridium_helmet;
+    public static Item black_diamond_helmet;
+    public static Item black_diamond_chestplate;
+    public static Item black_diamond_leggings;
+    public static Item black_diamond_boots;
+    public static Item iridium_helmet;
+    public static Item iridium_chestplate;
+    public static Item iridium_leggings;
+    public static Item iridium_boots;
+    public static Item breathable_black_diamond_helmet;
+    public static Item breathable_iridium_helmet;
 
-	// Name,Durability,ReductionAmounts[Helm,Chest,Leg,Boot],Enchantability
-	public static ArmorMaterial black_diamond = EnumHelper.addArmorMaterial("black_diamond", "black_diamond", 44, new int[] { 12, 15, 12, 9 }, 16);
-	public static ArmorMaterial iridium = EnumHelper.addArmorMaterial("iridium", "iridium", 42, new int[] { 11, 14, 11, 8 }, 16);
+    // Name,Durability,ReductionAmounts[Helm,Chest,Leg,Boot],Enchantability
+    public static ArmorMaterial black_diamond = EnumHelper.addArmorMaterial("black_diamond", "black_diamond", 44, new int[] { 12, 15, 12, 9 }, 16);
+    public static ArmorMaterial iridium = EnumHelper.addArmorMaterial("iridium", "iridium", 42, new int[] { 11, 14, 11, 8 }, 16);
 
-	public static void init()
-	{
-		// Init
-		FronosArmorItems.black_diamond_helmet = new ItemArmorBlackDiamond("black_diamond_helmet", FronosArmorItems.black_diamond, 7, 0);
-		FronosArmorItems.black_diamond_chestplate = new ItemArmorBlackDiamond("black_diamond_chestplate", FronosArmorItems.black_diamond, 7, 1);
-		FronosArmorItems.black_diamond_leggings = new ItemArmorBlackDiamond("black_diamond_leggings", FronosArmorItems.black_diamond, 7, 2);
-		FronosArmorItems.black_diamond_boots = new ItemArmorBlackDiamond("black_diamond_boots", FronosArmorItems.black_diamond, 7, 3);
-		FronosArmorItems.iridium_helmet = new ItemArmorIridium("iridium_helmet", FronosArmorItems.iridium, 7, 0);
-		FronosArmorItems.iridium_chestplate = new ItemArmorIridium("iridium_chestplate", FronosArmorItems.iridium, 7, 1);
-		FronosArmorItems.iridium_leggings = new ItemArmorIridium("iridium_leggings", FronosArmorItems.iridium, 7, 2);
-		FronosArmorItems.iridium_boots = new ItemArmorIridium("iridium_boots", FronosArmorItems.iridium, 7, 3);
-		FronosArmorItems.breathable_black_diamond_helmet = new ItemBreathableBlackDiamond("breathable_black_diamond_helmet", FronosArmorItems.black_diamond, 7, 0);
-		FronosArmorItems.breathable_iridium_helmet = new ItemBreathableIridium("breathable_iridium_helmet", FronosArmorItems.iridium, 7, 0);
+    public static void init()
+    {
+        // Init
+        FronosArmorItems.black_diamond_helmet = new ItemArmorBlackDiamond("black_diamond_helmet", FronosArmorItems.black_diamond, 7, 0);
+        FronosArmorItems.black_diamond_chestplate = new ItemArmorBlackDiamond("black_diamond_chestplate", FronosArmorItems.black_diamond, 7, 1);
+        FronosArmorItems.black_diamond_leggings = new ItemArmorBlackDiamond("black_diamond_leggings", FronosArmorItems.black_diamond, 7, 2);
+        FronosArmorItems.black_diamond_boots = new ItemArmorBlackDiamond("black_diamond_boots", FronosArmorItems.black_diamond, 7, 3);
+        FronosArmorItems.iridium_helmet = new ItemArmorIridium("iridium_helmet", FronosArmorItems.iridium, 7, 0);
+        FronosArmorItems.iridium_chestplate = new ItemArmorIridium("iridium_chestplate", FronosArmorItems.iridium, 7, 1);
+        FronosArmorItems.iridium_leggings = new ItemArmorIridium("iridium_leggings", FronosArmorItems.iridium, 7, 2);
+        FronosArmorItems.iridium_boots = new ItemArmorIridium("iridium_boots", FronosArmorItems.iridium, 7, 3);
+        FronosArmorItems.breathable_black_diamond_helmet = new ItemBreathableBlackDiamond("breathable_black_diamond_helmet", FronosArmorItems.black_diamond, 7, 0);
+        FronosArmorItems.breathable_iridium_helmet = new ItemBreathableIridium("breathable_iridium_helmet", FronosArmorItems.iridium, 7, 0);
 
-		// Register
-		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_helmet);
-		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_chestplate);
-		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_leggings);
-		CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_boots);
-		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_helmet);
-		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_chestplate);
-		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_leggings);
-		CommonRegisterHelper.registerItem(FronosArmorItems.iridium_boots);
-		CommonRegisterHelper.registerItem(FronosArmorItems.breathable_black_diamond_helmet);
-		CommonRegisterHelper.registerItem(FronosArmorItems.breathable_iridium_helmet);
-	}
+        // Register
+        CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_helmet);
+        CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_chestplate);
+        CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_leggings);
+        CommonRegisterHelper.registerItem(FronosArmorItems.black_diamond_boots);
+        CommonRegisterHelper.registerItem(FronosArmorItems.iridium_helmet);
+        CommonRegisterHelper.registerItem(FronosArmorItems.iridium_chestplate);
+        CommonRegisterHelper.registerItem(FronosArmorItems.iridium_leggings);
+        CommonRegisterHelper.registerItem(FronosArmorItems.iridium_boots);
+        CommonRegisterHelper.registerItem(FronosArmorItems.breathable_black_diamond_helmet);
+        CommonRegisterHelper.registerItem(FronosArmorItems.breathable_iridium_helmet);
+    }
 }

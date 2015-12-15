@@ -21,30 +21,30 @@ import stevekung.mods.moreplanets.planets.siriusb.client.render.entities.layers.
 
 public class RenderEvolvedSiriusBlazeBoss extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/evolved_sirius_blaze_boss.png");
+    private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/evolved_sirius_blaze_boss.png");
 
-	public RenderEvolvedSiriusBlazeBoss(RenderManager render)
-	{
-		super(render, new ModelBlaze(), 0.5F);
-		this.addLayer(new LayerSiriusBlazeBoss(this));
-	}
+    public RenderEvolvedSiriusBlazeBoss(RenderManager render)
+    {
+        super(render, new ModelBlaze(), 0.5F);
+        this.addLayer(new LayerSiriusBlazeBoss(this));
+    }
 
-	@Override
-	public void doRender(EntityLiving entity, double par2, double par4, double par6, float par8, float par9)
-	{
-		BossStatus.setBossStatus((IBossDisplayData)entity, false);
-		super.doRender(entity, par2, par4, par6, par8, par9);
-	}
+    @Override
+    public void doRender(EntityLiving entity, double par2, double par4, double par6, float par8, float par9)
+    {
+        BossStatus.setBossStatus((IBossDisplayData)entity, false);
+        super.doRender(entity, par2, par4, par6, par8, par9);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.texture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.texture;
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		GlStateManager.scale(4.0F, 4.0F, 4.0F);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    {
+        GlStateManager.scale(4.0F, 4.0F, 4.0F);
+    }
 }

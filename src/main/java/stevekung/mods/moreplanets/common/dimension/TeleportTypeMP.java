@@ -19,37 +19,37 @@ import net.minecraft.world.WorldServer;
 
 public class TeleportTypeMP implements ITeleportType
 {
-	@Override
-	public boolean useParachute()
-	{
-		return true;
-	}
+    @Override
+    public boolean useParachute()
+    {
+        return true;
+    }
 
-	@Override
-	public Vector3 getPlayerSpawnLocation(WorldServer world, EntityPlayerMP player)
-	{
-		if (player != null)
-		{
-			GCPlayerStats stats = GCPlayerStats.get(player);
-			return new Vector3(stats.coordsTeleportedFromX, 250.0, stats.coordsTeleportedFromZ);
-		}
-		return null;
-	}
+    @Override
+    public Vector3 getPlayerSpawnLocation(WorldServer world, EntityPlayerMP player)
+    {
+        if (player != null)
+        {
+            GCPlayerStats stats = GCPlayerStats.get(player);
+            return new Vector3(stats.coordsTeleportedFromX, 250.0, stats.coordsTeleportedFromZ);
+        }
+        return null;
+    }
 
-	@Override
-	public Vector3 getEntitySpawnLocation(WorldServer world, Entity entity)
-	{
-		return new Vector3(entity.posX, 250.0, entity.posZ);
-	}
+    @Override
+    public Vector3 getEntitySpawnLocation(WorldServer world, Entity entity)
+    {
+        return new Vector3(entity.posX, 250.0, entity.posZ);
+    }
 
-	@Override
-	public Vector3 getParaChestSpawnLocation(WorldServer world, EntityPlayerMP player, Random rand)
-	{
-		double x = (rand.nextDouble() * 2 - 1.0D) * 5.0D;
-		double z = (rand.nextDouble() * 2 - 1.0D) * 5.0D;
-		return new Vector3(player.posX + x, 230.0D, player.posZ + z);
-	}
+    @Override
+    public Vector3 getParaChestSpawnLocation(WorldServer world, EntityPlayerMP player, Random rand)
+    {
+        double x = (rand.nextDouble() * 2 - 1.0D) * 5.0D;
+        double z = (rand.nextDouble() * 2 - 1.0D) * 5.0D;
+        return new Vector3(player.posX + x, 230.0D, player.posZ + z);
+    }
 
-	@Override
-	public void onSpaceDimensionChanged(World world, EntityPlayerMP player, boolean ridingAutoRocket) {}
+    @Override
+    public void onSpaceDimensionChanged(World world, EntityPlayerMP player, boolean ridingAutoRocket) {}
 }

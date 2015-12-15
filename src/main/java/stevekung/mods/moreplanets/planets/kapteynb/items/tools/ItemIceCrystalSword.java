@@ -24,56 +24,56 @@ import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
 public class ItemIceCrystalSword extends ItemSword
 {
-	public ItemIceCrystalSword(String name, ToolMaterial material)
-	{
-		super(material);
-		this.setUnlocalizedName(name);
-	}
+    public ItemIceCrystalSword(String name, ToolMaterial material)
+    {
+        super(material);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpToolsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpToolsTab;
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
-	{
-		entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 20));
-		entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
-		entity.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 80));
-		stack.damageItem(1, entity2);
-		return true;
-	}
+    @Override
+    public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
+    {
+        entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 20));
+        entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+        entity.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 80));
+        stack.damageItem(1, entity2);
+        return true;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack itemStack)
-	{
-		if (!itemStack.isItemEnchanted())
-		{
-			itemStack.addEnchantment(Enchantment.sharpness, 5);
-			itemStack.addEnchantment(Enchantment.looting, 2);
-			itemStack.addEnchantment(Enchantment.fireAspect, 2);
-			itemStack.addEnchantment(Enchantment.unbreaking, 3);
-		}
-		return true;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack itemStack)
+    {
+        if (!itemStack.isItemEnchanted())
+        {
+            itemStack.addEnchantment(Enchantment.sharpness, 5);
+            itemStack.addEnchantment(Enchantment.looting, 2);
+            itemStack.addEnchantment(Enchantment.fireAspect, 2);
+            itemStack.addEnchantment(Enchantment.unbreaking, 3);
+        }
+        return true;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
-	{
-		if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 5)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+    {
+        if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 5)
+        {
+            return true;
+        }
+        return false;
+    }
 }

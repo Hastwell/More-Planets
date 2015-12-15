@@ -15,43 +15,43 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class ArmorBreathableNorium extends ItemBreathableArmor
 {
-	public ArmorBreathableNorium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorBreathableNorium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == NibiruArmorItems.breathable_norium_helmet)
-		{
-			return "moreplanets:textures/model/armor/breathable_norium.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == NibiruArmorItems.breathable_norium_helmet)
+        {
+            return "moreplanets:textures/model/armor/breathable_norium.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return NibiruItems.nibiru_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return NibiruItems.nibiru_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 3;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 3;
+    }
 
-	@Override
-	protected EnumGearType getGearType()
-	{
-		return EnumGearType.HELMET;
-	}
+    @Override
+    protected EnumGearType getGearType()
+    {
+        return EnumGearType.HELMET;
+    }
 
-	@Override
-	protected Item getBreathableArmor()
-	{
-		return NibiruArmorItems.breathable_norium_helmet;
-	}
+    @Override
+    protected Item getBreathableArmor()
+    {
+        return NibiruArmorItems.breathable_norium_helmet;
+    }
 }

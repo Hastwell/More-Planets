@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class ItemArmorBlackDiamond extends ItemArmorMP
 {
-	public ItemArmorBlackDiamond(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ItemArmorBlackDiamond(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == FronosArmorItems.black_diamond_helmet || stack.getItem() == FronosArmorItems.black_diamond_chestplate || stack.getItem() == FronosArmorItems.black_diamond_boots)
-		{
-			return "moreplanets:textures/model/armor/black_diamond_1.png";
-		}
-		if (stack.getItem() == FronosArmorItems.black_diamond_leggings)
-		{
-			return "moreplanets:textures/model/armor/black_diamond_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == FronosArmorItems.black_diamond_helmet || stack.getItem() == FronosArmorItems.black_diamond_chestplate || stack.getItem() == FronosArmorItems.black_diamond_boots)
+        {
+            return "moreplanets:textures/model/armor/black_diamond_1.png";
+        }
+        if (stack.getItem() == FronosArmorItems.black_diamond_leggings)
+        {
+            return "moreplanets:textures/model/armor/black_diamond_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return FronosItems.fronos_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return FronosItems.fronos_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 4;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 4;
+    }
 }

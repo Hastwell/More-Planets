@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import net.minecraft.block.BlockAir;
@@ -26,99 +27,105 @@ import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockFronosColorizedLeaves extends BlockLeavesMP
 {
-	public BlockFronosColorizedLeaves(String name)
-	{
-		super();
-		this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
-		this.setUnlocalizedName(name);
-	}
+    public BlockFronosColorizedLeaves(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.CHECK_DECAY, true).withProperty(BlockStateHelper.DECAYABLE, true));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getBlockColor()
-	{
-		return BlockFronosColorizedLeaves.getLeavesColor();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getBlockColor()
+    {
+        return -16733696;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderColor(IBlockState state)
-	{
-		return BlockFronosColorizedLeaves.getLeavesColor();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderColor(IBlockState state)
+    {
+        return -16733696;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess world, BlockPos pos, int pass)
-	{
-		return BlockFronosColorizedLeaves.getLeavesColor();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int colorMultiplier(IBlockAccess world, BlockPos pos, int pass)
+    {
+        return -16733696;
+    }
 
-	public static int getLeavesColor()
-	{
-		return -16733696;
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        super.updateTick(world, pos, state, rand);
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		super.updateTick(world, pos, state, rand);
+        if (rand.nextInt(100) == 0)
+        {
+            int i = 6;
+            Iterator iterator = BlockPos.getAllInBoxMutable(pos.add(-8, -8, -8), pos.add(8, 8, 8)).iterator();
 
-		if (world.rand.nextInt(200) == 0)
-		{
-			if (world.getBlockState(pos.down()) instanceof BlockAir)
-			{
-				world.setBlockState(pos.down(), FronosBlocks.coconut_block.getDefaultState(), 3);
-			}
-		}
-	}
+            while (iterator.hasNext())
+            {
+                BlockPos blockpos1 = (BlockPos)iterator.next();
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(FronosBlocks.fronos_sapling);
-	}
+                if (world.getBlockState(blockpos1).getBlock() == FronosBlocks.coconut_block)
+                {
+                    --i;
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 0;
-	}
+                    if (i <= 0)
+                    {
+                        return;
+                    }
+                }
+            }
+            if (world.getBlockState(pos.down()).getBlock() instanceof BlockAir)
+            {
+                world.setBlockState(pos.down(), FronosBlocks.coconut_block.getDefaultState(), 3);
+            }
+        }
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { BlockStateHelper.CHECK_DECAY, BlockStateHelper.DECAYABLE });
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(FronosBlocks.fronos_sapling);
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { BlockStateHelper.CHECK_DECAY, BlockStateHelper.DECAYABLE });
+    }
 
-	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
-	{
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		ret.add(new ItemStack(this, 1, 0));
-		return ret;
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(BlockStateHelper.DECAYABLE, Boolean.valueOf((meta & 4) == 0)).withProperty(BlockStateHelper.CHECK_DECAY, Boolean.valueOf((meta & 8) > 0));
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		byte b0 = 0;
-		int i = b0 | 1;
+    @Override
+    public ArrayList<ItemStack> onSheared(ItemStack itemStack, IBlockAccess world, BlockPos pos, int fortune)
+    {
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ret.add(new ItemStack(this, 1, 0));
+        return ret;
+    }
 
-		if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
-		{
-			i |= 4;
-		}
-		if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
-		{
-			i |= 8;
-		}
-		return i;
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        byte b0 = 0;
+        int i = b0 | 1;
+
+        if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
+        {
+            i |= 4;
+        }
+        if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
+        {
+            i |= 8;
+        }
+        return i;
+    }
 }

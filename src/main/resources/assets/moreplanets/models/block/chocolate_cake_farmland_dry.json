@@ -1,0 +1,8 @@
+{
+    "parent": "block/farmland",
+    "textures": {
+        "particle": "moreplanets:blocks/chocolate_cake_bread",
+        "dirt": "moreplanets:blocks/chocolate_cake_bread",
+        "top": "moreplanets:blocks/chocolate_cake_farmland_dry"
+    }
+}

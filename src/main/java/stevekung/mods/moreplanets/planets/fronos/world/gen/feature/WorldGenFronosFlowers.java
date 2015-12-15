@@ -18,29 +18,29 @@ import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
 
 public class WorldGenFronosFlowers extends WorldGenerator
 {
-	private IProperty prop;
-	private Comparable value;
-	private BlockBushMP flower;
+    private IProperty prop;
+    private Comparable value;
+    private BlockBushMP flower;
 
-	public WorldGenFronosFlowers(BlockBushMP flower, IProperty prop, Comparable value)
-	{
-		this.prop = prop;
-		this.flower = flower;
-		this.value = value;
-	}
+    public WorldGenFronosFlowers(BlockBushMP flower, IProperty prop, Comparable value)
+    {
+        this.prop = prop;
+        this.flower = flower;
+        this.value = value;
+    }
 
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		for (int i = 0; i < 64; ++i)
-		{
-			BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        for (int i = 0; i < 64; ++i)
+        {
+            BlockPos pos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-			if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && this.flower.canPlaceBlockOnSide(world, pos1, EnumFacing.UP))
-			{
-				world.setBlockState(pos1, this.flower.getDefaultState().withProperty(this.prop, this.value), 2);
-			}
-		}
-		return true;
-	}
+            if (world.isAirBlock(pos1) && (!world.provider.getHasNoSky() || pos1.getY() < 255) && this.flower.canPlaceBlockOnSide(world, pos1, EnumFacing.UP))
+            {
+                world.setBlockState(pos1, this.flower.getDefaultState().withProperty(this.prop, this.value), 2);
+            }
+        }
+        return true;
+    }
 }

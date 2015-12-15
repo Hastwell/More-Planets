@@ -29,133 +29,133 @@ import stevekung.mods.moreplanets.common.blocks.BlockPlanetTileMP;
 
 public class BlockDeimos extends BlockPlanetTileMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockDeimos(String name)
-	{
-		super(Material.rock);
-		this.setResistance(2.5F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.deimos_surface_rock));
-		this.setUnlocalizedName(name);
-	}
+    public BlockDeimos(String name)
+    {
+        super(Material.rock);
+        this.setResistance(2.5F);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.deimos_surface_rock));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 8; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 8; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public float getBlockHardness(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
+    @Override
+    public float getBlockHardness(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos).getBlock();
 
-		if (!(block instanceof BlockDeimos))
-		{
-			return 0.0F;
-		}
+        if (!(block instanceof BlockDeimos))
+        {
+            return 0.0F;
+        }
 
-		switch (this.getMetaFromState(world.getBlockState(pos)))
-		{
-		case 0:
-		case 1:
-			return 1.25F;
-		case 2:
-			return 1.5F;
-		default:
-			return 2.0F;
-		}
-	}
+        switch (this.getMetaFromState(world.getBlockState(pos)))
+        {
+        case 0:
+        case 1:
+            return 1.25F;
+        case 2:
+            return 1.5F;
+        default:
+            return 2.0F;
+        }
+    }
 
-	@Override
-	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
-	{
-		int meta = this.getMetaFromState(world.getBlockState(pos));
+    @Override
+    public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
+    {
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta <= 1)
-		{
-			return 6.0F;
-		}
-		if (meta >= 2)
-		{
-			return 5.0F;
-		}
-		return super.getExplosionResistance(world, pos, entity, explosion);
-	}
+        if (meta <= 1)
+        {
+            return 6.0F;
+        }
+        if (meta >= 2)
+        {
+            return 5.0F;
+        }
+        return super.getExplosionResistance(world, pos, entity, explosion);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		int meta = this.getMetaFromState(state);
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
 
-		if (meta == 2)
-		{
-			return 3;
-		}
-		return meta;
-	}
+        if (meta == 2)
+        {
+            return 3;
+        }
+        return meta;
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		return this.getMetaFromState(state) >= 4;
-	}
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        return this.getMetaFromState(state) >= 4;
+    }
 
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		int meta = this.getMetaFromState(world.getBlockState(pos));
+    @Override
+    public boolean isTerraformable(World world, BlockPos pos)
+    {
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
-		{
-			return true;
-		}
-		return false;
-	}
+        if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		deimos_surface_rock,
-		deimos_sub_surface_rock,
-		deimos_rock,
-		deimos_cobblestone,
-		deimos_tin_ore,
-		deimos_copper_ore,
-		deimos_iron_ore,
-		deimos_desh_ore;
+    public static enum BlockType implements IStringSerializable
+    {
+        deimos_surface_rock,
+        deimos_sub_surface_rock,
+        deimos_rock,
+        deimos_cobblestone,
+        deimos_tin_ore,
+        deimos_copper_ore,
+        deimos_iron_ore,
+        deimos_desh_ore;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

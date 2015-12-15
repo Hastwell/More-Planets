@@ -21,33 +21,33 @@ import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 public class DispenserRegistryMP
 {
-	public static void init()
-	{
-		BlockDispenser.dispenseBehaviorRegistry.putObject(SiriusBItems.sirius_fire_charge, new BehaviorDefaultDispenseItem()
-		{
-			@Override
-			public ItemStack dispenseStack(IBlockSource blockSource, ItemStack itemStack)
-			{
-				EnumFacing facing = BlockDispenser.getFacing(blockSource.getBlockMetadata());
-				IPosition iposition = BlockDispenser.getDispensePosition(blockSource);
-				World world = blockSource.getWorld();
-				Random rand = world.rand;
-				double d0 = iposition.getX() + facing.getFrontOffsetX() * 0.3F;
-				double d1 = iposition.getY() + facing.getFrontOffsetX() * 0.3F;
-				double d2 = iposition.getZ() + facing.getFrontOffsetZ() * 0.3F;
-				double d3 = rand.nextGaussian() * 0.05D + facing.getFrontOffsetX();
-				double d4 = rand.nextGaussian() * 0.05D + facing.getFrontOffsetY();
-				double d5 = rand.nextGaussian() * 0.05D + facing.getFrontOffsetZ();
-				world.spawnEntityInWorld(new EntitySmallSiriusFireball(world, d0, d1, d2, d3, d4, d5));
-				itemStack.splitStack(1);
-				return itemStack;
-			}
+    public static void init()
+    {
+        BlockDispenser.dispenseBehaviorRegistry.putObject(SiriusBItems.sirius_fire_charge, new BehaviorDefaultDispenseItem()
+        {
+            @Override
+            public ItemStack dispenseStack(IBlockSource blockSource, ItemStack itemStack)
+            {
+                EnumFacing facing = BlockDispenser.getFacing(blockSource.getBlockMetadata());
+                IPosition iposition = BlockDispenser.getDispensePosition(blockSource);
+                World world = blockSource.getWorld();
+                Random rand = world.rand;
+                double d0 = iposition.getX() + facing.getFrontOffsetX() * 0.3F;
+                double d1 = iposition.getY() + facing.getFrontOffsetX() * 0.3F;
+                double d2 = iposition.getZ() + facing.getFrontOffsetZ() * 0.3F;
+                double d3 = rand.nextGaussian() * 0.05D + facing.getFrontOffsetX();
+                double d4 = rand.nextGaussian() * 0.05D + facing.getFrontOffsetY();
+                double d5 = rand.nextGaussian() * 0.05D + facing.getFrontOffsetZ();
+                world.spawnEntityInWorld(new EntitySmallSiriusFireball(world, d0, d1, d2, d3, d4, d5));
+                itemStack.splitStack(1);
+                return itemStack;
+            }
 
-			@Override
-			protected void playDispenseSound(IBlockSource blockSource)
-			{
-				blockSource.getWorld().playAuxSFX(1009, blockSource.getBlockPos(), 0);
-			}
-		});
-	}
+            @Override
+            protected void playDispenseSound(IBlockSource blockSource)
+            {
+                blockSource.getWorld().playAuxSFX(1009, blockSource.getBlockPos(), 0);
+            }
+        });
+    }
 }

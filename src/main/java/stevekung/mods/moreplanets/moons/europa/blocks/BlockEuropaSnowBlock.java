@@ -19,34 +19,34 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
 public class BlockEuropaSnowBlock extends BlockBaseMP
 {
-	public BlockEuropaSnowBlock(String name)
-	{
-		super(Material.craftedSnow);
-		this.setTickRandomly(true);
-		this.setUnlocalizedName(name);
-		this.setHardness(0.2F);
-		this.setStepSound(soundTypeSnow);
-	}
+    public BlockEuropaSnowBlock(String name)
+    {
+        super(Material.craftedSnow);
+        this.setTickRandomly(true);
+        this.setUnlocalizedName(name);
+        this.setHardness(0.2F);
+        this.setStepSound(soundTypeSnow);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return null;//TODO Europa Snow Ball
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return null;//TODO Europa Snow Ball
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 4;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 4;
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11)
-		{
-			this.dropBlockAsItem(world, pos, state, 0);
-			world.setBlockToAir(pos);
-		}
-	}
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (world.getLightFor(EnumSkyBlock.BLOCK, pos) > 11)
+        {
+            this.dropBlockAsItem(world, pos, state, 0);
+            world.setBlockToAir(pos);
+        }
+    }
 }

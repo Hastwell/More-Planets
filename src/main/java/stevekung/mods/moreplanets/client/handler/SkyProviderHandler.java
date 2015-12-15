@@ -53,191 +53,191 @@ import stevekung.mods.moreplanets.spacestation.mars.WorldProviderMarsOrbit;
 
 public class SkyProviderHandler
 {
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onSkyRenderer(ClientTickEvent event)
-	{
-		Minecraft mc = Minecraft.getMinecraft();
-		WorldClient world = mc.theWorld;
-		EntityPlayerSP player = mc.thePlayer;
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onSkyRenderer(ClientTickEvent event)
+    {
+        Minecraft mc = Minecraft.getMinecraft();
+        WorldClient world = mc.theWorld;
+        EntityPlayerSP player = mc.thePlayer;
 
-		if (world != null)
-		{
-			if (Loader.isModLoaded("GalacticraftMars"))
-			{
-				if (world.provider instanceof WorldProviderMars)
-				{
-					if (world.provider.getSkyRenderer() instanceof SkyProviderMars)
-					{
-						world.provider.setSkyRenderer(new SkyProviderMarsMP((IGalacticraftWorldProvider) world.provider));
-					}
-				}
-			}
-			if (world.provider instanceof WorldProviderDiona)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderDiona((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderPolongnius)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderPolongnius((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderNibiru)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderNibiru((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderFronos)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderFronos((IGalacticraftWorldProvider) world.provider));
-				}
-			}
-			else if (world.provider instanceof WorldProviderKoentus)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderKoentus((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderKapteynB)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderKapteynB((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderSiriusB)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderSiriusB((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderMercury)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderMercury((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderPhobos)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderPhobos((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderDeimos)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderDeimos((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderPluto)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderPluto((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderVenus)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderVenus((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderJupiterOrbit)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
-					((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
-					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderMarsOrbit)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
-					((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
-					GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-			else if (world.provider instanceof WorldProviderDarkAsteroids)
-			{
-				if (world.provider.getSkyRenderer() == null)
-				{
-					world.provider.setSkyRenderer(new SkyProviderDarkAsteroids((IGalacticraftWorldProvider) world.provider));
-				}
-				if (world.provider.getCloudRenderer() == null)
-				{
-					world.provider.setCloudRenderer(new CloudRenderer());
-				}
-			}
-		}
-	}
+        if (world != null)
+        {
+            if (Loader.isModLoaded("GalacticraftMars"))
+            {
+                if (world.provider instanceof WorldProviderMars)
+                {
+                    if (world.provider.getSkyRenderer() instanceof SkyProviderMars)
+                    {
+                        world.provider.setSkyRenderer(new SkyProviderMarsMP((IGalacticraftWorldProvider) world.provider));
+                    }
+                }
+            }
+            if (world.provider instanceof WorldProviderDiona)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderDiona((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderPolongnius)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderPolongnius((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderNibiru)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderNibiru((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderFronos)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderFronos((IGalacticraftWorldProvider) world.provider));
+                }
+            }
+            else if (world.provider instanceof WorldProviderKoentus)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderKoentus((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderKapteynB)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderKapteynB((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderSiriusB)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderSiriusB((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderMercury)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderMercury((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderPhobos)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderPhobos((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderDeimos)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderDeimos((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderPluto)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderPluto((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderVenus)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderVenus((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderJupiterOrbit)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
+                    ((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
+                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderMarsOrbit)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
+                    ((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
+                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+            else if (world.provider instanceof WorldProviderDarkAsteroids)
+            {
+                if (world.provider.getSkyRenderer() == null)
+                {
+                    world.provider.setSkyRenderer(new SkyProviderDarkAsteroids((IGalacticraftWorldProvider) world.provider));
+                }
+                if (world.provider.getCloudRenderer() == null)
+                {
+                    world.provider.setCloudRenderer(new CloudRenderer());
+                }
+            }
+        }
+    }
 }

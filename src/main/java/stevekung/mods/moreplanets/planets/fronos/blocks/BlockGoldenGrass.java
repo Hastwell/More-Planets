@@ -27,86 +27,86 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockGoldenGrass extends BlockGrassMP implements IFronosGrass
 {
-	public static PropertyBool HAS_TEA_CREAM = PropertyBool.create("tea");
+    public static PropertyBool HAS_TEA_CREAM = PropertyBool.create("tea");
 
-	public BlockGoldenGrass(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(HAS_TEA_CREAM, false));
-	}
+    public BlockGoldenGrass(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(HAS_TEA_CREAM, false));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (rand.nextInt(1) == 0)
-		{
-			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.GOLDEN_DUST, pos.getX() + rand.nextFloat(), pos.getY() + 1.3F, pos.getZ() + rand.nextFloat());
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (rand.nextInt(1) == 0)
+        {
+            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.GOLDEN_DUST, pos.getX() + rand.nextFloat(), pos.getY() + 1.3F, pos.getZ() + rand.nextFloat());
+        }
+    }
 
-	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos.up()).getBlock();
-		return state.withProperty(HAS_TEA_CREAM, Boolean.valueOf(block == FronosBlocks.tea_cream_layer));
-	}
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos.up()).getBlock();
+        return state.withProperty(HAS_TEA_CREAM, Boolean.valueOf(block == FronosBlocks.tea_cream_layer));
+    }
 
-	@Override
-	public int getLightValue(IBlockAccess world, BlockPos pos)
-	{
-		return 10;
-	}
+    @Override
+    public int getLightValue(IBlockAccess world, BlockPos pos)
+    {
+        return 10;
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (!world.isRemote)
-		{
-			if (world.getLightFromNeighbors(pos.up()) < 4 && world.getBlockLightOpacity(pos.up()) > 2)
-			{
-				world.setBlockState(pos, FronosBlocks.fronos_dirt.getDefaultState());
-			}
-			else if (world.getLightFromNeighbors(pos.up()) >= 9)
-			{
-				for (int i = 0; i < 4; ++i)
-				{
-					BlockPos pos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (!world.isRemote)
+        {
+            if (world.getLightFromNeighbors(pos.up()) < 4 && world.getBlockLightOpacity(pos.up()) > 2)
+            {
+                world.setBlockState(pos, FronosBlocks.fronos_dirt.getDefaultState());
+            }
+            else if (world.getLightFromNeighbors(pos.up()) >= 9)
+            {
+                for (int i = 0; i < 4; ++i)
+                {
+                    BlockPos pos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
 
-					if (world.getBlockState(pos1) == FronosBlocks.fronos_dirt.getDefaultState())
-					{
-						if (world.getLightFromNeighbors(pos1.up()) >= 4 && world.getBlockState(pos1.up()).getBlock().getLightOpacity() <= 2)
-						{
-							world.setBlockState(pos1, FronosBlocks.golden_grass.getDefaultState());
-						}
-					}
-				}
-			}
-		}
-	}
+                    if (world.getBlockState(pos1) == FronosBlocks.fronos_dirt.getDefaultState())
+                    {
+                        if (world.getLightFromNeighbors(pos1.up()) >= 4 && world.getBlockState(pos1.up()).getBlock().getLightOpacity() <= 2)
+                        {
+                            world.setBlockState(pos1, FronosBlocks.golden_grass.getDefaultState());
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(FronosBlocks.fronos_dirt);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(FronosBlocks.fronos_dirt);
+    }
 
-	@Override
-	public Block getFarmlandBlock()
-	{
-		return FronosBlocks.fronos_farmland;
-	}
+    @Override
+    public Block getFarmlandBlock()
+    {
+        return FronosBlocks.fronos_farmland;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { HAS_TEA_CREAM });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { HAS_TEA_CREAM });
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return 0;
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return 0;
+    }
 }

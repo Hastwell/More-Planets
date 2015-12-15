@@ -21,38 +21,38 @@ import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianVillager;
 @SideOnly(Side.CLIENT)
 public class RenderVenusianVillager extends RenderLiving
 {
-	private ResourceLocation villagerTexture = new ResourceLocation("moreplanets:textures/entity/venusian_villager.png");
+    private ResourceLocation villagerTexture = new ResourceLocation("moreplanets:textures/entity/venusian_villager.png");
 
-	public RenderVenusianVillager(RenderManager render)
-	{
-		super(render, new ModelAlienVillager(0.0F), 0.5F);
-	}
+    public RenderVenusianVillager(RenderManager render)
+    {
+        super(render, new ModelAlienVillager(0.0F), 0.5F);
+    }
 
-	protected void preRenderVillager(EntityVenusianVillager entity)
-	{
-		float f1 = 0.9375F;
+    protected void preRenderVillager(EntityVenusianVillager entity)
+    {
+        float f1 = 0.9375F;
 
-		if (entity.getGrowingAge() < 0)
-		{
-			f1 = (float) (f1 * 0.5D);
-			this.shadowSize = 0.25F;
-		}
-		else
-		{
-			this.shadowSize = 0.5F;
-		}
-		GlStateManager.scale(f1, f1, f1);
-	}
+        if (entity.getGrowingAge() < 0)
+        {
+            f1 = (float) (f1 * 0.5D);
+            this.shadowSize = 0.25F;
+        }
+        else
+        {
+            this.shadowSize = 0.5F;
+        }
+        GlStateManager.scale(f1, f1, f1);
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase entity, float par2)
-	{
-		this.preRenderVillager((EntityVenusianVillager)entity);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    {
+        this.preRenderVillager((EntityVenusianVillager)entity);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.villagerTexture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.villagerTexture;
+    }
 }

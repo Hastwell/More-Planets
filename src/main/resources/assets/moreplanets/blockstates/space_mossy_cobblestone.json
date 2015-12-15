@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "variant=mossy_diona_cobblestone": { "model": "moreplanets:mossy_diona_cobblestone" },
+        "variant=mossy_polongnius_cobblestone": { "model": "moreplanets:mossy_polongnius_cobblestone" },
+		"variant=mossy_nibiru_cobblestone": { "model": "moreplanets:mossy_nibiru_cobblestone" },
+		"variant=mossy_koentus_cobblestone": { "model": "moreplanets:mossy_koentus_cobblestone" },
+		"variant=mossy_fronos_cobblestone": { "model": "moreplanets:mossy_fronos_cobblestone" },
+		"variant=mossy_kapteyn_b_cobblestone": { "model": "moreplanets:mossy_kapteyn_b_cobblestone" },
+		"variant=mossy_sirius_b_cobblestone": { "model": "moreplanets:mossy_sirius_b_cobblestone" }
+    }
+}

@@ -20,22 +20,22 @@ import stevekung.mods.moreplanets.planets.nibiru.client.model.ModelGiantWorm;
 @SideOnly(Side.CLIENT)
 public class RenderGiantWorm extends RenderLiving
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/giant_worm.png");
+    private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/giant_worm.png");
 
-	public RenderGiantWorm(RenderManager render)
-	{
-		super(render, new ModelGiantWorm(5.0F), 0.65F);
-	}
+    public RenderGiantWorm(RenderManager render)
+    {
+        super(render, new ModelGiantWorm(5.0F), 0.65F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.texture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.texture;
+    }
 
-	@Override
-	protected void preRenderCallback(EntityLivingBase living, float par2)
-	{
-		GlStateManager.scale(0.25F, 0.25F, 0.25F);
-	}
+    @Override
+    protected void preRenderCallback(EntityLivingBase living, float par2)
+    {
+        GlStateManager.scale(0.25F, 0.25F, 0.25F);
+    }
 }

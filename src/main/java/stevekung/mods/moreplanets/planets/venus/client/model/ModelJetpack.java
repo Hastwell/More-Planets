@@ -16,59 +16,59 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelJetpack extends ModelBiped
 {
-	ModelRenderer tank1;
-	ModelRenderer tank2;
-	ModelRenderer tank3;
+    ModelRenderer tank1;
+    ModelRenderer tank2;
+    ModelRenderer tank3;
 
-	public ModelJetpack(float scale)
-	{
-		this.textureWidth = 32;
-		this.textureHeight = 32;
+    public ModelJetpack(float scale)
+    {
+        this.textureWidth = 32;
+        this.textureHeight = 32;
 
-		this.tank1 = new ModelRenderer(this, 0, 0);
-		this.tank1.addBox(-2F, -5F, 0F, 4, 11, 4);
-		this.tank1.setRotationPoint(-3F, 5F, 2F);
+        this.tank1 = new ModelRenderer(this, 0, 0);
+        this.tank1.addBox(-2F, -5F, 0F, 4, 11, 4);
+        this.tank1.setRotationPoint(-3F, 5F, 2F);
 
-		this.tank2 = new ModelRenderer(this, 0, 0);
-		this.tank2.addBox(-2F, -5F, 0F, 4, 11, 4);
-		this.tank2.setRotationPoint(3F, 5F, 2F);
+        this.tank2 = new ModelRenderer(this, 0, 0);
+        this.tank2.addBox(-2F, -5F, 0F, 4, 11, 4);
+        this.tank2.setRotationPoint(3F, 5F, 2F);
 
-		this.tank3 = new ModelRenderer(this, 16, 0);
-		this.tank3.addBox(-1F, -4.5F, 0F, 2, 9, 2);
-		this.tank3.setRotationPoint(0F, 6F, 2F);
-	}
+        this.tank3 = new ModelRenderer(this, 16, 0);
+        this.tank3.addBox(-1F, -4.5F, 0F, 2, 9, 2);
+        this.tank3.setRotationPoint(0F, 6F, 2F);
+    }
 
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		this.tank1.render(f5);
-		this.tank2.render(f5);
-		this.tank3.render(f5);
-	}
+    @Override
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+    {
+        super.render(entity, f, f1, f2, f3, f4, f5);
+        this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        this.tank1.render(f5);
+        this.tank2.render(f5);
+        this.tank3.render(f5);
+    }
 
-	@Override
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
-	{
-		if (this.isSneak)
-		{
-			this.tank1.rotateAngleX = 0.5F;
-			this.tank1.setRotationPoint(-3F, 8F, 4.5F);
-			this.tank2.rotateAngleX = 0.5F;
-			this.tank2.setRotationPoint(3F, 8F, 4.5F);
-			this.tank3.rotateAngleX = 0.5F;
-			this.tank3.setRotationPoint(0F, 8F, 4.5F);
-		}
-		else
-		{
-			this.tank1.rotateAngleX = 0.0F;
-			this.tank1.setRotationPoint(-3F, 5F, 2F);
-			this.tank2.rotateAngleX = 0.0F;
-			this.tank2.setRotationPoint(3F, 5F, 2F);
-			this.tank3.rotateAngleX = 0.0F;
-			this.tank3.setRotationPoint(0F, 6F, 2F);
-		}
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-	}
+    @Override
+    public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
+    {
+        if (this.isSneak)
+        {
+            this.tank1.rotateAngleX = 0.5F;
+            this.tank1.setRotationPoint(-3F, 8F, 4.5F);
+            this.tank2.rotateAngleX = 0.5F;
+            this.tank2.setRotationPoint(3F, 8F, 4.5F);
+            this.tank3.rotateAngleX = 0.5F;
+            this.tank3.setRotationPoint(0F, 8F, 4.5F);
+        }
+        else
+        {
+            this.tank1.rotateAngleX = 0.0F;
+            this.tank1.setRotationPoint(-3F, 5F, 2F);
+            this.tank2.rotateAngleX = 0.0F;
+            this.tank2.setRotationPoint(3F, 5F, 2F);
+            this.tank3.rotateAngleX = 0.0F;
+            this.tank3.setRotationPoint(0F, 6F, 2F);
+        }
+        super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    }
 }

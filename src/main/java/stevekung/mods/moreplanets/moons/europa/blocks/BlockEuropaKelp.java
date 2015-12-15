@@ -29,150 +29,150 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
 public class BlockEuropaKelp extends BlockBaseMP
 {
-	public static PropertyInteger AGE = PropertyInteger.create("age", 0, 15);
+    public static PropertyInteger AGE = PropertyInteger.create("age", 0, 15);
 
-	public BlockEuropaKelp(String name)
-	{
-		super(Material.plants);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
-		float f = 0.375F;
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-		this.setTickRandomly(true);
-		this.setUnlocalizedName(name);
-	}
+    public BlockEuropaKelp(String name)
+    {
+        super(Material.plants);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
+        float f = 0.375F;
+        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
+        this.setTickRandomly(true);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (world.getBlockState(pos.down()).getBlock() == this || this.checkForDrop(world, pos, state))
-		{
-			if (world.isAirBlock(pos.up()))
-			{
-				int i;
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (world.getBlockState(pos.down()).getBlock() == this || this.checkForDrop(world, pos, state))
+        {
+            if (world.isAirBlock(pos.up()))
+            {
+                int i;
 
-				for (i = 1; world.getBlockState(pos.down(i)).getBlock() == this; ++i)
-				{
-				}
+                for (i = 1; world.getBlockState(pos.down(i)).getBlock() == this; ++i)
+                {
+                }
 
-				if (i < 3)
-				{
-					int j = ((Integer)state.getValue(AGE)).intValue();
+                if (i < 3)
+                {
+                    int j = ((Integer)state.getValue(AGE)).intValue();
 
-					if (j == 15)
-					{
-						world.setBlockState(pos.up(), this.getDefaultState());
-						world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(0)), 4);
-					}
-					else
-					{
-						world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(j + 1)), 4);
-					}
-				}
-			}
-		}
-	}
+                    if (j == 15)
+                    {
+                        world.setBlockState(pos.up(), this.getDefaultState());
+                        world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(0)), 4);
+                    }
+                    else
+                    {
+                        world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(j + 1)), 4);
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean canPlaceBlockAt(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos.down()).getBlock();
+    @Override
+    public boolean canPlaceBlockAt(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos.down()).getBlock();
 
-		if (block == this)
-		{
-			return true;
-		}
-		else if (block != EuropaBlocks.europa_ice_slush && block != EuropaBlocks.europa_sand)
-		{
-			return false;
-		}
-		else
-		{
-			return true;
-		}
-	}
+        if (block == this)
+        {
+            return true;
+        }
+        else if (block != EuropaBlocks.europa_ice_slush && block != EuropaBlocks.europa_sand)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock)
-	{
-		this.checkForDrop(world, pos, state);
-	}
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock)
+    {
+        this.checkForDrop(world, pos, state);
+    }
 
-	protected boolean checkForDrop(World world, BlockPos pos, IBlockState state)
-	{
-		if (this.canBlockStay(world, pos))
-		{
-			return true;
-		}
-		else
-		{
-			this.dropBlockAsItem(world, pos, state, 0);
-			world.setBlockToAir(pos);
-			return false;
-		}
-	}
+    protected boolean checkForDrop(World world, BlockPos pos, IBlockState state)
+    {
+        if (this.canBlockStay(world, pos))
+        {
+            return true;
+        }
+        else
+        {
+            this.dropBlockAsItem(world, pos, state, 0);
+            world.setBlockToAir(pos);
+            return false;
+        }
+    }
 
-	public boolean canBlockStay(World world, BlockPos pos)
-	{
-		return this.canPlaceBlockAt(world, pos);
-	}
+    public boolean canBlockStay(World world, BlockPos pos)
+    {
+        return this.canPlaceBlockAt(world, pos);
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        return null;
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Items.reeds;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Items.reeds;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
-	{
-		return new ItemStack(Items.reeds, 1, 0);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(Items.reeds, 1, 0);
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(AGE, Integer.valueOf(meta));
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.CUTOUT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.CUTOUT;
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((Integer)state.getValue(AGE)).intValue();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((Integer)state.getValue(AGE)).intValue();
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] {AGE});
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {AGE});
+    }
 }

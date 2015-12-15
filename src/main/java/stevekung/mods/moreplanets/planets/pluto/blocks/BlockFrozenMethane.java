@@ -19,31 +19,31 @@ import stevekung.mods.moreplanets.common.blocks.BlockIceMP;
 
 public class BlockFrozenMethane extends BlockIceMP
 {
-	public BlockFrozenMethane(String name)
-	{
-		super(Material.ice);
-		this.slipperiness = 1.1F;
-		this.setUnlocalizedName(name);
-		this.setHardness(4.0F);
-		this.setResistance(8.0F);
-	}
+    public BlockFrozenMethane(String name)
+    {
+        super(Material.ice);
+        this.slipperiness = 1.1F;
+        this.setUnlocalizedName(name);
+        this.setHardness(4.0F);
+        this.setResistance(8.0F);
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		ItemStack itemStack = player.getCurrentEquippedItem();
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        ItemStack itemStack = player.getCurrentEquippedItem();
+        player.addExhaustion(0.025F);
 
-		if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
-		{
-			if (world.rand.nextInt(10) == 0)
-			{
-				world.setBlockState(pos, PlutoBlocks.liquid_methane.getDefaultState());
-			}
-		}
-		if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
-		{
-			this.dropBlockAsItem(world, pos, state, 0);
-		}
-	}
+        if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
+        {
+            if (world.rand.nextInt(10) == 0)
+            {
+                world.setBlockState(pos, PlutoBlocks.liquid_methane.getDefaultState());
+            }
+        }
+        if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
+        {
+            this.dropBlockAsItem(world, pos, state, 0);
+        }
+    }
 }

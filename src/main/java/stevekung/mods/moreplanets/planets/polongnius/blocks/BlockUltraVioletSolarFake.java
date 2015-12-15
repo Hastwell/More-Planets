@@ -32,140 +32,140 @@ import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityUltr
 
 public class BlockUltraVioletSolarFake extends BlockContainerMP implements IPartialSealableBlock, ITileEntityProvider
 {
-	public BlockUltraVioletSolarFake(String name)
-	{
-		super(Material.iron);
-		this.setUnlocalizedName(name);
-		this.setStepSound(Block.soundTypeMetal);
-		this.setResistance(1000000000000000.0F);
-	}
+    public BlockUltraVioletSolarFake(String name)
+    {
+        super(Material.iron);
+        this.setUnlocalizedName(name);
+        this.setStepSound(Block.soundTypeMetal);
+        this.setResistance(1000000000000000.0F);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean canDropFromExplosion(Explosion explosion)
-	{
-		return false;
-	}
+    @Override
+    public boolean canDropFromExplosion(Explosion explosion)
+    {
+        return false;
+    }
 
-	@Override
-	public float getBlockHardness(World world, BlockPos pos)
-	{
-		TileEntity tileEntity = world.getTileEntity(pos);
+    @Override
+    public float getBlockHardness(World world, BlockPos pos)
+    {
+        TileEntity tileEntity = world.getTileEntity(pos);
 
-		if (tileEntity != null)
-		{
-			BlockPos mainBlockPosition = ((TileEntityUltraVioletFake) tileEntity).mainBlockPosition;
+        if (tileEntity != null)
+        {
+            BlockPos mainBlockPosition = ((TileEntityUltraVioletFake) tileEntity).mainBlockPosition;
 
-			if (mainBlockPosition != null)
-			{
-				return world.getBlockState(mainBlockPosition).getBlock().getBlockHardness(world, mainBlockPosition);
-			}
-		}
-		return this.blockHardness;
-	}
+            if (mainBlockPosition != null)
+            {
+                return world.getBlockState(mainBlockPosition).getBlock().getBlockHardness(world, mainBlockPosition);
+            }
+        }
+        return this.blockHardness;
+    }
 
-	@Override
-	public boolean isSealed(World world, BlockPos pos, EnumFacing side)
-	{
-		return true;
-	}
+    @Override
+    public boolean isSealed(World world, BlockPos pos, EnumFacing side)
+    {
+        return true;
+    }
 
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state)
-	{
-		TileEntity tileEntity = world.getTileEntity(pos);
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state)
+    {
+        TileEntity tileEntity = world.getTileEntity(pos);
 
-		if (tileEntity instanceof TileEntityUltraVioletFake)
-		{
-			((TileEntityUltraVioletFake) tileEntity).onBlockRemoval();
-		}
-		super.breakBlock(world, pos, state);
-	}
+        if (tileEntity instanceof TileEntityUltraVioletFake)
+        {
+            ((TileEntityUltraVioletFake) tileEntity).onBlockRemoval();
+        }
+        super.breakBlock(world, pos, state);
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float par7, float par8, float par9)
-	{
-		TileEntityUltraVioletFake tileEntity = (TileEntityUltraVioletFake)world.getTileEntity(pos);
-		return tileEntity.onBlockActivated(player);
-	}
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float par7, float par8, float par9)
+    {
+        TileEntityUltraVioletFake tileEntity = (TileEntityUltraVioletFake)world.getTileEntity(pos);
+        return tileEntity.onBlockActivated(player);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return -1;
-	}
+    @Override
+    public int getRenderType()
+    {
+        return -1;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		return new TileEntityUltraVioletFake();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new TileEntityUltraVioletFake();
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		TileEntity tileEntity = world.getTileEntity(pos);
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        TileEntity tileEntity = world.getTileEntity(pos);
 
-		if (tileEntity instanceof TileEntityUltraVioletFake)
-		{
-			BlockPos mainBlockPosition = ((TileEntityUltraVioletFake) tileEntity).mainBlockPosition;
+        if (tileEntity instanceof TileEntityUltraVioletFake)
+        {
+            BlockPos mainBlockPosition = ((TileEntityUltraVioletFake) tileEntity).mainBlockPosition;
 
-			if (mainBlockPosition != null)
-			{
-				Block mainBlock = world.getBlockState(mainBlockPosition).getBlock();
+            if (mainBlockPosition != null)
+            {
+                Block mainBlock = world.getBlockState(mainBlockPosition).getBlock();
 
-				if (Blocks.air != mainBlock)
-				{
-					return mainBlock.getPickBlock(moving, world, mainBlockPosition);
-				}
-			}
-		}
-		return null;
-	}
+                if (Blocks.air != mainBlock)
+                {
+                    return mainBlock.getPickBlock(moving, world, mainBlockPosition);
+                }
+            }
+        }
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean addHitEffects(World world, MovingObjectPosition moving, EffectRenderer effect)
-	{
-		BlockPos pos = moving.getBlockPos();
-		TileEntity tileEntity = world.getTileEntity(pos);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean addHitEffects(World world, MovingObjectPosition moving, EffectRenderer effect)
+    {
+        BlockPos pos = moving.getBlockPos();
+        TileEntity tileEntity = world.getTileEntity(pos);
 
-		if (tileEntity instanceof TileEntityUltraVioletFake)
-		{
-			if (((TileEntityUltraVioletFake) tileEntity).mainBlockPosition != null)
-			{
-				effect.addBlockHitEffects(((TileEntityUltraVioletFake) tileEntity).mainBlockPosition, moving);
-			}
-		}
-		return super.addHitEffects(world, moving, effect);
-	}
+        if (tileEntity instanceof TileEntityUltraVioletFake)
+        {
+            if (((TileEntityUltraVioletFake) tileEntity).mainBlockPosition != null)
+            {
+                effect.addBlockHitEffects(((TileEntityUltraVioletFake) tileEntity).mainBlockPosition, moving);
+            }
+        }
+        return super.addHitEffects(world, moving, effect);
+    }
 
-	public void makeFakeBlock(World worldObj, BlockPos pos, BlockPos mainBlock, int meta)
-	{
-		worldObj.setBlockState(pos, this.getDefaultState(), 3);
-		((TileEntityUltraVioletFake) worldObj.getTileEntity(pos)).setMainBlock(mainBlock);
-	}
+    public void makeFakeBlock(World worldObj, BlockPos pos, BlockPos mainBlock, int meta)
+    {
+        worldObj.setBlockState(pos, this.getDefaultState(), 3);
+        ((TileEntityUltraVioletFake) worldObj.getTileEntity(pos)).setMainBlock(mainBlock);
+    }
 }

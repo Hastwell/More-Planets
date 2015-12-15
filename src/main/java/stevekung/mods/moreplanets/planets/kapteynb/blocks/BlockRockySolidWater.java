@@ -27,78 +27,78 @@ import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury
 
 public class BlockRockySolidWater extends BlockBaseMP
 {
-	public BlockRockySolidWater(String name)
-	{
-		super(Material.rock);
-		this.setHardness(0.6F);
-		this.setResistance(2.0F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockRockySolidWater(String name)
+    {
+        super(Material.rock);
+        this.setHardness(0.6F);
+        this.setResistance(2.0F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		player.addExhaustion(0.025F);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        player.addExhaustion(0.025F);
 
-		if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
-		{
-			List<ItemStack> items = new ArrayList<ItemStack>();
-			ItemStack itemstack = this.createStackedBlock(state);
+        if (this.canSilkHarvest(world, pos, world.getBlockState(pos), player) && EnchantmentHelper.getSilkTouchModifier(player))
+        {
+            List<ItemStack> items = new ArrayList<ItemStack>();
+            ItemStack itemstack = this.createStackedBlock(state);
 
-			if (itemstack != null)
-			{
-				items.add(itemstack);
-			}
+            if (itemstack != null)
+            {
+                items.add(itemstack);
+            }
 
-			ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
+            ForgeEventFactory.fireBlockHarvesting(items, world, pos, world.getBlockState(pos), 0, 1.0f, true, player);
 
-			for (ItemStack is : items)
-			{
-				spawnAsEntity(world, pos, is);
-			}
-		}
-		else
-		{
-			if (world.provider.doesWaterVaporize())
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
-			else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
-			{
-				world.setBlockToAir(pos);
-				return;
-			}
+            for (ItemStack is : items)
+            {
+                spawnAsEntity(world, pos, is);
+            }
+        }
+        else
+        {
+            if (world.provider.doesWaterVaporize())
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
+            else if (WorldUtilMP.isSpaceWorld(world, new WorldProviderMercury()) && world.isDaytime() && world.canBlockSeeSky(pos))
+            {
+                world.setBlockToAir(pos);
+                return;
+            }
 
-			int i = EnchantmentHelper.getFortuneModifier(player);
-			this.harvesters.set(player);
-			this.dropBlockAsItem(world, pos, state, i);
-			this.harvesters.set(null);
-			Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
+            int i = EnchantmentHelper.getFortuneModifier(player);
+            this.harvesters.set(player);
+            this.dropBlockAsItem(world, pos, state, i);
+            this.harvesters.set(null);
+            Material material = world.getBlockState(pos.down()).getBlock().getMaterial();
 
-			if (material.blocksMovement() || material.isLiquid())
-			{
-				if (world.rand.nextInt(10) == 0)
-				{
-					world.setBlockState(pos, Blocks.water.getDefaultState());
-				}
-				else
-				{
-					world.setBlockState(pos, KapteynBBlocks.frozen_water.getDefaultState());
-				}
-			}
-		}
-	}
+            if (material.blocksMovement() || material.isLiquid())
+            {
+                if (world.rand.nextInt(10) == 0)
+                {
+                    world.setBlockState(pos, Blocks.water.getDefaultState());
+                }
+                else
+                {
+                    world.setBlockState(pos, KapteynBBlocks.frozen_water.getDefaultState());
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 }

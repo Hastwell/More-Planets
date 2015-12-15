@@ -21,29 +21,27 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
 
 public class BiomeGenBasePolongnius extends BiomeGenBaseMP implements IPlanetFog
 {
-	public static BiomeGenBase polongnius = new BiomeGenBasePolongnius().setBiomeName("Polongnius");
+    public BiomeGenBasePolongnius()
+    {
+        super(ConfigManagerMP.idBasePlanetBiome);
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityCheeseCow.class, 6, 2, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 8, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 8, 1, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityCheeseSlime.class, 2, 1, 2));
+    }
 
-	public BiomeGenBasePolongnius()
-	{
-		super(ConfigManagerMP.idPolongniusBiome);
-		this.spawnableCreatureList.add(new SpawnListEntry(EntityCheeseCow.class, 6, 2, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 8, 2, 3));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 8, 1, 2));
-		this.spawnableMonsterList.add(new SpawnListEntry(EntityCheeseSlime.class, 2, 1, 2));
-	}
+    @Override
+    public float getFogDensity(int x, int y, int z)
+    {
+        return 0.35F;
+    }
 
-	@Override
-	public float getFogDensity(int x, int y, int z)
-	{
-		return 0.35F;
-	}
-
-	@Override
-	public int getFogColor(int x, int y, int z)
-	{
-		return -1854138;
-	}
+    @Override
+    public int getFogColor(int x, int y, int z)
+    {
+        return -1854138;
+    }
 }

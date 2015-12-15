@@ -19,30 +19,30 @@ import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 
 public class RenderProjectileFronisiumTNT extends Render
 {
-	private BlockRendererDispatcher renderBlocks = Minecraft.getMinecraft().getBlockRendererDispatcher();
+    private BlockRendererDispatcher renderBlocks = Minecraft.getMinecraft().getBlockRendererDispatcher();
 
-	public RenderProjectileFronisiumTNT(RenderManager render)
-	{
-		super(render);
-		this.shadowSize = 0.5F;
-	}
+    public RenderProjectileFronisiumTNT(RenderManager render)
+    {
+        super(render);
+        this.shadowSize = 0.5F;
+    }
 
-	@Override
-	public void doRender(Entity entity, double x, double y, double z, float par8, float par9)
-	{
-		BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-		this.bindTexture(TextureMap.locationBlocksTexture);
-		GlStateManager.enableCull();
-		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x - 0.5D, (float) y, (float) z + 0.5D);
-		blockrendererdispatcher.renderBlockBrightness(DionaBlocks.fronisium_tnt.getDefaultState(), 1.0F);
-		GlStateManager.popMatrix();
-		GlStateManager.disableCull();
-	}
+    @Override
+    public void doRender(Entity entity, double x, double y, double z, float par8, float par9)
+    {
+        BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
+        this.bindTexture(TextureMap.locationBlocksTexture);
+        GlStateManager.enableCull();
+        GlStateManager.pushMatrix();
+        GlStateManager.translate((float) x - 0.5D, (float) y, (float) z + 0.5D);
+        blockrendererdispatcher.renderBlockBrightness(DionaBlocks.fronisium_tnt.getDefaultState(), 1.0F);
+        GlStateManager.popMatrix();
+        GlStateManager.disableCull();
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return TextureMap.locationBlocksTexture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return TextureMap.locationBlocksTexture;
+    }
 }

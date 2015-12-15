@@ -36,257 +36,257 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class BlockPolongnius extends BlockPlanetTileMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockPolongnius(String name)
-	{
-		super(Material.rock);
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.cheese_gas));
-	}
+    public BlockPolongnius(String name)
+    {
+        super(Material.rock);
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.cheese_gas));
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))
-		{
-			entity.motionX *= 0.45D;
-			entity.motionZ *= 0.45D;
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))
+        {
+            entity.motionX *= 0.45D;
+            entity.motionZ *= 0.45D;
+        }
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.cheese_gas))
-		{
-			float f = 0.13F;
-			return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
-		}
-		if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))
-		{
-			float f = 0.1F;
-			return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
-		}
-		return super.getCollisionBoundingBox(world, pos, state);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.cheese_gas))
+        {
+            float f = 0.13F;
+            return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
+        }
+        if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))
+        {
+            float f = 0.1F;
+            return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
+        }
+        return super.getCollisionBoundingBox(world, pos, state);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 16; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 16; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public float getBlockHardness(World world, BlockPos pos)
-	{
-		Block block = world.getBlockState(pos).getBlock();
+    @Override
+    public float getBlockHardness(World world, BlockPos pos)
+    {
+        Block block = world.getBlockState(pos).getBlock();
 
-		if (!(block instanceof BlockPolongnius))
-		{
-			return 0.0F;
-		}
+        if (!(block instanceof BlockPolongnius))
+        {
+            return 0.0F;
+        }
 
-		switch (this.getMetaFromState(world.getBlockState(pos)))
-		{
-		case 0:
-			return 0.25F;
-		case 1:
-			return 0.5F;
-		case 2:
-			return 1.5F;
-		case 11:
-		case 12:
-		case 13:
-			return 3.0F;
-		case 14:
-		case 15:
-			return 4.0F;
-		default:
-			return 2.0F;
-		}
-	}
+        switch (this.getMetaFromState(world.getBlockState(pos)))
+        {
+        case 0:
+            return 0.25F;
+        case 1:
+            return 0.5F;
+        case 2:
+            return 1.5F;
+        case 11:
+        case 12:
+        case 13:
+            return 3.0F;
+        case 14:
+        case 15:
+            return 4.0F;
+        default:
+            return 2.0F;
+        }
+    }
 
-	@Override
-	public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
-	{
-		int meta = this.getMetaFromState(world.getBlockState(pos));
+    @Override
+    public float getExplosionResistance(World world, BlockPos pos, Entity entity, Explosion explosion)
+    {
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if (meta <= 1)
-		{
-			return 6.0F;
-		}
-		if (meta >= 2 && meta <= 10)
-		{
-			return 5.0F;
-		}
-		if (meta >= 11 && meta <= 13)
-		{
-			return 8.0F;
-		}
-		if (meta == 14 || meta == 15)
-		{
-			return 40.0F;
-		}
-		return super.getExplosionResistance(world, pos, entity, explosion);
-	}
+        if (meta <= 1)
+        {
+            return 6.0F;
+        }
+        if (meta >= 2 && meta <= 10)
+        {
+            return 5.0F;
+        }
+        if (meta >= 11 && meta <= 13)
+        {
+            return 8.0F;
+        }
+        if (meta == 14 || meta == 15)
+        {
+            return 40.0F;
+        }
+        return super.getExplosionResistance(world, pos, entity, explosion);
+    }
 
-	@Override
-	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
-	{
-		IBlockState state = world.getBlockState(pos);
+    @Override
+    public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
+    {
+        IBlockState state = world.getBlockState(pos);
 
-		if (state == state.withProperty(VARIANT, BlockType.cheese_gas) || state == state.withProperty(VARIANT, BlockType.solid_cheese_gas))
-		{
-			return true;
-		}
-		return super.canHarvestBlock(world, pos, player);
-	}
+        if (state == state.withProperty(VARIANT, BlockType.cheese_gas) || state == state.withProperty(VARIANT, BlockType.solid_cheese_gas))
+        {
+            return true;
+        }
+        return super.canHarvestBlock(world, pos, player);
+    }
 
-	@Override
-	public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
-	{
-		IBlockState state = world.getBlockState(pos);
-		return state == state.withProperty(VARIANT, BlockType.solid_polongnius_meteoric_iron) || state == state.withProperty(VARIANT, BlockType.palladium_block);
-	}
+    @Override
+    public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
+    {
+        IBlockState state = world.getBlockState(pos);
+        return state == state.withProperty(VARIANT, BlockType.solid_polongnius_meteoric_iron) || state == state.withProperty(VARIANT, BlockType.palladium_block);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.palladium_ore) || state == state.withProperty(VARIANT, BlockType.flonium_ore) || state == state.withProperty(VARIANT, BlockType.purple_crystal_ore))
-		{
-			return PolongniusItems.polongnius_item;
-		}
-		if (state == state.withProperty(VARIANT, BlockType.cheese_of_milk_ore))
-		{
-			return PolongniusItems.cheese_food;
-		}
-		return Item.getItemFromBlock(this);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.palladium_ore) || state == state.withProperty(VARIANT, BlockType.flonium_ore) || state == state.withProperty(VARIANT, BlockType.purple_crystal_ore))
+        {
+            return PolongniusItems.polongnius_item;
+        }
+        if (state == state.withProperty(VARIANT, BlockType.cheese_of_milk_ore))
+        {
+            return PolongniusItems.cheese_food;
+        }
+        return Item.getItemFromBlock(this);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		int meta = this.getMetaFromState(state);
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
 
-		if (meta == 2 || meta == 7)
-		{
-			return 3;
-		}
-		if (meta == 8 || meta == 10)
-		{
-			return 0;
-		}
-		if (meta == 9)
-		{
-			return 1;
-		}
-		return meta;
-	}
+        if (meta == 2 || meta == 7)
+        {
+            return 3;
+        }
+        if (meta == 8 || meta == 10)
+        {
+            return 0;
+        }
+        if (meta == 9)
+        {
+            return 1;
+        }
+        return meta;
+    }
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random rand)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.palladium_ore))
-		{
-			return 1 + rand.nextInt(2);
-		}
-		if (state == state.withProperty(VARIANT, BlockType.flonium_ore))
-		{
-			return 1 + rand.nextInt(4);
-		}
-		if (state == state.withProperty(VARIANT, BlockType.cheese_of_milk_ore))
-		{
-			return 1 + rand.nextInt(1);
-		}
-		return super.quantityDropped(state, fortune, rand);
-	}
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random rand)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.palladium_ore))
+        {
+            return 1 + rand.nextInt(2);
+        }
+        if (state == state.withProperty(VARIANT, BlockType.flonium_ore))
+        {
+            return 1 + rand.nextInt(4);
+        }
+        if (state == state.withProperty(VARIANT, BlockType.cheese_of_milk_ore))
+        {
+            return 1 + rand.nextInt(1);
+        }
+        return super.quantityDropped(state, fortune, rand);
+    }
 
-	@Override
-	public boolean isValueable(IBlockState state)
-	{
-		return this.getMetaFromState(state) >= 4 && this.getMetaFromState(state) <= 9;
-	}
+    @Override
+    public boolean isValueable(IBlockState state)
+    {
+        return this.getMetaFromState(state) >= 4 && this.getMetaFromState(state) <= 9;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))
-		{
-			if (!World.doesBlockHaveSolidTopSurface(world, pos.up()))
-			{
-				if (world.rand.nextInt(10) == 0)
-				{
-					MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CHEESE_SLIME, pos.getX() + world.rand.nextFloat(), pos.getY() + 1.2F, pos.getZ() + world.rand.nextFloat());
-				}
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))
+        {
+            if (!World.doesBlockHaveSolidTopSurface(world, pos.up()))
+            {
+                if (world.rand.nextInt(10) == 0)
+                {
+                    MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.CHEESE_SLIME, pos.getX() + world.rand.nextFloat(), pos.getY() + 1.2F, pos.getZ() + world.rand.nextFloat());
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		int meta = this.getMetaFromState(world.getBlockState(pos));
+    @Override
+    public boolean isTerraformable(World world, BlockPos pos)
+    {
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-		if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
-		{
-			return true;
-		}
-		return false;
-	}
+        if ((meta == 0 || meta == 1) && !world.getBlockState(pos.up()).getBlock().isOpaqueCube())
+        {
+            return true;
+        }
+        return false;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		cheese_gas,
-		solid_cheese_gas,
-		polongnius_stone,
-		polongnius_cobblestone,
-		polongnius_copper_ore,
-		polongnius_tin_ore,
-		polongnius_iron_ore,
-		palladium_ore,
-		flonium_ore,
-		purple_crystal_ore,
-		cheese_of_milk_ore,
-		solid_polongnius_meteoric_iron,
-		purple_crystal_block,
-		palladium_block,
-		polongnius_slime_dungeon_brick,
-		polongnius_dungeon_brick;
+    public static enum BlockType implements IStringSerializable
+    {
+        cheese_gas,
+        solid_cheese_gas,
+        polongnius_stone,
+        polongnius_cobblestone,
+        polongnius_copper_ore,
+        polongnius_tin_ore,
+        polongnius_iron_ore,
+        palladium_ore,
+        flonium_ore,
+        purple_crystal_ore,
+        cheese_of_milk_ore,
+        solid_polongnius_meteoric_iron,
+        purple_crystal_block,
+        palladium_block,
+        polongnius_slime_dungeon_brick,
+        polongnius_dungeon_brick;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

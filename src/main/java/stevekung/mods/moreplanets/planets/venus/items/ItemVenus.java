@@ -11,15 +11,15 @@ import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 
 public class ItemVenus extends ItemBaseMP
 {
-	public ItemVenus(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemVenus(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "lead_ingot" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "lead_ingot" };
+    }
 }

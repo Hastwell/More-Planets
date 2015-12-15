@@ -34,85 +34,85 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class MorePlanetsRegistry
 {
-	public static SimpleNetworkWrapper simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel(MorePlanetsCore.MOD_ID);
+    public static SimpleNetworkWrapper simpleNetworkWrapper = NetworkRegistry.INSTANCE.newSimpleChannel(MorePlanetsCore.MOD_ID);
 
-	public static Planet createPlanet(String name, SolarSystem solar, float phaseShift, float distance, float orbitTime, float size, int tier, ResourceLocation resource)
-	{
-		Planet planet = new Planet(name).setParentSolarSystem(solar);
-		planet.setPhaseShift(phaseShift);
-		planet.setRelativeDistanceFromCenter(new ScalableDistance(distance, distance));
-		planet.setRelativeOrbitTime(orbitTime);
-		planet.setRelativeSize(size);
-		planet.setTierRequired(tier);
-		planet.setBodyIcon(resource);
-		MPLog.debug("Register Planet : %s", planet.getName());
-		return planet;
-	}
+    public static Planet createPlanet(String name, SolarSystem solar, float phaseShift, float distance, float orbitTime, float size, int tier, ResourceLocation resource)
+    {
+        Planet planet = new Planet(name).setParentSolarSystem(solar);
+        planet.setPhaseShift(phaseShift);
+        planet.setRelativeDistanceFromCenter(new ScalableDistance(distance, distance));
+        planet.setRelativeOrbitTime(orbitTime);
+        planet.setRelativeSize(size);
+        planet.setTierRequired(tier);
+        planet.setBodyIcon(resource);
+        MPLog.debug("Register Planet : %s", planet.getName());
+        return planet;
+    }
 
-	public static Moon createMoon(String name, Planet planet, float phaseShift, float distance, float orbitTime, float size, int tier, ResourceLocation resource)
-	{
-		Moon moon = new Moon(name).setParentPlanet(planet);
-		moon.setPhaseShift(phaseShift);
-		moon.setRelativeDistanceFromCenter(new ScalableDistance(distance, distance));
-		moon.setRelativeOrbitTime(orbitTime);
-		moon.setRelativeSize(size);
-		moon.setTierRequired(tier);
-		moon.setBodyIcon(resource);
-		MPLog.debug("Register Moon : %s", moon.getName());
-		return moon;
-	}
+    public static Moon createMoon(String name, Planet planet, float phaseShift, float distance, float orbitTime, float size, int tier, ResourceLocation resource)
+    {
+        Moon moon = new Moon(name).setParentPlanet(planet);
+        moon.setPhaseShift(phaseShift);
+        moon.setRelativeDistanceFromCenter(new ScalableDistance(distance, distance));
+        moon.setRelativeOrbitTime(orbitTime);
+        moon.setRelativeSize(size);
+        moon.setTierRequired(tier);
+        moon.setBodyIcon(resource);
+        MPLog.debug("Register Moon : %s", moon.getName());
+        return moon;
+    }
 
-	public static Satellite createSatellite(String name, Planet planet, float phaseShift, float distance, float orbitTime, float size, int tier, ResourceLocation resource)
-	{
-		Satellite satellite = new Satellite(name).setParentBody(planet);
-		satellite.setPhaseShift(phaseShift);
-		satellite.setRelativeDistanceFromCenter(new ScalableDistance(distance, distance));
-		satellite.setRelativeOrbitTime(orbitTime);
-		satellite.setRelativeSize(size);
-		satellite.setTierRequired(tier);
-		satellite.setBodyIcon(resource);
-		MPLog.debug("Register Satellite : %s", satellite.getName());
-		return satellite;
-	}
+    public static Satellite createSatellite(String name, Planet planet, float phaseShift, float distance, float orbitTime, float size, int tier, ResourceLocation resource)
+    {
+        Satellite satellite = new Satellite(name).setParentBody(planet);
+        satellite.setPhaseShift(phaseShift);
+        satellite.setRelativeDistanceFromCenter(new ScalableDistance(distance, distance));
+        satellite.setRelativeOrbitTime(orbitTime);
+        satellite.setRelativeSize(size);
+        satellite.setTierRequired(tier);
+        satellite.setBodyIcon(resource);
+        MPLog.debug("Register Satellite : %s", satellite.getName());
+        return satellite;
+    }
 
-	public static Star createStar(String name, SolarSystem solar, ResourceLocation resource)
-	{
-		Star star = new Star(name).setParentSolarSystem(solar);
-		star.setTierRequired(-1);
-		star.setBodyIcon(resource);
-		MPLog.debug("Register Star : %s", star.getName());
-		return star;
-	}
+    public static Star createStar(String name, SolarSystem solar, ResourceLocation resource)
+    {
+        Star star = new Star(name).setParentSolarSystem(solar);
+        star.setTierRequired(-1);
+        star.setBodyIcon(resource);
+        MPLog.debug("Register Star : %s", star.getName());
+        return star;
+    }
 
-	public static void registerSchematic(ISchematicPage schematic)
-	{
-		SchematicRegistry.registerSchematicRecipe(schematic);
-		MPLog.debug("Register Schematic : %s, %s", schematic.getClass().getSimpleName(), GameData.getItemRegistry().getNameForObject(schematic.getRequiredItem().getItem()).toString());
-	}
+    public static void registerSchematic(ISchematicPage schematic)
+    {
+        SchematicRegistry.registerSchematicRecipe(schematic);
+        MPLog.debug("Register Schematic : %s, %s", schematic.getClass().getSimpleName(), GameData.getItemRegistry().getNameForObject(schematic.getRequiredItem().getItem()).toString());
+    }
 
-	public static void registerDungeonLoot(CelestialBody celestial, ItemStack itemStack)
-	{
-		GalacticraftRegistry.addDungeonLoot(celestial.getTierRequirement(), itemStack);
-		MPLog.debug("Register Dungeon Loot : %s, %s, %s", celestial.getTierRequirement(), GameData.getItemRegistry().getNameForObject(itemStack.getItem()).toString(), itemStack.getItemDamage());
-	}
+    public static void registerDungeonLoot(CelestialBody celestial, ItemStack itemStack)
+    {
+        GalacticraftRegistry.addDungeonLoot(celestial.getTierRequirement(), itemStack);
+        MPLog.debug("Register Dungeon Loot : %s, %s, %s", celestial.getTierRequirement(), GameData.getItemRegistry().getNameForObject(itemStack.getItem()).toString(), itemStack.getItemDamage());
+    }
 
-	public static void registerSpaceStation(Satellite satellite, Planet planet, HashMap<Object, Integer> recipe)
-	{
-		GalacticraftRegistry.registerSpaceStation(new SpaceStationType(satellite.getDimensionID(), planet.getDimensionID(), new SpaceStationRecipe(recipe)));
-		MPLog.debug("Register Satellite [%s : %s] at planet [%s : %s]", satellite.getName(), satellite.getDimensionID(), planet.getName(), planet.getDimensionID());
-		MPLog.debug("Using recipes %s", recipe.toString());
-	}
+    public static void registerSpaceStation(Satellite satellite, Planet planet, HashMap<Object, Integer> recipe)
+    {
+        GalacticraftRegistry.registerSpaceStation(new SpaceStationType(satellite.getDimensionID(), planet.getDimensionID(), new SpaceStationRecipe(recipe)));
+        MPLog.debug("Register Satellite [%s : %s] at planet [%s : %s]", satellite.getName(), satellite.getDimensionID(), planet.getName(), planet.getDimensionID());
+        MPLog.debug("Using recipes %s", recipe.toString());
+    }
 
-	public static void registerSpaceStationProvider(int id, int staticId, Class<? extends WorldProvider> provider)
-	{
-		GalacticraftRegistry.registerProvider(id, provider, false);
-		GalacticraftRegistry.registerProvider(staticId, provider, true);
-		MPLog.debug("Register Space Station Provider ID: %s, Static ID: %s, Provider: %s", id, staticId, provider.getSimpleName());
-	}
+    public static void registerSpaceStationProvider(int id, int staticId, Class<? extends WorldProvider> provider)
+    {
+        GalacticraftRegistry.registerProvider(id, provider, false);
+        GalacticraftRegistry.registerProvider(staticId, provider, true);
+        MPLog.debug("Register Space Station Provider ID: %s, Static ID: %s, Provider: %s", id, staticId, provider.getSimpleName());
+    }
 
-	public static <REQ extends IMessage, REPLY extends IMessage> void registerMessageHandler(Class<? extends IMessageHandler<REQ, REPLY>> messageHandler, Class<REQ> requestMessageType, int discriminator, Side side)
-	{
-		MorePlanetsRegistry.simpleNetworkWrapper.registerMessage(messageHandler, requestMessageType, discriminator, side);
-		MPLog.debug("Register Message Handler : %s, %s", messageHandler.getSimpleName(), requestMessageType.getSimpleName());
-	}
+    public static <REQ extends IMessage, REPLY extends IMessage> void registerMessageHandler(Class<? extends IMessageHandler<REQ, REPLY>> messageHandler, Class<REQ> requestMessageType, int discriminator, Side side)
+    {
+        MorePlanetsRegistry.simpleNetworkWrapper.registerMessage(messageHandler, requestMessageType, discriminator, side);
+        MPLog.debug("Register Message Handler : %s, %s", messageHandler.getSimpleName(), requestMessageType.getSimpleName());
+    }
 }

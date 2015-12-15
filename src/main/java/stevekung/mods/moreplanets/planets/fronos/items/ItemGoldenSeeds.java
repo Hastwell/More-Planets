@@ -21,44 +21,44 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class ItemGoldenSeeds extends ItemMorePlanets implements IPlantable
 {
-	public ItemGoldenSeeds(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemGoldenSeeds(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return FronosBlocks.golden_crops.getDefaultState();
-	}
+    @Override
+    public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+    {
+        return FronosBlocks.golden_crops.getDefaultState();
+    }
 
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Crop;
-	}
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+    {
+        return EnumPlantType.Crop;
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
-		if (side != EnumFacing.UP)
-		{
-			return false;
-		}
-		else if (!player.canPlayerEdit(pos.offset(side), side, itemStack))
-		{
-			return false;
-		}
-		else if (world.getBlockState(pos).getBlock().canSustainPlant(world, pos, EnumFacing.UP, this) && world.isAirBlock(pos.up()))
-		{
-			world.setBlockState(pos.up(), FronosBlocks.golden_crops.getDefaultState());
-			--itemStack.stackSize;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+    @Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if (side != EnumFacing.UP)
+        {
+            return false;
+        }
+        else if (!player.canPlayerEdit(pos.offset(side), side, itemStack))
+        {
+            return false;
+        }
+        else if (world.getBlockState(pos).getBlock().canSustainPlant(world, pos, EnumFacing.UP, this) && world.isAirBlock(pos.up()))
+        {
+            world.setBlockState(pos.up(), FronosBlocks.golden_crops.getDefaultState());
+            --itemStack.stackSize;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -8,29 +8,33 @@
 package stevekung.mods.moreplanets.common.world.biome;
 
 import net.minecraft.world.biome.BiomeGenBase;
+import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 
-public abstract class BiomeGenBaseMP extends BiomeGenBase
+public class BiomeGenBaseMP extends BiomeGenBase
 {
-	public BiomeGenBaseMP(int id)
-	{
-		super(id);
-		this.spawnableMonsterList.clear();
-		this.spawnableWaterCreatureList.clear();
-		this.spawnableCreatureList.clear();
-		this.spawnableCaveCreatureList.clear();
-		this.rainfall = 0F;
-		this.setColor(-16744448);
-	}
+    public static BiomeGenBase basePlanetBiome = new BiomeGenBaseMP(ConfigManagerMP.idBasePlanetBiome).setBiomeName("Planet");
+    public static BiomeGenBase baseMoonBiome = new BiomeGenBaseMP(ConfigManagerMP.idBaseMoonBiome).setBiomeName("Moon");
 
-	@Override
-	public BiomeGenBase setColor(int color)
-	{
-		return this.func_150557_a(-16744448, false);
-	}
+    public BiomeGenBaseMP(int id)
+    {
+        super(id);
+        this.spawnableMonsterList.clear();
+        this.spawnableWaterCreatureList.clear();
+        this.spawnableCreatureList.clear();
+        this.spawnableCaveCreatureList.clear();
+        this.rainfall = 0F;
+        this.setColor(-16744448);
+    }
 
-	@Override
-	public float getSpawningChance()
-	{
-		return 0.1F;
-	}
+    @Override
+    public BiomeGenBase setColor(int color)
+    {
+        return this.func_150557_a(-16744448, false);
+    }
+
+    @Override
+    public float getSpawningChance()
+    {
+        return 0.1F;
+    }
 }

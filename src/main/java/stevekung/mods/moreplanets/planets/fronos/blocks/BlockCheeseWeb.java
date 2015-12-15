@@ -29,83 +29,83 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockCheeseWeb extends BlockBaseMP
 {
-	public BlockCheeseWeb(String name)
-	{
-		super(Material.web);
-		this.setUnlocalizedName(name);
-		this.setLightOpacity(1);
-		this.setHardness(4.0F);
-	}
+    public BlockCheeseWeb(String name)
+    {
+        super(Material.web);
+        this.setUnlocalizedName(name);
+        this.setLightOpacity(1);
+        this.setHardness(4.0F);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		entity.setInWeb();
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        entity.setInWeb();
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        return null;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 9;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 9;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return FronosItems.fronos_item;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return FronosItems.fronos_item;
+    }
 
-	@Override
-	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
-	{
-		ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
+    {
+        ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack == null)
-		{
-			return player.canHarvestBlock(this);
-		}
-		return stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword);
-	}
+        if (stack == null)
+        {
+            return player.canHarvestBlock(this);
+        }
+        return stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword);
+    }
 
-	@Override
-	public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, BlockPos pos)
-	{
-		ItemStack stack = player.inventory.getCurrentItem();
+    @Override
+    public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, BlockPos pos)
+    {
+        ItemStack stack = player.inventory.getCurrentItem();
 
-		if (stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword))
-		{
-			return 0.1F;
-		}
-		return ForgeHooks.blockStrength(this.getDefaultState(), player, world, pos);
-	}
+        if (stack != null && (stack.getItem() instanceof ItemShears || stack.getItem() instanceof ItemSword))
+        {
+            return 0.1F;
+        }
+        return ForgeHooks.blockStrength(this.getDefaultState(), player, world, pos);
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(this, 1, 0);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        return new ItemStack(this, 1, 0);
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.CUTOUT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.CUTOUT;
+    }
 }

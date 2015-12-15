@@ -19,33 +19,33 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenMapleIvy extends WorldGenerator
 {
-	@Override
-	public boolean generate(World world, Random rand, BlockPos pos)
-	{
-		for (; pos.getY() < 128; pos = pos.up())
-		{
-			if (world.isAirBlock(pos))
-			{
-				EnumFacing[] aenumfacing = EnumFacing.Plane.HORIZONTAL.facings();
-				int i = aenumfacing.length;
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        for (; pos.getY() < 128; pos = pos.up())
+        {
+            if (world.isAirBlock(pos))
+            {
+                EnumFacing[] aenumfacing = EnumFacing.Plane.HORIZONTAL.facings();
+                int i = aenumfacing.length;
 
-				for (int j = 0; j < i; ++j)
-				{
-					EnumFacing enumfacing = aenumfacing[j];
+                for (int j = 0; j < i; ++j)
+                {
+                    EnumFacing enumfacing = aenumfacing[j];
 
-					if (FronosBlocks.maple_ivy.canPlaceBlockOnSide(world, pos, enumfacing))
-					{
-						IBlockState iblockstate = FronosBlocks.maple_ivy.getDefaultState().withProperty(BlockVineMP.NORTH, Boolean.valueOf(enumfacing == EnumFacing.NORTH)).withProperty(BlockVineMP.EAST, Boolean.valueOf(enumfacing == EnumFacing.EAST)).withProperty(BlockVineMP.SOUTH, Boolean.valueOf(enumfacing == EnumFacing.SOUTH)).withProperty(BlockVineMP.WEST, Boolean.valueOf(enumfacing == EnumFacing.WEST));
-						world.setBlockState(pos, iblockstate, 2);
-						break;
-					}
-				}
-			}
-			else
-			{
-				pos = pos.add(rand.nextInt(4) - rand.nextInt(4), 0, rand.nextInt(4) - rand.nextInt(4));
-			}
-		}
-		return true;
-	}
+                    if (FronosBlocks.red_maple_ivy.canPlaceBlockOnSide(world, pos, enumfacing))
+                    {
+                        IBlockState iblockstate = FronosBlocks.red_maple_ivy.getDefaultState().withProperty(BlockVineMP.NORTH, Boolean.valueOf(enumfacing == EnumFacing.NORTH)).withProperty(BlockVineMP.EAST, Boolean.valueOf(enumfacing == EnumFacing.EAST)).withProperty(BlockVineMP.SOUTH, Boolean.valueOf(enumfacing == EnumFacing.SOUTH)).withProperty(BlockVineMP.WEST, Boolean.valueOf(enumfacing == EnumFacing.WEST));
+                        world.setBlockState(pos, iblockstate, 2);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                pos = pos.add(rand.nextInt(4) - rand.nextInt(4), 0, rand.nextInt(4) - rand.nextInt(4));
+            }
+        }
+        return true;
+    }
 }

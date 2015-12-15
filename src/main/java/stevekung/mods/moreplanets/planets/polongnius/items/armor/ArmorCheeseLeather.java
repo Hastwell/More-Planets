@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class ArmorCheeseLeather extends ItemArmorMP
 {
-	public ArmorCheeseLeather(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorCheeseLeather(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
-	{
-		if (stack.getItem() == PolongniusArmorItems.cheese_leather_helmet || stack.getItem() == PolongniusArmorItems.cheese_leather_chestplate || stack.getItem() == PolongniusArmorItems.cheese_leather_boots)
-		{
-			return "moreplanets:textures/model/armor/cheese_leather_1.png";
-		}
-		else if (stack.getItem() == PolongniusArmorItems.cheese_leather_leggings)
-		{
-			return "moreplanets:textures/model/armor/cheese_leather_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer)
+    {
+        if (stack.getItem() == PolongniusArmorItems.cheese_leather_helmet || stack.getItem() == PolongniusArmorItems.cheese_leather_chestplate || stack.getItem() == PolongniusArmorItems.cheese_leather_boots)
+        {
+            return "moreplanets:textures/model/armor/cheese_leather_1.png";
+        }
+        else if (stack.getItem() == PolongniusArmorItems.cheese_leather_leggings)
+        {
+            return "moreplanets:textures/model/armor/cheese_leather_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return PolongniusItems.polongnius_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return PolongniusItems.polongnius_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 10;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 10;
+    }
 }

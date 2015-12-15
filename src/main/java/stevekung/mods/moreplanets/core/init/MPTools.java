@@ -19,16 +19,16 @@ import stevekung.mods.moreplanets.planets.siriusb.items.tools.SiriusBToolsItems;
 
 public class MPTools
 {
-	public static void init()
-	{
-		DionaToolsItems.init();
-		PolongniusToolsItems.init();
-		NibiruToolsItems.init();
-		KoentusToolsItems.init();
-		FronosToolsItems.init();
-		KapteynBToolsItems.init();
-		SiriusBToolsItems.init();
-		PlutoToolsItems.init();
-		MPLog.debug("Register Tools");
-	}
+    public static void init()
+    {
+        DionaToolsItems.init();
+        PolongniusToolsItems.init();
+        NibiruToolsItems.init();
+        KoentusToolsItems.init();
+        FronosToolsItems.init();
+        KapteynBToolsItems.init();
+        SiriusBToolsItems.init();
+        PlutoToolsItems.init();
+        MPLog.debug("Register Tools");
+    }
 }

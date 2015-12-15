@@ -27,144 +27,144 @@ import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 
 public class BlockDoorMP extends BlockDoor
 {
-	private DoorType doorType;
+    private DoorType doorType;
 
-	public static enum DoorType
-	{
-		ANCIENT_DARK, ORANGE, COCONUT, MAPLE, CRYSTAL, EUROPA;
-	}
+    public static enum DoorType
+    {
+        ANCIENT_DARK, ORANGE, COCONUT, MAPLE, CRYSTAL, EUROPA;
+    }
 
-	public BlockDoorMP(String name, DoorType type)
-	{
-		super(Material.wood);
-		this.doorType = type;
-		this.setHardness(3.0F);
-		this.setStepSound(soundTypeWood);
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, Boolean.valueOf(false)).withProperty(HINGE, BlockDoorMP.EnumHingePosition.LEFT).withProperty(POWERED, Boolean.valueOf(false)).withProperty(HALF, BlockDoorMP.EnumDoorHalf.LOWER));
-	}
+    public BlockDoorMP(String name, DoorType type)
+    {
+        super(Material.wood);
+        this.doorType = type;
+        this.setHardness(3.0F);
+        this.setStepSound(soundTypeWood);
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, Boolean.valueOf(false)).withProperty(HINGE, BlockDoorMP.EnumHingePosition.LEFT).withProperty(POWERED, Boolean.valueOf(false)).withProperty(HALF, BlockDoorMP.EnumDoorHalf.LOWER));
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition mov, World world, BlockPos pos, EntityPlayer player)
-	{
-		if (this.doorType == DoorType.ANCIENT_DARK)
-		{
-			return new ItemStack(NibiruItems.ancient_dark_door);
-		}
-		else if (this.doorType == DoorType.ORANGE)
-		{
-			return new ItemStack(NibiruItems.orange_door);
-		}
-		else if (this.doorType == DoorType.COCONUT)
-		{
-			return new ItemStack(FronosItems.coconut_door);
-		}
-		else if (this.doorType == DoorType.MAPLE)
-		{
-			return new ItemStack(FronosItems.maple_door);
-		}
-		else if (this.doorType == DoorType.CRYSTAL)
-		{
-			return new ItemStack(KoentusItems.crystal_door);
-		}
-		else if (this.doorType == DoorType.EUROPA)
-		{
-			return new ItemStack(EuropaItems.europa_door);
-		}
-		return null;
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition mov, World world, BlockPos pos, EntityPlayer player)
+    {
+        if (this.doorType == DoorType.ANCIENT_DARK)
+        {
+            return new ItemStack(NibiruItems.ancient_dark_door);
+        }
+        else if (this.doorType == DoorType.ORANGE)
+        {
+            return new ItemStack(NibiruItems.orange_door);
+        }
+        else if (this.doorType == DoorType.COCONUT)
+        {
+            return new ItemStack(FronosItems.coconut_door);
+        }
+        else if (this.doorType == DoorType.MAPLE)
+        {
+            return new ItemStack(FronosItems.maple_door);
+        }
+        else if (this.doorType == DoorType.CRYSTAL)
+        {
+            return new ItemStack(KoentusItems.crystal_door);
+        }
+        else if (this.doorType == DoorType.EUROPA)
+        {
+            return new ItemStack(EuropaItems.europa_door);
+        }
+        return null;
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		if (!(state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER))
-		{
-			if (this.doorType == DoorType.ANCIENT_DARK)
-			{
-				return NibiruItems.ancient_dark_door;
-			}
-			else if (this.doorType == DoorType.ORANGE)
-			{
-				return NibiruItems.orange_door;
-			}
-			else if (this.doorType == DoorType.COCONUT)
-			{
-				return FronosItems.coconut_door;
-			}
-			else if (this.doorType == DoorType.MAPLE)
-			{
-				return FronosItems.maple_door;
-			}
-			else if (this.doorType == DoorType.CRYSTAL)
-			{
-				return KoentusItems.crystal_door;
-			}
-			else if (this.doorType == DoorType.EUROPA)
-			{
-				return EuropaItems.europa_door;
-			}
-		}
-		return null;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        if (!(state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER))
+        {
+            if (this.doorType == DoorType.ANCIENT_DARK)
+            {
+                return NibiruItems.ancient_dark_door;
+            }
+            else if (this.doorType == DoorType.ORANGE)
+            {
+                return NibiruItems.orange_door;
+            }
+            else if (this.doorType == DoorType.COCONUT)
+            {
+                return FronosItems.coconut_door;
+            }
+            else if (this.doorType == DoorType.MAPLE)
+            {
+                return FronosItems.maple_door;
+            }
+            else if (this.doorType == DoorType.CRYSTAL)
+            {
+                return KoentusItems.crystal_door;
+            }
+            else if (this.doorType == DoorType.EUROPA)
+            {
+                return EuropaItems.europa_door;
+            }
+        }
+        return null;
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock)
-	{
-		if (state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER)
-		{
-			if (world.getBlockState(pos.down()).getBlock() != this)
-			{
-				world.setBlockToAir(pos);
-			}
-			else if (neighborBlock != this)
-			{
-				this.onNeighborBlockChange(world, pos.down(), world.getBlockState(pos.down()), neighborBlock);
-			}
-		}
-		else
-		{
-			boolean flag1 = false;
+    @Override
+    public void onNeighborBlockChange(World world, BlockPos pos, IBlockState state, Block neighborBlock)
+    {
+        if (state.getValue(HALF) == BlockDoor.EnumDoorHalf.UPPER)
+        {
+            if (world.getBlockState(pos.down()).getBlock() != this)
+            {
+                world.setBlockToAir(pos);
+            }
+            else if (neighborBlock != this)
+            {
+                this.onNeighborBlockChange(world, pos.down(), world.getBlockState(pos.down()), neighborBlock);
+            }
+        }
+        else
+        {
+            boolean flag1 = false;
 
-			if (world.getBlockState(pos.up()).getBlock() != this)
-			{
-				world.setBlockToAir(pos);
-				flag1 = true;
-			}
+            if (world.getBlockState(pos.up()).getBlock() != this)
+            {
+                world.setBlockToAir(pos);
+                flag1 = true;
+            }
 
-			if (!World.doesBlockHaveSolidTopSurface(world, pos.down()))
-			{
-				world.setBlockToAir(pos);
-				flag1 = true;
+            if (!World.doesBlockHaveSolidTopSurface(world, pos.down()))
+            {
+                world.setBlockToAir(pos);
+                flag1 = true;
 
-				if (world.getBlockState(pos.up()).getBlock() == this)
-				{
-					world.setBlockToAir(pos.up());
-				}
-			}
+                if (world.getBlockState(pos.up()).getBlock() == this)
+                {
+                    world.setBlockToAir(pos.up());
+                }
+            }
 
-			if (flag1)
-			{
-				if (!world.isRemote)
-				{
-					this.dropBlockAsItem(world, pos, state, 0);
-				}
-			}
-			else
-			{
-				boolean flag = world.isBlockPowered(pos) || world.isBlockPowered(pos.up());
+            if (flag1)
+            {
+                if (!world.isRemote)
+                {
+                    this.dropBlockAsItem(world, pos, state, 0);
+                }
+            }
+            else
+            {
+                boolean flag = world.isBlockPowered(pos) || world.isBlockPowered(pos.up());
 
-				if ((flag || neighborBlock.canProvidePower()) && neighborBlock != this && flag != ((Boolean)world.getBlockState(pos.up()).getValue(POWERED)).booleanValue())
-				{
-					world.setBlockState(pos.up(), world.getBlockState(pos.up()).withProperty(POWERED, Boolean.valueOf(flag)), 2);
+                if ((flag || neighborBlock.canProvidePower()) && neighborBlock != this && flag != ((Boolean)world.getBlockState(pos.up()).getValue(POWERED)).booleanValue())
+                {
+                    world.setBlockState(pos.up(), world.getBlockState(pos.up()).withProperty(POWERED, Boolean.valueOf(flag)), 2);
 
-					if (flag != ((Boolean)state.getValue(OPEN)).booleanValue())
-					{
-						world.setBlockState(pos, state.withProperty(OPEN, Boolean.valueOf(flag)), 2);
-						world.markBlockRangeForRenderUpdate(pos, pos);
-						world.playAuxSFXAtEntity((EntityPlayer)null, flag ? 1003 : 1006, pos, 0);
-					}
-				}
-			}
-		}
-	}
+                    if (flag != ((Boolean)state.getValue(OPEN)).booleanValue())
+                    {
+                        world.setBlockState(pos, state.withProperty(OPEN, Boolean.valueOf(flag)), 2);
+                        world.markBlockRangeForRenderUpdate(pos, pos);
+                        world.playAuxSFXAtEntity((EntityPlayer)null, flag ? 1003 : 1006, pos, 0);
+                    }
+                }
+            }
+        }
+    }
 }

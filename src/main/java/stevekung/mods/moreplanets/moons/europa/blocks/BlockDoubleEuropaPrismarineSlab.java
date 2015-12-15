@@ -20,47 +20,47 @@ import net.minecraft.world.World;
 
 public class BlockDoubleEuropaPrismarineSlab extends BlockEuropaPrismarineSlab
 {
-	public BlockDoubleEuropaPrismarineSlab(String name, Material material)
-	{
-		super(material);
-		this.setHardness(1.5F);
-		this.setResistance(10.0F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockDoubleEuropaPrismarineSlab(String name, Material material)
+    {
+        super(material);
+        this.setHardness(1.5F);
+        this.setResistance(10.0F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean isDouble()
-	{
-		return true;
-	}
+    @Override
+    public boolean isDouble()
+    {
+        return true;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return null;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return null;
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(EuropaBlocks.half_europa_prismarine_slab);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(EuropaBlocks.half_europa_prismarine_slab);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 2;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 2;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state) & 7;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state) & 7;
+    }
 
-	@Override
-	public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
-	{
-		return new ItemStack(EuropaBlocks.half_europa_prismarine_slab, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
-	}
+    @Override
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    {
+        return new ItemStack(EuropaBlocks.half_europa_prismarine_slab, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
+    }
 }

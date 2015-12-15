@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 
 public class ArmorWhiteCrystal extends ItemArmorMP
 {
-	public ArmorWhiteCrystal(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorWhiteCrystal(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == KoentusArmorItems.white_crystal_helmet || stack.getItem() == KoentusArmorItems.white_crystal_chestplate || stack.getItem() == KoentusArmorItems.white_crystal_boots)
-		{
-			return "moreplanets:textures/model/armor/white_crystal_1.png";
-		}
-		if (stack.getItem() == KoentusArmorItems.white_crystal_leggings)
-		{
-			return "moreplanets:textures/model/armor/white_crystal_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == KoentusArmorItems.white_crystal_helmet || stack.getItem() == KoentusArmorItems.white_crystal_chestplate || stack.getItem() == KoentusArmorItems.white_crystal_boots)
+        {
+            return "moreplanets:textures/model/armor/white_crystal_1.png";
+        }
+        if (stack.getItem() == KoentusArmorItems.white_crystal_leggings)
+        {
+            return "moreplanets:textures/model/armor/white_crystal_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return KoentusItems.koentus_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return KoentusItems.koentus_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 }

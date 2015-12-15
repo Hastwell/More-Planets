@@ -13,5 +13,5 @@ import net.minecraft.item.ItemStack;
 
 public interface ItemDescription
 {
-	void addDescription(ItemStack itemStack, List list, boolean useLShift);
+    void addDescription(ItemStack itemStack, List list, boolean useLShift);
 }

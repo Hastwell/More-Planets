@@ -14,43 +14,43 @@ import net.minecraft.entity.Entity;
 
 public class ModelCheeseCubeEye extends ModelBase
 {
-	public ModelRenderer body1;
-	public ModelRenderer body2;
-	public ModelRenderer eye;
+    public ModelRenderer body1;
+    public ModelRenderer body2;
+    public ModelRenderer eye;
 
-	public ModelCheeseCubeEye()
-	{
-		this.textureWidth = 128;
-		this.textureHeight = 64;
+    public ModelCheeseCubeEye()
+    {
+        this.textureWidth = 128;
+        this.textureHeight = 64;
 
-		this.body1 = new ModelRenderer(this, 0, 0);
-		this.body1.addBox(-8F, -8F, -8F, 16, 16, 16, 0F);
-		this.body1.setRotationPoint(0F, 16F, 0F);
-		this.body2 = new ModelRenderer(this, 0, 0);
-		this.body2.addBox(-8F, -8F, -8F, 16, 16, 16, 0F);
-		this.body2.setRotationPoint(0F, 16F, 0F);
-		this.eye = new ModelRenderer(this, 100, 0);
-		this.eye.addBox(0F, 0F, 0F, 10, 6, 1, 0F);
-		this.eye.setRotationPoint(-5F, 13F, -9F);
-	}
+        this.body1 = new ModelRenderer(this, 0, 0);
+        this.body1.addBox(-8F, -8F, -8F, 16, 16, 16, 0F);
+        this.body1.setRotationPoint(0F, 16F, 0F);
+        this.body2 = new ModelRenderer(this, 0, 0);
+        this.body2.addBox(-8F, -8F, -8F, 16, 16, 16, 0F);
+        this.body2.setRotationPoint(0F, 16F, 0F);
+        this.eye = new ModelRenderer(this, 100, 0);
+        this.eye.addBox(0F, 0F, 0F, 10, 6, 1, 0F);
+        this.eye.setRotationPoint(-5F, 13F, -9F);
+    }
 
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
-		this.updateBodyRotation(entity, f2);
-		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(770, 771);
-		this.body1.render(f5);
-		this.body2.render(f5);
-		this.eye.render(f5);
-		GlStateManager.disableBlend();
-	}
+    @Override
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+    {
+        this.updateBodyRotation(entity, f2);
+        this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(770, 771);
+        this.body1.render(f5);
+        this.body2.render(f5);
+        this.eye.render(f5);
+        GlStateManager.disableBlend();
+    }
 
-	private void updateBodyRotation(Entity e, float f)
-	{
-		float var8 = 0.03F * (e.getEntityId() % 5) + 0.05F;
-		this.body1.rotateAngleZ = e.ticksExisted * var8 + (float) (Math.PI / 8) * 2;
-		this.body2.rotateAngleZ = (float) (e.ticksExisted * var8 + (float) (Math.PI / 8) * 0.5);
-	}
+    private void updateBodyRotation(Entity e, float f)
+    {
+        float var8 = 0.03F * (e.getEntityId() % 5) + 0.05F;
+        this.body1.rotateAngleZ = e.ticksExisted * var8 + (float) (Math.PI / 8) * 2;
+        this.body2.rotateAngleZ = (float) (e.ticksExisted * var8 + (float) (Math.PI / 8) * 0.5);
+    }
 }

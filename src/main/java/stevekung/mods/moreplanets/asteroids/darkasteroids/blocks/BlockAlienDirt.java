@@ -33,123 +33,123 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
 public class BlockAlienDirt extends BlockBaseMP implements ITerraformableBlock
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockAlienDirt(String name)
-	{
-		super(Material.ground);
-		this.setStepSound(soundTypeGravel);
-		this.setHardness(0.55F);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.alien_dirt));
-		this.setUnlocalizedName(name);
-	}
+    public BlockAlienDirt(String name)
+    {
+        super(Material.ground);
+        this.setStepSound(soundTypeGravel);
+        this.setHardness(0.55F);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.alien_dirt));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
-	{
-		Block block = plant.getPlant(world, pos).getBlock();
-		return block == DarkAsteroidBlocks.alien_sapling || plant.getPlantType(world, pos) == EnumPlantType.Plains;
-	}
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
+    {
+        Block block = plant.getPlant(world, pos).getBlock();
+        return block == DarkAsteroidBlocks.alien_sapling || plant.getPlantType(world, pos) == EnumPlantType.Plains;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public boolean isTerraformable(World world, BlockPos pos)
-	{
-		return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
-	}
+    @Override
+    public boolean isTerraformable(World world, BlockPos pos)
+    {
+        return true && !world.getBlockState(pos.up()).getBlock().isOpaqueCube();
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitVecX, float hitVecY, float hitVecZ)
-	{
-		if (player.getCurrentEquippedItem() != null)
-		{
-			if (player.getCurrentEquippedItem().getDisplayName().toLowerCase().contains("hoe"))
-			{
-				if (state == state.withProperty(VARIANT, BlockType.alien_dirt))
-				{
-					Block farmland = DarkAsteroidBlocks.alien_farmland;
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitVecX, float hitVecY, float hitVecZ)
+    {
+        if (player.getCurrentEquippedItem() != null)
+        {
+            if (player.getCurrentEquippedItem().getDisplayName().toLowerCase().contains("hoe"))
+            {
+                if (state == state.withProperty(VARIANT, BlockType.alien_dirt))
+                {
+                    Block farmland = DarkAsteroidBlocks.alien_farmland;
 
-					world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, farmland.stepSound.getStepSound(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getFrequency() * 0.8F);
+                    world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, farmland.stepSound.getStepSound(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getFrequency() * 0.8F);
 
-					if (!world.isRemote)
-					{
-						world.setBlockState(pos, farmland.getDefaultState(), 2);
-					}
-					player.getCurrentEquippedItem().damageItem(1, player);
-				}
-				else if (state == state.withProperty(VARIANT, BlockType.alien_coarse_dirt))
-				{
-					Block farmland = this;
+                    if (!world.isRemote)
+                    {
+                        world.setBlockState(pos, farmland.getDefaultState(), 2);
+                    }
+                    player.getCurrentEquippedItem().damageItem(1, player);
+                }
+                else if (state == state.withProperty(VARIANT, BlockType.alien_coarse_dirt))
+                {
+                    Block farmland = this;
 
-					world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, farmland.stepSound.getStepSound(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getFrequency() * 0.8F);
+                    world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, farmland.stepSound.getStepSound(), (farmland.stepSound.getVolume() + 1.0F) / 2.0F, farmland.stepSound.getFrequency() * 0.8F);
 
-					if (!world.isRemote)
-					{
-						world.setBlockState(pos, farmland.getDefaultState(), 2);
-					}
-					player.getCurrentEquippedItem().damageItem(1, player);
-				}
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		else
-		{
-			return false;
-		}
-	}
+                    if (!world.isRemote)
+                    {
+                        world.setBlockState(pos, farmland.getDefaultState(), 2);
+                    }
+                    player.getCurrentEquippedItem().damageItem(1, player);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		alien_dirt,
-		alien_coarse_dirt;
+    public static enum BlockType implements IStringSerializable
+    {
+        alien_dirt,
+        alien_coarse_dirt;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

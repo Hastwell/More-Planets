@@ -14,20 +14,20 @@ import stevekung.mods.moreplanets.moons.europa.blocks.BlockEuropaLog;
 
 public class ItemBlockEuropaLog extends ItemBlockMorePlanets
 {
-	public ItemBlockEuropaLog(Block block)
-	{
-		super(block);
-	}
+    public ItemBlockEuropaLog(Block block)
+    {
+        super(block);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta & 3;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta & 3;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		return super.getUnlocalizedName() + "." + BlockEuropaLog.BlockType.byMetadata(itemStack.getMetadata()).getUnlocalizedName();
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        return super.getUnlocalizedName() + "." + BlockEuropaLog.BlockType.byMetadata(itemStack.getMetadata()).getUnlocalizedName();
+    }
 }

@@ -13,18 +13,18 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockFenceGateMP extends BlockFenceGate
 {
-	public BlockFenceGateMP(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setStepSound(soundTypeWood);
-		this.setHardness(2.0F);
-		this.setResistance(5.0F);
-	}
+    public BlockFenceGateMP(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setStepSound(soundTypeWood);
+        this.setHardness(2.0F);
+        this.setResistance(5.0F);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

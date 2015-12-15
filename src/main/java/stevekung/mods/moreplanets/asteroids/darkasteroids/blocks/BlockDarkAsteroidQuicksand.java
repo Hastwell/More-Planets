@@ -17,29 +17,29 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
 public class BlockDarkAsteroidQuicksand extends BlockBaseMP
 {
-	public BlockDarkAsteroidQuicksand(String name)
-	{
-		super(Material.sand);
-		this.setHardness(0.5F);
-		this.setStepSound(soundTypeSand);
-		this.setUnlocalizedName(name);
-	}
+    public BlockDarkAsteroidQuicksand(String name)
+    {
+        super(Material.sand);
+        this.setHardness(0.5F);
+        this.setStepSound(soundTypeSand);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        return null;
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return true;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return true;
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		entity.setInWeb();
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        entity.setInWeb();
+    }
 }

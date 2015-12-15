@@ -19,32 +19,32 @@ import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 
 public class ItemPlutoHeartCrystal extends ItemMorePlanets
 {
-	public ItemPlutoHeartCrystal(String name)
-	{
-		super();
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName(name);
-		this.setMaxDamage(5);
-	}
+    public ItemPlutoHeartCrystal(String name)
+    {
+        super();
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName(name);
+        this.setMaxDamage(5);
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!(player.getAbsorptionAmount() >= 1.0F))
-		{
-			player.setAbsorptionAmount(80.0F);
-			itemStack.damageItem(1, player);
-		}
-		return itemStack;
-	}
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!(player.getAbsorptionAmount() >= 1.0F))
+        {
+            player.setAbsorptionAmount(80.0F);
+            itemStack.damageItem(1, player);
+        }
+        return itemStack;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-	{
-		if (player.worldObj.isRemote)
-		{
-			list.add(EnumChatFormatting.YELLOW + "Right clicked for increase your health");
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
+    {
+        if (player.worldObj.isRemote)
+        {
+            list.add(EnumChatFormatting.YELLOW + "Right clicked for increase your health");
+        }
+    }
 }

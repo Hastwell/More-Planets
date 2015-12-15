@@ -19,85 +19,85 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class TileEntityUltraVioletFake extends TileEntityAdvanced implements IPacketReceiver
 {
-	@NetworkedField(targetSide = Side.CLIENT)
-	public BlockPos mainBlockPosition;
+    @NetworkedField(targetSide = Side.CLIENT)
+    public BlockPos mainBlockPosition;
 
-	public void setMainBlock(BlockPos mainBlock)
-	{
-		this.mainBlockPosition = mainBlock;
+    public void setMainBlock(BlockPos mainBlock)
+    {
+        this.mainBlockPosition = mainBlock;
 
-		if (!this.worldObj.isRemote)
-		{
-			this.worldObj.markBlockForUpdate(this.mainBlockPosition);
-		}
-	}
+        if (!this.worldObj.isRemote)
+        {
+            this.worldObj.markBlockForUpdate(this.mainBlockPosition);
+        }
+    }
 
-	public void onBlockRemoval()
-	{
-		if (this.mainBlockPosition != null)
-		{
-			TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition);
+    public void onBlockRemoval()
+    {
+        if (this.mainBlockPosition != null)
+        {
+            TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition);
 
-			if (tileEntity instanceof IMultiBlock)
-			{
-				IMultiBlock mainBlock = (IMultiBlock) tileEntity;
-				mainBlock.onDestroy(this);
-			}
-		}
-	}
+            if (tileEntity instanceof IMultiBlock)
+            {
+                IMultiBlock mainBlock = (IMultiBlock) tileEntity;
+                mainBlock.onDestroy(this);
+            }
+        }
+    }
 
-	public boolean onBlockActivated(EntityPlayer player)
-	{
-		if (this.mainBlockPosition != null)
-		{
-			TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition);
+    public boolean onBlockActivated(EntityPlayer player)
+    {
+        if (this.mainBlockPosition != null)
+        {
+            TileEntity tileEntity = this.worldObj.getTileEntity(this.mainBlockPosition);
 
-			if (tileEntity instanceof IMultiBlock)
-			{
-				return ((IMultiBlock) tileEntity).onActivated(player);
-			}
-		}
-		return false;
-	}
+            if (tileEntity instanceof IMultiBlock)
+            {
+                return ((IMultiBlock) tileEntity).onActivated(player);
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		NBTTagCompound tag = nbt.getCompoundTag("mainBlockPosition");
-		this.mainBlockPosition = new BlockPos(tag.getInteger("x"), tag.getInteger("y"), tag.getInteger("z"));
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        NBTTagCompound tag = nbt.getCompoundTag("mainBlockPosition");
+        this.mainBlockPosition = new BlockPos(tag.getInteger("x"), tag.getInteger("y"), tag.getInteger("z"));
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
 
-		if (this.mainBlockPosition != null)
-		{
-			NBTTagCompound tag = new NBTTagCompound();
-			tag.setInteger("x", this.mainBlockPosition.getX());
-			tag.setInteger("y", this.mainBlockPosition.getY());
-			tag.setInteger("z", this.mainBlockPosition.getZ());
-			nbt.setTag("mainBlockPosition", tag);
-		}
-	}
+        if (this.mainBlockPosition != null)
+        {
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setInteger("x", this.mainBlockPosition.getX());
+            tag.setInteger("y", this.mainBlockPosition.getY());
+            tag.setInteger("z", this.mainBlockPosition.getZ());
+            nbt.setTag("mainBlockPosition", tag);
+        }
+    }
 
-	@Override
-	public double getPacketRange()
-	{
-		return 30.0D;
-	}
+    @Override
+    public double getPacketRange()
+    {
+        return 30.0D;
+    }
 
-	@Override
-	public int getPacketCooldown()
-	{
-		return 50;
-	}
+    @Override
+    public int getPacketCooldown()
+    {
+        return 50;
+    }
 
-	@Override
-	public boolean isNetworkedTile()
-	{
-		return this.mainBlockPosition != null;
-	}
+    @Override
+    public boolean isNetworkedTile()
+    {
+        return this.mainBlockPosition != null;
+    }
 }

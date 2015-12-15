@@ -28,53 +28,53 @@ import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAst
 
 public class RenderDarkAsteroid extends Render
 {
-	public RenderDarkAsteroid(RenderManager render)
-	{
-		super(render);
-	}
+    public RenderDarkAsteroid(RenderManager render)
+    {
+        super(render);
+    }
 
-	@Override
-	public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTickTime)
-	{
-		EntityDarkAsteroid asteroid = (EntityDarkAsteroid) entity;
-		this.bindTexture(TextureMap.locationBlocksTexture);
-		IBlockState iblockstate = DarkAsteroidBlocks.dark_asteroid_rock.getDefaultState();
-		Block block = iblockstate.getBlock();
-		BlockPos blockpos = new BlockPos(asteroid);
-		World world = asteroid.worldObj;
+    @Override
+    public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTickTime)
+    {
+        EntityDarkAsteroid asteroid = (EntityDarkAsteroid) entity;
+        this.bindTexture(TextureMap.locationBlocksTexture);
+        IBlockState iblockstate = DarkAsteroidBlocks.dark_asteroid_rock.getDefaultState();
+        Block block = iblockstate.getBlock();
+        BlockPos blockpos = new BlockPos(asteroid);
+        World world = asteroid.worldObj;
 
-		if (iblockstate != world.getBlockState(blockpos) && block.getRenderType() != -1)
-		{
-			if (block.getRenderType() == 3)
-			{
-				GlStateManager.pushMatrix();
-				GlStateManager.translate((float)x, (float)y, (float)z);
-				GlStateManager.rotate(asteroid.rotationPitch, 1, 0, 0);
-				GlStateManager.rotate(asteroid.rotationYaw, 0, 1, 0);
-				GlStateManager.disableLighting();
-				Tessellator tessellator = Tessellator.getInstance();
-				WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-				worldrenderer.startDrawingQuads();
-				worldrenderer.setVertexFormat(DefaultVertexFormats.BLOCK);
-				int i = blockpos.getX();
-				int j = blockpos.getY();
-				int k = blockpos.getZ();
-				worldrenderer.setTranslation((-i) - 0.5F, -j, (-k) - 0.5F);
-				BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-				IBakedModel ibakedmodel = blockrendererdispatcher.getModelFromBlockState(iblockstate, world, (BlockPos)null);
-				blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, iblockstate, blockpos, worldrenderer, false);
-				worldrenderer.setTranslation(0.0D, 0.0D, 0.0D);
-				tessellator.draw();
-				GlStateManager.enableLighting();
-				GlStateManager.popMatrix();
-				super.doRender(entity, x, y, z, p_76986_8_, partialTickTime);
-			}
-		}
-	}
+        if (iblockstate != world.getBlockState(blockpos) && block.getRenderType() != -1)
+        {
+            if (block.getRenderType() == 3)
+            {
+                GlStateManager.pushMatrix();
+                GlStateManager.translate((float)x, (float)y, (float)z);
+                GlStateManager.rotate(asteroid.rotationPitch, 1, 0, 0);
+                GlStateManager.rotate(asteroid.rotationYaw, 0, 1, 0);
+                GlStateManager.disableLighting();
+                Tessellator tessellator = Tessellator.getInstance();
+                WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+                worldrenderer.startDrawingQuads();
+                worldrenderer.setVertexFormat(DefaultVertexFormats.BLOCK);
+                int i = blockpos.getX();
+                int j = blockpos.getY();
+                int k = blockpos.getZ();
+                worldrenderer.setTranslation((-i) - 0.5F, -j, (-k) - 0.5F);
+                BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
+                IBakedModel ibakedmodel = blockrendererdispatcher.getModelFromBlockState(iblockstate, world, (BlockPos)null);
+                blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, iblockstate, blockpos, worldrenderer, false);
+                worldrenderer.setTranslation(0.0D, 0.0D, 0.0D);
+                tessellator.draw();
+                GlStateManager.enableLighting();
+                GlStateManager.popMatrix();
+                super.doRender(entity, x, y, z, p_76986_8_, partialTickTime);
+            }
+        }
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return TextureMap.locationBlocksTexture;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return TextureMap.locationBlocksTexture;
+    }
 }

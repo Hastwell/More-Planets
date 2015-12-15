@@ -21,48 +21,48 @@ import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreathable, IEntityLivingPlanet
 {
-	public EntitySiriusCreeper(World world)
-	{
-		super(world);
-		this.isImmuneToFire = true;
-	}
+    public EntitySiriusCreeper(World world)
+    {
+        super(world);
+        this.isImmuneToFire = true;
+    }
 
-	@Override
-	protected void updateAITasks()
-	{
-		if (this.isWet())
-		{
-			this.attackEntityFrom(DamageSource.drown, 1.0F);
-		}
-	}
+    @Override
+    protected void updateAITasks()
+    {
+        if (this.isWet())
+        {
+            this.attackEntityFrom(DamageSource.drown, 1.0F);
+        }
+    }
 
-	@Override
-	public boolean canBreath()
-	{
-		return true;
-	}
+    @Override
+    public boolean canBreath()
+    {
+        return true;
+    }
 
-	@Override
-	public ItemStack getPickedResult(MovingObjectPosition target)
-	{
-		return new ItemStack(MPItems.spawn_egg_mp, 1, 1030);
-	}
+    @Override
+    public ItemStack getPickedResult(MovingObjectPosition target)
+    {
+        return new ItemStack(MPItems.spawn_egg_mp, 1, 1030);
+    }
 
-	@Override
-	public EnumDimensionType canLivingInDimension()
-	{
-		return EnumDimensionType.SIRIUS_B;
-	}
+    @Override
+    public EnumDimensionType canLivingInDimension()
+    {
+        return EnumDimensionType.SIRIUS_B;
+    }
 
-	@Override
-	public boolean getCanSpawnHere()
-	{
-		BlockPos pos = this.getPosition();
+    @Override
+    public boolean getCanSpawnHere()
+    {
+        BlockPos pos = this.getPosition();
 
-		if (this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL && this.worldObj.checkNoEntityCollision(this.getBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getBoundingBox()) && this.worldObj.getLightBrightness(pos) >= 0.0F)
-		{
-			return true;
-		}
-		return false;
-	}
+        if (this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL && this.worldObj.checkNoEntityCollision(this.getBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getBoundingBox()) && this.worldObj.getLightBrightness(pos) >= 0.0F)
+        {
+            return true;
+        }
+        return false;
+    }
 }

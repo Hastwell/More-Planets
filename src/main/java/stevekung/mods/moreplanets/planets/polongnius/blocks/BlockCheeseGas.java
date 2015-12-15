@@ -19,54 +19,54 @@ import stevekung.mods.moreplanets.common.blocks.BlockBreakableMP;
 
 public class BlockCheeseGas extends BlockBreakableMP
 {
-	public BlockCheeseGas(String name)
-	{
-		super(Material.cloth);
-		this.setStepSound(soundTypeCloth);
-		this.setHardness(0.25F);
-		this.setResistance(0.5F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockCheeseGas(String name)
+    {
+        super(Material.cloth);
+        this.setStepSound(soundTypeCloth);
+        this.setHardness(0.25F);
+        this.setResistance(0.5F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (entity instanceof EntityLivingBase)
-		{
-			if (!((EntityLivingBase)entity).isSneaking())
-			{
-				entity.motionX *= 1.0F;
-				entity.motionY = 0.15F;
-				entity.motionZ *= 1.0F;
-				entity.fallDistance = 0.0F;
-				return;
-			}
-			else
-			{
-				entity.motionX *= 1.0F;
-				entity.motionY = -0.05F;
-				entity.motionZ *= 1.0F;
-				entity.fallDistance = 0.0F;
-				return;
-			}
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (entity instanceof EntityLivingBase)
+        {
+            if (!((EntityLivingBase)entity).isSneaking())
+            {
+                entity.motionX *= 1.0F;
+                entity.motionY = 0.15F;
+                entity.motionZ *= 1.0F;
+                entity.fallDistance = 0.0F;
+                return;
+            }
+            else
+            {
+                entity.motionX *= 1.0F;
+                entity.motionY = -0.05F;
+                entity.motionZ *= 1.0F;
+                entity.fallDistance = 0.0F;
+                return;
+            }
+        }
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		return null;
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        return null;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 }

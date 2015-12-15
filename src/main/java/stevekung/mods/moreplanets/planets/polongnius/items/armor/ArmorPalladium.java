@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class ArmorPalladium extends ItemArmorMP
 {
-	public ArmorPalladium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ArmorPalladium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == PolongniusArmorItems.palladium_helmet || stack.getItem() == PolongniusArmorItems.palladium_chestplate || stack.getItem() == PolongniusArmorItems.palladium_boots)
-		{
-			return "moreplanets:textures/model/armor/palladium_1.png";
-		}
-		if (stack.getItem() == PolongniusArmorItems.palladium_leggings)
-		{
-			return "moreplanets:textures/model/armor/palladium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == PolongniusArmorItems.palladium_helmet || stack.getItem() == PolongniusArmorItems.palladium_chestplate || stack.getItem() == PolongniusArmorItems.palladium_boots)
+        {
+            return "moreplanets:textures/model/armor/palladium_1.png";
+        }
+        if (stack.getItem() == PolongniusArmorItems.palladium_leggings)
+        {
+            return "moreplanets:textures/model/armor/palladium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return PolongniusItems.polongnius_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return PolongniusItems.polongnius_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 7;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 7;
+    }
 }

@@ -16,163 +16,163 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.common.world.ILightningStorm;
+import stevekung.mods.moreplanets.common.world.gen.WorldChunkManagerPlanetBase;
 import stevekung.mods.moreplanets.core.init.MPPlanets;
 import stevekung.mods.moreplanets.planets.nibiru.world.gen.ChunkProviderNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.WorldChunkManagerNibiru;
 
 public class WorldProviderNibiru extends WorldProviderMP implements ILightningStorm
 {
-	@Override
-	public Vector3 getFogColor()
-	{
-		float f = 1.0F - this.getStarBrightness(1.0F);
-		return new Vector3(163F / 255F * f, 91F / 255F * f, 44F / 255F * f);
-	}
+    @Override
+    public Vector3 getFogColor()
+    {
+        float f = 1.0F - this.getStarBrightness(1.0F);
+        return new Vector3(163F / 255F * f, 91F / 255F * f, 44F / 255F * f);
+    }
 
-	@Override
-	public Vector3 getSkyColor()
-	{
-		float f = 1.15F - this.getStarBrightness(1.0F);
-		return new Vector3(195 / 255F * f, 110 / 255F * f, 50 / 255F * f);
-	}
+    @Override
+    public Vector3 getSkyColor()
+    {
+        float f = 1.15F - this.getStarBrightness(1.0F);
+        return new Vector3(195 / 255F * f, 110 / 255F * f, 50 / 255F * f);
+    }
 
-	@Override
-	public long getDayLength()
-	{
-		return 120000L;
-	}
+    @Override
+    public long getDayLength()
+    {
+        return 120000L;
+    }
 
-	@Override
-	public Class<? extends IChunkProvider> getChunkProviderClass()
-	{
-		return ChunkProviderNibiru.class;
-	}
+    @Override
+    public Class<? extends IChunkProvider> getChunkProviderClass()
+    {
+        return ChunkProviderNibiru.class;
+    }
 
-	@Override
-	public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
-	{
-		return WorldChunkManagerNibiru.class;
-	}
+    @Override
+    public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
+    {
+        return WorldChunkManagerPlanetBase.class;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float bright)
-	{
-		float f1 = this.worldObj.getCelestialAngle(bright);
-		float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getStarBrightness(float bright)
+    {
+        float f1 = this.worldObj.getCelestialAngle(bright);
+        float f2 = 1.0F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.25F);
 
-		if (f2 < 0.0F)
-		{
-			f2 = 0.0F;
-		}
-		if (f2 > 1.0F)
-		{
-			f2 = 0.95F;
-		}
-		return f2 * f2 * 0.6F;
-	}
+        if (f2 < 0.0F)
+        {
+            f2 = 0.0F;
+        }
+        if (f2 > 1.0F)
+        {
+            f2 = 0.95F;
+        }
+        return f2 * f2 * 0.6F;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public float getSunBrightness(float bright)
-	{
-		float f1 = this.worldObj.getCelestialAngle(1.0F);
-		float f2 = -0.7F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public float getSunBrightness(float bright)
+    {
+        float f1 = this.worldObj.getCelestialAngle(1.0F);
+        float f2 = -0.7F - (MathHelper.cos(f1 * (float) Math.PI * 2.0F) * 2.0F + 0.2F);
 
-		if (f2 < 0.0F)
-		{
-			f2 = 0.0F;
-		}
-		if (f2 > 1.0F)
-		{
-			f2 = 1.0F;
-		}
-		f2 = 1.0F - f2;
-		return f2 * 1.0F;
-	}
+        if (f2 < 0.0F)
+        {
+            f2 = 0.0F;
+        }
+        if (f2 > 1.0F)
+        {
+            f2 = 1.0F;
+        }
+        f2 = 1.0F - f2;
+        return f2 * 1.0F;
+    }
 
-	@Override
-	public double getSolarEnergyMultiplier()
-	{
-		return 0.8D;
-	}
+    @Override
+    public double getSolarEnergyMultiplier()
+    {
+        return 0.8D;
+    }
 
-	@Override
-	public float getGravity()
-	{
-		return 0.042F;
-	}
+    @Override
+    public float getGravity()
+    {
+        return 0.042F;
+    }
 
-	@Override
-	public double getMeteorFrequency()
-	{
-		return 4.0D;
-	}
+    @Override
+    public double getMeteorFrequency()
+    {
+        return 4.0D;
+    }
 
-	@Override
-	public boolean canSpaceshipTierPass(int tier)
-	{
-		return tier >= 6;
-	}
+    @Override
+    public boolean canSpaceshipTierPass(int tier)
+    {
+        return tier >= 6;
+    }
 
-	@Override
-	public float getFallDamageModifier()
-	{
-		return 0.58F;
-	}
+    @Override
+    public float getFallDamageModifier()
+    {
+        return 0.58F;
+    }
 
-	@Override
-	public float getSoundVolReductionAmount()
-	{
-		return 5.0F;
-	}
+    @Override
+    public float getSoundVolReductionAmount()
+    {
+        return 5.0F;
+    }
 
-	@Override
-	public CelestialBody getCelestialBody()
-	{
-		return MPPlanets.nibiru;
-	}
+    @Override
+    public CelestialBody getCelestialBody()
+    {
+        return MPPlanets.nibiru;
+    }
 
-	@Override
-	public boolean hasBreathableAtmosphere()
-	{
-		return false;
-	}
+    @Override
+    public boolean hasBreathableAtmosphere()
+    {
+        return false;
+    }
 
-	@Override
-	public float getThermalLevelModifier()
-	{
-		if (this.isDaytime())
-		{
-			return 2.5F;
-		}
-		else
-		{
-			return 1.0F;
-		}
-	}
+    @Override
+    public float getThermalLevelModifier()
+    {
+        if (this.isDaytime())
+        {
+            return 2.5F;
+        }
+        else
+        {
+            return 1.0F;
+        }
+    }
 
-	@Override
-	public float getWindLevel()
-	{
-		return 0.4F;
-	}
+    @Override
+    public float getWindLevel()
+    {
+        return 0.4F;
+    }
 
-	@Override
-	public double getUltraVioletEnergyMultiplie()
-	{
-		return 12.0D;
-	}
+    @Override
+    public double getUltraVioletEnergyMultiplie()
+    {
+        return 12.0D;
+    }
 
-	@Override
-	public double getLightningStormFrequency()
-	{
-		return 4.0D;
-	}
+    @Override
+    public double getLightningStormFrequency()
+    {
+        return 4.0D;
+    }
 
-	@Override
-	public String getInternalNameSuffix()
-	{
-		return "_nibiru";
-	}
+    @Override
+    public String getInternalNameSuffix()
+    {
+        return "_nibiru";
+    }
 }

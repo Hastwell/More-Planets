@@ -15,42 +15,42 @@ import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class TileEntityUraniumWaste extends TileEntity implements IUpdatePlayerListBox
 {
-	public int radiationLevel = 10000;
+    public int radiationLevel = 10000;
 
-	@Override
-	public void update()
-	{
-		if (!this.worldObj.isRemote && this.radiationLevel > 0)
-		{
-			this.radiationLevel--;
-		}
-		if (this.radiationLevel == 0)
-		{
-			this.worldObj.setBlockState(this.pos, KapteynBBlocks.uranium_waste.getDefaultState().withProperty(BlockUraniumWaste.VARIANT, BlockUraniumWaste.BlockType.inactive_uranium_waste), 3);
-		}
-	}
+    @Override
+    public void update()
+    {
+        if (!this.worldObj.isRemote && this.radiationLevel > 0)
+        {
+            this.radiationLevel--;
+        }
+        if (this.radiationLevel == 0)
+        {
+            this.worldObj.setBlockState(this.pos, KapteynBBlocks.uranium_waste.getDefaultState().withProperty(BlockUraniumWaste.VARIANT, BlockUraniumWaste.BlockType.inactive_uranium_waste), 3);
+        }
+    }
 
-	public int getRadiationLevel()
-	{
-		return this.radiationLevel;
-	}
+    public int getRadiationLevel()
+    {
+        return this.radiationLevel;
+    }
 
-	public void setRadiationLevel(int radLevel)
-	{
-		this.radiationLevel = radLevel;
-	}
+    public void setRadiationLevel(int radLevel)
+    {
+        this.radiationLevel = radLevel;
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbt)
-	{
-		super.readFromNBT(nbt);
-		this.radiationLevel = nbt.getInteger("RadiationLevel");
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound nbt)
+    {
+        super.readFromNBT(nbt);
+        this.radiationLevel = nbt.getInteger("RadiationLevel");
+    }
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt)
-	{
-		super.writeToNBT(nbt);
-		nbt.setInteger("RadiationLevel", this.radiationLevel);
-	}
+    @Override
+    public void writeToNBT(NBTTagCompound nbt)
+    {
+        super.writeToNBT(nbt);
+        nbt.setInteger("RadiationLevel", this.radiationLevel);
+    }
 }

@@ -22,47 +22,47 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class SchematicTier5Rocket implements ISchematicPage
 {
-	@Override
-	public int getPageID()
-	{
-		return ConfigManagerMP.idSchematicTier5Rocket;
-	}
+    @Override
+    public int getPageID()
+    {
+        return ConfigManagerMP.idTier5RocketSchematic;
+    }
 
-	@Override
-	public int getGuiID()
-	{
-		return ConfigManagerMP.idGuiSchematicTier5Rocket;
-	}
+    @Override
+    public int getGuiID()
+    {
+        return ConfigManagerMP.idTier5RocketSchematicGui;
+    }
 
-	@Override
-	public ItemStack getRequiredItem()
-	{
-		return new ItemStack(PolongniusItems.tier_5_rocket_schematic, 1, 0);
-	}
+    @Override
+    public ItemStack getRequiredItem()
+    {
+        return new ItemStack(PolongniusItems.tier_5_rocket_schematic, 1, 0);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public GuiScreen getResultScreen(EntityPlayer player, BlockPos pos)
-	{
-		return new GuiSchematicTier5Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiScreen getResultScreen(EntityPlayer player, BlockPos pos)
+    {
+        return new GuiSchematicTier5Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
+    }
 
-	@Override
-	public Container getResultContainer(EntityPlayer player, BlockPos pos)
-	{
-		return new ContainerSchematicTier5Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
-	}
+    @Override
+    public Container getResultContainer(EntityPlayer player, BlockPos pos)
+    {
+        return new ContainerSchematicTier5Rocket(player.inventory, pos.getX(), pos.getY(), pos.getZ());
+    }
 
-	@Override
-	public int compareTo(ISchematicPage page)
-	{
-		if (this.getPageID() > page.getPageID())
-		{
-			return 1;
-		}
-		else
-		{
-			return -1;
-		}
-	}
+    @Override
+    public int compareTo(ISchematicPage page)
+    {
+        if (this.getPageID() > page.getPageID())
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

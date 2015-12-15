@@ -19,24 +19,24 @@ import stevekung.mods.moreplanets.common.entities.IImmuneMapleIvy;
 
 public class BlockMapleIvy extends BlockVineMP
 {
-	public BlockMapleIvy(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockMapleIvy(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (entity instanceof EntityLivingBase)
-		{
-			if (!(entity instanceof IImmuneMapleIvy) || !((IImmuneMapleIvy)entity).canLivingInIvy())
-			{
-				if (world.rand.nextInt(2000) == 0)
-				{
-					((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.poison.id, 120));
-				}
-			}
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (entity instanceof EntityLivingBase)
+        {
+            if (!(entity instanceof IImmuneMapleIvy) || !((IImmuneMapleIvy)entity).canLivingInIvy())
+            {
+                if (world.rand.nextInt(2000) == 0)
+                {
+                    ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.poison.id, 120));
+                }
+            }
+        }
+    }
 }

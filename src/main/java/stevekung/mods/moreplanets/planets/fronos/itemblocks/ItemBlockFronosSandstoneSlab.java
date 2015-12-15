@@ -14,14 +14,14 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosSandstoneSlab
 
 public class ItemBlockFronosSandstoneSlab extends ItemBlockSlabMP
 {
-	public ItemBlockFronosSandstoneSlab(Block block, BlockFronosSandstoneSlab singleSlab, BlockDoubleFronosSandstoneSlab doubleSlab)
-	{
-		super(block, singleSlab, doubleSlab);
-	}
+    public ItemBlockFronosSandstoneSlab(Block block, BlockFronosSandstoneSlab singleSlab, BlockDoubleFronosSandstoneSlab doubleSlab)
+    {
+        super(block, singleSlab, doubleSlab);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "fronos_sandstone", "white_sandstone", "cheese_sandstone" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "fronos_sandstone", "white_sandstone", "cheese_sandstone" };
+    }
 }

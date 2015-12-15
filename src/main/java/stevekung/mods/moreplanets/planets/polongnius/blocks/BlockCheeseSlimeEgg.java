@@ -19,76 +19,76 @@ import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
 
 public class BlockCheeseSlimeEgg extends BlockEggMP
 {
-	public BlockCheeseSlimeEgg(String name)
-	{
-		super();
-		this.setStepSound(SLIME_SOUND);
-		this.setHardness(0.0F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockCheeseSlimeEgg(String name)
+    {
+        super();
+        this.setStepSound(SLIME_SOUND);
+        this.setHardness(0.0F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
-	{
-		if (!world.isRemote)
-		{
-			EntityCheeseSlime slime = new EntityCheeseSlime(world);
-			slime.setPosition(pos.getX() + 0.5D, pos.getY() + 1.0D, pos.getZ() + 0.5D);
-			slime.setSlimeSize(world.rand.nextInt(4));
-			world.spawnEntityInWorld(slime);
-		}
-		world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "mob.slime.big", 5.0F, 1.0F);
-		world.setBlockToAir(pos);
-		this.onBlockDestroyedByExplosion(world, pos, explosion);
-	}
+    @Override
+    public void onBlockExploded(World world, BlockPos pos, Explosion explosion)
+    {
+        if (!world.isRemote)
+        {
+            EntityCheeseSlime slime = new EntityCheeseSlime(world);
+            slime.setPosition(pos.getX() + 0.5D, pos.getY() + 1.0D, pos.getZ() + 0.5D);
+            slime.setSlimeSize(world.rand.nextInt(4));
+            world.spawnEntityInWorld(slime);
+        }
+        world.playSoundEffect(pos.getX(), pos.getY(), pos.getZ(), "mob.slime.big", 5.0F, 1.0F);
+        world.setBlockToAir(pos);
+        this.onBlockDestroyedByExplosion(world, pos, explosion);
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 
-	@Override
-	public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
-	{
-		if (entity.isSneaking())
-		{
-			super.onFallenUpon(world, pos, entity, fallDistance);
-		}
-		else
-		{
-			entity.fall(fallDistance, 0.0F);
-		}
-	}
+    @Override
+    public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
+    {
+        if (entity.isSneaking())
+        {
+            super.onFallenUpon(world, pos, entity, fallDistance);
+        }
+        else
+        {
+            entity.fall(fallDistance, 0.0F);
+        }
+    }
 
-	@Override
-	public void onLanded(World world, Entity entity)
-	{
-		if (entity.isSneaking())
-		{
-			super.onLanded(world, entity);
-		}
-		else if (entity.motionY < 0.0D)
-		{
-			entity.motionY = -entity.motionY;
-		}
-	}
+    @Override
+    public void onLanded(World world, Entity entity)
+    {
+        if (entity.isSneaking())
+        {
+            super.onLanded(world, entity);
+        }
+        else if (entity.motionY < 0.0D)
+        {
+            entity.motionY = -entity.motionY;
+        }
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
-		{
-			double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
-			entity.motionX *= d;
-			entity.motionZ *= d;
-		}
-		super.onEntityCollidedWithBlock(world, pos, entity);
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+    {
+        if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
+        {
+            double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
+            entity.motionX *= d;
+            entity.motionZ *= d;
+        }
+        super.onEntityCollidedWithBlock(world, pos, entity);
+    }
 
-	@Override
-	public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
+    {
+        return true;
+    }
 }

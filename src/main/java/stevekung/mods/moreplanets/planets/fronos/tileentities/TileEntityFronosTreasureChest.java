@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class TileEntityFronosTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityFronosTreasureChest()
-	{
-		super(7, "fronos", FronosBlocks.fronos_treasure_chest);
-	}
+    public TileEntityFronosTreasureChest()
+    {
+        super(7, "fronos", FronosBlocks.fronos_treasure_chest);
+    }
 }

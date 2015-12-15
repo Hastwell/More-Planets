@@ -15,35 +15,35 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class ItemArmorIridium extends ItemArmorMP
 {
-	public ItemArmorIridium(String name, ArmorMaterial material, int render, int type)
-	{
-		super(material, render, type);
-		this.setUnlocalizedName(name);
-	}
+    public ItemArmorIridium(String name, ArmorMaterial material, int render, int type)
+    {
+        super(material, render, type);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if (stack.getItem() == FronosArmorItems.iridium_helmet || stack.getItem() == FronosArmorItems.iridium_chestplate || stack.getItem() == FronosArmorItems.iridium_boots)
-		{
-			return "moreplanets:textures/model/armor/iridium_1.png";
-		}
-		if (stack.getItem() == FronosArmorItems.iridium_leggings)
-		{
-			return "moreplanets:textures/model/armor/iridium_2.png";
-		}
-		return null;
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        if (stack.getItem() == FronosArmorItems.iridium_helmet || stack.getItem() == FronosArmorItems.iridium_chestplate || stack.getItem() == FronosArmorItems.iridium_boots)
+        {
+            return "moreplanets:textures/model/armor/iridium_1.png";
+        }
+        if (stack.getItem() == FronosArmorItems.iridium_leggings)
+        {
+            return "moreplanets:textures/model/armor/iridium_2.png";
+        }
+        return null;
+    }
 
-	@Override
-	protected Item getRepairItems()
-	{
-		return FronosItems.fronos_item;
-	}
+    @Override
+    protected Item getRepairItems()
+    {
+        return FronosItems.fronos_item;
+    }
 
-	@Override
-	protected int getRepairItemsMetadata()
-	{
-		return 5;
-	}
+    @Override
+    protected int getRepairItemsMetadata()
+    {
+        return 5;
+    }
 }

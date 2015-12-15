@@ -14,35 +14,35 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockStairsMP extends BlockStairs
 {
-	public BlockStairsMP(IBlockState material, String name, String sound, String type, float hardness)
-	{
-		super(material);
-		this.setUnlocalizedName(name);
-		this.setHardness(hardness);
+    public BlockStairsMP(IBlockState material, String name, String sound, String type, float hardness)
+    {
+        super(material);
+        this.setUnlocalizedName(name);
+        this.setHardness(hardness);
 
-		if (sound == "wood")
-		{
-			this.setStepSound(soundTypeWood);
-		}
-		if (sound == "glass")
-		{
-			this.setStepSound(soundTypeGlass);
-		}
-		if (type == "sirius")
-		{
-			this.setLightLevel(1.0F);
-		}
-		this.useNeighborBrightness = true;
-	}
+        if (sound == "wood")
+        {
+            this.setStepSound(soundTypeWood);
+        }
+        if (sound == "glass")
+        {
+            this.setStepSound(soundTypeGlass);
+        }
+        if (type == "sirius")
+        {
+            this.setLightLevel(1.0F);
+        }
+        this.useNeighborBrightness = true;
+    }
 
-	public BlockStairsMP(IBlockState material, String name, float hardness)
-	{
-		this(material, name, null, null, hardness);
-	}
+    public BlockStairsMP(IBlockState material, String name, float hardness)
+    {
+        this(material, name, null, null, hardness);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

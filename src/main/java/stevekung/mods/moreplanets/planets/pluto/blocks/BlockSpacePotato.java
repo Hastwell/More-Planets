@@ -19,77 +19,77 @@ import stevekung.mods.moreplanets.planets.pluto.items.PlutoItems;
 
 public class BlockSpacePotato extends BlockCrops
 {
-	public BlockSpacePotato(String name)
-	{
-		super();
-		this.setStepSound(soundTypeGrass);
-		this.setUnlocalizedName(name);
-	}
+    public BlockSpacePotato(String name)
+    {
+        super();
+        this.setStepSound(soundTypeGrass);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
-	{
-		if (world.provider instanceof WorldProviderPluto)
-		{
-			return ((Integer)state.getValue(AGE)).intValue() < 7;
-		}
-		return false;
-	}
+    @Override
+    public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
+    {
+        if (world.provider instanceof WorldProviderPluto)
+        {
+            return ((Integer)state.getValue(AGE)).intValue() < 7;
+        }
+        return false;
+    }
 
-	@Override
-	public boolean canUseBonemeal(World world, Random rand, BlockPos pos, IBlockState state)
-	{
-		return world.provider instanceof WorldProviderPluto;
-	}
+    @Override
+    public boolean canUseBonemeal(World world, Random rand, BlockPos pos, IBlockState state)
+    {
+        return world.provider instanceof WorldProviderPluto;
+    }
 
-	@Override
-	public void grow(World world, Random rand, BlockPos pos, IBlockState state)
-	{
-		if (world.provider instanceof WorldProviderPluto)
-		{
-			this.grow(world, pos, state);
-		}
-	}
+    @Override
+    public void grow(World world, Random rand, BlockPos pos, IBlockState state)
+    {
+        if (world.provider instanceof WorldProviderPluto)
+        {
+            this.grow(world, pos, state);
+        }
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		super.updateTick(world, pos, state, rand);
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        super.updateTick(world, pos, state, rand);
 
-		if (world.provider instanceof WorldProviderPluto)
-		{
-			if (world.getLightFromNeighbors(pos.up()) >= 9)
-			{
-				int i = ((Integer)state.getValue(AGE)).intValue();
+        if (world.provider instanceof WorldProviderPluto)
+        {
+            if (world.getLightFromNeighbors(pos.up()) >= 9)
+            {
+                int i = ((Integer)state.getValue(AGE)).intValue();
 
-				if (i < 7)
-				{
-					float f = getGrowthChance(this, world, pos);
+                if (i < 7)
+                {
+                    float f = getGrowthChance(this, world, pos);
 
-					if (rand.nextInt((int)(25.0F / f) + 1) == 0)
-					{
-						world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
-					}
-				}
-			}
-		}
-	}
+                    if (rand.nextInt((int)(25.0F / f) + 1) == 0)
+                    {
+                        world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return 0;
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return 0;
+    }
 
-	@Override
-	protected Item getSeed()
-	{
-		return PlutoItems.space_potato;
-	}
+    @Override
+    protected Item getSeed()
+    {
+        return PlutoItems.space_potato;
+    }
 
-	@Override
-	protected Item getCrop()
-	{
-		return PlutoItems.space_potato;
-	}
+    @Override
+    protected Item getCrop()
+    {
+        return PlutoItems.space_potato;
+    }
 }

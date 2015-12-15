@@ -18,16 +18,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderMilkCow extends RenderCow
 {
-	private ResourceLocation textures = new ResourceLocation("moreplanets:textures/entity/milk_cow.png");
+    private ResourceLocation textures = new ResourceLocation("moreplanets:textures/entity/milk_cow.png");
 
-	public RenderMilkCow(RenderManager render)
-	{
-		super(render, new ModelCow(), 0.7F);
-	}
+    public RenderMilkCow(RenderManager render)
+    {
+        super(render, new ModelCow(), 0.7F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.textures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.textures;
+    }
 }

@@ -35,139 +35,129 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
 public class BlockIoMagmaRock extends BlockBaseMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockIoMagmaRock(String name)
-	{
-		super(Material.rock);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.io_magma_rock));
-		this.setUnlocalizedName(name);
-		this.setHardness(3.0F);
-	}
+    public BlockIoMagmaRock(String name)
+    {
+        super(Material.rock);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.io_magma_rock));
+        this.setUnlocalizedName(name);
+        this.setHardness(3.0F);
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		if (state == state.withProperty(VARIANT, BlockType.io_magma_rock))
-		{
-			float f = 0.1F;
-			return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
-		}
-		return super.getCollisionBoundingBox(world, pos, state);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        if (state == state.withProperty(VARIANT, BlockType.io_magma_rock))
+        {
+            float f = 0.1F;
+            return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - f, pos.getZ() + 1);
+        }
+        return super.getCollisionBoundingBox(world, pos, state);
+    }
 
-	@Override
-	public boolean isFireSource(World world, BlockPos pos, EnumFacing side)
-	{
-		IBlockState state = world.getBlockState(pos);
+    @Override
+    public boolean isFireSource(World world, BlockPos pos, EnumFacing side)
+    {
+        return this.getMetaFromState(world.getBlockState(pos)) == 0 && side == EnumFacing.UP;
+    }
 
-		if (state == state.withProperty(VARIANT, BlockType.io_magma_rock))
-		{
-			if (side == EnumFacing.UP)
-			{
-				return true;
-			}
-		}
-		return super.isFireSource(world, pos, side);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 2; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        if (entity instanceof EntityPlayer && ((EntityPlayer)entity).capabilities.isCreativeMode)
+        {
+            return;
+        }
+        if (state == state.withProperty(VARIANT, BlockType.io_magma_rock))
+        {
+            entity.setFire(10);
+            entity.motionX *= 0.5D;
+            entity.motionZ *= 0.5D;
+        }
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		if (entity instanceof EntityPlayer && ((EntityPlayer)entity).capabilities.isCreativeMode)
-		{
-			return;
-		}
-		if (state == state.withProperty(VARIANT, BlockType.io_magma_rock))
-		{
-			entity.setFire(10);
-			entity.motionX *= 0.5D;
-			entity.motionZ *= 0.5D;
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (rand.nextInt(1) == 0)
+        {
+            world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (rand.nextInt(1) == 0)
-		{
-			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
-		}
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        ItemStack itemStack = player.getCurrentEquippedItem();
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		ItemStack itemStack = player.getCurrentEquippedItem();
-		player.addExhaustion(0.025F);
+        if (state == state.withProperty(VARIANT, BlockType.io_magma_rock))
+        {
+            if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
+            {
+                if (world.rand.nextInt(20) == 0)
+                {
+                    world.setBlockState(pos, Blocks.flowing_lava.getDefaultState());
+                }
+            }
+            if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
+            {
+                this.dropBlockAsItem(world, pos, state, 0);
+            }
+        }
+        super.harvestBlock(world, player, pos, state, tile);
+    }
 
-		if (state == state.withProperty(VARIANT, BlockType.io_magma_rock))
-		{
-			if (itemStack == null || !(itemStack.getItem() instanceof ItemPickaxe))
-			{
-				if (world.rand.nextInt(20) == 0)
-				{
-					world.setBlockState(pos, Blocks.flowing_lava.getDefaultState());
-				}
-			}
-			if (itemStack != null && itemStack.getItem() instanceof ItemPickaxe)
-			{
-				this.dropBlockAsItem(world, pos, state, 0);
-			}
-		}
-		super.harvestBlock(world, player, pos, state, tile);
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    public static enum BlockType implements IStringSerializable
+    {
+        io_magma_rock,
+        io_sulfur_rock;
 
-	public static enum BlockType implements IStringSerializable
-	{
-		io_magma_rock,
-		io_sulfur_rock;
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
-
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

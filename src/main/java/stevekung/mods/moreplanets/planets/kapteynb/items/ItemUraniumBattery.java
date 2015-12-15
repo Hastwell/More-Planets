@@ -19,34 +19,34 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class ItemUraniumBattery extends ItemElectricBase implements IItemElectric
 {
-	public ItemUraniumBattery(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemUraniumBattery(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack par1ItemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack par1ItemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public float getMaxElectricityStored(ItemStack itemStack)
-	{
-		return 500000;
-	}
+    @Override
+    public float getMaxElectricityStored(ItemStack itemStack)
+    {
+        return 500000;
+    }
 
-	@Override
-	public int getTierGC(ItemStack itemStack)
-	{
-		return 8;
-	}
+    @Override
+    public int getTierGC(ItemStack itemStack)
+    {
+        return 8;
+    }
 }

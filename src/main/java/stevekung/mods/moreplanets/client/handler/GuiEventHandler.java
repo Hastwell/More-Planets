@@ -29,62 +29,62 @@ import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityUltr
 
 public class GuiEventHandler implements IGuiHandler
 {
-	@Override
-	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
-	{
-		TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
-		EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
+    @Override
+    public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+    {
+        TileEntity tile = world.getTileEntity(new BlockPos(x, y, z));
+        EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
 
-		if (playerBase == null)
-		{
-			player.addChatMessage(new ChatComponentText("More Planets player instance null server-side. This is a bug."));
-			return null;
-		}
-		if (tile != null)
-		{
-			if (tile instanceof TileEntityUltraVioletSolarPanel)
-			{
-				return new ContainerUltraVioletSolarPanel(player.inventory, (TileEntityUltraVioletSolarPanel) tile);
-			}
-			else if (tile instanceof TileEntityPowerCrystalGenerator)
-			{
-				return new ContainerPowerCrystalGenerator(player.inventory, (TileEntityPowerCrystalGenerator) tile);
-			}
-			else if (tile instanceof TileEntityCandyExtractor)
-			{
-				return new ContainerCandyExtractor(player.inventory, (TileEntityCandyExtractor)tile);
-			}
-			/*else if (tile instanceof TileEntityMineralWaterGenerator)
+        if (playerBase == null)
+        {
+            player.addChatMessage(new ChatComponentText("More Planets player instance null server-side. This is a bug."));
+            return null;
+        }
+        if (tile != null)
+        {
+            if (tile instanceof TileEntityUltraVioletSolarPanel)
+            {
+                return new ContainerUltraVioletSolarPanel(player.inventory, (TileEntityUltraVioletSolarPanel) tile);
+            }
+            else if (tile instanceof TileEntityPowerCrystalGenerator)
+            {
+                return new ContainerPowerCrystalGenerator(player.inventory, (TileEntityPowerCrystalGenerator) tile);
+            }
+            else if (tile instanceof TileEntityCandyExtractor)
+            {
+                return new ContainerCandyExtractor(player.inventory, (TileEntityCandyExtractor)tile);
+            }
+            /*else if (tile instanceof TileEntityMineralWaterGenerator)
 			{
 				return new ContainerMineralWaterGenerator(player.inventory, (TileEntityMineralWaterGenerator) tile);
 			}*/
-		}
-		return null;
-	}
+        }
+        return null;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
-	{
-		BlockPos pos = new BlockPos(x, y, z);
-		TileEntity tile = world.getTileEntity(pos);
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
+    {
+        BlockPos pos = new BlockPos(x, y, z);
+        TileEntity tile = world.getTileEntity(pos);
 
-		if (tile instanceof TileEntityUltraVioletSolarPanel)
-		{
-			return new GuiUltraVioletSolarPanel(player.inventory, (TileEntityUltraVioletSolarPanel) world.getTileEntity(pos));
-		}
-		else if (tile instanceof TileEntityPowerCrystalGenerator)
-		{
-			return new GuiPowerCrystalGenerator(player.inventory, (TileEntityPowerCrystalGenerator) world.getTileEntity(pos));
-		}
-		else if (tile instanceof TileEntityCandyExtractor)
-		{
-			return new GuiCandyExtractor(player.inventory, (TileEntityCandyExtractor)tile);
-		}
-		/*else if (tile instanceof TileEntityMineralWaterGenerator)
+        if (tile instanceof TileEntityUltraVioletSolarPanel)
+        {
+            return new GuiUltraVioletSolarPanel(player.inventory, (TileEntityUltraVioletSolarPanel) world.getTileEntity(pos));
+        }
+        else if (tile instanceof TileEntityPowerCrystalGenerator)
+        {
+            return new GuiPowerCrystalGenerator(player.inventory, (TileEntityPowerCrystalGenerator) world.getTileEntity(pos));
+        }
+        else if (tile instanceof TileEntityCandyExtractor)
+        {
+            return new GuiCandyExtractor(player.inventory, (TileEntityCandyExtractor)tile);
+        }
+        /*else if (tile instanceof TileEntityMineralWaterGenerator)
 		{
 			return new GuiMineralWaterGenerator(player.inventory, (TileEntityMineralWaterGenerator) world.getTileEntity(position.intX(), position.intY(), position.intZ()));
 		}*/
-		return null;
-	}
+        return null;
+    }
 }

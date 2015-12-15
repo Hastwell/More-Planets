@@ -29,77 +29,77 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockInfectedGrass extends BlockGrassMP
 {
-	public BlockInfectedGrass(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockInfectedGrass(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (!world.isRemote)
-		{
-			if (world.getLightFromNeighbors(pos.up()) < 4 && world.getBlockState(pos.up()).getBlock().getLightOpacity(world, pos.up()) > 2)
-			{
-				world.setBlockState(pos, NibiruBlocks.infected_dirt.getDefaultState());
-			}
-			else
-			{
-				if (world.getLightFromNeighbors(pos.up()) >= 9)
-				{
-					for (int i = 0; i < 4; ++i)
-					{
-						BlockPos blockpos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
-						Block block = world.getBlockState(blockpos1.up()).getBlock();
-						IBlockState iblockstate1 = world.getBlockState(blockpos1);
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (!world.isRemote)
+        {
+            if (world.getLightFromNeighbors(pos.up()) < 4 && world.getBlockState(pos.up()).getBlock().getLightOpacity(world, pos.up()) > 2)
+            {
+                world.setBlockState(pos, NibiruBlocks.infected_dirt.getDefaultState());
+            }
+            else
+            {
+                if (world.getLightFromNeighbors(pos.up()) >= 9)
+                {
+                    for (int i = 0; i < 4; ++i)
+                    {
+                        BlockPos blockpos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
+                        Block block = world.getBlockState(blockpos1.up()).getBlock();
+                        IBlockState iblockstate1 = world.getBlockState(blockpos1);
 
-						if (iblockstate1 == NibiruBlocks.infected_dirt.getDefaultState() && world.getLightFromNeighbors(blockpos1.up()) >= 4 && block.getLightOpacity(world, blockpos1.up()) <= 2)
-						{
-							world.setBlockState(blockpos1, NibiruBlocks.infected_grass.getDefaultState());
-						}
-					}
-				}
-			}
-		}
-	}
+                        if (iblockstate1 == NibiruBlocks.infected_dirt.getDefaultState() && world.getLightFromNeighbors(blockpos1.up()) >= 4 && block.getLightOpacity(world, blockpos1.up()) <= 2)
+                        {
+                            world.setBlockState(blockpos1, NibiruBlocks.infected_grass.getDefaultState());
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
-	{
-		Block block = plant.getPlant(world, pos).getBlock();
-		return block == NibiruBlocks.nibiru_sapling || plant.getPlantType(world, pos) == EnumPlantType.Plains;
-	}
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
+    {
+        Block block = plant.getPlant(world, pos).getBlock();
+        return block == NibiruBlocks.nibiru_sapling || plant.getPlantType(world, pos) == EnumPlantType.Plains;
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return Item.getItemFromBlock(NibiruBlocks.infected_dirt);
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(NibiruBlocks.infected_dirt);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (rand.nextInt(1) == 0)
-		{
-			if (!World.doesBlockHaveSolidTopSurface(world, pos.up()))
-			{
-				MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.INFECTED_SPORE, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
-			}
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (rand.nextInt(1) == 0)
+        {
+            if (!World.doesBlockHaveSolidTopSurface(world, pos.up()))
+            {
+                MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.INFECTED_SPORE, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+            }
+        }
+    }
 
-	@Override
-	public Block getFarmlandBlock()
-	{
-		return NibiruBlocks.infected_farmland;
-	}
+    @Override
+    public Block getFarmlandBlock()
+    {
+        return NibiruBlocks.infected_farmland;
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		super.harvestBlock(world, player, pos, state, tile);
-		MorePlanetsEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        super.harvestBlock(world, player, pos, state, tile);
+        MorePlanetsEvents.addInfectedGas(player);
+    }
 }

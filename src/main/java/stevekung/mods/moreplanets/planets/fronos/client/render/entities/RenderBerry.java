@@ -18,16 +18,16 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelBerry;
 @SideOnly(Side.CLIENT)
 public class RenderBerry extends RenderLiving
 {
-	private ResourceLocation berryTextures = new ResourceLocation("moreplanets:textures/entity/berry.png");
+    private ResourceLocation berryTextures = new ResourceLocation("moreplanets:textures/entity/berry.png");
 
-	public RenderBerry(RenderManager render)
-	{
-		super(render, new ModelBerry(), 0.5F);
-	}
+    public RenderBerry(RenderManager render)
+    {
+        super(render, new ModelBerry(), 0.5F);
+    }
 
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity)
-	{
-		return this.berryTextures;
-	}
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        return this.berryTextures;
+    }
 }

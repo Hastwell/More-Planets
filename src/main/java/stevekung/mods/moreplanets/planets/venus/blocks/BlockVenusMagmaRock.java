@@ -24,43 +24,43 @@ import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 
 public class BlockVenusMagmaRock extends BlockBaseMP
 {
-	public BlockVenusMagmaRock(String name)
-	{
-		super(Material.rock);
-		this.setUnlocalizedName(name);
-		this.setHardness(2.5F);
-		this.setLightLevel(0.5F);
-	}
+    public BlockVenusMagmaRock(String name)
+    {
+        super(Material.rock);
+        this.setUnlocalizedName(name);
+        this.setHardness(2.5F);
+        this.setLightLevel(0.5F);
+    }
 
-	@Override
-	public boolean isFireSource(World world, BlockPos pos, EnumFacing side)
-	{
-		if (side == EnumFacing.UP)
-		{
-			return true;
-		}
-		return super.isFireSource(world, pos, side);
-	}
+    @Override
+    public boolean isFireSource(World world, BlockPos pos, EnumFacing side)
+    {
+        if (side == EnumFacing.UP)
+        {
+            return true;
+        }
+        return super.isFireSource(world, pos, side);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		if (rand.nextInt(1) == 0)
-		{
-			world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (rand.nextInt(1) == 0)
+        {
+            world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX() + rand.nextFloat(), pos.getY() + 1.1F, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		player.addExhaustion(0.025F);
-		this.dropBlockAsItem(world, pos, state, 0);
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        player.addExhaustion(0.025F);
+        this.dropBlockAsItem(world, pos, state, 0);
 
-		if (world.rand.nextInt(20) == 0)
-		{
-			world.setBlockState(pos, Blocks.flowing_lava.getDefaultState());
-		}
-	}
+        if (world.rand.nextInt(20) == 0)
+        {
+            world.setBlockState(pos, Blocks.flowing_lava.getDefaultState());
+        }
+    }
 }

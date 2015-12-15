@@ -9,20 +9,20 @@ package stevekung.mods.moreplanets.common.util;
 
 public enum EnumChestTexture
 {
-	DIONA,
-	POLONGNIUS,
-	NIBIRU,
-	KOENTUS,
-	FRONOS,
-	KAPTEYN_B,
-	SIRIUS_B,
-	MERCURY,
-	VENUS,
-	PLUTO;
+    DIONA,
+    POLONGNIUS,
+    NIBIRU,
+    KOENTUS,
+    FRONOS,
+    KAPTEYN_B,
+    SIRIUS_B,
+    MERCURY,
+    VENUS,
+    PLUTO;
 
-	@Override
-	public String toString()
-	{
-		return this.name().toLowerCase();
-	}
+    @Override
+    public String toString()
+    {
+        return this.name().toLowerCase();
+    }
 }

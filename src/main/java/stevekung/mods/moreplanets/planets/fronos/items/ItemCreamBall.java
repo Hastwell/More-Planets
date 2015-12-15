@@ -16,31 +16,31 @@ import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityCrea
 
 public class ItemCreamBall extends ItemBaseMP
 {
-	public ItemCreamBall(String name)
-	{
-		super();
-		this.setMaxStackSize(16);
-		this.setUnlocalizedName(name);
-	}
+    public ItemCreamBall(String name)
+    {
+        super();
+        this.setMaxStackSize(16);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
-	{
-		if (!player.capabilities.isCreativeMode)
-		{
-			--itemStack.stackSize;
-		}
-		if (!world.isRemote)
-		{
-			world.spawnEntityInWorld(new EntityCreamBall(world, player, itemStack.getItemDamage()));
-		}
-		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (Item.itemRand.nextFloat() * 0.4F + 0.8F));
-		return itemStack;
-	}
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+    {
+        if (!player.capabilities.isCreativeMode)
+        {
+            --itemStack.stackSize;
+        }
+        if (!world.isRemote)
+        {
+            world.spawnEntityInWorld(new EntityCreamBall(world, player, itemStack.getItemDamage()));
+        }
+        world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (Item.itemRand.nextFloat() * 0.4F + 0.8F));
+        return itemStack;
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "vanilla_cream_ball", "chocolate_cream_ball", "strawberry_cream_ball", "orange_cream_ball", "tea_cream_ball", "lemon_cream_ball" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "vanilla_cream_ball", "chocolate_cream_ball", "strawberry_cream_ball", "orange_cream_ball", "tea_cream_ball", "lemon_cream_ball" };
+    }
 }

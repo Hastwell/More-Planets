@@ -21,72 +21,72 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 
 public class ItemSpacePotato extends ItemFoodMP implements IPlantable
 {
-	private int[] foodHunger = new int[] {
-			1,
-			6
-	};
-	private float[] foodSaturation = new float[] {
-			0.3F,
-			0.6F
-	};
+    private int[] foodHunger = new int[] {
+            1,
+            6
+    };
+    private float[] foodSaturation = new float[] {
+            0.3F,
+            0.6F
+    };
 
-	public ItemSpacePotato(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setHasSubtypes(true);
-	}
+    public ItemSpacePotato(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public IBlockState getPlant(IBlockAccess world, BlockPos pos)
-	{
-		return PlutoBlocks.space_potato_block.getDefaultState();
-	}
+    @Override
+    public IBlockState getPlant(IBlockAccess world, BlockPos pos)
+    {
+        return PlutoBlocks.space_potato_block.getDefaultState();
+    }
 
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
-	{
-		return EnumPlantType.Crop;
-	}
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos)
+    {
+        return EnumPlantType.Crop;
+    }
 
-	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
-		if (side != EnumFacing.UP)
-		{
-			return false;
-		}
-		else if (!player.canPlayerEdit(pos.offset(side), side, itemStack))
-		{
-			return false;
-		}
-		else if (world.getBlockState(pos).getBlock().canSustainPlant(world, pos, EnumFacing.UP, this) && world.isAirBlock(pos.up()))
-		{
-			world.setBlockState(pos.up(), PlutoBlocks.space_potato_block.getDefaultState());
-			--itemStack.stackSize;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+    @Override
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if (side != EnumFacing.UP)
+        {
+            return false;
+        }
+        else if (!player.canPlayerEdit(pos.offset(side), side, itemStack))
+        {
+            return false;
+        }
+        else if (world.getBlockState(pos).getBlock().canSustainPlant(world, pos, EnumFacing.UP, this) && world.isAirBlock(pos.up()))
+        {
+            world.setBlockState(pos.up(), PlutoBlocks.space_potato_block.getDefaultState());
+            --itemStack.stackSize;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-	@Override
-	public int getHealAmount(ItemStack itemStack)
-	{
-		return this.foodHunger[itemStack.getItemDamage()];
-	}
+    @Override
+    public int getHealAmount(ItemStack itemStack)
+    {
+        return this.foodHunger[itemStack.getItemDamage()];
+    }
 
-	@Override
-	public float getSaturationModifier(ItemStack itemStack)
-	{
-		return this.foodSaturation[itemStack.getItemDamage()];
-	}
+    @Override
+    public float getSaturationModifier(ItemStack itemStack)
+    {
+        return this.foodSaturation[itemStack.getItemDamage()];
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "space_potato", "baked_space_potato" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "space_potato", "baked_space_potato" };
+    }
 }

@@ -29,127 +29,126 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockJelly extends BlockBreakableMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockJelly(String name)
-	{
-		super(Material.cloth);
-		this.setStepSound(MorePlanetsCore.soundTypeSmallSlime);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_block));
-		this.setUnlocalizedName(name);
-	}
+    public BlockJelly(String name)
+    {
+        super(Material.cloth);
+        this.setStepSound(MorePlanetsCore.soundTypeSmallSlime);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.grape_jelly_block));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isFullCube()
-	{
-		return false;
-	}
+    @Override
+    public boolean isFullCube()
+    {
+        return false;
+    }
 
-	@Override
-	public EnumWorldBlockLayer getBlockLayer()
-	{
-		return EnumWorldBlockLayer.TRANSLUCENT;
-	}
+    @Override
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT;
+    }
 
-	@Override
-	public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
-	{
-		if (entity.isSneaking())
-		{
-			super.onFallenUpon(world, pos, entity, fallDistance);
-		}
-		else
-		{
-			entity.fall(fallDistance, 0.0F);
-		}
-	}
+    @Override
+    public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance)
+    {
+        if (entity.isSneaking())
+        {
+            super.onFallenUpon(world, pos, entity, fallDistance);
+        }
+        else
+        {
+            entity.fall(fallDistance, 0.0F);
+        }
+    }
 
-	@Override
-	public void onLanded(World world, Entity entity)
-	{
-		if (entity.isSneaking())
-		{
-			super.onLanded(world, entity);
-		}
-		else if (entity.motionY < 0.0D)
-		{
-			entity.motionY = -entity.motionY;
-		}
-	}
+    @Override
+    public void onLanded(World world, Entity entity)
+    {
+        if (entity.isSneaking())
+        {
+            super.onLanded(world, entity);
+        }
+        else if (entity.motionY < 0.0D)
+        {
+            entity.motionY = -entity.motionY;
+        }
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
-	{
-		if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
-		{
-			double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
-			entity.motionX *= d;
-			entity.motionZ *= d;
-		}
-		super.onEntityCollidedWithBlock(world, pos, entity);
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, Entity entity)
+    {
+        if (Math.abs(entity.motionY) < 0.1D && !entity.isSneaking())
+        {
+            double d = 0.4D + Math.abs(entity.motionY) * 0.2D;
+            entity.motionX *= d;
+            entity.motionZ *= d;
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 8; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 8; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		grape_jelly_block,
-		raspberry_jelly_block,
-		strawberry_jelly_block,
-		berry_jelly_block,
-		lime_jelly_block,
-		orange_jelly_block,
-		green_jelly_block,
-		lemon_jelly_block;
+    public static enum BlockType implements IStringSerializable
+    {
+        grape_jelly_block,
+        raspberry_jelly_block,
+        strawberry_jelly_block,
+        berry_jelly_block,
+        lime_jelly_block,
+        orange_jelly_block,
+        green_jelly_block,
+        lemon_jelly_block;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }

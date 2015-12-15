@@ -20,60 +20,60 @@ import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
 @SideOnly(Side.CLIENT)
 public class LayerEuropaSquidEyes implements LayerRenderer
 {
-	private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/europa_squid_eyes.png");
-	private ResourceLocation texture1 = new ResourceLocation("moreplanets:textures/entity/europa_squid_chemical_eyes.png");
-	private RenderEuropaSquid render;
+    private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/europa_squid_eyes.png");
+    private ResourceLocation texture1 = new ResourceLocation("moreplanets:textures/entity/europa_squid_chemical_eyes.png");
+    private RenderEuropaSquid render;
 
-	public LayerEuropaSquidEyes(RenderEuropaSquid render)
-	{
-		this.render = render;
-	}
+    public LayerEuropaSquidEyes(RenderEuropaSquid render)
+    {
+        this.render = render;
+    }
 
-	public void func_177201_a(EntityEuropaSquid entity, float p_177201_2_, float p_177201_3_, float p_177201_4_, float p_177201_5_, float p_177201_6_, float p_177201_7_, float p_177201_8_)
-	{
-		ResourceLocation res = null;
+    public void func_177201_a(EntityEuropaSquid entity, float p_177201_2_, float p_177201_3_, float p_177201_4_, float p_177201_5_, float p_177201_6_, float p_177201_7_, float p_177201_8_)
+    {
+        ResourceLocation res = null;
 
-		if (entity.getSquidType() == 0)
-		{
-			res = this.texture;
-		}
-		else if (entity.getSquidType() == 1)
-		{
-			res = this.texture1;
-		}
-		this.render.bindTexture(res);
-		GlStateManager.enableBlend();
-		GlStateManager.disableAlpha();
-		GlStateManager.blendFunc(1, 1);
-		GlStateManager.disableLighting();
+        if (entity.getSquidType() == 0)
+        {
+            res = this.texture;
+        }
+        else if (entity.getSquidType() == 1)
+        {
+            res = this.texture1;
+        }
+        this.render.bindTexture(res);
+        GlStateManager.enableBlend();
+        GlStateManager.disableAlpha();
+        GlStateManager.blendFunc(1, 1);
+        GlStateManager.disableLighting();
 
-		if (entity.isInvisible())
-		{
-			GlStateManager.depthMask(false);
-		}
-		else
-		{
-			GlStateManager.depthMask(true);
-		}
+        if (entity.isInvisible())
+        {
+            GlStateManager.depthMask(false);
+        }
+        else
+        {
+            GlStateManager.depthMask(true);
+        }
 
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
-		GlStateManager.enableLighting();
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.render.getMainModel().render(entity, p_177201_2_, p_177201_3_, p_177201_5_, p_177201_6_, p_177201_7_, p_177201_8_);
-		this.render.func_177105_a(entity, p_177201_4_);
-		GlStateManager.disableBlend();
-		GlStateManager.enableAlpha();
-	}
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
+        GlStateManager.enableLighting();
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        this.render.getMainModel().render(entity, p_177201_2_, p_177201_3_, p_177201_5_, p_177201_6_, p_177201_7_, p_177201_8_);
+        this.render.func_177105_a(entity, p_177201_4_);
+        GlStateManager.disableBlend();
+        GlStateManager.enableAlpha();
+    }
 
-	@Override
-	public boolean shouldCombineTextures()
-	{
-		return false;
-	}
+    @Override
+    public boolean shouldCombineTextures()
+    {
+        return false;
+    }
 
-	@Override
-	public void doRenderLayer(EntityLivingBase entity, float p_177141_2_, float p_177141_3_, float p_177141_4_, float p_177141_5_, float p_177141_6_, float p_177141_7_, float p_177141_8_)
-	{
-		this.func_177201_a((EntityEuropaSquid)entity, p_177141_2_, p_177141_3_, p_177141_4_, p_177141_5_, p_177141_6_, p_177141_7_, p_177141_8_);
-	}
+    @Override
+    public void doRenderLayer(EntityLivingBase entity, float p_177141_2_, float p_177141_3_, float p_177141_4_, float p_177141_5_, float p_177141_6_, float p_177141_7_, float p_177141_8_)
+    {
+        this.func_177201_a((EntityEuropaSquid)entity, p_177141_2_, p_177141_3_, p_177141_4_, p_177141_5_, p_177141_6_, p_177141_7_, p_177141_8_);
+    }
 }

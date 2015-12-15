@@ -12,28 +12,28 @@ import stevekung.mods.moreplanets.common.items.ItemFoodMP;
 
 public class ItemCandyCane extends ItemFoodMP
 {
-	public ItemCandyCane(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-		this.setHasSubtypes(true);
-	}
+    public ItemCandyCane(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "pink_candy_cane_item", "orange_candy_cane_item", "green_candy_cane_item", "yellow_candy_cane_item", "light_blue_candy_cane_item", "blue_candy_cane_item", "red_candy_cane_item", "purple_candy_cane_item" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "pink_candy_cane_item", "orange_candy_cane_item", "green_candy_cane_item", "yellow_candy_cane_item", "light_blue_candy_cane_item", "blue_candy_cane_item", "red_candy_cane_item", "purple_candy_cane_item" };
+    }
 
-	@Override
-	public int getHealAmount(ItemStack itemStack)
-	{
-		return 4;
-	}
+    @Override
+    public int getHealAmount(ItemStack itemStack)
+    {
+        return 4;
+    }
 
-	@Override
-	public float getSaturationModifier(ItemStack itemStack)
-	{
-		return 0.6F;
-	}
+    @Override
+    public float getSaturationModifier(ItemStack itemStack)
+    {
+        return 0.6F;
+    }
 }

@@ -14,21 +14,21 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCandyCane2;
 
 public class ItemBlockCandyCane2 extends ItemBlockMorePlanets
 {
-	public ItemBlockCandyCane2(Block block)
-	{
-		super(block);
-		this.setHasSubtypes(true);
-	}
+    public ItemBlockCandyCane2(Block block)
+    {
+        super(block);
+        this.setHasSubtypes(true);
+    }
 
-	@Override
-	public int getMetadata(int meta)
-	{
-		return meta & 3;
-	}
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta & 3;
+    }
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		return super.getUnlocalizedName() + "." + BlockCandyCane2.BlockType.byMetadata(itemStack.getMetadata()).getUnlocalizedName();
-	}
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        return super.getUnlocalizedName() + "." + BlockCandyCane2.BlockType.byMetadata(itemStack.getMetadata()).getUnlocalizedName();
+    }
 }

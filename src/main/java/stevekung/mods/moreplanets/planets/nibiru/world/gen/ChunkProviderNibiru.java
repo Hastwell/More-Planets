@@ -35,148 +35,133 @@ import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomTreasureN
 
 public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
 {
-	private BiomeDecoratorNibiru biomeDecorator = new BiomeDecoratorNibiru();
-	private MapGenCavesMP caveGenerator = new MapGenCavesMP(NibiruBlocks.nibiru_block, this.getBlockMetadata());
-	private MapGenCavernNibiru cavernGenerator = new MapGenCavernNibiru();
-	private MapGenNibiruRavine ravineGenerator = new MapGenNibiruRavine();
-	private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseNibiru.nibiru };
+    private BiomeDecoratorNibiru biomeDecorator = new BiomeDecoratorNibiru();
+    private MapGenCavesMP caveGenerator = new MapGenCavesMP(NibiruBlocks.nibiru_block, this.getBlockMetadata());
+    private MapGenCavernNibiru cavernGenerator = new MapGenCavernNibiru();
+    private MapGenNibiruRavine ravineGenerator = new MapGenNibiruRavine();
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseNibiru.basePlanetBiome };
 
-	private MapGenDungeon dungeonGenerator = new MapGenDungeon(NibiruBlocks.nibiru_block, 12, 8, 24, 4);
-	{
-		this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.otherRooms.add(new RoomChestsNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.bossRooms.add(new RoomBossNibiru(null, 0, 0, 0, null));
-		this.dungeonGenerator.treasureRooms.add(new RoomTreasureNibiru(null, 0, 0, 0, null));
-	}
+    private MapGenDungeon dungeonGenerator = new MapGenDungeon(NibiruBlocks.nibiru_block, 12, 8, 24, 4);
+    {
+        this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomChestsNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.otherRooms.add(new RoomChestsNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.bossRooms.add(new RoomBossNibiru(null, 0, 0, 0, null));
+        this.dungeonGenerator.treasureRooms.add(new RoomTreasureNibiru(null, 0, 0, 0, null));
+    }
 
-	public ChunkProviderNibiru(World world, long seed, boolean genFeature)
-	{
-		super(world, seed, genFeature);
-	}
+    public ChunkProviderNibiru(World world, long seed, boolean genFeature)
+    {
+        super(world, seed, genFeature);
+    }
 
-	@Override
-	public Chunk provideChunk(int chunkX, int chunkZ)
-	{
-		ChunkPrimer primer = new ChunkPrimer();
-		this.rand.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
-		this.generateTerrain(chunkX, chunkZ, primer);
-		this.createCraters(chunkX, chunkZ, primer);
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
-		this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-		this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-		this.cavernGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-		this.ravineGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-		this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 30, chunkZ * 16, chunkX, chunkZ, primer);
-		Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
-		chunk.generateSkylightMap();
-		return chunk;
-	}
+    @Override
+    public Chunk provideChunk(int chunkX, int chunkZ)
+    {
+        ChunkPrimer primer = new ChunkPrimer();
+        this.rand.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
+        this.generateTerrain(chunkX, chunkZ, primer);
+        this.createCraters(chunkX, chunkZ, primer);
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
+        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.cavernGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.ravineGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 30, chunkZ * 16, chunkX, chunkZ, primer);
+        Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
+        chunk.generateSkylightMap();
+        return chunk;
+    }
 
-	@Override
-	public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
-	{
-		BlockFalling.fallInstantly = true;
-		int x = chunkX * 16;
-		int z = chunkZ * 16;
-		BlockPos pos = new BlockPos(x, 0, z);
-		this.worldObj.getBiomeGenForCoords(new BlockPos(pos.add(16, 0, 16)));
-		this.rand.setSeed(this.worldObj.getSeed());
-		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
-		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
-		this.dungeonGenerator.handleTileEntities(this.rand);
-		this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseNibiru.nibiru, pos);
+    @Override
+    public void populate(IChunkProvider chunk, int chunkX, int chunkZ)
+    {
+        BlockFalling.fallInstantly = true;
+        int x = chunkX * 16;
+        int z = chunkZ * 16;
+        BlockPos pos = new BlockPos(x, 0, z);
+        this.worldObj.getBiomeGenForCoords(new BlockPos(pos.add(16, 0, 16)));
+        this.rand.setSeed(this.worldObj.getSeed());
+        long var7 = this.rand.nextLong() / 2L * 2L + 1L;
+        long var9 = this.rand.nextLong() / 2L * 2L + 1L;
+        this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
+        this.dungeonGenerator.handleTileEntities(this.rand);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseNibiru.basePlanetBiome, pos);
 
-		for (int i = 0; i < 2; i++)
-		{
-			if (this.rand.nextInt(5) == 0)
-			{
-				int x1 = x + this.rand.nextInt(16) + 8;
-				int y1 = this.rand.nextInt(256 - 16) + 16;
-				int z1 = z + this.rand.nextInt(16) + 8;
-				new WorldGenSplashBlock(NibiruBlocks.oil_rock.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState()).generate(this.worldObj, this.rand, new BlockPos(x1, y1, z1));
-			}
-		}
-		for (int i = 0; i < 4; i++)
-		{
-			if (this.rand.nextInt(5) == 0)
-			{
-				int x1 = x + this.rand.nextInt(16) + 8;
-				int y1 = this.rand.nextInt(256 - 16) + 16;
-				int z1 = z + this.rand.nextInt(16) + 8;
-				new WorldGenSplashBlock(NibiruBlocks.infected_grass.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState()).generate(this.worldObj, this.rand, new BlockPos(x1, y1, z1));
-			}
-		}
-		for (int i = 0; i < 4; i++)
-		{
-			if (this.rand.nextInt(5) == 0)
-			{
-				int x1 = x + this.rand.nextInt(16) + 8;
-				int y1 = this.rand.nextInt(256 - 16) + 16;
-				int z1 = z + this.rand.nextInt(16) + 8;
-				new WorldGenSplashBlock(NibiruBlocks.infected_dirt.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState()).generate(this.worldObj, this.rand, new BlockPos(x1, y1, z1));
-			}
-		}
-		for (int i = 0; i < 256; ++i)
-		{
-			int x1 = x + this.rand.nextInt(16) + 8;
-			int y1 = this.rand.nextInt(256);
-			int z1 = z + this.rand.nextInt(16) + 8;
-			new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, new BlockPos(x1, y1, z1));
-		}
-		for (int i = 0; i < 256; ++i)
-		{
-			int x1 = x + this.rand.nextInt(16) + 8;
-			int y1 = this.rand.nextInt(256);
-			int z1 = z + this.rand.nextInt(16) + 8;
-			new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, new BlockPos(x1, y1, z1));
-		}
-		BlockFalling.fallInstantly = false;
-	}
+        for (int i = 0; i < 2; i++)
+        {
+            if (this.rand.nextInt(5) == 0)
+            {
+                new WorldGenSplashBlock(NibiruBlocks.oil_rock.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState(), true).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if (this.rand.nextInt(5) == 0)
+            {
+                new WorldGenSplashBlock(NibiruBlocks.infected_grass.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState(), true).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+            }
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if (this.rand.nextInt(5) == 0)
+            {
+                new WorldGenSplashBlock(NibiruBlocks.infected_dirt.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState(), true).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+            }
+        }
+        for (int i = 0; i < 256; ++i)
+        {
+            new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
+        for (int i = 0; i < 256; ++i)
+        {
+            new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
+        BlockFalling.fallInstantly = false;
+    }
 
-	@Override
-	public List func_177458_a(EnumCreatureType type, BlockPos pos)
-	{
-		if (type == EnumCreatureType.MONSTER)
-		{
-			List monsters = new ArrayList();
-			monsters.add(new BiomeGenBase.SpawnListEntry(EntityInfectedZombie.class, 100, 4, 4));
-			monsters.add(new BiomeGenBase.SpawnListEntry(EntityGiantWorm.class, 100, 2, 4));
-			return monsters;
-		}
-		return super.func_177458_a(type, pos);
-	}
+    @Override
+    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    {
+        if (type == EnumCreatureType.MONSTER)
+        {
+            List monsters = new ArrayList();
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityInfectedZombie.class, 100, 4, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityGiantWorm.class, 100, 2, 4));
+            return monsters;
+        }
+        return super.func_177458_a(type, pos);
+    }
 
-	@Override
-	protected String getName()
-	{
-		return "Nibiru";
-	}
+    @Override
+    protected String getName()
+    {
+        return "Nibiru";
+    }
 
-	@Override
-	protected Block getBaseBlock()
-	{
-		return NibiruBlocks.nibiru_block;
-	}
+    @Override
+    protected Block getBaseBlock()
+    {
+        return NibiruBlocks.nibiru_block;
+    }
 
-	@Override
-	protected int[] getBlockMetadata()
-	{
-		return new int[] { 0, 1, 2 };
-	}
+    @Override
+    protected int[] getBlockMetadata()
+    {
+        return new int[] { 0, 1, 2 };
+    }
 
-	@Override
-	protected double[] getMountainHeightList()
-	{
-		return new double[] { 18, 36, 120, 64, 8, 12, 12 };
-	}
+    @Override
+    protected double[] getMountainHeightList()
+    {
+        return new double[] { 18, 36, 120, 64, 8, 12, 12 };
+    }
 }

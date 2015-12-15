@@ -13,22 +13,22 @@ import net.minecraft.entity.Entity;
 
 public class ModelLaser extends ModelBase
 {
-	public ModelRenderer laser;
+    public ModelRenderer laser;
 
-	public ModelLaser()
-	{
-		this.textureWidth = 64;
-		this.textureHeight = 32;
+    public ModelLaser()
+    {
+        this.textureWidth = 64;
+        this.textureHeight = 32;
 
-		this.laser = new ModelRenderer(this, 0, 0);
-		this.laser.addBox(0F, 0F, 0F, 1, 1, 2, 0F);
-		this.laser.setRotationPoint(0F, 0F, 0F);
-	}
+        this.laser = new ModelRenderer(this, 0, 0);
+        this.laser.addBox(0F, 0F, 0F, 1, 1, 2, 0F);
+        this.laser.setRotationPoint(0F, 0F, 0F);
+    }
 
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		this.laser.render(f5);
-	}
+    @Override
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+    {
+        super.render(entity, f, f1, f2, f3, f4, f5);
+        this.laser.render(f5);
+    }
 }

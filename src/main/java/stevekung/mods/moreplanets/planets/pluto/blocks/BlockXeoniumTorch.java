@@ -22,40 +22,40 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockXeoniumTorch extends BlockTorch
 {
-	public BlockXeoniumTorch(String name)
-	{
-		super();
-		this.setTickRandomly(true);
-		this.setLightLevel(0.95F);
-		this.setStepSound(soundTypeWood);
-		this.setUnlocalizedName(name);
-	}
+    public BlockXeoniumTorch(String name)
+    {
+        super();
+        this.setTickRandomly(true);
+        this.setLightLevel(0.95F);
+        this.setStepSound(soundTypeWood);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
-	{
-		EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
-		double d0 = pos.getX() + 0.5D;
-		double d1 = pos.getY() + 0.7D;
-		double d2 = pos.getZ() + 0.5D;
-		double d3 = 0.22D;
-		double d4 = 0.27D;
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
+    {
+        EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+        double d0 = pos.getX() + 0.5D;
+        double d1 = pos.getY() + 0.7D;
+        double d2 = pos.getZ() + 0.5D;
+        double d3 = 0.22D;
+        double d4 = 0.27D;
 
-		if (enumfacing.getAxis().isHorizontal())
-		{
-			EnumFacing enumfacing1 = enumfacing.getOpposite();
-			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.XEONIUM_SMOKE, d0 + d4 * enumfacing1.getFrontOffsetX(), d1 + d3, d2 + d4 * enumfacing1.getFrontOffsetZ());
-		}
-		else
-		{
-			MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.XEONIUM_SMOKE, d0, d1, d2);
-		}
-	}
+        if (enumfacing.getAxis().isHorizontal())
+        {
+            EnumFacing enumfacing1 = enumfacing.getOpposite();
+            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.XEONIUM_SMOKE, d0 + d4 * enumfacing1.getFrontOffsetX(), d1 + d3, d2 + d4 * enumfacing1.getFrontOffsetZ());
+        }
+        else
+        {
+            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.XEONIUM_SMOKE, d0, d1, d2);
+        }
+    }
 }

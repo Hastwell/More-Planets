@@ -12,27 +12,27 @@ import stevekung.mods.moreplanets.common.items.ItemBaseMP;
 
 public class ItemKapteynB extends ItemBaseMP implements IPowerCrystal
 {
-	public ItemKapteynB(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public ItemKapteynB(String name)
+    {
+        super();
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	protected String[] getItemVariantsName()
-	{
-		return new String[] { "frozen_iron_ingot", "uranium_gem", "compressed_frozen_iron", "uranium_stick", "frozen_iron_stick", "ice_crystal_shard" };
-	}
+    @Override
+    protected String[] getItemVariantsName()
+    {
+        return new String[] { "frozen_iron_ingot", "uranium_gem", "compressed_frozen_iron", "uranium_stick", "frozen_iron_stick", "ice_crystal_shard" };
+    }
 
-	@Override
-	public boolean isPowerCrystal(int meta)
-	{
-		return meta == 1 || meta == 5;
-	}
+    @Override
+    public boolean isPowerCrystal(int meta)
+    {
+        return meta == 1 || meta == 5;
+    }
 
-	@Override
-	public int getPowerCrystalBurnTime(int meta)
-	{
-		return meta == 1 ? 16000 : meta == 5 ? 6400 : 0;
-	}
+    @Override
+    public int getPowerCrystalBurnTime(int meta)
+    {
+        return meta == 1 ? 16000 : meta == 5 ? 6400 : 0;
+    }
 }

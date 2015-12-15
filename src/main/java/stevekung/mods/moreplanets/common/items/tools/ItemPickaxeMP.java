@@ -19,37 +19,37 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class ItemPickaxeMP extends ItemPickaxe
 {
-	private Item repairItems;
-	private int repairItemsMeta;
+    private Item repairItems;
+    private int repairItemsMeta;
 
-	public ItemPickaxeMP(String name, ToolMaterial material, Item item, int meta)
-	{
-		super(material);
-		this.repairItems = item;
-		this.repairItemsMeta = meta;
-		this.setUnlocalizedName(name);
-	}
+    public ItemPickaxeMP(String name, ToolMaterial material, Item item, int meta)
+    {
+        super(material);
+        this.repairItems = item;
+        this.repairItemsMeta = meta;
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpToolsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpToolsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
-	{
-		if (itemStack2.getItem() == this.repairItems && itemStack2.getItemDamage() == this.repairItemsMeta)
-		{
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
+    {
+        if (itemStack2.getItem() == this.repairItems && itemStack2.getItemDamage() == this.repairItemsMeta)
+        {
+            return true;
+        }
+        return false;
+    }
 }

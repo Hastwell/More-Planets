@@ -21,42 +21,42 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 
 public class BlockInfectedWormEggRock extends BlockBaseMP
 {
-	public BlockInfectedWormEggRock(String name)
-	{
-		super(Material.rock);
-		this.setResistance(5.0F);
-		this.setHardness(2.0F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockInfectedWormEggRock(String name)
+    {
+        super(Material.rock);
+        this.setResistance(5.0F);
+        this.setHardness(2.0F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 0;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
+    }
 
-	@Override
-	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		return true;
-	}
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return true;
+    }
 
-	@Override
-	public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state)
-	{
-		if (!world.isRemote)
-		{
-			EntityInfectedWorm infectedWorm = new EntityInfectedWorm(world);
-			infectedWorm.setLocationAndAngles(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, 0.0F, 0.0F);
-			world.spawnEntityInWorld(infectedWorm);
-			infectedWorm.spawnExplosionParticle();
-		}
-	}
+    @Override
+    public void onBlockDestroyedByPlayer(World world, BlockPos pos, IBlockState state)
+    {
+        if (!world.isRemote)
+        {
+            EntityInfectedWorm infectedWorm = new EntityInfectedWorm(world);
+            infectedWorm.setLocationAndAngles(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, 0.0F, 0.0F);
+            world.spawnEntityInWorld(infectedWorm);
+            infectedWorm.spawnExplosionParticle();
+        }
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		super.harvestBlock(world, player, pos, state, tile);
-		MorePlanetsEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        super.harvestBlock(world, player, pos, state, tile);
+        MorePlanetsEvents.addInfectedGas(player);
+    }
 }

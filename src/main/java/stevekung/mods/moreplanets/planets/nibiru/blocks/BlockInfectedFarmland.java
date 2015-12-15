@@ -15,25 +15,27 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockFarmlandMP;
 import stevekung.mods.moreplanets.common.eventhandler.MorePlanetsEvents;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockInfectedFarmland extends BlockFarmlandMP
 {
-	public BlockInfectedFarmland(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockInfectedFarmland(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(0)));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public Block getDirtBlock()
-	{
-		return NibiruBlocks.infected_dirt;
-	}
+    @Override
+    public Block getDirtBlock()
+    {
+        return NibiruBlocks.infected_dirt;
+    }
 
-	@Override
-	public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
-	{
-		super.harvestBlock(world, player, pos, state, tile);
-		MorePlanetsEvents.addInfectedGas(player);
-	}
+    @Override
+    public void harvestBlock(World world, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity tile)
+    {
+        super.harvestBlock(world, player, pos, state, tile);
+        MorePlanetsEvents.addInfectedGas(player);
+    }
 }

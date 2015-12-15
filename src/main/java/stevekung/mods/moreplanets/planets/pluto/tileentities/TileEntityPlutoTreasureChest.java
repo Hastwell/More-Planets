@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 
 public class TileEntityPlutoTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityPlutoTreasureChest()
-	{
-		super(5, "pluto", PlutoBlocks.pluto_treasure_chest);
-	}
+    public TileEntityPlutoTreasureChest()
+    {
+        super(5, "pluto", PlutoBlocks.pluto_treasure_chest);
+    }
 }

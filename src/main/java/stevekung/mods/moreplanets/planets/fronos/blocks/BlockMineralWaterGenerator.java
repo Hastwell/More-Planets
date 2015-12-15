@@ -28,87 +28,87 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityMineralW
 
 public class BlockMineralWaterGenerator extends BlockTileGC
 {
-	public static PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    public static PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-	public BlockMineralWaterGenerator(String name)
-	{
-		super(Material.iron);
-		this.setHardness(2.0F);
-		this.setStepSound(soundTypeMetal);
-		this.setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH));
-		this.setUnlocalizedName(name);
-	}
+    public BlockMineralWaterGenerator(String name)
+    {
+        super(Material.iron);
+        this.setHardness(2.0F);
+        this.setStepSound(soundTypeMetal);
+        this.setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public int getRenderType()
-	{
-		return 3;
-	}
+    @Override
+    public int getRenderType()
+    {
+        return 3;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack itemStack)
-	{
-		world.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
-	}
+    @Override
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack itemStack)
+    {
+        world.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+    }
 
-	@Override
-	public boolean onUseWrench(World world, BlockPos pos, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
-		world.setBlockState(pos, world.getBlockState(pos).withProperty(FACING, player.getHorizontalFacing().getOpposite()), 2);
-		return true;
-	}
+    @Override
+    public boolean onUseWrench(World world, BlockPos pos, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        world.setBlockState(pos, world.getBlockState(pos).withProperty(FACING, player.getHorizontalFacing().getOpposite()), 2);
+        return true;
+    }
 
-	@Override
-	public boolean onMachineActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
-	{
-		if (!world.isRemote)
-		{
-			player.openGui(MorePlanetsCore.INSTANCE, -1, world, pos.getX(), pos.getY(), pos.getZ());
-			return true;
-		}
-		return true;
-	}
+    @Override
+    public boolean onMachineActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if (!world.isRemote)
+        {
+            player.openGui(MorePlanetsCore.INSTANCE, -1, world, pos.getX(), pos.getY(), pos.getZ());
+            return true;
+        }
+        return true;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int metadata)
-	{
-		return new TileEntityMineralWaterGenerator();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int metadata)
+    {
+        return new TileEntityMineralWaterGenerator();
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IBlockState getStateForEntityRender(IBlockState state)
-	{
-		return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IBlockState getStateForEntityRender(IBlockState state)
+    {
+        return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        EnumFacing enumfacing = EnumFacing.getFront(meta);
 
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y)
-		{
-			enumfacing = EnumFacing.NORTH;
-		}
-		return this.getDefaultState().withProperty(FACING, enumfacing);
-	}
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+        {
+            enumfacing = EnumFacing.NORTH;
+        }
+        return this.getDefaultState().withProperty(FACING, enumfacing);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((EnumFacing)state.getValue(FACING)).getIndex();
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] {FACING});
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] {FACING});
+    }
 }

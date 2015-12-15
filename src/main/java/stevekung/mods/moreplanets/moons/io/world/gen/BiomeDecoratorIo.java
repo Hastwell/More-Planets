@@ -15,30 +15,30 @@ import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 
 public class BiomeDecoratorIo extends BiomeDecoratorSpace
 {
-	private WorldGenerator sulfurGen;
+    private WorldGenerator sulfurGen;
 
-	private World world;
+    private World world;
 
-	public BiomeDecoratorIo()
-	{
-		this.sulfurGen = new WorldGenMinableMeta(IoBlocks.io_block, 16, 8, true, IoBlocks.io_block, 2);
-	}
+    public BiomeDecoratorIo()
+    {
+        this.sulfurGen = new WorldGenMinableMeta(IoBlocks.io_block, 16, 8, true, IoBlocks.io_block, 2);
+    }
 
-	@Override
-	public void decorate()
-	{
-		this.generateOre(32, this.sulfurGen, 0, 256);
-	}
+    @Override
+    public void decorate()
+    {
+        this.generateOre(32, this.sulfurGen, 0, 256);
+    }
 
-	@Override
-	protected void setCurrentWorld(World world)
-	{
-		this.world = world;
-	}
+    @Override
+    protected void setCurrentWorld(World world)
+    {
+        this.world = world;
+    }
 
-	@Override
-	protected World getCurrentWorld()
-	{
-		return this.world;
-	}
+    @Override
+    protected World getCurrentWorld()
+    {
+        return this.world;
+    }
 }

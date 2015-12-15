@@ -9,25 +9,20 @@ package stevekung.mods.moreplanets.asteroids.darkasteroids.blocks;
 
 import net.minecraft.block.Block;
 import stevekung.mods.moreplanets.common.blocks.BlockFarmlandMP;
+import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockAlienFarmland extends BlockFarmlandMP
 {
-	public BlockAlienFarmland(String name)
-	{
-		super();
-		this.setUnlocalizedName(name);
-	}
+    public BlockAlienFarmland(String name)
+    {
+        super();
+        this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.MOISTURE, Integer.valueOf(0)));
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public Block getDirtBlock()
-	{
-		return DarkAsteroidBlocks.alien_dirt;
-	}
-
-	/*@Override
-	public boolean canSustainPlant(IBlockAccess world, BlockPos pos, EnumFacing side, IPlantable plant)
-	{
-		Block block = plant.getPlant(world, pos).getBlock();
-		return block == FronosBlocks.strawberry_bush || block == FronosBlocks.golden_crops || block == FronosBlocks.glass_gem_corn;
-	}*/
+    @Override
+    public Block getDirtBlock()
+    {
+        return DarkAsteroidBlocks.alien_dirt;
+    }
 }

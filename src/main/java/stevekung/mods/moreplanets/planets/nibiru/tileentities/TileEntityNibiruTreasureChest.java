@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 
 public class TileEntityNibiruTreasureChest extends TileEntityTreasureChestMP
 {
-	public TileEntityNibiruTreasureChest()
-	{
-		super(6, "nibiru", NibiruBlocks.nibiru_treasure_chest);
-	}
+    public TileEntityNibiruTreasureChest()
+    {
+        super(6, "nibiru", NibiruBlocks.nibiru_treasure_chest);
+    }
 }

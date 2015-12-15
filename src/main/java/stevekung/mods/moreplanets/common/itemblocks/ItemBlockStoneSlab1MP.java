@@ -8,19 +8,19 @@
 package stevekung.mods.moreplanets.common.itemblocks;
 
 import net.minecraft.block.Block;
-import stevekung.mods.moreplanets.common.blocks.BlockDoubleStoneSlab1MP;
-import stevekung.mods.moreplanets.common.blocks.BlockStoneSlab1MP;
+import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleStoneSlab1;
+import stevekung.mods.moreplanets.common.blocks.other.BlockStoneSlab1;
 
 public class ItemBlockStoneSlab1MP extends ItemBlockSlabMP
 {
-	public ItemBlockStoneSlab1MP(Block block, BlockStoneSlab1MP singleSlab, BlockDoubleStoneSlab1MP doubleSlab)
-	{
-		super(block, singleSlab, doubleSlab);
-	}
+    public ItemBlockStoneSlab1MP(Block block, BlockStoneSlab1 singleSlab, BlockDoubleStoneSlab1 doubleSlab)
+    {
+        super(block, singleSlab, doubleSlab);
+    }
 
-	@Override
-	public String[] getBlockVariantsName()
-	{
-		return new String[] { "diona_cobblestone", "quontonium_brick", "chiseled_quontonium", "polongnius_cobblestone", "nibiru_cobblestone", "koentus_cobblestone", "koentus_ancient_stone", "koentus_ancient_stone_brick" };
-	}
+    @Override
+    public String[] getBlockVariantsName()
+    {
+        return new String[] { "diona_cobblestone", "quontonium_brick", "chiseled_quontonium", "polongnius_cobblestone", "nibiru_cobblestone", "koentus_cobblestone", "koentus_ancient_stone", "koentus_ancient_stone_brick" };
+    }
 }

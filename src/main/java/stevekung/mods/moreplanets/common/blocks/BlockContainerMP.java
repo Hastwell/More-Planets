@@ -14,14 +14,14 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class BlockContainerMP extends BlockContainer
 {
-	protected BlockContainerMP(Material material)
-	{
-		super(material);
-	}
+    protected BlockContainerMP(Material material)
+    {
+        super(material);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 }

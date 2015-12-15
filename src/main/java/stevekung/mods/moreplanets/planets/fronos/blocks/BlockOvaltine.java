@@ -22,43 +22,43 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockOvaltine extends BlockFalling
 {
-	public BlockOvaltine(String name)
-	{
-		super();
-		this.setStepSound(soundTypeSand);
-		this.setHardness(0.55F);
-		this.setUnlocalizedName(name);
-	}
+    public BlockOvaltine(String name)
+    {
+        super();
+        this.setStepSound(soundTypeSand);
+        this.setHardness(0.55F);
+        this.setUnlocalizedName(name);
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return FronosItems.candy_food;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return FronosItems.candy_food;
+    }
 
-	@Override
-	public int quantityDropped(Random rand)
-	{
-		return 4;
-	}
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 4;
+    }
 
-	@Override
-	public CreativeTabs getCreativeTabToDisplayOn()
-	{
-		return MorePlanetsCore.mpBlocksTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTabToDisplayOn()
+    {
+        return MorePlanetsCore.mpBlocksTab;
+    }
 
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
-	{
-		float yOffset = 0.125F;
-		return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - yOffset, pos.getZ() + 1);
-	}
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
+    {
+        float yOffset = 0.125F;
+        return AxisAlignedBB.fromBounds(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1 - yOffset, pos.getZ() + 1);
+    }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		entity.motionX *= 0.4D;
-		entity.motionZ *= 0.4D;
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+    {
+        entity.motionX *= 0.4D;
+        entity.motionZ *= 0.4D;
+    }
 }

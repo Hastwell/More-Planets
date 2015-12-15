@@ -14,64 +14,64 @@ import stevekung.mods.moreplanets.common.util.MPLog;
 
 public class MeteorClientMessage implements IMessage
 {
-	private Vec3 targetCoordinates;
-	private boolean messageIsValid;
+    private Vec3 targetCoordinates;
+    private boolean messageIsValid;
 
-	public MeteorClientMessage(Vec3 vec3)
-	{
-		this.targetCoordinates = vec3;
-		this.messageIsValid = true;
-	}
+    public MeteorClientMessage(Vec3 vec3)
+    {
+        this.targetCoordinates = vec3;
+        this.messageIsValid = true;
+    }
 
-	public Vec3 getTargetCoordinates()
-	{
-		return this.targetCoordinates;
-	}
+    public Vec3 getTargetCoordinates()
+    {
+        return this.targetCoordinates;
+    }
 
-	public boolean isMessageValid()
-	{
-		return this.messageIsValid;
-	}
+    public boolean isMessageValid()
+    {
+        return this.messageIsValid;
+    }
 
-	public MeteorClientMessage()
-	{
-		this.messageIsValid = false;
-	}
+    public MeteorClientMessage()
+    {
+        this.messageIsValid = false;
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buf)
-	{
-		try
-		{
-			double x = buf.readDouble();
-			double y = buf.readDouble();
-			double z = buf.readDouble();
-			this.targetCoordinates = new Vec3(x, y, z);
+    @Override
+    public void fromBytes(ByteBuf buf)
+    {
+        try
+        {
+            double x = buf.readDouble();
+            double y = buf.readDouble();
+            double z = buf.readDouble();
+            this.targetCoordinates = new Vec3(x, y, z);
 
-		}
-		catch (IndexOutOfBoundsException ioe)
-		{
-			MPLog.error("Exception while reading NetworkMessageToClient: " + ioe);
-			return;
-		}
-		this.messageIsValid = true;
-	}
+        }
+        catch (IndexOutOfBoundsException ioe)
+        {
+            MPLog.error("Exception while reading NetworkMessageToClient: " + ioe);
+            return;
+        }
+        this.messageIsValid = true;
+    }
 
-	@Override
-	public void toBytes(ByteBuf buf)
-	{
-		if (!this.messageIsValid)
-		{
-			return;
-		}
-		buf.writeDouble(this.targetCoordinates.xCoord);
-		buf.writeDouble(this.targetCoordinates.yCoord);
-		buf.writeDouble(this.targetCoordinates.zCoord);
-	}
+    @Override
+    public void toBytes(ByteBuf buf)
+    {
+        if (!this.messageIsValid)
+        {
+            return;
+        }
+        buf.writeDouble(this.targetCoordinates.xCoord);
+        buf.writeDouble(this.targetCoordinates.yCoord);
+        buf.writeDouble(this.targetCoordinates.zCoord);
+    }
 
-	@Override
-	public String toString()
-	{
-		return "NetworkMessageToClient[targetCoordinates=" + String.valueOf(this.targetCoordinates) + "]";
-	}
+    @Override
+    public String toString()
+    {
+        return "NetworkMessageToClient[targetCoordinates=" + String.valueOf(this.targetCoordinates) + "]";
+    }
 }

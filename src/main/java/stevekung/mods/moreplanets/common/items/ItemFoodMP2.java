@@ -18,21 +18,21 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public abstract class ItemFoodMP2 extends ItemFood
 {
-	public ItemFoodMP2()
-	{
-		super(0, false);
-	}
+    public ItemFoodMP2()
+    {
+        super(0, false);
+    }
 
-	@Override
-	public CreativeTabs getCreativeTab()
-	{
-		return MorePlanetsCore.mpItemsTab;
-	}
+    @Override
+    public CreativeTabs getCreativeTab()
+    {
+        return MorePlanetsCore.mpItemsTab;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack itemStack)
-	{
-		return ClientProxyCore.galacticraftItem;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumRarity getRarity(ItemStack itemStack)
+    {
+        return ClientProxyCore.galacticraftItem;
+    }
 }

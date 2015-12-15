@@ -35,187 +35,187 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityCreamGolem extends EntityGolem implements IRangedAttackMob
 {
-	public EntityCreamGolem(World world)
-	{
-		super(world);
-		this.setSize(0.7F, 1.9F);
-		((PathNavigateGround)this.getNavigator()).func_179690_a(true);
-		this.tasks.addTask(1, new EntityAIArrowAttack(this, 1.25D, 20, 10.0F));
-		this.tasks.addTask(2, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		this.tasks.addTask(4, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityLiving.class, 10, true, false, IMob.mobSelector));
-		this.setCreamGolemType(this.rand.nextInt(6));
-	}
+    public EntityCreamGolem(World world)
+    {
+        super(world);
+        this.setSize(0.7F, 1.9F);
+        ((PathNavigateGround)this.getNavigator()).func_179690_a(true);
+        this.tasks.addTask(1, new EntityAIArrowAttack(this, 1.25D, 20, 10.0F));
+        this.tasks.addTask(2, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(4, new EntityAILookIdle(this));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityLiving.class, 10, true, false, IMob.mobSelector));
+        this.setCreamGolemType(this.rand.nextInt(6));
+    }
 
-	@Override
-	public ItemStack getPickedResult(MovingObjectPosition target)
-	{
-		return new ItemStack(MPItems.spawn_egg_mp, 1, 1026);
-	}
+    @Override
+    public ItemStack getPickedResult(MovingObjectPosition target)
+    {
+        return new ItemStack(MPItems.spawn_egg_mp, 1, 1026);
+    }
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(12.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
-	}
+    @Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(12.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
+    }
 
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
-	}
+    @Override
+    protected void entityInit()
+    {
+        super.entityInit();
+        this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
+    }
 
-	@Override
-	protected int getExperiencePoints(EntityPlayer player)
-	{
-		return 1 + this.worldObj.rand.nextInt(6);
-	}
+    @Override
+    protected int getExperiencePoints(EntityPlayer player)
+    {
+        return 1 + this.worldObj.rand.nextInt(6);
+    }
 
-	@Override
-	protected String getLivingSound()
-	{
-		return null;
-	}
+    @Override
+    protected String getLivingSound()
+    {
+        return null;
+    }
 
-	@Override
-	protected String getHurtSound()
-	{
-		return null;
-	}
+    @Override
+    protected String getHurtSound()
+    {
+        return null;
+    }
 
-	@Override
-	protected String getDeathSound()
-	{
-		return null;
-	}
+    @Override
+    protected String getDeathSound()
+    {
+        return null;
+    }
 
-	@Override
-	public void onLivingUpdate()
-	{
-		super.onLivingUpdate();
+    @Override
+    public void onLivingUpdate()
+    {
+        super.onLivingUpdate();
 
-		if (!this.worldObj.isRemote)
-		{
-			int i = MathHelper.floor_double(this.posX);
-			int j = MathHelper.floor_double(this.posY);
-			int k = MathHelper.floor_double(this.posZ);
+        if (!this.worldObj.isRemote)
+        {
+            int i = MathHelper.floor_double(this.posX);
+            int j = MathHelper.floor_double(this.posY);
+            int k = MathHelper.floor_double(this.posZ);
 
-			if (this.isWet())
-			{
-				this.attackEntityFrom(DamageSource.drown, 1.0F);
-			}
+            if (this.isWet())
+            {
+                this.attackEntityFrom(DamageSource.drown, 1.0F);
+            }
 
-			for (int l = 0; l < 4; ++l)
-			{
-				i = MathHelper.floor_double(this.posX + (l % 2 * 2 - 1) * 0.25F);
-				j = MathHelper.floor_double(this.posY);
-				k = MathHelper.floor_double(this.posZ + (l / 2 % 2 * 2 - 1) * 0.25F);
+            for (int l = 0; l < 4; ++l)
+            {
+                i = MathHelper.floor_double(this.posX + (l % 2 * 2 - 1) * 0.25F);
+                j = MathHelper.floor_double(this.posY);
+                k = MathHelper.floor_double(this.posZ + (l / 2 % 2 * 2 - 1) * 0.25F);
 
-				int golemType = this.getCreamGolemType();
+                int golemType = this.getCreamGolemType();
 
-				if (golemType == 0)
-				{
-					if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.vanilla_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
-					{
-						this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.vanilla_cream_layer.getDefaultState());
-					}
-				}
-				else if (golemType == 1)
-				{
-					if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.chocolate_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
-					{
-						this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.chocolate_cream_layer.getDefaultState());
-					}
-				}
-				else if (golemType == 2)
-				{
-					if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.strawberry_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
-					{
-						this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.strawberry_cream_layer.getDefaultState());
-					}
-				}
-				else if (golemType == 3)
-				{
-					if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.orange_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
-					{
-						this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.orange_cream_layer.getDefaultState());
-					}
-				}
-				else if (golemType == 4)
-				{
-					if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.tea_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
-					{
-						this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.tea_cream_layer.getDefaultState());
-					}
-				}
-				else if (golemType == 5)
-				{
-					if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.lemon_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
-					{
-						this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.lemon_cream_layer.getDefaultState());
-					}
-				}
-			}
-		}
-	}
+                if (golemType == 0)
+                {
+                    if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.vanilla_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
+                    {
+                        this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.vanilla_cream_layer.getDefaultState());
+                    }
+                }
+                else if (golemType == 1)
+                {
+                    if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.chocolate_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
+                    {
+                        this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.chocolate_cream_layer.getDefaultState());
+                    }
+                }
+                else if (golemType == 2)
+                {
+                    if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.strawberry_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
+                    {
+                        this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.strawberry_cream_layer.getDefaultState());
+                    }
+                }
+                else if (golemType == 3)
+                {
+                    if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.orange_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
+                    {
+                        this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.orange_cream_layer.getDefaultState());
+                    }
+                }
+                else if (golemType == 4)
+                {
+                    if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.tea_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
+                    {
+                        this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.tea_cream_layer.getDefaultState());
+                    }
+                }
+                else if (golemType == 5)
+                {
+                    if (this.worldObj.getBlockState(new BlockPos(i, j, k)).getBlock().getMaterial() == Material.air && FronosBlocks.lemon_cream_layer.canPlaceBlockAt(this.worldObj, new BlockPos(i, j, k)))
+                    {
+                        this.worldObj.setBlockState(new BlockPos(i, j, k), FronosBlocks.lemon_cream_layer.getDefaultState());
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	protected void dropFewItems(boolean drop, int fortune)
-	{
-		int j = this.rand.nextInt(16);
+    @Override
+    protected void dropFewItems(boolean drop, int fortune)
+    {
+        int j = this.rand.nextInt(16);
 
-		for (int i = 4; i < j; ++i)
-		{
-			this.entityDropItem(new ItemStack(FronosItems.cream_ball, 1, this.getCreamGolemType()), 0.0F);
-		}
-	}
+        for (int i = 4; i < j; ++i)
+        {
+            this.entityDropItem(new ItemStack(FronosItems.cream_ball, 1, this.getCreamGolemType()), 0.0F);
+        }
+    }
 
-	@Override
-	public void writeEntityToNBT(NBTTagCompound nbt)
-	{
-		super.writeEntityToNBT(nbt);
-		nbt.setInteger("CreamGolemType", this.getCreamGolemType());
-	}
+    @Override
+    public void writeEntityToNBT(NBTTagCompound nbt)
+    {
+        super.writeEntityToNBT(nbt);
+        nbt.setInteger("CreamGolemType", this.getCreamGolemType());
+    }
 
-	@Override
-	public void readEntityFromNBT(NBTTagCompound nbt)
-	{
-		super.readEntityFromNBT(nbt);
-		this.setCreamGolemType(nbt.getInteger("CreamGolemType"));
-	}
+    @Override
+    public void readEntityFromNBT(NBTTagCompound nbt)
+    {
+        super.readEntityFromNBT(nbt);
+        this.setCreamGolemType(nbt.getInteger("CreamGolemType"));
+    }
 
-	public int getCreamGolemType()
-	{
-		return this.dataWatcher.getWatchableObjectByte(16);
-	}
+    public int getCreamGolemType()
+    {
+        return this.dataWatcher.getWatchableObjectByte(16);
+    }
 
-	public void setCreamGolemType(int type)
-	{
-		this.dataWatcher.updateObject(16, Byte.valueOf((byte)type));
-	}
+    public void setCreamGolemType(int type)
+    {
+        this.dataWatcher.updateObject(16, Byte.valueOf((byte)type));
+    }
 
-	@Override
-	public void attackEntityWithRangedAttack(EntityLivingBase living, float par2)
-	{
-		double d0 = living.posY + living.getEyeHeight() - 1.100000023841858D;
-		double d1 = living.posX - this.posX;
-		double d3 = living.posZ - this.posZ;
-		float f1 = MathHelper.sqrt_double(d1 * d1 + d3 * d3) * 0.2F;
-		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+    @Override
+    public void attackEntityWithRangedAttack(EntityLivingBase living, float par2)
+    {
+        double d0 = living.posY + living.getEyeHeight() - 1.100000023841858D;
+        double d1 = living.posX - this.posX;
+        double d3 = living.posZ - this.posZ;
+        float f1 = MathHelper.sqrt_double(d1 * d1 + d3 * d3) * 0.2F;
+        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 
-		EntityCreamBall entitysnowball = new EntityCreamBall(this.worldObj, this, this.getCreamGolemType());
-		double d2 = d0 - entitysnowball.posY;
-		entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
-		this.worldObj.spawnEntityInWorld(entitysnowball);
-	}
+        EntityCreamBall entitysnowball = new EntityCreamBall(this.worldObj, this, this.getCreamGolemType());
+        double d2 = d0 - entitysnowball.posY;
+        entitysnowball.setThrowableHeading(d1, d2 + f1, d3, 1.6F, 12.0F);
+        this.worldObj.spawnEntityInWorld(entitysnowball);
+    }
 
-	@Override
-	public float getEyeHeight()
-	{
-		return 1.7F;
-	}
+    @Override
+    public float getEyeHeight()
+    {
+        return 1.7F;
+    }
 }

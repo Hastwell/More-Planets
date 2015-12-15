@@ -26,82 +26,82 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class BlockCream extends BlockBaseMP
 {
-	public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
+    public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 
-	public BlockCream(String name)
-	{
-		super(Material.craftedSnow);
-		this.setStepSound(soundTypeSnow);
-		this.setHardness(0.2F);
-		this.setUnlocalizedName(name);
-		this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.vanilla_cream));
-	}
+    public BlockCream(String name)
+    {
+        super(Material.craftedSnow);
+        this.setStepSound(soundTypeSnow);
+        this.setHardness(0.2F);
+        this.setUnlocalizedName(name);
+        this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.vanilla_cream));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < 6; ++i)
-		{
-			list.add(new ItemStack(this, 1, i));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < 6; ++i)
+        {
+            list.add(new ItemStack(this, 1, i));
+        }
+    }
 
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		return FronosItems.cream_ball;
-	}
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return FronosItems.cream_ball;
+    }
 
-	@Override
-	public int damageDropped(IBlockState state)
-	{
-		return this.getMetaFromState(state);
-	}
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return this.getMetaFromState(state);
+    }
 
-	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random rand)
-	{
-		return 4;
-	}
+    @Override
+    public int quantityDropped(IBlockState state, int fortune, Random rand)
+    {
+        return 4;
+    }
 
-	@Override
-	protected BlockState createBlockState()
-	{
-		return new BlockState(this, new IProperty[] { VARIANT });
-	}
+    @Override
+    protected BlockState createBlockState()
+    {
+        return new BlockState(this, new IProperty[] { VARIANT });
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
-	{
-		return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(VARIANT, BlockType.values()[meta]);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state)
-	{
-		return ((BlockType)state.getValue(VARIANT)).ordinal();
-	}
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((BlockType)state.getValue(VARIANT)).ordinal();
+    }
 
-	public static enum BlockType implements IStringSerializable
-	{
-		vanilla_cream,
-		chocolate_cream,
-		strawberry_cream,
-		orange_cream,
-		tea_cream,
-		lemon_cream;
+    public static enum BlockType implements IStringSerializable
+    {
+        vanilla_cream,
+        chocolate_cream,
+        strawberry_cream,
+        orange_cream,
+        tea_cream,
+        lemon_cream;
 
-		@Override
-		public String toString()
-		{
-			return this.getName();
-		}
+        @Override
+        public String toString()
+        {
+            return this.getName();
+        }
 
-		@Override
-		public String getName()
-		{
-			return this.name();
-		}
-	}
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
 }
