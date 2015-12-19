@@ -213,6 +213,10 @@ tile.fronos_sandstone.cheeseSandstoneSmooth.name=平滑奶酪沙石
 tile.fronos_sandstone_stairs.name=糖果星沙石楼梯
 tile.white_sandstone_stairs.name=白色沙石楼梯
 tile.cheese_sandstone_stairs.name=奶酪沙石楼梯
+tile.fronos_block1.gold.name=金矿石
+tile.fronos_block1.diamond.name=钻石矿石
+tile.fronos_block1.emerald.name=绿宝石矿石
+tile.fronos_block1.silicon.name=硅矿石
 
 # SLABS
 tile.mp_stone_half_slab2.fronos.name=糖果星圆石台阶
