@@ -13,6 +13,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.client.SkyProviderBaseMP;
 
@@ -53,40 +54,36 @@ public class SkyProviderSiriusB extends SkyProviderBaseMP
 
         f18 = 1.0F - f18;
 
-        worldrenderer.startDrawing(6);
-        worldrenderer.setColorRGBA_F(f6 * f18, f7 * f18, f8 * f18, afloat[3] * 2 / f18);
-        worldrenderer.addVertex(0.0D, 100.0D, 0.0D);
-        worldrenderer.setColorRGBA_F(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F);
+        worldrenderer.func_181668_a(6, DefaultVertexFormats.field_181706_f);
+        worldrenderer.func_181662_b(0.0D, 100.0D, 0.0D).func_181666_a(f6 * f18, f7 * f18, f8 * f18, afloat[3] * 2 / f18).func_181675_d();
 
         // Render sun aura
         f10 = 150.0F;
-        worldrenderer.addVertex(-f10, 100.0D, -f10);
-        worldrenderer.addVertex(0, 100.0D, (double) -f10 * 1.5F);
-        worldrenderer.addVertex(f10, 100.0D, -f10);
-        worldrenderer.addVertex((double) f10 * 1.5F, 100.0D, 0);
-        worldrenderer.addVertex(f10, 100.0D, f10);
-        worldrenderer.addVertex(0, 100.0D, (double) f10 * 1.5F);
-        worldrenderer.addVertex(-f10, 100.0D, f10);
-        worldrenderer.addVertex((double) -f10 * 1.5F, 100.0D, 0);
-        worldrenderer.addVertex(-f10, 100.0D, -f10);
+        worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(0, 100.0D, (double) -f10 * 1.5F).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b((double) f10 * 1.5F, 100.0D, 0).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(0, 100.0D, (double) f10 * 1.5F).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 100.0D, f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b((double) -f10 * 1.5F, 100.0D, 0).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
 
         tessellator.draw();
-        worldrenderer.startDrawing(6);
-        worldrenderer.setColorRGBA_F(f6 * f18, f7 * f18, f8 * f18, afloat[3] * f18);
-        worldrenderer.addVertex(0.0D, 100.0D, 0.0D);
-        worldrenderer.setColorRGBA_F(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F);
+        worldrenderer.func_181668_a(6, DefaultVertexFormats.field_181706_f);
+        worldrenderer.func_181662_b(0.0D, 100.0D, 0.0D).func_181666_a(f6 * f18, f7 * f18, f8 * f18, afloat[3] * f18).func_181675_d();
 
         // Render larger sun aura
         f10 = 200.0F;
-        worldrenderer.addVertex(-f10, 100.0D, -f10);
-        worldrenderer.addVertex(0, 100.0D, (double) -f10 * 1.5F);
-        worldrenderer.addVertex(f10, 100.0D, -f10);
-        worldrenderer.addVertex((double) f10 * 1.5F, 100.0D, 0);
-        worldrenderer.addVertex(f10, 100.0D, f10);
-        worldrenderer.addVertex(0, 100.0D, (double) f10 * 1.5F);
-        worldrenderer.addVertex(-f10, 100.0D, f10);
-        worldrenderer.addVertex((double) -f10 * 1.5F, 100.0D, 0);
-        worldrenderer.addVertex(-f10, 100.0D, -f10);
+        worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(0, 100.0D, (double) -f10 * 1.5F).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b((double) f10 * 1.5F, 100.0D, 0).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(0, 100.0D, (double) f10 * 1.5F).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 100.0D, f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b((double) -f10 * 1.5F, 100.0D, 0).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
         tessellator.draw();
         GlStateManager.popMatrix();
         GlStateManager.shadeModel(7424);
@@ -102,11 +99,11 @@ public class SkyProviderSiriusB extends SkyProviderBaseMP
         GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
         f10 = this.sunSize;
         mc.renderEngine.bindTexture(this.siriusTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-f10, 100.0D, -f10, 0.0D, 0.0D);
-        worldrenderer.addVertexWithUV(f10, 100.0D, -f10, 1.0D, 0.0D);
-        worldrenderer.addVertexWithUV(f10, 100.0D, f10, 1.0D, 1.0D);
-        worldrenderer.addVertexWithUV(-f10, 100.0D, f10, 0.0D, 1.0D);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, f10).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 100.0D, f10).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
 
         GlStateManager.disableBlend();
@@ -118,11 +115,11 @@ public class SkyProviderSiriusB extends SkyProviderBaseMP
         GlStateManager.rotate(-32F, -100.0F, -20.0F, 180.0F);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
         mc.renderEngine.bindTexture(this.fronosTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-f10, -100.0D, f10, 0, 1);
-        worldrenderer.addVertexWithUV(f10, -100.0D, f10, 1, 1);
-        worldrenderer.addVertexWithUV(f10, -100.0D, -f10, 1, 0);
-        worldrenderer.addVertexWithUV(-f10, -100.0D, -f10, 0, 0);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, f10).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 100.0D, f10).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
     }
 

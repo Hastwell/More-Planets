@@ -54,8 +54,7 @@ public class RenderDarkAsteroid extends Render
                 GlStateManager.disableLighting();
                 Tessellator tessellator = Tessellator.getInstance();
                 WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-                worldrenderer.startDrawingQuads();
-                worldrenderer.setVertexFormat(DefaultVertexFormats.BLOCK);
+                worldrenderer.func_181668_a(7, DefaultVertexFormats.BLOCK);
                 int i = blockpos.getX();
                 int j = blockpos.getY();
                 int k = blockpos.getZ();

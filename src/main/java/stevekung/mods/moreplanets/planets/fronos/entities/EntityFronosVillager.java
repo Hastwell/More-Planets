@@ -51,8 +51,6 @@ import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIFronosVilla
 import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIFronosVillagerMate;
 import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIFronosVillagerPlay;
 
-import com.google.common.base.Predicate;
-
 public class EntityFronosVillager extends EntityAgeable implements INpc
 {
     private int randomTickDivider;
@@ -69,21 +67,10 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
         super(world);
         this.villagerInventory = new InventoryBasic("Items", false, 8);
         this.setSize(0.6F, 1.8F);
-        ((PathNavigateGround)this.getNavigator()).func_179688_b(true);
-        ((PathNavigateGround)this.getNavigator()).func_179690_a(true);
+        ((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
+        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAvoidEntity(this, new Predicate()
-        {
-            public boolean func_179530_a(Entity p_179530_1_)
-            {
-                return p_179530_1_ instanceof EntityZombie;
-            }
-            @Override
-            public boolean apply(Object p_apply_1_)
-            {
-                return this.func_179530_a((Entity)p_apply_1_);
-            }
-        }, 8.0F, 0.6D, 0.6D));
+        this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(1, new EntityAIMoveIndoors(this));
         this.tasks.addTask(2, new EntityAIRestrictOpenDoor(this));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
@@ -112,10 +99,10 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
     }
 
     @Override
-    protected void func_175500_n()
+    protected void onGrowingAdult()
     {
         this.tasks.addTask(8, new EntityAIFronosVillagerHarvestFarmland(this, 0.6D));
-        super.func_175500_n();
+        super.onGrowingAdult();
     }
 
     @Override
@@ -142,7 +129,7 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
             else
             {
                 BlockPos blockpos1 = this.villageObj.getCenter();
-                this.func_175449_a(blockpos1, (int)(this.villageObj.getVillageRadius() * 1.0F));
+                this.setHomePosAndDistance(blockpos1, (int)(this.villageObj.getVillageRadius() * 1.0F));
 
                 if (this.isLookingForHome)
                 {
@@ -307,7 +294,7 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
                     b0 = -3;
                 }
 
-                this.villageObj.setReputationForPlayer(livingBase.getName(), b0);
+                this.villageObj.setReputationForPlayer(livingBase.getCommandSenderName(), b0);
 
                 if (this.isEntityAlive())
                 {
@@ -328,7 +315,7 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
             {
                 if (entity instanceof EntityPlayer)
                 {
-                    this.villageObj.setReputationForPlayer(entity.getName(), -2);
+                    this.villageObj.setReputationForPlayer(entity.getCommandSenderName(), -2);
                 }
                 else if (entity instanceof IMob)
                 {
@@ -436,7 +423,7 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
     public EntityFronosVillager func_180488_b(EntityAgeable p_180488_1_)
     {
         EntityFronosVillager entityvillager = new EntityFronosVillager(this.worldObj);
-        entityvillager.func_180482_a(this.worldObj.getDifficultyForLocation(new BlockPos(entityvillager)), (IEntityLivingData)null);
+        entityvillager.onInitialSpawn(this.worldObj.getDifficultyForLocation(new BlockPos(entityvillager)), (IEntityLivingData)null);
         return entityvillager;
     }
 
@@ -453,7 +440,7 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
         {
             EntityWitch entitywitch = new EntityWitch(this.worldObj);
             entitywitch.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
-            entitywitch.func_180482_a(this.worldObj.getDifficultyForLocation(new BlockPos(entitywitch)), (IEntityLivingData)null);
+            entitywitch.onInitialSpawn(this.worldObj.getDifficultyForLocation(new BlockPos(entitywitch)), (IEntityLivingData)null);
             this.worldObj.spawnEntityInWorld(entitywitch);
             this.setDead();
         }
@@ -465,18 +452,17 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
     }
 
     @Override
-    protected void func_175445_a(EntityItem p_175445_1_)
+    protected void updateEquipmentIfNeeded(EntityItem item)
     {
-        ItemStack itemstack = p_175445_1_.getEntityItem();
-        Item item = itemstack.getItem();
+        ItemStack itemstack = item.getEntityItem();
 
-        if (this.func_175558_a(item))
+        if (this.func_175558_a(itemstack.getItem()))
         {
             ItemStack itemstack1 = this.villagerInventory.func_174894_a(itemstack);
 
             if (itemstack1 == null)
             {
-                p_175445_1_.setDead();
+                item.setDead();
             }
             else
             {

@@ -12,8 +12,8 @@ import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 
 public class BiomeGenBaseMP extends BiomeGenBase
 {
-    public static BiomeGenBase basePlanetBiome = new BiomeGenBaseMP(ConfigManagerMP.idBasePlanetBiome).setBiomeName("Planet");
-    public static BiomeGenBase baseMoonBiome = new BiomeGenBaseMP(ConfigManagerMP.idBaseMoonBiome).setBiomeName("Moon");
+    public static BiomeGenBase basePlanetBiome = new BiomeGenBaseMP(ConfigManagerMP.idBasePlanetBiome).setColor(-16744448).setBiomeName("Planet");
+    public static BiomeGenBase baseMoonBiome = new BiomeGenBaseMP(ConfigManagerMP.idBaseMoonBiome).setColor(-16744448).setBiomeName("Moon");
 
     public BiomeGenBaseMP(int id)
     {
@@ -23,18 +23,5 @@ public class BiomeGenBaseMP extends BiomeGenBase
         this.spawnableCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
         this.rainfall = 0F;
-        this.setColor(-16744448);
-    }
-
-    @Override
-    public BiomeGenBase setColor(int color)
-    {
-        return this.func_150557_a(-16744448, false);
-    }
-
-    @Override
-    public float getSpawningChance()
-    {
-        return 0.1F;
     }
 }

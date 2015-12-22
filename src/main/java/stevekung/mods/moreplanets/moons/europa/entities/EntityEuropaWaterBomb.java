@@ -7,16 +7,14 @@
 
 package stevekung.mods.moreplanets.moons.europa.entities;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.moons.europa.world.EuropaWaterExplosion;
 
-public class EntityEuropaWaterBomb extends Entity
+public class EntityEuropaWaterBomb extends EntityTNTPrimed
 {
-    public int fuse;
     private EntityLivingBase tntPlacedBy;
 
     public EntityEuropaWaterBomb(World world)
@@ -40,21 +38,6 @@ public class EntityEuropaWaterBomb extends Entity
         this.prevPosY = y;
         this.prevPosZ = z;
         this.tntPlacedBy = entityLiving;
-    }
-
-    @Override
-    protected void entityInit() {}
-
-    @Override
-    protected boolean canTriggerWalking()
-    {
-        return false;
-    }
-
-    @Override
-    public boolean canBeCollidedWith()
-    {
-        return !this.isDead;
     }
 
     @Override
@@ -96,31 +79,8 @@ public class EntityEuropaWaterBomb extends Entity
     private void explode()
     {
         float f = 4.0F;
-        EuropaWaterExplosion explosion = new EuropaWaterExplosion(this.worldObj, this, this.posX, this.posY, this.posZ, f, true, true);
+        EuropaWaterExplosion explosion = new EuropaWaterExplosion(this.worldObj, this, this.posX, this.posY, this.posZ, f, true);
         explosion.doExplosionA();
         explosion.doExplosionB(true);
-    }
-
-    @Override
-    protected void writeEntityToNBT(NBTTagCompound tagCompound)
-    {
-        tagCompound.setByte("Fuse", (byte)this.fuse);
-    }
-
-    @Override
-    protected void readEntityFromNBT(NBTTagCompound tagCompund)
-    {
-        this.fuse = tagCompund.getByte("Fuse");
-    }
-
-    public EntityLivingBase getTntPlacedBy()
-    {
-        return this.tntPlacedBy;
-    }
-
-    @Override
-    public float getEyeHeight()
-    {
-        return 0.0F;
     }
 }

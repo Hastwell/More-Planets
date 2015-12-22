@@ -33,11 +33,11 @@ public class EntityGeyserFX extends EntityFX
     }
 
     @Override
-    public void func_180434_a(WorldRenderer worldRender, Entity entity, float p_70539_2_, float p_70539_3_, float p_70539_4_, float p_70539_5_, float p_70539_6_, float p_70539_7_)
+    public void renderParticle(WorldRenderer worldRender, Entity entity, float p_70539_2_, float p_70539_3_, float p_70539_4_, float p_70539_5_, float p_70539_6_, float p_70539_7_)
     {
         float f6 = (this.particleAge + p_70539_2_) / this.particleMaxAge;
         this.particleScale = this.flameScale * (5.0F - f6 * f6 * 0.5F);
-        super.func_180434_a(worldRender, entity, p_70539_2_, p_70539_3_, p_70539_4_, p_70539_5_, p_70539_6_, p_70539_7_);
+        super.renderParticle(worldRender, entity, p_70539_2_, p_70539_3_, p_70539_4_, p_70539_5_, p_70539_6_, p_70539_7_);
     }
 
     @Override

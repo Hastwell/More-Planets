@@ -58,7 +58,7 @@ public class InventoryRocketSchematic implements IInventory
     }
 
     @Override
-    public String getName()
+    public String getCommandSenderName()
     {
         return "container.crafting";
     }
@@ -153,7 +153,7 @@ public class InventoryRocketSchematic implements IInventory
     @Override
     public IChatComponent getDisplayName()
     {
-        return new ChatComponentText(this.getName());
+        return new ChatComponentText(this.getCommandSenderName());
     }
 
     @Override

@@ -79,7 +79,6 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
         super(world);
         this.setSize(2.4F, 1.9F);
         this.tasks.addTask(1, new EntityAISwimming(this));
-        this.tasks.addTask(2, this.field_175455_a);
         this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
         this.tasks.addTask(4, new AISpiderAttack(EntityPlayer.class));
         this.tasks.addTask(4, new AISpiderAttack(EntityIronGolem.class));
@@ -98,7 +97,7 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
     }
 
     @Override
-    protected PathNavigate func_175447_b(World world)
+    protected PathNavigate getNewNavigator(World world)
     {
         return new PathNavigateClimber(this, world);
     }
@@ -309,7 +308,7 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
         if (this.roomCoords != null && this.roomSize != null)
         {
             @SuppressWarnings("unchecked")
-            List<Entity> entitiesWithin = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.fromBounds(this.roomCoords.intX() - 1, this.roomCoords.intY() - 1, this.roomCoords.intZ() - 1, this.roomCoords.intX() + this.roomSize.intX(), this.roomCoords.intY() + this.roomSize.intY(), this.roomCoords.intZ() + this.roomSize.intZ()));
+            List<EntityPlayer> entitiesWithin = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.fromBounds(this.roomCoords.intX() - 1, this.roomCoords.intY() - 1, this.roomCoords.intZ() - 1, this.roomCoords.intX() + this.roomSize.intX(), this.roomCoords.intY() + this.roomSize.intY(), this.roomCoords.intZ() + this.roomSize.intZ()));
 
             this.entitiesWithin = entitiesWithin.size();
 

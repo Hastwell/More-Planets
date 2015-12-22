@@ -87,7 +87,7 @@ public class WorldUtilMP
                 worldNew.updateEntityWithOptionalForce(entity, false);
                 entity.moveToBlockPosAndAngles(blockpos, entity.rotationYaw, entity.rotationPitch);
 
-                player.mcServer.getConfigurationManager().func_72375_a(player, (WorldServer) worldNew);
+                player.mcServer.getConfigurationManager().preparePlayer(player, (WorldServer) worldNew);
                 player.playerNetServerHandler.setPlayerLocation(blockpos.getX(), blockpos.getY(), blockpos.getZ(), entity.rotationYaw, entity.rotationPitch);
 
                 MPLog.info("Server attempting to transfer player " + player.getGameProfile().getName() + " to dimension " + worldNew.provider.getDimensionId());

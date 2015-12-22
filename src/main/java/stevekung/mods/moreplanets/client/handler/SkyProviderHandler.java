@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.SkyProviderDarkAsteroids;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
+import stevekung.mods.moreplanets.client.SkyProviderMarsMP;
 import stevekung.mods.moreplanets.moons.deimos.client.sky.SkyProviderDeimos;
 import stevekung.mods.moreplanets.moons.deimos.dimension.WorldProviderDeimos;
 import stevekung.mods.moreplanets.moons.koentus.client.sky.SkyProviderKoentus;
@@ -46,9 +47,7 @@ import stevekung.mods.moreplanets.planets.siriusb.client.sky.SkyProviderSiriusB;
 import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 import stevekung.mods.moreplanets.planets.venus.client.sky.SkyProviderVenus;
 import stevekung.mods.moreplanets.planets.venus.dimension.WorldProviderVenus;
-import stevekung.mods.moreplanets.spacestation.jupiter.SkyProviderJupiterOrbit;
 import stevekung.mods.moreplanets.spacestation.jupiter.WorldProviderJupiterOrbit;
-import stevekung.mods.moreplanets.spacestation.mars.SkyProviderMarsOrbit;
 import stevekung.mods.moreplanets.spacestation.mars.WorldProviderMarsOrbit;
 
 public class SkyProviderHandler
@@ -201,32 +200,32 @@ public class SkyProviderHandler
                     world.provider.setCloudRenderer(new CloudRenderer());
                 }
             }
-            else if (world.provider instanceof WorldProviderJupiterOrbit)
-            {
-                if (world.provider.getSkyRenderer() == null)
-                {
-                    world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
-                    ((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
-                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
-                }
-                if (world.provider.getCloudRenderer() == null)
-                {
-                    world.provider.setCloudRenderer(new CloudRenderer());
-                }
-            }
-            else if (world.provider instanceof WorldProviderMarsOrbit)
-            {
-                if (world.provider.getSkyRenderer() == null)
-                {
-                    world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
-                    ((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
-                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
-                }
-                if (world.provider.getCloudRenderer() == null)
-                {
-                    world.provider.setCloudRenderer(new CloudRenderer());
-                }
-            }
+//            else if (world.provider instanceof WorldProviderJupiterOrbit)
+//            {
+//                if (world.provider.getSkyRenderer() == null)
+//                {
+//                    world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
+//                    ((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
+//                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+//                }
+//                if (world.provider.getCloudRenderer() == null)
+//                {
+//                    world.provider.setCloudRenderer(new CloudRenderer());
+//                }
+//            }
+//            else if (world.provider instanceof WorldProviderMarsOrbit)
+//            {
+//                if (world.provider.getSkyRenderer() == null)
+//                {
+//                    world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
+//                    ((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
+//                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+//                }
+//                if (world.provider.getCloudRenderer() == null)
+//                {
+//                    world.provider.setCloudRenderer(new CloudRenderer());
+//                }
+//            }
             else if (world.provider instanceof WorldProviderDarkAsteroids)
             {
                 if (world.provider.getSkyRenderer() == null)

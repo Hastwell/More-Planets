@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -23,14 +23,15 @@ import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.polongnius.entities.projectiles.EntityCheeseSpore;
 
 @SideOnly(Side.CLIENT)
-public class RenderCheeseSpore extends Render
+public class RenderCheeseSpore extends Render<EntityCheeseSpore>
 {
     public RenderCheeseSpore(RenderManager render)
     {
         super(render);
     }
 
-    public void doRender(EntityCheeseSpore entity, double x, double y, double z, float p_76986_8_, float partialTicks)
+    @Override
+    public void doRender(EntityCheeseSpore entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.bindEntityTexture(entity);
@@ -50,27 +51,20 @@ public class RenderCheeseSpore extends Render
         float f9 = 0.25F;
         GlStateManager.rotate(180.0F - this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.setNormal(0.0F, 1.0F, 0.0F);
-        worldrenderer.addVertexWithUV(0.0F - f8, 0.0F - f9, 0.0D, f3, f6);
-        worldrenderer.addVertexWithUV(f7 - f8, 0.0F - f9, 0.0D, f4, f6);
-        worldrenderer.addVertexWithUV(f7 - f8, 1.0F - f9, 0.0D, f4, f5);
-        worldrenderer.addVertexWithUV(0.0F - f8, 1.0F - f9, 0.0D, f3, f5);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181710_j);
+        worldrenderer.func_181662_b(-0.5D, -0.25D, 0.0D).func_181673_a(f3, f6).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(0.5D, -0.25D, 0.0D).func_181673_a(f4, f6).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(0.5D, 0.75D, 0.0D).func_181673_a(f4, f5).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
+        worldrenderer.func_181662_b(-0.5D, 0.75D, 0.0D).func_181673_a(f3, f5).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
         tessellator.draw();
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
-        super.doRender(entity, x, y, z, p_76986_8_, partialTicks);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityCheeseSpore entity)
     {
         return TextureMap.locationBlocksTexture;
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks)
-    {
-        this.doRender((EntityCheeseSpore)entity, x, y, z, p_76986_8_, partialTicks);
     }
 }

@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.pluto.world.gen;
 
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
 import net.minecraft.init.Blocks;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
@@ -35,7 +36,7 @@ public class BiomeDecoratorPluto extends BiomeDecoratorMP
     }
 
     @Override
-    protected void generateOres()
+    protected void genDecorations(BiomeGenBase biome)
     {
         this.generateOre(8, this.xeoniumGen, 16, 32);
         this.generateOre(15, this.frozenIronGen, 12, 32);

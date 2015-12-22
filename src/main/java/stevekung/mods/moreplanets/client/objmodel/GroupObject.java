@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -43,7 +44,7 @@ public class GroupObject
         {
             Tessellator tessellator = Tessellator.getInstance();
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-            worldrenderer.startDrawing(this.glDrawingMode);
+            worldrenderer.func_181668_a(this.glDrawingMode, DefaultVertexFormats.field_181710_j);
             this.render(tessellator);
             tessellator.draw();
         }

@@ -27,16 +27,16 @@ import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IInteractionObject;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUpdatePlayerListBox, IInventory, IKeyable, IInteractionObject
+public class TileEntityTreasureChestMP extends TileEntityAdvanced implements ITickable, IInventory, IKeyable, IInteractionObject
 {
     private ItemStack[] chestContents = new ItemStack[27];
     public float lidAngle;
@@ -129,7 +129,7 @@ public class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUp
     }
 
     @Override
-    public String getName()
+    public String getCommandSenderName()
     {
         return StatCollector.translateToLocal("container." + this.name + ".treasurechest.name");
     }
@@ -459,7 +459,7 @@ public class TileEntityTreasureChestMP extends TileEntityAdvanced implements IUp
     @Override
     public IChatComponent getDisplayName()
     {
-        return new ChatComponentText(this.getName());
+        return new ChatComponentText(this.getCommandSenderName());
     }
 
     @Override

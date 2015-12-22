@@ -172,7 +172,7 @@ public class ItemMonsterPlacerMP extends ItemMorePlanets
                 EntityLiving entityliving = (EntityLiving)entityToSpawn;
 
                 entityToSpawn.setLocationAndAngles(x, y, z, world.rand.nextFloat() * 360.0F, 0.0F);
-                entityliving.func_180482_a(world.getDifficultyForLocation(new BlockPos(entityToSpawn)), (IEntityLivingData)null);
+                entityliving.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(entityToSpawn)), (IEntityLivingData)null);
                 world.spawnEntityInWorld(entityToSpawn);
                 ((EntityLiving)entityToSpawn).playLivingSound();
             }

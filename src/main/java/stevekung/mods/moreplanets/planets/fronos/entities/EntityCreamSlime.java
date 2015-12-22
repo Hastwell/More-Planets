@@ -187,9 +187,9 @@ public class EntityCreamSlime extends EntityLiving implements IMob
     }
 
     @Override
-    public void func_145781_i(int par1)
+    public void onDataWatcherUpdate(int id)
     {
-        if (par1 == 16)
+        if (id == 16)
         {
             int j = this.getSlimeSize();
             this.setSize(0.51000005F * j, 0.51000005F * j);
@@ -201,7 +201,7 @@ public class EntityCreamSlime extends EntityLiving implements IMob
                 this.resetHeight();
             }
         }
-        super.func_145781_i(par1);
+        super.onDataWatcherUpdate(id);
     }
 
     @Override
@@ -315,7 +315,7 @@ public class EntityCreamSlime extends EntityLiving implements IMob
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         int i = this.rand.nextInt(2);
 
@@ -325,7 +325,7 @@ public class EntityCreamSlime extends EntityLiving implements IMob
         }
         int j = 1 << i;
         this.setSlimeSize(j);
-        return super.func_180482_a(diff, data);
+        return super.onInitialSpawn(diff, data);
     }
 
     class AISlimeFaceRandom extends EntityAIBase
@@ -364,7 +364,7 @@ public class EntityCreamSlime extends EntityLiving implements IMob
         public AISlimeFloat()
         {
             this.setMutexBits(5);
-            ((PathNavigateGround)EntityCreamSlime.this.getNavigator()).func_179693_d(true);
+            ((PathNavigateGround)EntityCreamSlime.this.getNavigator()).setCanSwim(true);
         }
 
         @Override

@@ -36,7 +36,7 @@ public class EntityOvantineSmokeFX extends EntityFX
     }
 
     @Override
-    public void func_180434_a(WorldRenderer worldRender, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
+    public void renderParticle(WorldRenderer worldRender, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
     {
         float f6 = (this.particleAge + par2) / this.particleMaxAge * 32.0F;
 
@@ -49,7 +49,7 @@ public class EntityOvantineSmokeFX extends EntityFX
             f6 = 1.0F;
         }
         this.particleScale = this.smokeParticleScale * f6;
-        super.func_180434_a(worldRender, entity, par2, par3, par4, par5, par6, par7);
+        super.renderParticle(worldRender, entity, par2, par3, par4, par5, par6, par7);
     }
 
     @Override

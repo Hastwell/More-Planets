@@ -20,13 +20,13 @@ import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 
-public abstract class TileEntityAncientChestMP extends TileEntityLockable implements IUpdatePlayerListBox, IInventory
+public abstract class TileEntityAncientChestMP extends TileEntityLockable implements ITickable, IInventory
 {
     private ItemStack[] chestContents = new ItemStack[27];
     public boolean adjacentChestChecked;
@@ -111,7 +111,7 @@ public abstract class TileEntityAncientChestMP extends TileEntityLockable implem
     }
 
     @Override
-    public String getName()
+    public String getCommandSenderName()
     {
         return this.getChestName() + " Ancient Chest";
     }

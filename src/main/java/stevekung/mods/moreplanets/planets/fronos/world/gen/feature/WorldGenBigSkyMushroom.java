@@ -183,7 +183,7 @@ public class WorldGenBigSkyMushroom extends WorldGenerator
 
                                     if (world.getBlockState(blockpos1).getBlock().canBeReplacedByLeaves(world, blockpos1))
                                     {
-                                        this.func_175905_a(world, blockpos1, FronosBlocks.sky_mushroom_block, k1);
+                                        this.setBlockAndNotifyAdequately(world, blockpos1, FronosBlocks.sky_mushroom_block.getStateFromMeta(k1));
                                     }
                                 }
                             }
@@ -197,7 +197,7 @@ public class WorldGenBigSkyMushroom extends WorldGenerator
 
                         if (state.getBlock().canBeReplacedByLeaves(world, upN))
                         {
-                            this.func_175905_a(world, pos.up(l), FronosBlocks.sky_mushroom_block, 10);
+                            this.setBlockAndNotifyAdequately(world, pos.up(l), FronosBlocks.sky_mushroom_block.getStateFromMeta(10));
                         }
                     }
                     return true;

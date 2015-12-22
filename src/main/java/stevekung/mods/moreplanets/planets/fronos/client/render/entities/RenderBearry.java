@@ -9,14 +9,14 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelBearry;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityBearry;
 
 @SideOnly(Side.CLIENT)
-public class RenderBearry extends RenderLiving
+public class RenderBearry extends RenderLiving<EntityBearry>
 {
     private ResourceLocation bearryTextures = new ResourceLocation("moreplanets:textures/entity/bearry.png");
 
@@ -26,7 +26,7 @@ public class RenderBearry extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityBearry entity)
     {
         return this.bearryTextures;
     }

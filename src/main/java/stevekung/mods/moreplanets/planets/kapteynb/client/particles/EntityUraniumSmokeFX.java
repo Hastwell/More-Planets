@@ -66,12 +66,12 @@ public class EntityUraniumSmokeFX extends EntityFX
     }
 
     @Override
-    public void func_180434_a(WorldRenderer worldRender, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
+    public void renderParticle(WorldRenderer worldrenderer, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
     {
         Tessellator tessellator = Tessellator.getInstance();
         float f6 = (this.particleAge + par2) / this.particleMaxAge;
         this.particleScale = this.lavaParticleScale * (1.0F - f6 * f6);
-        super.func_180434_a(worldRender, entity, par2, par3, par4, par5, par6, par7);
+        super.renderParticle(worldrenderer, entity, par2, par3, par4, par5, par6, par7);
 
         tessellator.draw();
         GlStateManager.pushMatrix();
@@ -82,18 +82,17 @@ public class EntityUraniumSmokeFX extends EntityFX
         float var13 = (float)(this.prevPosX + (this.posX - this.prevPosX) * par2 - EntityFX.interpPosX);
         float var14 = (float)(this.prevPosY + (this.posY - this.prevPosY) * par2 - EntityFX.interpPosY);
         float var15 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * par2 - EntityFX.interpPosZ);
-        tessellator.getWorldRenderer().startDrawingQuads();
-        tessellator.getWorldRenderer().setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, 1.0F);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor, 0.0D, 1.0D);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor, 1.0D, 1.0D);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor, 1.0D, 0.0D);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor, 0.0D, 0.0D);
+        worldrenderer.startDrawingQuads();
+        worldrenderer.addVertex(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor).addUV(0.0D, 1.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
+        worldrenderer.addVertex(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor).addUV(1.0D, 1.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
+        worldrenderer.addVertex(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor).addUV(1.0D, 0.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
+        worldrenderer.addVertex(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor).addUV(0.0D, 0.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
         tessellator.draw();
         GlStateManager.disableBlend();
         GlStateManager.depthMask(true);
         GlStateManager.popMatrix();
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.particles);
-        tessellator.getWorldRenderer().startDrawingQuads();
+        worldrenderer.startDrawingQuads();
     }
 
     @Override

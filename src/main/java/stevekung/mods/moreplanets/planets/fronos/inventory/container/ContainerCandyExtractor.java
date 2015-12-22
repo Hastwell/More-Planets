@@ -52,9 +52,9 @@ public class ContainerCandyExtractor extends Container
     }
 
     @Override
-    public void addCraftingToCrafters(ICrafting listener)
+    public void onCraftGuiOpened(ICrafting listener)
     {
-        super.addCraftingToCrafters(listener);
+        super.onCraftGuiOpened(listener);
         listener.func_175173_a(this, this.tileFurnace);
     }
 

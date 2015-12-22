@@ -23,7 +23,7 @@ public class MapGenCavernNibiru extends MapGenBase
     protected int range = 12;
 
     @Override
-    public void func_175792_a(IChunkProvider provider, World world, int chunkX, int chunkZ, ChunkPrimer chunk)
+    public void generate(IChunkProvider provider, World world, int chunkX, int chunkZ, ChunkPrimer chunk)
     {
         int var6 = this.range;
         long var7 = this.rand.nextLong();
@@ -36,13 +36,13 @@ public class MapGenCavernNibiru extends MapGenBase
                 long var13 = x * var7;
                 long var15 = z * var9;
                 this.rand.setSeed(var13 ^ var15 ^ world.getSeed());
-                this.func_180701_a(world, x, z, chunkX, chunkZ, chunk);
+                this.recursiveGenerate(world, x, z, chunkX, chunkZ, chunk);
             }
         }
     }
 
     @Override
-    protected void func_180701_a(World world, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk)
+    protected void recursiveGenerate(World world, int xChunkCoord, int zChunkCoord, int origXChunkCoord, int origZChunkCoord, ChunkPrimer chunk)
     {
         if (this.rand.nextInt(100) == 0)
         {

@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,7 +21,7 @@ import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityFronisiumTNT;
 
 @SideOnly(Side.CLIENT)
-public class RenderFronisiumTNT extends Render
+public class RenderFronisiumTNT extends Render<EntityFronisiumTNT>
 {
     public RenderFronisiumTNT(RenderManager render)
     {
@@ -30,7 +29,7 @@ public class RenderFronisiumTNT extends Render
         this.shadowSize = 0.5F;
     }
 
-    public void doRender(EntityFronisiumTNT entity, double x, double y, double z, float par5, float partialTicks)
+    public void doRender(EntityFronisiumTNT entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
         GlStateManager.pushMatrix();
@@ -71,23 +70,12 @@ public class RenderFronisiumTNT extends Render
             GlStateManager.enableTexture2D();
         }
         GlStateManager.popMatrix();
-        super.doRender(entity, x, y, z, par5, partialTicks);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    protected ResourceLocation func_180563_a(EntityFronisiumTNT entity)
+    @Override
+    protected ResourceLocation getEntityTexture(EntityFronisiumTNT entity)
     {
         return TextureMap.locationBlocksTexture;
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
-    {
-        return this.func_180563_a((EntityFronisiumTNT)entity);
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityFronisiumTNT)entity, x, y, z, par5, partialTicks);
     }
 }

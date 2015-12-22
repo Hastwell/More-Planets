@@ -9,14 +9,14 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelBerry;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityBerry;
 
 @SideOnly(Side.CLIENT)
-public class RenderBerry extends RenderLiving
+public class RenderBerry extends RenderLiving<EntityBerry>
 {
     private ResourceLocation berryTextures = new ResourceLocation("moreplanets:textures/entity/berry.png");
 
@@ -26,7 +26,7 @@ public class RenderBerry extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityBerry entity)
     {
         return this.berryTextures;
     }

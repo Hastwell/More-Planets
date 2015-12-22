@@ -19,7 +19,7 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelMarshmallow;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
 
 @SideOnly(Side.CLIENT)
-public class RenderMarshmallow extends RenderLiving
+public class RenderMarshmallow extends RenderLiving<EntityMarshmallow>
 {
     private ResourceLocation marshmallowTextures = new ResourceLocation("moreplanets:textures/entity/marshmallow.png");
 
@@ -29,15 +29,15 @@ public class RenderMarshmallow extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityMarshmallow entity)
     {
         return this.marshmallowTextures;
     }
 
     @Override
-    public void preRenderCallback(EntityLivingBase living, float par2)
+    public void preRenderCallback(EntityMarshmallow entity, float partialTickTime)
     {
-        if (((EntityMarshmallow)living).isSitting())
+        if (entity.isSitting())
         {
             GlStateManager.scale(0.8F, 0.8F, 0.8F);
         }

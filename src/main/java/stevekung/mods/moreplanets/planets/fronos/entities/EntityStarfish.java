@@ -200,7 +200,7 @@ public class EntityStarfish extends EntityAnimal
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         if (this.worldObj.rand.nextInt(5) == 0)
         {
@@ -212,6 +212,6 @@ public class EntityStarfish extends EntityAnimal
                 this.worldObj.spawnEntityInWorld(starfish);
             }
         }
-        return data;
+        return super.onInitialSpawn(diff, data);
     }
 }

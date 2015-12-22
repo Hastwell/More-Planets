@@ -84,11 +84,11 @@ public class BlockNibiruSapling extends BlockSaplingMP
         {
             if (type == BlockType.ancient_dark_sapling)
             {
-                obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, this, null);
+                obj = new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, this, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null);
             }
             else if (type == BlockType.orange_sapling)
             {
-                obj = new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, this, null);
+                obj = new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, this, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null);
             }
         }
         if (obj != null)

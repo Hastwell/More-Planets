@@ -72,8 +72,8 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
         this.generateTerrain(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
         this.createCraters(chunkX, chunkZ, primer);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
         this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();
@@ -106,7 +106,7 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
     }
 
     @Override
-    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
     {
         if (type == EnumCreatureType.MONSTER)
         {
@@ -120,7 +120,7 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
             creatures.add(new SpawnListEntry(EntitySpaceWolf.class, 8, 4, 4));
             return creatures;
         }
-        return super.func_177458_a(type, pos);
+        return super.getPossibleCreatures(type, pos);
     }
 
     @Override

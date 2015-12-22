@@ -11,9 +11,6 @@ import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,7 +18,7 @@ import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.laye
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
 
 @SideOnly(Side.CLIENT)
-public class RenderCheeseSlime extends RenderLiving
+public class RenderCheeseSlime extends RenderLiving<EntityCheeseSlime>
 {
     private ResourceLocation slimeTextures = new ResourceLocation("moreplanets:textures/entity/cheese_slime.png");
 
@@ -31,52 +28,25 @@ public class RenderCheeseSlime extends RenderLiving
         this.addLayer(new LayerCheeseSlimeGel(this));
     }
 
-    public void doRender(EntityCheeseSlime living, double par2, double par3, double par4, float par5, float par6)
+    @Override
+    public void doRender(EntityCheeseSlime entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
-        this.shadowSize = 0.25F * living.getSlimeSize();
-        super.doRender(living, par2, par3, par4, par5, par6);
+        this.shadowSize = 0.25F * entity.getSlimeSize();
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    protected void preRenderCallback(EntityCheeseSlime living, float par2)
+    @Override
+    protected void preRenderCallback(EntityCheeseSlime entity, float partialTickTime)
     {
-        float f1 = living.getSlimeSize();
-        float f2 = (living.prevSquishFactor + (living.squishFactor - living.prevSquishFactor) * par2) / (f1 * 0.5F + 1.0F);
+        float f1 = entity.getSlimeSize();
+        float f2 = (entity.prevSquishFactor + (entity.squishFactor - entity.prevSquishFactor) * partialTickTime) / (f1 * 0.5F + 1.0F);
         float f3 = 1.0F / (f2 + 1.0F);
         GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
     }
 
+    @Override
     protected ResourceLocation getEntityTexture(EntityCheeseSlime entity)
     {
         return this.slimeTextures;
-    }
-
-    @Override
-    public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
-    }
-
-    @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
-    {
-        this.preRenderCallback((EntityCheeseSlime)entity, par2);
-    }
-
-    @Override
-    public void doRender(EntityLivingBase entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
-    {
-        return this.getEntityTexture((EntityCheeseSlime)entity);
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityCheeseSlime)entity, x, y, z, par5, partialTicks);
     }
 }

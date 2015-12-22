@@ -54,7 +54,7 @@ public class ComponentFronosVillageHut extends ComponentFronosVillage
 
     public static ComponentFronosVillageHut func_74908_a(ComponentFronosVillageStartPiece component, List list, Random rand, int x, int y, int z, EnumFacing side, int type)
     {
-        StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 4, 6, 5, side);
+        StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 4, 6, 5, side);
         return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(list, structureboundingbox) == null ? new ComponentFronosVillageHut(component, type, rand, structureboundingbox, side) : null;
     }
 
@@ -72,53 +72,53 @@ public class ComponentFronosVillageHut extends ComponentFronosVillage
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 6 - 1, 0);
         }
 
-        this.func_175804_a(world, box, 1, 1, 1, 3, 5, 4, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
-        this.func_175804_a(world, box, 0, 0, 0, 3, 0, 4, Blocks.cobblestone.getDefaultState(), Blocks.cobblestone.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 0, 1, 2, 0, 3, FronosBlocks.fronos_dirt.getDefaultState(), FronosBlocks.fronos_dirt.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 1, 1, 3, 5, 4, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 0, 0, 0, 3, 0, 4, Blocks.cobblestone.getDefaultState(), Blocks.cobblestone.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 0, 1, 2, 0, 3, FronosBlocks.fronos_dirt.getDefaultState(), FronosBlocks.fronos_dirt.getDefaultState(), false);
 
         if (this.isTallHouse)
         {
-            this.func_175804_a(world, box, 1, 4, 1, 2, 4, 3, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+            this.fillWithBlocks(world, box, 1, 4, 1, 2, 4, 3, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
         }
         else
         {
-            this.func_175804_a(world, box, 1, 5, 1, 2, 5, 3, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+            this.fillWithBlocks(world, box, 1, 5, 1, 2, 5, 3, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
         }
 
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 1, 4, 0, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 2, 4, 0, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 1, 4, 4, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 2, 4, 4, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 0, 4, 1, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 0, 4, 2, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 0, 4, 3, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 3, 4, 1, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 3, 4, 2, box);
-        this.func_175811_a(world, FronosBlocks.fronos_log.getDefaultState(), 3, 4, 3, box);
-        this.func_175804_a(world, box, 0, 1, 0, 0, 3, 0, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 3, 1, 0, 3, 3, 0, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 0, 1, 4, 0, 3, 4, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 3, 1, 4, 3, 3, 4, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 0, 1, 1, 0, 3, 3, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
-        this.func_175804_a(world, box, 3, 1, 1, 3, 3, 3, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 1, 0, 2, 3, 0, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 1, 4, 2, 3, 4, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
-        this.func_175811_a(world, FronosBlocks.cheese_glass_pane.getDefaultState(), 0, 2, 2, box);
-        this.func_175811_a(world, FronosBlocks.cheese_glass_pane.getDefaultState(), 3, 2, 2, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 1, 4, 0, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 2, 4, 0, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 1, 4, 4, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 2, 4, 4, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 0, 4, 1, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 0, 4, 2, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 0, 4, 3, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 3, 4, 1, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 3, 4, 2, box);
+        this.setBlockState(world, FronosBlocks.fronos_log.getDefaultState(), 3, 4, 3, box);
+        this.fillWithBlocks(world, box, 0, 1, 0, 0, 3, 0, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 3, 1, 0, 3, 3, 0, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 0, 1, 4, 0, 3, 4, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 3, 1, 4, 3, 3, 4, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 0, 1, 1, 0, 3, 3, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 3, 1, 1, 3, 3, 3, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 1, 0, 2, 3, 0, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 1, 4, 2, 3, 4, FronosBlocks.fronos_planks.getDefaultState(), FronosBlocks.fronos_planks.getDefaultState(), false);
+        this.setBlockState(world, FronosBlocks.cheese_glass_pane.getDefaultState(), 0, 2, 2, box);
+        this.setBlockState(world, FronosBlocks.cheese_glass_pane.getDefaultState(), 3, 2, 2, box);
 
         if (this.tablePosition > 0)
         {
-            this.func_175811_a(world, Blocks.oak_fence.getDefaultState(), this.tablePosition, 1, 3, box);
-            this.func_175811_a(world, Blocks.wooden_pressure_plate.getDefaultState(), this.tablePosition, 2, 3, box);
+            this.setBlockState(world, Blocks.oak_fence.getDefaultState(), this.tablePosition, 1, 3, box);
+            this.setBlockState(world, Blocks.wooden_pressure_plate.getDefaultState(), this.tablePosition, 2, 3, box);
         }
 
-        this.func_175811_a(world, Blocks.air.getDefaultState(), 1, 1, 0, box);
-        this.func_175811_a(world, Blocks.air.getDefaultState(), 1, 2, 0, box);
-        this.func_175810_a(world, box, rand, 1, 1, 0, EnumFacing.getHorizontal(this.getMetadataWithOffset(Blocks.oak_door, 1)));
+        this.setBlockState(world, Blocks.air.getDefaultState(), 1, 1, 0, box);
+        this.setBlockState(world, Blocks.air.getDefaultState(), 1, 2, 0, box);
+        this.placeDoorCurrentPosition(world, box, rand, 1, 1, 0, EnumFacing.getHorizontal(this.getMetadataWithOffset(Blocks.oak_door, 1)));
 
-        if (this.func_175807_a(world, 1, 0, -1, box).getBlock().getMaterial() == Material.air && this.func_175807_a(world, 1, -1, -1, box).getBlock().getMaterial() != Material.air)
+        if (this.getBlockStateFromPos(world, 1, 0, -1, box).getBlock().getMaterial() == Material.air && this.getBlockStateFromPos(world, 1, -1, -1, box).getBlock().getMaterial() != Material.air)
         {
-            this.func_175811_a(world, Blocks.stone_stairs.getStateFromMeta(this.getMetadataWithOffset(Blocks.stone_stairs, 3)), 1, 0, -1, box);
+            this.setBlockState(world, Blocks.stone_stairs.getStateFromMeta(this.getMetadataWithOffset(Blocks.stone_stairs, 3)), 1, 0, -1, box);
         }
 
         for (int i = 0; i < 5; ++i)
@@ -126,7 +126,7 @@ public class ComponentFronosVillageHut extends ComponentFronosVillage
             for (int j = 0; j < 4; ++j)
             {
                 this.clearCurrentPositionBlocksUpwards(world, j, 6, i, box);
-                this.func_175808_b(world, Blocks.cobblestone.getDefaultState(), j, -1, i, box);
+                this.replaceAirAndLiquidDownwards(world, Blocks.cobblestone.getDefaultState(), j, -1, i, box);
             }
         }
         this.spawnVillagers(world, box, 1, 1, 2, 1);

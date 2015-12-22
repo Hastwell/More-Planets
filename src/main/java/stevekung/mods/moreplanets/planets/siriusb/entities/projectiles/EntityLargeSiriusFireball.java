@@ -34,7 +34,7 @@ public class EntityLargeSiriusFireball extends EntityFireball
             if (moving.entityHit != null)
             {
                 moving.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 6.0F);
-                this.func_174815_a(this.shootingEntity, moving.entityHit);
+                this.applyEnchantments(this.shootingEntity, moving.entityHit);
             }
             this.explode();
             this.setDead();

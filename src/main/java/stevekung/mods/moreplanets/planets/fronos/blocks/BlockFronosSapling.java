@@ -96,13 +96,13 @@ public class BlockFronosSapling extends BlockSaplingMP
                 obj = new WorldGenCoconutTree(30, 10, 1.3D);
                 break;
             case red_maple_sapling:
-                obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, this, FronosBlocks.red_maple_ivy);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, this, FronosBlocks.red_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
                 break;
             case yellow_maple_sapling:
-                obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, true, this, FronosBlocks.yellow_maple_ivy);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, this, FronosBlocks.yellow_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
                 break;
             case purple_maple_sapling:
-                obj = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, true, this, FronosBlocks.purple_maple_ivy);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, this, FronosBlocks.purple_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
                 break;
             }
         }

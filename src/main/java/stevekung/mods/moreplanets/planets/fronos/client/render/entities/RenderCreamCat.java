@@ -10,8 +10,6 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,7 +17,7 @@ import stevekung.mods.moreplanets.planets.fronos.client.model.ModelCreamCat;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamCat;
 
 @SideOnly(Side.CLIENT)
-public class RenderCreamCat extends RenderLiving
+public class RenderCreamCat extends RenderLiving<EntityCreamCat>
 {
     private ResourceLocation chocolateCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/chocolate.png");
     private ResourceLocation spaceCatTextures = new ResourceLocation("moreplanets:textures/entity/cream_cat/default.png");
@@ -35,18 +33,18 @@ public class RenderCreamCat extends RenderLiving
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    protected void preRenderCallback(EntityCreamCat entity, float partialTickTime)
     {
-        if (((EntityCreamCat)entity).isTamed())
+        if (entity.isTamed())
         {
             GlStateManager.scale(0.8F, 0.8F, 0.8F);
         }
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityCreamCat entity)
     {
-        switch (((EntityCreamCat)entity).getTameSkin())
+        switch (entity.getTameSkin())
         {
         case 0:
         default:

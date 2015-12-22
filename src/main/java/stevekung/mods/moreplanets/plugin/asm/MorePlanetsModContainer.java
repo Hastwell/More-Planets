@@ -46,13 +46,13 @@ public class MorePlanetsModContainer extends DummyModContainer
     public List<ArtifactVersion> getDependencies()
     {
         LinkedList<ArtifactVersion> deps = new LinkedList<ArtifactVersion>();
-        deps.add(VersionParser.parseVersionReference("required-after:Forge@[11.14.4.1577,)"));
+        deps.add(VersionParser.parseVersionReference("required-after:Forge@[11.15.0.1622,)"));
         return deps;
     }
 
     @Override
     public VersionRange acceptableMinecraftVersionRange()
     {
-        return VersionParser.parseRange("[1.8]");
+        return VersionParser.parseRange("[1.8.8]");
     }
 }

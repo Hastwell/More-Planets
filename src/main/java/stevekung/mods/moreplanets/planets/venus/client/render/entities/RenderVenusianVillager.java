@@ -11,15 +11,13 @@ import micdoodle8.mods.galacticraft.core.client.model.ModelAlienVillager;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianVillager;
 
 @SideOnly(Side.CLIENT)
-public class RenderVenusianVillager extends RenderLiving
+public class RenderVenusianVillager extends RenderLiving<EntityVenusianVillager>
 {
     private ResourceLocation villagerTexture = new ResourceLocation("moreplanets:textures/entity/venusian_villager.png");
 
@@ -28,7 +26,8 @@ public class RenderVenusianVillager extends RenderLiving
         super(render, new ModelAlienVillager(0.0F), 0.5F);
     }
 
-    protected void preRenderVillager(EntityVenusianVillager entity)
+    @Override
+    protected void preRenderCallback(EntityVenusianVillager entity, float partialTickTime)
     {
         float f1 = 0.9375F;
 
@@ -45,13 +44,7 @@ public class RenderVenusianVillager extends RenderLiving
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
-    {
-        this.preRenderVillager((EntityVenusianVillager)entity);
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityVenusianVillager entity)
     {
         return this.villagerTexture;
     }

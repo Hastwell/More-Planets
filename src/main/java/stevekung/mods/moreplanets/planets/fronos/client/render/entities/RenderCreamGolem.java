@@ -10,14 +10,13 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 import net.minecraft.client.model.ModelSnowMan;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamGolem;
 
 @SideOnly(Side.CLIENT)
-public class RenderCreamGolem extends RenderLiving
+public class RenderCreamGolem extends RenderLiving<EntityCreamGolem>
 {
     private ResourceLocation vanillaTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/vanilla.png");
     private ResourceLocation chocolateTextures = new ResourceLocation("moreplanets:textures/entity/cream_golem/chocolate.png");
@@ -32,9 +31,9 @@ public class RenderCreamGolem extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityCreamGolem entity)
     {
-        switch (((EntityCreamGolem)entity).getCreamGolemType())
+        switch (entity.getCreamGolemType())
         {
         case 0:
         default:

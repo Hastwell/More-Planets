@@ -40,12 +40,12 @@ public class EntityBlueFlameFX extends EntityFX
     }
 
     @Override
-    public void func_180434_a(WorldRenderer worldRender, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
+    public void renderParticle(WorldRenderer worldRender, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
     {
         Tessellator tessellator = Tessellator.getInstance();
         float f = (this.particleAge + par2) / this.particleMaxAge;
         this.particleScale = this.flameScale * (1.0F - f * f * 1.0F);
-        super.func_180434_a(worldRender, entity, par2, par3, par4, par5, par6, par7);
+        super.renderParticle(worldRender, entity, par2, par3, par4, par5, par6, par7);
 
         tessellator.draw();
         GlStateManager.pushMatrix();

@@ -13,6 +13,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.client.SkyProviderBaseMP;
 
@@ -44,11 +45,11 @@ public class SkyProviderDiona extends SkyProviderBaseMP
         GlStateManager.disableTexture2D();
         GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
         size = 11.0F / 3.5F;
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertex(-size, 99.9D, -size);
-        worldrenderer.addVertex(size, 99.9D, -size);
-        worldrenderer.addVertex(size, 99.9D, size);
-        worldrenderer.addVertex(-size, 99.9D, size);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181662_b(-size, 99.9D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 99.9D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 99.9D, size).func_181675_d();
+        worldrenderer.func_181662_b(-size, 99.9D, size).func_181675_d();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -60,21 +61,21 @@ public class SkyProviderDiona extends SkyProviderBaseMP
 
         // Some blanking to conceal the stars
         size = this.sunSize / 3.5F;
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertex(-size, 99.9D, -size);
-        worldrenderer.addVertex(size, 99.9D, -size);
-        worldrenderer.addVertex(size, 99.9D, size);
-        worldrenderer.addVertex(-size, 99.9D, size);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181662_b(-size, 99.9D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 99.9D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 99.9D, size).func_181675_d();
+        worldrenderer.func_181662_b(-size, 99.9D, size).func_181675_d();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         size = this.sunSize + 7;
         mc.renderEngine.bindTexture(this.siriusTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-size, 100.0D, -size, 0.0D, 0.0D);
-        worldrenderer.addVertexWithUV(size, 100.0D, -size, 1.0D, 0.0D);
-        worldrenderer.addVertexWithUV(size, 100.0D, size, 1.0D, 1.0D);
-        worldrenderer.addVertexWithUV(-size, 100.0D, size, 0.0D, 1.0D);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
 
         GlStateManager.disableBlend();
@@ -86,11 +87,11 @@ public class SkyProviderDiona extends SkyProviderBaseMP
         GlStateManager.rotate(200F, 1.0F, 0.0F, 0.0F);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
         mc.renderEngine.bindTexture(this.polongniusTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-size, -100.0D, size, 0, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, size, 1, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, -size, 1, 0);
-        worldrenderer.addVertexWithUV(-size, -100.0D, -size, 0, 0);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
 
         // Koentus
@@ -101,11 +102,11 @@ public class SkyProviderDiona extends SkyProviderBaseMP
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
         GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
         mc.renderEngine.bindTexture(this.koentusTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-size, -100.0D, size, 0, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, size, 1, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, -size, 1, 0);
-        worldrenderer.addVertexWithUV(-size, -100.0D, -size, 0, 0);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
     }
 

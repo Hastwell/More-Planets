@@ -42,11 +42,11 @@ public class BiomeGenBaseNibiru extends BiomeGenBaseMP
     {
         if (rand.nextInt(1) == 0)
         {
-            return new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, NibiruBlocks.nibiru_sapling, null);
+            return new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, NibiruBlocks.nibiru_sapling, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null);
         }
         else if (rand.nextInt(2) == 0)
         {
-            return new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, NibiruBlocks.nibiru_sapling, null);
+            return new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, NibiruBlocks.nibiru_sapling, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null);
         }
         return null;
     }

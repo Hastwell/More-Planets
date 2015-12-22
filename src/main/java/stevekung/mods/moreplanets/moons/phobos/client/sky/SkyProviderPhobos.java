@@ -13,6 +13,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.client.SkyProviderBaseMP;
 
@@ -46,11 +47,11 @@ public class SkyProviderPhobos extends SkyProviderBaseMP
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         float size = this.sunSize + 2.6F;
         mc.renderEngine.bindTexture(this.sunTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-size, 100.0D, -size, 0.0D, 0.0D);
-        worldrenderer.addVertexWithUV(size, 100.0D, -size, 1.0D, 0.0D);
-        worldrenderer.addVertexWithUV(size, 100.0D, size, 1.0D, 1.0D);
-        worldrenderer.addVertexWithUV(-size, 100.0D, size, 0.0D, 1.0D);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
 
         GlStateManager.disableBlend();
@@ -62,11 +63,11 @@ public class SkyProviderPhobos extends SkyProviderBaseMP
         GlStateManager.rotate(-32F, -100.0F, -20.0F, 180.0F);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
         mc.renderEngine.bindTexture(this.marsTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-size, -100.0D, size, 0, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, size, 1, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, -size, 1, 0);
-        worldrenderer.addVertexWithUV(-size, -100.0D, -size, 0, 0);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
 
         // Deimos
@@ -77,11 +78,11 @@ public class SkyProviderPhobos extends SkyProviderBaseMP
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
         GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
         mc.renderEngine.bindTexture(this.deimosTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-size, -100.0D, size, 0, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, size, 1, 1);
-        worldrenderer.addVertexWithUV(size, -100.0D, -size, 1, 0);
-        worldrenderer.addVertexWithUV(-size, -100.0D, -size, 0, 0);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
     }
 

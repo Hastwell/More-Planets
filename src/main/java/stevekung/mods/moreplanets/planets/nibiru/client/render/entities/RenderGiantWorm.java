@@ -16,9 +16,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.nibiru.client.model.ModelGiantWorm;
+import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 
 @SideOnly(Side.CLIENT)
-public class RenderGiantWorm extends RenderLiving
+public class RenderGiantWorm extends RenderLiving<EntityGiantWorm>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/giant_worm.png");
 
@@ -28,13 +29,13 @@ public class RenderGiantWorm extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityGiantWorm entity)
     {
         return this.texture;
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase living, float par2)
+    protected void preRenderCallback(EntityGiantWorm entity, float partialTickTime)
     {
         GlStateManager.scale(0.25F, 0.25F, 0.25F);
     }

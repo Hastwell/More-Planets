@@ -120,7 +120,7 @@ public class ComponentKoentusVillagePathGen extends ComponentKoentusVillageRoadP
     {
         for (int var7 = 7 * MathHelper.getRandomIntegerInRange(rand, 3, 5); var7 >= 7; var7 -= 7)
         {
-            StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 3, var7, facing);
+            StructureBoundingBox var8 = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 3, 3, var7, facing);
 
             if (StructureComponent.findIntersecting(list, var8) == null)
             {
@@ -141,7 +141,7 @@ public class ComponentKoentusVillagePathGen extends ComponentKoentusVillageRoadP
             {
                 BlockPos blockpos = new BlockPos(i, 64, j);
 
-                if (box.func_175898_b(blockpos))
+                if (box.isVecInside(blockpos))
                 {
                     blockpos = world.getTopSolidOrLiquidBlock(blockpos).down();
                     world.setBlockState(blockpos, iblockstate, 2);

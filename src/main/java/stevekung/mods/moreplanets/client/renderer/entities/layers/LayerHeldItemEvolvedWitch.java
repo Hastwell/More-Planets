@@ -80,7 +80,7 @@ public class LayerHeldItemEvolvedWitch implements LayerRenderer
                     GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
                     GlStateManager.translate(0.0F, -0.125F, 0.0F);
                 }
-                this.render.func_82422_c();
+                this.render.transformHeldFull3DItemLayer();
                 f8 = 0.625F;
                 GlStateManager.scale(f8, -f8, f8);
                 GlStateManager.rotate(-100.0F, 1.0F, 0.0F, 0.0F);

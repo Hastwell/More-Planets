@@ -11,18 +11,16 @@ import net.minecraft.client.model.ModelSpider;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.nibiru.client.render.entities.layers.LayerInfectedEvolvedSpiderBossEyes;
+import stevekung.mods.moreplanets.planets.nibiru.entities.EntityEvolvedInfectedSpiderBoss;
 
 @SideOnly(Side.CLIENT)
-public class RenderInfectedEvolvedSpiderBoss extends RenderLiving
+public class RenderInfectedEvolvedSpiderBoss extends RenderLiving<EntityEvolvedInfectedSpiderBoss>
 {
     private ResourceLocation spiderTextures = new ResourceLocation("moreplanets:textures/entity/infected_spider_boss.png");
 
@@ -33,26 +31,26 @@ public class RenderInfectedEvolvedSpiderBoss extends RenderLiving
     }
 
     @Override
-    public void doRender(EntityLiving entity, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(EntityEvolvedInfectedSpiderBoss entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BossStatus.setBossStatus((IBossDisplayData) entity, false);
-        super.doRender(entity, par2, par4, par6, par8, par9);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    protected void preRenderCallback(EntityEvolvedInfectedSpiderBoss entity, float partialTickTime)
     {
         GlStateManager.scale(2.0F, 2.0F, 2.0F);
     }
 
     @Override
-    protected float getDeathMaxRotation(EntityLivingBase entity)
+    protected float getDeathMaxRotation(EntityEvolvedInfectedSpiderBoss entity)
     {
         return 180.0F;
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityEvolvedInfectedSpiderBoss entity)
     {
         return this.spiderTextures;
     }

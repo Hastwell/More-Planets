@@ -348,7 +348,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
         @Override
         public boolean shouldExecute()
         {
-            return !this.field_179475_a.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") ? false : this.field_179475_a.func_175489_ck().getBlock().getMaterial() == Material.air ? false : this.field_179475_a.getRNG().nextInt(2000) == 0;
+            return !this.field_179475_a.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") ? false : this.field_179475_a.getHeldBlockState().getBlock().getMaterial() == Material.air ? false : this.field_179475_a.getRNG().nextInt(2000) == 0;
         }
 
         @Override
@@ -363,10 +363,10 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
             Block block = world.getBlockState(blockpos).getBlock();
             Block block1 = world.getBlockState(blockpos.down()).getBlock();
 
-            if (this.func_179474_a(world, blockpos, this.field_179475_a.func_175489_ck().getBlock(), block, block1))
+            if (this.func_179474_a(world, blockpos, this.field_179475_a.getHeldBlockState().getBlock(), block, block1))
             {
-                world.setBlockState(blockpos, this.field_179475_a.func_175489_ck(), 3);
-                this.field_179475_a.func_175490_a(Blocks.air.getDefaultState());
+                world.setBlockState(blockpos, this.field_179475_a.getHeldBlockState(), 3);
+                this.field_179475_a.setHeldBlockState(Blocks.air.getDefaultState());
             }
         }
 
@@ -383,7 +383,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
         @Override
         public boolean shouldExecute()
         {
-            return !this.field_179473_a.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") ? false : this.field_179473_a.func_175489_ck().getBlock().getMaterial() != Material.air ? false : this.field_179473_a.getRNG().nextInt(20) == 0;
+            return !this.field_179473_a.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") ? false : this.field_179473_a.getHeldBlockState().getBlock().getMaterial() != Material.air ? false : this.field_179473_a.getRNG().nextInt(20) == 0;
         }
 
         @Override
@@ -400,7 +400,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
 
             if (EntityEvolvedEnderman.carriableBlocks.contains(block))
             {
-                this.field_179473_a.func_175490_a(iblockstate);
+                this.field_179473_a.setHeldBlockState(iblockstate);
                 world.setBlockState(blockpos, Blocks.air.getDefaultState());
             }
         }
@@ -423,7 +423,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
     }
 
     @Override
-    protected void addRandomArmor()
+    protected void addRandomDrop()
     {
         switch (this.rand.nextInt(10))
         {

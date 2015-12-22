@@ -102,7 +102,7 @@ public class WorldGenEuropaTree1 extends WorldGenAbstractTree
                                 {
                                     if (!World.doesBlockHaveSolidTopSurface(world, blockpos))
                                     {
-                                        this.func_175905_a(world, blockpos, EuropaBlocks.europa_leaves, 0);
+                                        this.setBlockAndNotifyAdequately(world, blockpos, EuropaBlocks.europa_leaves.getDefaultState());
                                     }
                                 }
                             }
@@ -131,7 +131,7 @@ public class WorldGenEuropaTree1 extends WorldGenAbstractTree
                     {
                         if (!World.doesBlockHaveSolidTopSurface(world, pos.down(l1)))
                         {
-                            this.func_175905_a(world, pos.down(l1), EuropaBlocks.europa_log, 0);
+                            this.setBlockAndNotifyAdequately(world, pos.down(l1), EuropaBlocks.europa_log.getDefaultState());
                         }
                     }
                     return true;

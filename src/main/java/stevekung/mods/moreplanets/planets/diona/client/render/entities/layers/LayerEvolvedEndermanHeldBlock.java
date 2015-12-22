@@ -33,7 +33,7 @@ public class LayerEvolvedEndermanHeldBlock implements LayerRenderer
 
     public void func_177173_a(EntityEvolvedEnderman entity, float par2)
     {
-        IBlockState iblockstate = entity.func_175489_ck();
+        IBlockState iblockstate = entity.getHeldBlockState();
 
         if (iblockstate.getBlock().getMaterial() != Material.air)
         {

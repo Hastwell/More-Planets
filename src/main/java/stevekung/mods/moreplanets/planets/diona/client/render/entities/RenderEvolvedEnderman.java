@@ -12,9 +12,6 @@ import java.util.Random;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -24,7 +21,7 @@ import stevekung.mods.moreplanets.planets.diona.client.render.entities.layers.La
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 @SideOnly(Side.CLIENT)
-public class RenderEvolvedEnderman extends RenderLiving
+public class RenderEvolvedEnderman extends RenderLiving<EntityEvolvedEnderman>
 {
     private ResourceLocation endermanTextures = new ResourceLocation("moreplanets:textures/entity/evolved_enderman/evolved_enderman.png");
     private ModelEvolvedEnderman endermanModel;
@@ -38,9 +35,16 @@ public class RenderEvolvedEnderman extends RenderLiving
         this.addLayer(new LayerEvolvedEndermanHeldBlock(this));
     }
 
-    public void doRender(EntityEvolvedEnderman entity, double x, double y, double z, float par5, float partialTicks)
+    @Override
+    protected ResourceLocation getEntityTexture(EntityEvolvedEnderman entity)
     {
-        this.endermanModel.isCarrying = entity.func_175489_ck().getBlock().getMaterial() != Material.air;
+        return this.endermanTextures;
+    }
+
+    @Override
+    public void doRender(EntityEvolvedEnderman entity, double x, double y, double z, float entityYaw, float partialTicks)
+    {
+        this.endermanModel.isCarrying = entity.getHeldBlockState().getBlock().getMaterial() != Material.air;
         this.endermanModel.isAttacking = entity.isScreaming();
 
         if (entity.isScreaming())
@@ -49,35 +53,6 @@ public class RenderEvolvedEnderman extends RenderLiving
             x += this.rnd.nextGaussian() * d3;
             z += this.rnd.nextGaussian() * d3;
         }
-        super.doRender(entity, x, y, z, par5, partialTicks);
-    }
-
-    protected ResourceLocation func_180573_a(EntityEvolvedEnderman entity)
-    {
-        return this.endermanTextures;
-    }
-
-    @Override
-    public void doRender(EntityLiving entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
-    }
-
-    @Override
-    public void doRender(EntityLivingBase entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
-    {
-        return this.func_180573_a((EntityEvolvedEnderman)entity);
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityEvolvedEnderman)entity, x, y, z, par5, partialTicks);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 }

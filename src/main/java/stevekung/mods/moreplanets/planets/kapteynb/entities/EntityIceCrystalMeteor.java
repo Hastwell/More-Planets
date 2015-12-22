@@ -142,7 +142,7 @@ public class EntityIceCrystalMeteor extends Entity
 
                 if (flag)
                 {
-                    this.func_174815_a(this.shootingEntity, moving.entityHit);
+                    this.applyEnchantments(this.shootingEntity, moving.entityHit);
                 }
             }
             else
@@ -179,7 +179,7 @@ public class EntityIceCrystalMeteor extends Entity
     }
 
     @Override
-    public boolean func_174816_a(Explosion explosion, World world, BlockPos pos, IBlockState state, float damage)
+    public boolean verifyExplosion(Explosion explosion, World world, BlockPos pos, IBlockState state, float damage)
     {
         return ConfigManagerCore.meteorBlockDamageEnabled;
     }

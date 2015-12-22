@@ -251,7 +251,7 @@ public class EntityEuropaCrab extends EntityAnimal implements IEntityBreathable,
                 {
                     public boolean func_179913_a(EntityPlayerMP player)
                     {
-                        return EntityEuropaCrab.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.func_180239_c();
+                        return EntityEuropaCrab.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.survivalOrAdventure();
                     }
                     @Override
                     public boolean apply(Object player)
@@ -275,16 +275,15 @@ public class EntityEuropaCrab extends EntityAnimal implements IEntityBreathable,
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         if (this.worldObj.rand.nextInt(100) == 0)
         {
             EntityEuropaCrab crab = new EntityEuropaCrab(this.worldObj);
             crab.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-            crab.func_180482_a(diff, (IEntityLivingData)null);
             crab.setCrabType(3);
             this.worldObj.spawnEntityInWorld(crab);
         }
-        return data;
+        return super.onInitialSpawn(diff, data);
     }
 }

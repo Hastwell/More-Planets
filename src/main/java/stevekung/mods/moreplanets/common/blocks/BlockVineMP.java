@@ -65,7 +65,7 @@ public class BlockVineMP extends BlockBaseMP implements IShearable
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
     {
-        return state.withProperty(UP, Boolean.valueOf(world.getBlockState(pos.up()).getBlock().isSolidFullCube()));
+        return state.withProperty(UP, Boolean.valueOf(world.getBlockState(pos.up()).getBlock().isBlockNormalCube()));
     }
 
     @Override

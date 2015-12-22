@@ -7,11 +7,10 @@
 
 package stevekung.mods.moreplanets.moons.europa.world;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -19,19 +18,20 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
-import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
-import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -39,7 +39,6 @@ import com.google.common.collect.Sets;
 
 public class EuropaWaterExplosion extends Explosion
 {
-    private boolean isFlaming;
     private boolean isSmoking;
     private Random explosionRNG;
     private World worldObj;
@@ -48,49 +47,59 @@ public class EuropaWaterExplosion extends Explosion
     private double explosionZ;
     private Entity exploder;
     private float explosionSize;
-    private List affectedBlockPositions;
-    private Map field_77288_k;
+    private List<BlockPos> affectedBlockPositions;
+    private Map<EntityPlayer, Vec3> playerKnockbackMap;
     private Vec3 position;
 
-    public EuropaWaterExplosion(World world, Entity entity, double x, double y, double z, float size, boolean flaming, boolean smoking)
+    @SideOnly(Side.CLIENT)
+    public EuropaWaterExplosion(World world, Entity entity, double x, double y, double z, float size, List<BlockPos> pos)
     {
-        super(world, entity, x, y, z, size, flaming, smoking);
+        this(world, entity, x, y, z, size, true, pos);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public EuropaWaterExplosion(World world, Entity entity, double x, double y, double z, float size, boolean smoke, List<BlockPos> pos)
+    {
+        this(world, entity, x, y, z, size, smoke);
+        this.affectedBlockPositions.addAll(pos);
+    }
+
+    public EuropaWaterExplosion(World world, Entity entity, double x, double y, double z, float size, boolean smoke)
+    {
+        super(world, entity, x, y, z, size, false, smoke);
         this.explosionRNG = new Random();
-        this.affectedBlockPositions = Lists.newArrayList();
-        this.field_77288_k = Maps.newHashMap();
+        this.affectedBlockPositions = Lists.<BlockPos>newArrayList();
+        this.playerKnockbackMap = Maps.<EntityPlayer, Vec3>newHashMap();
         this.worldObj = world;
         this.exploder = entity;
         this.explosionSize = size;
         this.explosionX = x;
         this.explosionY = y;
         this.explosionZ = z;
-        this.isFlaming = flaming;
-        this.isSmoking = smoking;
+        this.isSmoking = smoke;
         this.position = new Vec3(this.explosionX, this.explosionY, this.explosionZ);
     }
 
     @Override
     public void doExplosionA()
     {
-        HashSet hashset = Sets.newHashSet();
-        int j;
-        int k;
+        Set<BlockPos> set = Sets.<BlockPos>newHashSet();
 
-        for (int i = 0; i < 16; ++i)
+        for (int j = 0; j < 16; ++j)
         {
-            for (j = 0; j < 16; ++j)
+            for (int k = 0; k < 16; ++k)
             {
-                for (k = 0; k < 16; ++k)
+                for (int l = 0; l < 16; ++l)
                 {
-                    if (i == 0 || i == 15 || j == 0 || j == 15 || k == 0 || k == 15)
+                    if (j == 0 || j == 15 || k == 0 || k == 15 || l == 0 || l == 15)
                     {
-                        double d0 = i / 15.0F * 2.0F - 1.0F;
-                        double d1 = j / 15.0F * 2.0F - 1.0F;
-                        double d2 = k / 15.0F * 2.0F - 1.0F;
+                        double d0 = j / 15.0F * 2.0F - 1.0F;
+                        double d1 = k / 15.0F * 2.0F - 1.0F;
+                        double d2 = l / 15.0F * 2.0F - 1.0F;
                         double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
-                        d0 /= d3;
-                        d1 /= d3;
-                        d2 /= d3;
+                        d0 = d0 / d3;
+                        d1 = d1 / d3;
+                        d2 = d2 / d3;
                         float f = this.explosionSize * (0.7F + this.worldObj.rand.nextFloat() * 0.6F);
                         double d4 = this.explosionX;
                         double d6 = this.explosionY;
@@ -101,9 +110,14 @@ public class EuropaWaterExplosion extends Explosion
                             BlockPos blockpos = new BlockPos(d4, d6, d8);
                             IBlockState iblockstate = this.worldObj.getBlockState(blockpos);
 
-                            if (f > 0.0F && (this.exploder == null || this.exploder.func_174816_a(this, this.worldObj, blockpos, iblockstate, f)))
+                            if (iblockstate.getBlock().getMaterial() != Material.air)
                             {
-                                hashset.add(blockpos);
+                                float f2 = this.exploder != null ? this.exploder.getExplosionResistance(this, this.worldObj, blockpos, iblockstate) : iblockstate.getBlock().getExplosionResistance(this.worldObj, blockpos, (Entity)null, this);
+                                f -= (f2 + 0.3F) * 0.3F;
+                            }
+                            if (f > 0.0F && (this.exploder == null || this.exploder.verifyExplosion(this, this.worldObj, blockpos, iblockstate, f)))
+                            {
+                                set.add(blockpos);
                             }
                             d4 += d0 * 0.30000001192092896D;
                             d6 += d1 * 0.30000001192092896D;
@@ -114,23 +128,23 @@ public class EuropaWaterExplosion extends Explosion
             }
         }
 
-        this.affectedBlockPositions.addAll(hashset);
+        this.affectedBlockPositions.addAll(set);
         float f3 = this.explosionSize * 2.0F;
-        j = MathHelper.floor_double(this.explosionX - f3 - 1.0D);
-        k = MathHelper.floor_double(this.explosionX + f3 + 1.0D);
-        int j1 = MathHelper.floor_double(this.explosionY - f3 - 1.0D);
-        int l = MathHelper.floor_double(this.explosionY + f3 + 1.0D);
-        int k1 = MathHelper.floor_double(this.explosionZ - f3 - 1.0D);
-        int i1 = MathHelper.floor_double(this.explosionZ + f3 + 1.0D);
-        List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.exploder, new AxisAlignedBB(j, j1, k1, k, l, i1));
+        int k1 = MathHelper.floor_double(this.explosionX - f3 - 1.0D);
+        int l1 = MathHelper.floor_double(this.explosionX + f3 + 1.0D);
+        int i2 = MathHelper.floor_double(this.explosionY - f3 - 1.0D);
+        int i1 = MathHelper.floor_double(this.explosionY + f3 + 1.0D);
+        int j2 = MathHelper.floor_double(this.explosionZ - f3 - 1.0D);
+        int j1 = MathHelper.floor_double(this.explosionZ + f3 + 1.0D);
+        List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this.exploder, new AxisAlignedBB(k1, i2, j2, l1, i1, j1));
         ForgeEventFactory.onExplosionDetonate(this.worldObj, this, list, f3);
         Vec3 vec3 = new Vec3(this.explosionX, this.explosionY, this.explosionZ);
 
-        for (int l1 = 0; l1 < list.size(); ++l1)
+        for (int k2 = 0; k2 < list.size(); ++k2)
         {
-            Entity entity = (Entity)list.get(l1);
+            Entity entity = list.get(k2);
 
-            if (!entity.func_180427_aV())
+            if (!entity.isImmuneToExplosions())
             {
                 double d12 = entity.getDistance(this.explosionX, this.explosionY, this.explosionZ) / f3;
 
@@ -143,9 +157,9 @@ public class EuropaWaterExplosion extends Explosion
 
                     if (d13 != 0.0D)
                     {
-                        d5 /= d13;
-                        d7 /= d13;
-                        d9 /= d13;
+                        d5 = d5 / d13;
+                        d7 = d7 / d13;
+                        d9 = d9 / d13;
                         double d14 = this.worldObj.getBlockDensity(vec3, entity.getEntityBoundingBox());
                         double d10 = (1.0D - d12) * d14;
                         entity.attackEntityFrom(DamageSource.setExplosionSource(this), (int)((d10 * d10 + d10) / 2.0D * 8.0D * f3 + 1.0D));
@@ -154,9 +168,9 @@ public class EuropaWaterExplosion extends Explosion
                         entity.motionY += d7 * d11;
                         entity.motionZ += d9 * d11;
 
-                        if (entity instanceof EntityPlayer)
+                        if (entity instanceof EntityPlayer && !((EntityPlayer)entity).capabilities.disableDamage)
                         {
-                            this.field_77288_k.put(entity, new Vec3(d5 * d10, d7 * d10, d9 * d10));
+                            this.playerKnockbackMap.put((EntityPlayer)entity, new Vec3(d5 * d10, d7 * d10, d9 * d10));
                         }
                     }
                 }
@@ -165,32 +179,26 @@ public class EuropaWaterExplosion extends Explosion
     }
 
     @Override
-    public void doExplosionB(boolean bool)
+    public void doExplosionB(boolean spawnParticles)
     {
         this.worldObj.playSoundEffect(this.explosionX, this.explosionY, this.explosionZ, "random.explode", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 
         if (this.explosionSize >= 2.0F && this.isSmoking)
         {
-            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ);
+            this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_HUGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D, new int[0]);
         }
         else
         {
-            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
+            this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D, new int[0]);
         }
-
-        Iterator iterator;
-        BlockPos blockpos;
 
         if (this.isSmoking)
         {
-            iterator = this.affectedBlockPositions.iterator();
-
-            while (iterator.hasNext())
+            for (BlockPos blockpos : this.affectedBlockPositions)
             {
-                blockpos = (BlockPos)iterator.next();
                 Block block = this.worldObj.getBlockState(blockpos).getBlock();
 
-                if (bool)
+                if (spawnParticles)
                 {
                     double d0 = blockpos.getX() + this.worldObj.rand.nextFloat();
                     double d1 = blockpos.getY() + this.worldObj.rand.nextFloat();
@@ -199,16 +207,16 @@ public class EuropaWaterExplosion extends Explosion
                     double d4 = d1 - this.explosionY;
                     double d5 = d2 - this.explosionZ;
                     double d6 = MathHelper.sqrt_double(d3 * d3 + d4 * d4 + d5 * d5);
-                    d3 /= d6;
-                    d4 /= d6;
-                    d5 /= d6;
+                    d3 = d3 / d6;
+                    d4 = d4 / d6;
+                    d5 = d5 / d6;
                     double d7 = 0.5D / (d6 / this.explosionSize + 0.1D);
-                    d7 *= this.worldObj.rand.nextFloat() * this.worldObj.rand.nextFloat() + 0.3F;
-                    d3 *= d7;
-                    d4 *= d7;
-                    d5 *= d7;
-                    MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_EXPLOSION_NORMAL, (d0 + this.explosionX * 1.0D) / 2.0D, (d1 + this.explosionY * 1.0D) / 2.0D, (d2 + this.explosionZ * 1.0D) / 2.0D, d3, d4, d5);
-                    MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.MC_NORMAL_SMOKE, d0, d1, d2, d3, d4, d5);
+                    d7 = d7 * (this.worldObj.rand.nextFloat() * this.worldObj.rand.nextFloat() + 0.3F);
+                    d3 = d3 * d7;
+                    d4 = d4 * d7;
+                    d5 = d5 * d7;
+                    this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, (d0 + this.explosionX * 1.0D) / 2.0D, (d1 + this.explosionY * 1.0D) / 2.0D, (d2 + this.explosionZ * 1.0D) / 2.0D, d3, d4, d5, new int[0]);
+                    this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0, d1, d2, d3, d4, d5, new int[0]);
                 }
 
                 if (block.getMaterial() != Material.air)
@@ -221,33 +229,18 @@ public class EuropaWaterExplosion extends Explosion
                 }
             }
         }
-
-        if (this.isFlaming)
-        {
-            iterator = this.affectedBlockPositions.iterator();
-
-            while (iterator.hasNext())
-            {
-                blockpos = (BlockPos)iterator.next();
-
-                if (this.worldObj.getBlockState(blockpos).getBlock().getMaterial() == Material.air && this.worldObj.getBlockState(blockpos.down()).getBlock().isFullBlock() && this.explosionRNG.nextInt(3) == 0)
-                {
-                    this.worldObj.setBlockState(blockpos, EuropaBlocks.europa_water.getDefaultState());
-                }
-            }
-        }
     }
 
     @Override
-    public Map func_77277_b()
+    public Map<EntityPlayer, Vec3> getPlayerKnockbackMap()
     {
-        return this.field_77288_k;
+        return this.playerKnockbackMap;
     }
 
     @Override
     public EntityLivingBase getExplosivePlacedBy()
     {
-        return this.exploder == null ? null : this.exploder instanceof EntityEuropaWaterBomb ? ((EntityEuropaWaterBomb)this.exploder).getTntPlacedBy() : this.exploder instanceof EntityLivingBase ? (EntityLivingBase)this.exploder : null;
+        return this.exploder == null ? null : this.exploder instanceof EntityTNTPrimed ? ((EntityTNTPrimed)this.exploder).getTntPlacedBy() : this.exploder instanceof EntityLivingBase ? (EntityLivingBase)this.exploder : null;
     }
 
     @Override
@@ -257,7 +250,7 @@ public class EuropaWaterExplosion extends Explosion
     }
 
     @Override
-    public List func_180343_e()
+    public List<BlockPos> getAffectedBlockPositions()
     {
         return this.affectedBlockPositions;
     }

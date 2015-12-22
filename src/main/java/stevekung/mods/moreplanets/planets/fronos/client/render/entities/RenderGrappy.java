@@ -9,15 +9,15 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelGrappy2;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.layers.LayerGrappyWool;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
 
 @SideOnly(Side.CLIENT)
-public class RenderGrappy extends RenderLiving
+public class RenderGrappy extends RenderLiving<EntityGrappy>
 {
     private ResourceLocation grappyTextures = new ResourceLocation("moreplanets:textures/entity/grappy/grappy_sheared.png");
 
@@ -28,7 +28,7 @@ public class RenderGrappy extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityGrappy entity)
     {
         return this.grappyTextures;
     }

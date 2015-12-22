@@ -18,10 +18,10 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.relauncher.Side;
@@ -31,7 +31,7 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.BlockCandyExtractor;
 import stevekung.mods.moreplanets.planets.fronos.inventory.container.ContainerCandyExtractor;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class TileEntityCandyExtractor extends TileEntityLockable implements IUpdatePlayerListBox, ISidedInventory
+public class TileEntityCandyExtractor extends TileEntityLockable implements ITickable, ISidedInventory
 {
     private static int[] slotsTop = new int[] {0};
     private static int[] slotsBottom = new int[] {2, 1};
@@ -118,7 +118,7 @@ public class TileEntityCandyExtractor extends TileEntityLockable implements IUpd
     }
 
     @Override
-    public String getName()
+    public String getCommandSenderName()
     {
         return EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("container.candy.extractor.name");
     }

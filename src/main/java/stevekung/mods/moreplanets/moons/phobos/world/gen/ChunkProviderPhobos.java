@@ -42,8 +42,8 @@ public class ChunkProviderPhobos extends ChunkProviderBaseMP
         this.generateTerrain(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
         this.createCraters(chunkX, chunkZ, primer);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();
         return chunk;
@@ -61,7 +61,7 @@ public class ChunkProviderPhobos extends ChunkProviderBaseMP
         long var7 = this.rand.nextLong() / 2L * 2L + 1L;
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
-        this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
+        this.villageGenerator.generateStructure(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMartianMoon.baseMoonBiome, pos);
         BlockFalling.fallInstantly = false;
     }
@@ -69,7 +69,7 @@ public class ChunkProviderPhobos extends ChunkProviderBaseMP
     @Override
     public void recreateStructures(Chunk chunk, int chunkX, int chunkZ)
     {
-        this.villageGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, (ChunkPrimer) null);
+        this.villageGenerator.generate(this, this.worldObj, chunkX, chunkZ, (ChunkPrimer) null);
     }
 
     @Override

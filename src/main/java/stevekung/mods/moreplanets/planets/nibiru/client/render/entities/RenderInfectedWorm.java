@@ -10,13 +10,13 @@ package stevekung.mods.moreplanets.planets.nibiru.client.render.entities;
 import micdoodle8.mods.galacticraft.planets.mars.client.model.ModelSludgeling;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 
 @SideOnly(Side.CLIENT)
-public class RenderInfectedWorm extends RenderLiving
+public class RenderInfectedWorm extends RenderLiving<EntityInfectedWorm>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/infected_worm.png");
 
@@ -26,7 +26,7 @@ public class RenderInfectedWorm extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityInfectedWorm entity)
     {
         return this.texture;
     }

@@ -46,14 +46,14 @@ import com.google.common.base.Predicate;
 
 public class EntityCreamCat extends EntityTameable
 {
-    private EntityAIAvoidEntity field_175545_bm;
+    private EntityAIAvoidEntity avoidEntity;
     private EntityAITempt aiTempt;
 
     public EntityCreamCat(World world)
     {
         super(world);
         this.setSize(0.6F, 0.7F);
-        ((PathNavigateGround)this.getNavigator()).func_179690_a(true);
+        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
         this.tasks.addTask(2, this.aiSit);
@@ -303,7 +303,7 @@ public class EntityCreamCat extends EntityTameable
     }
 
     @Override
-    public boolean handleLavaMovement()
+    public boolean isNotColliding()
     {
         if (this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox(), this) && this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getEntityBoundingBox()))
         {
@@ -325,9 +325,9 @@ public class EntityCreamCat extends EntityTameable
     }
 
     @Override
-    public String getName()
+    public String getCommandSenderName()
     {
-        return this.hasCustomName() ? this.getCustomNameTag() : this.isTamed() ? StatCollector.translateToLocal("entity.CreamCat.name") : super.getName();
+        return this.hasCustomName() ? this.getCustomNameTag() : this.isTamed() ? StatCollector.translateToLocal("entity.CreamCat.name") : super.getCommandSenderName();
     }
 
     @Override
@@ -339,35 +339,22 @@ public class EntityCreamCat extends EntityTameable
     @Override
     protected void setupTamedAI()
     {
-        if (this.field_175545_bm == null)
+        if (this.avoidEntity == null)
         {
-            this.field_175545_bm = new EntityAIAvoidEntity(this, new Predicate()
-            {
-                public boolean func_179874_a(Entity p_179874_1_)
-                {
-                    return p_179874_1_ instanceof EntityPlayer;
-                }
-                @Override
-                public boolean apply(Object p_apply_1_)
-                {
-                    return this.func_179874_a((Entity)p_apply_1_);
-                }
-            }, 16.0F, 0.8D, 1.33D);
+            this.avoidEntity = new EntityAIAvoidEntity(this, EntityPlayer.class, 16.0F, 0.8D, 1.33D);
         }
 
-        this.tasks.removeTask(this.field_175545_bm);
+        this.tasks.removeTask(this.avoidEntity);
 
         if (!this.isTamed())
         {
-            this.tasks.addTask(4, this.field_175545_bm);
+            this.tasks.addTask(4, this.avoidEntity);
         }
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
-        data = super.func_180482_a(diff, data);
-
         if (this.worldObj.rand.nextInt(7) == 0)
         {
             for (int i = 0; i < 2; ++i)
@@ -378,7 +365,7 @@ public class EntityCreamCat extends EntityTameable
                 this.worldObj.spawnEntityInWorld(entityocelot);
             }
         }
-        return data;
+        return super.onInitialSpawn(diff, data);
     }
 
     @Override

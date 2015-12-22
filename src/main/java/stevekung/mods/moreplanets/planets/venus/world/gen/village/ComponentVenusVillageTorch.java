@@ -50,7 +50,7 @@ public class ComponentVenusVillageTorch extends ComponentVenusVillage
     @SuppressWarnings("rawtypes")
     public static StructureBoundingBox func_74904_a(List list, int x, int y, int z, EnumFacing facing)
     {
-        StructureBoundingBox var7 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 4, 2, facing);
+        StructureBoundingBox var7 = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 3, 4, 2, facing);
         return StructureComponent.findIntersecting(list, var7) != null ? null : var7;
     }
 
@@ -68,15 +68,15 @@ public class ComponentVenusVillageTorch extends ComponentVenusVillage
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
         }
 
-        this.func_175804_a(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
-        this.func_175811_a(world, Blocks.oak_fence.getDefaultState(), 1, 0, 0, box);
-        this.func_175811_a(world, Blocks.oak_fence.getDefaultState(), 1, 1, 0, box);
-        this.func_175811_a(world, Blocks.oak_fence.getDefaultState(), 1, 2, 0, box);
-        this.func_175811_a(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, 3, 0, box);
-        this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 2, 4, 7, box);
-        this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 1, 4, 6, box);
-        this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 3, 4, 6, box);
-        this.func_175811_a(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, 4, 5, box);
+        this.fillWithBlocks(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+        this.setBlockState(world, Blocks.oak_fence.getDefaultState(), 1, 0, 0, box);
+        this.setBlockState(world, Blocks.oak_fence.getDefaultState(), 1, 1, 0, box);
+        this.setBlockState(world, Blocks.oak_fence.getDefaultState(), 1, 2, 0, box);
+        this.setBlockState(world, VenusBlocks.venus_block.getDefaultState().withProperty(BlockVenus.VARIANT, BlockVenus.BlockType.venus_stone_brick), 1, 3, 0, box);
+        this.setBlockState(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 2, 4, 7, box);
+        this.setBlockState(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 1, 4, 6, box);
+        this.setBlockState(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 3, 4, 6, box);
+        this.setBlockState(world, VenusBlocks.sulfur_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, 4, 5, box);
         return true;
     }
 }

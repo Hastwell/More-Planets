@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,7 +21,7 @@ import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaWaterBomb;
 
 @SideOnly(Side.CLIENT)
-public class RenderEuropaWaterBomb extends Render
+public class RenderEuropaWaterBomb extends Render<EntityEuropaWaterBomb>
 {
     public RenderEuropaWaterBomb(RenderManager render)
     {
@@ -30,7 +29,7 @@ public class RenderEuropaWaterBomb extends Render
         this.shadowSize = 0.5F;
     }
 
-    public void doRender(EntityEuropaWaterBomb entity, double x, double y, double z, float p_76986_8_, float partialTicks)
+    public void doRender(EntityEuropaWaterBomb entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
         GlStateManager.pushMatrix();
@@ -71,18 +70,12 @@ public class RenderEuropaWaterBomb extends Render
             GlStateManager.enableTexture2D();
         }
         GlStateManager.popMatrix();
-        super.doRender(entity, x, y, z, p_76986_8_, partialTicks);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityEuropaWaterBomb entity)
     {
         return TextureMap.locationBlocksTexture;
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks)
-    {
-        this.doRender((EntityEuropaWaterBomb)entity, x, y, z, p_76986_8_, partialTicks);
     }
 }

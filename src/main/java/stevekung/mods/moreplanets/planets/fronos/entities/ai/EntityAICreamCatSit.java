@@ -62,7 +62,7 @@ public class EntityAICreamCatSit extends EntityAIMoveToBlock
         super.updateTask();
         this.cat.getAISit().setSitting(false);
 
-        if (!this.func_179487_f())
+        if (!this.getIsAboveDestination())
         {
             this.cat.setSitting(false);
         }
@@ -73,7 +73,7 @@ public class EntityAICreamCatSit extends EntityAIMoveToBlock
     }
 
     @Override
-    protected boolean func_179488_a(World world, BlockPos pos)
+    protected boolean shouldMoveTo(World world, BlockPos pos)
     {
         if (!world.isAirBlock(pos.up()))
         {

@@ -11,8 +11,6 @@ import net.minecraft.client.model.ModelSquid;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -20,7 +18,7 @@ import stevekung.mods.moreplanets.moons.europa.client.render.entities.layer.Laye
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaSquid;
 
 @SideOnly(Side.CLIENT)
-public class RenderEuropaSquid extends RenderLiving
+public class RenderEuropaSquid extends RenderLiving<EntityEuropaSquid>
 {
     private ResourceLocation squidTextures = new ResourceLocation("moreplanets:textures/entity/europa_squid.png");
     private ResourceLocation squidTextures1 = new ResourceLocation("moreplanets:textures/entity/europa_squid_chemical.png");
@@ -31,40 +29,28 @@ public class RenderEuropaSquid extends RenderLiving
         this.addLayer(new LayerEuropaSquidEyes(this));
     }
 
-    protected void rotateCorpse(EntityEuropaSquid p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
+    @Override
+    protected float handleRotationFloat(EntityEuropaSquid entity, float partialTicks)
     {
-        float f3 = p_77043_1_.prevSquidPitch + (p_77043_1_.squidPitch - p_77043_1_.prevSquidPitch) * p_77043_4_;
-        float f4 = p_77043_1_.prevSquidYaw + (p_77043_1_.squidYaw - p_77043_1_.prevSquidYaw) * p_77043_4_;
+        return entity.lastTentacleAngle + (entity.tentacleAngle - entity.lastTentacleAngle) * partialTicks;
+    }
+
+    @Override
+    protected void rotateCorpse(EntityEuropaSquid entity, float p_77043_2_, float entityYaw, float partialTicks)
+    {
+        float f3 = entity.prevSquidPitch + (entity.squidPitch - entity.prevSquidPitch) * partialTicks;
+        float f4 = entity.prevSquidYaw + (entity.squidYaw - entity.prevSquidYaw) * partialTicks;
         GlStateManager.translate(0.0F, 0.5F, 0.0F);
-        GlStateManager.rotate(180.0F - p_77043_3_, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(180.0F - entityYaw, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(f3, 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(f4, 0.0F, 1.0F, 0.0F);
         GlStateManager.translate(0.0F, -1.2F, 0.0F);
     }
 
-    protected float handleRotationFloat(EntityEuropaSquid p_77044_1_, float p_77044_2_)
-    {
-        return p_77044_1_.lastTentacleAngle + (p_77044_1_.tentacleAngle - p_77044_1_.lastTentacleAngle) * p_77044_2_;
-    }
-
     @Override
-    protected float handleRotationFloat(EntityLivingBase p_77044_1_, float p_77044_2_)
+    protected ResourceLocation getEntityTexture(EntityEuropaSquid entity)
     {
-        return this.handleRotationFloat((EntityEuropaSquid)p_77044_1_, p_77044_2_);
-    }
-
-    @Override
-    protected void rotateCorpse(EntityLivingBase p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_)
-    {
-        this.rotateCorpse((EntityEuropaSquid)p_77043_1_, p_77043_2_, p_77043_3_, p_77043_4_);
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
-    {
-        EntityEuropaSquid squid = (EntityEuropaSquid) entity;
-
-        switch (squid.getSquidType())
+        switch (entity.getSquidType())
         {
         case 0:
         default:

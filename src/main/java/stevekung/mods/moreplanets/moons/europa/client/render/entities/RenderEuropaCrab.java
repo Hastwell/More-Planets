@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.moons.europa.client.render.entities;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,7 +17,7 @@ import stevekung.mods.moreplanets.moons.europa.client.render.entities.layer.Laye
 import stevekung.mods.moreplanets.moons.europa.entities.EntityEuropaCrab;
 
 @SideOnly(Side.CLIENT)
-public class RenderEuropaCrab extends RenderLiving
+public class RenderEuropaCrab extends RenderLiving<EntityEuropaCrab>
 {
     private ResourceLocation textures1 = new ResourceLocation("moreplanets:textures/entity/europa_crab.png");
     private ResourceLocation textures2 = new ResourceLocation("moreplanets:textures/entity/black_europa_crab.png");
@@ -31,11 +30,9 @@ public class RenderEuropaCrab extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityEuropaCrab entity)
     {
-        EntityEuropaCrab crab = (EntityEuropaCrab)entity;
-
-        switch (crab.getCrabType())
+        switch (entity.getCrabType())
         {
         case 0:
         default:

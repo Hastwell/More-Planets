@@ -130,7 +130,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
     }
 
     @Override
-    public boolean handleLavaMovement()
+    public boolean isNotColliding()
     {
         return this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox(), this) && this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getEntityBoundingBox());
     }
@@ -196,9 +196,9 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
     }
 
     @Override
-    public void func_145781_i(int par1)
+    public void onDataWatcherUpdate(int id)
     {
-        if (par1 == 16)
+        if (id == 16)
         {
             int j = this.getSlimeSize();
             this.setSize(0.51000005F * j, 0.51000005F * j);
@@ -210,7 +210,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
                 this.resetHeight();
             }
         }
-        super.func_145781_i(par1);
+        super.onDataWatcherUpdate(id);
     }
 
     @Override
@@ -272,7 +272,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
         if (this.canEntityBeSeen(entity) && this.getDistanceSqToEntity(entity) < 0.6D * i * 0.6D * i && entity.attackEntityFrom(DamageSource.causeMobDamage(this), this.getAttackStrength()))
         {
             this.playSound("mob.attack", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-            this.func_174815_a(this, entity);
+            this.applyEnchantments(this, entity);
         }
     }
 
@@ -308,7 +308,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
     @Override
     public boolean getCanSpawnHere()
     {
-        if (this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL && this.worldObj.checkNoEntityCollision(this.getBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getBoundingBox()) && this.worldObj.getLightBrightness(this.getPosition()) >= 0.0F)
+        if (this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL && this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getEntityBoundingBox()) && this.worldObj.getLightBrightness(this.getPosition()) >= 0.0F)
         {
             return true;
         }
@@ -345,7 +345,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         int i = this.rand.nextInt(3);
 
@@ -355,7 +355,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
         }
         int j = 1 << i;
         this.setSlimeSize(j);
-        return super.func_180482_a(diff, data);
+        return super.onInitialSpawn(diff, data);
     }
 
     class AISlimeAttack extends EntityAIBase
@@ -433,7 +433,7 @@ public class EntitySiriusMagmaCube extends EntityLiving implements IMob, IEntity
         public AISlimeFloat()
         {
             this.setMutexBits(5);
-            ((PathNavigateGround)EntitySiriusMagmaCube.this.getNavigator()).func_179693_d(true);
+            ((PathNavigateGround)EntitySiriusMagmaCube.this.getNavigator()).setCanSwim(true);
         }
 
         @Override

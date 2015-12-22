@@ -60,7 +60,6 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIArrowAttack(this, 1.0D, 60, 10.0F));
         this.tasks.addTask(2, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(2, this.field_175455_a);
         this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(3, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
@@ -297,7 +296,7 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
     }
 
     @Override
-    protected void addRandomArmor()
+    protected void addRandomDrop()
     {
         switch (this.rand.nextInt(10))
         {

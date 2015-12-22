@@ -7,9 +7,6 @@
 
 package stevekung.mods.moreplanets.core.init;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
@@ -25,11 +22,9 @@ public class MPPotions
     public static Potion chemical;
     public static Potion electro_magnetic_pulse;
     public static Potion icy_poison;
-    public static Potion[] potionTypes;
 
     public static void init()
     {
-        MPPotions.initPotionHook();
         MPPotions.intializePotions();
         MPLog.debug("Register Potions");
     }
@@ -40,32 +35,5 @@ public class MPPotions
         MPPotions.chemical = new ChemicalEffect(ConfigManagerMP.idPotionChemical, -16718336).setPotionName("potion.chemical");
         MPPotions.electro_magnetic_pulse = new EMPEffect(ConfigManagerMP.idPotionEMP, -14258727).setPotionName("potion.emp").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "45166E8E-7CE8-4030-940E-514C1F160890", -2.5D, 2);
         MPPotions.icy_poison = new IcyPoisonEffect(ConfigManagerMP.idPotionIcyPoison, -6564921).setPotionName("potion.icy_poison").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "9623E0072-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
-    }
-
-    private static void initPotionHook()
-    {
-        for (Field f : Potion.class.getDeclaredFields())
-        {
-            f.setAccessible(true);
-
-            try
-            {
-                if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a"))
-                {
-                    Field modfield = Field.class.getDeclaredField("modifiers");
-                    modfield.setAccessible(true);
-                    modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
-                    potionTypes = (Potion[])f.get(null);
-                    Potion[] newPotionTypes = new Potion[128];
-                    System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
-                    f.set(null, newPotionTypes);
-                }
-            }
-            catch (Exception e)
-            {
-                MPLog.error("Potion registering failed, please report this to More Planets GitHub");
-                e.printStackTrace();
-            }
-        }
     }
 }

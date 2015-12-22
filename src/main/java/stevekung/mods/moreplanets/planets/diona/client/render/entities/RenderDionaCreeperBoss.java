@@ -10,16 +10,14 @@ package stevekung.mods.moreplanets.planets.diona.client.render.entities;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.planets.diona.client.model.ModelDionaCreeperBoss;
 import stevekung.mods.moreplanets.planets.diona.client.render.entities.layers.LayerDionaCreeperBossCharge;
+import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperBoss;
 
-public class RenderDionaCreeperBoss extends RenderLiving
+public class RenderDionaCreeperBoss extends RenderLiving<EntityDionaCreeperBoss>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/diona_minion_creeper.png");
 
@@ -30,20 +28,20 @@ public class RenderDionaCreeperBoss extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityDionaCreeperBoss entity)
     {
         return this.texture;
     }
 
     @Override
-    public void doRender(EntityLiving entity, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(EntityDionaCreeperBoss entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BossStatus.setBossStatus((IBossDisplayData)entity, false);
-        super.doRender(entity, par2, par4, par6, par8, par9);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    protected void preRenderCallback(EntityDionaCreeperBoss entity, float partialTickTime)
     {
         GlStateManager.translate(0.0F, 0.5F, 0.0F);
         GlStateManager.scale(3.8F, 3.8F, 3.8F);

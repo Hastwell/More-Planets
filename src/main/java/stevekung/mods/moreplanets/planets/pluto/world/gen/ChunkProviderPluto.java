@@ -31,10 +31,12 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
     private BiomeDecoratorPluto biomeDecorator = new BiomeDecoratorPluto();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(PlutoBlocks.pluto_block, this.getBlockMetadata());
+    //private MapGenDungeon dungeonGenerator = new MapGenDungeon(PlutoBlocks.pluto_block, 8, 8, 16, 4);
 
-    private MapGenDungeon dungeonGenerator = new MapGenDungeon(PlutoBlocks.pluto_block, 8, 8, 16, 4);
+    public ChunkProviderPluto(World world, long seed, boolean genFeature)
     {
-        this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
+        super(world, seed, genFeature);
+        /*this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -46,12 +48,7 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsPluto(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomChestsPluto(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossPluto(null, 0, 0, 0, null));
-        this.dungeonGenerator.treasureRooms.add(new RoomTreasurePluto(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderPluto(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
+        this.dungeonGenerator.treasureRooms.add(new RoomTreasurePluto(null, 0, 0, 0, null));*/
     }
 
     @Override
@@ -62,9 +59,9 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         this.generateTerrain(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
         this.createCraters(chunkX, chunkZ, primer);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-        this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
+        //this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();
         return chunk;
@@ -82,7 +79,7 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         long var7 = this.rand.nextLong() / 2L * 2L + 1L;
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
-        this.dungeonGenerator.handleTileEntities(this.rand);
+        //this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
         BlockFalling.fallInstantly = false;
     }

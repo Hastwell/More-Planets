@@ -51,7 +51,7 @@ public class ComponentKoentusVillageTorch extends ComponentKoentusVillage
     @SuppressWarnings("rawtypes")
     public static StructureBoundingBox func_74904_a(List list, int x, int y, int z, EnumFacing facing)
     {
-        StructureBoundingBox var7 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 4, 2, facing);
+        StructureBoundingBox var7 = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 3, 4, 2, facing);
         return StructureComponent.findIntersecting(list, var7) != null ? null : var7;
     }
 
@@ -68,15 +68,15 @@ public class ComponentKoentusVillageTorch extends ComponentKoentusVillage
             }
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
         }
-        this.func_175804_a(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 0, 0, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 1, 0, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 2, 0, box);
-        this.func_175811_a(world, DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.chiseled_quontonium), 1, 3, 0, box);
-        this.func_175811_a(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 2, 4, 7, box);
-        this.func_175811_a(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 1, 4, 6, box);
-        this.func_175811_a(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 3, 4, 6, box);
-        this.func_175811_a(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, 4, 5, box);
+        this.fillWithBlocks(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 0, 0, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 1, 0, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 2, 0, box);
+        this.setBlockState(world, DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.chiseled_quontonium), 1, 3, 0, box);
+        this.setBlockState(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 2, 4, 7, box);
+        this.setBlockState(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 1, 4, 6, box);
+        this.setBlockState(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 3, 4, 6, box);
+        this.setBlockState(world, KoentusBlocks.white_crystal_torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, 4, 5, box);
         return true;
     }
 }

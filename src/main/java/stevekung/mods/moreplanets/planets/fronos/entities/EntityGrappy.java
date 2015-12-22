@@ -75,7 +75,7 @@ public class EntityGrappy extends EntityAnimal implements IShearable
     {
         super(world);
         this.setSize(0.9F, 0.7F);
-        ((PathNavigateGround)this.getNavigator()).func_179690_a(true);
+        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
@@ -339,11 +339,10 @@ public class EntityGrappy extends EntityAnimal implements IShearable
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance p_180482_1_, IEntityLivingData p_180482_2_)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
-        p_180482_2_ = super.func_180482_a(p_180482_1_, p_180482_2_);
         this.setFleeceColor(func_175510_a(this.worldObj.rand));
-        return p_180482_2_;
+        return super.onInitialSpawn(diff, data);
     }
 
     private EnumDyeColor func_175511_a(EntityAnimal p_175511_1_, EntityAnimal p_175511_2_)

@@ -8,15 +8,15 @@
 package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
 import net.minecraft.client.model.ModelCow;
-import net.minecraft.client.renderer.entity.RenderCow;
+import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityMilkCow;
 
 @SideOnly(Side.CLIENT)
-public class RenderMilkCow extends RenderCow
+public class RenderMilkCow extends RenderLiving<EntityMilkCow>
 {
     private ResourceLocation textures = new ResourceLocation("moreplanets:textures/entity/milk_cow.png");
 
@@ -26,7 +26,7 @@ public class RenderMilkCow extends RenderCow
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityMilkCow entity)
     {
         return this.textures;
     }

@@ -10,14 +10,13 @@ package stevekung.mods.moreplanets.planets.polongnius.client.render.entities;
 import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
 
 @SideOnly(Side.CLIENT)
-public class RenderCheeseCow extends RenderLiving
+public class RenderCheeseCow extends RenderLiving<EntityCheeseCow>
 {
     private ResourceLocation cowTextures = new ResourceLocation("moreplanets:textures/entity/cheese_cow.png");
 
@@ -26,14 +25,9 @@ public class RenderCheeseCow extends RenderLiving
         super(render, new ModelCow(), 0.6F);
     }
 
+    @Override
     protected ResourceLocation getEntityTexture(EntityCheeseCow entity)
     {
         return this.cowTextures;
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
-    {
-        return this.getEntityTexture((EntityCheeseCow)entity);
     }
 }

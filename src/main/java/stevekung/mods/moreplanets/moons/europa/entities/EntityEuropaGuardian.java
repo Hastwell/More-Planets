@@ -67,7 +67,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     private float field_175483_bk;
     private float field_175485_bl;
     private float field_175486_bm;
-    private EntityLivingBase field_175478_bn;
+    private EntityLivingBase targetedEntity;
     private int field_175479_bo;
     private boolean field_175480_bp;
     private EntityAIWander wander;
@@ -111,7 +111,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     public void readEntityFromNBT(NBTTagCompound tagCompund)
     {
         super.readEntityFromNBT(tagCompund);
-        this.func_175467_a(tagCompund.getBoolean("Elder"));
+        this.setElder(tagCompund.getBoolean("Elder"));
     }
 
     @Override
@@ -122,12 +122,12 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     }
 
     @Override
-    protected PathNavigate func_175447_b(World world)
+    protected PathNavigate getNewNavigator(World world)
     {
         return new PathNavigateSwimmer(this, world);
     }
 
-    private boolean func_175468_a(int p_175468_1_)
+    private boolean isSyncedFlagSet(int p_175468_1_)
     {
         return (this.dataWatcher.getWatchableObjectInt(16) & p_175468_1_) != 0;
     }
@@ -149,7 +149,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     @Override
     public boolean func_175472_n()
     {
-        return this.func_175468_a(2);
+        return this.isSyncedFlagSet(2);
     }
 
     private void func_175476_l(boolean p_175476_1_)
@@ -166,40 +166,40 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     @Override
     public boolean isElder()
     {
-        return this.func_175468_a(4);
+        return this.isSyncedFlagSet(4);
     }
 
     @Override
-    public void func_175467_a(boolean p_175467_1_)
+    public void setElder(boolean elder)
     {
-        this.func_175473_a(4, p_175467_1_);
+        this.func_175473_a(4, elder);
 
-        if (p_175467_1_)
+        if (elder)
         {
             this.setSize(1.9975F, 1.9975F);
             this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
             this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
             this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(80.0D);
             this.enablePersistence();
-            this.wander.func_179479_b(400);
+            this.wander.setExecutionChance(400);
         }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void func_175465_cm()
+    public void setElder()
     {
-        this.func_175467_a(true);
+        this.setElder(true);
         this.field_175486_bm = this.field_175485_bl = 1.0F;
     }
 
-    private void func_175463_b(int p_175463_1_)
+    private void setTargetedEntity(int id)
     {
-        this.dataWatcher.updateObject(17, Integer.valueOf(p_175463_1_));
+        this.dataWatcher.updateObject(17, Integer.valueOf(id));
     }
 
     @Override
-    public boolean func_175474_cn()
+    public boolean hasTargetedEntity()
     {
         return this.dataWatcher.getWatchableObjectInt(17) != 0;
     }
@@ -207,15 +207,15 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     @Override
     public EntityLivingBase getTargetedEntity()
     {
-        if (!this.func_175474_cn())
+        if (!this.hasTargetedEntity())
         {
             return null;
         }
         else if (this.worldObj.isRemote)
         {
-            if (this.field_175478_bn != null)
+            if (this.targetedEntity != null)
             {
-                return this.field_175478_bn;
+                return this.targetedEntity;
             }
             else
             {
@@ -223,8 +223,8 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
 
                 if (entity instanceof EntityLivingBase)
                 {
-                    this.field_175478_bn = (EntityLivingBase)entity;
-                    return this.field_175478_bn;
+                    this.targetedEntity = (EntityLivingBase)entity;
+                    return this.targetedEntity;
                 }
                 else
                 {
@@ -239,21 +239,21 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     }
 
     @Override
-    public void func_145781_i(int p_145781_1_)
+    public void onDataWatcherUpdate(int id)
     {
-        super.func_145781_i(p_145781_1_);
+        super.onDataWatcherUpdate(id);
 
-        if (p_145781_1_ == 16)
+        if (id == 16)
         {
             if (this.isElder() && this.width < 1.0F)
             {
                 this.setSize(1.9975F, 1.9975F);
             }
         }
-        else if (p_145781_1_ == 17)
+        else if (id == 17)
         {
             this.field_175479_bo = 0;
-            this.field_175478_bn = null;
+            this.targetedEntity = null;
         }
     }
 
@@ -294,9 +294,9 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     }
 
     @Override
-    public float func_180484_a(BlockPos p_180484_1_)
+    public float getBlockPathWeight(BlockPos pos)
     {
-        return this.worldObj.getBlockState(p_180484_1_).getBlock().getMaterial() == Material.water ? 10.0F + this.worldObj.getLightBrightness(p_180484_1_) - 0.5F : super.func_180484_a(p_180484_1_);
+        return this.worldObj.getBlockState(pos).getBlock().getMaterial() == Material.water ? 10.0F + this.worldObj.getLightBrightness(pos) - 0.5F : super.getBlockPathWeight(pos);
     }
 
     @Override
@@ -358,7 +358,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
                 }
             }
 
-            if (this.func_175474_cn())
+            if (this.hasTargetedEntity())
             {
                 if (this.field_175479_bo < this.func_175464_ck())
                 {
@@ -404,7 +404,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
             this.isAirBorne = true;
         }
 
-        if (this.func_175474_cn())
+        if (this.hasTargetedEntity())
         {
             this.rotationYaw = this.rotationYawHead;
         }
@@ -443,7 +443,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
             {
                 public boolean func_179913_a(EntityPlayerMP player)
                 {
-                    return EntityEuropaGuardian.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.func_180239_c();
+                    return EntityEuropaGuardian.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.survivalOrAdventure();
                 }
                 @Override
                 public boolean apply(Object player)
@@ -472,7 +472,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
                 {
                     public boolean func_179913_a(EntityPlayerMP player)
                     {
-                        return EntityEuropaGuardian.this.getDistanceSqToEntity(player) < 2500.0D && player.theItemInWorldManager.func_180239_c();
+                        return EntityEuropaGuardian.this.getDistanceSqToEntity(player) < 2500.0D && player.theItemInWorldManager.survivalOrAdventure();
                     }
                     @Override
                     public boolean apply(Object player)
@@ -496,7 +496,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
 
             if (!this.hasHome())
             {
-                this.func_175449_a(new BlockPos(this), 16);
+                this.setHomePosAndDistance(new BlockPos(this), 16);
             }
         }
     }
@@ -527,7 +527,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     }
 
     @Override
-    protected void addRandomArmor()
+    protected void addRandomDrop()
     {
         ItemStack itemstack = ((WeightedRandomFishable)WeightedRandom.getRandomItem(this.rand, EntityFishHook.func_174855_j())).getItemStack(this.rand);
         this.entityDropItem(itemstack, 1.0F);
@@ -540,7 +540,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     }
 
     @Override
-    public boolean handleLavaMovement()
+    public boolean isNotColliding()
     {
         return this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox(), this) && this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty();
     }
@@ -569,7 +569,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
             }
             entitylivingbase.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 64, 0));
         }
-        this.wander.func_179480_f();
+        this.wander.makeUpdate();
         return super.attackEntityFrom(source, amount);
     }
 
@@ -643,9 +643,9 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
         @Override
         public void resetTask()
         {
-            this.field_179456_a.func_175463_b(0);
+            this.field_179456_a.setTargetedEntity(0);
             this.field_179456_a.setAttackTarget((EntityLivingBase)null);
-            this.field_179456_a.wander.func_179480_f();
+            this.field_179456_a.wander.makeUpdate();
         }
 
         @Override
@@ -665,7 +665,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
 
                 if (this.field_179455_b == 0)
                 {
-                    this.field_179456_a.func_175463_b(this.field_179456_a.getAttackTarget().getEntityId());
+                    this.field_179456_a.setTargetedEntity(this.field_179456_a.getAttackTarget().getEntityId());
                     this.field_179456_a.worldObj.setEntityState(this.field_179456_a, (byte)21);
                 }
                 else if (this.field_179455_b >= this.field_179456_a.func_175464_ck())
@@ -727,11 +727,11 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
                 double d7 = this.field_179930_g.posX + d0 / d3 * 2.0D;
                 double d8 = this.field_179930_g.getEyeHeight() + this.field_179930_g.posY + d1 / d3 * 1.0D;
                 double d9 = this.field_179930_g.posZ + d2 / d3 * 2.0D;
-                double d10 = entitylookhelper.func_180423_e();
-                double d11 = entitylookhelper.func_180422_f();
-                double d12 = entitylookhelper.func_180421_g();
+                double d10 = entitylookhelper.getLookPosX();
+                double d11 = entitylookhelper.getLookPosY();
+                double d12 = entitylookhelper.getLookPosZ();
 
-                if (!entitylookhelper.func_180424_b())
+                if (!entitylookhelper.getIsLooking())
                 {
                     d10 = d7;
                     d11 = d8;

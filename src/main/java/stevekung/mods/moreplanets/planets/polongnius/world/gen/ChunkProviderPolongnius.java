@@ -36,13 +36,16 @@ import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomTreas
 
 public class ChunkProviderPolongnius extends ChunkProviderBaseMP
 {
-    public BiomeDecoratorPolongnius biomeDecorator = new BiomeDecoratorPolongnius();
+    private BiomeDecoratorPolongnius biomeDecorator = new BiomeDecoratorPolongnius();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(PolongniusBlocks.polongnius_block, this.getBlockMetadata());
+    //private MapGenDungeon dungeonGenerator = new MapGenDungeon(PolongniusBlocks.polongnius_block, 13, 8, 24, 4);
+    //private MapGenDungeon dungeonGenerator2 = new MapGenDungeon(PolongniusBlocks.polongnius_block, 14, 8, 24, 4);
 
-    private MapGenDungeon dungeonGenerator = new MapGenDungeon(PolongniusBlocks.polongnius_block, 13, 8, 24, 4);
+    public ChunkProviderPolongnius(World world, long seed, boolean genFeature)
     {
-        this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
+        super(world, seed, genFeature);
+        /*this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -55,10 +58,6 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasurePolongnius(null, 0, 0, 0, null));
-    }
-
-    private MapGenDungeon dungeonGenerator2 = new MapGenDungeon(PolongniusBlocks.polongnius_block, 14, 8, 24, 4);
-    {
         this.dungeonGenerator2.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator2.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator2.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -71,12 +70,7 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
         this.dungeonGenerator2.otherRooms.add(new RoomChestsPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator2.otherRooms.add(new RoomChestsPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator2.bossRooms.add(new RoomBossPolongnius(null, 0, 0, 0, null));
-        this.dungeonGenerator2.treasureRooms.add(new RoomTreasurePolongnius(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderPolongnius(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
+        this.dungeonGenerator2.treasureRooms.add(new RoomTreasurePolongnius(null, 0, 0, 0, null));*/
     }
 
     @Override
@@ -87,10 +81,10 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
         this.generateTerrain(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
         this.createCraters(chunkX, chunkZ, primer);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-        this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
-        this.dungeonGenerator2.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
+        //this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
+        //this.dungeonGenerator2.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();
         return chunk;
@@ -108,8 +102,8 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
         long var7 = this.rand.nextLong() / 2L * 2L + 1L;
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
-        this.dungeonGenerator.handleTileEntities(this.rand);
-        this.dungeonGenerator2.handleTileEntities(this.rand);
+        //this.dungeonGenerator.handleTileEntities(this.rand);
+        //this.dungeonGenerator2.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
 
         for (int i = 0; i < 8; ++i)
@@ -120,7 +114,7 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
     }
 
     @Override
-    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
     {
         if (type == EnumCreatureType.MONSTER)
         {
@@ -134,7 +128,7 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
             creatures.add(new BiomeGenBase.SpawnListEntry(EntityCheeseCow.class, 8, 4, 4));
             return creatures;
         }
-        return super.func_177458_a(type, pos);
+        return super.getPossibleCreatures(type, pos);
     }
 
     @Override

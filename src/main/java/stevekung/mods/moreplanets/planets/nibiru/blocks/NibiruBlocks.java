@@ -17,9 +17,9 @@ import stevekung.mods.moreplanets.common.blocks.BlockDoorMP.DoorType;
 import stevekung.mods.moreplanets.common.blocks.BlockFenceGateMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariantLeaves;
 import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
-import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruLeaves;
 import stevekung.mods.moreplanets.planets.nibiru.itemblocks.ItemBlockNibiruLog;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -95,7 +95,7 @@ public class NibiruBlocks
         CommonRegisterHelper.registerBlock(NibiruBlocks.infected_worm_egg_rock);
         CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_log, ItemBlockNibiruLog.class);
         CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_planks, ItemBlockMultiVariant.class, new VariantsName("ancient_dark", "orange"));
-        CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_leaves, ItemBlockNibiruLeaves.class);
+        CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_leaves, ItemBlockMultiVariantLeaves.class, new VariantsName("ancient_dark_leaves", "orange_leaves"));
         CommonRegisterHelper.registerBlock(NibiruBlocks.ancient_dark_wood_stairs);
         CommonRegisterHelper.registerBlock(NibiruBlocks.orange_wood_stairs);
         CommonRegisterHelper.registerBlock(NibiruBlocks.nibiru_cobblestone_stairs);

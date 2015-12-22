@@ -17,8 +17,9 @@ import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.planets.polongnius.client.model.ModelCheeseCubeEye;
+import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCubeEyeBoss;
 
-public class RenderCheeseCubeBoss extends RenderLiving
+public class RenderCheeseCubeBoss extends RenderLiving<EntityCheeseCubeEyeBoss>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/cheese_cube_boss.png");
 
@@ -28,20 +29,20 @@ public class RenderCheeseCubeBoss extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityCheeseCubeEyeBoss entity)
     {
         return this.texture;
     }
 
     @Override
-    public void doRender(EntityLiving living, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(EntityCheeseCubeEyeBoss entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
-        BossStatus.setBossStatus((IBossDisplayData)living, false);
-        super.doRender(living, par2, par4, par6, par8, par9);
+        BossStatus.setBossStatus((IBossDisplayData)entity, false);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase living, float par2)
+    protected void preRenderCallback(EntityCheeseCubeEyeBoss entity, float partialTickTime)
     {
         GlStateManager.scale(1.5F, 1.5F, 1.5F);
     }

@@ -109,7 +109,7 @@ public abstract class ComponentVenusVillage extends StructureComponent
             {
                 BlockPos pos = new BlockPos(l, 64, k);
 
-                if (box.func_175898_b(pos))
+                if (box.isVecInside(pos))
                 {
                     i += Math.max(world.getTopSolidOrLiquidBlock(pos).getY(), world.provider.getAverageGroundLevel());
                     ++j;
@@ -142,7 +142,7 @@ public abstract class ComponentVenusVillage extends StructureComponent
                 int k1 = this.getYWithOffset(y);
                 int l1 = this.getZWithOffset(x + i1, z);
 
-                if (!box.func_175898_b(new BlockPos(j1, k1, l1)))
+                if (!box.isVecInside(new BlockPos(j1, k1, l1)))
                 {
                     break;
                 }
@@ -160,18 +160,18 @@ public abstract class ComponentVenusVillage extends StructureComponent
     }
 
     @Override
-    protected void func_175811_a(World world, IBlockState state, int x, int y, int z, StructureBoundingBox box)
+    protected void setBlockState(World world, IBlockState state, int x, int y, int z, StructureBoundingBox box)
     {
         IBlockState iblockstate1 = this.func_175847_a(state);
-        super.func_175811_a(world, iblockstate1, x, y, z, box);
+        super.setBlockState(world, iblockstate1, x, y, z, box);
     }
 
     @Override
-    protected void func_175804_a(World world, StructureBoundingBox box, int x, int y, int z, int par6, int par7, int par8, IBlockState state, IBlockState state1, boolean bool)
+    protected void fillWithBlocks(World world, StructureBoundingBox box, int xMin, int yMin, int zMin, int xMax, int yMax, int zMax, IBlockState boundaryBlockState, IBlockState insideBlockState, boolean existingOnly)
     {
-        IBlockState iblockstate2 = this.func_175847_a(state);
-        IBlockState iblockstate3 = this.func_175847_a(state1);
-        super.func_175804_a(world, box, x, y, z, par6, par7, par8, iblockstate2, iblockstate3, bool);
+        IBlockState iblockstate2 = this.func_175847_a(boundaryBlockState);
+        IBlockState iblockstate3 = this.func_175847_a(insideBlockState);
+        super.fillWithBlocks(world, box, xMin, yMin, zMin, xMax, yMax, zMax, iblockstate2, iblockstate3, existingOnly);
     }
 
     protected static class SwitchEnumFacing

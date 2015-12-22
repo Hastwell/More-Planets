@@ -125,7 +125,7 @@ public class EntityLemonDuck extends FronosPet
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         if (this.worldObj.rand.nextInt(10) == 0)
         {
@@ -135,7 +135,7 @@ public class EntityLemonDuck extends FronosPet
             duck.setGrowingAge(-24000);
             this.worldObj.spawnEntityInWorld(duck);
         }
-        return data;
+        return super.onInitialSpawn(diff, data);
     }
 
     @Override

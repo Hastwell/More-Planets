@@ -186,13 +186,13 @@ public class MapGenVenusRavine extends MapGenBase
     }
 
     @Override
-    protected void func_180701_a(World world, int p_180701_2_, int p_180701_3_, int p_180701_4_, int p_180701_5_, ChunkPrimer p_180701_6_)
+    protected void recursiveGenerate(World world, int orX, int orZ, int chunkX, int chunkZ, ChunkPrimer chunk)
     {
         if (this.rand.nextInt(50) == 0)
         {
-            double d0 = p_180701_2_ * 16 + this.rand.nextInt(16);
+            double d0 = orX * 16 + this.rand.nextInt(16);
             double d1 = this.rand.nextInt(this.rand.nextInt(40) + 8) + 20;
-            double d2 = p_180701_3_ * 16 + this.rand.nextInt(16);
+            double d2 = orZ * 16 + this.rand.nextInt(16);
             byte b0 = 1;
 
             for (int i1 = 0; i1 < b0; ++i1)
@@ -200,7 +200,7 @@ public class MapGenVenusRavine extends MapGenBase
                 float f = this.rand.nextFloat() * (float)Math.PI * 2.0F;
                 float f1 = (this.rand.nextFloat() - 0.5F) * 2.0F / 8.0F;
                 float f2 = (this.rand.nextFloat() * 2.0F + this.rand.nextFloat()) * 2.0F;
-                this.func_180707_a(this.rand.nextLong(), p_180701_4_, p_180701_5_, p_180701_6_, d0, d1, d2, f2, f, f1, 0, 0, 3.0D);
+                this.func_180707_a(this.rand.nextLong(), chunkX, chunkZ, chunk, d0, d1, d2, f2, f, f1, 0, 0, 3.0D);
             }
         }
     }

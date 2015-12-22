@@ -14,11 +14,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.EntityAlienSplashFX;
 import stevekung.mods.moreplanets.client.particles.EntityGreenRedstoneFX;
 import stevekung.mods.moreplanets.client.particles.EntityLiquidDripFX;
-import stevekung.mods.moreplanets.client.particles.mc.EntityMCBreakingFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCExplodeFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCHugeExplodeFX;
-import stevekung.mods.moreplanets.client.particles.mc.EntityMCLargeExplodeFX;
-import stevekung.mods.moreplanets.client.particles.mc.EntityMCSmokeFX;
 import stevekung.mods.moreplanets.moons.koentus.client.particles.EntityKoentusMeteorSmokeFX;
 import stevekung.mods.moreplanets.moons.koentus.client.particles.EntityWhiteCrystalSmokeFX;
 import stevekung.mods.moreplanets.planets.diona.client.particles.EntityBluePortalFX;
@@ -35,14 +32,12 @@ import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityPinkDand
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityPurpleDandelionFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityPurpleSpikeFX;
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityTeaFluidFX;
-import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.kapteynb.client.particles.EntityGeyserFX;
 import stevekung.mods.moreplanets.planets.kapteynb.client.particles.EntityUraniumSmokeFX;
 import stevekung.mods.moreplanets.planets.nibiru.client.particles.EntityGeneratorSmokeFX;
 import stevekung.mods.moreplanets.planets.nibiru.client.particles.EntityInfectedSporeFX;
 import stevekung.mods.moreplanets.planets.pluto.client.particles.EntityXeoniumSmokeFX;
 import stevekung.mods.moreplanets.planets.polongnius.client.particles.EntityCheeseBubbleFX;
-import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.siriusb.client.particles.EntitySiriusFlameFX;
 import stevekung.mods.moreplanets.planets.siriusb.client.particles.EntitySiriusLavaFX;
 import stevekung.mods.moreplanets.planets.venus.client.particles.EntityVenusSmokeFX;
@@ -97,22 +92,22 @@ public class EffectHandlerMP
         {
             entityfx = new EntityGeyserFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
         }
-        else if (type == EnumParticleTypesMP.MC_NORMAL_SMOKE)
-        {
-            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 1.0F);
-        }
-        else if (type == EnumParticleTypesMP.MC_LARGE_SMOKE)
-        {
-            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 2.5F);
-        }
+//        else if (type == EnumParticleTypesMP.MC_NORMAL_SMOKE)
+//        {
+//            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 1.0F);
+//        }
+//        else if (type == EnumParticleTypesMP.MC_LARGE_SMOKE)
+//        {
+//            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 2.5F);
+//        }
         else if (type == EnumParticleTypesMP.MC_EXPLOSION_NORMAL)
         {
             entityfx = new EntityMCExplodeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
         }
-        else if (type == EnumParticleTypesMP.MC_EXPLOSION_LARGE)
-        {
-            entityfx = new EntityMCLargeExplodeFX(Minecraft.getMinecraft().getTextureManager(), mc.theWorld, x, y, z, motionX, motionY, motionZ);
-        }
+//        else if (type == EnumParticleTypesMP.MC_EXPLOSION_LARGE)
+//        {
+//            entityfx = new EntityMCLargeExplodeFX(Minecraft.getMinecraft().getTextureManager(), mc.theWorld, x, y, z, motionX, motionY, motionZ);
+//        }
         else if (type == EnumParticleTypesMP.ALIEN_SPLASH)
         {
             entityfx = new EntityAlienSplashFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
@@ -183,66 +178,66 @@ public class EffectHandlerMP
         {
             entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.1F, 0.1F, 0.1F, 1.0F, true);
         }
-        else if (type == EnumParticleTypesMP.CHEESE_SLIME)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball, 0);
-        }
-        else if (type == EnumParticleTypesMP.VANILLA_CREAM_BALL)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 0);
-        }
-        else if (type == EnumParticleTypesMP.CHOCOLATE_CREAM_BALL)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 1);
-        }
-        else if (type == EnumParticleTypesMP.STRAWBERRY_CREAM_BALL)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 2);
-        }
-        else if (type == EnumParticleTypesMP.ORANGE_CREAM_BALL)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 3);
-        }
-        else if (type == EnumParticleTypesMP.TEA_CREAM_BALL)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 4);
-        }
-        else if (type == EnumParticleTypesMP.LEMON_CREAM_BALL)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 5);
-        }
-        else if (type == EnumParticleTypesMP.GRAPE_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 0);
-        }
-        else if (type == EnumParticleTypesMP.RASPBERRY_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 1);
-        }
-        else if (type == EnumParticleTypesMP.STRAWBERRY_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 2);
-        }
-        else if (type == EnumParticleTypesMP.BERRY_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 3);
-        }
-        else if (type == EnumParticleTypesMP.LIME_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 4);
-        }
-        else if (type == EnumParticleTypesMP.ORANGE_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 5);
-        }
-        else if (type == EnumParticleTypesMP.GREEN_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 6);
-        }
-        else if (type == EnumParticleTypesMP.LEMON_JELLY)
-        {
-            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 7);
-        }
+//        else if (type == EnumParticleTypesMP.CHEESE_SLIME)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball, 0);
+//        }
+//        else if (type == EnumParticleTypesMP.VANILLA_CREAM_BALL)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 0);
+//        }
+//        else if (type == EnumParticleTypesMP.CHOCOLATE_CREAM_BALL)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 1);
+//        }
+//        else if (type == EnumParticleTypesMP.STRAWBERRY_CREAM_BALL)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 2);
+//        }
+//        else if (type == EnumParticleTypesMP.ORANGE_CREAM_BALL)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 3);
+//        }
+//        else if (type == EnumParticleTypesMP.TEA_CREAM_BALL)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 4);
+//        }
+//        else if (type == EnumParticleTypesMP.LEMON_CREAM_BALL)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 5);
+//        }
+//        else if (type == EnumParticleTypesMP.GRAPE_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 0);
+//        }
+//        else if (type == EnumParticleTypesMP.RASPBERRY_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 1);
+//        }
+//        else if (type == EnumParticleTypesMP.STRAWBERRY_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 2);
+//        }
+//        else if (type == EnumParticleTypesMP.BERRY_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 3);
+//        }
+//        else if (type == EnumParticleTypesMP.LIME_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 4);
+//        }
+//        else if (type == EnumParticleTypesMP.ORANGE_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 5);
+//        }
+//        else if (type == EnumParticleTypesMP.GREEN_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 6);
+//        }
+//        else if (type == EnumParticleTypesMP.LEMON_JELLY)
+//        {
+//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 7);
+//        }
         else if (type == EnumParticleTypesMP.ORANGE_DANDELION)
         {
             entityfx = new EntityOrangeDandelionFX(mc.theWorld, x, y, z);

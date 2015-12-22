@@ -8,12 +8,12 @@
 package stevekung.mods.moreplanets.planets.kapteynb.tileentities;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.BlockUraniumWaste;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
-public class TileEntityUraniumWaste extends TileEntity implements IUpdatePlayerListBox
+public class TileEntityUraniumWaste extends TileEntity implements ITickable
 {
     public int radiationLevel = 10000;
 

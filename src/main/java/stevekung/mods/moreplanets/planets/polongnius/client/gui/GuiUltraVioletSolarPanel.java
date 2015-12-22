@@ -82,7 +82,7 @@ public class GuiUltraVioletSolarPanel extends GuiContainerGC
         int offsetY = 35;
         this.buttonEnableSolar.enabled = this.tileEntity.disableCooldown == 0;
         this.buttonEnableSolar.displayString = !this.tileEntity.getDisabled(0) ? GCCoreUtil.translate("gui.button.disable.name") : GCCoreUtil.translate("gui.button.enable.name");
-        String displayString = this.tileEntity.getName();
+        String displayString = this.tileEntity.getCommandSenderName();
         this.fontRendererObj.drawString(displayString, this.xSize / 2 - this.fontRendererObj.getStringWidth(displayString) / 2, 7, 4210752);
         displayString = GCCoreUtil.translate("gui.message.status.name") + ": " + this.getStatus();
         this.fontRendererObj.drawString(displayString, this.xSize / 2 - this.fontRendererObj.getStringWidth(displayString) / 2, 45 + 23 - 46 + offsetY, 4210752);

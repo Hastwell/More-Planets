@@ -218,7 +218,7 @@ public class MapGenCavesMP extends MapGenBase
     }
 
     @Override
-    protected void func_180701_a(World world, int chunkX, int chunkZ, int oriX, int oriZ, ChunkPrimer chunk)
+    protected void recursiveGenerate(World world, int chunkX, int chunkZ, int oriX, int oriZ, ChunkPrimer chunk)
     {
         int i1 = this.rand.nextInt(this.rand.nextInt(this.rand.nextInt(15) + 1) + 1);
 

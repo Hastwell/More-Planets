@@ -63,9 +63,9 @@ public class ChunkProviderKapteynB extends ChunkProviderBaseMP
         this.generateTerrain(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
         this.createCraters(chunkX, chunkZ, primer);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-        this.ravineGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
+        this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
         this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();

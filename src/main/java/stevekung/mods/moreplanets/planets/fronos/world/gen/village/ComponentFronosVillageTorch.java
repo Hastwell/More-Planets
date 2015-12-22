@@ -35,7 +35,7 @@ public class ComponentFronosVillageTorch extends ComponentFronosVillage
 
     public static StructureBoundingBox func_175856_a(List list, int x, int y, int z, EnumFacing side)
     {
-        StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 3, 4, 2, side);
+        StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 3, 4, 2, side);
         return StructureComponent.findIntersecting(list, structureboundingbox) != null ? null : structureboundingbox;
     }
 
@@ -67,15 +67,15 @@ public class ComponentFronosVillageTorch extends ComponentFronosVillage
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
         }
 
-        this.func_175804_a(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
-        this.func_175811_a(world, FronosBlocks.fronos_fence.getDefaultState(), 1, 0, 0, box);
-        this.func_175811_a(world, FronosBlocks.fronos_fence.getDefaultState(), 1, 1, 0, box);
-        this.func_175811_a(world, FronosBlocks.fronos_fence.getDefaultState(), 1, 2, 0, box);
-        this.func_175811_a(world, Blocks.wool.getStateFromMeta(EnumDyeColor.WHITE.getDyeDamage()), 1, 3, 0, box);
-        this.func_175811_a(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 2, 4, 7, box);
-        this.func_175811_a(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 1, 4, 6, box);
-        this.func_175811_a(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 3, 4, 6, box);
-        this.func_175811_a(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, 4, 5, box);
+        this.fillWithBlocks(world, box, 0, 0, 0, 2, 3, 1, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+        this.setBlockState(world, FronosBlocks.fronos_fence.getDefaultState(), 1, 0, 0, box);
+        this.setBlockState(world, FronosBlocks.fronos_fence.getDefaultState(), 1, 1, 0, box);
+        this.setBlockState(world, FronosBlocks.fronos_fence.getDefaultState(), 1, 2, 0, box);
+        this.setBlockState(world, Blocks.wool.getStateFromMeta(EnumDyeColor.WHITE.getDyeDamage()), 1, 3, 0, box);
+        this.setBlockState(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 2, 4, 7, box);
+        this.setBlockState(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 1, 4, 6, box);
+        this.setBlockState(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 3, 4, 6, box);
+        this.setBlockState(world, Blocks.torch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, 4, 5, box);
         return true;
     }
 }

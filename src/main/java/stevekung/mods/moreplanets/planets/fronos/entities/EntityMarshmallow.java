@@ -134,7 +134,7 @@ public class EntityMarshmallow extends FronosPet
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         if (this.worldObj.rand.nextInt(10) == 0)
         {
@@ -144,7 +144,7 @@ public class EntityMarshmallow extends FronosPet
             marshmallow.mountEntity(this);
             marshmallow.setGrowingAge(-24000);
         }
-        return data;
+        return super.onInitialSpawn(diff, data);
     }
 
     @Override

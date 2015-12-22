@@ -154,7 +154,7 @@ public class ChunkProviderJupiterOrbit extends ChunkProviderGenerate
     }
 
     @Override
-    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
     {
         if (type == EnumCreatureType.MONSTER)
         {

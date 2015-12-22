@@ -24,9 +24,9 @@ public class EntitySmallSiriusFireball extends EntityFireball
         this.setSize(0.3125F, 0.3125F);
     }
 
-    public EntitySmallSiriusFireball(World world, EntityLivingBase p_i1771_2_, double p_i1771_3_, double p_i1771_5_, double p_i1771_7_)
+    public EntitySmallSiriusFireball(World world, EntityLivingBase living, double x, double y, double z)
     {
-        super(world, p_i1771_2_, p_i1771_3_, p_i1771_5_, p_i1771_7_);
+        super(world, living, x, y, z);
         this.setSize(0.3125F, 0.3125F);
     }
 
@@ -49,7 +49,7 @@ public class EntitySmallSiriusFireball extends EntityFireball
 
                 if (flag)
                 {
-                    this.func_174815_a(this.shootingEntity, movingObject.entityHit);
+                    this.applyEnchantments(this.shootingEntity, movingObject.entityHit);
 
                     if (!movingObject.entityHit.isImmuneToFire())
                     {

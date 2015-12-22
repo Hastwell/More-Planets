@@ -21,13 +21,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public enum EnumStateMapper
 {
-    FENCE_GATE(new Builder().addPropertiesToIgnore(new IProperty[] {BlockFenceGate.POWERED}).build()),
-    DOOR(new Builder().addPropertiesToIgnore(new IProperty[] {BlockDoor.POWERED}).build()),
-    FLUID_LEVEL(new Builder().addPropertiesToIgnore(new IProperty[] {BlockFluidBase.LEVEL}).build()),
-    LIQUID_LEVEL(new Builder().addPropertiesToIgnore(new IProperty[] {BlockLiquid.LEVEL}).build()),
-    FIRE(new Builder().addPropertiesToIgnore(new IProperty[] {BlockFire.AGE}).build()),
-    TNT(new Builder().addPropertiesToIgnore(new IProperty[] {BlockStateHelper.EXPLODE}).build()),
-    LEAVES(new Builder().addPropertiesToIgnore(new IProperty[] {BlockStateHelper.CHECK_DECAY, BlockStateHelper.DECAYABLE}).build()),
+    FENCE_GATE(new Builder().ignore(new IProperty[] {BlockFenceGate.POWERED}).build()),
+    DOOR(new Builder().ignore(new IProperty[] {BlockDoor.POWERED}).build()),
+    FLUID_LEVEL(new Builder().ignore(new IProperty[] {BlockFluidBase.LEVEL}).build()),
+    LIQUID_LEVEL(new Builder().ignore(new IProperty[] {BlockLiquid.LEVEL}).build()),
+    FIRE(new Builder().ignore(new IProperty[] {BlockFire.AGE}).build()),
+    TNT(new Builder().ignore(new IProperty[] {BlockStateHelper.EXPLODE}).build()),
+    LEAVES(new Builder().ignore(new IProperty[] {BlockStateHelper.CHECK_DECAY, BlockStateHelper.DECAYABLE}).build()),
 
     ;StateMap builder;
 

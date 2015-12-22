@@ -9,10 +9,14 @@ package stevekung.mods.moreplanets.common.world.biome;
 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.biome.BiomeDecorator;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public abstract class BiomeDecoratorMP extends BiomeDecorator
 {
+    @Override
+    protected abstract void genDecorations(BiomeGenBase biome);
+
     protected void generateOre(int amount, WorldGenerator worldGen, int minY, int maxY)
     {
         for (int i = 0; i < amount; ++i)

@@ -103,7 +103,7 @@ public abstract class ItemBlockSlabMP extends ItemBlockBaseMP
 
             if (comparable == variantInStack)
             {
-                IBlockState state1 = this.doubleSlab.getDefaultState().withProperty(this.singleSlab.getVariantProperty(), comparable);
+                IBlockState state1 = this.doubleSlab.getDefaultState().withProperty((IProperty)this.singleSlab.getVariantProperty(), comparable);
 
                 if (world.checkNoEntityCollision(this.doubleSlab.getCollisionBoundingBox(world, pos, state1)) && world.setBlockState(pos, state1, 3))
                 {

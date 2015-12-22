@@ -182,7 +182,7 @@ public class ChunkProviderIo extends ChunkProviderGenerate
     }
 
     @Override
-    public void func_180517_a(int x, int z, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
+    public void replaceBlocksForBiome(int x, int z, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
     {
         int var5 = 20;
         float var6 = 0.03125F;
@@ -259,8 +259,8 @@ public class ChunkProviderIo extends ChunkProviderGenerate
         this.generateTerrain(x, z, primer);
         this.createCraters(x, z, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, x * 16, z * 16, 16, 16);
-        this.func_180517_a(x, z, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, x, z, primer);
+        this.replaceBlocksForBiome(x, z, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, x, z, primer);
         this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), x * 16, 30, z * 16, x, z, primer);
 
         Chunk var4 = new Chunk(this.worldObj, primer, x, z);
@@ -394,7 +394,7 @@ public class ChunkProviderIo extends ChunkProviderGenerate
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
     {
         if (type == EnumCreatureType.MONSTER)
         {

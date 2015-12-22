@@ -197,7 +197,7 @@ public class MapGenFronosRavine extends MapGenBase
     }
 
     @Override
-    protected void func_180701_a(World world, int p_180701_2_, int p_180701_3_, int p_180701_4_, int p_180701_5_, ChunkPrimer p_180701_6_)
+    protected void recursiveGenerate(World world, int p_180701_2_, int p_180701_3_, int p_180701_4_, int p_180701_5_, ChunkPrimer p_180701_6_)
     {
         if (this.rand.nextInt(50) == 0)
         {

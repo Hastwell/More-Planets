@@ -97,7 +97,7 @@ public class StructureEuropaOceanMonument extends MapGenStructure
 
         if (k == i1 && l == j1)
         {
-            if (this.worldObj.getWorldChunkManager().func_180300_a(new BlockPos(k * 16 + 8, 64, l * 16 + 8), (BiomeGenBase)null) != BiomeGenBase.deepOcean)
+            if (this.worldObj.getWorldChunkManager().getBiomeGenerator(new BlockPos(k * 16 + 8, 64, l * 16 + 8), (BiomeGenBase)null) != BiomeGenBase.deepOcean)
             {
                 return false;
             }
@@ -131,7 +131,7 @@ public class StructureEuropaOceanMonument extends MapGenStructure
 
     public static class StartMonument extends StructureStart
     {
-        private Set field_175791_c = Sets.newHashSet();
+        private Set<ChunkCoordIntPair> field_175791_c = Sets.<ChunkCoordIntPair>newHashSet();
         private boolean field_175790_d;
 
         public StartMonument() {}
@@ -164,7 +164,7 @@ public class StructureEuropaOceanMonument extends MapGenStructure
             if (!this.field_175790_d)
             {
                 this.components.clear();
-                this.func_175789_b(world, rand, this.func_143019_e(), this.func_143018_f());
+                this.func_175789_b(world, rand, this.getChunkPosX(), this.getChunkPosZ());
             }
             super.generateStructure(world, rand, box);
         }
@@ -183,27 +183,25 @@ public class StructureEuropaOceanMonument extends MapGenStructure
         }
 
         @Override
-        public void func_143022_a(NBTTagCompound nbt)
+        public void writeToNBT(NBTTagCompound nbt)
         {
-            super.func_143022_a(nbt);
+            super.writeToNBT(nbt);
             NBTTagList nbttaglist = new NBTTagList();
-            Iterator iterator = this.field_175791_c.iterator();
 
-            while (iterator.hasNext())
+            for (ChunkCoordIntPair chunkcoordintpair : this.field_175791_c)
             {
-                ChunkCoordIntPair chunkcoordintpair = (ChunkCoordIntPair)iterator.next();
-                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-                nbttagcompound1.setInteger("X", chunkcoordintpair.chunkXPos);
-                nbttagcompound1.setInteger("Z", chunkcoordintpair.chunkZPos);
-                nbttaglist.appendTag(nbttagcompound1);
+                NBTTagCompound nbttagcompound = new NBTTagCompound();
+                nbttagcompound.setInteger("X", chunkcoordintpair.chunkXPos);
+                nbttagcompound.setInteger("Z", chunkcoordintpair.chunkZPos);
+                nbttaglist.appendTag(nbttagcompound);
             }
             nbt.setTag("Processed", nbttaglist);
         }
 
         @Override
-        public void func_143017_b(NBTTagCompound nbt)
+        public void readFromNBT(NBTTagCompound nbt)
         {
-            super.func_143017_b(nbt);
+            super.readFromNBT(nbt);
 
             if (nbt.hasKey("Processed", 9))
             {
@@ -211,8 +209,8 @@ public class StructureEuropaOceanMonument extends MapGenStructure
 
                 for (int i = 0; i < nbttaglist.tagCount(); ++i)
                 {
-                    NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-                    this.field_175791_c.add(new ChunkCoordIntPair(nbttagcompound1.getInteger("X"), nbttagcompound1.getInteger("Z")));
+                    NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
+                    this.field_175791_c.add(new ChunkCoordIntPair(nbttagcompound.getInteger("X"), nbttagcompound.getInteger("Z")));
                 }
             }
         }

@@ -239,7 +239,7 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
                 {
                     public boolean func_179913_a(EntityPlayerMP player)
                     {
-                        return EntityEuropaSquid.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.func_180239_c();
+                        return EntityEuropaSquid.this.getDistanceSqToEntity(player) < 16.0D && player.theItemInWorldManager.survivalOrAdventure();
                     }
                     @Override
                     public boolean apply(Object player)
@@ -289,17 +289,17 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         if (this.worldObj.rand.nextInt(100) == 0)
         {
             EntityEuropaSquid squid = new EntityEuropaSquid(this.worldObj);
             squid.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-            squid.func_180482_a(diff, (IEntityLivingData)null);
+            squid.onInitialSpawn(diff, (IEntityLivingData)null);
             squid.setSquidType(1);
             this.worldObj.spawnEntityInWorld(squid);
         }
-        return data;
+        return super.onInitialSpawn(diff, data);
     }
 
     @Override

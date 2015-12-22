@@ -95,7 +95,7 @@ public class ModelEuropaGuardian extends ModelBase
         this.guardianEye.rotationPointZ = -8.25F;
         Object object = Minecraft.getMinecraft().getRenderViewEntity();
 
-        if (entityguardian.func_175474_cn())
+        if (entityguardian.hasTargetedEntity())
         {
             object = entityguardian.getTargetedEntity();
         }

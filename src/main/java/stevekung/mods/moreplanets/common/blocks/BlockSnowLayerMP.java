@@ -99,7 +99,7 @@ public class BlockSnowLayerMP extends BlockBaseMP
     {
         IBlockState state = world.getBlockState(pos.down());
         Block block = state.getBlock();
-        return block != Blocks.ice && block != Blocks.packed_ice && block != EuropaBlocks.europa_ice && block != EuropaBlocks.packed_europa_ice ? block.isLeaves(world, pos.down()) ? true : block == this && ((Integer)state.getValue(BlockStateHelper.LAYERS)).intValue() == 7 ? true : block.isOpaqueCube() && block.getMaterial().blocksMovement() : false;
+        return block != Blocks.ice && block != Blocks.packed_ice && block != EuropaBlocks.europa_ice && block != EuropaBlocks.packed_europa_ice ? block.isLeaves(world, pos.down()) ? true : block == this && ((Integer)state.getValue(BlockStateHelper.LAYERS)).intValue() >= 7 ? true : block.isOpaqueCube() && block.getMaterial().blocksMovement() : false;
     }
 
     @Override
@@ -187,7 +187,7 @@ public class BlockSnowLayerMP extends BlockBaseMP
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, 0);
     }

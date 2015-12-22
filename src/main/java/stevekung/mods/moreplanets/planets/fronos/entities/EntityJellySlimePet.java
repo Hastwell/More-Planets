@@ -419,7 +419,7 @@ public class EntityJellySlimePet extends EntityTameable
         public AISlimeFloat()
         {
             this.setMutexBits(5);
-            ((PathNavigateGround)EntityJellySlimePet.this.getNavigator()).func_179693_d(true);
+            ((PathNavigateGround)EntityJellySlimePet.this.getNavigator()).setCanSwim(true);
         }
 
         @Override

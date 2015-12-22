@@ -72,7 +72,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
     {
         super(world);
         this.setSize(0.6F, 0.8F);
-        ((PathNavigateGround)this.getNavigator()).func_179690_a(true);
+        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
@@ -359,7 +359,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
 
         if (flag)
         {
-            this.func_174815_a(this, entity);
+            this.applyEnchantments(this, entity);
         }
         return flag;
     }
@@ -627,7 +627,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
     }
 
     @Override
-    public boolean func_142018_a(EntityLivingBase living, EntityLivingBase living2)
+    public boolean shouldAttackEntity(EntityLivingBase living, EntityLivingBase living2)
     {
         if (!(living instanceof EntityCreeper) && !(living instanceof EntityGhast))
         {
@@ -635,7 +635,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
             {
                 EntitySpaceWolf entitywolf = (EntitySpaceWolf)living;
 
-                if (entitywolf.isTamed() && entitywolf.getOwnerEntity() == living2)
+                if (entitywolf.isTamed() && entitywolf.getOwner() == living2)
                 {
                     return false;
                 }
@@ -661,7 +661,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
     }
 
     @Override
-    protected void addRandomArmor()
+    protected void addRandomDrop()
     {
         switch (this.rand.nextInt(10))
         {

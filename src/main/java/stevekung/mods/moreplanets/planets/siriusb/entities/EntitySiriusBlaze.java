@@ -323,7 +323,7 @@ public class EntitySiriusBlaze extends EntityMob implements IEntityBreathable, I
     @Override
     public boolean getCanSpawnHere()
     {
-        if (this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL && this.worldObj.checkNoEntityCollision(this.getBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getBoundingBox()) && this.worldObj.getLightBrightness(this.getPosition()) >= 0.0F)
+        if (this.worldObj.getDifficulty() != EnumDifficulty.PEACEFUL && this.worldObj.checkNoEntityCollision(this.getEntityBoundingBox()) && this.worldObj.getCollidingBoundingBoxes(this, this.getEntityBoundingBox()).isEmpty() && !this.worldObj.isAnyLiquid(this.getEntityBoundingBox()) && this.worldObj.getLightBrightness(this.getPosition()) >= 0.0F)
         {
             return true;
         }

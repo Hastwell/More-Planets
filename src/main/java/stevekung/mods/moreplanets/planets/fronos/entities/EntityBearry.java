@@ -161,18 +161,18 @@ public class EntityBearry extends FronosPet
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance diff, IEntityLivingData data)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         if (this.worldObj.rand.nextInt(10) == 0)
         {
             EntityMarshmallow marshmallow = new EntityMarshmallow(this.worldObj);
             marshmallow.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
-            marshmallow.func_180482_a(diff, (IEntityLivingData)null);
+            marshmallow.onInitialSpawn(diff, (IEntityLivingData)null);
             marshmallow.mountEntity(this);
             marshmallow.setGrowingAge(-24000);
             this.worldObj.spawnEntityInWorld(marshmallow);
         }
-        return data;
+        return super.onInitialSpawn(diff, data);
     }
 
     @Override

@@ -125,10 +125,10 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     {
         IRenderHandler sky = this.getSkyRenderer();
 
-        if (sky instanceof SkyProviderMarsOrbit)
-        {
-            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
-        }
+//        if (sky instanceof SkyProviderMarsOrbit)
+//        {
+//            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
+//        }
     }
 
     @Override
@@ -139,10 +139,10 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
         this.skyAngularVelocity = angle * 180F / 3.1415927F;
         IRenderHandler sky = this.getSkyRenderer();
 
-        if (sky instanceof SkyProviderMarsOrbit)
-        {
-            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
-        }
+//        if (sky instanceof SkyProviderMarsOrbit)
+//        {
+//            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
+//        }
         this.thrustersFiring = firing;
     }
 

@@ -49,7 +49,7 @@ public class EntityDionaCreeperMinion extends EntityCreeper implements IEntityBr
         {
             this.lastActiveTime = this.timeSinceIgnited;
 
-            if (this.func_146078_ca())
+            if (this.hasIgnited())
             {
                 this.setCreeperState(1);
             }

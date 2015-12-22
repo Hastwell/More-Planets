@@ -100,8 +100,8 @@ public class EntityAITemptMP extends EntityAIBase
         this.targetX = this.temptingPlayer.posX;
         this.targetY = this.temptingPlayer.posY;
         this.targetZ = this.temptingPlayer.posZ;
-        this.field_75286_m = ((PathNavigateGround)this.temptedEntity.getNavigator()).func_179689_e();
-        ((PathNavigateGround)this.temptedEntity.getNavigator()).func_179690_a(false);
+        this.field_75286_m = ((PathNavigateGround)this.temptedEntity.getNavigator()).getAvoidsWater();
+        ((PathNavigateGround)this.temptedEntity.getNavigator()).setAvoidsWater(false);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class EntityAITemptMP extends EntityAIBase
         this.temptingPlayer = null;
         this.temptedEntity.getNavigator().clearPathEntity();
         this.delayTemptCounter = 100;
-        ((PathNavigateGround)this.temptedEntity.getNavigator()).func_179690_a(this.field_75286_m);
+        ((PathNavigateGround)this.temptedEntity.getNavigator()).setAvoidsWater(this.field_75286_m);
     }
 
     @Override

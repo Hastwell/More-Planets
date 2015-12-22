@@ -79,20 +79,20 @@ public class ComponentKoentusVillageWell extends ComponentKoentusVillage
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 3, 0);
         }
 
-        this.func_175804_a(world, box, 1, 0, 1, 4, 12, 4, KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), Blocks.water.getDefaultState(), false);
-        this.func_175811_a(world, Blocks.air.getDefaultState(), 2, 12, 2, box);
-        this.func_175811_a(world, Blocks.air.getDefaultState(), 3, 12, 2, box);
-        this.func_175811_a(world, Blocks.air.getDefaultState(), 2, 12, 3, box);
-        this.func_175811_a(world, Blocks.air.getDefaultState(), 3, 12, 3, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 13, 1, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 14, 1, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 13, 1, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 14, 1, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 13, 4, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 14, 4, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 13, 4, box);
-        this.func_175811_a(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 14, 4, box);
-        this.func_175804_a(world, box, 1, 15, 1, 4, 15, 4, KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), false);
+        this.fillWithBlocks(world, box, 1, 0, 1, 4, 12, 4, KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), Blocks.water.getDefaultState(), false);
+        this.setBlockState(world, Blocks.air.getDefaultState(), 2, 12, 2, box);
+        this.setBlockState(world, Blocks.air.getDefaultState(), 3, 12, 2, box);
+        this.setBlockState(world, Blocks.air.getDefaultState(), 2, 12, 3, box);
+        this.setBlockState(world, Blocks.air.getDefaultState(), 3, 12, 3, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 13, 1, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 14, 1, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 13, 1, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 14, 1, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 13, 4, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 1, 14, 4, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 13, 4, box);
+        this.setBlockState(world, KoentusBlocks.crystal_segment.getDefaultState(), 4, 14, 4, box);
+        this.fillWithBlocks(world, box, 1, 15, 1, 4, 15, 4, KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), false);
 
         for (int i = 0; i <= 5; ++i)
         {
@@ -100,7 +100,7 @@ public class ComponentKoentusVillageWell extends ComponentKoentusVillage
             {
                 if (j == 0 || j == 5 || i == 0 || i == 5)
                 {
-                    this.func_175811_a(world, KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), j, 11, i, box);
+                    this.setBlockState(world, KoentusBlocks.koentus_block.getDefaultState().withProperty(BlockKoentus.VARIANT, BlockKoentus.BlockType.koentus_ancient_stone_brick), j, 11, i, box);
                     this.clearCurrentPositionBlocksUpwards(world, j, 12, i, box);
                 }
             }

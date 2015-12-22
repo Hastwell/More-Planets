@@ -41,10 +41,12 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(VenusBlocks.venus_block, this.getBlockMetadata());
     private MapGenVenusRavine ravineGenerator = new MapGenVenusRavine();
     private MapGenVenusVillage villageGenerator = new MapGenVenusVillage();
-    private MapGenDungeon dungeonGenerator = new MapGenDungeon(VenusBlocks.venus_block, 14, 8, 24, 4);
+    //private MapGenDungeon dungeonGenerator = new MapGenDungeon(VenusBlocks.venus_block, 14, 8, 24, 4);
 
+    public ChunkProviderVenus(World world, long seed, boolean genFeature)
     {
-        this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
+        super(world, seed, genFeature);
+        /*this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -56,12 +58,7 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
-        this.dungeonGenerator.bossRooms.add(new RoomBossVenus(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderVenus(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
+        this.dungeonGenerator.bossRooms.add(new RoomBossVenus(null, 0, 0, 0, null));*/
     }
 
     @Override
@@ -72,10 +69,10 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
         this.generateTerrain(chunkX, chunkZ, primer);
         this.createCraters(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-        this.ravineGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
-        this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 30, chunkZ * 16, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
+        this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
+        //this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 30, chunkZ * 16, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();
         return chunk;
@@ -93,15 +90,15 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
         long var7 = this.rand.nextLong() / 2L * 2L + 1L;
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
-        this.dungeonGenerator.handleTileEntities(this.rand);
+        //this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
-        this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
+        this.villageGenerator.generateStructure(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
 
         for (int i = 0; i < 4; i++)
         {
             if (this.rand.nextInt(5) == 0)
             {
-                new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser, 0, VenusBlocks.venus_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+                new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser, 0, VenusBlocks.venus_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256 - 16) + 16, this.rand.nextInt(16) + 8));
             }
         }
         BlockFalling.fallInstantly = false;
@@ -110,11 +107,11 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
     @Override
     public void recreateStructures(Chunk chunk, int x, int z)
     {
-        this.villageGenerator.func_175792_a(this, this.worldObj, x, z, (ChunkPrimer) null);
+        this.villageGenerator.generate(this, this.worldObj, x, z, (ChunkPrimer) null);
     }
 
     @Override
-    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
     {
         if (type == EnumCreatureType.MONSTER)
         {
@@ -123,7 +120,7 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityVenusianBlaze.class, 100, 4, 4));
             return monsters;
         }
-        return super.func_177458_a(type, pos);
+        return super.getPossibleCreatures(type, pos);
     }
 
     @Override

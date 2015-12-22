@@ -210,7 +210,7 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
     }
 
     @Override
-    public String getName()
+    public String getCommandSenderName()
     {
         return StatCollector.translateToLocal("container.powercrystal.name");
     }
@@ -323,6 +323,6 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
     @Override
     public IChatComponent getDisplayName()
     {
-        return new ChatComponentText(this.getName());
+        return new ChatComponentText(this.getCommandSenderName());
     }
 }

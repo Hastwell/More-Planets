@@ -5,7 +5,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.pluto.client.sky;
+package stevekung.mods.moreplanets.client;
 
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import net.minecraft.client.Minecraft;
@@ -15,14 +15,15 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
-import stevekung.mods.moreplanets.client.SkyProviderBaseMP;
 
-public class SkyProviderPluto extends SkyProviderBaseMP
+public class SkyProviderMarsMP extends SkyProviderBaseMP
 {
-    private ResourceLocation sunTexture = new ResourceLocation("galacticraftcore:textures/gui/planets/sun.png");
-    private ResourceLocation charonTexture = new ResourceLocation("moreplanets:textures/gui/celestialbodies/charon.png");
+    private ResourceLocation overworldTexture = new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/earth.png");
+    private ResourceLocation sunTexture = new ResourceLocation("textures/environment/sun.png");
+    private ResourceLocation phobosTexture = new ResourceLocation("moreplanets:textures/gui/celestialbodies/phobos.png");
+    private ResourceLocation deimosTexture = new ResourceLocation("moreplanets:textures/gui/celestialbodies/deimos.png");
 
-    public SkyProviderPluto(IGalacticraftWorldProvider provider)
+    public SkyProviderMarsMP(IGalacticraftWorldProvider provider)
     {
         super();
         this.sunSize = 17.5F * provider.getSolarSize();
@@ -45,8 +46,8 @@ public class SkyProviderPluto extends SkyProviderBaseMP
         GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
         afloat[0] = 255 / 255.0F;
-        afloat[1] = 255 / 255.0F;
-        afloat[2] = 235 / 255.0F;
+        afloat[1] = 194 / 255.0F;
+        afloat[2] = 180 / 255.0F;
         afloat[3] = 0.3F;
         f6 = afloat[0];
         f7 = afloat[1];
@@ -57,7 +58,7 @@ public class SkyProviderPluto extends SkyProviderBaseMP
         worldrenderer.func_181662_b(0.0D, 100.0D, 0.0D).func_181666_a(f6 * f18, f7 * f18, f8 * f18, afloat[3] * 2 / f18).func_181675_d();
 
         // Render sun aura
-        f10 = 3.5F;
+        f10 = 20.0F;
         worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
         worldrenderer.func_181662_b(0, 100.0D, (double) -f10 * 1.5F).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
         worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
@@ -73,7 +74,7 @@ public class SkyProviderPluto extends SkyProviderBaseMP
         worldrenderer.func_181662_b(0.0D, 100.0D, 0.0D).func_181666_a(f6 * f18, f7 * f18, f8 * f18, afloat[3] * f18).func_181675_d();
 
         // Render larger sun aura
-        f10 = 5.0F;
+        f10 = 40.0F;
         worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
         worldrenderer.func_181662_b(0, 100.0D, (double) -f10 * 1.5F).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
         worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181666_a(afloat[0] * f18, afloat[1] * f18, afloat[2] * f18, 0.0F).func_181675_d();
@@ -86,17 +87,21 @@ public class SkyProviderPluto extends SkyProviderBaseMP
         tessellator.draw();
         GlStateManager.popMatrix();
         GlStateManager.shadeModel(7424);
-        GlStateManager.enableTexture2D();
+        GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 1, 1, 0);
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(0.0F, 0.0F, 0.0F);
         GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
-        GlStateManager.blendFunc(770, 1);
+
+        // Render sun
         GlStateManager.disableTexture2D();
+        GlStateManager.blendFunc(770, 1);
         GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
-        f10 = 4.3F / 3.5F;
+
+        //Some blanking to conceal the stars
+        f10 = this.sunSize / 3.5F;
         worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
         worldrenderer.func_181662_b(-f10, 99.9D, -f10).func_181675_d();
         worldrenderer.func_181662_b(f10, 99.9D, -f10).func_181675_d();
@@ -105,24 +110,22 @@ public class SkyProviderPluto extends SkyProviderBaseMP
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-
-        // Sun
-        GlStateManager.disableTexture2D();
-        GlStateManager.blendFunc(770, 1);
-        GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
-
-        // Some blanking to conceal the stars
-        f10 = this.sunSize / 2.5F;
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
-        worldrenderer.func_181662_b(-f10, 99.9D, -f10).func_181675_d();
-        worldrenderer.func_181662_b(f10, 99.9D, -f10).func_181675_d();
-        worldrenderer.func_181662_b(f10, 99.9D, f10).func_181675_d();
-        worldrenderer.func_181662_b(-f10, 99.9D, f10).func_181675_d();
-        tessellator.draw();
-        GlStateManager.enableTexture2D();
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        f10 = this.sunSize - 6.5F;
+        f10 = this.sunSize;
         mc.renderEngine.bindTexture(this.sunTexture);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181662_b(-f10, 99.9D, -f10).func_181675_d();
+        worldrenderer.func_181662_b(f10, 99.9D, -f10).func_181675_d();
+        worldrenderer.func_181662_b(f10, 99.9D, f10).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 99.9D, f10).func_181675_d();
+        tessellator.draw();
+
+        // Render earth
+        f10 = 0.5F;
+        GlStateManager.scale(0.6F, 0.6F, 0.6F);
+        GlStateManager.rotate(40.0F, 0.0F, 0.0F, 1.0F);
+        GlStateManager.rotate(200F, 1.0F, 0.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
+        mc.renderEngine.bindTexture(this.overworldTexture);
         worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
         worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181673_a(0.0D, 0.0D).func_181675_d();
         worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181673_a(1.0D, 0.0D).func_181675_d();
@@ -130,17 +133,29 @@ public class SkyProviderPluto extends SkyProviderBaseMP
         worldrenderer.func_181662_b(-f10, 100.0D, f10).func_181673_a(0.0D, 1.0D).func_181675_d();
         tessellator.draw();
 
-        GlStateManager.disableBlend();
-        GlStateManager.popMatrix();
-        GlStateManager.pushMatrix();
-
-        // Charon
-        f10 = 5.25F;
+        // Phobos
+        f10 = 3.8F;
         GlStateManager.scale(0.6F, 0.6F, 0.6F);
-        GlStateManager.rotate(130.0F, 8.0F, 0.4F, 1.0F);
-        GlStateManager.rotate(10F, 1.0F, 0.0F, 5.0F);
+        GlStateManager.rotate(40.0F, 0.0F, 0.0F, 1.0F);
+        GlStateManager.rotate(200F, 1.0F, 0.0F, 0.0F);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
-        mc.renderEngine.bindTexture(this.charonTexture);
+        GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
+        mc.renderEngine.bindTexture(this.phobosTexture);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181673_a(0.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181673_a(1.0D, 0.0D).func_181675_d();
+        worldrenderer.func_181662_b(f10, 100.0D, f10).func_181673_a(1.0D, 1.0D).func_181675_d();
+        worldrenderer.func_181662_b(-f10, 100.0D, f10).func_181673_a(0.0D, 1.0D).func_181675_d();
+        tessellator.draw();
+
+        // Deimos
+        f10 = 1.2F;
+        GlStateManager.scale(0.6F, 0.6F, 0.6F);
+        GlStateManager.rotate(40.0F, 0.0F, 0.0F, 1.0F);
+        GlStateManager.rotate(200F, 1.0F, 0.0F, 0.0F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
+        GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
+        mc.renderEngine.bindTexture(this.deimosTexture);
         worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
         worldrenderer.func_181662_b(-f10, 100.0D, -f10).func_181673_a(0.0D, 0.0D).func_181675_d();
         worldrenderer.func_181662_b(f10, 100.0D, -f10).func_181673_a(1.0D, 0.0D).func_181675_d();
@@ -152,18 +167,18 @@ public class SkyProviderPluto extends SkyProviderBaseMP
     @Override
     protected double[] getMaxStarCount()
     {
-        return new double[] { 60000D, 100D, 150D };
+        return new double[] { 35000D, 150D, 130D };
     }
 
     @Override
     protected float[] getStarBrightness()
     {
-        return new float[] { 0.4F, 0.5F };
+        return null;
     }
 
     @Override
     protected boolean useDefaultStarBrightness()
     {
-        return false;
+        return true;
     }
 }

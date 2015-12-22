@@ -256,7 +256,7 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
         if (this.roomCoords != null && this.roomSize != null)
         {
             @SuppressWarnings("unchecked")
-            List<Entity> entitiesWithin = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.fromBounds(this.roomCoords.intX() - 1, this.roomCoords.intY() - 1, this.roomCoords.intZ() - 1, this.roomCoords.intX() + this.roomSize.intX(), this.roomCoords.intY() + this.roomSize.intY(), this.roomCoords.intZ() + this.roomSize.intZ()));
+            List<EntityPlayer> entitiesWithin = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.fromBounds(this.roomCoords.intX() - 1, this.roomCoords.intY() - 1, this.roomCoords.intZ() - 1, this.roomCoords.intX() + this.roomSize.intX(), this.roomCoords.intY() + this.roomSize.intY(), this.roomCoords.intZ() + this.roomSize.intZ()));
 
             this.entitiesWithin = entitiesWithin.size();
 
@@ -536,9 +536,9 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
             }
             else
             {
-                double d0 = entitymovehelper.func_179917_d() - this.field_179454_a.posX;
-                double d1 = entitymovehelper.func_179919_e() - this.field_179454_a.posY;
-                double d2 = entitymovehelper.func_179918_f() - this.field_179454_a.posZ;
+                double d0 = entitymovehelper.getX() - this.field_179454_a.posX;
+                double d1 = entitymovehelper.getY() - this.field_179454_a.posY;
+                double d2 = entitymovehelper.getZ() - this.field_179454_a.posZ;
                 double d3 = d0 * d0 + d1 * d1 + d2 * d2;
                 return d3 < 1.0D || d3 > 3600.0D;
             }

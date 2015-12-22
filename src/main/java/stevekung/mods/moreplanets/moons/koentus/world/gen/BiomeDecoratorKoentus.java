@@ -46,11 +46,6 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorMP
     @Override
     protected void genDecorations(BiomeGenBase biome)
     {
-        int i;
-        int x;
-        int y;
-        int z;
-
         this.generateOre(22, this.tinGen, 0, 64);
         this.generateOre(24, this.copperGen, 0, 64);
         this.generateOre(20, this.dirtGen, 0, 256);
@@ -60,12 +55,9 @@ public class BiomeDecoratorKoentus extends BiomeDecoratorMP
         this.generateOre(15, this.iceGen, 0, 128);
         this.generateOre(15, this.glowIceGen, 0, 128);
 
-        for (i = 0; i < this.rockSpiresPerChunk; ++i)
+        for (int i = 0; i < this.rockSpiresPerChunk; ++i)
         {
-            x = this.randomGenerator.nextInt(16) + 8;
-            y = this.randomGenerator.nextInt(256);
-            z = this.randomGenerator.nextInt(16) + 8;
-            this.rockSpiresGen.generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
+            this.rockSpiresGen.generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(this.randomGenerator.nextInt(16) + 8, this.randomGenerator.nextInt(256 - 16) + 16, this.randomGenerator.nextInt(16) + 8));
         }
     }
 }

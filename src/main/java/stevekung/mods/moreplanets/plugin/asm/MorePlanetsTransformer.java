@@ -51,10 +51,10 @@ public class MorePlanetsTransformer implements IClassTransformer
         }
 
         MorePlanetsTransformer.obfuscated = obfuscated;
-        IBLOCKSTATE_NAME = obfuscated ? "bec" : "net/minecraft/block/state/IBlockState";
-        BLOCK_MODEL_SHAPES_NAME = obfuscated ? "clc" : "net/minecraft/client/renderer/BlockModelShapes";
+        IBLOCKSTATE_NAME = obfuscated ? "alz" : "net/minecraft/block/state/IBlockState";
+        BLOCK_MODEL_SHAPES_NAME = obfuscated ? "bgc" : "net/minecraft/client/renderer/BlockModelShapes";
         METHOD_GET_TEXTURE_NAME = obfuscated ? "a" : "getTexture";
-        TEXTURE_ATLAS_SPRITE_NAME = obfuscated ? "cue" : "net/minecraft/client/renderer/texture/TextureAtlasSprite";
+        TEXTURE_ATLAS_SPRITE_NAME = obfuscated ? "bmi" : "net/minecraft/client/renderer/texture/TextureAtlasSprite";
         MODEL_TEXTURE_HELPER_NAME = "stevekung/mods/moreplanets/client/ModelTextureHelperMP";
     }
 
@@ -71,7 +71,7 @@ public class MorePlanetsTransformer implements IClassTransformer
             instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MODEL_TEXTURE_HELPER_NAME, "getTexture", "(L" + IBLOCKSTATE_NAME + ";)L" + TEXTURE_ATLAS_SPRITE_NAME + ";", false));
             instructions.add(new InsnNode(Opcodes.ARETURN));
             renderMethodNode.instructions.insertBefore(this.getInsertionPoint(renderMethodNode, "getTexture()"), instructions);
-            Logger.info(MorePlanetsTransformer.obfuscated ? "Successfully patched into clc" : "Successfully patched into " + BLOCK_MODEL_SHAPES_NAME.replace("/", "."));
+            Logger.info(MorePlanetsTransformer.obfuscated ? "Successfully patched into " + BLOCK_MODEL_SHAPES_NAME : "Successfully patched into " + BLOCK_MODEL_SHAPES_NAME.replace("/", "."));
             return this.getBytes(classNode, 0);
         }
         return clazz;

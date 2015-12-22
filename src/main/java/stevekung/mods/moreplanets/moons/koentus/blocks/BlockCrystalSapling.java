@@ -56,7 +56,7 @@ public class BlockCrystalSapling extends BlockSaplingMP
 
         if (obj == null)
         {
-            obj = new WorldGenTreeMP(6, KoentusBlocks.crystal_log, KoentusBlocks.crystal_leaves, 0, 0, false, this, null);
+            obj = new WorldGenTreeMP(KoentusBlocks.crystal_log, KoentusBlocks.crystal_leaves, 0, 0, this, null, null, null, null);
         }
         if (obj != null)
         {

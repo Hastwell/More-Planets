@@ -67,27 +67,16 @@ public class BiomeDecoratorVenus extends BiomeDecoratorMP
         this.generateOre(20, this.sandGen1, 0, 256);
         this.generateOre(20, this.magmaGen, 0, 128);
 
-        int i;
-        int x;
-        int y;
-        int z;
-
-        for (i = 0; i < this.lavaLakePerChunk; ++i)
+        for (int i = 0; i < this.lavaLakePerChunk; ++i)
         {
             if (this.randomGenerator.nextInt(20) == 0)
             {
-                x = this.randomGenerator.nextInt(16) + 8;
-                y = this.randomGenerator.nextInt(32 - 16) + 16;
-                z = this.randomGenerator.nextInt(16) + 8;
-                new WorldGenLiquidLakes(Blocks.lava, VenusBlocks.venus_block, 2).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
+                new WorldGenLiquidLakes(Blocks.lava, VenusBlocks.venus_block, 2).generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(this.randomGenerator.nextInt(16) + 8, this.randomGenerator.nextInt(32 - 16) + 16, this.randomGenerator.nextInt(16) + 8));
             }
         }
-        for (i = 0; i < 16; ++i)
+        for (int i = 0; i < 16; ++i)
         {
-            x = this.randomGenerator.nextInt(16) + 8;
-            y = this.randomGenerator.nextInt(255);
-            z = this.randomGenerator.nextInt(16) + 8;
-            new WorldGenSurfaceLava().generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(x, y, z));
+            new WorldGenSurfaceLava().generate(this.currentWorld, this.randomGenerator, this.field_180294_c.add(this.randomGenerator.nextInt(16) + 8, this.randomGenerator.nextInt(256 - 16) + 16, this.randomGenerator.nextInt(16) + 8));
         }
     }
 }

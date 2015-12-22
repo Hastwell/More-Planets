@@ -66,7 +66,7 @@ public class ComponentFronosVillageField3 extends ComponentFronosVillage
     @SuppressWarnings("rawtypes")
     public static ComponentFronosVillageField3 func_74900_a(ComponentFronosVillageStartPiece component, List list, Random rand, int x, int y, int z, EnumFacing side, int type)
     {
-        StructureBoundingBox structureboundingbox = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 13, 4, 9, side);
+        StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 13, 4, 9, side);
         return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(list, structureboundingbox) == null ? new ComponentFronosVillageField3(component, type, structureboundingbox, side) : null;
     }
 
@@ -84,30 +84,30 @@ public class ComponentFronosVillageField3 extends ComponentFronosVillage
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
         }
 
-        this.func_175804_a(world, box, 0, 1, 0, 12, 4, 8, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 0, 1, 2, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
-        this.func_175804_a(world, box, 4, 0, 1, 5, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
-        this.func_175804_a(world, box, 7, 0, 1, 8, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
-        this.func_175804_a(world, box, 10, 0, 1, 11, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
-        this.func_175804_a(world, box, 0, 0, 0, 0, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 6, 0, 0, 6, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 12, 0, 0, 12, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 0, 0, 11, 0, 0, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 0, 8, 11, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
-        this.func_175804_a(world, box, 3, 0, 1, 3, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
-        this.func_175804_a(world, box, 9, 0, 1, 9, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 0, 1, 0, 12, 4, 8, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 0, 1, 2, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 4, 0, 1, 5, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 7, 0, 1, 8, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 10, 0, 1, 11, 0, 7, FronosBlocks.fronos_farmland.getDefaultState(), FronosBlocks.fronos_farmland.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 6, 0, 0, 6, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 12, 0, 0, 12, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 0, 0, 11, 0, 0, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 0, 8, 11, 0, 8, FronosBlocks.fronos_log.getDefaultState(), FronosBlocks.fronos_log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 3, 0, 1, 3, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 9, 0, 1, 9, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
         int i;
 
         for (i = 1; i <= 7; ++i)
         {
-            this.func_175811_a(world, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 1, 1, i, box);
-            this.func_175811_a(world, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 2, 1, i, box);
-            this.func_175811_a(world, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 4, 1, i, box);
-            this.func_175811_a(world, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 5, 1, i, box);
-            this.func_175811_a(world, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 7, 1, i, box);
-            this.func_175811_a(world, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 8, 1, i, box);
-            this.func_175811_a(world, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 10, 1, i, box);
-            this.func_175811_a(world, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 11, 1, i, box);
+            this.setBlockState(world, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 1, 1, i, box);
+            this.setBlockState(world, this.cropTypeA.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 2, 1, i, box);
+            this.setBlockState(world, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 4, 1, i, box);
+            this.setBlockState(world, this.cropTypeB.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 5, 1, i, box);
+            this.setBlockState(world, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 7, 1, i, box);
+            this.setBlockState(world, this.cropTypeC.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 8, 1, i, box);
+            this.setBlockState(world, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 10, 1, i, box);
+            this.setBlockState(world, this.cropTypeD.getStateFromMeta(MathHelper.getRandomIntegerInRange(rand, 2, 7)), 11, 1, i, box);
         }
 
         for (i = 0; i < 9; ++i)
@@ -115,7 +115,7 @@ public class ComponentFronosVillageField3 extends ComponentFronosVillage
             for (int j = 0; j < 13; ++j)
             {
                 this.clearCurrentPositionBlocksUpwards(world, j, 4, i, box);
-                this.func_175808_b(world, FronosBlocks.fronos_dirt.getDefaultState(), j, -1, i, box);
+                this.replaceAirAndLiquidDownwards(world, FronosBlocks.fronos_dirt.getDefaultState(), j, -1, i, box);
             }
         }
         return true;

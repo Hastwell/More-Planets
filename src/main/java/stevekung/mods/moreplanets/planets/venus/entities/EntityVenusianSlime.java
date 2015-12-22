@@ -76,7 +76,7 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
     }
 
     @Override
-    public boolean handleLavaMovement()
+    public boolean isNotColliding()
     {
         return false;
     }
@@ -181,9 +181,9 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
     }
 
     @Override
-    public void func_145781_i(int par1)
+    public void onDataWatcherUpdate(int id)
     {
-        if (par1 == 16)
+        if (id == 16)
         {
             int j = this.getSlimeSize();
             this.setSize(0.51000005F * j, 0.51000005F * j);
@@ -195,7 +195,7 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
                 this.resetHeight();
             }
         }
-        super.func_145781_i(par1);
+        super.onDataWatcherUpdate(id);
     }
 
     @Override
@@ -257,7 +257,7 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
         if (this.canEntityBeSeen(living) && this.getDistanceSqToEntity(living) < 0.6D * i * 0.6D * i && living.attackEntityFrom(DamageSource.causeMobDamage(this), this.getAttackStrength()))
         {
             this.playSound("mob.attack", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-            this.func_174815_a(this, living);
+            this.applyEnchantments(this, living);
         }
     }
 
@@ -333,17 +333,17 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
     }
 
     @Override
-    public IEntityLivingData func_180482_a(DifficultyInstance p_180482_1_, IEntityLivingData p_180482_2_)
+    public IEntityLivingData onInitialSpawn(DifficultyInstance diff, IEntityLivingData data)
     {
         int i = this.rand.nextInt(3);
 
-        if (i < 2 && this.rand.nextFloat() < 0.5F * p_180482_1_.getClampedAdditionalDifficulty())
+        if (i < 2 && this.rand.nextFloat() < 0.5F * diff.getClampedAdditionalDifficulty())
         {
             ++i;
         }
         int j = 1 << i;
         this.setSlimeSize(j);
-        return super.func_180482_a(p_180482_1_, p_180482_2_);
+        return super.onInitialSpawn(diff, data);
     }
 
     @Override
@@ -427,7 +427,7 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
         public AISlimeFloat()
         {
             this.setMutexBits(5);
-            ((PathNavigateGround)EntityVenusianSlime.this.getNavigator()).func_179693_d(true);
+            ((PathNavigateGround)EntityVenusianSlime.this.getNavigator()).setCanSwim(true);
         }
 
         @Override

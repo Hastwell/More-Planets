@@ -11,6 +11,7 @@ import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.util.BlockPos;
+import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
@@ -62,8 +63,9 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
         this.generateTerrain(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
         this.createCraters(chunkX, chunkZ, primer);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
+        this.villageGenerator.generateStructure(worldObj, rand, new ChunkCoordIntPair(chunkX, chunkZ));
         this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();
@@ -90,7 +92,7 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
     @Override
     public void recreateStructures(Chunk chunk, int chunkX, int chunkZ)
     {
-        this.villageGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, (ChunkPrimer) null);
+        this.villageGenerator.generate(this, this.worldObj, chunkX, chunkZ, (ChunkPrimer) null);
     }
 
     @Override

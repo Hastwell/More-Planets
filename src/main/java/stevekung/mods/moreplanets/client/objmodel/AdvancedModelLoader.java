@@ -40,7 +40,7 @@ public class AdvancedModelLoader
             throw new ModelFormatException("The resource name is not valid");
         }
 
-        String suffix = name.substring(i+1);
+        String suffix = name.substring(i + 1);
         IModelCustomLoader loader = instances.get(suffix);
 
         if (loader == null)

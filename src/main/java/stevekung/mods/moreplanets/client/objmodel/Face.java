@@ -34,7 +34,6 @@ public class Face
             this.faceNormal = this.calculateFaceNormal();
         }
 
-        worldrenderer.setNormal(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z);
         float averageU = 0.0F;
         float averageV = 0.0F;
 
@@ -66,11 +65,11 @@ public class Face
                 {
                     offsetV = -offsetV;
                 }
-                worldrenderer.addVertexWithUV(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z, this.textureCoordinates[i].u + offsetU, this.textureCoordinates[i].v + offsetV);
+                worldrenderer.func_181662_b(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).func_181673_a(this.textureCoordinates[i].u + offsetU, this.textureCoordinates[i].v + offsetV).func_181663_c(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).func_181675_d();
             }
             else
             {
-                worldrenderer.addVertex(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z);
+                worldrenderer.func_181662_b(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).func_181663_c(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).func_181675_d();//TODO
             }
         }
     }

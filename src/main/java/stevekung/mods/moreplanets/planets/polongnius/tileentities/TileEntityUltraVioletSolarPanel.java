@@ -286,7 +286,7 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
                 {
                     if (this.worldObj.isRemote && this.worldObj.rand.nextDouble() < 0.1D)
                     {
-                        FMLClientHandler.instance().getClient().effectRenderer.func_180533_a(new BlockPos(this.pos.getX() + (y == 2 ? x : 0), this.pos.getY() + y, this.pos.getZ() + (y == 2 ? z : 0)), Block.getStateById(Block.getIdFromBlock(PolongniusBlocks.ultra_violet_solar_panel) >> 12 & 255));
+                        FMLClientHandler.instance().getClient().effectRenderer.addBlockDestroyEffects(new BlockPos(this.pos.getX() + (y == 2 ? x : 0), this.pos.getY() + y, this.pos.getZ() + (y == 2 ? z : 0)), Block.getStateById(Block.getIdFromBlock(PolongniusBlocks.ultra_violet_solar_panel) >> 12 & 255));
                     }
                     this.worldObj.setBlockToAir(new BlockPos(this.pos.getX() + (y == 2 ? x : 0), this.pos.getY() + y, this.pos.getZ() + (y == 2 ? z : 0)));
                 }
@@ -378,7 +378,7 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
     }
 
     @Override
-    public String getName()
+    public String getCommandSenderName()
     {
         return StatCollector.translateToLocal("container.ultraviolet.solar.name");
     }
@@ -528,7 +528,7 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
     @Override
     public IChatComponent getDisplayName()
     {
-        return new ChatComponentText(this.getName());
+        return new ChatComponentText(this.getCommandSenderName());
     }
 
     @Override

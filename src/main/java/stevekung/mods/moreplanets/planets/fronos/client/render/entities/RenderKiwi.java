@@ -9,14 +9,14 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelKiwi;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
 
 @SideOnly(Side.CLIENT)
-public class RenderKiwi extends RenderLiving
+public class RenderKiwi extends RenderLiving<EntityKiwi>
 {
     private ResourceLocation kiwiTextures = new ResourceLocation("moreplanets:textures/entity/kiwi.png");
 
@@ -26,7 +26,7 @@ public class RenderKiwi extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityKiwi entity)
     {
         return this.kiwiTextures;
     }

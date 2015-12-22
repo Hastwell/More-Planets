@@ -28,12 +28,12 @@ public class AchievementsMP
     public static void init()
     {
         //par x, y
-        AchievementsMP.getTier4Schematic = new Achievement("achievement.mp.getT4", "mp.getT4", 0, 0, new ItemStack(DionaItems.tier_4_rocket, 1, 10), null).setIndependent().func_180788_c();
-        AchievementsMP.reachDiona = new Achievement("achievement.mp.reachDiona", "mp.reachDiona", 1, 2, new ItemStack(MPItems.achievement_temp, 1, 0), AchievementsMP.getTier4Schematic).func_180788_c();
-        AchievementsMP.mineDionaOre = new Achievement("achievement.mp.mineDionaOre", "mp.mineDionaOre", 4, 3, new ItemStack(DionaBlocks.diona_block, 1, 4), AchievementsMP.reachDiona).func_180788_c();
-        AchievementsMP.getSpacePick = new Achievement("achievement.mp.getSpacePick", "mp.getSpacePick", 4, 1, new ItemStack(DionaToolsItems.quontonium_pickaxe), AchievementsMP.mineDionaOre).func_180788_c();
-        AchievementsMP.laserGun = new Achievement("achievement.mp.laserGun", "mp.laserGun", 4, 5, new ItemStack(DionaItems.laser_gun), AchievementsMP.mineDionaOre).setSpecial().func_180788_c();
-        AchievementsMP.tameSpaceWolf = new Achievement("achievement.mp.tameSpaceWolf", "mp.tameSpaceWolf", -2, 4, new ItemStack(Items.bone), AchievementsMP.reachDiona).func_180788_c();
+        AchievementsMP.getTier4Schematic = new Achievement("achievement.mp.getT4", "mp.getT4", 0, 0, new ItemStack(DionaItems.tier_4_rocket, 1, 10), null).initIndependentStat().registerStat();
+        AchievementsMP.reachDiona = new Achievement("achievement.mp.reachDiona", "mp.reachDiona", 1, 2, new ItemStack(MPItems.achievement_temp, 1, 0), AchievementsMP.getTier4Schematic).registerStat();
+        AchievementsMP.mineDionaOre = new Achievement("achievement.mp.mineDionaOre", "mp.mineDionaOre", 4, 3, new ItemStack(DionaBlocks.diona_block, 1, 4), AchievementsMP.reachDiona).registerStat();
+        AchievementsMP.getSpacePick = new Achievement("achievement.mp.getSpacePick", "mp.getSpacePick", 4, 1, new ItemStack(DionaToolsItems.quontonium_pickaxe), AchievementsMP.mineDionaOre).registerStat();
+        AchievementsMP.laserGun = new Achievement("achievement.mp.laserGun", "mp.laserGun", 4, 5, new ItemStack(DionaItems.laser_gun), AchievementsMP.mineDionaOre).setSpecial().registerStat();
+        AchievementsMP.tameSpaceWolf = new Achievement("achievement.mp.tameSpaceWolf", "mp.tameSpaceWolf", -2, 4, new ItemStack(Items.bone), AchievementsMP.reachDiona).registerStat();
 
         AchievementPage.registerAchievementPage(new AchievementPage("More Planets", AchievementsMP.getTier4Schematic, AchievementsMP.reachDiona, AchievementsMP.mineDionaOre, AchievementsMP.getSpacePick, AchievementsMP.laserGun, AchievementsMP.tameSpaceWolf));
     }

@@ -37,7 +37,7 @@ public class ComponentMartianVillageHouse extends ComponentMartianVillage
     @SuppressWarnings("rawtypes")
     public static ComponentMartianVillageHouse func_74921_a(ComponentMartianVillageStartPiece component, List list, int x, int y, int z, EnumFacing facing, int type)
     {
-        StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 17, 9, 17, facing);
+        StructureBoundingBox var8 = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 17, 9, 17, facing);
         return StructureComponent.findIntersecting(list, var8) == null ? new ComponentMartianVillageHouse(component, type, var8, facing) : null;
     }
 
@@ -77,7 +77,7 @@ public class ComponentMartianVillageHouse extends ComponentMartianVillage
         {
             for (int j = 3; j <= 13; j++)
             {
-                this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, 0, j, box);
+                this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, 0, j, box);
             }
         }
 
@@ -85,7 +85,7 @@ public class ComponentMartianVillageHouse extends ComponentMartianVillage
         {
             for (int j = 2; j <= 14; j++)
             {
-                this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, 0, j, box);
+                this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, 0, j, box);
             }
         }
 
@@ -93,7 +93,7 @@ public class ComponentMartianVillageHouse extends ComponentMartianVillage
         {
             for (int j = 5; j <= 11; j++)
             {
-                this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, 0, j, box);
+                this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, 0, j, box);
             }
         }
 
@@ -101,343 +101,343 @@ public class ComponentMartianVillageHouse extends ComponentMartianVillage
 
         for (yLevel = -8; yLevel < 4; yLevel++)
         {
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 2, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 2, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 3, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 4, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 2, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 2, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 3, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 4, box);
 
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 5, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 6, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 7, box);
-            this.func_175811_a(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 1, yLevel, 8, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 9, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 10, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 11, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 5, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 6, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 7, box);
+            this.setBlockState(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 1, yLevel, 8, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 9, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 10, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 11, box);
 
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 12, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 13, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 14, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 14, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 12, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 13, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 14, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 14, box);
 
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 15, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 15, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 15, box);
-            this.func_175811_a(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 8, yLevel, 15, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 15, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 15, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 15, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 15, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 15, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 15, box);
+            this.setBlockState(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 8, yLevel, 15, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 15, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 15, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 15, box);
 
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 14, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 14, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 13, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 12, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 14, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 14, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 13, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 12, box);
 
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 11, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 10, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 9, box);
-            this.func_175811_a(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 15, yLevel, 8, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 7, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 6, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 5, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 11, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 10, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 9, box);
+            this.setBlockState(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 15, yLevel, 8, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 7, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 6, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 5, box);
 
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 4, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 3, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 2, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 2, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 4, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 3, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 2, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 2, box);
 
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 1, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 1, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 1, box);
-            this.func_175811_a(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 8, yLevel, 1, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 1, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 1, box);
-            this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 1, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 1, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 1, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 1, box);
+            this.setBlockState(world, yLevel <= 1 ? MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite) : Blocks.air.getDefaultState(), 8, yLevel, 1, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 1, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 1, box);
+            this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 1, box);
         }
 
         yLevel = 4;
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 4, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 6, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 10, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 11, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 14, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 15, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 12, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 10, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 6, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 5, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 2, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 1, box);
 
-        this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 8, yLevel, 2, box);
-        this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 14, yLevel, 8, box);
-        this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 8, yLevel, 14, box);
-        this.func_175811_a(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, yLevel, 8, box);
+        this.setBlockState(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.getOpposite()), 8, yLevel, 2, box);
+        this.setBlockState(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateY()), 14, yLevel, 8, box);
+        this.setBlockState(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode.rotateYCCW()), 8, yLevel, 14, box);
+        this.setBlockState(world, GCBlocks.glowstoneTorch.getDefaultState().withProperty(BlockTorch.FACING, this.coordBaseMode), 2, yLevel, 8, box);
 
         yLevel = 5;
 
         // corner 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 5, box);
 
         // side 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 6, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 1, yLevel, 10, box);
 
         // corner 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 14, box);
 
         // side 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 15, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 15, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 15, box);
 
         // corner 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 11, box);
 
         // side 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 10, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 15, yLevel, 6, box);
 
         // corner 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 2, box);
 
         // side 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 1, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 1, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 1, box);
 
         yLevel = 6;
 
         // corner 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 4, box);
 
         // side 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 6, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 10, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 11, box);
 
         // corner 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 13, box);
 
         // side 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 14, box);
 
         // corner 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 12, box);
 
         // side 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 10, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 6, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 5, box);
 
         // corner 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 3, box);
 
         // side 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 2, box);
 
         yLevel = 7;
 
         // corner 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 6, box);
 
         // side 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 2, yLevel, 9, box);
 
         // corner 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 10, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 13, box);
 
         // side 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 14, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 14, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 14, box);
 
         // corner 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 10, box);
 
         // side 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 14, yLevel, 7, box);
 
         // corner 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 6, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 3, box);
 
         // side 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 2, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 2, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 2, box);
 
         yLevel = 8;
 
         // corner 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 6, box);
 
         // side 1
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 3, yLevel, 9, box);
 
         // corner 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 10, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 6, yLevel, 12, box);
 
         // side 2
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 13, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 13, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 13, box);
 
         // corner 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 10, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 10, box);
 
         // side 3
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 9, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 13, yLevel, 7, box);
 
         // corner 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 6, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 6, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 10, yLevel, 4, box);
 
         // side 4
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 3, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 3, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 3, box);
 
         // extras
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 5, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 11, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 5, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 5, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 11, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 11, yLevel, 5, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 4, yLevel, 9, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 12, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 12, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 12, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 4, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 9, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 8, yLevel, 4, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 7, yLevel, 4, box);
 
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 7, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 8, box);
-        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 9, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 7, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 8, box);
+        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), 12, yLevel, 9, box);
 
         yLevel = 9;
 
@@ -449,11 +449,11 @@ public class ComponentMartianVillageHouse extends ComponentMartianVillage
                 {
                     if (i >= 7 && i <= 9 && j >= 7 && j <= 9)
                     {
-                        this.func_175811_a(world, Blocks.glass.getDefaultState(), i, yLevel, j, box);
+                        this.setBlockState(world, Blocks.glass.getDefaultState(), i, yLevel, j, box);
                     }
                     else
                     {
-                        this.func_175811_a(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, yLevel, j, box);
+                        this.setBlockState(world, MPBlocks.chondrite_rock.getDefaultState().withProperty(BlockChondriteRock.VARIANT, BlockChondriteRock.BlockType.polished_chondrite), i, yLevel, j, box);
                     }
                 }
             }

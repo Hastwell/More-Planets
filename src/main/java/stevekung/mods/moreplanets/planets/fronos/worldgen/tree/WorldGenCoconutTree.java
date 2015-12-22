@@ -129,7 +129,7 @@ public class WorldGenCoconutTree extends WorldGenAbstractTree
     {
         if (world.isAirBlock(new BlockPos(pos)) || world.getBlockState(new BlockPos(pos)).getBlock().isLeaves(world, new BlockPos(pos)))
         {
-            this.func_175905_a(world, new BlockPos(pos), block, meta);
+            this.setBlockAndNotifyAdequately(world, new BlockPos(pos), block.getStateFromMeta(meta));
         }
     }
 
@@ -137,7 +137,7 @@ public class WorldGenCoconutTree extends WorldGenAbstractTree
     {
         if (world.isAirBlock(new BlockPos(x, y, z)) || world.getBlockState(new BlockPos(x, y, z)).getBlock().isLeaves(world, new BlockPos(x, y, z)))
         {
-            this.func_175905_a(world, new BlockPos(x, y, z), block, meta);
+            this.setBlockAndNotifyAdequately(world, new BlockPos(x, y, z), block.getStateFromMeta(meta));
         }
     }
 }

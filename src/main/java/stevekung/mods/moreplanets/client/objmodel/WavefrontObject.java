@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.IResource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -175,11 +176,11 @@ public class WavefrontObject implements IModelCustom
 
         if (this.currentGroupObject != null)
         {
-            worldrenderer.startDrawing(this.currentGroupObject.glDrawingMode);
+            worldrenderer.func_181668_a(this.currentGroupObject.glDrawingMode, DefaultVertexFormats.field_181710_j);
         }
         else
         {
-            worldrenderer.startDrawing(GL11.GL_TRIANGLES);
+            worldrenderer.func_181668_a(GL11.GL_TRIANGLES, DefaultVertexFormats.field_181710_j);
         }
         this.tessellateAll(tessellator);
         tessellator.draw();

@@ -12,15 +12,13 @@ import net.minecraft.client.model.ModelVillager;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityFronosVillager;
 
 @SideOnly(Side.CLIENT)
-public class RenderFronosVillager extends RenderLiving
+public class RenderFronosVillager extends RenderLiving<EntityFronosVillager>
 {
     private ResourceLocation villagerTextures = new ResourceLocation("moreplanets:textures/entity/fronos_villager.png");
 
@@ -29,12 +27,8 @@ public class RenderFronosVillager extends RenderLiving
         super(render, new ModelVillager(0.0F), 0.5F);
     }
 
-    public ModelVillager model()
-    {
-        return (ModelVillager)super.getMainModel();
-    }
-
-    protected void preRenderCallback(EntityFronosVillager entity)
+    @Override
+    protected void preRenderCallback(EntityFronosVillager entity, float partialTickTime)
     {
         float f1 = 0.9375F;
 
@@ -51,19 +45,13 @@ public class RenderFronosVillager extends RenderLiving
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
-    {
-        this.preRenderCallback((EntityFronosVillager)entity);
-    }
-
-    @Override
     public ModelBase getMainModel()
     {
-        return this.model();
+        return (ModelVillager)super.getMainModel();
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityFronosVillager entity)
     {
         return this.villagerTextures;
     }

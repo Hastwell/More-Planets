@@ -135,7 +135,7 @@ public abstract class ChunkProviderHillsBaseMP extends ChunkProviderGenerate
     }
 
     @Override
-    public void func_180517_a(int x, int z, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
+    public void replaceBlocksForBiome(int x, int z, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
     {
         int var5 = 20;
         float var6 = 0.03125F;
@@ -306,7 +306,7 @@ public abstract class ChunkProviderHillsBaseMP extends ChunkProviderGenerate
     }
 
     @Override
-    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
     {
         if (type == EnumCreatureType.MONSTER)
         {

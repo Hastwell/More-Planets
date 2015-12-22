@@ -47,7 +47,7 @@ public class ComponentVenusVillageField extends ComponentVenusVillage
     @SuppressWarnings("rawtypes")
     public static ComponentVenusVillageField func_74900_a(ComponentVenusVillageStartPiece component, List list, int x, int y, int z, EnumFacing facing, int type)
     {
-        StructureBoundingBox var8 = StructureBoundingBox.func_175897_a(x, y, z, 0, 0, 0, 13, 4, 9, facing);
+        StructureBoundingBox var8 = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 13, 4, 9, facing);
         return StructureComponent.findIntersecting(list, var8) == null ? new ComponentVenusVillageField(component, type, var8, facing) : null;
     }
 
@@ -65,18 +65,18 @@ public class ComponentVenusVillageField extends ComponentVenusVillage
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4 - 1, 0);
         }
 
-        this.func_175804_a(world, box, 0, 1, 0, 12, 4, 8, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 0, 1, 2, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
-        this.func_175804_a(world, box, 4, 0, 1, 5, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
-        this.func_175804_a(world, box, 7, 0, 1, 8, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
-        this.func_175804_a(world, box, 10, 0, 1, 11, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
-        this.func_175804_a(world, box, 0, 0, 0, 0, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
-        this.func_175804_a(world, box, 6, 0, 0, 6, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
-        this.func_175804_a(world, box, 12, 0, 0, 12, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 0, 0, 11, 0, 0, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
-        this.func_175804_a(world, box, 1, 0, 8, 11, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
-        this.func_175804_a(world, box, 3, 0, 1, 3, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
-        this.func_175804_a(world, box, 9, 0, 1, 9, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 0, 1, 0, 12, 4, 8, Blocks.air.getDefaultState(), Blocks.air.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 0, 1, 2, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 4, 0, 1, 5, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 7, 0, 1, 8, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 10, 0, 1, 11, 0, 7, Blocks.dirt.getDefaultState(), Blocks.dirt.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 0, 0, 0, 0, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 6, 0, 0, 6, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 12, 0, 0, 12, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 0, 0, 11, 0, 0, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 1, 0, 8, 11, 0, 8, Blocks.log.getDefaultState(), Blocks.log.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 3, 0, 1, 3, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
+        this.fillWithBlocks(world, box, 9, 0, 1, 9, 0, 7, Blocks.flowing_water.getDefaultState(), Blocks.flowing_water.getDefaultState(), false);
         int var4;
 
         for (var4 = 1; var4 <= 7; ++var4)
@@ -90,7 +90,7 @@ public class ComponentVenusVillageField extends ComponentVenusVillage
                 {
                     if (rand.nextInt(3) == 0)
                     {
-                        this.func_175808_b(world, Blocks.sapling.getStateFromMeta(rand.nextInt(4)), i, 1, var4, box);
+                        this.setBlockState(world, Blocks.sapling.getStateFromMeta(rand.nextInt(4)), i, 1, var4, box);
                     }
                 }
             }
@@ -101,7 +101,7 @@ public class ComponentVenusVillageField extends ComponentVenusVillage
             for (int var5 = 0; var5 < 13; ++var5)
             {
                 this.clearCurrentPositionBlocksUpwards(world, var5, 4, var4, box);
-                this.func_175811_a(world, Blocks.dirt.getDefaultState(), var5, -1, var4, box);
+                this.replaceAirAndLiquidDownwards(world, Blocks.dirt.getDefaultState(), var5, -1, var4, box);
             }
         }
         return true;

@@ -157,10 +157,10 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
         this.rand.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
         this.generateTerrain(chunkX, chunkZ, primer);
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
-        this.func_180517_a(chunkX, chunkZ, primer, this.biomesForGeneration);
-        this.caveGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
+        this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
         this.cavernGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
-        this.ravineGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, primer);
+        this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
         this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 30, chunkZ * 16, chunkX, chunkZ, primer);
 
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
@@ -351,7 +351,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
     }
 
     @Override
-    public void func_180517_a(int chunkX, int chunkZ, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
+    public void replaceBlocksForBiome(int chunkX, int chunkZ, ChunkPrimer chunk, BiomeGenBase[] biomeGen)
     {
         double d0 = 0.03125D;
         this.stoneNoise = this.field_147430_m.func_151599_a(this.stoneNoise, chunkX * 16, chunkZ * 16, 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
@@ -384,9 +384,8 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
         long i1 = this.rand.nextLong() / 2L * 2L + 1L;
         long j1 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * i1 + chunkZ * j1 ^ this.worldObj.getSeed());
-        biomegenbase.decorate(this.worldObj, this.rand, new BlockPos(x, 0, z));
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseFronos.coconutForest, pos);
-        this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
+        this.villageGenerator.generateStructure(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, x + 8, z + 8, 16, 16, this.rand);
 
         for (int i = 0; i < 8; ++i)
@@ -416,7 +415,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
     }
 
     @Override
-    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
     {
         if (type == EnumCreatureType.MONSTER)
         {
@@ -491,7 +490,7 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
     @Override
     public void recreateStructures(Chunk chunk, int chunkX, int chunkZ)
     {
-        this.villageGenerator.func_175792_a(this, this.worldObj, chunkX, chunkZ, (ChunkPrimer) null);
+        this.villageGenerator.generate(this, this.worldObj, chunkX, chunkZ, (ChunkPrimer) null);
     }
 
     @Override

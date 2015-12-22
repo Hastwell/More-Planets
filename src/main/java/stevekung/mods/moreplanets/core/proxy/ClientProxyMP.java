@@ -14,7 +14,9 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -173,6 +175,7 @@ public class ClientProxyMP extends CommonProxyMP
 		GlStateManager.disableBlend();*/
 
         Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         GL11.glColor4f(f1, f1, f1, 1.0F);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -185,11 +188,11 @@ public class ClientProxyMP extends CommonProxyMP
         float f7 = -0.5F;
         float f8 = -mc.thePlayer.rotationYaw / 64.0F;
         float f9 = mc.thePlayer.rotationPitch / 64.0F;
-        tessellator.getWorldRenderer().startDrawingQuads();
-        tessellator.getWorldRenderer().addVertexWithUV(f3, f5, f7, f2 + f8, f2 + f9);
-        tessellator.getWorldRenderer().addVertexWithUV(f4, f5, f7, 0.0F + f8, f2 + f9);
-        tessellator.getWorldRenderer().addVertexWithUV(f4, f6, f7, 0.0F + f8, 0.0F + f9);
-        tessellator.getWorldRenderer().addVertexWithUV(f3, f6, f7, f2 + f8, 0.0F + f9);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+        worldrenderer.func_181662_b(f3, f5, f7).func_181673_a(f2 + f8, f2 + f9);
+        worldrenderer.func_181662_b(f4, f5, f7).func_181673_a(0.0F + f8, f2 + f9);
+        worldrenderer.func_181662_b(f4, f6, f7).func_181673_a(0.0F + f8, 0.0F + f9);
+        worldrenderer.func_181662_b(f3, f6, f7).func_181673_a(f2 + f8, 0.0F + f9);
         tessellator.draw();
         GL11.glPopMatrix();
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

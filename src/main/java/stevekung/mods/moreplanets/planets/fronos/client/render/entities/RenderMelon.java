@@ -9,14 +9,14 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelMelon;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
 
 @SideOnly(Side.CLIENT)
-public class RenderMelon extends RenderLiving
+public class RenderMelon extends RenderLiving<EntityMelon>
 {
     private ResourceLocation melonTextures = new ResourceLocation("moreplanets:textures/entity/melon.png");
 
@@ -26,7 +26,7 @@ public class RenderMelon extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityMelon entity)
     {
         return this.melonTextures;
     }

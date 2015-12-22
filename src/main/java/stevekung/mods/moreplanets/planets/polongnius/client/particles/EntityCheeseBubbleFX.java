@@ -11,6 +11,7 @@ import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -39,7 +40,7 @@ public class EntityCheeseBubbleFX extends EntityFX
     }
 
     @Override
-    public void func_180434_a(WorldRenderer worldRender, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
+    public void renderParticle(WorldRenderer worldrenderer, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
     {
         Tessellator tessellator = Tessellator.getInstance();
         float f = (this.particleAge + par2) / this.particleMaxAge * 32.0F;
@@ -80,19 +81,17 @@ public class EntityCheeseBubbleFX extends EntityFX
         float f11 = (float)(this.prevPosX + (this.posX - this.prevPosX) * par2 - EntityFX.interpPosX);
         float f12 = (float)(this.prevPosY + (this.posY - this.prevPosY) * par2 - EntityFX.interpPosY);
         float f13 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * par2 - EntityFX.interpPosZ);
-        worldRender.startDrawingQuads();
-        worldRender.setBrightness(10);
-        worldRender.setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, 1.0F);
-        worldRender.addVertexWithUV(f11 - par3 * f10 - par6 * f10, f12 - par4 * f10, f13 - par5 * f10 - par7 * f10, f7, f9);
-        worldRender.addVertexWithUV(f11 - par3 * f10 + par6 * f10, f12 + par4 * f10, f13 - par5 * f10 + par7 * f10, f7, f8);
-        worldRender.addVertexWithUV(f11 + par3 * f10 + par6 * f10, f12 + par4 * f10, f13 + par5 * f10 + par7 * f10, f6, f8);
-        worldRender.addVertexWithUV(f11 + par3 * f10 - par6 * f10, f12 - par4 * f10, f13 + par5 * f10 - par7 * f10, f6, f9);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b(f11 - par3 * f10 - par6 * f10, f12 - par4 * f10, f13 - par5 * f10 - par7 * f10).func_181673_a(f7, f9).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
+        worldrenderer.func_181662_b(f11 - par3 * f10 + par6 * f10, f12 + par4 * f10, f13 - par5 * f10 + par7 * f10).func_181673_a(f7, f8).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
+        worldrenderer.func_181662_b(f11 + par3 * f10 + par6 * f10, f12 + par4 * f10, f13 + par5 * f10 + par7 * f10).func_181673_a(f6, f8).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
+        worldrenderer.func_181662_b(f11 + par3 * f10 - par6 * f10, f12 - par4 * f10, f13 + par5 * f10 - par7 * f10).func_181673_a(f6, f9).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
         tessellator.draw();
         GlStateManager.disableBlend();
         GlStateManager.depthMask(true);
         GlStateManager.popMatrix();
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation("textures/particle/particles.png"));
-        worldRender.startDrawingQuads();
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
     }
 
     @Override

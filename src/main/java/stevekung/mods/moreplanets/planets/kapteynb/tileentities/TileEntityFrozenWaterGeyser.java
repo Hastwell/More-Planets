@@ -13,12 +13,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
 
-public class TileEntityFrozenWaterGeyser extends TileEntity implements IUpdatePlayerListBox
+public class TileEntityFrozenWaterGeyser extends TileEntity implements ITickable
 {
     @Override
     public void update()

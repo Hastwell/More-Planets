@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.projectile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -39,7 +40,7 @@ public class RenderCreamBall extends Render
         GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         this.bindTexture(TextureMap.locationBlocksTexture);
-        Minecraft.getMinecraft().getRenderItem().renderItemModel(new ItemStack(FronosItems.cream_ball, 1, cream.getCreamBallType()));
+        Minecraft.getMinecraft().getRenderItem().func_181564_a(new ItemStack(FronosItems.cream_ball, 1, cream.getCreamBallType()), TransformType.GROUND);
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, par5, partialTicks);

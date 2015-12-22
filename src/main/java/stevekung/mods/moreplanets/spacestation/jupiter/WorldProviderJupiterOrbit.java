@@ -251,10 +251,10 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
     {
         IRenderHandler sky = this.getSkyRenderer();
 
-        if (sky instanceof SkyProviderJupiterOrbit)
-        {
-            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
-        }
+//        if (sky instanceof SkyProviderJupiterOrbit)
+//        {
+//            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
+//        }
     }
 
     @Override
@@ -265,10 +265,10 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
         this.skyAngularVelocity = angle * 180F / 3.1415927F;
         IRenderHandler sky = this.getSkyRenderer();
 
-        if (sky instanceof SkyProviderJupiterOrbit)
-        {
-            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
-        }
+//        if (sky instanceof SkyProviderJupiterOrbit)
+//        {
+//            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
+//        }
         this.thrustersFiring = firing;
     }
 

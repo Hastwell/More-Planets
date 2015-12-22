@@ -14,6 +14,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenDeadBush;
 import net.minecraft.world.gen.feature.WorldGenReed;
 import net.minecraft.world.gen.feature.WorldGenWaterlily;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenLiquidLakes;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
@@ -346,8 +347,8 @@ public class BiomeDecoratorFronos extends BiomeDecoratorMP
         {
             x = this.randomGenerator.nextInt(16) + 8;
             z = this.randomGenerator.nextInt(16) + 8;
-            pos = this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z));
-            WorldGenTreeMP tree = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, true, FronosBlocks.fronos_sapling, FronosBlocks.red_maple_ivy);
+            pos = this.currentWorld.getHeight(this.field_180294_c.add(x, 0, z));
+            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, FronosBlocks.fronos_sapling, FronosBlocks.red_maple_ivy, this.currentWorld.getBlockState(field_180294_c.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
             tree.func_175904_e();
             tree.generate(this.currentWorld, this.randomGenerator, pos);
         }
@@ -358,8 +359,8 @@ public class BiomeDecoratorFronos extends BiomeDecoratorMP
         {
             x = this.randomGenerator.nextInt(16) + 8;
             z = this.randomGenerator.nextInt(16) + 8;
-            pos = this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z));
-            WorldGenTreeMP tree = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, true, FronosBlocks.fronos_sapling, FronosBlocks.yellow_maple_ivy);
+            pos = this.currentWorld.getHeight(this.field_180294_c.add(x, 0, z));
+            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, FronosBlocks.fronos_sapling, FronosBlocks.yellow_maple_ivy, this.currentWorld.getBlockState(field_180294_c.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
             tree.func_175904_e();
             tree.generate(this.currentWorld, this.randomGenerator, pos);
         }
@@ -370,8 +371,8 @@ public class BiomeDecoratorFronos extends BiomeDecoratorMP
         {
             x = this.randomGenerator.nextInt(16) + 8;
             z = this.randomGenerator.nextInt(16) + 8;
-            pos = this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z));
-            WorldGenTreeMP tree = new WorldGenTreeMP(4, FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, true, FronosBlocks.fronos_sapling, FronosBlocks.purple_maple_ivy);
+            pos = this.currentWorld.getHeight(this.field_180294_c.add(x, 0, z));
+            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, FronosBlocks.fronos_sapling, FronosBlocks.purple_maple_ivy, this.currentWorld.getBlockState(field_180294_c.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
             tree.func_175904_e();
             tree.generate(this.currentWorld, this.randomGenerator, pos);
         }
@@ -706,7 +707,7 @@ public class BiomeDecoratorFronos extends BiomeDecoratorMP
         {
             x = this.randomGenerator.nextInt(16) + 8;
             z = this.randomGenerator.nextInt(16) + 8;
-            int i1 = this.nextInt(this.currentWorld.getHorizon(this.field_180294_c.add(x, 0, z)).getY() * 2);
+            int i1 = this.nextInt(this.currentWorld.getHeight(this.field_180294_c.add(x, 0, z)).getY() * 2);
             pos = this.field_180294_c.add(x, i1, z);
 
             while (true)

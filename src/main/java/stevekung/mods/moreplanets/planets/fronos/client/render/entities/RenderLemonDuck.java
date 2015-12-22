@@ -9,14 +9,14 @@ package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.model.ModelLemonDuck;
+import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
 
 @SideOnly(Side.CLIENT)
-public class RenderLemonDuck extends RenderLiving
+public class RenderLemonDuck extends RenderLiving<EntityLemonDuck>
 {
     private ResourceLocation lemonDuckTextures = new ResourceLocation("moreplanets:textures/entity/lemon_duck.png");
 
@@ -26,7 +26,7 @@ public class RenderLemonDuck extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityLemonDuck entity)
     {
         return this.lemonDuckTextures;
     }

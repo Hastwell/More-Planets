@@ -22,7 +22,9 @@ import stevekung.mods.moreplanets.common.blocks.BlockSnowLayerMP;
 import stevekung.mods.moreplanets.common.blocks.BlockStairsMP;
 import stevekung.mods.moreplanets.common.blocks.BlockVineMP;
 import stevekung.mods.moreplanets.common.blocks.fluid.FluidMP;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockColoredMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariantLeaves;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockSnowLayerMP;
 import stevekung.mods.moreplanets.common.util.VariantsName;
 import stevekung.mods.moreplanets.planets.fronos.blocks.fluids.BlockFluidCaramel;
@@ -34,10 +36,8 @@ import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockCandyCane1;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockCandyCane2;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockDandelion;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosColorizedLeaves;
-import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosLeaves;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosLog;
 import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockFronosSandstoneSlab;
-import stevekung.mods.moreplanets.planets.fronos.itemblocks.ItemBlockSpaceShell;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
@@ -311,7 +311,7 @@ public class FronosBlocks
         CommonRegisterHelper.registerBlock(FronosBlocks.fronos_log, ItemBlockFronosLog.class);
         CommonRegisterHelper.registerBlock(FronosBlocks.fronos_planks, ItemBlockMultiVariant.class, new VariantsName("coconut", "maple"));
         CommonRegisterHelper.registerBlock(FronosBlocks.fronos_colorized_leaves, ItemBlockFronosColorizedLeaves.class);
-        CommonRegisterHelper.registerBlock(FronosBlocks.fronos_leaves, ItemBlockFronosLeaves.class);
+        CommonRegisterHelper.registerBlock(FronosBlocks.fronos_leaves, ItemBlockMultiVariantLeaves.class, new VariantsName("red_maple_leaves", "yellow_maple_leaves", "purple_maple_leaves"));
         CommonRegisterHelper.registerBlock(FronosBlocks.fronos_cobblestone_stairs);
         CommonRegisterHelper.registerBlock(FronosBlocks.fronos_stone_brick_stairs);
         CommonRegisterHelper.registerBlock(FronosBlocks.cracked_fronos_stone_brick_stairs);
@@ -340,7 +340,7 @@ public class FronosBlocks
         CommonRegisterHelper.registerBlock(FronosBlocks.pink_cake);
         CommonRegisterHelper.registerBlock(FronosBlocks.white_cake);
         CommonRegisterHelper.registerBlock(FronosBlocks.chocolate_cake);
-        CommonRegisterHelper.registerBlock(FronosBlocks.space_shell, ItemBlockSpaceShell.class);
+        CommonRegisterHelper.registerBlock(FronosBlocks.space_shell, ItemBlockColoredMP.class);
         CommonRegisterHelper.registerBlock(FronosBlocks.space_oyster);
         CommonRegisterHelper.registerBlock(FronosBlocks.cavern_oyster);
         CommonRegisterHelper.registerBlock(FronosBlocks.jelly_slime_egg, ItemBlockMultiVariant.class, new VariantsName(true, "grape", "raspberry", "strawberry", "berry", "lime", "orange", "green", "lemon"));

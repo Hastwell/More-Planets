@@ -24,7 +24,7 @@ public abstract class EntityFlyingBossMP extends EntityMob
     public void fall(float distance, float damageMultiplier) {}
 
     @Override
-    protected void func_180433_a(double par1, boolean par2, Block block, BlockPos pos) {}
+    protected void updateFallState(double par1, boolean par2, Block block, BlockPos pos) {}
 
     @Override
     public void moveEntityWithHeading(float par1, float par2)

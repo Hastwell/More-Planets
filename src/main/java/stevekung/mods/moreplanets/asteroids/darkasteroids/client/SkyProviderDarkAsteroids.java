@@ -13,6 +13,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.client.SkyProviderBaseMP;
 
@@ -40,22 +41,22 @@ public class SkyProviderDarkAsteroids extends SkyProviderBaseMP
         GlStateManager.disableTexture2D();
         GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
         float size = this.sunSize / 5.8F;
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertex(-size, 90.0D, -size);
-        worldrenderer.addVertex(size, 90.0D, -size);
-        worldrenderer.addVertex(size, 90.0D, size);
-        worldrenderer.addVertex(-size, 90.0D, size);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181662_b(-size, 90.0D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 90.0D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 90.0D, size).func_181675_d();
+        worldrenderer.func_181662_b(-size, 90.0D, size).func_181675_d();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.blendFunc(770, 1);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         size = this.sunSize / 1.8F;
         mc.renderEngine.bindTexture(this.sunTexture);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertexWithUV(-size, 90.0D, -size, 0.0D, 0.0D);
-        worldrenderer.addVertexWithUV(size, 90.0D, -size, 1.0D, 0.0D);
-        worldrenderer.addVertexWithUV(size, 90.0D, size, 1.0D, 1.0D);
-        worldrenderer.addVertexWithUV(-size, 90.0D, size, 0.0D, 1.0D);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181662_b(-size, 90.0D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 90.0D, -size).func_181675_d();
+        worldrenderer.func_181662_b(size, 90.0D, size).func_181675_d();
+        worldrenderer.func_181662_b(-size, 90.0D, size).func_181675_d();
         tessellator.draw();
 
         // Render planet??

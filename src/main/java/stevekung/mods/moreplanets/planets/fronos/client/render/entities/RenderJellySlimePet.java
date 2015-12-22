@@ -20,7 +20,7 @@ import stevekung.mods.moreplanets.planets.fronos.client.render.entities.layers.L
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlimePet;
 
 @SideOnly(Side.CLIENT)
-public class RenderJellySlimePet extends RenderLiving
+public class RenderJellySlimePet extends RenderLiving<EntityJellySlimePet>
 {
     private ResourceLocation strawberrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/strawberry.png");
     private ResourceLocation berrySlimeTextures = new ResourceLocation("moreplanets:textures/entity/jelly_slime/berry.png");
@@ -37,22 +37,17 @@ public class RenderJellySlimePet extends RenderLiving
         this.addLayer(new LayerJellySlimePetGel(this));
     }
 
-    protected void preRenderCallback(EntityJellySlimePet entity, float par2)
+    @Override
+    protected void preRenderCallback(EntityJellySlimePet entity, float partialTickTime)
     {
         float f1 = 1;
-        float f2 = (entity.prevSquishFactor + (entity.squishFactor - entity.prevSquishFactor) * par2) / (f1 * 0.5F + 1.0F);
+        float f2 = (entity.prevSquishFactor + (entity.squishFactor - entity.prevSquishFactor) * partialTickTime) / (f1 * 0.5F + 1.0F);
         float f3 = 1.0F / (f2 + 1.0F);
         GlStateManager.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
-    {
-        this.preRenderCallback((EntityJellySlimePet)entity, par2);
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityJellySlimePet entity)
     {
         switch (((EntityJellySlimePet)entity).getJellySlimeType())
         {

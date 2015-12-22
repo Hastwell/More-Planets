@@ -30,27 +30,27 @@ public class CommandHomePlanet extends CommandBase
     }
 
     @Override
-    public boolean canCommandSenderUse(ICommandSender sender)
+    public boolean canCommandSenderUseCommand(ICommandSender sender)
     {
-        return MinecraftServer.getServer().isSinglePlayer() || super.canCommandSenderUse(sender);
+        return MinecraftServer.getServer().isSinglePlayer() || super.canCommandSenderUseCommand(sender);
     }
 
     @Override
     public String getCommandUsage(ICommandSender sender)
     {
-        return "/" + this.getName();
+        return "/" + this.getCommandName();
     }
 
     @Override
-    public String getName()
+    public String getCommandName()
     {
         return "homeplanettp";
     }
 
     @Override
-    public void execute(ICommandSender sender, String[] length) throws CommandException
+    public void processCommand(ICommandSender sender, String[] length) throws CommandException
     {
-        EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayerUsername(sender.getName(), true);
+        EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayerUsername(sender.getCommandSenderName(), true);
         MPPlayerStats stats = MPPlayerStats.get(playerBase);
 
         if (length.length < 1)
