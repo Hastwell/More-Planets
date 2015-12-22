@@ -16,6 +16,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMartianMoon;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
@@ -62,7 +63,7 @@ public class ChunkProviderDeimos extends ChunkProviderBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMartianMoon.baseMoonBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.baseMoonBiome, pos);
         BlockFalling.fallInstantly = false;
     }
 

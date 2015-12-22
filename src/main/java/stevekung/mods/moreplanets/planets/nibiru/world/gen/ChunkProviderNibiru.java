@@ -20,6 +20,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderHillsBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
@@ -40,9 +41,11 @@ public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
     private MapGenCavernNibiru cavernGenerator = new MapGenCavernNibiru();
     private MapGenNibiruRavine ravineGenerator = new MapGenNibiruRavine();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseNibiru.basePlanetBiome };
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(NibiruBlocks.nibiru_block, 12, 8, 24, 4);
+
+    public ChunkProviderNibiru(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerNibiru(null, 0, 0, 0, null));
@@ -56,11 +59,6 @@ public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsNibiru(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossNibiru(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureNibiru(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderNibiru(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override
@@ -94,36 +92,36 @@ public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseNibiru.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
 
         for (int i = 0; i < 2; i++)
         {
             if (this.rand.nextInt(5) == 0)
             {
-                new WorldGenSplashBlock(NibiruBlocks.oil_rock.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState(), true).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+                new WorldGenSplashBlock(NibiruBlocks.oil_rock, 0, NibiruBlocks.nibiru_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256 - 16) + 16, this.rand.nextInt(16) + 8));
             }
         }
         for (int i = 0; i < 4; i++)
         {
             if (this.rand.nextInt(5) == 0)
             {
-                new WorldGenSplashBlock(NibiruBlocks.infected_grass.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState(), true).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+                new WorldGenSplashBlock(NibiruBlocks.infected_grass, 0, NibiruBlocks.nibiru_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256 - 16) + 16, this.rand.nextInt(16) + 8));
             }
         }
         for (int i = 0; i < 4; i++)
         {
             if (this.rand.nextInt(5) == 0)
             {
-                new WorldGenSplashBlock(NibiruBlocks.infected_dirt.getDefaultState(), NibiruBlocks.nibiru_block.getDefaultState(), true).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+                new WorldGenSplashBlock(NibiruBlocks.infected_dirt, 0, NibiruBlocks.nibiru_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256 - 16) + 16, this.rand.nextInt(16) + 8));
             }
         }
         for (int i = 0; i < 256; ++i)
         {
-            new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+            new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, NibiruBlocks.nibiru_sapling, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
         }
         for (int i = 0; i < 256; ++i)
         {
-            new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, NibiruBlocks.nibiru_sapling, null).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+            new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, NibiruBlocks.nibiru_sapling, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
         }
         BlockFalling.fallInstantly = false;
     }

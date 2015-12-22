@@ -173,7 +173,12 @@ public class MPEntities
     {
         id = id + 1000;
         EntityRegistry.registerModEntity(entity, name, id, MorePlanetsCore.INSTANCE, 64, 3, true);
-        if (type != null) { EntitySpawnPlacementRegistry.setPlacementType(entity, type); }
+
+        if (type != null)
+        {
+            EntitySpawnPlacementRegistry.setPlacementType(entity, type);
+            MPLog.debug("Register spawn placement type of %s, %s", name, type.toString());
+        }
         entityEggs.put(Integer.valueOf(id), new EntityEggInfo(id, backgroundEggColour, foregroundEggColour));
     }
 

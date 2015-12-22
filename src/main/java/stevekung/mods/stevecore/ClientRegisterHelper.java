@@ -21,12 +21,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientRegisterHelper
 {
-    public static void registerVariantsName(Item item, String[] variant)
+    public static void registerVariantsName(Item item, String... variant)
     {
         ModelBakery.addVariantName(item, variant);
     }
 
-    public static void registerVariantsName(Block block, String[] variant)
+    public static void registerVariantsName(Block block, String... variant)
     {
         ClientRegisterHelper.registerVariantsName(Item.getItemFromBlock(block), variant);
     }

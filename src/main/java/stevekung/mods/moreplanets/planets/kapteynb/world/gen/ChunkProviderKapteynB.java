@@ -16,6 +16,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
@@ -28,13 +29,15 @@ import stevekung.mods.moreplanets.planets.kapteynb.world.gen.dungeon.RoomTreasur
 
 public class ChunkProviderKapteynB extends ChunkProviderBaseMP
 {
-    public BiomeDecoratorKapteynB biomeDecorator = new BiomeDecoratorKapteynB();
+    private BiomeDecoratorKapteynB biomeDecorator = new BiomeDecoratorKapteynB();
     private MapGenKapteynBRavine ravineGenerator = new MapGenKapteynBRavine();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseKapteynB.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(KapteynBBlocks.kapteyn_b_block, this.getBlockMetadata());
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(KapteynBBlocks.kapteyn_b_block, 12, 8, 24, 4);
+
+    public ChunkProviderKapteynB(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -48,11 +51,6 @@ public class ChunkProviderKapteynB extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsKapteynB(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossKapteynB(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureKapteynB(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderKapteynB(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override
@@ -85,7 +83,7 @@ public class ChunkProviderKapteynB extends ChunkProviderBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseKapteynB.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
 
         for (int i = 0; i < 4; i++)
         {

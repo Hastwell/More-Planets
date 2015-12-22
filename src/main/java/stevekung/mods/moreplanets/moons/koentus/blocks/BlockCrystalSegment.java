@@ -82,6 +82,9 @@ public class BlockCrystalSegment extends BlockBreakableMP
         case 2:
             this.setBlockBounds(min, min, 0F, max, max, 1.0F);
             break;
+        default:
+            this.setBlockBounds(min, 0F, min, max, 1.0F, max);
+            break;
         }
     }
 

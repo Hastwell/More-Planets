@@ -16,6 +16,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
@@ -31,9 +32,11 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
     private BiomeDecoratorKoentus biomeDecorator = new BiomeDecoratorKoentus();
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(KoentusBlocks.koentus_block, this.getBlockMetadata());
     private MapGenKoentusVillage villageGenerator = new MapGenKoentusVillage();
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(KoentusBlocks.koentus_block, 11, 8, 24, 4);
+
+    public ChunkProviderKoentus(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -47,11 +50,6 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsKoentus(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossKoentus(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderKoentus(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override
@@ -83,7 +81,7 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseKoentus.baseMoonBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.baseMoonBiome, pos);
         BlockFalling.fallInstantly = false;
     }
 

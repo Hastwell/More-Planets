@@ -13,7 +13,6 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
@@ -42,11 +41,11 @@ public class BiomeGenBaseNibiru extends BiomeGenBaseMP
     {
         if (rand.nextInt(1) == 0)
         {
-            return new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, false, NibiruBlocks.nibiru_sapling, null);
+            return new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 0, 0, NibiruBlocks.nibiru_sapling, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null);
         }
         else if (rand.nextInt(2) == 0)
         {
-            return new WorldGenTreeMP(5, NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, false, NibiruBlocks.nibiru_sapling, null);
+            return new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, NibiruBlocks.nibiru_sapling, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null);
         }
         return null;
     }

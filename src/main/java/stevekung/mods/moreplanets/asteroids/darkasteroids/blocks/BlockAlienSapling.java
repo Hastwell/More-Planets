@@ -56,7 +56,7 @@ public class BlockAlienSapling extends BlockSaplingMP
 
         if (obj == null)
         {
-            obj = new WorldGenTreeMP(6, DarkAsteroidBlocks.alien_log, DarkAsteroidBlocks.alien_leaves, 0, 0, false, this, null);
+            obj = new WorldGenTreeMP(DarkAsteroidBlocks.alien_log, DarkAsteroidBlocks.alien_leaves, 0, 0, this, null, DarkAsteroidBlocks.alien_grass, DarkAsteroidBlocks.alien_dirt, null);
         }
         if (obj != null)
         {

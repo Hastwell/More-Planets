@@ -31,9 +31,11 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
     private BiomeDecoratorPluto biomeDecorator = new BiomeDecoratorPluto();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(PlutoBlocks.pluto_block, this.getBlockMetadata());
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(PlutoBlocks.pluto_block, 8, 8, 16, 4);
+
+    public ChunkProviderPluto(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -47,11 +49,6 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsPluto(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossPluto(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasurePluto(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderPluto(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override

@@ -43,7 +43,9 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
     private MapGenVenusVillage villageGenerator = new MapGenVenusVillage();
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(VenusBlocks.venus_block, 14, 8, 24, 4);
 
+    public ChunkProviderVenus(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -57,11 +59,6 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsVenus(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossVenus(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderVenus(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override
@@ -101,7 +98,7 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
         {
             if (this.rand.nextInt(5) == 0)
             {
-                new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser, 0, VenusBlocks.venus_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+                new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser, 0, VenusBlocks.venus_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256 - 16) + 16, this.rand.nextInt(16) + 8));
             }
         }
         BlockFalling.fallInstantly = false;

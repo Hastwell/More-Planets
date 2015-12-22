@@ -38,12 +38,14 @@ import stevekung.mods.moreplanets.planets.siriusb.world.gen.dungeon.RoomTreasure
 
 public class ChunkProviderSiriusB extends ChunkProviderBaseMP
 {
-    public BiomeDecoratorSiriusB biomeDecorator = new BiomeDecoratorSiriusB();
+    private BiomeDecoratorSiriusB biomeDecorator = new BiomeDecoratorSiriusB();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(SiriusBBlocks.sirius_b_block, this.getBlockMetadata());
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(SiriusBBlocks.sirius_b_block, 9, 8, 24, 4);
+
+    public ChunkProviderSiriusB(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerSiriusB(null, 0, 0, 0, null));
@@ -57,11 +59,6 @@ public class ChunkProviderSiriusB extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsSiriusB(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossSiriusB(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureSiriusB(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderSiriusB(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override
@@ -98,7 +95,7 @@ public class ChunkProviderSiriusB extends ChunkProviderBaseMP
         {
             if (this.rand.nextInt(5) == 0)
             {
-                new WorldGenSplashBlock(SiriusBBlocks.sirius_b_block, 7, SiriusBBlocks.sirius_b_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(128 - 32) + 32, this.rand.nextInt(16) + 8));
+                new WorldGenSplashBlock(SiriusBBlocks.sirius_b_block, 7, SiriusBBlocks.sirius_b_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(128 - 16) + 16, this.rand.nextInt(16) + 8));
             }
         }
         for (int i = 0; i < 8; ++i)

@@ -53,7 +53,7 @@ public class ItemCrystalCocoa extends ItemMorePlanets
                 if (world.isAirBlock(pos))
                 {
                     IBlockState iblockstate1 = KoentusBlocks.crystal_cocoa.onBlockPlaced(world, pos, side, hitX, hitY, hitZ, 0, player);
-                    world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, KoentusBlocks.crystal_cocoa.stepSound.getPlaceSound(), (KoentusBlocks.crystal_cocoa.stepSound.getVolume() + 1.0F) / 2.0F, KoentusBlocks.crystal_cocoa.stepSound.getFrequency() * 0.8F);
+                    world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, KoentusBlocks.crystal_cocoa.stepSound.getPlaceSound(), (KoentusBlocks.crystal_cocoa.stepSound.getVolume() + 1.0F) / 2.0F, KoentusBlocks.crystal_cocoa.stepSound.getFrequency() * 1.5F);
                     world.setBlockState(pos, iblockstate1, 2);
 
                     if (!player.capabilities.isCreativeMode)

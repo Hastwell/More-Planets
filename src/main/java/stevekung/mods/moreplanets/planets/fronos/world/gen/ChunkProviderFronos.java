@@ -105,7 +105,10 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
     int[][] field_73219_j = new int[32][32];
 
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(FronosBlocks.fronos_block, 14, 8, 24, 4);
+
+    public ChunkProviderFronos(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature, "");
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerFronos(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerFronos(null, 0, 0, 0, null));
@@ -119,11 +122,6 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
         this.dungeonGenerator.otherRooms.add(new RoomChestsFronos(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossFronos(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureFronos(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderFronos(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature, "");
         this.stoneNoise = new double[256];
         this.caveGenerator = new MapGenCavesFronos();
         this.cavernGenerator = new MapGenCavernFronos();
@@ -384,7 +382,6 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
         long i1 = this.rand.nextLong() / 2L * 2L + 1L;
         long j1 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * i1 + chunkZ * j1 ^ this.worldObj.getSeed());
-        biomegenbase.decorate(this.worldObj, this.rand, new BlockPos(x, 0, z));
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseFronos.coconutForest, pos);
         this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, x + 8, z + 8, 16, 16, this.rand);

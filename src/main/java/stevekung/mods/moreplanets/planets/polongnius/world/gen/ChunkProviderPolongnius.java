@@ -36,12 +36,15 @@ import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomTreas
 
 public class ChunkProviderPolongnius extends ChunkProviderBaseMP
 {
-    public BiomeDecoratorPolongnius biomeDecorator = new BiomeDecoratorPolongnius();
+    private BiomeDecoratorPolongnius biomeDecorator = new BiomeDecoratorPolongnius();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(PolongniusBlocks.polongnius_block, this.getBlockMetadata());
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(PolongniusBlocks.polongnius_block, 13, 8, 24, 4);
+    private MapGenDungeon dungeonGenerator2 = new MapGenDungeon(PolongniusBlocks.polongnius_block, 14, 8, 24, 4);
+
+    public ChunkProviderPolongnius(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -55,10 +58,6 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasurePolongnius(null, 0, 0, 0, null));
-    }
-
-    private MapGenDungeon dungeonGenerator2 = new MapGenDungeon(PolongniusBlocks.polongnius_block, 14, 8, 24, 4);
-    {
         this.dungeonGenerator2.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator2.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator2.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -72,11 +71,6 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
         this.dungeonGenerator2.otherRooms.add(new RoomChestsPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator2.bossRooms.add(new RoomBossPolongnius(null, 0, 0, 0, null));
         this.dungeonGenerator2.treasureRooms.add(new RoomTreasurePolongnius(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderPolongnius(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override

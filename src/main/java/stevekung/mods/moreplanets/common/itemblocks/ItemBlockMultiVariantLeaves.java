@@ -5,16 +5,21 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.nibiru.itemblocks;
+package stevekung.mods.moreplanets.common.itemblocks;
 
 import net.minecraft.block.Block;
-import stevekung.mods.moreplanets.common.itemblocks.ItemBlockBaseMP;
+import stevekung.mods.moreplanets.common.util.VariantsName;
 
-public class ItemBlockNibiruLeaves extends ItemBlockBaseMP
+public class ItemBlockMultiVariantLeaves extends ItemBlockBaseMP
 {
-    public ItemBlockNibiruLeaves(Block block)
+    private String[] name;
+    private boolean reverse;
+
+    public ItemBlockMultiVariantLeaves(Block block, VariantsName name)
     {
         super(block);
+        this.name = name.getStringList();
+        this.reverse = name.isReverseName();
     }
 
     @Override
@@ -24,8 +29,14 @@ public class ItemBlockNibiruLeaves extends ItemBlockBaseMP
     }
 
     @Override
-    public String[] getBlockVariantsName()
+    protected String[] getBlockVariantsName()
     {
-        return new String[] { "ancient_dark_leaves", "orange_leaves" };
+        return this.name;
+    }
+
+    @Override
+    protected boolean reverseName()
+    {
+        return this.reverse;
     }
 }

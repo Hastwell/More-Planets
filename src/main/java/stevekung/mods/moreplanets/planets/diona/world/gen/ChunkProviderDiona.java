@@ -22,13 +22,13 @@ import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
-import stevekung.mods.moreplanets.moons.koentus.world.gen.BiomeGenBaseKoentus;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
@@ -41,9 +41,11 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
     private BiomeDecoratorDiona biomeDecorator = new BiomeDecoratorDiona();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseDiona.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(DionaBlocks.diona_block, this.getBlockMetadata());
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(DionaBlocks.diona_block, 15, 8, 16, 4);
+
+    public ChunkProviderDiona(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -57,11 +59,6 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsDiona(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossDiona(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureDiona(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderDiona(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override
@@ -94,7 +91,7 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, x + 8, z + 8, 16, 16, this.rand);
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseKoentus.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
 
         // Dungeon Spawner
         for (int i = 0; i < 12; ++i)

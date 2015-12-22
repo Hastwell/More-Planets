@@ -21,37 +21,49 @@ import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
 
 public class WorldGenTreeMP extends WorldGenAbstractTree
 {
-    private int minTreeHeight;
-    private boolean vinesGrow;
     private int woodMeta;
     private int leavesMeta;
     private Block wood;
     private Block leaves;
     private Block sapling;
     private Block vine;
+    private Block grass;
+    private boolean grassBool;
+    private Block dirt;
+    private Block fruit;
 
-    public WorldGenTreeMP(int minHeight, Block wood, Block leaves, int woodMeta, int leavesMeta, boolean hasVine, Block sapling, Block vine)
+    public WorldGenTreeMP(Block wood, Block leaves, int woodMeta, int leavesMeta, Block sapling, Block vine, Block grass, Block dirt, Block fruit)
     {
         super(false);
-        this.minTreeHeight = minHeight;
         this.woodMeta = woodMeta;
-        this.vinesGrow = hasVine;
         this.wood = wood;
         this.leaves = leaves;
         this.sapling = sapling;
         this.leavesMeta = leavesMeta;
         this.vine = vine;
+        this.grass = grass;
+        this.dirt = dirt;
+        this.fruit = fruit;
+    }
 
-        if (this.vine == null && this.vinesGrow == false)
-        {
-            this.vine = Blocks.air;
-        }
+    public WorldGenTreeMP(Block wood, Block leaves, int woodMeta, int leavesMeta, Block sapling, Block vine, boolean grass, Block dirt, Block fruit)
+    {
+        super(false);
+        this.woodMeta = woodMeta;
+        this.wood = wood;
+        this.leaves = leaves;
+        this.sapling = sapling;
+        this.leavesMeta = leavesMeta;
+        this.vine = vine;
+        this.grassBool = grass;
+        this.dirt = dirt;
+        this.fruit = fruit;
     }
 
     @Override
     public boolean generate(World world, Random rand, BlockPos pos)
     {
-        int i = rand.nextInt(3) + this.minTreeHeight;
+        int i = rand.nextInt(3) + 5;
         boolean flag = true;
 
         if (pos.getY() >= 1 && pos.getY() + i + 1 <= 256)
@@ -103,6 +115,7 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 
                 if (isSoil && pos.getY() < 256 - i - 1)
                 {
+                    this.onPlantGrow(world, pos.down());
                     b0 = 3;
                     byte b1 = 0;
                     int i1;
@@ -147,7 +160,7 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
                         {
                             this.func_175905_a(world, pos.up(l), this.wood, this.woodMeta);
 
-                            if (this.vinesGrow && l > 0)
+                            if (this.vine != null && l > 0)
                             {
                                 if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(-1, l, 0)))
                                 {
@@ -169,7 +182,7 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
                         }
                     }
 
-                    if (this.vinesGrow)
+                    if (this.vine != null)
                     {
                         for (l = pos.getY() - 3 + i; l <= pos.getY() + i; ++l)
                         {
@@ -210,6 +223,24 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
                             }
                         }
                     }
+                    else if (this.fruit != null)
+                    {
+                        if (rand.nextInt(1) == 0 && i > 5)
+                        {
+                            for (l = 0; l < 2; ++l)
+                            {
+                                for (i1 = 0; i1 < 4; ++i1)
+                                {
+                                    if (rand.nextInt(4 - l) == 0)
+                                    {
+                                        j1 = rand.nextInt(3);
+                                        EnumFacing enumfacing = EnumFacing.getHorizontal(i1).getOpposite();
+                                        this.func_175905_a(world, pos.add(enumfacing.getFrontOffsetX(), i - 5 + l, enumfacing.getFrontOffsetZ()), this.fruit, j1 << 2 | EnumFacing.getHorizontal(i1).getHorizontalIndex());
+                                    }
+                                }
+                            }
+                        }
+                    }
                     return true;
                 }
                 else
@@ -221,6 +252,22 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
         else
         {
             return false;
+        }
+    }
+
+    private void onPlantGrow(World world, BlockPos pos)
+    {
+        if (world.getBlockState(pos).getBlock() == this.grass && this.grass != null && this.dirt != null)
+        {
+            world.setBlockState(pos, this.dirt.getDefaultState(), 2);
+        }
+        else if (this.grassBool && this.dirt != null)
+        {
+            world.setBlockState(pos, this.dirt.getDefaultState(), 2);
+        }
+        else if (world.getBlockState(pos).getBlock() == Blocks.grass)
+        {
+            world.setBlockState(pos, Blocks.dirt.getDefaultState(), 2);
         }
     }
 

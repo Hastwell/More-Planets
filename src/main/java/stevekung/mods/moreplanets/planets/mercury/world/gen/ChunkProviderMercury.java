@@ -16,6 +16,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
@@ -30,9 +31,11 @@ public class ChunkProviderMercury extends ChunkProviderBaseMP
     private BiomeDecoratorMercury biomeDecorator = new BiomeDecoratorMercury();
     private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMercury.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(MercuryBlocks.mercury_block, this.getBlockMetadata());
-
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(MercuryBlocks.mercury_block, 11, 8, 16, 4);
+
+    public ChunkProviderMercury(World world, long seed, boolean genFeature)
     {
+        super(world, seed, genFeature);
         this.dungeonGenerator.otherRooms.add(new RoomEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
         this.dungeonGenerator.otherRooms.add(new RoomSpawnerMP(null, 0, 0, 0, null));
@@ -46,11 +49,6 @@ public class ChunkProviderMercury extends ChunkProviderBaseMP
         this.dungeonGenerator.otherRooms.add(new RoomChestsMercury(null, 0, 0, 0, null));
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureEmptyMP(null, 0, 0, 0, null));
         this.dungeonGenerator.bossRooms.add(new RoomBossMercury(null, 0, 0, 0, null));
-    }
-
-    public ChunkProviderMercury(World world, long seed, boolean genFeature)
-    {
-        super(world, seed, genFeature);
     }
 
     @Override
@@ -82,7 +80,7 @@ public class ChunkProviderMercury extends ChunkProviderBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMercury.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
         BlockFalling.fallInstantly = false;
     }
 

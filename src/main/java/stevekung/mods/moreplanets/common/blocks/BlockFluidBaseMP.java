@@ -71,7 +71,7 @@ public abstract class BlockFluidBaseMP extends BlockFluidClassic
     {
         super.updateTick(world, pos, state, rand);
 
-        if (this.blockMaterial == Material.water && this.isInfinite())
+        if (this.isInfinite())
         {
             int i = ((Integer)state.getValue(LEVEL)).intValue();
             byte b0 = 1;
