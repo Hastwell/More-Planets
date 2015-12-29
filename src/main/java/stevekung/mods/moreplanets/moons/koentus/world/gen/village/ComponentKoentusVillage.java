@@ -161,7 +161,7 @@ public abstract class ComponentKoentusVillage extends StructureComponent
     @Override
     protected void setBlockState(World world, IBlockState state, int x, int y, int z, StructureBoundingBox box)
     {
-        IBlockState iblockstate1 = this.func_175847_a(state);
+        this.func_175847_a(state);
         super.setBlockState(world, state, x, y, z, box);
     }
 

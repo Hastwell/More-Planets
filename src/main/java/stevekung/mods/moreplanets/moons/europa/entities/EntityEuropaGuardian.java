@@ -44,7 +44,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.util.WeightedRandom;
-import net.minecraft.util.WeightedRandomFishable;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -529,7 +528,7 @@ public class EntityEuropaGuardian extends EntityGuardian implements IEntityBreat
     @Override
     protected void addRandomDrop()
     {
-        ItemStack itemstack = ((WeightedRandomFishable)WeightedRandom.getRandomItem(this.rand, EntityFishHook.func_174855_j())).getItemStack(this.rand);
+        ItemStack itemstack = WeightedRandom.getRandomItem(this.rand, EntityFishHook.func_174855_j()).getItemStack(this.rand);
         this.entityDropItem(itemstack, 1.0F);
     }
 

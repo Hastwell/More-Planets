@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.world.gen;
 
-import net.minecraft.world.biome.BiomeGenBase;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusBlaze;

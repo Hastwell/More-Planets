@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.polongnius.world.gen;
 import java.util.ArrayList;
 import java.util.List;
 
-import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
@@ -23,16 +22,11 @@ import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
-import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomBossPolongnius;
-import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomChestsPolongnius;
-import stevekung.mods.moreplanets.planets.polongnius.world.gen.dungeon.RoomTreasurePolongnius;
 
 public class ChunkProviderPolongnius extends ChunkProviderBaseMP
 {

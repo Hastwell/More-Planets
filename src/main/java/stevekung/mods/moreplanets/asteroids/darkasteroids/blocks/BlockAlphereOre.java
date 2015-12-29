@@ -39,7 +39,7 @@ public class BlockAlphereOre extends BlockBaseMP implements IDetectableResource
     @Override
     public int quantityDroppedWithBonus(int fortune, Random rand)
     {
-        if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped((IBlockState)this.getBlockState().getValidStates().iterator().next(), rand, fortune))
+        if (fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(this.getBlockState().getValidStates().iterator().next(), rand, fortune))
         {
             int j = rand.nextInt(fortune + 2) - 1;
 

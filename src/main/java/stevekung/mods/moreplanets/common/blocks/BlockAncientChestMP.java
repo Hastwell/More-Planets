@@ -162,7 +162,7 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
             IBlockState iblockstate2 = world.getBlockState(pos.south());
             IBlockState iblockstate3 = world.getBlockState(pos.west());
             IBlockState iblockstate4 = world.getBlockState(pos.east());
-            EnumFacing enumfacing = (EnumFacing)state.getValue(BlockStateHelper.FACING);
+            EnumFacing enumfacing = state.getValue(BlockStateHelper.FACING);
             Block block = iblockstate1.getBlock();
             Block block1 = iblockstate2.getBlock();
             Block block2 = iblockstate3.getBlock();
@@ -183,11 +183,11 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 
                     if (block2 == this)
                     {
-                        enumfacing2 = (EnumFacing)iblockstate3.getValue(BlockStateHelper.FACING);
+                        enumfacing2 = iblockstate3.getValue(BlockStateHelper.FACING);
                     }
                     else
                     {
-                        enumfacing2 = (EnumFacing)iblockstate4.getValue(BlockStateHelper.FACING);
+                        enumfacing2 = iblockstate4.getValue(BlockStateHelper.FACING);
                     }
 
                     if (enumfacing2 == EnumFacing.NORTH)
@@ -218,11 +218,11 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
 
                 if (block == this)
                 {
-                    enumfacing1 = (EnumFacing)iblockstate1.getValue(BlockStateHelper.FACING);
+                    enumfacing1 = iblockstate1.getValue(BlockStateHelper.FACING);
                 }
                 else
                 {
-                    enumfacing1 = (EnumFacing)iblockstate2.getValue(BlockStateHelper.FACING);
+                    enumfacing1 = iblockstate2.getValue(BlockStateHelper.FACING);
                 }
 
                 if (enumfacing1 == EnumFacing.WEST)
@@ -281,7 +281,7 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
         }
         else
         {
-            EnumFacing enumfacing2 = (EnumFacing)state.getValue(BlockStateHelper.FACING);
+            EnumFacing enumfacing2 = state.getValue(BlockStateHelper.FACING);
 
             if (world.getBlockState(pos.offset(enumfacing2)).getBlock().isFullBlock())
             {
@@ -422,7 +422,7 @@ public abstract class BlockAncientChestMP extends BlockContainerMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
+        return state.getValue(BlockStateHelper.FACING).getIndex();
     }
 
     @Override

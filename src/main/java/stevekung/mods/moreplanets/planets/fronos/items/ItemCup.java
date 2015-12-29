@@ -244,7 +244,7 @@ public class ItemCup extends ItemFoodMP
                 {
                     if (world.rand.nextInt(3) == 0)
                     {
-                        world.setBlockState(pos, FronosBlocks.space_oyster.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(BlockSpaceOyster.OPEN, true), 3);
+                        world.setBlockState(pos, FronosBlocks.space_oyster.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(state.getValue(BlockStateHelper.FACING).getIndex())).withProperty(BlockSpaceOyster.OPEN, true), 3);
                     }
                     --itemStack.stackSize;
                     player.dropPlayerItemWithRandomChoice(new ItemStack(this, 1, 0), false);
@@ -268,7 +268,7 @@ public class ItemCup extends ItemFoodMP
                 {
                     if (world.rand.nextInt(5) == 0)
                     {
-                        world.setBlockState(pos, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(BlockCavernOyster.OPEN, true), 3);
+                        world.setBlockState(pos, FronosBlocks.cavern_oyster.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(state.getValue(BlockStateHelper.FACING).getIndex())).withProperty(BlockCavernOyster.OPEN, true), 3);
                     }
                     --itemStack.stackSize;
                     player.dropPlayerItemWithRandomChoice(new ItemStack(this, 1, 0), false);
@@ -281,7 +281,7 @@ public class ItemCup extends ItemFoodMP
             }
         }
 
-        if (block == Blocks.snow_layer && ((Integer)state.getValue(BlockSnow.LAYERS)).intValue() < 1)
+        if (block == Blocks.snow_layer && state.getValue(BlockSnow.LAYERS).intValue() < 1)
         {
             side = EnumFacing.UP;
         }

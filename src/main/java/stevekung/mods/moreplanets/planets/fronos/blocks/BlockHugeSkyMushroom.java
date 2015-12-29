@@ -8,7 +8,6 @@
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import java.util.Random;
-import java.util.Set;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -99,7 +98,7 @@ public class BlockHugeSkyMushroom extends BlockBaseMP
     {
         IBlockState state = world.getBlockState(pos);
 
-        for (IProperty prop : (Set<IProperty>)state.getProperties().keySet())
+        for (IProperty prop : state.getProperties().keySet())
         {
             if (prop.getName().equals("variant"))
             {

@@ -48,7 +48,7 @@ public class BlockFluidFrozenWater extends BlockFluidBaseMP
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
     {
-        int meta = (Integer)state.getValue(LEVEL);
+        int meta = state.getValue(LEVEL);
 
         if (rand.nextInt(64) == 0)
         {

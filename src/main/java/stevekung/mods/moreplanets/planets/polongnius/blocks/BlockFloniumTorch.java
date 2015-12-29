@@ -42,7 +42,7 @@ public class BlockFloniumTorch extends BlockTorch
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
     {
-        EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+        EnumFacing enumfacing = state.getValue(FACING);
         double d0 = pos.getX() + 0.5D;
         double d1 = pos.getY() + 0.7D;
         double d2 = pos.getZ() + 0.5D;

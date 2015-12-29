@@ -45,7 +45,7 @@ public class RenderCreamSlime extends RenderLiving<EntityCreamSlime>
     @Override
     protected ResourceLocation getEntityTexture(EntityCreamSlime entity)
     {
-        switch (((EntityCreamSlime)entity).getCreamSlimeType())
+        switch (entity.getCreamSlimeType())
         {
         case 0:
         default:

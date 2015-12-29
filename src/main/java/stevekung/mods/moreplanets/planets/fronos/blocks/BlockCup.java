@@ -150,7 +150,7 @@ public class BlockCup extends BlockBaseMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
+        return state.getValue(BlockStateHelper.FACING).getIndex();
     }
 
     @Override

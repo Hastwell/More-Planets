@@ -14,8 +14,8 @@ import stevekung.mods.moreplanets.planets.fronos.world.gen.biome.BiomeGenBaseFro
 
 public class GenLayerFronosBiomes extends GenLayer
 {
-    protected BiomeGenBase[] commonBiomes = { BiomeGenBaseFronos.coconutForest, BiomeGenBaseFronos.purpleMapleForest, BiomeGenBaseFronos.mapleForest, BiomeGenBaseFronos.grassyPlains, BiomeGenBaseFronos.candyLand };
-    protected BiomeGenBase[] rareBiomes = { BiomeGenBaseFronos.goldenField };
+    protected BiomeGenBase[] commonBiomes = { BiomeGenBaseFronos.coconutForest, BiomeGenBaseFronos.purpleMapleForest, BiomeGenBaseFronos.mapleForest, BiomeGenBaseFronos.grassyPlains };
+    protected BiomeGenBase[] rareBiomes = { BiomeGenBaseFronos.goldenField, BiomeGenBaseFronos.candyLand };
 
     public GenLayerFronosBiomes(long seed, GenLayer genlayer)
     {

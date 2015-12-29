@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.boss.BossStatus;
-import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.planets.diona.client.model.ModelDionaCreeperBoss;
 import stevekung.mods.moreplanets.planets.diona.client.render.entities.layers.LayerDionaCreeperBossCharge;
@@ -36,7 +35,7 @@ public class RenderDionaCreeperBoss extends RenderLiving<EntityDionaCreeperBoss>
     @Override
     public void doRender(EntityDionaCreeperBoss entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
-        BossStatus.setBossStatus((IBossDisplayData)entity, false);
+        BossStatus.setBossStatus(entity, false);
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 

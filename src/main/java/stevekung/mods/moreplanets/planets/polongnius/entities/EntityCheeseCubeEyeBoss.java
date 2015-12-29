@@ -178,7 +178,7 @@ public class EntityCheeseCubeEyeBoss extends EntityFlyingBossMP implements IMob,
 
             if (!this.worldObj.isRemote)
             {
-                for (TileEntity tile : (List<TileEntity>) this.worldObj.loadedTileEntityList)
+                for (TileEntity tile : this.worldObj.loadedTileEntityList)
                 {
                     if (tile instanceof TileEntityPolongniusTreasureChest)
                     {

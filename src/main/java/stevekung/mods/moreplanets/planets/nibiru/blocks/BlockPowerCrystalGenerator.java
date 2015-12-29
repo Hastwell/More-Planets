@@ -62,7 +62,7 @@ public class BlockPowerCrystalGenerator extends BlockTileGC implements IBlockShi
 
             if (tileEntity.heatGJperTick > 0)
             {
-                EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+                EnumFacing enumfacing = state.getValue(FACING);
                 double d0 = pos.getX() + 0.5D;
                 double d1 = pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
                 double d2 = pos.getZ() + 0.5D;
@@ -161,7 +161,7 @@ public class BlockPowerCrystalGenerator extends BlockTileGC implements IBlockShi
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     @Override

@@ -241,7 +241,7 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
                 this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY, this.posZ, j));
             }
 
-            for (TileEntity tile : (List<TileEntity>) this.worldObj.loadedTileEntityList)
+            for (TileEntity tile : this.worldObj.loadedTileEntityList)
             {
                 if (tile instanceof TileEntityDionaTreasureChest)
                 {

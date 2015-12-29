@@ -75,7 +75,7 @@ public abstract class BlockLeavesMP extends BlockBaseMP implements IShearable
     {
         if (!world.isRemote)
         {
-            if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue() && ((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
+            if (state.getValue(BlockStateHelper.CHECK_DECAY).booleanValue() && state.getValue(BlockStateHelper.DECAYABLE).booleanValue())
             {
                 byte b0 = 4;
                 int i = b0 + 1;

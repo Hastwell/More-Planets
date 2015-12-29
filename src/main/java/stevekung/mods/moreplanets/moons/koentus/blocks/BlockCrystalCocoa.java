@@ -58,7 +58,7 @@ public class BlockCrystalCocoa extends BlockDirectional implements IGrowable
         }
         else if (world.rand.nextInt(5) == 0)
         {
-            int i = ((Integer)state.getValue(AGE)).intValue();
+            int i = state.getValue(AGE).intValue();
 
             if (i < 2)
             {
@@ -69,7 +69,7 @@ public class BlockCrystalCocoa extends BlockDirectional implements IGrowable
 
     private boolean canBlockStay(World world, BlockPos pos, IBlockState state)
     {
-        pos = pos.offset((EnumFacing)state.getValue(FACING));
+        pos = pos.offset(state.getValue(FACING));
         IBlockState iblockstate1 = world.getBlockState(pos);
         return iblockstate1.getBlock() == KoentusBlocks.crystal_log;
     }
@@ -105,8 +105,8 @@ public class BlockCrystalCocoa extends BlockDirectional implements IGrowable
     public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
     {
         IBlockState iblockstate = world.getBlockState(pos);
-        EnumFacing enumfacing = (EnumFacing)iblockstate.getValue(FACING);
-        int i = ((Integer)iblockstate.getValue(AGE)).intValue();
+        EnumFacing enumfacing = iblockstate.getValue(FACING);
+        int i = iblockstate.getValue(AGE).intValue();
         int j = 4 + i * 2;
         int k = 5 + i * 2;
         float f = j / 2.0F;
@@ -163,7 +163,7 @@ public class BlockCrystalCocoa extends BlockDirectional implements IGrowable
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
         List<ItemStack> dropped = new ArrayList<ItemStack>();
-        int j = ((Integer)state.getValue(AGE)).intValue();
+        int j = state.getValue(AGE).intValue();
         byte b0 = 1;
 
         if (j >= 2)
@@ -187,7 +187,7 @@ public class BlockCrystalCocoa extends BlockDirectional implements IGrowable
     @Override
     public boolean canGrow(World world, BlockPos pos, IBlockState state, boolean isClient)
     {
-        return ((Integer)state.getValue(AGE)).intValue() < 2;
+        return state.getValue(AGE).intValue() < 2;
     }
 
     @Override
@@ -199,7 +199,7 @@ public class BlockCrystalCocoa extends BlockDirectional implements IGrowable
     @Override
     public void grow(World world, Random rand, BlockPos pos, IBlockState state)
     {
-        world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(((Integer)state.getValue(AGE)).intValue() + 1)), 2);
+        world.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(state.getValue(AGE).intValue() + 1)), 2);
     }
 
     @Override
@@ -218,8 +218,8 @@ public class BlockCrystalCocoa extends BlockDirectional implements IGrowable
     public int getMetaFromState(IBlockState state)
     {
         byte b0 = 0;
-        int i = b0 | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
-        i |= ((Integer)state.getValue(AGE)).intValue() << 2;
+        int i = b0 | state.getValue(FACING).getHorizontalIndex();
+        i |= state.getValue(AGE).intValue() << 2;
         return i;
     }
 

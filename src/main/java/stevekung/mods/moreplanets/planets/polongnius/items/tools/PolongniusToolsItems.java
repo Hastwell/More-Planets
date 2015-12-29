@@ -10,12 +10,11 @@ package stevekung.mods.moreplanets.planets.polongnius.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.common.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class PolongniusToolsItems
@@ -44,21 +43,21 @@ public class PolongniusToolsItems
     public static void init()
     {
         // Init
-        PolongniusToolsItems.polongnius_meteoric_iron_pickaxe = new ItemPickaxeMP("polongnius_meteoric_iron_pickaxe", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
-        PolongniusToolsItems.polongnius_meteoric_iron_axe = new ItemAxeMP("polongnius_meteoric_iron_axe", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
-        PolongniusToolsItems.polongnius_meteoric_iron_hoe = new ItemHoeMP("polongnius_meteoric_iron_hoe", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
-        PolongniusToolsItems.polongnius_meteoric_iron_shovel = new ItemShovelMP("polongnius_meteoric_iron_shovel", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
-        PolongniusToolsItems.polongnius_meteoric_iron_sword = new ItemSwordMP("polongnius_meteoric_iron_sword", PolongniusToolsItems.polongnius_meteoric_iron, PolongniusItems.polongnius_item, 6);
-        PolongniusToolsItems.palladium_pickaxe = new ItemPickaxeMP("palladium_pickaxe", PolongniusToolsItems.palladium, PolongniusItems.polongnius_item, 7);
-        PolongniusToolsItems.palladium_axe = new ItemAxeMP("palladium_axe", PolongniusToolsItems.palladium, PolongniusItems.polongnius_item, 7);
-        PolongniusToolsItems.palladium_hoe = new ItemHoeMP("palladium_hoe", PolongniusToolsItems.palladium, PolongniusItems.polongnius_item, 7);
-        PolongniusToolsItems.palladium_shovel = new ItemShovelMP("palladium_shovel", PolongniusToolsItems.palladium, PolongniusItems.polongnius_item, 7);
-        PolongniusToolsItems.palladium_sword = new ItemSwordMP("palladium_sword", PolongniusToolsItems.palladium, PolongniusItems.polongnius_item, 7);
-        PolongniusToolsItems.purple_crystal_pickaxe = new ItemPickaxeMP("purple_crystal_pickaxe", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
-        PolongniusToolsItems.purple_crystal_axe = new ItemAxeMP("purple_crystal_axe", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
-        PolongniusToolsItems.purple_crystal_hoe = new ItemHoeMP("purple_crystal_hoe", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
-        PolongniusToolsItems.purple_crystal_shovel = new ItemShovelMP("purple_crystal_shovel", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
-        PolongniusToolsItems.purple_crystal_sword = new ItemSwordMP("purple_crystal_sword", PolongniusToolsItems.purple_crystal, PolongniusItems.polongnius_item, 1);
+        PolongniusToolsItems.polongnius_meteoric_iron_pickaxe = new ItemElectricPickaxeMP("polongnius_meteoric_iron_pickaxe", PolongniusToolsItems.polongnius_meteoric_iron, 17500.0F, null);
+        PolongniusToolsItems.polongnius_meteoric_iron_axe = new ItemElectricAxeMP("polongnius_meteoric_iron_axe", PolongniusToolsItems.polongnius_meteoric_iron, 17500.0F, null);
+        PolongniusToolsItems.polongnius_meteoric_iron_hoe = new ItemElectricHoeMP("polongnius_meteoric_iron_hoe", PolongniusToolsItems.polongnius_meteoric_iron, 17500.0F, null);
+        PolongniusToolsItems.polongnius_meteoric_iron_shovel = new ItemElectricShovelMP("polongnius_meteoric_iron_shovel", PolongniusToolsItems.polongnius_meteoric_iron, 17500.0F, null);
+        PolongniusToolsItems.polongnius_meteoric_iron_sword = new ItemElectricSwordMP("polongnius_meteoric_iron_sword", PolongniusToolsItems.polongnius_meteoric_iron, 17500.0F, null);
+        PolongniusToolsItems.palladium_pickaxe = new ItemElectricPickaxeMP("palladium_pickaxe", PolongniusToolsItems.palladium, 17500.0F, null);
+        PolongniusToolsItems.palladium_axe = new ItemElectricAxeMP("palladium_axe", PolongniusToolsItems.palladium, 17500.0F, null);
+        PolongniusToolsItems.palladium_hoe = new ItemElectricHoeMP("palladium_hoe", PolongniusToolsItems.palladium, 17500.0F, null);
+        PolongniusToolsItems.palladium_shovel = new ItemElectricShovelMP("palladium_shovel", PolongniusToolsItems.palladium, 17500.0F, null);
+        PolongniusToolsItems.palladium_sword = new ItemElectricSwordMP("palladium_sword", PolongniusToolsItems.palladium, 17500.0F, null);
+        PolongniusToolsItems.purple_crystal_pickaxe = new ItemElectricPickaxeMP("purple_crystal_pickaxe", PolongniusToolsItems.purple_crystal, 18000.0F, null);
+        PolongniusToolsItems.purple_crystal_axe = new ItemElectricAxeMP("purple_crystal_axe", PolongniusToolsItems.purple_crystal, 18000.0F, null);
+        PolongniusToolsItems.purple_crystal_hoe = new ItemElectricHoeMP("purple_crystal_hoe", PolongniusToolsItems.purple_crystal, 18000.0F, null);
+        PolongniusToolsItems.purple_crystal_shovel = new ItemElectricShovelMP("purple_crystal_shovel", PolongniusToolsItems.purple_crystal, 18000.0F, null);
+        PolongniusToolsItems.purple_crystal_sword = new ItemElectricSwordMP("purple_crystal_sword", PolongniusToolsItems.purple_crystal, 18000.0F, null);
 
         // Register
         CommonRegisterHelper.registerItem(PolongniusToolsItems.polongnius_meteoric_iron_sword);

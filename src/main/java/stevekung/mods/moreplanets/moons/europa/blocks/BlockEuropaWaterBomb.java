@@ -78,7 +78,7 @@ public class BlockEuropaWaterBomb extends BlockBaseMP
     {
         if (!world.isRemote)
         {
-            if (((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue())
+            if (state.getValue(BlockStateHelper.EXPLODE).booleanValue())
             {
                 EntityEuropaWaterBomb entitytntprimed = new EntityEuropaWaterBomb(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, igniter);
                 world.spawnEntityInWorld(entitytntprimed);
@@ -143,7 +143,7 @@ public class BlockEuropaWaterBomb extends BlockBaseMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Boolean)state.getValue(BlockStateHelper.EXPLODE)).booleanValue() ? 1 : 0;
+        return state.getValue(BlockStateHelper.EXPLODE).booleanValue() ? 1 : 0;
     }
 
     @Override

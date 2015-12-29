@@ -50,7 +50,7 @@ public class ItemLaserGun extends ItemElectricBase
         {
             flag = false;
         }
-        if (this.getElectricityStored(itemStack) >= 250.0F && (flag || player.inventory.hasItem(DionaItems.laser_ammo)))
+        if (this.getElectricityStored(itemStack) >= 50.0F && (flag || player.inventory.hasItem(DionaItems.laser_ammo)))
         {
             EntityLaserMP laser = new EntityLaserMP(world, player, 1.0F);
             world.playSoundAtEntity(player, "moreplanets:player.laser", 1.0F, 2.0F / (1.0F * 0.4F + 1.2F) + 1.0F * 0.5F);
@@ -58,7 +58,7 @@ public class ItemLaserGun extends ItemElectricBase
 
             if (!flag)
             {
-                this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 250.0F);
+                this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 50.0F);
             }
 
             if (player.inventory.hasItemStack(new ItemStack(DionaItems.laser_ammo, 1, 0)))

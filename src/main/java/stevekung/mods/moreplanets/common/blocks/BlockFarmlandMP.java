@@ -64,7 +64,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
     @Override
     public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
     {
-        int i = ((Integer)state.getValue(BlockStateHelper.MOISTURE)).intValue();
+        int i = state.getValue(BlockStateHelper.MOISTURE).intValue();
 
         if (!this.hasWater(world, pos) && !world.canLightningStrike(pos.up()))
         {
@@ -153,7 +153,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(BlockStateHelper.MOISTURE)).intValue();
+        return state.getValue(BlockStateHelper.MOISTURE).intValue();
     }
 
     @Override
@@ -171,7 +171,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
     @Override
     public boolean isFertile(World world, BlockPos pos)
     {
-        return (Integer)world.getBlockState(pos).getValue(BlockStateHelper.MOISTURE) == 1;
+        return world.getBlockState(pos).getValue(BlockStateHelper.MOISTURE) == 1;
     }
 
     @Override

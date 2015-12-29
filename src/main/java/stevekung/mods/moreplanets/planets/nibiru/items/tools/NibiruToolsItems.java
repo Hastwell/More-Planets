@@ -10,12 +10,11 @@ package stevekung.mods.moreplanets.planets.nibiru.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.common.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class NibiruToolsItems
@@ -38,16 +37,16 @@ public class NibiruToolsItems
     public static void init()
     {
         // Init
-        NibiruToolsItems.red_gem_pickaxe = new ItemPickaxeMP("red_gem_pickaxe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
-        NibiruToolsItems.red_gem_axe = new ItemAxeMP("red_gem_axe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
-        NibiruToolsItems.red_gem_hoe = new ItemHoeMP("red_gem_hoe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
-        NibiruToolsItems.red_gem_shovel = new ItemShovelMP("red_gem_shovel", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
-        NibiruToolsItems.red_gem_sword = new ItemSwordMP("red_gem_sword", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2);
-        NibiruToolsItems.norium_pickaxe = new ItemPickaxeMP("norium_pickaxe", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
-        NibiruToolsItems.norium_axe = new ItemAxeMP("norium_axe", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
-        NibiruToolsItems.norium_hoe = new ItemHoeMP("norium_hoe", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
-        NibiruToolsItems.norium_shovel = new ItemShovelMP("norium_shovel", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
-        NibiruToolsItems.norium_sword = new ItemSwordMP("norium_sword", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3);
+        NibiruToolsItems.red_gem_pickaxe = new ItemElectricPickaxeMP("red_gem_pickaxe", NibiruToolsItems.red_gem, 20000.0F, null);
+        NibiruToolsItems.red_gem_axe = new ItemElectricAxeMP("red_gem_axe", NibiruToolsItems.red_gem, 20000.0F, null);
+        NibiruToolsItems.red_gem_hoe = new ItemElectricHoeMP("red_gem_hoe", NibiruToolsItems.red_gem, 20000.0F, null);
+        NibiruToolsItems.red_gem_shovel = new ItemElectricShovelMP("red_gem_shovel", NibiruToolsItems.red_gem, 20000.0F, null);
+        NibiruToolsItems.red_gem_sword = new ItemElectricSwordMP("red_gem_sword", NibiruToolsItems.red_gem, 20000.0F, null);
+        NibiruToolsItems.norium_pickaxe = new ItemElectricPickaxeMP("norium_pickaxe", NibiruToolsItems.norium, 20000.0F, null);
+        NibiruToolsItems.norium_axe = new ItemElectricAxeMP("norium_axe", NibiruToolsItems.norium, 20000.0F, null);
+        NibiruToolsItems.norium_hoe = new ItemElectricHoeMP("norium_hoe", NibiruToolsItems.norium, 20000.0F, null);
+        NibiruToolsItems.norium_shovel = new ItemElectricShovelMP("norium_shovel", NibiruToolsItems.norium, 20000.0F, null);
+        NibiruToolsItems.norium_sword = new ItemElectricSwordMP("norium_sword", NibiruToolsItems.norium, 20000.0F, null);
 
         // Register
         CommonRegisterHelper.registerItem(NibiruToolsItems.red_gem_sword);

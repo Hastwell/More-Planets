@@ -75,7 +75,7 @@ public class EntityAlienSplashFX extends EntityFX
 
             if (iblockstate.getBlock() instanceof BlockLiquid)
             {
-                d0 = 1.0F - BlockLiquid.getLiquidHeightPercent(((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue());
+                d0 = 1.0F - BlockLiquid.getLiquidHeightPercent(iblockstate.getValue(BlockLiquid.LEVEL).intValue());
             }
             else
             {

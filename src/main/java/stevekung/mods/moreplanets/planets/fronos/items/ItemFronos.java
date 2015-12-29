@@ -41,9 +41,10 @@ public class ItemFronos extends ItemBaseMP
                 {
                     if (world.rand.nextInt(10) == 0)
                     {
+                        world.destroyBlock(pos, false);
                         world.setBlockState(pos, FronosBlocks.coconut_milk.getDefaultState());
                     }
-                    world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, FronosBlocks.coconut_milk.stepSound.getPlaceSound(), (FronosBlocks.coconut_milk.stepSound.getVolume() + 1.0F) / 2.0F, 1.2F);
+                    world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, FronosBlocks.coconut_block.stepSound.getPlaceSound(), (FronosBlocks.coconut_block.stepSound.getVolume() + 1.0F) / 2.0F, 1.2F);
                     --itemStack.stackSize;
                     return true;
                 }

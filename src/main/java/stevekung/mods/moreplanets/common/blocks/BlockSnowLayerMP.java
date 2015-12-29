@@ -53,13 +53,13 @@ public class BlockSnowLayerMP extends BlockBaseMP
     @Override
     public boolean isPassable(IBlockAccess world, BlockPos pos)
     {
-        return ((Integer)world.getBlockState(pos).getValue(BlockStateHelper.LAYERS)).intValue() < 5;
+        return world.getBlockState(pos).getValue(BlockStateHelper.LAYERS).intValue() < 5;
     }
 
     @Override
     public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
     {
-        int i = ((Integer)state.getValue(BlockStateHelper.LAYERS)).intValue() - 1;
+        int i = state.getValue(BlockStateHelper.LAYERS).intValue() - 1;
         float f = 0.125F;
         return new AxisAlignedBB(pos.getX() + this.minX, pos.getY() + this.minY, pos.getZ() + this.minZ, pos.getX() + this.maxX, pos.getY() + i * f, pos.getZ() + this.maxZ);
     }
@@ -86,7 +86,7 @@ public class BlockSnowLayerMP extends BlockBaseMP
     public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
     {
         IBlockState iblockstate = world.getBlockState(pos);
-        this.getBoundsForLayers(((Integer)iblockstate.getValue(BlockStateHelper.LAYERS)).intValue());
+        this.getBoundsForLayers(iblockstate.getValue(BlockStateHelper.LAYERS).intValue());
     }
 
     protected void getBoundsForLayers(int meta)
@@ -99,7 +99,7 @@ public class BlockSnowLayerMP extends BlockBaseMP
     {
         IBlockState state = world.getBlockState(pos.down());
         Block block = state.getBlock();
-        return block != Blocks.ice && block != Blocks.packed_ice && block != EuropaBlocks.europa_ice && block != EuropaBlocks.packed_europa_ice ? block.isLeaves(world, pos.down()) ? true : block == this && ((Integer)state.getValue(BlockStateHelper.LAYERS)).intValue() >= 7 ? true : block.isOpaqueCube() && block.getMaterial().blocksMovement() : false;
+        return block != Blocks.ice && block != Blocks.packed_ice && block != EuropaBlocks.europa_ice && block != EuropaBlocks.packed_europa_ice ? block.isLeaves(world, pos.down()) ? true : block == this && state.getValue(BlockStateHelper.LAYERS).intValue() >= 7 ? true : block.isOpaqueCube() && block.getMaterial().blocksMovement() : false;
     }
 
     @Override
@@ -171,13 +171,13 @@ public class BlockSnowLayerMP extends BlockBaseMP
     @Override
     public boolean isReplaceable(World world, BlockPos pos)
     {
-        return ((Integer)world.getBlockState(pos).getValue(BlockStateHelper.LAYERS)).intValue() == 1;
+        return world.getBlockState(pos).getValue(BlockStateHelper.LAYERS).intValue() == 1;
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(BlockStateHelper.LAYERS)).intValue() - 1;
+        return state.getValue(BlockStateHelper.LAYERS).intValue() - 1;
     }
 
     @Override
@@ -195,13 +195,13 @@ public class BlockSnowLayerMP extends BlockBaseMP
     @Override
     public int quantityDropped(IBlockState state, int fortune, Random random)
     {
-        return (Integer)state.getValue(BlockStateHelper.LAYERS) + 1;
+        return state.getValue(BlockStateHelper.LAYERS) + 1;
     }
 
     @Override
     public boolean isSideSolid(IBlockAccess world, BlockPos pos, EnumFacing side)
     {
         IBlockState state = this.getActualState(world.getBlockState(pos), world, pos);
-        return (Integer)state.getValue(BlockStateHelper.LAYERS) >= 8;
+        return state.getValue(BlockStateHelper.LAYERS) >= 8;
     }
 }

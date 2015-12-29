@@ -30,6 +30,12 @@ public abstract class BlockPlanetTileMP extends BlockBaseMP implements IDetectab
     }
 
     @Override
+    public String getHarvestTool(IBlockState state)
+    {
+        return "pickaxe";
+    }
+
+    @Override
     public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));

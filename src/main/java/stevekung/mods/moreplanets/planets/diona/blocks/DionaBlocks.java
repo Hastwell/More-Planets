@@ -59,14 +59,11 @@ public class DionaBlocks
         CommonRegisterHelper.registerBlock(DionaBlocks.green_redstone_torch_off);
 
         // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.diona_block, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.diona_cobblestone_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.chiseled_quontonium_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.quontonium_brick_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.diona_dungeon_brick_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.diona_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.diona_ancient_chest, "axe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.diona_block, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(DionaBlocks.diona_block, "pickaxe", 0);
 
         // Register ore dictionary
         OreDictionary.registerOre("oreQuontonium", new ItemStack(DionaBlocks.diona_block, 1, 4));

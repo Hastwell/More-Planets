@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.pluto.world.gen;
 
-import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.util.BlockPos;
@@ -19,12 +18,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
-import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomBossPluto;
-import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomChestsPluto;
-import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomTreasurePluto;
 
 public class ChunkProviderPluto extends ChunkProviderBaseMP
 {

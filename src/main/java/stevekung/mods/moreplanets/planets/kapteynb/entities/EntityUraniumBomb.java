@@ -15,8 +15,6 @@ import stevekung.mods.moreplanets.planets.kapteynb.world.UraniumExplosion;
 
 public class EntityUraniumBomb extends EntityTNTPrimed
 {
-    private EntityLivingBase tntPlacedBy;
-
     public EntityUraniumBomb(World world)
     {
         super(world);
@@ -37,7 +35,6 @@ public class EntityUraniumBomb extends EntityTNTPrimed
         this.prevPosX = x;
         this.prevPosY = y;
         this.prevPosZ = z;
-        this.tntPlacedBy = entityLiving;
     }
 
     @Override

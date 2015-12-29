@@ -272,13 +272,13 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
     @Override
     public EnumSet<EnumFacing> getElectricalOutputDirections()
     {
-        return EnumSet.of((EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING));
+        return EnumSet.of(this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING));
     }
 
     @Override
     public EnumFacing getElectricalOutputDirectionMain()
     {
-        return (EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING);
+        return this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING);
     }
 
     @Override

@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.boss.BossStatus;
-import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -33,7 +32,7 @@ public class RenderInfectedEvolvedSpiderBoss extends RenderLiving<EntityEvolvedI
     @Override
     public void doRender(EntityEvolvedInfectedSpiderBoss entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
-        BossStatus.setBossStatus((IBossDisplayData) entity, false);
+        BossStatus.setBossStatus(entity, false);
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 

@@ -244,7 +244,7 @@ public class EntityEvolvedSiriusBlazeBoss extends EntityMob implements IEntityBr
                 this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY, this.posZ, j));
             }
 
-            for (TileEntity tile : (List<TileEntity>) this.worldObj.loadedTileEntityList)
+            for (TileEntity tile : this.worldObj.loadedTileEntityList)
             {
                 if (tile instanceof TileEntityDionaTreasureChest)
                 {

@@ -40,7 +40,7 @@ public class WorldGenSpaceOyster extends WorldGenerator
         }
         else
         {
-            world.setBlockState(pos, this.block.withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)world.getBlockState(pos).getValue(BlockStateHelper.FACING)).getIndex())), 2);
+            world.setBlockState(pos, this.block.withProperty(BlockStateHelper.FACING, EnumFacing.getFront(world.getBlockState(pos).getValue(BlockStateHelper.FACING).getIndex())), 2);
             return true;
         }
     }

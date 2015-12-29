@@ -34,7 +34,7 @@ public class BlockFluidDirtyWater extends BlockFluidBaseMP
     public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
     {
         super.randomDisplayTick(world, pos, state, rand);
-        int meta = (Integer)state.getValue(LEVEL);
+        int meta = state.getValue(LEVEL);
 
         if (rand.nextInt(64) == 0)
         {

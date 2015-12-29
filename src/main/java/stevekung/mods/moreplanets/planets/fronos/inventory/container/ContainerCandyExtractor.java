@@ -65,7 +65,7 @@ public class ContainerCandyExtractor extends Container
 
         for (int i = 0; i < this.crafters.size(); ++i)
         {
-            ICrafting icrafting = (ICrafting)this.crafters.get(i);
+            ICrafting icrafting = this.crafters.get(i);
 
             if (this.field_178152_f != this.tileFurnace.getField(2))
             {
@@ -107,7 +107,7 @@ public class ContainerCandyExtractor extends Container
     public ItemStack transferStackInSlot(EntityPlayer player, int index)
     {
         ItemStack itemstack = null;
-        Slot slot = (Slot)this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack())
         {

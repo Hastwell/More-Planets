@@ -15,8 +15,6 @@ import stevekung.mods.moreplanets.moons.europa.world.EuropaWaterExplosion;
 
 public class EntityEuropaWaterBomb extends EntityTNTPrimed
 {
-    private EntityLivingBase tntPlacedBy;
-
     public EntityEuropaWaterBomb(World world)
     {
         super(world);
@@ -37,7 +35,6 @@ public class EntityEuropaWaterBomb extends EntityTNTPrimed
         this.prevPosX = x;
         this.prevPosY = y;
         this.prevPosZ = z;
-        this.tntPlacedBy = entityLiving;
     }
 
     @Override

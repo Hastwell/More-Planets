@@ -106,11 +106,11 @@ public class BlockFronosLeaves extends BlockLeavesMP
         byte b0 = 0;
         int i = b0 | ((BlockType)state.getValue(VARIANT)).ordinal();
 
-        if (!((Boolean)state.getValue(BlockStateHelper.DECAYABLE)).booleanValue())
+        if (!state.getValue(BlockStateHelper.DECAYABLE).booleanValue())
         {
             i |= 4;
         }
-        if (((Boolean)state.getValue(BlockStateHelper.CHECK_DECAY)).booleanValue())
+        if (state.getValue(BlockStateHelper.CHECK_DECAY).booleanValue())
         {
             i |= 8;
         }

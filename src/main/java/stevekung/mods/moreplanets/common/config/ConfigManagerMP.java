@@ -92,12 +92,6 @@ public class ConfigManagerMP
     public static int idTier7RocketSchematicGui;
     public static int idTier8RocketSchematicGui;
 
-    // Potions
-    public static int idPotionInfectedGas;
-    public static int idPotionChemical;
-    public static int idPotionEMP;
-    public static int idPotionIcyPoison;
-
     public static void init(File file)
     {
         ConfigManagerMP.config = new Configuration(file);
@@ -388,27 +382,6 @@ public class ConfigManagerMP
 
             prop = ConfigManagerMP.config.get(ConfigManagerMP.GUIS, "Tier 8 Rocket Schematic GUI ID", 504);
             ConfigManagerMP.idTier8RocketSchematicGui = prop.getInt();
-            propOrder.add(prop.getName());
-
-            // Potions
-            prop = ConfigManagerMP.config.get(ConfigManagerMP.POTIONS, "Infected Gas Potion ID", 60);
-            prop.setRequiresMcRestart(true);
-            ConfigManagerMP.idPotionInfectedGas = prop.getInt();
-            propOrder.add(prop.getName());
-
-            prop = ConfigManagerMP.config.get(ConfigManagerMP.POTIONS, "Chemical Potion ID", 61);
-            prop.setRequiresMcRestart(true);
-            ConfigManagerMP.idPotionChemical = prop.getInt();
-            propOrder.add(prop.getName());
-
-            prop = ConfigManagerMP.config.get(ConfigManagerMP.POTIONS, "EMP Potion ID", 62);
-            prop.setRequiresMcRestart(true);
-            ConfigManagerMP.idPotionEMP = prop.getInt();
-            propOrder.add(prop.getName());
-
-            prop = ConfigManagerMP.config.get(ConfigManagerMP.POTIONS, "Icy Poison Potion ID", 63);
-            prop.setRequiresMcRestart(true);
-            ConfigManagerMP.idPotionIcyPoison = prop.getInt();
             propOrder.add(prop.getName());
 
             ConfigManagerMP.config.setCategoryPropertyOrder(Configuration.CATEGORY_GENERAL, propOrder);

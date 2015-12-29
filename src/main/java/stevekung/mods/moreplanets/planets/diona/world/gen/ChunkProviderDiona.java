@@ -22,13 +22,13 @@ import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
-import stevekung.mods.moreplanets.moons.koentus.world.gen.BiomeGenBaseKoentus;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperMinion;
 import stevekung.mods.moreplanets.planets.diona.entities.EntitySpaceWolf;
@@ -94,7 +94,7 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, x + 8, z + 8, 16, 16, this.rand);
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseKoentus.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
 
         // Dungeon Spawner
         for (int i = 0; i < 12; ++i)

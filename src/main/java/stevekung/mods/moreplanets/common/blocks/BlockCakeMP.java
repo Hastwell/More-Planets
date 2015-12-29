@@ -41,7 +41,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
     public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos)
     {
         float f1 = 0.0625F;
-        float f2 = (1 + ((Integer)world.getBlockState(pos).getValue(BlockStateHelper.BITES)).intValue() * 2) / 16.0F;
+        float f2 = (1 + world.getBlockState(pos).getValue(BlockStateHelper.BITES).intValue() * 2) / 16.0F;
         float f3 = 0.5F;
         this.setBlockBounds(f2, 0.0F, f1, 1.0F - f1, f3, 1.0F - f1);
     }
@@ -58,7 +58,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
     public AxisAlignedBB getCollisionBoundingBox(World world, BlockPos pos, IBlockState state)
     {
         float f1 = 0.0625F;
-        float f2 = (1 + ((Integer)state.getValue(BlockStateHelper.BITES)).intValue() * 2) / 16.0F;
+        float f2 = (1 + state.getValue(BlockStateHelper.BITES).intValue() * 2) / 16.0F;
         float f3 = 0.5F;
         return new AxisAlignedBB(pos.getX() + f2, pos.getY(), pos.getZ() + f1, pos.getX() + 1 - f1, pos.getY() + f3, pos.getZ() + 1 - f1);
     }
@@ -102,7 +102,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
         }
 
         player.getFoodStats().addStats(this.getFoodAmount(), this.getSaturationAmount());
-        int i = ((Integer)state.getValue(BlockStateHelper.BITES)).intValue();
+        int i = state.getValue(BlockStateHelper.BITES).intValue();
 
         if (i < 6)
         {
@@ -171,7 +171,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(BlockStateHelper.BITES)).intValue();
+        return state.getValue(BlockStateHelper.BITES).intValue();
     }
 
     @Override
@@ -183,7 +183,7 @@ public abstract class BlockCakeMP extends BlockBaseMP
     @Override
     public int getComparatorInputOverride(World world, BlockPos pos)
     {
-        return (7 - ((Integer)world.getBlockState(pos).getValue(BlockStateHelper.BITES)).intValue()) * 2;
+        return (7 - world.getBlockState(pos).getValue(BlockStateHelper.BITES).intValue()) * 2;
     }
 
     @Override

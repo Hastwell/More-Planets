@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.mercury.world.gen;
 
-import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.util.BlockPos;
@@ -16,14 +15,10 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomTreasureEmptyMP;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
-import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomBossMercury;
-import stevekung.mods.moreplanets.planets.mercury.world.gen.dungeon.RoomChestsMercury;
 
 public class ChunkProviderMercury extends ChunkProviderBaseMP
 {
@@ -79,7 +74,7 @@ public class ChunkProviderMercury extends ChunkProviderBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         //this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMercury.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
         BlockFalling.fallInstantly = false;
     }
 

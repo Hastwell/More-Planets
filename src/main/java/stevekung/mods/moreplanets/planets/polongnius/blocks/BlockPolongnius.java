@@ -46,6 +46,26 @@ public class BlockPolongnius extends BlockPlanetTileMP
     }
 
     @Override
+    public String getHarvestTool(IBlockState state)
+    {
+        if (this.getMetaFromState(state) <= 1)
+        {
+            return "shovel";
+        }
+        return "pickaxe";
+    }
+
+    @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        if (this.getMetaFromState(state) >= 4)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
     public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
     {
         if (state == state.withProperty(VARIANT, BlockType.polongnius_slime_dungeon_brick))
@@ -73,7 +93,7 @@ public class BlockPolongnius extends BlockPlanetTileMP
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
         for (int i = 0; i < 16; ++i)
         {

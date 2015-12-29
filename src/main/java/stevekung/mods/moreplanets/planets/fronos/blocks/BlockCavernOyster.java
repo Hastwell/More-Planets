@@ -60,7 +60,7 @@ public class BlockCavernOyster extends BlockOysterMP
                 {
                     if (world.rand.nextInt(5) == 0)
                     {
-                        world.setBlockState(pos, this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(OPEN, true), 3);
+                        world.setBlockState(pos, this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(state.getValue(BlockStateHelper.FACING).getIndex())).withProperty(OPEN, true), 3);
                     }
                 }
             }
@@ -94,7 +94,7 @@ public class BlockCavernOyster extends BlockOysterMP
     {
         if (state == state.withProperty(OPEN, true))
         {
-            world.setBlockState(pos, this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex())).withProperty(OPEN, false), 3);
+            world.setBlockState(pos, this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.getFront(state.getValue(BlockStateHelper.FACING).getIndex())).withProperty(OPEN, false), 3);
             EntityItem entityitem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(FronosItems.pearl, 1, 1));
 
             if (!world.isRemote && world.rand.nextInt(20) == 0)
@@ -139,9 +139,9 @@ public class BlockCavernOyster extends BlockOysterMP
     public int getMetaFromState(IBlockState state)
     {
         byte b0 = 0;
-        int i = b0 | ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getOpposite().getIndex();
+        int i = b0 | state.getValue(BlockStateHelper.FACING).getOpposite().getIndex();
 
-        if (!((Boolean)state.getValue(OPEN)).booleanValue())
+        if (!state.getValue(OPEN).booleanValue())
         {
             i |= 8;
         }

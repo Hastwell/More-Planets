@@ -27,6 +27,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
@@ -207,6 +208,12 @@ public class EntityStrawberryChicken extends EntityAnimal
     public boolean isBreedingItem(ItemStack itemStack)
     {
         return itemStack != null && (itemStack.getItem() == Items.wheat_seeds || itemStack.getItem() == FronosItems.golden_seeds);
+    }
+
+    @Override
+    public boolean getCanSpawnHere()
+    {
+        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() instanceof IFronosGrass;
     }
 
     @Override

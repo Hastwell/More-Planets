@@ -58,7 +58,7 @@ public class BlockSiriusFire extends BlockFire
             }
             else
             {
-                int i = ((Integer)state.getValue(AGE)).intValue();
+                int i = state.getValue(AGE).intValue();
 
                 if (i < 15)
                 {
@@ -364,7 +364,7 @@ public class BlockSiriusFire extends BlockFire
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(AGE)).intValue();
+        return state.getValue(AGE).intValue();
     }
 
     @Override

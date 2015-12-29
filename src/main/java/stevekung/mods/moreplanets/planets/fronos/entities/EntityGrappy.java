@@ -44,9 +44,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIGrappyEatGrass;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
@@ -103,8 +103,7 @@ public class EntityGrappy extends EntityAnimal implements IShearable
     @Override
     public boolean getCanSpawnHere()
     {
-        Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
-        return block == FronosBlocks.fronos_grass;
+        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() instanceof IFronosGrass;
     }
 
     @Override

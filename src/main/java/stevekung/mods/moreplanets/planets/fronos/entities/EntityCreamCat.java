@@ -38,8 +38,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAICreamCatSit;
 
 import com.google.common.base.Predicate;
@@ -371,8 +371,7 @@ public class EntityCreamCat extends EntityTameable
     @Override
     public boolean getCanSpawnHere()
     {
-        Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
-        return block == FronosBlocks.fronos_grass;
+        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() instanceof IFronosGrass;
     }
 
     @Override

@@ -113,7 +113,7 @@ public class EntityLiquidDripFX extends EntityFX
 
             if (state.getBlock() instanceof BlockLiquid)
             {
-                d0 = BlockLiquid.getLiquidHeightPercent(((Integer)state.getValue(BlockLiquid.LEVEL)).intValue());
+                d0 = BlockLiquid.getLiquidHeightPercent(state.getValue(BlockLiquid.LEVEL).intValue());
             }
 
             double d1 = MathHelper.floor_double(this.posY) + 1 - d0;

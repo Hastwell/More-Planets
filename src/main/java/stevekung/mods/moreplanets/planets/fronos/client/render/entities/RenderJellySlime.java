@@ -47,7 +47,7 @@ public class RenderJellySlime extends RenderLiving<EntityJellySlime>
     @Override
     protected ResourceLocation getEntityTexture(EntityJellySlime entity)
     {
-        switch (((EntityJellySlime)entity).getJellySlimeType())
+        switch (entity.getJellySlimeType())
         {
         case 0:
         default:

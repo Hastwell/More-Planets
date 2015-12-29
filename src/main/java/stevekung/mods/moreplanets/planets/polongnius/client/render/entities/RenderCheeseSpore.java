@@ -46,9 +46,6 @@ public class RenderCheeseSpore extends Render<EntityCheeseSpore>
         float f4 = textureatlassprite.getMaxU();
         float f5 = textureatlassprite.getMinV();
         float f6 = textureatlassprite.getMaxV();
-        float f7 = 1.0F;
-        float f8 = 0.5F;
-        float f9 = 0.25F;
         GlStateManager.rotate(180.0F - this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181710_j);

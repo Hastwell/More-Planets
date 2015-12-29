@@ -71,9 +71,9 @@ public abstract class BlockFluidBaseMP extends BlockFluidClassic
     {
         super.updateTick(world, pos, state, rand);
 
-        if (this.blockMaterial == Material.water && this.isInfinite())
+        if (this.isInfinite())
         {
-            int i = ((Integer)state.getValue(LEVEL)).intValue();
+            int i = state.getValue(LEVEL).intValue();
             byte b0 = 1;
 
             int j = this.tickRate(world);
@@ -119,7 +119,7 @@ public abstract class BlockFluidBaseMP extends BlockFluidClassic
                     {
                         l = 0;
                     }
-                    else if (iblockstate2.getBlock().getMaterial() == this.blockMaterial && ((Integer)iblockstate2.getValue(LEVEL)).intValue() == 0)
+                    else if (iblockstate2.getBlock().getMaterial() == this.blockMaterial && iblockstate2.getValue(LEVEL).intValue() == 0)
                     {
                         l = 0;
                     }
@@ -182,7 +182,7 @@ public abstract class BlockFluidBaseMP extends BlockFluidClassic
 
     private int getLevel(IBlockAccess world, BlockPos pos)
     {
-        return world.getBlockState(pos).getBlock().getMaterial() == this.blockMaterial ? ((Integer)world.getBlockState(pos).getValue(LEVEL)).intValue() : -1;
+        return world.getBlockState(pos).getBlock().getMaterial() == this.blockMaterial ? world.getBlockState(pos).getValue(LEVEL).intValue() : -1;
     }
 
     @Override

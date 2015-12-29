@@ -17,6 +17,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
@@ -65,7 +66,7 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
         this.createCraters(chunkX, chunkZ, primer);
         this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
         this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, primer);
-        this.villageGenerator.generateStructure(worldObj, rand, new ChunkCoordIntPair(chunkX, chunkZ));
+        this.villageGenerator.generateStructure(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
         this.dungeonGenerator.generateUsingArrays(this.worldObj, this.worldObj.getSeed(), chunkX * 16, 25, chunkZ * 16, chunkX, chunkZ, primer);
         Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
         chunk.generateSkylightMap();
@@ -85,7 +86,7 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseKoentus.baseMoonBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.baseMoonBiome, pos);
         BlockFalling.fallInstantly = false;
     }
 

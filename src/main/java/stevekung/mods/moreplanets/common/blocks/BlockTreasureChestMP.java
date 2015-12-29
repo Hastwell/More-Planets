@@ -99,7 +99,7 @@ public abstract class BlockTreasureChestMP extends BlockContainerMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
+        return state.getValue(BlockStateHelper.FACING).getIndex();
     }
 
     @Override

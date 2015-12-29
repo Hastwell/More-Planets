@@ -15,9 +15,9 @@ import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class EMPEffect extends Potion
 {
-    public EMPEffect(int id, int color)
+    public EMPEffect(String name, int color)
     {
-        super(id, new ResourceLocation("moreplanets:emp"), true, color);
+        super(new ResourceLocation("moreplanets:" + name), true, color);
         this.setIconIndex(1, 0);
     }
 

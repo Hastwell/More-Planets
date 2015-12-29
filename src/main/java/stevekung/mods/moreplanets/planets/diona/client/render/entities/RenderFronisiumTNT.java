@@ -29,6 +29,7 @@ public class RenderFronisiumTNT extends Render<EntityFronisiumTNT>
         this.shadowSize = 0.5F;
     }
 
+    @Override
     public void doRender(EntityFronisiumTNT entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();

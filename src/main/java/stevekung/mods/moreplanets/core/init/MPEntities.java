@@ -172,7 +172,7 @@ public class MPEntities
     private static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour, SpawnPlacementType type)
     {
         id = id + 1000;
-        EntityRegistry.registerModEntity(entity, name, id, MorePlanetsCore.INSTANCE, 64, 3, true);
+        EntityRegistry.registerModEntity(entity, name, id, MorePlanetsCore.INSTANCE, 80, 3, true);
 
         if (type != null)
         {

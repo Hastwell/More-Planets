@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.nibiru.world.gen;
 import java.util.ArrayList;
 import java.util.List;
 
-import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
@@ -20,18 +19,14 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderHillsBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomBossNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomChestsNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomSpawnerNibiru;
-import stevekung.mods.moreplanets.planets.nibiru.world.gen.dungeon.RoomTreasureNibiru;
 
 public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
 {
@@ -91,7 +86,7 @@ public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         //this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseNibiru.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
 
         for (int i = 0; i < 2; i++)
         {

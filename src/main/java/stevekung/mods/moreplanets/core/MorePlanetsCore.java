@@ -13,6 +13,7 @@ import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -67,7 +68,7 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5Rocket;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.14.4.1577,);", guiFactory = "stevekung.mods.moreplanets.common.config.ConfigGuiFactoryMP")//TODO required-after:Micdoodlecore;
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.15.0.1622,);", guiFactory = "stevekung.mods.moreplanets.common.config.ConfigGuiFactoryMP")//TODO required-after:Micdoodlecore;
 public class MorePlanetsCore
 {
     public static final String NAME = "More Planets";
@@ -163,5 +164,16 @@ public class MorePlanetsCore
     public void serverStarted(FMLServerStartedEvent event)
     {
         new Thread(new ThreadVersionCheckMP()).start();
+    }
+
+    public static boolean isObfuscatedEnvironment()
+    {
+        try
+        {
+            Blocks.class.getField("air");
+            return true;
+        }
+        catch (Throwable e) {}
+        return false;
     }
 }

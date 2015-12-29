@@ -110,7 +110,7 @@ public class BlockCoconut extends BlockFalling
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Boolean)state.getValue(HAS_LEAVES)).booleanValue() ? 1 : 0;
+        return state.getValue(HAS_LEAVES).booleanValue() ? 1 : 0;
     }
 
     @Override

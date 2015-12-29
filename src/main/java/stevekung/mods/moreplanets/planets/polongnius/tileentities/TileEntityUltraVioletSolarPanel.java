@@ -355,13 +355,13 @@ public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectrical
     @Override
     public EnumSet<EnumFacing> getElectricalOutputDirections()
     {
-        return EnumSet.of((EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockUltraVioletSolarPanel.FACING));
+        return EnumSet.of(this.worldObj.getBlockState(this.getPos()).getValue(BlockUltraVioletSolarPanel.FACING));
     }
 
     @Override
     public EnumFacing getElectricalOutputDirectionMain()
     {
-        return (EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockUltraVioletSolarPanel.FACING);
+        return this.worldObj.getBlockState(this.getPos()).getValue(BlockUltraVioletSolarPanel.FACING);
     }
 
     @Override

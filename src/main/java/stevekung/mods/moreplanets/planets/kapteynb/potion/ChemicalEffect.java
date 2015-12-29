@@ -16,9 +16,9 @@ import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class ChemicalEffect extends Potion
 {
-    public ChemicalEffect(int id, int color)
+    public ChemicalEffect(String name, int color)
     {
-        super(id, new ResourceLocation("moreplanets:chemical"), true, color);
+        super(new ResourceLocation("moreplanets:" + name), true, color);
         this.setIconIndex(1, 0);
     }
 

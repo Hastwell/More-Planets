@@ -54,7 +54,7 @@ public class ItemBlockSnowLayerMP extends ItemBlockMorePlanets
 
             if (block == this.snow)
             {
-                int i = ((Integer)state.getValue(BlockStateHelper.LAYERS)).intValue();
+                int i = state.getValue(BlockStateHelper.LAYERS).intValue();
 
                 if (i <= 7)
                 {
@@ -77,6 +77,6 @@ public class ItemBlockSnowLayerMP extends ItemBlockMorePlanets
     public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side, EntityPlayer player, ItemStack stack)
     {
         IBlockState state = world.getBlockState(pos);
-        return state.getBlock() != this.snow || (Integer)state.getValue(BlockStateHelper.LAYERS) > 7 ? super.canPlaceBlockOnSide(world, pos, side, player, stack) : true;
+        return state.getBlock() != this.snow || state.getValue(BlockStateHelper.LAYERS) > 7 ? super.canPlaceBlockOnSide(world, pos, side, player, stack) : true;
     }
 }

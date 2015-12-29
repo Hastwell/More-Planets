@@ -50,7 +50,7 @@ public class BlockEuropaSponge extends BlockBaseMP
     @Override
     public int damageDropped(IBlockState state)
     {
-        return ((Boolean)state.getValue(WET)).booleanValue() ? 1 : 0;
+        return state.getValue(WET).booleanValue() ? 1 : 0;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class BlockEuropaSponge extends BlockBaseMP
 
     private void tryAbsorb(World world, BlockPos pos, IBlockState state)
     {
-        if (!((Boolean)state.getValue(WET)).booleanValue() && this.absorb(world, pos))
+        if (!state.getValue(WET).booleanValue() && this.absorb(world, pos))
         {
             world.setBlockState(pos, state.withProperty(WET, Boolean.valueOf(true)), 2);
             world.playAuxSFX(2001, pos, Block.getIdFromBlock(EuropaBlocks.europa_water));
@@ -143,7 +143,7 @@ public class BlockEuropaSponge extends BlockBaseMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Boolean)state.getValue(WET)).booleanValue() ? 1 : 0;
+        return state.getValue(WET).booleanValue() ? 1 : 0;
     }
 
     @Override
@@ -156,7 +156,7 @@ public class BlockEuropaSponge extends BlockBaseMP
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, BlockPos pos, IBlockState state, Random rand)
     {
-        if (((Boolean)state.getValue(WET)).booleanValue())
+        if (state.getValue(WET).booleanValue())
         {
             EnumFacing enumfacing = EnumFacing.random(rand);
 

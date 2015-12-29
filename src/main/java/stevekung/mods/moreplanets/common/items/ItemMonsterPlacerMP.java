@@ -15,7 +15,6 @@ import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -68,7 +67,7 @@ public class ItemMonsterPlacerMP extends ItemMorePlanets
                 if (tileentity instanceof TileEntityMobSpawner)
                 {
                     MobSpawnerBaseLogic mobspawnerbaselogic = ((TileEntityMobSpawner)tileentity).getSpawnerBaseLogic();
-                    mobspawnerbaselogic.setEntityName(EntityList.getStringFromID(itemStack.getMetadata()));
+                    mobspawnerbaselogic.setEntityName("MorePlanets." + MPEntities.getStringFromID(itemStack.getMetadata()));
                     tileentity.markDirty();
                     world.markBlockForUpdate(pos);
 
@@ -83,7 +82,7 @@ public class ItemMonsterPlacerMP extends ItemMorePlanets
             pos = pos.offset(side);
             double d0 = 0.0D;
 
-            if (side == EnumFacing.UP && iblockstate instanceof BlockFence)
+            if (side == EnumFacing.UP && iblockstate.getBlock() instanceof BlockFence)
             {
                 d0 = 0.5D;
             }

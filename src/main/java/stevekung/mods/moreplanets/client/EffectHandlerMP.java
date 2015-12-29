@@ -92,22 +92,22 @@ public class EffectHandlerMP
         {
             entityfx = new EntityGeyserFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
         }
-//        else if (type == EnumParticleTypesMP.MC_NORMAL_SMOKE)
-//        {
-//            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 1.0F);
-//        }
-//        else if (type == EnumParticleTypesMP.MC_LARGE_SMOKE)
-//        {
-//            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 2.5F);
-//        }
+        //        else if (type == EnumParticleTypesMP.MC_NORMAL_SMOKE)
+        //        {
+        //            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 1.0F);
+        //        }
+        //        else if (type == EnumParticleTypesMP.MC_LARGE_SMOKE)
+        //        {
+        //            entityfx = new EntityMCSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ, 2.5F);
+        //        }
         else if (type == EnumParticleTypesMP.MC_EXPLOSION_NORMAL)
         {
             entityfx = new EntityMCExplodeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
         }
-//        else if (type == EnumParticleTypesMP.MC_EXPLOSION_LARGE)
-//        {
-//            entityfx = new EntityMCLargeExplodeFX(Minecraft.getMinecraft().getTextureManager(), mc.theWorld, x, y, z, motionX, motionY, motionZ);
-//        }
+        //        else if (type == EnumParticleTypesMP.MC_EXPLOSION_LARGE)
+        //        {
+        //            entityfx = new EntityMCLargeExplodeFX(Minecraft.getMinecraft().getTextureManager(), mc.theWorld, x, y, z, motionX, motionY, motionZ);
+        //        }
         else if (type == EnumParticleTypesMP.ALIEN_SPLASH)
         {
             entityfx = new EntityAlienSplashFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
@@ -178,66 +178,66 @@ public class EffectHandlerMP
         {
             entityfx = new EntityLiquidDripFX(mc.theWorld, x, y, z, 0.1F, 0.1F, 0.1F, 1.0F, true);
         }
-//        else if (type == EnumParticleTypesMP.CHEESE_SLIME)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball, 0);
-//        }
-//        else if (type == EnumParticleTypesMP.VANILLA_CREAM_BALL)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 0);
-//        }
-//        else if (type == EnumParticleTypesMP.CHOCOLATE_CREAM_BALL)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 1);
-//        }
-//        else if (type == EnumParticleTypesMP.STRAWBERRY_CREAM_BALL)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 2);
-//        }
-//        else if (type == EnumParticleTypesMP.ORANGE_CREAM_BALL)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 3);
-//        }
-//        else if (type == EnumParticleTypesMP.TEA_CREAM_BALL)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 4);
-//        }
-//        else if (type == EnumParticleTypesMP.LEMON_CREAM_BALL)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 5);
-//        }
-//        else if (type == EnumParticleTypesMP.GRAPE_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 0);
-//        }
-//        else if (type == EnumParticleTypesMP.RASPBERRY_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 1);
-//        }
-//        else if (type == EnumParticleTypesMP.STRAWBERRY_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 2);
-//        }
-//        else if (type == EnumParticleTypesMP.BERRY_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 3);
-//        }
-//        else if (type == EnumParticleTypesMP.LIME_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 4);
-//        }
-//        else if (type == EnumParticleTypesMP.ORANGE_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 5);
-//        }
-//        else if (type == EnumParticleTypesMP.GREEN_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 6);
-//        }
-//        else if (type == EnumParticleTypesMP.LEMON_JELLY)
-//        {
-//            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 7);
-//        }
+        //        else if (type == EnumParticleTypesMP.CHEESE_SLIME)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball, 0);
+        //        }
+        //        else if (type == EnumParticleTypesMP.VANILLA_CREAM_BALL)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 0);
+        //        }
+        //        else if (type == EnumParticleTypesMP.CHOCOLATE_CREAM_BALL)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 1);
+        //        }
+        //        else if (type == EnumParticleTypesMP.STRAWBERRY_CREAM_BALL)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 2);
+        //        }
+        //        else if (type == EnumParticleTypesMP.ORANGE_CREAM_BALL)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 3);
+        //        }
+        //        else if (type == EnumParticleTypesMP.TEA_CREAM_BALL)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 4);
+        //        }
+        //        else if (type == EnumParticleTypesMP.LEMON_CREAM_BALL)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 5);
+        //        }
+        //        else if (type == EnumParticleTypesMP.GRAPE_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 0);
+        //        }
+        //        else if (type == EnumParticleTypesMP.RASPBERRY_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 1);
+        //        }
+        //        else if (type == EnumParticleTypesMP.STRAWBERRY_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 2);
+        //        }
+        //        else if (type == EnumParticleTypesMP.BERRY_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 3);
+        //        }
+        //        else if (type == EnumParticleTypesMP.LIME_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 4);
+        //        }
+        //        else if (type == EnumParticleTypesMP.ORANGE_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 5);
+        //        }
+        //        else if (type == EnumParticleTypesMP.GREEN_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 6);
+        //        }
+        //        else if (type == EnumParticleTypesMP.LEMON_JELLY)
+        //        {
+        //            entityfx = new EntityMCBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 7);
+        //        }
         else if (type == EnumParticleTypesMP.ORANGE_DANDELION)
         {
             entityfx = new EntityOrangeDandelionFX(mc.theWorld, x, y, z);

@@ -50,7 +50,7 @@ public class ContainerPowerCrystalGenerator extends Container
     public ItemStack transferStackInSlot(EntityPlayer player, int slot)
     {
         ItemStack itemStack = null;
-        Slot invSlot = (Slot) this.inventorySlots.get(slot);
+        Slot invSlot = this.inventorySlots.get(slot);
 
         if (invSlot != null && invSlot.getHasStack())
         {

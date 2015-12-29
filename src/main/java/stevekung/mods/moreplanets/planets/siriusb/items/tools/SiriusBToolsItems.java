@@ -10,12 +10,11 @@ package stevekung.mods.moreplanets.planets.siriusb.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.common.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.common.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
 public class SiriusBToolsItems
@@ -32,11 +31,11 @@ public class SiriusBToolsItems
     public static void init()
     {
         // Init
-        SiriusBToolsItems.sulfur_pickaxe = new ItemPickaxeMP("sulfur_pickaxe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
-        SiriusBToolsItems.sulfur_axe = new ItemAxeMP("sulfur_axe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
-        SiriusBToolsItems.sulfur_hoe = new ItemHoeMP("sulfur_hoe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
-        SiriusBToolsItems.sulfur_shovel = new ItemShovelMP("sulfur_shovel", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
-        SiriusBToolsItems.sulfur_sword = new ItemSwordMP("sulfur_sword", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4);
+        SiriusBToolsItems.sulfur_pickaxe = new ItemElectricPickaxeMP("sulfur_pickaxe", SiriusBToolsItems.sulfur, 30000.0F, null);
+        SiriusBToolsItems.sulfur_axe = new ItemElectricAxeMP("sulfur_axe", SiriusBToolsItems.sulfur, 30000.0F, null);
+        SiriusBToolsItems.sulfur_hoe = new ItemElectricHoeMP("sulfur_hoe", SiriusBToolsItems.sulfur, 30000.0F, null);
+        SiriusBToolsItems.sulfur_shovel = new ItemElectricShovelMP("sulfur_shovel", SiriusBToolsItems.sulfur, 30000.0F, null);
+        SiriusBToolsItems.sulfur_sword = new ItemElectricSwordMP("sulfur_sword", SiriusBToolsItems.sulfur, 30000.0F, null);
 
         // Register
         CommonRegisterHelper.registerItem(SiriusBToolsItems.sulfur_sword);

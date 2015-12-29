@@ -32,6 +32,7 @@ public class RenderPoisonArrow extends Render<EntityPoisonArrow>
         super(render);
     }
 
+    @Override
     public void doRender(EntityPoisonArrow entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         this.bindEntityTexture(entity);

@@ -194,6 +194,6 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Boolean)state.getValue(IMMUNE)).booleanValue() ? 1 : 0;
+        return state.getValue(IMMUNE).booleanValue() ? 1 : 0;
     }
 }

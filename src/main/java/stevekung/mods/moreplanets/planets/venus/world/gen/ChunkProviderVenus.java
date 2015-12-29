@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.venus.world.gen;
 import java.util.ArrayList;
 import java.util.List;
 
-import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
@@ -24,15 +23,10 @@ import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderHillsBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
-import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomTreasureEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
-import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomBossVenus;
-import stevekung.mods.moreplanets.planets.venus.world.gen.dungeon.RoomChestsVenus;
 
 public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
 {

@@ -47,7 +47,7 @@ public class RenderFronosVillager extends RenderLiving<EntityFronosVillager>
     @Override
     public ModelBase getMainModel()
     {
-        return (ModelVillager)super.getMainModel();
+        return super.getMainModel();
     }
 
     @Override

@@ -14,7 +14,6 @@ import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,8 +24,6 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
 {
     public int spaceStationDimensionID;
     private float angularVelocityRadians = 0F;
-    private float skyAngularVelocity = (float) (this.angularVelocityRadians * 180 / Math.PI);
-
     @Override
     public void setDimension(int id)
     {
@@ -238,8 +235,6 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
     {
         super.setSpinRate(angle);
         this.angularVelocityRadians = angle;
-        this.skyAngularVelocity = angle * 180F / 3.1415927F;
-
         if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
         {
             this.updateSkyProviderSpinRate();
@@ -249,12 +244,12 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
     @SideOnly(Side.CLIENT)
     private void updateSkyProviderSpinRate()
     {
-        IRenderHandler sky = this.getSkyRenderer();
+        this.getSkyRenderer();
 
-//        if (sky instanceof SkyProviderJupiterOrbit)
-//        {
-//            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
-//        }
+        //        if (sky instanceof SkyProviderJupiterOrbit)
+        //        {
+        //            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
+        //        }
     }
 
     @Override
@@ -262,13 +257,12 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
     {
         super.setSpinRate(angle, firing);
         this.angularVelocityRadians = angle;
-        this.skyAngularVelocity = angle * 180F / 3.1415927F;
-        IRenderHandler sky = this.getSkyRenderer();
+        this.getSkyRenderer();
 
-//        if (sky instanceof SkyProviderJupiterOrbit)
-//        {
-//            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
-//        }
+        //        if (sky instanceof SkyProviderJupiterOrbit)
+        //        {
+        //            ((SkyProviderJupiterOrbit) sky).spinDeltaPerTick = this.skyAngularVelocity;
+        //        }
         this.thrustersFiring = firing;
     }
 

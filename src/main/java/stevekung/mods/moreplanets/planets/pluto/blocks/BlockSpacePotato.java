@@ -31,7 +31,7 @@ public class BlockSpacePotato extends BlockCrops
     {
         if (world.provider instanceof WorldProviderPluto)
         {
-            return ((Integer)state.getValue(AGE)).intValue() < 7;
+            return state.getValue(AGE).intValue() < 7;
         }
         return false;
     }
@@ -60,7 +60,7 @@ public class BlockSpacePotato extends BlockCrops
         {
             if (world.getLightFromNeighbors(pos.up()) >= 9)
             {
-                int i = ((Integer)state.getValue(AGE)).intValue();
+                int i = state.getValue(AGE).intValue();
 
                 if (i < 7)
                 {

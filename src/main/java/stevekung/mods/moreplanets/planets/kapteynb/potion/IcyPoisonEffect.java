@@ -17,9 +17,9 @@ import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class IcyPoisonEffect extends Potion
 {
-    public IcyPoisonEffect(int id, int color)
+    public IcyPoisonEffect(String name, int color)
     {
-        super(id, new ResourceLocation("moreplanets:icy_poison"), true, color);
+        super(new ResourceLocation("moreplanets:" + name), true, color);
         this.setIconIndex(1, 0);
     }
 

@@ -29,6 +29,7 @@ public class RenderEuropaWaterBomb extends Render<EntityEuropaWaterBomb>
         this.shadowSize = 0.5F;
     }
 
+    @Override
     public void doRender(EntityEuropaWaterBomb entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();

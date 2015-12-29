@@ -153,11 +153,11 @@ public class BlockDoorMP extends BlockDoor
             {
                 boolean flag = world.isBlockPowered(pos) || world.isBlockPowered(pos.up());
 
-                if ((flag || neighborBlock.canProvidePower()) && neighborBlock != this && flag != ((Boolean)world.getBlockState(pos.up()).getValue(POWERED)).booleanValue())
+                if ((flag || neighborBlock.canProvidePower()) && neighborBlock != this && flag != world.getBlockState(pos.up()).getValue(POWERED).booleanValue())
                 {
                     world.setBlockState(pos.up(), world.getBlockState(pos.up()).withProperty(POWERED, Boolean.valueOf(flag)), 2);
 
-                    if (flag != ((Boolean)state.getValue(OPEN)).booleanValue())
+                    if (flag != state.getValue(OPEN).booleanValue())
                     {
                         world.setBlockState(pos, state.withProperty(OPEN, Boolean.valueOf(flag)), 2);
                         world.markBlockRangeForRenderUpdate(pos, pos);

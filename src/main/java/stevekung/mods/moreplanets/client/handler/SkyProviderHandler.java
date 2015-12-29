@@ -9,11 +9,9 @@ package stevekung.mods.moreplanets.client.handler;
 
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import micdoodle8.mods.galacticraft.core.client.CloudRenderer;
-import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStatsClient;
 import micdoodle8.mods.galacticraft.planets.mars.client.SkyProviderMars;
 import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -47,8 +45,6 @@ import stevekung.mods.moreplanets.planets.siriusb.client.sky.SkyProviderSiriusB;
 import stevekung.mods.moreplanets.planets.siriusb.dimension.WorldProviderSiriusB;
 import stevekung.mods.moreplanets.planets.venus.client.sky.SkyProviderVenus;
 import stevekung.mods.moreplanets.planets.venus.dimension.WorldProviderVenus;
-import stevekung.mods.moreplanets.spacestation.jupiter.WorldProviderJupiterOrbit;
-import stevekung.mods.moreplanets.spacestation.mars.WorldProviderMarsOrbit;
 
 public class SkyProviderHandler
 {
@@ -58,8 +54,6 @@ public class SkyProviderHandler
     {
         Minecraft mc = Minecraft.getMinecraft();
         WorldClient world = mc.theWorld;
-        EntityPlayerSP player = mc.thePlayer;
-
         if (world != null)
         {
             if (Loader.isModLoaded("GalacticraftMars"))
@@ -200,32 +194,32 @@ public class SkyProviderHandler
                     world.provider.setCloudRenderer(new CloudRenderer());
                 }
             }
-//            else if (world.provider instanceof WorldProviderJupiterOrbit)
-//            {
-//                if (world.provider.getSkyRenderer() == null)
-//                {
-//                    world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
-//                    ((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
-//                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
-//                }
-//                if (world.provider.getCloudRenderer() == null)
-//                {
-//                    world.provider.setCloudRenderer(new CloudRenderer());
-//                }
-//            }
-//            else if (world.provider instanceof WorldProviderMarsOrbit)
-//            {
-//                if (world.provider.getSkyRenderer() == null)
-//                {
-//                    world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
-//                    ((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
-//                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
-//                }
-//                if (world.provider.getCloudRenderer() == null)
-//                {
-//                    world.provider.setCloudRenderer(new CloudRenderer());
-//                }
-//            }
+            //            else if (world.provider instanceof WorldProviderJupiterOrbit)
+            //            {
+            //                if (world.provider.getSkyRenderer() == null)
+            //                {
+            //                    world.provider.setSkyRenderer(new SkyProviderJupiterOrbit());
+            //                    ((SkyProviderJupiterOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderJupiterOrbit) world.provider).getSpinRate();
+            //                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+            //                }
+            //                if (world.provider.getCloudRenderer() == null)
+            //                {
+            //                    world.provider.setCloudRenderer(new CloudRenderer());
+            //                }
+            //            }
+            //            else if (world.provider instanceof WorldProviderMarsOrbit)
+            //            {
+            //                if (world.provider.getSkyRenderer() == null)
+            //                {
+            //                    world.provider.setSkyRenderer(new SkyProviderMarsOrbit());
+            //                    ((SkyProviderMarsOrbit) world.provider.getSkyRenderer()).spinDeltaPerTick = ((WorldProviderMarsOrbit) world.provider).getSpinRate();
+            //                    GCPlayerStatsClient.get(player).inFreefallFirstCheck = false;
+            //                }
+            //                if (world.provider.getCloudRenderer() == null)
+            //                {
+            //                    world.provider.setCloudRenderer(new CloudRenderer());
+            //                }
+            //            }
             else if (world.provider instanceof WorldProviderDarkAsteroids)
             {
                 if (world.provider.getSkyRenderer() == null)

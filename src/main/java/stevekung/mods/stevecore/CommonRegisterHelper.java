@@ -20,7 +20,6 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -113,7 +112,6 @@ public class CommonRegisterHelper
 
     public static void registerForgeEvent(Object event)
     {
-        FMLCommonHandler.instance().bus().register(event);
         MinecraftForge.EVENT_BUS.register(event);
     }
 

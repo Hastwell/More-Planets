@@ -21,12 +21,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientRegisterHelper
 {
-    public static void registerVariantsName(Item item, String[] variant)
+    public static void registerVariantsName(Item item, String... variant)
     {
-        ModelBakery.addVariantName(item, variant);
+        for (String name : variant)
+        {
+            ModelBakery.registerItemVariants(item, new ModelResourceLocation(name, "inventory"));
+        }
     }
 
-    public static void registerVariantsName(Block block, String[] variant)
+    public static void registerVariantsName(Block block, String... variant)
     {
         ClientRegisterHelper.registerVariantsName(Item.getItemFromBlock(block), variant);
     }
@@ -163,6 +166,6 @@ public class ClientRegisterHelper
 
     private static void registerVariantsName(Item item, String variant, String folder)
     {
-        ModelBakery.addVariantName(item, folder + ":" + variant);
+        ModelBakery.registerItemVariants(item, new ModelResourceLocation(folder + ":" + variant, "inventory"));
     }
 }

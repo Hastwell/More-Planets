@@ -62,7 +62,7 @@ public class BlockEuropaKelp extends BlockBaseMP
 
                 if (i < 3)
                 {
-                    int j = ((Integer)state.getValue(AGE)).intValue();
+                    int j = state.getValue(AGE).intValue();
 
                     if (j == 15)
                     {
@@ -167,7 +167,7 @@ public class BlockEuropaKelp extends BlockBaseMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((Integer)state.getValue(AGE)).intValue();
+        return state.getValue(AGE).intValue();
     }
 
     @Override

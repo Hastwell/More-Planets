@@ -51,7 +51,7 @@ public class ContainerUltraVioletSolarPanel extends Container
     public ItemStack transferStackInSlot(EntityPlayer player, int slot)
     {
         ItemStack itemStack = null;
-        Slot var4 = (Slot) this.inventorySlots.get(slot);
+        Slot var4 = this.inventorySlots.get(slot);
 
         if (var4 != null && var4.getHasStack())
         {

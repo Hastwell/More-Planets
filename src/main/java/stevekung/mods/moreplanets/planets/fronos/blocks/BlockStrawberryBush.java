@@ -57,7 +57,7 @@ public class BlockStrawberryBush extends BlockCrops implements IPlantableMP
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
         List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
-        int age = ((Integer)state.getValue(AGE)).intValue();
+        int age = state.getValue(AGE).intValue();
         Random rand = world instanceof World ? ((World)world).rand : new Random();
 
         if (age >= 7)

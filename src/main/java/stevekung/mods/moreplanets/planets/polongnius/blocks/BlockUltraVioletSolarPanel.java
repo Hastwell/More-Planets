@@ -187,7 +187,7 @@ public class BlockUltraVioletSolarPanel extends BlockTileGC implements IPartialS
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     @Override

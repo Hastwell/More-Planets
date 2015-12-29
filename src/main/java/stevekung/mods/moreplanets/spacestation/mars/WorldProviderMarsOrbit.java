@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.spacestation.mars;
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
 import micdoodle8.mods.galacticraft.core.dimension.WorldProviderOrbit;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,8 +20,6 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
 {
     public int spaceStationDimensionID;
     private float angularVelocityRadians = 0F;
-    private float skyAngularVelocity = (float) (this.angularVelocityRadians * 180 / Math.PI);
-
     @Override
     public void setDimension(int id)
     {
@@ -112,8 +109,6 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     {
         super.setSpinRate(angle);
         this.angularVelocityRadians = angle;
-        this.skyAngularVelocity = angle * 180F / 3.1415927F;
-
         if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
         {
             this.updateSkyProviderSpinRate();
@@ -123,12 +118,12 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     @SideOnly(Side.CLIENT)
     private void updateSkyProviderSpinRate()
     {
-        IRenderHandler sky = this.getSkyRenderer();
+        this.getSkyRenderer();
 
-//        if (sky instanceof SkyProviderMarsOrbit)
-//        {
-//            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
-//        }
+        //        if (sky instanceof SkyProviderMarsOrbit)
+        //        {
+        //            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
+        //        }
     }
 
     @Override
@@ -136,13 +131,12 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     {
         super.setSpinRate(angle, firing);
         this.angularVelocityRadians = angle;
-        this.skyAngularVelocity = angle * 180F / 3.1415927F;
-        IRenderHandler sky = this.getSkyRenderer();
+        this.getSkyRenderer();
 
-//        if (sky instanceof SkyProviderMarsOrbit)
-//        {
-//            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
-//        }
+        //        if (sky instanceof SkyProviderMarsOrbit)
+        //        {
+        //            ((SkyProviderMarsOrbit)sky).spinDeltaPerTick = this.skyAngularVelocity;
+        //        }
         this.thrustersFiring = firing;
     }
 

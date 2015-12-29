@@ -52,7 +52,7 @@ public abstract class ItemBlockSlabMP extends ItemBlockBaseMP
             {
                 IProperty iproperty = this.singleSlab.getVariantProperty();
                 Comparable comparable = state.getValue(iproperty);
-                EnumBlockHalf enumblockhalf = (EnumBlockHalf)state.getValue(BlockSlab.HALF);
+                EnumBlockHalf enumblockhalf = state.getValue(BlockSlab.HALF);
 
                 if ((side == EnumFacing.UP && enumblockhalf == EnumBlockHalf.BOTTOM || side == EnumFacing.DOWN && enumblockhalf == BlockSlab.EnumBlockHalf.TOP) && comparable == object)
                 {

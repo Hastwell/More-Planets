@@ -86,7 +86,7 @@ public class BlockCandyExtractor extends BlockContainerMP
             Block block1 = world.getBlockState(pos.south()).getBlock();
             Block block2 = world.getBlockState(pos.west()).getBlock();
             Block block3 = world.getBlockState(pos.east()).getBlock();
-            EnumFacing enumfacing = (EnumFacing)state.getValue(BlockStateHelper.FACING);
+            EnumFacing enumfacing = state.getValue(BlockStateHelper.FACING);
 
             if (enumfacing == EnumFacing.NORTH && block.isFullBlock() && !block1.isFullBlock())
             {
@@ -159,7 +159,7 @@ public class BlockCandyExtractor extends BlockContainerMP
     {
         if (this.isActive)
         {
-            EnumFacing enumfacing = (EnumFacing)state.getValue(BlockStateHelper.FACING);
+            EnumFacing enumfacing = state.getValue(BlockStateHelper.FACING);
             double d0 = pos.getX() + 0.5D;
             double d1 = pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
             double d2 = pos.getZ() + 0.5D;
@@ -261,7 +261,7 @@ public class BlockCandyExtractor extends BlockContainerMP
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(BlockStateHelper.FACING)).getIndex();
+        return state.getValue(BlockStateHelper.FACING).getIndex();
     }
 
     @Override

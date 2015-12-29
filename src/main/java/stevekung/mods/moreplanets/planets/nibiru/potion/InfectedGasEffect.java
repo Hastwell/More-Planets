@@ -16,9 +16,9 @@ import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class InfectedGasEffect extends Potion
 {
-    public InfectedGasEffect(int id, int color)
+    public InfectedGasEffect(String name, int color)
     {
-        super(id, new ResourceLocation("moreplanets:infected_gas"), true, color);
+        super(new ResourceLocation("moreplanets:" + name), true, color);
         this.setIconIndex(1, 0);
     }
 
