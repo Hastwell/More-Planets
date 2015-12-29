@@ -51,7 +51,7 @@ public class EntityCheeseCow extends EntityAnimal implements IEntityBreathable
     @Override
     public boolean getCanSpawnHere()
     {
-        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() == PolongniusBlocks.polongnius_block.getDefaultState();
+        return this.worldObj.getBlockState(this.getPosition().down()) == PolongniusBlocks.polongnius_block.getDefaultState();
     }
 
     @Override

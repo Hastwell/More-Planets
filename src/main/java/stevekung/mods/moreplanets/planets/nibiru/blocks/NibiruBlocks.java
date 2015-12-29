@@ -130,10 +130,9 @@ public class NibiruBlocks
         CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.infected_grass, "shovel", 0);
         CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.infected_dirt, "shovel", 0);
         CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.infected_farmland, "shovel", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.nibiru_block, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.nibiru_cobblestone_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.nibiru_dungeon_brick_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.oil_rock, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.nibiru_dungeon_brick_stairs, "pickaxe", 1);
+        CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.oil_rock, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.infected_worm_egg_rock, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(NibiruBlocks.power_crystal_generator, "pickaxe", 0);
 

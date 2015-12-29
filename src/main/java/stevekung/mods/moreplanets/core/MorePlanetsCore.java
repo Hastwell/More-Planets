@@ -13,6 +13,7 @@ import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.planets.mars.MarsModule;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -163,5 +164,16 @@ public class MorePlanetsCore
     public void serverStarted(FMLServerStartedEvent event)
     {
         new Thread(new ThreadVersionCheckMP()).start();
+    }
+
+    public static boolean isObfuscatedEnvironment()
+    {
+        try
+        {
+            Blocks.class.getField("air");
+            return true;
+        }
+        catch (Throwable e) {}
+        return false;
     }
 }

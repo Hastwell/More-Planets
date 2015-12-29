@@ -43,6 +43,22 @@ public class BlockFronos extends BlockPlanetTileMP
     }
 
     @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
+
+        if (meta == 2 || meta >= 4 && meta <= 8 || meta == 10 || meta == 14)
+        {
+            return 1;
+        }
+        if (meta == 9)
+        {
+            return 2;
+        }
+        return 0;
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {

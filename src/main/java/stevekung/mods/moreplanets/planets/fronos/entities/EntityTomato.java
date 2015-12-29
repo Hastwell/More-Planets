@@ -21,9 +21,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityTomato extends EntityAnimal
@@ -58,7 +58,7 @@ public class EntityTomato extends EntityAnimal
     @Override
     public boolean getCanSpawnHere()
     {
-        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() == FronosBlocks.fronos_grass;
+        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() instanceof IFronosGrass;
     }
 
     @Override

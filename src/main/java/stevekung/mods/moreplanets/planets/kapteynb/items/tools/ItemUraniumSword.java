@@ -9,14 +9,10 @@ package stevekung.mods.moreplanets.planets.kapteynb.items.tools;
 
 import java.util.List;
 
-import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
@@ -24,45 +20,26 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.common.items.tools.ItemElectricSwordMP;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 
-public class ItemUraniumSword extends ItemSword
+public class ItemUraniumSword extends ItemElectricSwordMP
 {
     public ItemUraniumSword(String name, ToolMaterial material)
     {
-        super(material);
+        super(name, material, 25000.0F, null);
         this.setUnlocalizedName(name);
-    }
-
-    @Override
-    public CreativeTabs getCreativeTab()
-    {
-        return MorePlanetsCore.mpToolsTab;
     }
 
     @Override
     public boolean hitEntity(ItemStack itemStack, EntityLivingBase entity, EntityLivingBase entity2)
     {
-        entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
-        itemStack.damageItem(1, entity2);
-        return true;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public EnumRarity getRarity(ItemStack itemStack)
-    {
-        return ClientProxyCore.galacticraftItem;
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-    {
-        if (repair.getItem() == KapteynBItems.kapteyn_b_item && repair.getItemDamage() == 1)
+        if (this.getElectricityStored(itemStack) != 0.0F)
         {
+            this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.5F);
+            entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
             return true;
         }
         return false;
@@ -72,10 +49,8 @@ public class ItemUraniumSword extends ItemSword
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
     {
-        if (player.worldObj.isRemote)
-        {
-            list.add(EnumChatFormatting.GRAY + "Ice Crystal Tool Upgrade Required : 12");
-        }
+        list.add(EnumChatFormatting.GRAY + "Ice Crystal Tool Upgrade Required : 12");
+        super.addInformation(itemStack, player, list, advanced);
     }
 
     @Override

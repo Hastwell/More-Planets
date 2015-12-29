@@ -32,6 +32,7 @@ public class TileEntityFrozenWaterGeyser extends TileEntity implements IUpdatePl
                 if (living.size() > 0)
                 {
                     living.get(0).motionY = 1.5D;
+                    living.get(0).fallDistance = 0.0F;
                     living.get(0).extinguish();
                     living.get(0).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
                 }
@@ -45,6 +46,7 @@ public class TileEntityFrozenWaterGeyser extends TileEntity implements IUpdatePl
                     if (!player.get(0).capabilities.isFlying)
                     {
                         player.get(0).motionY = 1.5D;
+                        player.get(0).fallDistance = 0.0F;
                         player.get(0).extinguish();
                         player.get(0).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
                     }

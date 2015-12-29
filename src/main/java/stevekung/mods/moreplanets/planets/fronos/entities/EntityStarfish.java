@@ -7,7 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.fronos.entities;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosSand;
@@ -46,13 +47,8 @@ public class EntityStarfish extends EntityAnimal
     @Override
     public boolean getCanSpawnHere()
     {
-        Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
-
-        if (block == FronosBlocks.fronos_sand.getDefaultState().withProperty(BlockFronosSand.VARIANT, BlockFronosSand.BlockType.white_sand) || block == Blocks.sand)
-        {
-            return true;
-        }
-        return block == FronosBlocks.fronos_grass;
+        IBlockState state = this.worldObj.getBlockState(this.getPosition().down());
+        return state.getBlock() instanceof IFronosGrass || state == FronosBlocks.fronos_sand.getDefaultState().withProperty(BlockFronosSand.VARIANT, BlockFronosSand.BlockType.white_sand) || state == Blocks.sand.getDefaultState();
     }
 
     @Override

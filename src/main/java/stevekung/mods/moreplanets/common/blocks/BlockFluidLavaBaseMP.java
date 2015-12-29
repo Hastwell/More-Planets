@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
@@ -31,8 +32,13 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
         this.setQuantaPerBlock(4);
         this.setHardness(100.0F);
         this.setResistance(100.0F);
-        this.setLightLevel(1.0F);
         this.setTickRandomly(true);
+    }
+
+    @Override
+    public int getLightValue(IBlockAccess world, BlockPos pos)
+    {
+        return 15;
     }
 
     @Override

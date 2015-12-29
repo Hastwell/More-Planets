@@ -14,6 +14,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import micdoodle8.mods.galacticraft.planets.mars.entities.EntitySlimeling;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -25,6 +26,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPItems;
@@ -115,20 +117,20 @@ public class EntityDustSludgeling extends EntityMob implements IEntityBreathable
     @Override
     public void onLivingUpdate()
     {
-        Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
-
-        for (int i = 0; i < 5; i++)
+        if (this.motionX * this.motionX + this.motionZ * this.motionZ > 2.500000277905201E-7D && this.rand.nextInt(2) == 0)
         {
-            if (this.worldObj.rand.nextInt(8) == 0)
+            int x = MathHelper.floor_double(this.posX);
+            int y = MathHelper.floor_double(this.posY - 0.20000000298023224D);
+            int z = MathHelper.floor_double(this.posZ);
+            IBlockState block = this.worldObj.getBlockState(new BlockPos(x, y, z));
+
+            if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))
             {
-                if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))
-                {
-                    this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.getPosition().getX() + this.worldObj.rand.nextFloat(), this.getPosition().getY() + 0.5F, this.getPosition().getZ() + this.worldObj.rand.nextFloat(), 0.0D, 0.0D, 0.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))});
-                }
-                else if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))
-                {
-                    this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.getPosition().getX() + this.worldObj.rand.nextFloat(), this.getPosition().getY() + 0.5F, this.getPosition().getZ() + this.worldObj.rand.nextFloat(), 0.0D, 0.0D, 0.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))});
-                }
+                this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.posX + (this.rand.nextFloat() - 0.5D) * this.width, this.getEntityBoundingBox().minY + 0.1D, this.posZ + (this.rand.nextFloat() - 0.5D) * this.width, 4.0D * (this.rand.nextFloat() - 0.5D), 0.5D, (this.rand.nextFloat() - 0.5D) * 4.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_surface_rock))});
+            }
+            else if (block == DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))
+            {
+                this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.posX + (this.rand.nextFloat() - 0.5D) * this.width, this.getEntityBoundingBox().minY + 0.1D, this.posZ + (this.rand.nextFloat() - 0.5D) * this.width, 4.0D * (this.rand.nextFloat() - 0.5D), 0.5D, (this.rand.nextFloat() - 0.5D) * 4.0D, new int[] {Block.getStateId(DionaBlocks.diona_block.getDefaultState().withProperty(BlockDiona.VARIANT, BlockDiona.BlockType.diona_sub_surface_rock))});
             }
         }
         super.onLivingUpdate();

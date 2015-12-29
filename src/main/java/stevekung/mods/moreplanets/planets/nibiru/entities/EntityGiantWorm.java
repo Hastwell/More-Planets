@@ -19,8 +19,6 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
@@ -100,12 +98,6 @@ public class EntityGiantWorm extends EntityMob implements IEntityBreathable, IEn
     protected void playStepSound(BlockPos pos, Block block)
     {
         this.worldObj.playSoundAtEntity(this, "mob.silverfish.step", 1.0F, 1.0F);
-    }
-
-    @Override
-    protected Item getDropItem()
-    {
-        return Item.getItemFromBlock(Blocks.air);
     }
 
     @Override

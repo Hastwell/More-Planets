@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import org.apache.logging.log4j.Level;
 
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class MPLog
 {
@@ -32,7 +33,7 @@ public class MPLog
 
     public static void debug(String message)
     {
-        if (ConfigManagerMP.enableDebug)
+        if (ConfigManagerMP.enableDebug || MorePlanetsCore.isObfuscatedEnvironment())
         {
             FMLRelaunchLog.log("More Planets Debug", Level.INFO, message);
         }
@@ -55,7 +56,7 @@ public class MPLog
 
     public static void debug(String message, Object... obj)
     {
-        if (ConfigManagerMP.enableDebug)
+        if (ConfigManagerMP.enableDebug || MorePlanetsCore.isObfuscatedEnvironment())
         {
             FMLRelaunchLog.log("More Planets Debug", Level.INFO, message, obj);
         }

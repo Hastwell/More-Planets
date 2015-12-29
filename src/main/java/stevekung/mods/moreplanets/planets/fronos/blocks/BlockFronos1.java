@@ -45,6 +45,16 @@ public class BlockFronos1 extends BlockBaseMP implements IDetectableResource
     }
 
     @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        if (this.getMetaFromState(state) <= 2)
+        {
+            return 2;
+        }
+        return 1;
+    }
+
+    @Override
     public ItemStack getPickBlock(MovingObjectPosition target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)));

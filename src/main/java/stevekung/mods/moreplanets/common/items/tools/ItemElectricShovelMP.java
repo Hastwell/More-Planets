@@ -44,19 +44,23 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
-public abstract class ItemElectricShovelMP extends ItemSpade implements IItemElectric
+public class ItemElectricShovelMP extends ItemSpade implements IItemElectric
 {
     //private static Object itemManagerIC2;
     public float transferMax;
     private DefaultArtifactVersion mcVersion = null;
+    private IToolEffect effect;
+    private float maxPower;
 
-    public ItemElectricShovelMP(ToolMaterial material)
+    public ItemElectricShovelMP(String name, ToolMaterial material, float maxPower, IToolEffect effect)
     {
         super(material);
         this.setMaxDamage(100);
         this.setNoRepair();
-        this.setMaxTransfer();
-
+        this.setUnlocalizedName(name);
+        this.transferMax = 200;
+        this.effect = effect;
+        this.maxPower = maxPower;
         this.mcVersion = new DefaultArtifactVersion((String) FMLInjectionData.data()[4]);
 
         if (EnergyConfigHandler.isIndustrialCraft2Loaded())
@@ -72,9 +76,10 @@ public abstract class ItemElectricShovelMP extends ItemSpade implements IItemEle
         }
     }
 
-    protected void setMaxTransfer()
+    @Override
+    public float getMaxElectricityStored(ItemStack itemStack)
     {
-        this.transferMax = 200;
+        return this.maxPower;
     }
 
     @Override
@@ -103,6 +108,11 @@ public abstract class ItemElectricShovelMP extends ItemSpade implements IItemEle
         if (this.getElectricityStored(itemStack) != 0.0F)
         {
             this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.5F);
+
+            if (this.effect != null)
+            {
+                this.effect.addEffect(living);
+            }
             return true;
         }
         return false;
@@ -240,11 +250,10 @@ public abstract class ItemElectricShovelMP extends ItemSpade implements IItemEle
         return energyStored;
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
+    @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs creativeTabs, List list)
     {
-        list.add(ElectricItemHelper.getUncharged(new ItemStack(this)));
         list.add(ElectricItemHelper.getWithCharge(new ItemStack(this), this.getMaxElectricityStored(new ItemStack(this))));
     }
 

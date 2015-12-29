@@ -93,18 +93,11 @@ public class PolongniusBlocks
         CommonRegisterHelper.registerBlock(PolongniusBlocks.ultra_violet_solar_fake);
 
         // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_block, "shovel", 0, 0);
-        CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_block, "shovel", 0, 1);
         CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_cobblestone_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_dungeon_brick_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.fallen_polongnius_meteor, "pickaxe", 2);
         CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.ultra_violet_solar_panel, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_ancient_chest, "axe", 0);
-
-        for (int i = 2; i < 15; i++)
-        {
-            CommonRegisterHelper.setBlockHarvestLevel(PolongniusBlocks.polongnius_block, "pickaxe", 0, i);
-        }
 
         // Register ore dictionary
         OreDictionary.registerOre("oreCopper", new ItemStack(PolongniusBlocks.polongnius_block, 1, 4));

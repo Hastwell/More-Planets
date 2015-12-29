@@ -124,11 +124,10 @@ public class KoentusBlocks
         CommonRegisterHelper.registerBlock(KoentusBlocks.crystal_cocoa);
 
         // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_block, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.eledos_egg, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.crystal_segment, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_cobblestone_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_dungeon_brick_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_ancient_stone_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.koentus_ancient_stone_brick_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(KoentusBlocks.fallen_koentus_meteor, "pickaxe", 2);

@@ -105,7 +105,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
     @Override
     public boolean getCanSpawnHere()
     {
-        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() == DionaBlocks.diona_block.getDefaultState();
+        return this.worldObj.getBlockState(this.getPosition().down()) == DionaBlocks.diona_block.getDefaultState();
     }
 
     @Override

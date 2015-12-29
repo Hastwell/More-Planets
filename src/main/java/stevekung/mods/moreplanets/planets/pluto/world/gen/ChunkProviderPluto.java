@@ -21,6 +21,7 @@ import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomBossPluto;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomChestsPluto;
@@ -81,6 +82,19 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
+
+        pos = pos.add(8, 0, 8);
+
+        for (int k1 = 0; k1 < 16; ++k1)
+        {
+            for (int l1 = 0; l1 < 16; ++l1)
+            {
+                if (this.worldObj.canSnowAt(this.worldObj.getPrecipitationHeight(pos.add(k1, 0, l1)), true))
+                {
+                    this.worldObj.setBlockState(this.worldObj.getPrecipitationHeight(pos.add(k1, 0, l1)), EuropaBlocks.europa_snow_layer.getDefaultState(), 2);
+                }
+            }
+        }
         BlockFalling.fallInstantly = false;
     }
 

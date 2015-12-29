@@ -9,7 +9,10 @@ package stevekung.mods.moreplanets.planets.pluto.dimension;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
+import net.minecraft.block.Block;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,6 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.dimension.WorldProviderMP;
 import stevekung.mods.moreplanets.common.world.gen.WorldChunkManagerPlanetBase;
 import stevekung.mods.moreplanets.core.init.MPPlanets;
+import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.ChunkProviderPluto;
 
 public class WorldProviderPluto extends WorldProviderMP
@@ -50,6 +54,28 @@ public class WorldProviderPluto extends WorldProviderMP
     public Class<? extends WorldChunkManager> getWorldChunkManagerClass()
     {
         return WorldChunkManagerPlanetBase.class;
+    }
+
+    @Override
+    public boolean canSnowAt(BlockPos pos, boolean checkLight)
+    {
+        if (!checkLight)
+        {
+            return true;
+        }
+        else
+        {
+            if (pos.getY() >= 72 && pos.getY() < 255 && this.worldObj.getLightFor(EnumSkyBlock.BLOCK, pos) < 10)
+            {
+                Block block = this.worldObj.getBlockState(pos).getBlock();
+
+                if (block.isAir(this.worldObj, pos) && EuropaBlocks.europa_snow_layer.canPlaceBlockAt(this.worldObj, pos))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     @Override

@@ -415,8 +415,6 @@ public class FronosBlocks
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_ancient_chest, "axe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.sky_mushroom_block, "axe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_sandstone, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_block, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_block1, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.jelly_ore, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_cobblestone_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_stone_brick_stairs, "pickaxe", 0);
@@ -425,7 +423,7 @@ public class FronosBlocks
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.candy_extractor_idle, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.candy_extractor_active, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.mineral_water_generator, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.ore_block, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.ore_block, "pickaxe", 2);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.space_oyster, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.cavern_oyster, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.half_fronos_sandstone_slab, "pickaxe", 0);

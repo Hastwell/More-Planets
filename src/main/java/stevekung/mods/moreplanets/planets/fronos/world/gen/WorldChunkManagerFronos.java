@@ -248,8 +248,11 @@ import net.minecraft.world.gen.layer.IntCache;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.biome.BiomeGenBaseFronos;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.layer.GenLayerFronos;
 
+import com.google.common.collect.Lists;
+
 public class WorldChunkManagerFronos extends WorldChunkManagerSpace
 {
+    private List<BiomeGenBase> allowedBiomes = Lists.newArrayList(BiomeGenBaseFronos.coconutForest, BiomeGenBaseFronos.mapleForest, BiomeGenBaseFronos.purpleMapleForest, BiomeGenBaseFronos.grassyPlains);
     private GenLayer unzoomedBiomes;
     private GenLayer zoomedBiomes;
     private BiomeCache myBiomeCache;
@@ -259,12 +262,7 @@ public class WorldChunkManagerFronos extends WorldChunkManagerSpace
     {
         this.myBiomeCache = new BiomeCache(this);
         this.myBiomesToSpawnIn = new ArrayList();
-        this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.coconutForest);
-        this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.goldenField);
-        this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.purpleMapleForest);
-        this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.grassyPlains);
-        this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.candyLand);
-        this.myBiomesToSpawnIn.add(BiomeGenBaseFronos.mapleForest);
+        this.myBiomesToSpawnIn.addAll(this.allowedBiomes);
     }
 
     public WorldChunkManagerFronos(long seed)

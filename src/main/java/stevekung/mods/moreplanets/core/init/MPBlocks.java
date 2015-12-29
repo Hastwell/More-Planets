@@ -145,10 +145,10 @@ public class MPBlocks
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_stone_slab_2, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_wooden_slab_1, "axe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_wooden_slab_1, "axe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_dungeon_brick_slab_1, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_dungeon_brick_slab_1, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_dungeon_brick_slab_1, "pickaxe", 1);
+        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_dungeon_brick_slab_1, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.stone_wall, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.dungeon_brick_wall, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.dungeon_brick_wall, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.chondrite_rock, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.polished_space_decoration, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.space_mossy_cobblestone, "pickaxe", 0);

@@ -13,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
 import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
@@ -72,6 +73,12 @@ public class EntityMilkCow extends EntityCow
     public boolean isBreedingItem(ItemStack itemStack)
     {
         return super.isBreedingItem(itemStack) || itemStack.getItem() == FronosItems.fronos_item && itemStack.getItemDamage() == 6;
+    }
+
+    @Override
+    public boolean getCanSpawnHere()
+    {
+        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() instanceof IFronosGrass;
     }
 
     @Override
