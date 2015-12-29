@@ -10,12 +10,11 @@ package stevekung.mods.moreplanets.planets.diona.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.core.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class DionaToolsItems
@@ -44,16 +43,16 @@ public class DionaToolsItems
 
     private static void initItems()
     {
-        DionaToolsItems.quontonium_sword = new ItemSwordMP("quontonium_sword", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_sword");
-        DionaToolsItems.quontonium_shovel = new ItemShovelMP("quontonium_spade", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_shovel");
-        DionaToolsItems.quontonium_pickaxe = new ItemPickaxeMP("quontonium_pickaxe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_pickaxe");
-        DionaToolsItems.quontonium_axe = new ItemAxeMP("quontonium_axe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_axe");
-        DionaToolsItems.quontonium_hoe = new ItemHoeMP("quontonium_hoe", DionaToolsItems.quontonium, DionaItems.diona_item, 2, "diona:quontonium_hoe");
-        DionaToolsItems.fronisium_sword = new ItemSwordMP("fronisium_sword", fronisium, DionaItems.diona_item, 3, "diona:fronisium_sword");
-        DionaToolsItems.fronisium_shovel = new ItemShovelMP("fronisium_spade", fronisium, DionaItems.diona_item, 3, "diona:fronisium_shovel");
-        DionaToolsItems.fronisium_pickaxe = new ItemPickaxeMP("fronisium_pickaxe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_pickaxe");
-        DionaToolsItems.fronisium_axe = new ItemAxeMP("fronisium_axe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_axe");
-        DionaToolsItems.fronisium_hoe = new ItemHoeMP("fronisium_hoe", fronisium, DionaItems.diona_item, 3, "diona:fronisium_hoe");
+        DionaToolsItems.quontonium_sword = new ItemElectricSwordMP("quontonium_sword", DionaToolsItems.quontonium, 15000.0F, null).setTextureName("diona:quontonium_sword");
+        DionaToolsItems.quontonium_shovel = new ItemElectricShovelMP("quontonium_spade", DionaToolsItems.quontonium, 15000.0F, null).setTextureName("diona:quontonium_shovel");
+        DionaToolsItems.quontonium_pickaxe = new ItemElectricPickaxeMP("quontonium_pickaxe", DionaToolsItems.quontonium, 15000.0F, null).setTextureName("diona:quontonium_pickaxe");
+        DionaToolsItems.quontonium_axe = new ItemElectricAxeMP("quontonium_axe", DionaToolsItems.quontonium, 15000.0F, null).setTextureName("diona:quontonium_axe");
+        DionaToolsItems.quontonium_hoe = new ItemElectricHoeMP("quontonium_hoe", DionaToolsItems.quontonium, 15000.0F, null).setTextureName("diona:quontonium_hoe");
+        DionaToolsItems.fronisium_sword = new ItemElectricSwordMP("fronisium_sword", DionaToolsItems.fronisium, 15000.0F, null).setTextureName("diona:fronisium_sword");
+        DionaToolsItems.fronisium_shovel = new ItemElectricShovelMP("fronisium_spade", DionaToolsItems.fronisium, 15000.0F, null).setTextureName("diona:fronisium_shovel");
+        DionaToolsItems.fronisium_pickaxe = new ItemElectricPickaxeMP("fronisium_pickaxe", DionaToolsItems.fronisium, 15000.0F, null).setTextureName("diona:fronisium_pickaxe");
+        DionaToolsItems.fronisium_axe = new ItemElectricAxeMP("fronisium_axe", DionaToolsItems.fronisium, 15000.0F, null).setTextureName("diona:fronisium_axe");
+        DionaToolsItems.fronisium_hoe = new ItemElectricHoeMP("fronisium_hoe", DionaToolsItems.fronisium, 15000.0F, null).setTextureName("diona:fronisium_hoe");
     }
 
     private static void registerHarvestLevels()

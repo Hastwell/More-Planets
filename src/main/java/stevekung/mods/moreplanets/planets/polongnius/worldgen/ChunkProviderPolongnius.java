@@ -38,7 +38,6 @@ import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
-import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
@@ -373,7 +372,7 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.dungeonGenerator2.handleTileEntities(this.rand);
         this.decoratePlanet(this.worldObj, this.rand, var4, var5);
-        
+
         for (int i = 0; i < 8; ++i)
         {
             int x = var4 + this.rand.nextInt(16) + 8;
@@ -381,7 +380,7 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
             int z = var5 + this.rand.nextInt(16) + 8;
             new WorldGenSpaceDungeons(new Block[] { PolongniusBlocks.polongnius_ancient_chest, PolongniusBlocks.polongnius_ancient_chest, MPBlocks.space_mossy_cobblestone }, 1).generate(this.worldObj, this.rand, x, y, z);
         }
-        
+
         BlockFalling.fallInstantly = false;
     }
 

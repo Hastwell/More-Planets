@@ -35,7 +35,6 @@ import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSplashBlock;
-import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusBlaze;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusCreeper;
@@ -285,7 +284,7 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.blazePit.generateStructuresInChunk(this.worldObj, new Random(), par2, par3);
         this.decoratePlanet(this.worldObj, this.rand, var4, var5);
-        
+
         for (int i = 0; i < 8; ++i)
         {
             int x = var4 + this.rand.nextInt(16) + 8;
@@ -293,7 +292,7 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
             int z = var5 + this.rand.nextInt(16) + 8;
             new WorldGenSpaceDungeons(new Block[] { SiriusBBlocks.sirius_b_ancient_chest, SiriusBBlocks.sirius_b_block, MPBlocks.space_mossy_cobblestone }, 5).generate(this.worldObj, this.rand, x, y, z);
         }
-        
+
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, par2, par3, false));
 
         boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, par2, par3, false, EventType.FIRE);

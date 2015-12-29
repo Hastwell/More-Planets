@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.moons.koentus.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -44,7 +45,7 @@ public class KoentusBlocks
     public static Block crystal_dirt;
     public static Block crystal_wooden_planks;
     public static Block crystal_log;
-    public static Block crystal_sapling;
+    public static BlockSapling crystal_sapling;
     public static Block crystal_leaves;
     public static Block crystal_fence;
     public static Block crystal_fence_gate;

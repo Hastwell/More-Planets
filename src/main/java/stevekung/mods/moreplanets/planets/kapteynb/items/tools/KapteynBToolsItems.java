@@ -7,9 +7,18 @@
 
 package stevekung.mods.moreplanets.planets.kapteynb.items.tools;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.util.EnumHelper;
+import stevekung.mods.moreplanets.core.items.tools.IToolEffect;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class KapteynBToolsItems
@@ -44,16 +53,51 @@ public class KapteynBToolsItems
 
     private static void initItems()
     {
-        KapteynBToolsItems.frozen_iron_pickaxe = new ItemFrozenIronPickaxe("frozen_iron_pickaxe", KapteynBToolsItems.frozen_iron);
-        KapteynBToolsItems.frozen_iron_axe = new ItemFrozenIronAxe("frozen_iron_axe", KapteynBToolsItems.frozen_iron);
-        KapteynBToolsItems.frozen_iron_hoe = new ItemFrozenIronHoe("frozen_iron_hoe", KapteynBToolsItems.frozen_iron);
-        KapteynBToolsItems.frozen_iron_shovel = new ItemFrozenIronShovel("frozen_iron_spade", KapteynBToolsItems.frozen_iron);
-        KapteynBToolsItems.frozen_iron_sword = new ItemFrozenIronSword("frozen_iron_sword", KapteynBToolsItems.frozen_iron);
-        KapteynBToolsItems.uranium_pickaxe = new ItemUraniumPickaxe("uranium_pickaxe", KapteynBToolsItems.uranium);
-        KapteynBToolsItems.uranium_axe = new ItemUraniumAxe("uranium_axe", KapteynBToolsItems.uranium);
-        KapteynBToolsItems.uranium_hoe = new ItemUraniumHoe("uranium_hoe", KapteynBToolsItems.uranium);
-        KapteynBToolsItems.uranium_shovel = new ItemUraniumShovel("uranium_spade", KapteynBToolsItems.uranium);
-        KapteynBToolsItems.uranium_sword = new ItemUraniumSword("uranium_sword", KapteynBToolsItems.uranium);
+        KapteynBToolsItems.frozen_iron_pickaxe = new ItemElectricPickaxeMP("frozen_iron_pickaxe", KapteynBToolsItems.frozen_iron, 22500.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+            }
+        }).setTextureName("kapteynb:frozen_iron_pickaxe");
+        KapteynBToolsItems.frozen_iron_axe = new ItemElectricAxeMP("frozen_iron_axe", KapteynBToolsItems.frozen_iron, 22500.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+            }
+        }).setTextureName("kapteynb:frozen_iron_axe");
+        KapteynBToolsItems.frozen_iron_hoe = new ItemElectricHoeMP("frozen_iron_hoe", KapteynBToolsItems.frozen_iron, 22500.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+            }
+        }).setTextureName("kapteynb:frozen_iron_hoe");
+        KapteynBToolsItems.frozen_iron_shovel = new ItemElectricShovelMP("frozen_iron_spade", KapteynBToolsItems.frozen_iron, 22500.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+            }
+        }).setTextureName("kapteynb:frozen_iron_shovel");
+        KapteynBToolsItems.frozen_iron_sword = new ItemElectricSwordMP("frozen_iron_sword", KapteynBToolsItems.frozen_iron, 22500.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 60));
+            }
+        }).setTextureName("kapteynb:frozen_iron_sword");
+        KapteynBToolsItems.uranium_pickaxe = new ItemUraniumPickaxe("uranium_pickaxe", KapteynBToolsItems.uranium).setTextureName("kapteynb:uranium_pickaxe");
+        KapteynBToolsItems.uranium_axe = new ItemUraniumAxe("uranium_axe", KapteynBToolsItems.uranium).setTextureName("kapteynb:uranium_axe");
+        KapteynBToolsItems.uranium_hoe = new ItemUraniumHoe("uranium_hoe", KapteynBToolsItems.uranium).setTextureName("kapteynb:uranium_hoe");
+        KapteynBToolsItems.uranium_shovel = new ItemUraniumShovel("uranium_spade", KapteynBToolsItems.uranium).setTextureName("kapteynb:uranium_shovel");
+        KapteynBToolsItems.uranium_sword = new ItemUraniumSword("uranium_sword", KapteynBToolsItems.uranium).setTextureName("kapteynb:uranium_sword");
         KapteynBToolsItems.ice_crystal_pickaxe = new ItemIceCrystalPickaxe("ice_crystal_pickaxe", KapteynBToolsItems.ice_crystal);
         KapteynBToolsItems.ice_crystal_axe = new ItemIceCrystalAxe("ice_crystal_axe", KapteynBToolsItems.ice_crystal);
         KapteynBToolsItems.ice_crystal_hoe = new ItemIceCrystalHoe("ice_crystal_hoe", KapteynBToolsItems.ice_crystal);

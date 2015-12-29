@@ -127,14 +127,13 @@ public class BlockCrystalSapling extends BlockSapling
     {
         int meta = world.getBlockMetadata(x, y, z);
         Object obj = null;
-        random.nextInt(8);
 
         if (obj == null)
         {
             switch (meta)
             {
             case 0:
-                obj = new WorldGenTreeMP(KoentusBlocks.crystal_log, KoentusBlocks.crystal_leaves, 0, 0);
+                obj = new WorldGenTreeMP(KoentusBlocks.crystal_log, KoentusBlocks.crystal_leaves, 0, 0, this, null, null);
                 break;
             }
         }

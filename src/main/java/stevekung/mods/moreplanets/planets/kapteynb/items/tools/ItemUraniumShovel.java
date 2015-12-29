@@ -9,65 +9,36 @@ package stevekung.mods.moreplanets.planets.kapteynb.items.tools;
 
 import java.util.List;
 
-import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricShovelMP;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemUraniumShovel extends ItemSpade
+public class ItemUraniumShovel extends ItemElectricShovelMP
 {
-    public ItemUraniumShovel(String name, ToolMaterial par2EnumToolMaterial)
+    public ItemUraniumShovel(String name, ToolMaterial material)
     {
-        super(par2EnumToolMaterial);
+        super(name, material, 25000.0F, null);
         this.setUnlocalizedName(name);
     }
 
     @Override
-    public CreativeTabs getCreativeTab()
+    public boolean hitEntity(ItemStack itemStack, EntityLivingBase entity, EntityLivingBase entity2)
     {
-        return MorePlanetsCore.mpToolsTab;
-    }
-
-    @Override
-    public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase entity2)
-    {
-        entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
-        stack.damageItem(1, entity2);
-        return true;
-    }
-
-    @Override
-    public EnumRarity getRarity(ItemStack par1ItemStack)
-    {
-        return ClientProxyCore.galacticraftItem;
-    }
-
-    @Override
-    public void registerIcons(IIconRegister par1IconRegister)
-    {
-        this.itemIcon = par1IconRegister.registerIcon("kapteynb:uranium_shovel");
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
-    {
-        if (par2ItemStack.getItem() == KapteynBItems.kapteyn_b_item && par2ItemStack.getItemDamage() == 1)
+        if (this.getElectricityStored(itemStack) != 0.0F)
         {
+            this.setElectricity(itemStack, this.getElectricityStored(itemStack) - 10.5F);
+            entity.addPotionEffect(new PotionEffect(MPPotions.chemical.id, 60));
             return true;
         }
         return false;
@@ -77,10 +48,8 @@ public class ItemUraniumShovel extends ItemSpade
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
     {
-        if (player.worldObj.isRemote)
-        {
-            list.add(EnumChatFormatting.GRAY + "Ice Crystal Tool Upgrade Required : 8");
-        }
+        list.add(EnumChatFormatting.GRAY + "Ice Crystal Tool Upgrade Required : 8");
+        super.addInformation(itemStack, player, list, advanced);
     }
 
     @Override

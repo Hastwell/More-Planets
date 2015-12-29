@@ -19,19 +19,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.particle.EntityBreakingFX;
 import net.minecraft.client.particle.EntityFX;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.network.NetHandlerPlayServer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.IFluidBlock;
-
-import org.lwjgl.opengl.GL11;
-
 import stevekung.mods.moreplanets.core.particles.EntitySmokeFXMP;
 import stevekung.mods.moreplanets.core.renderer.EntityRendererMP;
 import stevekung.mods.moreplanets.core.renderer.ItemRendererMP;
@@ -41,7 +33,6 @@ import stevekung.mods.moreplanets.core.renderer.blocks.BlockRendererFence;
 import stevekung.mods.moreplanets.core.renderer.blocks.BlockRendererSlime;
 import stevekung.mods.moreplanets.core.renderer.blocks.BlockRendererTreasureChest;
 import stevekung.mods.moreplanets.core.todo.RenderPlayerMP;
-import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.particles.EntityCrystalSmokeFX;
 import stevekung.mods.moreplanets.moons.koentus.particles.EntityKoentusDripParticleFX;
@@ -655,111 +646,6 @@ public class ClientProxyMP extends CommonProxyMP
         if (player instanceof EntityPlayerMP)
         {
             ObfuscationReflectionHelper.setPrivateValue(NetHandlerPlayServer.class, ((EntityPlayerMP)player).playerNetServerHandler, Integer.valueOf(0), new String[] { "field_147365_f", "floatingTickCount" });
-        }
-    }
-
-    public static void renderFluidOverlays(float partialTicks)
-    {
-        float f1 = mc.thePlayer.getBrightness(partialTicks) / 3.0F;
-
-        if (ClientProxyMP.isInsideOfFluid(PolongniusBlocks.cheese_of_milk_fluid))
-        {
-            f1 = mc.thePlayer.getBrightness(partialTicks) / 1.0F;
-            mc.getTextureManager().bindTexture(cheeseOfMilk);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(FronosBlocks.coconut_milk_fluid))
-        {
-            f1 = mc.thePlayer.getBrightness(partialTicks) / 1.0F;
-            mc.getTextureManager().bindTexture(coconutMilk);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(FronosBlocks.mineral_water_fluid))
-        {
-            f1 = mc.thePlayer.getBrightness(partialTicks) / 0.5F;
-            mc.getTextureManager().bindTexture(mineralWater);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(FronosBlocks.ovantine_fluid))
-        {
-            f1 = mc.thePlayer.getBrightness(partialTicks) / 1.0F;
-            mc.getTextureManager().bindTexture(ovaltine);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(FronosBlocks.tea_fluid))
-        {
-            f1 = mc.thePlayer.getBrightness(partialTicks) / 1.0F;
-            mc.getTextureManager().bindTexture(tea);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(FronosBlocks.caramel_fluid))
-        {
-            f1 = mc.thePlayer.getBrightness(partialTicks) / 1.0F;
-            mc.getTextureManager().bindTexture(caramel);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(KapteynBBlocks.frozen_water_fluid))
-        {
-            f1 = mc.thePlayer.getBrightness(partialTicks) / 1.0F;
-            mc.getTextureManager().bindTexture(frozenWater);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(MercuryBlocks.dirty_water_fluid))
-        {
-            mc.getTextureManager().bindTexture(dirtyWater);
-        }
-        else if (ClientProxyMP.isInsideOfFluid(EuropaBlocks.europa_water_fluid))
-        {
-            mc.getTextureManager().bindTexture(europaWater);
-        }
-        else
-        {
-            return;
-        }
-
-        Tessellator tessellator = Tessellator.instance;
-        GL11.glColor4f(f1, f1, f1, 1.0F);
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        GL11.glPushMatrix();
-        float f2 = 4.0F;
-        float f3 = -1.0F;
-        float f4 = 1.0F;
-        float f5 = -1.0F;
-        float f6 = 1.0F;
-        float f7 = -0.5F;
-        float f8 = -mc.thePlayer.rotationYaw / 64.0F;
-        float f9 = mc.thePlayer.rotationPitch / 64.0F;
-        tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV(f3, f5, f7, f2 + f8, f2 + f9);
-        tessellator.addVertexWithUV(f4, f5, f7, 0.0F + f8, f2 + f9);
-        tessellator.addVertexWithUV(f4, f6, f7, 0.0F + f8, 0.0F + f9);
-        tessellator.addVertexWithUV(f3, f6, f7, f2 + f8, 0.0F + f9);
-        tessellator.draw();
-        GL11.glPopMatrix();
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        GL11.glDisable(GL11.GL_BLEND);
-    }
-
-    public static boolean isInsideOfFluid(Fluid fluid)
-    {
-        Entity entity = mc.thePlayer;
-        double d0 = entity.posY + entity.getEyeHeight();
-        int i = MathHelper.floor_double(entity.posX);
-        int j = MathHelper.floor_float(MathHelper.floor_double(d0));
-        int k = MathHelper.floor_double(entity.posZ);
-        Block block = entity.worldObj.getBlock(i, j, k);
-
-        if (block != null && block instanceof IFluidBlock && ((IFluidBlock) block).getFluid() != null && ((IFluidBlock) block).getFluid().getName().equals(fluid.getName()))
-        {
-            double filled = ((IFluidBlock) block).getFilledPercentage(entity.worldObj, i, j, k);
-
-            if (filled < 0)
-            {
-                filled *= -1;
-                return d0 > j + (1 - filled);
-            }
-            else
-            {
-                return d0 < j + filled;
-            }
-        }
-        else
-        {
-            return false;
         }
     }
 }

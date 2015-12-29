@@ -129,15 +129,15 @@ public class BlockFronosSapling extends BlockSapling
                 break;
                 // Red Maple
             case 1:
-                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, 5, 3, false);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, this, world.getBlock(x, y - 1, z) instanceof IFronosGrass, FronosBlocks.fronos_dirt);
                 break;
                 // Yellow Maple
             case 2:
-                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, 5, 3, false);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, this, world.getBlock(x, y - 1, z) instanceof IFronosGrass, FronosBlocks.fronos_dirt);
                 break;
                 // Purple Maple
             case 3:
-                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 3, false);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, this, world.getBlock(x, y - 1, z) instanceof IFronosGrass, FronosBlocks.fronos_dirt);
                 break;
             }
         }

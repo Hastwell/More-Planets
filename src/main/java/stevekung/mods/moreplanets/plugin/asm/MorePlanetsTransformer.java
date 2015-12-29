@@ -29,16 +29,13 @@ public class MorePlanetsTransformer implements IClassTransformer
     private boolean deobfuscated = true;
     private DefaultArtifactVersion mcVersion;
 
-    private String nameItemRenderer;
     private String nameRendererLivingEntity;
 
     private static String KEY_CLASS_ENTITY_LIVING = "entityLivingClass";
-    private static String KEY_CLASS_ITEM_RENDERER = "itemRendererClass";
     private static String KEY_CLASS_RENDERER_LIVING_ENTITY = "rendererLivingEntity";
     private static String KEY_METHOD_RENDER_OVERLAYS = "renderOverlaysMethod";
     private static String KEY_METHOD_RENDER_MODEL = "renderModel";
 
-    private static String CLASS_CLIENT_PROXY_MAIN = "stevekung/mods/moreplanets/core/proxy/ClientProxyMP";
     private static String CLASS_RENDER_PLAYER_MP = "stevekung/mods/moreplanets/core/todo/RenderPlayerMP";
 
     private static int operationCount = 0;
@@ -57,7 +54,6 @@ public class MorePlanetsTransformer implements IClassTransformer
         if (this.mcVersionMatches("[1.7.10]"))
         {
             this.nodemap.put(MorePlanetsTransformer.KEY_CLASS_ENTITY_LIVING, new ObfuscationEntry("net/minecraft/entity/EntityLivingBase", "sv"));
-            this.nodemap.put(MorePlanetsTransformer.KEY_CLASS_ITEM_RENDERER, new ObfuscationEntry("net/minecraft/client/renderer/ItemRenderer", "bly"));
             this.nodemap.put(MorePlanetsTransformer.KEY_CLASS_RENDERER_LIVING_ENTITY, new ObfuscationEntry("net/minecraft/client/renderer/entity/RendererLivingEntity", "boh"));
 
             this.nodemap.put(MorePlanetsTransformer.KEY_METHOD_RENDER_OVERLAYS, new MethodObfuscationEntry("renderOverlays", "b", "(F)V"));
@@ -88,53 +84,21 @@ public class MorePlanetsTransformer implements IClassTransformer
 
     private void populateNamesDeObf()
     {
-        this.nameItemRenderer = this.getName(MorePlanetsTransformer.KEY_CLASS_ITEM_RENDERER);
         this.nameRendererLivingEntity = this.getName(MorePlanetsTransformer.KEY_CLASS_RENDERER_LIVING_ENTITY);
     }
 
     private void populateNamesObf()
     {
-        this.nameItemRenderer = this.nodemap.get(MorePlanetsTransformer.KEY_CLASS_ITEM_RENDERER).obfuscatedName;
         this.nameRendererLivingEntity = this.nodemap.get(MorePlanetsTransformer.KEY_CLASS_RENDERER_LIVING_ENTITY).obfuscatedName;
     }
 
     private byte[] transformVanilla(String testName, byte[] bytes)
     {
-        if (testName.equals(this.nameItemRenderer))
-        {
-            return this.transformItemRenderer(bytes);
-        }
-        else if (testName.equals(this.nameRendererLivingEntity)) //TODO Custom Thermal Armor rendering
+        if (testName.equals(this.nameRendererLivingEntity)) //TODO Custom Thermal Armor texture rendering
         {
             return this.transformRendererLivingEntity(bytes);
         }
         return bytes;
-    }
-
-    public byte[] transformItemRenderer(byte[] bytes)
-    {
-        ClassNode node = this.startInjection(bytes);
-        MorePlanetsTransformer.operationCount = 1;
-        MethodNode renderOverlaysMethod = this.getMethod(node, MorePlanetsTransformer.KEY_METHOD_RENDER_OVERLAYS);
-
-        if (renderOverlaysMethod != null)
-        {
-            for (int count = 0; count < renderOverlaysMethod.instructions.size(); count++)
-            {
-                AbstractInsnNode glEnable = renderOverlaysMethod.instructions.get(count);
-
-                if (glEnable instanceof MethodInsnNode && ((MethodInsnNode) glEnable).name.equals("glEnable"))
-                {
-                    InsnList toAdd = new InsnList();
-                    toAdd.add(new VarInsnNode(Opcodes.FLOAD, 1));
-                    toAdd.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MorePlanetsTransformer.CLASS_CLIENT_PROXY_MAIN, "renderFluidOverlays", "(F)V", false));
-                    renderOverlaysMethod.instructions.insertBefore(glEnable, toAdd);
-                    MorePlanetsTransformer.injectionCount++;
-                    break;
-                }
-            }
-        }
-        return this.finishInjection(node);
     }
 
     public byte[] transformRendererLivingEntity(byte[] bytes)

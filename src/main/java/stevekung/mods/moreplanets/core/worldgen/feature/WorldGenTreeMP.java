@@ -10,93 +10,82 @@ package stevekung.mods.moreplanets.core.worldgen.feature;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
-import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosSapling;
-import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenTreeMP extends WorldGenAbstractTree
 {
-    private final int minTreeHeight;
-    private final int randomTreeHeight;
-
-    private final boolean vinesGrow;
-
-    private final Block wood;
-    private final Block leaves;
-
-    private final int metaWood;
+    private Block wood;
+    private Block leaves;
+    private int metaWood;
     private int metaLeaves;
+    private Block sapling;
+    private Block grass;
+    private boolean grassBool;
+    private Block dirt;
 
-    private boolean isFruitTree = false;
-
-    public WorldGenTreeMP(Block wood, Block leaves, int metaWood, int metaLeaves)
+    public WorldGenTreeMP(Block wood, Block leaves, int metaWood, int metaLeaves, Block sapling, Block grass, Block dirt)
     {
-        this(wood, leaves, metaWood, metaLeaves, false, 4, 3, false);
-    }
-
-    public WorldGenTreeMP(Block wood, Block leaves, int metaWood, boolean isFruitTree)
-    {
-        this(wood, leaves, metaWood, -1, false, 5, 4, false);
-
-        this.isFruitTree = isFruitTree;
-    }
-
-    public WorldGenTreeMP(Block wood, Block leaves, int metaWood, int metaLeaves, boolean doBlockNotify, int minTreeHeight, int randomTreeHeight, boolean vinesGrow)
-    {
-        super(doBlockNotify);
-
+        super(false);
         this.wood = wood;
         this.leaves = leaves;
         this.metaWood = metaWood;
         this.metaLeaves = metaLeaves;
-        this.minTreeHeight = minTreeHeight;
-        this.randomTreeHeight = randomTreeHeight;
-        this.vinesGrow = vinesGrow;
+        this.sapling = sapling;
+        this.grass = grass;
+        this.dirt = dirt;
+    }
+
+    public WorldGenTreeMP(Block wood, Block leaves, int metaWood, int metaLeaves, Block sapling, boolean grass, Block dirt)
+    {
+        super(false);
+        this.wood = wood;
+        this.leaves = leaves;
+        this.metaWood = metaWood;
+        this.metaLeaves = metaLeaves;
+        this.sapling = sapling;
+        this.grassBool = grass;
+        this.dirt = dirt;
     }
 
     @Override
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    public boolean generate(World world, Random rand, int x, int y, int z)
     {
-        final int l = par2Random.nextInt(this.randomTreeHeight) + this.minTreeHeight;
+        int l = rand.nextInt(3) + 5;
         boolean flag = true;
 
-        if (this.isFruitTree)
-        {
-            this.metaLeaves = par2Random.nextInt(4);
-        }
-        if (par4 >= 1 && par4 + l + 1 <= 256)
+        if (y >= 1 && y + l + 1 <= 256)
         {
             byte b0;
             int k1;
             Block block;
 
-            for (int i1 = par4; i1 <= par4 + 1 + l; ++i1)
+            for (int i1 = y; i1 <= y + 1 + l; ++i1)
             {
                 b0 = 1;
 
-                if (i1 == par4)
+                if (i1 == y)
                 {
                     b0 = 0;
                 }
 
-                if (i1 >= par4 + 1 + l - 2)
+                if (i1 >= y + 1 + l - 2)
                 {
                     b0 = 2;
                 }
 
-                for (int j1 = par3 - b0; j1 <= par3 + b0 && flag; ++j1)
+                for (int j1 = x - b0; j1 <= x + b0 && flag; ++j1)
                 {
-                    for (k1 = par5 - b0; k1 <= par5 + b0 && flag; ++k1)
+                    for (k1 = z - b0; k1 <= z + b0 && flag; ++k1)
                     {
                         if (i1 >= 0 && i1 < 256)
                         {
-                            block = par1World.getBlock(j1, i1, k1);
+                            block = world.getBlock(j1, i1, k1);
 
-                            if (!this.isReplaceable(par1World, j1, i1, k1))
+                            if (!this.isReplaceable(world, j1, i1, k1))
                             {
                                 flag = false;
                             }
@@ -115,41 +104,39 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
             }
             else
             {
-                final Block block2 = par1World.getBlock(par3, par4 - 1, par5);
-                final boolean isSoil = block2.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockFronosSapling)FronosBlocks.fronos_sapling);
+                Block block2 = world.getBlock(x, y - 1, z);
+                boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling)this.sapling);
 
-                if (isSoil && par4 < 256 - l - 1)
+                if (isSoil && y < 256 - l - 1)
                 {
-                    block2.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);
+                    this.onPlantGrow(world, x, y - 1, z);
                     b0 = 3;
-                    final byte b1 = 0;
+                    byte b1 = 0;
                     int l1;
                     int i2;
                     int j2;
                     int i3;
 
-                    for (k1 = par4 - b0 + l; k1 <= par4 + l; ++k1)
+                    for (k1 = y - b0 + l; k1 <= y + l; ++k1)
                     {
-                        i3 = k1 - (par4 + l);
+                        i3 = k1 - (y + l);
                         l1 = b1 + 1 - i3 / 2;
 
-                        for (i2 = par3 - l1; i2 <= par3 + l1; ++i2)
+                        for (i2 = x - l1; i2 <= x + l1; ++i2)
                         {
-                            j2 = i2 - par3;
+                            j2 = i2 - x;
 
-                            for (int k2 = par5 - l1; k2 <= par5 + l1; ++k2)
+                            for (int k2 = z - l1; k2 <= z + l1; ++k2)
                             {
-                                final int l2 = k2 - par5;
+                                int l2 = k2 - z;
 
-                                if (Math.abs(j2) != l1 || Math.abs(l2) != l1 || par2Random.nextInt(2) != 0 && i3 != 0)
+                                if (Math.abs(j2) != l1 || Math.abs(l2) != l1 || rand.nextInt(2) != 0 && i3 != 0)
                                 {
-                                    final Block block1 = par1World.getBlock(i2, k1, k2);
+                                    Block block1 = world.getBlock(i2, k1, k2);
 
-                                    if (block1.isAir(par1World, i2, k1, k2) || block1.isLeaves(par1World, i2, k1, k2))
+                                    if (block1.isAir(world, i2, k1, k2) || block1.isLeaves(world, i2, k1, k2))
                                     {
-                                        final int metadata = this.isFruitTree ? this.metaLeaves > 0 ? par2Random.nextInt(4) == 0 ? this.metaLeaves - 1 : this.metaLeaves : this.metaLeaves : this.metaLeaves;
-
-                                        this.setBlockAndNotifyAdequately(par1World, i2, k1, k2, this.leaves, metadata);
+                                        this.setBlockAndNotifyAdequately(world, i2, k1, k2, this.leaves, this.metaLeaves);
                                     }
                                 }
                             }
@@ -158,87 +145,11 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
 
                     for (k1 = 0; k1 < l; ++k1)
                     {
-                        block = par1World.getBlock(par3, par4 + k1, par5);
+                        block = world.getBlock(x, y + k1, z);
 
-                        if (block.isAir(par1World, par3, par4 + k1, par5) || block.isLeaves(par1World, par3, par4 + k1, par5))
+                        if (block.isAir(world, x, y + k1, z) || block.isLeaves(world, x, y + k1, z))
                         {
-                            this.setBlockAndNotifyAdequately(par1World, par3, par4 + k1, par5, this.wood, this.metaWood);
-
-                            if (this.vinesGrow && k1 > 0)
-                            {
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + k1, par5))
-                                {
-                                    this.setBlockAndNotifyAdequately(par1World, par3 - 1, par4 + k1, par5, Blocks.vine, 8);
-                                }
-
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + k1, par5))
-                                {
-                                    this.setBlockAndNotifyAdequately(par1World, par3 + 1, par4 + k1, par5, Blocks.vine, 2);
-                                }
-
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + k1, par5 - 1))
-                                {
-                                    this.setBlockAndNotifyAdequately(par1World, par3, par4 + k1, par5 - 1, Blocks.vine, 1);
-                                }
-
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + k1, par5 + 1))
-                                {
-                                    this.setBlockAndNotifyAdequately(par1World, par3, par4 + k1, par5 + 1, Blocks.vine, 4);
-                                }
-                            }
-                        }
-                    }
-
-                    if (this.vinesGrow)
-                    {
-                        for (k1 = par4 - 3 + l; k1 <= par4 + l; ++k1)
-                        {
-                            i3 = k1 - (par4 + l);
-                            l1 = 2 - i3 / 2;
-
-                            for (i2 = par3 - l1; i2 <= par3 + l1; ++i2)
-                            {
-                                for (j2 = par5 - l1; j2 <= par5 + l1; ++j2)
-                                {
-                                    if (par1World.getBlock(i2, k1, j2).isLeaves(par1World, i2, k1, j2))
-                                    {
-                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2 - 1, k1, j2).isAir(par1World, i2 - 1, k1, j2))
-                                        {
-                                            this.growVines(par1World, i2 - 1, k1, j2, 8);
-                                        }
-
-                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2 + 1, k1, j2).isAir(par1World, i2 + 1, k1, j2))
-                                        {
-                                            this.growVines(par1World, i2 + 1, k1, j2, 2);
-                                        }
-
-                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2, k1, j2 - 1).isAir(par1World, i2, k1, j2 - 1))
-                                        {
-                                            this.growVines(par1World, i2, k1, j2 - 1, 1);
-                                        }
-
-                                        if (par2Random.nextInt(4) == 0 && par1World.getBlock(i2, k1, j2 + 1).isAir(par1World, i2, k1, j2 + 1))
-                                        {
-                                            this.growVines(par1World, i2, k1, j2 + 1, 4);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        if (par2Random.nextInt(5) == 0 && l > 5)
-                        {
-                            for (k1 = 0; k1 < 2; ++k1)
-                            {
-                                for (i3 = 0; i3 < 4; ++i3)
-                                {
-                                    if (par2Random.nextInt(4 - k1) == 0)
-                                    {
-                                        l1 = par2Random.nextInt(3);
-                                        this.setBlockAndNotifyAdequately(par1World, par3 + Direction.offsetX[Direction.rotateOpposite[i3]], par4 + l - 5 + k1, par5 + Direction.offsetZ[Direction.rotateOpposite[i3]], Blocks.cocoa, l1 << 2 | i3);
-                                    }
-                                }
-                            }
+                            this.setBlockAndNotifyAdequately(world, x, y + k1, z, this.wood, this.metaWood);
                         }
                     }
                     return true;
@@ -255,21 +166,19 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
         }
     }
 
-    private void growVines(World world, int x, int y, int z, int flag)
+    private void onPlantGrow(World world, int x, int y, int z)
     {
-        this.setBlockAndNotifyAdequately(world, x, y, z, Blocks.vine, flag);
-        int i1 = 4;
-
-        while (true)
+        if (world.getBlock(x, y, z) == this.grass && this.grass != null && this.dirt != null)
         {
-            --y;
-
-            if (world.getBlock(x, y, z).isAir(world, x, y, z) || i1 <= 0)
-            {
-                return;
-            }
-            this.setBlockAndNotifyAdequately(world, x, y, z, Blocks.vine, flag);
-            --i1;
+            world.setBlock(x, y, z, this.dirt, 0, 2);
+        }
+        else if (this.grassBool && this.dirt != null)
+        {
+            world.setBlock(x, y, z, this.dirt, 0, 2);
+        }
+        else if (world.getBlock(x, y, z) == Blocks.grass)
+        {
+            world.setBlock(x, y, z, Blocks.dirt, 0, 2);
         }
     }
 }

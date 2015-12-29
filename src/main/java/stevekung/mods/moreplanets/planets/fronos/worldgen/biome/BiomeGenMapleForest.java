@@ -7,11 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.fronos.worldgen.biome;
 
-import java.util.Random;
-
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenMapleForest extends BiomeGenBaseFronos
@@ -20,8 +16,8 @@ public class BiomeGenMapleForest extends BiomeGenBaseFronos
     {
         super(ConfigManagerMP.idMapleForestBiome);
         this.enableRain = true;
-		this.rainfall = 0.5F;
-		this.temperature = 0.5F;
+        this.rainfall = 0.5F;
+        this.temperature = 0.5F;
         this.topBlock = FronosBlocks.pink_grass;
         this.topMeta = 0;
         this.fillerBlock = FronosBlocks.fronos_dirt;
@@ -47,14 +43,5 @@ public class BiomeGenMapleForest extends BiomeGenBaseFronos
         this.getBiomeDecorator().mapleIvyPerChunk = 8;
         this.getBiomeDecorator().bluePoisonMushroomPerChunk = 4;
         this.getBiomeDecorator().purpleSpikeFlowerPerChunk = 4;
-    }
-
-    @Override
-    public WorldGenAbstractTree func_150567_a(Random rand)
-    {
-        WorldGenTreeMP red = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, 5, 4, false);
-        WorldGenTreeMP yellow = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, 5, 4, false);
-        WorldGenTreeMP purple = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false);
-        return rand.nextInt(10) == 0 ? purple : rand.nextInt(6) == 0 ? yellow : rand.nextInt(4) == 0 ? red : null;
     }
 }

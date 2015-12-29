@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.planets.fronos.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -129,7 +130,7 @@ public class FronosBlocks
     public static Block space_oyster_close;
     public static Block cavern_oyster_close;
     public static Block jelly_slime_egg;
-    public static Block fronos_sapling;
+    public static BlockSapling fronos_sapling;
     public static Block fronos_tall_grass;
     public static Block fronos_flower;
     public static Block dandelion;

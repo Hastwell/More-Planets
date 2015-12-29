@@ -14,6 +14,7 @@ import cpw.mods.fml.common.Loader;
 
 public class CompatibilityUtilMP
 {
+    @Deprecated //TODO: Removed in 1.8
     public static boolean is4SpaceVenusLoaded()
     {
         return Loader.isModLoaded("SpaceCore") && Loader.isModLoaded("SpaceVenus");

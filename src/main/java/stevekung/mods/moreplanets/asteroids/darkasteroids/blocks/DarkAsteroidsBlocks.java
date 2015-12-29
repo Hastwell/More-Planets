@@ -8,6 +8,7 @@
 package stevekung.mods.moreplanets.asteroids.darkasteroids.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.BlockAlienLeaves.AlienLeafCategory;
@@ -28,7 +29,7 @@ public class DarkAsteroidsBlocks
     public static Block alien_log;
     public static Block alien_planks;
     public static Block alien_leaves;
-    public static Block alien_sapling;
+    public static BlockSapling alien_sapling;
     public static Block alien_glowstone;
     public static Block dark_air;
 

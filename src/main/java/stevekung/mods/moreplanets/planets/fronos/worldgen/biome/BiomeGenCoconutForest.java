@@ -16,8 +16,8 @@ public class BiomeGenCoconutForest extends BiomeGenBaseFronos
     {
         super(ConfigManagerMP.idCoconutForestBiome);
         this.enableRain = true;
-		this.rainfall = 0.5F;
-		this.temperature = 0.5F;
+        this.rainfall = 0.5F;
+        this.temperature = 0.5F;
         this.topBlock = FronosBlocks.fronos_grass;
         this.topMeta = 0;
         this.fillerBlock = FronosBlocks.fronos_dirt;

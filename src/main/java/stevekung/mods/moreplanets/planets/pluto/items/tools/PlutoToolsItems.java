@@ -7,9 +7,18 @@
 
 package stevekung.mods.moreplanets.planets.pluto.items.tools;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.util.EnumHelper;
+import stevekung.mods.moreplanets.core.items.tools.IToolEffect;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class PlutoToolsItems
@@ -26,11 +35,46 @@ public class PlutoToolsItems
     public static void init()
     {
         // Init
-        PlutoToolsItems.xeonium_pickaxe = new ItemXeoniumPickaxe("xeonium_pickaxe", PlutoToolsItems.xeonium);
-        PlutoToolsItems.xeonium_axe = new ItemXeoniumAxe("xeonium_axe", PlutoToolsItems.xeonium);
-        PlutoToolsItems.xeonium_hoe = new ItemXeoniumHoe("xeonium_hoe", PlutoToolsItems.xeonium);
-        PlutoToolsItems.xeonium_shovel = new ItemXeoniumShovel("xeonium_shovel", PlutoToolsItems.xeonium);
-        PlutoToolsItems.xeonium_sword = new ItemXeoniumSword("xeonium_sword", PlutoToolsItems.xeonium);
+        PlutoToolsItems.xeonium_pickaxe = new ItemElectricPickaxeMP("xeonium_pickaxe", PlutoToolsItems.xeonium, 35000.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
+            }
+        }).setTextureName("pluto:xeonium_pickaxe");
+        PlutoToolsItems.xeonium_axe = new ItemElectricAxeMP("xeonium_axe", PlutoToolsItems.xeonium, 35000.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
+            }
+        }).setTextureName("pluto:xeonium_axe");
+        PlutoToolsItems.xeonium_hoe = new ItemElectricHoeMP("xeonium_hoe", PlutoToolsItems.xeonium, 35000.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
+            }
+        }).setTextureName("pluto:xeonium_hoe");
+        PlutoToolsItems.xeonium_shovel = new ItemElectricShovelMP("xeonium_shovel", PlutoToolsItems.xeonium, 35000.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
+            }
+        }).setTextureName("pluto:xeonium_shovel");
+        PlutoToolsItems.xeonium_sword = new ItemElectricSwordMP("xeonium_sword", PlutoToolsItems.xeonium, 35000.0F, new IToolEffect()
+        {
+            @Override
+            public void addEffect(EntityLivingBase living)
+            {
+                living.addPotionEffect(new PotionEffect(Potion.confusion.id, 200));
+            }
+        }).setTextureName("pluto:xeonium_sword");
 
         // Register
         RegisterHelper.registerItem(PlutoToolsItems.xeonium_pickaxe);

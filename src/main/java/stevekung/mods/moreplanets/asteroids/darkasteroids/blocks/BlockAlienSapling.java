@@ -134,7 +134,7 @@ public class BlockAlienSapling extends BlockSapling
             switch (meta)
             {
             case 0:
-                obj = new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0);
+                obj = new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0, this, DarkAsteroidsBlocks.alien_grass, DarkAsteroidsBlocks.alien_dirt);
                 break;
             }
         }

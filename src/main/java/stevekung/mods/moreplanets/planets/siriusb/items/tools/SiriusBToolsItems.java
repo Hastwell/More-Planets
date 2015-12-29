@@ -10,12 +10,11 @@ package stevekung.mods.moreplanets.planets.siriusb.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.core.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class SiriusBToolsItems
@@ -38,11 +37,11 @@ public class SiriusBToolsItems
 
     private static void initItems()
     {
-        SiriusBToolsItems.sulfur_pickaxe = new ItemPickaxeMP("sulfur_pickaxe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_pickaxe");
-        SiriusBToolsItems.sulfur_axe = new ItemAxeMP("sulfur_axe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_axe");
-        SiriusBToolsItems.sulfur_hoe = new ItemHoeMP("sulfur_hoe", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_hoe");
-        SiriusBToolsItems.sulfur_shovel = new ItemShovelMP("sulfur_shovel", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_shovel");
-        SiriusBToolsItems.sulfur_sword = new ItemSwordMP("sulfur_sword", SiriusBToolsItems.sulfur, SiriusBItems.sirius_b_item, 4, "siriusb:sulfur_sword");
+        SiriusBToolsItems.sulfur_pickaxe = new ItemElectricPickaxeMP("sulfur_pickaxe", SiriusBToolsItems.sulfur, 30000.0F, null).setTextureName("siriusb:sulfur_pickaxe");
+        SiriusBToolsItems.sulfur_axe = new ItemElectricAxeMP("sulfur_axe", SiriusBToolsItems.sulfur, 30000.0F, null).setTextureName("siriusb:sulfur_axe");
+        SiriusBToolsItems.sulfur_hoe = new ItemElectricHoeMP("sulfur_hoe", SiriusBToolsItems.sulfur, 30000.0F, null).setTextureName("siriusb:sulfur_hoe");
+        SiriusBToolsItems.sulfur_shovel = new ItemElectricShovelMP("sulfur_shovel", SiriusBToolsItems.sulfur, 30000.0F, null).setTextureName("siriusb:sulfur_shovel");
+        SiriusBToolsItems.sulfur_sword = new ItemElectricSwordMP("sulfur_sword", SiriusBToolsItems.sulfur, 30000.0F, null).setTextureName("siriusb:sulfur_sword");
     }
 
     private static void registerHarvestLevels()

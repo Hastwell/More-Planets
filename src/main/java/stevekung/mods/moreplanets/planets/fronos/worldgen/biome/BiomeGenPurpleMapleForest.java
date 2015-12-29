@@ -7,11 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.fronos.worldgen.biome;
 
-import java.util.Random;
-
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
@@ -20,8 +16,8 @@ public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
     {
         super(ConfigManagerMP.idPurpleMapleForestBiome);
         this.enableRain = true;
-		this.rainfall = 0.5F;
-		this.temperature = 0.5F;
+        this.rainfall = 0.5F;
+        this.temperature = 0.5F;
         this.topBlock = FronosBlocks.purple_grass;
         this.topMeta = 0;
         this.fillerBlock = FronosBlocks.fronos_dirt;
@@ -47,11 +43,5 @@ public class BiomeGenPurpleMapleForest extends BiomeGenBaseFronos
         this.getBiomeDecorator().mapleIvyPerChunk = 12;
         this.getBiomeDecorator().bluePoisonMushroomPerChunk = 8;
         this.getBiomeDecorator().purpleSpikeFlowerPerChunk = 8;
-    }
-
-    @Override
-    public WorldGenAbstractTree func_150567_a(Random rand)
-    {
-        return rand.nextInt(5) == 0 ? new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false) : null;
     }
 }

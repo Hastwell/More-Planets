@@ -10,12 +10,11 @@ package stevekung.mods.moreplanets.planets.nibiru.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.core.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class NibiruToolsItems
@@ -44,16 +43,16 @@ public class NibiruToolsItems
 
     private static void initItems()
     {
-        NibiruToolsItems.red_gem_pickaxe = new ItemPickaxeMP("red_gem_pickaxe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2, "nibiru:red_gem_pickaxe");
-        NibiruToolsItems.red_gem_axe = new ItemAxeMP("red_gem_axe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2, "nibiru:red_gem_axe");
-        NibiruToolsItems.red_gem_hoe = new ItemHoeMP("red_gem_hoe", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2, "nibiru:red_gem_hoe");
-        NibiruToolsItems.red_gem_shovel = new ItemShovelMP("red_gem_spade", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2, "nibiru:red_gem_shovel");
-        NibiruToolsItems.red_gem_sword = new ItemSwordMP("red_gem_sword", NibiruToolsItems.red_gem, NibiruItems.nibiru_item, 2, "nibiru:red_gem_sword");
-        NibiruToolsItems.norium_pickaxe = new ItemPickaxeMP("norium_pickaxe", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3, "nibiru:norium_pickaxe");
-        NibiruToolsItems.norium_axe = new ItemAxeMP("norium_axe", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3, "nibiru:norium_axe");
-        NibiruToolsItems.norium_hoe = new ItemHoeMP("norium_hoe", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3, "nibiru:norium_hoe");
-        NibiruToolsItems.norium_shovel = new ItemShovelMP("norium_spade", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3, "nibiru:norium_shovel");
-        NibiruToolsItems.norium_sword = new ItemSwordMP("norium_sword", NibiruToolsItems.norium, NibiruItems.nibiru_item, 3, "nibiru:norium_sword");
+        NibiruToolsItems.red_gem_pickaxe = new ItemElectricPickaxeMP("red_gem_pickaxe", NibiruToolsItems.red_gem, 20000.0F, null).setTextureName("nibiru:red_gem_pickaxe");
+        NibiruToolsItems.red_gem_axe = new ItemElectricAxeMP("red_gem_axe", NibiruToolsItems.red_gem, 20000.0F, null).setTextureName("nibiru:red_gem_axe");
+        NibiruToolsItems.red_gem_hoe = new ItemElectricHoeMP("red_gem_hoe", NibiruToolsItems.red_gem, 20000.0F, null).setTextureName("nibiru:red_gem_hoe");
+        NibiruToolsItems.red_gem_shovel = new ItemElectricShovelMP("red_gem_spade", NibiruToolsItems.red_gem, 20000.0F, null).setTextureName("nibiru:red_gem_shovel");
+        NibiruToolsItems.red_gem_sword = new ItemElectricSwordMP("red_gem_sword", NibiruToolsItems.red_gem, 20000.0F, null).setTextureName("nibiru:red_gem_sword");
+        NibiruToolsItems.norium_pickaxe = new ItemElectricPickaxeMP("norium_pickaxe", NibiruToolsItems.norium, 20000.0F, null).setTextureName("nibiru:norium_pickaxe");
+        NibiruToolsItems.norium_axe = new ItemElectricAxeMP("norium_axe", NibiruToolsItems.norium, 20000.0F, null).setTextureName("nibiru:norium_axe");
+        NibiruToolsItems.norium_hoe = new ItemElectricHoeMP("norium_hoe", NibiruToolsItems.norium, 20000.0F, null).setTextureName("nibiru:norium_hoe");
+        NibiruToolsItems.norium_shovel = new ItemElectricShovelMP("norium_spade", NibiruToolsItems.norium, 20000.0F, null).setTextureName("nibiru:norium_shovel");
+        NibiruToolsItems.norium_sword = new ItemElectricSwordMP("norium_sword", NibiruToolsItems.norium, 20000.0F, null).setTextureName("nibiru:norium_sword");
     }
 
     private static void registerHarvestLevels()

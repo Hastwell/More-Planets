@@ -43,7 +43,6 @@ import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSplashBlock;
-import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
@@ -409,7 +408,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.decoratePlanet(this.worldObj, this.rand, var4, var5);
-        
+
         for (int i = 0; i < 8; ++i)
         {
             int x = var4 + this.rand.nextInt(16) + 8;
@@ -417,7 +416,7 @@ public class ChunkProviderNibiru extends ChunkProviderGenerate
             int z = var5 + this.rand.nextInt(16) + 8;
             new WorldGenSpaceDungeons(new Block[] { NibiruBlocks.nibiru_ancient_chest, NibiruBlocks.nibiru_block, MPBlocks.space_mossy_cobblestone }, 2).generate(this.worldObj, this.rand, x, y, z);
         }
-        
+
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
 
         boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, chunkX, chunkZ, false, EventType.FIRE);

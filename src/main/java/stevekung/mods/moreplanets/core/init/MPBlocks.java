@@ -62,6 +62,7 @@ public class MPBlocks
     public static Block tinted_glass_pane;
     public static Block space_decoration_block;
     public static Block space_mossy_cobblestone;
+    //public static Block nether_teleporter;
 
     public static Block stone_wall;
     public static Block dungeon_brick_wall;
@@ -106,6 +107,7 @@ public class MPBlocks
         MPBlocks.tinted_glass_pane = new BlockTintedGlassPane("tinted_glass_pane");
         MPBlocks.space_decoration_block = new BlockPolishedSpaceDecoration("space_decoration_block");
         MPBlocks.space_mossy_cobblestone = new BlockSpaceMossyCobblestone("space_mossy_cobblestone");
+        //MPBlocks.nether_teleporter = new BlockNetherTeleporter("nether_teleporter");
     }
 
     private static void initSlabBlocks()
@@ -152,6 +154,7 @@ public class MPBlocks
         RegisterHelper.registerBlock(MPBlocks.space_mossy_cobblestone, ItemBlockSpaceMossyCobblestone.class);
         RegisterHelper.registerBlock(MPBlocks.tinted_glass, ItemBlockTintedGlassPane.class);
         RegisterHelper.registerBlock(MPBlocks.tinted_glass_pane, ItemBlockTintedGlassPane.class);
+        //RegisterHelper.registerBlock(MPBlocks.nether_teleporter);
         RegisterHelper.registerBlock(MPBlocks.stone_wall, ItemBlockWallMP.class);
         RegisterHelper.registerBlock(MPBlocks.dungeon_brick_wall, ItemBlockDungeonBrickWall.class);
         RegisterHelper.registerBlock(stone_slab_half, ItemBlockSlabMP.class, stone_slab_half, stone_slab_full);

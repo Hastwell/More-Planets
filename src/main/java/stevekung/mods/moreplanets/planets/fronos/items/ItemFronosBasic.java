@@ -55,6 +55,7 @@ public class ItemFronosBasic extends ItemBaseMP
                 {
                     if (world.rand.nextInt(10) == 0)
                     {
+                        world.func_147480_a(par4, par5, par6, false);
                         world.setBlock(par4, par5, par6, FronosBlocks.coconut_milk);
                     }
                     world.playSoundEffect(par4, par5, par6, "dig.wood", 5.0F, 1.2F);

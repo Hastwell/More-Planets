@@ -53,6 +53,38 @@ public class ItemPickaxeMP extends ItemPickaxe
         this.itemIcon = iconRegister.registerIcon(this.texture);
     }
 
+    /*@Override
+    Self Heal Tools code TODO Used for Alien tools
+    public void onUpdate(ItemStack itemStack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_)
+    {
+        if (itemStack.getItemDamage() < itemStack.getMaxDamage())
+        {
+            if (entity.ticksExisted % 100 == 0)
+            {
+                int i = itemStack.getItemDamage();
+                itemStack.setItemDamage(--i);
+            }
+        }
+    }
+
+    @Override
+    public boolean onEntityItemUpdate(EntityItem item)
+    {
+        ItemStack itemStack = item.getEntityItem();
+
+        if (itemStack.getItemDamage() < itemStack.getMaxDamage())
+        {
+            if (item.ticksExisted % 100 == 0)
+            {
+                int i = itemStack.getItemDamage();
+                itemStack.setItemDamage(--i);
+                item.lifespan = 6000;
+                item.worldObj.playAuxSFX(2005, (int)Math.floor(item.posX), (int)Math.floor(item.posY), (int)Math.floor(item.posZ), 0);
+            }
+        }
+        return false;
+    }*/
+
     @Override
     public boolean getIsRepairable(ItemStack itemStack, ItemStack itemStack2)
     {

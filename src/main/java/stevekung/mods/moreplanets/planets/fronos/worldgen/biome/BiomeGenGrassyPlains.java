@@ -16,8 +16,8 @@ public class BiomeGenGrassyPlains extends BiomeGenBaseFronos
     {
         super(ConfigManagerMP.idGrassyPlainsBiome);
         this.enableRain = true;
-		this.rainfall = 0.5F;
-		this.temperature = 0.5F;
+        this.rainfall = 0.5F;
+        this.temperature = 0.5F;
         this.topBlock = FronosBlocks.plains_grass;
         this.topMeta = 0;
         this.fillerBlock = FronosBlocks.fronos_dirt;

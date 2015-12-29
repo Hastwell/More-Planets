@@ -24,6 +24,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenLiquidLakes;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
+import stevekung.mods.moreplanets.planets.fronos.blocks.IFronosGrass;
 import stevekung.mods.moreplanets.planets.fronos.worldgen.feature.WorldGenCandyCane1;
 import stevekung.mods.moreplanets.planets.fronos.worldgen.feature.WorldGenCandyCane2;
 import stevekung.mods.moreplanets.planets.fronos.worldgen.feature.WorldGenCandyFlower;
@@ -385,7 +386,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
             x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
             z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 
-            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, false, 5, 4, false);
+            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, FronosBlocks.fronos_sapling, this.currentWorld.getBlock(x, this.currentWorld.getHeightValue(x, z) - 1, z) instanceof IFronosGrass, FronosBlocks.fronos_dirt);
             tree.setScale(1.0D, 1.0D, 1.0D);
             tree.generate(this.currentWorld, this.randomGenerator, x, this.currentWorld.getHeightValue(x, z), z);
         }
@@ -402,7 +403,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
             x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
             z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 
-            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, 5, 4, false);
+            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, FronosBlocks.fronos_sapling, this.currentWorld.getBlock(x, this.currentWorld.getHeightValue(x, z) - 1, z) instanceof IFronosGrass, FronosBlocks.fronos_dirt);
             tree.setScale(1.0D, 1.0D, 1.0D);
             tree.generate(this.currentWorld, this.randomGenerator, x, this.currentWorld.getHeightValue(x, z), z);
         }
@@ -419,7 +420,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
             x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
             z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 
-            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, false, 5, 4, false);
+            WorldGenTreeMP tree = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, FronosBlocks.fronos_sapling, this.currentWorld.getBlock(x, this.currentWorld.getHeightValue(x, z) - 1, z) instanceof IFronosGrass, FronosBlocks.fronos_dirt);
             tree.setScale(1.0D, 1.0D, 1.0D);
             tree.generate(this.currentWorld, this.randomGenerator, x, this.currentWorld.getHeightValue(x, z), z);
         }

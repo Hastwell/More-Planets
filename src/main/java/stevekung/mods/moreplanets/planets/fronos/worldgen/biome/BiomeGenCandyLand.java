@@ -16,8 +16,8 @@ public class BiomeGenCandyLand extends BiomeGenBaseFronos
     {
         super(ConfigManagerMP.idCandyLandBiome);
         this.enableRain = true;
-		this.rainfall = 0.5F;
-		this.temperature = 0.5F;
+        this.rainfall = 0.5F;
+        this.temperature = 0.5F;
         this.topBlock = FronosBlocks.frosted_cake;
         this.topMeta = 3;
         this.fillerBlock = FronosBlocks.frosted_cake;

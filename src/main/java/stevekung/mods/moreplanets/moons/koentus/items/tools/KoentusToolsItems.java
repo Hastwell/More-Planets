@@ -10,12 +10,11 @@ package stevekung.mods.moreplanets.moons.koentus.items.tools;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import stevekung.mods.moreplanets.core.items.tools.ItemAxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemHoeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemPickaxeMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemShovelMP;
-import stevekung.mods.moreplanets.core.items.tools.ItemSwordMP;
-import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricAxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricHoeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricPickaxeMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricShovelMP;
+import stevekung.mods.moreplanets.core.items.tools.ItemElectricSwordMP;
 import stevekung.mods.stevecore.RegisterHelper;
 
 public class KoentusToolsItems
@@ -44,16 +43,16 @@ public class KoentusToolsItems
 
     private static void initItems()
     {
-        KoentusToolsItems.white_crystal_pickaxe = new ItemPickaxeMP("white_crystal_pickaxe", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5, "koentus:white_crystal_pickaxe");
-        KoentusToolsItems.white_crystal_axe = new ItemAxeMP("white_crystal_axe", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5, "koentus:white_crystal_axe");
-        KoentusToolsItems.white_crystal_hoe = new ItemHoeMP("white_crystal_hoe", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5, "koentus:white_crystal_hoe");
-        KoentusToolsItems.white_crystal_shovel = new ItemShovelMP("white_crystal_spade", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5, "koentus:white_crystal_shovel");
-        KoentusToolsItems.white_crystal_sword = new ItemSwordMP("white_crystal_sword", KoentusToolsItems.white_crystal, KoentusItems.koentus_item, 5, "koentus:white_crystal_sword");
-        KoentusToolsItems.koentus_meteoric_iron_pickaxe = new ItemPickaxeMP("koentus_meteor_pickaxe", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6, "koentus:koentus_meteoric_iron_pickaxe");
-        KoentusToolsItems.koentus_meteoric_iron_axe = new ItemAxeMP("koentus_meteor_axe", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6, "koentus:koentus_meteoric_iron_axe");
-        KoentusToolsItems.koentus_meteoric_iron_hoe = new ItemHoeMP("koentus_meteor_hoe", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6, "koentus:koentus_meteoric_iron_hoe");
-        KoentusToolsItems.koentus_meteoric_iron_shovel = new ItemShovelMP("koentus_meteor_spade", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6, "koentus:koentus_meteoric_iron_shovel");
-        KoentusToolsItems.koentus_meteoric_iron_sword = new ItemSwordMP("koentus_meteor_sword", KoentusToolsItems.koentus_meteoric_iron, KoentusItems.koentus_item, 6, "koentus:koentus_meteoric_iron_sword");
+        KoentusToolsItems.white_crystal_pickaxe = new ItemElectricPickaxeMP("white_crystal_pickaxe", KoentusToolsItems.white_crystal, 18500.0F, null).setTextureName("koentus:white_crystal_pickaxe");
+        KoentusToolsItems.white_crystal_axe = new ItemElectricAxeMP("white_crystal_axe", KoentusToolsItems.white_crystal, 18500.0F, null).setTextureName("koentus:white_crystal_axe");
+        KoentusToolsItems.white_crystal_hoe = new ItemElectricHoeMP("white_crystal_hoe", KoentusToolsItems.white_crystal, 18500.0F, null).setTextureName("koentus:white_crystal_hoe");
+        KoentusToolsItems.white_crystal_shovel = new ItemElectricShovelMP("white_crystal_spade", KoentusToolsItems.white_crystal, 18500.0F, null).setTextureName("koentus:white_crystal_shovel");
+        KoentusToolsItems.white_crystal_sword = new ItemElectricSwordMP("white_crystal_sword", KoentusToolsItems.white_crystal, 18500.0F, null).setTextureName("koentus:white_crystal_sword");
+        KoentusToolsItems.koentus_meteoric_iron_pickaxe = new ItemElectricPickaxeMP("koentus_meteor_pickaxe", KoentusToolsItems.koentus_meteoric_iron, 18000.0F, null).setTextureName("koentus:koentus_meteoric_iron_pickaxe");
+        KoentusToolsItems.koentus_meteoric_iron_axe = new ItemElectricAxeMP("koentus_meteor_axe", KoentusToolsItems.koentus_meteoric_iron, 18000.0F, null).setTextureName("koentus:koentus_meteoric_iron_axe");
+        KoentusToolsItems.koentus_meteoric_iron_hoe = new ItemElectricHoeMP("koentus_meteor_hoe", KoentusToolsItems.koentus_meteoric_iron, 18000.0F, null).setTextureName("koentus:koentus_meteoric_iron_hoe");
+        KoentusToolsItems.koentus_meteoric_iron_shovel = new ItemElectricShovelMP("koentus_meteor_spade", KoentusToolsItems.koentus_meteoric_iron, 18000.0F, null).setTextureName("koentus:koentus_meteoric_iron_shovel");
+        KoentusToolsItems.koentus_meteoric_iron_sword = new ItemElectricSwordMP("koentus_meteor_sword", KoentusToolsItems.koentus_meteoric_iron, 18000.0F, null).setTextureName("koentus:koentus_meteoric_iron_sword");
     }
 
     private static void registerHarvestLevels()

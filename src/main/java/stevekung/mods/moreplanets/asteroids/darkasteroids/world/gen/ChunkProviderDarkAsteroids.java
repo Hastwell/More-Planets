@@ -672,7 +672,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                 {
                     int i = this.rand.nextInt(16) + x + 8;
                     int k = this.rand.nextInt(16) + z + 8;
-                    new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
+                    new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0, DarkAsteroidsBlocks.alien_sapling, DarkAsteroidsBlocks.alien_grass, DarkAsteroidsBlocks.alien_dirt).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
                 }
                 /*if (this.rand.nextInt(ChunkProviderDarkAsteroids.TALL_GRASS_CHANCE) == 0)
 				{

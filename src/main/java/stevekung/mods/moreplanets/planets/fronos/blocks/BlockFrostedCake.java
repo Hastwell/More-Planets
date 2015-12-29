@@ -176,12 +176,12 @@ public class BlockFrostedCake extends Block
             list.add(new ItemStack(block, 1, i));
         }
     }
-    
+
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitVecX, float hitVecY, float hitVecZ)
     {
         int metafarm = 0;
-        
+
         if (world.getBlockMetadata(x, y, z) == 0 || world.getBlockMetadata(x, y, z) == 3 || world.getBlockMetadata(x, y, z) == 4)
         {
             metafarm = 0;
@@ -194,7 +194,7 @@ public class BlockFrostedCake extends Block
         {
             metafarm = 2;
         }
-        
+
         if (player.getCurrentEquippedItem() != null)
         {
             if (player.getCurrentEquippedItem().getDisplayName().toLowerCase().contains("hoe"))
@@ -230,18 +230,6 @@ public class BlockFrostedCake extends Block
     @Override
     public int damageDropped(int meta)
     {
-        if (meta == 3 || meta == 4)
-        {
-            return 0;
-        }
-        if (meta == 5)
-        {
-            return 1;
-        }
-        if (meta == 6)
-        {
-            return 2;
-        }
         return meta;
     }
 }

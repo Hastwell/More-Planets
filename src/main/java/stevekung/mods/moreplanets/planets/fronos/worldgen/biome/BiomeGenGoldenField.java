@@ -7,11 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.fronos.worldgen.biome;
 
-import java.util.Random;
-
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
-import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class BiomeGenGoldenField extends BiomeGenBaseFronos
@@ -50,11 +46,5 @@ public class BiomeGenGoldenField extends BiomeGenBaseFronos
         this.getBiomeDecorator().redMapleTreePerChunk = -999;
         this.getBiomeDecorator().yellowMapleTreePerChunk = -999;
         this.getBiomeDecorator().purpleMapleTreePerChunk = -999;
-    }
-
-    @Override
-    public WorldGenAbstractTree func_150567_a(Random rand)
-    {
-        return rand.nextInt(10) == 0 ? new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, false, 5, 4, false) : null;
     }
 }
