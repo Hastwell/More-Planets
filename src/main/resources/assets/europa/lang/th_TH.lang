@@ -9,7 +9,7 @@ tile.europa_snow_block.name=หิมะดาวยูโรปา
 tile.europa_ice_slush.name=น้ำแข็งดาวยูโรปาที่กำลังละลาย
 tile.europa_salt.name=เกลือดาวยูโรปา
 tile.europa_water_bomb.name=ระเบิดน้ำดาวยูโรปา
-tile.europa_geyser.default.name=Europa Underwater Geyser
+tile.europa_geyser.default.name=น้ำพุร้อนใต้ดินดาวยูโรปา
 tile.europa_geyser.smoke.name=Europa Underwater Smoke Geyser
 tile.europa_snow_layer.name=Europa Snow
 tile.europa_log.europa_wood.name=Europa Wood
@@ -44,8 +44,8 @@ item.europa_gunpowder.name=Europa Gunpowder
 # ARMORS
 
 # ENTITIES
-entity.MorePlanet.EuropaSquid.name=Europa Squid
-entity.MorePlanet.EuropaCrab.name=Europa Crab
+entity.MorePlanet.EuropaSquid.name=หมึกดาวยูโรปา
+entity.MorePlanet.EuropaCrab.name=ปูดาวยูโรปา
 
 # GUI
 
