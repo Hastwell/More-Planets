@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.objmodel.WavefrontObject.TextureCoordinate;
+import stevekung.mods.moreplanets.client.objmodel.WavefrontObject.Vertex;
 
 public class Face
 {

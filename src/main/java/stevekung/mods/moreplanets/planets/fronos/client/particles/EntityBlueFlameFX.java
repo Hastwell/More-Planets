@@ -49,7 +49,6 @@ public class EntityBlueFlameFX extends EntityFX
 
         tessellator.draw();
         GlStateManager.pushMatrix();
-        GlStateManager.depthMask(false);
         GlStateManager.enableBlend();
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(this.texture));
         float sizeFactor = 0.1F * this.particleScale;
@@ -65,7 +64,6 @@ public class EntityBlueFlameFX extends EntityFX
         worldRender.addVertexWithUV(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor, 0.0D, 0.0D);
         tessellator.draw();
         GlStateManager.disableBlend();
-        GlStateManager.depthMask(true);
         GlStateManager.popMatrix();
         FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.particles);
         worldRender.startDrawingQuads();

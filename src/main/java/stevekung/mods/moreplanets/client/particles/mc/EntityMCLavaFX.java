@@ -5,8 +5,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.kapteynb.client.particles;
+package stevekung.mods.moreplanets.client.particles.mc;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -15,18 +16,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class EntityUraniumSmokeFX extends EntityFX
+public class EntityMCLavaFX extends EntityFX
 {
-    private String texture = "kapteynb:textures/particles/uranium_smoke.png";
-    private ResourceLocation particles = new ResourceLocation("textures/particle/particles.png");
+    private String texture;
     private float lavaParticleScale;
 
-    public EntityUraniumSmokeFX(World world, double x, double y, double z)
+    public EntityMCLavaFX(World world, double x, double y, double z, String texture)
     {
         super(world, x, y, z, 0.0D, 0.0D, 0.0D);
         this.motionX *= 0.800000011920929D;
@@ -38,12 +37,13 @@ public class EntityUraniumSmokeFX extends EntityFX
         this.lavaParticleScale = this.particleScale;
         this.particleMaxAge = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
         this.noClip = false;
+        this.texture = "moreplanets:textures/particles/" + texture + ".png";
     }
 
     @Override
-    public int getBrightnessForRender(float light)
+    public int getBrightnessForRender(float partialTicks)
     {
-        float f1 = (this.particleAge + light) / this.particleMaxAge;
+        float f1 = (this.particleAge + partialTicks) / this.particleMaxAge;
 
         if (f1 < 0.0F)
         {
@@ -53,47 +53,46 @@ public class EntityUraniumSmokeFX extends EntityFX
         {
             f1 = 1.0F;
         }
-        int i = super.getBrightnessForRender(light);
+        int i = super.getBrightnessForRender(partialTicks);
         short short1 = 240;
         int j = i >> 16 & 255;
         return short1 | j << 16;
     }
 
     @Override
-    public float getBrightness(float light)
+    public float getBrightness(float partialTicks)
     {
         return 1.0F;
     }
 
     @Override
-    public void func_180434_a(WorldRenderer worldRender, Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
+    public void func_180434_a(WorldRenderer worldRender, Entity entity, float partialTicks, float par3, float par4, float par5, float par6, float par7)
     {
         Tessellator tessellator = Tessellator.getInstance();
-        float f6 = (this.particleAge + par2) / this.particleMaxAge;
+        float f6 = (this.particleAge + partialTicks) / this.particleMaxAge;
         this.particleScale = this.lavaParticleScale * (1.0F - f6 * f6);
-        super.func_180434_a(worldRender, entity, par2, par3, par4, par5, par6, par7);
+        super.func_180434_a(worldRender, entity, partialTicks, par3, par4, par5, par6, par7);
 
         tessellator.draw();
         GlStateManager.pushMatrix();
-        GlStateManager.depthMask(false);
         GlStateManager.enableBlend();
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(this.texture));
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(this.texture));
         float sizeFactor = 0.1F * this.particleScale;
-        float var13 = (float)(this.prevPosX + (this.posX - this.prevPosX) * par2 - EntityFX.interpPosX);
-        float var14 = (float)(this.prevPosY + (this.posY - this.prevPosY) * par2 - EntityFX.interpPosY);
-        float var15 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * par2 - EntityFX.interpPosZ);
-        tessellator.getWorldRenderer().startDrawingQuads();
-        tessellator.getWorldRenderer().setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, 1.0F);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor, 0.0D, 1.0D);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor, 1.0D, 1.0D);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor, 1.0D, 0.0D);
-        tessellator.getWorldRenderer().addVertexWithUV(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor, 0.0D, 0.0D);
+        float var13 = (float)(this.prevPosX + (this.posX - this.prevPosX) * partialTicks - EntityFX.interpPosX);
+        float var14 = (float)(this.prevPosY + (this.posY - this.prevPosY) * partialTicks - EntityFX.interpPosY);
+        float var15 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * partialTicks - EntityFX.interpPosZ);
+        worldRender.startDrawingQuads();
+        worldRender.setBrightness(225);
+        worldRender.setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, 1.0F);
+        worldRender.addVertexWithUV(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor, 0.0D, 1.0D);
+        worldRender.addVertexWithUV(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor, 1.0D, 1.0D);
+        worldRender.addVertexWithUV(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor, 1.0D, 0.0D);
+        worldRender.addVertexWithUV(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor, 0.0D, 0.0D);
         tessellator.draw();
         GlStateManager.disableBlend();
-        GlStateManager.depthMask(true);
         GlStateManager.popMatrix();
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.particles);
-        tessellator.getWorldRenderer().startDrawingQuads();
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("textures/particle/particles.png"));
+        worldRender.startDrawingQuads();
     }
 
     @Override

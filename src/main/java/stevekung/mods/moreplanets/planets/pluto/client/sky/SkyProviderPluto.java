@@ -162,7 +162,7 @@ public class SkyProviderPluto extends SkyProviderBaseMP
     @Override
     protected float[] getStarBrightness()
     {
-        return new float[] { 0.4F, 0.5F };
+        return new float[] { 0.6F, 0.5F };
     }
 
     @Override

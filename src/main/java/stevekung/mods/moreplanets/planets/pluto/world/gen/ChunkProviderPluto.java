@@ -75,13 +75,13 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         int x = chunkX * 16;
         int z = chunkZ * 16;
         BlockPos pos = new BlockPos(x, 0, z);
-        this.worldObj.getBiomeGenForCoords(pos.add(16, 0, 16));
+        BiomeGenBase biome = this.worldObj.getBiomeGenForCoords(pos.add(16, 0, 16));
         this.rand.setSeed(this.worldObj.getSeed());
         long var7 = this.rand.nextLong() / 2L * 2L + 1L;
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
-        this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
+        this.biomeDecorator.decorate(this.worldObj, this.rand, biome, pos);
 
         pos = pos.add(8, 0, 8);
 

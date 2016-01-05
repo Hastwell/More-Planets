@@ -55,7 +55,6 @@ public class BlockFluidIoLava extends BlockFluidLavaBaseMP
             double d7 = pos.getZ() + rand.nextFloat();
             world.spawnParticle(EnumParticleTypes.DRIP_LAVA, d5, d6, d7, 0.0D, 0.0D, 0.0D);
         }
-        super.randomDisplayTick(world, pos, state, rand);
     }
 
     @Override

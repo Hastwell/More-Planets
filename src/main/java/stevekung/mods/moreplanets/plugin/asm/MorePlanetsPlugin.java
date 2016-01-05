@@ -11,10 +11,12 @@ package stevekung.mods.moreplanets.plugin.asm;
 import java.util.Map;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import stevekung.mods.moreplanets.plugin.asm.MorePlanetsTransformer.Logger;
 
 @TransformerExclusions("stevekung.mods.moreplanets.plugin.asm")
+@MCVersion(value = "1.8")
 public class MorePlanetsPlugin implements IFMLLoadingPlugin
 {
     @Override
@@ -27,7 +29,7 @@ public class MorePlanetsPlugin implements IFMLLoadingPlugin
     @Override
     public String getModContainerClass()
     {
-        return null;//"stevekung.mods.moreplanets.plugin.asm.MorePlanetsModContainer" TODO
+        return null;
     }
 
     @Override

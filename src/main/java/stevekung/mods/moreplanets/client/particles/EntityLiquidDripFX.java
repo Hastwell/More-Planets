@@ -33,6 +33,10 @@ public class EntityLiquidDripFX extends EntityFX
         this.motionX = this.motionY = this.motionZ = 0.0D;
         this.setParticleTextureIndex(113);
         this.setSize(0.01F, 0.01F);
+        this.particleRed = r;
+        this.particleGreen = g;
+        this.particleBlue = b;
+        this.particleAlpha = alpha;
         this.newRed = r;
         this.newGreen = g;
         this.newBlue = b;

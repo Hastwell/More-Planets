@@ -46,6 +46,18 @@ public class BlockDarkAsteroid extends BlockPlanetTileMP
     }
 
     @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
+
+        if (meta == 4 || meta == 8 || meta == 9)
+        {
+            return 2;
+        }
+        return 1;
+    }
+
+    @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         int meta = this.getMetaFromState(state);

@@ -12,6 +12,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.kapteynb.world.UraniumExplosion;
 
 public class EntityUraniumBomb extends Entity
@@ -89,6 +91,7 @@ public class EntityUraniumBomb extends Entity
         {
             this.handleWaterMovement();
             this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.URANIUM_LAVA, this.posX, this.posY + 0.5D, this.posZ);
         }
     }
 

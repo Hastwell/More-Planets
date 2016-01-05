@@ -43,6 +43,22 @@ public class BlockSiriusB extends BlockPlanetTileMP
     }
 
     @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
+
+        if (meta == 9)
+        {
+            return 1;
+        }
+        if (meta >= 4 && meta <= 6 || meta == 8)
+        {
+            return 2;
+        }
+        return 0;
+    }
+
+    @Override
     public int getLightValue(IBlockAccess world, BlockPos pos)
     {
         IBlockState state = world.getBlockState(pos);
@@ -90,7 +106,7 @@ public class BlockSiriusB extends BlockPlanetTileMP
         case 2:
             return 2.0F;
         case 8:
-            return 3.0F;
+            return 5.0F;
         case 9:
             return 4.0F;
         default:

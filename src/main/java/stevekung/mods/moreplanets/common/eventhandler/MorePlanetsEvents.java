@@ -61,7 +61,6 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.ZombieEvent.SummonAidEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -69,6 +68,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -87,6 +87,7 @@ import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.player.MPPlayerStats;
+import stevekung.mods.moreplanets.common.util.CalendarHelper;
 import stevekung.mods.moreplanets.common.util.MPLog;
 import stevekung.mods.moreplanets.common.world.ILightningStorm;
 import stevekung.mods.moreplanets.common.world.IMeteorType;
@@ -141,9 +142,22 @@ public class MorePlanetsEvents
     @SideOnly(Side.CLIENT)
     public void openMainMenu(GuiOpenEvent event)
     {
-        if (event.gui instanceof GuiMainMenu && ConfigManagerMP.enableNewMainManu == true)
+        if (event.gui instanceof GuiMainMenu)
         {
-            GuiMainMenu.titlePanoramaPaths = MorePlanetsEvents.titlePanoramaPaths;
+            GuiMainMenu gui = (GuiMainMenu) event.gui;
+
+            if (ConfigManagerMP.enableNewMainMenu)
+            {
+                GuiMainMenu.titlePanoramaPaths = MorePlanetsEvents.titlePanoramaPaths;
+            }
+            if (CalendarHelper.isMorePlanetsBirthDay())
+            {
+                gui.splashText = "Happy birthday, More Planets!";
+            }
+            else if (CalendarHelper.isMyBirthDay())
+            {
+                gui.splashText = "Happy birthday, SteveKunG!";
+            }
         }
     }
 
@@ -367,30 +381,24 @@ public class MorePlanetsEvents
     }
 
     @SubscribeEvent
-    public void onPickupItem(EntityItemPickupEvent event)
+    public void onPickupItem(ItemPickupEvent event)
     {
-        ItemStack itemStack = event.item.getEntityItem();
+        ItemStack itemStack = event.pickedUp.getEntityItem();
         Item item = itemStack.getItem();
         Block block = Block.getBlockFromItem(item);
         int meta = itemStack.getItemDamage();
 
-        if (event.entityPlayer.inventory.addItemStackToInventory(itemStack))
+        if (block == KoentusBlocks.crystal_log || block == NibiruBlocks.nibiru_log || block == FronosBlocks.fronos_log || block == EuropaBlocks.europa_log || block == DarkAsteroidBlocks.alien_log)
         {
-            event.setResult(Result.ALLOW);
-
-            if (block == KoentusBlocks.crystal_log || block == NibiruBlocks.nibiru_log || block == FronosBlocks.fronos_log || block == EuropaBlocks.europa_log || block == DarkAsteroidBlocks.alien_log)
-            {
-                event.entityPlayer.triggerAchievement(AchievementList.mineWood);
-            }
-            if (item == DionaItems.tier_4_rocket_schematic)
-            {
-                event.entityPlayer.triggerAchievement(AchievementsMP.getTier4Schematic);
-            }
-            if (item == Item.getItemFromBlock(DionaBlocks.diona_block) && (meta == 4 || meta == 5))
-            {
-                event.entityPlayer.triggerAchievement(AchievementsMP.mineDionaOre);
-            }
-            event.entityPlayer.onItemPickup(event.item, itemStack.stackSize);
+            event.player.triggerAchievement(AchievementList.mineWood);
+        }
+        if (item == DionaItems.tier_4_rocket_schematic)
+        {
+            event.player.triggerAchievement(AchievementsMP.getTier4Schematic);
+        }
+        if (item == Item.getItemFromBlock(DionaBlocks.diona_block) && (meta == 4 || meta == 5))
+        {
+            event.player.triggerAchievement(AchievementsMP.mineDionaOre);
         }
     }
 

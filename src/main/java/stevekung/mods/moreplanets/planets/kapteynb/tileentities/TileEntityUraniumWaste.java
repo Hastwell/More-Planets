@@ -10,23 +10,25 @@ package stevekung.mods.moreplanets.planets.kapteynb.tileentities;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
-import stevekung.mods.moreplanets.planets.kapteynb.blocks.BlockUraniumWaste;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class TileEntityUraniumWaste extends TileEntity implements IUpdatePlayerListBox
 {
-    public int radiationLevel = 10000;
+    public int radiationLevel = 100;
 
     @Override
     public void update()
     {
-        if (!this.worldObj.isRemote && this.radiationLevel > 0)
+        if (!this.worldObj.isRemote)
         {
-            this.radiationLevel--;
-        }
-        if (this.radiationLevel == 0)
-        {
-            this.worldObj.setBlockState(this.pos, KapteynBBlocks.uranium_waste.getDefaultState().withProperty(BlockUraniumWaste.VARIANT, BlockUraniumWaste.BlockType.inactive_uranium_waste), 3);
+            if (this.radiationLevel > 0)
+            {
+                this.radiationLevel--;
+            }
+            if (this.radiationLevel <= 0)
+            {
+                this.worldObj.setBlockState(this.pos, KapteynBBlocks.inactive_uranium_waste.getDefaultState());
+            }
         }
     }
 

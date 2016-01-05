@@ -637,4 +637,38 @@ public class WavefrontObject implements IModelCustom
         this.groupObjectMatcher = this.groupObjectPattern.matcher(line);
         return this.groupObjectMatcher.matches();
     }
+
+    public static class Vertex
+    {
+        public float x, y, z;
+
+        public Vertex(float x, float y)
+        {
+            this(x, y, 0.0F);
+        }
+
+        public Vertex(float x, float y, float z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+    }
+
+    public class TextureCoordinate
+    {
+        public float u, v, w;
+
+        public TextureCoordinate(float u, float v)
+        {
+            this(u, v, 0.0F);
+        }
+
+        public TextureCoordinate(float u, float v, float w)
+        {
+            this.u = u;
+            this.v = v;
+            this.w = w;
+        }
+    }
 }

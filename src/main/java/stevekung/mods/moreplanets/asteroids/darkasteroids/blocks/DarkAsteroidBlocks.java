@@ -66,8 +66,7 @@ public class DarkAsteroidBlocks
         CommonRegisterHelper.registerBlock(DarkAsteroidBlocks.dark_air);
 
         // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.dark_asteroid_rock, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alphere_ore, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alphere_ore, "pickaxe", 2);
         CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.dark_asteroid_quicksand, "shovel", 0);
         CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alien_grass, "shovel", 0);
         CommonRegisterHelper.setBlockHarvestLevel(DarkAsteroidBlocks.alien_dirt, "shovel", 0);

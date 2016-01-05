@@ -25,9 +25,9 @@ public class EntityCoconutMilkFX extends EntityFX
         this.motionX *= 0.10000000149011612D;
         this.motionY *= 0.10000000149011612D;
         this.motionZ *= 0.10000000149011612D;
-        this.particleGreen = 30.0F;
-        this.particleBlue = 30.0F;
-        this.particleRed = 30.0F;
+        this.particleGreen = 5.0F;
+        this.particleBlue = 5.0F;
+        this.particleRed = 5.0F;
         this.particleScale *= 0.75F;
         this.smokeParticleScale = this.particleScale;
         this.particleMaxAge = (int)(8.0D / (Math.random() * 0.8D + 0.2D));

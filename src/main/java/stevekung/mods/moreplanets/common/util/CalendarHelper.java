@@ -28,6 +28,11 @@ public class CalendarHelper
         return CalendarHelper.getMonth(3) && CalendarHelper.getDay(31, 1);
     }
 
+    public static boolean isMyBirthDay()
+    {
+        return CalendarHelper.getMonth(2) && CalendarHelper.getDay(2, 0);
+    }
+
     private static boolean getMonth(int month)
     {
         return CalendarHelper.calendar.get(2) + 1 == month;

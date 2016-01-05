@@ -18,6 +18,7 @@ import stevekung.mods.moreplanets.client.particles.mc.EntityMCBreakingFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCExplodeFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCHugeExplodeFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCLargeExplodeFX;
+import stevekung.mods.moreplanets.client.particles.mc.EntityMCLavaFX;
 import stevekung.mods.moreplanets.client.particles.mc.EntityMCSmokeFX;
 import stevekung.mods.moreplanets.moons.koentus.client.particles.EntityKoentusMeteorSmokeFX;
 import stevekung.mods.moreplanets.moons.koentus.client.particles.EntityWhiteCrystalSmokeFX;
@@ -37,14 +38,12 @@ import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityPurpleSp
 import stevekung.mods.moreplanets.planets.fronos.client.particles.EntityTeaFluidFX;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.kapteynb.client.particles.EntityGeyserFX;
-import stevekung.mods.moreplanets.planets.kapteynb.client.particles.EntityUraniumSmokeFX;
 import stevekung.mods.moreplanets.planets.nibiru.client.particles.EntityGeneratorSmokeFX;
 import stevekung.mods.moreplanets.planets.nibiru.client.particles.EntityInfectedSporeFX;
 import stevekung.mods.moreplanets.planets.pluto.client.particles.EntityXeoniumSmokeFX;
 import stevekung.mods.moreplanets.planets.polongnius.client.particles.EntityCheeseBubbleFX;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.siriusb.client.particles.EntitySiriusFlameFX;
-import stevekung.mods.moreplanets.planets.siriusb.client.particles.EntitySiriusLavaFX;
 import stevekung.mods.moreplanets.planets.venus.client.particles.EntityVenusSmokeFX;
 
 @SideOnly(Side.CLIENT)
@@ -289,7 +288,7 @@ public class EffectHandlerMP
         }
         else if (type == EnumParticleTypesMP.SIRIUS_LAVA)
         {
-            entityfx = new EntitySiriusLavaFX(mc.theWorld, x, y, z);
+            entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "sirius_lava");
         }
         else if (type == EnumParticleTypesMP.GOLDEN_DUST)
         {
@@ -299,9 +298,9 @@ public class EffectHandlerMP
         {
             entityfx = new EntityGoldenSmokeFX(mc.theWorld, x, y, z);
         }
-        else if (type == EnumParticleTypesMP.URANIUM_SMOKE)
+        else if (type == EnumParticleTypesMP.URANIUM_LAVA)
         {
-            entityfx = new EntityUraniumSmokeFX(mc.theWorld, x, y, z);
+            entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "uranium_smoke");
         }
         else if (type == EnumParticleTypesMP.SIRIUS_FLAME)
         {
@@ -326,6 +325,26 @@ public class EffectHandlerMP
         else if (type == EnumParticleTypesMP.GREEN_SMOKE)
         {
             entityfx = new EntityGreenRedstoneFX(mc.theWorld, x, y, z);
+        }
+        else if (type == EnumParticleTypesMP.BLACK_LAVA)
+        {
+            entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "black_lava");
+        }
+        else if (type == EnumParticleTypesMP.RED_SULFUR_LAVA)
+        {
+            entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "red_sulfur_lava");
+        }
+        else if (type == EnumParticleTypesMP.YELLOW_SULFUR_LAVA)
+        {
+            entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "yellow_sulfur_lava");
+        }
+        else if (type == EnumParticleTypesMP.ORANGE_SULFUR_LAVA)
+        {
+            entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "orange_sulfur_lava");
+        }
+        else if (type == EnumParticleTypesMP.BROWN_SULFUR_LAVA)
+        {
+            entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "brown_sulfur_lava");
         }
         mc.effectRenderer.addEffect(entityfx);
     }

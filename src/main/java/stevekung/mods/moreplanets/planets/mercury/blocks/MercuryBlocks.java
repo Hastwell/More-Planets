@@ -56,9 +56,8 @@ public class MercuryBlocks
         CommonRegisterHelper.registerBlock(MercuryBlocks.dirty_water);
 
         // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_block, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_cobblestone_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_dungeon_brick_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.metallic_rock, "pickaxe", 2);
         CommonRegisterHelper.setBlockHarvestLevel(MercuryBlocks.mercury_ancient_chest, "axe", 0);
 

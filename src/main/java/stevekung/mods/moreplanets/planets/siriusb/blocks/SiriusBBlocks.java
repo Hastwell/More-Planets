@@ -74,9 +74,8 @@ public class SiriusBBlocks
 
         // Set harvest level
         CommonRegisterHelper.setBlockHarvestLevel(SiriusBBlocks.sirius_obsidian, "pickaxe", 3);
-        CommonRegisterHelper.setBlockHarvestLevel(SiriusBBlocks.sirius_b_block, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(SiriusBBlocks.sirius_b_carbon_cobblestone_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(SiriusBBlocks.sirius_b_dungeon_brick_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(SiriusBBlocks.sirius_b_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(SiriusBBlocks.sirius_b_ancient_chest, "axe", 0);
 
         // Register ore dictionary

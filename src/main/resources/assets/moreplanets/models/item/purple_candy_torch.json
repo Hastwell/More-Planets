@@ -2,7 +2,7 @@
     "parent": "moreplanets:block/purple_candy_torch",
     "display": {
         "thirdperson": {
-            "rotation": [ 90, -45, 140 ],
+            "rotation": [ 90, -45, 135 ],
             "translation": [ 0, 1, -2.75 ],
             "scale": [ 0.55, 0.55, 0.55 ]
         },

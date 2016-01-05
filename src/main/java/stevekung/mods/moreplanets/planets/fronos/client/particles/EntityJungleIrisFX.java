@@ -49,7 +49,6 @@ public class EntityJungleIrisFX extends EntityFX
         super.func_180434_a(worldRender, entity, par2, par3, par4, par5, par6, par7);
         tessellator.draw();
 
-        GlStateManager.depthMask(true);
         GlStateManager.enableBlend();
         GlStateManager.enableDepth();
         GlStateManager.blendFunc(770, 771);

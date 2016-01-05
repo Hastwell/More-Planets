@@ -42,6 +42,22 @@ public class BlockMercury extends BlockPlanetTileMP
     }
 
     @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
+
+        if (meta >= 4 && meta <= 7)
+        {
+            return 1;
+        }
+        if (meta >= 8 && meta <= 10)
+        {
+            return 2;
+        }
+        return 0;
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
@@ -70,7 +86,7 @@ public class BlockMercury extends BlockPlanetTileMP
             return 1.5F;
         case 9:
         case 10:
-            return 3.0F;
+            return 5.0F;
         case 11:
             return 4.0F;
         default:

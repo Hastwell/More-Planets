@@ -42,7 +42,7 @@ public class BlockFluidBlackIoLava extends BlockFluidLavaBaseMP
                 double d5 = pos.getX() + rand.nextFloat();
                 double d6 = pos.getY() + this.maxY;
                 double d7 = pos.getZ() + rand.nextFloat();
-                world.spawnParticle(EnumParticleTypes.LAVA, d5, d6, d7, 0.0D, 0.0D, 0.0D);//TODO Black Lava Flame
+                MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.BLACK_LAVA, d5, d6, d7);
                 world.playSound(d5, d6, d7, "liquid.lavapop", 0.2F + rand.nextFloat() * 0.2F, 0.9F + rand.nextFloat() * 0.15F, false);
             }
             if (rand.nextInt(200) == 0)
