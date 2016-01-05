@@ -48,11 +48,11 @@ public class RenderSmallSiriusFireball extends Render
         float f6 = textureatlassprite.getMaxV();
         GlStateManager.rotate(180.0F - this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181710_j);
-        worldrenderer.func_181662_b(-0.5D, -0.25D, 0.0D).func_181673_a(f3, f6).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
-        worldrenderer.func_181662_b(0.5D, -0.25D, 0.0D).func_181673_a(f4, f6).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
-        worldrenderer.func_181662_b(0.5D, 0.75D, 0.0D).func_181673_a(f4, f5).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
-        worldrenderer.func_181662_b(-0.5D, 0.75D, 0.0D).func_181673_a(f3, f5).func_181663_c(0.0F, 1.0F, 0.0F).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_NORMAL);
+        worldrenderer.pos(-0.5D, -0.25D, 0.0D).tex(f3, f6).normal(0.0F, 1.0F, 0.0F).endVertex();
+        worldrenderer.pos(0.5D, -0.25D, 0.0D).tex(f4, f6).normal(0.0F, 1.0F, 0.0F).endVertex();
+        worldrenderer.pos(0.5D, 0.75D, 0.0D).tex(f4, f5).normal(0.0F, 1.0F, 0.0F).endVertex();
+        worldrenderer.pos(-0.5D, 0.75D, 0.0D).tex(f3, f5).normal(0.0F, 1.0F, 0.0F).endVertex();
         tessellator.draw();
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();

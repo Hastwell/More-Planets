@@ -52,6 +52,10 @@ public class BlockDiona extends BlockPlanetTileMP
         {
             return 1;
         }
+        if (meta == 10 || meta == 11)
+        {
+            return 2;
+        }
         return 0;
     }
 
@@ -103,6 +107,7 @@ public class BlockDiona extends BlockPlanetTileMP
             return 1.5F;
         case 10:
         case 11:
+            return 5.0F;
         case 15:
             return 4.0F;
         case 12:

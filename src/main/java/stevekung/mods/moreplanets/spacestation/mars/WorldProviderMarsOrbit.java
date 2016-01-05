@@ -19,7 +19,7 @@ import stevekung.mods.moreplanets.core.init.MPPlanets;
 public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltraVioletLevel
 {
     public int spaceStationDimensionID;
-    private float angularVelocityRadians = 0F;
+
     @Override
     public void setDimension(int id)
     {
@@ -108,7 +108,7 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     public void setSpinRate(float angle)
     {
         super.setSpinRate(angle);
-        this.angularVelocityRadians = angle;
+
         if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
         {
             this.updateSkyProviderSpinRate();
@@ -130,7 +130,6 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     public void setSpinRate(float angle, boolean firing)
     {
         super.setSpinRate(angle, firing);
-        this.angularVelocityRadians = angle;
         this.getSkyRenderer();
 
         //        if (sky instanceof SkyProviderMarsOrbit)

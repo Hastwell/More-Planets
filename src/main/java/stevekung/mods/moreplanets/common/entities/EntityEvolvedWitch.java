@@ -193,9 +193,9 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void handleHealthUpdate(byte p_70103_1_)
+    public void handleStatusUpdate(byte id)
     {
-        if (p_70103_1_ == 15)
+        if (id == 15)
         {
             for (int i = 0; i < this.rand.nextInt(35) + 10; ++i)
             {
@@ -204,7 +204,7 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
         }
         else
         {
-            super.handleHealthUpdate(p_70103_1_);
+            super.handleStatusUpdate(id);
         }
     }
 

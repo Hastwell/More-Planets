@@ -10,11 +10,16 @@ package stevekung.mods.moreplanets.planets.kapteynb.entities;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.planets.kapteynb.world.UraniumExplosion;
 
 public class EntityUraniumBomb extends EntityTNTPrimed
 {
+    private EntityLivingBase tntPlacedBy;
+
     public EntityUraniumBomb(World world)
     {
         super(world);
@@ -23,7 +28,7 @@ public class EntityUraniumBomb extends EntityTNTPrimed
         this.setSize(0.98F, 0.98F);
     }
 
-    public EntityUraniumBomb(World world, double x, double y, double z, EntityLivingBase entityLiving)
+    public EntityUraniumBomb(World world, double x, double y, double z, EntityLivingBase living)
     {
         this(world);
         this.setPosition(x, y, z);
@@ -35,6 +40,7 @@ public class EntityUraniumBomb extends EntityTNTPrimed
         this.prevPosX = x;
         this.prevPosY = y;
         this.prevPosZ = z;
+        this.tntPlacedBy = living;
     }
 
     @Override
@@ -69,14 +75,22 @@ public class EntityUraniumBomb extends EntityTNTPrimed
         {
             this.handleWaterMovement();
             this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+            MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.URANIUM_LAVA, this.posX, this.posY + 0.5D, this.posZ);
         }
     }
 
-    private void explode()
+    @Override
+    public EntityLivingBase getTntPlacedBy()
+    {
+        return this.tntPlacedBy;
+    }
+
+    private Explosion explode()
     {
         float f = 25.0F;
-        UraniumExplosion explosion = new UraniumExplosion(this.worldObj, this, this.posX, this.posY, this.posZ, f, true, true);
+        UraniumExplosion explosion = new UraniumExplosion(this.worldObj, this, this.posX, this.posY + this.height / 2.0F, this.posZ, f, true, true);
         explosion.doExplosionA();
         explosion.doExplosionB(true);
+        return explosion;
     }
 }

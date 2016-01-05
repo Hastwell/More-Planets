@@ -325,9 +325,9 @@ public class EntityCreamCat extends EntityTameable
     }
 
     @Override
-    public String getCommandSenderName()
+    public String getName()
     {
-        return this.hasCustomName() ? this.getCustomNameTag() : this.isTamed() ? StatCollector.translateToLocal("entity.CreamCat.name") : super.getCommandSenderName();
+        return this.hasCustomName() ? this.getCustomNameTag() : this.isTamed() ? StatCollector.translateToLocal("entity.CreamCat.name") : super.getName();
     }
 
     @Override

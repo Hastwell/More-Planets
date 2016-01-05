@@ -491,8 +491,8 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_redstone_ore, "kapteyn_b_redstone_ore", "moreplanets");
         ClientRegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_ice, 0, "kapteyn_b_ice", "moreplanets");
         ClientRegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_ice, 1, "dirty_kapteyn_b_ice", "moreplanets");
-        ClientRegisterHelper.registerModelRender(KapteynBBlocks.uranium_waste, 0, "uranium_waste", "moreplanets");
-        ClientRegisterHelper.registerModelRender(KapteynBBlocks.uranium_waste, 1, "inactive_uranium_waste", "moreplanets");
+        ClientRegisterHelper.registerModelRender(KapteynBBlocks.uranium_waste, "uranium_waste", "moreplanets");
+        ClientRegisterHelper.registerModelRender(KapteynBBlocks.inactive_uranium_waste, "inactive_uranium_waste", "moreplanets");
         ClientRegisterHelper.registerModelRender(KapteynBBlocks.uranium_bomb, "uranium_bomb", "moreplanets");
         ClientRegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_ancient_chest, "kapteyn_b_ancient_chest", "moreplanets");
         ClientRegisterHelper.registerModelRender(KapteynBBlocks.kapteyn_b_cracked_ice_stairs, "kapteyn_b_cracked_ice_stairs", "moreplanets");

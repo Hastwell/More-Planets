@@ -85,7 +85,7 @@ public class TileEntityCandyExtractor extends TileEntityLockable implements ITic
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int index)
+    public ItemStack removeStackFromSlot(int index)
     {
         if (this.itemStacks[index] != null)
         {
@@ -118,7 +118,7 @@ public class TileEntityCandyExtractor extends TileEntityLockable implements ITic
     }
 
     @Override
-    public String getCommandSenderName()
+    public String getName()
     {
         return EnumChatFormatting.DARK_BLUE + StatCollector.translateToLocal("container.candy.extractor.name");
     }

@@ -41,22 +41,22 @@ public class SkyProviderDarkAsteroids extends SkyProviderBaseMP
         GlStateManager.disableTexture2D();
         GlStateManager.color(0.0F, 0.0F, 0.0F, 1.0F);
         float size = this.sunSize / 5.8F;
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
-        worldrenderer.func_181662_b(-size, 90.0D, -size).func_181675_d();
-        worldrenderer.func_181662_b(size, 90.0D, -size).func_181675_d();
-        worldrenderer.func_181662_b(size, 90.0D, size).func_181675_d();
-        worldrenderer.func_181662_b(-size, 90.0D, size).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(-size, 90.0D, -size).endVertex();
+        worldrenderer.pos(size, 90.0D, -size).endVertex();
+        worldrenderer.pos(size, 90.0D, size).endVertex();
+        worldrenderer.pos(-size, 90.0D, size).endVertex();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.blendFunc(770, 1);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         size = this.sunSize / 1.8F;
         mc.renderEngine.bindTexture(this.sunTexture);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
-        worldrenderer.func_181662_b(-size, 90.0D, -size).func_181675_d();
-        worldrenderer.func_181662_b(size, 90.0D, -size).func_181675_d();
-        worldrenderer.func_181662_b(size, 90.0D, size).func_181675_d();
-        worldrenderer.func_181662_b(-size, 90.0D, size).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(-size, 90.0D, -size).endVertex();
+        worldrenderer.pos(size, 90.0D, -size).endVertex();
+        worldrenderer.pos(size, 90.0D, size).endVertex();
+        worldrenderer.pos(-size, 90.0D, size).endVertex();
         tessellator.draw();
 
         // Render planet??

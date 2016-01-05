@@ -58,6 +58,10 @@ public class BlockPolongnius extends BlockPlanetTileMP
     @Override
     public int getHarvestLevel(IBlockState state)
     {
+        if (this.getMetaFromState(state) >= 11 && this.getMetaFromState(state) <= 13)
+        {
+            return 2;
+        }
         if (this.getMetaFromState(state) >= 4)
         {
             return 1;
@@ -122,7 +126,7 @@ public class BlockPolongnius extends BlockPlanetTileMP
         case 11:
         case 12:
         case 13:
-            return 3.0F;
+            return 5.0F;
         case 14:
         case 15:
             return 4.0F;
@@ -158,9 +162,9 @@ public class BlockPolongnius extends BlockPlanetTileMP
     @Override
     public boolean canHarvestBlock(IBlockAccess world, BlockPos pos, EntityPlayer player)
     {
-        IBlockState state = world.getBlockState(pos);
+        int meta = this.getMetaFromState(world.getBlockState(pos));
 
-        if (state == state.withProperty(VARIANT, BlockType.cheese_gas) || state == state.withProperty(VARIANT, BlockType.solid_cheese_gas))
+        if (meta == 0 || meta == 1)
         {
             return true;
         }
@@ -170,8 +174,8 @@ public class BlockPolongnius extends BlockPlanetTileMP
     @Override
     public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
     {
-        IBlockState state = world.getBlockState(pos);
-        return state == state.withProperty(VARIANT, BlockType.solid_polongnius_meteoric_iron) || state == state.withProperty(VARIANT, BlockType.palladium_block);
+        int meta = this.getMetaFromState(world.getBlockState(pos));
+        return meta >= 11 && meta <= 13;
     }
 
     @Override

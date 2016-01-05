@@ -131,7 +131,7 @@ public class RenderEuropaGuardian extends RenderLiving<EntityEuropaGuardian>
             GlStateManager.rotate(f7 * (180F / (float)Math.PI), 1.0F, 0.0F, 0.0F);
             byte b0 = 1;
             double d4 = f4 * 0.05D * (1.0D - (b0 & 1) * 2.5D);
-            worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
             float f9 = f2 * f2;
             double d5 = b0 * 0.2D;
             double d6 = d5 * 1.41D;
@@ -159,25 +159,25 @@ public class RenderEuropaGuardian extends RenderLiving<EntityEuropaGuardian>
 
             if (entity.isElder())
             {
-                worldrenderer.func_181662_b(d15, d3, d16).func_181673_a(d24, d26).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d15, 0.0D, d16).func_181673_a(d24, d25).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d17, 0.0D, d18).func_181673_a(d23, d25).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d17, d3, d18).func_181673_a(d23, d26).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d19, d3, d20).func_181673_a(d24, d26).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d19, 0.0D, d20).func_181673_a(d24, d25).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d21, 0.0D, d22).func_181673_a(d23, d25).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d21, d3, d22).func_181673_a(d23, d26).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
+                worldrenderer.pos(d15, d3, d16).tex(d24, d26).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d15, 0.0D, d16).tex(d24, d25).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d17, 0.0D, d18).tex(d23, d25).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d17, d3, d18).tex(d23, d26).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d19, d3, d20).tex(d24, d26).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d19, 0.0D, d20).tex(d24, d25).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d21, 0.0D, d22).tex(d23, d25).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d21, d3, d22).tex(d23, d26).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
             }
             else
             {
-                worldrenderer.func_181662_b(d15, d3, d16).func_181673_a(d24, d26).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d15, 0.0D, d16).func_181673_a(d24, d25).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d17, 0.0D, d18).func_181673_a(d23, d25).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d17, d3, d18).func_181673_a(d23, d26).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d19, d3, d20).func_181673_a(d24, d26).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d19, 0.0D, d20).func_181673_a(d24, d25).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d21, 0.0D, d22).func_181673_a(d23, d25).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d21, d3, d22).func_181673_a(d23, d26).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
+                worldrenderer.pos(d15, d3, d16).tex(d24, d26).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d15, 0.0D, d16).tex(d24, d25).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d17, 0.0D, d18).tex(d23, d25).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d17, d3, d18).tex(d23, d26).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d19, d3, d20).tex(d24, d26).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d19, 0.0D, d20).tex(d24, d25).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d21, 0.0D, d22).tex(d23, d25).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d21, d3, d22).tex(d23, d26).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
             }
 
             if (entity.ticksExisted % 2 == 0)
@@ -187,17 +187,17 @@ public class RenderEuropaGuardian extends RenderLiving<EntityEuropaGuardian>
 
             if (entity.isElder())
             {
-                worldrenderer.func_181662_b(d7, d3, d8).func_181673_a(0.5D, d27 + 0.5D).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d9, d3, d10).func_181673_a(1.0D, d27 + 0.5D).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d13, d3, d14).func_181673_a(1.0D, d27).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
-                worldrenderer.func_181662_b(d11, d3, d12).func_181673_a(0.5D, d27).func_181669_b(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).func_181675_d();
+                worldrenderer.pos(d7, d3, d8).tex(0.5D, d27 + 0.5D).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d9, d3, d10).tex(1.0D, d27 + 0.5D).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d13, d3, d14).tex(1.0D, d27).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
+                worldrenderer.pos(d11, d3, d12).tex(0.5D, d27).color(150 + (int)(f9 * 240.0F), 32 + (int)(f9 * 25.0F), 190 - (int)(f9 * 240.0F), 255).endVertex();
             }
             else
             {
-                worldrenderer.func_181662_b(d7, d3, d8).func_181673_a(0.5D, d27 + 0.5D).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d9, d3, d10).func_181673_a(1.0D, d27 + 0.5D).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d13, d3, d14).func_181673_a(1.0D, d27).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
-                worldrenderer.func_181662_b(d11, d3, d12).func_181673_a(0.5D, d27).func_181669_b(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).func_181675_d();
+                worldrenderer.pos(d7, d3, d8).tex(0.5D, d27 + 0.5D).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d9, d3, d10).tex(1.0D, d27 + 0.5D).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d13, d3, d14).tex(1.0D, d27).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
+                worldrenderer.pos(d11, d3, d12).tex(0.5D, d27).color(255 + (int)(f9 * 1.0F - 128 * 2.0F), 82 + (int)(f9 * 255.0F), 60, 255).endVertex();
             }
             tessellator.draw();
             GlStateManager.enableLighting();

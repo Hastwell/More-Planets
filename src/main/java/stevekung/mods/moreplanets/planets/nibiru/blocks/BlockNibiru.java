@@ -52,11 +52,11 @@ public class BlockNibiru extends BlockPlanetTileMP
     {
         int meta = this.getMetaFromState(state);
 
-        if (meta == 4 || meta == 5 || meta >= 8)
+        if (meta == 4 || meta == 5 || meta == 8 || meta == 12)
         {
             return 1;
         }
-        if (meta == 6)
+        if (meta == 6 || meta >= 9 && meta <= 11)
         {
             return 2;
         }
@@ -112,7 +112,7 @@ public class BlockNibiru extends BlockPlanetTileMP
         case 9:
         case 10:
         case 11:
-            return 3.0F;
+            return 5.0F;
         case 12:
             return 4.0F;
         default:

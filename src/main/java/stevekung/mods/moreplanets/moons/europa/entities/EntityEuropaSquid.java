@@ -264,15 +264,15 @@ public class EntityEuropaSquid extends EntityWaterMob implements IEntityBreathab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void handleHealthUpdate(byte health)
+    public void handleStatusUpdate(byte id)
     {
-        if (health == 19)
+        if (id == 19)
         {
             this.squidRotation = 0.0F;
         }
         else
         {
-            super.handleHealthUpdate(health);
+            super.handleStatusUpdate(id);
         }
     }
 

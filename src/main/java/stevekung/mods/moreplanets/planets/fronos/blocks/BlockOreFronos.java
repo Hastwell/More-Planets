@@ -32,7 +32,7 @@ public class BlockOreFronos extends BlockBaseMP
     {
         super(Material.rock);
         this.setUnlocalizedName(name);
-        this.setHardness(3.0F);
+        this.setHardness(5.0F);
         this.setDefaultState(this.getDefaultState().withProperty(VARIANT, BlockType.iridium_block));
         this.setStepSound(soundTypeMetal);
     }

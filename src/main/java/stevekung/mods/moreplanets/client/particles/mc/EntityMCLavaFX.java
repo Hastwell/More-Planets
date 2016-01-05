@@ -5,28 +5,28 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
-package stevekung.mods.moreplanets.planets.kapteynb.client.particles;
+package stevekung.mods.moreplanets.client.particles.mc;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class EntityUraniumSmokeFX extends EntityFX
+public class EntityMCLavaFX extends EntityFX
 {
-    private String texture = "kapteynb:textures/particles/uranium_smoke.png";
-    private ResourceLocation particles = new ResourceLocation("textures/particle/particles.png");
+    private String texture;
     private float lavaParticleScale;
 
-    public EntityUraniumSmokeFX(World world, double x, double y, double z)
+    public EntityMCLavaFX(World world, double x, double y, double z, String texture)
     {
         super(world, x, y, z, 0.0D, 0.0D, 0.0D);
         this.motionX *= 0.800000011920929D;
@@ -38,6 +38,7 @@ public class EntityUraniumSmokeFX extends EntityFX
         this.lavaParticleScale = this.particleScale;
         this.particleMaxAge = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
         this.noClip = false;
+        this.texture = "moreplanets:textures/particles/" + texture + ".png";
     }
 
     @Override
@@ -75,24 +76,22 @@ public class EntityUraniumSmokeFX extends EntityFX
 
         tessellator.draw();
         GlStateManager.pushMatrix();
-        GlStateManager.depthMask(false);
         GlStateManager.enableBlend();
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(this.texture));
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(this.texture));
         float sizeFactor = 0.1F * this.particleScale;
         float var13 = (float)(this.prevPosX + (this.posX - this.prevPosX) * par2 - EntityFX.interpPosX);
         float var14 = (float)(this.prevPosY + (this.posY - this.prevPosY) * par2 - EntityFX.interpPosY);
         float var15 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * par2 - EntityFX.interpPosZ);
-        worldrenderer.startDrawingQuads();
-        worldrenderer.addVertex(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor).addUV(0.0D, 1.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
-        worldrenderer.addVertex(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor).addUV(1.0D, 1.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
-        worldrenderer.addVertex(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor).addUV(1.0D, 0.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
-        worldrenderer.addVertex(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor).addUV(0.0D, 0.0D).setColorRGBA(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).build();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
+        worldrenderer.pos(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor).tex(0.0D, 1.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor).tex(1.0D, 1.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor).tex(1.0D, 0.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor).tex(0.0D, 0.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
         tessellator.draw();
         GlStateManager.disableBlend();
-        GlStateManager.depthMask(true);
         GlStateManager.popMatrix();
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.particles);
-        worldrenderer.startDrawingQuads();
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("textures/particle/particles.png"));
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
     }
 
     @Override

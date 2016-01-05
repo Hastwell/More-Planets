@@ -72,7 +72,7 @@ public class CommonRegisterHelper
 
     public static void registerNonMobEntity(Class<? extends Entity> entity, String name, Object mod, boolean sendVelocityUpdate)
     {
-        EntityRegistry.registerModEntity(entity, name, entityIDs++, mod, 64, 3, sendVelocityUpdate);
+        EntityRegistry.registerModEntity(entity, name, entityIDs++, mod, 80, 3, sendVelocityUpdate);
     }
 
     public static void registerFluidContainer(Fluid fluid, ItemStack filledContainer, ItemStack emptyContainer)

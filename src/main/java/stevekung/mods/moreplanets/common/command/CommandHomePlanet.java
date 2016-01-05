@@ -50,7 +50,7 @@ public class CommandHomePlanet extends CommandBase
     @Override
     public void processCommand(ICommandSender sender, String[] length) throws CommandException
     {
-        EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayerUsername(sender.getCommandSenderName(), true);
+        EntityPlayerMP playerBase = PlayerUtil.getPlayerBaseServerFromPlayerUsername(sender.getName(), true);
         MPPlayerStats stats = MPPlayerStats.get(playerBase);
 
         if (length.length < 1)

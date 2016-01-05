@@ -116,7 +116,7 @@ public class BlockGreenRedstoneTorch extends BlockTorch
     }
 
     @Override
-    public int isProvidingWeakPower(IBlockAccess world, BlockPos pos, IBlockState state, EnumFacing side)
+    public int getWeakPower(IBlockAccess world, BlockPos pos, IBlockState state, EnumFacing side)
     {
         return this.isOn && state.getValue(FACING) != side ? 15 : 0;
     }
@@ -181,9 +181,9 @@ public class BlockGreenRedstoneTorch extends BlockTorch
     }
 
     @Override
-    public int isProvidingStrongPower(IBlockAccess world, BlockPos pos, IBlockState state, EnumFacing side)
+    public int getStrongPower(IBlockAccess world, BlockPos pos, IBlockState state, EnumFacing side)
     {
-        return side == EnumFacing.DOWN ? this.isProvidingWeakPower(world, pos, state, side) : 0;
+        return side == EnumFacing.DOWN ? this.getWeakPower(world, pos, state, side) : 0;
     }
 
     @Override

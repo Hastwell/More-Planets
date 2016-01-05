@@ -7,40 +7,14 @@
 
 package stevekung.mods.moreplanets.planets.diona.entities;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-import java.util.UUID;
-
 import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityEndermite;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
@@ -48,56 +22,17 @@ import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPItems;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Sets;
-
 public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBreathable
 {
-    private static UUID attackingSpeedBoostModifierUUID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
-    private static AttributeModifier attackingSpeedBoostModifier = new AttributeModifier(attackingSpeedBoostModifierUUID, "Attacking speed boost", 0.15000000596046448D, 0).setSaved(false);
-    private static Set carriableBlocks = Sets.newIdentityHashSet();
     public EntityEvolvedEnderman(World world)
     {
         super(world);
-        this.setSize(0.6F, 2.9F);
-        this.stepHeight = 1.0F;
-        this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, new EntityAIAttackOnCollide(this, 1.0D, false));
-        this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
-        this.tasks.addTask(10, new EntityEvolvedEnderman.AIPlaceBlock());
-        this.tasks.addTask(11, new EntityEvolvedEnderman.AITakeBlock());
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.targetTasks.addTask(2, new EntityEvolvedEnderman.AIFindPlayer());
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityEndermite.class, 10, true, false, new Predicate()
-        {
-            public boolean func_179948_a(EntityEndermite entity)
-            {
-                return entity.isSpawnedByPlayer();
-            }
-            @Override
-            public boolean apply(Object entity)
-            {
-                return this.func_179948_a((EntityEndermite)entity);
-            }
-        }));
     }
 
     @Override
     public ItemStack getPickedResult(MovingObjectPosition target)
     {
         return new ItemStack(MPItems.spawn_egg_mp, 1, 1001);
-    }
-
-    @Override
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(7.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(64.0D);
     }
 
     @Override
@@ -112,27 +47,6 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
         }
         this.isJumping = false;
         super.onLivingUpdate();
-    }
-
-    @Override
-    protected boolean teleportRandomly()
-    {
-        double d0 = this.posX + (this.rand.nextDouble() - 0.5D) * 64.0D;
-        double d1 = this.posY + (this.rand.nextInt(64) - 32);
-        double d2 = this.posZ + (this.rand.nextDouble() - 0.5D) * 64.0D;
-        return this.teleportTo(d0, d1, d2);
-    }
-
-    @Override
-    protected boolean teleportToEntity(Entity entity)
-    {
-        Vec3 vec3 = new Vec3(this.posX - entity.posX, this.getEntityBoundingBox().minY + this.height / 2.0F - entity.posY + entity.getEyeHeight(), this.posZ - entity.posZ);
-        vec3 = vec3.normalize();
-        double d0 = 16.0D;
-        double d1 = this.posX + (this.rand.nextDouble() - 0.5D) * 8.0D - vec3.xCoord * d0;
-        double d2 = this.posY + (this.rand.nextInt(16) - 8) - vec3.yCoord * d0;
-        double d3 = this.posZ + (this.rand.nextDouble() - 0.5D) * 8.0D - vec3.zCoord * d0;
-        return this.teleportTo(d1, d2, d3);
     }
 
     @Override
@@ -210,216 +124,10 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
         }
     }
 
-    private boolean shouldAttackPlayer(EntityPlayer player)
-    {
-        ItemStack itemStack = player.inventory.armorInventory[3];
-
-        if (itemStack != null && itemStack.getItem() == Item.getItemFromBlock(Blocks.pumpkin))
-        {
-            return false;
-        }
-        else
-        {
-            Vec3 vec3 = player.getLook(1.0F).normalize();
-            Vec3 vec31 = new Vec3(this.posX - player.posX, this.getEntityBoundingBox().minY + this.height / 2.0F - (player.posY + player.getEyeHeight()), this.posZ - player.posZ);
-            double d0 = vec31.lengthVector();
-            vec31 = vec31.normalize();
-            double d1 = vec3.dotProduct(vec31);
-            return d1 > 1.0D - 0.025D / d0 ? player.canEntityBeSeen(this) : false;
-        }
-    }
-
     @Override
     public boolean canBreath()
     {
         return true;
-    }
-
-    class AIFindPlayer extends EntityAINearestAttackableTarget
-    {
-        private EntityPlayer field_179448_g;
-        private int field_179450_h;
-        private int field_179451_i;
-        private EntityEvolvedEnderman field_179449_j = EntityEvolvedEnderman.this;
-
-        public AIFindPlayer()
-        {
-            super(EntityEvolvedEnderman.this, EntityPlayer.class, true);
-        }
-
-        @Override
-        public boolean shouldExecute()
-        {
-            double d0 = this.getTargetDistance();
-            List list = this.taskOwner.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.taskOwner.getEntityBoundingBox().expand(d0, 4.0D, d0), this.targetEntitySelector);
-            Collections.sort(list, this.theNearestAttackableTargetSorter);
-
-            if (list.isEmpty())
-            {
-                return false;
-            }
-            else
-            {
-                this.field_179448_g = (EntityPlayer)list.get(0);
-                return true;
-            }
-        }
-
-        @Override
-        public void startExecuting()
-        {
-            this.field_179450_h = 5;
-            this.field_179451_i = 0;
-        }
-
-        @Override
-        public void resetTask()
-        {
-            this.field_179448_g = null;
-            this.field_179449_j.setScreaming(false);
-            IAttributeInstance iattributeinstance = this.field_179449_j.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
-            iattributeinstance.removeModifier(EntityEvolvedEnderman.attackingSpeedBoostModifier);
-            super.resetTask();
-        }
-
-        @Override
-        public boolean continueExecuting()
-        {
-            if (this.field_179448_g != null)
-            {
-                if (!this.field_179449_j.shouldAttackPlayer(this.field_179448_g))
-                {
-                    return false;
-                }
-                else
-                {
-                    this.field_179449_j.faceEntity(this.field_179448_g, 10.0F, 10.0F);
-                    return true;
-                }
-            }
-            else
-            {
-                return super.continueExecuting();
-            }
-        }
-
-        @Override
-        public void updateTask()
-        {
-            if (this.field_179448_g != null)
-            {
-                if (--this.field_179450_h <= 0)
-                {
-                    this.targetEntity = this.field_179448_g;
-                    this.field_179448_g = null;
-                    super.startExecuting();
-                    this.field_179449_j.playSound("mob.endermen.stare", 1.0F, 1.0F);
-                    this.field_179449_j.setScreaming(true);
-                    IAttributeInstance iattributeinstance = this.field_179449_j.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
-                    iattributeinstance.applyModifier(EntityEvolvedEnderman.attackingSpeedBoostModifier);
-                }
-            }
-            else
-            {
-                if (this.targetEntity != null)
-                {
-                    if (this.targetEntity instanceof EntityPlayer && this.field_179449_j.shouldAttackPlayer((EntityPlayer)this.targetEntity))
-                    {
-                        if (this.targetEntity.getDistanceSqToEntity(this.field_179449_j) < 16.0D)
-                        {
-                            this.field_179449_j.teleportRandomly();
-                        }
-                        this.field_179451_i = 0;
-                    }
-                    else if (this.targetEntity.getDistanceSqToEntity(this.field_179449_j) > 256.0D && this.field_179451_i++ >= 30 && this.field_179449_j.teleportToEntity(this.targetEntity))
-                    {
-                        this.field_179451_i = 0;
-                    }
-                }
-                super.updateTask();
-            }
-        }
-    }
-
-    class AIPlaceBlock extends EntityAIBase
-    {
-        private EntityEvolvedEnderman field_179475_a = EntityEvolvedEnderman.this;
-
-        @Override
-        public boolean shouldExecute()
-        {
-            return !this.field_179475_a.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") ? false : this.field_179475_a.getHeldBlockState().getBlock().getMaterial() == Material.air ? false : this.field_179475_a.getRNG().nextInt(2000) == 0;
-        }
-
-        @Override
-        public void updateTask()
-        {
-            Random random = this.field_179475_a.getRNG();
-            World world = this.field_179475_a.worldObj;
-            int i = MathHelper.floor_double(this.field_179475_a.posX - 1.0D + random.nextDouble() * 2.0D);
-            int j = MathHelper.floor_double(this.field_179475_a.posY + random.nextDouble() * 2.0D);
-            int k = MathHelper.floor_double(this.field_179475_a.posZ - 1.0D + random.nextDouble() * 2.0D);
-            BlockPos blockpos = new BlockPos(i, j, k);
-            Block block = world.getBlockState(blockpos).getBlock();
-            Block block1 = world.getBlockState(blockpos.down()).getBlock();
-
-            if (this.func_179474_a(world, blockpos, this.field_179475_a.getHeldBlockState().getBlock(), block, block1))
-            {
-                world.setBlockState(blockpos, this.field_179475_a.getHeldBlockState(), 3);
-                this.field_179475_a.setHeldBlockState(Blocks.air.getDefaultState());
-            }
-        }
-
-        private boolean func_179474_a(World worldIn, BlockPos p_179474_2_, Block p_179474_3_, Block p_179474_4_, Block p_179474_5_)
-        {
-            return !p_179474_3_.canPlaceBlockAt(worldIn, p_179474_2_) ? false : p_179474_4_.getMaterial() != Material.air ? false : p_179474_5_.getMaterial() == Material.air ? false : p_179474_5_.isFullCube();
-        }
-    }
-
-    class AITakeBlock extends EntityAIBase
-    {
-        private EntityEvolvedEnderman field_179473_a = EntityEvolvedEnderman.this;
-
-        @Override
-        public boolean shouldExecute()
-        {
-            return !this.field_179473_a.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") ? false : this.field_179473_a.getHeldBlockState().getBlock().getMaterial() != Material.air ? false : this.field_179473_a.getRNG().nextInt(20) == 0;
-        }
-
-        @Override
-        public void updateTask()
-        {
-            Random random = this.field_179473_a.getRNG();
-            World world = this.field_179473_a.worldObj;
-            int i = MathHelper.floor_double(this.field_179473_a.posX - 2.0D + random.nextDouble() * 4.0D);
-            int j = MathHelper.floor_double(this.field_179473_a.posY + random.nextDouble() * 3.0D);
-            int k = MathHelper.floor_double(this.field_179473_a.posZ - 2.0D + random.nextDouble() * 4.0D);
-            BlockPos blockpos = new BlockPos(i, j, k);
-            IBlockState iblockstate = world.getBlockState(blockpos);
-            Block block = iblockstate.getBlock();
-
-            if (EntityEvolvedEnderman.carriableBlocks.contains(block))
-            {
-                this.field_179473_a.setHeldBlockState(iblockstate);
-                world.setBlockState(blockpos, Blocks.air.getDefaultState());
-            }
-        }
-    }
-
-    public static void setCarriable(Block block, boolean canCarry)
-    {
-        if (canCarry)
-        {
-            carriableBlocks.add(block);
-        }
-        else
-        {
-            carriableBlocks.remove(block);
-        }
-    }
-    public static boolean getCarriable(Block block)
-    {
-        return carriableBlocks.contains(block);
     }
 
     @Override
@@ -450,4 +158,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
             break;
         }
     }
+
+    @Override
+    protected boolean spawnCustomParticles() { return true; }//TODO
 }

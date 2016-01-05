@@ -154,9 +154,9 @@ public class ClientRegisterHelper
         return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelManager().getTextureMap().getAtlasSprite(texture);
     }
 
-    public static TextureAtlasSprite getTexture(IBlockState state)
+    public static TextureAtlasSprite getParticleTexture(IBlockState state)
     {
-        return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(state).getTexture();
+        return Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(state).getParticleTexture();
     }
 
     private static void registerVariantsName(Block block, String variant, String folder)

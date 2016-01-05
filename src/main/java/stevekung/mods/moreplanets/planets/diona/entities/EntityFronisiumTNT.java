@@ -7,15 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.diona.entities;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
-public class EntityFronisiumTNT extends Entity
+public class EntityFronisiumTNT extends EntityTNTPrimed
 {
-    public int fuse;
     private EntityLivingBase tntPlacedBy;
 
     public EntityFronisiumTNT(World world)
@@ -39,21 +37,6 @@ public class EntityFronisiumTNT extends Entity
         this.prevPosY = y;
         this.prevPosZ = z;
         this.tntPlacedBy = living;
-    }
-
-    @Override
-    protected void entityInit() {}
-
-    @Override
-    protected boolean canTriggerWalking()
-    {
-        return false;
-    }
-
-    @Override
-    public boolean canBeCollidedWith()
-    {
-        return !this.isDead;
     }
 
     @Override
@@ -91,32 +74,15 @@ public class EntityFronisiumTNT extends Entity
         }
     }
 
-    private void explode()
-    {
-        float f = 12.0F;
-        this.worldObj.createExplosion(this, this.posX, this.posY + this.height / 2.0F, this.posZ, f, true);
-    }
-
     @Override
-    protected void writeEntityToNBT(NBTTagCompound nbt)
-    {
-        nbt.setByte("Fuse", (byte)this.fuse);
-    }
-
-    @Override
-    protected void readEntityFromNBT(NBTTagCompound nbt)
-    {
-        this.fuse = nbt.getByte("Fuse");
-    }
-
     public EntityLivingBase getTntPlacedBy()
     {
         return this.tntPlacedBy;
     }
 
-    @Override
-    public float getEyeHeight()
+    private void explode()
     {
-        return 0.0F;
+        float f = 12.0F;
+        this.worldObj.createExplosion(this, this.posX, this.posY + this.height / 2.0F, this.posZ, f, true);
     }
 }

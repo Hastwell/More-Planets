@@ -42,7 +42,7 @@ public class BlockSiriusFire extends BlockFire
     @Override
     public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
     {
-        if (world.getGameRules().getGameRuleBooleanValue("doFireTick"))
+        if (world.getGameRules().getBoolean("doFireTick"))
         {
             if (!this.canPlaceBlockAt(world, pos))
             {

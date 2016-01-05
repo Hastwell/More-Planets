@@ -66,29 +66,29 @@ public class RenderPoisonArrow extends Render<EntityPoisonArrow>
         GlStateManager.scale(f10, f10, f10);
         GlStateManager.translate(-4.0F, 0.0F, 0.0F);
         GL11.glNormal3f(f10, 0.0F, 0.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-        worldrenderer.func_181662_b(-7.0D, -2.0D, -2.0D).func_181673_a(f6, f8);
-        worldrenderer.func_181662_b(-7.0D, -2.0D, 2.0D).func_181673_a(f7, f8);
-        worldrenderer.func_181662_b(-7.0D, 2.0D, 2.0D).func_181673_a(f7, f9);
-        worldrenderer.func_181662_b(-7.0D, 2.0D, -2.0D).func_181673_a(f6, f9);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(-7.0D, -2.0D, -2.0D).tex(f6, f8);
+        worldrenderer.pos(-7.0D, -2.0D, 2.0D).tex(f7, f8);
+        worldrenderer.pos(-7.0D, 2.0D, 2.0D).tex(f7, f9);
+        worldrenderer.pos(-7.0D, 2.0D, -2.0D).tex(f6, f9);
         tessellator.draw();
         GL11.glNormal3f(-f10, 0.0F, 0.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-        worldrenderer.func_181662_b(-7.0D, 2.0D, -2.0D).func_181673_a(f6, f8);
-        worldrenderer.func_181662_b(-7.0D, 2.0D, 2.0D).func_181673_a(f7, f8);
-        worldrenderer.func_181662_b(-7.0D, -2.0D, 2.0D).func_181673_a(f7, f9);
-        worldrenderer.func_181662_b(-7.0D, -2.0D, -2.0D).func_181673_a(f6, f9);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(-7.0D, 2.0D, -2.0D).tex(f6, f8);
+        worldrenderer.pos(-7.0D, 2.0D, 2.0D).tex(f7, f8);
+        worldrenderer.pos(-7.0D, -2.0D, 2.0D).tex(f7, f9);
+        worldrenderer.pos(-7.0D, -2.0D, -2.0D).tex(f6, f9);
         tessellator.draw();
 
         for (int i = 0; i < 4; ++i)
         {
             GlStateManager.rotate(90.0F, 1.0F, 0.0F, 0.0F);
             GL11.glNormal3f(0.0F, 0.0F, f10);
-            worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-            worldrenderer.func_181662_b(-8.0D, -2.0D, 0.0D).func_181673_a(f2, f4);
-            worldrenderer.func_181662_b(8.0D, -2.0D, 0.0D).func_181673_a(f3, f4);
-            worldrenderer.func_181662_b(8.0D, 2.0D, 0.0D).func_181673_a(f3, f5);
-            worldrenderer.func_181662_b(-8.0D, 2.0D, 0.0D).func_181673_a(f2, f5);
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+            worldrenderer.pos(-8.0D, -2.0D, 0.0D).tex(f2, f4);
+            worldrenderer.pos(8.0D, -2.0D, 0.0D).tex(f3, f4);
+            worldrenderer.pos(8.0D, 2.0D, 0.0D).tex(f3, f5);
+            worldrenderer.pos(-8.0D, 2.0D, 0.0D).tex(f2, f5);
             tessellator.draw();
         }
         GlStateManager.disableRescaleNormal();

@@ -103,6 +103,6 @@ public class ModelTextureHelperMP
         {
             return ClientRegisterHelper.registerBlockTexture("moreplanets:blocks/fallen_ice_crystal_meteor");
         }
-        return ClientRegisterHelper.getTexture(state);
+        return ClientRegisterHelper.getParticleTexture(state);
     }
 }

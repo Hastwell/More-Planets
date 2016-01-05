@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.siriusb.client.particles;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -15,7 +16,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -50,31 +50,22 @@ public class EntitySiriusFlameFX extends EntityFX
 
         tessellator.draw();
         GlStateManager.pushMatrix();
-        GlStateManager.depthMask(false);
         GlStateManager.enableBlend();
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(this.texture));
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(this.texture));
         float sizeFactor = 0.1F * this.particleScale;
         float var13 = (float)(this.prevPosX + (this.posX - this.prevPosX) * par2 - EntityFX.interpPosX);
         float var14 = (float)(this.prevPosY + (this.posY - this.prevPosY) * par2 - EntityFX.interpPosY);
         float var15 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * par2 - EntityFX.interpPosZ);
-        //DefaultVertexFormats.field_181707_g = DefaultVertexFormats.render2DTexture???
-        //func_181668_a = startDrawing
-        //func_181662_b = addVertex
-        //func_181673_a = addUV
-        //func_181666_a = setColorRGBA
-        //func_181671_a = setBrightness???
-        //func_181675_d = build???
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-        worldrenderer.func_181662_b(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor).func_181673_a(0.0D, 1.0D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 255).func_181675_d();
-        worldrenderer.func_181662_b(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor).func_181673_a(1.0D, 1.0D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 255).func_181675_d();
-        worldrenderer.func_181662_b(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor).func_181673_a(1.0D, 0.0D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 255).func_181675_d();
-        worldrenderer.func_181662_b(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor).func_181673_a(0.0D, 0.0D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 255).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
+        worldrenderer.pos(var13 - par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 - par5 * sizeFactor - par7 * sizeFactor).tex(0.0D, 1.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(var13 - par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 - par5 * sizeFactor + par7 * sizeFactor).tex(1.0D, 1.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(var13 + par3 * sizeFactor + par6 * sizeFactor, var14 + par4 * sizeFactor, var15 + par5 * sizeFactor + par7 * sizeFactor).tex(1.0D, 0.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(var13 + par3 * sizeFactor - par6 * sizeFactor, var14 - par4 * sizeFactor, var15 + par5 * sizeFactor - par7 * sizeFactor).tex(0.0D, 0.0D).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
         tessellator.draw();
         GlStateManager.disableBlend();
-        GlStateManager.depthMask(true);
         GlStateManager.popMatrix();
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(this.particles);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        Minecraft.getMinecraft().renderEngine.bindTexture(this.particles);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
     }
 
     @Override

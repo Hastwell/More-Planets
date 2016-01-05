@@ -33,6 +33,7 @@ public class KapteynBBlocks
     public static Block frozen_water;
     public static Block rocky_solid_water;
     public static Block uranium_waste;
+    public static Block inactive_uranium_waste;
     public static Block kapteyn_b_ancient_chest;
     public static Block uranium_bomb;
     public static Block fallen_ice_crystal_meteor;
@@ -54,6 +55,7 @@ public class KapteynBBlocks
         KapteynBBlocks.rocky_solid_water = new BlockRockySolidWater("rocky_solid_water");
         KapteynBBlocks.kapteyn_b_ancient_chest = new BlockKapteynBAncientChest("kapteyn_b_ancient_chest");
         KapteynBBlocks.uranium_waste = new BlockUraniumWaste("uranium_waste");
+        KapteynBBlocks.inactive_uranium_waste = new BlockInactiveUraniumWaste("inactive_uranium_waste");
         KapteynBBlocks.uranium_bomb = new BlockUraniumBomb("uranium_bomb");
         KapteynBBlocks.fallen_ice_crystal_meteor = new BlockFallenIceCrystalMeteor("fallen_ice_crystal_meteor");
         KapteynBBlocks.frozen_water_geyser = new BlockFrozenWaterGeyser("frozen_water_geyser");
@@ -76,25 +78,18 @@ public class KapteynBBlocks
         CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_cracked_ice_stairs);
         CommonRegisterHelper.registerBlock(KapteynBBlocks.kapteyn_b_dungeon_brick_stairs);
         CommonRegisterHelper.registerBlock(KapteynBBlocks.fallen_ice_crystal_meteor);
-        CommonRegisterHelper.registerBlock(KapteynBBlocks.uranium_waste, ItemBlockMultiVariant.class, new VariantsName("active", "inactive"));
+        CommonRegisterHelper.registerBlock(KapteynBBlocks.uranium_waste);
+        CommonRegisterHelper.registerBlock(KapteynBBlocks.inactive_uranium_waste);
         CommonRegisterHelper.registerBlock(KapteynBBlocks.icy_poison_crystal, ItemBlockIcyPoisonCrystal.class);
         CommonRegisterHelper.registerBlock(KapteynBBlocks.frozen_water);
 
         // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_block, "shovel", 0, 0);
-        CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_block, "shovel", 0, 1);
         CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.rocky_solid_water, "shovel", 0);
-
-        for (int i = 2; i < 12; i++)
-        {
-            CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_block, "pickaxe", 0, i);
-        }
-
         CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.frozen_water_geyser, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_redstone_ore, "pickaxe", 2);
         CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_redstone_ore_active, "pickaxe", 2);
         CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_cracked_ice_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_dungeon_brick_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(KapteynBBlocks.kapteyn_b_ancient_chest, "pickaxe", 0);
 
         // Register ore dictionary

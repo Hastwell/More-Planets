@@ -42,6 +42,22 @@ public class BlockPluto extends BlockPlanetTileMP
     }
 
     @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
+
+        if (meta == 4 || meta == 5)
+        {
+            return 2;
+        }
+        if (meta >= 6 && meta <= 8)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {

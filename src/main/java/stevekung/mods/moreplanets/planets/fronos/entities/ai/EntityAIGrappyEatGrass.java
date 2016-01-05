@@ -82,7 +82,7 @@ public class EntityAIGrappyEatGrass extends EntityAIBase
 
             if (field_179505_b.apply(this.entityWorld.getBlockState(pos)))
             {
-                if (this.entityWorld.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+                if (this.entityWorld.getGameRules().getBoolean("mobGriefing"))
                 {
                     this.entityWorld.destroyBlock(pos, false);
                 }
@@ -94,7 +94,7 @@ public class EntityAIGrappyEatGrass extends EntityAIBase
 
                 if (this.entityWorld.getBlockState(pos1).getBlock() instanceof IFronosGrass)
                 {
-                    if (this.entityWorld.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+                    if (this.entityWorld.getGameRules().getBoolean("mobGriefing"))
                     {
                         this.entityWorld.playAuxSFX(2001, pos1, Block.getIdFromBlock(FronosBlocks.fronos_grass));
                         this.entityWorld.setBlockState(pos1, FronosBlocks.fronos_dirt.getDefaultState(), 2);
@@ -103,7 +103,7 @@ public class EntityAIGrappyEatGrass extends EntityAIBase
                 }
                 else if (this.entityWorld.getBlockState(pos).getBlock() == FronosBlocks.fronos_tall_grass)
                 {
-                    if (this.entityWorld.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+                    if (this.entityWorld.getGameRules().getBoolean("mobGriefing"))
                     {
                         this.entityWorld.playAuxSFX(2001, pos1, Block.getIdFromBlock(FronosBlocks.fronos_tall_grass));
                     }

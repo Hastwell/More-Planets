@@ -176,11 +176,11 @@ public class WavefrontObject implements IModelCustom
 
         if (this.currentGroupObject != null)
         {
-            worldrenderer.func_181668_a(this.currentGroupObject.glDrawingMode, DefaultVertexFormats.field_181710_j);
+            worldrenderer.begin(this.currentGroupObject.glDrawingMode, DefaultVertexFormats.POSITION_TEX_NORMAL);
         }
         else
         {
-            worldrenderer.func_181668_a(GL11.GL_TRIANGLES, DefaultVertexFormats.field_181710_j);
+            worldrenderer.begin(GL11.GL_TRIANGLES, DefaultVertexFormats.POSITION_TEX_NORMAL);
         }
         this.tessellateAll(tessellator);
         tessellator.draw();
@@ -637,5 +637,39 @@ public class WavefrontObject implements IModelCustom
         }
         this.groupObjectMatcher = this.groupObjectPattern.matcher(line);
         return this.groupObjectMatcher.matches();
+    }
+
+    public static class Vertex
+    {
+        public float x, y, z;
+
+        public Vertex(float x, float y)
+        {
+            this(x, y, 0.0F);
+        }
+
+        public Vertex(float x, float y, float z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+    }
+
+    public static class TextureCoordinate
+    {
+        public float u, v, w;
+
+        public TextureCoordinate(float u, float v)
+        {
+            this(u, v, 0.0F);
+        }
+
+        public TextureCoordinate(float u, float v, float w)
+        {
+            this.u = u;
+            this.v = v;
+            this.w = w;
+        }
     }
 }

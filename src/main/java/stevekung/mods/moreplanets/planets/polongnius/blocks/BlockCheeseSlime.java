@@ -14,7 +14,7 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBreakableMP;
 
-public class BlockCheeseSlime extends BlockBreakableMP
+public class BlockCheeseSlime extends BlockBreakableMP implements net.minecraftforge.common.ISlimeBlock
 {
     public BlockCheeseSlime(String name)
     {

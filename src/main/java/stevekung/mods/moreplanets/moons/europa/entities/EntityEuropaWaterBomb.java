@@ -19,8 +19,6 @@ public class EntityEuropaWaterBomb extends EntityTNTPrimed
     {
         super(world);
         this.fuse = 80;
-        this.preventEntitySpawning = true;
-        this.setSize(0.98F, 0.98F);
     }
 
     public EntityEuropaWaterBomb(World world, double x, double y, double z, EntityLivingBase entityLiving)

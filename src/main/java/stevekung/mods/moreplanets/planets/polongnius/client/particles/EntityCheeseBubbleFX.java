@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.planets.polongnius.client.particles;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -15,7 +16,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -60,10 +60,9 @@ public class EntityCheeseBubbleFX extends EntityFX
 
         tessellator.draw();
         GlStateManager.pushMatrix();
-        GlStateManager.depthMask(false);
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(770, 1);
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(this.texture));
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(this.texture));
         float f6 = this.particleTextureIndexX / 16.0F;
         float f7 = f6 + 0.0624375F;
         float f8 = this.particleTextureIndexY / 16.0F;
@@ -81,17 +80,16 @@ public class EntityCheeseBubbleFX extends EntityFX
         float f11 = (float)(this.prevPosX + (this.posX - this.prevPosX) * par2 - EntityFX.interpPosX);
         float f12 = (float)(this.prevPosY + (this.posY - this.prevPosY) * par2 - EntityFX.interpPosY);
         float f13 = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * par2 - EntityFX.interpPosZ);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-        worldrenderer.func_181662_b(f11 - par3 * f10 - par6 * f10, f12 - par4 * f10, f13 - par5 * f10 - par7 * f10).func_181673_a(f7, f9).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
-        worldrenderer.func_181662_b(f11 - par3 * f10 + par6 * f10, f12 + par4 * f10, f13 - par5 * f10 + par7 * f10).func_181673_a(f7, f8).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
-        worldrenderer.func_181662_b(f11 + par3 * f10 + par6 * f10, f12 + par4 * f10, f13 + par5 * f10 + par7 * f10).func_181673_a(f6, f8).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
-        worldrenderer.func_181662_b(f11 + par3 * f10 - par6 * f10, f12 - par4 * f10, f13 + par5 * f10 - par7 * f10).func_181673_a(f6, f9).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).func_181671_a(0, 10).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
+        worldrenderer.pos(f11 - par3 * f10 - par6 * f10, f12 - par4 * f10, f13 - par5 * f10 - par7 * f10).tex(f7, f9).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(f11 - par3 * f10 + par6 * f10, f12 + par4 * f10, f13 - par5 * f10 + par7 * f10).tex(f7, f8).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(f11 + par3 * f10 + par6 * f10, f12 + par4 * f10, f13 + par5 * f10 + par7 * f10).tex(f6, f8).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
+        worldrenderer.pos(f11 + par3 * f10 - par6 * f10, f12 - par4 * f10, f13 + par5 * f10 - par7 * f10).tex(f6, f9).color(this.particleRed, this.particleGreen, this.particleBlue, 1.0F).lightmap(0, 255).endVertex();
         tessellator.draw();
         GlStateManager.disableBlend();
-        GlStateManager.depthMask(true);
         GlStateManager.popMatrix();
-        FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation("textures/particle/particles.png"));
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("textures/particle/particles.png"));
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
     }
 
     @Override

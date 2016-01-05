@@ -90,7 +90,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
         {
             if (!world.isRemote && world.rand.nextFloat() < fallDistance - 0.5F)
             {
-                if (!(entity instanceof EntityPlayer) && !world.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+                if (!(entity instanceof EntityPlayer) && !world.getGameRules().getBoolean("mobGriefing"))
                 {
                     return;
                 }

@@ -294,7 +294,7 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
                     b0 = -3;
                 }
 
-                this.villageObj.setReputationForPlayer(livingBase.getCommandSenderName(), b0);
+                this.villageObj.setReputationForPlayer(livingBase.getName(), b0);
 
                 if (this.isEntityAlive())
                 {
@@ -315,7 +315,7 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
             {
                 if (entity instanceof EntityPlayer)
                 {
-                    this.villageObj.setReputationForPlayer(entity.getCommandSenderName(), -2);
+                    this.villageObj.setReputationForPlayer(entity.getName(), -2);
                 }
                 else if (entity instanceof IMob)
                 {
@@ -383,23 +383,23 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void handleHealthUpdate(byte p_70103_1_)
+    public void handleStatusUpdate(byte id)
     {
-        if (p_70103_1_ == 12)
+        if (id == 12)
         {
             this.func_180489_a(EnumParticleTypes.HEART);
         }
-        else if (p_70103_1_ == 13)
+        else if (id == 13)
         {
             this.func_180489_a(EnumParticleTypes.VILLAGER_ANGRY);
         }
-        else if (p_70103_1_ == 14)
+        else if (id == 14)
         {
             this.func_180489_a(EnumParticleTypes.VILLAGER_HAPPY);
         }
         else
         {
-            super.handleHealthUpdate(p_70103_1_);
+            super.handleStatusUpdate(id);
         }
     }
 

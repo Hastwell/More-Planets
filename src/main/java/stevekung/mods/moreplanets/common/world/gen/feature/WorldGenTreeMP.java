@@ -93,7 +93,7 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
                     {
                         if (j >= 0 && j < 256)
                         {
-                            if (!this.isReplaceable(world, mutableblockpos.func_181079_c(l, j, i1)))
+                            if (!this.isReplaceable(world, mutableblockpos.set(l, j, i1)))
                             {
                                 flag = false;
                             }
@@ -192,7 +192,7 @@ public class WorldGenTreeMP extends WorldGenAbstractTree
                             {
                                 for (int i5 = pos.getZ() - k4; i5 <= pos.getZ() + k4; ++i5)
                                 {
-                                    blockpos$mutableblockpos1.func_181079_c(l4, k3, i5);
+                                    blockpos$mutableblockpos1.set(l4, k3, i5);
 
                                     if (world.getBlockState(blockpos$mutableblockpos1).getBlock().isLeaves(world,blockpos$mutableblockpos1))
                                     {

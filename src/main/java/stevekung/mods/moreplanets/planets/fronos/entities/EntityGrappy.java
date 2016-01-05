@@ -218,15 +218,15 @@ public class EntityGrappy extends EntityAnimal implements IShearable
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void handleHealthUpdate(byte health)
+    public void handleStatusUpdate(byte id)
     {
-        if (health == 10)
+        if (id == 10)
         {
             this.sheepTimer = 40;
         }
         else
         {
-            super.handleHealthUpdate(health);
+            super.handleStatusUpdate(id);
         }
     }
 

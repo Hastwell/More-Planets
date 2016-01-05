@@ -184,12 +184,12 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int par1)
+    public ItemStack removeStackFromSlot(int index)
     {
-        if (this.containingItems[par1] != null)
+        if (this.containingItems[index] != null)
         {
-            ItemStack var2 = this.containingItems[par1];
-            this.containingItems[par1] = null;
+            ItemStack var2 = this.containingItems[index];
+            this.containingItems[index] = null;
             return var2;
         }
         else
@@ -210,7 +210,7 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
     }
 
     @Override
-    public String getCommandSenderName()
+    public String getName()
     {
         return StatCollector.translateToLocal("container.powercrystal.name");
     }
@@ -323,6 +323,6 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
     @Override
     public IChatComponent getDisplayName()
     {
-        return new ChatComponentText(this.getCommandSenderName());
+        return new ChatComponentText(this.getName());
     }
 }

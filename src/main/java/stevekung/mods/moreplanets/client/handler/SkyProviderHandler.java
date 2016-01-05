@@ -54,6 +54,7 @@ public class SkyProviderHandler
     {
         Minecraft mc = Minecraft.getMinecraft();
         WorldClient world = mc.theWorld;
+
         if (world != null)
         {
             if (Loader.isModLoaded("GalacticraftMars"))

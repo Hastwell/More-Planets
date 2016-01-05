@@ -81,7 +81,7 @@ public class EntityDionaCreeperMinion extends EntityCreeper implements IEntityBr
     {
         if (!this.worldObj.isRemote)
         {
-            boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+            boolean flag = this.worldObj.getGameRules().getBoolean("mobGriefing");
             float f = this.getPowered() ? 1.0F : 0.5F;
             this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius * f, flag);
             this.setDead();

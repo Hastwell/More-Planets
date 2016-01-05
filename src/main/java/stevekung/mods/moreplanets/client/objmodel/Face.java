@@ -12,6 +12,8 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.client.objmodel.WavefrontObject.TextureCoordinate;
+import stevekung.mods.moreplanets.client.objmodel.WavefrontObject.Vertex;
 
 public class Face
 {
@@ -65,11 +67,11 @@ public class Face
                 {
                     offsetV = -offsetV;
                 }
-                worldrenderer.func_181662_b(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).func_181673_a(this.textureCoordinates[i].u + offsetU, this.textureCoordinates[i].v + offsetV).func_181663_c(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).func_181675_d();
+                worldrenderer.pos(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).tex(this.textureCoordinates[i].u + offsetU, this.textureCoordinates[i].v + offsetV).normal(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).endVertex();
             }
             else
             {
-                worldrenderer.func_181662_b(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).func_181663_c(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).func_181675_d();//TODO
+                worldrenderer.pos(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).normal(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).endVertex();//TODO
             }
         }
     }

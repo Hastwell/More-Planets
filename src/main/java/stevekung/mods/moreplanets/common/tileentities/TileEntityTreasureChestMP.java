@@ -102,7 +102,7 @@ public class TileEntityTreasureChestMP extends TileEntityAdvanced implements ITi
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int index)
+    public ItemStack removeStackFromSlot(int index)
     {
         if (this.chestContents[index] != null)
         {
@@ -129,7 +129,7 @@ public class TileEntityTreasureChestMP extends TileEntityAdvanced implements ITi
     }
 
     @Override
-    public String getCommandSenderName()
+    public String getName()
     {
         return StatCollector.translateToLocal("container." + this.name + ".treasurechest.name");
     }
@@ -459,7 +459,7 @@ public class TileEntityTreasureChestMP extends TileEntityAdvanced implements ITi
     @Override
     public IChatComponent getDisplayName()
     {
-        return new ChatComponentText(this.getCommandSenderName());
+        return new ChatComponentText(this.getName());
     }
 
     @Override

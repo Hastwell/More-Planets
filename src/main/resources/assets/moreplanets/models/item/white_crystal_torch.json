@@ -2,7 +2,7 @@
     "parent": "moreplanets:block/white_crystal_torch",
     "display": {
         "thirdperson": {
-            "rotation": [ 90, -45, 140 ],
+            "rotation": [ 90, -45, 135 ],
             "translation": [ 0, 1, -2.75 ],
             "scale": [ 0.55, 0.55, 0.55 ]
         },
@@ -14,6 +14,16 @@
 		"gui": {
             "rotation": [ 0, 0, 0 ],
             "translation": [ 0, 1.25, 0 ],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        },
+		"fixed": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1.5, 1.5, 1.5 ]
+        },
+		"ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
             "scale": [ 1.5, 1.5, 1.5 ]
         }
     }

@@ -47,11 +47,11 @@ public class SkyProviderPhobos extends SkyProviderBaseMP
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         float size = this.sunSize + 2.6F;
         mc.renderEngine.bindTexture(this.sunTexture);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
-        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(-size, 100.0D, -size).tex(0.0D, 0.0D).endVertex();
+        worldrenderer.pos(size, 100.0D, -size).tex(1.0D, 0.0D).endVertex();
+        worldrenderer.pos(size, 100.0D, size).tex(1.0D, 1.0D).endVertex();
+        worldrenderer.pos(-size, 100.0D, size).tex(0.0D, 1.0D).endVertex();
         tessellator.draw();
 
         GlStateManager.disableBlend();
@@ -63,11 +63,11 @@ public class SkyProviderPhobos extends SkyProviderBaseMP
         GlStateManager.rotate(-32F, -100.0F, -20.0F, 180.0F);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
         mc.renderEngine.bindTexture(this.marsTexture);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
-        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(-size, 100.0D, -size).tex(0.0D, 0.0D).endVertex();
+        worldrenderer.pos(size, 100.0D, -size).tex(1.0D, 0.0D).endVertex();
+        worldrenderer.pos(size, 100.0D, size).tex(1.0D, 1.0D).endVertex();
+        worldrenderer.pos(-size, 100.0D, size).tex(0.0D, 1.0D).endVertex();
         tessellator.draw();
 
         // Deimos
@@ -78,11 +78,11 @@ public class SkyProviderPhobos extends SkyProviderBaseMP
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1F);
         GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 10.0F, 0.0F, 0.0F);
         mc.renderEngine.bindTexture(this.deimosTexture);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
-        worldrenderer.func_181662_b(-size, 100.0D, -size).func_181673_a(0.0D, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b(size, 100.0D, -size).func_181673_a(1.0D, 0.0D).func_181675_d();
-        worldrenderer.func_181662_b(size, 100.0D, size).func_181673_a(1.0D, 1.0D).func_181675_d();
-        worldrenderer.func_181662_b(-size, 100.0D, size).func_181673_a(0.0D, 1.0D).func_181675_d();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(-size, 100.0D, -size).tex(0.0D, 0.0D).endVertex();
+        worldrenderer.pos(size, 100.0D, -size).tex(1.0D, 0.0D).endVertex();
+        worldrenderer.pos(size, 100.0D, size).tex(1.0D, 1.0D).endVertex();
+        worldrenderer.pos(-size, 100.0D, size).tex(0.0D, 1.0D).endVertex();
         tessellator.draw();
     }
 

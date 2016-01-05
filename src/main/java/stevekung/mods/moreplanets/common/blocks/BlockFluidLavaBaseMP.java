@@ -63,7 +63,7 @@ public abstract class BlockFluidLavaBaseMP extends BlockFluidBaseMP
             }
         }
 
-        if (world.getGameRules().getGameRuleBooleanValue("doFireTick"))
+        if (world.getGameRules().getBoolean("doFireTick"))
         {
             int i = rand.nextInt(3);
 

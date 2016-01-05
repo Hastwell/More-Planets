@@ -113,7 +113,7 @@ public class BlockCakeFarmland extends BlockFarmlandMP
                 IBlockState state = world.getBlockState(pos);
                 int meta = 0;
 
-                if (!(entity instanceof EntityPlayer) && !world.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+                if (!(entity instanceof EntityPlayer) && !world.getGameRules().getBoolean("mobGriefing"))
                 {
                     return;
                 }

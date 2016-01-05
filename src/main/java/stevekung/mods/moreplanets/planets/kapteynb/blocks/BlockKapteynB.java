@@ -47,6 +47,32 @@ public class BlockKapteynB extends BlockPlanetTileMP implements IPlantableBlock
     }
 
     @Override
+    public String getHarvestTool(IBlockState state)
+    {
+        if (this.getMetaFromState(state) <= 1)
+        {
+            return "shovel";
+        }
+        return "pickaxe";
+    }
+
+    @Override
+    public int getHarvestLevel(IBlockState state)
+    {
+        int meta = this.getMetaFromState(state);
+
+        if (meta >= 4 && meta <= 6 || meta >= 9 && meta <= 11)
+        {
+            return 2;
+        }
+        if (meta == 7 || meta == 8 || meta == 12)
+        {
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
     public float getBlockHardness(World world, BlockPos pos)
     {
         Block block = world.getBlockState(pos).getBlock();
@@ -65,7 +91,10 @@ public class BlockKapteynB extends BlockPlanetTileMP implements IPlantableBlock
             return 1.25F;
         case 3:
             return 1.5F;
+        case 9:
+        case 10:
         case 11:
+            return 5.0F;
         case 12:
             return 4.0F;
         default:
@@ -96,8 +125,8 @@ public class BlockKapteynB extends BlockPlanetTileMP implements IPlantableBlock
     @Override
     public boolean isBeaconBase(IBlockAccess world, BlockPos pos, BlockPos beacon)
     {
-        IBlockState state = world.getBlockState(pos);
-        return state == state.withProperty(VARIANT, BlockType.frozen_iron_block) || state == state.withProperty(VARIANT, BlockType.uranium_block);
+        int meta = this.getMetaFromState(world.getBlockState(pos));
+        return meta >= 9 && meta <= 11;
     }
 
     @Override

@@ -40,7 +40,7 @@ public class RenderSnowballMP extends Render<Entity>
         GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         this.bindTexture(TextureMap.locationBlocksTexture);
-        Minecraft.getMinecraft().getRenderItem().func_181564_a(this.itemStack, TransformType.GROUND);
+        Minecraft.getMinecraft().getRenderItem().renderItem(this.itemStack, TransformType.GROUND);
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, par5, partialTicks);

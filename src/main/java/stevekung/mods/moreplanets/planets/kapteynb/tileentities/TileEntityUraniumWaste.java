@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.kapteynb.tileentities;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
-import stevekung.mods.moreplanets.planets.kapteynb.blocks.BlockUraniumWaste;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class TileEntityUraniumWaste extends TileEntity implements ITickable
@@ -20,13 +19,16 @@ public class TileEntityUraniumWaste extends TileEntity implements ITickable
     @Override
     public void update()
     {
-        if (!this.worldObj.isRemote && this.radiationLevel > 0)
+        if (!this.worldObj.isRemote)
         {
-            this.radiationLevel--;
-        }
-        if (this.radiationLevel == 0)
-        {
-            this.worldObj.setBlockState(this.pos, KapteynBBlocks.uranium_waste.getDefaultState().withProperty(BlockUraniumWaste.VARIANT, BlockUraniumWaste.BlockType.inactive_uranium_waste), 3);
+            if (this.radiationLevel > 0)
+            {
+                this.radiationLevel--;
+            }
+            if (this.radiationLevel <= 0)
+            {
+                this.worldObj.setBlockState(this.pos, KapteynBBlocks.inactive_uranium_waste.getDefaultState());
+            }
         }
     }
 

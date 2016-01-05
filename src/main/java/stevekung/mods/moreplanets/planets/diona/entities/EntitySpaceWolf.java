@@ -506,9 +506,9 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void handleHealthUpdate(byte health)
+    public void handleStatusUpdate(byte id)
     {
-        if (health == 8)
+        if (id == 8)
         {
             this.isShaking = true;
             this.timeWolfIsShaking = 0.0F;
@@ -516,7 +516,7 @@ public class EntitySpaceWolf extends EntityTameable implements IEntityBreathable
         }
         else
         {
-            super.handleHealthUpdate(health);
+            super.handleStatusUpdate(id);
         }
     }
 

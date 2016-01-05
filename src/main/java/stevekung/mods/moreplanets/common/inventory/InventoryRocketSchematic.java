@@ -58,13 +58,13 @@ public class InventoryRocketSchematic implements IInventory
     }
 
     @Override
-    public String getCommandSenderName()
+    public String getName()
     {
         return "container.crafting";
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int slot)
+    public ItemStack removeStackFromSlot(int slot)
     {
         if (this.stackList[slot] != null)
         {
@@ -153,7 +153,7 @@ public class InventoryRocketSchematic implements IInventory
     @Override
     public IChatComponent getDisplayName()
     {
-        return new ChatComponentText(this.getCommandSenderName());
+        return new ChatComponentText(this.getName());
     }
 
     @Override

@@ -43,7 +43,7 @@ public class EntityLargeSiriusFireball extends EntityFireball
 
     private void explode()
     {
-        boolean gamerule = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+        boolean gamerule = this.worldObj.getGameRules().getBoolean("mobGriefing");
         SiriusExplosion explosion = new SiriusExplosion(this.worldObj, this, this.posX, this.posY, this.posZ, 4.0F, gamerule, gamerule);
         explosion.doExplosionA();
         explosion.doExplosionB(true);

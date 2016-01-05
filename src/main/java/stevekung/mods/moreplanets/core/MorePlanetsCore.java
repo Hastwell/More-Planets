@@ -68,7 +68,7 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5Rocket;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.15.0.1622,);", guiFactory = "stevekung.mods.moreplanets.common.config.ConfigGuiFactoryMP")//TODO required-after:Micdoodlecore;
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.15.0.1671,);", guiFactory = "stevekung.mods.moreplanets.common.config.ConfigGuiFactoryMP")//TODO required-after:Micdoodlecore;
 public class MorePlanetsCore
 {
     public static final String NAME = "More Planets";

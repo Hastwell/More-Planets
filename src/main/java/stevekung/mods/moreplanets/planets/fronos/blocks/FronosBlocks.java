@@ -421,7 +421,7 @@ public class FronosBlocks
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_cobblestone_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_stone_brick_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.cracked_fronos_stone_brick_stairs, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_dungeon_brick_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.fronos_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.candy_extractor_idle, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.candy_extractor_active, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(FronosBlocks.mineral_water_generator, "pickaxe", 0);

@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBreakableMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public class BlockJelly extends BlockBreakableMP
+public class BlockJelly extends BlockBreakableMP implements net.minecraftforge.common.ISlimeBlock
 {
     public static PropertyEnum VARIANT = PropertyEnum.create("variant", BlockType.class);
 

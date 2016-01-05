@@ -57,11 +57,11 @@ public abstract class SkyProviderBaseMP extends IRenderHandler
         {
             for (int l = -byte2 * i; l <= byte2 * i; l += byte2)
             {
-                worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
-                worldrenderer.func_181662_b(j + 0, f, l + 0).func_181675_d();
-                worldrenderer.func_181662_b(j + byte2, f, l + 0).func_181675_d();
-                worldrenderer.func_181662_b(j + byte2, f, l + byte2).func_181675_d();
-                worldrenderer.func_181662_b(j + 0, f, l + byte2).func_181675_d();
+                worldrenderer.begin(7, DefaultVertexFormats.POSITION);
+                worldrenderer.pos(j + 0, f, l + 0).endVertex();
+                worldrenderer.pos(j + byte2, f, l + 0).endVertex();
+                worldrenderer.pos(j + byte2, f, l + byte2).endVertex();
+                worldrenderer.pos(j + 0, f, l + byte2).endVertex();
                 tessellator.draw();
             }
         }
@@ -70,16 +70,16 @@ public abstract class SkyProviderBaseMP extends IRenderHandler
         this.glSkyList2 = this.starList + 2;
         GL11.glNewList(this.glSkyList2, GL11.GL_COMPILE);
         f = -16F;
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION);
 
         for (int k = -byte2 * i; k <= byte2 * i; k += byte2)
         {
             for (int i1 = -byte2 * i; i1 <= byte2 * i; i1 += byte2)
             {
-                worldrenderer.func_181662_b(k + byte2, f, i1 + 0).func_181675_d();
-                worldrenderer.func_181662_b(k + 0, f, i1 + 0).func_181675_d();
-                worldrenderer.func_181662_b(k + 0, f, i1 + byte2).func_181675_d();
-                worldrenderer.func_181662_b(k + byte2, f, i1 + byte2).func_181675_d();
+                worldrenderer.pos(k + byte2, f, i1 + 0).endVertex();
+                worldrenderer.pos(k + 0, f, i1 + 0).endVertex();
+                worldrenderer.pos(k + 0, f, i1 + byte2).endVertex();
+                worldrenderer.pos(k + byte2, f, i1 + byte2).endVertex();
             }
         }
         tessellator.draw();
@@ -144,27 +144,27 @@ public abstract class SkyProviderBaseMP extends IRenderHandler
             GlStateManager.callList(this.glSkyList2);
             GlStateManager.popMatrix();
             float f = -((float)(playerEyes + 65.0D));
-            worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181706_f);
-            worldrenderer.func_181662_b(-1.0D, f, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, f, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, -1.0D, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, -1.0D, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, -1.0D, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, -1.0D, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, f, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, f, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, -1.0D, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, -1.0D, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, f, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, f, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, f, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, f, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, -1.0D, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, -1.0D, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, -1.0D, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(-1.0D, -1.0D, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, -1.0D, 1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
-            worldrenderer.func_181662_b(1.0D, -1.0D, -1.0D).func_181666_a(0, 0, 0, 255).func_181675_d();
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+            worldrenderer.pos(-1.0D, f, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, f, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, f, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, f, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, f, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, f, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, f, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, f, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, 1.0D).color(0, 0, 0, 255).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, -1.0D).color(0, 0, 0, 255).endVertex();
             tessellator.draw();
         }
         GlStateManager.color(red, green, blue);
@@ -185,7 +185,7 @@ public abstract class SkyProviderBaseMP extends IRenderHandler
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         Random rand = new Random(10842L);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION);
 
         for (int starIndex = 0; starIndex < (ConfigManagerCore.moreStars ? this.getMaxStarCount()[0] : 6000); ++starIndex)
         {
@@ -224,7 +224,7 @@ public abstract class SkyProviderBaseMP extends IRenderHandler
                     double d24 = 0.0D * d12 - d21 * d13;
                     double d25 = d24 * d9 - d22 * d10;
                     double d26 = d22 * d9 + d24 * d10;
-                    worldrenderer.func_181662_b(d5 + d25, d6 + d23, d7 + d26).func_181675_d();
+                    worldrenderer.pos(d5 + d25, d6 + d23, d7 + d26).endVertex();
                 }
             }
         }

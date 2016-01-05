@@ -45,7 +45,7 @@ public class EntityCheeseSpore extends EntityFireball
             {
                 moving.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 10.0F);
             }
-            this.worldObj.newExplosion((Entity)null, this.posX, this.posY, this.posZ, 1.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
+            this.worldObj.newExplosion((Entity)null, this.posX, this.posY, this.posZ, 1.0F, false, this.worldObj.getGameRules().getBoolean("mobGriefing"));
             this.setDead();
         }
         if (this.rand.nextInt(4) == 0)

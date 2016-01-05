@@ -84,7 +84,7 @@ public abstract class TileEntityAncientChestMP extends TileEntityLockable implem
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int index)
+    public ItemStack removeStackFromSlot(int index)
     {
         if (this.chestContents[index] != null)
         {
@@ -111,7 +111,7 @@ public abstract class TileEntityAncientChestMP extends TileEntityLockable implem
     }
 
     @Override
-    public String getCommandSenderName()
+    public String getName()
     {
         return this.getChestName() + " Ancient Chest";
     }

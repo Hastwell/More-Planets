@@ -26,9 +26,6 @@ public class DeimosBlocks
         // Register
         CommonRegisterHelper.registerBlock(DeimosBlocks.deimos_block, ItemBlockMultiVariant.class, new VariantsName("surface_rock", "sub_surface_rock", "rock", "cobblestone", "tin_ore", "copper_ore", "iron_ore", "desh_ore"));
 
-        // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(DeimosBlocks.deimos_block, "pickaxe", 0);
-
         // Register ore dictionary
         OreDictionary.registerOre("oreTin", new ItemStack(DeimosBlocks.deimos_block, 1, 4));
         OreDictionary.registerOre("oreCopper", new ItemStack(DeimosBlocks.deimos_block, 1, 5));

@@ -48,9 +48,13 @@ public class BlockKoentus extends BlockPlanetTileMP
     {
         int meta = this.getMetaFromState(state);
 
-        if (meta >= 4 && meta <= 11 || meta == 15)
+        if (meta >= 4 && meta <= 8 || meta == 15)
         {
             return 1;
+        }
+        if (meta == 9 || meta == 10)
+        {
+            return 2;
         }
         return 0;
     }
@@ -87,7 +91,7 @@ public class BlockKoentus extends BlockPlanetTileMP
             return 1.5F;
         case 9:
         case 10:
-            return 3.0F;
+            return 5.0F;
         case 14:
             return 4.0F;
         default:

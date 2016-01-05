@@ -70,9 +70,8 @@ public class PlutoBlocks
         CommonRegisterHelper.registerBlock(PlutoBlocks.space_potato_block);
 
         // Set harvest level
-        CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.pluto_block, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.frozen_methane_block, "pickaxe", 0);
-        CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.frozen_nitrogen_block, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.frozen_methane_block, "pickaxe", 1);
+        CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.frozen_nitrogen_block, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.pluto_heart_crystal, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(PlutoBlocks.pluto_ancient_chest, "axe", 0);
 
