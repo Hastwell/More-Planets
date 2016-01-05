@@ -21,11 +21,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EntitySiriusFlameFX extends EntityFX
 {
-    private String texture = "siriusb:textures/particles/sirius_flame.png";
+    private String texture;
     private ResourceLocation particles = new ResourceLocation("textures/particle/particles.png");
     private float flameScale;
 
-    public EntitySiriusFlameFX(World world, double x, double y, double z)
+    public EntitySiriusFlameFX(World world, double x, double y, double z, String texture)
     {
         super(world, x, y, z);
         this.motionX = this.motionX * 0.009999999776482582D + this.motionX;
@@ -37,6 +37,7 @@ public class EntitySiriusFlameFX extends EntityFX
         this.flameScale = this.particleScale;
         this.particleMaxAge = (int)(8.0D / (Math.random() * 0.8D + 0.2D)) + 4;
         this.noClip = true;
+        this.texture = texture;
     }
 
     @Override
@@ -75,8 +76,8 @@ public class EntitySiriusFlameFX extends EntityFX
     {
         float f = (this.particleAge + light) / this.particleMaxAge;
         int i = super.getBrightnessForRender(light);
-        int j = i & 0xFF;
-        int k = i >> 16 & 0xFF;
+        int j = i & 255;
+        int k = i >> 16 & 255;
         j += (int)(f * 15.0F * 16.0F);
 
         if (f < 0.0F)

@@ -92,7 +92,7 @@ public class BlockBasicPolongnius extends BlockBasicMP implements IDetectableRes
     @Override
     public boolean isBeaconBase(IBlockAccess world, int x, int y, int z, int beaconX, int beaconY, int beaconZ)
     {
-        return world.getBlockMetadata(x, y, z) == 10 || world.getBlockMetadata(x, y, z) == 12;
+        return world.getBlockMetadata(x, y, z) >= 10 && world.getBlockMetadata(x, y, z) <= 12;
     }
 
     @Override

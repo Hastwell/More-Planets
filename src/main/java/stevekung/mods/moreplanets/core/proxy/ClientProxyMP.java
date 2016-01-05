@@ -76,7 +76,7 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOys
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.particles.EntityFrozenWaterDripFX;
 import stevekung.mods.moreplanets.planets.kapteynb.particles.EntityGeyserFX;
-import stevekung.mods.moreplanets.planets.kapteynb.particles.EntityUraniumSmokeFX;
+import stevekung.mods.moreplanets.planets.kapteynb.particles.EntityUraniumFlameFX;
 import stevekung.mods.moreplanets.planets.kapteynb.render.blocks.BlockRendererIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChestTemp;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBTreasureChest;
@@ -615,15 +615,15 @@ public class ClientProxyMP extends CommonProxyMP
         }
         else if (string == "siriusFlame")
         {
-            entityfx = new EntitySiriusFlameFX(ClientProxyMP.mc.theWorld, x, y, z);
+            entityfx = new EntitySiriusFlameFX(ClientProxyMP.mc.theWorld, x, y, z, "siriusb:textures/particles/sirius_flame.png");
         }
         else if (string == "siriusLava")
         {
             entityfx = new EntitySiriusLavaFX(ClientProxyMP.mc.theWorld, x, y, z);
         }
-        else if (string == "uraniumSmoke")
+        else if (string == "uraniumFlame")
         {
-            entityfx = new EntityUraniumSmokeFX(ClientProxyMP.mc.theWorld, x, y, z);
+            entityfx = new EntityUraniumFlameFX(ClientProxyMP.mc.theWorld, x, y, z);
         }
         else if (string == "blueFlame")
         {

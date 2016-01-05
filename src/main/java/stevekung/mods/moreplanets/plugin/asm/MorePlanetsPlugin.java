@@ -19,7 +19,7 @@ public class MorePlanetsPlugin implements IFMLLoadingPlugin
     @Override
     public String getModContainerClass()
     {
-        return null;//TODO "stevekung.mods.moreplanets.plugin.asm.MorePlanetsModContainer"
+        return null;
     }
 
     @Override

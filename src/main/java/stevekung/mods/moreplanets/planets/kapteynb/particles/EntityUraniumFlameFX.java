@@ -19,13 +19,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class EntityUraniumSmokeFX extends EntityFX
+public class EntityUraniumFlameFX extends EntityFX
 {
     private String texture = "kapteynb:textures/particles/uranium_smoke.png";
     private ResourceLocation particles = new ResourceLocation("textures/particle/particles.png");
     private float lavaParticleScale;
 
-    public EntityUraniumSmokeFX(World world, double x, double y, double z)
+    public EntityUraniumFlameFX(World world, double x, double y, double z)
     {
         super(world, x, y, z, 0.0D, 0.0D, 0.0D);
         this.motionX *= 0.800000011920929D;

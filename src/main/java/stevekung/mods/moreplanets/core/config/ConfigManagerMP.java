@@ -57,7 +57,7 @@ public class ConfigManagerMP
     public static boolean disableInfectedGas;
     public static boolean allowMobCreatureSpawningOnFronos;
     public static boolean enableVersionCheck;
-    public static boolean enableNewMainManu;
+    public static boolean enableNewMainMenu;
     public static boolean enableDebug;
     public static String homePlanetName;
 
@@ -288,9 +288,9 @@ public class ConfigManagerMP
             ConfigManagerMP.enableVersionCheck = prop.getBoolean(true);
             propOrder.add(prop.getName());
 
-            prop = ConfigManagerMP.config.get(ConfigManagerMP.GENERAL, "Enable New Main Manu Screen", true);
+            prop = ConfigManagerMP.config.get(ConfigManagerMP.GENERAL, "Enable New Main Menu Screen", true);
             prop.setRequiresMcRestart(true);
-            ConfigManagerMP.enableNewMainManu = prop.getBoolean(true);
+            ConfigManagerMP.enableNewMainMenu = prop.getBoolean(true);
             propOrder.add(prop.getName());
 
             prop = ConfigManagerMP.config.get(ConfigManagerMP.GENERAL, "Enable Debug Logging", false);

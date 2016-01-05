@@ -58,7 +58,6 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.ZombieEvent.SummonAidEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 
 import org.lwjgl.Sys;
@@ -122,6 +121,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -389,30 +389,24 @@ public class MorePlanetEvents
     }
 
     @SubscribeEvent
-    public void onPickupItem(EntityItemPickupEvent event)
+    public void onPickupItem(ItemPickupEvent event)
     {
-        ItemStack itemStack = event.item.getEntityItem();
+        ItemStack itemStack = event.pickedUp.getEntityItem();
         Item item = itemStack.getItem();
         Block block = Block.getBlockFromItem(item);
         int meta = itemStack.getItemDamage();
 
-        if (event.entityPlayer.inventory.addItemStackToInventory(itemStack))
+        if (block == KoentusBlocks.crystal_log || block == NibiruBlocks.nibiru_log || block == FronosBlocks.fronos_log || block == EuropaBlocks.europa_log || block == DarkAsteroidsBlocks.alien_log)
         {
-            event.setResult(Result.ALLOW);
-
-            if (block == KoentusBlocks.crystal_log || block == NibiruBlocks.nibiru_log || block == FronosBlocks.fronos_log || block == EuropaBlocks.europa_log || block == DarkAsteroidsBlocks.alien_log)
-            {
-                event.entityPlayer.triggerAchievement(AchievementList.mineWood);
-            }
-            if (item == DionaItems.tier4_rocket_schematic && meta == 1)
-            {
-                event.entityPlayer.triggerAchievement(AchievementsMP.getTier4Schematic);
-            }
-            if (item == Item.getItemFromBlock(DionaBlocks.diona_block) && (meta == 4 || meta == 5))
-            {
-                event.entityPlayer.triggerAchievement(AchievementsMP.mineDionaOre);
-            }
-            event.entityPlayer.onItemPickup(event.item, itemStack.stackSize);
+            event.player.triggerAchievement(AchievementList.mineWood);
+        }
+        if (item == DionaItems.tier4_rocket_schematic && meta == 1)
+        {
+            event.player.triggerAchievement(AchievementsMP.getTier4Schematic);
+        }
+        if (item == Item.getItemFromBlock(DionaBlocks.diona_block) && (meta == 4 || meta == 5))
+        {
+            event.player.triggerAchievement(AchievementsMP.mineDionaOre);
         }
     }
 

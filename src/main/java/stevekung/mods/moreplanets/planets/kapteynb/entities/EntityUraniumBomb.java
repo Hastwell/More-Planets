@@ -91,7 +91,7 @@ public class EntityUraniumBomb extends Entity
         else
         {
             this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
-            MorePlanetsCore.proxy.spawnParticle("uraniumSmoke", this.posX, this.posY + 0.5D, this.posZ);
+            MorePlanetsCore.proxy.spawnParticle("uraniumFlame", this.posX, this.posY + 0.5D, this.posZ);
         }
     }
 
