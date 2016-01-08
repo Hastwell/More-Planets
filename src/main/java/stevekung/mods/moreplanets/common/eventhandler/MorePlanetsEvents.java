@@ -62,7 +62,6 @@ import net.minecraftforge.event.entity.living.ZombieEvent.SummonAidEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
-import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
@@ -988,7 +987,7 @@ public class MorePlanetsEvents
         float xOffset = mapPos.x;
         float yOffset = mapPos.y;
 
-        if (FMLClientHandler.instance().getClient().currentScreen instanceof GuiCelestialSelection)
+        if (Minecraft.getMinecraft().currentScreen instanceof GuiCelestialSelection)
         {
             GlStateManager.color(r, g, b, outerAlpha);
         }
@@ -1099,7 +1098,7 @@ public class MorePlanetsEvents
                             {
                                 f = 1.0F;
                             }
-                            living.playSound("mob.slime.big", f, 0.4F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+                            living.playSound("mob.slime.big", f + 0.05F, 0.4F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
                         }
                         MorePlanetsCore.proxy.spawnParticle(EnumParticleTypesMP.ALIEN_SPLASH, living.posX + (world.rand.nextFloat() - 0.5D) * living.width, living.getEntityBoundingBox().minY + 0.1D, living.posZ + (world.rand.nextFloat() - 0.5D) * living.width, -living.motionX, 0.6D, -living.motionZ);
                     }

@@ -3,10 +3,10 @@
 More Planets is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivs 4.0 Unported License](http://creativecommons.org/licenses/by-nc-nd/4.0/deed.en_US).
 
 # More Planets
-A custom planets exploration adventure in Minecraft!
+An add-on with custom planets exploration adventure for Galacticraft!
 
 # Author
-SteveKunG - Mod Creator, Texture
+SteveKunG - Mod Author
 
 # Link
 More Planets - http://minecraftforum.net/forums/thread/2358057
