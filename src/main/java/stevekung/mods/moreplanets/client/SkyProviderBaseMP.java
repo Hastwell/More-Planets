@@ -115,6 +115,11 @@ public abstract class SkyProviderBaseMP extends IRenderHandler
 
         if (star > 0.0F)
         {
+            GlStateManager.pushMatrix();
+            GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
+            GlStateManager.rotate(world.getCelestialAngle(partialTicks) * 360.0F, 1.0F, 0.0F, 0.0F);
+            GlStateManager.rotate(-19.0F, 0.0F, 1.0F, 0.0F);
+
             if (this.useDefaultStarBrightness() && this.getStarBrightness() == null)
             {
                 GlStateManager.color(star, star, star, star);
@@ -124,6 +129,7 @@ public abstract class SkyProviderBaseMP extends IRenderHandler
                 GlStateManager.color(custom[0], custom[0], custom[0], custom[1] * world.getStarBrightness(partialTicks) / 0.25F);
             }
             GlStateManager.callList(this.starList);
+            GlStateManager.popMatrix();
         }
 
         GlStateManager.pushMatrix();
