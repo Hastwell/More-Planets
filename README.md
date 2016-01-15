@@ -12,4 +12,4 @@ SteveKunG - Mod Author
 More Planets - http://minecraftforum.net/forums/thread/2358057
 
 # License
-License can be found here : https://github.com/SteveKunG/More-Planets/blob/master/LICENSE.txt
+License can be found here : https://github.com/SteveKunG/More-Planets/blob/1.7.10/LICENSE.txt
