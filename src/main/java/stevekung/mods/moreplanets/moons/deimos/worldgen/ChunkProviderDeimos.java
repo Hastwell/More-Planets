@@ -31,7 +31,9 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.worldgen.village.MapGenMartianVillage;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
@@ -321,6 +323,14 @@ public class ChunkProviderDeimos extends ChunkProviderGenerate
         this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
         this.rand.setSeed(par2 * var7 + par3 * var9 ^ this.worldObj.getSeed());
         this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            int x1 = var4 + this.rand.nextInt(16) + 8;
+            int y1 = this.rand.nextInt(256);
+            int z1 = var5 + this.rand.nextInt(16) + 8;
+            new WorldGenSpaceDungeons(Blocks.chest, DeimosBlocks.deimos_block, MPBlocks.space_mossy_cobblestone, 9).generate(this.worldObj, this.rand, x1, y1, z1);
+        }
         BlockFalling.fallInstantly = false;
     }
 
@@ -360,7 +370,7 @@ public class ChunkProviderDeimos extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         return null;

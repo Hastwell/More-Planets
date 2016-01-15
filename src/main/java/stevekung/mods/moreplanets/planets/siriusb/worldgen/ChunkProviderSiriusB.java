@@ -290,7 +290,7 @@ public class ChunkProviderSiriusB extends ChunkProviderGenerate
             int x = var4 + this.rand.nextInt(16) + 8;
             int y = this.rand.nextInt(256);
             int z = var5 + this.rand.nextInt(16) + 8;
-            new WorldGenSpaceDungeons(new Block[] { SiriusBBlocks.sirius_b_ancient_chest, SiriusBBlocks.sirius_b_block, MPBlocks.space_mossy_cobblestone }, 5).generate(this.worldObj, this.rand, x, y, z);
+            new WorldGenSpaceDungeons(SiriusBBlocks.sirius_b_ancient_chest, SiriusBBlocks.sirius_b_block, MPBlocks.space_mossy_cobblestone, 5).generate(this.worldObj, this.rand, x, y, z);
         }
 
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, par2, par3, false));

@@ -27,14 +27,14 @@ public class BiomeGenBasePolongnius extends BiomeGenBaseMP implements IPlanetFog
     public BiomeGenBasePolongnius()
     {
         super(ConfigManagerMP.idPolongniusBiome);
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityCheeseCow.class, 6, 2, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 8, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 8, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 8, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 8, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 8, 1, 2));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityCheeseSlime.class, 2, 1, 2));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityCheeseCow.class, 8, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityCheeseSlime.class, 15, 2, 4));
     }
 
     @Override

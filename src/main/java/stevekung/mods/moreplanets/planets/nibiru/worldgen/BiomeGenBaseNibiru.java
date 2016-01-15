@@ -36,9 +36,9 @@ public class BiomeGenBaseNibiru extends BiomeGenBaseMP
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityGiantWorm.class, 50, 2, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityGiantWorm.class, 100, 2, 4));
     }
 
     @Override

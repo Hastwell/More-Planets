@@ -57,7 +57,36 @@ tile.alien_planks.name=Alien Wood Planks
 tile.alien_glowstone.name=Alien Glowstone
 tile.alien_leaves.alien.name=Alien Leaves
 tile.alien_sapling.name=Alien Sapling
+tile.space_mossy_cobblestone.diona.name=Diona Mossy Cobblestone
+tile.space_mossy_cobblestone.polongnius.name=Polongnius Mossy Cobblestone
+tile.space_mossy_cobblestone.nibiru.name=Nibiru Mossy Cobblestone
+tile.space_mossy_cobblestone.koentus.name=Koentus Mossy Cobblestone
+tile.space_mossy_cobblestone.kapteynb.name=Kapteyn B Mossy Cobblestone
+tile.space_mossy_cobblestone.siriusb.name=Sirius B Mossy Cobblestone
+tile.space_mossy_cobblestone.venus.name=Venus Mossy Cobblestone
+tile.space_mossy_cobblestone.mercury.name=Mercury Mossy Cobblestone
+tile.space_mossy_cobblestone.pluto.name=Pluto Mossy Cobblestone
+tile.space_mossy_cobblestone.martian.name=Martian Mossy Cobblestone
+
+tile.mp_wall.venus.name=Venus Cobblestone Wall
+tile.mp_dungeon_brick_wall.venus.name=Venus Dungeon Brick Wall
+tile.mp_stone_half_slab2.venus.name=Venus Cobblestone Slab
+tile.dungeon_brick_half_slab2.venus.name=Venus Dungeon Brick Slab
+tile.mp_wall.pluto.name=Pluto Cobblestone Wall
+tile.mp_dungeon_brick_wall.pluto.name=Pluto Dungeon Brick Wall
+tile.mp_stone_half_slab2.pluto.name=Pluto Cobblestone Slab
+tile.dungeon_brick_half_slab2.pluto.name=Pluto Dungeon Brick Slab
+tile.mp_wood_half_slab.alienWood.name=Alien Wood Slab
+tile.venus_cobblestone_stairs.name=Venus Cobblestone Stairs
+tile.venus_dungeon_brick_stairs.name=Venus Dungeon Brick Stairs
+tile.pluto_cobblestone_stairs.name=Pluto Cobblestone Stairs
+tile.pluto_dungeon_brick_stairs.name=Pluto Dungeon Brick Stairs
+tile.alien_wood_stairs.name=Alien Wood Stairs
+tile.alien_fence.name=Alien Fence
+tile.alien_fence_gate.name=Alien Fence Gate
+
 entity.MorePlanet.EvolvedWitch.name=Evolved Witch
+entity.MorePlanet.PlutoAlien.name=Pluto Alien
 
 item.feces.name=Feces
 item.decompose.name=Decompose

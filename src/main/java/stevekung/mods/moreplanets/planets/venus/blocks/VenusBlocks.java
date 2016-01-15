@@ -36,6 +36,8 @@ public class VenusBlocks
     public static Block half_venus_sandstone_slab;
     public static Block double_venus_sandstone_slab;
     public static Block venus_sandstone_stairs;
+    public static Block venus_cobblestone_stairs;
+    public static Block venus_dungeon_brick_stairs;
 
     public static void init()
     {
@@ -60,6 +62,8 @@ public class VenusBlocks
         VenusBlocks.half_venus_sandstone_slab = new BlockVenusSandstoneSlab("half_venus_sandstone_slab", false, Material.rock, VenusSlabCategory.WOOD1);
         VenusBlocks.double_venus_sandstone_slab = new BlockVenusSandstoneSlab("double_venus_sandstone_slab", true, Material.rock, VenusSlabCategory.WOOD1);
         VenusBlocks.venus_sandstone_stairs = new BlockStairsMP("venus_sandstone_stairs", 0.8F, StairsCategory.venus_sandstone, Blocks.stone);
+        VenusBlocks.venus_cobblestone_stairs = new BlockStairsMP("venus_cobblestone_stairs", 2.0F, StairsCategory.venus_cobblestone, Blocks.stone);
+        VenusBlocks.venus_dungeon_brick_stairs = new BlockStairsMP("venus_dungeon_brick_stairs", 2.0F, StairsCategory.venus_dungeon_brick, Blocks.stone);
     }
 
     private static void setHarvestLevels()
@@ -75,6 +79,8 @@ public class VenusBlocks
         VenusBlocks.half_venus_sandstone_slab.setHarvestLevel("pickaxe", 0);
         VenusBlocks.double_venus_sandstone_slab.setHarvestLevel("pickaxe", 0);
         VenusBlocks.venus_sandstone_stairs.setHarvestLevel("pickaxe", 0);
+        VenusBlocks.venus_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+        VenusBlocks.venus_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
     }
 
     private static void registerBlocks()
@@ -89,6 +95,8 @@ public class VenusBlocks
         RegisterHelper.registerBlock(VenusBlocks.half_venus_sandstone_slab, ItemBlockVenusSandstoneSlab.class, VenusBlocks.half_venus_sandstone_slab, VenusBlocks.double_venus_sandstone_slab);
         RegisterHelper.registerBlock(VenusBlocks.double_venus_sandstone_slab, ItemBlockVenusSandstoneSlab.class, VenusBlocks.half_venus_sandstone_slab, VenusBlocks.double_venus_sandstone_slab);
         RegisterHelper.registerBlock(VenusBlocks.sulfur_torch);
+        RegisterHelper.registerBlock(VenusBlocks.venus_cobblestone_stairs);
+        RegisterHelper.registerBlock(VenusBlocks.venus_dungeon_brick_stairs);
         RegisterHelper.registerBlock(VenusBlocks.venus_sandstone_stairs);
         RegisterHelper.registerBlock(VenusBlocks.venusian_blaze_egg);
         RegisterHelper.registerBlock(VenusBlocks.venus_ancient_chest);

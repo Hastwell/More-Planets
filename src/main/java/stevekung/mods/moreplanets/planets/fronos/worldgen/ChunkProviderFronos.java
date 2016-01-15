@@ -25,6 +25,7 @@ import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
@@ -400,9 +401,8 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
             int x1 = var4 + this.rand.nextInt(16) + 8;
             int y1 = this.rand.nextInt(256);
             int z1 = var5 + this.rand.nextInt(16) + 8;
-            new WorldGenSpaceDungeons(new Block[] { FronosBlocks.fronos_ancient_chest, FronosBlocks.fronos_block, FronosBlocks.mossy_fronos_cobblestone }, 1, 0).generate(this.worldObj, this.rand, x1, y1, z1);
+            new WorldGenSpaceDungeons(FronosBlocks.fronos_ancient_chest, FronosBlocks.fronos_block, FronosBlocks.mossy_fronos_cobblestone, 1, 0).generate(this.worldObj, this.rand, x1, y1, z1);
         }
-
         BlockFalling.fallInstantly = false;
     }
 
@@ -448,15 +448,15 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
             }
             else
             {
-                monsters.add(new SpawnListEntry(EntityEvolvedZombie.class, 5, 4, 4));
-                monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 5, 4, 4));
-                monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 5, 4, 4));
-                monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 5, 4, 4));
-                monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 5, 1, 4));
-                monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 2, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             }
-            monsters.add(new SpawnListEntry(EntityCreamSlime.class, 50, 4, 4));
-            monsters.add(new SpawnListEntry(EntityJellySlime.class, 50, 4, 4));
+            monsters.add(new SpawnListEntry(EntityCreamSlime.class, 25, 2, 4));
+            monsters.add(new SpawnListEntry(EntityJellySlime.class, 25, 2, 4));
             return monsters;
         }
         else if (type == EnumCreatureType.creature)
@@ -489,6 +489,12 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
             List waterCreatures = new ArrayList();
             waterCreatures.add(new SpawnListEntry(EntitySquid.class, 10, 4, 4));
             return waterCreatures;
+        }
+        else if (type == EnumCreatureType.ambient)
+        {
+            List caveCreatures = new ArrayList();
+            caveCreatures.add(new SpawnListEntry(EntityBat.class, 10, 8, 8));
+            return caveCreatures;
         }
         return null;
     }

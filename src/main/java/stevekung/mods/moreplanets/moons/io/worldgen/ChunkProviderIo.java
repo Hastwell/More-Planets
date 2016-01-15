@@ -30,6 +30,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.util.ForgeDirection;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
@@ -417,12 +418,12 @@ public class ChunkProviderIo extends ChunkProviderGenerate
         if (par1EnumCreatureType == EnumCreatureType.monster)
         {
             List monsters = new ArrayList();
-            monsters.add(new SpawnListEntry(EntityEvolvedZombie.class, 8, 2, 3));
-            monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 8, 2, 3));
-            monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 8, 2, 3));
-            monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 8, 2, 3));
-            // monsters.add(new SpawnListEntry(EntityEvolvedBlaze.class, 8, 2,
-            // 3));
+            monsters.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         else

@@ -19,6 +19,6 @@ public class ItemBlockWallMP extends ItemBlockBaseMP
     @Override
     public String[] getBlockVariantsName()
     {
-        return new String[] { "diona", "quonBrick", "quonChiseled", "polongnius", "nibiru", "koentus", "koentusStone", "koentusBrick", "fronos", "fronosBrick", "fronosCrackBrick", "kapteyn", "sirius", "mercury"};
+        return new String[] { "diona", "quonBrick", "quonChiseled", "polongnius", "nibiru", "koentus", "koentusStone", "koentusBrick", "fronos", "fronosBrick", "fronosCrackBrick", "kapteyn", "sirius", "mercury", "venus", "pluto" };
     }
 }

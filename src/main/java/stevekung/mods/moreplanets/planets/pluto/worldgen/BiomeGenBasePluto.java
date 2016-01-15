@@ -29,6 +29,6 @@ public class BiomeGenBasePluto extends BiomeGenBaseMP
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
     }
 }

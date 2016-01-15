@@ -12,11 +12,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
-import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteorChunk;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteorChunk;
 
-public class ItemPolongniusMeteorChunk extends ItemMorePlanet
+public class ItemIceCrystalMeteorChunk extends ItemMorePlanet
 {
-    public ItemPolongniusMeteorChunk(String name)
+    public ItemIceCrystalMeteorChunk(String name)
     {
         super();
         this.setMaxStackSize(16);
@@ -36,7 +36,7 @@ public class ItemPolongniusMeteorChunk extends ItemMorePlanet
 
         if (!world.isRemote)
         {
-            EntityPolongniusMeteorChunk meteor = new EntityPolongniusMeteorChunk(world, player, 1.0F);
+            EntityIceCrystalMeteorChunk meteor = new EntityIceCrystalMeteorChunk(world, player, 1.0F);
             world.spawnEntityInWorld(meteor);
         }
         return itemStack;

@@ -28,6 +28,7 @@ import stevekung.mods.moreplanets.planets.fronos.render.items.ItemRendererCandyB
 import stevekung.mods.moreplanets.planets.fronos.render.items.ItemRendererCup;
 import stevekung.mods.moreplanets.planets.fronos.render.items.ItemRendererTier7Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
+import stevekung.mods.moreplanets.planets.kapteynb.render.items.ItemRendererIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.render.items.ItemRendererTier8Rocket;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import stevekung.mods.moreplanets.planets.nibiru.render.items.ItemRendererTier6Rocket;
@@ -62,5 +63,6 @@ public class ItemRendererMP
         MinecraftForgeClient.registerItemRenderer(VenusItems.venus_dungeon_key, new ItemRendererKey(new ResourceLocation("venus:textures/model/venus_treasure_chest.png")));
         MinecraftForgeClient.registerItemRenderer(MPItems.tier_2_thermal_padding, new ItemRendererTier2ThermalArmor());
         MinecraftForgeClient.registerItemRenderer(MPItems.tier_3_thermal_padding, new ItemRendererTier3ThermalArmor());
+        MinecraftForgeClient.registerItemRenderer(KapteynBItems.ice_crystal_meteor_chunk, new ItemRendererIceCrystalMeteorChunk());
     }
 }

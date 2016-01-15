@@ -31,6 +31,7 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOys
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOysterOpen;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityTeaCup;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityFrozenWaterGeyser;
+import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIceCrystalMeteor;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChestTemp;
@@ -119,6 +120,7 @@ public class MPTileEntities
         GameRegistry.registerTileEntity(TileEntityUraniumWaste.class, "UraniumWaste");
         GameRegistry.registerTileEntity(TileEntityIcyPoisonCrystal.class, "IcyPoisonCrystal");
         GameRegistry.registerTileEntity(TileEntityFrozenWaterGeyser.class, "FrozenWaterGeyser");
+        GameRegistry.registerTileEntity(TileEntityIceCrystalMeteor.class, "IceCrystalMeteor");
 
         // Sirius B
         GameRegistry.registerTileEntity(TileEntitySiriusBTreasureChest.class, "SiriusBTreasureChest");

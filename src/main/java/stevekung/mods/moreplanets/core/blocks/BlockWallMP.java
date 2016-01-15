@@ -42,7 +42,7 @@ public class BlockWallMP extends BlockWall
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        this.wallBlockIcon = new IIcon[14];
+        this.wallBlockIcon = new IIcon[16];
         this.wallBlockIcon[0] = par1IconRegister.registerIcon("diona:diona_cobblestone");
         this.wallBlockIcon[1] = par1IconRegister.registerIcon("diona:quontonium_brick");
         this.wallBlockIcon[2] = par1IconRegister.registerIcon("diona:chiseled_quontonium");
@@ -57,6 +57,8 @@ public class BlockWallMP extends BlockWall
         this.wallBlockIcon[11] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_cobblestone");
         this.wallBlockIcon[12] = par1IconRegister.registerIcon("siriusb:sirius_b_carbon_cobblestone");
         this.wallBlockIcon[13] = par1IconRegister.registerIcon("mercury:mercury_cobblestone");
+        this.wallBlockIcon[14] = par1IconRegister.registerIcon("venus:venus_cobblestone");
+        this.wallBlockIcon[15] = par1IconRegister.registerIcon("pluto:pluto_cobblestone");
     }
 
     @Override
@@ -165,6 +167,6 @@ public class BlockWallMP extends BlockWall
 
     private String[] wallBlocks()
     {
-        return new String[] { "diona", "quonBrick", "quonChiseled", "polongnius", "nibiru", "koentus", "koentusStone", "koentusBrick", "fronos", "fronosBrick", "fronosCrackBrick", "kapteyn", "sirius", "mercury" };
+        return new String[] { "diona", "quonBrick", "quonChiseled", "polongnius", "nibiru", "koentus", "koentusStone", "koentusBrick", "fronos", "fronosBrick", "fronosCrackBrick", "kapteyn", "sirius", "mercury", "venus", "pluto" };
     }
 }

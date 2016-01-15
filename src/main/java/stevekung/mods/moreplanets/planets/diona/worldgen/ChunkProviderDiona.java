@@ -354,9 +354,8 @@ public class ChunkProviderDiona extends ChunkProviderGenerate
             int x = var4 + this.rand.nextInt(16) + 8;
             int y = this.rand.nextInt(256);
             int z = var5 + this.rand.nextInt(16) + 8;
-            new WorldGenSpaceDungeons(new Block[] { DionaBlocks.diona_ancient_chest, DionaBlocks.diona_block, MPBlocks.space_mossy_cobblestone }, 0).generate(this.worldObj, this.rand, x, y, z);
+            new WorldGenSpaceDungeons(DionaBlocks.diona_ancient_chest, DionaBlocks.diona_block, MPBlocks.space_mossy_cobblestone, 0).generate(this.worldObj, this.rand, x, y, z);
         }
-
         BlockFalling.fallInstantly = false;
     }
 
@@ -391,7 +390,7 @@ public class ChunkProviderDiona extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityDionaMinionCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         else if (par1EnumCreatureType == EnumCreatureType.creature)

@@ -32,9 +32,11 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 import stevekung.mods.moreplanets.planets.mercury.worldgen.dungeon.RoomBossMercury;
@@ -343,6 +345,14 @@ public class ChunkProviderMercury extends ChunkProviderGenerate
         this.rand.setSeed(par2 * var7 + par3 * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            int x1 = var4 + this.rand.nextInt(16) + 8;
+            int y1 = this.rand.nextInt(256);
+            int z1 = var5 + this.rand.nextInt(16) + 8;
+            new WorldGenSpaceDungeons(MercuryBlocks.mercury_ancient_chest, MercuryBlocks.mercury_block, MPBlocks.space_mossy_cobblestone, 7).generate(this.worldObj, this.rand, x1, y1, z1);
+        }
         BlockFalling.fallInstantly = false;
     }
 
@@ -376,7 +386,7 @@ public class ChunkProviderMercury extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         return null;

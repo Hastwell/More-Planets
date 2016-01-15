@@ -31,6 +31,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.init.MPPotions;
+import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -175,7 +176,7 @@ public class EntityIceCrystalMeteorChunk extends Entity implements IProjectile
 
         Block block = this.worldObj.getBlock(this.xTile, this.yTile, this.zTile);
 
-        if (!block.isAir(this.worldObj, this.xTile, this.yTile, this.zTile))
+        if (block != null && !block.isAir(this.worldObj, this.xTile, this.yTile, this.zTile))
         {
             block.setBlockBoundsBasedOnState(this.worldObj, this.xTile, this.yTile, this.zTile);
             AxisAlignedBB axisalignedbb = block.getCollisionBoundingBoxFromPool(this.worldObj, this.xTile, this.yTile, this.zTile);
@@ -272,7 +273,7 @@ public class EntityIceCrystalMeteorChunk extends Entity implements IProjectile
 
             float f2;
             float f3;
-            double damage = ConfigManagerCore.hardMode ? 5.5D : 3.25D;
+            double damage = ConfigManagerCore.hardMode ? 12.75D : 8.5D;
 
             if (movingobjectposition != null)
             {
@@ -307,7 +308,6 @@ public class EntityIceCrystalMeteorChunk extends Entity implements IProjectile
                             {
                                 entitylivingbase.setArrowCountInEntity(entitylivingbase.getArrowCountInEntity() + 1);
                             }
-
                             if (this.knockbackStrength > 0)
                             {
                                 f3 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
@@ -323,16 +323,23 @@ public class EntityIceCrystalMeteorChunk extends Entity implements IProjectile
                                 EnchantmentHelper.func_151384_a(entitylivingbase, this.shootingEntity);
                                 EnchantmentHelper.func_151385_b((EntityLivingBase) this.shootingEntity, entitylivingbase);
                             }
-
                             if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
                             {
                                 ((EntityPlayerMP) this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
                             }
-                            entitylivingbase.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 120, 0));
-                        }
 
+                            this.worldObj.playSoundAtEntity(this, Block.soundTypeGlass.getBreakSound(), (Block.soundTypeGlass.getVolume() + 1.0F) / 2.0F, Block.soundTypeGlass.getPitch() * 0.8F);
+
+                            List<EntityLivingBase> living = this.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(this.posX - 1.0D, this.posY - 1.0D, this.posZ - 1.0D, this.posX + 1.0D, this.posY + 1.0D, this.posZ + 1.0D));
+
+                            for (EntityLivingBase e : living)
+                            {
+                                e.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 120, 0));
+                            }
+                        }
                         if (!(movingobjectposition.entityHit instanceof EntityEnderman))
                         {
+                            this.addParticle();
                             this.setDead();
                         }
                     }
@@ -344,6 +351,7 @@ public class EntityIceCrystalMeteorChunk extends Entity implements IProjectile
                         this.rotationYaw += 180.0F;
                         this.prevRotationYaw += 180.0F;
                         this.ticksInAir = 0;
+                        this.addParticle();
                     }
                 }
                 else
@@ -361,11 +369,19 @@ public class EntityIceCrystalMeteorChunk extends Entity implements IProjectile
                     this.posY -= this.motionY / f2 * 0.05000000074505806D;
                     this.posZ -= this.motionZ / f2 * 0.05000000074505806D;
                     this.inGround = true;
+                    this.addParticle();
+                    this.worldObj.playSoundAtEntity(this, Block.soundTypeGlass.getBreakSound(), (Block.soundTypeGlass.getVolume() + 1.0F) / 2.0F, Block.soundTypeGlass.getPitch() * 0.8F);
+                    List<EntityLivingBase> living = this.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(this.posX - 1.0D, this.posY - 1.0D, this.posZ - 1.0D, this.posX + 1.0D, this.posY + 1.0D, this.posZ + 1.0D));
 
+                    for (EntityLivingBase e : living)
+                    {
+                        e.addPotionEffect(new PotionEffect(MPPotions.icy_poison.id, 120, 0));
+                    }
                     if (!this.inTile.isAir(this.worldObj, this.xTile, this.yTile, this.zTile))
                     {
                         this.inTile.onEntityCollidedWithBlock(this.worldObj, this.xTile, this.yTile, this.zTile, this);
                     }
+                    this.setDead();
                 }
             }
 
@@ -399,6 +415,25 @@ public class EntityIceCrystalMeteorChunk extends Entity implements IProjectile
             this.motionY -= WorldUtil.getGravityForEntity(this);
             this.setPosition(this.posX, this.posY, this.posZ);
             this.func_145775_I();
+        }
+    }
+
+    private void addParticle()
+    {
+        byte b0 = 5;
+
+        for (int i2 = 0; i2 < b0; ++i2)
+        {
+            for (int j1 = 0; j1 < b0; ++j1)
+            {
+                for (int k1 = 0; k1 < b0; ++k1)
+                {
+                    double d00 = this.posX + (i2 + 0.5D) / b0;
+                    double d1 = this.posY + (j1 + 0.5D) / b0;
+                    double d2 = this.posZ + (k1 + 0.5D) / b0;
+                    this.worldObj.spawnParticle("blockcrack_" + String.valueOf(Block.getIdFromBlock(KapteynBBlocks.icy_poison_crystal)) + "_0", d00, d1, d2, d00 - this.posX - 0.5D, d1 - this.posY - 0.5D, d2 - this.posZ - 0.5D);
+                }
+            }
         }
     }
 

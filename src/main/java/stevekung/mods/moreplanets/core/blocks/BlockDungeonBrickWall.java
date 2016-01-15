@@ -170,7 +170,7 @@ public class BlockDungeonBrickWall extends BlockWall
     @Override
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        this.wallBlockIcon = new IIcon[8];
+        this.wallBlockIcon = new IIcon[16];
         this.wallBlockIcon[0] = par1IconRegister.registerIcon("diona:diona_dungeon_brick");
         this.wallBlockIcon[1] = par1IconRegister.registerIcon("polongnius:polongnius_dungeon_brick");
         this.wallBlockIcon[2] = par1IconRegister.registerIcon("nibiru:nibiru_dungeon_brick");
@@ -179,10 +179,12 @@ public class BlockDungeonBrickWall extends BlockWall
         this.wallBlockIcon[5] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_dungeon_brick");
         this.wallBlockIcon[6] = par1IconRegister.registerIcon("siriusb:sirius_b_dungeon_brick");
         this.wallBlockIcon[7] = par1IconRegister.registerIcon("mercury:mercury_dungeon_brick");
+        this.wallBlockIcon[8] = par1IconRegister.registerIcon("venus:venus_dungeon_brick");
+        this.wallBlockIcon[9] = par1IconRegister.registerIcon("pluto:pluto_dungeon_brick");
     }
 
     private String[] getTypes()
     {
-        return new String[] { "dionaBrick", "polongniusBrick", "nibiruBrick", "koentusBrick", "fronosBrick", "kapteynBrick", "siriusBrick", "mercury"};
+        return new String[] { "dionaBrick", "polongniusBrick", "nibiruBrick", "koentusBrick", "fronosBrick", "kapteynBrick", "siriusBrick", "mercury", "venus", "pluto" };
     }
 }

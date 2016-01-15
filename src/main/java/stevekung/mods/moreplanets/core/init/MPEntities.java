@@ -14,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityEvolvedDarkCreeper;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
@@ -64,6 +65,7 @@ import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityTeaC
 import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityVanillaCreamBall;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityEvolvedInfectedSpiderBoss;
@@ -72,6 +74,7 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6Rocket;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6RocketNoFlag;
+import stevekung.mods.moreplanets.planets.pluto.entities.EntityPlutoAlien;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCubeEyeBoss;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
@@ -159,6 +162,10 @@ public class MPEntities
         registerEntity(EntityEvolvedWitch.class, "EvolvedWitch", 40, 3407872, 5349438);
         registerEntity(EntityMilkCow.class, "MilkCow", 41, -13487566, -657931);
 
+        registerEntity(EntityPlutoAlien.class, "PlutoAlien", 42, -6125457, -13380436);
+
+        registerEntity(EntityEvolvedDarkCreeper.class, "EvolvedDarkCreeper", 43, 0, 0);
+
         //TEMPLATE HOTFIX
         registerEntity(EntityFronosCreeperBossTemp.class, "FronosBossTemp", 38, 0, 0);
     }
@@ -202,6 +209,7 @@ public class MPEntities
         RegisterHelper.registerNonMobEntity(EntityEuropaWaterBomb.class, "EuropaWaterBomb", MorePlanetsCore.instance, true);
 
         RegisterHelper.registerNonMobEntity(EntityDarkAsteroid.class, "DarkAsteroid", MorePlanetsCore.instance, true);
+        RegisterHelper.registerNonMobEntity(EntityIceCrystalMeteorChunk.class, "IceCrystalMeteorChunk", MorePlanetsCore.instance, true);
     }
 
     public static void registerEntity(Class<? extends Entity> entity, String name, int id, int backgroundEggColour, int foregroundEggColour)

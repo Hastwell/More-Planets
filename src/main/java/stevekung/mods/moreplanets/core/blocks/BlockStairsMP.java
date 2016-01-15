@@ -31,6 +31,7 @@ public class BlockStairsMP extends BlockStairs
         RED_MAPLE_WOOD ("wood"),
         CRYSTAL_WOOD ("wood"),
         EUROPA_WOOD ("wood"),
+        ALIEN_WOOD ("wood"),
 
         DIONA_COBBLESTONE ("stone"),
         DIONA_BRICK ("stone"),
@@ -58,7 +59,12 @@ public class BlockStairsMP extends BlockStairs
         white_sandstone ("stone"),
         cheese_sandstone ("stone"),
         venus_sandstone ("stone"),
-        europa_sandstone ("stone");
+        europa_sandstone ("stone"),
+        venus_cobblestone ("stone"),
+        venus_dungeon_brick ("stone"),
+        pluto_cobblestone ("stone"),
+        pluto_dungeon_brick ("stone")
+        ;
 
         private List<String> values;
         private String type;
@@ -208,6 +214,26 @@ public class BlockStairsMP extends BlockStairs
         else if (this.category == StairsCategory.EUROPA_WOOD)//Crystal Wood
         {
             this.blockIcon = par1IconRegister.registerIcon("europa:europa_planks");
+        }
+        else if (this.category == StairsCategory.venus_cobblestone)//Crystal Wood
+        {
+            this.blockIcon = par1IconRegister.registerIcon("venus:venus_cobblestone");
+        }
+        else if (this.category == StairsCategory.venus_dungeon_brick)//Crystal Wood
+        {
+            this.blockIcon = par1IconRegister.registerIcon("venus:venus_dungeon_brick");
+        }
+        else if (this.category == StairsCategory.pluto_cobblestone)//Crystal Wood
+        {
+            this.blockIcon = par1IconRegister.registerIcon("pluto:pluto_cobblestone");
+        }
+        else if (this.category == StairsCategory.pluto_dungeon_brick)//Crystal Wood
+        {
+            this.blockIcon = par1IconRegister.registerIcon("pluto:pluto_dungeon_brick");
+        }
+        else if (this.category == StairsCategory.ALIEN_WOOD)//Crystal Wood
+        {
+            this.blockIcon = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_wood_planks");
         }
 
         this.fronosSandstoneIcon = new IIcon[12];

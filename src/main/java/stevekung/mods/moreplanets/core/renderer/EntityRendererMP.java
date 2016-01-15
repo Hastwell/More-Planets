@@ -103,10 +103,12 @@ import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderTier7Rock
 import stevekung.mods.moreplanets.planets.fronos.render.entities.RenderTomato;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 import stevekung.mods.moreplanets.planets.kapteynb.render.entities.RenderFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.render.entities.RenderIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.render.entities.RenderIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.render.entities.RenderTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.render.entities.RenderUraniumBomb;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityEvolvedInfectedSpiderBoss;
@@ -119,6 +121,8 @@ import stevekung.mods.moreplanets.planets.nibiru.render.entities.RenderGiantWorm
 import stevekung.mods.moreplanets.planets.nibiru.render.entities.RenderInfectedEvolvedSpiderBoss;
 import stevekung.mods.moreplanets.planets.nibiru.render.entities.RenderInfectedWorm;
 import stevekung.mods.moreplanets.planets.nibiru.render.entities.RenderInfectedZombie;
+import stevekung.mods.moreplanets.planets.pluto.entities.EntityPlutoAlien;
+import stevekung.mods.moreplanets.planets.pluto.render.entities.RenderPlutoAlien;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCow;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseCubeEyeBoss;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
@@ -214,6 +218,7 @@ public class EntityRendererMP
         RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab());
 
         RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow());
+        RenderingRegistry.registerEntityRenderingHandler(EntityPlutoAlien.class, new RenderPlutoAlien());
 
         //TEMPLATE HOTFIX
         RenderingRegistry.registerEntityRenderingHandler(EntityFronosCreeperBossTemp.class, new RenderFronosCreeperBossTemp());
@@ -256,5 +261,6 @@ public class EntityRendererMP
         RenderingRegistry.registerEntityRenderingHandler(EntitySiriusSmallFireball.class, new RenderSiriusSmallFireball());
 
         RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new RenderDarkAsteroid());
+        RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteorChunk.class, new RenderIceCrystalMeteorChunk());
     }
 }

@@ -203,4 +203,10 @@ public class WorldProviderFronos extends WorldProviderMP
     {
         return 2.4D;
     }
+
+    @Override
+    public boolean netherPortalsOperational()
+    {
+        return true;
+    }
 }

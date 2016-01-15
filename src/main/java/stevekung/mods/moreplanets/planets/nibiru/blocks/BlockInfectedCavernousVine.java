@@ -175,7 +175,7 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
             {
                 Block block = world.getBlock(x, y2, z);
 
-                if (!block.isAir(world, x, y, z))
+                if (block == null || !block.isAir(world, x, y, z))
                 {
                     return;
                 }

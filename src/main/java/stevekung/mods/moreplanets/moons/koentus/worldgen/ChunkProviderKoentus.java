@@ -33,9 +33,11 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.worldgen.dungeon.RoomBossKoentus;
 import stevekung.mods.moreplanets.moons.koentus.worldgen.dungeon.RoomChestsKoentus;
@@ -342,6 +344,14 @@ public class ChunkProviderKoentus extends ChunkProviderGenerate
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.decoratePlanet(this.worldObj, this.rand, var4, var5);
         this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            int x1 = var4 + this.rand.nextInt(16) + 8;
+            int y1 = this.rand.nextInt(256);
+            int z1 = var5 + this.rand.nextInt(16) + 8;
+            new WorldGenSpaceDungeons(KoentusBlocks.koentus_ancient_chest, KoentusBlocks.koentus_block, MPBlocks.space_mossy_cobblestone, 3).generate(this.worldObj, this.rand, x1, y1, z1);
+        }
         BlockFalling.fallInstantly = false;
     }
 
@@ -375,7 +385,7 @@ public class ChunkProviderKoentus extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         return null;

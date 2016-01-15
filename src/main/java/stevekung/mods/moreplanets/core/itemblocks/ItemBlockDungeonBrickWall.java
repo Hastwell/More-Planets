@@ -19,6 +19,6 @@ public class ItemBlockDungeonBrickWall extends ItemBlockBaseMP
     @Override
     public String[] getBlockVariantsName()
     {
-        return new String[] { "dionaBrick", "polongniusBrick", "nibiruBrick", "koentusBrick", "fronosBrick", "kapteynBrick", "siriusBrick", "mercury"};
+        return new String[] { "dionaBrick", "polongniusBrick", "nibiruBrick", "koentusBrick", "fronosBrick", "kapteynBrick", "siriusBrick", "mercury", "venus", "pluto" };
     }
 }

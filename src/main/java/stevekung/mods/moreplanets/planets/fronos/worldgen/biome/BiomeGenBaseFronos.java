@@ -21,6 +21,7 @@ import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
@@ -88,7 +89,7 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
             this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
             this.spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
             this.spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 4));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 10, 1, 4));
             this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 5, 1, 1));
             this.spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 12, 4, 4));
             this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 10, 4, 4));
@@ -97,15 +98,15 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
         }
         else
         {
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 5, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 5, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 5, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 5, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 5, 1, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 2, 4));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
         }
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityCreamSlime.class, 50, 4, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityJellySlime.class, 50, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityCreamSlime.class, 150, 1, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityJellySlime.class, 150, 1, 4));
         this.spawnableWaterCreatureList.add(new SpawnListEntry(EntitySquid.class, 10, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityBearry.class, 8, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityBerry.class, 8, 4, 4));
@@ -119,6 +120,7 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
         this.spawnableCreatureList.add(new SpawnListEntry(EntityGrappy.class, 12, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityCreamCat.class, 2, 2, 2));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityMilkCow.class, 8, 4, 4));
+        this.spawnableCaveCreatureList.add(new SpawnListEntry(EntityBat.class, 10, 8, 8));
     }
 
     @Override

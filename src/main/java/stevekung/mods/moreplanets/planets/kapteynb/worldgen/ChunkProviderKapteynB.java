@@ -362,7 +362,7 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
             int x = var4 + this.rand.nextInt(16) + 8;
             int y = this.rand.nextInt(256);
             int z = var5 + this.rand.nextInt(16) + 8;
-            new WorldGenSpaceDungeons(new Block[] { KapteynBBlocks.kapteyn_b_ancient_chest, KapteynBBlocks.kapteyn_b_block, MPBlocks.space_mossy_cobblestone }, 4).generate(this.worldObj, this.rand, x, y, z);
+            new WorldGenSpaceDungeons(KapteynBBlocks.kapteyn_b_ancient_chest, KapteynBBlocks.kapteyn_b_block, MPBlocks.space_mossy_cobblestone, 4).generate(this.worldObj, this.rand, x, y, z);
         }
 
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
@@ -412,8 +412,8 @@ public class ChunkProviderKapteynB extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         return null;

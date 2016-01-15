@@ -19,16 +19,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltraVioletLevel
 {
-    public int spaceStationDimensionID;
     private float angularVelocityRadians = 0F;
     private float skyAngularVelocity = (float) (this.angularVelocityRadians * 180 / Math.PI);
-
-    @Override
-    public void setDimension(int id)
-    {
-        this.spaceStationDimensionID = id;
-        super.setDimension(id);
-    }
 
     @Override
     public long getDayLength()

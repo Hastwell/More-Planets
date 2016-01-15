@@ -24,6 +24,7 @@ import micdoodle8.mods.galacticraft.planets.asteroids.blocks.AsteroidBlocks;
 import micdoodle8.mods.galacticraft.planets.asteroids.world.gen.SpecialAsteroidBlock;
 import micdoodle8.mods.galacticraft.planets.asteroids.world.gen.SpecialAsteroidBlockHandler;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
@@ -623,19 +624,19 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                     this.worldObj.setBlock(px, y, pz, block, meta, 2);
                     int count = 7;
 
-                    if (!this.worldObj.getBlock(px - 1,  y, pz).isAir(this.worldObj, px - 1, y, pz))
+                    if (!(this.worldObj.getBlock(px - 1,  y, pz) instanceof BlockAir))
                     {
                         count = 1;
                     }
-                    else if (!this.worldObj.getBlock(px - 2,  y, pz).isAir(this.worldObj, px - 2, y, pz))
+                    else if (!(this.worldObj.getBlock(px - 2,  y, pz) instanceof BlockAir))
                     {
                         count = 3;
                     }
-                    else if (!this.worldObj.getBlock(px - 3,  y, pz).isAir(this.worldObj, px - 3,  y, pz))
+                    else if (!(this.worldObj.getBlock(px - 3,  y, pz) instanceof BlockAir))
                     {
                         count = 5;
                     }
-                    else if (!this.worldObj.getBlock(px - 4,  y, pz).isAir(this.worldObj, px - 4,  y, pz))
+                    else if (!(this.worldObj.getBlock(px - 4,  y, pz) instanceof BlockAir))
                     {
                         count = 6;
                     }
@@ -796,59 +797,59 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                 {
                     for (int y = yMin; y < yMax; y++)
                     {
-                        if (chunk.getBlock(x - 1, y, z).isAir(w, x - 1, y, z) && !chunk.getBlock(x, y, z).isAir(w, x, y, z))
+                        if (chunk.getBlock(x - 1, y, z) instanceof BlockAir && !(chunk.getBlock(x, y, z) instanceof BlockAir))
                         {
                             int count = 2;
 
                             if (x > 1)
                             {
-                                if (chunk.getBlock(x - 2, y, z).isAir(w, x - 2, y, z))
+                                if (chunk.getBlock(x - 2, y, z) instanceof BlockAir)
                                 {
                                     count+=2;
                                 }
                             }
                             if (x > 2)
                             {
-                                if (chunk.getBlock(x - 3, y, z).isAir(w, x - 3, y, z))
+                                if (chunk.getBlock(x - 3, y, z) instanceof BlockAir)
                                 {
                                     count+=2;
                                 }
-                                if (chunk.getBlock(x - 3, y + 1, z).isAir(w, x - 3, y + 1, z))
+                                if (chunk.getBlock(x - 3, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (chunk.getBlock(x - 3, y + 1, z).isAir(w, x - 3, y + 1, z))
+                                if (chunk.getBlock(x - 3, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (z > 0 && chunk.getBlock(x - 3, y, z - 1).isAir(w, x - 3, y, z - 1))
+                                if (z > 0 && chunk.getBlock(x - 3, y, z - 1) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (z < 15 && chunk.getBlock(x - 3, y, z + 1).isAir(w, x - 3, y, z + 1))
+                                if (z < 15 && chunk.getBlock(x - 3, y, z + 1) instanceof BlockAir)
                                 {
                                     count++;
                                 }
                             }
                             if (x > 3)
                             {
-                                if (chunk.getBlock(x - 4, y, z).isAir(w, x - 4, y, z))
+                                if (chunk.getBlock(x - 4, y, z) instanceof BlockAir)
                                 {
                                     count+=2;
                                 }
-                                if (chunk.getBlock(x - 4, y + 1, z).isAir(w, x - 4, y + 1, z))
+                                if (chunk.getBlock(x - 4, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (chunk.getBlock(x - 4, y + 1, z).isAir(w, x - 4, y + 1, z))
+                                if (chunk.getBlock(x - 4, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (z > 0 && !chunk.getBlock(x - 4, y, z - 1).isAir(w, x - 4, y, z - 1))
+                                if (z > 0 && !(chunk.getBlock(x - 4, y, z - 1) instanceof BlockAir))
                                 {
                                     count++;
                                 }
-                                if (z < 15 && !chunk.getBlock(x - 4, y, z + 1).isAir(w, x - 4, y, z + 1))
+                                if (z < 15 && !(chunk.getBlock(x - 4, y, z + 1) instanceof BlockAir))
                                 {
                                     count++;
                                 }
@@ -908,7 +909,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         else

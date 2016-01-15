@@ -14,6 +14,8 @@ import net.minecraft.block.material.Material;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickSlab;
 import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickSlab.DungeonSlabCategory;
+import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickSlab1;
+import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickSlab1.DungeonSlab1Category;
 import stevekung.mods.moreplanets.core.blocks.BlockDungeonBrickWall;
 import stevekung.mods.moreplanets.core.blocks.BlockPolishedSpaceDecoration;
 import stevekung.mods.moreplanets.core.blocks.BlockSlabMP;
@@ -25,6 +27,7 @@ import stevekung.mods.moreplanets.core.blocks.base.BlockChondrite;
 import stevekung.mods.moreplanets.core.blocks.base.BlockSpaceMossyCobblestone;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockChondrite;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickSlab;
+import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickSlab1;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDungeonBrickWall;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSlabMP;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockSpaceDecoration;
@@ -57,6 +60,8 @@ public class MPBlocks
     public static Block wooden_slab_half;
     public static Block dungeon_brick_slab_full;
     public static Block dungeon_brick_slab_half;
+    public static Block dungeon_brick_slab_full1;
+    public static Block dungeon_brick_slab_half1;
     public static Block chondrite_block;
     public static Block tinted_glass;
     public static Block tinted_glass_pane;
@@ -120,6 +125,8 @@ public class MPBlocks
         MPBlocks.wooden_slab_full = new BlockSlabMP("mp_wood_double_slab", true, Material.wood, SlabCategory.STONE);
         MPBlocks.dungeon_brick_slab_half = new BlockDungeonBrickSlab("dungeon_brick_half_slab1", false, Material.rock, DungeonSlabCategory.WOOD1);
         MPBlocks.dungeon_brick_slab_full = new BlockDungeonBrickSlab("dungeon_brick_double_slab1", true, Material.rock, DungeonSlabCategory.WOOD1);
+        MPBlocks.dungeon_brick_slab_half1 = new BlockDungeonBrickSlab1("dungeon_brick_half_slab2", false, Material.rock, DungeonSlab1Category.WOOD1);
+        MPBlocks.dungeon_brick_slab_full1 = new BlockDungeonBrickSlab1("dungeon_brick_double_slab2", true, Material.rock, DungeonSlab1Category.WOOD1);
     }
 
     private static void setHarvestLevels()
@@ -135,6 +142,8 @@ public class MPBlocks
         MPBlocks.chondrite_block.setHarvestLevel("pickaxe", 0);
         MPBlocks.dungeon_brick_slab_half.setHarvestLevel("pickaxe", 0);
         MPBlocks.dungeon_brick_slab_full.setHarvestLevel("pickaxe", 0);
+        MPBlocks.dungeon_brick_slab_half1.setHarvestLevel("pickaxe", 0);
+        MPBlocks.dungeon_brick_slab_full1.setHarvestLevel("pickaxe", 0);
         MPBlocks.space_decoration_block.setHarvestLevel("pickaxe", 0);
         MPBlocks.stone_wall.setHarvestLevel("pickaxe", 0);
         MPBlocks.dungeon_brick_wall.setHarvestLevel("pickaxe", 0);
@@ -165,6 +174,8 @@ public class MPBlocks
         RegisterHelper.registerBlock(wooden_slab_full, ItemBlockSlabMP.class, wooden_slab_half, wooden_slab_full);
         RegisterHelper.registerBlock(dungeon_brick_slab_half, ItemBlockDungeonBrickSlab.class, dungeon_brick_slab_half, dungeon_brick_slab_full);
         RegisterHelper.registerBlock(dungeon_brick_slab_full, ItemBlockDungeonBrickSlab.class, dungeon_brick_slab_half, dungeon_brick_slab_full);
+        RegisterHelper.registerBlock(dungeon_brick_slab_half1, ItemBlockDungeonBrickSlab1.class, dungeon_brick_slab_half1, dungeon_brick_slab_full1);
+        RegisterHelper.registerBlock(dungeon_brick_slab_full1, ItemBlockDungeonBrickSlab1.class, dungeon_brick_slab_half1, dungeon_brick_slab_full1);
     }
 
     private static void initNEI()

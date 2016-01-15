@@ -15,6 +15,9 @@ import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.BlockAlienLeave
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.BlockAlienLog.AlienLogCategory;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.itemblocks.ItemBlockAlienLeaves;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.itemblocks.ItemBlockDarkAsteroids;
+import stevekung.mods.moreplanets.core.blocks.BlockFenceGateMP;
+import stevekung.mods.moreplanets.core.blocks.BlockStairsMP;
+import stevekung.mods.moreplanets.core.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.core.itemblocks.ItemBlockDirtMP;
 import stevekung.mods.stevecore.RegisterHelper;
 
@@ -32,6 +35,9 @@ public class DarkAsteroidsBlocks
     public static BlockSapling alien_sapling;
     public static Block alien_glowstone;
     public static Block dark_air;
+    public static Block alien_wood_stairs;
+    public static Block alien_fence;
+    public static Block alien_fence_gate;
 
     public static void init()
     {
@@ -48,6 +54,9 @@ public class DarkAsteroidsBlocks
         DarkAsteroidsBlocks.alien_sapling = new BlockAlienSapling("alien_sapling");
         DarkAsteroidsBlocks.alien_glowstone = new BlockAlienGlowstone("alien_glowstone");
         DarkAsteroidsBlocks.dark_air = new BlockDarkAir("dark_air");
+        DarkAsteroidsBlocks.alien_wood_stairs = new BlockStairsMP("alien_wood_stairs", 2.0F, StairsCategory.ALIEN_WOOD, DarkAsteroidsBlocks.alien_planks);
+        DarkAsteroidsBlocks.alien_fence = new BlockAlienFence("alien_fence");
+        DarkAsteroidsBlocks.alien_fence_gate = new BlockFenceGateMP("alien_fence_gate", "mpcore:darkasteroids/alien_wood_planks");
 
         // Register
         RegisterHelper.registerBlock(DarkAsteroidsBlocks.dark_asteroid_block, ItemBlockDarkAsteroids.class);
@@ -59,6 +68,9 @@ public class DarkAsteroidsBlocks
         RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_planks);
         RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_glowstone);
         RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_leaves, ItemBlockAlienLeaves.class);
+        RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_wood_stairs);
+        RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_fence);
+        RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_fence_gate);
         RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_sapling);
         RegisterHelper.registerBlock(DarkAsteroidsBlocks.alien_farmland);
         RegisterHelper.registerBlock(DarkAsteroidsBlocks.dark_air);
@@ -72,6 +84,16 @@ public class DarkAsteroidsBlocks
         DarkAsteroidsBlocks.alien_farmland.setHarvestLevel("shovel", 0);
         DarkAsteroidsBlocks.alien_log.setHarvestLevel("axe", 0);
         DarkAsteroidsBlocks.alien_planks.setHarvestLevel("axe", 0);
+        DarkAsteroidsBlocks.alien_wood_stairs.setHarvestLevel("axe", 0);
+        DarkAsteroidsBlocks.alien_fence.setHarvestLevel("axe", 0);
+        DarkAsteroidsBlocks.alien_fence_gate.setHarvestLevel("axe", 0);
+
+        RegisterHelper.setFireBurn(DarkAsteroidsBlocks.alien_sapling, 60, 100);
+        RegisterHelper.setFireBurn(DarkAsteroidsBlocks.alien_log, 5, 5);
+        RegisterHelper.setFireBurn(DarkAsteroidsBlocks.alien_leaves, 30, 60);
+        RegisterHelper.setFireBurn(DarkAsteroidsBlocks.alien_fence, 5, 20);
+        RegisterHelper.setFireBurn(DarkAsteroidsBlocks.alien_fence_gate, 5, 20);
+        RegisterHelper.setFireBurn(DarkAsteroidsBlocks.alien_wood_stairs, 5, 20);
 
         // Register ore dictionary
         OreDictionary.registerOre("oreAluminum", new ItemStack(DarkAsteroidsBlocks.dark_asteroid_block, 1, 3));

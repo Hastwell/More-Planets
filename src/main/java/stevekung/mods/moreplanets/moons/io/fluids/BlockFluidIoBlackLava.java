@@ -50,7 +50,7 @@ public class BlockFluidIoBlackLava extends BlockFluidLavaBaseMP
             double d5 = x + rand.nextFloat();
             double d6 = y - 1.05D;
             double d7 = z + rand.nextFloat();
-            world.spawnParticle("dripLava", d5, d6, d7, 0.0D, 0.0D, 0.0D);//TODO
+            world.spawnParticle("dripLava", d5, d6, d7, 0.0D, 0.0D, 0.0D);
         }
     }
 

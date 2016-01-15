@@ -67,6 +67,7 @@ public class CraftingRecipesKapteynB
         GameRegistry.addShapelessRecipe(new ItemStack(KapteynBItems.kapteyn_b_item, 9, 1), new ItemStack(KapteynBBlocks.kapteyn_b_block, 1, 13) );
         GameRegistry.addRecipe(new ItemStack(KapteynBItems.kapteyn_b_item, 2, 4), new Object[] { "I", "I", 'I', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 0) });
         GameRegistry.addRecipe(new ItemStack(KapteynBItems.kapteyn_b_item, 2, 3), new Object[] { "U", "U", 'U', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 1) });
+        GameRegistry.addRecipe(new ItemStack(KapteynBItems.ice_crystal_meteor_chunk, 3), new Object[] { "MM", "MM", 'M', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 5) });
 
         // Armor
         GameRegistry.addRecipe(new ItemStack(KapteynBArmorItems.uranium_helmet), new Object[] { "QQQ", "Q Q", 'Q', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 1) });

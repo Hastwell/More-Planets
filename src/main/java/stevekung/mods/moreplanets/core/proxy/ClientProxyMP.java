@@ -23,7 +23,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.network.NetHandlerPlayServer;
-import net.minecraft.util.ResourceLocation;
+import stevekung.mods.moreplanets.core.particles.EntityMCLavaFX;
 import stevekung.mods.moreplanets.core.particles.EntitySmokeFXMP;
 import stevekung.mods.moreplanets.core.renderer.EntityRendererMP;
 import stevekung.mods.moreplanets.core.renderer.ItemRendererMP;
@@ -76,7 +76,6 @@ import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntitySpaceOys
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.particles.EntityFrozenWaterDripFX;
 import stevekung.mods.moreplanets.planets.kapteynb.particles.EntityGeyserFX;
-import stevekung.mods.moreplanets.planets.kapteynb.particles.EntityUraniumFlameFX;
 import stevekung.mods.moreplanets.planets.kapteynb.render.blocks.BlockRendererIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChestTemp;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBTreasureChest;
@@ -101,7 +100,6 @@ import stevekung.mods.moreplanets.planets.polongnius.tileentities.TileEntityPolo
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.particles.EntitySiriusFlameFX;
 import stevekung.mods.moreplanets.planets.siriusb.particles.EntitySiriusLavaDripFX;
-import stevekung.mods.moreplanets.planets.siriusb.particles.EntitySiriusLavaFX;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBAncientChest;
 import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusBTreasureChest;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
@@ -110,7 +108,6 @@ import stevekung.mods.moreplanets.planets.venus.model.ModelJetpack;
 import stevekung.mods.moreplanets.planets.venus.particles.EntityVenusSmokeFX;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -154,16 +151,6 @@ public class ClientProxyMP extends CommonProxyMP
     private static int plutoAncientChestRenderID;
 
     public static Map<Item, ModelBiped> jetpackModel = new HashMap<Item, ModelBiped>();
-    private static Minecraft mc = FMLClientHandler.instance().getClient();
-    private static ResourceLocation cheeseOfMilk = new ResourceLocation("mpcore:textures/overlay/cheese_of_milk.png");
-    private static ResourceLocation coconutMilk = new ResourceLocation("mpcore:textures/overlay/coconut_milk.png");
-    private static ResourceLocation mineralWater = new ResourceLocation("mpcore:textures/overlay/mineral_water.png");
-    private static ResourceLocation ovaltine = new ResourceLocation("mpcore:textures/overlay/ovaltine.png");
-    private static ResourceLocation tea = new ResourceLocation("mpcore:textures/overlay/tea.png");
-    private static ResourceLocation caramel = new ResourceLocation("mpcore:textures/overlay/caramel.png");
-    private static ResourceLocation frozenWater = new ResourceLocation("mpcore:textures/overlay/frozen_water.png");
-    private static ResourceLocation dirtyWater = new ResourceLocation("mpcore:textures/overlay/dirty_water.png");
-    private static ResourceLocation europaWater = new ResourceLocation("mpcore:textures/overlay/europa_water.png");
 
     @Override
     public void postInit(FMLPostInitializationEvent event)
@@ -392,252 +379,262 @@ public class ClientProxyMP extends CommonProxyMP
     public void spawnMotionParticle(String string, double x, double y, double z, double motionX, double motionY, double motionZ)
     {
         EntityFX entityfx = null;
-        int i = ClientProxyMP.mc.gameSettings.particleSetting;
-        double d6 = ClientProxyMP.mc.renderViewEntity.posX - x;
-        double d7 = ClientProxyMP.mc.renderViewEntity.posY - y;
-        double d8 = ClientProxyMP.mc.renderViewEntity.posZ - z;
-        double d9 = 16.0D;
+        Minecraft mc = Minecraft.getMinecraft();
 
-        if (i == 1 && ClientProxyMP.mc.theWorld.rand.nextInt(3) == 0)
+        if (mc != null && mc.renderViewEntity != null && mc.effectRenderer != null)
         {
-            i = 2;
-        }
-        if (d6 * d6 + d7 * d7 + d8 * d8 > d9 * d9)
-        {
-            return;
-        }
-        else if (i > 1)
-        {
-            return;
-        }
+            int i = mc.gameSettings.particleSetting;
+            double d6 = mc.renderViewEntity.posX - x;
+            double d7 = mc.renderViewEntity.posY - y;
+            double d8 = mc.renderViewEntity.posZ - z;
+            double d9 = 16.0D;
 
-        if (string == "koentusSmoke")
-        {
-            entityfx = new EntityMeteorSmokeFX(ClientProxyMP.mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            if (i == 1 && mc.theWorld.rand.nextInt(3) == 0)
+            {
+                i = 2;
+            }
+            if (d6 * d6 + d7 * d7 + d8 * d8 > d9 * d9)
+            {
+                return;
+            }
+            else if (i > 1)
+            {
+                return;
+            }
+
+            if (string == "koentusSmoke")
+            {
+                entityfx = new EntityMeteorSmokeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            else if (string == "cavernOyster")
+            {
+                entityfx = new EntityCavernOysterFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            else if (string == "infectedSupended")
+            {
+                entityfx = new EntityInfectedSporeFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            else if (string == "bluePortal")
+            {
+                entityfx = new EntityBluePortalFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            else if (string == "jungleIris")
+            {
+                entityfx = new EntityJungleIrisFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            else if (string == "mcLargeSmoke")
+            {
+                entityfx = new EntitySmokeFXMP(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            else if (string == "waterGeyser")
+            {
+                entityfx = new EntityGeyserFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            mc.effectRenderer.addEffect(entityfx);
         }
-        else if (string == "cavernOyster")
-        {
-            entityfx = new EntityCavernOysterFX(ClientProxyMP.mc.theWorld, x, y, z, motionX, motionY, motionZ);
-        }
-        else if (string == "infectedSupended")
-        {
-            entityfx = new EntityInfectedSporeFX(ClientProxyMP.mc.theWorld, x, y, z, motionX, motionY, motionZ);
-        }
-        else if (string == "bluePortal")
-        {
-            entityfx = new EntityBluePortalFX(ClientProxyMP.mc.theWorld, x, y, z, motionX, motionY, motionZ);
-        }
-        else if (string == "jungleIris")
-        {
-            entityfx = new EntityJungleIrisFX(ClientProxyMP.mc.theWorld, x, y, z, motionX, motionY, motionZ);
-        }
-        else if (string == "mcLargeSmoke")
-        {
-            entityfx = new EntitySmokeFXMP(ClientProxyMP.mc.theWorld, x, y, z, motionX, motionY, motionZ);
-        }
-        else if (string == "waterGeyser")
-        {
-            entityfx = new EntityGeyserFX(ClientProxyMP.mc.theWorld, x, y, z, motionX, motionY, motionZ);
-        }
-        ClientProxyMP.mc.effectRenderer.addEffect(entityfx);
     }
 
     @Override
     public void spawnParticle(String string, double x, double y, double z)
     {
         EntityFX entityfx = null;
-        int i = ClientProxyMP.mc.gameSettings.particleSetting;
-        double d6 = ClientProxyMP.mc.renderViewEntity.posX - x;
-        double d7 = ClientProxyMP.mc.renderViewEntity.posY - y;
-        double d8 = ClientProxyMP.mc.renderViewEntity.posZ - z;
-        double d9 = 16.0D;
+        Minecraft mc = Minecraft.getMinecraft();
 
-        if (i == 1 && ClientProxyMP.mc.theWorld.rand.nextInt(3) == 0)
+        if (mc != null && mc.renderViewEntity != null && mc.effectRenderer != null)
         {
-            i = 2;
-        }
-        if (d6 * d6 + d7 * d7 + d8 * d8 > d9 * d9)
-        {
-            return;
-        }
-        else if (i > 1)
-        {
-            return;
-        }
+            int i = mc.gameSettings.particleSetting;
+            double d6 = mc.renderViewEntity.posX - x;
+            double d7 = mc.renderViewEntity.posY - y;
+            double d8 = mc.renderViewEntity.posZ - z;
+            double d9 = 16.0D;
 
-        if (string == "koentusBricksDrip")
-        {
-            entityfx = new EntityKoentusDripParticleFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
+            if (i == 1 && mc.theWorld.rand.nextInt(3) == 0)
+            {
+                i = 2;
+            }
+            if (d6 * d6 + d7 * d7 + d8 * d8 > d9 * d9)
+            {
+                return;
+            }
+            else if (i > 1)
+            {
+                return;
+            }
+
+            if (string == "koentusBricksDrip")
+            {
+                entityfx = new EntityKoentusDripParticleFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "coconutMilkDrip")
+            {
+                entityfx = new EntityCoconutMilkDripFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "mineralWaterDrip")
+            {
+                entityfx = new EntityMineralWaterDripFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "ovantineDrip")
+            {
+                entityfx = new EntityOvantineDripFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "cheeseOfMilkDrip")
+            {
+                entityfx = new EntityCheeseOfMilkDripFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "frozenWaterDrip")
+            {
+                entityfx = new EntityFrozenWaterDripFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "teaDrip")
+            {
+                entityfx = new EntityTeaDripFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "caramelDrip")
+            {
+                entityfx = new EntityCaramelDripFX(mc.theWorld, x, y, z, Material.water);
+            }
+            else if (string == "siriusLavaDrip")
+            {
+                entityfx = new EntitySiriusLavaDripFX(mc.theWorld, x, y, z, Material.lava);
+            }
+            else if (string == "cheeseSlime")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball);
+            }
+            else if (string == "vanillaBall")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 0);
+            }
+            else if (string == "chocolateBall")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 1);
+            }
+            else if (string == "strawberryBall")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 2);
+            }
+            else if (string == "orangeBall")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 3);
+            }
+            else if (string == "teaBall")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 4);
+            }
+            else if (string == "lemonBall")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.cream_ball, 5);
+            }
+            else if (string == "jellyGrape")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 0);
+            }
+            else if (string == "jellyRaspberry")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 1);
+            }
+            else if (string == "jellyStrawberry")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 2);
+            }
+            else if (string == "jellyBerry")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 3);
+            }
+            else if (string == "jellyLime")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 4);
+            }
+            else if (string == "jellyOrange")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 5);
+            }
+            else if (string == "jellyGreen")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 6);
+            }
+            else if (string == "jellyLemon")
+            {
+                entityfx = new EntityBreakingFX(mc.theWorld, x, y, z, FronosItems.jelly, 7);
+            }
+            else if (string == "orangeDandelion")
+            {
+                entityfx = new EntityOrangeDandelionFX(mc.theWorld, x, y, z, 2.0F);
+            }
+            else if (string == "pinkDandelion")
+            {
+                entityfx = new EntityPinkDandelionFX(mc.theWorld, x, y, z, 2.0F);
+            }
+            else if (string == "purpleDandelion")
+            {
+                entityfx = new EntityPurpleDandelionFX(mc.theWorld, x, y, z, 2.0F);
+            }
+            else if (string == "cheeseBubble")
+            {
+                entityfx = new EntityCheeseBubbleFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "crystalSmoke")
+            {
+                entityfx = new EntityCrystalSmokeFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "ichoriusSmoke")
+            {
+                entityfx = new EntityGeneratorSmokeFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "purpleSpike")
+            {
+                entityfx = new EntityPurpleFlowerFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "coconutMilk")
+            {
+                entityfx = new EntityCoconutMilkFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "mineralWater")
+            {
+                entityfx = new EntityMineralWaterFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "ovantineSmoke")
+            {
+                entityfx = new EntityOvantineSmokeFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "goldDust")
+            {
+                entityfx = new EntityGoldenGrassFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "goldSmoke")
+            {
+                entityfx = new EntityGoldenSmokeFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "tea")
+            {
+                entityfx = new EntityTeaFluidFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "siriusFlame")
+            {
+                entityfx = new EntitySiriusFlameFX(mc.theWorld, x, y, z, "siriusb:textures/particles/sirius_flame.png");
+            }
+            else if (string == "siriusLava")
+            {
+                entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "siriusb:textures/particles/sirius_lava");
+            }
+            else if (string == "uraniumLava")
+            {
+                entityfx = new EntityMCLavaFX(mc.theWorld, x, y, z, "kapteynb:textures/particles/uranium_smoke");
+            }
+            else if (string == "blueFlame")
+            {
+                entityfx = new EntityBlueFlameFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "venusSmoke")
+            {
+                entityfx = new EntityVenusSmokeFX(mc.theWorld, x, y, z);
+            }
+            else if (string == "xeoniumSmoke")
+            {
+                entityfx = new EntityXeoniumSmokeFX(mc.theWorld, x, y, z);
+            }
+            mc.effectRenderer.addEffect(entityfx);
         }
-        else if (string == "coconutMilkDrip")
-        {
-            entityfx = new EntityCoconutMilkDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
-        }
-        else if (string == "mineralWaterDrip")
-        {
-            entityfx = new EntityMineralWaterDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
-        }
-        else if (string == "ovantineDrip")
-        {
-            entityfx = new EntityOvantineDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
-        }
-        else if (string == "cheeseOfMilkDrip")
-        {
-            entityfx = new EntityCheeseOfMilkDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
-        }
-        else if (string == "frozenWaterDrip")
-        {
-            entityfx = new EntityFrozenWaterDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
-        }
-        else if (string == "teaDrip")
-        {
-            entityfx = new EntityTeaDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
-        }
-        else if (string == "caramelDrip")
-        {
-            entityfx = new EntityCaramelDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.water);
-        }
-        else if (string == "siriusLavaDrip")
-        {
-            entityfx = new EntitySiriusLavaDripFX(ClientProxyMP.mc.theWorld, x, y, z, Material.lava);
-        }
-        else if (string == "cheeseSlime")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, PolongniusItems.cheese_slimeball);
-        }
-        else if (string == "vanillaBall")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.cream_ball, 0);
-        }
-        else if (string == "chocolateBall")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.cream_ball, 1);
-        }
-        else if (string == "strawberryBall")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.cream_ball, 2);
-        }
-        else if (string == "orangeBall")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.cream_ball, 3);
-        }
-        else if (string == "teaBall")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.cream_ball, 4);
-        }
-        else if (string == "lemonBall")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.cream_ball, 5);
-        }
-        else if (string == "jellyGrape")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 0);
-        }
-        else if (string == "jellyRaspberry")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 1);
-        }
-        else if (string == "jellyStrawberry")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 2);
-        }
-        else if (string == "jellyBerry")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 3);
-        }
-        else if (string == "jellyLime")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 4);
-        }
-        else if (string == "jellyOrange")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 5);
-        }
-        else if (string == "jellyGreen")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 6);
-        }
-        else if (string == "jellyLemon")
-        {
-            entityfx = new EntityBreakingFX(ClientProxyMP.mc.theWorld, x, y, z, FronosItems.jelly, 7);
-        }
-        else if (string == "orangeDandelion")
-        {
-            entityfx = new EntityOrangeDandelionFX(ClientProxyMP.mc.theWorld, x, y, z, 2.0F);
-        }
-        else if (string == "pinkDandelion")
-        {
-            entityfx = new EntityPinkDandelionFX(ClientProxyMP.mc.theWorld, x, y, z, 2.0F);
-        }
-        else if (string == "purpleDandelion")
-        {
-            entityfx = new EntityPurpleDandelionFX(ClientProxyMP.mc.theWorld, x, y, z, 2.0F);
-        }
-        else if (string == "cheeseBubble")
-        {
-            entityfx = new EntityCheeseBubbleFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "crystalSmoke")
-        {
-            entityfx = new EntityCrystalSmokeFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "ichoriusSmoke")
-        {
-            entityfx = new EntityGeneratorSmokeFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "purpleSpike")
-        {
-            entityfx = new EntityPurpleFlowerFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "coconutMilk")
-        {
-            entityfx = new EntityCoconutMilkFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "mineralWater")
-        {
-            entityfx = new EntityMineralWaterFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "ovantineSmoke")
-        {
-            entityfx = new EntityOvantineSmokeFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "goldDust")
-        {
-            entityfx = new EntityGoldenGrassFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "goldSmoke")
-        {
-            entityfx = new EntityGoldenSmokeFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "tea")
-        {
-            entityfx = new EntityTeaFluidFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "siriusFlame")
-        {
-            entityfx = new EntitySiriusFlameFX(ClientProxyMP.mc.theWorld, x, y, z, "siriusb:textures/particles/sirius_flame.png");
-        }
-        else if (string == "siriusLava")
-        {
-            entityfx = new EntitySiriusLavaFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "uraniumFlame")
-        {
-            entityfx = new EntityUraniumFlameFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "blueFlame")
-        {
-            entityfx = new EntityBlueFlameFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "venusSmoke")
-        {
-            entityfx = new EntityVenusSmokeFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        else if (string == "xeoniumSmoke")
-        {
-            entityfx = new EntityXeoniumSmokeFX(ClientProxyMP.mc.theWorld, x, y, z);
-        }
-        ClientProxyMP.mc.effectRenderer.addEffect(entityfx);
     }
 
     @Override

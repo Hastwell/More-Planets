@@ -15,6 +15,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -28,6 +29,12 @@ public class BlockSpaceMossyCobblestone extends BlockBaseMP
         this.setHardness(2.0F);
         this.setResistance(10.0F);
         this.setBlockName(name);
+    }
+
+    @Override
+    public int getLightValue(IBlockAccess world, int x, int y, int z)
+    {
+        return world.getBlockMetadata(x, y, z) == 5 ? 15 : 0;
     }
 
     @Override

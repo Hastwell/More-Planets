@@ -130,19 +130,21 @@ public class EntityIceCrystalMeteor extends Entity
         GalacticraftCore.proxy.spawnParticle("distanceSmoke", new Vector3(this.posX, this.posY + 1D + Math.random(), this.posZ - Math.random()), new Vector3(0.0D, 0.0D, 0.0D), new Object[] { });
     }
 
-    protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
+    protected void onImpact(MovingObjectPosition moving)
     {
         if (!this.worldObj.isRemote)
         {
-            if (par1MovingObjectPosition != null)
+            if (moving != null)
             {
-                if (this.worldObj.getBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ).isAir(this.worldObj, par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ))
+                Block b = this.worldObj.getBlock(moving.blockX, moving.blockY + 1, moving.blockZ);
+
+                if (b != null && b.isAir(this.worldObj, moving.blockX, moving.blockY + 1, moving.blockZ))
                 {
-                    this.worldObj.setBlock(par1MovingObjectPosition.blockX, par1MovingObjectPosition.blockY + 1, par1MovingObjectPosition.blockZ, KapteynBBlocks.fallen_ice_crystal_meteor, 0, 3);
+                    this.worldObj.setBlock(moving.blockX, moving.blockY + 1, moving.blockZ, KapteynBBlocks.fallen_ice_crystal_meteor, 0, 3);
                 }
-                if (par1MovingObjectPosition.entityHit != null)
+                if (moving.entityHit != null)
                 {
-                    par1MovingObjectPosition.entityHit.attackEntityFrom(EntityIceCrystalMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12F : 6F);
+                    moving.entityHit.attackEntityFrom(EntityIceCrystalMeteor.causeMeteorDamage(this, this.shootingEntity), ConfigManagerCore.hardMode ? 12F : 6F);
                 }
             }
             this.worldObj.newExplosion((Entity) null, this.posX, this.posY, this.posZ, this.size / 3 + 2, false, true);

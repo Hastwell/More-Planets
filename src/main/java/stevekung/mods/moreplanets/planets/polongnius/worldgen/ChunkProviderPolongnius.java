@@ -378,9 +378,8 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
             int x = var4 + this.rand.nextInt(16) + 8;
             int y = this.rand.nextInt(256);
             int z = var5 + this.rand.nextInt(16) + 8;
-            new WorldGenSpaceDungeons(new Block[] { PolongniusBlocks.polongnius_ancient_chest, PolongniusBlocks.polongnius_ancient_chest, MPBlocks.space_mossy_cobblestone }, 1).generate(this.worldObj, this.rand, x, y, z);
+            new WorldGenSpaceDungeons(PolongniusBlocks.polongnius_ancient_chest, PolongniusBlocks.polongnius_ancient_chest, MPBlocks.space_mossy_cobblestone, 1).generate(this.worldObj, this.rand, x, y, z);
         }
-
         BlockFalling.fallInstantly = false;
     }
 
@@ -413,9 +412,9 @@ public class ChunkProviderPolongnius extends ChunkProviderGenerate
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-            monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-            monsters.add(new BiomeGenBase.SpawnListEntry(EntityCheeseSlime.class, 100, 4, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityCheeseSlime.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         else if (par1EnumCreatureType == EnumCreatureType.creature)

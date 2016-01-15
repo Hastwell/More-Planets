@@ -10,11 +10,13 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
@@ -22,10 +24,11 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.blocks.base.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
+import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIceCrystalMeteor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFallenIceCrystalMeteor extends BlockBaseMP
+public class BlockFallenIceCrystalMeteor extends BlockBaseMP implements ITileEntityProvider
 {
     public BlockFallenIceCrystalMeteor(String name)
     {
@@ -104,11 +107,11 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
     }
 
     @Override
-    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+    public void updateTick(World world, int x, int y, int z, Random rand)
     {
-        if (!par1World.isRemote)
+        if (!world.isRemote)
         {
-            this.tryToFall(par1World, par2, par3, par4);
+            this.tryToFall(world, x, y, z);
         }
     }
 
@@ -166,5 +169,11 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
     public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
     {
         return new ItemStack(this, 1, 0);
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new TileEntityIceCrystalMeteor();
     }
 }

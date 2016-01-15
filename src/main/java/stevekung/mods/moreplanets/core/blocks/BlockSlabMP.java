@@ -46,7 +46,9 @@ public class BlockSlabMP extends BlockSlab
         "fronosCrackBrick",
         "kapteyn",
         "sirius",
-        "mercury"
+        "mercury",
+        "venus",
+        "pluto"
     };
 
     private static String[] rockTypes = new String[] {
@@ -55,7 +57,8 @@ public class BlockSlabMP extends BlockSlab
         "coconutWood",
         "redMapleWood",
         "crystalWood",
-        "europaWood"
+        "europaWood",
+        "alienWood"
     };
 
     private IIcon[] textures;
@@ -106,13 +109,14 @@ public class BlockSlabMP extends BlockSlab
         /**Wood Type**/
         if (this.category == SlabCategory.STONE)
         {
-            this.textures = new IIcon[6];
+            this.textures = new IIcon[8];
             this.textures[0] = par1IconRegister.registerIcon("nibiru:ancient_dark_wood_planks");
             this.textures[1] = par1IconRegister.registerIcon("nibiru:orange_wood_planks");
             this.textures[2] = par1IconRegister.registerIcon("fronos:coconut_wood_planks");
             this.textures[3] = par1IconRegister.registerIcon("fronos:maple_wood_planks");
             this.textures[4] = par1IconRegister.registerIcon("koentus:crystal_planks");
             this.textures[5] = par1IconRegister.registerIcon("europa:europa_planks");
+            this.textures[6] = par1IconRegister.registerIcon("mpcore:darkasteroids/alien_wood_planks");
         }
         /**Stone Type 2**/
         else if (this.category == SlabCategory.WOOD2)
@@ -124,6 +128,8 @@ public class BlockSlabMP extends BlockSlab
             this.textures[3] = par1IconRegister.registerIcon("kapteynb:kapteyn_b_cobblestone");
             this.textures[4] = par1IconRegister.registerIcon("siriusb:sirius_b_carbon_cobblestone");
             this.textures[5] = par1IconRegister.registerIcon("mercury:mercury_cobblestone");
+            this.textures[6] = par1IconRegister.registerIcon("venus:venus_cobblestone");
+            this.textures[7] = par1IconRegister.registerIcon("pluto:pluto_cobblestone");
         }
         /**Stone Type 1**/
         else
@@ -165,15 +171,15 @@ public class BlockSlabMP extends BlockSlab
 
         if (this.category == SlabCategory.WOOD1)
         {
-            max = 7;
+            max = 8;
         }
         else if (this.category == SlabCategory.WOOD2)
         {
-            max = 6;
+            max = 8;
         }
         else if (this.category == SlabCategory.STONE)
         {
-            max = 6;
+            max = 7;
         }
         for (int i = 0; i < max; ++i)
         {

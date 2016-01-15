@@ -17,21 +17,24 @@ import stevekung.mods.moreplanets.core.util.MPLog;
 
 public class WorldGenSpaceDungeons extends WorldGenerator
 {
-    // 0:chest 1:cobblestone 2:moss
-    private Block[] block;
+    private Block chest;
+    private Block cobblestone;
+    private Block moss;
     private int cobbleMeta;
     private int mossMeta;
 
-    public WorldGenSpaceDungeons(Block[] block, int cobbleMeta, int mossMeta)
+    public WorldGenSpaceDungeons(Block chest, Block cobblestone, Block moss, int cobbleMeta, int mossMeta)
     {
-        this.block = block;
+        this.chest = chest;
+        this.cobblestone = cobblestone;
+        this.moss = moss;
         this.cobbleMeta = cobbleMeta;
         this.mossMeta = mossMeta;
     }
 
-    public WorldGenSpaceDungeons(Block[] block, int mossMeta)
+    public WorldGenSpaceDungeons(Block chest, Block cobblestone, Block moss, int mossMeta)
     {
-        this(block, 3, mossMeta);
+        this(chest, cobblestone, moss, 3, mossMeta);
     }
 
     @Override
@@ -90,11 +93,11 @@ public class WorldGenSpaceDungeons extends WorldGenerator
                         {
                             if (l1 == y - 1 && rand.nextInt(4) != 0)
                             {
-                                world.setBlock(k1, l1, i2, this.block[2], this.mossMeta, 2);
+                                world.setBlock(k1, l1, i2, this.moss, this.mossMeta, 2);
                             }
                             else
                             {
-                                world.setBlock(k1, l1, i2, this.block[1], this.cobbleMeta, 2);
+                                world.setBlock(k1, l1, i2, this.cobblestone, this.cobbleMeta, 2);
                             }
                         }
                     }
@@ -139,7 +142,7 @@ public class WorldGenSpaceDungeons extends WorldGenerator
 
                             if (k2 == 1)
                             {
-                                world.setBlock(i2, y, j2, this.block[0], 0, 2);
+                                world.setBlock(i2, y, j2, this.chest, 0, 2);
                                 TileEntityAncientChestMP tileentitychest = (TileEntityAncientChestMP)world.getTileEntity(i2, y, j2);
 
                                 if (tileentitychest != null)
@@ -182,20 +185,20 @@ public class WorldGenSpaceDungeons extends WorldGenerator
     {
         if (rand.nextInt(5) == 0)
         {
-            return "EvolvedSpider";
+            return "GalacticraftCore.EvolvedSpider";
         }
         else if (rand.nextInt(10) == 0)
         {
-            return "EvolvedSkeleton";
+            return "GalacticraftCore.EvolvedSkeleton";
         }
         else if (rand.nextInt(25) == 0)
         {
-            return "EvolvedCreeper";
+            return "GalacticraftCore.EvolvedCreeper";
         }
         else if (rand.nextInt(30) == 0)
         {
             return "MorePlanet.EvolvedWitch";
         }
-        return "EvolvedZombie";
+        return "GalacticraftCore.EvolvedZombie";
     }
 }

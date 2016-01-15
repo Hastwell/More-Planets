@@ -54,6 +54,7 @@ item.tier_8_rocket_schematic.name=NASA Workbench Schematic
 item.tier_8_rocket_module.tier8_rocket_engine.name=Tier 8 Rocket Engine
 item.tier_8_rocket_module.tier8_booster.name=Tier 8 Booster
 item.tier_8_rocket_module.tier8_heavy_duty_plate.name=Heavy Duty Plate
+item.ice_crystal_meteor_chunk.name=Ice Crystal Meteor Chunk
 
 # TOOLS
 item.frozen_iron_pickaxe.name=Frozen Iron Pickaxe

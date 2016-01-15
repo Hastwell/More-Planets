@@ -23,6 +23,7 @@ public class KapteynBItems
     public static Item namerium_crystal;
     public static Item tier8_rocket;
     public static Item tier8_rocket_schematic;
+    public static Item ice_crystal_meteor_chunk;
 
     public static void init()
     {
@@ -40,6 +41,7 @@ public class KapteynBItems
         KapteynBItems.namerium_crystal = new ItemNameriumCrystal("namerium_crystal");
         KapteynBItems.tier8_rocket = new ItemTier8Rocket("tier_8_rocket");
         KapteynBItems.tier8_rocket_schematic = new ItemTier8Schematic("tier_8_rocket_schematic");
+        KapteynBItems.ice_crystal_meteor_chunk = new ItemIceCrystalMeteorChunk("ice_crystal_meteor_chunk");
     }
 
     private static void registerItems()
@@ -49,6 +51,7 @@ public class KapteynBItems
         RegisterHelper.registerItem(KapteynBItems.kapteyn_b_dungeon_key);
         RegisterHelper.registerItem(KapteynBItems.uranium_battery);
         RegisterHelper.registerItem(KapteynBItems.frozen_water_bucket);
+        RegisterHelper.registerItem(KapteynBItems.ice_crystal_meteor_chunk);
         RegisterHelper.registerItem(KapteynBItems.tier8_rocket);
         RegisterHelper.registerItem(KapteynBItems.tier8_rocket_schematic);
 

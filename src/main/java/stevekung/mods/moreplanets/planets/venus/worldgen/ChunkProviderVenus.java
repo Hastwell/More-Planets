@@ -36,9 +36,11 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.core.worldgen.MapGenCaveMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.core.worldgen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
@@ -402,6 +404,15 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
         this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
         this.blazePit.generateStructuresInChunk(this.worldObj, new Random(), chunkX, chunkZ);
         this.decoratePlanet(this.worldObj, this.rand, var4, var5);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            int x1 = var4 + this.rand.nextInt(16) + 8;
+            int y1 = this.rand.nextInt(256);
+            int z1 = var5 + this.rand.nextInt(16) + 8;
+            new WorldGenSpaceDungeons(VenusBlocks.venus_ancient_chest, VenusBlocks.venus_block, MPBlocks.space_mossy_cobblestone, 6).generate(this.worldObj, this.rand, x1, y1, z1);
+        }
+
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(chunk, this.worldObj, this.rand, chunkX, chunkZ, false));
 
         boolean doGen = TerrainGen.populate(chunk, this.worldObj, this.rand, chunkX, chunkZ, false, EventType.FIRE);
@@ -455,10 +466,10 @@ public class ChunkProviderVenus extends ChunkProviderGenerate
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-            monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-            monsters.add(new BiomeGenBase.SpawnListEntry(EntityVenusianSlime.class, 100, 4, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityVenusianSlime.class, 50, 4, 4));
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityVenusianBlaze.class, 100, 4, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         return null;

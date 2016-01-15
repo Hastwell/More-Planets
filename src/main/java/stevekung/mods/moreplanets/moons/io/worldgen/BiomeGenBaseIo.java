@@ -13,6 +13,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.world.biome.BiomeGenBase;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
@@ -27,6 +28,7 @@ public class BiomeGenBaseIo extends BiomeGenBaseMP
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
     }
 }

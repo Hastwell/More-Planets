@@ -99,12 +99,11 @@ public class MPPlanets
             MorePlanetsCore.venus.setDimensionInfo(ConfigManagerMP.idDimensionVenus, WorldProviderVenus.class);
             MorePlanetsCore.venus.atmosphereComponent(IAtmosphericGas.CO2).atmosphereComponent(IAtmosphericGas.NITROGEN).atmosphereComponent(IAtmosphericGas.ARGON);
         }
-        if (ConfigManagerMP.enableJupiterPlanet)
+        if (ConfigManagerMP.enableJupiterPlanet)//TODO Fix jupiter???
         {
             MorePlanetsCore.jupiter = MPPlanets.createPlanet("jupiter", GalacticraftCore.solarSystemSol, 2.3F, 1.5F, 11.861993428258488499452354874042F, 0.5319F, 0, new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/jupiter.png"));
             WorldProviderNull.setName("Jupiter");
             MorePlanetsCore.jupiter.setDimensionInfo(ConfigManagerMP.idDimensionJupiter, WorldProviderNull.class);
-            MorePlanetsCore.jupiter.canCreateSS(true);
             MorePlanetsCore.jupiter.setBodyIcon(new ResourceLocation("galacticraftcore:textures/gui/celestialbodies/jupiter.png"));
         }
         if (ConfigManagerMP.enablePlutoPlanet)
@@ -160,18 +159,24 @@ public class MPPlanets
 
         GalaxyRegistry.registerMoon(MorePlanetsCore.koentus);
 
-        if (ConfigManagerMP.enableJupiterSpaceStation) { GalaxyRegistry.registerSatellite(MorePlanetsCore.jupiterSpaceStation); }
+        //if (ConfigManagerMP.enableJupiterSpaceStation) { GalaxyRegistry.registerSatellite(MorePlanetsCore.jupiterSpaceStation); }
         if (ConfigManagerMP.enableMarsSpaceStation) { GalaxyRegistry.registerSatellite(MorePlanetsCore.marsSpaceStation); }
 
         if (ConfigManagerMP.enableMercuryPlanet) { GalaxyRegistry.registerPlanet(MorePlanetsCore.mercury); }
         if (ConfigManagerMP.enableVenusPlanet) { GalaxyRegistry.registerPlanet(MorePlanetsCore.venus); }
         if (ConfigManagerMP.enablePlutoPlanet) { GalaxyRegistry.registerPlanet(MorePlanetsCore.pluto); }
-        if (ConfigManagerMP.enableJupiterPlanet) { GalaxyRegistry.registerPlanet(MorePlanetsCore.jupiter); }
+
+        // TODO Make it work?
+        /*if (ConfigManagerMP.enableJupiterPlanet)
+        {
+            GalacticraftRegistry.registerProvider(ConfigManagerMP.idDimensionJupiter, WorldProviderVenus.class, false);
+            GalaxyRegistry.registerPlanet(MorePlanetsCore.jupiter);
+        }*/
 
         if (ConfigManagerMP.enablePhobosMoon) { GalaxyRegistry.registerMoon(MorePlanetsCore.deimos); }
         if (ConfigManagerMP.enableDeimosMoon) { GalaxyRegistry.registerMoon(MorePlanetsCore.phobos); }
 
-        if (ConfigManagerMP.enableJupiterSpaceStation) { MPPlanets.registerProvider(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionStaticJupiterSpaceStation, WorldProviderJupiterOrbit.class); }
+        //if (ConfigManagerMP.enableJupiterSpaceStation) { MPPlanets.registerProvider(ConfigManagerMP.idDimensionJupiterSpaceStation, ConfigManagerMP.idDimensionStaticJupiterSpaceStation, WorldProviderJupiterOrbit.class); }
         if (ConfigManagerMP.enableMarsSpaceStation) { MPPlanets.registerProvider(ConfigManagerMP.idDimensionMarsSpaceStation, ConfigManagerMP.idDimensionStaticMarsSpaceStation, WorldProviderMarsOrbit.class); }
 
         GalacticraftRegistry.registerTeleportType(WorldProviderDiona.class, teleport);

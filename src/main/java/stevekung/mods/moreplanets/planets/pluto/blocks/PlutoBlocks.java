@@ -8,10 +8,13 @@
 package stevekung.mods.moreplanets.planets.pluto.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import stevekung.mods.moreplanets.core.blocks.BlockStairsMP;
+import stevekung.mods.moreplanets.core.blocks.BlockStairsMP.StairsCategory;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidMethane;
 import stevekung.mods.moreplanets.planets.pluto.fluids.BlockFluidNitrogen;
 import stevekung.mods.moreplanets.planets.pluto.itemblocks.ItemBlockPluto;
@@ -29,6 +32,8 @@ public class PlutoBlocks
     public static Block space_potato_block;
     public static Block liquid_methane;
     public static Block liquid_nitrogen;
+    public static Block pluto_cobblestone_stairs;
+    public static Block pluto_dungeon_brick_stairs;
 
     public static Fluid liquid_methane_fluid;
     public static Fluid liquid_nitrogen_fluid;
@@ -50,6 +55,8 @@ public class PlutoBlocks
         PlutoBlocks.pluto_ancient_chest = new BlockPlutoAncientChest("pluto_ancient_chest");
         PlutoBlocks.pluto_treasure_chest = new BlockPlutoTreasureChest("pluto_treasure_chest");
         PlutoBlocks.space_potato_block = new BlockSpacePotato("space_potato_block");
+        PlutoBlocks.pluto_cobblestone_stairs = new BlockStairsMP("pluto_cobblestone_stairs", 2.0F, StairsCategory.pluto_cobblestone, Blocks.stone);
+        PlutoBlocks.pluto_dungeon_brick_stairs = new BlockStairsMP("pluto_dungeon_brick_stairs", 2.0F, StairsCategory.pluto_dungeon_brick, Blocks.stone);
 
         PlutoBlocks.liquid_methane_fluid = new Fluid("liquid_methane_fluid").setBlock(PlutoBlocks.liquid_methane).setViscosity(3000);
         PlutoBlocks.liquid_nitrogen_fluid = new Fluid("liquid_nitrogen_fluid").setBlock(PlutoBlocks.liquid_nitrogen).setViscosity(3000);
@@ -64,6 +71,8 @@ public class PlutoBlocks
         PlutoBlocks.pluto_block.setHarvestLevel("pickaxe", 3);
         PlutoBlocks.frozen_methane_block.setHarvestLevel("pickaxe", 2);
         PlutoBlocks.frozen_nitrogen_block.setHarvestLevel("pickaxe", 2);
+        PlutoBlocks.pluto_cobblestone_stairs.setHarvestLevel("pickaxe", 0);
+        PlutoBlocks.pluto_dungeon_brick_stairs.setHarvestLevel("pickaxe", 0);
         PlutoBlocks.pluto_ancient_chest.setHarvestLevel("axe", 0);
     }
 
@@ -75,6 +84,8 @@ public class PlutoBlocks
         RegisterHelper.registerBlock(PlutoBlocks.frozen_nitrogen_block);
         RegisterHelper.registerBlock(PlutoBlocks.pluto_ancient_chest);
         RegisterHelper.registerBlock(PlutoBlocks.pluto_treasure_chest);
+        RegisterHelper.registerBlock(PlutoBlocks.pluto_cobblestone_stairs);
+        RegisterHelper.registerBlock(PlutoBlocks.pluto_dungeon_brick_stairs);
         RegisterHelper.registerBlock(PlutoBlocks.xeonium_torch);
         RegisterHelper.registerBlock(PlutoBlocks.liquid_methane);
         RegisterHelper.registerBlock(PlutoBlocks.liquid_nitrogen);
