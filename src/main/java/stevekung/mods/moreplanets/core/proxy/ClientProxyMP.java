@@ -23,6 +23,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.network.NetHandlerPlayServer;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.particles.EntityDarkPortalFX;
 import stevekung.mods.moreplanets.core.particles.EntityMCLavaFX;
 import stevekung.mods.moreplanets.core.particles.EntitySmokeFXMP;
 import stevekung.mods.moreplanets.core.renderer.EntityRendererMP;
@@ -429,6 +430,10 @@ public class ClientProxyMP extends CommonProxyMP
             else if (string == "waterGeyser")
             {
                 entityfx = new EntityGeyserFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
+            }
+            else if (string == "darkPortal")
+            {
+                entityfx = new EntityDarkPortalFX(mc.theWorld, x, y, z, motionX, motionY, motionZ);
             }
             mc.effectRenderer.addEffect(entityfx);
         }

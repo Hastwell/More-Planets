@@ -22,16 +22,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUltraVioletLevel
 {
-    public int spaceStationDimensionID;
     private float angularVelocityRadians = 0F;
     private float skyAngularVelocity = (float) (this.angularVelocityRadians * 180 / Math.PI);
-
-    @Override
-    public void setDimension(int id)
-    {
-        this.spaceStationDimensionID = id;
-        super.setDimension(id);
-    }
 
     @Override
     public CelestialBody getCelestialBody()
@@ -146,7 +138,7 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
     @Override
     public String getDimensionName()
     {
-        return "Jupiter Space Station " + this.spaceStationDimensionID;
+        return "Space Station " + this.spaceStationDimensionID;
     }
 
     @Override

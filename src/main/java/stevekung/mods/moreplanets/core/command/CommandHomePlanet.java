@@ -65,7 +65,7 @@ public class CommandHomePlanet extends CommandBase
                 }
                 else
                 {
-                    int dimID = WorldUtil.getProviderForName(ConfigManagerMP.homePlanetName).dimensionId;
+                    int dimID = WorldUtil.getProviderForNameServer(ConfigManagerMP.homePlanetName).dimensionId;
                     WorldUtilMP.setHomePlanetDimension(playerBase, dimID, worldserver);
                     stats.usingHomePlanetCommand = true;
                     CommandBase.func_152373_a(sender, this, "commands.homeplanettp.success", new Object[] { playerBase.getGameProfile().getName(), StatCollector.translateToLocal(ConfigManagerMP.homePlanetName) });

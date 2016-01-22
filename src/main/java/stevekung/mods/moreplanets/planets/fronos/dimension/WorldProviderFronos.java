@@ -23,6 +23,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class WorldProviderFronos extends WorldProviderMP
 {
     @Override
+    public boolean canRespawnHere()
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isSurfaceWorld()
+    {
+        return true;
+    }
+
+    @Override
     public Vector3 getFogColor()
     {
         float f = 1.1F - this.getStarBrightness(1.0F);

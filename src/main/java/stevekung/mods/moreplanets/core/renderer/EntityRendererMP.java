@@ -14,7 +14,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderEvolvedDarkCreeper;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
+import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityEvolvedDarkCreeper;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketMP;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketNoFlagMP;
@@ -219,6 +221,7 @@ public class EntityRendererMP
 
         RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow());
         RenderingRegistry.registerEntityRenderingHandler(EntityPlutoAlien.class, new RenderPlutoAlien());
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedDarkCreeper.class, new RenderEvolvedDarkCreeper());
 
         //TEMPLATE HOTFIX
         RenderingRegistry.registerEntityRenderingHandler(EntityFronosCreeperBossTemp.class, new RenderFronosCreeperBossTemp());

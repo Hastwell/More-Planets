@@ -49,7 +49,7 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     @Override
     public String getDimensionName()
     {
-        return "Mars Space Station " + this.spaceStationDimensionID;
+        return "Space Station " + this.spaceStationDimensionID;
     }
 
     @Override

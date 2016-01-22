@@ -733,7 +733,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
         {
             if (chunk.getBlockStorageArray()[j] == null)
             {
-                chunk.getBlockStorageArray()[j] = new ExtendedBlockStorage(j, false);
+                chunk.getBlockStorageArray()[j] = new ExtendedBlockStorage(j << 4, false);
             }
         }
 

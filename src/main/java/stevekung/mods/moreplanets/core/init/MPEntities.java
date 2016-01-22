@@ -14,7 +14,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityEvolvedDarkCreeper;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
@@ -164,7 +163,7 @@ public class MPEntities
 
         registerEntity(EntityPlutoAlien.class, "PlutoAlien", 42, -6125457, -13380436);
 
-        registerEntity(EntityEvolvedDarkCreeper.class, "EvolvedDarkCreeper", 43, 0, 0);
+        //registerEntity(EntityEvolvedDarkCreeper.class, "EvolvedDarkCreeper", 43, 0, 0);
 
         //TEMPLATE HOTFIX
         registerEntity(EntityFronosCreeperBossTemp.class, "FronosBossTemp", 38, 0, 0);

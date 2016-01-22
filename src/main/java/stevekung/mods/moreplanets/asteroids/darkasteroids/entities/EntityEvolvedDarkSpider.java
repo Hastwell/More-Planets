@@ -1,65 +1,32 @@
 package stevekung.mods.moreplanets.asteroids.darkasteroids.entities;
 
-import java.util.UUID;
-
 import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
+import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import micdoodle8.mods.galacticraft.core.util.WorldUtil;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAICreeperSwell;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public class EntityEvolvedDarkCreeper extends EntityCreeper implements IEntityBreathable
+public class EntityEvolvedDarkSpider extends EntitySpider implements IEntityBreathable
 {
-    private float sizeXBase = -1.0F;
-    private float sizeYBase;
-    private static UUID babySpeedBoostUUID = UUID.fromString("ef67a435-32a4-4efd-b218-e7431438b109");
-    private static AttributeModifier babySpeedBoostModifier = new AttributeModifier(babySpeedBoostUUID, "Baby speed boost evolved creeper", 0.5D, 1);
-
-    public EntityEvolvedDarkCreeper(World world)
+    public EntityEvolvedDarkSpider(World par1World)
     {
-        super(world);
-        this.tasks.taskEntries.clear();
-        this.tasks.addTask(1, new EntityAISwimming(this));
-        this.tasks.addTask(2, new EntityAICreeperSwell(this));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityOcelot.class, 6.0F, 0.25F, 0.3F));
-        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.25F, false));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.2F));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(6, new EntityAILookIdle(this));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false));
-        this.setSize(0.6F, 1.8F);
-    }
-
-    @Override
-    protected void entityInit()
-    {
-        super.entityInit();
-        this.getDataWatcher().addObject(12, Byte.valueOf((byte) 0));
+        super(par1World);
+        this.setSize(1.4F, 0.9F);
     }
 
     @Override
@@ -67,29 +34,8 @@ public class EntityEvolvedDarkCreeper extends EntityCreeper implements IEntityBr
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0F);
-    }
-
-    @Override
-    public void writeEntityToNBT(NBTTagCompound nbt)
-    {
-        super.writeEntityToNBT(nbt);
-
-        if (this.isChild())
-        {
-            nbt.setBoolean("IsBaby", true);
-        }
-    }
-
-    @Override
-    public void readEntityFromNBT(NBTTagCompound nbt)
-    {
-        super.readEntityFromNBT(nbt);
-
-        if (nbt.getBoolean("IsBaby"))
-        {
-            this.setChild(true);
-        }
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(ConfigManagerCore.hardMode ? 1.2F : 1.0F);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(ConfigManagerCore.hardMode ? 4.0D : 2.0D);
     }
 
     @Override
@@ -98,70 +44,52 @@ public class EntityEvolvedDarkCreeper extends EntityCreeper implements IEntityBr
         return true;
     }
 
-    public void setChildSize(boolean isChild)
+    @Override
+    protected boolean isAIEnabled()
     {
-        this.setCreeperScale(isChild ? 0.5F : 1.0F);
+        return false;
     }
 
     @Override
-    protected void setSize(float sizeX, float sizeY)
+    public IEntityLivingData onSpawnWithEgg(IEntityLivingData data)
     {
-        boolean flag = this.sizeXBase > 0.0F && this.sizeYBase > 0.0F;
-        this.sizeXBase = sizeX;
-        this.sizeYBase = sizeY;
-
-        if (!flag)
+        if (this.worldObj.rand.nextInt(100) == 0)
         {
-            this.setCreeperScale(1.0F);
+            EntityEvolvedDarkSkeleton skeleton = new EntityEvolvedDarkSkeleton(this.worldObj);
+            skeleton.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
+            skeleton.onSpawnWithEgg(null);
+            this.worldObj.spawnEntityInWorld(skeleton);
+            skeleton.mountEntity(this);
         }
-    }
-
-    protected void setCreeperScale(float scale)
-    {
-        super.setSize(this.sizeXBase * scale, this.sizeYBase * scale);
-    }
-
-    @Override
-    public boolean isChild()
-    {
-        return this.getDataWatcher().getWatchableObjectByte(12) == 1;
-    }
-
-    @Override
-    protected int getExperiencePoints(EntityPlayer player)
-    {
-        if (this.isChild())
+        if (data == null)
         {
-            this.experienceValue = this.experienceValue * 5 / 2;
-        }
-        return super.getExperiencePoints(player);
-    }
+            data = new EntityEvolvedDarkSpider.GroupData();
 
-    public void setChild(boolean isChild)
-    {
-        this.getDataWatcher().updateObject(12, Byte.valueOf((byte) (isChild ? 1 : 0)));
-
-        if (this.worldObj != null && !this.worldObj.isRemote)
-        {
-            IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.movementSpeed);
-            iattributeinstance.removeModifier(babySpeedBoostModifier);
-
-            if (isChild)
+            if (this.worldObj.difficultySetting == EnumDifficulty.HARD && this.worldObj.rand.nextFloat() < 0.1F * this.worldObj.func_147462_b(this.posX, this.posY, this.posZ))
             {
-                iattributeinstance.applyModifier(babySpeedBoostModifier);
+                ((EntityEvolvedDarkSpider.GroupData)data).func_111104_a(this.worldObj.rand);
             }
         }
-        this.setChildSize(isChild);
+        if (data instanceof EntityEvolvedDarkSpider.GroupData)
+        {
+            int i = ((EntityEvolvedDarkSpider.GroupData)data).field_111105_a;
+
+            if (i > 0 && Potion.potionTypes[i] != null)
+            {
+                this.addPotionEffect(new PotionEffect(i, Integer.MAX_VALUE));
+            }
+        }
+        return data;
     }
 
     @Override
     protected void jump()
     {
-        this.motionY = 0.45D / WorldUtil.getGravityFactor(this);
+        this.motionY = 0.52D / WorldUtil.getGravityFactor(this);
 
-        if (this.motionY < 0.22D)
+        if (this.motionY < 0.26D)
         {
-            this.motionY = 0.22D;
+            this.motionY = 0.26D;
         }
         if (this.isPotionActive(Potion.jump))
         {
@@ -185,12 +113,14 @@ public class EntityEvolvedDarkCreeper extends EntityCreeper implements IEntityBr
         case 0:
         case 1:
         case 9:
+            break;
         case 2:
         case 3:
+            this.dropItem(GCItems.cheeseCurd, 1);
             break;
         case 4:
         case 5:
-            this.entityDropItem(new ItemStack(Blocks.sand), 0.0F);
+            this.dropItem(Items.fermented_spider_eye, 1);
             break;
         case 6:
             //Oxygen tank half empty or less
@@ -200,7 +130,7 @@ public class EntityEvolvedDarkCreeper extends EntityCreeper implements IEntityBr
             this.dropItem(GCItems.oxygenGear, 1);
             break;
         case 8:
-            this.entityDropItem(new ItemStack(Blocks.ice), 0.0F);
+            this.dropItem(GCItems.oxygenConcentrator, 1);
             break;
         }
     }
