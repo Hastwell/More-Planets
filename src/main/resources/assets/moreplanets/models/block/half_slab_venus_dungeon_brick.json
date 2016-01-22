@@ -1,0 +1,8 @@
+{
+    "parent": "block/half_slab",
+    "textures": {
+        "bottom": "moreplanets:blocks/venus_dungeon_brick",
+        "top": "moreplanets:blocks/venus_dungeon_brick",
+        "side": "moreplanets:blocks/venus_dungeon_brick"
+    }
+}

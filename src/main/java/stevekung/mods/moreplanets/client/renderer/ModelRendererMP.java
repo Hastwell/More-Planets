@@ -74,6 +74,10 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(MPBlocks.space_mossy_cobblestone, 4, "mossy_fronos_cobblestone", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.space_mossy_cobblestone, 5, "mossy_kapteyn_b_cobblestone", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.space_mossy_cobblestone, 6, "mossy_sirius_b_cobblestone", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.space_mossy_cobblestone, 7, "mossy_venus_cobblestone", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.space_mossy_cobblestone, 8, "mossy_mercury_cobblestone", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.space_mossy_cobblestone, 9, "mossy_pluto_cobblestone", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.space_mossy_cobblestone, 10, "mossy_martian_cobblestone", "moreplanets");
 
         ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_1, 0, "diona_cobblestone_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_1, 1, "quontonium_brick_slab", "moreplanets");
@@ -89,12 +93,15 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_2, 3, "kapteyn_b_cracked_ice_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_2, 4, "sirius_b_carbon_cobblestone_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_2, 5, "mercury_cobblestone_slab", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_2, 6, "venus_cobblestone_slab", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.half_stone_slab_2, 7, "pluto_cobblestone_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_wooden_slab_1, 0, "ancient_dark_wood_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_wooden_slab_1, 1, "orange_wood_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_wooden_slab_1, 2, "crystal_wood_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_wooden_slab_1, 3, "coconut_wood_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_wooden_slab_1, 4, "maple_wood_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_wooden_slab_1, 5, "europa_wood_slab", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.half_wooden_slab_1, 6, "alien_wood_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_1, 0, "diona_dungeon_brick_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_1, 1, "polongnius_dungeon_brick_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_1, 2, "nibiru_dungeon_brick_slab", "moreplanets");
@@ -103,6 +110,8 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_1, 5, "kapteyn_b_dungeon_brick_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_1, 6, "sirius_b_dungeon_brick_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_1, 7, "mercury_dungeon_brick_slab", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_2, 0, "venus_dungeon_brick_slab", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.half_dungeon_brick_slab_2, 1, "pluto_dungeon_brick_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 0, "diona_cobblestone_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 1, "quontonium_brick_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 2, "chiseled_quontonium_wall", "moreplanets");
@@ -117,6 +126,8 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 11, "kapteyn_b_cracked_ice_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 12, "sirius_b_carbon_cobblestone_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 13, "mercury_cobblestone_wall", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 14, "venus_cobblestone_wall", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.stone_wall, 15, "pluto_cobblestone_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 0, "diona_dungeon_brick_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 1, "polongnius_dungeon_brick_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 2, "nibiru_dungeon_brick_wall", "moreplanets");
@@ -125,6 +136,8 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 5, "kapteyn_b_dungeon_brick_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 6, "sirius_b_dungeon_brick_wall", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 7, "mercury_dungeon_brick_wall", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 8, "venus_dungeon_brick_wall", "moreplanets");
+        ClientRegisterHelper.registerModelRender(MPBlocks.dungeon_brick_wall, 9, "pluto_dungeon_brick_wall", "moreplanets");
         ClientRegisterHelper.registerModelRenderWithDyeColor(MPBlocks.tinted_glass, "moreplanets");
         ClientRegisterHelper.registerModelRenderWithDyeColor(MPBlocks.tinted_glass_pane, "moreplanets");
 
@@ -597,6 +610,8 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(VenusBlocks.venus_sandstone, 2, "smooth_venus_sandstone", "moreplanets");
         ClientRegisterHelper.registerModelRender(VenusBlocks.half_venus_sandstone_slab, 0, "venus_sandstone_slab", "moreplanets");
         ClientRegisterHelper.registerModelRender(VenusBlocks.venus_sandstone_stairs, "venus_sandstone_stairs", "moreplanets");
+        ClientRegisterHelper.registerModelRender(VenusBlocks.venus_cobblestone_stairs, "venus_cobblestone_stairs", "moreplanets");
+        ClientRegisterHelper.registerModelRender(VenusBlocks.venus_dungeon_brick_stairs, "venus_dungeon_brick_stairs", "moreplanets");
 
         ClientRegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 0, "pluto_surface_rock", "moreplanets");
         ClientRegisterHelper.registerModelRender(PlutoBlocks.pluto_block, 1, "pluto_sub_surface_rock", "moreplanets");
@@ -616,6 +631,8 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(PlutoBlocks.pluto_ancient_chest, "pluto_ancient_chest", "moreplanets");
         ClientRegisterHelper.registerModelRender(PlutoBlocks.pluto_treasure_chest, "pluto_treasure_chest", "moreplanets");
         ClientRegisterHelper.registerModelRender(PlutoBlocks.pluto_heart_crystal, "pluto_heart_crystal_block", "moreplanets");
+        ClientRegisterHelper.registerModelRender(PlutoBlocks.pluto_cobblestone_stairs, "pluto_cobblestone_stairs", "moreplanets");
+        ClientRegisterHelper.registerModelRender(PlutoBlocks.pluto_dungeon_brick_stairs, "pluto_dungeon_brick_stairs", "moreplanets");
 
         ClientRegisterHelper.registerModelRender(EuropaBlocks.europa_prismarine, 0, "europa_prismarine", "moreplanets");
         ClientRegisterHelper.registerModelRender(EuropaBlocks.europa_prismarine, 1, "europa_prismarine_bricks", "moreplanets");
@@ -676,6 +693,9 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_sapling, "alien_sapling", "moreplanets");
         ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_glowstone, "alien_glowstone", "moreplanets");
         ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_vine, "alien_vine", "moreplanets");
+        ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_wood_stairs, "alien_wood_stairs", "moreplanets");
+        ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_fence, "alien_fence", "moreplanets");
+        ClientRegisterHelper.registerModelRender(DarkAsteroidBlocks.alien_fence_gate, "alien_fence_gate", "moreplanets");
 
         // Items
         ClientRegisterHelper.registerModelRender(MPItems.feces, "feces", "moreplanets");
@@ -689,14 +709,6 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(MPItems.tier_3_thermal_padding, 1, "tier_3_thermal_chestplate", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPItems.tier_3_thermal_padding, 2, "tier_3_thermal_leggings", "moreplanets");
         ClientRegisterHelper.registerModelRender(MPItems.tier_3_thermal_padding, 3, "tier_3_thermal_boots", "moreplanets");
-        ClientRegisterHelper.registerModelRender(MPItems.spawn_egg_mp, new ItemMeshDefinition()
-        {
-            @Override
-            public ModelResourceLocation getModelLocation(ItemStack itemStack)
-            {
-                return new ModelResourceLocation("moreplanets:spawn_egg_mp", "inventory");
-            }
-        });
         ClientRegisterHelper.registerModelRender(MPItems.cheese_spore, "cheese_spore", "moreplanets");
 
         ClientRegisterHelper.registerModelRender(DionaItems.diona_item, 0, "quontonium_ingot", "moreplanets");
@@ -806,6 +818,7 @@ public class ModelRendererMP
         ClientRegisterHelper.registerModelRender(KoentusItems.crystal_door, "crystal_door", "moreplanets");
         ClientRegisterHelper.registerModelRender(KoentusItems.crystal_cocoa, "crystal_cocoa", "moreplanets");
         ClientRegisterHelper.registerModelRender(KoentusItems.koentus_meteor_chunk, "koentus_meteor_chunk", "moreplanets");
+        ClientRegisterHelper.registerModelRender(KoentusItems.crystal_apple, "crystal_apple", "moreplanets");
 
         ClientRegisterHelper.registerModelRender(FronosItems.fronos_food, 0, "strawberry", "moreplanets");
         ClientRegisterHelper.registerModelRender(FronosItems.fronos_food, 1, "berry", "moreplanets");
@@ -928,6 +941,7 @@ public class ModelRendererMP
                 return new ModelResourceLocation("moreplanets:tier_8_rocket", "inventory");
             }
         });
+        ClientRegisterHelper.registerModelRender(KapteynBItems.ice_crystal_meteor_chunk, "ice_crystal_meteor_chunk", "moreplanets");
 
         ClientRegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 0, "small_diamond_pieces", "moreplanets");
         ClientRegisterHelper.registerModelRender(SiriusBItems.sirius_b_item, 1, "large_diamond_pieces", "moreplanets");

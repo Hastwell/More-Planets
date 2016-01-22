@@ -14,7 +14,7 @@ import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 
 public class TileEntityUraniumWaste extends TileEntity implements IUpdatePlayerListBox
 {
-    public int radiationLevel = 100;
+    public int radiationLevel = 10000;
 
     @Override
     public void update()

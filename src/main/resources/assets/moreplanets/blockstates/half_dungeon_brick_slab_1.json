@@ -15,6 +15,10 @@
 		"half=bottom,variant=sirius_b_dungeon_brick_slab": { "model": "moreplanets:half_slab_sirius_b_dungeon_brick" },
         "half=top,variant=sirius_b_dungeon_brick_slab": { "model": "moreplanets:upper_slab_sirius_b_dungeon_brick" },
 		"half=bottom,variant=mercury_dungeon_brick_slab": { "model": "moreplanets:half_slab_mercury_dungeon_brick" },
-        "half=top,variant=mercury_dungeon_brick_slab": { "model": "moreplanets:upper_slab_mercury_dungeon_brick" }
+        "half=top,variant=mercury_dungeon_brick_slab": { "model": "moreplanets:upper_slab_mercury_dungeon_brick" },
+		"half=bottom,variant=venus_dungeon_brick_slab": { "model": "moreplanets:half_slab_venus_dungeon_brick" },
+        "half=top,variant=venus_dungeon_brick_slab": { "model": "moreplanets:upper_slab_venus_dungeon_brick" },
+		"half=bottom,variant=pluto_dungeon_brick_slab": { "model": "moreplanets:half_slab_pluto_dungeon_brick" },
+        "half=top,variant=pluto_dungeon_brick_slab": { "model": "moreplanets:upper_slab_pluto_dungeon_brick" }
     }
 }

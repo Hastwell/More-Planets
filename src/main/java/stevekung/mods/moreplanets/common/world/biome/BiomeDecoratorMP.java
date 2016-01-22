@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.common.world.biome;
 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.biome.BiomeDecorator;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public abstract class BiomeDecoratorMP extends BiomeDecorator
@@ -21,4 +22,7 @@ public abstract class BiomeDecoratorMP extends BiomeDecorator
             worldGen.generate(this.currentWorld, this.randomGenerator, blockpos);
         }
     }
+
+    @Override
+    protected abstract void genDecorations(BiomeGenBase biome);
 }

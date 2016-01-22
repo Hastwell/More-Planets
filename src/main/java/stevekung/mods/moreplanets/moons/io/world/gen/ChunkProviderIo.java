@@ -32,6 +32,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderGenerate;
+import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
@@ -78,7 +79,7 @@ public class ChunkProviderIo extends ChunkProviderGenerate
         this.dungeonGenerator.treasureRooms.add(new RoomTreasureIo(null, 0, 0, 0, null));
     }
 
-    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseIo.baseMoonBiome };
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.baseMoonBiome };
 
     private static double TERRAIN_HEIGHT_MOD = 12;
     private static double SMALL_FEATURE_HEIGHT_MOD = 26;
@@ -353,7 +354,7 @@ public class ChunkProviderIo extends ChunkProviderGenerate
 
     public void decoratePlanet(World world, Random rand, int x, int z)
     {
-        this.biomedecoratorplanet.decorate(world, rand, x, z);
+        //this.biomedecoratorplanet.decorate(world, rand, x, z);
     }
 
     @Override

@@ -9,15 +9,12 @@ package stevekung.mods.moreplanets.planets.siriusb.entities;
 
 import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.EnumDimensionType;
-import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreathable, IEntityLivingPlanet
 {
@@ -40,12 +37,6 @@ public class EntitySiriusCreeper extends EntityCreeper implements IEntityBreatha
     public boolean canBreath()
     {
         return true;
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1030);
     }
 
     @Override

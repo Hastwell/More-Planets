@@ -24,8 +24,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
@@ -48,12 +46,6 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
     public EnumWorldBlockLayer getBlockLayer()
     {
         return EnumWorldBlockLayer.CUTOUT;
-    }
-
-    @Override
-    public MovingObjectPosition collisionRayTrace(World world, BlockPos pos, Vec3 vec3d, Vec3 vec3d1)
-    {
-        return super.collisionRayTrace(world, pos, vec3d, vec3d1);
     }
 
     @Override
@@ -143,7 +135,7 @@ public class BlockInfectedCavernousVine extends BlockBaseMP implements IShearabl
             {
                 Block block = world.getBlockState(new BlockPos(pos.getX(), y, pos.getZ())).getBlock();
 
-                if (!block.isAir(world, pos))
+                if (block == null || !block.isAir(world, pos))
                 {
                     return;
                 }

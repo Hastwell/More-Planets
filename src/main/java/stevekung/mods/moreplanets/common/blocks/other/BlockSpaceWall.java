@@ -84,7 +84,7 @@ public class BlockSpaceWall extends BlockWallMP
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
-        for (int i = 0; i < 14; ++i)
+        for (int i = 0; i < 16; ++i)
         {
             list.add(new ItemStack(this, 1, i));
         }
@@ -135,7 +135,9 @@ public class BlockSpaceWall extends BlockWallMP
         cracked_fronos_stone_brick_wall,
         kapteyn_b_cracked_ice_wall,
         sirius_b_carbon_cobblestone_wall,
-        mercury_cobblestone_wall;
+        mercury_cobblestone_wall,
+        venus_cobblestone_wall,
+        pluto_cobblestone_wall;
 
         @Override
         public String toString()

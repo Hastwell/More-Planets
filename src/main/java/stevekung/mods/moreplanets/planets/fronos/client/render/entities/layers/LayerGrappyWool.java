@@ -36,7 +36,7 @@ public class LayerGrappyWool implements LayerRenderer
         {
             this.sheepRenderer.bindTexture(this.grappyTextures);
 
-            if (entity.hasCustomName() && "steve".equals(entity.getCustomNameTag()))
+            if (entity.hasCustomName() && "steve_".equals(entity.getCustomNameTag()))
             {
                 int i = entity.ticksExisted / 25 + entity.getEntityId();
                 int j = EnumDyeColor.values().length;

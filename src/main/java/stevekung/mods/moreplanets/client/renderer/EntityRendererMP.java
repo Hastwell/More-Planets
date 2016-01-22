@@ -93,10 +93,12 @@ import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityCrea
 import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityPoisonArrow;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderUraniumBomb;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 import stevekung.mods.moreplanets.planets.nibiru.client.render.entities.RenderGiantWorm;
@@ -108,6 +110,8 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6Rocket;
+import stevekung.mods.moreplanets.planets.pluto.client.render.entities.RenderPlutoAlien;
+import stevekung.mods.moreplanets.planets.pluto.entities.EntityPlutoAlien;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.RenderCheeseCow;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.RenderCheeseCubeBoss;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.RenderCheeseSlime;
@@ -206,6 +210,7 @@ public class EntityRendererMP
 
         RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new RenderEvolvedWitch(render));
         RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPlutoAlien.class, new RenderPlutoAlien(render));
     }
 
     private static void registerNonEntityRenderers()
@@ -241,5 +246,6 @@ public class EntityRendererMP
         RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb(render));
 
         RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new RenderDarkAsteroid(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteorChunk.class, new RenderIceCrystalMeteorChunk(render));
     }
 }

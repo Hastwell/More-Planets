@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public abstract class ItemFoodMP2 extends ItemFood
+public class ItemFoodMP2 extends ItemFood
 {
     public ItemFoodMP2()
     {

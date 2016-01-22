@@ -14,11 +14,13 @@ import net.minecraft.block.material.Material;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.common.blocks.other.BlockChondriteRock;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleDungeonBrickSlab1;
+import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleDungeonBrickSlab2;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleStoneSlab1;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleStoneSlab2;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDoubleWoodenSlab1;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDummy;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDungeonBrickSlab1;
+import stevekung.mods.moreplanets.common.blocks.other.BlockDungeonBrickSlab2;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDungeonBrickWall;
 import stevekung.mods.moreplanets.common.blocks.other.BlockDungeonSpawner;
 import stevekung.mods.moreplanets.common.blocks.other.BlockPolishedSpaceDecoration;
@@ -31,6 +33,7 @@ import stevekung.mods.moreplanets.common.blocks.other.BlockTintedGlassPane;
 import stevekung.mods.moreplanets.common.blocks.other.BlockWoodenSlab1;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockColoredMP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDungeonBrickSlab1;
+import stevekung.mods.moreplanets.common.itemblocks.ItemBlockDungeonBrickSlab2;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockMultiVariant;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockStoneSlab1MP;
 import stevekung.mods.moreplanets.common.itemblocks.ItemBlockStoneSlab2MP;
@@ -63,6 +66,8 @@ public class MPBlocks
     public static Block double_wooden_slab_1;
     public static Block half_dungeon_brick_slab_1;
     public static Block double_dungeon_brick_slab_1;
+    public static Block half_dungeon_brick_slab_2;
+    public static Block double_dungeon_brick_slab_2;
 
     public static Block stone_wall;
     public static Block dungeon_brick_wall;
@@ -92,6 +97,8 @@ public class MPBlocks
         MPBlocks.double_wooden_slab_1 = new BlockDoubleWoodenSlab1("double_wooden_slab_1", Material.wood);
         MPBlocks.half_dungeon_brick_slab_1 = new BlockDungeonBrickSlab1("half_dungeon_brick_slab_1", Material.rock);
         MPBlocks.double_dungeon_brick_slab_1 = new BlockDoubleDungeonBrickSlab1("double_dungeon_brick_slab_1", Material.rock);
+        MPBlocks.half_dungeon_brick_slab_2 = new BlockDungeonBrickSlab2("half_dungeon_brick_slab_2", Material.rock);
+        MPBlocks.double_dungeon_brick_slab_2 = new BlockDoubleDungeonBrickSlab2("double_dungeon_brick_slab_2", Material.rock);
 
         MPBlocks.dummy_block = new BlockDummy("dummy_block");
         MPBlocks.dungeon_spawner = new BlockDungeonSpawner("dungeon_spawner_mp");
@@ -102,8 +109,8 @@ public class MPBlocks
         MPBlocks.space_mossy_cobblestone = new BlockSpaceMossyCobblestone("space_mossy_cobblestone");
 
         // Register
-        CommonRegisterHelper.registerBlock(MPBlocks.stone_wall, ItemBlockMultiVariant.class, new VariantsName("diona_cobblestone", "quontonium_brick", "chiseled_quontonium", "polongnius_cobblestone", "nibiru_cobblestone", "koentus_cobblestone", "koentus_ancient_stone", "koentus_ancient_stone_brick", "fronos_cobblestone", "fronos_stone_brick", "cracked_fronos_stone_brick", "kapteyn_b_cracked_ice", "sirius_b_carbon_cobblestone", "mercury_cobblestone"));
-        CommonRegisterHelper.registerBlock(MPBlocks.dungeon_brick_wall, ItemBlockMultiVariant.class, new VariantsName("diona_dungeon_brick", "polongnius_dungeon_brick", "nibiru_dungeon_brick", "koentus_dungeon_brick", "fronos_dungeon_brick", "kapteyn_b_dungeon_brick", "sirius_dungeon_brick", "mercury_dungeon_brick"));
+        CommonRegisterHelper.registerBlock(MPBlocks.stone_wall, ItemBlockMultiVariant.class, new VariantsName("diona_cobblestone", "quontonium_brick", "chiseled_quontonium", "polongnius_cobblestone", "nibiru_cobblestone", "koentus_cobblestone", "koentus_ancient_stone", "koentus_ancient_stone_brick", "fronos_cobblestone", "fronos_stone_brick", "cracked_fronos_stone_brick", "kapteyn_b_cracked_ice", "sirius_b_carbon_cobblestone", "mercury_cobblestone", "venus_cobblestone", "pluto_cobblestone"));
+        CommonRegisterHelper.registerBlock(MPBlocks.dungeon_brick_wall, ItemBlockMultiVariant.class, new VariantsName("diona_dungeon_brick", "polongnius_dungeon_brick", "nibiru_dungeon_brick", "koentus_dungeon_brick", "fronos_dungeon_brick", "kapteyn_b_dungeon_brick", "sirius_dungeon_brick", "mercury_dungeon_brick", "venus_dungeon_brick", "pluto_dungeon_brick"));
         CommonRegisterHelper.registerBlock(MPBlocks.half_stone_slab_1, ItemBlockStoneSlab1MP.class, MPBlocks.half_stone_slab_1, MPBlocks.double_stone_slab_1);
         CommonRegisterHelper.registerBlock(MPBlocks.double_stone_slab_1, ItemBlockStoneSlab1MP.class, MPBlocks.half_stone_slab_1, MPBlocks.double_stone_slab_1);
         CommonRegisterHelper.registerBlock(MPBlocks.half_stone_slab_2, ItemBlockStoneSlab2MP.class, MPBlocks.half_stone_slab_2, MPBlocks.double_stone_slab_2);
@@ -112,6 +119,8 @@ public class MPBlocks
         CommonRegisterHelper.registerBlock(MPBlocks.double_wooden_slab_1, ItemBlockWoodenSlab1MP.class, MPBlocks.half_wooden_slab_1, MPBlocks.double_wooden_slab_1);
         CommonRegisterHelper.registerBlock(MPBlocks.half_dungeon_brick_slab_1, ItemBlockDungeonBrickSlab1.class, MPBlocks.half_dungeon_brick_slab_1, MPBlocks.double_dungeon_brick_slab_1);
         CommonRegisterHelper.registerBlock(MPBlocks.double_dungeon_brick_slab_1, ItemBlockDungeonBrickSlab1.class, MPBlocks.half_dungeon_brick_slab_1, MPBlocks.double_dungeon_brick_slab_1);
+        CommonRegisterHelper.registerBlock(MPBlocks.half_dungeon_brick_slab_2, ItemBlockDungeonBrickSlab2.class, MPBlocks.half_dungeon_brick_slab_2, MPBlocks.double_dungeon_brick_slab_2);
+        CommonRegisterHelper.registerBlock(MPBlocks.double_dungeon_brick_slab_2, ItemBlockDungeonBrickSlab2.class, MPBlocks.half_dungeon_brick_slab_2, MPBlocks.double_dungeon_brick_slab_2);
         CommonRegisterHelper.registerBlock(MPBlocks.chondrite_rock, ItemBlockMultiVariant.class, new VariantsName("rock", "polished", "stone_brick"));
         CommonRegisterHelper.registerBlock(MPBlocks.polished_space_decoration, ItemBlockMultiVariant.class, new VariantsName("tin", "aluminum"));
         CommonRegisterHelper.registerBlock(MPBlocks.space_mossy_cobblestone, ItemBlockMultiVariant.class, new VariantsName("diona", "polongnius", "nibiru", "koentus", "fronos", "kapteynb", "siriusb", "venus", "mercury", "pluto", "martian"));
@@ -147,6 +156,8 @@ public class MPBlocks
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_wooden_slab_1, "axe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_dungeon_brick_slab_1, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_dungeon_brick_slab_1, "pickaxe", 1);
+        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.half_dungeon_brick_slab_2, "pickaxe", 1);
+        CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.double_dungeon_brick_slab_2, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.stone_wall, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.dungeon_brick_wall, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(MPBlocks.chondrite_rock, "pickaxe", 0);
@@ -161,6 +172,7 @@ public class MPBlocks
         highlightBlockList.add(MPBlocks.double_stone_slab_2);
         highlightBlockList.add(MPBlocks.double_wooden_slab_1);
         highlightBlockList.add(MPBlocks.double_dungeon_brick_slab_1);
+        highlightBlockList.add(MPBlocks.double_dungeon_brick_slab_2);
         highlightBlockList.add(DionaBlocks.diona_block);
         highlightBlockList.add(PolongniusBlocks.polongnius_block);
         highlightBlockList.add(PolongniusBlocks.ultra_violet_solar_fake);
@@ -210,6 +222,7 @@ public class MPBlocks
         hideBlockList.add(MPBlocks.double_stone_slab_2);
         hideBlockList.add(MPBlocks.double_wooden_slab_1);
         hideBlockList.add(MPBlocks.double_dungeon_brick_slab_1);
+        hideBlockList.add(MPBlocks.double_dungeon_brick_slab_2);
         hideBlockList.add(MPBlocks.dummy_block);
         hideBlockList.add(KoentusBlocks.crystal_door_block);
         hideBlockList.add(KoentusBlocks.crystal_farmland);

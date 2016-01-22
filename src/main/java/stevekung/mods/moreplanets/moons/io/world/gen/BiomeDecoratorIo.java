@@ -7,17 +7,15 @@
 
 package stevekung.mods.moreplanets.moons.io.world.gen;
 
-import micdoodle8.mods.galacticraft.api.prefab.world.gen.BiomeDecoratorSpace;
 import micdoodle8.mods.galacticraft.core.world.gen.WorldGenMinableMeta;
-import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import stevekung.mods.moreplanets.common.world.biome.BiomeDecoratorMP;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 
-public class BiomeDecoratorIo extends BiomeDecoratorSpace
+public class BiomeDecoratorIo extends BiomeDecoratorMP
 {
     private WorldGenerator sulfurGen;
-
-    private World world;
 
     public BiomeDecoratorIo()
     {
@@ -25,20 +23,8 @@ public class BiomeDecoratorIo extends BiomeDecoratorSpace
     }
 
     @Override
-    public void decorate()
+    protected void genDecorations(BiomeGenBase biome)
     {
-        this.generateOre(32, this.sulfurGen, 0, 256);
-    }
-
-    @Override
-    protected void setCurrentWorld(World world)
-    {
-        this.world = world;
-    }
-
-    @Override
-    protected World getCurrentWorld()
-    {
-        return this.world;
+        this.generateOre(32, this.sulfurGen, 0, 128);
     }
 }

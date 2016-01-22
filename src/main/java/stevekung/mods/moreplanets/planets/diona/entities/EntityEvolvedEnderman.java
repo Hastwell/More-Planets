@@ -39,14 +39,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.init.MPItems;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
@@ -56,6 +54,7 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
     private static UUID attackingSpeedBoostModifierUUID = UUID.fromString("020E0DFB-87AE-4653-9556-831010E291A0");
     private static AttributeModifier attackingSpeedBoostModifier = new AttributeModifier(attackingSpeedBoostModifierUUID, "Attacking speed boost", 0.15000000596046448D, 0).setSaved(false);
     private static Set carriableBlocks = Sets.newIdentityHashSet();
+
     public EntityEvolvedEnderman(World world)
     {
         super(world);
@@ -82,12 +81,6 @@ public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBrea
                 return this.func_179948_a((EntityEndermite)entity);
             }
         }));
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1001);
     }
 
     @Override

@@ -68,5 +68,6 @@ public class StateMapperUtil
         ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_fence_gate, EnumStateMapper.FENCE_GATE);
         ClientRegisterHelper.registerStateMapper(EuropaBlocks.europa_water_bomb, EnumStateMapper.TNT);
         ClientRegisterHelper.registerStateMapper(DarkAsteroidBlocks.alien_leaves, EnumStateMapper.LEAVES);
+        ClientRegisterHelper.registerStateMapper(DarkAsteroidBlocks.alien_fence_gate, EnumStateMapper.FENCE_GATE);
     }
 }

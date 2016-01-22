@@ -22,13 +22,15 @@ import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomTreasureEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.dungeon.RoomBossKoentus;
 import stevekung.mods.moreplanets.moons.koentus.world.gen.dungeon.RoomChestsKoentus;
 
 public class ChunkProviderKoentus extends ChunkProviderBaseMP
 {
-    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseKoentus.baseMoonBiome };
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.baseMoonBiome };
     private BiomeDecoratorKoentus biomeDecorator = new BiomeDecoratorKoentus();
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(KoentusBlocks.koentus_block, this.getBlockMetadata());
     private MapGenKoentusVillage villageGenerator = new MapGenKoentusVillage();
@@ -82,6 +84,11 @@ public class ChunkProviderKoentus extends ChunkProviderBaseMP
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.baseMoonBiome, pos);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(KoentusBlocks.koentus_ancient_chest, KoentusBlocks.koentus_block, MPBlocks.space_mossy_cobblestone, 3).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
         BlockFalling.fallInstantly = false;
     }
 

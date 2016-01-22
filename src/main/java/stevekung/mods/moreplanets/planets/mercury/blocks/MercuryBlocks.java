@@ -38,8 +38,8 @@ public class MercuryBlocks
         MercuryBlocks.mercury_block = new BlockMercury("mercury_block");
         MercuryBlocks.mercury_ice = new BlockMercuryIce("mercury_ice");
         MercuryBlocks.metallic_rock = new BlockMetallicRock("metallic_rock");
-        MercuryBlocks.mercury_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "mercury_cobblestone_stairs", 2.0F);
-        MercuryBlocks.mercury_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "mercury_dungeon_brick_stairs", 4.0F);
+        MercuryBlocks.mercury_cobblestone_stairs = new BlockStairsMP(Blocks.stone, "mercury_cobblestone_stairs", 2.0F);
+        MercuryBlocks.mercury_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone, "mercury_dungeon_brick_stairs", 4.0F);
         MercuryBlocks.mercury_ancient_chest = new BlockMercuryAncientChest("mercury_ancient_chest");
 
         MercuryBlocks.dirty_water_fluid = new FluidMP("dirty_water_fluid").setBlock(MercuryBlocks.dirty_water);

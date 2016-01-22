@@ -42,7 +42,7 @@ public class BlockInfectedOrangeRoseBush extends BlockBushMP implements IGrowabl
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, 0);
     }

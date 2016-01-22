@@ -1,0 +1,8 @@
+{
+    "parent": "block/outer_stairs",
+    "textures": {
+        "bottom": "moreplanets:blocks/pluto_cobblestone",
+        "top": "moreplanets:blocks/pluto_cobblestone",
+        "side": "moreplanets:blocks/pluto_cobblestone"
+    }
+}

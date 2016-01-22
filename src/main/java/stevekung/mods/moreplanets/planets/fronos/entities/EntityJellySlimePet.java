@@ -21,11 +21,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityJellySlimePet extends EntityTameable
@@ -46,6 +44,12 @@ public class EntityJellySlimePet extends EntityTameable
         this.tasks.addTask(4, new AISlimeHop());
         this.setJellySlimeType(this.rand.nextInt(8));
         this.setTamed(false);
+    }
+
+    @Override
+    public int getMaxSpawnedInChunk()
+    {
+        return 2;
     }
 
     @Override
@@ -255,12 +259,6 @@ public class EntityJellySlimePet extends EntityTameable
         {
             this.entityDropItem(new ItemStack(FronosItems.jelly, 1, this.getJellySlimeType()), 0.0F);
         }
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1040);
     }
 
     @Override

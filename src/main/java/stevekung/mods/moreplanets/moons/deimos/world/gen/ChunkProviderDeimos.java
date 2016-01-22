@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.moons.deimos.world.gen;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
@@ -20,7 +21,9 @@ import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMartianMoon;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.common.world.gen.village.MapGenMartianVillage;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.deimos.blocks.DeimosBlocks;
 
 public class ChunkProviderDeimos extends ChunkProviderBaseMP
@@ -64,6 +67,11 @@ public class ChunkProviderDeimos extends ChunkProviderBaseMP
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         this.villageGenerator.func_175794_a(this.worldObj, this.rand, new ChunkCoordIntPair(chunkX, chunkZ));
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.baseMoonBiome, pos);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(Blocks.chest, DeimosBlocks.deimos_block, MPBlocks.space_mossy_cobblestone, 10).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
         BlockFalling.fallInstantly = false;
     }
 

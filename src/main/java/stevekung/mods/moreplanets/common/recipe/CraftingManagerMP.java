@@ -328,6 +328,7 @@ public class CraftingManagerMP
         GameRegistry.addRecipe(new ItemStack(MPItems.tier_2_thermal_padding, 1, 3), new Object[] { "X X", "X X", 'X', new ItemStack(MPItems.desh_thermal_cloth) });
         GameRegistry.addRecipe(new ItemStack(MPItems.desh_thermal_cloth), new Object[] { "WXW", "XRX", "WXW", 'X', new ItemStack(MarsItems.marsItemBasic, 1, 5), 'R', Items.redstone, 'W', Blocks.wool });
         GameRegistry.addRecipe(new ItemStack(FronosItems.fronos_food, 1, 13), new Object[] { "SSS", " B ", 'S', new ItemStack(FronosBlocks.fronos_flower, 1, 4), 'B', new ItemStack(Items.bowl) });
+        GameRegistry.addRecipe(new ItemStack(KapteynBItems.ice_crystal_meteor_chunk, 3), new Object[] { "MM", "MM", 'M', new ItemStack(KapteynBItems.kapteyn_b_item, 1, 5) });
         GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 0), new ItemStack(DionaBlocks.diona_block, 1, 10) );
         GameRegistry.addShapelessRecipe(new ItemStack(DionaItems.diona_item, 9, 1), new ItemStack(DionaBlocks.diona_block, 1, 11) );
         GameRegistry.addShapelessRecipe(new ItemStack(PolongniusItems.polongnius_meteor_chunk, 3), new ItemStack(PolongniusItems.polongnius_item, 1, 2) );

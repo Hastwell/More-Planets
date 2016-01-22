@@ -20,12 +20,10 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAIFronosBeg;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityLemonDuck extends FronosPet
@@ -62,49 +60,6 @@ public class EntityLemonDuck extends FronosPet
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.15D);
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1020);
-    }
-
-    @Override
-    public boolean interact(EntityPlayer player)
-    {
-        ItemStack itemStack = player.inventory.getCurrentItem();
-
-        if (itemStack != null && itemStack.getItem() == MPItems.spawn_egg_mp && itemStack.getItemDamage() == 1020)
-        {
-            if (!this.worldObj.isRemote)
-            {
-                EntityAgeable entityageable = this.createChild(this);
-
-                if (entityageable != null)
-                {
-                    entityageable.setGrowingAge(-24000);
-                    entityageable.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
-                    this.worldObj.spawnEntityInWorld(entityageable);
-
-                    if (itemStack.hasDisplayName())
-                    {
-                        entityageable.setCustomNameTag(itemStack.getDisplayName());
-                    }
-                    if (!player.capabilities.isCreativeMode)
-                    {
-                        --itemStack.stackSize;
-
-                        if (itemStack.stackSize <= 0)
-                        {
-                            player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-        return super.interact(player);
     }
 
     @Override

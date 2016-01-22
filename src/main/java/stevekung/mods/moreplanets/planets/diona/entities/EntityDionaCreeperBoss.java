@@ -44,12 +44,10 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityProjectileFronisiumTNT;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
 import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTreasureChest;
@@ -81,12 +79,6 @@ public class EntityDionaCreeperBoss extends EntityMob implements IRangedAttackMo
 
     @Override
     public void knockBack(Entity entity, float knock, double x, double z) {}
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition moving)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1003);
-    }
 
     @Override
     public boolean canBePushed()

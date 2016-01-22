@@ -27,7 +27,9 @@ import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomTreasureEmptyMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
@@ -101,6 +103,10 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
                 new WorldGenSplashBlock(VenusBlocks.venus_smoke_geyser, 0, VenusBlocks.venus_block, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256 - 16) + 16, this.rand.nextInt(16) + 8));
             }
         }
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(VenusBlocks.venus_ancient_chest, VenusBlocks.venus_block, MPBlocks.space_mossy_cobblestone, 7).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
         BlockFalling.fallInstantly = false;
     }
 
@@ -116,7 +122,7 @@ public class ChunkProviderVenus extends ChunkProviderHillsBaseMP
         if (type == EnumCreatureType.MONSTER)
         {
             List monsters = new ArrayList();
-            monsters.add(new BiomeGenBase.SpawnListEntry(EntityVenusianSlime.class, 100, 4, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityVenusianSlime.class, 50, 4, 4));
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityVenusianBlaze.class, 100, 4, 4));
             return monsters;
         }

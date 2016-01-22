@@ -7,12 +7,17 @@
 
 package stevekung.mods.moreplanets.planets.pluto.world.gen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import micdoodle8.mods.galacticraft.core.world.gen.dungeon.MapGenDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -21,8 +26,11 @@ import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.moons.europa.blocks.EuropaBlocks;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
+import stevekung.mods.moreplanets.planets.pluto.entities.EntityPlutoAlien;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomBossPluto;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomChestsPluto;
 import stevekung.mods.moreplanets.planets.pluto.world.gen.dungeon.RoomTreasurePluto;
@@ -83,12 +91,16 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, biome, pos);
 
-        pos = pos.add(8, 0, 8);
-
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(PlutoBlocks.pluto_ancient_chest, PlutoBlocks.pluto_block, MPBlocks.space_mossy_cobblestone, 9).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
         for (int k1 = 0; k1 < 16; ++k1)
         {
             for (int l1 = 0; l1 < 16; ++l1)
             {
+                pos = pos.add(8, 0, 8);
+
                 if (this.worldObj.canSnowAt(this.worldObj.getPrecipitationHeight(pos.add(k1, 0, l1)), true))
                 {
                     this.worldObj.setBlockState(this.worldObj.getPrecipitationHeight(pos.add(k1, 0, l1)), EuropaBlocks.europa_snow_layer.getDefaultState(), 2);
@@ -96,6 +108,18 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
             }
         }
         BlockFalling.fallInstantly = false;
+    }
+
+    @Override
+    public List func_177458_a(EnumCreatureType type, BlockPos pos)
+    {
+        if (type == EnumCreatureType.MONSTER)
+        {
+            List monsters = new ArrayList();
+            monsters.add(new SpawnListEntry(EntityPlutoAlien.class, 50, 4, 4));
+            return monsters;
+        }
+        return super.func_177458_a(type, pos);
     }
 
     @Override

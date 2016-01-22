@@ -7,16 +7,16 @@
 
 package stevekung.mods.moreplanets.common.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockStairsMP extends BlockStairs
 {
-    public BlockStairsMP(IBlockState material, String name, String sound, String type, float hardness)
+    public BlockStairsMP(Block material, String name, String sound, String type, float hardness)
     {
-        super(material);
+        super(material.getDefaultState());
         this.setUnlocalizedName(name);
         this.setHardness(hardness);
 
@@ -35,7 +35,7 @@ public class BlockStairsMP extends BlockStairs
         this.useNeighborBrightness = true;
     }
 
-    public BlockStairsMP(IBlockState material, String name, float hardness)
+    public BlockStairsMP(Block material, String name, float hardness)
     {
         this(material, name, null, null, hardness);
     }

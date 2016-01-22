@@ -54,8 +54,8 @@ public class PolongniusBlocks
         PolongniusBlocks.cheese_of_milk_cake = new BlockCheeseOfMilkCake("cheese_of_milk_cake");
         PolongniusBlocks.flonium_torch = new BlockFloniumTorch("flonium_torch");
         PolongniusBlocks.ultra_violet_solar_panel = new BlockUltraVioletSolarPanel("ultra_violet_solar_panel");
-        PolongniusBlocks.polongnius_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "polongnius_cobblestone_stairs", 2.0F);
-        PolongniusBlocks.polongnius_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "polongnius_dungeon_brick_stairs", 4.0F);
+        PolongniusBlocks.polongnius_cobblestone_stairs = new BlockStairsMP(Blocks.stone, "polongnius_cobblestone_stairs", 2.0F);
+        PolongniusBlocks.polongnius_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone, "polongnius_dungeon_brick_stairs", 4.0F);
         PolongniusBlocks.polongnius_ancient_chest = new BlockPolongniusAncientChest("polongnius_ancient_chest");
         PolongniusBlocks.cheese_slime_block = new BlockCheeseSlime("cheese_slime_block");
         PolongniusBlocks.cheese_slime_egg = new BlockCheeseSlimeEgg("cheese_slime_egg");

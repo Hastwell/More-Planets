@@ -24,6 +24,7 @@ import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
@@ -45,6 +46,7 @@ import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
+import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -390,7 +392,6 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
         {
             new WorldGenSpaceDungeons(FronosBlocks.fronos_ancient_chest, FronosBlocks.fronos_block, MPBlocks.space_mossy_cobblestone, 1, 4).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
         }
-
         BlockFalling.fallInstantly = false;
     }
 
@@ -425,7 +426,8 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
                 monsters.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
                 monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
                 monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-                monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+                monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             }
             else
             {
@@ -433,12 +435,12 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
                 monsters.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
                 monsters.add(new SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
                 monsters.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
-                monsters.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 4));
+                monsters.add(new SpawnListEntry(EntityEnderman.class, 10, 1, 4));
                 monsters.add(new SpawnListEntry(EntityWitch.class, 5, 1, 1));
             }
-            monsters.add(new SpawnListEntry(EntityCreamSlime.class, 100, 4, 4));
-            monsters.add(new SpawnListEntry(EntityJellySlime.class, 100, 4, 4));
-            monsters.add(new SpawnListEntry(EntityJellySlimePet.class, 100, 4, 4));
+            monsters.add(new SpawnListEntry(EntityCreamSlime.class, 25, 2, 4));
+            monsters.add(new SpawnListEntry(EntityJellySlime.class, 25, 2, 4));
+            monsters.add(new SpawnListEntry(EntityJellySlimePet.class, 10, 1, 1));
             return monsters;
         }
         else if (type == EnumCreatureType.CREATURE)
@@ -457,16 +459,12 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
             creatures.add(new SpawnListEntry(EntityStarfish.class, 8, 4, 4));
             creatures.add(new SpawnListEntry(EntityMilkCow.class, 8, 4, 4));
 
-            if (ConfigManagerMP.allowMobCreatureSpawningOnFronos == true)
+            if (ConfigManagerMP.allowMobCreatureSpawningOnFronos)
             {
                 creatures.add(new SpawnListEntry(EntitySheep.class, 12, 4, 4));
                 creatures.add(new SpawnListEntry(EntityPig.class, 10, 4, 4));
                 creatures.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
                 creatures.add(new SpawnListEntry(EntityCow.class, 8, 4, 4));
-            }
-            else
-            {
-                return null;
             }
             return creatures;
         }
@@ -475,6 +473,12 @@ public class ChunkProviderFronos extends ChunkProviderGenerate
             List waterCreatures = new ArrayList();
             waterCreatures.add(new SpawnListEntry(EntitySquid.class, 10, 4, 4));
             return waterCreatures;
+        }
+        else if (type == EnumCreatureType.AMBIENT)
+        {
+            List caveCreatures = new ArrayList();
+            caveCreatures.add(new SpawnListEntry(EntityBat.class, 10, 8, 8));
+            return caveCreatures;
         }
         return null;
     }

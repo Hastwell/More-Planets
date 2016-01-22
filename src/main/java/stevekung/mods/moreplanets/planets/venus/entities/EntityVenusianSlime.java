@@ -27,11 +27,9 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBreathable
 {
@@ -60,12 +58,6 @@ public class EntityVenusianSlime extends EntityLiving implements IMob, IEntityBr
         {
             this.attackEntityFrom(DamageSource.drown, 1.0F);
         }
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1035);
     }
 
     @Override

@@ -55,7 +55,6 @@ public class ItemVariantsUtil
         ClientRegisterHelper.registerVariantsName(VenusItems.venus_item, "moreplanets:lead_ingot");
         ClientRegisterHelper.registerVariantsName(PlutoItems.pluto_item, "moreplanets:xeonium_gem");
         ClientRegisterHelper.registerVariantsName(PlutoItems.space_potato, "moreplanets:space_potato", "moreplanets:baked_space_potato");
-        ClientRegisterHelper.registerVariantsName(MPItems.spawn_egg_mp, "moreplanets:spawn_egg_mp");
         ClientRegisterHelper.registerVariantsName(EuropaItems.europa_prismarine, "moreplanets:europa_prismarine_shard", "moreplanets:europa_prismarine_crystals");
         ClientRegisterHelper.registerVariantsName(EuropaItems.europa_food, "moreplanets:raw_europa_eel_meat", "moreplanets:cooked_europa_eel_meat");
         ClientRegisterHelper.registerVariantsName(MPItems.achievement_temp, "moreplanets:diona_planet");

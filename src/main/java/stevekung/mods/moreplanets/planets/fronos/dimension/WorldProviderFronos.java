@@ -24,6 +24,18 @@ import stevekung.mods.moreplanets.planets.fronos.world.gen.WorldChunkManagerFron
 public class WorldProviderFronos extends WorldProviderMP
 {
     @Override
+    public boolean canRespawnHere()
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isSurfaceWorld()
+    {
+        return true;
+    }
+
+    @Override
     public Vector3 getFogColor()
     {
         float f = 1.1F - this.getStarBrightness(1.0F);
@@ -204,6 +216,12 @@ public class WorldProviderFronos extends WorldProviderMP
     public double getUltraVioletEnergyMultiplie()
     {
         return 2.4D;
+    }
+
+    @Override
+    public boolean netherPortalsOperational()
+    {
+        return true;
     }
 
     @Override

@@ -39,7 +39,7 @@ import stevekung.mods.moreplanets.planets.diona.world.gen.dungeon.RoomTreasureDi
 public class ChunkProviderDiona extends ChunkProviderBaseMP
 {
     private BiomeDecoratorDiona biomeDecorator = new BiomeDecoratorDiona();
-    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseDiona.basePlanetBiome };
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(DionaBlocks.diona_block, this.getBlockMetadata());
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(DionaBlocks.diona_block, 15, 8, 16, 4);
 
@@ -93,12 +93,10 @@ public class ChunkProviderDiona extends ChunkProviderBaseMP
         this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
 
-        // Dungeon Spawner
-        for (int i = 0; i < 12; ++i)
+        for (int i = 0; i < 8; ++i)
         {
             new WorldGenSpaceDungeons(DionaBlocks.diona_ancient_chest, DionaBlocks.diona_block, MPBlocks.space_mossy_cobblestone, 0).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
         }
-
         BlockFalling.fallInstantly = false;
     }
 

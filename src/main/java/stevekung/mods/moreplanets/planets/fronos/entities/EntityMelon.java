@@ -20,10 +20,8 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
@@ -58,49 +56,6 @@ public class EntityMelon extends EntityAnimal
     {
         Block block = this.worldObj.getBlockState(this.getPosition().down()).getBlock();
         return block == FronosBlocks.fronos_grass;
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1022);
-    }
-
-    @Override
-    public boolean interact(EntityPlayer player)
-    {
-        ItemStack itemStack = player.inventory.getCurrentItem();
-
-        if (itemStack != null && itemStack.getItem() == MPItems.spawn_egg_mp && itemStack.getItemDamage() == 1022)
-        {
-            if (!this.worldObj.isRemote)
-            {
-                EntityAgeable entityageable = this.createChild(this);
-
-                if (entityageable != null)
-                {
-                    entityageable.setGrowingAge(-24000);
-                    entityageable.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
-                    this.worldObj.spawnEntityInWorld(entityageable);
-
-                    if (itemStack.hasDisplayName())
-                    {
-                        entityageable.setCustomNameTag(itemStack.getDisplayName());
-                    }
-                    if (!player.capabilities.isCreativeMode)
-                    {
-                        --itemStack.stackSize;
-
-                        if (itemStack.stackSize <= 0)
-                        {
-                            player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-        return super.interact(player);
     }
 
     @Override

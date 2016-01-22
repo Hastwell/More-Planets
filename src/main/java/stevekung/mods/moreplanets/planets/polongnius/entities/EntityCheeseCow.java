@@ -23,10 +23,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.entities.ai.EntityAITemptMP;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
@@ -121,45 +119,10 @@ public class EntityCheeseCow extends EntityAnimal implements IEntityBreathable
             }
             return true;
         }
-        if (itemStack != null && itemStack.getItem() == MPItems.spawn_egg_mp && itemStack.getItemDamage() == 1005)
-        {
-            if (!this.worldObj.isRemote)
-            {
-                EntityAgeable entityageable = this.createChild(this);
-
-                if (entityageable != null)
-                {
-                    entityageable.setGrowingAge(-24000);
-                    entityageable.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
-                    this.worldObj.spawnEntityInWorld(entityageable);
-
-                    if (itemStack.hasDisplayName())
-                    {
-                        entityageable.setCustomNameTag(itemStack.getDisplayName());
-                    }
-                    if (!player.capabilities.isCreativeMode)
-                    {
-                        --itemStack.stackSize;
-
-                        if (itemStack.stackSize <= 0)
-                        {
-                            player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
         else
         {
             return super.interact(player);
         }
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1005);
     }
 
     @Override

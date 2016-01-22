@@ -67,6 +67,10 @@ public class NEIHighlightHandlerMP implements IHighlightHandler
         {
             return new ItemStack(MPBlocks.half_dungeon_brick_slab_1, 1, meta);
         }
+        if (block == MPBlocks.double_dungeon_brick_slab_2)
+        {
+            return new ItemStack(MPBlocks.half_dungeon_brick_slab_2, 1, meta);
+        }
         if (block == DionaBlocks.diona_block)
         {
             return new ItemStack(DionaBlocks.diona_block, 1, meta);

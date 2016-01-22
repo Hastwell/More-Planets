@@ -21,6 +21,6 @@ public class ItemBlockWoodenSlab1MP extends ItemBlockSlabMP
     @Override
     public String[] getBlockVariantsName()
     {
-        return new String[] { "ancient_dark_wood", "orange_wood", "crystal_wood", "coconut_wood", "maple_wood", "europa_wood" };
+        return new String[] { "ancient_dark_wood", "orange_wood", "crystal_wood", "coconut_wood", "maple_wood", "europa_wood", "alien_wood" };
     }
 }
