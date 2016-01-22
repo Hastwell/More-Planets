@@ -15,7 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenFronosSand extends WorldGenerator
@@ -55,7 +55,7 @@ public class WorldGenFronosSand extends WorldGenerator
                             BlockPos blockpos1 = new BlockPos(j, j1, k);
                             Block block = world.getBlockState(blockpos1).getBlock();
 
-                            if (block == FronosBlocks.fronos_dirt || block instanceof IFronosGrass)
+                            if (block == FronosBlocks.fronos_dirt || block instanceof ICustomBlockProperty && ((ICustomBlockProperty)block).getProperty() == 0)
                             {
                                 world.setBlockState(blockpos1, this.block, 2);
                             }

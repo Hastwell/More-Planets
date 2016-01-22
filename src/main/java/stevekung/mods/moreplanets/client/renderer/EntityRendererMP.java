@@ -7,9 +7,10 @@
 
 package stevekung.mods.moreplanets.client.renderer;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
@@ -93,10 +94,12 @@ import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityCrea
 import stevekung.mods.moreplanets.planets.fronos.entities.projectiles.EntityPoisonArrow;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.entities.RenderUraniumBomb;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityFrozenSludgeling;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteorChunk;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 import stevekung.mods.moreplanets.planets.nibiru.client.render.entities.RenderGiantWorm;
@@ -108,6 +111,8 @@ import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityTier6Rocket;
+import stevekung.mods.moreplanets.planets.pluto.client.render.entities.RenderPlutoAlien;
+import stevekung.mods.moreplanets.planets.pluto.entities.EntityPlutoAlien;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.RenderCheeseCow;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.RenderCheeseCubeBoss;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.RenderCheeseSlime;
@@ -152,94 +157,537 @@ public class EntityRendererMP
 
     private static void registerEntityRenderers()
     {
-        RenderManager render = Minecraft.getMinecraft().getRenderManager();
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityDustSludgeling.class, new RenderDustSludgeling(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntitySpaceWolf.class, new RenderSpaceWolf(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedEnderman.class, new RenderEvolvedEnderman(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperBoss.class, new RenderDionaCreeperBoss(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperMinion.class, new RenderDionaCreeperMinion(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCow.class, new RenderCheeseCow(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSlime.class, new RenderCheeseSlime(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCubeEyeBoss.class, new RenderCheeseCubeBoss(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityInfectedWorm.class, new RenderInfectedWorm(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityGiantWorm.class, new RenderGiantWorm(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, new RenderInfectedZombie(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedInfectedSpiderBoss.class, new RenderInfectedEvolvedSpiderBoss(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusianVillager.class, new RenderKoentusianVillager(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusSludgeling.class, new RenderKoentusSludgeling(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityBearry.class, new RenderBearry(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityBerry.class, new RenderBerry(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityMarshmallow.class, new RenderMarshmallow(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityKiwi.class, new RenderKiwi(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityJellySlime.class, new RenderJellySlime(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityJellySlimePet.class, new RenderJellySlimePet(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityCreamSlime.class, new RenderCreamSlime(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityLemonDuck.class, new RenderLemonDuck(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityStarfish.class, new RenderStarfish(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityMelon.class, new RenderMelon(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityTomato.class, new RenderTomato(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityGrappy.class, new RenderGrappy(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityCreamCat.class, new RenderCreamCat(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityCreamGolem.class, new RenderCreamGolem(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityStrawberryChicken.class, new RenderStrawberryChicken(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityFronosVillager.class, new RenderFronosVillager(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityFrozenSludgeling.class, new RenderFrozenSludgeling(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusCreeper.class, new RenderSiriusCreeper(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusBlaze.class, new RenderSiriusBlaze(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusMagmaCube.class, new RenderSiriusMagmaCube(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedSiriusBlazeBoss.class, new RenderEvolvedSiriusBlazeBoss(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianBlaze.class, new RenderVenusianBlaze(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianSlime.class, new RenderVenusianSlime(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianVillager.class, new RenderVenusianVillager(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new RenderEuropaSquid(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaGuardian.class, new RenderEuropaGuardian(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new RenderEuropaCrab(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new RenderEvolvedWitch(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityDustSludgeling.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderDustSludgeling(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntitySpaceWolf.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderSpaceWolf(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedEnderman.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderEvolvedEnderman(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperBoss.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderDionaCreeperBoss(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityDionaCreeperMinion.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderDionaCreeperMinion(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCow.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCheeseCow(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSlime.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCheeseSlime(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseCubeEyeBoss.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCheeseCubeBoss(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityInfectedWorm.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderInfectedWorm(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityGiantWorm.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderGiantWorm(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderInfectedZombie(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedInfectedSpiderBoss.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderInfectedEvolvedSpiderBoss(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusianVillager.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderKoentusianVillager(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusSludgeling.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderKoentusSludgeling(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityBearry.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderBearry(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityBerry.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderBerry(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityMarshmallow.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderMarshmallow(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityKiwi.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderKiwi(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityJellySlime.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderJellySlime(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityJellySlimePet.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderJellySlimePet(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamSlime.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCreamSlime(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityLemonDuck.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderLemonDuck(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityStarfish.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderStarfish(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityMelon.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderMelon(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityTomato.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderTomato(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityGrappy.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderGrappy(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamCat.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCreamCat(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamGolem.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCreamGolem(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityStrawberryChicken.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderStrawberryChicken(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityFronosVillager.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderFronosVillager(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityFrozenSludgeling.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderFrozenSludgeling(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusCreeper.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderSiriusCreeper(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusBlaze.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderSiriusBlaze(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntitySiriusMagmaCube.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderSiriusMagmaCube(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedSiriusBlazeBoss.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderEvolvedSiriusBlazeBoss(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianBlaze.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderVenusianBlaze(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianSlime.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderVenusianSlime(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityVenusianVillager.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderVenusianVillager(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaSquid.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderEuropaSquid(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaGuardian.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderEuropaGuardian(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaCrab.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderEuropaCrab(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedWitch.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderEvolvedWitch(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderMilkCow(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityPlutoAlien.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderPlutoAlien(manager);
+            }
+        });
     }
 
     private static void registerNonEntityRenderers()
     {
-        RenderManager render = Minecraft.getMinecraft().getRenderManager();
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityTier4Rocket.class, new RenderRocketMP(render, "tier_4_rocket"));
-        RenderingRegistry.registerEntityRenderingHandler(EntityProjectileFronisiumTNT.class, new RenderProjectileFronisiumTNT(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityFronisiumTNT.class, new RenderFronisiumTNT(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityLaserMP.class, new RenderLaserMP(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityTier5Rocket.class, new RenderRocketMP(render, "tier_5_rocket"));
-        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSpore.class, new RenderCheeseSpore(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteorChunk.class, new RenderPolongniusMeteorChunk(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteor.class, new RenderPolongniusMeteor(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityTier6Rocket.class, new RenderRocketMP(render, "tier_6_rocket"));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteorChunk.class, new RenderKoentusMeteorChunk(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteor.class, new RenderKoentusMeteor(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityCreamBall.class, new RenderCreamBall(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityPoisonArrow.class, new RenderPoisonArrow(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityTier7Rocket.class, new RenderTier7Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_7_rocket"));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityUraniumBomb.class, new RenderUraniumBomb(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityTier8Rocket.class, new RenderTier8Rocket(render, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_8_rocket"));
-        RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteor.class, new RenderIceCrystalMeteor(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntitySmallSiriusFireball.class, new RenderSmallSiriusFireball(render));
-        RenderingRegistry.registerEntityRenderingHandler(EntityLargeSiriusFireball.class, new RenderLargeSiriusFireball(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new RenderEuropaWaterBomb(render));
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new RenderDarkAsteroid(render));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier4Rocket.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderRocketMP(manager, "tier_4_rocket");
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityProjectileFronisiumTNT.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderProjectileFronisiumTNT(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityFronisiumTNT.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderFronisiumTNT(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityLaserMP.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderLaserMP(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier5Rocket.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderRocketMP(manager, "tier_5_rocket");
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCheeseSpore.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCheeseSpore(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteorChunk.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderPolongniusMeteorChunk(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityPolongniusMeteor.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderPolongniusMeteor(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier6Rocket.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderRocketMP(manager, "tier_6_rocket");
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteorChunk.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderKoentusMeteorChunk(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityKoentusMeteor.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderKoentusMeteor(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCreamBall.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderCreamBall(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityPoisonArrow.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderPoisonArrow(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier7Rocket.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderTier7Rocket(manager, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_7_rocket");
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityUraniumBomb.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderUraniumBomb(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityTier8Rocket.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderTier8Rocket(manager, EntityRendererMP.tier3RocketModel, "moreplanets", "tier_8_rocket");
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteor.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderIceCrystalMeteor(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntitySmallSiriusFireball.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderSmallSiriusFireball(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityLargeSiriusFireball.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderLargeSiriusFireball(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityEuropaWaterBomb.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderEuropaWaterBomb(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityDarkAsteroid.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderDarkAsteroid(manager);
+            }
+        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityIceCrystalMeteorChunk.class, new IRenderFactory()
+        {
+            @Override
+            public Render createRenderFor(RenderManager manager)
+            {
+                return new RenderIceCrystalMeteorChunk(manager);
+            }
+        });
     }
 }

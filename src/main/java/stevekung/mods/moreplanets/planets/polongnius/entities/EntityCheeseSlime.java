@@ -14,13 +14,11 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 
 public class EntityCheeseSlime extends EntitySlime implements IEntityBreathable
@@ -36,18 +34,12 @@ public class EntityCheeseSlime extends EntitySlime implements IEntityBreathable
     public void setSlimeSize(int size)
     {
         this.dataWatcher.updateObject(16, Byte.valueOf((byte)size));
-        this.setSize(0.51000005F * (float)size, 0.51000005F * (float)size);
+        this.setSize(0.51000005F * size, 0.51000005F * size);
         this.setPosition(this.posX, this.posY, this.posZ);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue((double)(size * size));
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue((double)(0.2F + 0.1F * (float)size));
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(size * size);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.2F + 0.1F * size);
         this.setHealth(this.getMaxHealth());
         this.experienceValue = size;
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1006);
     }
 
     @Override

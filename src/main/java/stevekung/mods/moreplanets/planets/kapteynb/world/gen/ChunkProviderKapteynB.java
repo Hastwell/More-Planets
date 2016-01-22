@@ -21,7 +21,9 @@ import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomEmptyMP;
 import stevekung.mods.moreplanets.common.world.gen.dungeon.RoomSpawnerMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.world.gen.dungeon.RoomBossKapteynB;
 import stevekung.mods.moreplanets.planets.kapteynb.world.gen.dungeon.RoomChestsKapteynB;
@@ -31,7 +33,7 @@ public class ChunkProviderKapteynB extends ChunkProviderBaseMP
 {
     public BiomeDecoratorKapteynB biomeDecorator = new BiomeDecoratorKapteynB();
     private MapGenKapteynBRavine ravineGenerator = new MapGenKapteynBRavine();
-    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseKapteynB.basePlanetBiome };
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(KapteynBBlocks.kapteyn_b_block, this.getBlockMetadata());
 
     private MapGenDungeon dungeonGenerator = new MapGenDungeon(KapteynBBlocks.kapteyn_b_block, 12, 8, 24, 4);
@@ -97,6 +99,10 @@ public class ChunkProviderKapteynB extends ChunkProviderBaseMP
                 int z1 = z + this.rand.nextInt(16) + 8;
                 new WorldGenSplashBlock(KapteynBBlocks.frozen_water_geyser, 0, KapteynBBlocks.kapteyn_b_block, 0).generate(this.worldObj, this.rand, new BlockPos(x1, y1, z1));
             }
+        }
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(KapteynBBlocks.kapteyn_b_ancient_chest, KapteynBBlocks.kapteyn_b_block, MPBlocks.space_mossy_cobblestone, 5).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
         }
         BlockFalling.fallInstantly = false;
     }

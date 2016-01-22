@@ -11,7 +11,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,7 +18,7 @@ import stevekung.mods.moreplanets.planets.diona.client.model.ModelLaser;
 import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityLaserMP;
 
 @SideOnly(Side.CLIENT)
-public class RenderLaserMP extends Render
+public class RenderLaserMP extends Render<EntityLaserMP>
 {
     private ModelBase model = new ModelLaser();
 
@@ -28,7 +27,8 @@ public class RenderLaserMP extends Render
         super(render);
     }
 
-    private void doRender(EntityLaserMP entity, double x, double y, double z, float par5, float partialTicks)
+    @Override
+    public void doRender(EntityLaserMP entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         this.bindEntityTexture(entity);
         GlStateManager.pushMatrix();
@@ -43,39 +43,29 @@ public class RenderLaserMP extends Render
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityLaserMP entity)
     {
-        return this.getEntityTexture((EntityLaserMP)entity);
-    }
+        ResourceLocation res = null;
 
-    private ResourceLocation getEntityTexture(EntityLaserMP entity)
-    {
-        if (entity.getLaserType() == 0)
+        switch (entity.getLaserType())
         {
-            return new ResourceLocation("moreplanets:textures/entity/projectiles/laser/laser.png");
+        case 0:
+        default:
+            res = new ResourceLocation("moreplanets:textures/entity/projectiles/laser/laser.png");
+            break;
+        case 1:
+            res = new ResourceLocation("moreplanets:textures/entity/projectiles/laser/hyper.png");
+            break;
+        case 2:
+            res = new ResourceLocation("moreplanets:textures/entity/projectiles/laser/emp.png");
+            break;
+        case 3:
+            res = new ResourceLocation("moreplanets:textures/entity/projectiles/laser/uranium.png");
+            break;
+        case 4:
+            res = new ResourceLocation("moreplanets:textures/entity/projectiles/laser/icy_poison.png");
+            break;
         }
-        else if (entity.getLaserType() == 1)
-        {
-            return new ResourceLocation("moreplanets:textures/entity/projectiles/laser/hyper.png");
-        }
-        else if (entity.getLaserType() == 2)
-        {
-            return new ResourceLocation("moreplanets:textures/entity/projectiles/laser/emp.png");
-        }
-        else if (entity.getLaserType() == 3)
-        {
-            return new ResourceLocation("moreplanets:textures/entity/projectiles/laser/uranium.png");
-        }
-        else if (entity.getLaserType() == 4)
-        {
-            return new ResourceLocation("moreplanets:textures/entity/projectiles/laser/icy_poison.png");
-        }
-        return null;
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityLaserMP)entity, x, y, z, par5, partialTicks);
+        return res;
     }
 }

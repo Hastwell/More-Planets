@@ -49,15 +49,15 @@ public class EntityLiquidDripFX extends EntityFX
     }
 
     @Override
-    public int getBrightnessForRender(float light)
+    public int getBrightnessForRender(float partialTicks)
     {
-        return this.isLavaDrip ? 257 : super.getBrightnessForRender(light);
+        return this.isLavaDrip ? 257 : super.getBrightnessForRender(partialTicks);
     }
 
     @Override
-    public float getBrightness(float light)
+    public float getBrightness(float partialTicks)
     {
-        return this.isLavaDrip ? 1.0F : super.getBrightness(light);
+        return this.isLavaDrip ? 1.0F : super.getBrightness(partialTicks);
     }
 
     @Override

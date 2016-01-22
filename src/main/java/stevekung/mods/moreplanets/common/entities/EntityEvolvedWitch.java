@@ -38,13 +38,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
-import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, IEntityBreathable
 {
@@ -107,12 +105,6 @@ public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, I
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(26.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1041);
     }
 
     @Override

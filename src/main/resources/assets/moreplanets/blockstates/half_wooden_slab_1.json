@@ -11,6 +11,8 @@
 		"half=bottom,variant=maple_wood_slab": { "model": "moreplanets:half_slab_maple_wood" },
         "half=top,variant=maple_wood_slab": { "model": "moreplanets:upper_slab_maple_wood" },
 		"half=bottom,variant=europa_wood_slab": { "model": "moreplanets:half_slab_europa_wood" },
-        "half=top,variant=europa_wood_slab": { "model": "moreplanets:upper_slab_europa_wood" }
+        "half=top,variant=europa_wood_slab": { "model": "moreplanets:upper_slab_europa_wood" },
+		"half=bottom,variant=alien_wood_slab": { "model": "moreplanets:half_slab_alien_wood" },
+        "half=top,variant=alien_wood_slab": { "model": "moreplanets:upper_slab_alien_wood" }
     }
 }

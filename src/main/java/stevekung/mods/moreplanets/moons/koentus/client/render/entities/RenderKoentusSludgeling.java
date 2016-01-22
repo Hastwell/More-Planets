@@ -10,13 +10,13 @@ package stevekung.mods.moreplanets.moons.koentus.client.render.entities;
 import micdoodle8.mods.galacticraft.planets.mars.client.model.ModelSludgeling;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusSludgeling;
 
 @SideOnly(Side.CLIENT)
-public class RenderKoentusSludgeling extends RenderLiving
+public class RenderKoentusSludgeling extends RenderLiving<EntityKoentusSludgeling>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/koentus_sludgeling.png");
 
@@ -26,7 +26,7 @@ public class RenderKoentusSludgeling extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityKoentusSludgeling entity)
     {
         return this.texture;
     }

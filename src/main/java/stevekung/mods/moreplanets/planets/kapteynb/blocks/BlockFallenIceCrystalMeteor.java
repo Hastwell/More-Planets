@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.kapteynb.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -20,6 +21,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
@@ -32,8 +34,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
+import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIceCrystalMeteor;
 
-public class BlockFallenIceCrystalMeteor extends BlockBaseMP
+public class BlockFallenIceCrystalMeteor extends BlockBaseMP implements ITileEntityProvider
 {
     public static PropertyBool IMMUNE = PropertyBool.create("immune_to_explosion");
 
@@ -177,6 +180,12 @@ public class BlockFallenIceCrystalMeteor extends BlockBaseMP
             return 100.0F;
         }
         return super.getExplosionResistance(world, pos, entity, explosion);
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new TileEntityIceCrystalMeteor();
     }
 
     @Override

@@ -113,7 +113,7 @@ public class ChunkProviderPolongnius extends ChunkProviderBaseMP
         if (type == EnumCreatureType.MONSTER)
         {
             List monsters = new ArrayList();
-            monsters.add(new BiomeGenBase.SpawnListEntry(EntityCheeseSlime.class, 100, 4, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityCheeseSlime.class, 15, 2, 4));
             return monsters;
         }
         else if (type == EnumCreatureType.CREATURE)

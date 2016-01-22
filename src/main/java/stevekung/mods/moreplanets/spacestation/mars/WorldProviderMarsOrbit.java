@@ -18,15 +18,6 @@ import stevekung.mods.moreplanets.core.init.MPPlanets;
 
 public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltraVioletLevel
 {
-    public int spaceStationDimensionID;
-
-    @Override
-    public void setDimension(int id)
-    {
-        this.spaceStationDimensionID = id;
-        super.setDimension(id);
-    }
-
     @Override
     public long getDayLength()
     {
@@ -54,7 +45,7 @@ public class WorldProviderMarsOrbit extends WorldProviderOrbit implements IUltra
     @Override
     public String getDimensionName()
     {
-        return "Mars Space Station " + this.spaceStationDimensionID;
+        return "Space Station " + this.spaceStationDimensionID;
     }
 
     @Override

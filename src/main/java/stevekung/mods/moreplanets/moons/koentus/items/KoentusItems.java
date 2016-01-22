@@ -22,6 +22,7 @@ public class KoentusItems
     public static Item koentus_meteor_chunk;
     public static Item crystal_door;
     public static Item crystal_cocoa;
+    public static Item crystal_apple;
 
     public static void init()
     {
@@ -30,11 +31,13 @@ public class KoentusItems
         KoentusItems.koentus_meteor_chunk = new ItemKoentusMeteorChunk("koentus_meteor_chunk");
         KoentusItems.crystal_door = new ItemDoorMP("crystal_door", DoorType.CRYSTAL);
         KoentusItems.crystal_cocoa = new ItemCrystalCocoa("crystal_cocoa");
+        KoentusItems.crystal_apple = new ItemCrystalApple("crystal_apple");
 
         // Register
         CommonRegisterHelper.registerItem(KoentusItems.koentus_item);
         CommonRegisterHelper.registerItem(KoentusItems.koentus_meteor_chunk);
         CommonRegisterHelper.registerItem(KoentusItems.crystal_cocoa);
+        CommonRegisterHelper.registerItem(KoentusItems.crystal_apple);
         CommonRegisterHelper.registerItem(KoentusItems.crystal_door);
 
         // Register ore dictionary

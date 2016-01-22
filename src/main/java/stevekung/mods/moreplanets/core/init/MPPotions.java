@@ -24,15 +24,11 @@ public class MPPotions
 
     public static void init()
     {
-        MPPotions.intializePotions();
-        MPLog.debug("Register Potions");
-    }
-
-    private static void intializePotions()
-    {
         MPPotions.infected_gas = new InfectedGasEffect("infected_gas", -4502242).setPotionName("potion.infected.gas");
         MPPotions.chemical = new ChemicalEffect("chemical", -16718336).setPotionName("potion.chemical");
         MPPotions.electro_magnetic_pulse = new EMPEffect("emp", -14258727).setPotionName("potion.emp").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "45166E8E-7CE8-4030-940E-514C1F160890", -2.5D, 2);
         MPPotions.icy_poison = new IcyPoisonEffect("icy_poison", -6564921).setPotionName("potion.icy_poison").registerPotionAttributeModifier(SharedMonsterAttributes.movementSpeed, "9623E0072-7CE8-4030-940E-514C1F160890", -0.20000000596046448D, 2);
+
+        MPLog.debug("Register Potions");
     }
 }

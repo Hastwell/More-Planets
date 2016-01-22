@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.moons.koentus.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -17,7 +18,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockLeavesMP;
+import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.stevecore.BlockStateHelper;
 
 public class BlockCrystalLeaves extends BlockLeavesMP
@@ -53,6 +56,15 @@ public class BlockCrystalLeaves extends BlockLeavesMP
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         ret.add(new ItemStack(this, 1, 0));
         return ret;
+    }
+
+    @Override
+    protected void dropFruit(World world, BlockPos pos, IBlockState state, int chance)
+    {
+        if (world.rand.nextInt(chance) == 0)
+        {
+            Block.spawnAsEntity(world, pos, new ItemStack(KoentusItems.crystal_apple));
+        }
     }
 
     @Override

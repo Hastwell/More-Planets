@@ -9,47 +9,17 @@ package stevekung.mods.moreplanets.planets.fronos.world.gen.biome;
 
 import java.util.Random;
 
-import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
-import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
-import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
-import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.ChunkPrimer;
-import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
-import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityBearry;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityBerry;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamCat;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamSlime;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityGrappy;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityJellySlime;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityKiwi;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityLemonDuck;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityMarshmallow;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityMelon;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityStarfish;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityStrawberryChicken;
-import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
 import stevekung.mods.moreplanets.planets.fronos.world.gen.BiomeDecoratorFronos;
 
 public class BiomeGenBaseFronos extends BiomeGenBaseMP
@@ -78,43 +48,6 @@ public class BiomeGenBaseFronos extends BiomeGenBaseMP
         this.theBiomeDecorator.treesPerChunk = -999;
         this.theBiomeDecorator.flowersPerChunk = -999;
         this.theBiomeDecorator.grassPerChunk = -999;
-
-        if (!ConfigManagerMP.allowMobCreatureSpawningOnFronos)
-        {
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedZombie.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSpider.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEvolvedEnderman.class, 100, 1, 4));
-        }
-        else
-        {
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 100, 1, 4));
-            this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 5, 1, 1));
-
-            this.spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 12, 4, 4));
-            this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 10, 4, 4));
-            this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
-            this.spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 8, 4, 4));
-        }
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityCreamSlime.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityJellySlime.class, 100, 4, 4));
-        this.spawnableWaterCreatureList.add(new SpawnListEntry(EntitySquid.class, 10, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityBearry.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityBerry.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityMarshmallow.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityKiwi.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityLemonDuck.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityTomato.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityMelon.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityStarfish.class, 8, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityStrawberryChicken.class, 10, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityGrappy.class, 12, 4, 4));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityCreamCat.class, 2, 2, 2));
     }
 
     @Override

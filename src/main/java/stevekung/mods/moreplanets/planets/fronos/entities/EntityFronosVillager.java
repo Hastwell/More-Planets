@@ -39,12 +39,10 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.village.Village;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIFronosVillagerFollowGolem;
 import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIFronosVillagerHarvestFarmland;
 import stevekung.mods.moreplanets.planets.fronos.entities.ai.EntityAIFronosVillagerInteract;
@@ -139,49 +137,6 @@ public class EntityFronosVillager extends EntityAgeable implements INpc
             }
         }
         super.updateAITasks();
-    }
-
-    @Override
-    public boolean interact(EntityPlayer player)
-    {
-        ItemStack itemStack = player.inventory.getCurrentItem();
-
-        if (itemStack != null && itemStack.getItem() == MPItems.spawn_egg_mp && itemStack.getItemDamage() == 1028)
-        {
-            if (!this.worldObj.isRemote)
-            {
-                EntityAgeable entityageable = this.createChild(this);
-
-                if (entityageable != null)
-                {
-                    entityageable.setGrowingAge(-24000);
-                    entityageable.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
-                    this.worldObj.spawnEntityInWorld(entityageable);
-
-                    if (itemStack.hasDisplayName())
-                    {
-                        entityageable.setCustomNameTag(itemStack.getDisplayName());
-                    }
-                    if (!player.capabilities.isCreativeMode)
-                    {
-                        --itemStack.stackSize;
-
-                        if (itemStack.stackSize <= 0)
-                        {
-                            player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-        return super.interact(player);
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1028);
     }
 
     @Override

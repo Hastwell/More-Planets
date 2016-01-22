@@ -21,6 +21,6 @@ public class ItemBlockStoneSlab2MP extends ItemBlockSlabMP
     @Override
     public String[] getBlockVariantsName()
     {
-        return new String[] { "fronos_cobblestone", "fronos_stone_brick", "cracked_fronos_stone_brick", "kapteyn_b_cracked_ice", "sirius_b_carbon_cobblestone", "mercury_cobblestone" };
+        return new String[] { "fronos_cobblestone", "fronos_stone_brick", "cracked_fronos_stone_brick", "kapteyn_b_cracked_ice", "sirius_b_carbon_cobblestone", "mercury_cobblestone", "venus_cobblestone", "pluto_cobblestone" };
     }
 }

@@ -61,13 +61,13 @@ public class KoentusBlocks
         // Init
         KoentusBlocks.koentus_block = new BlockKoentus("koentus_block");
         KoentusBlocks.koentus_ice = new BlockKoentusIce("koentus_ice");
-        KoentusBlocks.koentus_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_cobblestone_stairs", 2.0F);
-        KoentusBlocks.koentus_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_dungeon_brick_stairs", 4.0F);
+        KoentusBlocks.koentus_cobblestone_stairs = new BlockStairsMP(Blocks.stone, "koentus_cobblestone_stairs", 2.0F);
+        KoentusBlocks.koentus_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone, "koentus_dungeon_brick_stairs", 4.0F);
         KoentusBlocks.fallen_koentus_meteor = new BlockFallenKoentusMeteor("fallen_koentus_meteor");
         KoentusBlocks.eledos_egg = new BlockEledosEgg("eledos_egg");
         KoentusBlocks.white_crystal_torch = new BlockWhiteCrystalTorch("white_crystal_torch");
-        KoentusBlocks.koentus_ancient_stone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_ancient_stone_stairs", 1.5F);
-        KoentusBlocks.koentus_ancient_stone_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "koentus_ancient_stone_brick_stairs", 1.5F);
+        KoentusBlocks.koentus_ancient_stone_stairs = new BlockStairsMP(Blocks.stone, "koentus_ancient_stone_stairs", 1.5F);
+        KoentusBlocks.koentus_ancient_stone_brick_stairs = new BlockStairsMP(Blocks.stone, "koentus_ancient_stone_brick_stairs", 1.5F);
         KoentusBlocks.koentus_ancient_chest = new BlockKoentusAncientChest("koentus_ancient_chest");
         KoentusBlocks.glowing_ice_stone = new BlockGlowingIceStone("glowing_ice_stone");
         KoentusBlocks.crystal_segment = new BlockCrystalSegment("crystal_segment");
@@ -79,7 +79,7 @@ public class KoentusBlocks
         KoentusBlocks.crystal_fence = new BlockFenceMP("crystal_fence");
         KoentusBlocks.crystal_fence_gate = new BlockFenceGateMP("crystal_fence_gate");
         KoentusBlocks.crystal_farmland = new BlockCrystalFarmland("crystal_farmland");
-        KoentusBlocks.crystal_wood_stairs = new BlockStairsMP(Blocks.planks.getDefaultState(), "crystal_wood_stairs", "wood", null, 2.0F);
+        KoentusBlocks.crystal_wood_stairs = new BlockStairsMP(Blocks.planks, "crystal_wood_stairs", "wood", null, 2.0F);
         KoentusBlocks.crystal_door_block = new BlockDoorMP("crystal_door_block", DoorType.CRYSTAL);
         KoentusBlocks.crystal_cocoa = new BlockCrystalCocoa("crystal_cocoa_block");
 

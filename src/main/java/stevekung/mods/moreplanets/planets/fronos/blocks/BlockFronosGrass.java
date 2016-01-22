@@ -19,9 +19,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockGrassMP;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 
-public class BlockFronosGrass extends BlockGrassMP implements IFronosGrass
+public class BlockFronosGrass extends BlockGrassMP implements ICustomBlockProperty
 {
     public static PropertyBool HAS_VANILLA_CREAM = PropertyBool.create("vanilla");
 
@@ -86,6 +86,12 @@ public class BlockFronosGrass extends BlockGrassMP implements IFronosGrass
 
     @Override
     public int getMetaFromState(IBlockState state)
+    {
+        return 0;
+    }
+
+    @Override
+    public int getProperty()
     {
         return 0;
     }

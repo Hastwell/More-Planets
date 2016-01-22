@@ -23,13 +23,10 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.diona.blocks.BlockDiona;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
 
@@ -48,12 +45,6 @@ public class EntityDustSludgeling extends EntityMob implements IEntityBreathable
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedSpider.class, false, true));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedCreeper.class, false, true));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySlimeling.class, false));
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition moving)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1002);
     }
 
     @Override

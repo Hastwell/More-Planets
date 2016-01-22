@@ -11,14 +11,13 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderCreamSlime;
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityCreamSlime;
 
 @SideOnly(Side.CLIENT)
-public class LayerCreamSlimeGel implements LayerRenderer
+public class LayerCreamSlimeGel implements LayerRenderer<EntityCreamSlime>
 {
     private RenderCreamSlime slimeRenderer;
     private ModelBase slimeModel = new ModelSlime(0);
@@ -28,7 +27,14 @@ public class LayerCreamSlimeGel implements LayerRenderer
         this.slimeRenderer = render;
     }
 
-    public void doRenderLayer(EntityCreamSlime entity, float par2, float par3, float par5, float par6, float par7, float par8)
+    @Override
+    public boolean shouldCombineTextures()
+    {
+        return true;
+    }
+
+    @Override
+    public void doRenderLayer(EntityCreamSlime  entity, float par2, float par3, float partialTicks, float par5, float par6, float par7, float scale)
     {
         if (!entity.isInvisible())
         {
@@ -37,21 +43,9 @@ public class LayerCreamSlimeGel implements LayerRenderer
             GlStateManager.enableBlend();
             GlStateManager.blendFunc(770, 771);
             this.slimeModel.setModelAttributes(this.slimeRenderer.getMainModel());
-            this.slimeModel.render(entity, par2, par3, par5, par6, par7, par8);
+            this.slimeModel.render(entity, par2, par3, par5, par6, par7, scale);
             GlStateManager.disableBlend();
             GlStateManager.disableNormalize();
         }
-    }
-
-    @Override
-    public boolean shouldCombineTextures()
-    {
-        return true;
-    }
-
-    @Override
-    public void doRenderLayer(EntityLivingBase  entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
-    {
-        this.doRenderLayer((EntityCreamSlime)entity, par2, par3, par5, par6, par7, par8);
     }
 }

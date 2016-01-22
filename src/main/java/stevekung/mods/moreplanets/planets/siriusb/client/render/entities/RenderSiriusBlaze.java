@@ -10,14 +10,13 @@ package stevekung.mods.moreplanets.planets.siriusb.client.render.entities;
 import net.minecraft.client.model.ModelBlaze;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusBlaze;
 
 @SideOnly(Side.CLIENT)
-public class RenderSiriusBlaze extends RenderLiving
+public class RenderSiriusBlaze extends RenderLiving<EntitySiriusBlaze>
 {
     private ResourceLocation blazeTextures = new ResourceLocation("moreplanets:textures/entity/sirius_blaze.png");
 
@@ -26,14 +25,9 @@ public class RenderSiriusBlaze extends RenderLiving
         super(render, new ModelBlaze(), 0.5F);
     }
 
+    @Override
     protected ResourceLocation getEntityTexture(EntitySiriusBlaze entity)
     {
         return this.blazeTextures;
-    }
-
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
-    {
-        return this.getEntityTexture((EntitySiriusBlaze)entity);
     }
 }

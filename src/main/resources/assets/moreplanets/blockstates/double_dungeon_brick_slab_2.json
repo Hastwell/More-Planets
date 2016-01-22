@@ -1,0 +1,6 @@
+{
+    "variants": {
+		"variant=venus_dungeon_brick_slab": { "model": "moreplanets:venus_dungeon_brick" },
+		"variant=pluto_dungeon_brick_slab": { "model": "moreplanets:pluto_dungeon_brick" }
+    }
+}

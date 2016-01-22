@@ -15,7 +15,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 
 public class WorldGenFronosPumpkin extends WorldGenerator
 {
@@ -26,7 +26,7 @@ public class WorldGenFronosPumpkin extends WorldGenerator
         {
             BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-            if (world.isAirBlock(blockpos1) && world.getBlockState(blockpos1.down()).getBlock() instanceof IFronosGrass && Blocks.pumpkin.canPlaceBlockAt(world, blockpos1))
+            if (Blocks.pumpkin.canPlaceBlockAt(world, blockpos1) && world.getBlockState(blockpos1.down()).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)world.getBlockState(blockpos1.down()).getBlock()).getProperty() == 0)
             {
                 world.setBlockState(blockpos1, Blocks.pumpkin.getDefaultState().withProperty(BlockDirectional.FACING, EnumFacing.Plane.HORIZONTAL.random(rand)), 2);
             }

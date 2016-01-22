@@ -272,13 +272,51 @@ public class TileEntityPowerCrystalGenerator extends TileBaseUniversalElectrical
     @Override
     public EnumSet<EnumFacing> getElectricalOutputDirections()
     {
-        return EnumSet.of(this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING));
+        int facing = 0;
+
+        switch (EnumFacing.getHorizontal(((EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING)).getIndex()))
+        {
+        case NORTH:
+            facing = 3;
+            break;
+        case EAST:
+            facing = 1;
+            break;
+        case SOUTH:
+            facing = 2;
+            break;
+        case WEST:
+            facing = 0;
+            break;
+        default:
+            break;
+        }
+        return EnumSet.of(EnumFacing.getHorizontal(facing));
     }
 
     @Override
     public EnumFacing getElectricalOutputDirectionMain()
     {
-        return this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING);
+        int facing = 0;
+
+        switch (EnumFacing.getHorizontal(((EnumFacing)this.worldObj.getBlockState(this.getPos()).getValue(BlockPowerCrystalGenerator.FACING)).getIndex()))
+        {
+        case NORTH:
+            facing = 3;
+            break;
+        case EAST:
+            facing = 1;
+            break;
+        case SOUTH:
+            facing = 2;
+            break;
+        case WEST:
+            facing = 0;
+            break;
+        default:
+            break;
+        }
+        return EnumFacing.getHorizontal(facing);
     }
 
     @Override

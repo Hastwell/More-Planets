@@ -17,6 +17,7 @@ import stevekung.mods.moreplanets.planets.diona.tileentities.TileEntityDionaTrea
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAncientChest;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTreasureChest;
 import stevekung.mods.moreplanets.planets.kapteynb.client.render.tileentities.TileEntityIcyPoisonCrystalRenderer;
+import stevekung.mods.moreplanets.planets.kapteynb.client.render.tileentities.TileEntityKapteynBAncientChestRenderer;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBTreasureChest;
@@ -44,18 +45,16 @@ public class TileEntityRendererMP
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBTreasureChest.class, new TileEntityTreasureChestRendererMP(EnumChestTexture.KAPTEYN_B));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBTreasureChest.class, new TileEntityTreasureChestRendererMP(EnumChestTexture.SIRIUS_B));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoTreasureChest.class, new TileEntityTreasureChestRendererMP(EnumChestTexture.PLUTO));
-
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDionaAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.DIONA));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPolongniusAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.POLONGNIUS));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNibiruAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.NIBIRU));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKoentusAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.KOENTUS));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFronosAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.FRONOS));
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.KAPTEYN_B));
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKapteynBAncientChest.class, new TileEntityKapteynBAncientChestRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySiriusBAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.SIRIUS_B));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMercuryAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.MERCURY));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVenusAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.VENUS));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlutoAncientChest.class, new TileEntityAncientChestRenderer(EnumChestTexture.PLUTO));
-
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityUltraVioletSolarPanel.class, new TileEntityUltraVioletSolarPanelRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityIcyPoisonCrystal.class, new TileEntityIcyPoisonCrystalRenderer());
     }

@@ -9,11 +9,36 @@ package stevekung.mods.moreplanets.common.dimension;
 
 import micdoodle8.mods.galacticraft.api.prefab.world.gen.WorldProviderSpace;
 import micdoodle8.mods.galacticraft.api.world.ISolarLevel;
+import micdoodle8.mods.galacticraft.core.event.EventHandlerGC;
 import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
+import net.minecraft.entity.player.EntityPlayerMP;
 import stevekung.mods.moreplanets.common.world.IUltraVioletLevel;
 
 public abstract class WorldProviderMP extends WorldProviderSpace implements ISolarLevel, IUltraVioletLevel
 {
+    @Override
+    public boolean isSurfaceWorld()
+    {
+        return this.worldObj == null ? false : this.worldObj.isRemote;
+    }
+
+    @Override
+    public boolean canRespawnHere()
+    {
+        if (EventHandlerGC.bedActivated)
+        {
+            EventHandlerGC.bedActivated = false;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int getRespawnDimension(EntityPlayerMP player)
+    {
+        return this.shouldForceRespawn() ? this.dimensionId : 0;
+    }
+
     @Override
     public boolean canRainOrSnow()
     {

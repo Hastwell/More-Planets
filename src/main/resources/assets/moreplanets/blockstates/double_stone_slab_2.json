@@ -5,6 +5,8 @@
 		"variant=cracked_fronos_stone_brick_slab": { "model": "moreplanets:cracked_fronos_stone_brick" },
 		"variant=kapteyn_b_cracked_ice_slab": { "model": "moreplanets:kapteyn_b_cracked_ice" },
 		"variant=sirius_b_carbon_cobblestone_slab": { "model": "moreplanets:sirius_b_carbon_cobblestone" },
-		"variant=mercury_cobblestone_slab": { "model": "moreplanets:mercury_cobblestone" }
+		"variant=mercury_cobblestone_slab": { "model": "moreplanets:mercury_cobblestone" },
+		"variant=venus_cobblestone_slab": { "model": "moreplanets:venus_cobblestone" },
+		"variant=pluto_cobblestone_slab": { "model": "moreplanets:pluto_cobblestone" }
     }
 }

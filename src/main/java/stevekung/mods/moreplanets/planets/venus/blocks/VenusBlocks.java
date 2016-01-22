@@ -33,6 +33,8 @@ public class VenusBlocks
     public static Block half_venus_sandstone_slab;
     public static Block double_venus_sandstone_slab;
     public static Block venus_sandstone_stairs;
+    public static Block venus_cobblestone_stairs;
+    public static Block venus_dungeon_brick_stairs;
 
     public static void init()
     {
@@ -49,7 +51,9 @@ public class VenusBlocks
         VenusBlocks.venus_sandstone = new BlockVenusSandstone("venus_sandstone");
         VenusBlocks.half_venus_sandstone_slab = new BlockVenusSandstoneSlab("half_venus_sandstone_slab", Material.rock);
         VenusBlocks.double_venus_sandstone_slab = new BlockDoubleVenusSandstoneSlab("double_venus_sandstone_slab", Material.rock);
-        VenusBlocks.venus_sandstone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "venus_sandstone_stairs", 0.8F);
+        VenusBlocks.venus_sandstone_stairs = new BlockStairsMP(Blocks.stone, "venus_sandstone_stairs", 0.8F);
+        VenusBlocks.venus_cobblestone_stairs = new BlockStairsMP(Blocks.stone, "venus_cobblestone_stairs", 2.0F);
+        VenusBlocks.venus_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone, "venus_dungeon_brick_stairs", 4.0F);
 
         // Register
         CommonRegisterHelper.registerBlock(VenusBlocks.venus_block, ItemBlockMultiVariant.class, new VariantsName("surface", "sub_surface", "rock", "cobblestone", "sulfur_ore", "lead_ore", "tin_ore", "copper_ore", "coal_ore", "iron_ore", "gold_ore", "lead_block", "stone_brick", "cracked_stone_brick", "dungeon_brick"));
@@ -61,7 +65,9 @@ public class VenusBlocks
         CommonRegisterHelper.registerBlock(VenusBlocks.venus_sandstone, ItemBlockMultiVariant.class, new VariantsName("venus_sandstone", "chiseled_venus_sandstone", "smooth_venus_sandstone"));
         CommonRegisterHelper.registerBlock(VenusBlocks.half_venus_sandstone_slab, ItemBlockVenusSandstoneSlab.class, VenusBlocks.half_venus_sandstone_slab, VenusBlocks.double_venus_sandstone_slab);
         CommonRegisterHelper.registerBlock(VenusBlocks.double_venus_sandstone_slab, ItemBlockVenusSandstoneSlab.class, VenusBlocks.half_venus_sandstone_slab, VenusBlocks.double_venus_sandstone_slab);
+        CommonRegisterHelper.registerBlock(VenusBlocks.venus_cobblestone_stairs);
         CommonRegisterHelper.registerBlock(VenusBlocks.venus_sandstone_stairs);
+        CommonRegisterHelper.registerBlock(VenusBlocks.venus_dungeon_brick_stairs);
         CommonRegisterHelper.registerBlock(VenusBlocks.sulfur_torch);
         CommonRegisterHelper.registerBlock(VenusBlocks.venusian_blaze_egg);
         CommonRegisterHelper.registerBlock(VenusBlocks.venus_ancient_chest);
@@ -72,6 +78,8 @@ public class VenusBlocks
         CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.double_venus_sandstone_slab, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_sandstone_stairs, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_magma_rock, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_cobblestone_stairs, "pickaxe", 0);
+        CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_dungeon_brick_stairs, "pickaxe", 1);
         CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_smoke_geyser, "pickaxe", 0);
         CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_redstone_ore, "pickaxe", 2);
         CommonRegisterHelper.setBlockHarvestLevel(VenusBlocks.venus_redstone_ore_active, "pickaxe", 2);

@@ -39,6 +39,17 @@ tile.tinted_glass.brown.name=Brown Tinted Glass
 tile.tinted_glass.green.name=Green Tinted Glass
 tile.tinted_glass.red.name=Red Tinted Glass
 tile.tinted_glass.black.name=Black Tinted Glass
+tile.space_mossy_cobblestone.diona.name=Diona Mossy Cobblestone
+tile.space_mossy_cobblestone.polongnius.name=Polongnius Mossy Cobblestone
+tile.space_mossy_cobblestone.nibiru.name=Nibiru Mossy Cobblestone
+tile.space_mossy_cobblestone.koentus.name=Koentus Mossy Cobblestone
+tile.space_mossy_cobblestone.fronos.name=Fronos Mossy Cobblestone
+tile.space_mossy_cobblestone.kapteynb.name=Kapteyn B Mossy Cobblestone
+tile.space_mossy_cobblestone.siriusb.name=Sirius B Mossy Cobblestone
+tile.space_mossy_cobblestone.venus.name=Venus Mossy Cobblestone
+tile.space_mossy_cobblestone.mercury.name=Mercury Mossy Cobblestone
+tile.space_mossy_cobblestone.pluto.name=Pluto Mossy Cobblestone
+tile.space_mossy_cobblestone.martian.name=Martian Mossy Cobblestone
 
 #########Diona Block#########
 tile.diona_block.surface_rock.name=Diona Surface Rock
@@ -409,7 +420,6 @@ tile.fronos_leaves2.yellow_maple_leaves.name=Yellow Maple Leaves
 tile.fronos_leaves2.purple_maple_leaves.name=Purple Maple Leaves
 tile.fronos_ore_block.iridium_block.name=Iridium Block
 tile.fronos_ore_block.black_diamond_block.name=Black Diamond Block
-tile.mossy_fronos_cobblestone.name=Mossy Fronos Cobblestone
 tile.caramel_block.name=Caramel Block
 tile.lemon_jelly_ore.name=Lemon Jelly Ore
 tile.lemon_jelly_block.name=Lemon Jelly Block
@@ -603,6 +613,12 @@ tile.venus_sandstone.chiseled_venus_sandstone.name=Chiseled Venus Sandstone
 tile.venus_sandstone.smooth_venus_sandstone.name=Smooth Venus Sandstone
 tile.half_venus_sandstone_slab.venus_sandstone.name=Venus Sandstone Slab
 tile.venus_sandstone_stairs.name=Venus Sandstone Stairs
+tile.stone_wall.venus_cobblestone.name=Venus Cobblestone Wall
+tile.dungeon_brick_wall.venus_dungeon_brick.name=Venus Dungeon Brick Wall
+tile.half_stone_slab_2.venus_cobblestone.name=Venus Cobblestone Slab
+tile.half_dungeon_brick_slab_2.venus_dungeon_brick.name=Venus Dungeon Brick Slab
+tile.venus_cobblestone_stairs.name=Venus Cobblestone Stairs
+tile.venus_dungeon_brick_stairs.name=Venus Dungeon Brick Stairs
 
 #########Pluto Block#########
 tile.pluto_block.surface_rock.name=Pluto Surface Rock
@@ -623,6 +639,12 @@ tile.pluto_ancient_chest.name=Pluto Ancient Chest
 tile.pluto_treasure_chest.name=Pluto Treasure Chest
 tile.xeonium_torch.name=Xeonium Torch
 tile.pluto_heart_crystal_block.name=Pluto Heart Crystal
+tile.stone_wall.pluto_cobblestone.name=Pluto Cobblestone Wall
+tile.dungeon_brick_wall.pluto_dungeon_brick.name=Pluto Dungeon Brick Wall
+tile.half_stone_slab_2.pluto_cobblestone.name=Pluto Cobblestone Slab
+tile.half_dungeon_brick_slab_2.pluto_dungeon_brick.name=Pluto Dungeon Brick Slab
+tile.pluto_cobblestone_stairs.name=Pluto Cobblestone Stairs
+tile.pluto_dungeon_brick_stairs.name=Pluto Cobblestone Stairs
 
 #########Europa Block#########
 tile.europa_prismarine.prismarine.name=Europa Prismarine
@@ -684,6 +706,10 @@ tile.alien_glowstone.name=Alien Glowstone
 tile.alien_leaves.name=Alien Leaves
 tile.alien_sapling.name=Alien Sapling
 tile.alien_vine.name=Alien Vines
+tile.half_wooden_slab_1.alien_wood.name=Alien Wood Slab
+tile.alien_wood_stairs.name=Alien Wood Stairs
+tile.alien_fence.name=Alien Fence
+tile.alien_fence_gate.name=Alien Fence Gate
 
 # ITEMS
 #########Main Item#########
@@ -777,6 +803,7 @@ item.koentus_item.compressed_koentus_meteoric_iron.name=Compressed Koentus Meteo
 item.koentus_meteor_chunk.name=Koentus Meteor Chunk
 item.crystal_door.name=Crystal Door
 item.crystal_cocoa.name=Crystal Cocoa
+item.crystal_apple.name=Crystal Apple
 
 #########Fronos Item#########
 item.fronos_food.strawberry.name=Strawberry
@@ -885,6 +912,7 @@ item.tier_8_rocket_schematic.name=NASA Workbench Schematic
 item.tier_8_rocket_module.tier_8_rocket_engine.name=Tier 8 Rocket Engine
 item.tier_8_rocket_module.tier_8_booster.name=Tier 8 Booster
 item.tier_8_rocket_module.tier_8_heavy_duty_plate.name=Heavy Duty Plate
+item.ice_crystal_meteor_chunk.name=Ice Crystal Meteor Chunk
 
 #########Sirius B Item#########
 item.sirius_b_item.small_diamond_pieces.name=Small Diamond Pieces
@@ -1202,6 +1230,7 @@ entity.MorePlanets.EuropaCrab.name=Europa Crab
 entity.MorePlanets.JellySlimePet.name=Jelly Slime Pet
 entity.MorePlanets.EvolvedWitch.name=Evolved Witch
 entity.MorePlanets.MilkCow.name=Milk Cow
+entity.MorePlanets.PlutoAlien.name=Pluto Alien
 
 # DESCRIPTION
 desc.tier4.name=Tier 4

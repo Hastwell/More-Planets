@@ -13,7 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 
 public class WorldGenFronosMelon extends WorldGenerator
 {
@@ -24,7 +24,7 @@ public class WorldGenFronosMelon extends WorldGenerator
         {
             BlockPos blockpos1 = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
-            if (Blocks.melon_block.canPlaceBlockAt(world, blockpos1) && world.getBlockState(blockpos1.down()).getBlock() instanceof IFronosGrass)
+            if (Blocks.melon_block.canPlaceBlockAt(world, blockpos1) && world.getBlockState(blockpos1.down()).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)world.getBlockState(blockpos1.down()).getBlock()).getProperty() == 0)
             {
                 world.setBlockState(blockpos1, Blocks.melon_block.getDefaultState(), 2);
             }

@@ -10,13 +10,12 @@ package stevekung.mods.moreplanets.planets.polongnius.client.render.entities;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.client.objmodel.AdvancedModelLoader;
 import stevekung.mods.moreplanets.client.objmodel.IModelCustom;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityPolongniusMeteorChunk;
 
-public class RenderPolongniusMeteorChunk extends Render
+public class RenderPolongniusMeteorChunk extends Render<EntityPolongniusMeteorChunk>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/polongnius_meteor_chunk.png");
     private IModelCustom meteorChunkModel = AdvancedModelLoader.loadModel(new ResourceLocation("galacticraftcore:models/meteorChunk.obj"));
@@ -28,28 +27,23 @@ public class RenderPolongniusMeteorChunk extends Render
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityPolongniusMeteorChunk entity)
     {
         return this.texture;
     }
 
-    public void renderMeteorChunk(EntityPolongniusMeteorChunk entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+    public void doRender(EntityPolongniusMeteorChunk entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         float var24 = entity.rotationPitch;
         float var24b = entity.rotationYaw;
-        GlStateManager.translate((float) par2, (float) par4, (float) par6);
+        GlStateManager.translate((float)x, (float)y, (float)z);
         GlStateManager.scale(0.3F, 0.3F, 0.3F);
         GlStateManager.rotate(var24b, 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(var24, 0.0F, 0.0F, 1.0F);
         this.bindTexture(this.texture);
         this.meteorChunkModel.renderAll();
         GlStateManager.popMatrix();
-    }
-
-    @Override
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        this.renderMeteorChunk((EntityPolongniusMeteorChunk) par1Entity, par2, par4, par6, par8, par9);
     }
 }

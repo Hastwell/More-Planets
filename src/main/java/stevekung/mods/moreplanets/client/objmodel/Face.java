@@ -67,7 +67,7 @@ public class Face
                 {
                     offsetV = -offsetV;
                 }
-                worldrenderer.pos(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).tex(this.textureCoordinates[i].u + offsetU, this.textureCoordinates[i].v + offsetV).normal(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).endVertex();
+                worldrenderer.pos(this.vertices[i].x, this.vertices[i].y, this.vertices[i].z).tex(this.textureCoordinates[i].u + offsetU, this.textureCoordinates[i].v + offsetV).normal(this.faceNormal.x, this.faceNormal.y, this.faceNormal.z).endVertex();// WTF?
             }
             else
             {

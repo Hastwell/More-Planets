@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
 public class BlockDandelion extends BlockBushMP
@@ -194,13 +194,13 @@ public class BlockDandelion extends BlockBushMP
     public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
     {
         Block block = world.getBlockState(pos.down()).getBlock();
-        return block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt;
+        return block instanceof ICustomBlockProperty && ((ICustomBlockProperty)block).getProperty() == 0 || block == FronosBlocks.fronos_dirt;
     }
 
     @Override
     public boolean canPlaceBlockOn(Block ground)
     {
-        return ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
+        return ground instanceof ICustomBlockProperty && ((ICustomBlockProperty)ground).getProperty() == 0 || ground == FronosBlocks.fronos_dirt;
     }
 
     @Override

@@ -24,12 +24,9 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 
 public class EntityKoentusSludgeling extends EntityMob implements IEntityBreathable
@@ -47,12 +44,6 @@ public class EntityKoentusSludgeling extends EntityMob implements IEntityBreatha
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedSpider.class, false, true));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEvolvedCreeper.class, false, true));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySlimeling.class, false));
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition moving)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1013);
     }
 
     @Override

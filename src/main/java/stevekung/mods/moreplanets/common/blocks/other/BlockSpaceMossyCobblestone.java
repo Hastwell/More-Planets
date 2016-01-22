@@ -17,7 +17,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
@@ -36,10 +38,16 @@ public class BlockSpaceMossyCobblestone extends BlockBaseMP
     }
 
     @Override
+    public int getLightValue(IBlockAccess world, BlockPos pos)
+    {
+        return this.getMetaFromState(world.getBlockState(pos)) == 6 ? 15 : 0;
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 11; ++i)
         {
             list.add(new ItemStack(this, 1, i));
         }

@@ -16,7 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public abstract class FronosPet extends EntityTameable
@@ -108,7 +108,7 @@ public abstract class FronosPet extends EntityTameable
     @Override
     public boolean getCanSpawnHere()
     {
-        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() instanceof IFronosGrass;
+        return this.worldObj.getBlockState(this.getPosition().down()).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)this.worldObj.getBlockState(this.getPosition().down()).getBlock()).getProperty() == 0;
     }
 
     @Override

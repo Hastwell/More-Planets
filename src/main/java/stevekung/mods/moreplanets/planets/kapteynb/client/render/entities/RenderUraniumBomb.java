@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -22,7 +21,7 @@ import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityUraniumBomb;
 
 @SideOnly(Side.CLIENT)
-public class RenderUraniumBomb extends Render
+public class RenderUraniumBomb extends Render<EntityUraniumBomb>
 {
     public RenderUraniumBomb(RenderManager render)
     {
@@ -30,7 +29,8 @@ public class RenderUraniumBomb extends Render
         this.shadowSize = 0.5F;
     }
 
-    public void doRender(EntityUraniumBomb entity, double x, double y, double z, float p_76986_8_, float partialTicks)
+    @Override
+    public void doRender(EntityUraniumBomb entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
         GlStateManager.pushMatrix();
@@ -71,18 +71,12 @@ public class RenderUraniumBomb extends Render
             GlStateManager.enableTexture2D();
         }
         GlStateManager.popMatrix();
-        super.doRender(entity, x, y, z, p_76986_8_, partialTicks);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityUraniumBomb entity)
     {
         return TextureMap.locationBlocksTexture;
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks)
-    {
-        this.doRender((EntityUraniumBomb)entity, x, y, z, p_76986_8_, partialTicks);
     }
 }

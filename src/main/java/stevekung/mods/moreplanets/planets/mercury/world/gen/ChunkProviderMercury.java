@@ -18,12 +18,14 @@ import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.mercury.blocks.MercuryBlocks;
 
 public class ChunkProviderMercury extends ChunkProviderBaseMP
 {
     private BiomeDecoratorMercury biomeDecorator = new BiomeDecoratorMercury();
-    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMercury.basePlanetBiome };
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(MercuryBlocks.mercury_block, this.getBlockMetadata());
     //private MapGenDungeon dungeonGenerator = new MapGenDungeon(MercuryBlocks.mercury_block, 11, 8, 16, 4);
 
@@ -75,6 +77,11 @@ public class ChunkProviderMercury extends ChunkProviderBaseMP
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         //this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(MercuryBlocks.mercury_ancient_chest, MercuryBlocks.mercury_block, MPBlocks.space_mossy_cobblestone, 8).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
         BlockFalling.fallInstantly = false;
     }
 

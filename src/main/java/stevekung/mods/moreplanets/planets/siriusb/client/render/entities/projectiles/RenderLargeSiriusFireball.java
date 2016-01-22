@@ -16,7 +16,6 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -24,14 +23,15 @@ import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntityLar
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 
 @SideOnly(Side.CLIENT)
-public class RenderLargeSiriusFireball extends Render
+public class RenderLargeSiriusFireball extends Render<EntityLargeSiriusFireball>
 {
     public RenderLargeSiriusFireball(RenderManager render)
     {
         super(render);
     }
 
-    public void doRender(EntityLargeSiriusFireball entity, double x, double y, double z, float par5, float partialTicks)
+    @Override
+    public void doRender(EntityLargeSiriusFireball entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.bindEntityTexture(entity);
@@ -56,18 +56,12 @@ public class RenderLargeSiriusFireball extends Render
         tessellator.draw();
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
-        super.doRender(entity, x, y, z, par5, partialTicks);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityLargeSiriusFireball entity)
     {
         return TextureMap.locationBlocksTexture;
-    }
-
-    @Override
-    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
-    {
-        this.doRender((EntityLargeSiriusFireball)entity, x, y, z, par5, partialTicks);
     }
 }

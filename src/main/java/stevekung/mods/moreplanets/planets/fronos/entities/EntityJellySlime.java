@@ -14,13 +14,11 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
 public class EntityJellySlime extends EntitySlime implements IMob
@@ -31,12 +29,6 @@ public class EntityJellySlime extends EntitySlime implements IMob
     {
         super(world);
         this.setJellySlimeType(this.rand.nextInt(8));
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1018);
     }
 
     @Override

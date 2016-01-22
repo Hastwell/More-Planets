@@ -14,7 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class WorldGenCoconutTree extends WorldGenAbstractTree
@@ -36,7 +36,7 @@ public class WorldGenCoconutTree extends WorldGenAbstractTree
     {
         Block block = world.getBlockState(pos.down()).getBlock();
 
-        if (block != Blocks.grass && block != Blocks.dirt && !(block instanceof IFronosGrass) && block != FronosBlocks.fronos_dirt)
+        if (block != Blocks.grass && block != Blocks.dirt && !(block instanceof ICustomBlockProperty && ((ICustomBlockProperty)block).getProperty() == 0) && block != FronosBlocks.fronos_dirt)
         {
             return false;
         }

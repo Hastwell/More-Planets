@@ -28,6 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import stevekung.mods.moreplanets.client.handler.GuiEventHandler;
 import stevekung.mods.moreplanets.client.handler.PlanetFogHandler;
 import stevekung.mods.moreplanets.client.handler.SkyProviderHandler;
+import stevekung.mods.moreplanets.client.renderer.EntityRendererMP;
 import stevekung.mods.moreplanets.common.achievement.AchievementsMP;
 import stevekung.mods.moreplanets.common.command.CommandHomePlanet;
 import stevekung.mods.moreplanets.common.config.ConfigManagerMP;
@@ -68,7 +69,7 @@ import stevekung.mods.moreplanets.planets.polongnius.items.PolongniusItems;
 import stevekung.mods.moreplanets.planets.polongnius.schematics.SchematicTier5Rocket;
 import stevekung.mods.stevecore.CommonRegisterHelper;
 
-@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.15.0.1671,);", guiFactory = "stevekung.mods.moreplanets.common.config.ConfigGuiFactoryMP")//TODO required-after:Micdoodlecore;
+@Mod(modid = MorePlanetsCore.MOD_ID, name = MorePlanetsCore.NAME, version = MorePlanetsCore.VERSION, dependencies = /*"required-after:GalacticraftCore; required-after:GalacticraftMars;*/" after:Forge@[11.15.0.1684,);", guiFactory = "stevekung.mods.moreplanets.common.config.ConfigGuiFactoryMP")//TODO required-after:Micdoodlecore;
 public class MorePlanetsCore
 {
     public static final String NAME = "More Planets";
@@ -108,6 +109,7 @@ public class MorePlanetsCore
         CommonRegisterHelper.registerForgeEvent(new MorePlanetsEvents());
         CommonRegisterHelper.registerForgeEvent(new SkyProviderHandler());
         CommonRegisterHelper.registerForgeEvent(new PlanetFogHandler());
+        EntityRendererMP.init();
     }
 
     @EventHandler
@@ -140,8 +142,8 @@ public class MorePlanetsCore
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        MPTileEntities.init();
         MorePlanetsCore.proxy.registerRenderer();
+        MPTileEntities.init();
         CommonRegisterHelper.registerFuelHandler(new FurnaceFuelMP());
 
         CraftingManagerMP.init();

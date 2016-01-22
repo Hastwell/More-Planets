@@ -50,8 +50,8 @@ public class KapteynBBlocks
         KapteynBBlocks.kapteyn_b_redstone_ore_active = new BlockKapteynBRedstoneOre("kapteyn_b_redstone_ore_active", true);
         KapteynBBlocks.kapteyn_b_ice = new BlockKapteynBIce("kapteyn_b_ice");
         KapteynBBlocks.kapteyn_b_treasure_chest = new BlockKapteynBTreasureChest("kapteyn_b_treasure_chest");
-        KapteynBBlocks.kapteyn_b_cracked_ice_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "kapteyn_b_cracked_ice_stairs", "glass", null, 1.5F);
-        KapteynBBlocks.kapteyn_b_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "kapteyn_b_dungeon_brick_stairs", 4.0F);
+        KapteynBBlocks.kapteyn_b_cracked_ice_stairs = new BlockStairsMP(Blocks.stone, "kapteyn_b_cracked_ice_stairs", "glass", null, 1.5F);
+        KapteynBBlocks.kapteyn_b_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone, "kapteyn_b_dungeon_brick_stairs", 4.0F);
         KapteynBBlocks.rocky_solid_water = new BlockRockySolidWater("rocky_solid_water");
         KapteynBBlocks.kapteyn_b_ancient_chest = new BlockKapteynBAncientChest("kapteyn_b_ancient_chest");
         KapteynBBlocks.uranium_waste = new BlockUraniumWaste("uranium_waste");

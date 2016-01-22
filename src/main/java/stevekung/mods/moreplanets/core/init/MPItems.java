@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.items.DarkAsteroidsItems;
 import stevekung.mods.moreplanets.common.items.ItemFeces;
 import stevekung.mods.moreplanets.common.items.ItemMeteorShower;
-import stevekung.mods.moreplanets.common.items.ItemMonsterPlacerMP;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanets;
 import stevekung.mods.moreplanets.common.items.ItemMorePlanetsNull;
 import stevekung.mods.moreplanets.common.items.ItemTier2ThermalPadding;
@@ -36,7 +35,6 @@ import stevekung.mods.stevecore.CommonRegisterHelper;
 public class MPItems
 {
     public static Item meteor_shower;
-    public static Item spawn_egg_mp;
     public static Item feces;
     public static Item achievement_temp;
     public static Item tier_2_thermal_padding;
@@ -65,7 +63,6 @@ public class MPItems
 
         // Init
         MPItems.meteor_shower = new ItemMeteorShower("meteor_shower");
-        MPItems.spawn_egg_mp = new ItemMonsterPlacerMP("spawn_egg_mp");
         MPItems.feces = new ItemFeces("feces");
         MPItems.achievement_temp = new ItemMorePlanetsNull("achievement_temp");
         MPItems.desh_thermal_cloth = new ItemMorePlanets("desh_thermal_cloth");
@@ -77,7 +74,6 @@ public class MPItems
         CommonRegisterHelper.registerItem(MPItems.meteor_shower);
         CommonRegisterHelper.registerItem(MPItems.feces);
         CommonRegisterHelper.registerItem(MPItems.desh_thermal_cloth);
-        CommonRegisterHelper.registerItem(MPItems.spawn_egg_mp);
         CommonRegisterHelper.registerItem(MPItems.tier_2_thermal_padding);
         CommonRegisterHelper.registerItem(MPItems.tier_3_thermal_padding);
         CommonRegisterHelper.registerItem(MPItems.achievement_temp);

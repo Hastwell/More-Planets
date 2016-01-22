@@ -31,7 +31,7 @@ public class RenderSnowballMP extends Render<Entity>
     }
 
     @Override
-    public void doRender(Entity entity, double x, double y, double z, float par5, float partialTicks)
+    public void doRender(Entity entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         GlStateManager.translate((float)x, (float)y, (float)z);
@@ -43,7 +43,7 @@ public class RenderSnowballMP extends Render<Entity>
         Minecraft.getMinecraft().getRenderItem().renderItem(this.itemStack, TransformType.GROUND);
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
-        super.doRender(entity, x, y, z, par5, partialTicks);
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
     @Override

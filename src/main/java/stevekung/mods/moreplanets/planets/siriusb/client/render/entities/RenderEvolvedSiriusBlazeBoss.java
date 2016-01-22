@@ -11,15 +11,12 @@ import net.minecraft.client.model.ModelBlaze;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.BossStatus;
-import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.planets.siriusb.client.render.entities.layers.LayerSiriusBlazeBoss;
+import stevekung.mods.moreplanets.planets.siriusb.entities.EntityEvolvedSiriusBlazeBoss;
 
-public class RenderEvolvedSiriusBlazeBoss extends RenderLiving
+public class RenderEvolvedSiriusBlazeBoss extends RenderLiving<EntityEvolvedSiriusBlazeBoss>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/evolved_sirius_blaze_boss.png");
 
@@ -30,20 +27,20 @@ public class RenderEvolvedSiriusBlazeBoss extends RenderLiving
     }
 
     @Override
-    public void doRender(EntityLiving entity, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(EntityEvolvedSiriusBlazeBoss entity, double x, double y, double z, float entityYaw, float partialTickTime)
     {
-        BossStatus.setBossStatus((IBossDisplayData)entity, false);
-        super.doRender(entity, par2, par4, par6, par8, par9);
+        BossStatus.setBossStatus(entity, false);
+        super.doRender(entity, x, y, z, entityYaw, partialTickTime);
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityEvolvedSiriusBlazeBoss entity)
     {
         return this.texture;
     }
 
     @Override
-    protected void preRenderCallback(EntityLivingBase entity, float par2)
+    protected void preRenderCallback(EntityEvolvedSiriusBlazeBoss entity, float partialTickTime)
     {
         GlStateManager.scale(4.0F, 4.0F, 4.0F);
     }

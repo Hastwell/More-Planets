@@ -103,7 +103,7 @@ public abstract class BlockFarmlandMP extends BlockBaseMP
     protected boolean hasCrops(World world, BlockPos pos)
     {
         Block block = world.getBlockState(pos.up()).getBlock();
-        return block instanceof IPlantableMP || block instanceof IPlantable && this.canSustainPlant(world, pos, EnumFacing.UP, (IPlantable)block);
+        return block instanceof ICustomBlockProperty && ((ICustomBlockProperty)block).getProperty() == 1 || block instanceof IPlantable && this.canSustainPlant(world, pos, EnumFacing.UP, (IPlantable)block);
     }
 
     protected boolean hasWater(World world, BlockPos pos)

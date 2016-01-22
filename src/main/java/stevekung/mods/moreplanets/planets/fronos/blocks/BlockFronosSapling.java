@@ -27,7 +27,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.blocks.BlockSaplingMP;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
 import stevekung.mods.moreplanets.planets.fronos.worldgen.tree.WorldGenCoconutTree;
 
@@ -55,14 +55,14 @@ public class BlockFronosSapling extends BlockSaplingMP
     @Override
     public boolean canPlaceBlockOn(Block ground)
     {
-        return ground == Blocks.grass || ground == Blocks.dirt || ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt;
+        return ground == Blocks.grass || ground == Blocks.dirt || ground instanceof ICustomBlockProperty && ((ICustomBlockProperty)ground).getProperty() == 0 || ground == FronosBlocks.fronos_dirt;
     }
 
     @Override
     public boolean canBlockStay(World world, BlockPos pos, IBlockState state)
     {
         Block block = world.getBlockState(pos.down()).getBlock();
-        return block == Blocks.grass || block == Blocks.dirt || block instanceof IFronosGrass || block == FronosBlocks.fronos_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
+        return block == Blocks.grass || block == Blocks.dirt || block instanceof ICustomBlockProperty && ((ICustomBlockProperty)block).getProperty() == 0 || block == FronosBlocks.fronos_dirt || block.canSustainPlant(world, pos.down(), EnumFacing.UP, this);
     }
 
     @Override
@@ -96,13 +96,13 @@ public class BlockFronosSapling extends BlockSaplingMP
                 obj = new WorldGenCoconutTree(30, 10, 1.3D);
                 break;
             case red_maple_sapling:
-                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, this, FronosBlocks.red_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 0, this, FronosBlocks.red_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)world.getBlockState(pos.down()).getBlock()).getProperty() == 0, FronosBlocks.fronos_dirt, null);
                 break;
             case yellow_maple_sapling:
-                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, this, FronosBlocks.yellow_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 1, this, FronosBlocks.yellow_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)world.getBlockState(pos.down()).getBlock()).getProperty() == 0, FronosBlocks.fronos_dirt, null);
                 break;
             case purple_maple_sapling:
-                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, this, FronosBlocks.purple_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof IFronosGrass, FronosBlocks.fronos_dirt, null);
+                obj = new WorldGenTreeMP(FronosBlocks.fronos_log, FronosBlocks.fronos_leaves, 1, 2, this, FronosBlocks.purple_maple_ivy, world.getBlockState(pos.down()).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)world.getBlockState(pos.down()).getBlock()).getProperty() == 0, FronosBlocks.fronos_dirt, null);
                 break;
             }
         }

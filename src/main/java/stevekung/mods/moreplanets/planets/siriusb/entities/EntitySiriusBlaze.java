@@ -21,19 +21,16 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.EnumDimensionType;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.planets.siriusb.entities.projectiles.EntitySmallSiriusFireball;
 
 public class EntitySiriusBlaze extends EntityMob implements IEntityBreathable, IEntityLivingPlanet
@@ -53,12 +50,6 @@ public class EntitySiriusBlaze extends EntityMob implements IEntityBreathable, I
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1031);
     }
 
     @Override

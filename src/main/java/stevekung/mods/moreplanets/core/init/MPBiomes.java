@@ -18,7 +18,7 @@ public class MPBiomes
     public static void init()
     {
         BiomeDictionary.registerBiomeType(BiomeGenBaseMP.basePlanetBiome, Type.COLD, Type.DRY, Type.DEAD);
-        BiomeDictionary.registerBiomeType(BiomeGenBaseMP.baseMoonBiome, Type.HOT, Type.DRY, Type.DEAD);
+        BiomeDictionary.registerBiomeType(BiomeGenBaseMP.baseMoonBiome, Type.COLD, Type.DRY, Type.DEAD);
         BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.grassyPlains, Type.LUSH, Type.PLAINS);
         BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.goldenField, Type.LUSH, Type.PLAINS);
         BiomeDictionary.registerBiomeType(BiomeGenBaseFronos.coconutForest, Type.FOREST);

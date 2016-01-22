@@ -12,10 +12,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.blocks.IPlantableMP;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockGoldenCrops extends BlockCrops implements IPlantableMP
+public class BlockGoldenCrops extends BlockCrops implements ICustomBlockProperty
 {
     public BlockGoldenCrops(String name)
     {
@@ -51,5 +51,11 @@ public class BlockGoldenCrops extends BlockCrops implements IPlantableMP
     public int damageDropped(IBlockState state)
     {
         return 6;
+    }
+
+    @Override
+    public int getProperty()
+    {
+        return 1;
     }
 }

@@ -15,7 +15,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.MapGenBase;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 public class MapGenCavesFronos extends MapGenBase
@@ -185,7 +185,7 @@ public class MapGenCavesFronos extends MapGenBase
                                                     chunk.setBlockState(k2, j3, j4, Blocks.air.getDefaultState());
                                                 }
                                             }
-                                            else if (state.getBlock() instanceof IFronosGrass)
+                                            else if (state.getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)state.getBlock()).getProperty() == 0)
                                             {
                                                 chunk.setBlockState(k2, j3, j4, Blocks.air.getDefaultState());
                                             }

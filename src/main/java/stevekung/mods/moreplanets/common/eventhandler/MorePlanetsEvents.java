@@ -16,11 +16,14 @@ import micdoodle8.mods.galacticraft.api.galaxies.Moon;
 import micdoodle8.mods.galacticraft.api.galaxies.Planet;
 import micdoodle8.mods.galacticraft.api.inventory.AccessInventoryGC;
 import micdoodle8.mods.galacticraft.api.inventory.IInventoryGC;
+import micdoodle8.mods.galacticraft.api.recipe.SchematicEvent.Unlock;
+import micdoodle8.mods.galacticraft.api.recipe.SchematicRegistry;
 import micdoodle8.mods.galacticraft.core.client.gui.screen.GuiCelestialSelection;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedCreeper;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSkeleton;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedSpider;
 import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
+import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats;
 import micdoodle8.mods.galacticraft.core.util.OxygenUtil;
 import micdoodle8.mods.galacticraft.planets.mars.dimension.WorldProviderMars;
 import net.minecraft.block.Block;
@@ -158,6 +161,17 @@ public class MorePlanetsEvents
             {
                 gui.splashText = "Happy birthday, SteveKunG!";
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void onSchematicUnlocked(Unlock event)
+    {
+        GCPlayerStats stats = GCPlayerStats.get(event.player);
+
+        if (stats.unlockedSchematics.contains(SchematicRegistry.getMatchingRecipeForID(ConfigManagerMP.idTier4RocketSchematic)))
+        {
+            event.player.triggerAchievement(AchievementsMP.getTier4Schematic);
         }
     }
 
@@ -391,10 +405,6 @@ public class MorePlanetsEvents
         if (block == KoentusBlocks.crystal_log || block == NibiruBlocks.nibiru_log || block == FronosBlocks.fronos_log || block == EuropaBlocks.europa_log || block == DarkAsteroidBlocks.alien_log)
         {
             event.player.triggerAchievement(AchievementList.mineWood);
-        }
-        if (item == DionaItems.tier_4_rocket_schematic)
-        {
-            event.player.triggerAchievement(AchievementsMP.getTier4Schematic);
         }
         if (item == Item.getItemFromBlock(DionaBlocks.diona_block) && (meta == 4 || meta == 5))
         {

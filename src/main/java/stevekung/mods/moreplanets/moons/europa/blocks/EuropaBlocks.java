@@ -95,16 +95,16 @@ public class EuropaBlocks
         EuropaBlocks.europa_sandstone = new BlockEuropaSandstone("europa_sandstone");
         EuropaBlocks.half_europa_sandstone_slab = new BlockEuropaSandstoneSlab("half_europa_sandstone_slab", Material.rock);
         EuropaBlocks.double_europa_sandstone_slab = new BlockDoubleEuropaSandstoneSlab("double_europa_sandstone_slab", Material.rock);
-        EuropaBlocks.europa_sandstone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "europa_sandstone_stairs", 0.8F);
-        EuropaBlocks.europa_wood_stairs = new BlockStairsMP(Blocks.planks.getDefaultState(), "europa_wood_stairs", "wood", null, 2.0F);
+        EuropaBlocks.europa_sandstone_stairs = new BlockStairsMP(Blocks.stone, "europa_sandstone_stairs", 0.8F);
+        EuropaBlocks.europa_wood_stairs = new BlockStairsMP(Blocks.planks, "europa_wood_stairs", "wood", null, 2.0F);
         EuropaBlocks.europa_kelp = new BlockEuropaKelp("europa_kelp");
         EuropaBlocks.europa_fence_gate = new BlockFenceGateMP("europa_fence_gate");
         EuropaBlocks.europa_door_block = new BlockDoorMP("europa_door_block", DoorType.EUROPA);
         EuropaBlocks.half_europa_prismarine_slab = new BlockEuropaPrismarineSlab("half_europa_prismarine_slab", Material.rock);
         EuropaBlocks.double_europa_prismarine_slab = new BlockDoubleEuropaPrismarineSlab("double_europa_prismarine_slab", Material.rock);
-        EuropaBlocks.europa_prismarine_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "europa_prismarine_stairs", 1.5F);
-        EuropaBlocks.europa_prismarine_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "europa_prismarine_brick_stairs", 1.5F);
-        EuropaBlocks.dark_europa_prismarine_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "dark_europa_prismarine_stairs", 1.5F);
+        EuropaBlocks.europa_prismarine_stairs = new BlockStairsMP(Blocks.stone, "europa_prismarine_stairs", 1.5F);
+        EuropaBlocks.europa_prismarine_brick_stairs = new BlockStairsMP(Blocks.stone, "europa_prismarine_brick_stairs", 1.5F);
+        EuropaBlocks.dark_europa_prismarine_stairs = new BlockStairsMP(Blocks.stone, "dark_europa_prismarine_stairs", 1.5F);
         EuropaBlocks.europa_sponge = new BlockEuropaSponge("europa_sponge");
 
         EuropaBlocks.europa_water_fluid = new FluidMP("europa_water_fluid").setBlock(EuropaBlocks.europa_water);

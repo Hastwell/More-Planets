@@ -11,14 +11,13 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.polongnius.client.render.entities.RenderCheeseSlime;
 import stevekung.mods.moreplanets.planets.polongnius.entities.EntityCheeseSlime;
 
 @SideOnly(Side.CLIENT)
-public class LayerCheeseSlimeGel implements LayerRenderer
+public class LayerCheeseSlimeGel implements LayerRenderer<EntityCheeseSlime>
 {
     private RenderCheeseSlime slimeRenderer;
     private ModelBase slimeModel = new ModelSlime(0);
@@ -28,7 +27,14 @@ public class LayerCheeseSlimeGel implements LayerRenderer
         this.slimeRenderer = render;
     }
 
-    public void doRenderLayer(EntityCheeseSlime living, float par2, float par3, float par4, float par6, float par7, float par8)
+    @Override
+    public boolean shouldCombineTextures()
+    {
+        return true;
+    }
+
+    @Override
+    public void doRenderLayer(EntityCheeseSlime living, float par2, float par3, float partialTicks, float par5, float par6, float par7, float scale)
     {
         if (!living.isInvisible())
         {
@@ -37,21 +43,9 @@ public class LayerCheeseSlimeGel implements LayerRenderer
             GlStateManager.enableBlend();
             GlStateManager.blendFunc(770, 771);
             this.slimeModel.setModelAttributes(this.slimeRenderer.getMainModel());
-            this.slimeModel.render(living, par2, par3, par4, par6, par7, par8);
+            this.slimeModel.render(living, par2, par3, partialTicks, par6, par7, scale);
             GlStateManager.disableBlend();
             GlStateManager.disableNormalize();
         }
-    }
-
-    @Override
-    public boolean shouldCombineTextures()
-    {
-        return true;
-    }
-
-    @Override
-    public void doRenderLayer(EntityLivingBase living, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
-    {
-        this.doRenderLayer((EntityCheeseSlime)living, par2, par3, par4, par6, par7, par8);
     }
 }

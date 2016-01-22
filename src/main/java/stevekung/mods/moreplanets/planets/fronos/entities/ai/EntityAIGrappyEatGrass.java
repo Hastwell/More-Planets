@@ -13,7 +13,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 
 import com.google.common.base.Predicate;
@@ -42,7 +42,7 @@ public class EntityAIGrappyEatGrass extends EntityAIBase
         else
         {
             BlockPos blockpos = new BlockPos(this.grassEaterEntity.posX, this.grassEaterEntity.posY, this.grassEaterEntity.posZ);
-            return field_179505_b.apply(this.entityWorld.getBlockState(blockpos)) ? true : this.entityWorld.getBlockState(blockpos.down()).getBlock() instanceof IFronosGrass;
+            return field_179505_b.apply(this.entityWorld.getBlockState(blockpos)) ? true : this.entityWorld.getBlockState(blockpos.down()).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)this.entityWorld.getBlockState(blockpos.down()).getBlock()).getProperty() == 0;
         }
     }
 
@@ -92,7 +92,7 @@ public class EntityAIGrappyEatGrass extends EntityAIBase
             {
                 BlockPos pos1 = pos.down();
 
-                if (this.entityWorld.getBlockState(pos1).getBlock() instanceof IFronosGrass)
+                if (this.entityWorld.getBlockState(pos1).getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)this.entityWorld.getBlockState(pos1).getBlock()).getProperty() == 0)
                 {
                     if (this.entityWorld.getGameRules().getBoolean("mobGriefing"))
                     {

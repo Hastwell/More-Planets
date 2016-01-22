@@ -19,7 +19,6 @@ import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import stevekung.mods.moreplanets.client.EffectHandlerMP;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
-import stevekung.mods.moreplanets.client.renderer.EntityRendererMP;
 import stevekung.mods.moreplanets.client.renderer.ModelRendererMP;
 import stevekung.mods.moreplanets.client.renderer.TileEntityItemStackRendererMP;
 import stevekung.mods.moreplanets.client.renderer.TileEntityRendererMP;
@@ -38,7 +37,6 @@ public class ClientProxyMP extends CommonProxyMP
     {
         TileEntityItemStackRenderer.instance = new TileEntityItemStackRendererMP();
 
-        EntityRendererMP.init();
         TileEntityRendererMP.registerTileEntityRenderers();
         ModelRendererMP.registerModelRender();
         StateMapperUtil.registerStateMapper();

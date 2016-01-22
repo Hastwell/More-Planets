@@ -11,37 +11,36 @@ import micdoodle8.mods.galacticraft.core.client.model.ModelMeteor;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteor;
 
 @SideOnly(Side.CLIENT)
-public class RenderIceCrystalMeteor extends Render
+public class RenderIceCrystalMeteor extends Render<EntityIceCrystalMeteor>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/ice_crystal_meteor.png");
-    private ModelMeteor modelMeteor;
+    private ModelMeteor modelMeteor = new ModelMeteor();
 
     public RenderIceCrystalMeteor(RenderManager render)
     {
         super(render);
         this.shadowSize = 1F;
-        this.modelMeteor = new ModelMeteor();
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityIceCrystalMeteor entity)
     {
         return this.texture;
     }
 
-    public void doRenderMeteor(EntityIceCrystalMeteor entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+    public void doRender(EntityIceCrystalMeteor entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
-        GlStateManager.translate((float) par2, (float) par4, (float) par6);
-        GlStateManager.rotate(par8, 0.0F, 1.0F, 0.0F);
-        GlStateManager.rotate(par8, 1.0F, 0.0F, 0.0F);
+        GlStateManager.translate((float)x, (float)y, (float)z);
+        GlStateManager.rotate(entityYaw, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(entityYaw, 1.0F, 0.0F, 0.0F);
         float f = entity.getSize();
         GlStateManager.scale(f / 2, f / 2, f / 2);
         GlStateManager.enableBlend();
@@ -50,11 +49,5 @@ public class RenderIceCrystalMeteor extends Render
         this.modelMeteor.render(entity, 0.0F, 0.0F, -0.5F, 0.0F, 0.0F, 0.1F);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
-    }
-
-    @Override
-    public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        this.doRenderMeteor((EntityIceCrystalMeteor)entity, par2, par4, par6, par8, par9);
     }
 }

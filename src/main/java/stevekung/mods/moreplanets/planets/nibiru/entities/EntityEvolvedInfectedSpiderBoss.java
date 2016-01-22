@@ -51,7 +51,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -59,7 +58,6 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import stevekung.mods.moreplanets.common.entities.IEntityLivingPlanet;
 import stevekung.mods.moreplanets.common.util.EnumDimensionType;
-import stevekung.mods.moreplanets.core.init.MPItems;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
 import stevekung.mods.moreplanets.planets.nibiru.tileentities.TileEntityNibiruTreasureChest;
@@ -100,12 +98,6 @@ public class EntityEvolvedInfectedSpiderBoss extends EntityMob implements IEntit
     protected PathNavigate getNewNavigator(World world)
     {
         return new PathNavigateClimber(this, world);
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition moving)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1011);
     }
 
     @Override

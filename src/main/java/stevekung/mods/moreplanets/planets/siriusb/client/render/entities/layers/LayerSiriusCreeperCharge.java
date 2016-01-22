@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.planets.siriusb.client.render.entities.layers
 import net.minecraft.client.model.ModelCreeper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,41 +17,15 @@ import stevekung.mods.moreplanets.planets.siriusb.client.render.entities.RenderS
 import stevekung.mods.moreplanets.planets.siriusb.entities.EntitySiriusCreeper;
 
 @SideOnly(Side.CLIENT)
-public class LayerSiriusCreeperCharge implements LayerRenderer
+public class LayerSiriusCreeperCharge implements LayerRenderer<EntitySiriusCreeper>
 {
-    private ResourceLocation LIGHTNING_TEXTURE = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
+    private ResourceLocation lightningTexture = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
     private RenderSiriusCreeper creeperRenderer;
     private ModelCreeper creeperModel = new ModelCreeper(2.0F);
 
     public LayerSiriusCreeperCharge(RenderSiriusCreeper render)
     {
         this.creeperRenderer = render;
-    }
-
-    public void doRenderLayer(EntitySiriusCreeper creeper, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
-    {
-        if (creeper.getPowered())
-        {
-            GlStateManager.depthMask(!creeper.isInvisible());
-            this.creeperRenderer.bindTexture(this.LIGHTNING_TEXTURE);
-            GlStateManager.matrixMode(5890);
-            GlStateManager.loadIdentity();
-            float f7 = creeper.ticksExisted + par4;
-            GlStateManager.translate(f7 * 0.01F, f7 * 0.01F, 0.0F);
-            GlStateManager.matrixMode(5888);
-            GlStateManager.enableBlend();
-            float f8 = 0.5F;
-            GlStateManager.color(f8, f8, f8, 1.0F);
-            GlStateManager.disableLighting();
-            GlStateManager.blendFunc(1, 1);
-            this.creeperModel.setModelAttributes(this.creeperRenderer.getMainModel());
-            this.creeperModel.render(creeper, par2, par3, par5, par6, par7, par8);
-            GlStateManager.matrixMode(5890);
-            GlStateManager.loadIdentity();
-            GlStateManager.matrixMode(5888);
-            GlStateManager.enableLighting();
-            GlStateManager.disableBlend();
-        }
     }
 
     @Override
@@ -62,8 +35,29 @@ public class LayerSiriusCreeperCharge implements LayerRenderer
     }
 
     @Override
-    public void doRenderLayer(EntityLivingBase living, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
+    public void doRenderLayer(EntitySiriusCreeper entity, float par2, float par3, float partialTicks, float par5, float par6, float par7, float scale)
     {
-        this.doRenderLayer((EntitySiriusCreeper)living, par2, par3, par4, par5, par6, par7, par8);
+        if (entity.getPowered())
+        {
+            GlStateManager.depthMask(!entity.isInvisible());
+            this.creeperRenderer.bindTexture(this.lightningTexture);
+            GlStateManager.matrixMode(5890);
+            GlStateManager.loadIdentity();
+            float f7 = entity.ticksExisted + partialTicks;
+            GlStateManager.translate(f7 * 0.01F, f7 * 0.01F, 0.0F);
+            GlStateManager.matrixMode(5888);
+            GlStateManager.enableBlend();
+            float f8 = 0.5F;
+            GlStateManager.color(f8, f8, f8, 1.0F);
+            GlStateManager.disableLighting();
+            GlStateManager.blendFunc(1, 1);
+            this.creeperModel.setModelAttributes(this.creeperRenderer.getMainModel());
+            this.creeperModel.render(entity, par2, par3, par5, par6, par7, scale);
+            GlStateManager.matrixMode(5890);
+            GlStateManager.loadIdentity();
+            GlStateManager.matrixMode(5888);
+            GlStateManager.enableLighting();
+            GlStateManager.disableBlend();
+        }
     }
 }

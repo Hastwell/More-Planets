@@ -13,11 +13,11 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import stevekung.mods.moreplanets.planets.diona.blocks.DionaBlocks;
+import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityProjectileFronisiumTNT;
 
-public class RenderProjectileFronisiumTNT extends Render
+public class RenderProjectileFronisiumTNT extends Render<EntityProjectileFronisiumTNT>
 {
     private BlockRendererDispatcher renderBlocks = Minecraft.getMinecraft().getBlockRendererDispatcher();
 
@@ -28,7 +28,7 @@ public class RenderProjectileFronisiumTNT extends Render
     }
 
     @Override
-    public void doRender(Entity entity, double x, double y, double z, float par8, float par9)
+    public void doRender(EntityProjectileFronisiumTNT entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
         this.bindTexture(TextureMap.locationBlocksTexture);
@@ -41,7 +41,7 @@ public class RenderProjectileFronisiumTNT extends Render
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityProjectileFronisiumTNT entity)
     {
         return TextureMap.locationBlocksTexture;
     }

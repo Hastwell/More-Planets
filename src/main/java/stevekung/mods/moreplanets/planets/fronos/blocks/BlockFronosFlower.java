@@ -37,7 +37,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.common.util.DamageSourceMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPBlocks;
@@ -282,7 +282,7 @@ public class BlockFronosFlower extends BlockBushMP implements IGrowable
     @Override
     public boolean canPlaceBlockOn(Block ground)
     {
-        return ground instanceof IFronosGrass || ground == FronosBlocks.fronos_dirt || ground == FronosBlocks.fronos_sand || ground == FronosBlocks.fronos_block || ground == MPBlocks.space_mossy_cobblestone || ground == FronosBlocks.jelly_ore;
+        return ground instanceof ICustomBlockProperty && ((ICustomBlockProperty)ground).getProperty() == 0 || ground == FronosBlocks.fronos_dirt || ground == FronosBlocks.fronos_sand || ground == FronosBlocks.fronos_block || ground == MPBlocks.space_mossy_cobblestone || ground == FronosBlocks.jelly_ore;
     }
 
     @Override
@@ -297,7 +297,7 @@ public class BlockFronosFlower extends BlockBushMP implements IGrowable
         }
         if (meta >= 0 && meta <= 3 || meta == 5 || meta == 6)
         {
-            return ground.getBlock() instanceof IFronosGrass || ground.getBlock() == FronosBlocks.fronos_dirt;
+            return ground.getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)ground.getBlock()).getProperty() == 0 || ground.getBlock() == FronosBlocks.fronos_dirt;
         }
         if (meta == 4)
         {
@@ -305,7 +305,7 @@ public class BlockFronosFlower extends BlockBushMP implements IGrowable
         }
         if (meta == 7)
         {
-            return ground.getBlock() == FronosBlocks.fronos_block || ground.getBlock() instanceof IFronosGrass || ground.getBlock() == FronosBlocks.fronos_dirt || ground.getBlock() == FronosBlocks.jelly_ore || ground.getBlock() == MPBlocks.space_mossy_cobblestone;
+            return ground.getBlock() == FronosBlocks.fronos_block || ground.getBlock() instanceof ICustomBlockProperty && ((ICustomBlockProperty)ground.getBlock()).getProperty() == 0 || ground.getBlock() == FronosBlocks.fronos_dirt || ground.getBlock() == FronosBlocks.jelly_ore || ground.getBlock() == MPBlocks.space_mossy_cobblestone;
         }
         if (meta == 8)
         {

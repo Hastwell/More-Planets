@@ -37,10 +37,10 @@ public class DionaBlocks
         DionaBlocks.diona_treasure_chest = new BlockDionaTreasureChest("diona_treasure_chest");
         DionaBlocks.fronisium_tnt = new BlockFronisiumTNT("fronisium_tnt");
         DionaBlocks.creeper_minion_egg = new BlockCreeperMinionEgg("creeper_minion_egg");
-        DionaBlocks.diona_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "diona_cobblestone_stairs", 2.0F);
-        DionaBlocks.chiseled_quontonium_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "chiseled_quontonium_stairs", 2.5F);
-        DionaBlocks.quontonium_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "quontonium_brick_stairs", 2.5F);
-        DionaBlocks.diona_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "diona_dungeon_brick_stairs", 4.0F);
+        DionaBlocks.diona_cobblestone_stairs = new BlockStairsMP(Blocks.stone, "diona_cobblestone_stairs", 2.0F);
+        DionaBlocks.chiseled_quontonium_stairs = new BlockStairsMP(Blocks.stone, "chiseled_quontonium_stairs", 2.5F);
+        DionaBlocks.quontonium_brick_stairs = new BlockStairsMP(Blocks.stone, "quontonium_brick_stairs", 2.5F);
+        DionaBlocks.diona_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone, "diona_dungeon_brick_stairs", 4.0F);
         DionaBlocks.diona_ancient_chest = new BlockDionaAncientChest("diona_ancient_chest");
         DionaBlocks.green_redstone_torch = new BlockGreenRedstoneTorch("green_redstone_torch", true).setLightLevel(0.5F);
         DionaBlocks.green_redstone_torch_off = new BlockGreenRedstoneTorch("green_redstone_torch_off", false);

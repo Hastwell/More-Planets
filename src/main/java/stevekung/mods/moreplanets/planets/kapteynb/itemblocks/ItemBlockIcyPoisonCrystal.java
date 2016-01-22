@@ -32,6 +32,7 @@ public class ItemBlockIcyPoisonCrystal extends ItemBlockMorePlanets
             TileEntityIcyPoisonCrystal tile = (TileEntityIcyPoisonCrystal)world.getTileEntity(pos);
             tile.facing = facing.getIndex();
         }
+        world.playSoundEffect(pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, Block.soundTypeGlass.getPlaceSound(), (Block.soundTypeGlass.getVolume() + 1.0F) / 2.0F, Block.soundTypeGlass.getFrequency() * 0.8F);
         return super.placeBlockAt(itemStack, player, world, pos, facing, hitX, hitY, hitZ, state);
     }
 }

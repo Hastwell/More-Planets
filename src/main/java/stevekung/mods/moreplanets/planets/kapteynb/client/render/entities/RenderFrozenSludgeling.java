@@ -10,13 +10,13 @@ package stevekung.mods.moreplanets.planets.kapteynb.client.render.entities;
 import micdoodle8.mods.galacticraft.planets.mars.client.model.ModelSludgeling;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityFrozenSludgeling;
 
 @SideOnly(Side.CLIENT)
-public class RenderFrozenSludgeling extends RenderLiving
+public class RenderFrozenSludgeling extends RenderLiving<EntityFrozenSludgeling>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/frozen_sludgeling.png");
 
@@ -26,7 +26,7 @@ public class RenderFrozenSludgeling extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    protected ResourceLocation getEntityTexture(EntityFrozenSludgeling entity)
     {
         return this.texture;
     }

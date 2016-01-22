@@ -53,7 +53,7 @@ public class BlockDungeonBrickWall extends BlockWallMP
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
-        for (int i = 0; i < 8; ++i)
+        for (int i = 0; i < 10; ++i)
         {
             list.add(new ItemStack(this, 1, i));
         }
@@ -98,7 +98,9 @@ public class BlockDungeonBrickWall extends BlockWallMP
         fronos_dungeon_brick_wall,
         kapteyn_b_dungeon_brick_wall,
         sirius_b_dungeon_brick_wall,
-        mercury_dungeon_brick_wall;
+        mercury_dungeon_brick_wall,
+        venus_dungeon_brick_wall,
+        pluto_dungeon_brick_wall;
 
         @Override
         public String toString()

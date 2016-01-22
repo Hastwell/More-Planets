@@ -207,6 +207,12 @@ public class WorldProviderFronos extends WorldProviderMP
     }
 
     @Override
+    public boolean netherPortalsOperational()
+    {
+        return true;
+    }
+
+    @Override
     public String getInternalNameSuffix()
     {
         return "_fronos";

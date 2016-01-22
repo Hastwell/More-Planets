@@ -28,10 +28,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import stevekung.mods.moreplanets.common.blocks.BlockBushMP;
-import stevekung.mods.moreplanets.common.blocks.IPlantableMP;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 
-public class BlockGlassGemCorn extends BlockBushMP implements IPlantableMP
+public class BlockGlassGemCorn extends BlockBushMP implements ICustomBlockProperty
 {
     public static PropertyEnum STAGE = PropertyEnum.create("stage", BlockType.class);
 
@@ -219,6 +219,12 @@ public class BlockGlassGemCorn extends BlockBushMP implements IPlantableMP
     public IBlockState getPlant(IBlockAccess world, BlockPos pos)
     {
         return FronosBlocks.glass_gem_corn.getDefaultState();
+    }
+
+    @Override
+    public int getProperty()
+    {
+        return 1;
     }
 
     public static enum BlockType implements IStringSerializable

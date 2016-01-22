@@ -9,7 +9,6 @@ package stevekung.mods.moreplanets.planets.diona.client.render.entities.layers;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,9 +17,9 @@ import stevekung.mods.moreplanets.planets.diona.client.render.entities.RenderDio
 import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperBoss;
 
 @SideOnly(Side.CLIENT)
-public class LayerDionaCreeperBossCharge implements LayerRenderer
+public class LayerDionaCreeperBossCharge implements LayerRenderer<EntityDionaCreeperBoss>
 {
-    private ResourceLocation LIGHTNING_TEXTURE = new ResourceLocation("moreplanets:textures/entity/creeper_shield.png");
+    private ResourceLocation lightningTexture = new ResourceLocation("moreplanets:textures/entity/creeper_shield.png");
     private ResourceLocation powerTexture = new ResourceLocation("galacticraftcore:textures/model/power.png");
     private RenderDionaCreeperBoss creeperRenderer;
     private ModelDionaCreeperBoss creeperModel = new ModelDionaCreeperBoss();
@@ -30,15 +29,22 @@ public class LayerDionaCreeperBossCharge implements LayerRenderer
         this.creeperRenderer = render;
     }
 
-    public void doRenderLayer(EntityDionaCreeperBoss entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
+    @Override
+    public boolean shouldCombineTextures()
+    {
+        return false;
+    }
+
+    @Override
+    public void doRenderLayer(EntityDionaCreeperBoss entity, float par2, float par3, float partialTicks, float par5, float par6, float par7, float scale)
     {
         if (entity.isArmored())
         {
             GlStateManager.depthMask(!entity.isInvisible());
-            this.creeperRenderer.bindTexture(this.LIGHTNING_TEXTURE);
+            this.creeperRenderer.bindTexture(this.lightningTexture);
             GlStateManager.matrixMode(5890);
             GlStateManager.loadIdentity();
-            float f7 = entity.ticksExisted + par4;
+            float f7 = entity.ticksExisted + partialTicks;
             GlStateManager.translate(f7 * 0.01F, f7 * 0.01F, 0.0F);
             GlStateManager.matrixMode(5888);
             GlStateManager.enableBlend();
@@ -47,7 +53,7 @@ public class LayerDionaCreeperBossCharge implements LayerRenderer
             GlStateManager.disableLighting();
             GlStateManager.blendFunc(1, 1);
             this.creeperModel.setModelAttributes(this.creeperRenderer.getMainModel());
-            this.creeperModel.render(entity, par2, par3, par5, par6, par7, par8);
+            this.creeperModel.render(entity, par2, par3, par5, par6, par7, scale);
             GlStateManager.matrixMode(5890);
             GlStateManager.loadIdentity();
             GlStateManager.matrixMode(5888);
@@ -60,7 +66,7 @@ public class LayerDionaCreeperBossCharge implements LayerRenderer
             this.creeperRenderer.bindTexture(this.powerTexture);
             GlStateManager.matrixMode(5890);
             GlStateManager.loadIdentity();
-            float f7 = entity.ticksExisted + par4;
+            float f7 = entity.ticksExisted + partialTicks;
             GlStateManager.translate(f7 * 0.01F, f7 * 0.01F, 0.0F);
             GlStateManager.matrixMode(5888);
             GlStateManager.enableBlend();
@@ -69,24 +75,12 @@ public class LayerDionaCreeperBossCharge implements LayerRenderer
             GlStateManager.disableLighting();
             GlStateManager.blendFunc(1, 1);
             this.creeperModel.setModelAttributes(this.creeperRenderer.getMainModel());
-            this.creeperModel.render(entity, par2, par3, par5, par6, par7, par8);
+            this.creeperModel.render(entity, par2, par3, par5, par6, par7, scale);
             GlStateManager.matrixMode(5890);
             GlStateManager.loadIdentity();
             GlStateManager.matrixMode(5888);
             GlStateManager.enableLighting();
             GlStateManager.disableBlend();
         }
-    }
-
-    @Override
-    public boolean shouldCombineTextures()
-    {
-        return false;
-    }
-
-    @Override
-    public void doRenderLayer(EntityLivingBase entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
-    {
-        this.doRenderLayer((EntityDionaCreeperBoss)entity, par2, par3, par4, par5, par6, par7, par8);
     }
 }

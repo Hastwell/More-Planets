@@ -105,8 +105,8 @@ public class MorePlanetsRegistry
 
     public static void registerSpaceStationProvider(int id, int staticId, Class<? extends WorldProvider> provider)
     {
-        GalacticraftRegistry.registerProvider(id, provider, false);
-        GalacticraftRegistry.registerProvider(staticId, provider, true);
+        GalacticraftRegistry.registerProvider(id, provider, false, 0);
+        GalacticraftRegistry.registerProvider(staticId, provider, true, 0);
         MPLog.debug("Register Space Station Provider ID: %s, Static ID: %s, Provider: %s", id, staticId, provider.getSimpleName());
     }
 

@@ -7,18 +7,26 @@
 
 package stevekung.mods.moreplanets.planets.pluto.world.gen;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
+import stevekung.mods.moreplanets.planets.pluto.entities.EntityPlutoAlien;
 
 public class ChunkProviderPluto extends ChunkProviderBaseMP
 {
@@ -75,7 +83,24 @@ public class ChunkProviderPluto extends ChunkProviderBaseMP
         this.rand.setSeed(chunkX * var7 + chunkZ * var9 ^ this.worldObj.getSeed());
         //this.dungeonGenerator.handleTileEntities(this.rand);
         this.biomeDecorator.decorate(this.worldObj, this.rand, BiomeGenBaseMP.basePlanetBiome, pos);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(PlutoBlocks.pluto_ancient_chest, PlutoBlocks.pluto_block, MPBlocks.space_mossy_cobblestone, 9).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
         BlockFalling.fallInstantly = false;
+    }
+
+    @Override
+    public List getPossibleCreatures(EnumCreatureType type, BlockPos pos)
+    {
+        if (type == EnumCreatureType.MONSTER)
+        {
+            List monsters = new ArrayList();
+            monsters.add(new SpawnListEntry(EntityPlutoAlien.class, 50, 4, 4));
+            return monsters;
+        }
+        return super.getPossibleCreatures(type, pos);
     }
 
     @Override

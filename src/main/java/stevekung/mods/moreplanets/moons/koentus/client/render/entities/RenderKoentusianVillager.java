@@ -10,13 +10,13 @@ package stevekung.mods.moreplanets.moons.koentus.client.render.entities;
 import micdoodle8.mods.galacticraft.core.client.model.ModelAlienVillager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import stevekung.mods.moreplanets.moons.koentus.entities.EntityKoentusianVillager;
 
 @SideOnly(Side.CLIENT)
-public class RenderKoentusianVillager extends RenderLiving
+public class RenderKoentusianVillager extends RenderLiving<EntityKoentusianVillager>
 {
     private ResourceLocation texture = new ResourceLocation("moreplanets:textures/entity/koentusian_villager.png");
 
@@ -26,7 +26,7 @@ public class RenderKoentusianVillager extends RenderLiving
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityKoentusianVillager entity)
     {
         return this.texture;
     }

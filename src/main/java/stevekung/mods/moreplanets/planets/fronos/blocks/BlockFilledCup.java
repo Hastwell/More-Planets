@@ -16,6 +16,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.common.blocks.BlockBaseMP;
 import stevekung.mods.stevecore.BlockStateHelper;
@@ -29,6 +30,12 @@ public abstract class BlockFilledCup extends BlockBaseMP
         this.setTickRandomly(true);
         this.setDefaultState(this.getDefaultState().withProperty(BlockStateHelper.FACING, EnumFacing.NORTH));
         this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.7F, 0.5F, 0.7F);
+    }
+
+    @Override
+    public boolean canRenderInLayer(EnumWorldBlockLayer layer)
+    {
+        return EnumWorldBlockLayer.TRANSLUCENT == layer;
     }
 
     @Override

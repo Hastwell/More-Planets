@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.planets.fronos.blocks.BlockFronosCoral;
@@ -21,7 +20,7 @@ import stevekung.mods.moreplanets.planets.fronos.client.render.entities.RenderTo
 import stevekung.mods.moreplanets.planets.fronos.entities.EntityTomato;
 
 @SideOnly(Side.CLIENT)
-public class LayerTomato implements LayerRenderer
+public class LayerTomato implements LayerRenderer<EntityTomato>
 {
     private RenderTomato render;
 
@@ -30,7 +29,14 @@ public class LayerTomato implements LayerRenderer
         this.render = render;
     }
 
-    public void func_177204_a(EntityTomato entity)
+    @Override
+    public boolean shouldCombineTextures()
+    {
+        return true;
+    }
+
+    @Override
+    public void doRenderLayer(EntityTomato entity, float par2, float par3, float partialTicks, float par5, float par6, float par7, float scale)
     {
         if (!entity.isChild() && !entity.isInvisible())
         {
@@ -45,17 +51,5 @@ public class LayerTomato implements LayerRenderer
             GlStateManager.popMatrix();
             GlStateManager.disableCull();
         }
-    }
-
-    @Override
-    public boolean shouldCombineTextures()
-    {
-        return true;
-    }
-
-    @Override
-    public void doRenderLayer(EntityLivingBase entity, float par2, float par3, float par4, float par5, float par6, float par7, float par8)
-    {
-        this.func_177204_a((EntityTomato)entity);
     }
 }

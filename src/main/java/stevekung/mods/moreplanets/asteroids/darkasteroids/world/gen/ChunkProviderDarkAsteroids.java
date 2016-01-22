@@ -24,6 +24,7 @@ import micdoodle8.mods.galacticraft.planets.asteroids.blocks.AsteroidBlocks;
 import micdoodle8.mods.galacticraft.planets.asteroids.world.gen.SpecialAsteroidBlock;
 import micdoodle8.mods.galacticraft.planets.asteroids.world.gen.SpecialAsteroidBlockHandler;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.state.IBlockState;
@@ -609,19 +610,19 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                     this.worldObj.setBlockState(new BlockPos(px, y, pz), block.getStateFromMeta(meta), 2);
                     int count = 7;
 
-                    if (!this.worldObj.getBlockState(new BlockPos(px - 1,  y, pz)).getBlock().isAir(this.worldObj, new BlockPos(px - 1, y, pz)))
+                    if (!(this.worldObj.getBlockState(new BlockPos(px - 1,  y, pz)).getBlock() instanceof BlockAir))
                     {
                         count = 1;
                     }
-                    else if (!this.worldObj.getBlockState(new BlockPos(px - 2,  y, pz)).getBlock().isAir(this.worldObj, new BlockPos(px - 2, y, pz)))
+                    else if (!(this.worldObj.getBlockState(new BlockPos(px - 2,  y, pz)).getBlock() instanceof BlockAir))
                     {
                         count = 3;
                     }
-                    else if (!this.worldObj.getBlockState(new BlockPos(px - 3,  y, pz)).getBlock().isAir(this.worldObj, new BlockPos(px - 3,  y, pz)))
+                    else if (!(this.worldObj.getBlockState(new BlockPos(px - 3,  y, pz)).getBlock() instanceof BlockAir))
                     {
                         count = 5;
                     }
-                    else if (!this.worldObj.getBlockState(new BlockPos(px - 4,  y, pz)).getBlock().isAir(this.worldObj, new BlockPos(px - 4,  y, pz)))
+                    else if (!(this.worldObj.getBlockState(new BlockPos(px - 4,  y, pz)).getBlock() instanceof BlockAir))
                     {
                         count = 6;
                     }
@@ -719,7 +720,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
         {
             if (chunk.getBlockStorageArray()[j] == null)
             {
-                chunk.getBlockStorageArray()[j] = new ExtendedBlockStorage(j, false);
+                chunk.getBlockStorageArray()[j] = new ExtendedBlockStorage(j << 4, false);
             }
         }
 
@@ -784,59 +785,59 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                 {
                     for (int y = yMin; y < yMax; y++)
                     {
-                        if (chunk.getBlock(x - 1, y, z).isAir(w, new BlockPos(x - 1, y, z)) && !chunk.getBlock(x, y, z).isAir(w, new BlockPos(x, y, z)))
+                        if (chunk.getBlock(x - 1, y, z) instanceof BlockAir && !(chunk.getBlock(x, y, z) instanceof BlockAir))
                         {
                             int count = 2;
 
                             if (x > 1)
                             {
-                                if (chunk.getBlock(x - 2, y, z).isAir(w, new BlockPos(x - 2, y, z)))
+                                if (chunk.getBlock(x - 2, y, z) instanceof BlockAir)
                                 {
                                     count+=2;
                                 }
                             }
                             if (x > 2)
                             {
-                                if (chunk.getBlock(x - 3, y, z).isAir(w, new BlockPos(x - 3, y, z)))
+                                if (chunk.getBlock(x - 3, y, z) instanceof BlockAir)
                                 {
                                     count+=2;
                                 }
-                                if (chunk.getBlock(x - 3, y + 1, z).isAir(w, new BlockPos(x - 3, y + 1, z)))
+                                if (chunk.getBlock(x - 3, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (chunk.getBlock(x - 3, y + 1, z).isAir(w, new BlockPos(x - 3, y + 1, z)))
+                                if (chunk.getBlock(x - 3, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (z > 0 && chunk.getBlock(x - 3, y, z - 1).isAir(w, new BlockPos(x - 3, y, z - 1)))
+                                if (z > 0 && chunk.getBlock(x - 3, y, z - 1) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (z < 15 && chunk.getBlock(x - 3, y, z + 1).isAir(w, new BlockPos(x - 3, y, z + 1)))
+                                if (z < 15 && chunk.getBlock(x - 3, y, z + 1) instanceof BlockAir)
                                 {
                                     count++;
                                 }
                             }
                             if (x > 3)
                             {
-                                if (chunk.getBlock(x - 4, y, z).isAir(w, new BlockPos(x - 4, y, z)))
+                                if (chunk.getBlock(x - 4, y, z) instanceof BlockAir)
                                 {
                                     count+=2;
                                 }
-                                if (chunk.getBlock(x - 4, y + 1, z).isAir(w, new BlockPos(x - 4, y + 1, z)))
+                                if (chunk.getBlock(x - 4, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (chunk.getBlock(x - 4, y + 1, z).isAir(w, new BlockPos(x - 4, y + 1, z)))
+                                if (chunk.getBlock(x - 4, y + 1, z) instanceof BlockAir)
                                 {
                                     count++;
                                 }
-                                if (z > 0 && !chunk.getBlock(x - 4, y, z - 1).isAir(w, new BlockPos(x - 4, y, z - 1)))
+                                if (z > 0 && !(chunk.getBlock(x - 4, y, z - 1) instanceof BlockAir))
                                 {
                                     count++;
                                 }
-                                if (z < 15 && !chunk.getBlock(x - 4, y, z + 1).isAir(w, new BlockPos(x - 4, y, z + 1)))
+                                if (z < 15 && !(chunk.getBlock(x - 4, y, z + 1) instanceof BlockAir))
                                 {
                                     count++;
                                 }
@@ -892,7 +893,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
-            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 15, 2, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         return null;

@@ -29,26 +29,26 @@ public class TileEntityFrozenWaterGeyser extends TileEntity implements ITickable
             {
                 List<EntityLivingBase> living = this.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.fromBounds(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.pos.getX() + 1, this.pos.getY() + 8, this.pos.getZ() + 1));
 
-                if (living.size() > 0)
+                for (EntityLivingBase e : living)
                 {
-                    living.get(0).motionY = 1.5D;
-                    living.get(0).fallDistance = 0.0F;
-                    living.get(0).extinguish();
-                    living.get(0).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
+                    e.motionY = 1.5D;
+                    e.fallDistance = 0.0F;
+                    e.extinguish();
+                    e.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
                 }
             }
             else
             {
                 List<EntityPlayer> player = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.fromBounds(this.pos.getX(), this.pos.getY(), this.pos.getZ(), this.pos.getX() + 1, this.pos.getY() + 8, this.pos.getZ() + 1));
 
-                if (player.size() > 0)
+                for (EntityPlayer e : player)
                 {
-                    if (!player.get(0).capabilities.isFlying)
+                    if (!e.capabilities.isFlying)
                     {
-                        player.get(0).motionY = 1.5D;
-                        player.get(0).fallDistance = 0.0F;
-                        player.get(0).extinguish();
-                        player.get(0).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
+                        e.motionY = 1.5D;
+                        e.fallDistance = 0.0F;
+                        e.extinguish();
+                        e.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 120, 1));
                     }
                 }
             }

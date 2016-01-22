@@ -12,7 +12,6 @@ import micdoodle8.mods.galacticraft.core.util.ClientUtil;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -22,7 +21,7 @@ import stevekung.mods.moreplanets.client.objmodel.IModelCustom;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
 
 @SideOnly(Side.CLIENT)
-public class RenderTier8Rocket extends Render
+public class RenderTier8Rocket extends Render<EntityTier8Rocket>
 {
     private ResourceLocation rocketTexture;
     protected IModelCustom rocketModelObj;
@@ -36,20 +35,21 @@ public class RenderTier8Rocket extends Render
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(Entity entity)
+    protected ResourceLocation getEntityTexture(EntityTier8Rocket entity)
     {
         return this.rocketTexture;
     }
 
-    public void renderSpaceship(EntityTier8Rocket entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+    public void doRender(EntityTier8Rocket entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
-        float var24 = entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * par9 + 180;
-        GlStateManager.translate((float) par2, (float) par4 - 0.4F, (float) par6);
-        GlStateManager.rotate(180.0F - par8, 0.0F, 1.0F, 0.0F);
+        float var24 = entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks + 180;
+        GlStateManager.translate((float)x, (float)y - 0.4F, (float)z);
+        GlStateManager.rotate(180.0F - entityYaw, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(-var24, 0.0F, 0.0F, 1.0F);
-        float var28 = entity.rollAmplitude / 3 - par9;
-        float var30 = entity.shipDamage - par9;
+        float var28 = entity.rollAmplitude / 3 - partialTicks;
+        float var30 = entity.shipDamage - partialTicks;
 
         if (var30 < 0.0F)
         {
@@ -58,8 +58,8 @@ public class RenderTier8Rocket extends Render
         if (var28 > 0.0F)
         {
             float i = entity.getLaunched() ? (5 - MathHelper.floor_double(entity.timeUntilLaunch / 85)) / 10F : 0.3F;
-            GlStateManager.rotate(MathHelper.sin(var28) * var28 * i * par9, 1.0F, 0.0F, 0.0F);
-            GlStateManager.rotate(MathHelper.sin(var28) * var28 * i * par9, 1.0F, 0.0F, 1.0F);
+            GlStateManager.rotate(MathHelper.sin(var28) * var28 * i * partialTicks, 1.0F, 0.0F, 0.0F);
+            GlStateManager.rotate(MathHelper.sin(var28) * var28 * i * partialTicks, 1.0F, 0.0F, 1.0F);
         }
 
         this.bindEntityTexture(entity);
@@ -83,7 +83,6 @@ public class RenderTier8Rocket extends Render
         {
             GlStateManager.color(0, 1, 0);
         }
-
         GlStateManager.disableTexture2D();
         GlStateManager.disableLighting();
         this.rocketModelObj.renderPart("Cube");
@@ -91,11 +90,5 @@ public class RenderTier8Rocket extends Render
         GlStateManager.enableLighting();
         GlStateManager.color(1, 1, 1);
         GlStateManager.popMatrix();
-    }
-
-    @Override
-    public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        this.renderSpaceship((EntityTier8Rocket)entity, par2, par4, par6, par8, par9);
     }
 }

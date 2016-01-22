@@ -48,8 +48,8 @@ public class SiriusBBlocks
         SiriusBBlocks.sirius_fire = new BlockSiriusFire("sirius_fire");
         SiriusBBlocks.sirius_b_ancient_chest = new BlockSiriusBAncientChest("sirius_b_ancient_chest");
         SiriusBBlocks.sirius_obsidian = new BlockBaseMP("sirius_obsidian", Material.rock).setHardness(70.0F).setResistance(5000.0F).setLightLevel(1.0F);
-        SiriusBBlocks.sirius_b_carbon_cobblestone_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "sirius_b_carbon_cobblestone_stairs", null, "sirius", 2.5F);
-        SiriusBBlocks.sirius_b_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone.getDefaultState(), "sirius_b_dungeon_brick_stairs", null, "sirius", 4.0F);
+        SiriusBBlocks.sirius_b_carbon_cobblestone_stairs = new BlockStairsMP(Blocks.stone, "sirius_b_carbon_cobblestone_stairs", null, "sirius", 2.5F);
+        SiriusBBlocks.sirius_b_dungeon_brick_stairs = new BlockStairsMP(Blocks.stone, "sirius_b_dungeon_brick_stairs", null, "sirius", 4.0F);
         SiriusBBlocks.sirius_glowstone = new BlockSiriusGlowstone("sirius_glowstone");
         SiriusBBlocks.sirius_redstone_lamp_off = new BlockSiriusRedstoneLamp("sirius_redstone_lamp", false);
         SiriusBBlocks.sirius_redstone_lamp_on = new BlockSiriusRedstoneLamp("sirius_redstone_lamp_on", true);

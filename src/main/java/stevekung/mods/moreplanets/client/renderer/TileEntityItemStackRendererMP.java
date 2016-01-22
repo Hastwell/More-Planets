@@ -29,6 +29,8 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.FronosBlocks;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosAncientChest;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTreasureChest;
 import stevekung.mods.moreplanets.planets.kapteynb.blocks.KapteynBBlocks;
+import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityIceCrystalMeteorChunk;
+import stevekung.mods.moreplanets.planets.kapteynb.items.KapteynBItems;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityIcyPoisonCrystal;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBAncientChest;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityKapteynBTreasureChest;
@@ -162,6 +164,18 @@ public class TileEntityItemStackRendererMP extends TileEntityItemStackRenderer
             GlStateManager.rotate(180.0F, 0.0F, 0.0F, 0.0F);
             GlStateManager.scale(1.0F, 1.0F, 1.0F);
             mc.getRenderManager().renderEntityWithPosYaw(new EntityKoentusMeteorChunk(world), 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+            GlStateManager.popMatrix();
+        }
+        else if (item == KapteynBItems.ice_crystal_meteor_chunk)
+        {
+            GlStateManager.pushMatrix();
+            GlStateManager.enableBlend();
+            GlStateManager.blendFunc(770, 771);
+            GlStateManager.translate(0.5F, 0.5F, 0.5F);
+            GlStateManager.rotate(180.0F, 0.0F, 0.0F, 0.0F);
+            GlStateManager.scale(1.0F, 1.0F, 1.0F);
+            mc.getRenderManager().renderEntityWithPosYaw(new EntityIceCrystalMeteorChunk(world), 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+            GlStateManager.disableBlend();
             GlStateManager.popMatrix();
         }
         else

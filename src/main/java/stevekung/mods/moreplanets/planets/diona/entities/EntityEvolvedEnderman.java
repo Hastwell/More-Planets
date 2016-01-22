@@ -14,25 +14,17 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntityEvolvedEnderman extends EntityEnderman implements IEntityBreathable
 {
     public EntityEvolvedEnderman(World world)
     {
         super(world);
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1001);
     }
 
     @Override

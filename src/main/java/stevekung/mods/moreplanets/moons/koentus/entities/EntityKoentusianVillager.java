@@ -20,10 +20,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntityKoentusianVillager extends EntityAgeable implements IEntityBreathable
 {
@@ -71,49 +68,6 @@ public class EntityKoentusianVillager extends EntityAgeable implements IEntityBr
     public EntityKoentusianVillager createChild(EntityAgeable entity)
     {
         return new EntityKoentusianVillager(this.worldObj);
-    }
-
-    @Override
-    public boolean interact(EntityPlayer player)
-    {
-        ItemStack itemStack = player.inventory.getCurrentItem();
-
-        if (itemStack != null && itemStack.getItem() == MPItems.spawn_egg_mp && itemStack.getItemDamage() == 1012)
-        {
-            if (!this.worldObj.isRemote)
-            {
-                EntityAgeable entityageable = this.createChild(this);
-
-                if (entityageable != null)
-                {
-                    entityageable.setGrowingAge(-24000);
-                    entityageable.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
-                    this.worldObj.spawnEntityInWorld(entityageable);
-
-                    if (itemStack.hasDisplayName())
-                    {
-                        entityageable.setCustomNameTag(itemStack.getDisplayName());
-                    }
-                    if (!player.capabilities.isCreativeMode)
-                    {
-                        --itemStack.stackSize;
-
-                        if (itemStack.stackSize <= 0)
-                        {
-                            player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-        return super.interact(player);
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1012);
     }
 
     @Override

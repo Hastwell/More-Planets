@@ -11,6 +11,10 @@
 		"half=bottom,variant=sirius_b_carbon_cobblestone_slab": { "model": "moreplanets:half_slab_sirius_b_carbon_cobblestone" },
         "half=top,variant=sirius_b_carbon_cobblestone_slab": { "model": "moreplanets:upper_slab_sirius_b_carbon_cobblestone" },
 		"half=bottom,variant=mercury_cobblestone_slab": { "model": "moreplanets:half_slab_mercury_cobblestone" },
-        "half=top,variant=mercury_cobblestone_slab": { "model": "moreplanets:upper_slab_mercury_cobblestone" }
+        "half=top,variant=mercury_cobblestone_slab": { "model": "moreplanets:upper_slab_mercury_cobblestone" },
+		"half=bottom,variant=venus_cobblestone_slab": { "model": "moreplanets:half_slab_venus_cobblestone" },
+        "half=top,variant=venus_cobblestone_slab": { "model": "moreplanets:upper_slab_venus_cobblestone" },
+		"half=bottom,variant=pluto_cobblestone_slab": { "model": "moreplanets:half_slab_pluto_cobblestone" },
+        "half=top,variant=pluto_cobblestone_slab": { "model": "moreplanets:upper_slab_pluto_cobblestone" }
     }
 }

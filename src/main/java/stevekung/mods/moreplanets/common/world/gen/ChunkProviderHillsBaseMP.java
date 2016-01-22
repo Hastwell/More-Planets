@@ -28,6 +28,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.ChunkProviderGenerate;
+import stevekung.mods.moreplanets.common.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityEvolvedEnderman;
 
 public abstract class ChunkProviderHillsBaseMP extends ChunkProviderGenerate
@@ -316,6 +317,7 @@ public abstract class ChunkProviderHillsBaseMP extends ChunkProviderGenerate
             monsters.add(new SpawnListEntry(EntityEvolvedSkeleton.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedCreeper.class, 100, 4, 4));
             monsters.add(new SpawnListEntry(EntityEvolvedEnderman.class, 10, 1, 4));
+            monsters.add(new SpawnListEntry(EntityEvolvedWitch.class, 5, 1, 1));
             return monsters;
         }
         return null;

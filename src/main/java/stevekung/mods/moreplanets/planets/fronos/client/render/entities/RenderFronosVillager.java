@@ -7,7 +7,6 @@
 
 package stevekung.mods.moreplanets.planets.fronos.client.render.entities;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelVillager;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -42,12 +41,6 @@ public class RenderFronosVillager extends RenderLiving<EntityFronosVillager>
             this.shadowSize = 0.5F;
         }
         GlStateManager.scale(f1, f1, f1);
-    }
-
-    @Override
-    public ModelBase getMainModel()
-    {
-        return super.getMainModel();
     }
 
     @Override

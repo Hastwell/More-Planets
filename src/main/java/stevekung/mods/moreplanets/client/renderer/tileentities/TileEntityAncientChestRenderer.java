@@ -12,7 +12,6 @@ import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,7 +21,7 @@ import stevekung.mods.moreplanets.common.util.CalendarHelper;
 import stevekung.mods.moreplanets.common.util.EnumChestTexture;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
+public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer<TileEntityAncientChestMP>
 {
     private ResourceLocation textureChristmasDouble;
     private ResourceLocation textureChristmas;
@@ -30,7 +29,6 @@ public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
     private ResourceLocation textureNormal;
     private ResourceLocation morePlanetsChestNormal;
     private ResourceLocation morePlanetsLargeChestNormal;
-
     private ModelChest simpleChest = new ModelChest();
     private ModelChest largeChest = new ModelLargeChest();
 
@@ -44,38 +42,39 @@ public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
         this.morePlanetsLargeChestNormal = new ResourceLocation("moreplanets:textures/model/stevekung_chest_double.png");
     }
 
-    public void func_180538_a(TileEntityAncientChestMP chest, double p_180538_2_, double p_180538_4_, double p_180538_6_, float p_180538_8_, int p_180538_9_)
+    @Override
+    public void renderTileEntityAt(TileEntityAncientChestMP tile, double x, double y, double z, float partialTicks, int destroyStage)
     {
         int meta;
 
-        if (!chest.hasWorldObj())
+        if (!tile.hasWorldObj())
         {
             meta = 0;
         }
         else
         {
-            Block block = chest.getBlockType();
-            meta = chest.getBlockMetadata();
+            Block block = tile.getBlockType();
+            meta = tile.getBlockMetadata();
 
             if (block instanceof BlockAncientChestMP && meta == 0)
             {
-                ((BlockAncientChestMP)block).checkForSurroundingChests(chest.getWorld(), chest.getPos(), chest.getWorld().getBlockState(chest.getPos()));
-                meta = chest.getBlockMetadata();
+                ((BlockAncientChestMP)block).checkForSurroundingChests(tile.getWorld(), tile.getPos(), tile.getWorld().getBlockState(tile.getPos()));
+                meta = tile.getBlockMetadata();
             }
-            chest.checkForAdjacentChests();
+            tile.checkForAdjacentChests();
         }
 
-        if (chest.adjacentChestZNeg == null && chest.adjacentChestXNeg == null)
+        if (tile.adjacentChestZNeg == null && tile.adjacentChestXNeg == null)
         {
             ModelChest modelchest;
 
-            if (chest.adjacentChestXPos == null && chest.adjacentChestZPos == null)
+            if (tile.adjacentChestXPos == null && tile.adjacentChestZPos == null)
             {
                 modelchest = this.simpleChest;
 
-                if (p_180538_9_ >= 0)
+                if (destroyStage >= 0)
                 {
-                    this.bindTexture(DESTROY_STAGES[p_180538_9_]);
+                    this.bindTexture(DESTROY_STAGES[destroyStage]);
                     GlStateManager.matrixMode(5890);
                     GlStateManager.pushMatrix();
                     GlStateManager.scale(4.0F, 4.0F, 1.0F);
@@ -99,9 +98,9 @@ public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
             {
                 modelchest = this.largeChest;
 
-                if (p_180538_9_ >= 0)
+                if (destroyStage >= 0)
                 {
-                    this.bindTexture(DESTROY_STAGES[p_180538_9_]);
+                    this.bindTexture(DESTROY_STAGES[destroyStage]);
                     GlStateManager.matrixMode(5890);
                     GlStateManager.pushMatrix();
                     GlStateManager.scale(8.0F, 4.0F, 1.0F);
@@ -125,12 +124,12 @@ public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
             GlStateManager.pushMatrix();
             GlStateManager.enableRescaleNormal();
 
-            if (p_180538_9_ < 0)
+            if (destroyStage < 0)
             {
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             }
 
-            GlStateManager.translate((float)p_180538_2_, (float)p_180538_4_ + 1.0F, (float)p_180538_6_ + 1.0F);
+            GlStateManager.translate((float)x, (float)y + 1.0F, (float)z + 1.0F);
             GlStateManager.scale(1.0F, -1.0F, -1.0F);
             GlStateManager.translate(0.5F, 0.5F, 0.5F);
             short short1 = 0;
@@ -152,23 +151,23 @@ public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
                 short1 = -90;
             }
 
-            if (meta == 2 && chest.adjacentChestXPos != null)
+            if (meta == 2 && tile.adjacentChestXPos != null)
             {
                 GlStateManager.translate(1.0F, 0.0F, 0.0F);
             }
-            if (meta == 5 && chest.adjacentChestZPos != null)
+            if (meta == 5 && tile.adjacentChestZPos != null)
             {
                 GlStateManager.translate(0.0F, 0.0F, -1.0F);
             }
 
             GlStateManager.rotate(short1, 0.0F, 1.0F, 0.0F);
             GlStateManager.translate(-0.5F, -0.5F, -0.5F);
-            float f1 = chest.prevLidAngle + (chest.lidAngle - chest.prevLidAngle) * p_180538_8_;
+            float f1 = tile.prevLidAngle + (tile.lidAngle - tile.prevLidAngle) * partialTicks;
             float f2;
 
-            if (chest.adjacentChestZNeg != null)
+            if (tile.adjacentChestZNeg != null)
             {
-                f2 = chest.adjacentChestZNeg.prevLidAngle + (chest.adjacentChestZNeg.lidAngle - chest.adjacentChestZNeg.prevLidAngle) * p_180538_8_;
+                f2 = tile.adjacentChestZNeg.prevLidAngle + (tile.adjacentChestZNeg.lidAngle - tile.adjacentChestZNeg.prevLidAngle) * partialTicks;
 
                 if (f2 > f1)
                 {
@@ -176,9 +175,9 @@ public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
                 }
             }
 
-            if (chest.adjacentChestXNeg != null)
+            if (tile.adjacentChestXNeg != null)
             {
-                f2 = chest.adjacentChestXNeg.prevLidAngle + (chest.adjacentChestXNeg.lidAngle - chest.adjacentChestXNeg.prevLidAngle) * p_180538_8_;
+                f2 = tile.adjacentChestXNeg.prevLidAngle + (tile.adjacentChestXNeg.lidAngle - tile.adjacentChestXNeg.prevLidAngle) * partialTicks;
 
                 if (f2 > f1)
                 {
@@ -194,18 +193,12 @@ public class TileEntityAncientChestRenderer extends TileEntitySpecialRenderer
             GlStateManager.popMatrix();
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
-            if (p_180538_9_ >= 0)
+            if (destroyStage >= 0)
             {
                 GlStateManager.matrixMode(5890);
                 GlStateManager.popMatrix();
                 GlStateManager.matrixMode(5888);
             }
         }
-    }
-
-    @Override
-    public void renderTileEntityAt(TileEntity tile, double posX, double posZ, double p_180535_6_, float p_180535_8_, int p_180535_9_)
-    {
-        this.func_180538_a((TileEntityAncientChestMP)tile, posX, posZ, p_180535_6_, p_180535_8_, p_180535_9_);
     }
 }

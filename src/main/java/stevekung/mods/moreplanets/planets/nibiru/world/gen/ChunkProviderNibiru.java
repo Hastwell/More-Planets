@@ -22,8 +22,10 @@ import net.minecraft.world.chunk.IChunkProvider;
 import stevekung.mods.moreplanets.common.world.biome.BiomeGenBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.ChunkProviderHillsBaseMP;
 import stevekung.mods.moreplanets.common.world.gen.MapGenCavesMP;
+import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSpaceDungeons;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenSplashBlock;
 import stevekung.mods.moreplanets.common.world.gen.feature.WorldGenTreeMP;
+import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.blocks.NibiruBlocks;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityGiantWorm;
 import stevekung.mods.moreplanets.planets.nibiru.entities.EntityInfectedZombie;
@@ -34,7 +36,7 @@ public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
     private MapGenCavesMP caveGenerator = new MapGenCavesMP(NibiruBlocks.nibiru_block, this.getBlockMetadata());
     private MapGenCavernNibiru cavernGenerator = new MapGenCavernNibiru();
     private MapGenNibiruRavine ravineGenerator = new MapGenNibiruRavine();
-    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseNibiru.basePlanetBiome };
+    private BiomeGenBase[] biomesForGeneration = { BiomeGenBaseMP.basePlanetBiome };
     //private MapGenDungeon dungeonGenerator = new MapGenDungeon(NibiruBlocks.nibiru_block, 12, 8, 24, 4);
 
     public ChunkProviderNibiru(World world, long seed, boolean genFeature)
@@ -117,6 +119,10 @@ public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
         {
             new WorldGenTreeMP(NibiruBlocks.nibiru_log, NibiruBlocks.nibiru_leaves, 1, 1, NibiruBlocks.nibiru_sapling, null, NibiruBlocks.infected_grass, NibiruBlocks.infected_dirt, null).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
         }
+        for (int i = 0; i < 8; ++i)
+        {
+            new WorldGenSpaceDungeons(NibiruBlocks.nibiru_ancient_chest, NibiruBlocks.nibiru_block, MPBlocks.space_mossy_cobblestone, 2).generate(this.worldObj, this.rand, pos.add(this.rand.nextInt(16) + 8, this.rand.nextInt(256), this.rand.nextInt(16) + 8));
+        }
         BlockFalling.fallInstantly = false;
     }
 
@@ -127,7 +133,7 @@ public class ChunkProviderNibiru extends ChunkProviderHillsBaseMP
         {
             List monsters = new ArrayList();
             monsters.add(new BiomeGenBase.SpawnListEntry(EntityInfectedZombie.class, 100, 4, 4));
-            monsters.add(new BiomeGenBase.SpawnListEntry(EntityGiantWorm.class, 100, 2, 4));
+            monsters.add(new BiomeGenBase.SpawnListEntry(EntityGiantWorm.class, 100, 4, 4));
             return monsters;
         }
         return super.getPossibleCreatures(type, pos);

@@ -16,6 +16,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -59,7 +60,7 @@ public class BlockStoneSlab2 extends BlockSlab
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < 8; ++i)
         {
             list.add(new ItemStack(this, 1, i));
         }
@@ -113,7 +114,7 @@ public class BlockStoneSlab2 extends BlockSlab
     }
 
     @Override
-    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos)
+    public ItemStack getPickBlock(MovingObjectPosition moving, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, this.getMetaFromState(world.getBlockState(pos)) & 7);
     }
@@ -168,7 +169,9 @@ public class BlockStoneSlab2 extends BlockSlab
         cracked_fronos_stone_brick_slab(2),
         kapteyn_b_cracked_ice_slab(3),
         sirius_b_carbon_cobblestone_slab(4),
-        mercury_cobblestone_slab(5);
+        mercury_cobblestone_slab(5),
+        venus_cobblestone_slab(6),
+        pluto_cobblestone_slab(7);
 
         private int meta;
         private static BlockType[] META_LOOKUP = new BlockType[values().length];

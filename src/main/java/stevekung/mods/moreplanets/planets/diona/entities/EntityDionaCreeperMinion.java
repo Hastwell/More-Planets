@@ -10,10 +10,7 @@ package stevekung.mods.moreplanets.planets.diona.entities;
 import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import stevekung.mods.moreplanets.core.init.MPItems;
 
 public class EntityDionaCreeperMinion extends EntityCreeper implements IEntityBreathable
 {
@@ -27,12 +24,6 @@ public class EntityDionaCreeperMinion extends EntityCreeper implements IEntityBr
     public float getEyeHeight()
     {
         return this.height - 0.5F;
-    }
-
-    @Override
-    public ItemStack getPickedResult(MovingObjectPosition target)
-    {
-        return new ItemStack(MPItems.spawn_egg_mp, 1, 1004);
     }
 
     @Override

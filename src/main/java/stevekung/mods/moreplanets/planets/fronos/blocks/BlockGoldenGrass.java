@@ -22,10 +22,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stevekung.mods.moreplanets.client.EnumParticleTypesMP;
 import stevekung.mods.moreplanets.common.blocks.BlockGrassMP;
-import stevekung.mods.moreplanets.common.blocks.IFronosGrass;
+import stevekung.mods.moreplanets.common.blocks.ICustomBlockProperty;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 
-public class BlockGoldenGrass extends BlockGrassMP implements IFronosGrass
+public class BlockGoldenGrass extends BlockGrassMP implements ICustomBlockProperty
 {
     public static PropertyBool HAS_TEA_CREAM = PropertyBool.create("tea");
 
@@ -106,6 +106,12 @@ public class BlockGoldenGrass extends BlockGrassMP implements IFronosGrass
 
     @Override
     public int getMetaFromState(IBlockState state)
+    {
+        return 0;
+    }
+
+    @Override
+    public int getProperty()
     {
         return 0;
     }

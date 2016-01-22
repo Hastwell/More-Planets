@@ -22,15 +22,6 @@ import stevekung.mods.moreplanets.core.init.MPPlanets;
 
 public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUltraVioletLevel
 {
-    public int spaceStationDimensionID;
-
-    @Override
-    public void setDimension(int id)
-    {
-        this.spaceStationDimensionID = id;
-        super.setDimension(id);
-    }
-
     @Override
     public CelestialBody getCelestialBody()
     {
@@ -144,7 +135,7 @@ public class WorldProviderJupiterOrbit extends WorldProviderOrbit implements IUl
     @Override
     public String getDimensionName()
     {
-        return "Jupiter Space Station " + this.spaceStationDimensionID;
+        return "Space Station " + this.spaceStationDimensionID;
     }
 
     @Override

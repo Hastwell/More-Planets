@@ -6,6 +6,10 @@
 		"variant=mossy_koentus_cobblestone": { "model": "moreplanets:mossy_koentus_cobblestone" },
 		"variant=mossy_fronos_cobblestone": { "model": "moreplanets:mossy_fronos_cobblestone" },
 		"variant=mossy_kapteyn_b_cobblestone": { "model": "moreplanets:mossy_kapteyn_b_cobblestone" },
-		"variant=mossy_sirius_b_cobblestone": { "model": "moreplanets:mossy_sirius_b_cobblestone" }
+		"variant=mossy_sirius_b_cobblestone": { "model": "moreplanets:mossy_sirius_b_cobblestone" },
+		"variant=mossy_venus_cobblestone": { "model": "moreplanets:mossy_venus_cobblestone" },
+		"variant=mossy_mercury_cobblestone": { "model": "moreplanets:mossy_mercury_cobblestone" },
+		"variant=mossy_pluto_cobblestone": { "model": "moreplanets:mossy_pluto_cobblestone" },
+		"variant=mossy_martian_cobblestone": { "model": "moreplanets:mossy_martian_cobblestone" }
     }
 }

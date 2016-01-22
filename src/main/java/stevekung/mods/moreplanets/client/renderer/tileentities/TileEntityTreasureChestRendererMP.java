@@ -10,7 +10,6 @@ package stevekung.mods.moreplanets.client.renderer.tileentities;
 import micdoodle8.mods.galacticraft.core.client.model.block.ModelTreasureChest;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -18,7 +17,7 @@ import stevekung.mods.moreplanets.common.tileentities.TileEntityTreasureChestMP;
 import stevekung.mods.moreplanets.common.util.EnumChestTexture;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityTreasureChestRendererMP extends TileEntitySpecialRenderer
+public class TileEntityTreasureChestRendererMP extends TileEntitySpecialRenderer<TileEntityTreasureChestMP>
 {
     private ResourceLocation textureNormal;
     private ModelTreasureChest simpleChest = new ModelTreasureChest();
@@ -28,23 +27,24 @@ public class TileEntityTreasureChestRendererMP extends TileEntitySpecialRenderer
         this.textureNormal = new ResourceLocation("moreplanets:textures/model/" + texture.toString() + "_treasure_chest.png");
     }
 
-    public void func_180538_a(TileEntityTreasureChestMP chest, double p_180538_2_, double p_180538_4_, double p_180538_6_, float p_180538_8_, int p_180538_9_)
+    @Override
+    public void renderTileEntityAt(TileEntityTreasureChestMP tile, double x, double y, double z, float partialTicks, int destroyStage)
     {
-        int j;
+        int meta;
 
-        if (!chest.hasWorldObj())
+        if (!tile.hasWorldObj())
         {
-            j = 0;
+            meta = 0;
         }
         else
         {
-            chest.getBlockType();
-            j = chest.getBlockMetadata();
+            tile.getBlockType();
+            meta = tile.getBlockMetadata();
         }
 
-        if (p_180538_9_ >= 0)
+        if (destroyStage >= 0)
         {
-            this.bindTexture(DESTROY_STAGES[p_180538_9_]);
+            this.bindTexture(DESTROY_STAGES[destroyStage]);
             GlStateManager.matrixMode(5890);
             GlStateManager.pushMatrix();
             GlStateManager.scale(4.0F, 4.0F, 1.0F);
@@ -59,41 +59,41 @@ public class TileEntityTreasureChestRendererMP extends TileEntitySpecialRenderer
         GlStateManager.pushMatrix();
         GlStateManager.enableRescaleNormal();
 
-        if (p_180538_9_ < 0)
+        if (destroyStage < 0)
         {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        GlStateManager.translate((float)p_180538_2_, (float)p_180538_4_ + 1.0F, (float)p_180538_6_ + 1.0F);
+        GlStateManager.translate((float)x, (float)y + 1.0F, (float)z + 1.0F);
         GlStateManager.scale(1.0F, -1.0F, -1.0F);
         GlStateManager.translate(0.5F, 0.5F, 0.5F);
         short short1 = 0;
 
-        if (j == 2)
+        if (meta == 2)
         {
             short1 = 180;
         }
-        if (j == 3)
+        if (meta == 3)
         {
             short1 = 0;
         }
-        if (j == 4)
+        if (meta == 4)
         {
             short1 = 90;
         }
-        if (j == 5)
+        if (meta == 5)
         {
             short1 = -90;
         }
 
         GlStateManager.rotate(short1, 0.0F, 1.0F, 0.0F);
         GlStateManager.translate(-0.5F, -0.5F, -0.5F);
-        float f1 = chest.prevLidAngle + (chest.lidAngle - chest.prevLidAngle) * p_180538_8_;
+        float f1 = tile.prevLidAngle + (tile.lidAngle - tile.prevLidAngle) * partialTicks;
         f1 = 1.0F - f1;
         f1 = 1.0F - f1 * f1 * f1;
         this.simpleChest.chestLid.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
 
-        if (chest.locked)
+        if (tile.locked)
         {
             this.simpleChest.renderAll(false);
         }
@@ -106,17 +106,11 @@ public class TileEntityTreasureChestRendererMP extends TileEntitySpecialRenderer
         GlStateManager.popMatrix();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
-        if (p_180538_9_ >= 0)
+        if (destroyStage >= 0)
         {
             GlStateManager.matrixMode(5890);
             GlStateManager.popMatrix();
             GlStateManager.matrixMode(5888);
         }
-    }
-
-    @Override
-    public void renderTileEntityAt(TileEntity p_180535_1_, double posX, double posZ, double p_180535_6_, float p_180535_8_, int p_180535_9_)
-    {
-        this.func_180538_a((TileEntityTreasureChestMP)p_180535_1_, posX, posZ, p_180535_6_, p_180535_8_, p_180535_9_);
     }
 }
