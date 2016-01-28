@@ -7,6 +7,7 @@
 
 package stevekung.mods.moreplanets.core.renderer;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import micdoodle8.mods.galacticraft.core.client.render.entities.RenderTier1Rocket;
 import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.renderer.entity.RenderSnowball;
@@ -14,9 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderDarkAsteroid;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.client.render.entities.RenderEvolvedDarkCreeper;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityDarkAsteroid;
-import stevekung.mods.moreplanets.asteroids.darkasteroids.entities.EntityEvolvedDarkCreeper;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketMP;
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketNoFlagMP;
@@ -155,7 +154,6 @@ import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianVillager;
 import stevekung.mods.moreplanets.planets.venus.render.entities.RenderVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.render.entities.RenderVenusianSlime;
 import stevekung.mods.moreplanets.planets.venus.render.entities.RenderVenusianVillager;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class EntityRendererMP
 {
@@ -221,7 +219,6 @@ public class EntityRendererMP
 
         RenderingRegistry.registerEntityRenderingHandler(EntityMilkCow.class, new RenderMilkCow());
         RenderingRegistry.registerEntityRenderingHandler(EntityPlutoAlien.class, new RenderPlutoAlien());
-        RenderingRegistry.registerEntityRenderingHandler(EntityEvolvedDarkCreeper.class, new RenderEvolvedDarkCreeper());
 
         //TEMPLATE HOTFIX
         RenderingRegistry.registerEntityRenderingHandler(EntityFronosCreeperBossTemp.class, new RenderFronosCreeperBossTemp());

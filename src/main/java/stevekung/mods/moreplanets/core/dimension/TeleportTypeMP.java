@@ -52,4 +52,7 @@ public class TeleportTypeMP implements ITeleportType
 
     @Override
     public void onSpaceDimensionChanged(World newWorld, EntityPlayerMP player, boolean ridingAutoRocket) {}
+
+    @Override
+    public void setupAdventureSpawn(EntityPlayerMP player) {}
 }

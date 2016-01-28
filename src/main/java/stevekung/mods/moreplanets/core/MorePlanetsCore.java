@@ -284,7 +284,7 @@ public class MorePlanetsCore
             {
                 silicon = OreDictionary.getOres("itemSilicon").get(i - 1);
             }
-            CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, ConfigManagerCore.quickMode ? 2 : 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
+            CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 1, 0), new ItemStack[] { new ItemStack(PolongniusItems.polongnius_item, 1, 1), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(Items.repeater) });
             CircuitFabricatorRecipes.addRecipe(new ItemStack(PolongniusItems.purple_crystal_solar_module, 9, 1), new ItemStack[] { new ItemStack(Items.diamond), silicon, silicon, new ItemStack(Items.redstone), new ItemStack(PolongniusItems.polongnius_item, 1, 1) });
         }
 

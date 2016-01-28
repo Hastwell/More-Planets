@@ -20,6 +20,7 @@ import micdoodle8.mods.galacticraft.core.entities.EntityEvolvedZombie;
 import micdoodle8.mods.galacticraft.core.perlin.NoiseModule;
 import micdoodle8.mods.galacticraft.core.perlin.generator.Billowed;
 import micdoodle8.mods.galacticraft.core.perlin.generator.Gradient;
+import micdoodle8.mods.galacticraft.core.util.ConfigManagerCore;
 import micdoodle8.mods.galacticraft.planets.asteroids.blocks.AsteroidBlocks;
 import micdoodle8.mods.galacticraft.planets.asteroids.world.gen.SpecialAsteroidBlock;
 import micdoodle8.mods.galacticraft.planets.asteroids.world.gen.SpecialAsteroidBlockHandler;
@@ -38,6 +39,7 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLakes;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
@@ -200,8 +202,6 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                             int y = random.nextInt(rangeY) + ChunkProviderDarkAsteroids.MIN_ASTEROID_Y;
                             int size = random.nextInt(rangeSize) + ChunkProviderDarkAsteroids.MIN_ASTEROID_RADIUS;
 
-                            //Add to the list of asteroids for external use
-                            ((WorldProviderDarkAsteroids) this.worldObj.provider).addAsteroid(x, y, z);
                             //Generate the parts of the asteroid which are in this chunk
                             this.generateAsteroid(random, x, y, z, chunkX << 4, chunkZ << 4, size, idArray, metaArray, flagDataOnly);
                         }
@@ -213,12 +213,12 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 
     private void generateAsteroid(Random rand, int asteroidX, int asteroidY, int asteroidZ, int chunkX, int chunkZ, int size, Block[] blockArray, byte[] metaArray, boolean flagDataOnly)
     {
-        SpecialAsteroidBlock core = this.coreHandler.getBlock(rand);
+        SpecialAsteroidBlock core = this.coreHandler.getBlock(rand, size);
         SpecialAsteroidBlock shell = null;
 
         if (rand.nextInt(ChunkProviderDarkAsteroids.ASTEROID_SHELL_CHANCE) == 0)
         {
-            shell = this.shellHandler.getBlock(rand);
+            shell = this.shellHandler.getBlock(rand, size);
         }
 
         boolean isHollow = false;
@@ -229,6 +229,9 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
             isHollow = true;
             shell = new SpecialAsteroidBlock(AsteroidBlocks.blockDenseIce, (byte) 0, 1, .15);
         }
+
+        //Add to the list of asteroids for external use
+        ((WorldProviderDarkAsteroids) this.worldObj.provider).addAsteroid(asteroidX, asteroidY, asteroidZ, size, isHollow ? -1 : core.index);
 
         int xMin = this.clamp(Math.max(chunkX, asteroidX - size - ChunkProviderDarkAsteroids.MAX_ASTEROID_SKEW - 2) - chunkX, 0, 16);
         int zMin = this.clamp(Math.max(chunkZ, asteroidZ - size - ChunkProviderDarkAsteroids.MAX_ASTEROID_SKEW - 2) - chunkZ, 0, 16);
@@ -499,7 +502,7 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
 
     private int getTerrainHeightFor(float yMod, int asteroidY, int asteroidSize)
     {
-        return (int)(asteroidY - asteroidSize / 4 - -yMod * 1.5);
+        return (int)(asteroidY - asteroidSize / 4 + yMod * 1.5F);
     }
 
     private int getTerrainHeightAt(int x, int z, float[] yModArray, int xMin, int zMin, int zSize, int asteroidY, int asteroidSize)
@@ -668,14 +671,32 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                 int zSize = asteroidIndex.zSizeArray;
                 int asteroidY = asteroidIndex.asteroidYArray;
                 int asteroidSize = asteroidIndex.asteroidSizeArray;
+                boolean treesdone = false;
 
-                if (this.rand.nextInt(ChunkProviderDarkAsteroids.TREE_CHANCE) == 0)
+                if (ConfigManagerCore.challengeMode || this.rand.nextInt(ChunkProviderDarkAsteroids.TREE_CHANCE) == 0)
                 {
-                    int i = this.rand.nextInt(16) + x + 8;
-                    int k = this.rand.nextInt(16) + z + 8;
-                    new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0, DarkAsteroidsBlocks.alien_sapling, DarkAsteroidsBlocks.alien_grass, DarkAsteroidsBlocks.alien_dirt).generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k);
+                    int treeType = rand.nextInt(3);
+
+                    if (treeType == 1)
+                    {
+                        treeType = 0;
+                    }
+
+                    WorldGenTreeMP wg = new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0, DarkAsteroidsBlocks.alien_sapling, DarkAsteroidsBlocks.alien_grass, DarkAsteroidsBlocks.alien_dirt); 
+
+                    for (int tries = 0; tries < 5; tries++)
+                    {
+                        int i = rand.nextInt(16) + x + 8;
+                        int k = rand.nextInt(16) + z + 8;
+
+                        if (wg.generate(worldObj, rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k))
+                        {
+                            break;
+                        }
+                    }
+                    treesdone = true;
                 }
-                /*if (this.rand.nextInt(ChunkProviderDarkAsteroids.TALL_GRASS_CHANCE) == 0)
+                /*if (!treesdone || this.rand.nextInt(ChunkProviderDarkAsteroids.TALL_GRASS_CHANCE) == 0)
 				{
 					int i = this.rand.nextInt(16) + x + 8;
 					int k = this.rand.nextInt(16) + z + 8;

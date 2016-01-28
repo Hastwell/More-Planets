@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.TreeMap;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
 import micdoodle8.mods.galacticraft.api.vector.BlockVec3;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
@@ -27,13 +29,11 @@ import stevekung.mods.moreplanets.asteroids.darkasteroids.world.gen.WorldChunkMa
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.util.MPLog;
 import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implements IUltraVioletLevel
 {
     //Used to list asteroid centres to external code that needs to know them
-    private HashSet<BlockVec3> asteroidCentres = new HashSet();
+    private HashSet<AsteroidData> asteroids = new HashSet();
     private boolean dataNotLoaded = true;
     private AsteroidSaveData datafile;
     private double solarMultiplier = -2.0D;
@@ -130,20 +130,20 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
     }
 
     @Override
-    public void addAsteroid(int x, int y, int z)
+    public void addAsteroid(int x, int y, int z, int size, int core)
     {
-        BlockVec3 coords = new BlockVec3(x, y, z);
+        AsteroidData coords = new AsteroidData(x, y, z, size, core);
 
-        if (!this.asteroidCentres.contains(coords))
+        if (!this.asteroids.contains(coords))
         {
             if (this.dataNotLoaded)
             {
                 this.loadAsteroidSavedData();
             }
-            if (!this.asteroidCentres.contains(coords))
+            if (!this.asteroids.contains(coords))
             {
                 this.addToNBT(this.datafile.datacompound, coords);
-                this.asteroidCentres.add(coords);
+                this.asteroids.add(coords);
             }
         }
     }
@@ -151,11 +151,11 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
     @Override
     public void removeAsteroid(int x, int y, int z)
     {
-        BlockVec3 coords = new BlockVec3(x, y, z);
+        AsteroidData coords = new AsteroidData(x, y, z);
 
-        if (this.asteroidCentres.contains(coords))
+        if (this.asteroids.contains(coords))
         {
-            this.asteroidCentres.remove(coords);
+            this.asteroids.remove(coords);
 
             if (this.dataNotLoaded)
             {
@@ -194,7 +194,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
 
                 if (tag1 != null)
                 {
-                    this.asteroidCentres.add(BlockVec3.readFromNBT(tag1));
+                    this.asteroids.add(AsteroidData.readFromNBT(tag1));
                 }
             }
         }
@@ -204,7 +204,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
     {
         NBTTagList coordList = new NBTTagList();
 
-        for (BlockVec3 coords : this.asteroidCentres)
+        for (AsteroidData coords : this.asteroids)
         {
             NBTTagCompound tag = new NBTTagCompound();
             coords.writeToNBT(tag);
@@ -214,7 +214,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
         this.datafile.markDirty();
     }
 
-    private void addToNBT(NBTTagCompound nbt, BlockVec3 coords)
+    private void addToNBT(NBTTagCompound nbt, AsteroidData coords)
     {
         NBTTagList coordList = nbt.getTagList("coords", 10);
         NBTTagCompound tag = new NBTTagCompound();
@@ -231,26 +231,40 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
         {
             this.loadAsteroidSavedData();
         }
-        if (this.asteroidCentres.size() == 0)
+        if (this.asteroids.size() == 0)
         {
             return null;
         }
 
         BlockVec3 result = null;
+        AsteroidData resultRoid = null;
         int lowestDistance = Integer.MAX_VALUE;
 
-        for (BlockVec3 test : this.asteroidCentres)
+        for (AsteroidData test : this.asteroids)
         {
-            int dx = x - test.x;
-            int dz = z - test.z;
+            if ((test.sizeAndLandedFlag & 128) > 0)
+            {
+                continue;
+            }
+
+            int dx = x - test.centre.x;
+            int dz = z - test.centre.z;
             int a = dx * dx + dz * dz;
 
             if (a < lowestDistance)
             {
                 lowestDistance = a;
-                result = test;
+                result = test.centre;
+                resultRoid = test;
             }
         }
+
+        if (result == null)
+        {
+            return null;
+        }
+        resultRoid.sizeAndLandedFlag |= 128;
+        this.writeToNBT(this.datafile.datacompound);
         return result.clone();
     }
 
@@ -261,15 +275,17 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
         {
             this.loadAsteroidSavedData();
         }
-        if (this.asteroidCentres.size() == 0)
+        if (this.asteroids.size() == 0)
         {
             return null;
         }
 
         TreeMap<Integer, BlockVec3> targets = new TreeMap();
 
-        for (BlockVec3 test : this.asteroidCentres)
+        for (AsteroidData roid : this.asteroids)
         {
+            BlockVec3 test = roid.centre;
+
             switch (facing)
             {
             case 2:
@@ -322,7 +338,7 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
         for (BlockVec3 target : targets.values())
         {
             BlockVec3 coords = target.clone();
-            MPLog.debug("Found nearby asteroid at " + target.toString());
+            MPLog.debug("Found nearby asteroid at "+ target.toString());
 
             switch (facing)
             {
@@ -384,5 +400,87 @@ public class WorldProviderDarkAsteroids extends WorldProviderAsteroids implement
     public double getUltraVioletEnergyMultiplie()
     {
         return 0.5D;
+    }
+
+    public static class AsteroidData
+    {
+        protected BlockVec3 centre;
+        protected int sizeAndLandedFlag = 15;
+        protected int coreAndSpawnedFlag = -2;
+
+        public AsteroidData(int x, int y, int z)
+        {
+            this.centre = new BlockVec3(x, y, z);
+        }
+
+        public AsteroidData(int x, int y, int z, int size, int core)
+        {
+            this.centre = new BlockVec3(x, y, z);
+            this.sizeAndLandedFlag = size;
+            this.coreAndSpawnedFlag = core;
+        }
+
+        public AsteroidData(BlockVec3 bv)
+        {
+            this.centre = bv;
+        }
+
+        @Override
+        public int hashCode()
+        {
+            if (this.centre != null)
+            {
+                return this.centre.hashCode();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (o instanceof AsteroidData)
+            {
+                BlockVec3 vector = ((AsteroidData) o).centre;
+                return this.centre.x == vector.x && this.centre.y == vector.y && this.centre.z == vector.z;
+            }
+            if (o instanceof BlockVec3)
+            {
+                BlockVec3 vector = (BlockVec3) o;
+                return this.centre.x == vector.x && this.centre.y == vector.y && this.centre.z == vector.z;
+            }
+            return false;
+        }
+
+        public NBTTagCompound writeToNBT(NBTTagCompound tag)
+        {
+            tag.setInteger("x", this.centre.x);
+            tag.setInteger("y", this.centre.y);
+            tag.setInteger("z", this.centre.z);
+            tag.setInteger("coreAndFlag", this.coreAndSpawnedFlag);
+            tag.setInteger("sizeAndFlag", this.sizeAndLandedFlag);
+            return tag;
+        }
+
+        public static AsteroidData readFromNBT(NBTTagCompound tag)
+        {
+            BlockVec3 tempVector = new BlockVec3();
+            tempVector.x = tag.getInteger("x");
+            tempVector.y = tag.getInteger("y");
+            tempVector.z = tag.getInteger("z");
+            AsteroidData roid = new AsteroidData(tempVector);
+
+            if (tag.hasKey("coreAndFlag"))
+            {
+                roid.coreAndSpawnedFlag = tag.getInteger("coreAndFlag");
+            }
+            if (tag.hasKey("sizeAndFlag"))
+            {
+                roid.sizeAndLandedFlag = tag.getInteger("sizeAndFlag");
+            }
+            return roid;
+        }
     }
 }
