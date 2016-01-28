@@ -7,6 +7,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
@@ -143,11 +144,24 @@ public class WorldGenSpaceDungeons extends WorldGenerator
                             if (k2 == 1)
                             {
                                 world.setBlock(i2, y, j2, this.chest, 0, 2);
-                                TileEntityAncientChestMP tileentitychest = (TileEntityAncientChestMP)world.getTileEntity(i2, y, j2);
 
-                                if (tileentitychest != null)
+                                if (this.chest == Blocks.chest)
                                 {
-                                    WeightedRandomChestContent.generateChestContents(rand, ChestGenHooks.getItems(DUNGEON_CHEST, rand), tileentitychest, ChestGenHooks.getCount(DUNGEON_CHEST, rand));
+                                    TileEntityChest tileentitychest = (TileEntityChest)world.getTileEntity(i2, y, j2);
+
+                                    if (tileentitychest != null)
+                                    {
+                                        WeightedRandomChestContent.generateChestContents(rand, ChestGenHooks.getItems(DUNGEON_CHEST, rand), tileentitychest, ChestGenHooks.getCount(DUNGEON_CHEST, rand));
+                                    }
+                                }
+                                else
+                                {
+                                    TileEntityAncientChestMP tileentitychest = (TileEntityAncientChestMP)world.getTileEntity(i2, y, j2);
+
+                                    if (tileentitychest != null)
+                                    {
+                                        WeightedRandomChestContent.generateChestContents(rand, ChestGenHooks.getItems(DUNGEON_CHEST, rand), tileentitychest, ChestGenHooks.getCount(DUNGEON_CHEST, rand));
+                                    }
                                 }
                                 break label101;
                             }
