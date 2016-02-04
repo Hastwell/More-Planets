@@ -73,7 +73,7 @@ item.tier_4_rocket.name=4阶火箭
 item.mp_flag.laos.name=老挝旗帜
 item.mp_flag.singapore.name=新加坡旗帜
 item.mp_flag.myanmar.name=缅甸旗帜
-item.mp_flag.marlaysia.name=马来西亚旗帜
+item.mp_flag.malaysia.name=马来西亚旗帜
 item.mp_flag.vietnam.name=越南旗帜
 item.mp_flag.indonesia.name=印度尼西亚旗帜
 item.mp_flag.philippines.name=菲律宾旗帜
@@ -137,5 +137,5 @@ planet.diona=狄俄娜
 # POTION
 potion.emp=麻痹
 
-DEATH MESSAGES
+# DEATH MESSAGES
 death.attack.laser=%1$s 被激光射死了
