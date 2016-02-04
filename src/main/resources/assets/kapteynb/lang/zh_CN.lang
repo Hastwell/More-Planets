@@ -29,6 +29,7 @@ tile.frozen_water_fluid.name=冷冻水
 tile.fallen_ice_crystal_meteor.name=冰晶陨石
 tile.frozen_water_geyser.name=冷冻水喷泉
 tile.icy_poison_crystal.name=冰毒水晶
+item.ice_crystal_meteor_chunk.name=可投掷冰晶碎片
 
 # SLABS
 tile.mp_stone_half_slab2.kapteyn.name=卡普坦B圆石台阶
