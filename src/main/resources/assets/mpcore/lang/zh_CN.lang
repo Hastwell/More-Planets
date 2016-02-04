@@ -49,15 +49,44 @@ tile.dark_asteroid_block.emerald_ore.name=绿宝石矿石
 tile.dark_asteroid_block.lapis_ore.name=青金石矿石
 tile.dark_asteroid_quicksand.name=黑暗小行星流沙
 tile.alphere_ore.name=Alphere Ore
-tile.alien_grass.name=Alien Grass
-tile.alien_dirt.dirt.name=Alien Dirt
-tile.alien_dirt.coarse.name=Alien Coarse Dirt
-tile.alien_log.name=Alien Wood
-tile.alien_planks.name=Alien Wood Planks
-tile.alien_glowstone.name=Alien Glowstone
-tile.alien_leaves.alien.name=Alien Leaves
-tile.alien_sapling.name=Alien Sapling
+tile.alien_grass.name=外星草
+tile.alien_dirt.dirt.name=外星土
+tile.alien_dirt.coarse.name=粗糙外星土
+tile.alien_log.name=外星木
+tile.alien_planks.name=外星木板
+tile.alien_glowstone.name=外星萤石
+tile.alien_leaves.alien.name=外星树叶
+tile.alien_sapling.name=外星树苗
+tile.space_mossy_cobblestone.diona.name=狄俄娜苔石
+tile.space_mossy_cobblestone.polongnius.name=奶酪星苔石
+tile.space_mossy_cobblestone.nibiru.name=尼比鲁苔石
+tile.space_mossy_cobblestone.koentus.name=卡恩塔斯苔石
+tile.space_mossy_cobblestone.kapteynb.name=卡普坦B苔石
+tile.space_mossy_cobblestone.siriusb.name=天狼星B苔石
+tile.space_mossy_cobblestone.venus.name=金星苔石
+tile.space_mossy_cobblestone.mercury.name=水星苔石
+tile.space_mossy_cobblestone.pluto.name=冥王星苔石
+tile.space_mossy_cobblestone.martian.name=火星苔石
+
+tile.mp_wall.venus.name=金星圆石墙
+tile.mp_dungeon_brick_wall.venus.name=金星地牢石砖墙
+tile.mp_stone_half_slab2.venus.name=金星圆石台阶
+tile.dungeon_brick_half_slab2.venus.name=金星地牢石砖台阶
+tile.mp_wall.pluto.name=冥王星圆石墙
+tile.mp_dungeon_brick_wall.pluto.name=冥王星地牢石砖墙
+tile.mp_stone_half_slab2.pluto.name=冥王星圆石台阶
+tile.dungeon_brick_half_slab2.pluto.name=冥王星地牢石砖台阶
+tile.mp_wood_half_slab.alienWood.name=外星木台阶
+tile.venus_cobblestone_stairs.name=金星圆石楼梯
+tile.venus_dungeon_brick_stairs.name=金星地牢石砖楼梯
+tile.pluto_cobblestone_stairs.name=冥王星圆石楼梯
+tile.pluto_dungeon_brick_stairs.name=冥王星地牢石砖楼梯
+tile.alien_wood_stairs.name=外星木楼梯
+tile.alien_fence.name=外星木栅栏
+tile.alien_fence_gate.name=外星木栅栏门
+
 entity.MorePlanet.EvolvedWitch.name=女巫(进化体)
+entity.MorePlanet.PlutoAlien.name=冥王星人
 
 item.feces.name=屎(翔)
 item.decompose.name=分解
@@ -69,6 +98,7 @@ itemGroup.MorePlanetsBlocks=更多行星(方块)
 itemGroup.MorePlanetsItems=更多行星(物品)
 itemGroup.MorePlanetsTools=更多行星(工具)
 itemGroup.MorePlanetsArmor=更多行星(装备)
+gui.config.mp=更多行星配置
 
 # PLANET
 star.sirius=天狼星
@@ -76,6 +106,10 @@ solarsystem.sirius=天狼星系
 solarsystem.dark=黑暗星系
 planet.darkAsteroids=黑暗小行星
 star.dark=黑暗恒星
+
+commands.homeplanettp.alreadyuse=%s has already use this command! And you cannot use one more times!
+commands.homeplanettp.confignull=Please put your home planet name in the config. Command will not running!
+commands.homeplanettp.success=%s was choose home planet [%s]. Have fun!
 
 mp.failed.name=检查升级失败！
 mp.success.name=更多行星发现更新版本！
