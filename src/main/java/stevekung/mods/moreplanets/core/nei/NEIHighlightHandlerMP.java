@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.core.nei;
 
 import java.util.List;
 
+import codechicken.nei.api.IHighlightHandler;
+import codechicken.nei.api.ItemInfo;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,8 +28,6 @@ import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
-import codechicken.nei.api.IHighlightHandler;
-import codechicken.nei.api.ItemInfo;
 
 public class NEIHighlightHandlerMP implements IHighlightHandler
 {

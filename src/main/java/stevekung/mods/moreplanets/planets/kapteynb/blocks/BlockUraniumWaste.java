@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.ITileEntityProvider;
@@ -34,8 +36,6 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.init.MPPotions;
 import stevekung.mods.moreplanets.planets.kapteynb.items.armor.KapteynBArmorItems;
 import stevekung.mods.moreplanets.planets.kapteynb.tileentities.TileEntityUraniumWaste;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockUraniumWaste extends BlockBreakable implements IShearable, ITileEntityProvider
 {

@@ -1,18 +1,18 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.moons.io.recipe;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import micdoodle8.mods.galacticraft.planets.asteroids.items.AsteroidsItems;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.moons.io.blocks.IoBlocks;
 import stevekung.mods.moreplanets.moons.io.items.IoItems;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CraftingRecipesIo
 {

@@ -1,12 +1,13 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.core.renderer;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import stevekung.mods.moreplanets.moons.koentus.render.tileentities.TileEntityKoentusAncientChestRenderer;
 import stevekung.mods.moreplanets.moons.koentus.render.tileentities.TileEntityKoentusTreasureChestRenderer;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
@@ -75,7 +76,6 @@ import stevekung.mods.moreplanets.planets.venus.render.tileentities.TileEntityVe
 import stevekung.mods.moreplanets.planets.venus.render.tileentities.TileEntityVenusTreasureChestRenderer;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
-import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class TileEntityRendererMP
 {

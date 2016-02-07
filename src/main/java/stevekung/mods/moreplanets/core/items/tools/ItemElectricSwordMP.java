@@ -1,9 +1,16 @@
 package stevekung.mods.moreplanets.core.items.tools;
 
-import ic2.api.item.IElectricItemManager;
-
 import java.util.List;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+
+import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
+import cpw.mods.fml.common.versioning.VersionParser;
+import cpw.mods.fml.relauncher.FMLInjectionData;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.item.IElectricItemManager;
 import micdoodle8.mods.galacticraft.api.item.ElectricItemHelper;
 import micdoodle8.mods.galacticraft.api.item.IItemElectric;
 import micdoodle8.mods.galacticraft.core.energy.EnergyConfigHandler;
@@ -31,15 +38,6 @@ import net.minecraft.nbt.NBTTagFloat;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
-import cpw.mods.fml.common.versioning.VersionParser;
-import cpw.mods.fml.relauncher.FMLInjectionData;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemElectricSwordMP extends ItemSword implements IItemElectric
 {
@@ -391,25 +389,25 @@ public class ItemElectricSwordMP extends ItemSword implements IItemElectric
     {
         return (int) (this.transferMax * EnergyConfigHandler.TO_IC2_RATIO);
     }
-    
+
     @RuntimeInterface(clazz = "cofh.api.energy.IEnergyContainerItem", modID = "")
     public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate)
     {
         return (int) (this.recharge(container, maxReceive * EnergyConfigHandler.RF_RATIO, !simulate) / EnergyConfigHandler.RF_RATIO);
     }
-    
+
     @RuntimeInterface(clazz = "cofh.api.energy.IEnergyContainerItem", modID = "")
     public int extractEnergy(ItemStack container, int maxExtract, boolean simulate)
     {
         return (int) (this.discharge(container, maxExtract / EnergyConfigHandler.TO_RF_RATIO, !simulate) * EnergyConfigHandler.TO_RF_RATIO);
     }
-    
+
     @RuntimeInterface(clazz = "cofh.api.energy.IEnergyContainerItem", modID = "")
     public int getEnergyStored(ItemStack container)
     {
         return (int) (this.getElectricityStored(container) * EnergyConfigHandler.TO_RF_RATIO);
     }
-    
+
     @RuntimeInterface(clazz = "cofh.api.energy.IEnergyContainerItem", modID = "")
     public int getMaxEnergyStored(ItemStack container)
     {

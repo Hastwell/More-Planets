@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -10,6 +10,8 @@ package stevekung.mods.moreplanets.planets.fronos.blocks;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -31,21 +33,19 @@ import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.blocks.BlockFlowerMP;
 import stevekung.mods.moreplanets.core.util.DamageSourceMP;
 import stevekung.mods.moreplanets.planets.fronos.worldgen.feature.WorldGenBigSkyMushroom;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFronosFlower extends BlockFlowerMP implements IGrowable
 {
     private static String[] plants = new String[] {
-        "pink_butter_cup",
-        "orange_butterfly_flower",
-        "yellow_milk_cap",
-        "little_sun_flower",
-        "sky_mushroom",
-        "purple_spike_flower",
-        "jungle_iris",
-        "blue_poison_mushroom",
-        "white_moss"
+            "pink_butter_cup",
+            "orange_butterfly_flower",
+            "yellow_milk_cap",
+            "little_sun_flower",
+            "sky_mushroom",
+            "purple_spike_flower",
+            "jungle_iris",
+            "blue_poison_mushroom",
+            "white_moss"
     };
 
     private IIcon[] textures;

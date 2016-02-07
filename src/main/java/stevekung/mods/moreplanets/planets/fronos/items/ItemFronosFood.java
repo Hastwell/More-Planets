@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.planets.fronos.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -17,46 +19,44 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.items.ItemFoodMP;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemFronosFood extends ItemFoodMP
 {
     private static int[] foodHunger = new int[] {
-        4,//0
-        4,//1
-        3,//2
-        6,//3
-        4,//4
-        4,//5
-        4,//6
-        4,//7
-        4,//8
-        5,//9
-        2,//10
-        4,//11
-        5,//12
-        6,//13
-        6,//14
-        4//15
+            4,//0
+            4,//1
+            3,//2
+            6,//3
+            4,//4
+            4,//5
+            4,//6
+            4,//7
+            4,//8
+            5,//9
+            2,//10
+            4,//11
+            5,//12
+            6,//13
+            6,//14
+            4//15
     };
     private static float[] foodSaturation = new float[] {
-        0.25F,//0
-        0.25F,//1
-        0.15F,//2
-        0.35F,//3
-        0.45F,//4
-        0.45F,//5
-        0.45F,//6
-        0.45F,//7
-        0.45F,//8
-        0.5F,//9
-        0.15F,//10
-        0.45F,//11
-        0.4F,//12
-        0.6F,//13
-        0.55F,//14
-        0.45F//15
+            0.25F,//0
+            0.25F,//1
+            0.15F,//2
+            0.35F,//3
+            0.45F,//4
+            0.45F,//5
+            0.45F,//6
+            0.45F,//7
+            0.45F,//8
+            0.5F,//9
+            0.15F,//10
+            0.45F,//11
+            0.4F,//12
+            0.6F,//13
+            0.55F,//14
+            0.45F//15
     };
 
     public ItemFronosFood(String name)

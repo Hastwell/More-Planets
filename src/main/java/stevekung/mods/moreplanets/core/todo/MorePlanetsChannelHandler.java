@@ -1,20 +1,19 @@
 package stevekung.mods.moreplanets.core.todo;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-
 import java.util.EnumMap;
 
-import micdoodle8.mods.galacticraft.core.network.IPacket;
-import net.minecraft.entity.player.EntityPlayerMP;
-import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import stevekung.mods.moreplanets.core.util.MPLog;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.FMLIndexedMessageToMessageCodec;
 import cpw.mods.fml.common.network.FMLOutboundHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import micdoodle8.mods.galacticraft.core.network.IPacket;
+import net.minecraft.entity.player.EntityPlayerMP;
+import stevekung.mods.moreplanets.core.MorePlanetsCore;
+import stevekung.mods.moreplanets.core.util.MPLog;
 
 public class MorePlanetsChannelHandler extends FMLIndexedMessageToMessageCodec<IPacket>
 {

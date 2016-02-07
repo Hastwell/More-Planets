@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,9 @@ package stevekung.mods.moreplanets.planets.polongnius.tileentities;
 
 import java.util.EnumSet;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.tile.IDisableableMachine;
 import micdoodle8.mods.galacticraft.api.transmission.NetworkType;
 import micdoodle8.mods.galacticraft.api.transmission.tile.IConnector;
@@ -33,9 +36,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.world.IUltraVioletLevel;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.BlockUltraVioletSolarFake;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityUltraVioletSolarPanel extends TileBaseUniversalElectricalSource implements IMultiBlock, IPacketReceiver, IDisableableMachine, IInventory, ISidedInventory, IConnector
 {

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -10,6 +10,9 @@ package stevekung.mods.moreplanets.core.init;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry.EntityRegistration;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.world.World;
@@ -91,9 +94,6 @@ import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianBlaze;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianSlime;
 import stevekung.mods.moreplanets.planets.venus.entities.EntityVenusianVillager;
 import stevekung.mods.stevecore.RegisterHelper;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry.EntityRegistration;
 
 public class MPEntities
 {

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.planets.polongnius.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -16,20 +18,18 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.items.ItemFoodMP;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCheeseFood extends ItemFoodMP
 {
     private static final int[] foodHunger = new int[] {
-        3,
-        3,
-        8
+            3,
+            3,
+            8
     };
     private static final float[] foodSaturation = new float[] {
-        0.35F,
-        0.2F,
-        0.8F
+            0.35F,
+            0.2F,
+            0.8F
     };
 
     public ItemCheeseFood(String name)

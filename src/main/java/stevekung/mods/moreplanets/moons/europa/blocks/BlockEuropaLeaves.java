@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -10,6 +10,8 @@ package stevekung.mods.moreplanets.moons.europa.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
@@ -24,8 +26,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.moons.europa.items.EuropaItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockEuropaLeaves extends BlockLeavesBase implements IShearable
 {
@@ -35,7 +35,7 @@ public class BlockEuropaLeaves extends BlockLeavesBase implements IShearable
     }
 
     private static String[] leaves = new String[] {
-        "europa",
+            "europa",
     };
 
     private IIcon[][] textures;

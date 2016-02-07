@@ -2,6 +2,8 @@ package stevekung.mods.moreplanets.core.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.item.IItemThermal;
 import micdoodle8.mods.galacticraft.planets.asteroids.items.ItemThermalPadding;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,8 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier3ThermalPadding extends ItemMorePlanet implements IItemThermal
 {

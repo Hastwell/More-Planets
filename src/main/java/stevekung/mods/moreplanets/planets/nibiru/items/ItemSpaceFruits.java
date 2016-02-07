@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.planets.nibiru.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -19,20 +21,18 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.items.ItemFoodMP;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSpaceFruits extends ItemFoodMP
 {
     private static final int[] foodHunger = new int[] {
-        4,
-        4,
-        5
+            4,
+            4,
+            5
     };
     private static final float[] foodSaturation = new float[] {
-        0.2F,
-        0.4F,
-        0.6F
+            0.2F,
+            0.4F,
+            0.6F
     };
 
     public ItemSpaceFruits(String name)

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -10,6 +10,7 @@ package stevekung.mods.moreplanets.planets.fronos.entities;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import micdoodle8.mods.galacticraft.api.GalacticraftRegistry;
 import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
@@ -49,7 +50,6 @@ import stevekung.mods.moreplanets.planets.diona.entities.EntityDionaCreeperBoss;
 import stevekung.mods.moreplanets.planets.diona.entities.projectiles.EntityProjectileFronisiumTNT;
 import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityFronosTreasureChest;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 public class EntityFronosCreeperBossTemp extends EntityDionaCreeperBoss implements IRangedAttackMob, IEntityBreathable, IBossDisplayData, IBoss
 {

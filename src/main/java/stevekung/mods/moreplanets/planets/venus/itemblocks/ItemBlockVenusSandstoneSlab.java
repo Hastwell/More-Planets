@@ -1,13 +1,13 @@
 package stevekung.mods.moreplanets.planets.venus.itemblocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.planets.venus.blocks.BlockVenusSandstoneSlab;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockVenusSandstoneSlab extends ItemSlab
 {

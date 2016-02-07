@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -10,6 +10,9 @@ package stevekung.mods.moreplanets.core.proxy;
 import java.util.HashMap;
 import java.util.Map;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import micdoodle8.mods.galacticraft.core.client.render.block.BlockRendererMachine;
 import micdoodle8.mods.galacticraft.core.client.render.block.BlockRendererMeteor;
 import micdoodle8.mods.galacticraft.planets.mars.client.render.block.BlockRendererEgg;
@@ -109,9 +112,6 @@ import stevekung.mods.moreplanets.planets.venus.model.ModelJetpack;
 import stevekung.mods.moreplanets.planets.venus.particles.EntityVenusSmokeFX;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 
 public class ClientProxyMP extends CommonProxyMP
 {

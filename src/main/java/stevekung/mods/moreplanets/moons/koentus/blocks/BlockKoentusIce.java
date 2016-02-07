@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,8 +31,6 @@ import stevekung.mods.moreplanets.core.blocks.BlockIceMP;
 import stevekung.mods.moreplanets.core.util.WorldUtilMP;
 import stevekung.mods.moreplanets.moons.koentus.dimension.WorldProviderKoentus;
 import stevekung.mods.moreplanets.planets.mercury.dimension.WorldProviderMercury;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockKoentusIce extends BlockIceMP
 {

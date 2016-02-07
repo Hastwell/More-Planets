@@ -1,12 +1,13 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.core.init;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityEledosEgg;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusAncientChest;
 import stevekung.mods.moreplanets.moons.koentus.tileentities.TileEntityKoentusDungeonSpawner;
@@ -59,7 +60,6 @@ import stevekung.mods.moreplanets.planets.siriusb.tileentities.TileEntitySiriusB
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusAncientChest;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusDungeonSpawner;
 import stevekung.mods.moreplanets.planets.venus.tileentities.TileEntityVenusTreasureChest;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MPTileEntities
 {

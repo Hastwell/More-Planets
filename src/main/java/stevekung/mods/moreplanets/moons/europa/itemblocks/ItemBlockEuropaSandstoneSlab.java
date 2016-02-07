@@ -1,13 +1,13 @@
 package stevekung.mods.moreplanets.moons.europa.itemblocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.moons.europa.blocks.BlockEuropaSandstoneSlab;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockEuropaSandstoneSlab extends ItemSlab
 {

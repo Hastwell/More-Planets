@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -29,21 +29,21 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 public class BlockFronosTallGrass extends BlockFlowerMP implements IShearable
 {
     private static String[] fronosGrass = new String[] {
-        "fronos_short_grass",//0
-        "fronos_medium_grass",//1
-        "fronos_tall_grass",//2
-        "pink_short_grass",//3
-        "pink_medium_grass",//4
-        "pink_tall_grass",//5
-        "purple_short_grass",//6
-        "purple_medium_grass",//7
-        "purple_tall_grass",//8
-        "plains_short_grass",//9
-        "plains_medium_grass",//10
-        "plains_tall_grass",//11
-        "golden_short_grass",//12
-        "golden_medium_grass",//13
-        "golden_tall_grass"//14
+            "fronos_short_grass",//0
+            "fronos_medium_grass",//1
+            "fronos_tall_grass",//2
+            "pink_short_grass",//3
+            "pink_medium_grass",//4
+            "pink_tall_grass",//5
+            "purple_short_grass",//6
+            "purple_medium_grass",//7
+            "purple_tall_grass",//8
+            "plains_short_grass",//9
+            "plains_medium_grass",//10
+            "plains_tall_grass",//11
+            "golden_short_grass",//12
+            "golden_medium_grass",//13
+            "golden_tall_grass"//14
     };
 
     private IIcon[] textures;

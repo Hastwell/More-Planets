@@ -2,9 +2,9 @@ package stevekung.mods.moreplanets.core.util;
 
 import org.apache.logging.log4j.Level;
 
+import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
-import cpw.mods.fml.relauncher.FMLRelaunchLog;
 
 public class MPLog
 {

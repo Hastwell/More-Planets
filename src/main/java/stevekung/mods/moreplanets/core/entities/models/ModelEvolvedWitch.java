@@ -1,10 +1,10 @@
 package stevekung.mods.moreplanets.core.entities.models;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.model.ModelWitch;
 import net.minecraft.entity.Entity;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelEvolvedWitch extends ModelWitch

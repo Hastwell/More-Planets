@@ -1,12 +1,13 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.planets.venus.recipe;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -15,7 +16,6 @@ import stevekung.mods.moreplanets.core.init.MPBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 import stevekung.mods.moreplanets.planets.venus.blocks.VenusBlocks;
 import stevekung.mods.moreplanets.planets.venus.items.VenusItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CraftingRecipesVenus
 {

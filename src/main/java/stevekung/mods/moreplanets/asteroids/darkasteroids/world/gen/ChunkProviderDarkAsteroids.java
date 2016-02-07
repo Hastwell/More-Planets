@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -39,7 +39,6 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.ChunkProviderGenerate;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenLakes;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.core.entities.EntityEvolvedWitch;
@@ -671,30 +670,27 @@ public class ChunkProviderDarkAsteroids extends ChunkProviderGenerate
                 int zSize = asteroidIndex.zSizeArray;
                 int asteroidY = asteroidIndex.asteroidYArray;
                 int asteroidSize = asteroidIndex.asteroidSizeArray;
-                boolean treesdone = false;
-
                 if (ConfigManagerCore.challengeMode || this.rand.nextInt(ChunkProviderDarkAsteroids.TREE_CHANCE) == 0)
                 {
-                    int treeType = rand.nextInt(3);
+                    int treeType = this.rand.nextInt(3);
 
                     if (treeType == 1)
                     {
                         treeType = 0;
                     }
 
-                    WorldGenTreeMP wg = new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0, DarkAsteroidsBlocks.alien_sapling, DarkAsteroidsBlocks.alien_grass, DarkAsteroidsBlocks.alien_dirt); 
+                    WorldGenTreeMP wg = new WorldGenTreeMP(DarkAsteroidsBlocks.alien_log, DarkAsteroidsBlocks.alien_leaves, 0, 0, DarkAsteroidsBlocks.alien_sapling, DarkAsteroidsBlocks.alien_grass, DarkAsteroidsBlocks.alien_dirt);
 
                     for (int tries = 0; tries < 5; tries++)
                     {
-                        int i = rand.nextInt(16) + x + 8;
-                        int k = rand.nextInt(16) + z + 8;
+                        int i = this.rand.nextInt(16) + x + 8;
+                        int k = this.rand.nextInt(16) + z + 8;
 
-                        if (wg.generate(worldObj, rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k))
+                        if (wg.generate(this.worldObj, this.rand, i, this.getTerrainHeightAt(i - x, k - z, sizeYArray, xMin, zMin, zSize, asteroidY, asteroidSize), k))
                         {
                             break;
                         }
                     }
-                    treesdone = true;
                 }
                 /*if (!treesdone || this.rand.nextInt(ChunkProviderDarkAsteroids.TALL_GRASS_CHANCE) == 0)
 				{

@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.entity.IEntityBreathable;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.material.Material;
@@ -35,8 +37,6 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.blocks.DarkAsteroidsBlocks;
 import stevekung.mods.moreplanets.asteroids.darkasteroids.dimension.WorldProviderDarkAsteroids;
 import stevekung.mods.moreplanets.core.init.MPItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityEvolvedWitch extends EntityMob implements IRangedAttackMob, IEntityBreathable
 {

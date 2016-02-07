@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -33,32 +33,32 @@ public class BlockSlabMP extends BlockSlab
     }
 
     private static String[] woodTypes = new String[] {
-        "diona",
-        "quonBrick",
-        "chiseledQuon",
-        "polongnius",
-        "nibiru",
-        "koentus",
-        "koentusStone",
-        "koentusBrick",
-        "fronos",
-        "fronosBrick",
-        "fronosCrackBrick",
-        "kapteyn",
-        "sirius",
-        "mercury",
-        "venus",
-        "pluto"
+            "diona",
+            "quonBrick",
+            "chiseledQuon",
+            "polongnius",
+            "nibiru",
+            "koentus",
+            "koentusStone",
+            "koentusBrick",
+            "fronos",
+            "fronosBrick",
+            "fronosCrackBrick",
+            "kapteyn",
+            "sirius",
+            "mercury",
+            "venus",
+            "pluto"
     };
 
     private static String[] rockTypes = new String[] {
-        "ancientDarkWood",
-        "orangeWood",
-        "coconutWood",
-        "redMapleWood",
-        "crystalWood",
-        "europaWood",
-        "alienWood"
+            "ancientDarkWood",
+            "orangeWood",
+            "coconutWood",
+            "redMapleWood",
+            "crystalWood",
+            "europaWood",
+            "alienWood"
     };
 
     private IIcon[] textures;

@@ -1,12 +1,16 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.planets.diona.render.items;
 
+import org.lwjgl.Sys;
+import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.client.FMLClientHandler;
 import micdoodle8.mods.galacticraft.api.entity.IRocketType.EnumRocketType;
 import micdoodle8.mods.galacticraft.core.client.render.item.ItemRendererTier1Rocket;
 import net.minecraft.client.model.ModelBase;
@@ -15,13 +19,8 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.Sys;
-import org.lwjgl.opengl.GL11;
-
 import stevekung.mods.moreplanets.core.entities.models.ModelRocketMP;
 import stevekung.mods.moreplanets.planets.diona.entities.EntityTier4Rocket;
-import cpw.mods.fml.client.FMLClientHandler;
 
 public class ItemRendererTier4Rocket extends ItemRendererTier1Rocket
 {

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,9 @@ package stevekung.mods.moreplanets.planets.kapteynb.items;
 
 import java.util.List;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.entity.IRocketType.EnumRocketType;
 import micdoodle8.mods.galacticraft.api.item.IHoldableItem;
 import micdoodle8.mods.galacticraft.core.GalacticraftCore;
@@ -26,9 +29,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import stevekung.mods.moreplanets.core.items.ItemMorePlanet;
 import stevekung.mods.moreplanets.planets.kapteynb.entities.EntityTier8Rocket;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTier8Rocket extends ItemMorePlanet implements IHoldableItem
 {

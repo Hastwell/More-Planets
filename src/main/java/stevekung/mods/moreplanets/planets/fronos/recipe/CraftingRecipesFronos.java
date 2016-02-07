@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,7 @@ package stevekung.mods.moreplanets.planets.fronos.recipe;
 
 import java.util.HashMap;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import micdoodle8.mods.galacticraft.core.util.RecipeUtil;
 import net.minecraft.init.Blocks;
@@ -23,7 +24,6 @@ import stevekung.mods.moreplanets.planets.fronos.items.FronosItems;
 import stevekung.mods.moreplanets.planets.fronos.items.armor.FronosArmorItems;
 import stevekung.mods.moreplanets.planets.fronos.items.tools.FronosToolsItems;
 import stevekung.mods.moreplanets.planets.nibiru.items.NibiruItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CraftingRecipesFronos
 {

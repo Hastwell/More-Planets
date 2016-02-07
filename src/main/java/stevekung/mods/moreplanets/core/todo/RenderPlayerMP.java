@@ -1,5 +1,8 @@
 package stevekung.mods.moreplanets.core.todo;
 
+import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.common.Loader;
 import micdoodle8.mods.galacticraft.api.world.IGalacticraftWorldProvider;
 import micdoodle8.mods.galacticraft.core.client.model.ModelPlayerGC;
 import micdoodle8.mods.galacticraft.core.client.render.entities.RenderPlayerGC;
@@ -11,10 +14,6 @@ import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.common.Loader;
 
 public class RenderPlayerMP extends RenderPlayerGC
 {

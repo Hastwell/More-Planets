@@ -1,17 +1,16 @@
 package stevekung.mods.moreplanets.planets.pluto.render.entities;
 
+import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
 import stevekung.mods.moreplanets.planets.pluto.entities.EntityPlutoAlien;
 import stevekung.mods.moreplanets.planets.pluto.model.ModelPlutoAlien;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderPlutoAlien extends RenderLiving

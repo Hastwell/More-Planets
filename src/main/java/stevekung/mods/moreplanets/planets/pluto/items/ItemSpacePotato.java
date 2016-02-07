@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -9,6 +9,8 @@ package stevekung.mods.moreplanets.planets.pluto.items;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,18 +24,16 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import stevekung.mods.moreplanets.core.items.ItemFoodMP;
 import stevekung.mods.moreplanets.planets.pluto.blocks.PlutoBlocks;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSpacePotato extends ItemFoodMP implements IPlantable
 {
     private static int[] foodHunger = new int[] {
-        1,//0
-        6//1
+            1,//0
+            6//1
     };
     private static float[] foodSaturation = new float[] {
-        0.3F,//0
-        0.6F//1
+            0.3F,//0
+            0.6F//1
     };
 
     public ItemSpacePotato(String name)

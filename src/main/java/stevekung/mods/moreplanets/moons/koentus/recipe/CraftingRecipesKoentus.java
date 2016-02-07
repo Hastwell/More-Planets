@@ -1,12 +1,13 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.moons.koentus.recipe;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.block.BlockColored;
 import net.minecraft.init.Blocks;
@@ -19,7 +20,6 @@ import stevekung.mods.moreplanets.moons.koentus.items.KoentusItems;
 import stevekung.mods.moreplanets.moons.koentus.items.armor.KoentusArmorItems;
 import stevekung.mods.moreplanets.moons.koentus.items.tools.KoentusToolsItems;
 import stevekung.mods.moreplanets.planets.diona.items.DionaItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CraftingRecipesKoentus
 {

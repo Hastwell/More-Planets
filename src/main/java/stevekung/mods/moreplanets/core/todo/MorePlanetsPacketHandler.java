@@ -1,5 +1,7 @@
 package stevekung.mods.moreplanets.core.todo;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -7,8 +9,6 @@ import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import micdoodle8.mods.galacticraft.core.network.IPacket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Sharable
 public class MorePlanetsPacketHandler extends SimpleChannelInboundHandler<IPacket>

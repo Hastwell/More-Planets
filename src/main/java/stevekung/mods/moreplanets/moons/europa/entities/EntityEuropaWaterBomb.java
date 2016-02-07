@@ -1,12 +1,12 @@
 package stevekung.mods.moreplanets.moons.europa.entities;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import stevekung.mods.moreplanets.moons.europa.world.EuropaWaterExplosion;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityEuropaWaterBomb extends Entity
 {

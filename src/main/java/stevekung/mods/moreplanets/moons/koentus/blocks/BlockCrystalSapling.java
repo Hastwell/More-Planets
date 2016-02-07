@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -27,7 +27,7 @@ import stevekung.mods.moreplanets.core.worldgen.feature.WorldGenTreeMP;
 public class BlockCrystalSapling extends BlockSapling
 {
     private static String[] saplings = new String[] {
-        "crystal",
+            "crystal",
     };
     private IIcon[] textures;
 

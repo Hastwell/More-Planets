@@ -1,12 +1,13 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
 
 package stevekung.mods.moreplanets.planets.siriusb.recipe;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import micdoodle8.mods.galacticraft.core.items.GCItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,6 @@ import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.moreplanets.planets.siriusb.items.SiriusBItems;
 import stevekung.mods.moreplanets.planets.siriusb.items.armor.SiriusBArmorItems;
 import stevekung.mods.moreplanets.planets.siriusb.items.tools.SiriusBToolsItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CraftingRecipesSiriusB
 {

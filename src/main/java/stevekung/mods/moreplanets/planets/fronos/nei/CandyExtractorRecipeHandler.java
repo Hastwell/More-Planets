@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import codechicken.nei.ItemList;
+import codechicken.nei.NEIServerUtils;
+import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.TemplateRecipeHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
@@ -21,10 +25,6 @@ import net.minecraft.util.EnumChatFormatting;
 import stevekung.mods.moreplanets.core.recipe.CandyExtractorRecipes;
 import stevekung.mods.moreplanets.planets.fronos.gui.GuiCandyExtractor;
 import stevekung.mods.moreplanets.planets.fronos.tileentities.TileEntityCandyExtractor;
-import codechicken.nei.ItemList;
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.TemplateRecipeHandler;
 
 public class CandyExtractorRecipeHandler extends TemplateRecipeHandler
 {

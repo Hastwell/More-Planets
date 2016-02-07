@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -11,11 +11,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.client.config.IConfigElement;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import stevekung.mods.moreplanets.core.util.MPLog;
-import cpw.mods.fml.client.config.IConfigElement;
 
 public class ConfigManagerMP
 {

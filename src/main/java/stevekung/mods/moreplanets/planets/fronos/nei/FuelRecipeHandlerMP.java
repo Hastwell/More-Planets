@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import net.minecraft.item.ItemStack;
-import stevekung.mods.moreplanets.core.recipe.CandyExtractorRecipes;
 import codechicken.nei.NEIClientUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.GuiRecipe;
+import net.minecraft.item.ItemStack;
+import stevekung.mods.moreplanets.core.recipe.CandyExtractorRecipes;
 
 public class FuelRecipeHandlerMP extends CandyExtractorRecipeHandler
 {
