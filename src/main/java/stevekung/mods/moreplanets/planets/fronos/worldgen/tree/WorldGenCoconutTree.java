@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright 2015 SteveKunG - More Planets Mod
- * 
+ *
  * This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License.
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  ******************************************************************************/
@@ -18,20 +18,16 @@ import stevekung.mods.moreplanets.planets.fronos.blocks.IFronosGrass;
 
 public class WorldGenCoconutTree extends WorldGenAbstractTree
 {
-    private int strengthRand;
     private int bMax;
-    private double offset;
 
-    public WorldGenCoconutTree(int strengthRand, int bMax, double offset)
+    public WorldGenCoconutTree(int bMax)
     {
         super(false);
-        this.strengthRand = strengthRand;
         this.bMax = bMax;
-        this.offset = offset;
     }
 
     @Override
-    public boolean generate(World world, Random random, int x, int y, int z)
+    public boolean generate(World world, Random rand, int x, int y, int z)
     {
         while (world.isAirBlock(x, y, z) && y > 2)
         {
@@ -57,31 +53,19 @@ public class WorldGenCoconutTree extends WorldGenAbstractTree
                 }
             }
 
-            double strength = random.nextInt(this.strengthRand) / 100D;
-            double xoff = 0;
-            double yoff = 0;
-            int r = random.nextInt(4);
-            if(r == 0) { xoff = strength; }
-            else if(r == 1) { xoff = -strength; }
-            else if(r == 2) { yoff = strength; }
-            else { yoff = -strength; }
-
             int h = 1;
-            this.buildBlock(world, x, y, z, FronosBlocks.fronos_dirt, 0);
 
             for (int b = 0; b < this.bMax; b++)
             {
-                this.buildBlock(world, x + (int) Math.floor(xoff), y + h, z + (int) Math.floor(yoff), FronosBlocks.fronos_log, 0);
+                this.buildBlock(world, x, y + h, z, FronosBlocks.fronos_log, 0);
 
                 if (b == this.bMax - 1)
                 {
-                    this.generateTop(world, x + (int) Math.floor(xoff), y + h, z + (int) Math.floor(yoff));
+                    this.generateTop(world, x, y + h, z);
                 }
                 else
                 {
                     h++;
-                    xoff *= this.offset;
-                    yoff *= this.offset;
                 }
             }
             return true;

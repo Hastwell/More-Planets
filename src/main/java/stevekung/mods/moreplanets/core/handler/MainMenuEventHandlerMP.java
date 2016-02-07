@@ -32,7 +32,7 @@ public class MainMenuEventHandlerMP
         {
             GuiMainMenu gui = (GuiMainMenu) event.gui;
 
-            if (ConfigManagerMP.enableNewMainMenu)
+            if (ConfigManagerMP.enableNewMainMenu == true)
             {
                 this.setPrivateFinalValue(GuiMainMenu.class, gui, titlePanoramaPathsMP, titlePanoramaPaths);
             }

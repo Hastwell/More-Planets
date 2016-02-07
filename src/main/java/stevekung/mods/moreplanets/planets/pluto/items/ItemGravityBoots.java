@@ -7,21 +7,13 @@
 
 package stevekung.mods.moreplanets.planets.pluto.items;
 
-import java.util.List;
-
+import micdoodle8.mods.galacticraft.api.item.IArmorGravity;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-
-import org.lwjgl.input.Keyboard;
-
 import stevekung.mods.moreplanets.core.items.armor.ItemArmorMP;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGravityBoots extends ItemArmorMP
+public class ItemGravityBoots extends ItemArmorMP implements IArmorGravity
 {
     public ItemGravityBoots(String name, ArmorMaterial material, int render, int type)
     {
@@ -40,24 +32,6 @@ public class ItemGravityBoots extends ItemArmorMP
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean advanced)
-    {
-        if (player.worldObj.isRemote)
-        {
-            if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
-            {
-                list.add(EnumChatFormatting.GRAY + "Currently prevent fall damage");
-                list.add(EnumChatFormatting.RED + "WIP for increase/decrease gravity factor");
-            }
-            else
-            {
-                list.add("Press LSHIFT for info");
-            }
-        }
-    }
-
-    @Override
     public String getTextureLocation()
     {
         return "pluto";
@@ -73,5 +47,17 @@ public class ItemGravityBoots extends ItemArmorMP
     public int getRepairItemsMetadata()
     {
         return -1;
+    }
+
+    @Override
+    public int gravityOverrideIfLow()
+    {
+        return 50;
+    }
+
+    @Override
+    public int gravityOverrideIfHigh()
+    {
+        return 75;
     }
 }

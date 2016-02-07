@@ -369,7 +369,7 @@ public class BiomeDecoratorFronos extends BiomeDecorator
                 x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
                 y = this.randomGenerator.nextInt(256);
                 z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-                new WorldGenCoconutTree(35, 10, 1.3D).generate(this.currentWorld, this.randomGenerator, x, y, z);
+                new WorldGenCoconutTree(6 + this.randomGenerator.nextInt(8)).generate(this.currentWorld, this.randomGenerator, x, y, z);
             }
         }
 

@@ -30,7 +30,7 @@ public class CalendarHelper
 
     public static boolean isMyBirthDay()
     {
-        return CalendarHelper.getMonth(2) && CalendarHelper.getDay(2, 0);
+        return CalendarHelper.getMonth(2) && CalendarHelper.getDay(1, 1);
     }
 
     private static boolean getMonth(int month)

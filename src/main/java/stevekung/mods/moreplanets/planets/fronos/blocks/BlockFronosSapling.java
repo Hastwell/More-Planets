@@ -125,7 +125,7 @@ public class BlockFronosSapling extends BlockSapling
             {
             // Coconut
             case 0:
-                obj = new WorldGenCoconutTree(35, 10, 1.3D);
+                obj = new WorldGenCoconutTree(6 + random.nextInt(8));
                 break;
                 // Red Maple
             case 1:
