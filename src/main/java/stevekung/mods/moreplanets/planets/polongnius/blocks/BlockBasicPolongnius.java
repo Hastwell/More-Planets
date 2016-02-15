@@ -54,14 +54,9 @@ public class BlockBasicPolongnius extends BlockBasicMP implements IDetectableRes
     @Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
     {
-        if (world.getBlockMetadata(x, y, z) == 0)
+        if (world.getBlockMetadata(x, y, z) == 0 || world.getBlockMetadata(x, y, z) == 13)
         {
-            float f = 0.13F;
-            return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
-        }
-        if (world.getBlockMetadata(x, y, z) == 13)
-        {
-            float f = 0.1F;
+            float f = 0.125F;
             return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1 - f, z + 1);
         }
         return super.getCollisionBoundingBoxFromPool(world, x, y, z);

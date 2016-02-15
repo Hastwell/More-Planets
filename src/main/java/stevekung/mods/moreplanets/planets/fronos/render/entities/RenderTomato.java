@@ -69,9 +69,9 @@ public class RenderTomato extends RenderLiving
             GL11.glEnable(GL11.GL_CULL_FACE);
             GL11.glPushMatrix();
             GL11.glScalef(1.0F, -1.0F, 1.0F);
-            GL11.glTranslatef(0.0F, -0.2F, 0.0F);
+            GL11.glTranslatef(0.0F, -0.15F, 0.0F);
             GL11.glRotatef(0.0F, 0.0F, 0.0F, 0.0F);
-            this.field_147909_c.renderBlockAsItem(FronosBlocks.coral, 6, 1.0F);
+            this.field_147909_c.renderBlockAsItem(FronosBlocks.coral, 4, 1.0F);
             GL11.glPopMatrix();
             GL11.glPushMatrix();
             GL11.glPopMatrix();

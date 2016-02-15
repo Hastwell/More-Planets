@@ -147,7 +147,7 @@ public class WorldProviderVenus extends WorldProviderMP implements ILightningSto
     @Override
     public float getThermalLevelModifier()
     {
-        return -1.0F;
+        return this.isDaytime() ? 2.0F : -1.0F;
     }
 
     @Override

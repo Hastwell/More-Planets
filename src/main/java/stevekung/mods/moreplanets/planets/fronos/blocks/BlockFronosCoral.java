@@ -31,7 +31,7 @@ public class BlockFronosCoral extends BlockCoralMP
             "0",
             "0",
             "0",
-            "0",
+            "tomato_bush",
             "glowing_pink_coral",
             "colunus_coral"
     };
@@ -77,6 +77,7 @@ public class BlockFronosCoral extends BlockCoralMP
                 return;
             }
         }
+        this.textures[4] = iconRegister.registerIcon("fronos:" + BlockFronosCoral.coral[4]);
         this.textures[5] = iconRegister.registerIcon("fronos:" + BlockFronosCoral.coral[5]);
         this.textures[6] = iconRegister.registerIcon("fronos:" + BlockFronosCoral.coral[6]);
     }

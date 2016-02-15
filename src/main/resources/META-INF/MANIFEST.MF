@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-FMLCorePlugin: stevekung.mods.moreplanets.plugin.asm.MorePlanetsPlugin
-FMLCorePluginContainsFMLMod: true
-AccessTransformer: moreplanets_at.cfg

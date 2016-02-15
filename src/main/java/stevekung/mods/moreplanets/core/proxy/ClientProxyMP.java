@@ -36,7 +36,6 @@ import stevekung.mods.moreplanets.core.renderer.blocks.BlockRendererAncientChest
 import stevekung.mods.moreplanets.core.renderer.blocks.BlockRendererFence;
 import stevekung.mods.moreplanets.core.renderer.blocks.BlockRendererSlime;
 import stevekung.mods.moreplanets.core.renderer.blocks.BlockRendererTreasureChest;
-import stevekung.mods.moreplanets.core.todo.RenderPlayerMP;
 import stevekung.mods.moreplanets.moons.koentus.blocks.KoentusBlocks;
 import stevekung.mods.moreplanets.moons.koentus.particles.EntityCrystalSmokeFX;
 import stevekung.mods.moreplanets.moons.koentus.particles.EntityKoentusDripParticleFX;
@@ -163,8 +162,6 @@ public class ClientProxyMP extends CommonProxyMP
 
         ModelJetpack jetpack = new ModelJetpack(0.75F);
         jetpackModel.put(VenusItems.jetpack, jetpack);
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerMP());
     }
 
     private static void registerBlockRenderers()

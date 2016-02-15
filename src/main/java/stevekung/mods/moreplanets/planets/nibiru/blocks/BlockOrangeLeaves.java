@@ -90,16 +90,6 @@ public class BlockOrangeLeaves extends BlockLeavesBase implements IShearable
     }
 
     @Override
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-    {
-        for (int i = 0; i < BlockOrangeLeaves.types.length; ++i)
-        {
-            list.add(new ItemStack(this, 1, i));
-        }
-    }
-
-    @Override
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, int x, int y, int z, Random random)
     {
@@ -147,17 +137,6 @@ public class BlockOrangeLeaves extends BlockLeavesBase implements IShearable
         if (world.isRemote)
         {
             return;
-        }
-
-        if (random.nextInt(25) == 0)
-        {
-            if (meta > 0)
-            {
-                if ((meta & 3) < 3)
-                {
-                    world.setBlock(x, y, z, this, ++meta, 3);
-                }
-            }
         }
         if ((meta & 8) != 0)
         {
@@ -270,32 +249,6 @@ public class BlockOrangeLeaves extends BlockLeavesBase implements IShearable
     }
 
     @Override
-    public boolean onBlockActivated (World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
-    {
-        final int meta = world.getBlockMetadata(x, y, z);
-        if ((meta & 3) == 3)
-        {
-            world.setBlock(x, y, z, this, meta - 3, 3);
-            final EntityItem entityitem = new EntityItem(world, x, y, z, new ItemStack(NibiruItems.space_fruits, 1, 1));
-
-            if (!world.isRemote)
-            {
-                world.spawnEntityInWorld(entityitem);
-
-                if (!(player instanceof FakePlayer))
-                {
-                    entityitem.onCollideWithPlayer(player);
-                }
-            }
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    @Override
     public Item getItemDropped(int par1, Random par2Random, int par3)
     {
         return Item.getItemFromBlock(NibiruBlocks.nibiru_sapling);
@@ -326,20 +279,7 @@ public class BlockOrangeLeaves extends BlockLeavesBase implements IShearable
             final Item var9 = this.getItemDropped(meta, world.rand, par7);
             this.dropBlockAsItem(world, x, y, z, new ItemStack(var9, 1, this.damageDropped(meta)));
         }
-
-        if ((meta & 3) == 3)
-        {
-            this.dropBlockAsItem(world, x, y, z, new ItemStack(NibiruItems.space_fruits, 1, 1));
-        }
-        else if ((meta & 3) == 2 && world.rand.nextInt(16) == 0)
-        {
-            this.dropBlockAsItem(world, x, y, z, new ItemStack(NibiruItems.space_fruits, 1, 1));
-        }
-        else if ((meta & 3) == 1 && world.rand.nextInt(48) == 0)
-        {
-            this.dropBlockAsItem(world, x, y, z, new ItemStack(NibiruItems.space_fruits, 1, 1));
-        }
-        else if ((meta & 3) == 0 && world.rand.nextInt(80) == 0)
+        if (world.rand.nextInt(80) == 0)
         {
             this.dropBlockAsItem(world, x, y, z, new ItemStack(NibiruItems.space_fruits, 1, 1));
         }

@@ -147,9 +147,7 @@ public class WorldGenNibiruFruitTree extends WorldGenAbstractTree
 
                                     if (block1.isAir(par1World, i2, k1, k2) || block1.isLeaves(par1World, i2, k1, k2))
                                     {
-                                        int metadata = this.isFruitTree ? this.metaLeaves > 0 ? par2Random.nextInt(4) == 0 ? this.metaLeaves - 1 : this.metaLeaves : this.metaLeaves : this.metaLeaves;
-
-                                        this.setBlockAndNotifyAdequately(par1World, i2, k1, k2, this.leaves, metadata);
+                                        this.setBlockAndNotifyAdequately(par1World, i2, k1, k2, this.leaves, 0);
                                     }
                                 }
                             }
