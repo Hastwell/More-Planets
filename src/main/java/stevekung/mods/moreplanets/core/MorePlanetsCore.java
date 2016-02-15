@@ -109,7 +109,7 @@ public class MorePlanetsCore
 
     public static final int major_version = 1;
     public static final int minor_version = 3;
-    public static final int build_version = 0;
+    public static final int build_version = 1;
 
     @SidedProxy(clientSide = "stevekung.mods.moreplanets.core.proxy.ClientProxyMP", serverSide = "stevekung.mods.moreplanets.core.proxy.CommonProxyMP")
     public static CommonProxyMP proxy;
