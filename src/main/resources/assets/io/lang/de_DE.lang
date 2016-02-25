@@ -18,7 +18,7 @@ tile.io_magma_rock.sulfur_rock.name=Schwefelgestein
 # WALLS
 
 # ITEMS
-item.titanium_bucket.name=Titaniumeimer
+item.titanium_bucket.name=Titaneimer
 item.io_lava_bucket.name=Io-Lavaeimer
 item.liquid_red_sulfur_bucket.name=Roter Flüssigschwefel-Eimer
 item.liquid_yellow_sulfur_bucket.name=Gelber Flüssigschwefel-Eimer
