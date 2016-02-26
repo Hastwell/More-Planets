@@ -213,6 +213,10 @@ tile.fronos_sandstone.cheeseSandstoneSmooth.name=Glatter Käse-Sandstein
 tile.fronos_sandstone_stairs.name=Fronos-Sandsteintreppen
 tile.white_sandstone_stairs.name=Weiße Sandsteintreppen
 tile.cheese_sandstone_stairs.name=Käse-Sandsteintreppen
+tile.fronos_block1.gold.name=Golderz
+tile.fronos_block1.diamond.name=Diamanterz
+tile.fronos_block1.emerald.name=Smaragderz
+tile.fronos_block1.silicon.name=Siliziumerz
 
 # SLABS
 tile.mp_stone_half_slab2.fronos.name=Fronos-Bruchsteinstufe
