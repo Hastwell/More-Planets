@@ -1,0 +1,116 @@
+# More Planet's : Kapteyn B = GERMAN
+
+# BLOCK
+tile.kapteyn-b_block.surface_ice.name=Kapteyn B-Oberflächeneis
+tile.kapteyn-b_block.sub_surface_ice.name=Kapteyn B-Unteroberflächeneis
+tile.kapteyn-b_block.stone.name=Kapteyn B-Gestein
+tile.kapteyn-b_block.cobblestone.name=Kapteyn B-Bruchstein
+tile.kapteyn-b_block.namerium_ore.name=Namerium-Kristallerz
+tile.kapteyn-b_block.frozen_iron_ore.name=Gefrorenes Eisenerz
+tile.kapteyn-b_block.uranium_ore.name=Uranerz
+tile.kapteyn-b_block.tin_ore.name=Zinnerz
+tile.kapteyn-b_block.copper_ore.name=Kupfererz
+tile.kapteyn-b_block.redstone_ore.name=Redstone-Erz
+tile.kapteyn-b_block.namerium_block.name=Namerium-Block
+tile.kapteyn-b_block.frozen_iron_block.name=Gefrorener Eisenblock
+tile.kapteyn-b_block.uranium_block.name=Uranblock
+tile.kapteyn-b_block.dungeon_brick.name=Kapteyn B-Dungeonziegel
+tile.rocky_soild_water.name=Steiniges Massives Wasser
+tile.default_kapteyn-b_ice.name=Kapteyn B-Eis
+tile.dirty_kapteyn-b_ice.name=Dreckiges Kapteyn B-Eis
+tile.kapteyn-b_treasure_chest.name=Kapteyn B-Schatztruhe (Stufe 8)
+tile.kapteyn-b_ancient_chest.name=Uralte Kapteyn B-Truhe
+tile.kapteyn-b_cobblestone_stairs.name=Kapteyn B-Bruchsteintreppe
+tile.kapteyn-b_dungeon_brick_stairs.name=Kapteyn B-Dungeonziegeltreppe
+tile.uranium_waste.active.name=Uranabfall
+tile.uranium_waste.inactive.name=Inaktiver Uranabfall
+tile.uranium_bomb.name=Uranbombe
+tile.frozen_water_fluid.name=Gefrorenes Wasser
+tile.fallen_ice_crystal_meteor.name=Eiskristall-Meteor
+tile.frozen_water_geyser.name=Gefrorener Wasser-Geysir
+tile.icy_poison_crystal.name=Giftiger Eiskristall
+
+# SLABS
+tile.mp_stone_half_slab2.kapteyn.name=Kapteyn B-Bruchsteinstufe
+tile.dungeon_brick_half_slab1.kapteynBrick.name=Kapteyn B-Dungeonziegelstufe
+
+# WALLS
+tile.mp_wall.kapteyn.name=Kapteyn B-Bruchsteinmauer
+tile.mp_dungeon_brick_wall.kapteynBrick.name=Kapteyn B-Dungeonziegelmauer
+
+# ITEMS
+item.kapteyn-b_dungeon_key.name=Kapteyn B-Dungeonschlüssel (Stufe 8)
+item.uranium_battery.name=Uranbatterie
+item.kapteyn-b_item.frozen_iron_ingot.name=Gefrorener Eisenbarren
+item.kapteyn-b_item.uranium_gem.name=Uranedelstein
+item.kapteyn-b_item.compressed_frozen_iron.name=Gepresstes Gefrorenes Eisen
+item.frozen_water_bucket.name=Gefrorener Wassereimer
+item.kapteyn-b_item.uranium_stick.name=Uranstab
+item.kapteyn-b_item.frozen_iron_stick.name=Gefrorener Eisenstab
+item.kapteyn-b_item.ice_crystal_shard.name=Eiskristall-Scherbe
+item.namerium_crystal.name=Namerium-Kristall
+item.tier_8_rocket.name=Rakete (Stufe 8)
+item.tier_8_rocket_schematic.name=Raketenwerkbank-Bauplan
+item.tier_8_rocket_module.tier8_rocket_engine.name=Raketentriebwerk (Stufe 8)
+item.tier_8_rocket_module.tier8_booster.name=Hilfstriebwerk (Stufe 8)
+item.tier_8_rocket_module.tier8_heavy_duty_plate.name=Robuste Platte
+item.ice_crystal_meteor_chunk.name=Eiskristall-Meteorbrocken
+
+# TOOLS
+item.frozen_iron_pickaxe.name=Gefrorene Eisenspitzhacke
+item.frozen_iron_axe.name=Gefrorene Eisenaxt
+item.frozen_iron_hoe.name=Gefrorene Eisenhacke
+item.frozen_iron_spade.name=Gefrorene Eisenschaufel
+item.frozen_iron_sword.name=Gefrorenes Eisenschwert
+item.uranium_pickaxe.name=Uranspitzhacke
+item.uranium_axe.name=Uranaxt
+item.uranium_hoe.name=Uranhacke
+item.uranium_spade.name=Uranschaufel
+item.uranium_sword.name=Uranschwert
+item.ice_crystal_sword.name=Eiskristall-Schwert
+item.ice_crystal_shovel.name=Eiskristall-Schaufel
+item.ice_crystal_axe.name=Eiskristall-Axt
+item.ice_crystal_pickaxe.name=Eiskristall-Spitzhacke
+item.ice_crystal_hoe.name=Eiskristall-Hacke
+
+# ARMORS
+item.uranium_helmet.name=Uranhelm
+item.uranium_chestplate.name=Uranbrustpanzer
+item.uranium_leggings.name=Uranbeinschutz
+item.uranium_boots.name=Uranstiefel
+item.frozen_iron_helmet.name=Gefrorener Eisenhelm
+item.frozen_iron_chestplate.name=Gefrorener Eisenbrustpanzer
+item.frozen_iron_leggings.name=Gefrorener Eisenbeinschutz
+item.frozen_iron_boots.name=Gefrorene Eisenstiefel
+item.ice_crystal_helmet.name=Eiskristall-Helm
+item.ice_crystal_chestplate.name=Eiskristall-Brustpanzer
+item.ice_crystal_leggings.name=Eiskristall-Beinschutz
+item.ice_crystal_boots.name=Eiskristall-Stiefel
+item.breathable_uranium_helmet.name=Uranhelm (Atembar)
+item.breathable_frozen_iron_helmet.name=Gefrorener Eisenhelm (Atembar)
+item.breathable_ice_crystal_helmet.name=Eiskristall-Helm (Atembar)
+
+# ENTITIES
+entity.MorePlanet.FrozenSludgeling.name=Gefrorener Schlammling
+
+# DESCRIFTION
+schematic.tier8.rocket.name=Rakete (Stufe 8)
+desc.tier8.name=Stufe 8
+
+# DEATH MESSSAGE
+death.attack.chemical=%1$s wurde mit einer Chemikalie getötet
+death.attack.icy_poison=%1$s wurde mit einem giftigen Eiskristall vergiftet
+
+# CONTAINER
+container.kapteynb.treasurechest.name=Kapteyn B-Schatztruhe
+container.kapteynb.ancientchest.name=Uralte Kapteyn B-Truhe
+schematics.container.rocket.tier8=Rakete (Stufe 8)
+
+# PLANET
+star.kapteyn=Kapteyn
+planet.kapteynB=Kapteyn B
+solarsystem.kapteyn=Kapteyn-Sonnensystem
+
+# POTION
+potion.chemical=Chemikalie
+potion.icy_poison=Eisiges Gift
