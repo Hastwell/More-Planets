@@ -1,0 +1,115 @@
+# More Planets : Core = GERMAN
+
+tile.chondrite_block.rock.name=Chondritgestein
+tile.chondrite_block.polished.name=Polierter Chondrit
+tile.chondrite_block.stone_brick.name=Chondrit-Steinziegel
+tile.tinted_glass_pane.white.name=Getönte Glasscheibe
+tile.tinted_glass_pane.orange.name=Orange getönte Glasscheibe
+tile.tinted_glass_pane.magenta.name=Magenta getönte Glasscheibe
+tile.tinted_glass_pane.light_blue.name=Hellblau getönte Glasscheibe
+tile.tinted_glass_pane.yellow.name=Gelb getönte Glasscheibe
+tile.tinted_glass_pane.lime.name=Hellgrün getönte Glasscheibe
+tile.tinted_glass_pane.pink.name=Rosa getönte Glasscheibe
+tile.tinted_glass_pane.gray.name=Grau getönte Glasscheibe
+tile.tinted_glass_pane.silver.name=Hellgrau getönte Glasscheibe
+tile.tinted_glass_pane.cyan.name=Türkis getönte Glasscheibe
+tile.tinted_glass_pane.purple.name=Lila getönte Glasscheibe
+tile.tinted_glass_pane.blue.name=Blau getönte Glasscheibe
+tile.tinted_glass_pane.brown.name=Braun getönte Glasscheibe
+tile.tinted_glass_pane.green.name=Grün getönte Glasscheibe
+tile.tinted_glass_pane.red.name=Rot getönte Glasscheibe
+tile.tinted_glass_pane.black.name=Schwarz getönte Glasscheibe
+tile.tinted_glass.white.name=Getöntes Glas
+tile.tinted_glass.orange.name=Orange getöntes Glas
+tile.tinted_glass.magenta.name=Magenta getöntes Glas
+tile.tinted_glass.light_blue.name=Hellblau getöntes Glas
+tile.tinted_glass.yellow.name=Gelb getöntes Glas
+tile.tinted_glass.lime.name=Hellgrün getöntes Glas
+tile.tinted_glass.pink.name=Rosa getöntes Glas
+tile.tinted_glass.gray.name=Grau getöntes Glas
+tile.tinted_glass.silver.name=Hellgrau getöntes Glas
+tile.tinted_glass.cyan.name=Türkis getöntes Glas
+tile.tinted_glass.purple.name=Lila getöntes Glas
+tile.tinted_glass.blue.name=Blau getöntes Glas
+tile.tinted_glass.brown.name=Braun getöntes Glas
+tile.tinted_glass.green.name=Grün getöntes Glas
+tile.tinted_glass.red.name=Rot getöntes Glas
+tile.tinted_glass.black.name=Schwarz getöntes Glas
+tile.space_decoration_block.tin.name=Polierter Zinndekorationsblock
+tile.space_decoration_block.aluminum.name=Polierter Aluminiumdekorationsblock
+
+tile.dark_asteroid_block.rock.name=Dunkles Asteroidengestein
+tile.dark_asteroid_block.aluminum_ore.name=Aluminiumerz
+tile.dark_asteroid_block.ilmenite_ore.name=Ilmeniterz
+tile.dark_asteroid_block.iron_ore.name=Eisenerz
+tile.dark_asteroid_block.meteoric_iron_ore.name=Meteorisches Eisenerz
+tile.dark_asteroid_block.silicon_ore.name=Siliziumerz
+tile.dark_asteroid_block.diamond_ore.name=Diamanterz
+tile.dark_asteroid_block.emerald_ore.name=Smaragderz
+tile.dark_asteroid_block.lapis_ore.name=Lapislazulierz
+tile.dark_asteroid_quicksand.name=Dunkler Asteroidentreibsand
+tile.alphere_ore.name=Alphere-Erz
+tile.alien_grass.name=Alien-Gras
+tile.alien_dirt.dirt.name=Alien-Erde
+tile.alien_dirt.coarse.name=Grobe Alien-Erde
+tile.alien_log.name=Alien-Holz
+tile.alien_planks.name=Alien-Holzplanken
+tile.alien_glowstone.name=Alien-Glowstone
+tile.alien_leaves.alien.name=Alien-Laub
+tile.alien_sapling.name=Alien-Setzling
+tile.space_mossy_cobblestone.diona.name=Bemooster Diona-Bruchstein
+tile.space_mossy_cobblestone.polongnius.name=Bemooster Polongnius-Bruchstein
+tile.space_mossy_cobblestone.nibiru.name=Bemooster Nibiru-Bruchstein
+tile.space_mossy_cobblestone.koentus.name=Bemooster Koentus-Bruchstein
+tile.space_mossy_cobblestone.kapteynb.name=Bemooster Kapteyn B-Bruchstein
+tile.space_mossy_cobblestone.siriusb.name=Bemooster Sirius B-Bruchstein
+tile.space_mossy_cobblestone.venus.name=Bemooster Venus-Bruchstein
+tile.space_mossy_cobblestone.mercury.name=Bemooster Merkur-Bruchstein
+tile.space_mossy_cobblestone.pluto.name=Bemooster Pluto-Bruchstein
+tile.space_mossy_cobblestone.martian.name=Bemooster Martian-Bruchstein
+
+tile.mp_wall.venus.name=Venus-Bruchsteinmauer
+tile.mp_dungeon_brick_wall.venus.name=Venus-Dungeonziegelmauer
+tile.mp_stone_half_slab2.venus.name=Venus-Bruchsteinstufe
+tile.dungeon_brick_half_slab2.venus.name=Venus-Dungeonziegelstufe
+tile.mp_wall.pluto.name=Pluto-Bruchsteinmauer
+tile.mp_dungeon_brick_wall.pluto.name=Pluto-Dungeonziegelmauer
+tile.mp_stone_half_slab2.pluto.name=Pluto-Bruchsteinstufe
+tile.dungeon_brick_half_slab2.pluto.name=Pluto-Dungeonziegelstufe
+tile.mp_wood_half_slab.alienWood.name=Alien-Holzstufe
+tile.venus_cobblestone_stairs.name=Venus-Bruchsteintreppe
+tile.venus_dungeon_brick_stairs.name=Venus-Dungeonziegeltreppe
+tile.pluto_cobblestone_stairs.name=Pluto-Bruchsteintreppe
+tile.pluto_dungeon_brick_stairs.name=Pluto-Dungeonziegeltreppe
+tile.alien_wood_stairs.name=Alien-Holztreppe
+tile.alien_fence.name=Alien-Zaun
+tile.alien_fence_gate.name=Alien-Zauntor
+
+entity.MorePlanet.EvolvedWitch.name=Entwickelte Hexe
+entity.MorePlanet.PlutoAlien.name=Pluto-Alien
+
+item.feces.name=Kot
+item.decompose.name=Zersetzen
+item.desh_thermal_cloth.name=Desh-Thermalstoff
+item.alphere.name=Alphere
+
+# GUI
+itemGroup.MorePlanetsBlocks=More Planets: Blöcke
+itemGroup.MorePlanetsItems=More Planets: Items
+itemGroup.MorePlanetsTools=More Planets: Werkzeuge
+itemGroup.MorePlanetsArmor=More Planets: Rüstung
+gui.config.mp=More Planets-Konfuguration
+
+# PLANET
+star.sirius=Sirius
+solarsystem.sirius=Sirius-Sonnensystem
+solarsystem.dark=Dunkles Sonnensystem
+planet.darkAsteroids=Dunkle Asteroiden
+star.dark=Dunkler Stern
+
+commands.homeplanettp.alreadyuse=%s hat diesen Befehl schon benutzt! Du kannst ihn nicht noch mal benutzen!
+commands.homeplanettp.confignull=Bitte lege deinen Heimatplanet-Namen in der Konfiguration fest!
+commands.homeplanettp.success=%s ist nun dein Heimatplanet [%s]. Viel Spaß!
+
+mp.failed.name=Update-Check fehlgeschlagen!
+mp.success.name=Neue More Planets-Version gefunden:
