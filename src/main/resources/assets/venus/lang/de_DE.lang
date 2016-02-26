@@ -1,0 +1,57 @@
+# More Planets : Venus = GERMAN
+
+# BLOCK
+tile.venus_block.surface.name=Venus-Oberflächengestein
+tile.venus_block.sub_surface.name=Venus-Unteroberflächengestein
+tile.venus_block.rock.name=Venusgestein
+tile.venus_block.cobblestone.name=Venusbruchstein
+tile.venus_block.sulfur_ore.name=Schwefelerz
+tile.venus_block.lead_ore.name=Bleierz
+tile.venus_block.tin_ore.name=Zinnerz
+tile.venus_block.copper_ore.name=Kupfererz
+tile.venus_block.coal_ore.name=Steinkohle
+tile.venus_block.iron_ore.name=Eisenerz
+tile.venus_block.gold_ore.name=Golderz
+tile.venus_block.lead_block.name=Bleiblock
+tile.venus_block.stone_brick.name=Venus-Steinziegel
+tile.venus_block.cracked_stone_brick.name=Rissige Venus-Steinziegel
+tile.venus_block.dungeon_brick.name=Venus-Dungeonziegel
+tile.venus_redstone_ore.name=Venus-Redstoneerz
+tile.venus_smoke_geyser.name=Venus-Rauch-Geysir
+tile.venus_magma_rock.name=Venus-Magmagestein
+tile.venus_sand.name=Venussand
+tile.sulfur_torch.name=Schwefel-Fackel
+tile.venusian_blaze_egg.name=Ei einer Venuslohe
+tile.venus_ancient_chest.name=Uralte Venus-Truhe
+tile.venus_treasure_chest.name=Venus-Schatztruhe (Stufe 3)
+tile.venus_sandstone.venusSandstone.name=Venus-Sandstein
+tile.venus_sandstone.venusSandstoneChiseled.name=Gemeißelter Venus-Sandstein
+tile.venus_sandstone.venusSandstoneSmooth.name=Glatter Venus-Sandstein
+tile.half_venus_sandstone_slab.venus.name=Venus-Sandsteinstufe
+tile.venus_sandstone_stairs.name=Venus-Sandsteintreppe
+
+# ITEMS
+item.venus_item.lead_ingot.name=Bleibarren
+item.sulfur_battery.name=Schwefelbatterie
+item.jetpack.name=Jetpack
+item.venus_dungeon_key.name=Venus-Dungeonschlüssel (Stufe 3)
+
+# TOOLS
+
+# ARMORS
+
+# ENTITIES
+entity.MorePlanet.VenusianBlaze.name=Venuslohe
+entity.MorePlanet.VenusianSlime.name=Venusschleim
+entity.MorePlanet.VenusianVillager.name=Venusdorfbewohner
+entity.MorePlanet.VenusianBlazeMP.name=Venuslohe
+entity.MorePlanet.VenusianSlimeMP.name=Venusschleim
+entity.MorePlanet.VenusianVillagerMP.name=Venusdorfbewohner
+
+# DESCRIFTION
+
+# CONTAINER
+container.venus.treasurechest.name=Venus-Schatztruhe
+container.venus.ancientchest.name=Uralte Venus-Truhe
+
+# PLANET
