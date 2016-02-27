@@ -1,0 +1,148 @@
+# More Planet's : Nibiru = GERMAN
+
+# BLOCKS
+tile.nibiru_block.surface_rock.name=Nibiru-Oberflächengestein
+tile.nibiru_block.sub_surface_rock.name=Nibiru-Unteroberflächengestein
+tile.nibiru_block.rock.name=Nibirugestein
+tile.nibiru_block.cobblestone.name=Nibirubruchstein
+tile.nibiru_block.ichorius_ore.name=Ichorius-Edelsteinerz
+tile.nibiru_block.norium_ore.name=Norium-Erz
+tile.nibiru_block.diamond_ore.name=Diamanterz
+tile.nibiru_block.coal_ore.name=Steinkohle
+tile.nibiru_block.red_gem_ore.name=Rotes Edelsteinerz
+tile.nibiru_block.ichorius_block.name=Ichorius-Block
+tile.nibiru_block.norium_block.name=Norium-Block
+tile.nibiru_block.red_gem_block.name=Roter Edelsteinblock
+tile.nibiru_block.dungeon_brick.name=Nibiru-Dungeonziegel
+tile.oil_rock.oil_rock.name=Trockenöl-Gestein
+tile.oil_rock.oil_ore.name=Ölerz
+tile.helium_block.name=Helium-Block
+tile.nibiru_treasure_chest.name=Nibiru-Schatztruhe (Stufe 6)
+tile.nibiru_ancient_chest.name=Uralte Nibiru-Truhe
+tile.infected_worm_egg.name=Infiziertes Wurm-Ei-Gestein
+tile.infected_zombie_egg.name=Infiziertes Zombie-Ei
+tile.power_crystal_generator.name=Energiekristall-Generator
+tile.nibiru_cobblestone_stairs.name=Nibiru-Bruchsteintreppe
+tile.ancient_dark_wood_stairs.name=Uralte dunkle Holztreppe
+tile.nibiru_dungeon_brick_stairs.name=Nibiru-Dungeonziegeltreppe
+tile.nibiru_planks.ancient_dark.name=Uralte dunkle Holzplanken
+tile.nibiru_sapling.ancient_dark.name=Uralter dunkler Setzling
+tile.ancient_dark_leaves.state1.name=Uraltes dunkles Laub
+tile.ancient_dark_leaves.state2.name=Uraltes dunkles Blumenlaub
+tile.ancient_dark_leaves.state3.name=Uraltes dunkles Apfellaub
+tile.ancient_dark_leaves.state4.name=Uraltes dunkles Fruchtlaub
+tile.nibiru_log.ancient_dark_wood.name=Uraltes dunkles Holz
+tile.nibiru_log.orange_wood.name=Oranges Holz
+tile.ichorius_torch.name=Ichorius-Fackel
+tile.nibiru_sapling.orange.name=Oranger Setzling
+tile.orange_leaves.state1.name=Oranges Laub
+tile.orange_leaves.state2.name=Oranges Blumenlaub
+tile.orange_leaves.state3.name=Oranges Orangenlaub
+tile.orange_leaves.state4.name=Oranges Fruchtlaub
+tile.nibiru_planks.orange.name=Orange Holzplanken
+tile.orange_wood_stairs.name=Orange Holztreppe
+tile.infected_grass.name=Infiziertes Gras
+tile.infected_dirt.dirt.name=Infizierte Erde
+tile.infected_dirt.coarse.name=Grobe infizierte Erde
+tile.infected_vine.name=Infizierte Ranken
+tile.nibiru_fence.ancient_dark.name=Uralter dunkler Zaun
+tile.nibiru_fence.orange.name=Oranger Zaun
+tile.ancient_dark_fence_gate.name=Uraltes dunkles Zauntor
+tile.orange_fence_gate.name=Oranges Zauntor
+tile.infected_cavernous_vine.name=Infizierte kavernöse Weinranken
+
+# SLABS
+tile.mp_stone_half_slab1.nibiru.name=Nibiru-Bruchsteinstufe
+tile.mp_wood_half_slab.ancientDarkWood.name=Uralte dunkle Holzstufe
+tile.mp_wood_half_slab.orangeWood.name=Orange Holzstufe
+tile.dungeon_brick_half_slab1.nibiruBrick.name=Nibiru-Dunegonziegelstufe
+
+# WALLS
+tile.mp_wall.nibiru.name=Nibiru-Bruchsteinmauer
+tile.mp_dungeon_brick_wall.nibiruBrick.name=Nibiru-Dungeonziegelmauer
+
+# ITEMS
+item.nibiru_dungeon_key.name=Nibiru-Dungeonschlüssel (Stufe 6)
+item.nibiru_food.space_apple.name=Weltraumapfel
+item.nibiru_food.space_orange.name=Weltraumorange
+item.power_crystal.name=Ichorius-Edelstein
+item.nibiru_food.orange_juice.name=Orangensaft
+item.nibiru_item.compressed_red_gem.name=Gepresster roter Edelstein
+item.nibiru_item.red_gem.name=Roter Edelstein
+item.nibiru_item.red_gem_stick.name=Roter Edelsteinstab
+item.nibiru_item.norium_ingot.name=Norium-Barren
+item.nibiru_item.compressed_norium.name=Gepresstes Norium
+item.nibiru_item.norium_stick.name=Norium-Stab
+item.tier_6_rocket.name=Rakete (Stufe 6)
+item.tier_7_rocket_module.tier7_booster.name=Hilfstriebwerk (Stufe 7)
+item.tier_7_rocket_module.tier7_rocket_engine.name=Raketentriebwerk (Stufe 7)
+item.tier_7_rocket_module.tier7_heavy_duty_plate.name=Robuste Platte
+item.tier_7_rocket_module.tier7_rocket_fin.name=Raketennase (Stufe 7)
+item.tier_7_rocket_module.tier7_nose_cone.name=Raketenfinnen (Stufe 7)
+item.tier_6_rocket_schematic.tier6_schematic_rocket_no_flag.name=Raketenwerkbank-Bauplan
+item.tier_6_rocket_schematic.tier6_schematic_rocket.name=Raketenwerkbank-Bauplan
+item.ancient_dark_door.name=Uralte dunkle Tür
+item.orange_door.name=Orange Tür
+
+# DESCRIPTION
+desc.tier7.name=Stufe 7
+
+# SCHEMATIC
+schematic.tier6.rocket.name=Rakete (Stufe 6)
+schematic.tier6.rocket.noflag.name=Rakete (Stufe 6, keine Flagge)
+
+# TOOLS
+item.red_gem_pickaxe.name=Rote Edelsteinspitzhacke
+item.red_gem_axe.name=Rote Edelsteinaxt
+item.red_gem_hoe.name=Rote Edelsteinhacke
+item.red_gem_spade.name=Rote Edelsteinschaufel
+item.red_gem_sword.name=Rotes Edelsteinschwert
+item.norium_pickaxe.name=Norium-Spitzhacke
+item.norium_axe.name=Norium-Axt
+item.norium_hoe.name=Norium-Hacke
+item.norium_spade.name=Norium-Schaufel
+item.norium_sword.name=Norium-Schwert
+
+# ARMOR
+item.red_gem_helmet.name=Roter Edelsteinhelm
+item.red_gem_chestplate.name=Roter Edelsteinbrustpanzer
+item.red_gem_leggings.name=Roter Edelsteinbeinschutz
+item.red_gem_boots.name=Rote Edelsteinstiefel
+item.norium_helmet.name=Norium-Helm
+item.norium_chestplate.name=Norium-Brustpanzer
+item.norium_leggings.name=Norium-Beinschutz
+item.norium_boots.name=Norium-Stiefel
+item.breathable_red_gem_helmet.name=Roter Edelsteinhelm (Atembar)
+item.breathable_norium_helmet.name=Norium-Helm (Atembar)
+
+# ENTITIES
+entity.MorePlanet.InfectedWorm.name=Infizierter Wurm
+entity.MorePlanet.GiantWorm.name=Riesiger Wurm
+entity.MorePlanet.InfectedZombie.name=Infizierter Zombie
+entity.MorePlanet.EvolvedInfectedSpiderBoss.name=Entwickelter infizierter Spinnenboss
+
+# DESCRIPTION
+tile.power_crystal_generator.desc=Der Energiekristall-Generator erzeugt aus Enegiekristall-Edelsteinen Energie.
+
+# GUI
+gui.status.power.name=Sammelt
+
+# CONTAINER
+container.nibiru.ancientchest.name=Uralte Nibiru-Truhe
+container.powercrystal.name=Energiekristall-Generator
+container.nibiru.treasurechest.name=Nibiru-Schatztruhe
+schematics.container.rocket.tier6=Rakete (Stufe 6)
+schematics.container.rocket.noflag.tier6=Rakete (Stufe 6, keine Flagge)
+
+# PLANET
+planet.nibiru=Nibiru
+
+# POTION
+potion.infected.gas=Infiziertes Gas
+
+# MESSAGES
+message.warning.infected.gas=Unzureichende Thermalkleidung!
+
+# DEATH MESSAGES
+death.attack.infectionVine=%1$s wurde von einer infizierten Ranke infiziert
+death.attack.infectedGas=%1$s wurde von infiziertem Gas getötet

@@ -1,0 +1,51 @@
+# More Planets : Pluto = GERMAN
+
+# BLOCKS
+tile.pluto_block.surface_rock.name=Pluto-Oberflächengestein
+tile.pluto_block.sub_surface_rock.name=Pluto-Unteroberflächengestein
+tile.pluto_block.rock.name=Plutogestein
+tile.pluto_block.cobblestone.name=Plutobruchstein
+tile.pluto_block.meteoric_iron_ore.name=Meteorisches Eisenerz
+tile.pluto_block.frozen_iron_ore.name=Gefrorenes Eisenerz
+tile.pluto_block.iron_ore.name=Eisenerz
+tile.pluto_block.xeonium_ore.name=Xeonium-Erz
+tile.pluto_block.dungeon_brick.name=Pluto-Dungeonziegel
+tile.xeonium_glowstone.name=Xeonium-Glowstone
+tile.frozen_methane_block.name=Gefrorener Methanblock
+tile.frozen_nitrogen_block.name=Gefrorener Stickstoffblock
+tile.pluto_ancient_chest.name=Uralte Pluto-Truhe
+tile.pluto_treasure_chest.name=Pluto-Schatztruhe
+tile.xeonium_torch.name=Xeonium-Fackel
+tile.pluto_block.surface_rock_brown.name=Braunes Pluto-Oberflächengestein
+tile.pluto_block.surface_rock_light_brown.name=Hellbraunes Pluto-Oberflächengestein
+
+# SLABS
+
+# WALLS
+
+# ITEMS
+item.pluto_item.xeonium_gem.name=Xeonium-Edelstein
+item.xeonium_dust.name=Xeonium-Staub
+item.space_potato.space_potato.name=Weltraumkartoffel
+item.space_potato.baked_space_potato.name=Weltraum-Ofenkartoffel
+item.gravity_boots.name=Schwerkraftstiefel
+
+# TOOLS
+item.xeonium_pickaxe.name=Xeonium-Spitzhacke
+item.xeonium_axe.name=Xeonium-Axt
+item.xeonium_hoe.name=Xeonium-Hacke
+item.xeonium_shovel.name=Xeonium-Schaufel
+item.xeonium_sword.name=Xeonium-Schwert
+
+# ARMORS
+
+# ENTITIES
+
+# GUI
+
+# CONTAINER
+container.pluto.treasurechest.name=Pluto-Schatztruhe
+container.pluto.ancientchest.name=Uralte Pluto-Truhe
+
+# PLANET
+planet.pluto=Pluto

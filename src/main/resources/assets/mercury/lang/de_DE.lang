@@ -1,0 +1,56 @@
+# More Planet's : Mercury = GERMAN
+
+# BLOCK
+tile.mercury_block.surface_rock.name=Merkur-Oberflächengestein
+tile.mercury_block.sub_surface_rock.name=Merkur-Unteroberflächengestein
+tile.mercury_block.rock.name=Merkurgestein
+tile.mercury_block.cobblestone.name=Merkurbruchstein
+tile.mercury_block.tin_ore.name=Zinnerz
+tile.mercury_block.copper_ore.name=Kupfererz
+tile.mercury_block.aluminum_ore.name=Aluminiumerz
+tile.mercury_block.iron_ore.name=Eisenerz
+tile.mercury_block.metal_meteoric_iron_ore.name=Metallisches Meteorisches Eisenerz
+tile.mercury_block.silicate_rock.name=Silikatgestein 
+tile.mercury_block.solid_metal_meteoric_iron.name=Solides Metallisches Meteorisches Eisen
+tile.mercury_block.dungeon_brick.name=Merkur-Dungeonziegel
+tile.metallic_rock.name=Metallischer Stein
+tile.mercury_ice.name=Dreckiges Merkur-Eis
+tile.mercury_ancient_chest.name=Uralte Merkur-Truhe
+tile.mercury_treasure_chest.name=Merkur-Schatztruhe
+tile.mercury_cobblestone_stairs.name=Merkur-Bruchsteintreppe
+tile.mercury_dungeon_brick_stairs.name=Merkur-Dungeonziegeltreppe
+
+# SLABS
+tile.mp_stone_half_slab2.mercury.name=Merkur-Bruchsteinstufe
+tile.dungeon_brick_half_slab1.mercury.name=Merkur-Dungeonziegelstufe
+
+# WALLS
+tile.mp_wall.mercury.name=Merkur-Bruchsteinmauer
+tile.mp_dungeon_brick_wall.mercury.name=Merkur-Dungeonziegelmauer
+
+# ITEMS
+item.mercury_item.metallic_shard.name=Metallische Scherbe
+item.mercury_item.raw_metal_meteoric_iron.name=Rohes Metallisches Meteorisches Eisen
+item.mercury_item.metallic_ingot.name=Metallischer Barren
+item.mercury_item.metal_meteoric_iron_ingot.name=Metallischer Meteorischer Eisenbarren
+item.mercury_item.compressed_metallic.name=Gepresstes Metall
+item.mercury_item.compressed_metal_meteoric_iron.name=Gepresstes Metallisches Meteorisches Eisen
+item.mercury_item.gravity_core.name=Schwerkraft-Kern
+item.mercury_item.gravity_controller.name=Schwerkraft-Controller
+item.dirty_water_bucket.name=Dreckiger Wassereimer
+
+# TOOLS
+
+# ARMORS
+
+# ENTITIES
+
+# DESCRIFTION
+
+# DEATH MESSSAGE
+
+# CONTAINER
+container.mercury.treasurechest.name=Merkur-Schatztruhe
+container.mercury.ancientchest.name=Uralte Merkur-Truhe
+
+# PLANET

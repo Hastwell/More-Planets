@@ -1,0 +1,30 @@
+# More Planet's : Phobos = GERMAN
+
+# BLOCKS
+tile.phobos_block.surface_rock.name=Phobos-Oberflächengestein
+tile.phobos_block.sub_surface_rock.name=Phobos-Unteroberflächengestein
+tile.phobos_block.rock.name=Phobosgestein
+tile.phobos_block.cobblestone.name=Phobosbruchstein
+tile.phobos_block.tin_ore.name=Zinnerz
+tile.phobos_block.copper_ore.name=Kupfererz
+tile.phobos_block.iron_ore.name=Eisenerz
+tile.phobos_block.desh_ore.name=Desh-Erz
+
+# SLABS
+
+# WALLS
+
+# ITEMS
+
+# TOOLS
+
+# ARMORS
+
+# ENTITIES
+
+# GUI
+
+# CONTAINER
+
+# PLANET
+moon.phobos=Phobos
