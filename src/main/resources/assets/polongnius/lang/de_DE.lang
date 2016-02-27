@@ -16,121 +16,121 @@ tile.polongnius_block.purple_crystal_block.name=Lila Kristallblock
 tile.polongnius_block.palladium_block.name=Palladium-Block
 tile.polongnius_block.dungeon_brick.name=Polongnius-Dungeonziegel
 tile.polongnius_block.dungeon_brick2.name=Polongnius-Dungeonziegel
-tile.cheese_of_milk_cake.name=Cheese of Milk Cake ##TODO##
+tile.cheese_of_milk_cake.name=Milchkäse-Kuchen
 tile.floniumTorch.name=Flonium-Fackel
 tile.fallen_polongnius_meteor.name=Polongnius-Meteor
 tile.polongnius_cobblestone_stairs.name=Polongnius-Bruchsteintreppe
 tile.polongnius_dungeon_brick_stairs.name=Polongnius-Dungeonziegeltreppe
-tile.cheese_slime_egg.name=Käseslime-Ei
-tile.cheese_of_milk_fluid.name=Cheese of Milk ##TODO##
+tile.cheese_slime_egg.name=Käseschleim-Ei
+tile.cheese_of_milk_fluid.name=Milchkäse
 tile.flonium_torch.name=Flonium-Fackel
 tile.polongnius_treasure_chest.name=Polongnius-Schatztruhe (Stufe 5)
 tile.polongnius_ancient_chest.name=Uralte Polongnius-Truhe
-tile.ultra_violet_solar_panel.name=Ultra Violet Solar Panel
-tile.cheese_slime_block.name=Cheese Slime Block
-tile.cheese_gas.name=Cheese Gas Block
+tile.ultra_violet_solar_panel.name=UV-Solarmodul
+tile.cheese_slime_block.name=Käseschleim-Block
+tile.cheese_gas.name=Käsegas-Block
 
 # SLABS
-tile.mp_stone_half_slab1.polongnius.name=Polongnius Cobblestone Slab
-tile.dungeon_brick_half_slab1.polongniusBrick.name=Polongnius Dungeon Brick Slab
+tile.mp_stone_half_slab1.polongnius.name=Polongnius-Bruchsteinstufe
+tile.dungeon_brick_half_slab1.polongniusBrick.name=Polongnius-Dungeonziegelstufe
 
 # WALLS
-tile.mp_wall.polongnius.name=Polongnius Cobblestone Wall
-tile.mp_dungeon_brick_wall.polongniusBrick.name=Polongnius Dungeon Brick Wall
+tile.mp_wall.polongnius.name=Polongnius-Bruchsteinmauer
+tile.mp_dungeon_brick_wall.polongniusBrick.name=Polongnius-Dungeonziegelmauer
 
 # ITEMS
 item.polongnius_item.flonium.name=Flonium
-item.polongnius_item.purple_crystal.name=Purple Crystal
-item.polongnius_item.raw_polongnius_meteoric_iron.name=Raw Polongnius Meteoric Iron
-item.polongnius_item.raw_palladium.name=Raw Palladium
-item.polongnius_item.polongnius_meteoric_iron_ingot.name=Polongnius Meteoric Iron Ingot
-item.polongnius_item.palladium_ingot.name=Palladium Ingot
-item.polongnius_item.compressed_polongnius_meteoric_iron.name=Compressed Polongnius Meteoric Iron
-item.polongnius_item.polongnius_meteoric_iron_stick.name=Polongnius Meteoric Iron Stick
-item.polongnius_item.palladium_stick.name=Palladium Stick
-item.polongnius_item.cheese_leather.name=Cheese Leather
-item.polongnius_food.cheese_of_milk_curd.name=Cheese of Milk Curd
-item.polongnius_food.raw_cheese_beef.name=Raw Cheese Beef
-item.polongnius_food.cooked_cheese_beef.name=Cooked Cheese Beef
-item.polongnius_dungeon_key.name=Tier 5 Polongnius Dungeon Key
-item.purple_crystal_solar_module.purple_crystal_wafer.name=Purple Crystal Wafer
-item.polongnius_item.compressed_palladium.name=Compressed Palladium
-item.cheese_slimeball.name=Cheese Slimeball
-item.purple_crystal_solar_module.purple_crystal_solar_wafer.name=Purple Crystal Solar Wafer
-item.purple_crystal_solar_module.purple_crystal_solar_single.name=Single Purple Crystal Solar Panel
-item.purple_crystal_solar_module.purple_crystal_solar_panel.name=Full Purple Crystal Solar Panel
-item.cheese_of_milk_bucket.name=Cheese of Milk Bucket
-item.tier_5_rocket.name=Tier 5 Rocket
-item.tier_6_rocket_module.tier6_heavy_duty_plate.name=Heavy Duty Plate
-item.tier_6_rocket_module.tier6_rocket_engine.name=Tier 6 Rocket Engine
-item.tier_6_rocket_module.tier6_booster.name=Tier 6 Booster
-item.tier_5_rocket_schematic.schematic_tier5_rocket_no_flag.name=NASA Workbench Schematic
-item.tier_5_rocket_schematic.schematic_tier5_rocket.name=NASA Workbench Schematic
-item.polongnius_meteor_chunk.name=Polongnius Meteor Chunk
+item.polongnius_item.purple_crystal.name=Lila Kristall
+item.polongnius_item.raw_polongnius_meteoric_iron.name=Rohes Meteorisches Polongnius-Eisen
+item.polongnius_item.raw_palladium.name=Rohes Palladium
+item.polongnius_item.polongnius_meteoric_iron_ingot.name=Meteorischer Polongnius-Eisenbarren
+item.polongnius_item.palladium_ingot.name=Palladium-Barren
+item.polongnius_item.compressed_polongnius_meteoric_iron.name=Gepresstes Meteorisches Polongnius-Eisen
+item.polongnius_item.polongnius_meteoric_iron_stick.name=Meteorischer Polongnius-Eisenstab
+item.polongnius_item.palladium_stick.name=Palladium-Stab
+item.polongnius_item.cheese_leather.name=Käseleder
+item.polongnius_food.cheese_of_milk_curd.name=Milchkäse-Quark
+item.polongnius_food.raw_cheese_beef.name=Rohes Käsefleisch
+item.polongnius_food.cooked_cheese_beef.name=Käsesteak
+item.polongnius_dungeon_key.name=Polongnius-Dungeonschlüssel (Stufe 5)
+item.purple_crystal_solar_module.purple_crystal_wafer.name=Lila Kristallwafer
+item.polongnius_item.compressed_palladium.name=Gepresstes Palladium
+item.cheese_slimeball.name=Käse-Schleimball
+item.purple_crystal_solar_module.purple_crystal_solar_wafer.name=Lila Kristall-Solarwafer
+item.purple_crystal_solar_module.purple_crystal_solar_single.name=Einzelnes Lila Kristall-Solarmodul
+item.purple_crystal_solar_module.purple_crystal_solar_panel.name=Komplettes Lila Kristall-Solarmodul
+item.cheese_of_milk_bucket.name=Milchkäse-Eimer
+item.tier_5_rocket.name=Rakete (Stufe 5)
+item.tier_6_rocket_module.tier6_heavy_duty_plate.name=Robuste Platte
+item.tier_6_rocket_module.tier6_rocket_engine.name=Raketentriebwerk (Stufe 6)
+item.tier_6_rocket_module.tier6_booster.name=Hilfstriebwerk (Stufe 6)
+item.tier_5_rocket_schematic.schematic_tier5_rocket_no_flag.name=Raketenwerkbank-Bauplan
+item.tier_5_rocket_schematic.schematic_tier5_rocket.name=Raketenwerkbank-Bauplan
+item.polongnius_meteor_chunk.name=Polongnius-Meteorbrocken
 
 # TOOLS
-item.polongnius_meteor_pickaxe.name=Polongnius Meteoric Iron Pickaxe
-item.polongnius_meteor_axe.name=Polongnius Meteoric Iron Axe
-item.polongnius_meteor_hoe.name=Polongnius Meteoric Iron Hoe
-item.polongnius_meteor_spade.name=Polongnius Meteoric Iron Shovel
-item.polongnius_meteor_sword.name=Polongnius Meteoric Iron Sword
-item.palladium_pickaxe.name=Palladium Pickaxe
-item.palladium_axe.name=Palladium Axe
-item.palladium_hoe.name=Palladium Hoe
-item.palladium_spade.name=Palladium Shovel
-item.palladium_sword.name=Palladium Sword
-item.purple_crystal_pickaxe.name=Purple Crystal Pickaxe
-item.purple_crystal_axe.name=Purple Crystal Axe
-item.purple_crystal_hoe.name=Purple Crystal Hoe
-item.purple_crystal_spade.name=Purple Crystal Shovel
-item.purple_crystal_sword.name=Purple Crystal Sword
+item.polongnius_meteor_pickaxe.name=Meteorische Polongnius-Eisenspitzhacke
+item.polongnius_meteor_axe.name=Meteorische Polongnius-Eisenaxt
+item.polongnius_meteor_hoe.name=Meteorische Polongnius-Eisenhacke
+item.polongnius_meteor_spade.name=Meteorische Polongnius-Eisenschaufel
+item.polongnius_meteor_sword.name=Meteorisches Polongnius-Eisenschwert
+item.palladium_pickaxe.name=Palladium-Spitzhacke
+item.palladium_axe.name=Palladium-Axt
+item.palladium_hoe.name=Palladium-Hacke
+item.palladium_spade.name=Palladium-Schaufel
+item.palladium_sword.name=Palladium-Schwert
+item.purple_crystal_pickaxe.name=Lila Kristallspitzhacke
+item.purple_crystal_axe.name=Lila Kristallaxt
+item.purple_crystal_hoe.name=Lila Kristallhacke
+item.purple_crystal_spade.name=Lila Kristallschaufel
+item.purple_crystal_sword.name=Lila Kristallschwert
 
 # ARMOR
-item.polongnius_meteor_helmet.name=Polongnius Meteoric Iron Helmet
-item.polongnius_meteor_chestplate.name=Polongnius Meteoric Iron Chestplate
-item.polongnius_meteor_leggings.name=Polongnius Meteoric Iron Leggings
-item.polongnius_meteor_boots.name=Polongnius Meteoric Iron Boots
-item.cheese_leather_helmet.name=Cheese Leather Helmet
-item.cheese_leather_chestplate.name=Cheese Leather Chestplate
-item.cheese_leather_leggings.name=Cheese Leather Leggings
-item.cheese_leather_boots.name=Cheese Leather Boots
-item.palladium_helmet.name=Palladium Helmet
-item.palladium_chestplate.name=Palladium Chestplate
-item.palladium_leggings.name=Palladium Leggings
-item.palladium_boots.name=Palladium Boots
-item.purple_crystal_helmet.name=Purple Crystal Helmet
-item.purple_crystal_chestplate.name=Purple Crystal Chestplate
-item.purple_crystal_leggings.name=Purple Crystal Leggings
-item.purple_crystal_boots.name=Purple Crystal Boots
-item.breathable_polongnius_meteor_helmet.name=Breathable Polongnius Meteoric Iron Helmet
-item.breathable_palladium_helmet.name=Breathable Palladium Helmet
+item.polongnius_meteor_helmet.name=Meteorischer Polongnius-Eisenhelm
+item.polongnius_meteor_chestplate.name=Meteorischer Polongnius-Eisenbrustpanzer
+item.polongnius_meteor_leggings.name=Meteorischer Polongnius-Eisenbeinschutz
+item.polongnius_meteor_boots.name=Meteorische Polongnius-Eisenstiefel
+item.cheese_leather_helmet.name=Käse-Lederkappe
+item.cheese_leather_chestplate.name=Käse-Lederjacke
+item.cheese_leather_leggings.name=Käse-Lederhose
+item.cheese_leather_boots.name=Käse-Lederstiefel
+item.palladium_helmet.name=Palladium-Helm
+item.palladium_chestplate.name=Palladium-Brustpanzer
+item.palladium_leggings.name=Palladium-Beinschutz
+item.palladium_boots.name=Palladium-Stiefel
+item.purple_crystal_helmet.name=Lila Kristallhelm
+item.purple_crystal_chestplate.name=Lila Kristallbrustpanzer
+item.purple_crystal_leggings.name=Lila Kristallbeinschutz
+item.purple_crystal_boots.name=Lila Kristallstiefel
+item.breathable_polongnius_meteor_helmet.name=Meteorischer Polongnius-Eisenhelm (Atembar)
+item.breathable_palladium_helmet.name=Palladium-Helm (Atembar)
 
 # DESCRIPTION
 desc.tier6.name=Tier 6
-tile.cheese_of_milk_cake.desc=Cheese of Milk Blocks are created from cheese of milk of the Polongnius, place-able and editble.
-tile.ultra_violet_solar_panel.desc=Ultra Violet Solar Panel will collect energy from the sun or ultra violet light from stars, storing it for further use. Automatically adjusts panel angle for optimal energy collection.
-desc.slime.name=Slime type
+tile.cheese_of_milk_cake.desc=Milchkäse-Blöcke werden vom Milckäse auf dem Polongnius hergestellt, platzier- und essbar.
+tile.ultra_violet_solar_panel.desc=Das UV-Solarmodul sammelt Energie von der Sonne oder vom UV-Licht der Sterne und speichert diese für eine spätere Verwendung. Richtet sich automatisch aus, um die optimale Energieerzeugung zu garantieren.
+desc.slime.name=Schleimtyp
 
 # SCHEMATIC
-schematic.tier5.rocket.name=Tier 5 Rocket
-schematic.tier5.rocket.noflag.name=Tier 5 Rocket No Flag
+schematic.tier5.rocket.name=Rakete (Stufe 5)
+schematic.tier5.rocket.noflag.name=Rakete (Stufe 5, keine Flagge)
 
 # ENTITIES
-entity.MorePlanet.CheeseCow.name=Cheese Cow
-entity.MorePlanet.CheeseSlime.name=Cheese Slime
-entity.MorePlanet.CheeseCubeBoss.name=Cheese Cube Boss
+entity.MorePlanet.CheeseCow.name=Käsekuh
+entity.MorePlanet.CheeseSlime.name=Käseschleim
+entity.MorePlanet.CheeseCubeBoss.name=Käsewürfel-Boss
 
 # GUI
-gui.status.star.blockedfully.name=Star is Not Visible
-gui.status.star.blockedpartial.name=Star Partially Visible
-gui.status.starVisible.name=Star Visible
+gui.status.star.blockedfully.name=Sterne sind nicht sichtbar
+gui.status.star.blockedpartial.name=Sterne teilweise sichtbar
+gui.status.starVisible.name=Sterne sichtbar
 
 # CONTAINER
-container.polongnius.ancientchest.name=Polongnius Ancient Chest
-container.ultraviolet.solar.name=Ultra Violet Solar
-container.polongnius.treasurechest.name=Polongnius Treasure Chest
-schematics.container.rocket.tier5=Tier 5 Rocket
-schematics.container.rocket.noflag.tier5=Tier 5 Rocket No Flag
+container.polongnius.ancientchest.name=Uralte Polongnius-Truhe
+container.ultraviolet.solar.name=UV-Solarmodul
+container.polongnius.treasurechest.name=Polongnius-Schatztruhe
+schematics.container.rocket.tier5=Rakete (Stufe 5)
+schematics.container.rocket.noflag.tier5=Rakete (Stufe 5, keine Flagge)
 
 # PLANET
 planet.polongnius=Polongnius
