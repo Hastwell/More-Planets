@@ -27,6 +27,7 @@ public class ConfigManagerMP
     public static String BIOMES = "biomes";
     public static String POTIONS = "potions";
     public static String GUIS = "guis";
+    public static String HASTHAX = "hasthax";
 
     // Dimensions
     public static int idDimensionDiona;
@@ -137,6 +138,12 @@ public class ConfigManagerMP
     public static int idPotionChemical;
     public static int idPotionEMP;
     public static int idPotionIcyPoison;
+
+
+    // Hasthax Sections
+    public static boolean disableSulfurOredict;
+    public static boolean disableMilkOfCheeseEffect;
+
 
     public static void init(File file)
     {
@@ -542,6 +549,17 @@ public class ConfigManagerMP
             ConfigManagerMP.idPotionIcyPoison = prop.getInt();
             propOrder.add(prop.getName());
 
+	    // HastHax
+            prop = ConfigManagerMP.config.get(ConfigManagerMP.HASTHAX, "Disable Sulfur Oredict", true);
+            prop.comment = "Disables Sulfur Oredict registration to seperate MP Sulfur from overworld Sulfur";
+            ConfigManagerMP.disableSulfurOredict = prop.getBoolean(true);
+            propOrder.add(prop.getName());
+
+            prop = ConfigManagerMP.config.get(ConfigManagerMP.HASTHAX, "Disable Milk Of Cheese Saturation", true);
+            prop.comment = "Disables saturation obtained by standing in Milk of Cheese";
+            ConfigManagerMP.disableMilkOfCheeseEffect = prop.getBoolean(true);
+            propOrder.add(prop.getName());
+
             ConfigManagerMP.config.setCategoryPropertyOrder(Configuration.CATEGORY_GENERAL, propOrder);
 
             if (ConfigManagerMP.config.hasChanged())
@@ -565,6 +583,7 @@ public class ConfigManagerMP
         list.addAll(new ConfigElement(ConfigManagerMP.config.getCategory(ConfigManagerMP.POTIONS)).getChildElements());
         list.addAll(new ConfigElement(ConfigManagerMP.config.getCategory(ConfigManagerMP.SCHEMATICS)).getChildElements());
         list.addAll(new ConfigElement(ConfigManagerMP.config.getCategory(ConfigManagerMP.GUIS)).getChildElements());
+        list.addAll(new ConfigElement(ConfigManagerMP.config.getCategory(ConfigManagerMP.HASTHAX)).getChildElements());
         return list;
     }
 }

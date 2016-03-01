@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import stevekung.mods.moreplanets.core.MorePlanetsCore;
 import stevekung.mods.moreplanets.core.blocks.BlockFluidBaseMP;
 import stevekung.mods.moreplanets.planets.polongnius.blocks.PolongniusBlocks;
+import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 
 public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
 {
@@ -60,7 +61,7 @@ public class BlockFluidCheeseOfMilk extends BlockFluidBaseMP
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
     {
-        if (entity instanceof EntityLivingBase)
+        if (!ConfigManagerMP.disableMilkOfCheeseEffect && entity instanceof EntityLivingBase)
         {
             ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(Potion.field_76443_y.id, 50));
         }

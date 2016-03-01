@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import stevekung.mods.moreplanets.planets.siriusb.blocks.SiriusBBlocks;
 import stevekung.mods.stevecore.RegisterHelper;
+import stevekung.mods.moreplanets.core.config.ConfigManagerMP;
 
 public class SiriusBItems
 {
@@ -49,8 +50,11 @@ public class SiriusBItems
         RegisterHelper.registerItem(SiriusBItems.sirius_lava_bucket);
         RegisterHelper.registerItem(SiriusBItems.sirius_b_dungeon_key);
 
-        OreDictionary.registerOre("ingotSulfur", new ItemStack(SiriusBItems.sirius_b_item, 1, 0));
-        OreDictionary.registerOre("compressedSulfur", new ItemStack(SiriusBItems.sirius_b_item, 1, 1));
+        if(!ConfigManagerMP.disableSulfurOredict)
+        {
+		OreDictionary.registerOre("ingotSulfur", new ItemStack(SiriusBItems.sirius_b_item, 1, 0));
+        	OreDictionary.registerOre("compressedSulfur", new ItemStack(SiriusBItems.sirius_b_item, 1, 1));
+        }
     }
 
     private static void registerFluidContainer()
