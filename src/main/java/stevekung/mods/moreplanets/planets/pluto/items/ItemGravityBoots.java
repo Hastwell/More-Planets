@@ -12,6 +12,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import stevekung.mods.moreplanets.core.items.armor.ItemArmorMP;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class ItemGravityBoots extends ItemArmorMP implements IArmorGravity
 {
@@ -50,13 +51,13 @@ public class ItemGravityBoots extends ItemArmorMP implements IArmorGravity
     }
 
     @Override
-    public int gravityOverrideIfLow()
+    public int gravityOverrideIfLow(EntityPlayer p)
     {
         return 50;
     }
 
     @Override
-    public int gravityOverrideIfHigh()
+    public int gravityOverrideIfHigh(EntityPlayer p)
     {
         return 75;
     }
