@@ -9,9 +9,15 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath files("Galacticraft-API-1.7-3.0.12.445.jar")
+        classpath files("GalacticraftCore-Dev-1.7-3.0.12.445.jar")
+        classpath files("Galacticraft-Planets-Dev-1.7-3.0.12.445.jar")
+        classpath files("MicdoodleCore-Dev-1.7-3.0.12.445.jar")
+	classpath files("industrialcraft-2-2.2.805-experimental.jar")
     }
 }
 
@@ -24,6 +30,13 @@ archivesBaseName = "More-Planets"
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "eclipse"
+}
+
+repositories {
+     maven { // the repo from which to get NEI and stuff
+         name 'CB Repo'
+         url "http://chickenbones.net/maven/"
+     }
 }
 
 dependencies {
@@ -39,7 +52,9 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.57:dev"
+    compile 'codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev'
+    compile 'codechicken:CodeChickenLib:1.7.10-1.1.3.138:dev'
 }
 
 processResources
