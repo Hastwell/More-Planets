@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.*
+
 buildscript {
     repositories {
         mavenCentral()
@@ -23,7 +25,23 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.3.1-1.7.10"
+ext.env = System.getenv()
+ext.hash = 'git rev-parse --short HEAD'.execute().text.trim()
+ext.build = env.BUILD_NUMBER
+if (ext.build == null)
+{
+    if (ext.hash != null)
+    {
+        ext.build = ext.hash
+    }
+    else
+    {
+        ext.build =  "nogit"
+    }
+}
+version = "1.3.1-HH-" + build
+
+
 group= "stevekung.mods" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "More-Planets"
 
